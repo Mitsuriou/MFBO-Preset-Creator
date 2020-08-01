@@ -12,6 +12,9 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
 
 void MFBOPresetCreator::initializeGUI()
 {
+  // Menu bar
+  this->setupMenuBar();
+
   // Main vertical container
   auto lMainVertical{ new QVBoxLayout(this->ui.mainContainer) };
 
@@ -21,6 +24,28 @@ void MFBOPresetCreator::initializeGUI()
   this->setupOptionsGUI(*lMainVertical);
   this->setupOutputGUI(*lMainVertical);
   this->setupRemainingGUI(*lMainVertical);
+}
+
+void MFBOPresetCreator::setupMenuBar()
+{
+  // Construct a new menu bar
+  auto lMenuBar{ new QMenuBar(this) };
+  this->setMenuBar(lMenuBar);
+
+  // File
+  auto lFileMenu{ new QMenu(QString("File"), this) };
+  lMenuBar->addMenu(lFileMenu);
+  lFileMenu->addAction(QString("Exit"), this, SLOT(close()));
+
+  // Tools
+  auto lToolsMenu{ new QMenu(QString("Tools"), this) };
+  lMenuBar->addMenu(lToolsMenu);
+  lToolsMenu->addAction(QString("Settings"), this, SLOT(showSettingsDialog()));
+
+  // Help
+  auto lHelpMenu{ new QMenu(QString("Help"), this) };
+  lMenuBar->addMenu(lHelpMenu);
+  lHelpMenu->addAction(QString("About"), this, SLOT(showAboutDialog()));
 }
 
 void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
@@ -386,6 +411,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
     return;
   }
 
+  // Check if the path could be valid
+  if (lEntryDirectory.startsWith("/"))
+  {
+    this->displayWarningMessage("Error: the path given to export the files seems to be invalid.");
+    return;
+  }
+
   // Create main directory
   if (!QDir(lEntryDirectory).exists())
   {
@@ -537,4 +569,43 @@ void MFBOPresetCreator::generateDirectoryStructure()
   QMessageBox lMessageBox(QMessageBox::Icon::Information, "Generation successful", lSuccessText);
   lMessageBox.exec();
   lMessageBox.deleteLater();
+
+  // Open the folder where the file structure has been created
+  QDesktopServices::openUrl(lEntryDirectory);
+}
+
+void MFBOPresetCreator::showAboutDialog()
+{
+  // Construct the modal
+  auto lDialog{ new QDialog(this) };
+  lDialog->setWindowTitle(QString("About"));
+  lDialog->setFixedSize(400, 300);
+
+  // Construct and display the content of the modal
+  QString lText("WIP");
+  auto lModalContent{ new QLabel(lDialog) };
+  lModalContent->setText(lText);
+  lModalContent->adjustSize();
+
+  // Display and delete the modal
+  lDialog->exec();
+  lDialog->deleteLater();
+}
+
+void MFBOPresetCreator::showSettingsDialog()
+{
+  // Construct the modal
+  auto lDialog{ new QDialog(this) };
+  lDialog->setWindowTitle(QString("Settings"));
+  lDialog->setFixedSize(400, 300);
+
+  // Construct and display the content of the modal
+  QString lText("WIP");
+  auto lModalContent{ new QLabel(lDialog) };
+  lModalContent->setText(lText);
+  lModalContent->adjustSize();
+
+  // Display and delete the modal
+  lDialog->exec();
+  lDialog->deleteLater();
 }

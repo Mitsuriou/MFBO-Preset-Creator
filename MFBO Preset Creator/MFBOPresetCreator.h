@@ -3,6 +3,11 @@
 #include <QtWidgets/QMainWindow>
 #include <QVBoxLayout>
 #include <QString>
+#include <QMenuBar>
+#include <QMenu>
+#include <QAction>
+#include <QDialog>
+#include <QDesktopServices>
 
 #include "ui_MFBOPresetCreator.h"
 
@@ -16,6 +21,7 @@ public:
 private:
   Ui::MFBOPresetCreatorClass ui;
   void initializeGUI();
+  void setupMenuBar();
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
   void setupBodySlideGUI(QVBoxLayout& aLayout);
   void setupOptionsGUI(QVBoxLayout& aLayout);
@@ -32,4 +38,8 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
+
+  // Menu dialogs
+  void showAboutDialog();
+  void showSettingsDialog();
 };

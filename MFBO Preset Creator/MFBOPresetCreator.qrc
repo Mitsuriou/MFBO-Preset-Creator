@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/software">
-        <file alias="icon">ressources/software/icon.ico</file>
+        <file alias="icon">ressources/software/icon.png</file>
     </qresource>
     <qresource prefix="/ressources">
         <file alias="bodyslide_osp">ressources/bodyslide files/bodyslide.osp</file>
