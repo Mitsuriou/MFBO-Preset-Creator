@@ -1,0 +1,7 @@
+<SliderGroups>
+    <Group name="CBBE">
+        <Member name="{%%bodyslide_set_name%%} - 3BBB Body Amazing"/>
+        <Member name="{%%bodyslide_set_name%%} - Feet"/>
+        <Member name="{%%bodyslide_set_name%%} - Hands"/>
+    </Group>
+</SliderGroups>

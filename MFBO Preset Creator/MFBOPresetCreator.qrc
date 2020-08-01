@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/software">
+        <file alias="icon">ressources/software/icon.ico</file>
+    </qresource>
+    <qresource prefix="/ressources">
+        <file alias="bodyslide_osp">ressources/bodyslide files/bodyslide.osp</file>
+        <file alias="bodyslide_xml">ressources/bodyslide files/bodyslide.xml</file>
+        <file alias="CUSTOM CBBE SMP">ressources/3bbb meshes/CUSTOM CBBE SMP.xml</file>
+        <file alias="femalebody_0">ressources/3bbb meshes/femalebody_0.nif</file>
+        <file alias="femalebody_1">ressources/3bbb meshes/femalebody_1.nif</file>
+        <file alias="femalefeet_0">ressources/3bbb meshes/femalefeet_0.nif</file>
+        <file alias="femalefeet_1">ressources/3bbb meshes/femalefeet_1.nif</file>
+        <file alias="femalehands_0">ressources/3bbb meshes/femalehands_0.nif</file>
+        <file alias="femalehands_1">ressources/3bbb meshes/femalehands_1.nif</file>
+        <file alias="skeleton_female">ressources/3bbb meshes/skeleton_female.nif</file>
+    </qresource>
+</RCC>

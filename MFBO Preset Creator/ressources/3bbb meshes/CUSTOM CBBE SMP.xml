@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="description.xsd">
+
+	<!-- ground -->
+	<per-triangle-shape name="VirtualGround">
+		<margin>1</margin>
+		<prenetration>4</prenetration>
+		<tag>ground</tag>
+	</per-triangle-shape>
+
+	<bone name="NPC L Calf [LClf]"/>
+	<bone name="NPC R Calf [RClf]"/>
+	<bone name="NPC R Foot [Rft ]"/>
+	<bone name="NPC L Foot [Lft ]"/>
+	<bone name="NPC Head [Head]"/>
+	<bone name="NPC L Clavicle [LClv]"/>
+	<bone name="NPC R Clavicle [RClv]"/>
+	<bone name="NPC L Forearm [LLar]"/>
+	<bone name="NPC R Forearm [RLar]"/>
+	<bone name="NPC L ForearmTwist1 [LLt1]"/>
+	<bone name="NPC R ForearmTwist1 [RLt1]"/>
+	<bone name="NPC L ForearmTwist2 [LLt2]"/>
+	<bone name="NPC R ForearmTwist2 [RLt2]"/>
+	<bone name="NPC L UpperArm [LUar]"/>
+	<bone name="NPC R UpperArm [RUar]"/>
+	<bone name="NPC L UpperarmTwist1 [LUt1]"/>
+	<bone name="NPC R UpperarmTwist1 [RUt1]"/>
+	<bone name="NPC L UpperarmTwist2 [LUt2]"/>
+	<bone name="NPC R UpperarmTwist2 [RUt2]"/>
+	<bone name="NPC Spine [Spn0]"/>
+	<bone name="NPC Spine2 [Spn2]"/>
+	<bone name="NPC Spine1 [Spn1]"/>
+	<bone name="NPC Pelvis [Pelv]"/>
+	<bone name="NPC Belly"/>
+	<bone name="Belly"/>
+	<bone name="NPC L Thigh [LThg]"/>
+	<bone name="NPC R Thigh [RThg]"/>
+	<bone name="NPC L FrontThigh"/>
+	<bone name="NPC R FrontThigh"/>
+	<bone name="NPC L RearCalf [LrClf]"/>
+	<bone name="NPC R RearCalf [RrClf]"/>
+	<bone name="NPC L RearThigh"/>
+	<bone name="NPC R RearThigh"/>
+	<bone name="NPC L Hand [LHnd]"/>
+	<bone name="NPC R Hand [RHnd]"/>
+	<bone name="NPC L PreBreast"/>
+	<bone name="NPC R PreBreast"/>
+	<bone name="NPC L Breast"/>
+	<bone name="NPC R Breast"/>
+	<bone name="NPC L Breast01"/>
+	<bone name="NPC R Breast01"/>
+	<bone name="L Breast00"/>
+	<bone name="R Breast00"/>
+	<bone name="L Breast01"/>
+	<bone name="R Breast01"/>
+	<bone name="L Breast02"/>
+	<bone name="R Breast02"/>
+	<bone name="L Breast03"/>
+	<bone name="R Breast03"/>
+	<bone name="L Breast04"/>
+	<bone name="R Breast04"/>
+	<bone name="NPC L PreButt"/>
+	<bone name="NPC R PreButt"/>
+	<bone name="NPC L Pussy01"/>
+	<bone name="NPC R Pussy01"/>
+	<bone name="NPC L Butt"/>
+	<bone name="NPC R Butt"/>
+	<bone name="NPC L Pussy02"/>
+	<bone name="NPC R Pussy02"/>
+	
+	
+<!--
+	<bone-default>
+		<margin-multiplier>0.01</margin-multiplier>
+	</bone-default>
+	<bone name="L Breast00"/>
+	<bone name="R Breast00"/>
+
+
+	<bone-default>
+		<mass>10</mass>
+		<inertia x="2" y="2" z="2"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1" />
+			<origin x="0" y="0" z="0" />
+		</centerOfMassTransform>
+		<linearDamping>0.5</linearDamping>
+		<angularDamping>0.3</angularDamping>
+		<gravity-factor>0.05</gravity-factor>
+		<friction>0</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0.1</restitution>
+	</bone-default>
+	
+	<bone-default>
+		<margin-multiplier>0.01</margin-multiplier>
+	</bone-default>
+	<bone name="L Breast01"/>
+	<bone name="R Breast01"/>
+
+	<bone-default>
+		<mass>1</mass>
+		<inertia x="2" y="2" z="2"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1" />
+			<origin x="0" y="0" z="0" />
+		</centerOfMassTransform>
+		<linearDamping>0.7</linearDamping>
+		<angularDamping>0.3</angularDamping>
+		<gravity-factor>0.1</gravity-factor>
+		<friction>0</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0.2</restitution>
+	</bone-default>
+	
+	<bone-default>
+		<margin-multiplier>0.1</margin-multiplier>
+	</bone-default>
+	<bone name="L Breast02"/>
+	<bone name="R Breast02"/>
+
+	<bone-default>
+		<mass>0.2</mass>
+		<inertia x="2" y="2" z="2"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1" />
+			<origin x="0" y="0" z="0" />
+		</centerOfMassTransform>
+		<linearDamping>0.8</linearDamping>
+		<angularDamping>0.3</angularDamping>
+		<gravity-factor>0.15</gravity-factor>
+		<friction>0.4</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0.8</restitution>
+	</bone-default>
+
+	
+	<bone name="L Breast03"/>
+	<bone name="R Breast03"/>
+	
+	
+	<bone-default>
+		<mass>0.15</mass>
+		<inertia x="40" y="20" z="20"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</centerOfMassTransform>
+		<linearDamping>0.6</linearDamping>
+		<angularDamping>0.8</angularDamping>
+		<gravity-factor>0</gravity-factor>
+		<friction>0</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0</restitution>
+	</bone-default>
+	
+	
+	<bone name="L Breast04"/>
+	<bone name="R Breast04"/>
+	
+
+
+	<generic-constraint-default>
+			<frameInB>
+				<basis x="0" y="0" z="0" w="1"/>
+				<origin x="0" y="0" z="0"/>
+			</frameInB>
+    	<useLinearReferenceFrameA>false</useLinearReferenceFrameA>
+    	<linearLowerLimit x="-2" y="-0.2" z="-6" />
+    	<linearUpperLimit x="1" y="0.5" z="3" />
+		<angularLowerLimit x="-0.05" y="0" z="-0.05" />
+    	<angularUpperLimit x="0.05" y="0" z="0" />
+    	<linearStiffness x="900" y="900" z="1200"/>
+    	<angularStiffness x="900" y="0" z="900"/>
+    	<linearDamping x="2" y="2" z="20" />
+    	<angularDamping x="2" y="2" z="2" />
+    	<linearEquilibrium x="0" y="0" z="0" />
+    	<angularEquilibrium x="0" y="0" z="0" />
+    	<linearBounce x="0" y="0" z="0"/>
+    	<angularBounce x="0" y="0" z="0"/>
+	</generic-constraint-default>
+	<generic-constraint bodyA="L Breast01" bodyB="L Breast00"/>
+
+	<generic-constraint-default>
+		<linearLowerLimit x="-1" y="-0.2" z="-6" />
+    	<linearUpperLimit x="2" y="0.5" z="3" />
+		<angularLowerLimit x="-0.05" y="0" z="0" />
+    	<angularUpperLimit x="0.05" y="0" z="0.05" />
+	</generic-constraint-default>
+	<generic-constraint bodyA="R Breast01" bodyB="R Breast00"/>
+
+
+	<generic-constraint-default>
+		<linearLowerLimit x="0" y="-0.2" z="-4.5" />
+    	<linearUpperLimit x="0" y="1" z="1.2" />
+    	<angularLowerLimit x="-0.5" y="-0.02" z="-0.3" />
+    	<angularUpperLimit x="0.1" y="0.02" z="0.1" />
+    	<linearStiffness x="900" y="900" z="900"/>
+    	<angularStiffness x="900" y="900" z="900"/>
+    	<linearDamping x="2" y="2" z="14" />
+    	<angularDamping x="2" y="2" z="8" />
+    	<linearEquilibrium x="0" y="0" z="-1.2" />
+    	<angularEquilibrium x="0" y="0" z="0" />
+    </generic-constraint-default>
+	<generic-constraint bodyA="L Breast02" bodyB="L Breast01"/>	
+
+	<generic-constraint-default>
+		<linearLowerLimit x="0" y="-0.2" z="-4.5" />
+    	<linearUpperLimit x="0" y="1" z="1.2" />
+    	<angularLowerLimit x="-0.5" y="-0.02" z="-0.1" />
+    	<angularUpperLimit x="0.1" y="0.02" z="0.3" />
+	</generic-constraint-default>
+	<generic-constraint bodyA="R Breast02" bodyB="R Breast01"/>
+
+
+	<generic-constraint-default>
+		<linearLowerLimit x="-10" y="-10" z="-10" />
+    	<linearUpperLimit x="10" y="10" z="10" />
+    	<angularLowerLimit x="-0.1" y="-0.02" z="-0.1" />
+    	<angularUpperLimit x="0.1" y="0.02" z="0.05" />
+    	<linearStiffness x="900" y="900" z="900"/>
+    	<angularStiffness x="900" y="900" z="900"/>
+    	<linearDamping x="2" y="2" z="2" />
+    	<angularDamping x="2" y="2" z="2" />
+    	<linearEquilibrium x="0" y="0" z="-0.8" />
+    	<angularEquilibrium x="0" y="0" z="0" />
+    </generic-constraint-default>
+	<generic-constraint bodyA="L Breast03" bodyB="L Breast02"/>	
+
+	<generic-constraint-default>
+		<linearLowerLimit x="-1" y="-0.2" z="-2" />
+    	<linearUpperLimit x="1" y="0.5" z="2" />
+    	<angularLowerLimit x="-0.1" y="-0.02" z="-0.1" />
+    	<angularUpperLimit x="0.1" y="0.02" z="0.05" />
+    	<linearStiffness x="900" y="900" z="900"/>
+    	<angularStiffness x="900" y="900" z="900"/>
+    	<linearDamping x="2" y="2" z="2" />
+    	<angularDamping x="2" y="2" z="2" />
+    	<linearEquilibrium x="0" y="0" z="-0.8" />
+    	<angularEquilibrium x="0" y="0" z="0" />
+    </generic-constraint-default>
+	<generic-constraint bodyA="L Breast03" bodyB="L Breast01"/>	
+	
+
+	<generic-constraint-default>
+		<linearLowerLimit x="-10" y="-10" z="-10" />
+    	<linearUpperLimit x="10" y="10" z="10" />
+    	<angularLowerLimit x="-0.1" y="-0.02" z="-0.05" />
+    	<angularUpperLimit x="0.1" y="0.02" z="0.1" />
+	</generic-constraint-default>
+	<generic-constraint bodyA="R Breast03" bodyB="R Breast02"/>
+
+	<generic-constraint-default>
+		<linearLowerLimit x="-1" y="-0.2" z="-2" />
+    	<linearUpperLimit x="1" y="0.5" z="2" />
+    	<angularLowerLimit x="-0.1" y="-0.02" z="-0.05" />
+    	<angularUpperLimit x="0.1" y="0.02" z="0.1" />
+	</generic-constraint-default>
+	<generic-constraint bodyA="R Breast03" bodyB="R Breast01"/>
+	
+	<generic-constraint-default>
+		<frameInB>
+			<basis x="0" y="0" z="0" w="1" />
+			<origin x="0" y="0" z="0" />
+		</frameInB>
+			<useLinearReferenceFrameA>false</useLinearReferenceFrameA>
+			<linearLowerLimit x="-3" y="-0" z="-5" />
+			<linearUpperLimit x="0" y="0" z="5" />
+			<angularLowerLimit x="-0.4" y="0" z="0" />
+			<angularUpperLimit x="0.4" y="0" z="0" />
+			<linearStiffness x="40" y="60" z="40"/>
+			<angularStiffness x="9" y="9" z="9"/>
+			<linearDamping x="2" y="2" z="2" />
+			<angularDamping x="1" y="1" z="1" />
+			<linearEquilibrium x="-2" y="0" z="-4" />
+			<angularEquilibrium x="0" y="0" z="0" />
+			<linearBounce x="0" y="0" z="0"/>
+			<angularBounce x="0" y="0" z="0"/>
+	</generic-constraint-default>
+	<generic-constraint bodyA="L Breast04" bodyB="L Breast00"/>	
+	
+
+	<generic-constraint-default>
+		<frameInB>
+			<basis x="0" y="0" z="0" w="1" />
+			<origin x="0" y="0" z="0" />
+		</frameInB>
+			<useLinearReferenceFrameA>false</useLinearReferenceFrameA>
+			<linearLowerLimit x="-0" y="-0" z="-8" />
+			<linearUpperLimit x="3" y="0" z="8" />
+			<angularLowerLimit x="-0.4" y="0" z="0" />
+			<angularUpperLimit x="0.4" y="0" z="0" />
+			<linearStiffness x="40" y="60" z="40"/>
+			<angularStiffness x="50" y="50" z="50"/>
+			<linearDamping x="2" y="2" z="2" />
+			<angularDamping x="1" y="1" z="1" />
+			<linearEquilibrium x="2" y="0" z="-4" />
+			<angularEquilibrium x="0" y="0" z="0" />
+			<linearBounce x="0" y="0" z="0"/>
+			<angularBounce x="0" y="0" z="0"/>
+    </generic-constraint-default>
+	<generic-constraint bodyA="R Breast04" bodyB="R Breast00"/>
+	
+	
+
+
+<bone-default>
+	<mass>5.000000</mass>
+	<inertia x="10" y="10" z="10"/>
+	<centerOfMassTransform>
+		<basis x="0" y="0" z="0" w="1"/>
+		<origin x="0" y="-1" z="0"/>
+	</centerOfMassTransform>
+	<linearDamping>0.85</linearDamping>
+	<angularDamping>0.85</angularDamping>
+	<friction>0</friction>
+	<rollingFriction>0</rollingFriction>
+	<restitution>0</restitution>
+</bone-default>
+	
+	<bone name="NPC L Butt"/>
+	<bone name="NPC R Butt"/>
+	
+<generic-constraint-default>
+		<frameInB>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</frameInB>
+		<useLinearReferenceFrameA>false</useLinearReferenceFrameA>
+		<linearLowerLimit x="-6" y="-6" z="-6"/>
+		<linearUpperLimit x="6" y="6" z="6"/>
+		<angularLowerLimit x="-0.3" y="0" z="-0.3"/>
+		<angularUpperLimit x="0.3" y="0" z="0.3"/>
+		<linearStiffness x="500" y="500" z="500"/>
+		<angularStiffness x="500" y="500" z="500"/>
+		<linearDamping x="0.99" y="0.99" z="0.99"/>
+		<angularDamping x="0.99" y="0.99" z="0.99"/>
+		<linearEquilibrium x="0" y="0" z="-1"/>
+		<angularEquilibrium x="0" y="0" z="0"/>
+		<linearBounce x="0.5" y="0.5" z="0.5"/>
+		<angularBounce x="0.5" y="0.5" z="0.5"/>
+</generic-constraint-default>
+<generic-constraint bodyA="NPC L Butt" bodyB="NPC L PreButt"/>
+<generic-constraint bodyA="NPC R Butt" bodyB="NPC R PreButt"/>
+	
+	
+	<bone name="NPC L Pussy02">
+		<mass>0.10000</mass>
+		<inertia x="10" y="10" z="10"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</centerOfMassTransform>
+		<linearDamping>0</linearDamping>
+		<angularDamping>0</angularDamping>
+		<friction>0</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0</restitution>
+	</bone>
+	<bone name="NPC L Pussy01">
+		<mass>0.00000</mass>
+		<inertia x="0" y="0" z="0"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</centerOfMassTransform>
+		<linearDamping>0</linearDamping>
+		<angularDamping>0</angularDamping>
+		<friction>0</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0</restitution>
+	</bone>
+	<bone name="NPC R Pussy02">
+		<mass>0.10000</mass>
+		<inertia x="10" y="10" z="10"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</centerOfMassTransform>
+		<linearDamping>0</linearDamping>
+		<angularDamping>0</angularDamping>
+		<friction>0</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0</restitution>
+	</bone>
+	<bone name="NPC R Pussy01">
+		<mass>0.00000</mass>
+		<inertia x="0" y="0" z="0"/>
+		<centerOfMassTransform>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</centerOfMassTransform>
+		<linearDamping>0</linearDamping>
+		<angularDamping>0</angularDamping>
+		<friction>0</friction>
+		<rollingFriction>0</rollingFriction>
+		<restitution>0</restitution>
+	</bone>
+	<generic-constraint bodyA="NPC L Pussy02" bodyB="NPC L Pussy01">
+		<frameInB>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</frameInB>
+		<useLinearReferenceFrameA>false</useLinearReferenceFrameA>
+		<linearLowerLimit x="0" y="0" z="0"/>
+		<linearUpperLimit x="10" y="0" z="0"/>
+		<angularLowerLimit x="0" y="0" z="0"/>
+		<angularUpperLimit x="0" y="0" z="0"/>
+		<linearStiffness x="50" y="50" z="50"/>
+		<angularStiffness x="10" y="10" z="10"/>
+		<linearDamping x="0" y="0" z="0"/>
+		<angularDamping x="0" y="0" z="0"/>
+		<linearEquilibrium x="-5" y="0" z="0"/>
+		<angularEquilibrium x="0" y="0" z="0"/>
+	</generic-constraint>
+	<generic-constraint bodyA="NPC R Pussy02" bodyB="NPC R Pussy01">
+		<frameInB>
+			<basis x="0" y="0" z="0" w="1"/>
+			<origin x="0" y="0" z="0"/>
+		</frameInB>
+		<useLinearReferenceFrameA>false</useLinearReferenceFrameA>
+		<linearLowerLimit x="-10" y="0" z="0"/>
+		<linearUpperLimit x="0" y="0" z="0"/>
+		<angularLowerLimit x="0" y="0" z="0"/>
+		<angularUpperLimit x="0" y="0" z="0"/>
+		<linearStiffness x="10" y="10" z="10"/>
+		<angularStiffness x="10" y="10" z="10"/>
+		<linearDamping x="0" y="0" z="0"/>
+		<angularDamping x="0" y="0" z="0"/>
+		<linearEquilibrium x="5" y="0" z="0"/>
+		<angularEquilibrium x="0" y="0" z="0"/>
+	</generic-constraint>
+	
+	
+	<per-triangle-shape name="Baseshape">
+		<margin>0.01</margin>
+		<prenetration>0.2</prenetration>
+		<tag>body</tag>
+		<no-collide-with-tag>body</no-collide-with-tag>
+		<no-collide-with-tag>Labia</no-collide-with-tag>
+		<no-collide-with-tag>Lbreast</no-collide-with-tag>
+		<no-collide-with-tag>Rbreast</no-collide-with-tag>
+		<no-collide-with-tag>Belly</no-collide-with-tag>
+		
+		<weight-threshold bone="R Breast01">0.2</weight-threshold>
+		<weight-threshold bone="L Breast01">0.2</weight-threshold>
+		<weight-threshold bone="R Breast02">0.2</weight-threshold>
+		<weight-threshold bone="L Breast02">0.2</weight-threshold>
+		<weight-threshold bone="R Breast03">0.2</weight-threshold>
+		<weight-threshold bone="L Breast03">0.2</weight-threshold>
+		
+		<weight-threshold bone="NPC L Butt">0.1</weight-threshold>
+		<weight-threshold bone="NPC R Butt">0.1</weight-threshold>
+		
+		<weight-threshold bone="NPC L Pussy02">0.1</weight-threshold>
+		<weight-threshold bone="NPC R Pussy02">0.1</weight-threshold>
+		
+	</per-triangle-shape>
+
+	<!--
+	<per-triangle-shape name="Labia">
+		<shared>public</shared>
+		<margin>0.01</margin>
+		<tag>Labia</tag>
+		<no-collide-with-tag>Labia</no-collide-with-tag>
+		<no-collide-with-tag>body</no-collide-with-tag>
+		<no-collide-with-tag>Belly</no-collide-with-tag>
+		
+		<weight-threshold bone="NPC L Pussy02">0.1</weight-threshold>
+		<weight-threshold bone="NPC R Pussy02">0.1</weight-threshold>
+	</per-triangle-shape> 
+	-->
+</system>
