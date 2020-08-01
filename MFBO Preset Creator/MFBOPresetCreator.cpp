@@ -404,47 +404,6 @@ void MFBOPresetCreator::generateDirectoryStructure()
     return;
   }
 
-  // Create the meshes directory
-  auto lMeshesDirectory{ lEntryDirectory + "/" + lBodyMeshesPath };
-  if (!QDir(lMeshesDirectory).exists())
-  {
-    QDir().mkpath(lMeshesDirectory);
-  }
-  else
-  {
-    this->displayWarningMessage("Error while creating the meshes directory: \"" + lMeshesDirectory + "\" already exists.");
-    return;
-  }
-
-  // Copy the meshes at the wanted location
-  QFile::copy(":/ressources/CUSTOM CBBE SMP", lMeshesDirectory + "/" + "CUSTOM CBBE SMP.xml");
-  QFile lSMPXMLFile(lMeshesDirectory + "/" + "CUSTOM CBBE SMP.xml");
-  lSMPXMLFile.setPermissions(QFile::WriteUser);
-
-  QFile::copy(":/ressources/femalebody_0", lMeshesDirectory + "/" + "femalebody_0.nif");
-  QFile lBody0File(lMeshesDirectory + "/" + "femalebody_0.nif");
-  lBody0File.setPermissions(QFile::WriteUser);
-
-  QFile::copy(":/ressources/femalebody_1", lMeshesDirectory + "/" + "femalebody_1.nif");
-  QFile lBody1File(lMeshesDirectory + "/" + "femalebody_1.nif");
-  lBody1File.setPermissions(QFile::WriteUser);
-
-  QFile::copy(":/ressources/femalefeet_0", lMeshesDirectory + "/" + "femalefeet_0.nif");
-  QFile lFeet0File(lMeshesDirectory + "/" + "femalefeet_0.nif");
-  lFeet0File.setPermissions(QFile::WriteUser);
-
-  QFile::copy(":/ressources/femalefeet_1", lMeshesDirectory + "/" + "femalefeet_1.nif");
-  QFile lFeet1File(lMeshesDirectory + "/" + "femalefeet_1.nif");
-  lFeet1File.setPermissions(QFile::WriteUser);
-
-  QFile::copy(":/ressources/femalehands_0", lMeshesDirectory + "/" + "femalehands_0.nif");
-  QFile lHands0File(lMeshesDirectory + "/" + "femalehands_0.nif");
-  lHands0File.setPermissions(QFile::WriteUser);
-
-  QFile::copy(":/ressources/femalehands_1", lMeshesDirectory + "/" + "femalehands_1.nif");
-  QFile lHands1File(lMeshesDirectory + "/" + "femalehands_1.nif");
-  lHands1File.setPermissions(QFile::WriteUser);
-
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.length() == 0)
   {
@@ -561,8 +520,10 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (lSkeletonPath.length() > 0)
     {
-      auto lSkeletonDirectory{ lEntryDirectory + "/" + lSkeletonPath + "/" + "skeleton_female.nif" };
-      QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory);
+      auto lSkeletonDirectory{ lEntryDirectory + "/" + lSkeletonPath };
+      QDir().mkpath(lSkeletonDirectory);
+
+      QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif");
     }
     else
     {

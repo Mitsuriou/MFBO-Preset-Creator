@@ -7,5 +7,5 @@ void Utils::cleanPathString(QString& aPath)
 
 QString Utils::getProgramVersion()
 {
-  return QString("1.0.0.0");
+  return QString("1.1.0.0");
 }
