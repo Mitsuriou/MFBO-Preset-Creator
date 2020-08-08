@@ -99,6 +99,8 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->updateBodyMeshesPreview(QString(""));
 
   // Event binding
+  connect(lCbbe3BBBVersion140, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
+  connect(lCbbe3BBBVersion150, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
   connect(lMeshesPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateBodyMeshesPreview(QString)));
 }
 
@@ -344,6 +346,10 @@ void MFBOPresetCreator::updateOSPXMLPreview(QString aText)
 
 void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 {
+  // Selected CBBE 3BBB version
+  auto lCBBE3BBB140VersionSelected{ this->ui.mainContainer->findChild<QRadioButton*>("cbbe_version_140")->isChecked() };
+
+  // Path
   auto lOutputPathsPreview{ this->ui.mainContainer->findChild<QLabel*>("names_bodyslide_preview") };
 
   if (aText.trimmed().length() == 0)
@@ -351,13 +357,26 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
     aText = QString::fromStdString("*");
   }
 
-  QString lConstructedPreviewText(
-    QStringLiteral(
-      "%1 - Feet\n"
-      "%1 - Hands\n"
-      "%1 - 3BBB Body Amazing"
-    ).arg(aText)
-  );
+  QString lConstructedPreviewText{ "" };
+
+  if (lCBBE3BBB140VersionSelected)
+  {
+    lConstructedPreviewText =
+      QStringLiteral(
+        "%1 - Feet\n"
+        "%1 - Hands\n"
+        "%1 - 3BBB Body Amazing"
+      ).arg(aText);
+  }
+  else
+  {
+    lConstructedPreviewText =
+      QStringLiteral(
+        "%1 - CBBE 3BBB Feet\n"
+        "%1 - CBBE 3BBB Hands\n"
+        "%1 - CBBE 3BBB Body Amazing"
+      ).arg(aText);
+  }
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
@@ -621,6 +640,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   // Open the folder where the file structure has been created
   QDesktopServices::openUrl(lEntryDirectory);
+}
+
+void MFBOPresetCreator::refreshAllPreviewInputs()
+{
+  // Refresh the names in the bodyslide software
+  auto lBodyslideSlidersetsNames{ this->ui.mainContainer->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed() };
+  this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }
 
 void MFBOPresetCreator::showAboutDialog()

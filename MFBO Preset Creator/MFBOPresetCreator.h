@@ -40,6 +40,7 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
+  void refreshAllPreviewInputs();
 
   // Menu dialogs
   void showAboutDialog();
