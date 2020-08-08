@@ -3,8 +3,14 @@
         <file alias="icon">ressources/software/icon.png</file>
     </qresource>
     <qresource prefix="/ressources">
-        <file alias="bodyslide_osp">ressources/bodyslide files/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/bodyslide.xml</file>
-        <file alias="skeleton_female">ressources/3bbb meshes/skeleton_female.nif</file>
+        <file alias="skeleton_female">ressources/skeleton/skeleton_female.nif</file>
+    </qresource>
+    <qresource prefix="/cbbe_3bbb_1.40">
+        <file alias="bodyslide_osp">ressources/bodyslide files/1.40/bodyslide.osp</file>
+        <file alias="bodyslide_xml">ressources/bodyslide files/1.40/bodyslide.xml</file>
+    </qresource>
+    <qresource prefix="/cbbe_3bbb_1.50">
+        <file alias="bodyslide_osp">ressources/bodyslide files/1.50/bodyslide.osp</file>
+        <file alias="bodyslide_xml">ressources/bodyslide files/1.50/bodyslide.xml</file>
     </qresource>
 </RCC>

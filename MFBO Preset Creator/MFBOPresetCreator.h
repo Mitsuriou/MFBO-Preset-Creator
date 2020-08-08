@@ -8,6 +8,8 @@
 #include <QAction>
 #include <QDialog>
 #include <QDesktopServices>
+#include <QRadioButton>
+#include <QButtonGroup>
 
 #include "ui_MFBOPresetCreator.h"
 
