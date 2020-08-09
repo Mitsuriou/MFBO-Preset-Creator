@@ -1,0 +1,12 @@
+<SliderGroups>
+    <Group name="MFBO">
+        <Member name="{%%bodyslide_set_name%%} - 3BBB Body Amazing"/>
+        <Member name="{%%bodyslide_set_name%%} - Feet"/>
+        <Member name="{%%bodyslide_set_name%%} - Beast Hands"/>
+    </Group>
+    <Group name="CBBE">
+        <Member name="{%%bodyslide_set_name%%} - 3BBB Body Amazing"/>
+        <Member name="{%%bodyslide_set_name%%} - Feet"/>
+        <Member name="{%%bodyslide_set_name%%} - Beast Hands"/>
+    </Group>
+</SliderGroups>

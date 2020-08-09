@@ -8,9 +8,13 @@
     <qresource prefix="/cbbe_3bbb_1.40">
         <file alias="bodyslide_osp">ressources/bodyslide files/1.40/bodyslide.osp</file>
         <file alias="bodyslide_xml">ressources/bodyslide files/1.40/bodyslide.xml</file>
+        <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/1.40/bodyslide_beast_hands.osp</file>
+        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/1.40/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/cbbe_3bbb_1.50">
         <file alias="bodyslide_osp">ressources/bodyslide files/1.50/bodyslide.osp</file>
         <file alias="bodyslide_xml">ressources/bodyslide files/1.50/bodyslide.xml</file>
+        <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/1.50/bodyslide_beast_hands.osp</file>
+        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/1.50/bodyslide_beast_hands.xml</file>
     </qresource>
 </RCC>
