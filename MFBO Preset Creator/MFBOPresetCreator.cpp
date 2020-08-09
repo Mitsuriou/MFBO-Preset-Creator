@@ -87,13 +87,21 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesPathLineEdit->setObjectName("body_meshes_path_input");
   lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1);
 
+  // Beast hands
+  auto lLabelBeastHands{ new QLabel("Beast hands?") };
+  lMeshesGridLayout->addWidget(lLabelBeastHands, 2, 0);
+
+  auto lNeedBeastHands{ new QCheckBox(QString("Check this box if the follower or NPC uses beast hands.")) };
+  lNeedBeastHands->setObjectName("use_beast_hands");
+  lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1);
+
   // Third line
   auto lMeshestitlePreview{ new QLabel("Preview:") };
-  lMeshesGridLayout->addWidget(lMeshestitlePreview, 2, 0);
+  lMeshesGridLayout->addWidget(lMeshestitlePreview, 3, 0);
 
   auto lMeshesPathsPreview{ new QLabel("") };
   lMeshesPathsPreview->setObjectName("body_meshes_path_preview");
-  lMeshesGridLayout->addWidget(lMeshesPathsPreview, 2, 1);
+  lMeshesGridLayout->addWidget(lMeshesPathsPreview, 3, 1);
 
   // Initialization functions
   this->updateBodyMeshesPreview(QString(""));
@@ -101,6 +109,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   // Event binding
   connect(lCbbe3BBBVersion140, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
   connect(lCbbe3BBBVersion150, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
+  connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
   connect(lMeshesPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateBodyMeshesPreview(QString)));
 }
 
@@ -349,6 +358,9 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
   // Selected CBBE 3BBB version
   auto lCBBE3BBB140VersionSelected{ this->ui.mainContainer->findChild<QRadioButton*>("cbbe_version_140")->isChecked() };
 
+  // Beast hands
+  auto lMustUseBeastHands{ this->ui.mainContainer->findChild<QCheckBox*>("use_beast_hands")->isChecked() };
+
   // Path
   auto lOutputPathsPreview{ this->ui.mainContainer->findChild<QLabel*>("names_bodyslide_preview") };
 
@@ -361,21 +373,45 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 
   if (lCBBE3BBB140VersionSelected)
   {
-    lConstructedPreviewText =
-      QStringLiteral(
-        "%1 - Feet\n"
-        "%1 - Hands\n"
-        "%1 - 3BBB Body Amazing"
-      ).arg(aText);
+    if (lMustUseBeastHands)
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - Feet\n"
+          "%1 - Beast Hands\n"
+          "%1 - 3BBB Body Amazing"
+        ).arg(aText);
+    }
+    else
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - Feet\n"
+          "%1 - Hands\n"
+          "%1 - 3BBB Body Amazing"
+        ).arg(aText);
+    }
   }
   else
   {
-    lConstructedPreviewText =
-      QStringLiteral(
-        "%1 - CBBE 3BBB Feet\n"
-        "%1 - CBBE 3BBB Hands\n"
-        "%1 - CBBE 3BBB Body Amazing"
-      ).arg(aText);
+    if (lMustUseBeastHands)
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - CBBE 3BBB Feet\n"
+          "%1 - CBBE Beast Hands\n"
+          "%1 - CBBE 3BBB Body Amazing"
+        ).arg(aText);
+    }
+    else
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - CBBE 3BBB Feet\n"
+          "%1 - CBBE 3BBB Hands\n"
+          "%1 - CBBE 3BBB Body Amazing"
+        ).arg(aText);
+    }
   }
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
@@ -424,6 +460,9 @@ void MFBOPresetCreator::generateDirectoryStructure()
 {
   // Selected CBBE 3BBB version
   auto lCBBE3BBB140VersionSelected{ this->ui.mainContainer->findChild<QRadioButton*>("cbbe_version_140")->isChecked() };
+
+  // Beast hands
+  auto lMustUseBeastHands{ this->ui.mainContainer->findChild<QCheckBox*>("use_beast_hands")->isChecked() };
 
   // Body meshes path
   auto lBodyMeshesPath{ this->ui.mainContainer->findChild<QLineEdit*>("body_meshes_path_input")->text().trimmed() };
@@ -510,11 +549,25 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   if (lCBBE3BBB140VersionSelected)
   {
-    QFile::copy(":/cbbe_3bbb_1.40/bodyslide_xml", lXMLPathName);
+    if (lMustUseBeastHands)
+    {
+      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_xml", lXMLPathName);
+    }
+    else
+    {
+      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_xml", lXMLPathName);
+    }
   }
   else
   {
-    QFile::copy(":/cbbe_3bbb_1.50/bodyslide_xml", lXMLPathName);
+    if (lMustUseBeastHands)
+    {
+      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_xml", lXMLPathName);
+    }
+    else
+    {
+      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_xml", lXMLPathName);
+    }
   }
 
   QFile lXMLFile(lXMLPathName);
@@ -566,11 +619,25 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   if (lCBBE3BBB140VersionSelected)
   {
-    QFile::copy(":/cbbe_3bbb_1.40/bodyslide_osp", lOSPPathName);
+    if (lMustUseBeastHands)
+    {
+      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_osp", lOSPPathName);
+    }
+    else
+    {
+      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_osp", lOSPPathName);
+    }
   }
   else
   {
-    QFile::copy(":/cbbe_3bbb_1.50/bodyslide_osp", lOSPPathName);
+    if (lMustUseBeastHands)
+    {
+      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_osp", lOSPPathName);
+    }
+    else
+    {
+      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_osp", lOSPPathName);
+    }
   }
 
   QFile lOSPFile(lOSPPathName);

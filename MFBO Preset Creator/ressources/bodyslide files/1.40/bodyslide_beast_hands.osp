@@ -1,6 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <SliderSetInfo version="1">
-    <SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing">
+    <SliderSet name="{%%bodyslide_set_name%%} - Feet">
+        <DataFolder>CBBE</DataFolder>
+        <SourceFile>CBBE Feet.nif</SourceFile>
+        <OutputPath>{%%body_meshes_path%%}</OutputPath>
+        <OutputFile GenWeights="true">femalefeet</OutputFile>
+        <Shape target="Feet">Feet</Shape>
+        <Slider name="AnkleSize" invert="false" small="100" big="0">
+            <Data name="FeetAnkleSize" target="Feet" local="true">CBBE Feet.osd\FeetAnkleSize</Data>
+        </Slider>
+        <Slider name="FeetFeminine" invert="false" small="0" big="0">
+            <Data name="FeetFeetFeminine" target="Feet" local="true">CBBE Feet.osd\FeetFeetFeminine</Data>
+        </Slider>
+    </SliderSet>
+    <SliderSet name="{%%bodyslide_set_name%%} - Beast Hands">
+        <DataFolder>CBBE</DataFolder>
+        <SourceFile>CBBE Hands Beast.nif</SourceFile>
+        <OutputPath>{%%body_meshes_path%%}</OutputPath>
+        <OutputFile GenWeights="true">femalehands</OutputFile>
+        <Shape target="Hands" DataFolder="CBBE">Hands</Shape>
+        <Slider name="WristSize" invert="false" small="100" big="0">
+            <Data name="HandsWristSize" target="Hands">CBBE Hands Beast.osd\HandsWristSize</Data>
+        </Slider>
+    </SliderSet>
+    <SliderSet name="{%%bodyslide_set_name%%} - 3BBB Body Amazing">
         <DataFolder>SE 3BBB Amazing</DataFolder>
         <SourceFile>SE 3BBB Body Amazing.nif</SourceFile>
         <OutputPath>{%%body_meshes_path%%}</OutputPath>
@@ -24,6 +47,7 @@
         </Slider>
         <Slider name="Back" invert="false" small="0" big="0">
             <Data name="3BBBBack" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBBack</Data>
+            <Data name="3BBB_AnusBack" target="3BBB_Anus" local="true">SE 3BBB Body Amazing.osd\3BBB_AnusBack</Data>
         </Slider>
         <Slider name="BackArch" invert="false" small="0" big="0">
             <Data name="3BBBBackArch" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBBackArch</Data>
@@ -51,6 +75,7 @@
         </Slider>
         <Slider name="BreastCleavage" invert="false" small="0" big="0">
             <Data name="3BBBBreastCleavage" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBBreastCleavage</Data>
+            <Data name="3BBB_VaginaBreastCleavage" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaBreastCleavage</Data>
         </Slider>
         <Slider name="BreastFlatness2" invert="false" small="0" big="0">
             <Data name="3BBBBreastFlatness2" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBBreastFlatness2</Data>
@@ -205,6 +230,7 @@
         </Slider>
         <Slider name="MuscleButt" invert="false" small="0" big="0">
             <Data name="3BBBMuscleButt" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBMuscleButt</Data>
+            <Data name="3BBB_AnusMuscleButt" target="3BBB_Anus" local="true">SE 3BBB Body Amazing.osd\3BBB_AnusMuscleButt</Data>
         </Slider>
         <Slider name="MuscleLegs" invert="false" small="0" big="0">
             <Data name="3BBBMuscleLegs" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBMuscleLegs</Data>
@@ -333,10 +359,12 @@
         </Slider>
         <Slider name="Innieoutie" invert="false" small="0" big="0">
             <Data name="3BBBInnieoutie" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBInnieoutie</Data>
+            <Data name="3BBB_AnusInnieoutie" target="3BBB_Anus" local="true">SE 3BBB Body Amazing.osd\3BBB_AnusInnieoutie</Data>
             <Data name="3BBB_VaginaInnieoutie" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaInnieoutie</Data>
         </Slider>
         <Slider name="Labiapuffyness" invert="false" small="0" big="0">
             <Data name="3BBBLabiapuffyness" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBLabiapuffyness</Data>
+            <Data name="3BBB_VaginaLabiapuffyness" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiapuffyness</Data>
         </Slider>
         <Slider name="Labiaprotrude" invert="false" small="0" big="0">
             <Data name="3BBB_VaginaLabiaprotrude" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiaprotrude</Data>
@@ -350,32 +378,10 @@
         <Slider name="Clit" invert="false" small="0" big="0">
             <Data name="3BBB_VaginaClit" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaClit</Data>
         </Slider>
-        <Slider name="CBPC" invert="false" small="100" big="100">
+        <Slider name="CBPC" invert="false" small="100" big="100" hidden="false">
             <Data name="3BBBCBPC" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBCBPC</Data>
+            <Data name="3BBB_AnusCBPC" target="3BBB_Anus" local="true">SE 3BBB Body Amazing.osd\3BBB_AnusCBPC</Data>
             <Data name="3BBB_VaginaCBPC" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaCBPC</Data>
-        </Slider>
-    </SliderSet>
-	<SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Feet">
-        <DataFolder>CBBE</DataFolder>
-        <SourceFile>CBBE Feet.nif</SourceFile>
-        <OutputPath>{%%body_meshes_path%%}</OutputPath>
-        <OutputFile GenWeights="true">femalefeet</OutputFile>
-        <Shape target="Feet" DataFolder="CBBE">Feet</Shape>
-        <Slider name="AnkleSize" invert="false" small="100" big="0">
-            <Data name="FeetAnkleSize" target="Feet">CBBE Feet.osd\FeetAnkleSize</Data>
-        </Slider>
-        <Slider name="FeetFeminine" invert="false" small="0" big="0">
-            <Data name="FeetFeetFeminine" target="Feet">CBBE Feet.osd\FeetFeetFeminine</Data>
-        </Slider>
-    </SliderSet>
-    <SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Hands">
-        <DataFolder>CBBE</DataFolder>
-        <SourceFile>CBBE Hands.nif</SourceFile>
-        <OutputPath>{%%body_meshes_path%%}</OutputPath>
-        <OutputFile GenWeights="true">femalehands</OutputFile>
-        <Shape target="Hands" DataFolder="CBBE">Hands</Shape>
-        <Slider name="WristSize" invert="false" small="100" big="0">
-            <Data name="HandsWristSize" target="Hands" local="true">CBBE Hands.osd\HandsWristSize</Data>
         </Slider>
     </SliderSet>
 </SliderSetInfo>
