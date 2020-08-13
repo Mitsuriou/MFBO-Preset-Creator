@@ -14,7 +14,7 @@ void MFBOPresetCreator::initializeGUI()
   this->setupMenuBar();
 
   // Status bar
-  this->setupStatusBar();
+  //this->setupStatusBar();
 
   // Main window container
   auto lMainVertical{ new QVBoxLayout(this->ui.mainContainer) };
@@ -51,12 +51,14 @@ void MFBOPresetCreator::setupMenuBar()
   // Submenu: Upgrader
   auto lUpgraderToolAction = new QAction();
   lUpgraderToolAction->setText(tr("Upgrade CBBE 3BBB version"));
+  lUpgraderToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
   lUpgraderToolAction->setIcon(QIcon(":/black/arrow_up"));
   lToolsMenu->addAction(lUpgraderToolAction);
 
   // Submenu: Settings
   auto lSettingsAction = new QAction();
   lSettingsAction->setText(tr("Settings"));
+  lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
   lSettingsAction->setIcon(QIcon(":/black/cog"));
   lToolsMenu->addAction(lSettingsAction);
 
@@ -67,6 +69,7 @@ void MFBOPresetCreator::setupMenuBar()
   // Submenu: About
   auto lAboutAction = new QAction();
   lAboutAction->setText(tr("About"));
+  lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
   lAboutAction->setIcon(QIcon(":/black/information"));
   lHelpMenu->addAction(lAboutAction);
 
@@ -303,7 +306,6 @@ void MFBOPresetCreator::displayWarningMessage(QString aMessage)
 {
   QMessageBox lMessageBox(QMessageBox::Icon::Warning, "Warning", aMessage);
   lMessageBox.exec();
-  lMessageBox.deleteLater();
 }
 
 void MFBOPresetCreator::updateBodyMeshesPreview(QString aText)
@@ -765,7 +767,6 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   QMessageBox lMessageBox(QMessageBox::Icon::Information, "Generation successful", lSuccessText);
   lMessageBox.exec();
-  lMessageBox.deleteLater();
 
   // Open the folder where the file structure has been created
   QDesktopServices::openUrl(lEntryDirectory);
@@ -797,7 +798,7 @@ void MFBOPresetCreator::showSettingsDialog()
   lDialog->setFixedSize(400, 300);
 
   // Construct and display the content of the modal
-  QString lText("WIP");
+  QString lText("Settings will be available soon...");
   auto lModalContent{ new QLabel(lDialog) };
   lModalContent->setText(lText);
   lModalContent->adjustSize();
@@ -809,18 +810,32 @@ void MFBOPresetCreator::showSettingsDialog()
 
 void MFBOPresetCreator::showAboutDialog()
 {
-  // Construct the modal
-  auto lDialog{ new QDialog(this) };
-  lDialog->setWindowTitle(QString("About"));
-  lDialog->setFixedSize(400, 300);
+  // Build the description
+  auto lDescription{ QStringLiteral(
+    "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is a software "
+    "created by Dylan Jacquemin (also known under the nickname \"Mitsuriou\").<br />"
+    "This software has been developed to be provided for free to any user that wants to use the software. <br />"
+    "The totality of the source code is available on GitHub.com, under "
+    "<a href='https://github.com/Mitsuriou/MFBO-Preset-Creator'>this</a> link."
+    "<br /><br />"
+    "Ressources used to make this software:<br />"
+    "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
+    "<br /><br />"
+    "Ressources bundled in this software:<br />"
+    "&bull; The BodySlide files that are generated were taken from the "
+    "<a href='https://www.nexusmods.com/skyrimspecialedition/mods/30174'>CBBE 3BBB</a> mod on NexusMod "
+    "and slightly modified by Dylan Jacquemin.<br />"
+    "&bull; The \"female_skeleton.nif\" file has been taken from the "
+    "<a href='https://www.nexusmods.com/skyrimspecialedition/mods/1988'>XP32 Maximum Skeleton Special Extended - XPMSSE</a> "
+    "mod on NexusMod. The file has not been modified."
+  ) };
 
-  // Construct and display the content of the modal
-  QString lText("WIP");
-  auto lModalContent{ new QLabel(lDialog) };
-  lModalContent->setText(lText);
-  lModalContent->adjustSize();
+  // Construct the message box
+  QMessageBox lDialog(QMessageBox::Icon::Information, "About", lDescription, QMessageBox::StandardButton::Close);
+  lDialog.setIconPixmap(QPixmap(":/software/icon"));
+  lDialog.setTextFormat(Qt::RichText);
+  lDialog.adjustSize();
 
-  // Display and delete the modal
-  lDialog->exec();
-  lDialog->deleteLater();
+  // Display the message box
+  lDialog.exec();
 }

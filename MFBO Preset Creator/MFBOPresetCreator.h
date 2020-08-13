@@ -22,6 +22,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QPixmap>
 
 #include "ui_MFBOPresetCreator.h"
 
