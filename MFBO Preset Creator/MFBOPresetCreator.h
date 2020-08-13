@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include "Utils.h"
+#include "Enum.h"
+
 #include <QtWidgets/QMainWindow>
 #include <QVBoxLayout>
 #include <QString>
@@ -10,11 +13,17 @@
 #include <QDesktopServices>
 #include <QComboBox>
 #include <QStringList>
-#include <QFileSystemWatcher>
 #include <QStatusBar>
+#include <QLabel>
+#include <QGroupBox>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QTextStream>
 
 #include "ui_MFBOPresetCreator.h"
-#include "Enum.h"
 
 class MFBOPresetCreator : public QMainWindow
 {

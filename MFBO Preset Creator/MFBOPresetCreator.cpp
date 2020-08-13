@@ -1,6 +1,4 @@
 ﻿#include "MFBOPresetCreator.h"
-#include "stdafx.h"
-#include "Utils.h"
 
 MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   : QMainWindow(parent)
@@ -82,10 +80,11 @@ void MFBOPresetCreator::setupMenuBar()
 void MFBOPresetCreator::setupStatusBar()
 {
   // Divide the status bar in multiple parts
-  this->statusBar()->addWidget(new QLabel("aled"), 0);
-  this->statusBar()->addWidget(new QLabel("oui"), 1);
-  this->statusBar()->addWidget(new QLabel("non"), 2);
-  this->statusBar()->addWidget(new QLabel("test"), 3);
+  this->statusBar()->addWidget(new QLabel(""), 1);
+  this->statusBar()->addPermanentWidget(new QLabel("1"), 1);
+  this->statusBar()->addPermanentWidget(new QLabel("2"), 1);
+  this->statusBar()->addPermanentWidget(new QLabel("3"), 1);
+  this->statusBar()->addPermanentWidget(new QLabel("4"), 0);
 }
 
 void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)

@@ -111,17 +111,20 @@
   <ItemGroup>
     <ClCompile Include="Utils.cpp" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="Utils.h" />
     <QtRcc Include="MFBOPresetCreator.qrc" />
     <QtUic Include="MFBOPresetCreator.ui" />
     <QtMoc Include="MFBOPresetCreator.h" />
     <ClCompile Include="MFBOPresetCreator.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClInclude Include="stdafx.h" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MFBO Preset Creator.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ressources/software/icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

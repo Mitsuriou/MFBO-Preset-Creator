@@ -1,5 +1,4 @@
 ﻿#include "MFBOPresetCreator.h"
-#include "stdafx.h"
 #include "Utils.h"
 
 #include <QtWidgets/QApplication>
@@ -13,7 +12,7 @@ int main(int argc, char* argv[])
   lMainApplication.setWindowIcon(QIcon(":/software/icon"));
 
   // Launch the application
-  MFBOPresetCreator w;
-  w.show();
+  MFBOPresetCreator lMainWindow;
+  lMainWindow.show();
   return lMainApplication.exec();
 }
