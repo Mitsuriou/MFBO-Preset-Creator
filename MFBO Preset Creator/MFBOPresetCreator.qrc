@@ -29,4 +29,10 @@
         <file alias="arrow_up">ressources/software/icons/white/arrow-up-bold-outline.png</file>
         <file alias="information">ressources/software/icons/white/information-outline.png</file>
     </qresource>
+    <qresource prefix="/cbbe_3bbb_1.51">
+        <file alias="bodyslide_osp">ressources/bodyslide files/1.51/bodyslide.osp</file>
+        <file alias="bodyslide_xml">ressources/bodyslide files/1.51/bodyslide.xml</file>
+        <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/1.51/bodyslide_beast_hands.osp</file>
+        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/1.51/bodyslide_beast_hands.xml</file>
+    </qresource>
 </RCC>

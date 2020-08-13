@@ -409,18 +409,18 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - 3BBB Body Amazing\n"
           "%1 - Feet\n"
-          "%1 - Beast Hands\n"
-          "%1 - 3BBB Body Amazing"
+          "%1 - Beast Hands"
         ).arg(aText);
     }
     else
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - 3BBB Body Amazing\n"
           "%1 - Feet\n"
-          "%1 - Hands\n"
-          "%1 - 3BBB Body Amazing"
+          "%1 - Hands "
         ).arg(aText);
     }
     break;
@@ -429,23 +429,40 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
           "%1 - CBBE 3BBB Feet\n"
-          "%1 - CBBE Beast Hands\n"
-          "%1 - CBBE 3BBB Body Amazing"
+          "%1 - CBBE Beast Hands"
         ).arg(aText);
     }
     else
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
           "%1 - CBBE 3BBB Feet\n"
-          "%1 - CBBE 3BBB Hands\n"
-          "%1 - CBBE 3BBB Body Amazing"
+          "%1 - CBBE 3BBB Hands"
         ).arg(aText);
     }
     break;
   case Version1_51:
-    // TODO
+    if (lMustUseBeastHands)
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
+          "%1 - CBBE 3BBB Feet\n"
+          "%1 - CBBE 3BBB Hands Beast"
+        ).arg(aText);
+    }
+    else
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
+          "%1 - CBBE 3BBB Feet\n"
+          "%1 - CBBE 3BBB Hands"
+        ).arg(aText);
+    }
     break;
   default:
     lConstructedPreviewText = "Error while evaluating the data.";
@@ -588,35 +605,40 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   // Copy the QRC file and change the slidergroups names in the XML file
   QString lXMLPathName{ lSliderGroupsDirectory + "/" + lOSPXMLNames + ".xml" };
+  auto lRessourcesFolder{ QString("") };
 
   switch (lCBBE3BBBVersionSelected)
   {
   case Version1_40:
-    if (lMustUseBeastHands)
-    {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_xml", lXMLPathName);
-    }
-    else
-    {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_xml", lXMLPathName);
-    }
+    lRessourcesFolder = "cbbe_3bbb_1.40";
     break;
   case Version1_50:
-    if (lMustUseBeastHands)
-    {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_xml", lXMLPathName);
-    }
-    else
-    {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_xml", lXMLPathName);
-    }
+    lRessourcesFolder = "cbbe_3bbb_1.50";
     break;
   case Version1_51:
-    // TODO
+    lRessourcesFolder = "cbbe_3bbb_1.51";
     break;
   default:
-    // TODO
-    break;
+    this->displayWarningMessage("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer team.");
+    return;
+  }
+
+  // Copy the XML file
+  if (lMustUseBeastHands)
+  {
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
+    {
+      this->displayWarningMessage("The XML file could not be created. Did you execute the program with limited permissions?");
+      return;
+    }
+  }
+  else
+  {
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
+    {
+      this->displayWarningMessage("The XML file could not be created. Did you execute the program with limited permissions?");
+      return;
+    }
   }
 
   QFile lXMLFile(lXMLPathName);
@@ -666,34 +688,22 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Copy the QRC file and change the slidergroups names in the OSP file
   QString lOSPPathName(lSliderSetsDirectory + "/" + lOSPXMLNames + ".osp");
 
-  switch (lCBBE3BBBVersionSelected)
+  // Copy the OSP file
+  if (lMustUseBeastHands)
   {
-  case Version1_40:
-    if (lMustUseBeastHands)
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_osp", lOSPPathName);
+      this->displayWarningMessage("The OSP file could not be created. Did you execute the program with limited permissions?");
+      return;
     }
-    else
+  }
+  else
+  {
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_osp", lOSPPathName);
+      this->displayWarningMessage("The OSP file could not be created. Did you execute the program with limited permissions?");
+      return;
     }
-    break;
-  case Version1_50:
-    if (lMustUseBeastHands)
-    {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_osp", lOSPPathName);
-    }
-    else
-    {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_osp", lOSPPathName);
-    }
-    break;
-  case Version1_51:
-    // TODO
-    break;
-  default:
-    // TODO
-    break;
   }
 
   QFile lOSPFile(lOSPPathName);
@@ -737,7 +747,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
       auto lSkeletonDirectory{ lEntryDirectory + "/" + lSkeletonPath };
       QDir().mkpath(lSkeletonDirectory);
 
-      QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif");
+      if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif"))
+      {
+        this->displayWarningMessage("The skeleton file could not be created. Did you execute the program with limited permissions?");
+        return;
+      }
     }
     else
     {
@@ -819,7 +833,7 @@ void MFBOPresetCreator::showAboutDialog()
     "<a href='https://github.com/Mitsuriou/MFBO-Preset-Creator'>this</a> link."
     "<br /><br />"
     "Ressources used to make this software:<br />"
-    "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
+    "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI)."
     "<br /><br />"
     "Ressources bundled in this software:<br />"
     "&bull; The BodySlide files that are generated were taken from the "
