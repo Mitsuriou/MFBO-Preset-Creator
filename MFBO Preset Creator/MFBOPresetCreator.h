@@ -55,8 +55,8 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
-  void refreshAllPreviewInputs(int);
-  void refreshAllPreviewInputs();
+  void refreshAllPreviewFields(int);
+  void refreshAllPreviewFields();
 
   // Menu dialogs
   void launchUpgraderTool();

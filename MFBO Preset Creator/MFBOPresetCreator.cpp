@@ -73,7 +73,7 @@ void MFBOPresetCreator::setupMenuBar()
   lAboutAction->setIcon(QIcon(":/black/information"));
   lHelpMenu->addAction(lAboutAction);
 
-  // Connect all action signals
+  // Event binding
   connect(lExitAction, SIGNAL(triggered()), this, SLOT(close()));
   connect(lUpgraderToolAction, SIGNAL(triggered()), this, SLOT(launchUpgraderTool()));
   connect(lSettingsAction, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
@@ -123,7 +123,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1);
 
   // Beast hands
-  auto lLabelBeastHands{ new QLabel("Beast hands?") };
+  auto lLabelBeastHands{ new QLabel("Use beast hands?") };
   lMeshesGridLayout->addWidget(lLabelBeastHands, 2, 0);
 
   auto lNeedBeastHands{ new QCheckBox(QString("Check this box if the follower or NPC uses beast hands.")) };
@@ -142,8 +142,8 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->updateBodyMeshesPreview(QString(""));
 
   // Event binding
-  connect(lCbbe3BBBVersionSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(refreshAllPreviewInputs(int)));
-  connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
+  connect(lCbbe3BBBVersionSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(refreshAllPreviewFields(int)));
+  connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewFields()));
   connect(lMeshesPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateBodyMeshesPreview(QString)));
 }
 
@@ -174,7 +174,10 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 1, 1);
 
   // Third line
-  auto lNamesInApp{ new QLabel("Name in bodyslide software:") };
+  auto lNamesInApp{ new QLabel() };
+  lNamesInApp->setTextFormat(Qt::RichText);
+  lNamesInApp->setText("Preset names: &#128712;");
+  lNamesInApp->setToolTip(QString("This field represents the name under which the preset will be listed in the BodySlide software."));
   lBodyslideGridLayout->addWidget(lNamesInApp, 2, 0);
 
   auto lNamesInAppLineEdit{ new QLineEdit("") };
@@ -208,12 +211,15 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
   lOptionsGridLayout->setColumnMinimumWidth(0, 140);
 
   // Skeleton
-  auto lLabelSkeleton{ new QLabel("Skeleton") };
+  auto lLabelSkeleton{ new QLabel("") };
+  lLabelSkeleton->setTextFormat(Qt::RichText);
+  lLabelSkeleton->setText("Use a custom skeleton? &#128712;");
+  lLabelSkeleton->setToolTip(QString("Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate."));
   lOptionsGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
   auto lNeedCustomSkeleton{
     new QCheckBox(
-      QString("Check this box if the follower or NPC uses a custom skeleton. Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")
+      QString("Check this box if the follower or NPC uses a custom skeleton.")
     )
   };
   lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
@@ -786,12 +792,12 @@ void MFBOPresetCreator::generateDirectoryStructure()
   QDesktopServices::openUrl(lEntryDirectory);
 }
 
-void MFBOPresetCreator::refreshAllPreviewInputs(int)
+void MFBOPresetCreator::refreshAllPreviewFields(int)
 {
-  this->refreshAllPreviewInputs();
+  this->refreshAllPreviewFields();
 }
 
-void MFBOPresetCreator::refreshAllPreviewInputs()
+void MFBOPresetCreator::refreshAllPreviewFields()
 {
   // Refresh the names in the bodyslide software
   auto lBodyslideSlidersetsNames{ this->ui.mainContainer->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed() };
@@ -801,31 +807,34 @@ void MFBOPresetCreator::refreshAllPreviewInputs()
 
 void MFBOPresetCreator::launchUpgraderTool()
 {
-
+  this->displayWarningMessage("The CBBE 3BBB version upgrader is under development and will be released in a future version...");
 }
 
 void MFBOPresetCreator::showSettingsDialog()
 {
-  // Construct the modal
-  auto lDialog{ new QDialog(this) };
-  lDialog->setWindowTitle(QString("Settings"));
-  lDialog->setFixedSize(400, 300);
+  // TODO: Create the whole settings panel
 
-  // Construct and display the content of the modal
-  QString lText("Settings will be available soon...");
-  auto lModalContent{ new QLabel(lDialog) };
-  lModalContent->setText(lText);
-  lModalContent->adjustSize();
+  // Build the description
+  auto lDescription{ QStringLiteral(
+    "The settings panel in under developement and will be released in a future version..."
+  ) };
 
-  // Display and delete the modal
-  lDialog->exec();
-  lDialog->deleteLater();
+  // Construct the message box
+  //QMessageBox lDialog(QMessageBox::Icon::NoIcon, "Settings", lDescription, QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Save);
+  QMessageBox lDialog(QMessageBox::Icon::Warning, "Settings", lDescription, QMessageBox::StandardButton::Close);
+  //lDialog.setTextFormat(Qt::RichText);
+  lDialog.adjustSize();
+
+  // Display the message box
+  lDialog.exec();
 }
 
 void MFBOPresetCreator::showAboutDialog()
 {
   // Build the description
   auto lDescription{ QStringLiteral(
+    "<h1 style=\"text-align: center; padding: 0; margin: 0; margin-right: 20px;\">About this software</h1><br />"
+    "<p style=\"font-size: 12px; padding: 0; margin: 0; margin-right: 20px;\">"
     "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is a software "
     "created by Dylan Jacquemin (also known under the nickname \"Mitsuriou\").<br />"
     "This software has been developed to be provided for free to any user that wants to use the software. <br />"
@@ -843,11 +852,12 @@ void MFBOPresetCreator::showAboutDialog()
     "&bull; The \"female_skeleton.nif\" file has been taken from the "
     "<a href=\"https://www.nexusmods.com/skyrimspecialedition/mods/1988\">XP32 Maximum Skeleton Special Extended - XPMSSE</a> "
     "mod on NexusMod. The file has not been modified."
+    "</p>"
   ) };
 
   // Construct the message box
-  QMessageBox lDialog(QMessageBox::Icon::Information, "About", lDescription, QMessageBox::StandardButton::Close);
-  lDialog.setIconPixmap(QPixmap(":/software/icon"));
+  QMessageBox lDialog(QMessageBox::Icon::NoIcon, "About", lDescription, QMessageBox::StandardButton::Close);
+  //lDialog.setIconPixmap(QPixmap(":/software/icon"));
   lDialog.setTextFormat(Qt::RichText);
   lDialog.adjustSize();
 
