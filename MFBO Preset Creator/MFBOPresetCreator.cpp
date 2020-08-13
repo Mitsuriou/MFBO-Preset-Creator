@@ -13,9 +13,12 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
 void MFBOPresetCreator::initializeGUI()
 {
   // Menu bar
-  //this->setupMenuBar();
+  this->setupMenuBar();
 
-  // Main vertical container
+  // Status bar
+  this->setupStatusBar();
+
+  // Main window container
   auto lMainVertical{ new QVBoxLayout(this->ui.mainContainer) };
 
   // Setup all the different GUI components
@@ -28,24 +31,61 @@ void MFBOPresetCreator::initializeGUI()
 
 void MFBOPresetCreator::setupMenuBar()
 {
-  // Construct a new menu bar
+  // Construct the menu bar
   auto lMenuBar{ new QMenuBar(this) };
   this->setMenuBar(lMenuBar);
 
   // File
   auto lFileMenu{ new QMenu(QString("File"), this) };
   lMenuBar->addMenu(lFileMenu);
-  lFileMenu->addAction(QString("Exit"), this, SLOT(close()));
+
+  // Submenu: Exit
+  auto lExitAction = new QAction();
+  lExitAction->setText(tr("Exit"));
+  lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
+  lExitAction->setIcon(QIcon(":/black/exit"));
+  lFileMenu->addAction(lExitAction);
 
   // Tools
   auto lToolsMenu{ new QMenu(QString("Tools"), this) };
   lMenuBar->addMenu(lToolsMenu);
-  lToolsMenu->addAction(QString("Settings"), this, SLOT(showSettingsDialog()));
+
+  // Submenu: Upgrader
+  auto lUpgraderToolAction = new QAction();
+  lUpgraderToolAction->setText(tr("Upgrade CBBE 3BBB version"));
+  lUpgraderToolAction->setIcon(QIcon(":/black/arrow_up"));
+  lToolsMenu->addAction(lUpgraderToolAction);
+
+  // Submenu: Settings
+  auto lSettingsAction = new QAction();
+  lSettingsAction->setText(tr("Settings"));
+  lSettingsAction->setIcon(QIcon(":/black/cog"));
+  lToolsMenu->addAction(lSettingsAction);
 
   // Help
   auto lHelpMenu{ new QMenu(QString("Help"), this) };
   lMenuBar->addMenu(lHelpMenu);
-  lHelpMenu->addAction(QString("About"), this, SLOT(showAboutDialog()));
+
+  // Submenu: About
+  auto lAboutAction = new QAction();
+  lAboutAction->setText(tr("About"));
+  lAboutAction->setIcon(QIcon(":/black/information"));
+  lHelpMenu->addAction(lAboutAction);
+
+  // Connect all action signals
+  connect(lExitAction, SIGNAL(triggered()), this, SLOT(close()));
+  connect(lUpgraderToolAction, SIGNAL(triggered()), this, SLOT(launchUpgraderTool()));
+  connect(lSettingsAction, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
+  connect(lAboutAction, SIGNAL(triggered()), this, SLOT(showAboutDialog()));
+}
+
+void MFBOPresetCreator::setupStatusBar()
+{
+  // Divide the status bar in multiple parts
+  this->statusBar()->addWidget(new QLabel("aled"), 0);
+  this->statusBar()->addWidget(new QLabel("oui"), 1);
+  this->statusBar()->addWidget(new QLabel("non"), 2);
+  this->statusBar()->addWidget(new QLabel("test"), 3);
 }
 
 void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
@@ -744,11 +784,17 @@ void MFBOPresetCreator::refreshAllPreviewInputs()
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }
 
-void MFBOPresetCreator::showAboutDialog()
+
+void MFBOPresetCreator::launchUpgraderTool()
+{
+
+}
+
+void MFBOPresetCreator::showSettingsDialog()
 {
   // Construct the modal
   auto lDialog{ new QDialog(this) };
-  lDialog->setWindowTitle(QString("About"));
+  lDialog->setWindowTitle(QString("Settings"));
   lDialog->setFixedSize(400, 300);
 
   // Construct and display the content of the modal
@@ -762,11 +808,11 @@ void MFBOPresetCreator::showAboutDialog()
   lDialog->deleteLater();
 }
 
-void MFBOPresetCreator::showSettingsDialog()
+void MFBOPresetCreator::showAboutDialog()
 {
   // Construct the modal
   auto lDialog{ new QDialog(this) };
-  lDialog->setWindowTitle(QString("Settings"));
+  lDialog->setWindowTitle(QString("About"));
   lDialog->setFixedSize(400, 300);
 
   // Construct and display the content of the modal

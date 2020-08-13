@@ -11,6 +11,7 @@
 #include <QComboBox>
 #include <QStringList>
 #include <QFileSystemWatcher>
+#include <QStatusBar>
 
 #include "ui_MFBOPresetCreator.h"
 #include "Enum.h"
@@ -27,13 +28,13 @@ private:
 
   void initializeGUI();
   void setupMenuBar();
+  void setupStatusBar();
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
   void setupBodySlideGUI(QVBoxLayout& aLayout);
   void setupOptionsGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
   void displayWarningMessage(QString aMessage);
-  void openDirectoryAfterGeneration();
 
 private slots:
   void updateBodyMeshesPreview(QString aText);
@@ -48,6 +49,7 @@ private slots:
   void refreshAllPreviewInputs();
 
   // Menu dialogs
-  void showAboutDialog();
+  void launchUpgraderTool();
   void showSettingsDialog();
+  void showAboutDialog();
 };
