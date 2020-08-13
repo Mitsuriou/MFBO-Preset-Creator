@@ -110,6 +110,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Utils.cpp" />
+    <ClInclude Include="Enum.h" />
     <ClInclude Include="Utils.h" />
     <QtRcc Include="MFBOPresetCreator.qrc" />
     <QtUic Include="MFBOPresetCreator.ui" />

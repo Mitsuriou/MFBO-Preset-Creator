@@ -62,22 +62,15 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lCbbe3BBBVersionLabel{ new QLabel("CBBE 3BBB version:") };
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
-  auto lCBBEVersionGrid{ new QGridLayout() };
-  lMeshesGridLayout->addLayout(lCBBEVersionGrid, 0, 1);
+  QStringList lVersions;
+  lVersions.append(QString("1.40"));
+  lVersions.append(QString("1.50"));
+  lVersions.append(QString("1.51"));
 
-  auto lCbbe3BBBVersion140{ new QRadioButton("1.40 and older") };
-  lCBBEVersionGrid->addWidget(lCbbe3BBBVersion140, 0, 0);
-  lCbbe3BBBVersion140->setChecked(true);
-  lCbbe3BBBVersion140->setObjectName(QString("cbbe_version_140"));
-
-  auto lCbbe3BBBVersion150{ new QRadioButton("1.50") };
-  lCBBEVersionGrid->addWidget(lCbbe3BBBVersion150, 0, 1);
-  lCbbe3BBBVersion150->setObjectName(QString("cbbe_version_150"));
-
-  // Manage separately the buttons
-  auto lCBBEVersionGroup{ new QButtonGroup(lMeshesGridLayout) };
-  lCBBEVersionGroup->addButton(lCbbe3BBBVersion140);
-  lCBBEVersionGroup->addButton(lCbbe3BBBVersion150);
+  auto lCbbe3BBBVersionSelector{ new QComboBox() };
+  lCbbe3BBBVersionSelector->addItems(lVersions);
+  lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
+  lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1);
 
   // Second line
   auto lMeshesPathLabel{ new QLabel("Body meshes path:") };
@@ -107,8 +100,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->updateBodyMeshesPreview(QString(""));
 
   // Event binding
-  connect(lCbbe3BBBVersion140, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
-  connect(lCbbe3BBBVersion150, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
+  connect(lCbbe3BBBVersionSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(refreshAllPreviewInputs(int)));
   connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
   connect(lMeshesPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateBodyMeshesPreview(QString)));
 }
@@ -201,8 +193,6 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
   auto lSkeletonPathsPreview{ new QLabel("") };
   lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
   lOptionsGridLayout->addWidget(lSkeletonPathsPreview, 2, 1);
-
-  // TODO: Textures ?
 
   // Initialization functions
   this->updateSkeletonPreview(QString(""));
@@ -356,7 +346,7 @@ void MFBOPresetCreator::updateOSPXMLPreview(QString aText)
 void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 {
   // Selected CBBE 3BBB version
-  auto lCBBE3BBB140VersionSelected{ this->ui.mainContainer->findChild<QRadioButton*>("cbbe_version_140")->isChecked() };
+  auto lCBBE3BBBVersionSelected{ this->ui.mainContainer->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex() };
 
   // Beast hands
   auto lMustUseBeastHands{ this->ui.mainContainer->findChild<QCheckBox*>("use_beast_hands")->isChecked() };
@@ -371,8 +361,9 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 
   QString lConstructedPreviewText{ "" };
 
-  if (lCBBE3BBB140VersionSelected)
+  switch (lCBBE3BBBVersionSelected)
   {
+  case Version1_40:
     if (lMustUseBeastHands)
     {
       lConstructedPreviewText =
@@ -391,9 +382,8 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
           "%1 - 3BBB Body Amazing"
         ).arg(aText);
     }
-  }
-  else
-  {
+    break;
+  case Version1_50:
     if (lMustUseBeastHands)
     {
       lConstructedPreviewText =
@@ -412,6 +402,13 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
           "%1 - CBBE 3BBB Body Amazing"
         ).arg(aText);
     }
+    break;
+  case Version1_51:
+    // TODO
+    break;
+  default:
+    lConstructedPreviewText = "Error while evaluating the data.";
+    break;
   }
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
@@ -459,7 +456,7 @@ void MFBOPresetCreator::chooseExportDirectory()
 void MFBOPresetCreator::generateDirectoryStructure()
 {
   // Selected CBBE 3BBB version
-  auto lCBBE3BBB140VersionSelected{ this->ui.mainContainer->findChild<QRadioButton*>("cbbe_version_140")->isChecked() };
+  auto lCBBE3BBBVersionSelected{ this->ui.mainContainer->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex() };
 
   // Beast hands
   auto lMustUseBeastHands{ this->ui.mainContainer->findChild<QCheckBox*>("use_beast_hands")->isChecked() };
@@ -502,7 +499,12 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Create main directory
   if (!QDir(lEntryDirectory).exists())
   {
-    QDir().mkdir(lEntryDirectory);
+    // Wait to know the result of the mkdir()
+    if (!QDir().mkdir(lEntryDirectory))
+    {
+      this->displayWarningMessage("Error while creating the main directory: \"" + lEntryDirectory + "\" could not be created on your computer. Did you execute the program with limited permissions?");
+      return;
+    }
   }
   else
   {
@@ -546,9 +548,9 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Copy the QRC file and change the slidergroups names in the XML file
   QString lXMLPathName{ lSliderGroupsDirectory + "/" + lOSPXMLNames + ".xml" };
 
-
-  if (lCBBE3BBB140VersionSelected)
+  switch (lCBBE3BBBVersionSelected)
   {
+  case Version1_40:
     if (lMustUseBeastHands)
     {
       QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_xml", lXMLPathName);
@@ -557,9 +559,8 @@ void MFBOPresetCreator::generateDirectoryStructure()
     {
       QFile::copy(":/cbbe_3bbb_1.40/bodyslide_xml", lXMLPathName);
     }
-  }
-  else
-  {
+    break;
+  case Version1_50:
     if (lMustUseBeastHands)
     {
       QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_xml", lXMLPathName);
@@ -568,6 +569,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
     {
       QFile::copy(":/cbbe_3bbb_1.50/bodyslide_xml", lXMLPathName);
     }
+    break;
+  case Version1_51:
+    // TODO
+    break;
+  default:
+    // TODO
+    break;
   }
 
   QFile lXMLFile(lXMLPathName);
@@ -617,8 +625,9 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Copy the QRC file and change the slidergroups names in the OSP file
   QString lOSPPathName(lSliderSetsDirectory + "/" + lOSPXMLNames + ".osp");
 
-  if (lCBBE3BBB140VersionSelected)
+  switch (lCBBE3BBBVersionSelected)
   {
+  case Version1_40:
     if (lMustUseBeastHands)
     {
       QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_osp", lOSPPathName);
@@ -627,9 +636,8 @@ void MFBOPresetCreator::generateDirectoryStructure()
     {
       QFile::copy(":/cbbe_3bbb_1.40/bodyslide_osp", lOSPPathName);
     }
-  }
-  else
-  {
+    break;
+  case Version1_50:
     if (lMustUseBeastHands)
     {
       QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_osp", lOSPPathName);
@@ -638,6 +646,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
     {
       QFile::copy(":/cbbe_3bbb_1.50/bodyslide_osp", lOSPPathName);
     }
+    break;
+  case Version1_51:
+    // TODO
+    break;
+  default:
+    // TODO
+    break;
   }
 
   QFile lOSPFile(lOSPPathName);
@@ -692,13 +707,21 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   // Message when the generation has completed successfully
   QString lSuccessText{ "" };
-  if (lCBBE3BBB140VersionSelected)
+
+  switch (lCBBE3BBBVersionSelected)
   {
-    lSuccessText = "Every file has been correctly generated, for the versions 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)";
-  }
-  else
-  {
-    lSuccessText = "Every file has been correctly generated, for the versions 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+  case Version1_40:
+    lSuccessText = "Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+    break;
+  case Version1_50:
+    lSuccessText = "Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+    break;
+  case Version1_51:
+    lSuccessText = "Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+    break;
+  default:
+    lSuccessText = "Every file has been correctly generated. You can now exit the program or create another conversion! :)";
+    break;
   }
 
   QMessageBox lMessageBox(QMessageBox::Icon::Information, "Generation successful", lSuccessText);
@@ -707,6 +730,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   // Open the folder where the file structure has been created
   QDesktopServices::openUrl(lEntryDirectory);
+}
+
+void MFBOPresetCreator::refreshAllPreviewInputs(int)
+{
+  this->refreshAllPreviewInputs();
 }
 
 void MFBOPresetCreator::refreshAllPreviewInputs()

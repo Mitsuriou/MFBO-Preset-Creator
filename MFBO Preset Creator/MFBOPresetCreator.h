@@ -8,10 +8,12 @@
 #include <QAction>
 #include <QDialog>
 #include <QDesktopServices>
-#include <QRadioButton>
-#include <QButtonGroup>
+#include <QComboBox>
+#include <QStringList>
+#include <QFileSystemWatcher>
 
 #include "ui_MFBOPresetCreator.h"
+#include "Enum.h"
 
 class MFBOPresetCreator : public QMainWindow
 {
@@ -22,6 +24,7 @@ public:
 
 private:
   Ui::MFBOPresetCreatorClass ui;
+
   void initializeGUI();
   void setupMenuBar();
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
@@ -30,6 +33,7 @@ private:
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
   void displayWarningMessage(QString aMessage);
+  void openDirectoryAfterGeneration();
 
 private slots:
   void updateBodyMeshesPreview(QString aText);
@@ -40,6 +44,7 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
+  void refreshAllPreviewInputs(int);
   void refreshAllPreviewInputs();
 
   // Menu dialogs
