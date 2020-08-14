@@ -117,7 +117,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <QtMoc Include="UpgraderTool.h" />
-    <ClInclude Include="Utils.h" />
+    <QtMoc Include="Utils.h" />
     <QtRcc Include="MFBOPresetCreator.qrc" />
     <QtUic Include="MFBOPresetCreator.ui" />
     <QtMoc Include="MFBOPresetCreator.h" />

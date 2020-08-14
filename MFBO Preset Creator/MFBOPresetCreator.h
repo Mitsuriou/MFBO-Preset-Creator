@@ -23,6 +23,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QCloseEvent>
 //#include <QPixmap>
 
 #include "ui_MFBOPresetCreator.h"
@@ -33,6 +34,9 @@ class MFBOPresetCreator : public QMainWindow
 
 public:
   MFBOPresetCreator(QWidget* parent = Q_NULLPTR);
+
+protected:
+  void closeEvent(QCloseEvent* aEvent) override;
 
 private:
   Ui::MFBOPresetCreatorClass ui;
@@ -45,7 +49,6 @@ private:
   void setupOptionsGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
-  void displayWarningMessage(QString aMessage);
 
 private slots:
   void updateBodyMeshesPreview(QString aText);

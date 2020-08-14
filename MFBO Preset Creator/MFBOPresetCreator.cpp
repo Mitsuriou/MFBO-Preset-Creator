@@ -8,6 +8,22 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   this->initializeGUI();
 }
 
+void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
+{
+  auto lResult{ QMessageBox::question(this, tr("Quitting"),
+    tr("Are you sure you want to quit the software?"),
+    QMessageBox::Yes | QMessageBox::No, QMessageBox::No) };
+
+  if (lResult != QMessageBox::Yes)
+  {
+    aEvent->ignore();
+  }
+  else
+  {
+    aEvent->accept();
+  }
+}
+
 void MFBOPresetCreator::initializeGUI()
 {
   // Menu bar
@@ -50,7 +66,7 @@ void MFBOPresetCreator::setupMenuBar()
 
   // Submenu: Upgrader
   auto lUpgraderToolAction = new QAction();
-  lUpgraderToolAction->setText(tr("CBBE 3BBB Version Upgrader Tool"));
+  lUpgraderToolAction->setText(tr("CBBE 3BBB Version [Up/Down]grader Tool"));
   lUpgraderToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
   lUpgraderToolAction->setIcon(QIcon(":/black/arrow_up"));
   lToolsMenu->addAction(lUpgraderToolAction);
@@ -135,7 +151,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1);
 
   // Third line
-  auto lMeshestitlePreview{ new QLabel(tr("Preview:")) };
+  auto lMeshestitlePreview{ new QLabel(tr("Preview (not 100%\n accurate in some cases.\n It will be changed in\n future versions.):")) };
   lMeshesGridLayout->addWidget(lMeshestitlePreview, 3, 0);
 
   auto lMeshesPathsPreview{ new QLabel("") };
@@ -261,7 +277,7 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->setColumnMinimumWidth(0, 140);
 
   // First line
-  auto lOutputPathLabel{ new QLabel(tr("Output path:")) };
+  auto lOutputPathLabel{ new QLabel(tr("Output directory path:")) };
   lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
 
   auto lOutputPathLineEdit{ new QLineEdit("") };
@@ -270,11 +286,11 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputPathLineEdit->setObjectName("output_path_directory");
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
-  // Second line
   auto lOutputPathChooser{ new QPushButton(tr("Choose a directory...")) };
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
-  auto lLabelSubDirectoryPath{ new QLabel(tr("Mod subdirectory:")) };
+  // Second line
+  auto lLabelSubDirectoryPath{ new QLabel(tr("Output subdirectory name/path:")) };
   lOutputGridLayout->addWidget(lLabelSubDirectoryPath, 1, 0);
 
   auto lOutputSubpathLineEdit{ new QLineEdit("") };
@@ -289,12 +305,12 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputPathsPreview->setObjectName("output_path_preview");
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
-  // Initialization functions
-  this->updateOutputPreview();
-
   // Event binding
   connect(lOutputPathChooser, SIGNAL(clicked()), this, SLOT(chooseExportDirectory()));
   connect(lOutputSubpathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateOutputPreview()));
+
+  // Pre-filled data
+  this->updateOutputPreview();
 }
 
 void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
@@ -305,12 +321,6 @@ void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 
   // Event binding
   connect(lGenerateButton, SIGNAL(clicked()), this, SLOT(generateDirectoryStructure()));
-}
-
-void MFBOPresetCreator::displayWarningMessage(QString aMessage)
-{
-  QMessageBox lMessageBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
-  lMessageBox.exec();
 }
 
 void MFBOPresetCreator::updateBodyMeshesPreview(QString aText)
@@ -330,7 +340,7 @@ void MFBOPresetCreator::updateBodyMeshesPreview(QString aText)
       "%1/femalefeet_0.nif\n"
       "%1/femalefeet_1.nif\n"
       "%1/femalehands_0.nif\n"
-      "%1/femalehands_1.nif"
+      "%1/femalehands_1.nif\n"
     ).arg(aText)
   );
 
@@ -362,6 +372,7 @@ void MFBOPresetCreator::updateOutputPreview()
   }
   else
   {
+    lFullPath = tr("No path given or invalid path given.");
     lMainDirTextEdit->setDisabled(true);
   }
 
@@ -548,14 +559,14 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.length() == 0)
   {
-    this->displayWarningMessage(tr("Error: no path given to export the files."));
+    Utils::displayWarningMessage(tr("Error: no path given to export the files."));
     return;
   }
 
   // Check if the path could be valid
   if (lEntryDirectory.startsWith("/"))
   {
-    this->displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
+    Utils::displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
     return;
   }
 
@@ -565,34 +576,34 @@ void MFBOPresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkdir(lEntryDirectory))
     {
-      this->displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Did you execute the program with limited permissions?"));
       return;
     }
   }
   else
   {
-    this->displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" already exists on your computer."));
+    Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" already exists on your computer."));
     return;
   }
 
   // Export the meshes
   if (lBodyMeshesPath.length() == 0)
   {
-    this->displayWarningMessage(tr("Error: no path has been given for the meshes."));
+    Utils::displayWarningMessage(tr("Error: no path has been given for the meshes."));
     return;
   }
 
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.length() == 0)
   {
-    this->displayWarningMessage(tr("Error: no name given for the bodyslide files."));
+    Utils::displayWarningMessage(tr("Error: no name given for the bodyslide files."));
     return;
   }
 
   // Check if a name has been given for the presets
   if (lBodyslideSlidersetsNames.length() == 0)
   {
-    this->displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the Bodyslide software)."));
+    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the Bodyslide software)."));
     return;
   }
 
@@ -604,7 +615,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
     return;
   }
 
@@ -624,7 +635,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
     lRessourcesFolder = "cbbe_3bbb_1.51";
     break;
   default:
-    this->displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
+    Utils::displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
     return;
   }
 
@@ -633,7 +644,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
     {
-      this->displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -641,7 +652,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
     {
-      this->displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -673,7 +684,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
     return;
   }
 
@@ -686,7 +697,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
     return;
   }
 
@@ -698,7 +709,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      this->displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -706,7 +717,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      this->displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -740,7 +751,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
     return;
   }
 
@@ -754,13 +765,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif"))
       {
-        this->displayWarningMessage(tr("The skeleton file could not be created. Did you execute the program with limited permissions?"));
+        Utils::displayWarningMessage(tr("The skeleton file could not be created. Did you execute the program with limited permissions?"));
         return;
       }
     }
     else
     {
-      this->displayWarningMessage(tr("Error: no path given for the custom skeleton."));
+      Utils::displayWarningMessage(tr("Error: no path given for the custom skeleton."));
       return;
     }
   }

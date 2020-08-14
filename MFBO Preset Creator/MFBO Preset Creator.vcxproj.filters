@@ -15,9 +15,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Enum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -56,6 +53,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="UpgraderTool.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Utils.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
