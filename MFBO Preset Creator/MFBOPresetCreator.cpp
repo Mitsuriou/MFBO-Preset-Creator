@@ -817,6 +817,8 @@ void MFBOPresetCreator::showSettingsDialog()
   // App theme (light/dark)
   // Default window size
   // Language
+  // Default CBBE Version on app load
+  // Default CBBE Upgrade version on upgrade tool load
 
   // Build the description
   auto lDescription(tr("The settings panel in under developement and will be released in a future version..."));

@@ -42,6 +42,7 @@ void UpgraderTool::setupInterface(QGridLayout& aLayout)
 
   auto lCbbe3BBBVersionSelector{ new QComboBox() };
   lCbbe3BBBVersionSelector->addItems(lVersions);
+  lCbbe3BBBVersionSelector->setCurrentIndex(lCbbe3BBBVersionSelector->count() - 1);
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1);
 
