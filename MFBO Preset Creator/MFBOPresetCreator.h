@@ -2,6 +2,7 @@
 
 #include "Utils.h"
 #include "Enum.h"
+#include "UpgraderTool.h"
 
 #include <QtWidgets/QMainWindow>
 #include <QVBoxLayout>
@@ -22,7 +23,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QTextStream>
-#include <QPixmap>
+//#include <QPixmap>
 
 #include "ui_MFBOPresetCreator.h"
 

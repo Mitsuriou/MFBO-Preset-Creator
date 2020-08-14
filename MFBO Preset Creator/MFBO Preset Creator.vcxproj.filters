@@ -10,6 +10,9 @@
     <ClCompile Include="MFBOPresetCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UpgraderTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -42,9 +45,17 @@
     <Filter Include="Qt Ressources">
       <UniqueIdentifier>{d9a50dd6-abfd-4d7f-a1c6-b7b3fcceeec4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MFBOPresetCreator.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="UpgraderTool.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -67,5 +78,19 @@
     <Image Include="ressources/software/icon.ico">
       <Filter>C++ App Ressources</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mfbopc_fr.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="mfbopc_en.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="mfbopc_fr.qm">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="mfbopc_en.qm">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
