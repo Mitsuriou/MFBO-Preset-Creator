@@ -248,7 +248,6 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
   // Event binding
   connect(lNeedCustomSkeleton, SIGNAL(stateChanged(int)), this, SLOT(updateSkeletonPathState(int)));
   connect(lSkeletonPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateSkeletonPreview(QString)));
-
 }
 
 void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
@@ -310,7 +309,7 @@ void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 
 void MFBOPresetCreator::displayWarningMessage(QString aMessage)
 {
-  QMessageBox lMessageBox(QMessageBox::Icon::Warning, "Warning", aMessage);
+  QMessageBox lMessageBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
   lMessageBox.exec();
 }
 
@@ -471,7 +470,7 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
     }
     break;
   default:
-    lConstructedPreviewText = "Error while evaluating the data.";
+    lConstructedPreviewText = tr("Error while evaluating the data.");
     break;
   }
 
@@ -549,14 +548,14 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.length() == 0)
   {
-    this->displayWarningMessage("Error: no path given to export the files.");
+    this->displayWarningMessage(tr("Error: no path given to export the files."));
     return;
   }
 
   // Check if the path could be valid
   if (lEntryDirectory.startsWith("/"))
   {
-    this->displayWarningMessage("Error: the path given to export the files seems to be invalid.");
+    this->displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
     return;
   }
 
@@ -566,34 +565,34 @@ void MFBOPresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkdir(lEntryDirectory))
     {
-      this->displayWarningMessage("Error while creating the main directory: \"" + lEntryDirectory + "\" could not be created on your computer. Did you execute the program with limited permissions?");
+      this->displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Did you execute the program with limited permissions?"));
       return;
     }
   }
   else
   {
-    this->displayWarningMessage("Error while creating the main directory: \"" + lEntryDirectory + "\" already exists on your computer.");
+    this->displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" already exists on your computer."));
     return;
   }
 
   // Export the meshes
   if (lBodyMeshesPath.length() == 0)
   {
-    this->displayWarningMessage("Error: no path has been given for the meshes.");
+    this->displayWarningMessage(tr("Error: no path has been given for the meshes."));
     return;
   }
 
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.length() == 0)
   {
-    this->displayWarningMessage("Error: no name given for the bodyslide files.");
+    this->displayWarningMessage(tr("Error: no name given for the bodyslide files."));
     return;
   }
 
   // Check if a name has been given for the presets
   if (lBodyslideSlidersetsNames.length() == 0)
   {
-    this->displayWarningMessage("Error: no name given for the slider sets (names that appear in the Bodyslide software).");
+    this->displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the Bodyslide software)."));
     return;
   }
 
@@ -605,7 +604,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage("Error while creating the meshes directory: \"" + lSliderGroupsDirectory + "\" already exists.");
+    this->displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
     return;
   }
 
@@ -625,7 +624,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
     lRessourcesFolder = "cbbe_3bbb_1.51";
     break;
   default:
-    this->displayWarningMessage("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer team.");
+    this->displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
     return;
   }
 
@@ -634,7 +633,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
     {
-      this->displayWarningMessage("The XML file could not be created. Did you execute the program with limited permissions?");
+      this->displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -642,7 +641,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
     {
-      this->displayWarningMessage("The XML file could not be created. Did you execute the program with limited permissions?");
+      this->displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -674,7 +673,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage("Error while trying to parse the XML Bodyslide file.");
+    this->displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
     return;
   }
 
@@ -687,7 +686,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage("Error while creating the meshes directory: \"" + lSliderSetsDirectory + "\" already exists.");
+    this->displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
     return;
   }
 
@@ -699,7 +698,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      this->displayWarningMessage("The OSP file could not be created. Did you execute the program with limited permissions?");
+      this->displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -707,7 +706,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      this->displayWarningMessage("The OSP file could not be created. Did you execute the program with limited permissions?");
+      this->displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
       return;
     }
   }
@@ -741,7 +740,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage("Error while trying to parse the OSP Bodyslide file.");
+    this->displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
     return;
   }
 
@@ -755,13 +754,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif"))
       {
-        this->displayWarningMessage("The skeleton file could not be created. Did you execute the program with limited permissions?");
+        this->displayWarningMessage(tr("The skeleton file could not be created. Did you execute the program with limited permissions?"));
         return;
       }
     }
     else
     {
-      this->displayWarningMessage("Error: no path given for the custom skeleton.");
+      this->displayWarningMessage(tr("Error: no path given for the custom skeleton."));
       return;
     }
   }
@@ -772,20 +771,20 @@ void MFBOPresetCreator::generateDirectoryStructure()
   switch (lCBBE3BBBVersionSelected)
   {
   case Version1_40:
-    lSuccessText = "Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+    lSuccessText = tr("Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)");
     break;
   case Version1_50:
-    lSuccessText = "Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+    lSuccessText = tr("Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
     break;
   case Version1_51:
-    lSuccessText = "Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+    lSuccessText = tr("Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
     break;
   default:
-    lSuccessText = "Every file has been correctly generated. You can now exit the program or create another conversion! :)";
+    lSuccessText = tr("Every file has been correctly generated. You can now exit the program or create another conversion! :)");
     break;
   }
 
-  QMessageBox lMessageBox(QMessageBox::Icon::Information, "Generation successful", lSuccessText);
+  QMessageBox lMessageBox(QMessageBox::Icon::Information, tr("Generation successful"), lSuccessText);
   lMessageBox.exec();
 
   // Open the folder where the file structure has been created
@@ -820,15 +819,11 @@ void MFBOPresetCreator::showSettingsDialog()
   // Language
 
   // Build the description
-  auto lDescription(
-    QStringLiteral(
-      "The settings panel in under developement and will be released in a future version..."
-    )
-  );
+  auto lDescription(tr("The settings panel in under developement and will be released in a future version..."));
 
   // Construct the message box
   //QMessageBox lDialog(QMessageBox::Icon::NoIcon, "Settings", lDescription, QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Save);
-  QMessageBox lDialog(QMessageBox::Icon::Warning, "Settings", lDescription, QMessageBox::StandardButton::Close);
+  QMessageBox lDialog(QMessageBox::Icon::Warning, tr("Settings"), lDescription, QMessageBox::StandardButton::Close);
   //lDialog.setTextFormat(Qt::RichText);
   lDialog.adjustSize();
 
@@ -865,7 +860,7 @@ void MFBOPresetCreator::showAboutDialog()
   );
 
   // Construct the message box
-  QMessageBox lDialog(QMessageBox::Icon::NoIcon, "About", lDescription, QMessageBox::StandardButton::Close);
+  QMessageBox lDialog(QMessageBox::Icon::NoIcon, tr("About"), lDescription, QMessageBox::StandardButton::Close);
   //lDialog.setIconPixmap(QPixmap(":/software/icon"));
   lDialog.setTextFormat(Qt::RichText);
   lDialog.adjustSize();

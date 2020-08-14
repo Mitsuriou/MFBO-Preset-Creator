@@ -25,6 +25,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="60"/>
+        <location filename="MFBOPresetCreator.cpp" line="826"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
@@ -35,6 +36,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="71"/>
+        <location filename="MFBOPresetCreator.cpp" line="863"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
@@ -68,7 +70,7 @@
         <location filename="MFBOPresetCreator.cpp" line="173"/>
         <location filename="MFBOPresetCreator.cpp" line="192"/>
         <location filename="MFBOPresetCreator.cpp" line="238"/>
-        <location filename="MFBOPresetCreator.cpp" line="286"/>
+        <location filename="MFBOPresetCreator.cpp" line="285"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
@@ -105,7 +107,7 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="221"/>
         <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
-        <translation>Note : ne pas remplacer un squelette causerait des problèmes de collisions et de la physique de la poitrine.</translation>
+        <translation>Note : ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="224"/>
@@ -118,29 +120,159 @@
         <translation>Emplacement du squelette :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="257"/>
+        <location filename="MFBOPresetCreator.cpp" line="256"/>
         <source>Output</source>
         <translation>Sortie</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="265"/>
+        <location filename="MFBOPresetCreator.cpp" line="264"/>
         <source>Output path:</source>
         <translation>Emplacement de sortie :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="275"/>
+        <location filename="MFBOPresetCreator.cpp" line="274"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="278"/>
+        <location filename="MFBOPresetCreator.cpp" line="277"/>
         <source>Mod subdirectory:</source>
         <translation>Sous-répertoire du mod :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="304"/>
+        <location filename="MFBOPresetCreator.cpp" line="303"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="312"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="473"/>
+        <source>Error while evaluating the data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="551"/>
+        <source>Error: no path given to export the files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="558"/>
+        <source>Error: the path given to export the files seems to be invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="568"/>
+        <location filename="MFBOPresetCreator.cpp" line="574"/>
+        <source>Error while creating the main directory: &quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="568"/>
+        <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="574"/>
+        <source>&quot; already exists on your computer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="581"/>
+        <source>Error: no path has been given for the meshes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="588"/>
+        <source>Error: no name given for the bodyslide files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="595"/>
+        <source>Error: no name given for the slider sets (names that appear in the Bodyslide software).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="607"/>
+        <location filename="MFBOPresetCreator.cpp" line="689"/>
+        <source>Error while creating the meshes directory: &quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="607"/>
+        <location filename="MFBOPresetCreator.cpp" line="689"/>
+        <source>&quot; already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="627"/>
+        <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="636"/>
+        <location filename="MFBOPresetCreator.cpp" line="644"/>
+        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="676"/>
+        <source>Error while trying to parse the XML Bodyslide file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="701"/>
+        <location filename="MFBOPresetCreator.cpp" line="709"/>
+        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="743"/>
+        <source>Error while trying to parse the OSP Bodyslide file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="757"/>
+        <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="763"/>
+        <source>Error: no path given for the custom skeleton.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="774"/>
+        <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="777"/>
+        <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="780"/>
+        <source>Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="783"/>
+        <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="787"/>
+        <source>Generation successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="822"/>
+        <source>The settings panel in under developement and will be released in a future version...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
