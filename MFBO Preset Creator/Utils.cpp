@@ -19,11 +19,23 @@ void Utils::displayWarningMessage(QString aMessage)
 int Utils::getNumberFilesByExtension(QString aRootDir, QString aFileExtension)
 {
   auto lNumber{ 0 };
+  auto lAbsFilePath{ QString("") };
+  auto lRelativeDirs{ QString("") };
 
   QDirIterator it(aRootDir, QStringList() << QString("*." + aFileExtension), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     it.next();
+
+    // Ignore FOMOD directory
+    lAbsFilePath = it.fileInfo().absoluteFilePath();
+    lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
+
+    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    {
+      continue;
+    }
+
     lNumber++;
   }
 

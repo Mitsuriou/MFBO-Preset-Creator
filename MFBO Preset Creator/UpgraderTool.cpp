@@ -262,12 +262,12 @@ void UpgraderTool::launchUpDownGradeProcess()
 
     if (!lBackupDoneSuccessfully)
     {
+      Utils::displayWarningMessage(tr("Error: the backup could not be created. Please try again."));
       return;
     }
   }
 
   // Scan the number of files to treat
-  // TODO: ignore the fomod directory here!! (maybe not needed since it does not have the same structure, but it can be long to parse)
   auto lNumberOSPFiles{ Utils::getNumberFilesByExtension(lRootDir, "osp") };
   auto lNumberXMLFiles{ Utils::getNumberFilesByExtension(lRootDir, "xml") };
   auto lFilesToTreat{ lNumberOSPFiles + lNumberXMLFiles };
@@ -290,53 +290,68 @@ void UpgraderTool::launchUpDownGradeProcess()
   QString lPresetName;
   QDirIterator it(lRootDir, QStringList() << QString("*.xml") << QString("*.osp"), QDir::Files, QDirIterator::Subdirectories);
 
+  auto lAbsFilePath{ QString("") };
+  auto lRelativeDirs{ QString("") };
+  auto lMustUseBeastHands{ false };
+
+  auto lRessourcesFolder{ QString("") };
+  switch (lCBBE3BBBVersionSelected)
+  {
+  case CBBE3BBBVersion::Version1_40:
+    lRessourcesFolder = "cbbe_3bbb_1.40";
+    break;
+  case CBBE3BBBVersion::Version1_50:
+    lRessourcesFolder = "cbbe_3bbb_1.50";
+    break;
+  case CBBE3BBBVersion::Version1_51:
+    lRessourcesFolder = "cbbe_3bbb_1.51";
+    break;
+  default:
+    Utils::displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
+    return;
+  }
+
   while (it.hasNext())
   {
+    // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
       Utils::displayWarningMessage(tr("Process aborted by user."));
       return;
     }
 
+    // Navigate to the next file
     it.next();
 
+    // Ignore FOMOD directory
+    lAbsFilePath = it.fileInfo().absoluteFilePath();
+
+    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
+
+    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    {
+      continue;
+    }
+
+    // Check the file extension
     auto lFileSuffix{ it.fileInfo().completeSuffix() };
 
+    // Parse an XML file
     if (lFileSuffix == "xml")
     {
-      auto lXMLPathName{ it.fileInfo().absoluteFilePath() };
-
-      lPresetName = Utils::getPresetNameFromXMLFile(lXMLPathName);
-      bool lMustUseBeastHands{ Utils::isPresetUsingBeastHands(lXMLPathName) };
-
-      auto lRessourcesFolder{ QString("") };
-
-      switch (lCBBE3BBBVersionSelected)
-      {
-      case CBBE3BBBVersion::Version1_40:
-        lRessourcesFolder = "cbbe_3bbb_1.40";
-        break;
-      case CBBE3BBBVersion::Version1_50:
-        lRessourcesFolder = "cbbe_3bbb_1.50";
-        break;
-      case CBBE3BBBVersion::Version1_51:
-        lRessourcesFolder = "cbbe_3bbb_1.51";
-        break;
-      default:
-        Utils::displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
-        return;
-      }
+      lPresetName = Utils::getPresetNameFromXMLFile(lAbsFilePath);
+      lMustUseBeastHands = Utils::isPresetUsingBeastHands(lAbsFilePath);
 
       // Remove the file once all data has been read
-      if (QFile::exists(lXMLPathName))
+      if (QFile::exists(lAbsFilePath))
       {
-        QFile::remove(lXMLPathName);
+        QFile::remove(lAbsFilePath);
       }
 
       // Copy the XML file
       if (lMustUseBeastHands)
       {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
+        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lAbsFilePath))
         {
           Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
           return;
@@ -344,34 +359,36 @@ void UpgraderTool::launchUpDownGradeProcess()
       }
       else
       {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
+        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lAbsFilePath))
         {
           Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
           return;
         }
       }
 
-      QFile lXMLFile(lXMLPathName);
+      // Read the created XML file
+      QFile lXMLFile(lAbsFilePath);
       lXMLFile.setPermissions(QFile::WriteUser);
 
-      QByteArray lTempXMLContent;
+      QByteArray lXMLFileContent;
 
       if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
       {
-        lTempXMLContent = lXMLFile.readAll();
+        lXMLFileContent = lXMLFile.readAll();
         lXMLFile.close();
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
         return;
       }
 
-      if (lTempXMLContent.length() > 0)
+      // Replace the custom tags in the file
+      if (lXMLFileContent.length() > 0)
       {
         if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
         {
-          auto lTextToParse{ static_cast<QString>(lTempXMLContent) };
+          auto lTextToParse{ static_cast<QString>(lXMLFileContent) };
           lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
 
           QTextStream lTextStream(&lXMLFile);
@@ -382,7 +399,7 @@ void UpgraderTool::launchUpDownGradeProcess()
         }
         else
         {
-          Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+          Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
           return;
         }
       }

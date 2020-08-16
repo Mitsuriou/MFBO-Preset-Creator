@@ -392,65 +392,70 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="UpgraderTool.cpp" line="265"/>
+        <source>Error: the backup could not be created. Please try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="UpgraderTool.cpp" line="284"/>
         <source>Cancel Treatment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="297"/>
+        <location filename="UpgraderTool.cpp" line="319"/>
         <source>Process aborted by user.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="326"/>
+        <location filename="UpgraderTool.cpp" line="310"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="341"/>
-        <location filename="UpgraderTool.cpp" line="349"/>
+        <location filename="UpgraderTool.cpp" line="356"/>
+        <location filename="UpgraderTool.cpp" line="364"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="366"/>
-        <location filename="UpgraderTool.cpp" line="385"/>
+        <location filename="UpgraderTool.cpp" line="382"/>
+        <location filename="UpgraderTool.cpp" line="402"/>
         <source>Error while trying to open the file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="366"/>
-        <location filename="UpgraderTool.cpp" line="385"/>
+        <location filename="UpgraderTool.cpp" line="382"/>
+        <location filename="UpgraderTool.cpp" line="402"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="391"/>
+        <location filename="UpgraderTool.cpp" line="408"/>
         <source>Error while trying to parse the XML Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="411"/>
+        <location filename="UpgraderTool.cpp" line="428"/>
         <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="414"/>
+        <location filename="UpgraderTool.cpp" line="431"/>
         <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="417"/>
+        <location filename="UpgraderTool.cpp" line="434"/>
         <source>All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="420"/>
+        <location filename="UpgraderTool.cpp" line="437"/>
         <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="424"/>
+        <location filename="UpgraderTool.cpp" line="441"/>
         <source>Upgrade or downgarde successful</source>
         <translation type="unfinished"></translation>
     </message>
@@ -493,20 +498,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="56"/>
-        <location filename="Utils.cpp" line="71"/>
+        <location filename="Utils.cpp" line="68"/>
+        <location filename="Utils.cpp" line="83"/>
         <source>An unknown error has occured while creating the backup. Process aborted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="93"/>
-        <location filename="Utils.cpp" line="124"/>
+        <location filename="Utils.cpp" line="105"/>
+        <location filename="Utils.cpp" line="136"/>
         <source>Error while trying to open the file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="93"/>
-        <location filename="Utils.cpp" line="124"/>
+        <location filename="Utils.cpp" line="105"/>
+        <location filename="Utils.cpp" line="136"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
