@@ -31,7 +31,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="76"/>
-        <location filename="MFBOPresetCreator.cpp" line="839"/>
+        <location filename="MFBOPresetCreator.cpp" line="859"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -42,7 +42,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="87"/>
-        <location filename="MFBOPresetCreator.cpp" line="876"/>
+        <location filename="MFBOPresetCreator.cpp" line="896"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -218,13 +218,13 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="618"/>
-        <location filename="MFBOPresetCreator.cpp" line="700"/>
+        <location filename="MFBOPresetCreator.cpp" line="710"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="618"/>
-        <location filename="MFBOPresetCreator.cpp" line="700"/>
+        <location filename="MFBOPresetCreator.cpp" line="710"/>
         <source>&quot; already exists.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -240,58 +240,74 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="687"/>
+        <location filename="MFBOPresetCreator.cpp" line="672"/>
+        <location filename="MFBOPresetCreator.cpp" line="691"/>
+        <location filename="MFBOPresetCreator.cpp" line="747"/>
+        <location filename="MFBOPresetCreator.cpp" line="768"/>
+        <source>Error while trying to open the file &quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="672"/>
+        <location filename="MFBOPresetCreator.cpp" line="691"/>
+        <location filename="MFBOPresetCreator.cpp" line="747"/>
+        <location filename="MFBOPresetCreator.cpp" line="768"/>
+        <source>&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="697"/>
         <source>Error while trying to parse the XML Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="712"/>
-        <location filename="MFBOPresetCreator.cpp" line="720"/>
+        <location filename="MFBOPresetCreator.cpp" line="722"/>
+        <location filename="MFBOPresetCreator.cpp" line="730"/>
         <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="754"/>
+        <location filename="MFBOPresetCreator.cpp" line="774"/>
         <source>Error while trying to parse the OSP Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="768"/>
+        <location filename="MFBOPresetCreator.cpp" line="788"/>
         <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="774"/>
+        <location filename="MFBOPresetCreator.cpp" line="794"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="785"/>
+        <location filename="MFBOPresetCreator.cpp" line="805"/>
         <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="788"/>
+        <location filename="MFBOPresetCreator.cpp" line="808"/>
         <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="791"/>
+        <location filename="MFBOPresetCreator.cpp" line="811"/>
         <source>Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="794"/>
+        <location filename="MFBOPresetCreator.cpp" line="814"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="798"/>
+        <location filename="MFBOPresetCreator.cpp" line="818"/>
         <source>Generation successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="835"/>
+        <location filename="MFBOPresetCreator.cpp" line="855"/>
         <source>The settings panel in under developement and will be released in a future version...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -376,48 +392,95 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="UpgraderTool.cpp" line="284"/>
+        <source>Cancel Treatment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="297"/>
+        <source>Process aborted by user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="326"/>
+        <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="341"/>
+        <location filename="UpgraderTool.cpp" line="349"/>
+        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="366"/>
+        <location filename="UpgraderTool.cpp" line="385"/>
+        <source>Error while trying to open the file &quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="366"/>
+        <location filename="UpgraderTool.cpp" line="385"/>
+        <source>&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="391"/>
+        <source>Error while trying to parse the XML Bodyslide file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="411"/>
+        <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="414"/>
+        <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="417"/>
+        <source>All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="420"/>
+        <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="424"/>
+        <source>Upgrade or downgarde successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="UpgraderTool.cpp" line="119"/>
-        <source>Reformat presets names?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="122"/>
-        <source>If checked, &quot;* - Feet&quot; would become &quot;* - CBBE 3BBB Feet&quot; when upgrading from 1.40 to 1.51, for example.</source>
-        <oldsource>If checked, &quot;* - Feet &quot; would become &quot;* - CBBE 3BBB Feet &quot; when upgrading from 1.40 to 1.51, for example.</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="126"/>
         <source>[Up/Down]grade all the files under the input path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="183"/>
+        <location filename="UpgraderTool.cpp" line="176"/>
         <source>No path given or invalid path given.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="235"/>
+        <location filename="UpgraderTool.cpp" line="229"/>
         <source>Error: no path path given to [up/down]grade.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="255"/>
+        <location filename="UpgraderTool.cpp" line="249"/>
         <source>Error: no path given to backup the files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="262"/>
+        <location filename="UpgraderTool.cpp" line="256"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="282"/>
-        <source>Cancel treatment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="292"/>
+        <location filename="UpgraderTool.cpp" line="284"/>
         <source>Scanning, parsing and building the new BodySlide files. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -433,6 +496,18 @@
         <location filename="Utils.cpp" line="56"/>
         <location filename="Utils.cpp" line="71"/>
         <source>An unknown error has occured while creating the backup. Process aborted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Utils.cpp" line="93"/>
+        <location filename="Utils.cpp" line="124"/>
+        <source>Error while trying to open the file &quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Utils.cpp" line="93"/>
+        <location filename="Utils.cpp" line="124"/>
+        <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
