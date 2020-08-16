@@ -737,7 +737,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   QByteArray lTempOSPContent;
 
-  if (lOSPFile.open(QIODevice::ReadWrite | QIODevice::Text))
+  if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {
     lTempOSPContent = lOSPFile.readAll();
     lOSPFile.close();
@@ -751,11 +751,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Replace the slider sets names
   if (lTempOSPContent.length() > 0)
   {
-    if (lOSPFile.open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))
+    if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
     {
       auto lTextToParse{ static_cast<QString>(lTempOSPContent) };
       lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lBodyslideSlidersetsNames);
-      lTextToParse.replace(QString("{%%body_meshes_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%body_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%feet_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%hands_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
 
       QTextStream lTextStream(&lOSPFile);
       lTextStream << lTextToParse;

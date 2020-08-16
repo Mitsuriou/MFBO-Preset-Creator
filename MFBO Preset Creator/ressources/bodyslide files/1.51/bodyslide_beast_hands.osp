@@ -3,7 +3,7 @@
     <SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing">
         <DataFolder>SE 3BBB Amazing</DataFolder>
         <SourceFile>SE 3BBB Body Amazing.nif</SourceFile>
-        <OutputPath>{%%body_meshes_path%%}</OutputPath>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
         <OutputFile GenWeights="true">femalebody</OutputFile>
         <Shape target="3BBB">3BBB</Shape>
         <Shape target="3BBB_Anus">3BBB_Anus</Shape>
@@ -399,7 +399,7 @@
     <SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Feet">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Feet.nif</SourceFile>
-        <OutputPath>{%%body_meshes_path%%}</OutputPath>
+        <OutputPath>{%%feet_output_path%%}</OutputPath>
         <OutputFile GenWeights="true">femalefeet</OutputFile>
         <Shape target="Feet" DataFolder="CBBE">Feet</Shape>
         <Slider name="AnkleSize" invert="false" small="100" big="0">
@@ -412,7 +412,7 @@
 	<SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Hands Beast">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Hands Beast.nif</SourceFile>
-        <OutputPath>{%%body_meshes_path%%}</OutputPath>
+        <OutputPath>{%%hands_output_path%%}</OutputPath>
         <OutputFile GenWeights="true">femalehandsargonian</OutputFile>
         <Shape target="Hands" DataFolder="CBBE">Hands</Shape>
         <Slider name="WristSize" invert="false" small="100" big="0">

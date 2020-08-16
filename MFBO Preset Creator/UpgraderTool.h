@@ -2,6 +2,7 @@
 
 #include "Utils.h"
 #include "Enum.h"
+#include "Struct.h"
 
 #include <QApplication>
 #include <QString>
@@ -25,6 +26,7 @@
 #include <QDirIterator>
 #include <QFileInfo>
 #include <QTextStream>
+#include <QPair>
 
 class UpgraderTool : public QDialog
 {

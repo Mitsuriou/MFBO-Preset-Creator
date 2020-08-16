@@ -31,7 +31,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="76"/>
-        <location filename="MFBOPresetCreator.cpp" line="859"/>
+        <location filename="MFBOPresetCreator.cpp" line="861"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -42,7 +42,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="87"/>
-        <location filename="MFBOPresetCreator.cpp" line="896"/>
+        <location filename="MFBOPresetCreator.cpp" line="898"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -243,7 +243,7 @@
         <location filename="MFBOPresetCreator.cpp" line="672"/>
         <location filename="MFBOPresetCreator.cpp" line="691"/>
         <location filename="MFBOPresetCreator.cpp" line="747"/>
-        <location filename="MFBOPresetCreator.cpp" line="768"/>
+        <location filename="MFBOPresetCreator.cpp" line="770"/>
         <source>Error while trying to open the file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -251,7 +251,7 @@
         <location filename="MFBOPresetCreator.cpp" line="672"/>
         <location filename="MFBOPresetCreator.cpp" line="691"/>
         <location filename="MFBOPresetCreator.cpp" line="747"/>
-        <location filename="MFBOPresetCreator.cpp" line="768"/>
+        <location filename="MFBOPresetCreator.cpp" line="770"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -267,47 +267,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="774"/>
+        <location filename="MFBOPresetCreator.cpp" line="776"/>
         <source>Error while trying to parse the OSP Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="788"/>
+        <location filename="MFBOPresetCreator.cpp" line="790"/>
         <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="794"/>
+        <location filename="MFBOPresetCreator.cpp" line="796"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="805"/>
+        <location filename="MFBOPresetCreator.cpp" line="807"/>
         <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="808"/>
+        <location filename="MFBOPresetCreator.cpp" line="810"/>
         <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="811"/>
+        <location filename="MFBOPresetCreator.cpp" line="813"/>
         <source>Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="814"/>
+        <location filename="MFBOPresetCreator.cpp" line="816"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="818"/>
+        <location filename="MFBOPresetCreator.cpp" line="820"/>
         <source>Generation successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="855"/>
+        <location filename="MFBOPresetCreator.cpp" line="857"/>
         <source>The settings panel in under developement and will be released in a future version...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -402,60 +402,91 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="319"/>
+        <location filename="UpgraderTool.cpp" line="320"/>
         <source>Process aborted by user.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="310"/>
+        <location filename="UpgraderTool.cpp" line="311"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="356"/>
+        <location filename="UpgraderTool.cpp" line="347"/>
+        <source>Error while parsing the XML file &quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="347"/>
+        <location filename="UpgraderTool.cpp" line="426"/>
+        <source>&quot;. Aborting process</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="UpgraderTool.cpp" line="364"/>
+        <location filename="UpgraderTool.cpp" line="372"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="382"/>
-        <location filename="UpgraderTool.cpp" line="402"/>
+        <location filename="UpgraderTool.cpp" line="390"/>
+        <location filename="UpgraderTool.cpp" line="410"/>
+        <location filename="UpgraderTool.cpp" line="467"/>
+        <location filename="UpgraderTool.cpp" line="506"/>
         <source>Error while trying to open the file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="382"/>
-        <location filename="UpgraderTool.cpp" line="402"/>
+        <location filename="UpgraderTool.cpp" line="390"/>
+        <location filename="UpgraderTool.cpp" line="410"/>
+        <location filename="UpgraderTool.cpp" line="467"/>
+        <location filename="UpgraderTool.cpp" line="506"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="408"/>
+        <location filename="UpgraderTool.cpp" line="416"/>
         <source>Error while trying to parse the XML Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="428"/>
-        <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="431"/>
-        <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="434"/>
-        <source>All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="437"/>
-        <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
+        <location filename="UpgraderTool.cpp" line="426"/>
+        <source>Error while parsing the OSP file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="UpgraderTool.cpp" line="441"/>
+        <location filename="UpgraderTool.cpp" line="449"/>
+        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="512"/>
+        <source>Error while trying to parse the OSP Bodyslide file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="528"/>
+        <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="531"/>
+        <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="534"/>
+        <source>All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="537"/>
+        <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="541"/>
         <source>Upgrade or downgarde successful</source>
         <translation type="unfinished"></translation>
     </message>
@@ -505,13 +536,15 @@
     </message>
     <message>
         <location filename="Utils.cpp" line="105"/>
-        <location filename="Utils.cpp" line="136"/>
+        <location filename="Utils.cpp" line="138"/>
+        <location filename="Utils.cpp" line="208"/>
         <source>Error while trying to open the file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="105"/>
-        <location filename="Utils.cpp" line="136"/>
+        <location filename="Utils.cpp" line="138"/>
+        <location filename="Utils.cpp" line="208"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>

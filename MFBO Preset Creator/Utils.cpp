@@ -119,6 +119,78 @@ QString Utils::getPresetNameFromXMLFile(QString aPath)
   return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
 }
 
+std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(QString aPath)
+{
+  std::vector<Struct::SliderSet> lPaths;
+
+  QFile lReadFile(aPath);
+  lReadFile.setPermissions(QFile::WriteUser);
+
+  QDomDocument lOSPDocument;
+
+  if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    lOSPDocument.setContent(&lReadFile);
+    lReadFile.close();
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    return std::vector<Struct::SliderSet>();
+  }
+
+  QDomElement lRoot{ lOSPDocument.documentElement() };
+  QDomElement lSliderSet{ lRoot.firstChild().toElement() };
+
+  while (!lSliderSet.isNull())
+  {
+    if (lSliderSet.tagName() == "SliderSet")
+    {
+      Struct::SliderSet lTempSet;
+
+      lTempSet.name = lSliderSet.attribute("name", "");
+      if (lTempSet.name.contains("body", Qt::CaseInsensitive))
+      {
+        lTempSet.meshpart = "Body";
+      }
+      else if (lTempSet.name.contains("hands", Qt::CaseInsensitive))
+      {
+        lTempSet.meshpart = "Hands";
+      }
+      else if (lTempSet.name.contains("feet", Qt::CaseInsensitive))
+      {
+        lTempSet.meshpart = "Feet";
+      }
+
+      QDomElement lChild = lSliderSet.firstChild().toElement();
+      while (!lChild.isNull())
+      {
+        if (lChild.tagName() == "OutputPath")
+        {
+          lTempSet.outputpath = lChild.firstChild().toText().data();
+        }
+        else if (lChild.tagName() == "OutputFile")
+        {
+          lTempSet.outputfile = lChild.firstChild().toText().data();
+        }
+
+        if (lTempSet.outputpath != "" && lTempSet.outputfile != "")
+        {
+          break;
+        }
+
+        lChild = lChild.nextSiblingElement();
+      }
+
+      lPaths.push_back(lTempSet);
+    }
+
+    lSliderSet = lSliderSet.nextSiblingElement();
+  }
+
+  return lPaths;
+}
+
 bool Utils::isPresetUsingBeastHands(QString aPath)
 {
   QFile lReadFile(aPath);

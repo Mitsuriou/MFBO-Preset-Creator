@@ -293,6 +293,7 @@ void UpgraderTool::launchUpDownGradeProcess()
   auto lAbsFilePath{ QString("") };
   auto lRelativeDirs{ QString("") };
   auto lMustUseBeastHands{ false };
+  std::vector<Struct::SliderSet> lParsedSliderSets;
 
   auto lRessourcesFolder{ QString("") };
   switch (lCBBE3BBBVersionSelected)
@@ -340,6 +341,13 @@ void UpgraderTool::launchUpDownGradeProcess()
     if (lFileSuffix == "xml")
     {
       lPresetName = Utils::getPresetNameFromXMLFile(lAbsFilePath);
+
+      if (lPresetName == "")
+      {
+        Utils::displayWarningMessage(tr("Error while parsing the XML file \"") + lAbsFilePath + tr("\". Aborting process"));
+        return;
+      }
+
       lMustUseBeastHands = Utils::isPresetUsingBeastHands(lAbsFilePath);
 
       // Remove the file once all data has been read
@@ -411,7 +419,99 @@ void UpgraderTool::launchUpDownGradeProcess()
     }
     else if (lFileSuffix == "osp")
     {
-      // TODO
+      lParsedSliderSets = Utils::getOutputPathsFromOSPFile(lAbsFilePath);
+
+      if (lParsedSliderSets.size() == 0)
+      {
+        Utils::displayWarningMessage(tr("Error while parsing the OSP file \"") + lAbsFilePath + tr("\". Aborting process"));
+        return;
+      }
+
+      // Remove the file once all data has been read
+      if (QFile::exists(lAbsFilePath))
+      {
+        QFile::remove(lAbsFilePath);
+      }
+
+      // Copy the OSP file
+      if (lMustUseBeastHands)
+      {
+        if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_beast_hands_osp", lAbsFilePath))
+        {
+          Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+          return;
+        }
+      }
+      else
+      {
+        if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_osp", lAbsFilePath))
+        {
+          Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+          return;
+        }
+      }
+
+      // Read the created OSP file
+      QFile lOSPFile(lAbsFilePath);
+      lOSPFile.setPermissions(QFile::WriteUser);
+
+      QByteArray lOSPFileContent;
+
+      if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
+      {
+        lOSPFileContent = lOSPFile.readAll();
+        lOSPFile.close();
+      }
+      else
+      {
+        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
+        return;
+      }
+
+      // Replace the custom tags in the file
+      if (lOSPFileContent.length() > 0)
+      {
+        if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+        {
+          auto lTextToParse{ static_cast<QString>(lOSPFileContent) };
+          lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
+
+          for (auto lSliderSet : lParsedSliderSets)
+          {
+            if (lSliderSet.meshpart == "Body")
+            {
+              lTextToParse.replace(QString("{%%body_output_path%%}"), lSliderSet.outputpath);
+              lTextToParse.replace(QString("{%%body_output_file%%}"), lSliderSet.outputfile);
+            }
+            else if (lSliderSet.meshpart == "Feet")
+            {
+              lTextToParse.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputpath);
+              lTextToParse.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputfile);
+            }
+            else if (lSliderSet.meshpart == "Hands")
+            {
+              lTextToParse.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputpath);
+              lTextToParse.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputfile);
+            }
+          }
+
+          QTextStream lTextStream(&lOSPFile);
+          lTextStream << lTextToParse;
+          lTextStream.flush();
+
+          lOSPFile.close();
+        }
+        else
+        {
+          Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
+          return;
+        }
+      }
+      else
+      {
+        Utils::displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
+        return;
+      }
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
