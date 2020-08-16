@@ -1,8 +1,11 @@
 ﻿#pragma once
 
 #include "Utils.h"
+#include "Enum.h"
 
 #include <QApplication>
+#include <QString>
+#include <QStringList>
 #include <QWidget>
 #include <QDialog>
 #include <QGridLayout>
@@ -16,6 +19,12 @@
 #include <QProgressBar>
 #include <QStandardPaths>
 #include <QCloseEvent>
+#include <QFile>
+#include <QByteArray>
+#include <QMessageBox>
+#include <QDirIterator>
+#include <QFileInfo>
+#include <QTextStream>
 
 class UpgraderTool : public QDialog
 {

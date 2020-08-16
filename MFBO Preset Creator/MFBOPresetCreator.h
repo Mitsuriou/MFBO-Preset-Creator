@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Utils.h"
-#include "Enum.h"
 #include "UpgraderTool.h"
 
 #include <QtWidgets/QMainWindow>

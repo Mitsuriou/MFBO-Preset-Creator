@@ -420,7 +420,7 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 
   switch (lCBBE3BBBVersionSelected)
   {
-  case Version1_40:
+  case CBBE3BBBVersion::Version1_40:
     if (lMustUseBeastHands)
     {
       lConstructedPreviewText =
@@ -440,7 +440,7 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
         ).arg(aText);
     }
     break;
-  case Version1_50:
+  case CBBE3BBBVersion::Version1_50:
     if (lMustUseBeastHands)
     {
       lConstructedPreviewText =
@@ -460,7 +460,7 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
         ).arg(aText);
     }
     break;
-  case Version1_51:
+  case CBBE3BBBVersion::Version1_51:
     if (lMustUseBeastHands)
     {
       lConstructedPreviewText =
@@ -625,13 +625,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   switch (lCBBE3BBBVersionSelected)
   {
-  case Version1_40:
+  case CBBE3BBBVersion::Version1_40:
     lRessourcesFolder = "cbbe_3bbb_1.40";
     break;
-  case Version1_50:
+  case CBBE3BBBVersion::Version1_50:
     lRessourcesFolder = "cbbe_3bbb_1.50";
     break;
-  case Version1_51:
+  case CBBE3BBBVersion::Version1_51:
     lRessourcesFolder = "cbbe_3bbb_1.51";
     break;
   default:
@@ -667,6 +667,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
     lTempXMLContent = lXMLFile.readAll();
     lXMLFile.close();
   }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+    return;
+  }
 
   if (lTempXMLContent.length() > 0)
   {
@@ -680,6 +685,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
       lTextStream.flush();
 
       lXMLFile.close();
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+      return;
     }
   }
   else
@@ -732,6 +742,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
     lTempOSPContent = lOSPFile.readAll();
     lOSPFile.close();
   }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+    return;
+  }
 
   // Replace the slider sets names
   if (lTempOSPContent.length() > 0)
@@ -747,6 +762,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
       lTextStream.flush();
 
       lOSPFile.close();
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+      return;
     }
   }
   else
@@ -781,13 +801,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   switch (lCBBE3BBBVersionSelected)
   {
-  case Version1_40:
+  case CBBE3BBBVersion::Version1_40:
     lSuccessText = tr("Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)");
     break;
-  case Version1_50:
+  case CBBE3BBBVersion::Version1_50:
     lSuccessText = tr("Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
     break;
-  case Version1_51:
+  case CBBE3BBBVersion::Version1_51:
     lSuccessText = tr("Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
     break;
   default:

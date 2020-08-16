@@ -4,6 +4,8 @@
 #include <QMessageBox>
 #include <QDirIterator>
 #include <QStringList>
+#include <QFile>
+#include <QtXml/QDomDocument>
 
 class Utils : public QObject
 {
@@ -15,4 +17,6 @@ public:
   static void displayWarningMessage(QString aMessage);
   static int getNumberFilesByExtension(QString aRootDir, QString aFileExtension);
   static bool copyRecursively(QString sourceFolder, QString destFolder);
+  static QString getPresetNameFromXMLFile(QString aPath);
+  static bool isPresetUsingBeastHands(QString aPath);
 };

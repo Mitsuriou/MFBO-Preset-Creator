@@ -115,16 +115,9 @@ void UpgraderTool::setupInterface(QGridLayout& aLayout)
   lBackupPathsPreview->setObjectName("backup_path_preview");
   aLayout.addWidget(lBackupPathsPreview, 5, 1, 1, 2);
 
-  // Seventh line
-  auto lReformatPresetNamesLabel{ new QLabel(tr("Reformat presets names?")) };
-  aLayout.addWidget(lReformatPresetNamesLabel, 6, 0);
-
-  auto lShouldReformatPresetNames{ new QCheckBox(tr("If checked, \"* - Feet\" would become \"* - CBBE 3BBB Feet\" when upgrading from 1.40 to 1.51, for example.")) };
-  aLayout.addWidget(lShouldReformatPresetNames, 6, 1, 1, 2);
-
   // Generate button
   auto lGenerateButton{ new QPushButton(tr("[Up/Down]grade all the files under the input path")) };
-  aLayout.addWidget(lGenerateButton, 7, 0, 1, 3, Qt::AlignBottom);
+  aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding
   connect(lInputPathChooser, SIGNAL(clicked()), this, SLOT(chooseInputDirectory()));
@@ -227,6 +220,7 @@ void UpgraderTool::switchBackupState()
 
 void UpgraderTool::launchUpDownGradeProcess()
 {
+  auto lCBBE3BBBVersionSelected{ this->findChild<QComboBox*>("cbbe_3bbb_version")->currentIndex() };
   auto lRootDir{ this->findChild<QLineEdit*>("input_path_directory")->text() };
 
   // Check if the input path has been given by the user
@@ -277,9 +271,7 @@ void UpgraderTool::launchUpDownGradeProcess()
   auto lNumberOSPFiles{ Utils::getNumberFilesByExtension(lRootDir, "osp") };
   auto lNumberXMLFiles{ Utils::getNumberFilesByExtension(lRootDir, "xml") };
   auto lFilesToTreat{ lNumberOSPFiles + lNumberXMLFiles };
-
-  // Cancel button
-  auto lCancelButton{ new QPushButton(tr("Cancel treatment")) };
+  auto lTreatedFiles{ 0 };
 
   // Progress bar
   auto lProgressbar{ new QProgressBar() };
@@ -289,9 +281,146 @@ void UpgraderTool::launchUpDownGradeProcess()
   lProgressbar->setTextVisible(true);
 
   // Progress dialog
-  auto lProgressDialog{ new QProgressDialog(tr("Scanning, parsing and building the new BodySlide files. Please wait..."), "", 0, 0, this) };
-  lProgressDialog->setCancelButton(lCancelButton);
-  lProgressDialog->setBar(lProgressbar);
-  lProgressDialog->setWindowFlags(lProgressDialog->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-  lProgressDialog->exec();
+  QProgressDialog lProgressDialog(tr("Scanning, parsing and building the new BodySlide files. Please wait..."), tr("Cancel Treatment"), 0, 0, this);
+  lProgressDialog.setBar(lProgressbar);
+  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
+  lProgressDialog.show();
+
+  // Iterate through all the files
+  QString lPresetName;
+  QDirIterator it(lRootDir, QStringList() << QString("*.xml") << QString("*.osp"), QDir::Files, QDirIterator::Subdirectories);
+
+  while (it.hasNext())
+  {
+    if (lProgressDialog.wasCanceled())
+    {
+      Utils::displayWarningMessage(tr("Process aborted by user."));
+      return;
+    }
+
+    it.next();
+
+    auto lFileSuffix{ it.fileInfo().completeSuffix() };
+
+    if (lFileSuffix == "xml")
+    {
+      auto lXMLPathName{ it.fileInfo().absoluteFilePath() };
+
+      lPresetName = Utils::getPresetNameFromXMLFile(lXMLPathName);
+      bool lMustUseBeastHands{ Utils::isPresetUsingBeastHands(lXMLPathName) };
+
+      auto lRessourcesFolder{ QString("") };
+
+      switch (lCBBE3BBBVersionSelected)
+      {
+      case CBBE3BBBVersion::Version1_40:
+        lRessourcesFolder = "cbbe_3bbb_1.40";
+        break;
+      case CBBE3BBBVersion::Version1_50:
+        lRessourcesFolder = "cbbe_3bbb_1.50";
+        break;
+      case CBBE3BBBVersion::Version1_51:
+        lRessourcesFolder = "cbbe_3bbb_1.51";
+        break;
+      default:
+        Utils::displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
+        return;
+      }
+
+      // Remove the file once all data has been read
+      if (QFile::exists(lXMLPathName))
+      {
+        QFile::remove(lXMLPathName);
+      }
+
+      // Copy the XML file
+      if (lMustUseBeastHands)
+      {
+        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
+        {
+          Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+          return;
+        }
+      }
+      else
+      {
+        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
+        {
+          Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+          return;
+        }
+      }
+
+      QFile lXMLFile(lXMLPathName);
+      lXMLFile.setPermissions(QFile::WriteUser);
+
+      QByteArray lTempXMLContent;
+
+      if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
+      {
+        lTempXMLContent = lXMLFile.readAll();
+        lXMLFile.close();
+      }
+      else
+      {
+        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+        return;
+      }
+
+      if (lTempXMLContent.length() > 0)
+      {
+        if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+        {
+          auto lTextToParse{ static_cast<QString>(lTempXMLContent) };
+          lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
+
+          QTextStream lTextStream(&lXMLFile);
+          lTextStream << lTextToParse;
+          lTextStream.flush();
+
+          lXMLFile.close();
+        }
+        else
+        {
+          Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+          return;
+        }
+      }
+      else
+      {
+        Utils::displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
+        return;
+      }
+    }
+    else if (lFileSuffix == "osp")
+    {
+      // TODO
+    }
+
+    lProgressDialog.setValue(++lTreatedFiles);
+    // Update the GUI
+    qApp->processEvents();
+  }
+
+  // Message when the downgrade/upgrade has been completed successfully
+  auto lSuccessText{ QString("") };
+
+  switch (lCBBE3BBBVersionSelected)
+  {
+  case CBBE3BBBVersion::Version1_40:
+    lSuccessText = tr("All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)");
+    break;
+  case CBBE3BBBVersion::Version1_50:
+    lSuccessText = tr("All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)");
+    break;
+  case CBBE3BBBVersion::Version1_51:
+    lSuccessText = tr("All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)");
+    break;
+  default:
+    lSuccessText = tr("All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)");
+    break;
+  }
+
+  QMessageBox lMessageBox(QMessageBox::Icon::Information, tr("Upgrade or downgarde successful"), lSuccessText);
+  lMessageBox.exec();
 }

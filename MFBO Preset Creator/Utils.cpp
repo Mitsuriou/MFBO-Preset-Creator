@@ -75,3 +75,61 @@ bool Utils::copyRecursively(QString sourceFolder, QString destFolder)
 
   return true;
 }
+
+QString Utils::getPresetNameFromXMLFile(QString aPath)
+{
+  QFile lReadFile(aPath);
+  lReadFile.setPermissions(QFile::WriteUser);
+
+  QDomDocument lXMLDocument;
+
+  if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    lXMLDocument.setContent(&lReadFile);
+    lReadFile.close();
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    return "";
+  }
+
+  QDomElement lXMLGroup = lXMLDocument.documentElement().firstChild().toElement();
+  QString lPresetName;
+
+  if (lXMLGroup.tagName() == "Group")
+  {
+    // Get the first "Member" tag to read its "name" attribute
+    QDomElement lXMLMember = lXMLGroup.firstChild().toElement();
+    lPresetName = lXMLMember.attribute("name", "");
+  }
+
+  return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
+}
+
+bool Utils::isPresetUsingBeastHands(QString aPath)
+{
+  QFile lReadFile(aPath);
+  lReadFile.setPermissions(QFile::WriteUser);
+
+  QString lFileContent;
+
+  if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    lFileContent = static_cast<QString>(lReadFile.readAll());
+    lReadFile.close();
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    return false;
+  }
+
+  if (lFileContent.contains("beast hands", Qt::CaseInsensitive) ||
+    lFileContent.contains("hands beast", Qt::CaseInsensitive))
+  {
+    return true;
+  }
+
+  return false;
+}
