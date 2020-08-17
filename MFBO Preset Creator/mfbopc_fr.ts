@@ -9,86 +9,77 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="53"/>
+        <location filename="MFBOPresetCreator.cpp" line="50"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="58"/>
+        <location filename="MFBOPresetCreator.cpp" line="55"/>
         <source>Exit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="64"/>
+        <location filename="MFBOPresetCreator.cpp" line="61"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="69"/>
+        <location filename="MFBOPresetCreator.cpp" line="66"/>
         <source>CBBE 3BBB Version [Up/Down]grader Tool</source>
         <oldsource>CBBE 3BBB Version Upgrader Tool</oldsource>
         <translation type="unfinished">Outil de mise à niveau de version CBBE 3BBB</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="76"/>
-        <location filename="MFBOPresetCreator.cpp" line="861"/>
+        <location filename="MFBOPresetCreator.cpp" line="73"/>
+        <location filename="MFBOPresetCreator.cpp" line="848"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="82"/>
+        <location filename="MFBOPresetCreator.cpp" line="79"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="87"/>
-        <location filename="MFBOPresetCreator.cpp" line="898"/>
+        <location filename="MFBOPresetCreator.cpp" line="84"/>
+        <location filename="MFBOPresetCreator.cpp" line="885"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="116"/>
+        <location filename="MFBOPresetCreator.cpp" line="99"/>
         <source>CBBE body meshes</source>
         <translation>Meshes du corps CBBE</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="124"/>
+        <location filename="MFBOPresetCreator.cpp" line="107"/>
         <source>CBBE 3BBB version:</source>
         <translation>Version de CBBE 3BBB :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="138"/>
         <source>Body meshes path:</source>
-        <translation>Emplacement des meshes du corps :</translation>
+        <translation type="vanished">Emplacement des meshes du corps :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="146"/>
+        <location filename="MFBOPresetCreator.cpp" line="129"/>
         <source>Use beast hands?</source>
         <translation>Utiliser des main de bête ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="149"/>
+        <location filename="MFBOPresetCreator.cpp" line="132"/>
         <source>Check this box if the follower or NPC uses beast hands.</source>
         <translation>Cocher cette case si le follower ou le NPC utilise des mains de bête.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="154"/>
-        <source>Preview (not 100%
- accurate in some cases.
- It will be changed in
- future versions.):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="189"/>
-        <location filename="MFBOPresetCreator.cpp" line="208"/>
-        <location filename="MFBOPresetCreator.cpp" line="254"/>
-        <location filename="MFBOPresetCreator.cpp" line="301"/>
+        <location filename="MFBOPresetCreator.cpp" line="191"/>
+        <location filename="MFBOPresetCreator.cpp" line="210"/>
+        <location filename="MFBOPresetCreator.cpp" line="256"/>
+        <location filename="MFBOPresetCreator.cpp" line="303"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="173"/>
+        <location filename="MFBOPresetCreator.cpp" line="175"/>
         <source>BodySlide</source>
         <translation>BodySlide</translation>
     </message>
@@ -98,63 +89,80 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="181"/>
+        <location filename="MFBOPresetCreator.cpp" line="121"/>
+        <source>Meshes path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="137"/>
+        <source>Meshes names:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="158"/>
+        <location filename="MFBOPresetCreator.cpp" line="161"/>
+        <location filename="MFBOPresetCreator.cpp" line="164"/>
+        <source>_0.nif/_1.nif</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="183"/>
         <source>Bodyslide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="199"/>
+        <location filename="MFBOPresetCreator.cpp" line="201"/>
         <source>Preset names: &amp;#128712;</source>
         <translation>Noms des presets : &amp;#128712;</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="200"/>
+        <location filename="MFBOPresetCreator.cpp" line="202"/>
         <source>This field represents the name under which the preset will be listed in the BodySlide software.</source>
         <translation>Ce champ répresente le nom sous lequel le preset va être listé dans le logiciel BodySlide.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="227"/>
+        <location filename="MFBOPresetCreator.cpp" line="229"/>
         <source>Additional options</source>
         <translation>Options supplémentaires</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="236"/>
+        <location filename="MFBOPresetCreator.cpp" line="238"/>
         <source>Use a custom skeleton? &amp;#128712;</source>
         <translation>Utiliser un squelette personnalisé ? &amp;#128712;</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="237"/>
+        <location filename="MFBOPresetCreator.cpp" line="239"/>
         <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation>Note : ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="240"/>
+        <location filename="MFBOPresetCreator.cpp" line="242"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation>Cocher cette case si le follower ou le NPC utilise un squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="245"/>
+        <location filename="MFBOPresetCreator.cpp" line="247"/>
         <source>Skeleton path:</source>
         <translation>Emplacement du squelette :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="272"/>
+        <location filename="MFBOPresetCreator.cpp" line="274"/>
         <source>Output</source>
         <translation>Sortie</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="280"/>
+        <location filename="MFBOPresetCreator.cpp" line="282"/>
         <source>Output directory path:</source>
         <oldsource>Output path:</oldsource>
         <translation type="unfinished">Emplacement de sortie :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="289"/>
+        <location filename="MFBOPresetCreator.cpp" line="291"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="293"/>
+        <location filename="MFBOPresetCreator.cpp" line="295"/>
         <source>Output subdirectory name/path:</source>
         <oldsource>Mod subdirectory name/path:</oldsource>
         <translation type="unfinished"></translation>
@@ -164,154 +172,154 @@
         <translation type="vanished">Sous-répertoire du mod :</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="319"/>
+        <location filename="MFBOPresetCreator.cpp" line="321"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="375"/>
+        <location filename="MFBOPresetCreator.cpp" line="353"/>
         <source>No path given or invalid path given.</source>
         <oldsource>The path seems to be incorrect</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="484"/>
+        <location filename="MFBOPresetCreator.cpp" line="462"/>
         <source>Error while evaluating the data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="562"/>
+        <location filename="MFBOPresetCreator.cpp" line="545"/>
         <source>Error: no path given to export the files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="569"/>
+        <location filename="MFBOPresetCreator.cpp" line="552"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="579"/>
-        <location filename="MFBOPresetCreator.cpp" line="585"/>
+        <location filename="MFBOPresetCreator.cpp" line="562"/>
+        <location filename="MFBOPresetCreator.cpp" line="568"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="579"/>
+        <location filename="MFBOPresetCreator.cpp" line="562"/>
         <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="585"/>
+        <location filename="MFBOPresetCreator.cpp" line="568"/>
         <source>&quot; already exists on your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="592"/>
+        <location filename="MFBOPresetCreator.cpp" line="575"/>
         <source>Error: no path has been given for the meshes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="599"/>
+        <location filename="MFBOPresetCreator.cpp" line="582"/>
         <source>Error: no name given for the bodyslide files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="606"/>
+        <location filename="MFBOPresetCreator.cpp" line="589"/>
         <source>Error: no name given for the slider sets (names that appear in the Bodyslide software).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="618"/>
-        <location filename="MFBOPresetCreator.cpp" line="710"/>
+        <location filename="MFBOPresetCreator.cpp" line="601"/>
+        <location filename="MFBOPresetCreator.cpp" line="693"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="618"/>
-        <location filename="MFBOPresetCreator.cpp" line="710"/>
+        <location filename="MFBOPresetCreator.cpp" line="601"/>
+        <location filename="MFBOPresetCreator.cpp" line="693"/>
         <source>&quot; already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="638"/>
+        <location filename="MFBOPresetCreator.cpp" line="621"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="647"/>
-        <location filename="MFBOPresetCreator.cpp" line="655"/>
+        <location filename="MFBOPresetCreator.cpp" line="630"/>
+        <location filename="MFBOPresetCreator.cpp" line="638"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="672"/>
-        <location filename="MFBOPresetCreator.cpp" line="691"/>
-        <location filename="MFBOPresetCreator.cpp" line="747"/>
-        <location filename="MFBOPresetCreator.cpp" line="770"/>
+        <location filename="MFBOPresetCreator.cpp" line="655"/>
+        <location filename="MFBOPresetCreator.cpp" line="674"/>
+        <location filename="MFBOPresetCreator.cpp" line="730"/>
+        <location filename="MFBOPresetCreator.cpp" line="757"/>
         <source>Error while trying to open the file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="672"/>
-        <location filename="MFBOPresetCreator.cpp" line="691"/>
-        <location filename="MFBOPresetCreator.cpp" line="747"/>
-        <location filename="MFBOPresetCreator.cpp" line="770"/>
+        <location filename="MFBOPresetCreator.cpp" line="655"/>
+        <location filename="MFBOPresetCreator.cpp" line="674"/>
+        <location filename="MFBOPresetCreator.cpp" line="730"/>
+        <location filename="MFBOPresetCreator.cpp" line="757"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="697"/>
+        <location filename="MFBOPresetCreator.cpp" line="680"/>
         <source>Error while trying to parse the XML Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="722"/>
-        <location filename="MFBOPresetCreator.cpp" line="730"/>
+        <location filename="MFBOPresetCreator.cpp" line="705"/>
+        <location filename="MFBOPresetCreator.cpp" line="713"/>
         <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="776"/>
+        <location filename="MFBOPresetCreator.cpp" line="763"/>
         <source>Error while trying to parse the OSP Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="790"/>
+        <location filename="MFBOPresetCreator.cpp" line="777"/>
         <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="796"/>
+        <location filename="MFBOPresetCreator.cpp" line="783"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="807"/>
+        <location filename="MFBOPresetCreator.cpp" line="794"/>
         <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="810"/>
+        <location filename="MFBOPresetCreator.cpp" line="797"/>
         <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="813"/>
+        <location filename="MFBOPresetCreator.cpp" line="800"/>
         <source>Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="816"/>
+        <location filename="MFBOPresetCreator.cpp" line="803"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="820"/>
+        <location filename="MFBOPresetCreator.cpp" line="807"/>
         <source>Generation successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="857"/>
+        <location filename="MFBOPresetCreator.cpp" line="844"/>
         <source>The settings panel in under developement and will be released in a future version...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -401,96 +409,133 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="284"/>
+        <location filename="UpgraderTool.cpp" line="282"/>
         <source>Cancel Treatment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="320"/>
+        <location filename="UpgraderTool.cpp" line="311"/>
+        <source>Parsing XML files. Please Wait.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="321"/>
+        <location filename="UpgraderTool.cpp" line="367"/>
+        <location filename="UpgraderTool.cpp" line="523"/>
         <source>Process aborted by user.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="311"/>
+        <location filename="UpgraderTool.cpp" line="307"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="347"/>
+        <location filename="UpgraderTool.cpp" line="342"/>
         <source>Error while parsing the XML file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="347"/>
-        <location filename="UpgraderTool.cpp" line="426"/>
-        <source>&quot;. Aborting process</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="364"/>
-        <location filename="UpgraderTool.cpp" line="372"/>
+        <location filename="UpgraderTool.cpp" line="577"/>
+        <location filename="UpgraderTool.cpp" line="585"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="390"/>
-        <location filename="UpgraderTool.cpp" line="410"/>
-        <location filename="UpgraderTool.cpp" line="467"/>
-        <location filename="UpgraderTool.cpp" line="506"/>
+        <location filename="UpgraderTool.cpp" line="454"/>
+        <location filename="UpgraderTool.cpp" line="493"/>
+        <location filename="UpgraderTool.cpp" line="603"/>
+        <location filename="UpgraderTool.cpp" line="623"/>
         <source>Error while trying to open the file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="390"/>
-        <location filename="UpgraderTool.cpp" line="410"/>
-        <location filename="UpgraderTool.cpp" line="467"/>
-        <location filename="UpgraderTool.cpp" line="506"/>
+        <location filename="UpgraderTool.cpp" line="454"/>
+        <location filename="UpgraderTool.cpp" line="493"/>
+        <location filename="UpgraderTool.cpp" line="603"/>
+        <location filename="UpgraderTool.cpp" line="623"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="416"/>
+        <location filename="UpgraderTool.cpp" line="629"/>
         <source>Error while trying to parse the XML Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="426"/>
+        <location filename="UpgraderTool.cpp" line="393"/>
         <source>Error while parsing the OSP file &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="441"/>
-        <location filename="UpgraderTool.cpp" line="449"/>
+        <location filename="UpgraderTool.cpp" line="342"/>
+        <location filename="UpgraderTool.cpp" line="393"/>
+        <source>&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="351"/>
+        <source>Parsing and patching OSP files. Please Wait.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="413"/>
+        <source>No data found from the associated XML file. The file </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="413"/>
+        <source> was not modified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="428"/>
+        <location filename="UpgraderTool.cpp" line="436"/>
         <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="512"/>
+        <location filename="UpgraderTool.cpp" line="499"/>
         <source>Error while trying to parse the OSP Bodyslide file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="528"/>
+        <location filename="UpgraderTool.cpp" line="513"/>
+        <source>Patching XML files. Please Wait.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="549"/>
+        <source>Since the associated OSP file has not been modified, the file </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="549"/>
+        <source> has not been modified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="UpgraderTool.cpp" line="644"/>
         <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="531"/>
+        <location filename="UpgraderTool.cpp" line="647"/>
         <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="534"/>
+        <location filename="UpgraderTool.cpp" line="650"/>
         <source>All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="537"/>
+        <location filename="UpgraderTool.cpp" line="653"/>
         <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="541"/>
+        <location filename="UpgraderTool.cpp" line="657"/>
         <source>Upgrade or downgarde successful</source>
         <translation type="unfinished"></translation>
     </message>
@@ -517,11 +562,6 @@
     <message>
         <location filename="UpgraderTool.cpp" line="256"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="UpgraderTool.cpp" line="284"/>
-        <source>Scanning, parsing and building the new BodySlide files. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
