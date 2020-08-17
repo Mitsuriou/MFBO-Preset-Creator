@@ -423,7 +423,7 @@ void UpgraderTool::launchUpDownGradeProcess()
     // Copy the OSP file
     if (lMustUseBeastHands)
     {
-      if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_beast_hands_osp", lAbsFilePath))
+      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lAbsFilePath))
       {
         Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
         return;
@@ -431,7 +431,7 @@ void UpgraderTool::launchUpDownGradeProcess()
     }
     else
     {
-      if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_osp", lAbsFilePath))
+      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lAbsFilePath))
       {
         Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
         return;

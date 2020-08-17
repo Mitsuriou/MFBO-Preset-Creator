@@ -4,7 +4,7 @@
         <DataFolder>SE 3BBB Amazing</DataFolder>
         <SourceFile>SE 3BBB Body Amazing.nif</SourceFile>
         <OutputPath>{%%body_output_path%%}</OutputPath>
-        <OutputFile GenWeights="true">femalebody</OutputFile>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
         <Shape target="3BBB">3BBB</Shape>
         <Shape target="3BBB_Anus">3BBB_Anus</Shape>
         <Shape target="3BBB_Vagina">3BBB_Vagina</Shape>
@@ -359,7 +359,7 @@
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Feet.nif</SourceFile>
         <OutputPath>{%%feet_output_path%%}</OutputPath>
-        <OutputFile GenWeights="true">femalefeet</OutputFile>
+        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
         <Shape target="Feet" DataFolder="CBBE">Feet</Shape>
         <Slider name="AnkleSize" invert="false" small="100" big="0">
             <Data name="FeetAnkleSize" target="Feet">CBBE Feet.osd\FeetAnkleSize</Data>
@@ -372,7 +372,7 @@
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Hands.nif</SourceFile>
         <OutputPath>{%%hands_output_path%%}</OutputPath>
-        <OutputFile GenWeights="true">femalehands</OutputFile>
+        <OutputFile GenWeights="true">{%%hands_output_file%%}</OutputFile>
         <Shape target="Hands" DataFolder="CBBE">Hands</Shape>
         <Slider name="WristSize" invert="false" small="100" big="0">
             <Data name="HandsWristSize" target="Hands" local="true">CBBE Hands.osd\HandsWristSize</Data>

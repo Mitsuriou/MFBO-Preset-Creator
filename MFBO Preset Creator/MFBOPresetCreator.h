@@ -42,7 +42,6 @@ private:
 
   void initializeGUI();
   void setupMenuBar();
-  void setupStatusBar();
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
   void setupBodySlideGUI(QVBoxLayout& aLayout);
   void setupOptionsGUI(QVBoxLayout& aLayout);
@@ -50,7 +49,6 @@ private:
   void setupRemainingGUI(QVBoxLayout& aLayout);
 
 private slots:
-  void updateBodyMeshesPreview(QString aText);
   void updateOutputPreview();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
