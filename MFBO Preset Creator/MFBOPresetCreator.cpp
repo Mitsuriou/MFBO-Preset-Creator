@@ -1,6 +1,4 @@
 ﻿#include "MFBOPresetCreator.h"
-#include "stdafx.h"
-#include "Utils.h"
 
 MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   : QMainWindow(parent)
@@ -10,12 +8,28 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   this->initializeGUI();
 }
 
+void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
+{
+  auto lResult{ QMessageBox::question(this, tr("Quitting"),
+    tr("Are you sure you want to quit the software?"),
+    QMessageBox::Yes | QMessageBox::No, QMessageBox::No) };
+
+  if (lResult != QMessageBox::Yes)
+  {
+    aEvent->ignore();
+  }
+  else
+  {
+    aEvent->accept();
+  }
+}
+
 void MFBOPresetCreator::initializeGUI()
 {
   // Menu bar
-  //this->setupMenuBar();
+  this->setupMenuBar();
 
-  // Main vertical container
+  // Main window container
   auto lMainVertical{ new QVBoxLayout(this->ui.mainContainer) };
 
   // Setup all the different GUI components
@@ -28,30 +42,61 @@ void MFBOPresetCreator::initializeGUI()
 
 void MFBOPresetCreator::setupMenuBar()
 {
-  // Construct a new menu bar
+  // Construct the menu bar
   auto lMenuBar{ new QMenuBar(this) };
   this->setMenuBar(lMenuBar);
 
   // File
-  auto lFileMenu{ new QMenu(QString("File"), this) };
+  auto lFileMenu{ new QMenu(tr("File"), this) };
   lMenuBar->addMenu(lFileMenu);
-  lFileMenu->addAction(QString("Exit"), this, SLOT(close()));
+
+  // Submenu: Exit
+  auto lExitAction = new QAction();
+  lExitAction->setText(tr("Exit"));
+  lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
+  lExitAction->setIcon(QIcon(":/black/exit"));
+  lFileMenu->addAction(lExitAction);
 
   // Tools
-  auto lToolsMenu{ new QMenu(QString("Tools"), this) };
+  auto lToolsMenu{ new QMenu(tr("Tools"), this) };
   lMenuBar->addMenu(lToolsMenu);
-  lToolsMenu->addAction(QString("Settings"), this, SLOT(showSettingsDialog()));
+
+  // Submenu: Upgrader
+  auto lUpgraderToolAction = new QAction();
+  lUpgraderToolAction->setText(tr("CBBE 3BBB Version [Up/Down]grader Tool"));
+  lUpgraderToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
+  lUpgraderToolAction->setIcon(QIcon(":/black/arrow_up"));
+  lToolsMenu->addAction(lUpgraderToolAction);
+
+  // Submenu: Settings
+  auto lSettingsAction = new QAction();
+  lSettingsAction->setText(tr("Settings"));
+  lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
+  lSettingsAction->setIcon(QIcon(":/black/cog"));
+  lToolsMenu->addAction(lSettingsAction);
 
   // Help
-  auto lHelpMenu{ new QMenu(QString("Help"), this) };
+  auto lHelpMenu{ new QMenu(tr("Help"), this) };
   lMenuBar->addMenu(lHelpMenu);
-  lHelpMenu->addAction(QString("About"), this, SLOT(showAboutDialog()));
+
+  // Submenu: About
+  auto lAboutAction = new QAction();
+  lAboutAction->setText(tr("About"));
+  lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
+  lAboutAction->setIcon(QIcon(":/black/information"));
+  lHelpMenu->addAction(lAboutAction);
+
+  // Event binding
+  connect(lExitAction, SIGNAL(triggered()), this, SLOT(close()));
+  connect(lUpgraderToolAction, SIGNAL(triggered()), this, SLOT(launchUpgraderTool()));
+  connect(lSettingsAction, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
+  connect(lAboutAction, SIGNAL(triggered()), this, SLOT(showAboutDialog()));
 }
 
 void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 {
   // CBBE body meshes group box
-  auto lMeshesGroupBox{ new QGroupBox("CBBE body meshes") };
+  auto lMeshesGroupBox{ new QGroupBox(tr("CBBE body meshes")) };
   aLayout.addWidget(lMeshesGroupBox);
 
   // Grid layout
@@ -59,64 +104,75 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->setColumnMinimumWidth(0, 140);
 
   // First line
-  auto lCbbe3BBBVersionLabel{ new QLabel("CBBE 3BBB version:") };
+  auto lCbbe3BBBVersionLabel{ new QLabel(tr("CBBE 3BBB version:")) };
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
-  auto lCBBEVersionGrid{ new QGridLayout() };
-  lMeshesGridLayout->addLayout(lCBBEVersionGrid, 0, 1);
+  QStringList lVersions;
+  lVersions.append(QString("1.40"));
+  lVersions.append(QString("1.50"));
+  lVersions.append(QString("1.51"));
 
-  auto lCbbe3BBBVersion140{ new QRadioButton("1.40 and older") };
-  lCBBEVersionGrid->addWidget(lCbbe3BBBVersion140, 0, 0);
-  lCbbe3BBBVersion140->setChecked(true);
-  lCbbe3BBBVersion140->setObjectName(QString("cbbe_version_140"));
-
-  auto lCbbe3BBBVersion150{ new QRadioButton("1.50") };
-  lCBBEVersionGrid->addWidget(lCbbe3BBBVersion150, 0, 1);
-  lCbbe3BBBVersion150->setObjectName(QString("cbbe_version_150"));
-
-  // Manage separately the buttons
-  auto lCBBEVersionGroup{ new QButtonGroup(lMeshesGridLayout) };
-  lCBBEVersionGroup->addButton(lCbbe3BBBVersion140);
-  lCBBEVersionGroup->addButton(lCbbe3BBBVersion150);
+  auto lCbbe3BBBVersionSelector{ new QComboBox() };
+  lCbbe3BBBVersionSelector->addItems(lVersions);
+  lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
+  lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1);
 
   // Second line
-  auto lMeshesPathLabel{ new QLabel("Body meshes path:") };
+  auto lMeshesPathLabel{ new QLabel(tr("Meshes path:")) };
   lMeshesGridLayout->addWidget(lMeshesPathLabel, 1, 0);
 
   auto lMeshesPathLineEdit{ new QLineEdit("") };
-  lMeshesPathLineEdit->setObjectName("body_meshes_path_input");
+  lMeshesPathLineEdit->setObjectName("meshes_path_input");
   lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1);
 
-  // Beast hands
-  auto lLabelBeastHands{ new QLabel("Beast hands?") };
+  // Third line
+  auto lLabelBeastHands{ new QLabel(tr("Use beast hands?")) };
   lMeshesGridLayout->addWidget(lLabelBeastHands, 2, 0);
 
-  auto lNeedBeastHands{ new QCheckBox(QString("Check this box if the follower or NPC uses beast hands.")) };
+  auto lNeedBeastHands{ new QCheckBox(tr("Check this box if the follower or NPC uses beast hands.")) };
   lNeedBeastHands->setObjectName("use_beast_hands");
   lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1);
 
-  // Third line
-  auto lMeshestitlePreview{ new QLabel("Preview:") };
-  lMeshesGridLayout->addWidget(lMeshestitlePreview, 3, 0);
+  // Fourth line
+  auto lMeshestitlePreview{ new QLabel(tr("Meshes names:")) };
+  lMeshesGridLayout->addWidget(lMeshestitlePreview, 3, 0, 3, 1);
 
-  auto lMeshesPathsPreview{ new QLabel("") };
-  lMeshesPathsPreview->setObjectName("body_meshes_path_preview");
-  lMeshesGridLayout->addWidget(lMeshesPathsPreview, 3, 1);
+  auto lBodyMeshNameInput{ new QLineEdit("") };
+  lBodyMeshNameInput->setObjectName("body_mesh_name_input");
+  lMeshesGridLayout->addWidget(lBodyMeshNameInput, 3, 1);
+  lBodyMeshNameInput->setText("femalebody");
+  lBodyMeshNameInput->setPlaceholderText("femalebody");
 
-  // Initialization functions
-  this->updateBodyMeshesPreview(QString(""));
+  auto lFeetMeshNameInput{ new QLineEdit("") };
+  lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
+  lMeshesGridLayout->addWidget(lFeetMeshNameInput, 4, 1);
+  lFeetMeshNameInput->setText("femalefeet");
+  lFeetMeshNameInput->setPlaceholderText("femalefeet");
+
+  auto lHandsMeshNameInput{ new QLineEdit("") };
+  lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
+  lMeshesGridLayout->addWidget(lHandsMeshNameInput, 5, 1);
+  lHandsMeshNameInput->setText("femalehands");
+  lHandsMeshNameInput->setPlaceholderText("femalehands");
+
+  auto lBodyMeshNameLabel1{ new QLabel(tr("_0.nif/_1.nif")) };
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 3, 2);
+
+  auto lBodyMeshNameLabel2{ new QLabel(tr("_0.nif/_1.nif")) };
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 4, 2);
+
+  auto lBodyMeshNameLabel3{ new QLabel(tr("_0.nif/_1.nif")) };
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 5, 2);
 
   // Event binding
-  connect(lCbbe3BBBVersion140, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
-  connect(lCbbe3BBBVersion150, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
-  connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewInputs()));
-  connect(lMeshesPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateBodyMeshesPreview(QString)));
+  connect(lCbbe3BBBVersionSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(refreshAllPreviewFields(int)));
+  connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewFields()));
 }
 
 void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 {
   // Bodyslide defined names group box
-  auto lBodyslideGroupBox{ new QGroupBox("BodySlide") };
+  auto lBodyslideGroupBox{ new QGroupBox(tr("BodySlide")) };
   aLayout.addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -124,7 +180,7 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->setColumnMinimumWidth(0, 140);
 
   // First line
-  auto lOSPXMLNames{ new QLabel("Bodyslide files names:") };
+  auto lOSPXMLNames{ new QLabel(tr("Bodyslide files names:")) };
   lBodyslideGridLayout->addWidget(lOSPXMLNames, 0, 0);
 
   auto lOSPXMLNamesLineEdit{ new QLineEdit("") };
@@ -132,7 +188,7 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 0, 1);
 
   // Second line
-  auto lLabelOspXmlNames{ new QLabel("Preview:") };
+  auto lLabelOspXmlNames{ new QLabel(tr("Preview:")) };
   lBodyslideGridLayout->addWidget(lLabelOspXmlNames, 1, 0);
 
   auto lPathsNamesOspXmlNames{ new QLabel("") };
@@ -140,7 +196,10 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 1, 1);
 
   // Third line
-  auto lNamesInApp{ new QLabel("Name in bodyslide software:") };
+  auto lNamesInApp{ new QLabel() };
+  lNamesInApp->setTextFormat(Qt::RichText);
+  lNamesInApp->setText(tr("Preset names: &#128712;"));
+  lNamesInApp->setToolTip(QString(tr("This field represents the name under which the preset will be listed in the BodySlide software.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 2, 0);
 
   auto lNamesInAppLineEdit{ new QLineEdit("") };
@@ -148,7 +207,7 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 2, 1);
 
   // Fourth line
-  auto lLabelNamesInApp{ new QLabel("Preview:") };
+  auto lLabelNamesInApp{ new QLabel(tr("Preview:")) };
   lBodyslideGridLayout->addWidget(lLabelNamesInApp, 3, 0);
 
   auto lResultNamesInApp{ new QLabel("") };
@@ -167,26 +226,25 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
 {
   // Custom skeleton and textures group box
-  auto lOptionsGroupBox{ new QGroupBox("Options") };
+  auto lOptionsGroupBox{ new QGroupBox(tr("Additional options")) };
   aLayout.addWidget(lOptionsGroupBox);
 
   auto lOptionsGridLayout{ new QGridLayout(lOptionsGroupBox) };
   lOptionsGridLayout->setColumnMinimumWidth(0, 140);
 
   // Skeleton
-  auto lLabelSkeleton{ new QLabel("Skeleton") };
+  auto lLabelSkeleton{ new QLabel("") };
+  lLabelSkeleton->setTextFormat(Qt::RichText);
+  lLabelSkeleton->setText(tr("Use a custom skeleton? &#128712;"));
+  lLabelSkeleton->setToolTip(QString(tr("Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
   lOptionsGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
-  auto lNeedCustomSkeleton{
-    new QCheckBox(
-      QString("Check this box if the follower or NPC uses a custom skeleton. Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")
-    )
-  };
+  auto lNeedCustomSkeleton{ new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton.")) };
   lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
   lOptionsGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
 
   // Skeleton path
-  auto lLabelSkeletonPath{ new QLabel("Skeleton path:") };
+  auto lLabelSkeletonPath{ new QLabel(tr("Skeleton path:")) };
   lOptionsGridLayout->addWidget(lLabelSkeletonPath, 1, 0);
 
   auto lSkeletonPathLineEdit{ new QLineEdit("") };
@@ -195,14 +253,12 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
   lOptionsGridLayout->addWidget(lSkeletonPathLineEdit, 1, 1);
 
   // Skeleton path preview
-  auto lSkeletontitlePreview{ new QLabel("Preview:") };
+  auto lSkeletontitlePreview{ new QLabel(tr("Preview:")) };
   lOptionsGridLayout->addWidget(lSkeletontitlePreview, 2, 0);
 
   auto lSkeletonPathsPreview{ new QLabel("") };
   lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
   lOptionsGridLayout->addWidget(lSkeletonPathsPreview, 2, 1);
-
-  // TODO: Textures ?
 
   // Initialization functions
   this->updateSkeletonPreview(QString(""));
@@ -210,13 +266,12 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
   // Event binding
   connect(lNeedCustomSkeleton, SIGNAL(stateChanged(int)), this, SLOT(updateSkeletonPathState(int)));
   connect(lSkeletonPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateSkeletonPreview(QString)));
-
 }
 
 void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 {
   // Output group box
-  auto lOutputGroupBox{ new QGroupBox("Output") };
+  auto lOutputGroupBox{ new QGroupBox(tr("Output")) };
   aLayout.addWidget(lOutputGroupBox);
 
   // Grid layout
@@ -224,7 +279,7 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->setColumnMinimumWidth(0, 140);
 
   // First line
-  auto lOutputPathLabel{ new QLabel("Output path:") };
+  auto lOutputPathLabel{ new QLabel(tr("Output directory path:")) };
   lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
 
   auto lOutputPathLineEdit{ new QLineEdit("") };
@@ -233,11 +288,11 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputPathLineEdit->setObjectName("output_path_directory");
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
-  // Second line
-  auto lOutputPathChooser{ new QPushButton("Choose a directory...") };
+  auto lOutputPathChooser{ new QPushButton(tr("Choose a directory...")) };
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
-  auto lLabelSubDirectoryPath{ new QLabel("Mod subdirectory:") };
+  // Second line
+  auto lLabelSubDirectoryPath{ new QLabel(tr("Output subdirectory name/path:")) };
   lOutputGridLayout->addWidget(lLabelSubDirectoryPath, 1, 0);
 
   auto lOutputSubpathLineEdit{ new QLineEdit("") };
@@ -245,60 +300,29 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
   // Third line
-  auto lOutputtitlePreview{ new QLabel("Preview:") };
+  auto lOutputtitlePreview{ new QLabel(tr("Preview:")) };
   lOutputGridLayout->addWidget(lOutputtitlePreview, 2, 0);
 
   auto lOutputPathsPreview{ new QLabel("") };
   lOutputPathsPreview->setObjectName("output_path_preview");
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
-  // Initialization functions
-  this->updateOutputPreview();
-
   // Event binding
   connect(lOutputPathChooser, SIGNAL(clicked()), this, SLOT(chooseExportDirectory()));
   connect(lOutputSubpathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateOutputPreview()));
+
+  // Pre-filled data
+  this->updateOutputPreview();
 }
 
 void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 {
   // Generate button
-  auto lGenerateButton{ new QPushButton("Generate") };
+  auto lGenerateButton{ new QPushButton(tr("Generate the files on my computer")) };
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
   connect(lGenerateButton, SIGNAL(clicked()), this, SLOT(generateDirectoryStructure()));
-}
-
-void MFBOPresetCreator::displayWarningMessage(QString aMessage)
-{
-  QMessageBox lMessageBox(QMessageBox::Icon::Warning, "Warning", aMessage);
-  lMessageBox.exec();
-  lMessageBox.deleteLater();
-}
-
-void MFBOPresetCreator::updateBodyMeshesPreview(QString aText)
-{
-  auto lMeshesPathsPreview{ this->ui.mainContainer->findChild<QLabel*>("body_meshes_path_preview") };
-  Utils::cleanPathString(aText);
-
-  if (aText.trimmed().length() == 0)
-  {
-    aText = QString::fromStdString("*");
-  }
-
-  QString lConstructedPreviewText(
-    QStringLiteral(
-      "%1/femalebody_0.nif\n"
-      "%1/femalebody_1.nif\n"
-      "%1/femalefeet_0.nif\n"
-      "%1/femalefeet_1.nif\n"
-      "%1/femalehands_0.nif\n"
-      "%1/femalehands_1.nif"
-    ).arg(aText)
-  );
-
-  lMeshesPathsPreview->setText(lConstructedPreviewText);
 }
 
 void MFBOPresetCreator::updateOutputPreview()
@@ -313,7 +337,7 @@ void MFBOPresetCreator::updateOutputPreview()
   Utils::cleanPathString(lSubDirectory);
 
   // Construct full path
-  QString lFullPath("");
+  auto lFullPath(QString(""));
   if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
   {
     lFullPath = lMainDirectory + "/" + lSubDirectory;
@@ -326,6 +350,7 @@ void MFBOPresetCreator::updateOutputPreview()
   }
   else
   {
+    lFullPath = tr("No path given or invalid path given.");
     lMainDirTextEdit->setDisabled(true);
   }
 
@@ -343,7 +368,7 @@ void MFBOPresetCreator::updateOSPXMLPreview(QString aText)
     aText = QString::fromStdString("*");
   }
 
-  QString lConstructedPreviewText(
+  auto lConstructedPreviewText(
     QStringLiteral(
       "CalienteTools/BodySlide/SliderGroups/%1.xml\n"
       "CalienteTools/BodySlide/SliderSets/%1.osp"
@@ -356,7 +381,7 @@ void MFBOPresetCreator::updateOSPXMLPreview(QString aText)
 void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 {
   // Selected CBBE 3BBB version
-  auto lCBBE3BBB140VersionSelected{ this->ui.mainContainer->findChild<QRadioButton*>("cbbe_version_140")->isChecked() };
+  auto lCBBE3BBBVersionSelected{ this->ui.mainContainer->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex() };
 
   // Beast hands
   auto lMustUseBeastHands{ this->ui.mainContainer->findChild<QCheckBox*>("use_beast_hands")->isChecked() };
@@ -369,49 +394,73 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
     aText = QString::fromStdString("*");
   }
 
-  QString lConstructedPreviewText{ "" };
+  auto lConstructedPreviewText{ QString("") };
 
-  if (lCBBE3BBB140VersionSelected)
+  switch (lCBBE3BBBVersionSelected)
   {
+  case CBBE3BBBVersion::Version1_40:
     if (lMustUseBeastHands)
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - 3BBB Body Amazing\n"
           "%1 - Feet\n"
-          "%1 - Beast Hands\n"
-          "%1 - 3BBB Body Amazing"
+          "%1 - Beast Hands"
         ).arg(aText);
     }
     else
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - 3BBB Body Amazing\n"
           "%1 - Feet\n"
-          "%1 - Hands\n"
-          "%1 - 3BBB Body Amazing"
+          "%1 - Hands "
         ).arg(aText);
     }
-  }
-  else
-  {
+    break;
+  case CBBE3BBBVersion::Version1_50:
     if (lMustUseBeastHands)
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
           "%1 - CBBE 3BBB Feet\n"
-          "%1 - CBBE Beast Hands\n"
-          "%1 - CBBE 3BBB Body Amazing"
+          "%1 - CBBE Beast Hands"
         ).arg(aText);
     }
     else
     {
       lConstructedPreviewText =
         QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
           "%1 - CBBE 3BBB Feet\n"
-          "%1 - CBBE 3BBB Hands\n"
-          "%1 - CBBE 3BBB Body Amazing"
+          "%1 - CBBE 3BBB Hands"
         ).arg(aText);
     }
+    break;
+  case CBBE3BBBVersion::Version1_51:
+    if (lMustUseBeastHands)
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
+          "%1 - CBBE 3BBB Feet\n"
+          "%1 - CBBE 3BBB Hands Beast"
+        ).arg(aText);
+    }
+    else
+    {
+      lConstructedPreviewText =
+        QStringLiteral(
+          "%1 - CBBE 3BBB Body Amazing\n"
+          "%1 - CBBE 3BBB Feet\n"
+          "%1 - CBBE 3BBB Hands"
+        ).arg(aText);
+    }
+    break;
+  default:
+    lConstructedPreviewText = tr("Error while evaluating the data.");
+    break;
   }
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
@@ -459,14 +508,19 @@ void MFBOPresetCreator::chooseExportDirectory()
 void MFBOPresetCreator::generateDirectoryStructure()
 {
   // Selected CBBE 3BBB version
-  auto lCBBE3BBB140VersionSelected{ this->ui.mainContainer->findChild<QRadioButton*>("cbbe_version_140")->isChecked() };
+  auto lCBBE3BBBVersionSelected{ this->ui.mainContainer->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex() };
 
   // Beast hands
   auto lMustUseBeastHands{ this->ui.mainContainer->findChild<QCheckBox*>("use_beast_hands")->isChecked() };
 
   // Body meshes path
-  auto lBodyMeshesPath{ this->ui.mainContainer->findChild<QLineEdit*>("body_meshes_path_input")->text().trimmed() };
+  auto lBodyMeshesPath{ this->ui.mainContainer->findChild<QLineEdit*>("meshes_path_input")->text().trimmed() };
   Utils::cleanPathString(lBodyMeshesPath);
+
+  // Nif files names
+  auto lFemaleBodyNifName{ this->ui.mainContainer->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed() };
+  auto lFemaleFeetNifName{ this->ui.mainContainer->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed() };
+  auto lFemaleHandsNifName{ this->ui.mainContainer->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed() };
 
   // BodySlide names
   auto lOSPXMLNames{ this->ui.mainContainer->findChild<QLineEdit*>("names_osp_xml_input")->text().trimmed() };
@@ -488,46 +542,51 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.length() == 0)
   {
-    this->displayWarningMessage("Error: no path given to export the files.");
+    Utils::displayWarningMessage(tr("Error: no path given to export the files."));
     return;
   }
 
   // Check if the path could be valid
   if (lEntryDirectory.startsWith("/"))
   {
-    this->displayWarningMessage("Error: the path given to export the files seems to be invalid.");
+    Utils::displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
     return;
   }
 
   // Create main directory
   if (!QDir(lEntryDirectory).exists())
   {
-    QDir().mkdir(lEntryDirectory);
+    // Wait to know the result of the mkdir()
+    if (!QDir().mkdir(lEntryDirectory))
+    {
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Did you execute the program with limited permissions?"));
+      return;
+    }
   }
   else
   {
-    this->displayWarningMessage("Error while creating the main directory: \"" + lEntryDirectory + "\" already exists on your computer.");
+    Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" already exists on your computer."));
     return;
   }
 
   // Export the meshes
   if (lBodyMeshesPath.length() == 0)
   {
-    this->displayWarningMessage("Error: no path has been given for the meshes.");
+    Utils::displayWarningMessage(tr("Error: no path has been given for the meshes."));
     return;
   }
 
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.length() == 0)
   {
-    this->displayWarningMessage("Error: no name given for the bodyslide files.");
+    Utils::displayWarningMessage(tr("Error: no name given for the bodyslide files."));
     return;
   }
 
   // Check if a name has been given for the presets
   if (lBodyslideSlidersetsNames.length() == 0)
   {
-    this->displayWarningMessage("Error: no name given for the slider sets (names that appear in the Bodyslide software).");
+    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the Bodyslide software)."));
     return;
   }
 
@@ -539,34 +598,45 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage("Error while creating the meshes directory: \"" + lSliderGroupsDirectory + "\" already exists.");
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
     return;
   }
 
   // Copy the QRC file and change the slidergroups names in the XML file
-  QString lXMLPathName{ lSliderGroupsDirectory + "/" + lOSPXMLNames + ".xml" };
+  auto lXMLPathName{ lSliderGroupsDirectory + "/" + lOSPXMLNames + ".xml" };
+  auto lRessourcesFolder{ QString("") };
 
-
-  if (lCBBE3BBB140VersionSelected)
+  switch (lCBBE3BBBVersionSelected)
   {
-    if (lMustUseBeastHands)
+  case CBBE3BBBVersion::Version1_40:
+    lRessourcesFolder = "cbbe_3bbb_1.40";
+    break;
+  case CBBE3BBBVersion::Version1_50:
+    lRessourcesFolder = "cbbe_3bbb_1.50";
+    break;
+  case CBBE3BBBVersion::Version1_51:
+    lRessourcesFolder = "cbbe_3bbb_1.51";
+    break;
+  default:
+    Utils::displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
+    return;
+  }
+
+  // Copy the XML file
+  if (lMustUseBeastHands)
+  {
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
     {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_xml", lXMLPathName);
-    }
-    else
-    {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_xml", lXMLPathName);
+      Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+      return;
     }
   }
   else
   {
-    if (lMustUseBeastHands)
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
     {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_xml", lXMLPathName);
-    }
-    else
-    {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_xml", lXMLPathName);
+      Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+      return;
     }
   }
 
@@ -580,12 +650,17 @@ void MFBOPresetCreator::generateDirectoryStructure()
     lTempXMLContent = lXMLFile.readAll();
     lXMLFile.close();
   }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+    return;
+  }
 
   if (lTempXMLContent.length() > 0)
   {
     if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
     {
-      QString lTextToParse(lTempXMLContent);
+      auto lTextToParse{ static_cast<QString>(lTempXMLContent) };
       lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lBodyslideSlidersetsNames);
 
       QTextStream lTextStream(&lXMLFile);
@@ -594,10 +669,15 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
       lXMLFile.close();
     }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+      return;
+    }
   }
   else
   {
-    this->displayWarningMessage("Error while trying to parse the XML Bodyslide file.");
+    Utils::displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
     return;
   }
 
@@ -610,33 +690,28 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    this->displayWarningMessage("Error while creating the meshes directory: \"" + lSliderSetsDirectory + "\" already exists.");
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
     return;
   }
 
   // Copy the QRC file and change the slidergroups names in the OSP file
-  QString lOSPPathName(lSliderSetsDirectory + "/" + lOSPXMLNames + ".osp");
+  auto lOSPPathName(lSliderSetsDirectory + "/" + lOSPXMLNames + ".osp");
 
-  if (lCBBE3BBB140VersionSelected)
+  // Copy the OSP file
+  if (lMustUseBeastHands)
   {
-    if (lMustUseBeastHands)
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_beast_hands_osp", lOSPPathName);
-    }
-    else
-    {
-      QFile::copy(":/cbbe_3bbb_1.40/bodyslide_osp", lOSPPathName);
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+      return;
     }
   }
   else
   {
-    if (lMustUseBeastHands)
+    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_beast_hands_osp", lOSPPathName);
-    }
-    else
-    {
-      QFile::copy(":/cbbe_3bbb_1.50/bodyslide_osp", lOSPPathName);
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+      return;
     }
   }
 
@@ -645,20 +720,31 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   QByteArray lTempOSPContent;
 
-  if (lOSPFile.open(QIODevice::ReadWrite | QIODevice::Text))
+  if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {
     lTempOSPContent = lOSPFile.readAll();
     lOSPFile.close();
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+    return;
   }
 
   // Replace the slider sets names
   if (lTempOSPContent.length() > 0)
   {
-    if (lOSPFile.open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))
+    if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
     {
-      QString lTextToParse(lTempOSPContent);
+      auto lTextToParse{ static_cast<QString>(lTempOSPContent) };
       lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lBodyslideSlidersetsNames);
-      lTextToParse.replace(QString("{%%body_meshes_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%body_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%feet_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%hands_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+
+      lTextToParse.replace(QString("{%%body_output_file%%}"), lFemaleBodyNifName.size() > 0 ? lFemaleBodyNifName : "femalebody");
+      lTextToParse.replace(QString("{%%feet_output_file%%}"), lFemaleFeetNifName.size() > 0 ? lFemaleFeetNifName : "femalefeet");
+      lTextToParse.replace(QString("{%%hands_output_file%%}"), lFemaleHandsNifName.size() > 0 ? lFemaleHandsNifName : "femalehands");
 
       QTextStream lTextStream(&lOSPFile);
       lTextStream << lTextToParse;
@@ -666,10 +752,15 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
       lOSPFile.close();
     }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+      return;
+    }
   }
   else
   {
-    this->displayWarningMessage("Error while trying to parse the OSP Bodyslide file.");
+    Utils::displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
     return;
   }
 
@@ -681,73 +772,121 @@ void MFBOPresetCreator::generateDirectoryStructure()
       auto lSkeletonDirectory{ lEntryDirectory + "/" + lSkeletonPath };
       QDir().mkpath(lSkeletonDirectory);
 
-      QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif");
+      if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif"))
+      {
+        Utils::displayWarningMessage(tr("The skeleton file could not be created. Did you execute the program with limited permissions?"));
+        return;
+      }
     }
     else
     {
-      this->displayWarningMessage("Error: no path given for the custom skeleton.");
+      Utils::displayWarningMessage(tr("Error: no path given for the custom skeleton."));
       return;
     }
   }
 
   // Message when the generation has completed successfully
-  QString lSuccessText{ "" };
-  if (lCBBE3BBB140VersionSelected)
+  auto lSuccessText{ QString("") };
+
+  switch (lCBBE3BBBVersionSelected)
   {
-    lSuccessText = "Every file has been correctly generated, for the versions 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)";
-  }
-  else
-  {
-    lSuccessText = "Every file has been correctly generated, for the versions 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)";
+  case CBBE3BBBVersion::Version1_40:
+    lSuccessText = tr("Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)");
+    break;
+  case CBBE3BBBVersion::Version1_50:
+    lSuccessText = tr("Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
+    break;
+  case CBBE3BBBVersion::Version1_51:
+    lSuccessText = tr("Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
+    break;
+  default:
+    lSuccessText = tr("Every file has been correctly generated. You can now exit the program or create another conversion! :)");
+    break;
   }
 
-  QMessageBox lMessageBox(QMessageBox::Icon::Information, "Generation successful", lSuccessText);
+  QMessageBox lMessageBox(QMessageBox::Icon::Information, tr("Generation successful"), lSuccessText);
   lMessageBox.exec();
-  lMessageBox.deleteLater();
 
   // Open the folder where the file structure has been created
   QDesktopServices::openUrl(lEntryDirectory);
 }
 
-void MFBOPresetCreator::refreshAllPreviewInputs()
+void MFBOPresetCreator::refreshAllPreviewFields(int)
+{
+  this->refreshAllPreviewFields();
+}
+
+void MFBOPresetCreator::refreshAllPreviewFields()
 {
   // Refresh the names in the bodyslide software
   auto lBodyslideSlidersetsNames{ this->ui.mainContainer->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed() };
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }
 
-void MFBOPresetCreator::showAboutDialog()
+
+void MFBOPresetCreator::launchUpgraderTool()
 {
-  // Construct the modal
-  auto lDialog{ new QDialog(this) };
-  lDialog->setWindowTitle(QString("About"));
-  lDialog->setFixedSize(400, 300);
-
-  // Construct and display the content of the modal
-  QString lText("WIP");
-  auto lModalContent{ new QLabel(lDialog) };
-  lModalContent->setText(lText);
-  lModalContent->adjustSize();
-
-  // Display and delete the modal
-  lDialog->exec();
-  lDialog->deleteLater();
+  new UpgraderTool(this);
 }
 
 void MFBOPresetCreator::showSettingsDialog()
 {
-  // Construct the modal
-  auto lDialog{ new QDialog(this) };
-  lDialog->setWindowTitle(QString("Settings"));
-  lDialog->setFixedSize(400, 300);
+  // TODO: Create the whole settings panel
+  // Font size
+  // Font family
+  // App theme (light/dark)
+  // Default window size
+  // Language
+  // Default CBBE Version on app load
+  // Default CBBE Upgrade version on upgrade tool load
 
-  // Construct and display the content of the modal
-  QString lText("WIP");
-  auto lModalContent{ new QLabel(lDialog) };
-  lModalContent->setText(lText);
-  lModalContent->adjustSize();
+  // Build the description
+  auto lDescription(tr("The settings panel in under developement and will be released in a future version..."));
 
-  // Display and delete the modal
-  lDialog->exec();
-  lDialog->deleteLater();
+  // Construct the message box
+  //QMessageBox lDialog(QMessageBox::Icon::NoIcon, "Settings", lDescription, QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Save);
+  QMessageBox lDialog(QMessageBox::Icon::Warning, tr("Settings"), lDescription, QMessageBox::StandardButton::Close);
+  //lDialog.setTextFormat(Qt::RichText);
+  lDialog.adjustSize();
+
+  // Display the message box
+  lDialog.exec();
+}
+
+void MFBOPresetCreator::showAboutDialog()
+{
+  // Build the description
+  auto lDescription(
+    QStringLiteral(
+      "<h1 style=\"text-align: center; padding: 0; margin: 0; margin-right: 20px;\">About this software</h1><br />"
+      "<p style=\"font-size: 12px; padding: 0; margin: 0; margin-right: 20px;\">"
+      "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is a software "
+      "created by Dylan Jacquemin (also known under the nickname \"Mitsuriou\").<br />"
+      "This software has been developed to be provided for free to any user that wants to use the software. <br />"
+      "The totality of the source code is available on "
+      "<a href=\"https://github.com/Mitsuriou/MFBO-Preset-Creator\">GitHub.com</a>."
+      "<br /><br />"
+      "Ressources used to make this software:<br />"
+      "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
+      "&bull; All the icons were taken from <a href=\"https://materialdesignicons.com\">MaterialDesignIcons.com</a>.<br />"
+      "<br />"
+      "Ressources bundled in this software:<br />"
+      "&bull; The BodySlide (OSP and XML) files that are generated with MFBOPC were taken from the "
+      "<a href=\"https://www.nexusmods.com/skyrimspecialedition/mods/30174\">CBBE 3BBB</a> mod on NexusMod "
+      "and modified by Dylan Jacquemin.<br />"
+      "&bull; The \"female_skeleton.nif\" file has been taken from the "
+      "<a href=\"https://www.nexusmods.com/skyrimspecialedition/mods/1988\">XP32 Maximum Skeleton Special Extended - XPMSSE</a> "
+      "mod on NexusMod. The file has not been modified."
+      "</p>"
+    )
+  );
+
+  // Construct the message box
+  QMessageBox lDialog(QMessageBox::Icon::NoIcon, tr("About"), lDescription, QMessageBox::StandardButton::Close);
+  //lDialog.setIconPixmap(QPixmap(":/software/icon"));
+  lDialog.setTextFormat(Qt::RichText);
+  lDialog.adjustSize();
+
+  // Display the message box
+  lDialog.exec();
 }

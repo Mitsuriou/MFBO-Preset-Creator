@@ -4,21 +4,27 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MFBOPresetCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UpgraderTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Utils.h">
+    <ClInclude Include="Enum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -33,26 +39,61 @@
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
-    <Filter Include="Ressources">
-      <UniqueIdentifier>{4c942143-edbb-4837-9b94-d6684dd2a92e}</UniqueIdentifier>
+    <Filter Include="C++ App Ressources">
+      <UniqueIdentifier>{6c557561-e475-413b-9a0b-e95921564d0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI">
+    <Filter Include="Qt Ressources">
       <UniqueIdentifier>{d9a50dd6-abfd-4d7f-a1c6-b7b3fcceeec4}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="MFBOPresetCreator.qrc">
-      <Filter>Ressources</Filter>
-    </QtRcc>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MFBOPresetCreator.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="UpgraderTool.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Utils.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MFBOPresetCreator.ui">
-      <Filter>GUI</Filter>
+      <Filter>Qt Ressources</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MFBOPresetCreator.qrc">
+      <Filter>Qt Ressources</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MFBO Preset Creator.rc">
+      <Filter>C++ App Ressources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ressources/software/icon.ico">
+      <Filter>C++ App Ressources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mfbopc_fr.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="mfbopc_en.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="mfbopc_fr.qm">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="mfbopc_en.qm">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

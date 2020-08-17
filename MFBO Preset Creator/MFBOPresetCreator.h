@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include "Utils.h"
+#include "UpgraderTool.h"
+
 #include <QtWidgets/QMainWindow>
 #include <QVBoxLayout>
 #include <QString>
@@ -8,8 +11,19 @@
 #include <QAction>
 #include <QDialog>
 #include <QDesktopServices>
-#include <QRadioButton>
-#include <QButtonGroup>
+#include <QComboBox>
+#include <QStringList>
+#include <QStatusBar>
+#include <QLabel>
+#include <QGroupBox>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QTextStream>
+#include <QCloseEvent>
+//#include <QPixmap>
 
 #include "ui_MFBOPresetCreator.h"
 
@@ -20,8 +34,12 @@ class MFBOPresetCreator : public QMainWindow
 public:
   MFBOPresetCreator(QWidget* parent = Q_NULLPTR);
 
+protected:
+  void closeEvent(QCloseEvent* aEvent) override;
+
 private:
   Ui::MFBOPresetCreatorClass ui;
+
   void initializeGUI();
   void setupMenuBar();
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
@@ -29,10 +47,8 @@ private:
   void setupOptionsGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
-  void displayWarningMessage(QString aMessage);
 
 private slots:
-  void updateBodyMeshesPreview(QString aText);
   void updateOutputPreview();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
@@ -40,9 +56,11 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
-  void refreshAllPreviewInputs();
+  void refreshAllPreviewFields(int);
+  void refreshAllPreviewFields();
 
   // Menu dialogs
-  void showAboutDialog();
+  void launchUpgraderTool();
   void showSettingsDialog();
+  void showAboutDialog();
 };

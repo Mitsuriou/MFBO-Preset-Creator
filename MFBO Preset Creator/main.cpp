@@ -1,8 +1,8 @@
 ﻿#include "MFBOPresetCreator.h"
-#include "stdafx.h"
 #include "Utils.h"
 
 #include <QtWidgets/QApplication>
+//#include <QTranslator>
 
 int main(int argc, char* argv[])
 {
@@ -12,8 +12,13 @@ int main(int argc, char* argv[])
   lMainApplication.setApplicationVersion(Utils::getProgramVersion());
   lMainApplication.setWindowIcon(QIcon(":/software/icon"));
 
+  // Set the language of the GUI
+  //QTranslator lTranslator;
+  //lTranslator.load("mfbopc_fr");
+  //lMainApplication.installTranslator(&lTranslator);
+
   // Launch the application
-  MFBOPresetCreator w;
-  w.show();
+  MFBOPresetCreator lMainWindow;
+  lMainWindow.show();
   return lMainApplication.exec();
 }

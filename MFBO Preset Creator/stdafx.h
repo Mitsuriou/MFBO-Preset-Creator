@@ -1,10 +1,1 @@
-﻿//#include <QtWidgets>
-#include <QFile>
-#include <QPushButton>
-#include <QGroupBox>
-#include <QLabel>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QTextStream>
+﻿

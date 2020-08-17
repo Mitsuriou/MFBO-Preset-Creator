@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <SliderSetInfo version="1">
     <SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing">
         <DataFolder>SE 3BBB Amazing</DataFolder>
@@ -97,6 +97,12 @@
         <Slider name="BreastWidth" invert="false" small="0" big="0">
             <Data name="3BBBBreastWidth" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBBreastWidth</Data>
         </Slider>
+		<Slider name="BreastSideShape" invert="false" small="0" big="0">
+            <Data name="3BBBBreastSideShape" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBBreastSideShape</Data>
+        </Slider>
+        <Slider name="BreastUnderDepth" invert="false" small="0" big="0">
+            <Data name="3BBBBreastUnderDepth" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBBreastUnderDepth</Data>
+        </Slider>
         <Slider name="Butt" invert="false" small="0" big="0">
             <Data name="3BBBButt" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBButt</Data>
             <Data name="3BBB_AnusButt" target="3BBB_Anus" local="true">SE 3BBB Body Amazing.osd\3BBB_AnusButt</Data>
@@ -121,6 +127,12 @@
             <Data name="3BBBButtSmall" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBButtSmall</Data>
             <Data name="3BBB_AnusButtSmall" target="3BBB_Anus" local="true">SE 3BBB Body Amazing.osd\3BBB_AnusButtSmall</Data>
             <Data name="3BBB_VaginaButtSmall" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaButtSmall</Data>
+        </Slider>
+		<Slider name="ButtDimples" invert="false" small="0" big="0">
+            <Data name="3BBBButtDimples" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBButtDimples</Data>
+        </Slider>
+        <Slider name="ButtUnderFold" invert="false" small="0" big="0">
+            <Data name="3BBBButtUnderFold" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBButtUnderFold</Data>
         </Slider>
         <Slider name="CalfSize" invert="false" small="0" big="0">
             <Data name="3BBBCalfSize" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBCalfSize</Data>
@@ -185,6 +197,9 @@
         <Slider name="HipUpperWidth" invert="false" small="0" big="0">
             <Data name="3BBBHipUpperWidth" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBHipUpperWidth</Data>
         </Slider>
+		<Slider name="HipCarved" invert="false" small="0" big="0">
+            <Data name="3BBBHipCarved" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBHipCarved</Data>
+        </Slider>
         <Slider name="KneeHeight" invert="false" small="0" big="0">
             <Data name="3BBBKneeHeight" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBKneeHeight</Data>
         </Slider>
@@ -213,6 +228,9 @@
         </Slider>
         <Slider name="MusclePecs" invert="false" small="0" big="0">
             <Data name="3BBBMusclePecs" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBMusclePecs</Data>
+        </Slider>
+		<Slider name="NavelEven" invert="false" small="0" big="0">
+            <Data name="3BBBNavelEven" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBNavelEven</Data>
         </Slider>
         <Slider name="NeckSeam" invert="false" small="100" big="0" hidden="true">
             <Data name="3BBBNeckSeam" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBNeckSeam</Data>
@@ -249,6 +267,9 @@
         </Slider>
         <Slider name="NippleUp" invert="false" small="0" big="0">
             <Data name="3BBBNippleUp" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBNippleUp</Data>
+        </Slider>
+		<Slider name="NippleDip" invert="false" small="0" big="0">
+            <Data name="3BBBNippleDip" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBNippleDip</Data>
         </Slider>
         <Slider name="PregnancyBelly" invert="false" small="0" big="0">
             <Data name="3BBBPregnancyBelly" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBPregnancyBelly</Data>
@@ -335,8 +356,13 @@
             <Data name="3BBBInnieoutie" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBInnieoutie</Data>
             <Data name="3BBB_VaginaInnieoutie" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaInnieoutie</Data>
         </Slider>
+		<Slider name="LabiaTightUp" invert="false" small="0" big="0">
+            <Data name="3BBBLabiaTightUp" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBLabiaTightUp</Data>
+            <Data name="3BBB_VaginaLabiaTightUp" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiaTightUp</Data>
+        </Slider>
         <Slider name="Labiapuffyness" invert="false" small="0" big="0">
             <Data name="3BBBLabiapuffyness" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBLabiapuffyness</Data>
+            <Data name="3BBB_VaginaLabiapuffyness" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiapuffyness</Data>
         </Slider>
         <Slider name="Labiaprotrude" invert="false" small="0" big="0">
             <Data name="3BBB_VaginaLabiaprotrude" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiaprotrude</Data>
@@ -344,18 +370,33 @@
         <Slider name="Labiaprotrude2" invert="false" small="0" big="0">
             <Data name="3BBB_VaginaLabiaprotrude2" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiaprotrude2</Data>
         </Slider>
+		<Slider name="Labiaprotrudeback" invert="false" small="0" big="0">
+            <Data name="3BBB_VaginaLabiaprotrudeback" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiaprotrudeback</Data>
+        </Slider>
+		<Slider name="Labiaspread" invert="false" small="0" big="0">
+            <Data name="3BBB_VaginaLabiaspread" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaLabiaspread</Data>
+        </Slider>
         <Slider name="Vaginasize" invert="false" small="0" big="0">
             <Data name="3BBB_VaginaVaginasize" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaVaginasize</Data>
         </Slider>
+		<Slider name="VaginaHole" invert="false" small="0" big="0">
+            <Data name="3BBB_VaginaVaginaHole" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaVaginaHole</Data>
+        </Slider>
         <Slider name="Clit" invert="false" small="0" big="0">
             <Data name="3BBB_VaginaClit" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaClit</Data>
+        </Slider>
+		<Slider name="Cutepuffyness" invert="false" small="0" big="0">
+            <Data name="3BBBCutepuffyness" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBCutepuffyness</Data>
         </Slider>
         <Slider name="CBPC" invert="false" small="100" big="100">
             <Data name="3BBBCBPC" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBCBPC</Data>
             <Data name="3BBB_VaginaCBPC" target="3BBB_Vagina" local="true">SE 3BBB Body Amazing.osd\3BBB_VaginaCBPC</Data>
         </Slider>
+        <Slider name="CrotchGap" invert="false" small="0" big="0">
+            <Data name="3BBBCrotchGap" target="3BBB" local="true">SE 3BBB Body Amazing.osd\3BBBCrotchGap</Data>
+        </Slider>
     </SliderSet>
-	<SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Feet">
+    <SliderSet name="{%%bodyslide_set_name%%} - CBBE 3BBB Feet">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Feet.nif</SourceFile>
         <OutputPath>{%%feet_output_path%%}</OutputPath>
