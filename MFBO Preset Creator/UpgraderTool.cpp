@@ -270,29 +270,25 @@ void UpgraderTool::launchUpDownGradeProcess()
   // Scan the number of files to treat
   auto lNumberOSPFiles{ Utils::getNumberFilesByExtension(lRootDir, "osp") };
   auto lNumberXMLFiles{ Utils::getNumberFilesByExtension(lRootDir, "xml") };
-  auto lFilesToTreat{ lNumberOSPFiles + lNumberXMLFiles };
   auto lTreatedFiles{ 0 };
 
   // Progress bar
   auto lProgressbar{ new QProgressBar() };
   lProgressbar->setFormat("%v / %m");
-  lProgressbar->setRange(0, lFilesToTreat);
   lProgressbar->setValue(0);
   lProgressbar->setTextVisible(true);
 
   // Progress dialog
-  QProgressDialog lProgressDialog(tr("Scanning, parsing and building the new BodySlide files. Please wait..."), tr("Cancel Treatment"), 0, 0, this);
+  QProgressDialog lProgressDialog("", tr("Cancel Treatment"), 0, 0, this);
   lProgressDialog.setBar(lProgressbar);
   lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.show();
 
   // Iterate through all the files
-  QString lPresetName;
-  QDirIterator it(lRootDir, QStringList() << QString("*.xml") << QString("*.osp"), QDir::Files, QDirIterator::Subdirectories);
+  std::vector<QPair<QString, QString>> lNamesBuffer;
 
   auto lAbsFilePath{ QString("") };
   auto lRelativeDirs{ QString("") };
-  auto lMustUseBeastHands{ false };
   std::vector<Struct::SliderSet> lParsedSliderSets;
 
   auto lRessourcesFolder{ QString("") };
@@ -312,6 +308,11 @@ void UpgraderTool::launchUpDownGradeProcess()
     return;
   }
 
+  lProgressDialog.setLabelText(tr("Parsing XML files. Please Wait."));
+  lProgressbar->setRange(0, lNumberXMLFiles);
+  lTreatedFiles = 0;
+
+  QDirIterator it(lRootDir, QStringList() << QString("*.xml"), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -326,6 +327,52 @@ void UpgraderTool::launchUpDownGradeProcess()
 
     // Ignore FOMOD directory
     lAbsFilePath = it.fileInfo().absoluteFilePath();
+    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
+
+    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    {
+      continue;
+    }
+
+    // Build the names buffer
+    lNamesBuffer.push_back(QPair<QString, QString>(it.fileInfo().completeBaseName(), Utils::getPresetNameFromXMLFile(lAbsFilePath)));
+
+    if (lNamesBuffer.at(lNamesBuffer.size() - 1).second == "")
+    {
+      Utils::displayWarningMessage(tr("Error while parsing the XML file \"") + lAbsFilePath + tr("\". Aborting process."));
+      return;
+    }
+
+    lProgressDialog.setValue(++lTreatedFiles);
+    // Update the GUI
+    qApp->processEvents();
+  }
+
+  lProgressDialog.setLabelText(tr("Parsing and patching OSP files. Please Wait."));
+  lProgressbar->setRange(0, lNumberOSPFiles);
+  lTreatedFiles = 0;
+
+  std::vector<QPair<QString, QString>> lOSPBuffer;
+  for (auto lPair : lNamesBuffer)
+  {
+    lOSPBuffer.push_back(lPair);
+  }
+
+  QDirIterator it2(lRootDir, QStringList() << QString("*.osp"), QDir::Files, QDirIterator::Subdirectories);
+  while (it2.hasNext())
+  {
+    // Cancel the treatment if the user canceled it
+    if (lProgressDialog.wasCanceled())
+    {
+      Utils::displayWarningMessage(tr("Process aborted by user."));
+      return;
+    }
+
+    // Navigate to the next file
+    it2.next();
+
+    // Ignore FOMOD directory
+    lAbsFilePath = it2.fileInfo().absoluteFilePath();
 
     lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
 
@@ -334,132 +381,111 @@ void UpgraderTool::launchUpDownGradeProcess()
       continue;
     }
 
+    auto lMustUseBeastHands{ Utils::isPresetUsingBeastHands(lAbsFilePath) };
+
     // Check the file extension
-    auto lFileSuffix{ it.fileInfo().completeSuffix() };
+    auto lFileName{ it2.fileInfo().completeBaseName() };
 
-    // Parse an XML file
-    if (lFileSuffix == "xml")
+    lParsedSliderSets = Utils::getOutputPathsFromOSPFile(lAbsFilePath);
+
+    if (lParsedSliderSets.size() == 0)
     {
-      lPresetName = Utils::getPresetNameFromXMLFile(lAbsFilePath);
+      Utils::displayWarningMessage(tr("Error while parsing the OSP file \"") + lAbsFilePath + tr("\". Aborting process."));
+      return;
+    }
 
-      if (lPresetName == "")
+    // Search for the preset name in the buffer
+    auto lPresetName{ QString("") };
+    auto lBufferLocationToRemove{ -1 };
+
+    for (int i = 0; i < lOSPBuffer.size(); i++)
+    {
+      if (lFileName == lOSPBuffer.at(i).first)
       {
-        Utils::displayWarningMessage(tr("Error while parsing the XML file \"") + lAbsFilePath + tr("\". Aborting process"));
-        return;
+        lPresetName = lOSPBuffer.at(i).second;
+        lBufferLocationToRemove = i;
+        break;
       }
+    }
 
-      lMustUseBeastHands = Utils::isPresetUsingBeastHands(lAbsFilePath);
+    if (lPresetName == "")
+    {
+      Utils::displayWarningMessage(tr("No data found from the associated XML file. The file ") + it2.fileInfo().absoluteFilePath() + tr(" was not modified."));
+      continue;
+    }
 
-      // Remove the file once all data has been read
-      if (QFile::exists(lAbsFilePath))
+    // Remove the file once all data has been read
+    if (QFile::exists(lAbsFilePath))
+    {
+      QFile::remove(lAbsFilePath);
+    }
+
+    // Copy the OSP file
+    if (lMustUseBeastHands)
+    {
+      if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_beast_hands_osp", lAbsFilePath))
       {
-        QFile::remove(lAbsFilePath);
-      }
-
-      // Copy the XML file
-      if (lMustUseBeastHands)
-      {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lAbsFilePath))
-        {
-          Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
-          return;
-        }
-      }
-      else
-      {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lAbsFilePath))
-        {
-          Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
-          return;
-        }
-      }
-
-      // Read the created XML file
-      QFile lXMLFile(lAbsFilePath);
-      lXMLFile.setPermissions(QFile::WriteUser);
-
-      QByteArray lXMLFileContent;
-
-      if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
-      {
-        lXMLFileContent = lXMLFile.readAll();
-        lXMLFile.close();
-      }
-      else
-      {
-        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
-        return;
-      }
-
-      // Replace the custom tags in the file
-      if (lXMLFileContent.length() > 0)
-      {
-        if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-        {
-          auto lTextToParse{ static_cast<QString>(lXMLFileContent) };
-          lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
-
-          QTextStream lTextStream(&lXMLFile);
-          lTextStream << lTextToParse;
-          lTextStream.flush();
-
-          lXMLFile.close();
-        }
-        else
-        {
-          Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
-          return;
-        }
-      }
-      else
-      {
-        Utils::displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
+        Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
         return;
       }
     }
-    else if (lFileSuffix == "osp")
+    else
     {
-      lParsedSliderSets = Utils::getOutputPathsFromOSPFile(lAbsFilePath);
-
-      if (lParsedSliderSets.size() == 0)
+      if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_osp", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("Error while parsing the OSP file \"") + lAbsFilePath + tr("\". Aborting process"));
+        Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
         return;
       }
+    }
 
-      // Remove the file once all data has been read
-      if (QFile::exists(lAbsFilePath))
-      {
-        QFile::remove(lAbsFilePath);
-      }
+    // Read the created OSP file
+    QFile lOSPFile(lAbsFilePath);
+    lOSPFile.setPermissions(QFile::WriteUser);
 
-      // Copy the OSP file
-      if (lMustUseBeastHands)
+    QByteArray lOSPFileContent;
+
+    if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+      lOSPFileContent = lOSPFile.readAll();
+      lOSPFile.close();
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
+      return;
+    }
+
+    // Replace the custom tags in the file
+    if (lOSPFileContent.length() > 0)
+    {
+      if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
       {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_beast_hands_osp", lAbsFilePath))
+        auto lTextToParse{ static_cast<QString>(lOSPFileContent) };
+        lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
+
+        for (auto lSliderSet : lParsedSliderSets)
         {
-          Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
-          return;
+          if (lSliderSet.meshpart == "Body")
+          {
+            lTextToParse.replace(QString("{%%body_output_path%%}"), lSliderSet.outputpath);
+            lTextToParse.replace(QString("{%%body_output_file%%}"), lSliderSet.outputfile);
+          }
+          else if (lSliderSet.meshpart == "Feet")
+          {
+            lTextToParse.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputpath);
+            lTextToParse.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputfile);
+          }
+          else if (lSliderSet.meshpart == "Hands")
+          {
+            lTextToParse.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputpath);
+            lTextToParse.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputfile);
+          }
         }
-      }
-      else
-      {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/adv_bodyslide_osp", lAbsFilePath))
-        {
-          Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
-          return;
-        }
-      }
 
-      // Read the created OSP file
-      QFile lOSPFile(lAbsFilePath);
-      lOSPFile.setPermissions(QFile::WriteUser);
+        QTextStream lTextStream(&lOSPFile);
+        lTextStream << lTextToParse;
+        lTextStream.flush();
 
-      QByteArray lOSPFileContent;
-
-      if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
-      {
-        lOSPFileContent = lOSPFile.readAll();
         lOSPFile.close();
       }
       else
@@ -467,51 +493,141 @@ void UpgraderTool::launchUpDownGradeProcess()
         Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
         return;
       }
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
+      return;
+    }
 
-      // Replace the custom tags in the file
-      if (lOSPFileContent.length() > 0)
+    if (lBufferLocationToRemove != -1)
+    {
+      lOSPBuffer.erase(lOSPBuffer.begin() + lBufferLocationToRemove);
+    }
+
+    lProgressDialog.setValue(++lTreatedFiles);
+    // Update the GUI
+    qApp->processEvents();
+  }
+
+  lProgressDialog.setLabelText(tr("Patching XML files. Please Wait."));
+  lProgressbar->setRange(0, lNumberOSPFiles);
+  lTreatedFiles = 0;
+
+  QDirIterator it3(lRootDir, QStringList() << QString("*.xml"), QDir::Files, QDirIterator::Subdirectories);
+  while (it3.hasNext())
+  {
+    // Cancel the treatment if the user canceled it
+    if (lProgressDialog.wasCanceled())
+    {
+      Utils::displayWarningMessage(tr("Process aborted by user."));
+      return;
+    }
+
+    // Navigate to the next file
+    it3.next();
+
+    // Ignore FOMOD directory
+    lAbsFilePath = it3.fileInfo().absoluteFilePath();
+    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
+
+    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    {
+      continue;
+    }
+
+    auto lMustUseBeastHands{ Utils::isPresetUsingBeastHands(lAbsFilePath) };
+
+    // Check the file extension
+    auto lFileName{ it3.fileInfo().completeBaseName() };
+
+    // Check if the OSP file has skiped the parsing
+    for (int i = 0; i < lOSPBuffer.size(); i++)
+    {
+      if (lFileName == lOSPBuffer.at(i).first)
       {
-        if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-        {
-          auto lTextToParse{ static_cast<QString>(lOSPFileContent) };
-          lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
+        Utils::displayWarningMessage(tr("Since the associated OSP file has not been modified, the file ") + it3.fileInfo().absoluteFilePath() + tr(" has not been modified."));
+        continue;
+      }
+    }
 
-          for (auto lSliderSet : lParsedSliderSets)
-          {
-            if (lSliderSet.meshpart == "Body")
-            {
-              lTextToParse.replace(QString("{%%body_output_path%%}"), lSliderSet.outputpath);
-              lTextToParse.replace(QString("{%%body_output_file%%}"), lSliderSet.outputfile);
-            }
-            else if (lSliderSet.meshpart == "Feet")
-            {
-              lTextToParse.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputpath);
-              lTextToParse.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputfile);
-            }
-            else if (lSliderSet.meshpart == "Hands")
-            {
-              lTextToParse.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputpath);
-              lTextToParse.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputfile);
-            }
-          }
+    // Searching for the preset name in the buffer
+    auto lPresetName{ QString("") };
 
-          QTextStream lTextStream(&lOSPFile);
-          lTextStream << lTextToParse;
-          lTextStream.flush();
+    for (int i = 0; i < lNamesBuffer.size(); i++)
+    {
+      if (lFileName == lNamesBuffer.at(i).first)
+      {
+        lPresetName = lNamesBuffer.at(i).second;
+        break;
+      }
+    }
 
-          lOSPFile.close();
-        }
-        else
-        {
-          Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
-          return;
-        }
+    // Remove the file once all data has been read
+    if (QFile::exists(lAbsFilePath))
+    {
+      QFile::remove(lAbsFilePath);
+    }
+
+    // Copy the XML file
+    if (lMustUseBeastHands)
+    {
+      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lAbsFilePath))
+      {
+        Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+        return;
+      }
+    }
+    else
+    {
+      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lAbsFilePath))
+      {
+        Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+        return;
+      }
+    }
+
+    // Read the created XML file
+    QFile lXMLFile(lAbsFilePath);
+    lXMLFile.setPermissions(QFile::WriteUser);
+
+    QByteArray lXMLFileContent;
+
+    if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+      lXMLFileContent = lXMLFile.readAll();
+      lXMLFile.close();
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
+      return;
+    }
+
+    // Replace the custom tags in the file
+    if (lXMLFileContent.length() > 0)
+    {
+      if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+      {
+        auto lTextToParse{ static_cast<QString>(lXMLFileContent) };
+        lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
+
+        QTextStream lTextStream(&lXMLFile);
+        lTextStream << lTextToParse;
+        lTextStream.flush();
+
+        lXMLFile.close();
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
+        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
         return;
       }
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
+      return;
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
