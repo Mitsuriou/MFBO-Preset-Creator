@@ -7,7 +7,7 @@ void Utils::cleanPathString(QString& aPath)
 
 QString Utils::getProgramVersion()
 {
-  return QString("1.5.0.0");
+  return QString("1.6.0.0");
 }
 
 void Utils::displayWarningMessage(QString aMessage)
@@ -216,4 +216,31 @@ bool Utils::isPresetUsingBeastHands(QString aPath)
   }
 
   return false;
+}
+
+void Utils::checkSettingsFileExistence()
+{
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+
+  if (!lSettingsFile.exists()) {
+    lSettingsFile.open(QIODevice::WriteOnly);
+    lSettingsFile.close();
+  }
+}
+
+QString Utils::parseLanguageFromSettingsFile()
+{
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+  lSettingsFile.open(QIODevice::ReadOnly | QIODevice::Text);
+  QString lSettingsData = lSettingsFile.readAll();
+  lSettingsFile.close();
+
+  QJsonDocument lJsonDocument(QJsonDocument::fromJson(lSettingsData.toUtf8()));
+  QJsonObject lJsonObject = lJsonDocument.object();
+
+  if (lJsonObject.contains("lang") && lJsonObject["lang"].isString()) {
+    return lJsonObject["lang"].toString();
+  }
+
+  return "en";
 }

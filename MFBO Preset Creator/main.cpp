@@ -2,7 +2,7 @@
 #include "Utils.h"
 
 #include <QtWidgets/QApplication>
-//#include <QTranslator>
+#include <QTranslator>
 
 int main(int argc, char* argv[])
 {
@@ -12,10 +12,14 @@ int main(int argc, char* argv[])
   lMainApplication.setApplicationVersion(Utils::getProgramVersion());
   lMainApplication.setWindowIcon(QIcon(":/software/icon"));
 
+  // Open the config file
+  Utils::checkSettingsFileExistence();
+
   // Set the language of the GUI
-  //QTranslator lTranslator;
-  //lTranslator.load("mfbopc_fr");
-  //lMainApplication.installTranslator(&lTranslator);
+  auto lLanguage = Utils::parseLanguageFromSettingsFile();
+  QTranslator lTranslator;
+  lTranslator.load(QString("mfbopc_%1").arg(lLanguage));
+  lMainApplication.installTranslator(&lTranslator);
 
   // Launch the application
   MFBOPresetCreator lMainWindow;

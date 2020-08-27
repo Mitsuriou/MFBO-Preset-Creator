@@ -2,6 +2,7 @@
 
 #include "Utils.h"
 #include "UpgraderTool.h"
+#include "Settings.h"
 
 #include <QtWidgets/QMainWindow>
 #include <QVBoxLayout>

@@ -2,6 +2,7 @@
 
 #include "Struct.h"
 
+#include <QCoreApplication>
 #include <QString>
 #include <QMessageBox>
 #include <QDirIterator>
@@ -9,6 +10,8 @@
 #include <QFile>
 #include <QPair>
 #include <QtXml/QDomDocument>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 class Utils : public QObject
 {
@@ -23,4 +26,6 @@ public:
   static QString getPresetNameFromXMLFile(QString aPath);
   static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(QString aPath);
   static bool isPresetUsingBeastHands(QString aPath);
+  static void checkSettingsFileExistence();
+  static QString parseLanguageFromSettingsFile();
 };

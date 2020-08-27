@@ -823,7 +823,6 @@ void MFBOPresetCreator::refreshAllPreviewFields()
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }
 
-
 void MFBOPresetCreator::launchUpgraderTool()
 {
   new UpgraderTool(this);
@@ -831,26 +830,7 @@ void MFBOPresetCreator::launchUpgraderTool()
 
 void MFBOPresetCreator::showSettingsDialog()
 {
-  // TODO: Create the whole settings panel
-  // Font size
-  // Font family
-  // App theme (light/dark)
-  // Default window size
-  // Language
-  // Default CBBE Version on app load
-  // Default CBBE Upgrade version on upgrade tool load
-
-  // Build the description
-  auto lDescription(tr("The settings panel in under developement and will be released in a future version..."));
-
-  // Construct the message box
-  //QMessageBox lDialog(QMessageBox::Icon::NoIcon, "Settings", lDescription, QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Save);
-  QMessageBox lDialog(QMessageBox::Icon::Warning, tr("Settings"), lDescription, QMessageBox::StandardButton::Close);
-  //lDialog.setTextFormat(Qt::RichText);
-  lDialog.adjustSize();
-
-  // Display the message box
-  lDialog.exec();
+  new Settings(this);
 }
 
 void MFBOPresetCreator::showAboutDialog()
