@@ -18,9 +18,9 @@ void Utils::displayWarningMessage(QString aMessage)
 
 int Utils::getNumberFilesByExtension(QString aRootDir, QString aFileExtension)
 {
-  auto lNumber{ 0 };
-  auto lAbsFilePath{ QString("") };
-  auto lRelativeDirs{ QString("") };
+  auto lNumber{0};
+  auto lAbsFilePath{QString("")};
+  auto lRelativeDirs{QString("")};
 
   QDirIterator it(aRootDir, QStringList() << QString("*." + aFileExtension), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
@@ -139,8 +139,8 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(QString aPath)
     return std::vector<Struct::SliderSet>();
   }
 
-  QDomElement lRoot{ lOSPDocument.documentElement() };
-  QDomElement lSliderSet{ lRoot.firstChild().toElement() };
+  QDomElement lRoot{lOSPDocument.documentElement()};
+  QDomElement lSliderSet{lRoot.firstChild().toElement()};
 
   while (!lSliderSet.isNull())
   {
@@ -209,8 +209,7 @@ bool Utils::isPresetUsingBeastHands(QString aPath)
     return false;
   }
 
-  if (lFileContent.contains("beast hands", Qt::CaseInsensitive) ||
-    lFileContent.contains("hands beast", Qt::CaseInsensitive))
+  if (lFileContent.contains("beast hands", Qt::CaseInsensitive) || lFileContent.contains("hands beast", Qt::CaseInsensitive))
   {
     return true;
   }
@@ -222,14 +221,18 @@ void Utils::checkSettingsFileExistence()
 {
   QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
 
-  if (!lSettingsFile.exists()) {
+  if (!lSettingsFile.exists())
+  {
     lSettingsFile.open(QIODevice::WriteOnly);
     lSettingsFile.close();
   }
 }
 
-QString Utils::parseLanguageFromSettingsFile()
+Struct::Settings Utils::loadSettingsFromFile()
 {
+  Utils::checkSettingsFileExistence();
+
+  // Open and read the settings file
   QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
   lSettingsFile.open(QIODevice::ReadOnly | QIODevice::Text);
   QString lSettingsData = lSettingsFile.readAll();
@@ -238,9 +241,89 @@ QString Utils::parseLanguageFromSettingsFile()
   QJsonDocument lJsonDocument(QJsonDocument::fromJson(lSettingsData.toUtf8()));
   QJsonObject lJsonObject = lJsonDocument.object();
 
-  if (lJsonObject.contains("lang") && lJsonObject["lang"].isString()) {
-    return lJsonObject["lang"].toString();
+  Struct::Settings lSettings;
+
+  // Language
+  if (lJsonObject.contains("lang") && lJsonObject["lang"].isString())
+  {
+    lSettings.language = lJsonObject["lang"].toString();
   }
 
-  return "en";
+  // Font family
+  if (lJsonObject.contains("fontFamily") && lJsonObject["fontFamily"].isString())
+  {
+    lSettings.fontFamily = lJsonObject["fontFamily"].toString();
+  }
+
+  // Font size
+  if (lJsonObject.contains("fontSize") && lJsonObject["fontSize"].isString())
+  {
+    lSettings.fontSize = lJsonObject["fontSize"].toString().toInt();
+  }
+
+  // Dark theme
+  if (lJsonObject.contains("darkTheme") && lJsonObject["darkTheme"].isString())
+  {
+    lSettings.darkTheme = lJsonObject["darkTheme"].toString() == "true" ? true : false;
+  }
+
+  // Default window width
+  if (lJsonObject.contains("windowWidth") && lJsonObject["windowWidth"].isString())
+  {
+    lSettings.defaulWindowWidth = lJsonObject["windowWidth"].toString().toInt();
+  }
+
+  // Default window height
+  if (lJsonObject.contains("windowHeight") && lJsonObject["windowHeight"].isString())
+  {
+    lSettings.defaulWindowHeight = lJsonObject["windowHeight"].toString().toInt();
+  }
+
+  // Default CBBE 3BBB Version
+  if (lJsonObject.contains("default_3bbb_version") && lJsonObject["default_3bbb_version"].isString())
+  {
+    auto lFoundVersion = lJsonObject["default_3bbb_version"].toString().toInt();
+
+    switch (lFoundVersion)
+    {
+      case CBBE3BBBVersion::Version1_40:
+        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        break;
+      case CBBE3BBBVersion::Version1_50:
+        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+        break;
+      case CBBE3BBBVersion::Version1_51_and_1_52:
+        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+        break;
+      default:
+        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+    }
+  }
+
+  // Default upgrade or downgrade CBBE 3BBB Version
+  if (lJsonObject.contains("up_downgrade_3bbb_version") && lJsonObject["up_downgrade_3bbb_version"].isString())
+  {
+    auto lFoundVersion = lJsonObject["up_downgrade_3bbb_version"].toString().toInt();
+
+    switch (lFoundVersion)
+    {
+      case CBBE3BBBVersion::Version1_40:
+        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        break;
+      case CBBE3BBBVersion::Version1_50:
+        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+        break;
+      case CBBE3BBBVersion::Version1_51_and_1_52:
+        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+        break;
+      default:
+        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+    }
+  }
+
+  return lSettings;
+}
+
+void Utils::saveSettingsToFile(Struct::Settings)
+{
 }

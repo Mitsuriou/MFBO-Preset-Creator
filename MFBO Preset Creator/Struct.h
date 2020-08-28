@@ -18,13 +18,13 @@ namespace Struct
   struct Settings
   {
   public:
-    QString language;
-    QString fontFamily;
-    QString fontSize;
-    bool darkTheme = false;
-    int defaulWindowHeight{ -1 };
-    int defaulWindowWidth{ -1 };
-    CBBE3BBBVersion defaultCBBEBBBVersion{ CBBE3BBBVersion::Version1_40 };
-    CBBE3BBBVersion defaultUpgradingCBBEBBBVersion{ CBBE3BBBVersion::Version1_51 };
+    QString language{""};
+    QString fontFamily{""};
+    int fontSize{9};
+    bool darkTheme{false};
+    int defaulWindowWidth{-1};
+    int defaulWindowHeight{-1};
+    CBBE3BBBVersion defaultCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
+    CBBE3BBBVersion defaultUpgradingCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
   };
 }

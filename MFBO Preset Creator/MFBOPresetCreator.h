@@ -40,6 +40,7 @@ protected:
 
 private:
   Ui::MFBOPresetCreatorClass ui;
+  Struct::Settings mSettings;
 
   void initializeGUI();
   void setupMenuBar();

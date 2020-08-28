@@ -27,5 +27,6 @@ public:
   static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(QString aPath);
   static bool isPresetUsingBeastHands(QString aPath);
   static void checkSettingsFileExistence();
-  static QString parseLanguageFromSettingsFile();
+  static Struct::Settings loadSettingsFromFile();
+  static void saveSettingsToFile(Struct::Settings);
 };

@@ -39,6 +39,8 @@ protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
+  Struct::Settings mSettings;
+
   void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
