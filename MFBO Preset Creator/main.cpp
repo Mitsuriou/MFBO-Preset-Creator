@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QApplication>
 #include <QIcon>
+#include <QTranslator>
 
 int main(int argc, char* argv[])
 {
@@ -12,7 +13,14 @@ int main(int argc, char* argv[])
   lMainApplication.setApplicationVersion(Utils::getProgramVersion());
   lMainApplication.setWindowIcon(QIcon(":/software/icon"));
 
+  auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(Utils::loadSettingsFromFile().language))};
+  auto lTranslator{new QTranslator()};
+  if (lTranslator->load(QString("mfbopc_%1").arg(lLanguageToSet)))
+  {
+    lMainApplication.installTranslator(lTranslator);
+  }
+
   // Create the main window
-  MFBOPresetCreator lMainWindow;
+  MFBOPresetCreator lMainWindow(NULL, lTranslator);
   return lMainApplication.exec();
 }

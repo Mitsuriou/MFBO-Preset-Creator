@@ -1,8 +1,9 @@
 ﻿#include "MFBOPresetCreator.h"
 
-MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
+MFBOPresetCreator::MFBOPresetCreator(QWidget* parent, QTranslator* aTranslator)
   : QMainWindow(parent)
   , mSettings(Utils::loadSettingsFromFile())
+  , mTranslator(aTranslator)
 {
   // Construct the GUI
   ui.setupUi(this);
@@ -355,19 +356,13 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
   this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
 
   // Set the language of the GUI
-  if (mTranslator != nullptr)
+  qApp->removeTranslator(mTranslator);
+
+  auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(aSettings.language))};
+  if (mTranslator->load(QString("mfbopc_%1").arg(lLanguageToSet)))
   {
-    qApp->removeTranslator(mTranslator);
-    delete mTranslator;
-    mTranslator = nullptr;
+    qApp->installTranslator(mTranslator);
   }
-
-  mTranslator = new QTranslator(this);
-
-  auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(mSettings.language))};
-  mTranslator->load(QString("mfbopc_%1").arg(lLanguageToSet));
-
-  qApp->installTranslator(mTranslator);
 }
 
 void MFBOPresetCreator::updateOutputPreview()

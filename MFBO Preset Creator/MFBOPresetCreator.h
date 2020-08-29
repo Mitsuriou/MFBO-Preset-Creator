@@ -35,7 +35,7 @@ class MFBOPresetCreator : public QMainWindow
   Q_OBJECT
 
 public:
-  MFBOPresetCreator(QWidget* parent = Q_NULLPTR);
+  MFBOPresetCreator(QWidget* parent = Q_NULLPTR, QTranslator* aTranslator = Q_NULLPTR);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -44,7 +44,7 @@ protected:
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
-  QTranslator* mTranslator{nullptr};
+  QTranslator* mTranslator;
 
   void initializeGUI();
   void setupMenuBar();
