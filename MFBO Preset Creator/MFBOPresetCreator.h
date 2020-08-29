@@ -24,6 +24,8 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QCloseEvent>
+#include <QScreen>
+#include <QTranslator>
 //#include <QPixmap>
 
 #include "ui_MFBOPresetCreator.h"
@@ -37,10 +39,12 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
+  void changeEvent(QEvent* aEvent) override;
 
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
+  QTranslator* mTranslator{nullptr};
 
   void initializeGUI();
   void setupMenuBar();
@@ -49,6 +53,9 @@ private:
   void setupOptionsGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
+
+public slots:
+  void refreshUI(Struct::Settings aSettings);
 
 private slots:
   void updateOutputPreview();

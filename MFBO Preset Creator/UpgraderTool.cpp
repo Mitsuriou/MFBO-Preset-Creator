@@ -2,13 +2,13 @@
 
 UpgraderTool::UpgraderTool(QWidget* parent)
   : QDialog(parent)
+  , mSettings(Utils::loadSettingsFromFile())
 {
-  // Open and parse the config file
-  mSettings = Utils::loadSettingsFromFile();
-
   // Build the window's interface
   this->setWindowProperties();
   this->initializeGUI();
+
+  this->refreshUI();
 
   // Show the window when it's completely built
   this->show();
@@ -51,14 +51,9 @@ void UpgraderTool::setupInterface(QGridLayout& aLayout)
   auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB version:"))};
   aLayout.addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
-  QStringList lVersions;
-  lVersions.append(QString("1.40"));
-  lVersions.append(QString("1.50"));
-  lVersions.append(QString("1.51 - 1.52"));
-
   auto lCbbe3BBBVersionSelector{new QComboBox()};
-  lCbbe3BBBVersionSelector->addItems(lVersions);
-  lCbbe3BBBVersionSelector->setCurrentIndex(mSettings.defaultUpgradingCBBE3BBBVersion);
+  lCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
+  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultUpgradeToolCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
 
@@ -131,6 +126,14 @@ void UpgraderTool::setupInterface(QGridLayout& aLayout)
   lKeepBackup->setChecked(true);
   this->switchBackupState();
   this->updateBackupPreview();
+}
+
+void UpgraderTool::refreshUI()
+{
+  // Set the font properties
+  QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
+  this->setFont(lFont);
+  this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
 }
 
 void UpgraderTool::chooseInputDirectory()
@@ -295,13 +298,13 @@ void UpgraderTool::launchUpDownGradeProcess()
   auto lRessourcesFolder{QString("")};
   switch (lCBBE3BBBVersionSelected)
   {
-    case CBBE3BBBVersion::Version1_40:
+    case static_cast<int>(CBBE3BBBVersion::Version1_40):
       lRessourcesFolder = "cbbe_3bbb_1.40";
       break;
-    case CBBE3BBBVersion::Version1_50:
+    case static_cast<int>(CBBE3BBBVersion::Version1_50):
       lRessourcesFolder = "cbbe_3bbb_1.50";
       break;
-    case CBBE3BBBVersion::Version1_51_and_1_52:
+    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
       lRessourcesFolder = "cbbe_3bbb_1.51";
       break;
     default:
@@ -641,13 +644,13 @@ void UpgraderTool::launchUpDownGradeProcess()
 
   switch (lCBBE3BBBVersionSelected)
   {
-    case CBBE3BBBVersion::Version1_40:
+    case static_cast<int>(CBBE3BBBVersion::Version1_40):
       lSuccessText = tr("All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)");
       break;
-    case CBBE3BBBVersion::Version1_50:
+    case static_cast<int>(CBBE3BBBVersion::Version1_50):
       lSuccessText = tr("All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)");
       break;
-    case CBBE3BBBVersion::Version1_51_and_1_52:
+    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
       lSuccessText = tr("All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)");
       break;
     default:

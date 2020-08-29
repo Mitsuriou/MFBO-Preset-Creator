@@ -4,6 +4,7 @@
 
 #include <QCoreApplication>
 #include <QString>
+#include <QStringList>
 #include <QMessageBox>
 #include <QDirIterator>
 #include <QStringList>
@@ -28,5 +29,9 @@ public:
   static bool isPresetUsingBeastHands(QString aPath);
   static void checkSettingsFileExistence();
   static Struct::Settings loadSettingsFromFile();
-  static void saveSettingsToFile(Struct::Settings);
+  static void saveSettingsToFile(Struct::Settings aSettings);
+  static QJsonObject settingsStructToJson(Struct::Settings aSettings);
+  static QStringList getCBBE3BBBVersions();
+  static QString getShortLanguageNameFromEnum(int aEnumValue);
+  static QString getLongLanguageNameFromEnum(int aEnumValue);
 };

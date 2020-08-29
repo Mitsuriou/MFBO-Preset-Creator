@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "Utils.h"
+
 #include <QApplication>
 #include <QString>
 #include <QStringList>
@@ -23,6 +25,8 @@
 #include <QFileInfo>
 #include <QTextStream>
 #include <QPair>
+#include <QIntValidator>
+#include <QTranslator>
 
 class Settings : public QDialog
 {
@@ -35,11 +39,19 @@ protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
+  Struct::Settings mSettings;
+
   void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
+  void setupButtons(QGridLayout& aLayout);
   void loadSettings();
+  void refreshUI();
+
+signals:
+  void refreshMainUI(Struct::Settings aSettings);
 
 private slots:
-  void applySettings();
+  void saveSettings();
+  void restoreDefaultSettings();
 };

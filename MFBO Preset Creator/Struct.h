@@ -18,13 +18,13 @@ namespace Struct
   struct Settings
   {
   public:
-    QString language{""};
-    QString fontFamily{""};
-    int fontSize{9};
-    bool darkTheme{false};
-    int defaulWindowWidth{-1};
-    int defaulWindowHeight{-1};
-    CBBE3BBBVersion defaultCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
-    CBBE3BBBVersion defaultUpgradingCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
+    ApplicationLanguage language{ApplicationLanguage::English};
+    QString fontFamily{"MS Shell Dlg 2"};
+    int fontSize{11};
+    GUITheme appTheme{GUITheme::WindowsVista};
+    int mainWindowWidth{800};
+    int mainWindowHeight{600};
+    CBBE3BBBVersion defaultMainWindowCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
+    CBBE3BBBVersion defaultUpgradeToolCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
   };
 }

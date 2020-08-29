@@ -223,8 +223,9 @@ void Utils::checkSettingsFileExistence()
 
   if (!lSettingsFile.exists())
   {
-    lSettingsFile.open(QIODevice::WriteOnly);
-    lSettingsFile.close();
+    // Create a default setting file if it does not exist
+    Struct::Settings lSettings;
+    Utils::saveSettingsToFile(lSettings);
   }
 }
 
@@ -244,9 +245,22 @@ Struct::Settings Utils::loadSettingsFromFile()
   Struct::Settings lSettings;
 
   // Language
-  if (lJsonObject.contains("lang") && lJsonObject["lang"].isString())
+  if (lJsonObject.contains("lang") && lJsonObject["lang"].isDouble())
   {
-    lSettings.language = lJsonObject["lang"].toString();
+    auto lFoundLanguage = lJsonObject["lang"].toInt();
+
+    switch (lFoundLanguage)
+    {
+      case static_cast<int>(ApplicationLanguage::English):
+        lSettings.language = ApplicationLanguage::English;
+        break;
+      case static_cast<int>(ApplicationLanguage::French):
+        lSettings.language = ApplicationLanguage::French;
+        break;
+      default:
+        lSettings.language = ApplicationLanguage::English;
+        break;
+    }
   }
 
   // Font family
@@ -256,74 +270,147 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Font size
-  if (lJsonObject.contains("fontSize") && lJsonObject["fontSize"].isString())
+  if (lJsonObject.contains("fontSize") && lJsonObject["fontSize"].isDouble())
   {
-    lSettings.fontSize = lJsonObject["fontSize"].toString().toInt();
+    lSettings.fontSize = lJsonObject["fontSize"].toInt();
   }
 
   // Dark theme
-  if (lJsonObject.contains("darkTheme") && lJsonObject["darkTheme"].isString())
+  if (lJsonObject.contains("appTheme") && lJsonObject["appTheme"].isDouble())
   {
-    lSettings.darkTheme = lJsonObject["darkTheme"].toString() == "true" ? true : false;
+    auto lFoundAppTheme = lJsonObject["appTheme"].toInt();
+
+    switch (lFoundAppTheme)
+    {
+      case static_cast<int>(GUITheme::WindowsVista):
+        lSettings.appTheme = GUITheme::WindowsVista;
+        break;
+      default:
+        lSettings.appTheme = GUITheme::WindowsVista;
+        break;
+    }
   }
 
   // Default window width
-  if (lJsonObject.contains("windowWidth") && lJsonObject["windowWidth"].isString())
+  if (lJsonObject.contains("windowWidth") && lJsonObject["windowWidth"].isDouble())
   {
-    lSettings.defaulWindowWidth = lJsonObject["windowWidth"].toString().toInt();
+    lSettings.mainWindowWidth = lJsonObject["windowWidth"].toInt();
   }
 
   // Default window height
-  if (lJsonObject.contains("windowHeight") && lJsonObject["windowHeight"].isString())
+  if (lJsonObject.contains("windowHeight") && lJsonObject["windowHeight"].isDouble())
   {
-    lSettings.defaulWindowHeight = lJsonObject["windowHeight"].toString().toInt();
+    lSettings.mainWindowHeight = lJsonObject["windowHeight"].toInt();
   }
 
   // Default CBBE 3BBB Version
-  if (lJsonObject.contains("default_3bbb_version") && lJsonObject["default_3bbb_version"].isString())
+  if (lJsonObject.contains("default_3bbb_version") && lJsonObject["default_3bbb_version"].isDouble())
   {
-    auto lFoundVersion = lJsonObject["default_3bbb_version"].toString().toInt();
+    auto lFoundVersion = lJsonObject["default_3bbb_version"].toInt();
 
     switch (lFoundVersion)
     {
-      case CBBE3BBBVersion::Version1_40:
-        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+      case static_cast<int>(CBBE3BBBVersion::Version1_40):
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
         break;
-      case CBBE3BBBVersion::Version1_50:
-        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+      case static_cast<int>(CBBE3BBBVersion::Version1_50):
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
         break;
-      case CBBE3BBBVersion::Version1_51_and_1_52:
-        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+      case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
         break;
       default:
-        lSettings.defaultCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
     }
   }
 
   // Default upgrade or downgrade CBBE 3BBB Version
-  if (lJsonObject.contains("up_downgrade_3bbb_version") && lJsonObject["up_downgrade_3bbb_version"].isString())
+  if (lJsonObject.contains("up_downgrade_3bbb_version") && lJsonObject["up_downgrade_3bbb_version"].isDouble())
   {
-    auto lFoundVersion = lJsonObject["up_downgrade_3bbb_version"].toString().toInt();
+    auto lFoundVersion = lJsonObject["up_downgrade_3bbb_version"].toInt();
 
     switch (lFoundVersion)
     {
-      case CBBE3BBBVersion::Version1_40:
-        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+      case static_cast<int>(CBBE3BBBVersion::Version1_40):
+        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
         break;
-      case CBBE3BBBVersion::Version1_50:
-        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+      case static_cast<int>(CBBE3BBBVersion::Version1_50):
+        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
         break;
-      case CBBE3BBBVersion::Version1_51_and_1_52:
-        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+      case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
         break;
       default:
-        lSettings.defaultUpgradingCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
     }
   }
 
   return lSettings;
 }
 
-void Utils::saveSettingsToFile(Struct::Settings)
+void Utils::saveSettingsToFile(Struct::Settings aSettings)
 {
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+
+  lSettingsFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
+
+  auto gameObject{Utils::settingsStructToJson(aSettings)};
+  QJsonDocument saveDoc(gameObject);
+  lSettingsFile.write(saveDoc.toJson());
+
+  lSettingsFile.close();
+}
+
+QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
+{
+  QJsonObject lObj;
+
+  lObj["lang"] = static_cast<int>(aSettings.language);
+  lObj["fontFamily"] = aSettings.fontFamily;
+  lObj["fontSize"] = static_cast<int>(aSettings.fontSize);
+  lObj["appTheme"] = static_cast<int>(aSettings.appTheme);
+  lObj["windowWidth"] = aSettings.mainWindowWidth;
+  lObj["windowHeight"] = aSettings.mainWindowHeight;
+  lObj["default_3bbb_version"] = static_cast<int>(aSettings.defaultMainWindowCBBE3BBBVersion);
+  lObj["up_downgrade_3bbb_version"] = static_cast<int>(aSettings.defaultUpgradeToolCBBE3BBBVersion);
+
+  return lObj;
+}
+
+QStringList Utils::getCBBE3BBBVersions()
+{
+  QStringList lVersions;
+  lVersions.append(QString("1.40"));
+  lVersions.append(QString("1.50"));
+  lVersions.append(QString("1.51 - 1.52"));
+
+  return lVersions;
+}
+
+QString Utils::getShortLanguageNameFromEnum(int aEnumValue)
+{
+  switch (aEnumValue)
+  {
+    case static_cast<int>(ApplicationLanguage::English):
+      return "en";
+    case static_cast<int>(ApplicationLanguage::French):
+      return "fr";
+    default:
+      return "en";
+      break;
+  }
+}
+
+QString Utils::getLongLanguageNameFromEnum(int aEnumValue)
+{
+  switch (aEnumValue)
+  {
+    case static_cast<int>(ApplicationLanguage::English):
+      return "English";
+    case static_cast<int>(ApplicationLanguage::French):
+      return "Français";
+    default:
+      return "English";
+      break;
+  }
 }

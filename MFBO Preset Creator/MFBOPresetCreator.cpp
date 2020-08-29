@@ -2,13 +2,27 @@
 
 MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   : QMainWindow(parent)
+  , mSettings(Utils::loadSettingsFromFile())
 {
-  // Open and parse the config file
-  mSettings = Utils::loadSettingsFromFile();
-
   // Construct the GUI
   ui.setupUi(this);
   this->initializeGUI();
+
+  this->refreshUI(mSettings);
+
+  // Set the size of the window
+  QScreen* lScreen{QGuiApplication::primaryScreen()};
+  QRect lScreenGeom{lScreen->geometry()};
+
+  if (mSettings.mainWindowWidth < lScreenGeom.width() && mSettings.mainWindowHeight < lScreenGeom.height())
+  {
+    this->resize(mSettings.mainWindowWidth, mSettings.mainWindowHeight);
+    this->show();
+  }
+  else
+  {
+    this->showMaximized();
+  }
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -23,6 +37,17 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   {
     aEvent->accept();
   }
+}
+
+void MFBOPresetCreator::changeEvent(QEvent* aEvent)
+{
+  if (aEvent->type() == QEvent::LanguageChange)
+  {
+    ui.retranslateUi(this);
+  }
+
+  // remember to call base class implementation
+  QMainWindow::changeEvent(aEvent);
 }
 
 void MFBOPresetCreator::initializeGUI()
@@ -108,14 +133,9 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"))};
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
-  QStringList lVersions;
-  lVersions.append(QString("1.40"));
-  lVersions.append(QString("1.50"));
-  lVersions.append(QString("1.51 - 1.52"));
-
   auto lCbbe3BBBVersionSelector{new QComboBox()};
-  lCbbe3BBBVersionSelector->addItems(lVersions);
-  lCbbe3BBBVersionSelector->setCurrentIndex(mSettings.defaultCBBE3BBBVersion);
+  lCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
+  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1);
 
@@ -327,6 +347,29 @@ void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
   connect(lGenerateButton, SIGNAL(clicked()), this, SLOT(generateDirectoryStructure()));
 }
 
+void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
+{
+  // Set the font properties
+  QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
+  this->setFont(lFont);
+  this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
+
+  // Set the language of the GUI
+  if (mTranslator != nullptr)
+  {
+    qApp->removeTranslator(mTranslator);
+    delete mTranslator;
+    mTranslator = nullptr;
+  }
+
+  mTranslator = new QTranslator(this);
+
+  auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(mSettings.language))};
+  mTranslator->load(QString("mfbopc_%1").arg(lLanguageToSet));
+
+  qApp->installTranslator(mTranslator);
+}
+
 void MFBOPresetCreator::updateOutputPreview()
 {
   // Get main directory
@@ -399,7 +442,7 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 
   switch (lCBBE3BBBVersionSelected)
   {
-    case CBBE3BBBVersion::Version1_40:
+    case static_cast<int>(CBBE3BBBVersion::Version1_40):
       if (lMustUseBeastHands)
       {
         lConstructedPreviewText = QStringLiteral(
@@ -417,7 +460,7 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
                                     .arg(aText);
       }
       break;
-    case CBBE3BBBVersion::Version1_50:
+    case static_cast<int>(CBBE3BBBVersion::Version1_50):
       if (lMustUseBeastHands)
       {
         lConstructedPreviewText = QStringLiteral(
@@ -435,7 +478,7 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
                                     .arg(aText);
       }
       break;
-    case CBBE3BBBVersion::Version1_51_and_1_52:
+    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
       if (lMustUseBeastHands)
       {
         lConstructedPreviewText = QStringLiteral(
@@ -603,13 +646,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   switch (lCBBE3BBBVersionSelected)
   {
-    case CBBE3BBBVersion::Version1_40:
+    case static_cast<int>(CBBE3BBBVersion::Version1_40):
       lRessourcesFolder = "cbbe_3bbb_1.40";
       break;
-    case CBBE3BBBVersion::Version1_50:
+    case static_cast<int>(CBBE3BBBVersion::Version1_50):
       lRessourcesFolder = "cbbe_3bbb_1.50";
       break;
-    case CBBE3BBBVersion::Version1_51_and_1_52:
+    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
       lRessourcesFolder = "cbbe_3bbb_1.51";
       break;
     default:
@@ -785,13 +828,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   switch (lCBBE3BBBVersionSelected)
   {
-    case CBBE3BBBVersion::Version1_40:
+    case static_cast<int>(CBBE3BBBVersion::Version1_40):
       lSuccessText = tr("Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)");
       break;
-    case CBBE3BBBVersion::Version1_50:
+    case static_cast<int>(CBBE3BBBVersion::Version1_50):
       lSuccessText = tr("Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
       break;
-    case CBBE3BBBVersion::Version1_51_and_1_52:
+    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
       lSuccessText = tr("Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
       break;
     default:
@@ -825,7 +868,9 @@ void MFBOPresetCreator::launchUpgraderTool()
 
 void MFBOPresetCreator::showSettingsDialog()
 {
-  new Settings(this);
+  auto lSettings{new Settings(this)};
+
+  connect(lSettings, SIGNAL(refreshMainUI(Struct::Settings)), this, SLOT(refreshUI(Struct::Settings)));
 }
 
 void MFBOPresetCreator::showAboutDialog()
