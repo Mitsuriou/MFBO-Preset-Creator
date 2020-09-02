@@ -183,7 +183,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
 void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 {
-  // Bodyslide defined names group box
+  // BodySlide defined names group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide"))};
   aLayout.addWidget(lBodyslideGroupBox);
 
@@ -601,14 +601,14 @@ void MFBOPresetCreator::generateDirectoryStructure()
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no name given for the bodyslide files."));
+    Utils::displayWarningMessage(tr("Error: no name given for the BodySlide files."));
     return;
   }
 
   // Check if a name has been given for the presets
   if (lBodyslideSlidersetsNames.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the Bodyslide software)."));
+    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide software)."));
     return;
   }
 
@@ -699,7 +699,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
     return;
   }
 
@@ -782,7 +782,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
     return;
   }
 
@@ -819,7 +819,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
       lSuccessText = tr("Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
       break;
     case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lSuccessText = tr("Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
+      lSuccessText = tr("Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
       break;
     default:
       lSuccessText = tr("Every file has been correctly generated. You can now exit the program or create another conversion! :)");

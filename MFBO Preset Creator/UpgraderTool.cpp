@@ -283,7 +283,7 @@ void UpgraderTool::launchUpDownGradeProcess()
   lProgressbar->setTextVisible(true);
 
   // Progress dialog
-  QProgressDialog lProgressDialog("", tr("Cancel Treatment"), 0, 0, this);
+  QProgressDialog lProgressDialog("", tr("Cancel treatment"), 0, 0, this);
   lProgressDialog.setBar(lProgressbar);
   lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.show();
@@ -312,7 +312,7 @@ void UpgraderTool::launchUpDownGradeProcess()
       return;
   }
 
-  lProgressDialog.setLabelText(tr("Parsing XML files. Please Wait."));
+  lProgressDialog.setLabelText(tr("Parsing XML files. Please wait."));
   lProgressbar->setRange(0, lNumberXMLFiles);
   lTreatedFiles = 0;
 
@@ -352,7 +352,7 @@ void UpgraderTool::launchUpDownGradeProcess()
     qApp->processEvents();
   }
 
-  lProgressDialog.setLabelText(tr("Parsing and patching OSP files. Please Wait."));
+  lProgressDialog.setLabelText(tr("Parsing and patching OSP files. Please wait."));
   lProgressbar->setRange(0, lNumberOSPFiles);
   lTreatedFiles = 0;
 
@@ -500,7 +500,7 @@ void UpgraderTool::launchUpDownGradeProcess()
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to parse the OSP Bodyslide file."));
+      Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
       return;
     }
 
@@ -514,7 +514,7 @@ void UpgraderTool::launchUpDownGradeProcess()
     qApp->processEvents();
   }
 
-  lProgressDialog.setLabelText(tr("Patching XML files. Please Wait."));
+  lProgressDialog.setLabelText(tr("Patching XML files. Please wait."));
   lProgressbar->setRange(0, lNumberOSPFiles);
   lTreatedFiles = 0;
 
@@ -630,7 +630,7 @@ void UpgraderTool::launchUpDownGradeProcess()
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to parse the XML Bodyslide file."));
+      Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
       return;
     }
 
@@ -651,7 +651,7 @@ void UpgraderTool::launchUpDownGradeProcess()
       lSuccessText = tr("All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)");
       break;
     case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lSuccessText = tr("All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)");
+      lSuccessText = tr("All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)");
       break;
     default:
       lSuccessText = tr("All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)");
