@@ -4,6 +4,7 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent, QTranslator* aTranslator)
   : QMainWindow(parent)
   , mSettings(Utils::loadSettingsFromFile())
   , mTranslator(aTranslator)
+  , mMinimumFirstColmunWith(250)
 {
   // Construct the GUI
   ui.setupUi(this);
@@ -66,8 +67,15 @@ void MFBOPresetCreator::setupMenuBar()
   auto lFileMenu{new QMenu(tr("File"), this)};
   lMenuBar->addMenu(lFileMenu);
 
+  // Submenu: relaunch the app
+  auto lQuickRelaunch{new QAction()};
+  lQuickRelaunch->setText(tr("Quick relaunch"));
+  lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
+  lQuickRelaunch->setIcon(QIcon(":/black/reload"));
+  lFileMenu->addAction(lQuickRelaunch);
+
   // Submenu: Exit
-  auto lExitAction = new QAction();
+  auto lExitAction{new QAction()};
   lExitAction->setText(tr("Exit"));
   lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
   lExitAction->setIcon(QIcon(":/black/exit"));
@@ -85,7 +93,7 @@ void MFBOPresetCreator::setupMenuBar()
   lToolsMenu->addAction(lUpgraderToolAction);
 
   // Submenu: Settings
-  auto lSettingsAction = new QAction();
+  auto lSettingsAction{new QAction()};
   lSettingsAction->setText(tr("Settings"));
   lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
   lSettingsAction->setIcon(QIcon(":/black/cog"));
@@ -96,13 +104,14 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lHelpMenu);
 
   // Submenu: About
-  auto lAboutAction = new QAction();
+  auto lAboutAction{new QAction()};
   lAboutAction->setText(tr("About"));
   lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
   lAboutAction->setIcon(QIcon(":/black/information"));
   lHelpMenu->addAction(lAboutAction);
 
   // Event binding
+  connect(lQuickRelaunch, SIGNAL(triggered()), this, SLOT(quickRelaunch()));
   connect(lExitAction, SIGNAL(triggered()), this, SLOT(close()));
   connect(lUpgraderToolAction, SIGNAL(triggered()), this, SLOT(launchUpgraderTool()));
   connect(lSettingsAction, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
@@ -117,7 +126,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
-  lMeshesGridLayout->setColumnMinimumWidth(0, 140);
+  lMeshesGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // First line
   auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"))};
@@ -189,7 +198,7 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setColumnMinimumWidth(0, 140);
+  lBodyslideGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // First line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"))};
@@ -242,7 +251,7 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lOptionsGroupBox);
 
   auto lOptionsGridLayout{new QGridLayout(lOptionsGroupBox)};
-  lOptionsGridLayout->setColumnMinimumWidth(0, 140);
+  lOptionsGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // Skeleton
   auto lLabelSkeleton{new QLabel("")};
@@ -288,7 +297,7 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
-  lOutputGridLayout->setColumnMinimumWidth(0, 140);
+  lOutputGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // First line
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"))};
@@ -843,6 +852,11 @@ void MFBOPresetCreator::refreshAllPreviewFields()
   // Refresh the names in the bodyslide software
   auto lBodyslideSlidersetsNames{this->ui.mainContainer->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
+}
+
+void MFBOPresetCreator::quickRelaunch()
+{
+  qApp->exit(Settings::EXIT_CODE_REBOOT);
 }
 
 void MFBOPresetCreator::launchUpgraderTool()

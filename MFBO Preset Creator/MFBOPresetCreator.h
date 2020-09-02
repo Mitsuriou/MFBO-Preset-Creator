@@ -44,6 +44,7 @@ private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
   QTranslator* mTranslator;
+  int mMinimumFirstColmunWith;
 
   void initializeGUI();
   void setupMenuBar();
@@ -68,6 +69,7 @@ private slots:
   void refreshAllPreviewFields();
 
   // Menu dialogs
+  void quickRelaunch();
   void launchUpgraderTool();
   void showSettingsDialog();
   void showAboutDialog();
