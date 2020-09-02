@@ -2,13 +2,17 @@
 
 #include "Struct.h"
 
+#include <QCoreApplication>
 #include <QString>
+#include <QStringList>
 #include <QMessageBox>
 #include <QDirIterator>
 #include <QStringList>
 #include <QFile>
 #include <QPair>
 #include <QtXml/QDomDocument>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 class Utils : public QObject
 {
@@ -23,4 +27,11 @@ public:
   static QString getPresetNameFromXMLFile(QString aPath);
   static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(QString aPath);
   static bool isPresetUsingBeastHands(QString aPath);
+  static void checkSettingsFileExistence();
+  static Struct::Settings loadSettingsFromFile();
+  static void saveSettingsToFile(Struct::Settings aSettings);
+  static QJsonObject settingsStructToJson(Struct::Settings aSettings);
+  static QStringList getCBBE3BBBVersions();
+  static QString getShortLanguageNameFromEnum(int aEnumValue);
+  static QString getLongLanguageNameFromEnum(int aEnumValue);
 };

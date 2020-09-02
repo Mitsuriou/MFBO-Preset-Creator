@@ -2,6 +2,7 @@
 
 #include "Utils.h"
 #include "UpgraderTool.h"
+#include "Settings.h"
 
 #include <QtWidgets/QMainWindow>
 #include <QVBoxLayout>
@@ -23,6 +24,8 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QCloseEvent>
+#include <QScreen>
+#include <QTranslator>
 //#include <QPixmap>
 
 #include "ui_MFBOPresetCreator.h"
@@ -32,13 +35,16 @@ class MFBOPresetCreator : public QMainWindow
   Q_OBJECT
 
 public:
-  MFBOPresetCreator(QWidget* parent = Q_NULLPTR);
+  MFBOPresetCreator(QWidget* parent = Q_NULLPTR, QTranslator* aTranslator = Q_NULLPTR);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
   Ui::MFBOPresetCreatorClass ui;
+  Struct::Settings mSettings;
+  QTranslator* mTranslator;
+  int mMinimumFirstColmunWith;
 
   void initializeGUI();
   void setupMenuBar();
@@ -47,6 +53,9 @@ private:
   void setupOptionsGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
+
+public slots:
+  void refreshUI(Struct::Settings aSettings);
 
 private slots:
   void updateOutputPreview();
@@ -60,6 +69,7 @@ private slots:
   void refreshAllPreviewFields();
 
   // Menu dialogs
+  void quickRelaunch();
   void launchUpgraderTool();
   void showSettingsDialog();
   void showAboutDialog();
