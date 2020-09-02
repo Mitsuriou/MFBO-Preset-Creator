@@ -185,7 +185,17 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"))};
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 5, 2);
 
+  // Preview
+  auto lLabelPreview{new QLabel()};
+  lLabelPreview->setText(tr("Preview:"));
+  lMeshesGridLayout->addWidget(lLabelPreview);
+
+  auto lMeshesPreview{new QLabel()};
+  lMeshesPreview->setObjectName("meshes_preview");
+  lMeshesGridLayout->addWidget(lMeshesPreview);
+
   // Event binding
+  connect(lMeshesPreview, SIGNAL(textChanged(QString)), this, SIGNAL(refreshAllPreviewFields(QString)));
   connect(lCbbe3BBBVersionSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(refreshAllPreviewFields(int)));
   connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewFields()));
 }
@@ -361,6 +371,34 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
   {
     qApp->installTranslator(mTranslator);
   }
+}
+
+void MFBOPresetCreator::updateMeshesPreview()
+{
+  // Get all inut fields
+  auto lMeshesPath{this->ui.mainContainer->findChild<QLineEdit*>("meshes_path_input")->text().trimmed()};
+  auto lBodyName{this->ui.mainContainer->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
+  auto lFeetName{this->ui.mainContainer->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
+  auto lHandsName{this->ui.mainContainer->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
+
+  // Get preview label
+  auto lPreviewLabel{this->ui.mainContainer->findChild<QLabel*>("meshes_preview")};
+
+  auto lFullPreview(QString(""));
+
+  if (lMeshesPath == "")
+  {
+    lFullPreview = tr("No path given or invalid path given.");
+  }
+  //else if (lBodyName != "")
+  //{
+  //  lFullPreview = "";
+  //}
+  //else
+  //{
+  //}
+
+  lPreviewLabel->setText(lFullPreview);
 }
 
 void MFBOPresetCreator::updateOutputPreview()
@@ -842,6 +880,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
   QDesktopServices::openUrl(lEntryDirectory);
 }
 
+void MFBOPresetCreator::refreshAllPreviewFields(QString)
+{
+  this->refreshAllPreviewFields();
+}
+
 void MFBOPresetCreator::refreshAllPreviewFields(int)
 {
   this->refreshAllPreviewFields();
@@ -849,6 +892,9 @@ void MFBOPresetCreator::refreshAllPreviewFields(int)
 
 void MFBOPresetCreator::refreshAllPreviewFields()
 {
+  // Refresh the preview of the body meshes parts
+  this->updateMeshesPreview();
+
   // Refresh the names in the bodyslide software
   auto lBodyslideSlidersetsNames{this->ui.mainContainer->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);

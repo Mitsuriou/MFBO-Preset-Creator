@@ -58,6 +58,7 @@ public slots:
   void refreshUI(Struct::Settings aSettings);
 
 private slots:
+  void updateMeshesPreview();
   void updateOutputPreview();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
@@ -65,6 +66,7 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
+  void refreshAllPreviewFields(QString);
   void refreshAllPreviewFields(int);
   void refreshAllPreviewFields();
 
