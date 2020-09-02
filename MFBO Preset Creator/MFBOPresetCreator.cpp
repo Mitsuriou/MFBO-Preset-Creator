@@ -40,17 +40,6 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void MFBOPresetCreator::changeEvent(QEvent* aEvent)
-{
-  if (aEvent->type() == QEvent::LanguageChange)
-  {
-    ui.retranslateUi(this);
-  }
-
-  // remember to call base class implementation
-  QMainWindow::changeEvent(aEvent);
-}
-
 void MFBOPresetCreator::initializeGUI()
 {
   // Menu bar
@@ -359,7 +348,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
   qApp->removeTranslator(mTranslator);
 
   auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(aSettings.language))};
-  if (mTranslator->load(QString("mfbopc_%1").arg(lLanguageToSet)))
+  if (mTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))
   {
     qApp->installTranslator(mTranslator);
   }

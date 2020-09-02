@@ -39,7 +39,6 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void changeEvent(QEvent* aEvent) override;
 
 private:
   Ui::MFBOPresetCreatorClass ui;

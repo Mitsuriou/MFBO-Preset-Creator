@@ -35,4 +35,8 @@
         <file alias="arrow_up">ressources/software/icons/white/arrow-up-bold-outline.png</file>
         <file alias="information">ressources/software/icons/white/information-outline.png</file>
     </qresource>
+    <qresource prefix="/translations">
+        <file>mfbopc_en.qm</file>
+        <file>mfbopc_fr.qm</file>
+    </qresource>
 </RCC>

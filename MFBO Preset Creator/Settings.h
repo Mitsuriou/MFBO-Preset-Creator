@@ -34,12 +34,14 @@ class Settings : public QDialog
 
 public:
   Settings(QWidget* parent);
+  static int const EXIT_CODE_REBOOT{-123456789};
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
   Struct::Settings mSettings;
+  bool mMustRebootMainApp;
 
   void setWindowProperties();
   void initializeGUI();

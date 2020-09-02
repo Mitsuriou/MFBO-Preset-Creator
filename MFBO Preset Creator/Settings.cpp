@@ -3,6 +3,7 @@
 Settings::Settings(QWidget* parent)
   : QDialog(parent)
   , mSettings(Utils::loadSettingsFromFile())
+  , mMustRebootMainApp{false}
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -199,6 +200,16 @@ void Settings::refreshUI()
   this->setFont(lFont);
   this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
 
+  if (mMustRebootMainApp)
+  {
+    auto lResult{QMessageBox::question(this, tr("Application language changed"), tr("Settings saved. You changed the language of the application. You need to restart the latter to apply the chosen language. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes)};
+
+    if (lResult == QMessageBox::Yes)
+    {
+      // Reboot the application in case the language is changed
+      qApp->exit(Settings::EXIT_CODE_REBOOT);
+    }
+  }
   emit refreshMainUI(mSettings);
 }
 
@@ -305,6 +316,8 @@ void Settings::saveSettings()
       lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
       break;
   }
+
+  mMustRebootMainApp = mSettings.language != lSettings.language;
 
   Utils::saveSettingsToFile(lSettings);
   mSettings = lSettings;
