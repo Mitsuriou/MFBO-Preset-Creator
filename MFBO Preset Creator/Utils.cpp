@@ -7,7 +7,7 @@ void Utils::cleanPathString(QString& aPath)
 
 QString Utils::getProgramVersion()
 {
-  return QString("1.5.0.0");
+  return QString("1.6.0.0");
 }
 
 void Utils::displayWarningMessage(QString aMessage)
@@ -18,9 +18,9 @@ void Utils::displayWarningMessage(QString aMessage)
 
 int Utils::getNumberFilesByExtension(QString aRootDir, QString aFileExtension)
 {
-  auto lNumber{ 0 };
-  auto lAbsFilePath{ QString("") };
-  auto lRelativeDirs{ QString("") };
+  auto lNumber{0};
+  auto lAbsFilePath{QString("")};
+  auto lRelativeDirs{QString("")};
 
   QDirIterator it(aRootDir, QStringList() << QString("*." + aFileExtension), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
@@ -139,8 +139,8 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(QString aPath)
     return std::vector<Struct::SliderSet>();
   }
 
-  QDomElement lRoot{ lOSPDocument.documentElement() };
-  QDomElement lSliderSet{ lRoot.firstChild().toElement() };
+  QDomElement lRoot{lOSPDocument.documentElement()};
+  QDomElement lSliderSet{lRoot.firstChild().toElement()};
 
   while (!lSliderSet.isNull())
   {
@@ -209,11 +209,261 @@ bool Utils::isPresetUsingBeastHands(QString aPath)
     return false;
   }
 
-  if (lFileContent.contains("beast hands", Qt::CaseInsensitive) ||
-    lFileContent.contains("hands beast", Qt::CaseInsensitive))
+  if (lFileContent.contains("beast hands", Qt::CaseInsensitive) || lFileContent.contains("hands beast", Qt::CaseInsensitive))
   {
     return true;
   }
 
   return false;
+}
+
+void Utils::checkSettingsFileExistence()
+{
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+
+  if (!lSettingsFile.exists())
+  {
+    // Create a default setting file if it does not exist
+    Struct::Settings lSettings;
+
+    // Get the user's system language by default
+    auto lSystemLanguage{QLocale::languageToString(QLocale::system().language())};
+    lSettings.language = Utils::getStructLanguageFromName(lSystemLanguage);
+
+    Utils::saveSettingsToFile(lSettings);
+  }
+}
+
+Struct::Settings Utils::loadSettingsFromFile()
+{
+  Utils::checkSettingsFileExistence();
+
+  // Open and read the settings file
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+  lSettingsFile.open(QIODevice::ReadOnly | QIODevice::Text);
+  QString lSettingsData = lSettingsFile.readAll();
+  lSettingsFile.close();
+
+  QJsonDocument lJsonDocument(QJsonDocument::fromJson(lSettingsData.toUtf8()));
+  QJsonObject lJsonObject = lJsonDocument.object();
+
+  Struct::Settings lSettings;
+
+  // Language
+  if (lJsonObject.contains("lang") && lJsonObject["lang"].isDouble())
+  {
+    auto lFoundLanguage = lJsonObject["lang"].toInt();
+
+    switch (lFoundLanguage)
+    {
+      case static_cast<int>(ApplicationLanguage::English):
+        lSettings.language = ApplicationLanguage::English;
+        break;
+      case static_cast<int>(ApplicationLanguage::French):
+        lSettings.language = ApplicationLanguage::French;
+        break;
+      default:
+        lSettings.language = ApplicationLanguage::English;
+        break;
+    }
+  }
+
+  // Font family
+  if (lJsonObject.contains("fontFamily") && lJsonObject["fontFamily"].isString())
+  {
+    lSettings.fontFamily = lJsonObject["fontFamily"].toString();
+  }
+
+  // Font size
+  if (lJsonObject.contains("fontSize") && lJsonObject["fontSize"].isDouble())
+  {
+    lSettings.fontSize = lJsonObject["fontSize"].toInt();
+  }
+
+  // Dark theme
+  if (lJsonObject.contains("appTheme") && lJsonObject["appTheme"].isDouble())
+  {
+    auto lFoundAppTheme = lJsonObject["appTheme"].toInt();
+
+    switch (lFoundAppTheme)
+    {
+      case static_cast<int>(GUITheme::WindowsVista):
+        lSettings.appTheme = GUITheme::WindowsVista;
+        break;
+      default:
+        lSettings.appTheme = GUITheme::WindowsVista;
+        break;
+    }
+  }
+
+  // Default window width
+  if (lJsonObject.contains("windowWidth") && lJsonObject["windowWidth"].isDouble())
+  {
+    lSettings.mainWindowWidth = lJsonObject["windowWidth"].toInt();
+  }
+
+  // Default window height
+  if (lJsonObject.contains("windowHeight") && lJsonObject["windowHeight"].isDouble())
+  {
+    lSettings.mainWindowHeight = lJsonObject["windowHeight"].toInt();
+  }
+
+  // Main window opening mode
+  if (lJsonObject.contains("main_window_opening_mode") && lJsonObject["main_window_opening_mode"].isDouble())
+  {
+    auto lFoundWindowOpeningMode = lJsonObject["main_window_opening_mode"].toInt();
+
+    switch (lFoundWindowOpeningMode)
+    {
+      case static_cast<int>(WindowOpeningMode::Minimized):
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Minimized;
+        break;
+      case static_cast<int>(WindowOpeningMode::Windowed):
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
+        break;
+      case static_cast<int>(WindowOpeningMode::Maximized):
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Maximized;
+        break;
+      default:
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
+    }
+  }
+
+  // Default CBBE 3BBB Version
+  if (lJsonObject.contains("default_3bbb_version") && lJsonObject["default_3bbb_version"].isDouble())
+  {
+    auto lFoundVersion = lJsonObject["default_3bbb_version"].toInt();
+
+    switch (lFoundVersion)
+    {
+      case static_cast<int>(CBBE3BBBVersion::Version1_40):
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        break;
+      case static_cast<int>(CBBE3BBBVersion::Version1_50):
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+        break;
+      case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+        break;
+      default:
+        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+    }
+  }
+
+  // Default Retargeting Tool CBBE 3BBB Version
+  if (lJsonObject.contains("retargeting_tool_3bbb_version") && lJsonObject["retargeting_tool_3bbb_version"].isDouble())
+  {
+    auto lFoundVersion = lJsonObject["retargeting_tool_3bbb_version"].toInt();
+
+    switch (lFoundVersion)
+    {
+      case static_cast<int>(CBBE3BBBVersion::Version1_40):
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        break;
+      case static_cast<int>(CBBE3BBBVersion::Version1_50):
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+        break;
+      case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+        break;
+      default:
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+    }
+  }
+
+  return lSettings;
+}
+
+void Utils::saveSettingsToFile(Struct::Settings aSettings)
+{
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+
+  lSettingsFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
+
+  auto gameObject{Utils::settingsStructToJson(aSettings)};
+  QJsonDocument saveDoc(gameObject);
+  lSettingsFile.write(saveDoc.toJson());
+
+  lSettingsFile.close();
+}
+
+QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
+{
+  QJsonObject lObj;
+
+  lObj["lang"] = static_cast<int>(aSettings.language);
+  lObj["fontFamily"] = aSettings.fontFamily;
+  lObj["fontSize"] = static_cast<int>(aSettings.fontSize);
+  lObj["appTheme"] = static_cast<int>(aSettings.appTheme);
+  lObj["windowWidth"] = aSettings.mainWindowWidth;
+  lObj["windowHeight"] = aSettings.mainWindowHeight;
+  lObj["default_3bbb_version"] = static_cast<int>(aSettings.defaultMainWindowCBBE3BBBVersion);
+  lObj["retargeting_tool_3bbb_version"] = static_cast<int>(aSettings.defaultRetargetingToolCBBE3BBBVersion);
+  lObj["main_window_opening_mode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
+
+  return lObj;
+}
+
+QStringList Utils::getCBBE3BBBVersions()
+{
+  QStringList lVersions;
+  lVersions.append(QString("1.40"));
+  lVersions.append(QString("1.50"));
+  lVersions.append(QString("1.51 - 1.52"));
+
+  return lVersions;
+}
+
+QStringList Utils::getWindowOpeningModes()
+{
+  QStringList lWindowModes;
+  lWindowModes.append(QString("Minimized"));
+  lWindowModes.append(QString("Windowed"));
+  lWindowModes.append(QString("Maximized"));
+
+  return lWindowModes;
+}
+
+QString Utils::getShortLanguageNameFromEnum(int aEnumValue)
+{
+  switch (aEnumValue)
+  {
+    case static_cast<int>(ApplicationLanguage::English):
+      return "en";
+    case static_cast<int>(ApplicationLanguage::French):
+      return "fr";
+    default:
+      return "en";
+      break;
+  }
+}
+
+QString Utils::getLongLanguageNameFromEnum(int aEnumValue)
+{
+  switch (aEnumValue)
+  {
+    case static_cast<int>(ApplicationLanguage::English):
+      return "English";
+    case static_cast<int>(ApplicationLanguage::French):
+      return "Français";
+    default:
+      return "English";
+      break;
+  }
+}
+
+ApplicationLanguage Utils::getStructLanguageFromName(QString aShortName)
+{
+  if (aShortName.compare("English") == 0)
+  {
+    return ApplicationLanguage::English;
+  }
+
+  if (aShortName.compare("French") == 0)
+  {
+    return ApplicationLanguage::French;
+  }
+
+  // Default language if no supported language has been found
+  return ApplicationLanguage::English;
 }
