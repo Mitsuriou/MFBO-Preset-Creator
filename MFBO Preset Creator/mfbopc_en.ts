@@ -9,67 +9,67 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="52"/>
+        <location filename="MFBOPresetCreator.cpp" line="55"/>
         <source>File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="64"/>
+        <location filename="MFBOPresetCreator.cpp" line="67"/>
         <source>Exit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="70"/>
+        <location filename="MFBOPresetCreator.cpp" line="73"/>
         <source>Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="82"/>
+        <location filename="MFBOPresetCreator.cpp" line="85"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="88"/>
+        <location filename="MFBOPresetCreator.cpp" line="91"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="93"/>
-        <location filename="MFBOPresetCreator.cpp" line="977"/>
+        <location filename="MFBOPresetCreator.cpp" line="96"/>
+        <location filename="MFBOPresetCreator.cpp" line="1024"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="109"/>
+        <location filename="MFBOPresetCreator.cpp" line="112"/>
         <source>CBBE body meshes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="117"/>
+        <location filename="MFBOPresetCreator.cpp" line="120"/>
         <source>CBBE 3BBB version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="135"/>
+        <location filename="MFBOPresetCreator.cpp" line="138"/>
         <source>Use beast hands?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="138"/>
+        <location filename="MFBOPresetCreator.cpp" line="141"/>
         <source>Check this box if the follower or NPC uses beast hands.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="175"/>
-        <location filename="MFBOPresetCreator.cpp" line="213"/>
-        <location filename="MFBOPresetCreator.cpp" line="232"/>
-        <location filename="MFBOPresetCreator.cpp" line="278"/>
-        <location filename="MFBOPresetCreator.cpp" line="325"/>
+        <location filename="MFBOPresetCreator.cpp" line="178"/>
+        <location filename="MFBOPresetCreator.cpp" line="216"/>
+        <location filename="MFBOPresetCreator.cpp" line="235"/>
+        <location filename="MFBOPresetCreator.cpp" line="281"/>
+        <location filename="MFBOPresetCreator.cpp" line="328"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="197"/>
+        <location filename="MFBOPresetCreator.cpp" line="200"/>
         <source>BodySlide</source>
         <translation></translation>
     </message>
@@ -79,243 +79,243 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="57"/>
+        <location filename="MFBOPresetCreator.cpp" line="60"/>
         <source>Quick relaunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="75"/>
+        <location filename="MFBOPresetCreator.cpp" line="78"/>
         <source>CBBE 3BBB Version Retargeting Tool</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="127"/>
+        <location filename="MFBOPresetCreator.cpp" line="130"/>
         <source>Meshes path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="143"/>
+        <location filename="MFBOPresetCreator.cpp" line="146"/>
         <source>Meshes names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="164"/>
         <location filename="MFBOPresetCreator.cpp" line="167"/>
         <location filename="MFBOPresetCreator.cpp" line="170"/>
+        <location filename="MFBOPresetCreator.cpp" line="173"/>
         <source>_0.nif/_1.nif</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="205"/>
+        <location filename="MFBOPresetCreator.cpp" line="208"/>
         <source>Bodyslide files names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="223"/>
+        <location filename="MFBOPresetCreator.cpp" line="226"/>
         <source>Preset names: &amp;#128712;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="224"/>
+        <location filename="MFBOPresetCreator.cpp" line="227"/>
         <source>This field represents the name under which the preset will be listed in the BodySlide software.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="251"/>
+        <location filename="MFBOPresetCreator.cpp" line="254"/>
         <source>Additional options</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="260"/>
+        <location filename="MFBOPresetCreator.cpp" line="263"/>
         <source>Use a custom skeleton? &amp;#128712;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="261"/>
+        <location filename="MFBOPresetCreator.cpp" line="264"/>
         <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="264"/>
+        <location filename="MFBOPresetCreator.cpp" line="267"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="269"/>
+        <location filename="MFBOPresetCreator.cpp" line="272"/>
         <source>Skeleton path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="296"/>
+        <location filename="MFBOPresetCreator.cpp" line="299"/>
         <source>Output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="304"/>
+        <location filename="MFBOPresetCreator.cpp" line="307"/>
         <source>Output directory path:</source>
         <oldsource>Output path:</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="313"/>
+        <location filename="MFBOPresetCreator.cpp" line="316"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="317"/>
+        <location filename="MFBOPresetCreator.cpp" line="320"/>
         <source>Output subdirectory name/path:</source>
         <oldsource>Mod subdirectory name/path:</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="343"/>
+        <location filename="MFBOPresetCreator.cpp" line="346"/>
         <source>Generate the files on my computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="456"/>
+        <location filename="MFBOPresetCreator.cpp" line="500"/>
         <source>No path given or invalid path given.</source>
         <oldsource>The path seems to be incorrect</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="558"/>
+        <location filename="MFBOPresetCreator.cpp" line="602"/>
         <source>Error while evaluating the data.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="644"/>
+        <location filename="MFBOPresetCreator.cpp" line="688"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="651"/>
+        <location filename="MFBOPresetCreator.cpp" line="695"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="661"/>
-        <location filename="MFBOPresetCreator.cpp" line="667"/>
+        <location filename="MFBOPresetCreator.cpp" line="705"/>
+        <location filename="MFBOPresetCreator.cpp" line="711"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="661"/>
+        <location filename="MFBOPresetCreator.cpp" line="705"/>
         <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="667"/>
+        <location filename="MFBOPresetCreator.cpp" line="711"/>
         <source>&quot; already exists on your computer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="674"/>
+        <location filename="MFBOPresetCreator.cpp" line="718"/>
         <source>Error: no path has been given for the meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="681"/>
+        <location filename="MFBOPresetCreator.cpp" line="725"/>
         <source>Error: no name given for the BodySlide files.</source>
         <oldsource>Error: no name given for the bodyslide files.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="688"/>
+        <location filename="MFBOPresetCreator.cpp" line="732"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide software).</source>
         <oldsource>Error: no name given for the slider sets (names that appear in the Bodyslide software).</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="700"/>
-        <location filename="MFBOPresetCreator.cpp" line="792"/>
+        <location filename="MFBOPresetCreator.cpp" line="744"/>
+        <location filename="MFBOPresetCreator.cpp" line="836"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="700"/>
-        <location filename="MFBOPresetCreator.cpp" line="792"/>
+        <location filename="MFBOPresetCreator.cpp" line="744"/>
+        <location filename="MFBOPresetCreator.cpp" line="836"/>
         <source>&quot; already exists.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="720"/>
+        <location filename="MFBOPresetCreator.cpp" line="764"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="729"/>
-        <location filename="MFBOPresetCreator.cpp" line="737"/>
+        <location filename="MFBOPresetCreator.cpp" line="773"/>
+        <location filename="MFBOPresetCreator.cpp" line="781"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="754"/>
-        <location filename="MFBOPresetCreator.cpp" line="773"/>
-        <location filename="MFBOPresetCreator.cpp" line="829"/>
-        <location filename="MFBOPresetCreator.cpp" line="856"/>
+        <location filename="MFBOPresetCreator.cpp" line="798"/>
+        <location filename="MFBOPresetCreator.cpp" line="817"/>
+        <location filename="MFBOPresetCreator.cpp" line="873"/>
+        <location filename="MFBOPresetCreator.cpp" line="900"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="754"/>
-        <location filename="MFBOPresetCreator.cpp" line="773"/>
-        <location filename="MFBOPresetCreator.cpp" line="829"/>
-        <location filename="MFBOPresetCreator.cpp" line="856"/>
+        <location filename="MFBOPresetCreator.cpp" line="798"/>
+        <location filename="MFBOPresetCreator.cpp" line="817"/>
+        <location filename="MFBOPresetCreator.cpp" line="873"/>
+        <location filename="MFBOPresetCreator.cpp" line="900"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="779"/>
+        <location filename="MFBOPresetCreator.cpp" line="823"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <oldsource>Error while trying to parse the XML Bodyslide file.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="804"/>
-        <location filename="MFBOPresetCreator.cpp" line="812"/>
+        <location filename="MFBOPresetCreator.cpp" line="848"/>
+        <location filename="MFBOPresetCreator.cpp" line="856"/>
         <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="862"/>
+        <location filename="MFBOPresetCreator.cpp" line="906"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <oldsource>Error while trying to parse the OSP Bodyslide file.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="876"/>
+        <location filename="MFBOPresetCreator.cpp" line="920"/>
         <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="882"/>
+        <location filename="MFBOPresetCreator.cpp" line="926"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="893"/>
+        <location filename="MFBOPresetCreator.cpp" line="937"/>
         <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="896"/>
+        <location filename="MFBOPresetCreator.cpp" line="940"/>
         <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="899"/>
+        <location filename="MFBOPresetCreator.cpp" line="943"/>
         <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <oldsource>Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="902"/>
+        <location filename="MFBOPresetCreator.cpp" line="946"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="906"/>
+        <location filename="MFBOPresetCreator.cpp" line="950"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
@@ -363,13 +363,13 @@
     </message>
     <message>
         <location filename="Settings.cpp" line="76"/>
-        <location filename="Settings.cpp" line="118"/>
+        <location filename="Settings.cpp" line="115"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="77"/>
-        <location filename="Settings.cpp" line="119"/>
+        <location filename="Settings.cpp" line="116"/>
         <source>Français</source>
         <translation></translation>
     </message>
@@ -389,58 +389,53 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="106"/>
-        <source>Windows Vista (Default)</source>
+        <location filename="Settings.cpp" line="221"/>
+        <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="114"/>
+        <location filename="Settings.cpp" line="221"/>
+        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="111"/>
         <source>Window opening mode:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="127"/>
+        <location filename="Settings.cpp" line="124"/>
         <source>Default main window width:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="136"/>
+        <location filename="Settings.cpp" line="133"/>
         <source>Default main window height:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="145"/>
+        <location filename="Settings.cpp" line="142"/>
         <source>Default selected CBBE 3BBB version (main window):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="154"/>
+        <location filename="Settings.cpp" line="151"/>
         <source>Default selected CBBE 3BBB version (Retargeting tool):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="166"/>
+        <location filename="Settings.cpp" line="163"/>
         <source>Restore default without saving</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="169"/>
+        <location filename="Settings.cpp" line="166"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="173"/>
+        <location filename="Settings.cpp" line="170"/>
         <source>Close without saving</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="224"/>
-        <source>Application language changed</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="224"/>
-        <source>Settings saved. You changed the language of the application. You need to restart the latter to apply the chosen language. Would you like to restart the application now?</source>
         <translation></translation>
     </message>
 </context>
@@ -689,16 +684,16 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="105"/>
-        <location filename="Utils.cpp" line="138"/>
-        <location filename="Utils.cpp" line="208"/>
+        <location filename="Utils.cpp" line="120"/>
+        <location filename="Utils.cpp" line="153"/>
+        <location filename="Utils.cpp" line="223"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="105"/>
-        <location filename="Utils.cpp" line="138"/>
-        <location filename="Utils.cpp" line="208"/>
+        <location filename="Utils.cpp" line="120"/>
+        <location filename="Utils.cpp" line="153"/>
+        <location filename="Utils.cpp" line="223"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>

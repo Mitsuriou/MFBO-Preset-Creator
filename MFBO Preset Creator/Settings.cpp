@@ -102,11 +102,8 @@ void Settings::setupInterface(QGridLayout& aLayout)
   auto lGUIThemeLabel{new QLabel(tr("Application Theme:"))};
   aLayout.addWidget(lGUIThemeLabel, 3, 0);
 
-  QStringList lThemes;
-  lThemes.append(QString(tr("Windows Vista (Default)")));
-
   auto lGUIThemeSelector{new QComboBox()};
-  lGUIThemeSelector->addItems(lThemes);
+  lGUIThemeSelector->addItems(Utils::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   aLayout.addWidget(lGUIThemeSelector, 3, 1);
 
@@ -221,7 +218,7 @@ void Settings::refreshUI()
 
   if (mMustRebootMainApp)
   {
-    auto lResult{QMessageBox::question(this, tr("Application language changed"), tr("Settings saved. You changed the language of the application. You need to restart the latter to apply the chosen language. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes)};
+    auto lResult{QMessageBox::question(this, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
 
     if (lResult == QMessageBox::Yes)
     {
@@ -285,6 +282,18 @@ void Settings::saveSettings()
   {
     case static_cast<int>(GUITheme::WindowsVista):
       lSettings.appTheme = GUITheme::WindowsVista;
+      break;
+    case static_cast<int>(GUITheme::PaperLight):
+      lSettings.appTheme = GUITheme::PaperLight;
+      break;
+    case static_cast<int>(GUITheme::PaperDark):
+      lSettings.appTheme = GUITheme::PaperDark;
+      break;
+    case static_cast<int>(GUITheme::PaperWhiteMono):
+      lSettings.appTheme = GUITheme::PaperWhiteMono;
+      break;
+    case static_cast<int>(GUITheme::PaperBlackMono):
+      lSettings.appTheme = GUITheme::PaperBlackMono;
       break;
     default:
       lSettings.appTheme = GUITheme::WindowsVista;
@@ -354,7 +363,7 @@ void Settings::saveSettings()
       break;
   }
 
-  mMustRebootMainApp = mSettings.language != lSettings.language;
+  mMustRebootMainApp = (mSettings.language != lSettings.language) || (mSettings.appTheme != lSettings.appTheme);
 
   Utils::saveSettingsToFile(lSettings);
   mSettings = lSettings;

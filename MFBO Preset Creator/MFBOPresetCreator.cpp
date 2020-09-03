@@ -44,6 +44,9 @@ void MFBOPresetCreator::initializeGUI()
 
 void MFBOPresetCreator::setupMenuBar()
 {
+  // Keep a reference to the user theme
+  auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+
   // Construct the menu bar
   auto lMenuBar{new QMenuBar(this)};
   this->setMenuBar(lMenuBar);
@@ -56,14 +59,14 @@ void MFBOPresetCreator::setupMenuBar()
   auto lQuickRelaunch{new QAction()};
   lQuickRelaunch->setText(tr("Quick relaunch"));
   lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
-  lQuickRelaunch->setIcon(QIcon(":/black/reload"));
+  lQuickRelaunch->setIcon(QIcon(":/" + lIconFolder + "/reload"));
   lFileMenu->addAction(lQuickRelaunch);
 
   // Submenu: Exit
   auto lExitAction{new QAction()};
   lExitAction->setText(tr("Exit"));
   lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
-  lExitAction->setIcon(QIcon(":/black/exit"));
+  lExitAction->setIcon(QIcon(":/" + lIconFolder + "/exit"));
   lFileMenu->addAction(lExitAction);
 
   // Tools
@@ -74,14 +77,14 @@ void MFBOPresetCreator::setupMenuBar()
   auto lUpgraderToolAction{new QAction()};
   lUpgraderToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
   lUpgraderToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-  lUpgraderToolAction->setIcon(QIcon(":/black/arrow_up"));
+  lUpgraderToolAction->setIcon(QIcon(":/" + lIconFolder + "/arrow_up"));
   lToolsMenu->addAction(lUpgraderToolAction);
 
   // Submenu: Settings
   auto lSettingsAction{new QAction()};
   lSettingsAction->setText(tr("Settings"));
   lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
-  lSettingsAction->setIcon(QIcon(":/black/cog"));
+  lSettingsAction->setIcon(QIcon(":/" + lIconFolder + "/cog"));
   lToolsMenu->addAction(lSettingsAction);
 
   // Help
@@ -92,7 +95,7 @@ void MFBOPresetCreator::setupMenuBar()
   auto lAboutAction{new QAction()};
   lAboutAction->setText(tr("About"));
   lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-  lAboutAction->setIcon(QIcon(":/black/information"));
+  lAboutAction->setIcon(QIcon(":/" + lIconFolder + "/information"));
   lHelpMenu->addAction(lAboutAction);
 
   // Event binding
@@ -375,8 +378,49 @@ void MFBOPresetCreator::showWindow()
   }
 }
 
+void MFBOPresetCreator::applyStyleSheet(Struct::Settings aSettings)
+{
+  auto lQSSFileName{QString("")};
+
+  switch (mSettings.appTheme)
+  {
+    case GUITheme::WindowsVista:
+      break;
+    case GUITheme::PaperLight:
+      lQSSFileName = "Paper Light by 6788";
+      break;
+    case GUITheme::PaperDark:
+      lQSSFileName = "Paper Dark by 6788";
+      break;
+    case GUITheme::PaperWhiteMono:
+      lQSSFileName = "Paper White Mono";
+      break;
+    case GUITheme::PaperBlackMono:
+      lQSSFileName = "Paper Black Mono";
+      break;
+    default:
+      break;
+  }
+
+  if (lQSSFileName.compare("") == 0)
+  {
+    qApp->setStyleSheet("");
+  }
+  else
+  {
+    QFile lQSSFile(":qss/" + lQSSFileName + ".qss");
+
+    lQSSFile.open(QFile::ReadOnly);
+    QString lStyleSheet{QLatin1String(lQSSFile.readAll())};
+
+    qApp->setStyleSheet(lStyleSheet);
+  }
+}
+
 void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
 {
+  this->applyStyleSheet(aSettings);
+
   // Set the font properties
   QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
   this->setFont(lFont);
@@ -599,7 +643,7 @@ void MFBOPresetCreator::updateSkeletonPreview(QString aText)
 void MFBOPresetCreator::chooseExportDirectory()
 {
   auto lLineEdit{this->ui.mainContainer->findChild<QLineEdit*>("output_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory()};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
   this->updateOutputPreview();
 }
@@ -903,11 +947,13 @@ void MFBOPresetCreator::generateDirectoryStructure()
       break;
   }
 
-  QMessageBox lMessageBox(QMessageBox::Icon::Information, tr("Generation successful"), lSuccessText);
-  lMessageBox.exec();
+  auto lReply{QMessageBox::information(this, tr("Generation successful"), lSuccessText, QMessageBox::Ok, QMessageBox::Ok)};
 
-  // Open the folder where the file structure has been created
-  QDesktopServices::openUrl(lEntryDirectory);
+  if (lReply == QMessageBox::Ok)
+  {
+    // Open the folder where the file structure has been created
+    QDesktopServices::openUrl(lEntryDirectory);
+  }
 }
 
 void MFBOPresetCreator::refreshAllPreviewFields(QString aText)
@@ -963,6 +1009,7 @@ void MFBOPresetCreator::showAboutDialog()
       "Ressources used to make this software:<br />"
       "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
       "&bull; All the icons were taken from <a href=\"https://materialdesignicons.com\">MaterialDesignIcons.com</a>.<br />"
+      "&bull; Theme custom window themes were taken from <a href=\"https://github.com/6788-00\">6788-00's GitHub repository</a>.<br />"
       "<br />"
       "Ressources bundled in this software:<br />"
       "&bull; The BodySlide (OSP and XML) files that are generated with MFBOPC were taken from the "
@@ -975,7 +1022,6 @@ void MFBOPresetCreator::showAboutDialog()
 
   // Construct the message box
   QMessageBox lDialog(QMessageBox::Icon::NoIcon, tr("About"), lDescription, QMessageBox::StandardButton::Close);
-  //lDialog.setIconPixmap(QPixmap(":/software/icon"));
   lDialog.setTextFormat(Qt::RichText);
   lDialog.adjustSize();
 

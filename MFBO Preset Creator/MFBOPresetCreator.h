@@ -52,6 +52,7 @@ private:
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
   void showWindow();
+  void applyStyleSheet(Struct::Settings aSettings);
 
 public slots:
   void refreshUI(Struct::Settings aSettings);

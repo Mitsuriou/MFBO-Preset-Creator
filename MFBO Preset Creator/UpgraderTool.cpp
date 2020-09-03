@@ -658,6 +658,5 @@ void UpgraderTool::launchUpDownGradeProcess()
       break;
   }
 
-  QMessageBox lMessageBox(QMessageBox::Icon::Information, tr("Upgrade or downgarde successful"), lSuccessText);
-  lMessageBox.exec();
+  QMessageBox::information(this, tr("Upgrade or downgarde successful"), lSuccessText, QMessageBox::Ok, QMessageBox::Ok);
 }

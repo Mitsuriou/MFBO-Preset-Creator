@@ -26,6 +26,7 @@ public:
   static void displayWarningMessage(QString aMessage);
   static int getNumberFilesByExtension(QString aRootDir, QString aFileExtension);
   static bool copyRecursively(QString sourceFolder, QString destFolder);
+  static bool isThemeDark(GUITheme aTheme);
 
   // XML and OSP file parse
   static QString getPresetNameFromXMLFile(QString aPath);
@@ -41,6 +42,7 @@ public:
   // List
   static QStringList getCBBE3BBBVersions();
   static QStringList getWindowOpeningModes();
+  static QStringList getAppThemes();
 
   // Language
   static QString getShortLanguageNameFromEnum(int aEnumValue);

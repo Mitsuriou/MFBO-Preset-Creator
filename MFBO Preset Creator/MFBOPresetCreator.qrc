@@ -41,4 +41,154 @@
         <file>mfbopc_en.qm</file>
         <file>mfbopc_fr.qm</file>
     </qresource>
+    <qresource prefix="/qss">
+        <file alias="Paper Black Mono.qss">ressources/qss/Paper Black Mono.qss</file>
+        <file alias="Paper Dark by 6788.qss">ressources/qss/Paper Dark by 6788.qss</file>
+        <file alias="Paper Light by 6788.qss">ressources/qss/Paper Light by 6788.qss</file>
+        <file alias="Paper White Mono.qss">ressources/qss/Paper White Mono.qss</file>
+    </qresource>
+    <qresource prefix="/qss-ressources">
+        <file>ressources/qss/Paper/Dark/backup.svg</file>
+        <file>ressources/qss/Paper/Dark/cross.svg</file>
+        <file>ressources/qss/Paper/Dark/dots.svg</file>
+        <file>ressources/qss/Paper/Dark/folder.svg</file>
+        <file>ressources/qss/Paper/Dark/heart.svg</file>
+        <file>ressources/qss/Paper/Dark/minus.svg</file>
+        <file>ressources/qss/Paper/Dark/mo2.svg</file>
+        <file>ressources/qss/Paper/Dark/nexus.svg</file>
+        <file>ressources/qss/Paper/Dark/pin.svg</file>
+        <file>ressources/qss/Paper/Dark/plus.svg</file>
+        <file>ressources/qss/Paper/Dark/refresh.svg</file>
+        <file>ressources/qss/Paper/Dark/restore.svg</file>
+        <file>ressources/qss/Paper/Dark/run.svg</file>
+        <file>ressources/qss/Paper/Dark/shortcut.svg</file>
+        <file>ressources/qss/Paper/Dark/sort.svg</file>
+        <file>ressources/qss/Paper/Dark/Arrows/Large/down.svg</file>
+        <file>ressources/qss/Paper/Dark/Arrows/Large/up.svg</file>
+        <file>ressources/qss/Paper/Dark/Arrows/down.svg</file>
+        <file>ressources/qss/Paper/Dark/Arrows/left.svg</file>
+        <file>ressources/qss/Paper/Dark/Arrows/right.svg</file>
+        <file>ressources/qss/Paper/Dark/Arrows/up.svg</file>
+        <file>ressources/qss/Paper/Dark/Checkboxes/Checked/check.svg</file>
+        <file>ressources/qss/Paper/Dark/Checkboxes/Checked/hover.svg</file>
+        <file>ressources/qss/Paper/Dark/Checkboxes/Radio Buttons/hover.svg</file>
+        <file>ressources/qss/Paper/Dark/Checkboxes/Radio Buttons/radio.svg</file>
+        <file>ressources/qss/Paper/Dark/Checkboxes/Unchecked/hover.svg</file>
+        <file>ressources/qss/Paper/Dark/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>ressources/qss/Paper/Dark/Checkboxes/Disabled.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/archives.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/endorse.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/executables.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/help.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/instances.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/nexus.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/problems.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/profiles.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/settings.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/tools.svg</file>
+        <file>ressources/qss/Paper/Dark/Toolbar/update.svg</file>
+        <file>ressources/qss/Paper/Light/Arrows/Large/down.svg</file>
+        <file>ressources/qss/Paper/Light/Arrows/Large/up.svg</file>
+        <file>ressources/qss/Paper/Light/Arrows/down.svg</file>
+        <file>ressources/qss/Paper/Light/Arrows/left.svg</file>
+        <file>ressources/qss/Paper/Light/Arrows/right.svg</file>
+        <file>ressources/qss/Paper/Light/Arrows/up.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Checked/check.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Checked/hover.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Checked/selected.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Radio Buttons/hover.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Radio Buttons/radio.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Unchecked/hover.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Unchecked/selected.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>ressources/qss/Paper/Light/Checkboxes/disabled.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/archives.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/endorse.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/executables.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/help.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/instances.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/nexus.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/problems.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/profiles.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/settings.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/tools.svg</file>
+        <file>ressources/qss/Paper/Light/Toolbar/update.svg</file>
+        <file>ressources/qss/Paper/Light/backup.svg</file>
+        <file>ressources/qss/Paper/Light/cross.svg</file>
+        <file>ressources/qss/Paper/Light/dots.svg</file>
+        <file>ressources/qss/Paper/Light/folder.svg</file>
+        <file>ressources/qss/Paper/Light/heart.svg</file>
+        <file>ressources/qss/Paper/Light/minus.svg</file>
+        <file>ressources/qss/Paper/Light/mo2.svg</file>
+        <file>ressources/qss/Paper/Light/nexus.svg</file>
+        <file>ressources/qss/Paper/Light/pin.svg</file>
+        <file>ressources/qss/Paper/Light/plus.svg</file>
+        <file>ressources/qss/Paper/Light/refresh.svg</file>
+        <file>ressources/qss/Paper/Light/restore.svg</file>
+        <file>ressources/qss/Paper/Light/run.svg</file>
+        <file>ressources/qss/Paper/Light/shortcut.svg</file>
+        <file>ressources/qss/Paper/Light/sort.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Arrows/down.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Arrows/left.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Arrows/right.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Arrows/up.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Checked/check.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Checked/hover.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Checked/selected.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Unchecked/hover.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Unchecked/selected.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/Checkboxes/disabled.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/backup.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/cross.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/dots.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/folder.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/heart.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/minus.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/nexus.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/pin.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/plus.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/refresh.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/restore.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/restore-alt.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/run.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/shortcut.svg</file>
+        <file>ressources/qss/Paper/Mono/Black/sort.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/down.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/left.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/right.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/up.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/down.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/left.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/right.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Arrows/up.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Checkboxes/Checked/check.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Checkboxes/Checked/hover.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Checkboxes/Checked/selected.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Checkboxes/Unchecked/hover.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Checkboxes/Unchecked/selected.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Checkboxes/disabled.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/archives.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/endorse.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/executables.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/help.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/instances.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/nexus.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/problems.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/profiles.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/settings.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/tools.svg</file>
+        <file>ressources/qss/Paper/Mono/White/Toolbar/update.svg</file>
+        <file>ressources/qss/Paper/Mono/White/backup.svg</file>
+        <file>ressources/qss/Paper/Mono/White/dots.svg</file>
+        <file>ressources/qss/Paper/Mono/White/folder.svg</file>
+        <file>ressources/qss/Paper/Mono/White/heart.svg</file>
+        <file>ressources/qss/Paper/Mono/White/refresh.svg</file>
+        <file>ressources/qss/Paper/Mono/White/restore.svg</file>
+        <file>ressources/qss/Paper/Mono/White/restore-alt.svg</file>
+        <file>ressources/qss/Paper/Mono/White/run.svg</file>
+        <file>ressources/qss/Paper/Mono/White/shortcut.svg</file>
+        <file>ressources/qss/Paper/Mono/White/sort.svg</file>
+    </qresource>
 </RCC>
