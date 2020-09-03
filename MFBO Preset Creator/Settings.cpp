@@ -17,8 +17,8 @@ Settings::Settings(QWidget* parent)
 
 void Settings::closeEvent(QCloseEvent* aEvent)
 {
-  QObject* lEventSourceObject = sender();
-  QPushButton* lEventButton = qobject_cast<QPushButton*>(lEventSourceObject);
+  QObject* lEventSourceObject{sender()};
+  QPushButton* lEventButton{qobject_cast<QPushButton*>(lEventSourceObject)};
 
   auto lSaveButton{this->findChild<QPushButton*>("save_close")};
 
@@ -110,41 +110,54 @@ void Settings::setupInterface(QGridLayout& aLayout)
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   aLayout.addWidget(lGUIThemeSelector, 3, 1);
 
+  // MAIN WINDOW OPENING MODE
+  auto lWindowOpeningModeLabel{new QLabel(tr("Window opening mode:"))};
+  aLayout.addWidget(lWindowOpeningModeLabel, 4, 0);
+
+  QStringList lSupportedWindowOpeningMode;
+  lSupportedWindowOpeningMode.append(tr("English"));
+  lSupportedWindowOpeningMode.append(tr("Français"));
+
+  auto lWindowOpeningModeSelector{new QComboBox()};
+  lWindowOpeningModeSelector->addItems(Utils::getWindowOpeningModes());
+  lWindowOpeningModeSelector->setObjectName(QString("window_opening_mode"));
+  aLayout.addWidget(lWindowOpeningModeSelector, 4, 1);
+
   // WINDOW WIDTH
   auto lWinWidthLabel{new QLabel(tr("Default main window width:"))};
-  aLayout.addWidget(lWinWidthLabel, 4, 0);
+  aLayout.addWidget(lWinWidthLabel, 5, 0);
 
   auto lWinWidthInput{new QLineEdit("")};
   lWinWidthInput->setObjectName(QString("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 9999, this));
-  aLayout.addWidget(lWinWidthInput, 4, 1);
+  aLayout.addWidget(lWinWidthInput, 5, 1);
 
   // WINDOW HEIGHT
   auto lWinHeightLabel{new QLabel(tr("Default main window height:"))};
-  aLayout.addWidget(lWinHeightLabel, 5, 0);
+  aLayout.addWidget(lWinHeightLabel, 6, 0);
 
   auto lWinHeightInput{new QLineEdit("")};
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
-  aLayout.addWidget(lWinHeightInput, 5, 1);
+  aLayout.addWidget(lWinHeightInput, 6, 1);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION (MAIN)
   auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (main window):"))};
-  aLayout.addWidget(ldefaultCbbe3BBBVersionLabel, 6, 0);
+  aLayout.addWidget(ldefaultCbbe3BBBVersionLabel, 7, 0);
 
   auto ldefaultCbbe3BBBVersionSelector{new QComboBox()};
   ldefaultCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
   ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
-  aLayout.addWidget(ldefaultCbbe3BBBVersionSelector, 6, 1);
+  aLayout.addWidget(ldefaultCbbe3BBBVersionSelector, 7, 1);
 
-  // DEFAULT SELECTED CBBE 3BBB VERSION (UP/DOWNGRADER TOOL)
-  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (Up/Downgrader tool):"))};
-  aLayout.addWidget(lupgradeCbbe3BBBVersionLabel, 7, 0);
+  // DEFAULT SELECTED CBBE 3BBB VERSION (RETARGETING TOOL)
+  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (Retargeting tool):"))};
+  aLayout.addWidget(lupgradeCbbe3BBBVersionLabel, 8, 0);
 
   auto lupgradeCbbe3BBBVersionSelector{new QComboBox()};
   lupgradeCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
   lupgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
-  aLayout.addWidget(lupgradeCbbe3BBBVersionSelector, 7, 1);
+  aLayout.addWidget(lupgradeCbbe3BBBVersionSelector, 8, 1);
 }
 
 void Settings::setupButtons(QGridLayout& aLayout)
@@ -158,6 +171,9 @@ void Settings::setupButtons(QGridLayout& aLayout)
   aLayout.addWidget(lSaveButton, 0, 1);
 
   auto lCloseButton{new QPushButton(tr("Close without saving"))};
+  lCloseButton->setAutoDefault(true);
+  lCloseButton->setDefault(true);
+  lCloseButton->autoDefault();
   aLayout.addWidget(lCloseButton, 0, 2);
 
   // Event binding
@@ -168,29 +184,32 @@ void Settings::setupButtons(QGridLayout& aLayout)
 
 void Settings::loadSettings()
 {
-  auto lLang = this->findChild<QComboBox*>("language");
+  auto lLang{this->findChild<QComboBox*>("language")};
   lLang->setCurrentIndex(static_cast<int>(mSettings.language));
 
-  auto lFontFamily = this->findChild<QLineEdit*>("font_family");
+  auto lFontFamily{this->findChild<QLineEdit*>("font_family")};
   lFontFamily->setText(mSettings.fontFamily);
 
-  auto lFontSize = this->findChild<QLineEdit*>("font_size");
+  auto lFontSize{this->findChild<QLineEdit*>("font_size")};
   lFontSize->setText(QString::number(mSettings.fontSize));
 
-  auto lAppTheme = this->findChild<QComboBox*>("app_theme");
+  auto lAppTheme{this->findChild<QComboBox*>("app_theme")};
   lAppTheme->setCurrentIndex(static_cast<int>(mSettings.appTheme));
 
-  auto lWindowWidth = this->findChild<QLineEdit*>("window_width");
+  auto lWindowWidth{this->findChild<QLineEdit*>("window_width")};
   lWindowWidth->setText(QString::number(mSettings.mainWindowWidth));
 
-  auto lWindowHeight = this->findChild<QLineEdit*>("window_height");
+  auto lWindowHeight{this->findChild<QLineEdit*>("window_height")};
   lWindowHeight->setText(QString::number(mSettings.mainWindowHeight));
 
-  auto lDefaultCBBE3BBBVersion = this->findChild<QComboBox*>("default_cbbe_3bbb_version");
+  auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")};
+  lWindowOpeningMode->setCurrentIndex(static_cast<int>(mSettings.mainWindowOpeningMode));
+
+  auto lDefaultCBBE3BBBVersion{this->findChild<QComboBox*>("default_cbbe_3bbb_version")};
   lDefaultCBBE3BBBVersion->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
 
-  auto lDefaultUpgradeCBBE3BBBVersion = this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version");
-  lDefaultUpgradeCBBE3BBBVersion->setCurrentIndex(static_cast<int>(mSettings.defaultUpgradeToolCBBE3BBBVersion));
+  auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")};
+  lDefaultUpgradeCBBE3BBBVersion->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
 }
 
 void Settings::refreshUI()
@@ -223,14 +242,15 @@ void Settings::restoreDefaultSettings()
 
 void Settings::saveSettings()
 {
-  auto lLang = this->findChild<QComboBox*>("language")->currentIndex();
-  auto lFontFamily = this->findChild<QLineEdit*>("font_family")->text().trimmed();
-  auto lFontSize = this->findChild<QLineEdit*>("font_size")->text().trimmed();
-  auto lAppTheme = this->findChild<QComboBox*>("app_theme")->currentIndex();
-  auto lWindowWidth = this->findChild<QLineEdit*>("window_width")->text().trimmed();
-  auto lWindowHeight = this->findChild<QLineEdit*>("window_height")->text().trimmed();
-  auto lDefaultCBBE3BBBVersion = this->findChild<QComboBox*>("default_cbbe_3bbb_version")->currentIndex();
-  auto lDefaultUpgradeCBBE3BBBVersion = this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")->currentIndex();
+  auto lLang{this->findChild<QComboBox*>("language")->currentIndex()};
+  auto lFontFamily{this->findChild<QLineEdit*>("font_family")->text().trimmed()};
+  auto lFontSize{this->findChild<QLineEdit*>("font_size")->text().trimmed()};
+  auto lAppTheme{this->findChild<QComboBox*>("app_theme")->currentIndex()};
+  auto lWindowWidth{this->findChild<QLineEdit*>("window_width")->text().trimmed()};
+  auto lWindowHeight{this->findChild<QLineEdit*>("window_height")->text().trimmed()};
+  auto lDefaultCBBE3BBBVersion{this->findChild<QComboBox*>("default_cbbe_3bbb_version")->currentIndex()};
+  auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")->currentIndex()};
+  auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
 
   Struct::Settings lSettings;
 
@@ -283,6 +303,23 @@ void Settings::saveSettings()
     lSettings.mainWindowHeight = lWindowHeight.toInt();
   }
 
+  // Main window opening mode
+  switch (lWindowOpeningMode)
+  {
+    case static_cast<int>(WindowOpeningMode::Minimized):
+      lSettings.mainWindowOpeningMode = WindowOpeningMode::Minimized;
+      break;
+    case static_cast<int>(WindowOpeningMode::Windowed):
+      lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
+      break;
+    case static_cast<int>(WindowOpeningMode::Maximized):
+      lSettings.mainWindowOpeningMode = WindowOpeningMode::Maximized;
+      break;
+    default:
+      lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
+      break;
+  }
+
   // Default selected CBBE 3BBB version (main)
   switch (lDefaultCBBE3BBBVersion)
   {
@@ -300,20 +337,20 @@ void Settings::saveSettings()
       break;
   }
 
-  // Default selected CBBE 3BBB version (up/downgrader tool)
+  // Default selected CBBE 3BBB version (Retargeting tool)
   switch (lDefaultUpgradeCBBE3BBBVersion)
   {
     case static_cast<int>(CBBE3BBBVersion::Version1_40):
-      lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
       break;
     case static_cast<int>(CBBE3BBBVersion::Version1_50):
-      lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
       break;
     case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
       break;
     default:
-      lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
       break;
   }
 

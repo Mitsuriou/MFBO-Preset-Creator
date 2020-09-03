@@ -3,7 +3,6 @@
 
 #include <QtWidgets/QApplication>
 #include <QIcon>
-#include <QTranslator>
 
 int main(int argc, char* argv[])
 {
@@ -25,7 +24,7 @@ int main(int argc, char* argv[])
     }
 
     // Create and show the main window
-    MFBOPresetCreator lMainWindow(NULL, lTranslator);
+    MFBOPresetCreator lMainWindow;
     lMainWindow.show();
 
     // Launch the application

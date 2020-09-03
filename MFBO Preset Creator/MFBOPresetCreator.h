@@ -25,7 +25,6 @@
 #include <QTextStream>
 #include <QCloseEvent>
 #include <QScreen>
-#include <QTranslator>
 //#include <QPixmap>
 
 #include "ui_MFBOPresetCreator.h"
@@ -35,7 +34,7 @@ class MFBOPresetCreator : public QMainWindow
   Q_OBJECT
 
 public:
-  MFBOPresetCreator(QWidget* parent = Q_NULLPTR, QTranslator* aTranslator = Q_NULLPTR);
+  MFBOPresetCreator(QWidget* parent = Q_NULLPTR);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -43,7 +42,6 @@ protected:
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
-  QTranslator* mTranslator;
   int mMinimumFirstColmunWith;
 
   void initializeGUI();
@@ -53,6 +51,7 @@ private:
   void setupOptionsGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
+  void showWindow();
 
 public slots:
   void refreshUI(Struct::Settings aSettings);
@@ -66,7 +65,7 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
-  void refreshAllPreviewFields(QString);
+  void refreshAllPreviewFields(QString aText);
   void refreshAllPreviewFields(int);
   void refreshAllPreviewFields();
 

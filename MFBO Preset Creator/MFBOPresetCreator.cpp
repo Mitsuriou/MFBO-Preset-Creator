@@ -1,30 +1,15 @@
 ﻿#include "MFBOPresetCreator.h"
 
-MFBOPresetCreator::MFBOPresetCreator(QWidget* parent, QTranslator* aTranslator)
+MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   : QMainWindow(parent)
   , mSettings(Utils::loadSettingsFromFile())
-  , mTranslator(aTranslator)
-  , mMinimumFirstColmunWith(250)
+  , mMinimumFirstColmunWith(275)
 {
   // Construct the GUI
   ui.setupUi(this);
   this->initializeGUI();
-
   this->refreshUI(mSettings);
-
-  // Set the size of the window
-  QScreen* lScreen{QGuiApplication::primaryScreen()};
-  QRect lScreenGeom{lScreen->geometry()};
-
-  if (mSettings.mainWindowWidth < lScreenGeom.width() && mSettings.mainWindowHeight < lScreenGeom.height())
-  {
-    this->resize(mSettings.mainWindowWidth, mSettings.mainWindowHeight);
-    this->show();
-  }
-  else
-  {
-    this->showMaximized();
-  }
+  this->showWindow();
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -86,8 +71,8 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lToolsMenu);
 
   // Submenu: Upgrader
-  auto lUpgraderToolAction = new QAction();
-  lUpgraderToolAction->setText(tr("CBBE 3BBB Version [Up/Down]grader Tool"));
+  auto lUpgraderToolAction{new QAction()};
+  lUpgraderToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
   lUpgraderToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
   lUpgraderToolAction->setIcon(QIcon(":/black/arrow_up"));
   lToolsMenu->addAction(lUpgraderToolAction);
@@ -194,8 +179,14 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesPreview->setObjectName("meshes_preview");
   lMeshesGridLayout->addWidget(lMeshesPreview);
 
+  // Initialization functions
+  this->updateMeshesPreview();
+
   // Event binding
-  connect(lMeshesPreview, SIGNAL(textChanged(QString)), this, SIGNAL(refreshAllPreviewFields(QString)));
+  connect(lMeshesPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
+  connect(lBodyMeshNameInput, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
+  connect(lFeetMeshNameInput, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
+  connect(lHandsMeshNameInput, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
   connect(lCbbe3BBBVersionSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(refreshAllPreviewFields(int)));
   connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewFields()));
 }
@@ -356,27 +347,48 @@ void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
   connect(lGenerateButton, SIGNAL(clicked()), this, SLOT(generateDirectoryStructure()));
 }
 
+void MFBOPresetCreator::showWindow()
+{
+  // Set the size of the window
+  QScreen* lScreen{QGuiApplication::primaryScreen()};
+  QRect lScreenGeom{lScreen->geometry()};
+
+  // If the window size is correct for the user's screen
+  if (mSettings.mainWindowWidth < lScreenGeom.width() && mSettings.mainWindowHeight < lScreenGeom.height())
+  {
+    // resize the window
+    this->resize(mSettings.mainWindowWidth, mSettings.mainWindowHeight);
+  }
+
+  // Select the main window opening mode
+  if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Minimized)
+  {
+    this->showMinimized();
+  }
+  else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Maximized)
+  {
+    this->showMaximized();
+  }
+  else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Windowed)
+  {
+    this->show();
+  }
+}
+
 void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
 {
   // Set the font properties
   QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
   this->setFont(lFont);
   this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
-
-  // Set the language of the GUI
-  qApp->removeTranslator(mTranslator);
-
-  auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(aSettings.language))};
-  if (mTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))
-  {
-    qApp->installTranslator(mTranslator);
-  }
 }
 
 void MFBOPresetCreator::updateMeshesPreview()
 {
   // Get all inut fields
   auto lMeshesPath{this->ui.mainContainer->findChild<QLineEdit*>("meshes_path_input")->text().trimmed()};
+  Utils::cleanPathString(lMeshesPath);
+
   auto lBodyName{this->ui.mainContainer->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
   auto lFeetName{this->ui.mainContainer->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
   auto lHandsName{this->ui.mainContainer->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
@@ -388,15 +400,30 @@ void MFBOPresetCreator::updateMeshesPreview()
 
   if (lMeshesPath == "")
   {
-    lFullPreview = tr("No path given or invalid path given.");
+    lMeshesPath = "*";
   }
-  //else if (lBodyName != "")
-  //{
-  //  lFullPreview = "";
-  //}
-  //else
-  //{
-  //}
+
+  if (lBodyName == "")
+  {
+    lBodyName = "femalebody";
+  }
+
+  if (lFeetName == "")
+  {
+    lFeetName = "femalefeet";
+  }
+
+  if (lHandsName == "")
+  {
+    lHandsName = "femalehands";
+  }
+
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lBodyName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPath).arg(lBodyName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lFeetName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPath).arg(lFeetName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lHandsName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif").arg(lMeshesPath).arg(lHandsName);
 
   lPreviewLabel->setText(lFullPreview);
 }
@@ -446,8 +473,8 @@ void MFBOPresetCreator::updateOSPXMLPreview(QString aText)
 
   auto lConstructedPreviewText(
     QStringLiteral(
-      "CalienteTools/BodySlide/SliderGroups/%1.xml\n"
-      "CalienteTools/BodySlide/SliderSets/%1.osp")
+      "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderGroups/%1.xml\n"
+      "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
@@ -538,14 +565,17 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
 void MFBOPresetCreator::updateSkeletonPathState(int aState)
 {
   auto lSkeletonPathLineEdit{this->ui.mainContainer->findChild<QLineEdit*>("skeleton_path_directory")};
+  auto lSkeletonPreview{this->ui.mainContainer->findChild<QLabel*>("skeleton_path_preview")};
 
   switch (aState)
   {
     case Qt::Unchecked:
       lSkeletonPathLineEdit->setDisabled(true);
+      lSkeletonPreview->setDisabled(true);
       break;
     case Qt::Checked:
       lSkeletonPathLineEdit->setDisabled(false);
+      lSkeletonPreview->setDisabled(false);
       break;
     default:
       break;
@@ -559,7 +589,7 @@ void MFBOPresetCreator::updateSkeletonPreview(QString aText)
 
   if (aText.trimmed().length() == 0)
   {
-    aText = QString::fromStdString("*");
+    aText = QString::fromStdString("[...]/Skyrim Special Edition/Data/*");
   }
 
   aText = aText + "/skeleton_female.nif";
@@ -880,7 +910,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   QDesktopServices::openUrl(lEntryDirectory);
 }
 
-void MFBOPresetCreator::refreshAllPreviewFields(QString)
+void MFBOPresetCreator::refreshAllPreviewFields(QString aText)
 {
   this->refreshAllPreviewFields();
 }

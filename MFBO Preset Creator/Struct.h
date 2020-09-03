@@ -18,13 +18,14 @@ namespace Struct
   struct Settings
   {
   public:
-    ApplicationLanguage language{ApplicationLanguage::English};
+    GUITheme appTheme{GUITheme::WindowsVista};
+    CBBE3BBBVersion defaultMainWindowCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
     QString fontFamily{"MS Shell Dlg 2"};
     int fontSize{11};
-    GUITheme appTheme{GUITheme::WindowsVista};
-    int mainWindowWidth{800};
+    ApplicationLanguage language{ApplicationLanguage::English};
+    WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
+    CBBE3BBBVersion defaultRetargetingToolCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
     int mainWindowHeight{600};
-    CBBE3BBBVersion defaultMainWindowCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
-    CBBE3BBBVersion defaultUpgradeToolCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
+    int mainWindowWidth{800};
   };
 }

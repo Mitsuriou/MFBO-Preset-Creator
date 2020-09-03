@@ -16,7 +16,7 @@ UpgraderTool::UpgraderTool(QWidget* parent)
 
 void UpgraderTool::closeEvent(QCloseEvent* aEvent)
 {
-  auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the CBBE 3BBB Version [Up/Down]grader Tool?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+  auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the CBBE 3BBB Version Retargeting Tool?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
 
   if (lResult != QMessageBox::Yes)
   {
@@ -34,7 +34,7 @@ void UpgraderTool::setWindowProperties()
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setMinimumWidth(650);
-  this->setWindowTitle(tr("CBBE 3BBB Version [Up/Down]grader Tool"));
+  this->setWindowTitle(tr("CBBE 3BBB Version Retargeting Tool"));
 }
 
 void UpgraderTool::initializeGUI()
@@ -53,7 +53,7 @@ void UpgraderTool::setupInterface(QGridLayout& aLayout)
 
   auto lCbbe3BBBVersionSelector{new QComboBox()};
   lCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
-  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultUpgradeToolCBBE3BBBVersion));
+  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
 
@@ -112,7 +112,7 @@ void UpgraderTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lBackupPathsPreview, 5, 1, 1, 2);
 
   // Generate button
-  auto lGenerateButton{new QPushButton(tr("[Up/Down]grade all the files under the input path"))};
+  auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"))};
   aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding
@@ -230,7 +230,7 @@ void UpgraderTool::launchUpDownGradeProcess()
   // Check if the input path has been given by the user
   if (lRootDir.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no path path given to [up/down]grade."));
+    Utils::displayWarningMessage(tr("Error: no path path given for the retargeting."));
     return;
   }
 

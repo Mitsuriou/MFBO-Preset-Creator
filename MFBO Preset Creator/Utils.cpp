@@ -225,6 +225,11 @@ void Utils::checkSettingsFileExistence()
   {
     // Create a default setting file if it does not exist
     Struct::Settings lSettings;
+
+    // Get the user's system language by default
+    auto lSystemLanguage{QLocale::languageToString(QLocale::system().language())};
+    lSettings.language = Utils::getStructLanguageFromName(lSystemLanguage);
+
     Utils::saveSettingsToFile(lSettings);
   }
 }
@@ -303,6 +308,27 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.mainWindowHeight = lJsonObject["windowHeight"].toInt();
   }
 
+  // Main window opening mode
+  if (lJsonObject.contains("main_window_opening_mode") && lJsonObject["main_window_opening_mode"].isDouble())
+  {
+    auto lFoundWindowOpeningMode = lJsonObject["main_window_opening_mode"].toInt();
+
+    switch (lFoundWindowOpeningMode)
+    {
+      case static_cast<int>(WindowOpeningMode::Minimized):
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Minimized;
+        break;
+      case static_cast<int>(WindowOpeningMode::Windowed):
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
+        break;
+      case static_cast<int>(WindowOpeningMode::Maximized):
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Maximized;
+        break;
+      default:
+        lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
+    }
+  }
+
   // Default CBBE 3BBB Version
   if (lJsonObject.contains("default_3bbb_version") && lJsonObject["default_3bbb_version"].isDouble())
   {
@@ -324,24 +350,24 @@ Struct::Settings Utils::loadSettingsFromFile()
     }
   }
 
-  // Default upgrade or downgrade CBBE 3BBB Version
-  if (lJsonObject.contains("up_downgrade_3bbb_version") && lJsonObject["up_downgrade_3bbb_version"].isDouble())
+  // Default Retargeting Tool CBBE 3BBB Version
+  if (lJsonObject.contains("retargeting_tool_3bbb_version") && lJsonObject["retargeting_tool_3bbb_version"].isDouble())
   {
-    auto lFoundVersion = lJsonObject["up_downgrade_3bbb_version"].toInt();
+    auto lFoundVersion = lJsonObject["retargeting_tool_3bbb_version"].toInt();
 
     switch (lFoundVersion)
     {
       case static_cast<int>(CBBE3BBBVersion::Version1_40):
-        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
         break;
       case static_cast<int>(CBBE3BBBVersion::Version1_50):
-        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
         break;
       case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
         break;
       default:
-        lSettings.defaultUpgradeToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
+        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
     }
   }
 
@@ -372,7 +398,8 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   lObj["windowWidth"] = aSettings.mainWindowWidth;
   lObj["windowHeight"] = aSettings.mainWindowHeight;
   lObj["default_3bbb_version"] = static_cast<int>(aSettings.defaultMainWindowCBBE3BBBVersion);
-  lObj["up_downgrade_3bbb_version"] = static_cast<int>(aSettings.defaultUpgradeToolCBBE3BBBVersion);
+  lObj["retargeting_tool_3bbb_version"] = static_cast<int>(aSettings.defaultRetargetingToolCBBE3BBBVersion);
+  lObj["main_window_opening_mode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
 
   return lObj;
 }
@@ -385,6 +412,16 @@ QStringList Utils::getCBBE3BBBVersions()
   lVersions.append(QString("1.51 - 1.52"));
 
   return lVersions;
+}
+
+QStringList Utils::getWindowOpeningModes()
+{
+  QStringList lWindowModes;
+  lWindowModes.append(QString("Minimized"));
+  lWindowModes.append(QString("Windowed"));
+  lWindowModes.append(QString("Maximized"));
+
+  return lWindowModes;
 }
 
 QString Utils::getShortLanguageNameFromEnum(int aEnumValue)
@@ -413,4 +450,20 @@ QString Utils::getLongLanguageNameFromEnum(int aEnumValue)
       return "English";
       break;
   }
+}
+
+ApplicationLanguage Utils::getStructLanguageFromName(QString aShortName)
+{
+  if (aShortName.compare("English") == 0)
+  {
+    return ApplicationLanguage::English;
+  }
+
+  if (aShortName.compare("French") == 0)
+  {
+    return ApplicationLanguage::French;
+  }
+
+  // Default language if no supported language has been found
+  return ApplicationLanguage::English;
 }

@@ -17,3 +17,10 @@ enum class GUITheme
 {
   WindowsVista = 0
 };
+
+enum class WindowOpeningMode
+{
+  Minimized = 0,
+  Windowed = 1,
+  Maximized = 2
+};
