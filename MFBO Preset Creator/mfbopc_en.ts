@@ -35,7 +35,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="96"/>
-        <location filename="MFBOPresetCreator.cpp" line="1037"/>
+        <location filename="MFBOPresetCreator.cpp" line="1038"/>
         <source>About</source>
         <translation></translation>
     </message>
@@ -171,143 +171,143 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="513"/>
+        <location filename="MFBOPresetCreator.cpp" line="514"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="615"/>
+        <location filename="MFBOPresetCreator.cpp" line="616"/>
         <source>Error while evaluating the data.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="701"/>
+        <location filename="MFBOPresetCreator.cpp" line="702"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="708"/>
+        <location filename="MFBOPresetCreator.cpp" line="709"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="718"/>
-        <location filename="MFBOPresetCreator.cpp" line="724"/>
+        <location filename="MFBOPresetCreator.cpp" line="719"/>
+        <location filename="MFBOPresetCreator.cpp" line="725"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="718"/>
+        <location filename="MFBOPresetCreator.cpp" line="719"/>
         <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="724"/>
+        <location filename="MFBOPresetCreator.cpp" line="725"/>
         <source>&quot; already exists on your computer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="731"/>
+        <location filename="MFBOPresetCreator.cpp" line="732"/>
         <source>Error: no path has been given for the meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="738"/>
+        <location filename="MFBOPresetCreator.cpp" line="739"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="745"/>
+        <location filename="MFBOPresetCreator.cpp" line="746"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide software).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="757"/>
-        <location filename="MFBOPresetCreator.cpp" line="849"/>
+        <location filename="MFBOPresetCreator.cpp" line="758"/>
+        <location filename="MFBOPresetCreator.cpp" line="850"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="757"/>
-        <location filename="MFBOPresetCreator.cpp" line="849"/>
+        <location filename="MFBOPresetCreator.cpp" line="758"/>
+        <location filename="MFBOPresetCreator.cpp" line="850"/>
         <source>&quot; already exists.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="777"/>
+        <location filename="MFBOPresetCreator.cpp" line="778"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="786"/>
-        <location filename="MFBOPresetCreator.cpp" line="794"/>
+        <location filename="MFBOPresetCreator.cpp" line="787"/>
+        <location filename="MFBOPresetCreator.cpp" line="795"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="811"/>
-        <location filename="MFBOPresetCreator.cpp" line="830"/>
-        <location filename="MFBOPresetCreator.cpp" line="886"/>
-        <location filename="MFBOPresetCreator.cpp" line="913"/>
+        <location filename="MFBOPresetCreator.cpp" line="812"/>
+        <location filename="MFBOPresetCreator.cpp" line="831"/>
+        <location filename="MFBOPresetCreator.cpp" line="887"/>
+        <location filename="MFBOPresetCreator.cpp" line="914"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="811"/>
-        <location filename="MFBOPresetCreator.cpp" line="830"/>
-        <location filename="MFBOPresetCreator.cpp" line="886"/>
-        <location filename="MFBOPresetCreator.cpp" line="913"/>
+        <location filename="MFBOPresetCreator.cpp" line="812"/>
+        <location filename="MFBOPresetCreator.cpp" line="831"/>
+        <location filename="MFBOPresetCreator.cpp" line="887"/>
+        <location filename="MFBOPresetCreator.cpp" line="914"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="836"/>
+        <location filename="MFBOPresetCreator.cpp" line="837"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="861"/>
-        <location filename="MFBOPresetCreator.cpp" line="869"/>
+        <location filename="MFBOPresetCreator.cpp" line="862"/>
+        <location filename="MFBOPresetCreator.cpp" line="870"/>
         <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="919"/>
+        <location filename="MFBOPresetCreator.cpp" line="920"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="933"/>
+        <location filename="MFBOPresetCreator.cpp" line="934"/>
         <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="939"/>
+        <location filename="MFBOPresetCreator.cpp" line="940"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="950"/>
+        <location filename="MFBOPresetCreator.cpp" line="951"/>
         <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="953"/>
+        <location filename="MFBOPresetCreator.cpp" line="954"/>
         <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="956"/>
+        <location filename="MFBOPresetCreator.cpp" line="957"/>
         <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="959"/>
+        <location filename="MFBOPresetCreator.cpp" line="960"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="963"/>
+        <location filename="MFBOPresetCreator.cpp" line="964"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
@@ -328,106 +328,6 @@
         <location filename="MFBOPresetCreator.ui" line="24"/>
         <location filename="MFBOPresetCreator.ui" line="29"/>
         <source>Exit</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>Settings</name>
-    <message>
-        <location filename="Settings.cpp" line="31"/>
-        <source>Closing</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="31"/>
-        <source>Are you sure you want to close the Settings window without saving?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="54"/>
-        <source>Settings</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="77"/>
-        <source>Language:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="81"/>
-        <location filename="Settings.cpp" line="120"/>
-        <source>English</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="82"/>
-        <location filename="Settings.cpp" line="121"/>
-        <source>Français</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="90"/>
-        <source>Font family:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="98"/>
-        <source>Font size:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="107"/>
-        <source>Application Theme:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="226"/>
-        <source>Application settings changed</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="226"/>
-        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="116"/>
-        <source>Window opening mode:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="129"/>
-        <source>Default main window width:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="138"/>
-        <source>Default main window height:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="147"/>
-        <source>Default selected CBBE 3BBB version (main window):</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="156"/>
-        <source>Default selected CBBE 3BBB version (Retargeting tool):</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="168"/>
-        <source>Restore default without saving</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="171"/>
-        <source>Save and close</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="175"/>
-        <source>Close without saving</source>
         <translation></translation>
     </message>
 </context>
@@ -648,6 +548,106 @@
     <message>
         <location filename="RetargetingTool.cpp" line="265"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>Settings</name>
+    <message>
+        <location filename="Settings.cpp" line="31"/>
+        <source>Closing</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="31"/>
+        <source>Are you sure you want to close the Settings window without saving?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="54"/>
+        <source>Settings</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="77"/>
+        <source>Language:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="81"/>
+        <location filename="Settings.cpp" line="122"/>
+        <source>English</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="82"/>
+        <location filename="Settings.cpp" line="123"/>
+        <source>Français</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="90"/>
+        <source>Font family:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="100"/>
+        <source>Font size:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="109"/>
+        <source>Application Theme:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="235"/>
+        <source>Application settings changed</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="235"/>
+        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="118"/>
+        <source>Window opening mode:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="131"/>
+        <source>Default main window width:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="140"/>
+        <source>Default main window height:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="149"/>
+        <source>Default selected CBBE 3BBB version (main window):</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="158"/>
+        <source>Default selected CBBE 3BBB version (Retargeting tool):</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="170"/>
+        <source>Restore default without saving</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="175"/>
+        <source>Save and close</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="181"/>
+        <source>Close without saving</source>
         <translation></translation>
     </message>
 </context>
