@@ -40,6 +40,11 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   }
 }
 
+void Settings::reject()
+{
+  this->close();
+}
+
 void Settings::setWindowProperties()
 {
   this->setModal(true);
@@ -85,9 +90,11 @@ void Settings::setupInterface(QGridLayout& aLayout)
   auto lFontFamilyLabel{new QLabel(tr("Font family:"))};
   aLayout.addWidget(lFontFamilyLabel, 1, 0);
 
-  auto lFontFamilyInput{new QLineEdit("")};
-  lFontFamilyInput->setObjectName(QString("font_family"));
-  aLayout.addWidget(lFontFamilyInput, 1, 1);
+  auto lFontFamilySelector{new QComboBox()};
+  QFontDatabase lFontDB;
+  lFontFamilySelector->addItems(lFontDB.families(QFontDatabase::WritingSystem::Any));
+  lFontFamilySelector->setObjectName(QString("font_family"));
+  aLayout.addWidget(lFontFamilySelector, 1, 1);
 
   // FONT SIZE
   auto lFontSizeLabel{new QLabel(tr("Font size:"))};
@@ -102,11 +109,8 @@ void Settings::setupInterface(QGridLayout& aLayout)
   auto lGUIThemeLabel{new QLabel(tr("Application Theme:"))};
   aLayout.addWidget(lGUIThemeLabel, 3, 0);
 
-  QStringList lThemes;
-  lThemes.append(QString(tr("Windows Vista (Default)")));
-
   auto lGUIThemeSelector{new QComboBox()};
-  lGUIThemeSelector->addItems(lThemes);
+  lGUIThemeSelector->addItems(Utils::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   aLayout.addWidget(lGUIThemeSelector, 3, 1);
 
@@ -164,16 +168,19 @@ void Settings::setupButtons(QGridLayout& aLayout)
 {
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default without saving"))};
+  lRestoreDefaultButton->setAutoDefault(false);
+  lRestoreDefaultButton->setDefault(false);
   aLayout.addWidget(lRestoreDefaultButton, 0, 0);
 
   auto lSaveButton{new QPushButton(tr("Save and close"))};
   lSaveButton->setObjectName("save_close");
+  lSaveButton->setAutoDefault(false);
+  lSaveButton->setDefault(false);
   aLayout.addWidget(lSaveButton, 0, 1);
 
   auto lCloseButton{new QPushButton(tr("Close without saving"))};
-  lCloseButton->setAutoDefault(true);
-  lCloseButton->setDefault(true);
-  lCloseButton->autoDefault();
+  lCloseButton->setAutoDefault(false);
+  lCloseButton->setDefault(false);
   aLayout.addWidget(lCloseButton, 0, 2);
 
   // Event binding
@@ -187,8 +194,10 @@ void Settings::loadSettings()
   auto lLang{this->findChild<QComboBox*>("language")};
   lLang->setCurrentIndex(static_cast<int>(mSettings.language));
 
-  auto lFontFamily{this->findChild<QLineEdit*>("font_family")};
-  lFontFamily->setText(mSettings.fontFamily);
+  auto lFontFamily{this->findChild<QComboBox*>("font_family")};
+  QFontDatabase lFontDB;
+  auto lFamilyFontIndex{lFontDB.families(QFontDatabase::WritingSystem::Any).indexOf(QRegularExpression(mSettings.fontFamily))};
+  lFontFamily->setCurrentIndex(lFamilyFontIndex);
 
   auto lFontSize{this->findChild<QLineEdit*>("font_size")};
   lFontSize->setText(QString::number(mSettings.fontSize));
@@ -219,9 +228,11 @@ void Settings::refreshUI()
   this->setFont(lFont);
   this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
 
+  emit refreshMainUI(mSettings);
+
   if (mMustRebootMainApp)
   {
-    auto lResult{QMessageBox::question(this, tr("Application language changed"), tr("Settings saved. You changed the language of the application. You need to restart the latter to apply the chosen language. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes)};
+    auto lResult{QMessageBox::question(this, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
 
     if (lResult == QMessageBox::Yes)
     {
@@ -229,7 +240,6 @@ void Settings::refreshUI()
       qApp->exit(Settings::EXIT_CODE_REBOOT);
     }
   }
-  emit refreshMainUI(mSettings);
 }
 
 void Settings::restoreDefaultSettings()
@@ -243,7 +253,7 @@ void Settings::restoreDefaultSettings()
 void Settings::saveSettings()
 {
   auto lLang{this->findChild<QComboBox*>("language")->currentIndex()};
-  auto lFontFamily{this->findChild<QLineEdit*>("font_family")->text().trimmed()};
+  auto lFontFamily{this->findChild<QComboBox*>("font_family")->currentText().trimmed()};
   auto lFontSize{this->findChild<QLineEdit*>("font_size")->text().trimmed()};
   auto lAppTheme{this->findChild<QComboBox*>("app_theme")->currentIndex()};
   auto lWindowWidth{this->findChild<QLineEdit*>("window_width")->text().trimmed()};
@@ -285,6 +295,18 @@ void Settings::saveSettings()
   {
     case static_cast<int>(GUITheme::WindowsVista):
       lSettings.appTheme = GUITheme::WindowsVista;
+      break;
+    case static_cast<int>(GUITheme::PaperLight):
+      lSettings.appTheme = GUITheme::PaperLight;
+      break;
+    case static_cast<int>(GUITheme::PaperDark):
+      lSettings.appTheme = GUITheme::PaperDark;
+      break;
+    case static_cast<int>(GUITheme::PaperWhiteMono):
+      lSettings.appTheme = GUITheme::PaperWhiteMono;
+      break;
+    case static_cast<int>(GUITheme::PaperBlackMono):
+      lSettings.appTheme = GUITheme::PaperBlackMono;
       break;
     default:
       lSettings.appTheme = GUITheme::WindowsVista;
@@ -354,7 +376,7 @@ void Settings::saveSettings()
       break;
   }
 
-  mMustRebootMainApp = mSettings.language != lSettings.language;
+  mMustRebootMainApp = (mSettings.language != lSettings.language) || (mSettings.appTheme != lSettings.appTheme);
 
   Utils::saveSettingsToFile(lSettings);
   mSettings = lSettings;

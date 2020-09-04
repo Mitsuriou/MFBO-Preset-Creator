@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Utils.h"
-#include "UpgraderTool.h"
+#include "RetargetingTool.h"
 #include "Settings.h"
 
 #include <QtWidgets/QMainWindow>
@@ -25,7 +25,12 @@
 #include <QTextStream>
 #include <QCloseEvent>
 #include <QScreen>
-//#include <QPixmap>
+#include <QApplication>
+#include <QRect>
+#include <QDesktopWidget>
+
+#include "windows.h"
+#include "WinUser.h"
 
 #include "ui_MFBOPresetCreator.h"
 
@@ -52,6 +57,7 @@ private:
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
   void showWindow();
+  void applyStyleSheet();
 
 public slots:
   void refreshUI(Struct::Settings aSettings);
@@ -71,7 +77,7 @@ private slots:
 
   // Menu dialogs
   void quickRelaunch();
-  void launchUpgraderTool();
+  void launchRetargetingTool();
   void showSettingsDialog();
   void showAboutDialog();
 };

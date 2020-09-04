@@ -88,6 +88,21 @@ bool Utils::copyRecursively(QString sourceFolder, QString destFolder)
   return true;
 }
 
+bool Utils::isThemeDark(GUITheme aTheme)
+{
+  switch (aTheme)
+  {
+    case GUITheme::PaperDark:
+    case GUITheme::PaperBlackMono:
+      return true;
+    case GUITheme::WindowsVista:
+    case GUITheme::PaperLight:
+    case GUITheme::PaperWhiteMono:
+    default:
+      return false;
+  }
+}
+
 QString Utils::getPresetNameFromXMLFile(QString aPath)
 {
   QFile lReadFile(aPath);
@@ -290,6 +305,18 @@ Struct::Settings Utils::loadSettingsFromFile()
       case static_cast<int>(GUITheme::WindowsVista):
         lSettings.appTheme = GUITheme::WindowsVista;
         break;
+      case static_cast<int>(GUITheme::PaperLight):
+        lSettings.appTheme = GUITheme::PaperLight;
+        break;
+      case static_cast<int>(GUITheme::PaperDark):
+        lSettings.appTheme = GUITheme::PaperDark;
+        break;
+      case static_cast<int>(GUITheme::PaperWhiteMono):
+        lSettings.appTheme = GUITheme::PaperWhiteMono;
+        break;
+      case static_cast<int>(GUITheme::PaperBlackMono):
+        lSettings.appTheme = GUITheme::PaperBlackMono;
+        break;
       default:
         lSettings.appTheme = GUITheme::WindowsVista;
         break;
@@ -422,6 +449,18 @@ QStringList Utils::getWindowOpeningModes()
   lWindowModes.append(QString("Maximized"));
 
   return lWindowModes;
+}
+
+QStringList Utils::getAppThemes()
+{
+  QStringList lAppThemes;
+  lAppThemes.append(QString("Windows Vista"));
+  lAppThemes.append(QString("Paper Light by 6788"));
+  lAppThemes.append(QString("Paper Dark by 6788"));
+  lAppThemes.append(QString("Paper White Mono"));
+  lAppThemes.append(QString("Paper Black Mono"));
+
+  return lAppThemes;
 }
 
 QString Utils::getShortLanguageNameFromEnum(int aEnumValue)

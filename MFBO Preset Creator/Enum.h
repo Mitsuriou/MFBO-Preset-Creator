@@ -15,7 +15,11 @@ enum class ApplicationLanguage
 
 enum class GUITheme
 {
-  WindowsVista = 0
+  WindowsVista = 0,
+  PaperLight = 1,
+  PaperDark = 2,
+  PaperWhiteMono = 3,
+  PaperBlackMono = 4
 };
 
 enum class WindowOpeningMode

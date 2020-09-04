@@ -27,6 +27,8 @@
 #include <QPair>
 #include <QIntValidator>
 #include <QTranslator>
+#include <QFontDatabase>
+#include <QRegularExpression>
 
 class Settings : public QDialog
 {
@@ -38,6 +40,7 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
+  void reject();
 
 private:
   Struct::Settings mSettings;
