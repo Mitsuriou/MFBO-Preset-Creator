@@ -58,6 +58,9 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>xcopy /C /Y /R "$(TargetPath)"  "$(SolutionDir)client release\$(TargetFileName)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>msvc2019_64</QtInstall>

@@ -28,6 +28,11 @@ void UpgraderTool::closeEvent(QCloseEvent* aEvent)
   }
 }
 
+void UpgraderTool::reject()
+{
+  this->close();
+}
+
 void UpgraderTool::setWindowProperties()
 {
   this->setModal(true);

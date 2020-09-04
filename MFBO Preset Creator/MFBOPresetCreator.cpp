@@ -353,20 +353,29 @@ void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 void MFBOPresetCreator::showWindow()
 {
   // Set the size of the window
-  QScreen* lScreen{QGuiApplication::primaryScreen()};
-  QRect lScreenGeom{lScreen->geometry()};
+  auto lDesktopScreen{QGuiApplication::primaryScreen()};
+  QRect lScreenGeom{lDesktopScreen->availableGeometry()};
 
   // If the window size is correct for the user's screen
   if (mSettings.mainWindowWidth < lScreenGeom.width() && mSettings.mainWindowHeight < lScreenGeom.height())
   {
     // resize the window
-    this->resize(mSettings.mainWindowWidth, mSettings.mainWindowHeight);
+    this->resize(mSettings.mainWindowWidth - 2, mSettings.mainWindowHeight - 62);
   }
 
   // Select the main window opening mode
   if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Minimized)
   {
     this->showMinimized();
+
+    // Make the icon in the taskbar blink
+    FLASHWINFO finfo;
+    finfo.cbSize = sizeof(FLASHWINFO);
+    finfo.hwnd = (HWND)this->winId();
+    finfo.uCount = 5;
+    finfo.dwTimeout = 500;
+    finfo.dwFlags = FLASHW_ALL;
+    FlashWindowEx(&finfo);
   }
   else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Maximized)
   {
@@ -376,9 +385,13 @@ void MFBOPresetCreator::showWindow()
   {
     this->show();
   }
+
+  auto lPosX{(lScreenGeom.width() - this->frameGeometry().width()) / 2 + 1};
+  auto lPosY{(lScreenGeom.height() - this->frameGeometry().height()) / 2 + 31};
+  this->setGeometry(QRect(lPosX, lPosY, this->geometry().width(), this->geometry().height()));
 }
 
-void MFBOPresetCreator::applyStyleSheet(Struct::Settings aSettings)
+void MFBOPresetCreator::applyStyleSheet()
 {
   auto lQSSFileName{QString("")};
 
@@ -419,7 +432,8 @@ void MFBOPresetCreator::applyStyleSheet(Struct::Settings aSettings)
 
 void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
 {
-  this->applyStyleSheet(aSettings);
+  // Apply the chosen theme
+  this->applyStyleSheet();
 
   // Set the font properties
   QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);

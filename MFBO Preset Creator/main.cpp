@@ -5,6 +5,7 @@
 #include <QtWidgets/QApplication>
 #include <QIcon>
 #include <QFile>
+#include <QLibraryInfo>
 
 int main(int argc, char* argv[])
 {
@@ -18,12 +19,19 @@ int main(int argc, char* argv[])
     lMainApplication.setApplicationVersion(Utils::getProgramVersion());
     lMainApplication.setWindowIcon(QIcon(":/software/icon"));
 
-    // Language and translation
+    // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(Utils::loadSettingsFromFile().language))};
     auto lTranslator{new QTranslator()};
     if (lTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))
     {
       lMainApplication.installTranslator(lTranslator);
+    }
+
+    // Apply default Qt language and translation
+    auto lQtBaseTranslator{new QTranslator()};
+    if (lQtBaseTranslator->load("qt_" + lLanguageToSet + ".qm", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    {
+      lMainApplication.installTranslator(lQtBaseTranslator);
     }
 
     // Create and show the main window
