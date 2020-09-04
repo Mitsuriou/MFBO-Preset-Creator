@@ -153,7 +153,6 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="307"/>
         <source>Output directory path:</source>
-        <oldsource>Output path:</oldsource>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
@@ -164,7 +163,6 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="320"/>
         <source>Output subdirectory name/path:</source>
-        <oldsource>Mod subdirectory name/path:</oldsource>
         <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
@@ -175,7 +173,6 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="513"/>
         <source>No path given or invalid path given.</source>
-        <oldsource>The path seems to be incorrect</oldsource>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
@@ -217,13 +214,11 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="738"/>
         <source>Error: no name given for the BodySlide files.</source>
-        <oldsource>Error: no name given for the bodyslide files.</oldsource>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="745"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide software).</source>
-        <oldsource>Error: no name given for the slider sets (names that appear in the Bodyslide software).</oldsource>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans le logiciel BodySlide).</translation>
     </message>
     <message>
@@ -268,7 +263,6 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="836"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
-        <oldsource>Error while trying to parse the XML Bodyslide file.</oldsource>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
     </message>
     <message>
@@ -280,7 +274,6 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="919"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
-        <oldsource>Error while trying to parse the OSP Bodyslide file.</oldsource>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
@@ -306,7 +299,6 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="956"/>
         <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <oldsource>Every file has been correctly generated, for the version 1.51 of CBBE 3BBB. You can now exit the program or create another conversion! :)</oldsource>
         <translation>Tous les fichiers ont été correctement générés, pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
@@ -440,232 +432,221 @@
     </message>
 </context>
 <context>
-    <name>UpgraderTool</name>
+    <name>RetargetingTool</name>
     <message>
-        <location filename="UpgraderTool.cpp" line="19"/>
+        <location filename="RetargetingTool.cpp" line="19"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="42"/>
+        <location filename="RetargetingTool.cpp" line="42"/>
         <source>CBBE 3BBB Version Retargeting Tool</source>
-        <oldsource>CBBE 3BBB Version [Up/Down]grader Tool</oldsource>
         <translation>Outil de Re-ciblage de Version de CBBE 3BBB</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="56"/>
+        <location filename="RetargetingTool.cpp" line="56"/>
         <source>Targeted CBBE 3BBB version:</source>
         <translation>Version de CBBE 3BBB ciblée :</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="66"/>
+        <location filename="RetargetingTool.cpp" line="66"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="75"/>
-        <location filename="UpgraderTool.cpp" line="97"/>
+        <location filename="RetargetingTool.cpp" line="75"/>
+        <location filename="RetargetingTool.cpp" line="97"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="79"/>
+        <location filename="RetargetingTool.cpp" line="79"/>
         <source>Keep a backup?</source>
         <translation>Garder un backup ?</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="82"/>
+        <location filename="RetargetingTool.cpp" line="82"/>
         <source>You should always check this box to avoid any data loss or corruption.</source>
         <translation>Vous devriez toujours avoir cette case cochée pour éviter de perdre ou de corrompre des données.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="87"/>
+        <location filename="RetargetingTool.cpp" line="87"/>
         <source>Backup directory path:</source>
-        <oldsource>Backup path:</oldsource>
         <translation>Emplacement du répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="102"/>
+        <location filename="RetargetingTool.cpp" line="102"/>
         <source>Backup subdirectory name/path:</source>
         <translation>Nom/emplacement du répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="111"/>
+        <location filename="RetargetingTool.cpp" line="111"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="274"/>
+        <location filename="RetargetingTool.cpp" line="274"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation>Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="291"/>
+        <location filename="RetargetingTool.cpp" line="291"/>
         <source>Cancel treatment</source>
-        <oldsource>Cancel Treatment</oldsource>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="320"/>
+        <location filename="RetargetingTool.cpp" line="320"/>
         <source>Parsing XML files. Please wait.</source>
-        <oldsource>Parsing XML files. Please Wait.</oldsource>
         <translation>Analyse des fichiers XML. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="330"/>
-        <location filename="UpgraderTool.cpp" line="376"/>
-        <location filename="UpgraderTool.cpp" line="532"/>
+        <location filename="RetargetingTool.cpp" line="330"/>
+        <location filename="RetargetingTool.cpp" line="376"/>
+        <location filename="RetargetingTool.cpp" line="532"/>
         <source>Process aborted by user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="316"/>
+        <location filename="RetargetingTool.cpp" line="316"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation>Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le dévéloppeur.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="351"/>
+        <location filename="RetargetingTool.cpp" line="351"/>
         <source>Error while parsing the XML file &quot;</source>
         <translation>Erreur lors de l&apos;analyse du fichier XML &quot;</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="586"/>
-        <location filename="UpgraderTool.cpp" line="594"/>
+        <location filename="RetargetingTool.cpp" line="586"/>
+        <location filename="RetargetingTool.cpp" line="594"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation>Le fichier XML n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="463"/>
-        <location filename="UpgraderTool.cpp" line="502"/>
-        <location filename="UpgraderTool.cpp" line="612"/>
-        <location filename="UpgraderTool.cpp" line="632"/>
+        <location filename="RetargetingTool.cpp" line="463"/>
+        <location filename="RetargetingTool.cpp" line="502"/>
+        <location filename="RetargetingTool.cpp" line="612"/>
+        <location filename="RetargetingTool.cpp" line="632"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="463"/>
-        <location filename="UpgraderTool.cpp" line="502"/>
-        <location filename="UpgraderTool.cpp" line="612"/>
-        <location filename="UpgraderTool.cpp" line="632"/>
+        <location filename="RetargetingTool.cpp" line="463"/>
+        <location filename="RetargetingTool.cpp" line="502"/>
+        <location filename="RetargetingTool.cpp" line="612"/>
+        <location filename="RetargetingTool.cpp" line="632"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="638"/>
+        <location filename="RetargetingTool.cpp" line="638"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
-        <oldsource>Error while trying to parse the XML Bodyslide file.</oldsource>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="402"/>
+        <location filename="RetargetingTool.cpp" line="402"/>
         <source>Error while parsing the OSP file &quot;</source>
         <translation>Erreur lors de l&apos;analyse du fichier OSP &quot;</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="19"/>
+        <location filename="RetargetingTool.cpp" line="19"/>
         <source>Are you sure you want to close the CBBE 3BBB Version Retargeting Tool?</source>
         <translation>Êtes-vous sûr de vouloir quitter l&apos;Outil de Re-ciblage de Version de CBBE 3BBB ?</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="351"/>
-        <location filename="UpgraderTool.cpp" line="402"/>
+        <location filename="RetargetingTool.cpp" line="351"/>
+        <location filename="RetargetingTool.cpp" line="402"/>
         <source>&quot;. Aborting process.</source>
         <translation>&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="360"/>
+        <location filename="RetargetingTool.cpp" line="360"/>
         <source>Parsing and patching OSP files. Please wait.</source>
-        <oldsource>Parsing and patching OSP files. Please Wait.</oldsource>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="422"/>
+        <location filename="RetargetingTool.cpp" line="422"/>
         <source>No data found from the associated XML file. The file </source>
         <translation>Aucune donnée trouvée dans le fichier XML associé. Le fichier </translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="422"/>
+        <location filename="RetargetingTool.cpp" line="422"/>
         <source> was not modified.</source>
         <translation> n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="437"/>
-        <location filename="UpgraderTool.cpp" line="445"/>
+        <location filename="RetargetingTool.cpp" line="437"/>
+        <location filename="RetargetingTool.cpp" line="445"/>
         <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="508"/>
+        <location filename="RetargetingTool.cpp" line="508"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
-        <oldsource>Error while trying to parse the OSP Bodyslide file.</oldsource>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="522"/>
+        <location filename="RetargetingTool.cpp" line="522"/>
         <source>Patching XML files. Please wait.</source>
-        <oldsource>Patching XML files. Please Wait.</oldsource>
         <translation>Patch des fichiers XML. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="558"/>
+        <location filename="RetargetingTool.cpp" line="558"/>
         <source>Since the associated OSP file has not been modified, the file </source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier </translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="558"/>
+        <location filename="RetargetingTool.cpp" line="558"/>
         <source> has not been modified.</source>
         <translation> n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="653"/>
+        <location filename="RetargetingTool.cpp" line="653"/>
         <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.40 et plus bas de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="656"/>
+        <location filename="RetargetingTool.cpp" line="656"/>
         <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.50 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="659"/>
+        <location filename="RetargetingTool.cpp" line="659"/>
         <source>All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)</source>
-        <oldsource>All the files have been re-targeted for the version 1.51 of CBBE 3BBB. You can now exit this window! :)</oldsource>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="662"/>
+        <location filename="RetargetingTool.cpp" line="662"/>
         <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version sélectionnée de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="666"/>
+        <location filename="RetargetingTool.cpp" line="666"/>
         <source>Upgrade or downgarde successful</source>
         <translation>Re-ciblage réussi</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="120"/>
+        <location filename="RetargetingTool.cpp" line="120"/>
         <source>Retarget all the files under the input path</source>
-        <oldsource>[Up/Down]grade all the files under the input path</oldsource>
         <translation>Re-cibler tous les fichiers sous l&apos;emplacement d&apos;entrée</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="185"/>
+        <location filename="RetargetingTool.cpp" line="185"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="238"/>
+        <location filename="RetargetingTool.cpp" line="238"/>
         <source>Error: no path path given for the retargeting.</source>
-        <oldsource>Error: no path path given to retarget.</oldsource>
         <translation>Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="258"/>
+        <location filename="RetargetingTool.cpp" line="258"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="UpgraderTool.cpp" line="265"/>
+        <location filename="RetargetingTool.cpp" line="265"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>

@@ -74,11 +74,11 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lToolsMenu);
 
   // Submenu: Upgrader
-  auto lUpgraderToolAction{new QAction()};
-  lUpgraderToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
-  lUpgraderToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-  lUpgraderToolAction->setIcon(QIcon(":/" + lIconFolder + "/arrow_up"));
-  lToolsMenu->addAction(lUpgraderToolAction);
+  auto lRetargetingToolAction{new QAction()};
+  lRetargetingToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
+  lRetargetingToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
+  lRetargetingToolAction->setIcon(QIcon(":/" + lIconFolder + "/arrow_up"));
+  lToolsMenu->addAction(lRetargetingToolAction);
 
   // Submenu: Settings
   auto lSettingsAction{new QAction()};
@@ -101,7 +101,7 @@ void MFBOPresetCreator::setupMenuBar()
   // Event binding
   connect(lQuickRelaunch, SIGNAL(triggered()), this, SLOT(quickRelaunch()));
   connect(lExitAction, SIGNAL(triggered()), this, SLOT(close()));
-  connect(lUpgraderToolAction, SIGNAL(triggered()), this, SLOT(launchUpgraderTool()));
+  connect(lRetargetingToolAction, SIGNAL(triggered()), this, SLOT(launchRetargetingTool()));
   connect(lSettingsAction, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
   connect(lAboutAction, SIGNAL(triggered()), this, SLOT(showAboutDialog()));
 }
@@ -995,9 +995,9 @@ void MFBOPresetCreator::quickRelaunch()
   qApp->exit(Settings::EXIT_CODE_REBOOT);
 }
 
-void MFBOPresetCreator::launchUpgraderTool()
+void MFBOPresetCreator::launchRetargetingTool()
 {
-  new UpgraderTool(this);
+  new RetargetingTool(this);
 }
 
 void MFBOPresetCreator::showSettingsDialog()

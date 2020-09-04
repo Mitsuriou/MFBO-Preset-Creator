@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Utils.h"
-#include "UpgraderTool.h"
+#include "RetargetingTool.h"
 #include "Settings.h"
 
 #include <QtWidgets/QMainWindow>
@@ -77,7 +77,7 @@ private slots:
 
   // Menu dialogs
   void quickRelaunch();
-  void launchUpgraderTool();
+  void launchRetargetingTool();
   void showSettingsDialog();
   void showAboutDialog();
 };

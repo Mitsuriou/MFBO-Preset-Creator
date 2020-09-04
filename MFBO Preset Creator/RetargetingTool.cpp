@@ -1,6 +1,6 @@
-﻿#include "UpgraderTool.h"
+﻿#include "RetargetingTool.h"
 
-UpgraderTool::UpgraderTool(QWidget* parent)
+RetargetingTool::RetargetingTool(QWidget* parent)
   : QDialog(parent)
   , mSettings(Utils::loadSettingsFromFile())
 {
@@ -14,7 +14,7 @@ UpgraderTool::UpgraderTool(QWidget* parent)
   this->show();
 }
 
-void UpgraderTool::closeEvent(QCloseEvent* aEvent)
+void RetargetingTool::closeEvent(QCloseEvent* aEvent)
 {
   auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the CBBE 3BBB Version Retargeting Tool?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
 
@@ -28,12 +28,12 @@ void UpgraderTool::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void UpgraderTool::reject()
+void RetargetingTool::reject()
 {
   this->close();
 }
 
-void UpgraderTool::setWindowProperties()
+void RetargetingTool::setWindowProperties()
 {
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
@@ -42,7 +42,7 @@ void UpgraderTool::setWindowProperties()
   this->setWindowTitle(tr("CBBE 3BBB Version Retargeting Tool"));
 }
 
-void UpgraderTool::initializeGUI()
+void RetargetingTool::initializeGUI()
 {
   // Main window container
   auto lMainVertical{new QGridLayout(this)};
@@ -50,7 +50,7 @@ void UpgraderTool::initializeGUI()
   this->setupInterface(*lMainVertical);
 }
 
-void UpgraderTool::setupInterface(QGridLayout& aLayout)
+void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
   // First line
   auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB version:"))};
@@ -133,7 +133,7 @@ void UpgraderTool::setupInterface(QGridLayout& aLayout)
   this->updateBackupPreview();
 }
 
-void UpgraderTool::refreshUI()
+void RetargetingTool::refreshUI()
 {
   // Set the font properties
   QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
@@ -141,14 +141,14 @@ void UpgraderTool::refreshUI()
   this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
 }
 
-void UpgraderTool::chooseInputDirectory()
+void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
   auto lPath{QFileDialog::getExistingDirectory(this, "", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
 }
 
-void UpgraderTool::chooseBackupDirectory()
+void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
   auto lPath{QFileDialog::getExistingDirectory(this, "", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
@@ -157,7 +157,7 @@ void UpgraderTool::chooseBackupDirectory()
   this->updateBackupPreview();
 }
 
-void UpgraderTool::updateBackupPreview()
+void RetargetingTool::updateBackupPreview()
 {
   // Get main directory
   auto lMainDirTextEdit{this->findChild<QLineEdit*>("backup_path_directory")};
@@ -191,7 +191,7 @@ void UpgraderTool::updateBackupPreview()
   lOutputPathsPreview->setText(lFullPath);
 }
 
-void UpgraderTool::switchBackupState()
+void RetargetingTool::switchBackupState()
 {
   auto lKeepBackup{this->findChild<QCheckBox*>("keep_backup")};
 
@@ -227,7 +227,7 @@ void UpgraderTool::switchBackupState()
   }
 }
 
-void UpgraderTool::launchUpDownGradeProcess()
+void RetargetingTool::launchUpDownGradeProcess()
 {
   auto lCBBE3BBBVersionSelected{this->findChild<QComboBox*>("cbbe_3bbb_version")->currentIndex()};
   auto lRootDir{this->findChild<QLineEdit*>("input_path_directory")->text()};

@@ -28,12 +28,12 @@
 #include <QTextStream>
 #include <QPair>
 
-class UpgraderTool : public QDialog
+class RetargetingTool : public QDialog
 {
   Q_OBJECT
 
 public:
-  UpgraderTool(QWidget* parent);
+  RetargetingTool(QWidget* parent);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

@@ -10,7 +10,7 @@
     <ClCompile Include="MFBOPresetCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UpgraderTool.cpp">
+    <ClCompile Include="RetargetingTool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Settings.cpp">
@@ -58,7 +58,7 @@
     <QtMoc Include="MFBOPresetCreator.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="UpgraderTool.h">
+    <QtMoc Include="RetargetingTool.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Utils.h">
