@@ -46,6 +46,11 @@
         <file alias="Paper Dark by 6788.qss">ressources/qss/Paper Dark by 6788.qss</file>
         <file alias="Paper Light by 6788.qss">ressources/qss/Paper Light by 6788.qss</file>
         <file alias="Paper White Mono.qss">ressources/qss/Paper White Mono.qss</file>
+        <file alias="Alexhuszagh's Breeze Dark.qss">ressources/qss/Alexhuszagh's Breeze Dark.qss</file>
+        <file alias="Alexhuszagh's Breeze Light.qss">ressources/qss/Alexhuszagh's Breeze Light.qss</file>
+        <file alias="QuasarApp's Dark Style.qss">ressources/qss/QuasarApp's Dark Style.qss</file>
+        <file alias="QuasarApp's Material Style.qss">ressources/qss/QuasarApp's Material Style.qss</file>
+        <file alias="QuasarApp's Visual Studio Dark.qss">ressources/qss/QuasarApp's Visual Studio Dark.qss</file>
     </qresource>
     <qresource prefix="/qss-ressources">
         <file>ressources/qss/Paper/Dark/backup.svg</file>
@@ -190,5 +195,130 @@
         <file>ressources/qss/Paper/Mono/White/run.svg</file>
         <file>ressources/qss/Paper/Mono/White/shortcut.svg</file>
         <file>ressources/qss/Paper/Mono/White/sort.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_closed.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_closed-on.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_open.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_open-on.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_checked.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_checked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_indeterminate.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_indeterminate_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_unchecked.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_unchecked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/close.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/close-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/close-pressed.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/down_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/down_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/down_arrow-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/hmovetoolbar.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/hsepartoolbar.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/left_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/left_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_checked.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_checked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_unchecked.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_unchecked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/right_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/right_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/sizegrip.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/spinup_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/stylesheet-branch-end.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/stylesheet-branch-end-closed.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/stylesheet-branch-end-open.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/stylesheet-branch-more.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/stylesheet-vline.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/transparent.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/undock.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/undock-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/up_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/up_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/up_arrow-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/vmovetoolbar.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Dark/vsepartoolbars.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/branch_closed.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/branch_closed-on.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/branch_open.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/branch_open-on.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_checked.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_checked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_checked-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_indeterminate.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_indeterminate_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_indeterminate-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_unchecked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_unchecked-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/close.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/close-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/close-pressed.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/down_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/down_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/down_arrow-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/hmovetoolbar.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/hsepartoolbar.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/left_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/left_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/radio_checked.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/radio_checked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/radio_checked-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/radio_unchecked_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/radio_unchecked-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/right_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/right_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/sizegrip.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/spinup_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/stylesheet-branch-end.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/stylesheet-branch-end-closed.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/stylesheet-branch-end-open.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/stylesheet-branch-more.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/stylesheet-vline.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/transparent.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/undock.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/undock-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/up_arrow.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/up_arrow_disabled.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/up_arrow-hover.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/vmovetoolbar.svg</file>
+        <file>ressources/qss/Alexhuszagh Breeze Light/vsepartoolbars.svg</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/branch_closed.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/branch_closed-on.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/branch_open.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/branch_open-on.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_checked.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_checked_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_checked_focus.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_indeterminate.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_indeterminate_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_indeterminate_focus.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_unchecked.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_unchecked_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_unchecked_focus.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/close.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/close-hover.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/close-pressed.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/down_arrow.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/down_arrow_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/Hmovetoolbar.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/Hsepartoolbar.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/left_arrow.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/left_arrow_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/radio_checked.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/radio_checked_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/radio_checked_focus.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/radio_unchecked.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/radio_unchecked_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/radio_unchecked_focus.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/right_arrow.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/right_arrow_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/sizegrip.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/stylesheet-branch-end.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/stylesheet-branch-more.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/stylesheet-vline.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/transparent.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/undock.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/up_arrow.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/up_arrow_disabled.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/Vmovetoolbar.png</file>
+        <file>ressources/qss/QuasarApp QStyleSheet/Vsepartoolbar.png</file>
     </qresource>
 </RCC>

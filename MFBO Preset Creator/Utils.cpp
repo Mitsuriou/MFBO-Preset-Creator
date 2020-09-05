@@ -94,10 +94,15 @@ bool Utils::isThemeDark(GUITheme aTheme)
   {
     case GUITheme::PaperDark:
     case GUITheme::PaperBlackMono:
+    case GUITheme::AlexhuszaghBreezeDark:
+    case GUITheme::QuasarAppDarkStyle:
+    case GUITheme::QuasarAppMaterialStyle:
+    case GUITheme::QuasarAppVisualStudioDark:
       return true;
     case GUITheme::WindowsVista:
     case GUITheme::PaperLight:
     case GUITheme::PaperWhiteMono:
+    case GUITheme::AlexhuszaghBreezeLight:
     default:
       return false;
   }
@@ -317,6 +322,21 @@ Struct::Settings Utils::loadSettingsFromFile()
       case static_cast<int>(GUITheme::PaperBlackMono):
         lSettings.appTheme = GUITheme::PaperBlackMono;
         break;
+      case static_cast<int>(GUITheme::AlexhuszaghBreezeLight):
+        lSettings.appTheme = GUITheme::AlexhuszaghBreezeLight;
+        break;
+      case static_cast<int>(GUITheme::AlexhuszaghBreezeDark):
+        lSettings.appTheme = GUITheme::AlexhuszaghBreezeDark;
+        break;
+      case static_cast<int>(GUITheme::QuasarAppDarkStyle):
+        lSettings.appTheme = GUITheme::QuasarAppDarkStyle;
+        break;
+      case static_cast<int>(GUITheme::QuasarAppMaterialStyle):
+        lSettings.appTheme = GUITheme::QuasarAppMaterialStyle;
+        break;
+      case static_cast<int>(GUITheme::QuasarAppVisualStudioDark):
+        lSettings.appTheme = GUITheme::QuasarAppVisualStudioDark;
+        break;
       default:
         lSettings.appTheme = GUITheme::WindowsVista;
         break;
@@ -459,6 +479,11 @@ QStringList Utils::getAppThemes()
   lAppThemes.append(QString("Paper Dark by 6788"));
   lAppThemes.append(QString("Paper White Mono"));
   lAppThemes.append(QString("Paper Black Mono"));
+  lAppThemes.append(QString("Alexhuszagh's Breeze Light"));
+  lAppThemes.append(QString("Alexhuszagh's Breeze Dark"));
+  lAppThemes.append(QString("QuasarApp's Dark Style"));
+  lAppThemes.append(QString("QuasarApp's Material Style"));
+  lAppThemes.append(QString("QuasarApp's Visual Studio Dark"));
 
   return lAppThemes;
 }

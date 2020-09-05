@@ -56,14 +56,14 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lFileMenu);
 
   // Submenu: relaunch the app
-  auto lQuickRelaunch{new QAction()};
+  auto lQuickRelaunch{new QAction(this)};
   lQuickRelaunch->setText(tr("Quick relaunch"));
   lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
   lQuickRelaunch->setIcon(QIcon(":/" + lIconFolder + "/reload"));
   lFileMenu->addAction(lQuickRelaunch);
 
   // Submenu: Exit
-  auto lExitAction{new QAction()};
+  auto lExitAction{new QAction(this)};
   lExitAction->setText(tr("Exit"));
   lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
   lExitAction->setIcon(QIcon(":/" + lIconFolder + "/exit"));
@@ -74,14 +74,14 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lToolsMenu);
 
   // Submenu: Upgrader
-  auto lRetargetingToolAction{new QAction()};
+  auto lRetargetingToolAction{new QAction(this)};
   lRetargetingToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
   lRetargetingToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
   lRetargetingToolAction->setIcon(QIcon(":/" + lIconFolder + "/arrow_up"));
   lToolsMenu->addAction(lRetargetingToolAction);
 
   // Submenu: Settings
-  auto lSettingsAction{new QAction()};
+  auto lSettingsAction{new QAction(this)};
   lSettingsAction->setText(tr("Settings"));
   lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
   lSettingsAction->setIcon(QIcon(":/" + lIconFolder + "/cog"));
@@ -92,7 +92,7 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lHelpMenu);
 
   // Submenu: About
-  auto lAboutAction{new QAction()};
+  auto lAboutAction{new QAction(this)};
   lAboutAction->setText(tr("About"));
   lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
   lAboutAction->setIcon(QIcon(":/" + lIconFolder + "/information"));
@@ -109,7 +109,7 @@ void MFBOPresetCreator::setupMenuBar()
 void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 {
   // CBBE body meshes group box
-  auto lMeshesGroupBox{new QGroupBox(tr("CBBE body meshes"))};
+  auto lMeshesGroupBox{new QGroupBox(tr("CBBE body meshes"), this)};
   aLayout.addWidget(lMeshesGroupBox);
 
   // Grid layout
@@ -117,68 +117,68 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // First line
-  auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"))};
+  auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"), this)};
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
-  auto lCbbe3BBBVersionSelector{new QComboBox()};
+  auto lCbbe3BBBVersionSelector{new QComboBox(this)};
   lCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1);
 
   // Second line
-  auto lMeshesPathLabel{new QLabel(tr("Meshes path:"))};
+  auto lMeshesPathLabel{new QLabel(tr("Meshes path:"), this)};
   lMeshesGridLayout->addWidget(lMeshesPathLabel, 1, 0);
 
-  auto lMeshesPathLineEdit{new QLineEdit("")};
+  auto lMeshesPathLineEdit{new QLineEdit("", this)};
   lMeshesPathLineEdit->setObjectName("meshes_path_input");
   lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1);
 
   // Third line
-  auto lLabelBeastHands{new QLabel(tr("Use beast hands?"))};
+  auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
   lMeshesGridLayout->addWidget(lLabelBeastHands, 2, 0);
 
-  auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."))};
+  auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
   lNeedBeastHands->setObjectName("use_beast_hands");
   lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1);
 
   // Fourth line
-  auto lMeshestitlePreview{new QLabel(tr("Meshes names:"))};
+  auto lMeshestitlePreview{new QLabel(tr("Meshes names:"), this)};
   lMeshesGridLayout->addWidget(lMeshestitlePreview, 3, 0, 3, 1);
 
-  auto lBodyMeshNameInput{new QLineEdit("")};
+  auto lBodyMeshNameInput{new QLineEdit("", this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
   lMeshesGridLayout->addWidget(lBodyMeshNameInput, 3, 1);
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
-  auto lFeetMeshNameInput{new QLineEdit("")};
+  auto lFeetMeshNameInput{new QLineEdit("", this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
   lMeshesGridLayout->addWidget(lFeetMeshNameInput, 4, 1);
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
-  auto lHandsMeshNameInput{new QLineEdit("")};
+  auto lHandsMeshNameInput{new QLineEdit("", this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
   lMeshesGridLayout->addWidget(lHandsMeshNameInput, 5, 1);
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
-  auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"))};
+  auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 3, 2);
 
-  auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"))};
+  auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 4, 2);
 
-  auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"))};
+  auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"), this)};
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 5, 2);
 
   // Preview
-  auto lLabelPreview{new QLabel()};
+  auto lLabelPreview{new QLabel(this)};
   lLabelPreview->setText(tr("Preview:"));
   lMeshesGridLayout->addWidget(lLabelPreview);
 
-  auto lMeshesPreview{new QLabel()};
+  auto lMeshesPreview{new QLabel(this)};
   lMeshesPreview->setObjectName("meshes_preview");
   lMeshesGridLayout->addWidget(lMeshesPreview);
 
@@ -197,7 +197,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 {
   // BodySlide defined names group box
-  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide"))};
+  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide"), this)};
   aLayout.addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -205,37 +205,37 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // First line
-  auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"))};
+  auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
   lBodyslideGridLayout->addWidget(lOSPXMLNames, 0, 0);
 
-  auto lOSPXMLNamesLineEdit{new QLineEdit("")};
+  auto lOSPXMLNamesLineEdit{new QLineEdit("", this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 0, 1);
 
   // Second line
-  auto lLabelOspXmlNames{new QLabel(tr("Preview:"))};
+  auto lLabelOspXmlNames{new QLabel(tr("Preview:"), this)};
   lBodyslideGridLayout->addWidget(lLabelOspXmlNames, 1, 0);
 
-  auto lPathsNamesOspXmlNames{new QLabel("")};
+  auto lPathsNamesOspXmlNames{new QLabel("", this)};
   lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
   lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 1, 1);
 
   // Third line
-  auto lNamesInApp{new QLabel()};
+  auto lNamesInApp{new QLabel(this)};
   lNamesInApp->setTextFormat(Qt::RichText);
   lNamesInApp->setText(tr("Preset names: &#128712;"));
   lNamesInApp->setToolTip(QString(tr("This field represents the name under which the preset will be listed in the BodySlide software.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 2, 0);
 
-  auto lNamesInAppLineEdit{new QLineEdit("")};
+  auto lNamesInAppLineEdit{new QLineEdit("", this)};
   lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 2, 1);
 
   // Fourth line
-  auto lLabelNamesInApp{new QLabel(tr("Preview:"))};
+  auto lLabelNamesInApp{new QLabel(tr("Preview:"), this)};
   lBodyslideGridLayout->addWidget(lLabelNamesInApp, 3, 0);
 
-  auto lResultNamesInApp{new QLabel("")};
+  auto lResultNamesInApp{new QLabel("", this)};
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 3, 1);
 
@@ -251,37 +251,37 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
 {
   // Custom skeleton and textures group box
-  auto lOptionsGroupBox{new QGroupBox(tr("Additional options"))};
+  auto lOptionsGroupBox{new QGroupBox(tr("Additional options"), this)};
   aLayout.addWidget(lOptionsGroupBox);
 
   auto lOptionsGridLayout{new QGridLayout(lOptionsGroupBox)};
   lOptionsGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // Skeleton
-  auto lLabelSkeleton{new QLabel("")};
+  auto lLabelSkeleton{new QLabel("", this)};
   lLabelSkeleton->setTextFormat(Qt::RichText);
   lLabelSkeleton->setText(tr("Use a custom skeleton? &#128712;"));
   lLabelSkeleton->setToolTip(QString(tr("Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
   lOptionsGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
-  auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."))};
+  auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
   lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
   lOptionsGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
 
   // Skeleton path
-  auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"))};
+  auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
   lOptionsGridLayout->addWidget(lLabelSkeletonPath, 1, 0);
 
-  auto lSkeletonPathLineEdit{new QLineEdit("")};
+  auto lSkeletonPathLineEdit{new QLineEdit("", this)};
   lSkeletonPathLineEdit->setDisabled(true);
   lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
   lOptionsGridLayout->addWidget(lSkeletonPathLineEdit, 1, 1);
 
   // Skeleton path preview
-  auto lSkeletontitlePreview{new QLabel(tr("Preview:"))};
+  auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
   lOptionsGridLayout->addWidget(lSkeletontitlePreview, 2, 0);
 
-  auto lSkeletonPathsPreview{new QLabel("")};
+  auto lSkeletonPathsPreview{new QLabel("", this)};
   lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
   lOptionsGridLayout->addWidget(lSkeletonPathsPreview, 2, 1);
 
@@ -296,7 +296,7 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
 void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 {
   // Output group box
-  auto lOutputGroupBox{new QGroupBox(tr("Output"))};
+  auto lOutputGroupBox{new QGroupBox(tr("Output"), this)};
   aLayout.addWidget(lOutputGroupBox);
 
   // Grid layout
@@ -304,31 +304,31 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
 
   // First line
-  auto lOutputPathLabel{new QLabel(tr("Output directory path:"))};
+  auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
   lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
 
-  auto lOutputPathLineEdit{new QLineEdit("")};
+  auto lOutputPathLineEdit{new QLineEdit("", this)};
   lOutputPathLineEdit->setReadOnly(true);
   lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lOutputPathLineEdit->setObjectName("output_path_directory");
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
-  auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."))};
+  auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Second line
-  auto lLabelSubDirectoryPath{new QLabel(tr("Output subdirectory name/path:"))};
+  auto lLabelSubDirectoryPath{new QLabel(tr("Output subdirectory name/path:"), this)};
   lOutputGridLayout->addWidget(lLabelSubDirectoryPath, 1, 0);
 
-  auto lOutputSubpathLineEdit{new QLineEdit("")};
+  auto lOutputSubpathLineEdit{new QLineEdit("", this)};
   lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
   lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
   // Third line
-  auto lOutputtitlePreview{new QLabel(tr("Preview:"))};
+  auto lOutputtitlePreview{new QLabel(tr("Preview:"), this)};
   lOutputGridLayout->addWidget(lOutputtitlePreview, 2, 0);
 
-  auto lOutputPathsPreview{new QLabel("")};
+  auto lOutputPathsPreview{new QLabel("", this)};
   lOutputPathsPreview->setObjectName("output_path_preview");
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
@@ -343,7 +343,7 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 void MFBOPresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 {
   // Generate button
-  auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"))};
+  auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
@@ -410,6 +410,21 @@ void MFBOPresetCreator::applyStyleSheet()
       break;
     case GUITheme::PaperBlackMono:
       lQSSFileName = "Paper Black Mono";
+      break;
+    case GUITheme::AlexhuszaghBreezeLight:
+      lQSSFileName = "Alexhuszagh's Breeze Light";
+      break;
+    case GUITheme::AlexhuszaghBreezeDark:
+      lQSSFileName = "Alexhuszagh's Breeze Dark";
+      break;
+    case GUITheme::QuasarAppDarkStyle:
+      lQSSFileName = "QuasarApp's Dark Style";
+      break;
+    case GUITheme::QuasarAppMaterialStyle:
+      lQSSFileName = "QuasarApp's Material Style";
+      break;
+    case GUITheme::QuasarAppVisualStudioDark:
+      lQSSFileName = "QuasarApp's Visual Studio Dark";
       break;
     default:
       break;
@@ -1023,7 +1038,9 @@ void MFBOPresetCreator::showAboutDialog()
       "Ressources used to make this software:<br />"
       "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
       "&bull; All the icons were taken from <a href=\"https://materialdesignicons.com\">MaterialDesignIcons.com</a>.<br />"
-      "&bull; Theme custom window themes were taken from <a href=\"https://github.com/6788-00\">6788-00's GitHub repository</a>.<br />"
+      "&bull; Some GUI themes were taken from <a href=\"https://github.com/6788-00\">6788-00's GitHub repository</a>.<br />"
+      "&bull; Some GUI themes were taken from <a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\">Alexhuszagh/BreezeStyleSheets GitHub page</ a>.<br />"
+      "&bull; Some GUI themes were taken from <a href=\"https://github.com/QuasarApp/QStyleSheet\">QuasarApp/QStyleSheet GitHub page</ a>.<br />"
       "<br />"
       "Ressources bundled in this software:<br />"
       "&bull; The BodySlide (OSP and XML) files that are generated with MFBOPC were taken from the "

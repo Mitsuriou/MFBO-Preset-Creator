@@ -53,71 +53,71 @@ void RetargetingTool::initializeGUI()
 void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
   // First line
-  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB version:"))};
+  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB version:"), this)};
   aLayout.addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
-  auto lCbbe3BBBVersionSelector{new QComboBox()};
+  auto lCbbe3BBBVersionSelector{new QComboBox(this)};
   lCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
 
   // Second line
-  auto lInputPathLabel{new QLabel(tr("Input path:"))};
+  auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
   aLayout.addWidget(lInputPathLabel, 1, 0);
 
-  auto lInputPathLineEdit{new QLineEdit("")};
+  auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   aLayout.addWidget(lInputPathLineEdit, 1, 1);
 
-  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."))};
+  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   aLayout.addWidget(lInputPathChooser, 1, 2);
 
   // Third line
-  auto lKeepBackupLabel{new QLabel(tr("Keep a backup?"))};
+  auto lKeepBackupLabel{new QLabel(tr("Keep a backup?"), this)};
   aLayout.addWidget(lKeepBackupLabel, 2, 0);
 
-  auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."))};
+  auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."), this)};
   lKeepBackup->setObjectName("keep_backup");
   aLayout.addWidget(lKeepBackup, 2, 1, 1, 2);
 
   // Fourth line
-  auto lBackupPathLabel{new QLabel(tr("Backup directory path:"))};
+  auto lBackupPathLabel{new QLabel(tr("Backup directory path:"), this)};
   lBackupPathLabel->setObjectName("backup_path_label");
   aLayout.addWidget(lBackupPathLabel, 3, 0);
 
-  auto lBackupPathLineEdit{new QLineEdit("")};
+  auto lBackupPathLineEdit{new QLineEdit("", this)};
   lBackupPathLineEdit->setReadOnly(true);
   lBackupPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lBackupPathLineEdit->setObjectName("backup_path_directory");
   aLayout.addWidget(lBackupPathLineEdit, 3, 1);
 
-  auto lBackupPathChooser{new QPushButton(tr("Choose a directory..."))};
+  auto lBackupPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lBackupPathChooser->setObjectName("backup_dir_chooser");
   aLayout.addWidget(lBackupPathChooser, 3, 2);
 
   // Fifth line
-  auto lLabelSubDirectoryBackupPath{new QLabel(tr("Backup subdirectory name/path:"))};
+  auto lLabelSubDirectoryBackupPath{new QLabel(tr("Backup subdirectory name/path:"), this)};
   lLabelSubDirectoryBackupPath->setObjectName("backup_subdir_label");
   aLayout.addWidget(lLabelSubDirectoryBackupPath, 4, 0);
 
-  auto lBackupSubpathLineEdit{new QLineEdit("")};
+  auto lBackupSubpathLineEdit{new QLineEdit("", this)};
   lBackupSubpathLineEdit->setObjectName("backup_path_subdirectory");
   aLayout.addWidget(lBackupSubpathLineEdit, 4, 1);
 
   // Sixth line
-  auto lBackupPathPreviewLabel{new QLabel(tr("Preview:"))};
+  auto lBackupPathPreviewLabel{new QLabel(tr("Preview:"), this)};
   lBackupPathPreviewLabel->setObjectName("backup_path_preview_label");
   aLayout.addWidget(lBackupPathPreviewLabel, 5, 0);
 
-  auto lBackupPathsPreview{new QLabel("")};
+  auto lBackupPathsPreview{new QLabel("", this)};
   lBackupPathsPreview->setObjectName("backup_path_preview");
   aLayout.addWidget(lBackupPathsPreview, 5, 1, 1, 2);
 
   // Generate button
-  auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"))};
+  auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"), this)};
   aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding
@@ -282,7 +282,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lTreatedFiles{0};
 
   // Progress bar
-  auto lProgressbar{new QProgressBar()};
+  auto lProgressbar{new QProgressBar(this)};
   lProgressbar->setFormat("%v / %m");
   lProgressbar->setValue(0);
   lProgressbar->setTextVisible(true);

@@ -19,7 +19,12 @@ enum class GUITheme
   PaperLight = 1,
   PaperDark = 2,
   PaperWhiteMono = 3,
-  PaperBlackMono = 4
+  PaperBlackMono = 4,
+  AlexhuszaghBreezeLight = 5,
+  AlexhuszaghBreezeDark = 6,
+  QuasarAppDarkStyle = 7,
+  QuasarAppMaterialStyle = 8,
+  QuasarAppVisualStudioDark = 9
 };
 
 enum class WindowOpeningMode

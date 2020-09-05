@@ -121,53 +121,6 @@ QToolButton:menu-indicator {
 	subcontrol-position: center bottom;
 }
 
-/* Toolbar Button Icons */
-
-#actionChange_Game {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/instances.svg);
-}
-
-#actionInstallMod {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/archives.svg);
-}
-
-#actionNexus {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/nexus.svg);
-}
-
-#actionAdd_Profile {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/profiles.svg);
-}
-
-#actionModify_Executables {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/executables.svg);
-}
-
-#actionTool {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/tools.svg);
-}
-
-#actionSettings {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/settings.svg);
-}
-
-#actionEndorseMO {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/endorse.svg);
-}
-
-#actionProblems,
-#actionNotifications {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/problems.svg);
-}
-
-#actionUpdate {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/update.svg);
-}
-
-#actionHelp {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Toolbar/help.svg);
-}
-
 /* Group Boxes */
 
 QGroupBox {
@@ -268,110 +221,6 @@ QPushButton::menu-indicator {
 	image: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/Arrows/down.svg);
 	padding: 2px;
 	margin: 4px;
-}
-
-/* Most Button Icons */
-
-#listOptionsBtn {
-	/* Options button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/dots.svg);
-	qproperty-iconSize: 16px;
-	padding-left: 2px;
-}
-
-#openFolderMenu {
-	/* Open Folder button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/folder.svg);
-	qproperty-iconSize: 14px;
-	padding-left: 4px;
-}
-
-#restoreModsButton,
-#restoreButton {
-	/* Restore Backup buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/restore.svg);
-	qproperty-iconSize: 14px;
-}
-
-#saveModsButton,
-#saveButton {
-	/* Backup buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/backup.svg);
-	qproperty-iconSize: 14px;
-}
-
-#bossButton {
-	/* Sort button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/sort.svg);
-	qproperty-iconSize: 14px;
-}
-
-#linkButton {
-	/* Shortcuts button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/shortcut.svg);
-	qproperty-iconSize: 14px;
-}
-
-#refreshButton,
-#btnRefreshData,
-#btnRefreshDownloads {
-	/* Refresh buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/refresh.svg);
-	qproperty-iconSize: 14px;
-}
-
-#endorseBtn {
-	/* Endorse button on the Nexus Info tab of the Information window */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/heart.svg);
-	qproperty-iconSize: 14px;
-}
-
-#clearCacheButton {
-	/* Clear Cache button on the Nexus tab of the Settings window */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/cross.svg);
-	qproperty-iconSize: 14px;
-}
-
-/* Optional ESPs Tab */
-
-#ESPsSplitter::handle {
-	background: transparent;
-}
-
-#deactivateESP {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/minus.svg);
-	border: 2px solid #3D3D3D;
-}
-
-#activateESP {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/plus.svg);
-	border: 2px solid #3D3D3D;
-}
-
-#deactivateESP:hover,
-#activateESP:hover {
-	background: #5C5C5C;
-}
-
-/* Run & Shortcuts Button */
-
-#executablesListBox {
-	/* Increase right margin of the select executables box */
-	margin-right: 8px;
-}
-
-#startButton {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/run.svg);
-	qproperty-iconSize: 30px;
-	padding: 6px;
-	border-radius: 10px;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-#linkButton {
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
 }
 
 /* Scroll Bars */
@@ -624,24 +473,6 @@ QTabBar QToolButton:disabled {
 	background: 0;
 }
 
-/* Nexus Info Tab */
-
-#refresh {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/refresh.svg);
-}
-
-#visitNexus {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/nexus.svg);
-}
-
-#track {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/pin.svg);
-}
-
-#endorseBtn {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/Black/heart.svg);
-}
-
 /* Checkboxes */
 
 /* Unchecked */
@@ -777,19 +608,6 @@ QProgressBar::chunk {
     border-right: 2px solid #3D3D3D;
 }
 
-/* Downloads Tab */
-
-DownloadListWidget #frame {
-	/* outer box of an entry on the Downloads tab */
-	border: 2px solid #000;
-	border-bottom: 2px solid #3D3D3D;
-}
-
-DownloadListWidget #installLabel {
-	/* installed/done label */
-	color: none;
-}
-
 /* New Downloads View */
 
 /* Standard */
@@ -813,46 +631,6 @@ DownloadListWidget[downloadView=compact]::item {
 
 QProgressBar[downloadView=compact] {
 	background: transparent;
-}
-
-/* Categories Filter */
-
-#displayCategoriesBtn {
-	/* Filter button */
-	min-width: 12px;
-}
-
-#categoriesList {
-	/* Categories panel */
-	min-width: 200px;
-	margin-bottom: 4px;
-}
-
-#categoriesGroup {
-	/* Categories group box */
-	padding-bottom: 0;
-}
-
-/* Modify Executables Dialog */
-
-#EditExecutablesDialog #add {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/plus.svg);
-}
-
-#EditExecutablesDialog #remove {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/minus.svg);
-}
-
-#EditExecutablesDialog #up {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Arrows/Large/up.svg);
-}
-
-#EditExecutablesDialog #down {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/Arrows/Large/down.svg);
-}
-
-#EditExecutablesDialog #reset {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Dark/cross.svg);
 }
 
 /* Splitters */
@@ -884,13 +662,7 @@ QToolTip {
 	border-bottom: 2px solid #3D3D3D;
 }
 
-#activeModslabel, #activePluginsLabel {
-	/* Increase the Left Padding of the Mods and Plugins Counters */
-	padding-left: 6px;
-}
-
-QTableView,
-#stepsStack QWidget {
+QTableView {
 	/* Tables (i.e. Configure Categories) */
 	border: 0;
 }

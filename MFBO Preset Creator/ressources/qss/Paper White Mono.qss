@@ -133,53 +133,6 @@ QToolButton:menu-indicator {
 	subcontrol-position: center bottom
 }
 
-/* Toolbar Button Icons */
-
-#actionChange_Game {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/instances.svg);
-}
-
-#actionInstallMod {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/archives.svg);
-}
-
-#actionNexus {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/nexus.svg);
-}
-
-#actionAdd_Profile {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/profiles.svg);
-}
-
-#actionModify_Executables {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/executables.svg);
-}
-
-#actionTool {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/tools.svg);
-}
-
-#actionSettings {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/settings.svg);
-}
-
-#actionEndorseMO {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/endorse.svg);
-}
-
-#actionProblems,
-#actionNotifications {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/problems.svg);
-}
-
-#actionUpdate {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/update.svg);
-}
-
-#actionHelp {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Toolbar/help.svg);
-}
-
 /* Group Boxes */
 
 QGroupBox {
@@ -297,110 +250,6 @@ QPushButton::menu-indicator {
 QPushButton:menu-indicator:pressed {
 	/* expandable indicator when expanded */
 	image: url(:/qss-ressources/ressources/qss/Paper/Mono/White/Arrows/Selected/down.svg);
-}
-
-/* Most Button Icons */
-
-#listOptionsBtn {
-	/* Options button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/dots.svg);
-	qproperty-iconSize: 16px;
-	padding-left: 2px;
-}
-
-#openFolderMenu {
-	/* Open Folder button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/folder.svg);
-	qproperty-iconSize: 14px;
-	padding-left: 4px;
-}
-
-#restoreModsButton,
-#restoreButton {
-	/* Restore Backup buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/restore.svg);
-	qproperty-iconSize: 14px;
-}
-
-#saveModsButton,
-#saveButton {
-	/* Backup buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/backup.svg);
-	qproperty-iconSize: 14px;
-}
-
-#bossButton {
-	/* Sort button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/sort.svg);
-	qproperty-iconSize: 14px;
-}
-
-#linkButton {
-	/* Shortcuts button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/shortcut.svg);
-	qproperty-iconSize: 14px;
-}
-
-#refreshButton,
-#btnRefreshData,
-#btnRefreshDownloads {
-	/* Refresh buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/refresh.svg);
-	qproperty-iconSize: 14px;
-}
-
-#endorseBtn {
-	/* Endorse button on the Nexus Info tab of the Information window */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/heart.svg);
-	qproperty-iconSize: 14px;
-}
-
-#clearCacheButton {
-	/* Clear Cache button on the Nexus tab of the Settings window */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/cross.svg);
-	qproperty-iconSize: 14px;
-}
-
-#deactivateESP {
-	/* deactivate ESP button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/backup.svg);
-	border: 2px solid #000;
-}
-
-#activateESP {
-	/* activate ESP button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/restore-alt.svg);
-	border: 2px solid #000;
-}
-
-#deactivateESP:hover,
-#activateESP:hover {
-	/* activate and deactivate ESP buttons when moused-over */
-	background: #C2C2C2;
-}
-
-/* Run & Shortcuts Button */
-
-#executablesListBox {
-	/* Increase right margin of the select executables box */
-	margin-right: 8px;
-}
-
-#startButton {
-	/* Run Button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Mono/White/run.svg);
-	qproperty-iconSize: 30px;
-	padding: 6px;
-	border: 2px solid #000;
-	border-radius: 10px;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-#linkButton {
-	/* Shortcut Button */
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
 }
 
 /* Scroll Bars */
@@ -810,19 +659,6 @@ QProgressBar::chunk {
     border-right: 2px solid #000;
 }
 
-/* Downloads Tab */
-
-DownloadListWidget #frame {
-	/* outer box of an entry on the Downloads tab */
-	border: 2px solid #FFF;
-	border-bottom: 2px solid #000;
-}
-
-DownloadListWidget #installLabel {
-	/* installed/done label */
-	color: none;
-}
-
 /* New Downloads View */
 
 /* Standard */
@@ -852,24 +688,6 @@ QProgressBar[downloadView=compact] {
 	background: transparent;
 }
 
-/* Categories Filter */
-
-#displayCategoriesBtn {
-	/* Filter button */
-	min-width: 12px;
-}
-
-#categoriesList {
-	/* Categories panel */
-	min-width: 200px;
-	margin-bottom: 4px;
-}
-
-#categoriesGroup {
-	/* Categories group box */
-	padding-bottom: 0;
-}
-
 /* Splitters */
 
 QSplitter {
@@ -888,14 +706,6 @@ QSplitter::handle:vertical {
 	background: transparent;
 }
 
-/* LCD Counters                                */
-/* On Conflicts Tab, Mods and Plugins Counters */
-
-#activeModslabel, #activePluginsLabel {
-	/* Increase the Left Padding of the Mods and Plugins Counters */
-	padding-left: 6px;
-}
-
 /* Misc */
 
 QToolTip {
@@ -908,8 +718,7 @@ QToolTip {
 }
 
 QTableView,
-QLCDNumber,
-#stepsStack QWidget {
+QLCDNumber {
 	/* Tables (i.e. Configure Categories) */
 	border: 0;
 }

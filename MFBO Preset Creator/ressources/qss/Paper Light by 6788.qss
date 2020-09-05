@@ -83,69 +83,6 @@ QToolButton:menu-indicator {
 	margin: 4px;
 }
 
-#toolBar {
-	qproperty-movable: true;
-}
-
-#toolBar QToolButton {
-	background: transparent;
-	padding: 6px;
-	border-radius: 10px;
-	margin: 4px 4px 0 4px;
-}
-
-#toolBar QToolButton:hover,
-#toolBar QToolButton:pressed {
-	background: #C2C2C2;
-}
-
-/* Toolbar Button Icons */
-
-#actionChange_Game {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/instances.svg);
-}
-
-#actionInstallMod {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/archives.svg);
-}
-
-#actionNexus {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/nexus.svg);
-}
-
-#actionAdd_Profile {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/profiles.svg);
-}
-
-#actionModify_Executables {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/executables.svg);
-}
-
-#actionTool {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/tools.svg);
-}
-
-#actionSettings {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/settings.svg);
-}
-
-#actionEndorseMO {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/endorse.svg);
-}
-
-#actionProblems, 
-#actionNotifications {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/problems.svg);
-}
-
-#actionUpdate {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/update.svg);
-}
-
-#actionHelp {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Toolbar/help.svg);
-}
-
 /* Left Pane & File Trees */
 
 ModListView, PluginListView {
@@ -271,115 +208,6 @@ QPushButton::menu-indicator {
 	image: url(:/qss-ressources/ressources/qss/Paper/Light/Arrows/down.svg);
 	padding: 2px;
 	margin: 4px;
-}
-
-/* Icons */
-
-#listOptionsBtn {
-	/* Options button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/dots.svg);
-	qproperty-iconSize: 16px;
-	padding-left: 2px;
-}
-
-#openFolderMenu {
-	/* Open Folder button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/folder.svg);
-	qproperty-iconSize: 14px;
-	padding-left: 4px;
-}
-
-#restoreModsButton,
-#restoreButton {
-	/* Restore Backup buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/restore.svg);
-	qproperty-iconSize: 14px;
-}
-
-#saveModsButton,
-#saveButton {
-	/* Backup buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/backup.svg);
-	qproperty-iconSize: 14px;
-}
-
-#clearFiltersButton {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/cross.svg);
-}
-
-#bossButton {
-	/* Sort button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/sort.svg);
-	qproperty-iconSize: 14px;
-}
-
-#refreshButton,
-#btnRefreshData,
-#dataTabRefresh,
-#btnRefreshDownloads {
-	/* Refresh buttons */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/refresh.svg);
-	qproperty-iconSize: 14px;
-}
-
-#clearCacheButton,
-#revokeNexusAuthButton,
-#nexusDisconnect {
-	/* Clear Cache button on the Nexus tab of the Settings window */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/cross.svg);
-	qproperty-iconSize: 14px;
-}
-
-#deactivateESP {
-	/* deactivate ESP button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/minus.svg);
-	background: #FFF;
-}
-
-#activateESP {
-	/* activate ESP button */
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/plus.svg);
-	background: #FFF;
-}
-
-#deactivateESP:hover,
-#activateESP:hover {
-	/* activate and deactivate ESP buttons when moused-over */
-	background: #C2C2C2;
-}
-
-/* Start Group */
-
-#executablesListBox {
-	/* Increase right margin of the select executables box */
-	padding: 4px;
-	border-radius: 10px;
-	margin-right: 8px;
-}
-
-#startButton {
-	/* Run button */
-	background: #008484;
-	color: #FFF;
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/run.svg);
-	qproperty-iconSize: 30px;
-	padding: 6px;
-	border-radius: 0;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-}
-
-#startButton:hover {
-	/* Run button when moused-over*/
-	background: #C2C2C2;
-}
-
-#linkButton {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/shortcut.svg);
-	qproperty-iconSize: 14px;
-	border-radius: 0;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
 }
 
 /* Scroll Bars */
@@ -688,55 +516,6 @@ QTabBar QToolButton:disabled {
 	background: transparent;
 }
 
-/* v2.2.1 Text Files and INI Files Tab */
-
-#tabText QLineEdit,
-#tabIni QLineEdit {
-	margin-top: 5px;
-}
-
-#tabText QLineEdit:hover,
-#tabIni QLineEdit:hover {
-	border: 2px solid #FFF;
-}
-
-#tabText QToolButton,
-#tabIni QToolButton {
-	height: 12px;
-	background: #FFF;
-	border-radius: 6px;
-}
-
-#tabText QToolButton:hover,
-#tabIni QToolButton:hover {
-	background: #C2C2C2;
-}
-
-#tabText QToolButton:disabled,
-#tabIni QToolButton:disabled {
-	background: 0;
-	border: 2px solid #FFF;
-}
-
-/* Nexus Info Tab */
-
-#ModInfoDialog #refresh {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/refresh.svg);
-}
-
-#ModInfoDialog #visitNexus {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/nexus.svg);
-}
-
-#ModInfoDialog #track {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/pin.svg);
-}
-
-#endorseBtn {
-	qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/heart.svg);
-	qproperty-iconSize: 14px;
-}
-
 /* Checkboxes */
 
 QTreeView::indicator:unchecked,
@@ -872,20 +651,9 @@ QSlider::handle:hover {
 
 DownloadListWidget QFrame, 
 DownloadListWidgetCompact, 
-DownloadListWidgetCompact QLabel,
-#downloadTab QAbstractScrollArea {
+DownloadListWidgetCompact QLabel {
 	/* an entry on the Downloads tab */
 	background: #FFF;
-}
-
-DownloadListWidget #frame {
-	/* outer box of an entry on the Downloads tab */
-	border: none;
-}
-
-#installLabel {
-	/* installed/done label */
-	color: none;
 }
 
 DownloadListWidgetCompact, 
@@ -923,57 +691,6 @@ QProgressBar[downloadView=compact]::chunk {
 QProgressBar[downloadView=compact] {
 	/* Progress Bars on the Compact Downloads View */
 	background: transparent;
-}
-
-/* Categories Filter */
-
-#displayCategoriesBtn {
-	/* Filter button */
-	min-width: 12px;
-}
-
-QTreeWidget#filters,
-#categoriesList {
-	/* Categories panel */
-	min-width: 240px;
-}
-
-#categoriesGroup {
-	/* Categories group box */
-	padding: 25px 0 0 0;
-	border: 0;
-}
-
-/* Modify Executables Dialog */
-
-#EditExecutablesDialog QToolButton {
-	background: transparent;
-	padding: 4px 8px;
-	margin: 8px 0 8px 8px;
-}
-
-#EditExecutablesDialog QToolButton:hover {
-	background: #008484;
-}
-
-#EditExecutablesDialog #add {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/plus.svg);
-}
-
-#EditExecutablesDialog #remove {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/minus.svg);
-}
-
-#EditExecutablesDialog #up {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Arrows/Large/up.svg);
-}
-
-#EditExecutablesDialog #down {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/Arrows/Large/down.svg);
-}
-
-#EditExecutablesDialog #reset {
-    qproperty-icon: url(:/qss-ressources/ressources/qss/Paper/Light/cross.svg);
 }
 
 /* Log */
@@ -1053,11 +770,6 @@ QPlainTextEdit#output {
  	border-radius: 6px;
 }
 
-#activeModslabel, #activePluginsLabel {
-	/* Increase the left margin of the counters */
-	padding-left: 6px;
-}
-
 QToolTip {
 	background: #FFF;
 	border: 2px solid #E8E8E8;
@@ -1067,45 +779,4 @@ QToolTip {
 LinkLabel {
 	/* Links */
   	qproperty-linkColor: #008484;
-}
-
-/* MO2 Logo on the About dialog */
-AboutDialog #iconLabel {
-	qproperty-pixmap: url(:/qss-ressources/ressources/qss/Paper/Light/mo2.svg);
-}
-
-#stepsStack QWidget {
-	/* Groupboxes on the FOMOD Installer Dialog */
-	border: none;
-}
-
-#stepsStack QGroupBox {
-	/* Fix to reimplement styling for Groupboxes on the FOMOD Installer dialog */
-	border: 2px solid #FFF;
-	border-radius: 10px;
-}
-
-#executablesListBox::item {
-	/* fixes the black text problem on the Modify Executables window */
-	color: #D3D3D3;
-}
-
-#espFilterEdit {
-	margin-top: 4px;
-}
-
-#dataTabFilter {
-	margin-top: 8px;
-}
-
-#downloadFilterEdit {
-	margin-top: 7px;
-}
-
-#bossButton {
-	margin-bottom: 2px;
-}
-
-#btnRefreshDownloads, #dataTabRefresh {
-	margin-bottom: 6px;
 }

@@ -74,91 +74,91 @@ void Settings::initializeGUI()
 void Settings::setupInterface(QGridLayout& aLayout)
 {
   // LANGUAGE
-  auto lLanguageLabel{new QLabel(tr("Language:"))};
+  auto lLanguageLabel{new QLabel(tr("Language:"), this)};
   aLayout.addWidget(lLanguageLabel, 0, 0);
 
   QStringList lSupportedLanguages;
   lSupportedLanguages.append(tr("English"));
   lSupportedLanguages.append(tr("Français"));
 
-  auto lLanguageSelector{new QComboBox()};
+  auto lLanguageSelector{new QComboBox(this)};
   lLanguageSelector->addItems(lSupportedLanguages);
   lLanguageSelector->setObjectName(QString("language"));
   aLayout.addWidget(lLanguageSelector, 0, 1);
 
   // FONT FAMILY
-  auto lFontFamilyLabel{new QLabel(tr("Font family:"))};
+  auto lFontFamilyLabel{new QLabel(tr("Font family:"), this)};
   aLayout.addWidget(lFontFamilyLabel, 1, 0);
 
-  auto lFontFamilySelector{new QComboBox()};
+  auto lFontFamilySelector{new QComboBox(this)};
   QFontDatabase lFontDB;
   lFontFamilySelector->addItems(lFontDB.families(QFontDatabase::WritingSystem::Any));
   lFontFamilySelector->setObjectName(QString("font_family"));
   aLayout.addWidget(lFontFamilySelector, 1, 1);
 
   // FONT SIZE
-  auto lFontSizeLabel{new QLabel(tr("Font size:"))};
+  auto lFontSizeLabel{new QLabel(tr("Font size:"), this)};
   aLayout.addWidget(lFontSizeLabel, 2, 0);
 
-  auto lFontSizeInput{new QLineEdit("")};
+  auto lFontSizeInput{new QLineEdit("", this)};
   lFontSizeInput->setObjectName(QString("font_size"));
   lFontSizeInput->setValidator(new QIntValidator(1, 99, this));
   aLayout.addWidget(lFontSizeInput, 2, 1);
 
   // GUI THEME
-  auto lGUIThemeLabel{new QLabel(tr("Application Theme:"))};
+  auto lGUIThemeLabel{new QLabel(tr("Application Theme:"), this)};
   aLayout.addWidget(lGUIThemeLabel, 3, 0);
 
-  auto lGUIThemeSelector{new QComboBox()};
+  auto lGUIThemeSelector{new QComboBox(this)};
   lGUIThemeSelector->addItems(Utils::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   aLayout.addWidget(lGUIThemeSelector, 3, 1);
 
   // MAIN WINDOW OPENING MODE
-  auto lWindowOpeningModeLabel{new QLabel(tr("Window opening mode:"))};
+  auto lWindowOpeningModeLabel{new QLabel(tr("Window opening mode:"), this)};
   aLayout.addWidget(lWindowOpeningModeLabel, 4, 0);
 
   QStringList lSupportedWindowOpeningMode;
   lSupportedWindowOpeningMode.append(tr("English"));
   lSupportedWindowOpeningMode.append(tr("Français"));
 
-  auto lWindowOpeningModeSelector{new QComboBox()};
+  auto lWindowOpeningModeSelector{new QComboBox(this)};
   lWindowOpeningModeSelector->addItems(Utils::getWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("window_opening_mode"));
   aLayout.addWidget(lWindowOpeningModeSelector, 4, 1);
 
   // WINDOW WIDTH
-  auto lWinWidthLabel{new QLabel(tr("Default main window width:"))};
+  auto lWinWidthLabel{new QLabel(tr("Default main window width:"), this)};
   aLayout.addWidget(lWinWidthLabel, 5, 0);
 
-  auto lWinWidthInput{new QLineEdit("")};
+  auto lWinWidthInput{new QLineEdit("", this)};
   lWinWidthInput->setObjectName(QString("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 9999, this));
   aLayout.addWidget(lWinWidthInput, 5, 1);
 
   // WINDOW HEIGHT
-  auto lWinHeightLabel{new QLabel(tr("Default main window height:"))};
+  auto lWinHeightLabel{new QLabel(tr("Default main window height:"), this)};
   aLayout.addWidget(lWinHeightLabel, 6, 0);
 
-  auto lWinHeightInput{new QLineEdit("")};
+  auto lWinHeightInput{new QLineEdit("", this)};
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
   aLayout.addWidget(lWinHeightInput, 6, 1);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION (MAIN)
-  auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (main window):"))};
+  auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (main window):"), this)};
   aLayout.addWidget(ldefaultCbbe3BBBVersionLabel, 7, 0);
 
-  auto ldefaultCbbe3BBBVersionSelector{new QComboBox()};
+  auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
   ldefaultCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
   ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
   aLayout.addWidget(ldefaultCbbe3BBBVersionSelector, 7, 1);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION (RETARGETING TOOL)
-  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (Retargeting tool):"))};
+  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (Retargeting tool):"), this)};
   aLayout.addWidget(lupgradeCbbe3BBBVersionLabel, 8, 0);
 
-  auto lupgradeCbbe3BBBVersionSelector{new QComboBox()};
+  auto lupgradeCbbe3BBBVersionSelector{new QComboBox(this)};
   lupgradeCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
   lupgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
   aLayout.addWidget(lupgradeCbbe3BBBVersionSelector, 8, 1);
@@ -167,18 +167,18 @@ void Settings::setupInterface(QGridLayout& aLayout)
 void Settings::setupButtons(QGridLayout& aLayout)
 {
   // Create the buttons
-  auto lRestoreDefaultButton{new QPushButton(tr("Restore default without saving"))};
+  auto lRestoreDefaultButton{new QPushButton(tr("Restore default without saving"), this)};
   lRestoreDefaultButton->setAutoDefault(false);
   lRestoreDefaultButton->setDefault(false);
   aLayout.addWidget(lRestoreDefaultButton, 0, 0);
 
-  auto lSaveButton{new QPushButton(tr("Save and close"))};
+  auto lSaveButton{new QPushButton(tr("Save and close"), this)};
   lSaveButton->setObjectName("save_close");
   lSaveButton->setAutoDefault(false);
   lSaveButton->setDefault(false);
   aLayout.addWidget(lSaveButton, 0, 1);
 
-  auto lCloseButton{new QPushButton(tr("Close without saving"))};
+  auto lCloseButton{new QPushButton(tr("Close without saving"), this)};
   lCloseButton->setAutoDefault(false);
   lCloseButton->setDefault(false);
   aLayout.addWidget(lCloseButton, 0, 2);
@@ -307,6 +307,21 @@ void Settings::saveSettings()
       break;
     case static_cast<int>(GUITheme::PaperBlackMono):
       lSettings.appTheme = GUITheme::PaperBlackMono;
+      break;
+    case static_cast<int>(GUITheme::AlexhuszaghBreezeLight):
+      lSettings.appTheme = GUITheme::AlexhuszaghBreezeLight;
+      break;
+    case static_cast<int>(GUITheme::AlexhuszaghBreezeDark):
+      lSettings.appTheme = GUITheme::AlexhuszaghBreezeDark;
+      break;
+    case static_cast<int>(GUITheme::QuasarAppDarkStyle):
+      lSettings.appTheme = GUITheme::QuasarAppDarkStyle;
+      break;
+    case static_cast<int>(GUITheme::QuasarAppMaterialStyle):
+      lSettings.appTheme = GUITheme::QuasarAppMaterialStyle;
+      break;
+    case static_cast<int>(GUITheme::QuasarAppVisualStudioDark):
+      lSettings.appTheme = GUITheme::QuasarAppVisualStudioDark;
       break;
     default:
       lSettings.appTheme = GUITheme::WindowsVista;
