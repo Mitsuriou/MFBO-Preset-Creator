@@ -290,6 +290,8 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
 
   // Event binding
   connect(lNeedCustomSkeleton, SIGNAL(stateChanged(int)), this, SLOT(updateSkeletonPathState(int)));
+  lNeedCustomSkeleton->setChecked(true);
+  lNeedCustomSkeleton->setChecked(false);
   connect(lSkeletonPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateSkeletonPreview(QString)));
 }
 
@@ -662,11 +664,11 @@ void MFBOPresetCreator::updateSkeletonPreview(QString aText)
 
   if (aText.trimmed().length() == 0)
   {
-    aText = QString::fromStdString("[...]/Skyrim Special Edition/Data/*");
+    aText = QString::fromStdString("*");
   }
 
-  aText = aText + "/skeleton_female.nif";
-  lPathsPreview->setText(aText);
+  auto lConstructedPreviewText(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/skeleton_female.nif").arg(aText));
+  lPathsPreview->setText(lConstructedPreviewText);
 }
 
 void MFBOPresetCreator::chooseExportDirectory()
@@ -981,7 +983,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   if (lReply == QMessageBox::Ok)
   {
     // Open the folder where the file structure has been created
-    QDesktopServices::openUrl(lEntryDirectory);
+    QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
 }
 
