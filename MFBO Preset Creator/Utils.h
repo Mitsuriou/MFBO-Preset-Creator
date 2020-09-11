@@ -2,6 +2,7 @@
 
 #include "Struct.h"
 #include "Enum.h"
+#include "buildnumber.h"
 
 #include <QCoreApplication>
 #include <QString>
@@ -22,10 +23,10 @@ class Utils : public QObject
 public:
   // General functions
   static void cleanPathString(QString& aPath);
-  static QString getProgramVersion();
+  static QString getSoftwareVersion();
   static void displayWarningMessage(QString aMessage);
   static int getNumberFilesByExtension(QString aRootDir, QString aFileExtension);
-  static bool copyRecursively(QString sourceFolder, QString destFolder);
+  static bool copyRecursively(const QString aSourcePath, const QString aDestinationPath);
   static bool isThemeDark(GUITheme aTheme);
 
   // XML and OSP file parse

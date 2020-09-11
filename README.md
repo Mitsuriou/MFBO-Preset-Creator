@@ -43,3 +43,4 @@ WIP...
 - Splashscreen when the software is being launched
 - In-app automatic updater
 - Executable to install the app on C:/ProgramFiles (InnoSetup?)
+- Change the code auto-formatter

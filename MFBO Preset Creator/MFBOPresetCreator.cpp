@@ -711,7 +711,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   Utils::cleanPathString(lSubDirectory);
 
   // Full extract path
-  auto lEntryDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory))};
+  auto lEntryDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
 
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.length() == 0)
@@ -765,7 +765,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
 
   // Create the SliderGroups directory
-  auto lSliderGroupsDirectory{lEntryDirectory + "/CalienteTools/BodySlide/SliderGroups"};
+  auto lSliderGroupsDirectory{lEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
   if (!QDir(lSliderGroupsDirectory).exists())
   {
     QDir().mkpath(lSliderGroupsDirectory);
@@ -777,7 +777,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
 
   // Copy the QRC file and change the slidergroups names in the XML file
-  auto lXMLPathName{lSliderGroupsDirectory + "/" + lOSPXMLNames + ".xml"};
+  auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + lOSPXMLNames + ".xml"};
   auto lRessourcesFolder{QString("")};
 
   switch (lCBBE3BBBVersionSelected)
@@ -856,7 +856,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
 
   // Create the SliderSets directory
-  auto lSliderSetsDirectory{lEntryDirectory + "/CalienteTools/BodySlide/SliderSets"};
+  auto lSliderSetsDirectory{lEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
 
   if (!QDir(lSliderSetsDirectory).exists())
   {
@@ -869,7 +869,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
 
   // Copy the QRC file and change the slidergroups names in the OSP file
-  auto lOSPPathName(lSliderSetsDirectory + "/" + lOSPXMLNames + ".osp");
+  auto lOSPPathName(lSliderSetsDirectory + QDir::separator() + lOSPXMLNames + ".osp");
 
   // Copy the OSP file
   if (lMustUseBeastHands)
@@ -943,10 +943,10 @@ void MFBOPresetCreator::generateDirectoryStructure()
   {
     if (lSkeletonPath.length() > 0)
     {
-      auto lSkeletonDirectory{lEntryDirectory + "/" + lSkeletonPath};
+      auto lSkeletonDirectory{lEntryDirectory + QDir::separator() + lSkeletonPath};
       QDir().mkpath(lSkeletonDirectory);
 
-      if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + "/" + "skeleton_female.nif"))
+      if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + QDir::separator() + "skeleton_female.nif"))
       {
         Utils::displayWarningMessage(tr("The skeleton file could not be created. Did you execute the program with limited permissions?"));
         return;
