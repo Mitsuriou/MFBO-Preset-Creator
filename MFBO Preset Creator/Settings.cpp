@@ -244,10 +244,14 @@ void Settings::refreshUI()
 
 void Settings::restoreDefaultSettings()
 {
+  // Store the current settings
+  auto lStoredSettings = mSettings;
   // Create a default settings object and save it
   Struct::Settings lSettings;
   mSettings = lSettings;
   this->loadSettings();
+  // Reload the settings that were previously set
+  mSettings = lStoredSettings;
 }
 
 void Settings::saveSettings()
