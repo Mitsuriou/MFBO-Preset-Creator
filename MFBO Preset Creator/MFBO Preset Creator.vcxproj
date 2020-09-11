@@ -144,6 +144,7 @@
     <Image Include="ressources/software/icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md" />
     <None Include="mfbopc_en.qm" />
     <None Include="mfbopc_en.ts" />
     <None Include="mfbopc_fr.qm" />

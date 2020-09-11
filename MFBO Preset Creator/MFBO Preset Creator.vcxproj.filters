@@ -104,5 +104,6 @@
     <None Include="mfbopc_en.qm">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>
