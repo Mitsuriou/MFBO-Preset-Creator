@@ -16,7 +16,7 @@ The software is currently a simple executable file and not any installer is prov
 ### Launch
 To launch the software, simply click on the **MFBO Preset Creator.exe** file (the one with a black and white icon).
 
-# Roadmap (not orderer by priority)
+# Roadmap (not ordered by priority)
 ### GUI modifications
 - Separate the main GUI into tabs for the different body types
 - Allow the user to type different paths for the body, hands and feet
