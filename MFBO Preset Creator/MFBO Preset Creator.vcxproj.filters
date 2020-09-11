@@ -30,6 +30,9 @@
     <ClInclude Include="Struct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="buildnumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
@@ -101,5 +104,6 @@
     <None Include="mfbopc_en.qm">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>

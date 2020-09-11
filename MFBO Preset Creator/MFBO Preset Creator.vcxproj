@@ -52,6 +52,9 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>"$(ProjectDir)BuildNumber.exe"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link />
@@ -61,6 +64,9 @@
     <PostBuildEvent>
       <Command>xcopy /C /Y /R "$(TargetPath)"  "$(SolutionDir)client release\$(TargetFileName)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>"$(ProjectDir)BuildNumber.exe"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>msvc2019_64</QtInstall>
@@ -117,6 +123,7 @@
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClInclude Include="buildnumber.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Settings.h" />
@@ -137,6 +144,7 @@
     <Image Include="ressources/software/icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md" />
     <None Include="mfbopc_en.qm" />
     <None Include="mfbopc_en.ts" />
     <None Include="mfbopc_fr.qm" />

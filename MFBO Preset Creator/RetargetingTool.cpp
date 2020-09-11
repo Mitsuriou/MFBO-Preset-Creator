@@ -172,7 +172,7 @@ void RetargetingTool::updateBackupPreview()
   auto lFullPath(QString(""));
   if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
   {
-    lFullPath = lMainDirectory + "/" + lSubDirectory;
+    lFullPath = lMainDirectory + QDir::separator() + lSubDirectory;
     lMainDirTextEdit->setDisabled(false);
   }
   else if (lMainDirectory.length() > 0 && lSubDirectory.length() == 0)
@@ -250,7 +250,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     Utils::cleanPathString(lSubDirectory);
 
     // Full extract path
-    auto lFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory))};
+    auto lFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
 
     // Check if the full extract path has been given by the user
     if (lFullBackupDirectory.length() == 0)

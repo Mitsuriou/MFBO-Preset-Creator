@@ -15,8 +15,8 @@ int main(int argc, char* argv[])
   {
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
-    lMainApplication.setApplicationDisplayName("MFBOPC v." + Utils::getProgramVersion());
-    lMainApplication.setApplicationVersion(Utils::getProgramVersion());
+    lMainApplication.setApplicationDisplayName("MFBOPC v." + Utils::getSoftwareVersion());
+    lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
     lMainApplication.setWindowIcon(QIcon(":/software/icon"));
 
     // Apply custom language and translation

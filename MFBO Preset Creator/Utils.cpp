@@ -5,9 +5,26 @@ void Utils::cleanPathString(QString& aPath)
   aPath.replace("\\", "/");
 }
 
-QString Utils::getProgramVersion()
+QString Utils::getSoftwareVersion()
 {
-  return QString("1.7.2.0");
+  auto lBuildNumber{BUILDNUMBER};
+
+  if (lBuildNumber < 10)
+  {
+    return QString("1.7.3.000" + QString::fromStdString(BUILDNUMBER_STR));
+  }
+
+  if (lBuildNumber < 100)
+  {
+    return QString("1.7.3.00" + QString::fromStdString(BUILDNUMBER_STR));
+  }
+
+  if (lBuildNumber < 1000)
+  {
+    return QString("1.7.3.0" + QString::fromStdString(BUILDNUMBER_STR));
+  }
+
+  return QString("1.7.3." + QString::fromStdString(BUILDNUMBER_STR));
 }
 
 void Utils::displayWarningMessage(QString aMessage)
@@ -42,43 +59,45 @@ int Utils::getNumberFilesByExtension(QString aRootDir, QString aFileExtension)
   return lNumber;
 }
 
-bool Utils::copyRecursively(QString sourceFolder, QString destFolder)
+bool Utils::copyRecursively(const QString aSourcePath, const QString aDestinationPath)
 {
-  // Taken from https://forum.qt.io/topic/59245/is-there-any-api-to-recursively-copy-a-directory-and-all-it-s-sub-dirs-and-files/3
+  bool lIsSuccess{false};
+  QDir lSourceDirectory(aSourcePath);
 
-  bool success = false;
-  QDir sourceDir(sourceFolder);
-
-  if (!sourceDir.exists())
-    return false;
-
-  QDir destDir(destFolder);
-  if (!destDir.exists())
-    destDir.mkdir(destFolder);
-
-  QStringList files = sourceDir.entryList(QDir::Files);
-  for (int i = 0; i < files.count(); i++)
+  if (!lSourceDirectory.exists())
   {
-    QString srcName = sourceFolder + QDir::separator() + files[i];
-    QString destName = destFolder + QDir::separator() + files[i];
-    success = QFile::copy(srcName, destName);
+    return false;
+  }
 
-    if (!success)
+  QDir lDestinationDirectory(aDestinationPath);
+  if (!lDestinationDirectory.exists())
+  {
+    lDestinationDirectory.mkdir(aDestinationPath);
+  }
+
+  QStringList lFilesList = lSourceDirectory.entryList(QDir::Files);
+  for (int i = 0; i < lFilesList.count(); i++)
+  {
+    QString lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
+    QString lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
+    lIsSuccess = QFile::copy(lSourceName, lDestinationName);
+
+    if (!lIsSuccess)
     {
       Utils::displayWarningMessage(tr("An unknown error has occured while creating the backup. Process aborted."));
       return false;
     }
   }
 
-  files.clear();
-  files = sourceDir.entryList(QDir::AllDirs | QDir::NoDotAndDotDot);
-  for (int i = 0; i < files.count(); i++)
+  lFilesList.clear();
+  lFilesList = lSourceDirectory.entryList(QDir::AllDirs | QDir::NoDotAndDotDot);
+  for (int i = 0; i < lFilesList.count(); i++)
   {
-    QString srcName = sourceFolder + QDir::separator() + files[i];
-    QString destName = destFolder + QDir::separator() + files[i];
-    success = copyRecursively(srcName, destName);
+    auto lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
+    auto lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
+    lIsSuccess = copyRecursively(lSourceName, lDestinationName);
 
-    if (!success)
+    if (!lIsSuccess)
     {
       Utils::displayWarningMessage(tr("An unknown error has occured while creating the backup. Process aborted."));
       return false;
@@ -239,7 +258,7 @@ bool Utils::isPresetUsingBeastHands(QString aPath)
 
 void Utils::checkSettingsFileExistence()
 {
-  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + QDir::separator() + "config.json");
 
   if (!lSettingsFile.exists())
   {
@@ -259,7 +278,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   Utils::checkSettingsFileExistence();
 
   // Open and read the settings file
-  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + QDir::separator() + "config.json");
   lSettingsFile.open(QIODevice::ReadOnly | QIODevice::Text);
   QString lSettingsData = lSettingsFile.readAll();
   lSettingsFile.close();
@@ -423,7 +442,7 @@ Struct::Settings Utils::loadSettingsFromFile()
 
 void Utils::saveSettingsToFile(Struct::Settings aSettings)
 {
-  QFile lSettingsFile(QCoreApplication::applicationDirPath() + "/config.json");
+  QFile lSettingsFile(QCoreApplication::applicationDirPath() + QDir::separator() + "config.json");
 
   lSettingsFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
 
