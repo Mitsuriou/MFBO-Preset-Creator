@@ -9,9 +9,7 @@
 #include <QStringList>
 #include <QMessageBox>
 #include <QDirIterator>
-#include <QStringList>
 #include <QFile>
-#include <QPair>
 #include <QtXml/QDomDocument>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -24,15 +22,15 @@ public:
   // General functions
   static void cleanPathString(QString& aPath);
   static QString getSoftwareVersion();
-  static void displayWarningMessage(QString aMessage);
-  static int getNumberFilesByExtension(QString aRootDir, QString aFileExtension);
-  static bool copyRecursively(const QString aSourcePath, const QString aDestinationPath);
-  static bool isThemeDark(GUITheme aTheme);
+  static void displayWarningMessage(const QString& aMessage);
+  static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+  static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
+  static bool isThemeDark(const GUITheme aTheme);
 
   // XML and OSP file parse
-  static QString getPresetNameFromXMLFile(QString aPath);
-  static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(QString aPath);
-  static bool isPresetUsingBeastHands(QString aPath);
+  static QString getPresetNameFromXMLFile(const QString& aPath);
+  static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(const QString& aPath);
+  static bool isPresetUsingBeastHands(const QString& aPath);
 
   // Settings
   static void checkSettingsFileExistence();
@@ -40,13 +38,8 @@ public:
   static void saveSettingsToFile(Struct::Settings aSettings);
   static QJsonObject settingsStructToJson(Struct::Settings aSettings);
 
-  // List
-  static QStringList getCBBE3BBBVersions();
-  static QStringList getWindowOpeningModes();
-  static QStringList getAppThemes();
-
   // Language
-  static QString getShortLanguageNameFromEnum(int aEnumValue);
-  static QString getLongLanguageNameFromEnum(int aEnumValue);
-  static ApplicationLanguage getStructLanguageFromName(QString aShortName);
+  static QString getShortLanguageNameFromEnum(const int aEnumValue);
+  static QString getLongLanguageNameFromEnum(const int aEnumValue);
+  static ApplicationLanguage getStructLanguageFromName(const QString& aShortName);
 };

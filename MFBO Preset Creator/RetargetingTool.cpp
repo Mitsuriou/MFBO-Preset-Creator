@@ -57,7 +57,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
-  lCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
+  lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);

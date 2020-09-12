@@ -3,6 +3,7 @@
 #include "Utils.h"
 #include "Struct.h"
 #include "Enum.h"
+#include "DataLists.h"
 
 #include <QApplication>
 #include <QString>

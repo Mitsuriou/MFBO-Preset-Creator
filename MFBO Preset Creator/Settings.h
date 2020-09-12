@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Utils.h"
+#include "DataLists.h"
 
 #include <QApplication>
 #include <QString>

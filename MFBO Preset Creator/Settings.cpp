@@ -110,7 +110,7 @@ void Settings::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lGUIThemeLabel, 3, 0);
 
   auto lGUIThemeSelector{new QComboBox(this)};
-  lGUIThemeSelector->addItems(Utils::getAppThemes());
+  lGUIThemeSelector->addItems(DataLists::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   aLayout.addWidget(lGUIThemeSelector, 3, 1);
 
@@ -123,7 +123,7 @@ void Settings::setupInterface(QGridLayout& aLayout)
   lSupportedWindowOpeningMode.append(tr("Français"));
 
   auto lWindowOpeningModeSelector{new QComboBox(this)};
-  lWindowOpeningModeSelector->addItems(Utils::getWindowOpeningModes());
+  lWindowOpeningModeSelector->addItems(DataLists::getWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("window_opening_mode"));
   aLayout.addWidget(lWindowOpeningModeSelector, 4, 1);
 
@@ -150,7 +150,7 @@ void Settings::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(ldefaultCbbe3BBBVersionLabel, 7, 0);
 
   auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
-  ldefaultCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
+  ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
   aLayout.addWidget(ldefaultCbbe3BBBVersionSelector, 7, 1);
 
@@ -159,7 +159,7 @@ void Settings::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lupgradeCbbe3BBBVersionLabel, 8, 0);
 
   auto lupgradeCbbe3BBBVersionSelector{new QComboBox(this)};
-  lupgradeCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
+  lupgradeCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lupgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
   aLayout.addWidget(lupgradeCbbe3BBBVersionSelector, 8, 1);
 }

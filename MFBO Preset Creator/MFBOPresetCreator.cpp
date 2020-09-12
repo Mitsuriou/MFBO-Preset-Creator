@@ -121,7 +121,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
-  lCbbe3BBBVersionSelector->addItems(Utils::getCBBE3BBBVersions());
+  lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1);
@@ -149,18 +149,21 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lBodyMeshNameInput{new QLineEdit("", this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
   lMeshesGridLayout->addWidget(lBodyMeshNameInput, 3, 1);
+  lBodyMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
   auto lFeetMeshNameInput{new QLineEdit("", this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
   lMeshesGridLayout->addWidget(lFeetMeshNameInput, 4, 1);
+  lFeetMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
   auto lHandsMeshNameInput{new QLineEdit("", this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
   lMeshesGridLayout->addWidget(lHandsMeshNameInput, 5, 1);
+  lHandsMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
@@ -210,6 +213,7 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lOSPXMLNamesLineEdit{new QLineEdit("", this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
+  lOSPXMLNamesLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 0, 1);
 
   // Second line
@@ -460,7 +464,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
 
 void MFBOPresetCreator::updateMeshesPreview()
 {
-  // Get all inut fields
+  // Get all input fields
   auto lMeshesPath{this->ui.mainContainer->findChild<QLineEdit*>("meshes_path_input")->text().trimmed()};
   Utils::cleanPathString(lMeshesPath);
 
@@ -470,12 +474,13 @@ void MFBOPresetCreator::updateMeshesPreview()
 
   // Get preview label
   auto lPreviewLabel{this->ui.mainContainer->findChild<QLabel*>("meshes_preview")};
-
   auto lFullPreview(QString(""));
+  auto lIsValidPath{true};
 
   if (lMeshesPath == "")
   {
     lMeshesPath = "*";
+    lIsValidPath = false;
   }
 
   if (lBodyName == "")
@@ -500,6 +505,22 @@ void MFBOPresetCreator::updateMeshesPreview()
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lHandsName);
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif").arg(lMeshesPath).arg(lHandsName);
 
+  if (lIsValidPath)
+  {
+    if (lMeshesPath.startsWith("\\") || lMeshesPath.startsWith("/") || lMeshesPath.endsWith("\\") || lMeshesPath.endsWith("/"))
+    {
+      lPreviewLabel->setStyleSheet("QLabel {color: #FF9800;}");
+    }
+    else
+    {
+      lPreviewLabel->setStyleSheet("");
+    }
+  }
+  else
+  {
+    lPreviewLabel->setStyleSheet("QLabel {color: #F44336;}");
+  }
+
   lPreviewLabel->setText(lFullPreview);
 }
 
@@ -513,6 +534,7 @@ void MFBOPresetCreator::updateOutputPreview()
   // Get subdirectory
   auto lSubDirectory{this->ui.mainContainer->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
   Utils::cleanPathString(lSubDirectory);
+  auto lIsValidPath{true};
 
   // Construct full path
   auto lFullPath(QString(""));
@@ -530,10 +552,28 @@ void MFBOPresetCreator::updateOutputPreview()
   {
     lFullPath = tr("No path given or invalid path given.");
     lMainDirTextEdit->setDisabled(true);
+    lIsValidPath = false;
   }
 
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->ui.mainContainer->findChild<QLabel*>("output_path_preview")};
+
+  if (lIsValidPath)
+  {
+    if (QDir(lFullPath).exists())
+    {
+      lOutputPathsPreview->setStyleSheet("QLabel {color: #FF9800;}");
+    }
+    else
+    {
+      lOutputPathsPreview->setStyleSheet("");
+    }
+  }
+  else
+  {
+    lOutputPathsPreview->setStyleSheet("QLabel {color: #F44336;}");
+  }
+
   lOutputPathsPreview->setText(lFullPath);
 }
 
@@ -541,9 +581,12 @@ void MFBOPresetCreator::updateOSPXMLPreview(QString aText)
 {
   auto lOutputPathsPreview{this->ui.mainContainer->findChild<QLabel*>("names_osp_xml_preview")};
 
+  auto lIsValidPath{true};
+
   if (aText.trimmed().length() == 0)
   {
     aText = QString::fromStdString("*");
+    lIsValidPath = false;
   }
 
   auto lConstructedPreviewText(
@@ -551,6 +594,15 @@ void MFBOPresetCreator::updateOSPXMLPreview(QString aText)
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderGroups/%1.xml\n"
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
+
+  if (lIsValidPath)
+  {
+    lOutputPathsPreview->setStyleSheet("");
+  }
+  else
+  {
+    lOutputPathsPreview->setStyleSheet("QLabel {color: #F44336;}");
+  }
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
@@ -566,9 +618,12 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
   // Path
   auto lOutputPathsPreview{this->ui.mainContainer->findChild<QLabel*>("names_bodyslide_preview")};
 
+  auto lIsValidPath{true};
+
   if (aText.trimmed().length() == 0)
   {
     aText = QString::fromStdString("*");
+    lIsValidPath = false;
   }
 
   auto lConstructedPreviewText{QString("")};
@@ -634,6 +689,15 @@ void MFBOPresetCreator::updateBodyslideNamesPreview(QString aText)
       break;
   }
 
+  if (lIsValidPath)
+  {
+    lOutputPathsPreview->setStyleSheet("");
+  }
+  else
+  {
+    lOutputPathsPreview->setStyleSheet("QLabel {color: #F44336;}");
+  }
+
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
@@ -647,10 +711,17 @@ void MFBOPresetCreator::updateSkeletonPathState(int aState)
     case Qt::Unchecked:
       lSkeletonPathLineEdit->setDisabled(true);
       lSkeletonPreview->setDisabled(true);
+      lSkeletonPreview->setStyleSheet("");
       break;
     case Qt::Checked:
       lSkeletonPathLineEdit->setDisabled(false);
       lSkeletonPreview->setDisabled(false);
+
+      if (this->ui.mainContainer->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed().length() == 0)
+      {
+        lSkeletonPreview->setStyleSheet("QLabel {color: #F44336;}");
+      }
+
       break;
     default:
       break;
@@ -659,16 +730,28 @@ void MFBOPresetCreator::updateSkeletonPathState(int aState)
 
 void MFBOPresetCreator::updateSkeletonPreview(QString aText)
 {
-  auto lPathsPreview{this->ui.mainContainer->findChild<QLabel*>("skeleton_path_preview")};
   Utils::cleanPathString(aText);
+  auto lIsValidPath{true};
 
   if (aText.trimmed().length() == 0)
   {
     aText = QString::fromStdString("*");
+    lIsValidPath = false;
   }
 
-  auto lConstructedPreviewText(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/skeleton_female.nif").arg(aText));
-  lPathsPreview->setText(lConstructedPreviewText);
+  auto lConstructedPath(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/skeleton_female.nif").arg(aText));
+  auto lOutputPathPreview{this->ui.mainContainer->findChild<QLabel*>("skeleton_path_preview")};
+
+  if (lIsValidPath)
+  {
+    lOutputPathPreview->setStyleSheet("");
+  }
+  else if (this->ui.mainContainer->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
+  {
+    lOutputPathPreview->setStyleSheet("QLabel {color: #F44336;}");
+  }
+
+  lOutputPathPreview->setText(lConstructedPath);
 }
 
 void MFBOPresetCreator::chooseExportDirectory()
@@ -721,7 +804,7 @@ void MFBOPresetCreator::generateDirectoryStructure()
   }
 
   // Check if the path could be valid
-  if (lEntryDirectory.startsWith("/"))
+  if (lEntryDirectory.startsWith(QDir::separator()))
   {
     Utils::displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
     return;
@@ -1032,17 +1115,18 @@ void MFBOPresetCreator::showAboutDialog()
       "<h1 style=\"text-align: center; padding: 0; margin: 0; margin-right: 20px;\">About this software</h1><br />"
       "<p style=\"font-size: 12px; padding: 0; margin: 0; margin-right: 20px;\">"
       "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is a software "
-      "created by Dylan Jacquemin (also known under the nickname \"Mitsuriou\").<br />"
-      "This software has been developed to be provided for free to any user that wants to use the software. <br />"
+      "created by Dylan Jacquemin (also known under the nickname <a href=\"https://www.nexusmods.com/users/37026145\">Mitsuriou</a>).<br />"
+      "This software has been developed to be provided for free to any user that wants to use the software.<br />"
       "The totality of the source code is available on "
       "<a href=\"https://github.com/Mitsuriou/MFBO-Preset-Creator\">GitHub.com</a>."
       "<br /><br />"
       "Ressources used to make this software:<br />"
       "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
+      "&bull; <a href='http://buildnumber.sourceforge.net/'>BuildNumber</a> is used for version number auto-incrementat.<br />"
       "&bull; All the icons were taken from <a href=\"https://materialdesignicons.com\">MaterialDesignIcons.com</a>.<br />"
       "&bull; Some GUI themes were taken from <a href=\"https://github.com/6788-00\">6788-00's GitHub repository</a>.<br />"
-      "&bull; Some GUI themes were taken from <a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\">Alexhuszagh/BreezeStyleSheets GitHub page</ a>.<br />"
-      "&bull; Some GUI themes were taken from <a href=\"https://github.com/QuasarApp/QStyleSheet\">QuasarApp/QStyleSheet GitHub page</ a>.<br />"
+      "&bull; Some GUI themes were taken from <a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\">Alexhuszagh/BreezeStyleSheets GitHub page</a>.<br />"
+      "&bull; Some GUI themes were taken from <a href=\"https://github.com/QuasarApp/QStyleSheet\">QuasarApp/QStyleSheet GitHub page</a>.<br />"
       "<br />"
       "Ressources bundled in this software:<br />"
       "&bull; The BodySlide (OSP and XML) files that are generated with MFBOPC were taken from the "

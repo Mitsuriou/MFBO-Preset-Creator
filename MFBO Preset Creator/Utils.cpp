@@ -27,13 +27,13 @@ QString Utils::getSoftwareVersion()
   return QString("1.7.3." + QString::fromStdString(BUILDNUMBER_STR));
 }
 
-void Utils::displayWarningMessage(QString aMessage)
+void Utils::displayWarningMessage(const QString& aMessage)
 {
   QMessageBox lMessageBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
   lMessageBox.exec();
 }
 
-int Utils::getNumberFilesByExtension(QString aRootDir, QString aFileExtension)
+int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
   auto lAbsFilePath{QString("")};
@@ -59,7 +59,7 @@ int Utils::getNumberFilesByExtension(QString aRootDir, QString aFileExtension)
   return lNumber;
 }
 
-bool Utils::copyRecursively(const QString aSourcePath, const QString aDestinationPath)
+bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
 {
   bool lIsSuccess{false};
   QDir lSourceDirectory(aSourcePath);
@@ -107,7 +107,7 @@ bool Utils::copyRecursively(const QString aSourcePath, const QString aDestinatio
   return true;
 }
 
-bool Utils::isThemeDark(GUITheme aTheme)
+bool Utils::isThemeDark(const GUITheme aTheme)
 {
   switch (aTheme)
   {
@@ -127,7 +127,7 @@ bool Utils::isThemeDark(GUITheme aTheme)
   }
 }
 
-QString Utils::getPresetNameFromXMLFile(QString aPath)
+QString Utils::getPresetNameFromXMLFile(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -158,7 +158,7 @@ QString Utils::getPresetNameFromXMLFile(QString aPath)
   return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
 }
 
-std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(QString aPath)
+std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
 {
   std::vector<Struct::SliderSet> lPaths;
 
@@ -230,7 +230,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(QString aPath)
   return lPaths;
 }
 
-bool Utils::isPresetUsingBeastHands(QString aPath)
+bool Utils::isPresetUsingBeastHands(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -470,44 +470,7 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   return lObj;
 }
 
-QStringList Utils::getCBBE3BBBVersions()
-{
-  QStringList lVersions;
-  lVersions.append(QString("1.40"));
-  lVersions.append(QString("1.50"));
-  lVersions.append(QString("1.51 - 1.52"));
-
-  return lVersions;
-}
-
-QStringList Utils::getWindowOpeningModes()
-{
-  QStringList lWindowModes;
-  lWindowModes.append(QString("Minimized"));
-  lWindowModes.append(QString("Windowed"));
-  lWindowModes.append(QString("Maximized"));
-
-  return lWindowModes;
-}
-
-QStringList Utils::getAppThemes()
-{
-  QStringList lAppThemes;
-  lAppThemes.append(QString("Windows Vista"));
-  lAppThemes.append(QString("Paper Light by 6788"));
-  lAppThemes.append(QString("Paper Dark by 6788"));
-  lAppThemes.append(QString("Paper White Mono"));
-  lAppThemes.append(QString("Paper Black Mono"));
-  lAppThemes.append(QString("Alexhuszagh's Breeze Light"));
-  lAppThemes.append(QString("Alexhuszagh's Breeze Dark"));
-  lAppThemes.append(QString("QuasarApp's Dark Style"));
-  lAppThemes.append(QString("QuasarApp's Material Style"));
-  lAppThemes.append(QString("QuasarApp's Visual Studio Dark"));
-
-  return lAppThemes;
-}
-
-QString Utils::getShortLanguageNameFromEnum(int aEnumValue)
+QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
 {
   switch (aEnumValue)
   {
@@ -521,7 +484,7 @@ QString Utils::getShortLanguageNameFromEnum(int aEnumValue)
   }
 }
 
-QString Utils::getLongLanguageNameFromEnum(int aEnumValue)
+QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
 {
   switch (aEnumValue)
   {
@@ -535,7 +498,7 @@ QString Utils::getLongLanguageNameFromEnum(int aEnumValue)
   }
 }
 
-ApplicationLanguage Utils::getStructLanguageFromName(QString aShortName)
+ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
 {
   if (aShortName.compare("English") == 0)
   {
