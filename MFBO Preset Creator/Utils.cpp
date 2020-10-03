@@ -118,10 +118,6 @@ bool Utils::isThemeDark(const GUITheme aTheme)
     case GUITheme::QuasarAppMaterialStyle:
     case GUITheme::QuasarAppVisualStudioDark:
       return true;
-    case GUITheme::WindowsVista:
-    case GUITheme::PaperLight:
-    case GUITheme::PaperWhiteMono:
-    case GUITheme::AlexhuszaghBreezeLight:
     default:
       return false;
   }

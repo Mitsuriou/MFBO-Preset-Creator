@@ -30,6 +30,7 @@ To launch the software, simply click on the **MFBO Preset Creator.exe** file (th
 - [ ] Add an option to disable the automatic opening of the generated folder, after a generation
 - [ ] Be able to import a custom *female_skeleton.nif* file
 - [ ] Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
+- [ ] Be able to set a default export path that would be chosen automatically when the software launches
 
 ### Developer side
 - [ ] Create test classes
