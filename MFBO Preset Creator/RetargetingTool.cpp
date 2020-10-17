@@ -172,7 +172,7 @@ void RetargetingTool::updateBackupPreview()
   auto lFullPath(QString(""));
   if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
   {
-    lFullPath = lMainDirectory + QDir::separator() + lSubDirectory;
+    lFullPath = lMainDirectory + "/" + lSubDirectory;
     lMainDirTextEdit->setDisabled(false);
   }
   else if (lMainDirectory.length() > 0 && lSubDirectory.length() == 0)

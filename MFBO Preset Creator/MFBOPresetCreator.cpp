@@ -507,13 +507,13 @@ void MFBOPresetCreator::updateMeshesPreview()
 
   if (lIsValidPath)
   {
-    if (lMeshesPath.startsWith("\\") || lMeshesPath.startsWith("/") || lMeshesPath.endsWith("\\") || lMeshesPath.endsWith("/"))
+    if (lMeshesPath.startsWith("meshes/"))
     {
-      lPreviewLabel->setStyleSheet("QLabel {color: #FF9800;}");
+      lPreviewLabel->setStyleSheet("");
     }
     else
     {
-      lPreviewLabel->setStyleSheet("");
+      lPreviewLabel->setStyleSheet("QLabel {color: #FF9800;}");
     }
   }
   else
