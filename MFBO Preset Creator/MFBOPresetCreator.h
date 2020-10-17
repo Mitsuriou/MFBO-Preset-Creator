@@ -1,40 +1,21 @@
 ﻿#pragma once
 
-#include "Utils.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
-
-#include <QtWidgets/QMainWindow>
-#include <QVBoxLayout>
-#include <QString>
-#include <QMenuBar>
-#include <QMenu>
-#include <QAction>
-#include <QDialog>
-#include <QDesktopServices>
-#include <QComboBox>
-#include <QStringList>
-#include <QStatusBar>
-#include <QLabel>
-#include <QGroupBox>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QTextStream>
-#include <QCloseEvent>
-#include <QScreen>
-#include <QApplication>
-#include <QRect>
-#include <QDesktopWidget>
-
-#include "windows.h"
+#include "Utils.h"
 #include "WinUser.h"
+#include "stdafx.h"
+#include "windows.h"
 
 #include "ui_MFBOPresetCreator.h"
 
-class MFBOPresetCreator : public QMainWindow
+#ifdef CPLUSPLUS
+#define EXTERN_C extern "C"
+#else
+#define EXTERN_C extern
+#endif
+
+class __declspec(dllexport) MFBOPresetCreator : public QMainWindow
 {
   Q_OBJECT
 

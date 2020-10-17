@@ -1,11 +1,6 @@
 ﻿#include "MFBOPresetCreator.h"
 #include "Utils.h"
-
-#include <QCoreApplication>
-#include <QtWidgets/QApplication>
-#include <QIcon>
-#include <QFile>
-#include <QLibraryInfo>
+#include "stdafx.h"
 
 int main(int argc, char* argv[])
 {

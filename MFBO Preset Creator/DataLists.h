@@ -2,7 +2,13 @@
 
 #include <QStringList>
 
-class DataLists
+#ifdef CPLUSPLUS
+#define EXTERN_C extern "C"
+#else
+#define EXTERN_C extern
+#endif
+
+class __declspec(dllexport) DataLists
 {
 public:
   static QStringList getCBBE3BBBVersions();

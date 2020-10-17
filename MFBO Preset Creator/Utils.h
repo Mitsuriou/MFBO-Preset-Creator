@@ -1,20 +1,18 @@
 ﻿#pragma once
 
-#include "Struct.h"
 #include "Enum.h"
+#include "Struct.h"
 #include "buildnumber.h"
-
-#include <QCoreApplication>
-#include <QString>
-#include <QStringList>
-#include <QMessageBox>
-#include <QDirIterator>
-#include <QFile>
+#include "stdafx.h"
 #include <QtXml/QDomDocument>
-#include <QJsonDocument>
-#include <QJsonObject>
 
-class Utils : public QObject
+#ifdef CPLUSPLUS
+#define EXTERN_C extern "C"
+#else
+#define EXTERN_C extern
+#endif
+
+class __declspec(dllexport) Utils : public QObject
 {
   Q_OBJECT
 

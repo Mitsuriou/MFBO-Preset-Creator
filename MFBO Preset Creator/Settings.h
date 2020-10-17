@@ -1,37 +1,16 @@
 ﻿#pragma once
 
-#include "Utils.h"
 #include "DataLists.h"
+#include "Utils.h"
+#include "stdafx.h"
 
-#include <QApplication>
-#include <QString>
-#include <QStringList>
-#include <QWidget>
-#include <QDialog>
-#include <QGridLayout>
-#include <QLabel>
-#include <QComboBox>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QFileDialog>
-#include <QProgressDialog>
-#include <QCheckBox>
-#include <QProgressBar>
-#include <QStandardPaths>
-#include <QCloseEvent>
-#include <QFile>
-#include <QByteArray>
-#include <QMessageBox>
-#include <QDirIterator>
-#include <QFileInfo>
-#include <QTextStream>
-#include <QPair>
-#include <QIntValidator>
-#include <QTranslator>
-#include <QFontDatabase>
-#include <QRegularExpression>
+#ifdef CPLUSPLUS
+#define EXTERN_C extern "C"
+#else
+#define EXTERN_C extern
+#endif
 
-class Settings : public QDialog
+class __declspec(dllexport) Settings : public QDialog
 {
   Q_OBJECT
 
