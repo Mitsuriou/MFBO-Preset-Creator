@@ -9,13 +9,7 @@
 
 #include "ui_MFBOPresetCreator.h"
 
-#ifdef CPLUSPLUS
-#define EXTERN_C extern "C"
-#else
-#define EXTERN_C extern
-#endif
-
-class __declspec(dllexport) MFBOPresetCreator : public QMainWindow
+extern "C" class __declspec(dllexport) MFBOPresetCreator : public QMainWindow
 {
   Q_OBJECT
 

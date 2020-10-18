@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Enum.h"
-
 #include <QString>
 
 namespace Struct

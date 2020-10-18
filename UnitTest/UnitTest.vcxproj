@@ -34,16 +34,28 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtMoc>
-      <PreprocessorDefinitions>QT_WIDGETS_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OverrideClCompile>extend</OverrideClCompile>
     </QtMoc>
     <PostBuildEvent>
       <Command>powershell start-process "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName)$(TargetExt)"</Command>
     </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>MFBOPresetCreator.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="QtSettings">
-    <QtInstall>Qt 5.15.1 x64</QtInstall>
     <QtModules>core;gui;testlib;widgets;xml</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
+    <QtQMLDebugEnable>false</QtQMLDebugEnable>
+    <QtInstall>Qt 5.15.1 x64</QtInstall>
+    <QtLibrarySearchPath>
+    </QtLibrarySearchPath>
+    <QtHeaderSearchPath>
+    </QtHeaderSearchPath>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />

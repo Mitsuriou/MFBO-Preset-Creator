@@ -6,13 +6,7 @@
 #include "Utils.h"
 #include "stdafx.h"
 
-#ifdef CPLUSPLUS
-#define EXTERN_C extern "C"
-#else
-#define EXTERN_C extern
-#endif
-
-class __declspec(dllexport) RetargetingTool : public QDialog
+extern "C" class __declspec(dllexport) RetargetingTool : public QDialog
 {
   Q_OBJECT
 

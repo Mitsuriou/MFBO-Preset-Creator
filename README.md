@@ -14,7 +14,7 @@ Choose the **latest release** on https://github.com/Mitsuriou/MFBO-Preset-Creato
 The software is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the folder of your choice the content of the archive.
 
 ### Launch
-To launch the software, simply click on the **MFBO Preset Creator.exe** file (the one with a black and white icon).
+To launch the software, simply click on the **MFBOPresetCreator.exe** file (the one with a black and white icon).
 
 # Roadmap (not ordered by priority)
 ### GUI modifications

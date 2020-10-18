@@ -36,3 +36,8 @@ QStringList DataLists::getAppThemes()
 
   return lAppThemes;
 }
+
+QString DataLists::tt()
+{
+  return QString("ALED");
+}

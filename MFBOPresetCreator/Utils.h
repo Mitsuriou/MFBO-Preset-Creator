@@ -6,13 +6,7 @@
 #include "stdafx.h"
 #include <QtXml/QDomDocument>
 
-#ifdef CPLUSPLUS
-#define EXTERN_C extern "C"
-#else
-#define EXTERN_C extern
-#endif
-
-class __declspec(dllexport) Utils : public QObject
+extern "C" class __declspec(dllexport) Utils : public QObject
 {
   Q_OBJECT
 
@@ -40,4 +34,7 @@ public:
   static QString getShortLanguageNameFromEnum(const int aEnumValue);
   static QString getLongLanguageNameFromEnum(const int aEnumValue);
   static ApplicationLanguage getStructLanguageFromName(const QString& aShortName);
+
+private:
+  Utils(){};
 };

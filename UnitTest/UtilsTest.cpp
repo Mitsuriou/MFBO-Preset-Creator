@@ -1,25 +1,40 @@
 #pragma once
 
+#include <QDebug>
+#include <QStringList>
 #include <QtTest/QtTest>
+
+#include "./MFBOPresetCreator/DataLists.h"
 
 class UtilsTest : public QObject
 {
   Q_OBJECT
 
 private slots:
-  void toUpper();
+  void randomTest();
   void cleanupTestCase();
 };
 
-void UtilsTest::toUpper()
+void UtilsTest::randomTest()
 {
-  QString str = "Hello";
-  QCOMPARE(str.toUpper(), QString("HELLO"));
+  //QStringList lExpectedList;
+  //lExpectedList.append(QString("1.40"));
+  //lExpectedList.append(QString("1.50"));
+  //lExpectedList.append(QString("1.51 - 1.52"));
+
+  //auto lObtainedList = DataLists::getCBBE3BBBVersions();
+
+  //QCOMPARE(lExpectedList, lObtainedList);
+
+  int lExpectedList = -111;
+  auto lObtainedList = DataLists::tt();
+  QCOMPARE(lExpectedList, lObtainedList);
 }
 
 void UtilsTest::cleanupTestCase()
 {
-  system("Pause. All tests have been executed.");
+  qDebug() << "All tests have been executed.";
+  system("pause");
 }
 
 QTEST_MAIN(UtilsTest)

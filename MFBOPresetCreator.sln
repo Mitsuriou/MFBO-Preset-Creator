@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFBO Preset Creator", "MFBO Preset Creator\MFBO Preset Creator.vcxproj", "{51385EF8-9F40-43D7-A8F1-B9737468DB56}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFBOPresetCreator", "MFBOPresetCreator\MFBOPresetCreator.vcxproj", "{51385EF8-9F40-43D7-A8F1-B9737468DB56}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTest.vcxproj", "{175AB92D-1320-4F26-8E69-4BAB1E593CC8}"
 	ProjectSection(ProjectDependencies) = postProject
