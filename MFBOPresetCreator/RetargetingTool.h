@@ -6,7 +6,7 @@
 #include "Utils.h"
 #include "stdafx.h"
 
-extern "C" class __declspec(dllexport) RetargetingTool : public QDialog
+class __declspec(dllexport) RetargetingTool : public QDialog
 {
   Q_OBJECT
 

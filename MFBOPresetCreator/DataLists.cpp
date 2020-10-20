@@ -2,12 +2,12 @@
 
 QStringList DataLists::getCBBE3BBBVersions()
 {
-  QStringList lVersions;
+  /*QStringList lVersions;
   lVersions.append(QString("1.40"));
   lVersions.append(QString("1.50"));
-  lVersions.append(QString("1.51 - 1.52"));
+  lVersions.append(QString("1.51 - 1.52"));*/
 
-  return lVersions;
+  return QStringList();
 }
 
 QStringList DataLists::getWindowOpeningModes()
@@ -35,9 +35,4 @@ QStringList DataLists::getAppThemes()
   lAppThemes.append(QString("QuasarApp's Visual Studio Dark"));
 
   return lAppThemes;
-}
-
-QString DataLists::tt()
-{
-  return QString("ALED");
 }

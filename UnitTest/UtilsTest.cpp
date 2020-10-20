@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QDebug>
+#include <QString>
 #include <QStringList>
 #include <QtTest/QtTest>
 
@@ -17,17 +18,13 @@ private slots:
 
 void UtilsTest::randomTest()
 {
-  //QStringList lExpectedList;
-  //lExpectedList.append(QString("1.40"));
-  //lExpectedList.append(QString("1.50"));
-  //lExpectedList.append(QString("1.51 - 1.52"));
+  QStringList lExpectedList;
+  lExpectedList.append(QString("1.40"));
+  lExpectedList.append(QString("1.50"));
+  lExpectedList.append(QString("1.51 - 1.52"));
 
-  //auto lObtainedList = DataLists::getCBBE3BBBVersions();
+  auto lObtainedList = DataLists::getCBBE3BBBVersions();
 
-  //QCOMPARE(lExpectedList, lObtainedList);
-
-  int lExpectedList = -111;
-  auto lObtainedList = DataLists::tt();
   QCOMPARE(lExpectedList, lObtainedList);
 }
 

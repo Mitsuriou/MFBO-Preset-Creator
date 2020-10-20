@@ -6,7 +6,7 @@
 #include "stdafx.h"
 #include <QtXml/QDomDocument>
 
-extern "C" class __declspec(dllexport) Utils : public QObject
+class __declspec(dllexport) Utils : public QObject
 {
   Q_OBJECT
 
