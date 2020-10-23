@@ -6,6 +6,8 @@ QStringList DataLists::getCBBE3BBBVersions()
   lVersions.append(QString("1.40"));
   lVersions.append(QString("1.50"));
   lVersions.append(QString("1.51 - 1.52"));
+
+  return lVersions;
 }
 
 QStringList DataLists::getWindowOpeningModes()
