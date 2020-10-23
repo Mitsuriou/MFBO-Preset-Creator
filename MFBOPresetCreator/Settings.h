@@ -4,7 +4,7 @@
 #include "Utils.h"
 #include "stdafx.h"
 
-class __declspec(dllexport) Settings : public QDialog
+class Settings : public QDialog
 {
   Q_OBJECT
 

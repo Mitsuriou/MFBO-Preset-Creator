@@ -9,7 +9,7 @@
 
 #include "ui_MFBOPresetCreator.h"
 
-class __declspec(dllexport) MFBOPresetCreator : public QMainWindow
+class MFBOPresetCreator : public QMainWindow
 {
   Q_OBJECT
 

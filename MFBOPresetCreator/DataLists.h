@@ -3,7 +3,7 @@
 #include "qstring.h"
 #include "qstringlist.h"
 
-class __declspec(dllexport) DataLists
+class DataLists
 {
 public:
   static QStringList getCBBE3BBBVersions();
