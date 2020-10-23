@@ -2,12 +2,10 @@
 
 QStringList DataLists::getCBBE3BBBVersions()
 {
-  /*QStringList lVersions;
+  QStringList lVersions;
   lVersions.append(QString("1.40"));
   lVersions.append(QString("1.50"));
-  lVersions.append(QString("1.51 - 1.52"));*/
-
-  return QStringList();
+  lVersions.append(QString("1.51 - 1.52"));
 }
 
 QStringList DataLists::getWindowOpeningModes()
