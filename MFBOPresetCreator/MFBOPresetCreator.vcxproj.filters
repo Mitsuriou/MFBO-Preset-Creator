@@ -19,6 +19,18 @@
     <ClCompile Include="DataLists.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TabVanillaSE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TabUNPSE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TabCBBESE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum.h">
@@ -59,6 +71,11 @@
       <Extensions>ts</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MFBOPresetCreator.h">
@@ -76,10 +93,22 @@
     <QtMoc Include="DataLists.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Tab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TabVanillaSE.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TabUNPSE.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TabCBBESE.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MFBOPresetCreator.ui">
-      <Filter>Qt Ressources</Filter>
+      <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>

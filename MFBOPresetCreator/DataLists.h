@@ -6,7 +6,7 @@
 
 class DataLists : public QObject
 {
-  Q_OBJECT;
+  Q_OBJECT
 
 public:
   static QStringList getCBBE3BBBVersions();
