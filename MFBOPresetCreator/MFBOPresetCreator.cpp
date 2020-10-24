@@ -3,12 +3,12 @@
 MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   : QMainWindow(parent)
   , mSettings(Utils::loadSettingsFromFile())
-  , mMinimumFirstColmunWith(275)
+  , mMinimumFirstColmunWidth(275)
 {
   // Construct the GUI
   ui.setupUi(this);
   this->initializeGUI();
-  this->refreshUI(mSettings);
+  this->refreshUI(mSettings, false);
   this->showWindow();
 }
 
@@ -28,9 +28,6 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 
 void MFBOPresetCreator::initializeGUI()
 {
-  // Menu bar
-  this->setupMenuBar();
-
   // Main window container
   auto lMainVertical{new QVBoxLayout(this->ui.mainContainer)};
 
@@ -114,7 +111,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
-  lMeshesGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
+  lMeshesGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
 
   // First line
   auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"), this)};
@@ -132,6 +129,7 @@ void MFBOPresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   auto lMeshesPathLineEdit{new QLineEdit("", this)};
   lMeshesPathLineEdit->setObjectName("meshes_path_input");
+  lMeshesPathLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1);
 
   // Third line
@@ -205,7 +203,7 @@ void MFBOPresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
+  lBodyslideGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
 
   // First line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
@@ -259,7 +257,7 @@ void MFBOPresetCreator::setupOptionsGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lOptionsGroupBox);
 
   auto lOptionsGridLayout{new QGridLayout(lOptionsGroupBox)};
-  lOptionsGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
+  lOptionsGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
 
   // Skeleton
   auto lLabelSkeleton{new QLabel("", this)};
@@ -307,7 +305,7 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
-  lOutputGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWith);
+  lOutputGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
 
   // First line
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
@@ -317,6 +315,7 @@ void MFBOPresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputPathLineEdit->setReadOnly(true);
   lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lOutputPathLineEdit->setObjectName("output_path_directory");
+  lOutputPathLineEdit->setText(mSettings.mainWindowOutputPath);
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
@@ -436,7 +435,7 @@ void MFBOPresetCreator::applyStyleSheet()
       break;
   }
 
-  if (lQSSFileName.compare("") == 0)
+  if (lQSSFileName == "")
   {
     qApp->setStyleSheet("");
   }
@@ -451,15 +450,49 @@ void MFBOPresetCreator::applyStyleSheet()
   }
 }
 
-void MFBOPresetCreator::refreshUI(Struct::Settings aSettings)
+void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings)
 {
-  // Apply the chosen theme
-  this->applyStyleSheet();
+  if (aMustUpdateSettings)
+  {
+    // Store old values to check if GUI modifications are needed
+    auto lOldAppTheme = mSettings.appTheme;
+    auto lOldFontFamily = mSettings.fontFamily;
+    auto lOldFontSize = mSettings.fontSize;
 
-  // Set the font properties
-  QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
-  this->setFont(lFont);
-  this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
+    auto lNewAppTheme = aSettings.appTheme;
+    auto lNewFontFamily = aSettings.fontFamily;
+    auto lNewFontSize = aSettings.fontSize;
+
+    mSettings = aSettings;
+
+    if (lOldAppTheme != lNewAppTheme)
+    {
+      this->setupMenuBar();
+
+      // Apply the chosen theme
+      this->applyStyleSheet();
+    }
+
+    if (lOldFontFamily != lNewFontFamily || lOldFontSize != lNewFontSize)
+    {
+      // Set the font properties
+      QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
+      this->setFont(lFont);
+      this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
+    }
+  }
+  else
+  {
+    this->setupMenuBar();
+
+    // Apply the chosen theme
+    this->applyStyleSheet();
+
+    // Set the font properties
+    QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
+    this->setFont(lFont);
+    this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
+  }
 }
 
 void MFBOPresetCreator::updateMeshesPreview()
@@ -756,8 +789,20 @@ void MFBOPresetCreator::updateSkeletonPreview(QString aText)
 
 void MFBOPresetCreator::chooseExportDirectory()
 {
-  auto lLineEdit{this->ui.mainContainer->findChild<QLineEdit*>("output_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
+  auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
+
+  auto lSetGUIPath{lLineEdit->text()};
+  auto lPreSelectedDirectory{QString("")};
+  if (lSetGUIPath == "")
+  {
+    lPreSelectedDirectory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+  }
+  else
+  {
+    lPreSelectedDirectory = lSetGUIPath;
+  }
+
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lPreSelectedDirectory)};
   lLineEdit->setText(lPath);
   this->updateOutputPreview();
 }
@@ -1065,8 +1110,11 @@ void MFBOPresetCreator::generateDirectoryStructure()
 
   if (lReply == QMessageBox::Ok)
   {
-    // Open the folder where the file structure has been created
-    QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
+    if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
+    {
+      // Open the folder where the file structure has been created
+      QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
+    }
   }
 }
 
@@ -1104,7 +1152,7 @@ void MFBOPresetCreator::showSettingsDialog()
 {
   auto lSettings{new Settings(this)};
 
-  connect(lSettings, SIGNAL(refreshMainUI(Struct::Settings)), this, SLOT(refreshUI(Struct::Settings)));
+  connect(lSettings, SIGNAL(refreshMainUI(Struct::Settings, bool)), this, SLOT(refreshUI(Struct::Settings, bool)));
 }
 
 void MFBOPresetCreator::showAboutDialog()

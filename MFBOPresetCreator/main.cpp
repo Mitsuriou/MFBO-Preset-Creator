@@ -5,6 +5,7 @@
 int main(int argc, char* argv[])
 {
   auto currentExitCode{0};
+  QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
   do
   {

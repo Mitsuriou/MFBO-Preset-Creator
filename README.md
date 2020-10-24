@@ -20,21 +20,21 @@ To launch the software, simply click on the **MFBOPresetCreator.exe** file (the 
 ### GUI modifications
 - [ ] Separate the main GUI into tabs for the different body types
 - [ ] Allow the user to type different paths for the body, hands and feet
-- [X] (1.7.4) Add a check system to know is the *meshes/*" path is well filled and seems to be valid
+- [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
 
 ### New tools
 - [ ] Automatic conversion (choose a folder to automatically try to find where are located the meshes for the NPC that needs to be converted)
 
 ### Other cool features and improvements
 - [ ] Better software linking with Mod Organizer 2
-- [ ] Add an option to disable the automatic opening of the generated folder, after a generation
+- [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation
 - [ ] Be able to import a custom *female_skeleton.nif* file
 - [ ] Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
-- [ ] Be able to set a default export path that would be chosen automatically when the software launches
+- [X] (1.7.4) Be able to set a default export path that would be chosen automatically when the software launches
 
 ### Developer side
 - [ ] Create test classes
 - [ ] Splashscreen when the software is being launched
 - [ ] In-app automatic updater
 - [ ] Executable to install the app on C:/ProgramFiles (InnoSetup?)
-- [ ] Change the source code auto-formatter for more compatibility with Visual Studio 2019
+- [X] (1.7.4) Change the source code auto-formatter for more compatibility with Visual Studio 2019

@@ -13,9 +13,9 @@ QStringList DataLists::getCBBE3BBBVersions()
 QStringList DataLists::getWindowOpeningModes()
 {
   QStringList lWindowModes;
-  lWindowModes.append(QString("Minimized"));
-  lWindowModes.append(QString("Windowed"));
-  lWindowModes.append(QString("Maximized"));
+  lWindowModes.append(tr("Minimized"));
+  lWindowModes.append(tr("Windowed"));
+  lWindowModes.append(tr("Maximized"));
 
   return lWindowModes;
 }
@@ -35,4 +35,13 @@ QStringList DataLists::getAppThemes()
   lAppThemes.append(QString("QuasarApp's Visual Studio Dark"));
 
   return lAppThemes;
+}
+
+QStringList DataLists::getLanguages()
+{
+  QStringList lLanguages;
+  lLanguages.append(tr("English"));
+  lLanguages.append(tr("Français"));
+
+  return lLanguages;
 }

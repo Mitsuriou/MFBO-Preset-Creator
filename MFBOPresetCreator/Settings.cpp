@@ -17,9 +17,8 @@ Settings::Settings(QWidget* parent)
 
 void Settings::closeEvent(QCloseEvent* aEvent)
 {
-  QObject* lEventSourceObject{sender()};
-  QPushButton* lEventButton{qobject_cast<QPushButton*>(lEventSourceObject)};
-
+  auto lEventSourceObject{sender()};
+  auto lEventButton{qobject_cast<QPushButton*>(lEventSourceObject)};
   auto lSaveButton{this->findChild<QPushButton*>("save_close")};
 
   if (lEventButton == lSaveButton)
@@ -28,11 +27,18 @@ void Settings::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the Settings window without saving?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
-
-  if (lResult != QMessageBox::Yes)
+  if (this->getSettingsFromGUI() != mSettings)
   {
-    aEvent->ignore();
+    auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the Settings window without saving?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+
+    if (lResult != QMessageBox::Yes)
+    {
+      aEvent->ignore();
+    }
+    else
+    {
+      aEvent->accept();
+    }
   }
   else
   {
@@ -50,73 +56,88 @@ void Settings::setWindowProperties()
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-  this->setMinimumWidth(650);
   this->setWindowTitle(tr("Settings"));
 }
 
 void Settings::initializeGUI()
 {
-  // Main window containers
-  auto lMainVertical{new QGridLayout()};
-  this->setupInterface(*lMainVertical);
+  // Main layout
+  auto lMainContainer{new QVBoxLayout(this)};
 
-  auto lButtonsContainer{new QGridLayout()};
-  this->setupButtons(*lButtonsContainer);
+  // Tabs
+  auto lTabsContainer{new QVBoxLayout()};
+  lMainContainer->addLayout(lTabsContainer);
+  this->setupTabs(lTabsContainer);
 
-  auto lContainer{new QVBoxLayout(this)};
-  lContainer->addLayout(lMainVertical);
-  lContainer->addLayout(lButtonsContainer);
+  // Buttons
+  auto lButtonsContainer{new QHBoxLayout()};
+  lMainContainer->addLayout(lButtonsContainer);
+  this->setupButtons(lButtonsContainer);
 
   // Load the settings in the interface
   this->loadSettings();
 }
 
-void Settings::setupInterface(QGridLayout& aLayout)
+void Settings::setupTabs(QVBoxLayout* aLayout)
 {
-  // LANGUAGE
-  auto lLanguageLabel{new QLabel(tr("Language:"), this)};
-  aLayout.addWidget(lLanguageLabel, 0, 0);
+  auto lTabs{new QTabWidget(this)};
+  aLayout->addWidget(lTabs);
 
-  QStringList lSupportedLanguages;
-  lSupportedLanguages.append(tr("English"));
-  lSupportedLanguages.append(tr("Français"));
+  this->setupDisplayTab(lTabs);
+  this->setupPresetCreatorTab(lTabs);
+  this->setupRetargetingToolTab(lTabs);
+}
+
+void Settings::setupDisplayTab(QTabWidget* aTabs)
+{
+  auto lDisplayTab{new QWidget(aTabs)};
+  aTabs->addTab(lDisplayTab, tr("Display"));
+
+  auto lDisplayLayout{new QVBoxLayout(lDisplayTab)};
+  lDisplayLayout->setAlignment(Qt::AlignTop);
+  lDisplayTab->setLayout(lDisplayLayout);
+
+  // LANGUAGE
+  auto lLangLabelText = "* " + tr("Language:");
+  auto lLanguageLabel{new QLabel(lLangLabelText, this)};
+  lDisplayLayout->addWidget(lLanguageLabel);
 
   auto lLanguageSelector{new QComboBox(this)};
-  lLanguageSelector->addItems(lSupportedLanguages);
+  lLanguageSelector->addItems(DataLists::getLanguages());
   lLanguageSelector->setObjectName(QString("language"));
-  aLayout.addWidget(lLanguageSelector, 0, 1);
+  lDisplayLayout->addWidget(lLanguageSelector);
 
   // FONT FAMILY
   auto lFontFamilyLabel{new QLabel(tr("Font family:"), this)};
-  aLayout.addWidget(lFontFamilyLabel, 1, 0);
+  lDisplayLayout->addWidget(lFontFamilyLabel);
 
   auto lFontFamilySelector{new QComboBox(this)};
   QFontDatabase lFontDB;
   lFontFamilySelector->addItems(lFontDB.families(QFontDatabase::WritingSystem::Any));
   lFontFamilySelector->setObjectName(QString("font_family"));
-  aLayout.addWidget(lFontFamilySelector, 1, 1);
+  lDisplayLayout->addWidget(lFontFamilySelector);
 
   // FONT SIZE
   auto lFontSizeLabel{new QLabel(tr("Font size:"), this)};
-  aLayout.addWidget(lFontSizeLabel, 2, 0);
+  lDisplayLayout->addWidget(lFontSizeLabel);
 
   auto lFontSizeInput{new QLineEdit("", this)};
   lFontSizeInput->setObjectName(QString("font_size"));
   lFontSizeInput->setValidator(new QIntValidator(1, 99, this));
-  aLayout.addWidget(lFontSizeInput, 2, 1);
+  lDisplayLayout->addWidget(lFontSizeInput);
 
   // GUI THEME
   auto lGUIThemeLabel{new QLabel(tr("Application Theme:"), this)};
-  aLayout.addWidget(lGUIThemeLabel, 3, 0);
+  lDisplayLayout->addWidget(lGUIThemeLabel);
 
   auto lGUIThemeSelector{new QComboBox(this)};
   lGUIThemeSelector->addItems(DataLists::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
-  aLayout.addWidget(lGUIThemeSelector, 3, 1);
+  lDisplayLayout->addWidget(lGUIThemeSelector);
 
   // MAIN WINDOW OPENING MODE
   auto lWindowOpeningModeLabel{new QLabel(tr("Window opening mode:"), this)};
-  aLayout.addWidget(lWindowOpeningModeLabel, 4, 0);
+  lDisplayLayout->addWidget(lWindowOpeningModeLabel);
 
   QStringList lSupportedWindowOpeningMode;
   lSupportedWindowOpeningMode.append(tr("English"));
@@ -125,63 +146,105 @@ void Settings::setupInterface(QGridLayout& aLayout)
   auto lWindowOpeningModeSelector{new QComboBox(this)};
   lWindowOpeningModeSelector->addItems(DataLists::getWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("window_opening_mode"));
-  aLayout.addWidget(lWindowOpeningModeSelector, 4, 1);
+  lDisplayLayout->addWidget(lWindowOpeningModeSelector);
 
   // WINDOW WIDTH
   auto lWinWidthLabel{new QLabel(tr("Default main window width:"), this)};
-  aLayout.addWidget(lWinWidthLabel, 5, 0);
+  lDisplayLayout->addWidget(lWinWidthLabel);
 
   auto lWinWidthInput{new QLineEdit("", this)};
   lWinWidthInput->setObjectName(QString("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 9999, this));
-  aLayout.addWidget(lWinWidthInput, 5, 1);
+  lDisplayLayout->addWidget(lWinWidthInput);
 
   // WINDOW HEIGHT
   auto lWinHeightLabel{new QLabel(tr("Default main window height:"), this)};
-  aLayout.addWidget(lWinHeightLabel, 6, 0);
+  lDisplayLayout->addWidget(lWinHeightLabel);
 
   auto lWinHeightInput{new QLineEdit("", this)};
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
-  aLayout.addWidget(lWinHeightInput, 6, 1);
+  lDisplayLayout->addWidget(lWinHeightInput);
+}
 
-  // DEFAULT SELECTED CBBE 3BBB VERSION (MAIN)
-  auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (main window):"), this)};
-  aLayout.addWidget(ldefaultCbbe3BBBVersionLabel, 7, 0);
+void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
+{
+  QWidget* lPresetCreatorTab{new QWidget(aTabs)};
+  aTabs->addTab(lPresetCreatorTab, tr("Preset Creator"));
+
+  auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorTab)};
+  lPresetCreatorLayout->setAlignment(Qt::AlignTop);
+  lPresetCreatorTab->setLayout(lPresetCreatorLayout);
+
+  // DEFAULT SELECTED CBBE 3BBB VERSION
+  auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version:"), this)};
+  lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionLabel, 0, 0, 1, 2);
 
   auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
   ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
-  aLayout.addWidget(ldefaultCbbe3BBBVersionSelector, 7, 1);
+  lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionSelector, 1, 0, 1, 2);
 
-  // DEFAULT SELECTED CBBE 3BBB VERSION (RETARGETING TOOL)
-  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version (Retargeting tool):"), this)};
-  aLayout.addWidget(lupgradeCbbe3BBBVersionLabel, 8, 0);
+  // OUTPUT PATH PREVIEW
+  auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
+  lPresetCreatorLayout->addWidget(lOutputPathLabel, 2, 0, 1, 2);
 
-  auto lupgradeCbbe3BBBVersionSelector{new QComboBox(this)};
-  lupgradeCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
-  lupgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
-  aLayout.addWidget(lupgradeCbbe3BBBVersionSelector, 8, 1);
+  auto lOutputPathLineEdit{new QLineEdit("", this)};
+  lOutputPathLineEdit->setReadOnly(true);
+  lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+  lOutputPathLineEdit->setObjectName("output_path_directory");
+  lPresetCreatorLayout->addWidget(lOutputPathLineEdit, 3, 0);
+
+  // OUTPUT PATH CHOOSER
+  auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);
+
+  // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
+  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation"), this)};
+  lAutoOpenDirCheckbox->setObjectName(QString("auto_open_generated_dir"));
+  lPresetCreatorLayout->addWidget(lAutoOpenDirCheckbox, 4, 0, 1, 2);
+
+  // Event binding
+  connect(lOutputPathChooser, SIGNAL(clicked()), this, SLOT(chooseExportDirectory()));
 }
 
-void Settings::setupButtons(QGridLayout& aLayout)
+void Settings::setupRetargetingToolTab(QTabWidget* aTabs)
+{
+  QWidget* lRetargetingToolTab{new QWidget(aTabs)};
+  aTabs->addTab(lRetargetingToolTab, tr("Retargeting Tool"));
+
+  auto lRetargetingToolLayout{new QVBoxLayout(lRetargetingToolTab)};
+  lRetargetingToolLayout->setAlignment(Qt::AlignTop);
+  lRetargetingToolTab->setLayout(lRetargetingToolLayout);
+
+  // DEFAULT SELECTED CBBE 3BBB VERSION (RETARGETING TOOL)
+  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version:"), this)};
+  lRetargetingToolLayout->addWidget(lupgradeCbbe3BBBVersionLabel);
+
+  auto lUpgradeCbbe3BBBVersionSelector{new QComboBox(this)};
+  lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
+  lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
+  lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
+}
+
+void Settings::setupButtons(QHBoxLayout* aLayout)
 {
   // Create the buttons
-  auto lRestoreDefaultButton{new QPushButton(tr("Restore default without saving"), this)};
+  auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
   lRestoreDefaultButton->setAutoDefault(false);
   lRestoreDefaultButton->setDefault(false);
-  aLayout.addWidget(lRestoreDefaultButton, 0, 0);
+  aLayout->addWidget(lRestoreDefaultButton);
 
   auto lSaveButton{new QPushButton(tr("Save and close"), this)};
   lSaveButton->setObjectName("save_close");
   lSaveButton->setAutoDefault(false);
   lSaveButton->setDefault(false);
-  aLayout.addWidget(lSaveButton, 0, 1);
+  aLayout->addWidget(lSaveButton);
 
-  auto lCloseButton{new QPushButton(tr("Close without saving"), this)};
+  auto lCloseButton{new QPushButton(tr("Close"), this)};
   lCloseButton->setAutoDefault(false);
   lCloseButton->setDefault(false);
-  aLayout.addWidget(lCloseButton, 0, 2);
+  aLayout->addWidget(lCloseButton);
 
   // Event binding
   connect(lRestoreDefaultButton, SIGNAL(clicked()), this, SLOT(restoreDefaultSettings()));
@@ -219,42 +282,15 @@ void Settings::loadSettings()
 
   auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")};
   lDefaultUpgradeCBBE3BBBVersion->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
+
+  auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")};
+  lMainWindowOutputPath->setText(mSettings.mainWindowOutputPath);
+
+  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")};
+  lAutoOpenGeneratedDir->setChecked(mSettings.mainWindowAutomaticallyOpenGeneratedDirectory);
 }
 
-void Settings::refreshUI()
-{
-  // Set the font properties
-  QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
-  this->setFont(lFont);
-  this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
-
-  emit refreshMainUI(mSettings);
-
-  if (mMustRebootMainApp)
-  {
-    auto lResult{QMessageBox::question(this, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
-
-    if (lResult == QMessageBox::Yes)
-    {
-      // Reboot the application in case the language is changed
-      qApp->exit(Settings::EXIT_CODE_REBOOT);
-    }
-  }
-}
-
-void Settings::restoreDefaultSettings()
-{
-  // Store the current settings
-  auto lStoredSettings = mSettings;
-  // Create a default settings object and save it
-  Struct::Settings lSettings;
-  mSettings = lSettings;
-  this->loadSettings();
-  // Reload the settings that were previously set
-  mSettings = lStoredSettings;
-}
-
-void Settings::saveSettings()
+Struct::Settings Settings::getSettingsFromGUI()
 {
   auto lLang{this->findChild<QComboBox*>("language")->currentIndex()};
   auto lFontFamily{this->findChild<QComboBox*>("font_family")->currentText().trimmed()};
@@ -265,6 +301,8 @@ void Settings::saveSettings()
   auto lDefaultCBBE3BBBVersion{this->findChild<QComboBox*>("default_cbbe_3bbb_version")->currentIndex()};
   auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")->currentIndex()};
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
+  auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
+  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};
 
   Struct::Settings lSettings;
 
@@ -395,7 +433,77 @@ void Settings::saveSettings()
       break;
   }
 
-  mMustRebootMainApp = (mSettings.language != lSettings.language) || (mSettings.appTheme != lSettings.appTheme);
+  // Main window output path
+  if (lMainWindowOutputPath.size() > 0)
+  {
+    lSettings.mainWindowOutputPath = lMainWindowOutputPath;
+  }
+
+  // Automatically open generated directory
+  lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lAutoOpenGeneratedDir;
+
+  return lSettings;
+}
+
+void Settings::refreshUI()
+{
+  // Set the font properties
+  QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
+  this->setFont(lFont);
+  this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
+
+  emit refreshMainUI(mSettings, true);
+
+  if (mMustRebootMainApp)
+  {
+    auto lResult{QMessageBox::question(this, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+
+    if (lResult == QMessageBox::Yes)
+    {
+      // Reboot the application in case the language is changed
+      qApp->exit(Settings::EXIT_CODE_REBOOT);
+    }
+  }
+}
+
+void Settings::restoreDefaultSettings()
+{
+  // Store the current settings
+  auto lStoredSettings = mSettings;
+
+  // Create a default settings object and load it into the GUI
+  Struct::Settings lSettings;
+  mSettings = lSettings;
+  this->loadSettings();
+
+  // Reload the settings that were previously set
+  mSettings = lStoredSettings;
+}
+
+void Settings::chooseExportDirectory()
+{
+  auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
+
+  auto lSetGUIPath{lLineEdit->text()};
+  auto lPreSelectedDirectory{QString("")};
+  if (lSetGUIPath == "")
+  {
+    lPreSelectedDirectory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+  }
+  else
+  {
+    lPreSelectedDirectory = lSetGUIPath;
+  }
+
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lPreSelectedDirectory)};
+  lLineEdit->setText(lPath);
+}
+
+void Settings::saveSettings()
+{
+  auto lSettings{this->getSettingsFromGUI()};
+
+  mMustRebootMainApp = (mSettings.language != lSettings.language);
 
   Utils::saveSettingsToFile(lSettings);
   mSettings = lSettings;

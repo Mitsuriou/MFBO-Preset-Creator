@@ -22,15 +22,20 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
-  void setupInterface(QGridLayout& aLayout);
-  void setupButtons(QGridLayout& aLayout);
+  void setupTabs(QVBoxLayout* aLayout);
+  void setupDisplayTab(QTabWidget* aTabs);
+  void setupPresetCreatorTab(QTabWidget* aTabs);
+  void setupRetargetingToolTab(QTabWidget* aTabs);
+  void setupButtons(QHBoxLayout* aLayout);
   void loadSettings();
+  Struct::Settings getSettingsFromGUI();
   void refreshUI();
 
 signals:
-  void refreshMainUI(Struct::Settings aSettings);
+  void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
 
 private slots:
   void saveSettings();
   void restoreDefaultSettings();
+  void chooseExportDirectory();
 };

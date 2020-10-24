@@ -36,9 +36,6 @@
     <ClInclude Include="buildnumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataLists.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
@@ -74,6 +71,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Settings.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DataLists.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

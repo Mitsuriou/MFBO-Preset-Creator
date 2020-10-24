@@ -22,7 +22,7 @@ protected:
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
-  int mMinimumFirstColmunWith;
+  int mMinimumFirstColmunWidth;
 
   void initializeGUI();
   void setupMenuBar();
@@ -35,7 +35,7 @@ private:
   void applyStyleSheet();
 
 public slots:
-  void refreshUI(Struct::Settings aSettings);
+  void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
 
 private slots:
   void updateMeshesPreview();

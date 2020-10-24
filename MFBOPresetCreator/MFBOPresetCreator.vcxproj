@@ -129,7 +129,7 @@
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClInclude Include="buildnumber.h" />
-    <ClInclude Include="DataLists.h" />
+    <QtMoc Include="DataLists.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Settings.h" />

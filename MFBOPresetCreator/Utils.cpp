@@ -61,7 +61,7 @@ int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFi
 
 bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
 {
-  bool lIsSuccess{false};
+  auto lIsSuccess{false};
   QDir lSourceDirectory(aSourcePath);
 
   if (!lSourceDirectory.exists())
@@ -75,11 +75,13 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
     lDestinationDirectory.mkdir(aDestinationPath);
   }
 
-  QStringList lFilesList = lSourceDirectory.entryList(QDir::Files);
-  for (int i = 0; i < lFilesList.count(); i++)
+  auto lFilesList{lSourceDirectory.entryList(QDir::Files)};
+  auto lFilesListSize{lFilesList.count()};
+
+  for (int i = 0; i < lFilesListSize; i++)
   {
-    QString lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
-    QString lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
+    auto lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
+    auto lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
     lIsSuccess = QFile::copy(lSourceName, lDestinationName);
 
     if (!lIsSuccess)
@@ -91,7 +93,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
 
   lFilesList.clear();
   lFilesList = lSourceDirectory.entryList(QDir::AllDirs | QDir::NoDotAndDotDot);
-  for (int i = 0; i < lFilesList.count(); i++)
+  for (int i = 0; i < lFilesListSize; i++)
   {
     auto lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
     auto lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
@@ -141,8 +143,8 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
     return "";
   }
 
-  QDomElement lXMLGroup = lXMLDocument.documentElement().firstChild().toElement();
-  QString lPresetName;
+  auto lXMLGroup = lXMLDocument.documentElement().firstChild().toElement();
+  auto lPresetName{QString("")};
 
   if (lXMLGroup.tagName() == "Group")
   {
@@ -174,8 +176,8 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
     return std::vector<Struct::SliderSet>();
   }
 
-  QDomElement lRoot{lOSPDocument.documentElement()};
-  QDomElement lSliderSet{lRoot.firstChild().toElement()};
+  auto lRoot{lOSPDocument.documentElement()};
+  auto lSliderSet{lRoot.firstChild().toElement()};
 
   while (!lSliderSet.isNull())
   {
@@ -197,7 +199,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
         lTempSet.meshpart = "Feet";
       }
 
-      QDomElement lChild = lSliderSet.firstChild().toElement();
+      auto lChild{lSliderSet.firstChild().toElement()};
       while (!lChild.isNull())
       {
         if (lChild.tagName() == "OutputPath")
@@ -231,7 +233,7 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
 
-  QString lFileContent;
+  auto lFileContent{QString("")};
 
   if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {
@@ -287,7 +289,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   // Language
   if (lJsonObject.contains("lang") && lJsonObject["lang"].isDouble())
   {
-    auto lFoundLanguage = lJsonObject["lang"].toInt();
+    auto lFoundLanguage{lJsonObject["lang"].toInt()};
 
     switch (lFoundLanguage)
     {
@@ -318,7 +320,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   // Dark theme
   if (lJsonObject.contains("appTheme") && lJsonObject["appTheme"].isDouble())
   {
-    auto lFoundAppTheme = lJsonObject["appTheme"].toInt();
+    auto lFoundAppTheme{lJsonObject["appTheme"].toInt()};
 
     switch (lFoundAppTheme)
     {
@@ -373,7 +375,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   // Main window opening mode
   if (lJsonObject.contains("main_window_opening_mode") && lJsonObject["main_window_opening_mode"].isDouble())
   {
-    auto lFoundWindowOpeningMode = lJsonObject["main_window_opening_mode"].toInt();
+    auto lFoundWindowOpeningMode{lJsonObject["main_window_opening_mode"].toInt()};
 
     switch (lFoundWindowOpeningMode)
     {
@@ -394,7 +396,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   // Default CBBE 3BBB Version
   if (lJsonObject.contains("default_3bbb_version") && lJsonObject["default_3bbb_version"].isDouble())
   {
-    auto lFoundVersion = lJsonObject["default_3bbb_version"].toInt();
+    auto lFoundVersion{lJsonObject["default_3bbb_version"].toInt()};
 
     switch (lFoundVersion)
     {
@@ -415,7 +417,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   // Default Retargeting Tool CBBE 3BBB Version
   if (lJsonObject.contains("retargeting_tool_3bbb_version") && lJsonObject["retargeting_tool_3bbb_version"].isDouble())
   {
-    auto lFoundVersion = lJsonObject["retargeting_tool_3bbb_version"].toInt();
+    auto lFoundVersion{lJsonObject["retargeting_tool_3bbb_version"].toInt()};
 
     switch (lFoundVersion)
     {
@@ -431,6 +433,18 @@ Struct::Settings Utils::loadSettingsFromFile()
       default:
         lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
     }
+  }
+
+  // Main window output path
+  if (lJsonObject.contains("mainWindowOutputPath") && lJsonObject["mainWindowOutputPath"].isString())
+  {
+    lSettings.mainWindowOutputPath = lJsonObject["mainWindowOutputPath"].toString();
+  }
+
+  // Main window auto open generated dir
+  if (lJsonObject.contains("mainWindowAutomaticallyOpenGeneratedDirectory") && lJsonObject["mainWindowAutomaticallyOpenGeneratedDirectory"].isBool())
+  {
+    lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lJsonObject["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
   }
 
   return lSettings;
@@ -462,6 +476,8 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   lObj["default_3bbb_version"] = static_cast<int>(aSettings.defaultMainWindowCBBE3BBBVersion);
   lObj["retargeting_tool_3bbb_version"] = static_cast<int>(aSettings.defaultRetargetingToolCBBE3BBBVersion);
   lObj["main_window_opening_mode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
+  lObj["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
+  lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
 
   return lObj;
 }
