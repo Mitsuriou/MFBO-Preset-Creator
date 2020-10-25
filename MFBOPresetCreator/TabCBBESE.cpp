@@ -309,7 +309,7 @@ void TabCBBESE::updateMeshesPreview()
 
   if (lIsValidPath)
   {
-    if (lMeshesPath.startsWith("meshes/"))
+    if (lMeshesPath.startsWith("meshes/") && lMeshesPath.length() > 7)
     {
       lPreviewLabel->setStyleSheet("");
     }
