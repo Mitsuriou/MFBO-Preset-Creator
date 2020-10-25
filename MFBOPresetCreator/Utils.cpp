@@ -11,20 +11,20 @@ QString Utils::getSoftwareVersion()
 
   if (lBuildNumber < 10)
   {
-    return QString("1.7.5.000" + QString::fromStdString(BUILDNUMBER_STR));
+    return QString("1.7.6.000" + QString::fromStdString(BUILDNUMBER_STR));
   }
 
   if (lBuildNumber < 100)
   {
-    return QString("1.7.5.00" + QString::fromStdString(BUILDNUMBER_STR));
+    return QString("1.7.6.00" + QString::fromStdString(BUILDNUMBER_STR));
   }
 
   if (lBuildNumber < 1000)
   {
-    return QString("1.7.5.0" + QString::fromStdString(BUILDNUMBER_STR));
+    return QString("1.7.6.0" + QString::fromStdString(BUILDNUMBER_STR));
   }
 
-  return QString("1.7.5." + QString::fromStdString(BUILDNUMBER_STR));
+  return QString("1.7.6." + QString::fromStdString(BUILDNUMBER_STR));
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)

@@ -8,13 +8,21 @@ int main(int argc, char* argv[])
   QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+  // Create the main GUI handler
+  QApplication lMainApplication(argc, argv);
+  lMainApplication.setApplicationDisplayName("MFBOPC v." + Utils::getSoftwareVersion());
+  lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
+  lMainApplication.setWindowIcon(QIcon(":/software/icon"));
+
   do
   {
-    // Create the main GUI handler
-    QApplication lMainApplication(argc, argv);
-    lMainApplication.setApplicationDisplayName("MFBOPC v." + Utils::getSoftwareVersion());
-    lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
-    lMainApplication.setWindowIcon(QIcon(":/software/icon"));
+    //// Show the splash screen
+    //QPixmap lSplashScreenBackground(":/software/splashscreen");
+    //lSplashScreenBackground = lSplashScreenBackground.scaled(800, 450, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+    //QSplashScreen lSplashScreen(lSplashScreenBackground);
+    //lSplashScreen.showMessage("MFBOPC v." + Utils::getSoftwareVersion(), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    //lSplashScreen.show();
 
     // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(Utils::loadSettingsFromFile().language))};
@@ -33,7 +41,6 @@ int main(int argc, char* argv[])
 
     // Create and show the main window
     MFBOPresetCreator lMainWindow;
-    lMainWindow.show();
 
     // Launch the application
     currentExitCode = lMainApplication.exec();
