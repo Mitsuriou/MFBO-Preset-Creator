@@ -5,7 +5,7 @@
 #include "Utils.h"
 #include "stdafx.h"
 
-class Tab : public QTabWidget
+class Tab : public QWidget
 {
   Q_OBJECT
 

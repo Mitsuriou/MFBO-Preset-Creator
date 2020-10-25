@@ -33,311 +33,54 @@
 <context>
     <name>MFBOPresetCreator</name>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="17"/>
+        <location filename="MFBOPresetCreator.cpp" line="16"/>
         <source>Quitting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="52"/>
+        <location filename="MFBOPresetCreator.cpp" line="51"/>
         <source>File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="64"/>
+        <location filename="MFBOPresetCreator.cpp" line="63"/>
         <source>Exit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="70"/>
+        <location filename="MFBOPresetCreator.cpp" line="69"/>
         <source>Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="82"/>
+        <location filename="MFBOPresetCreator.cpp" line="81"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="88"/>
+        <location filename="MFBOPresetCreator.cpp" line="87"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="93"/>
-        <location filename="MFBOPresetCreator.cpp" line="1189"/>
+        <location filename="MFBOPresetCreator.cpp" line="92"/>
+        <location filename="MFBOPresetCreator.cpp" line="294"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="109"/>
-        <source>CBBE body meshes</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="117"/>
-        <source>CBBE 3BBB version:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="136"/>
-        <source>Use beast hands?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="139"/>
-        <source>Check this box if the follower or NPC uses beast hands.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="179"/>
-        <location filename="MFBOPresetCreator.cpp" line="218"/>
-        <location filename="MFBOPresetCreator.cpp" line="237"/>
-        <location filename="MFBOPresetCreator.cpp" line="283"/>
-        <location filename="MFBOPresetCreator.cpp" line="333"/>
-        <source>Preview:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="201"/>
-        <source>BodySlide</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="17"/>
+        <location filename="MFBOPresetCreator.cpp" line="16"/>
         <source>Are you sure you want to quit the software?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="57"/>
+        <location filename="MFBOPresetCreator.cpp" line="56"/>
         <source>Quick relaunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="75"/>
+        <location filename="MFBOPresetCreator.cpp" line="74"/>
         <source>CBBE 3BBB Version Retargeting Tool</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="127"/>
-        <source>Meshes path:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="144"/>
-        <source>Meshes names:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="168"/>
-        <location filename="MFBOPresetCreator.cpp" line="171"/>
-        <location filename="MFBOPresetCreator.cpp" line="174"/>
-        <source>_0.nif/_1.nif</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="209"/>
-        <source>Bodyslide files names:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="228"/>
-        <source>Preset names: &amp;#128712;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="229"/>
-        <source>This field represents the name under which the preset will be listed in the BodySlide software.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="256"/>
-        <source>Additional options</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="265"/>
-        <source>Use a custom skeleton? &amp;#128712;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="266"/>
-        <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="269"/>
-        <source>Check this box if the follower or NPC uses a custom skeleton.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="274"/>
-        <source>Skeleton path:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="303"/>
-        <source>Output</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="311"/>
-        <source>Output directory path:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="321"/>
-        <source>Choose a directory...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="325"/>
-        <source>Output subdirectory name/path:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="351"/>
-        <source>Generate the files on my computer</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="586"/>
-        <source>No path given or invalid path given.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="721"/>
-        <source>Error while evaluating the data.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="847"/>
-        <source>Error: no path given to export the files.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="854"/>
-        <source>Error: the path given to export the files seems to be invalid.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="864"/>
-        <location filename="MFBOPresetCreator.cpp" line="870"/>
-        <source>Error while creating the main directory: &quot;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="864"/>
-        <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="870"/>
-        <source>&quot; already exists on your computer.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="877"/>
-        <source>Error: no path has been given for the meshes.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="884"/>
-        <source>Error: no name given for the BodySlide files.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="891"/>
-        <source>Error: no name given for the slider sets (names that appear in the BodySlide software).</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="903"/>
-        <location filename="MFBOPresetCreator.cpp" line="995"/>
-        <source>Error while creating the meshes directory: &quot;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="903"/>
-        <location filename="MFBOPresetCreator.cpp" line="995"/>
-        <source>&quot; already exists.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="923"/>
-        <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="932"/>
-        <location filename="MFBOPresetCreator.cpp" line="940"/>
-        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="957"/>
-        <location filename="MFBOPresetCreator.cpp" line="976"/>
-        <location filename="MFBOPresetCreator.cpp" line="1032"/>
-        <location filename="MFBOPresetCreator.cpp" line="1059"/>
-        <source>Error while trying to open the file &quot;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="957"/>
-        <location filename="MFBOPresetCreator.cpp" line="976"/>
-        <location filename="MFBOPresetCreator.cpp" line="1032"/>
-        <location filename="MFBOPresetCreator.cpp" line="1059"/>
-        <source>&quot;.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="982"/>
-        <source>Error while trying to parse the XML BodySlide file.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1007"/>
-        <location filename="MFBOPresetCreator.cpp" line="1015"/>
-        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1065"/>
-        <source>Error while trying to parse the OSP BodySlide file.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1079"/>
-        <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1085"/>
-        <source>Error: no path given for the custom skeleton.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1096"/>
-        <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1099"/>
-        <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1102"/>
-        <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1105"/>
-        <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="1109"/>
-        <source>Generation successful</source>
         <translation></translation>
     </message>
 </context>
@@ -701,6 +444,266 @@
     <message>
         <location filename="Settings.cpp" line="238"/>
         <source>Save and close</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>TabCBBESE</name>
+    <message>
+        <location filename="TabCBBESE.cpp" line="18"/>
+        <source>CBBE body meshes</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="26"/>
+        <source>CBBE 3BBB version:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="36"/>
+        <source>Meshes path:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="45"/>
+        <source>Use beast hands?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="48"/>
+        <source>Check this box if the follower or NPC uses beast hands.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="53"/>
+        <source>Meshes names:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="77"/>
+        <location filename="TabCBBESE.cpp" line="80"/>
+        <location filename="TabCBBESE.cpp" line="83"/>
+        <source>_0.nif/_1.nif</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="88"/>
+        <location filename="TabCBBESE.cpp" line="127"/>
+        <location filename="TabCBBESE.cpp" line="146"/>
+        <location filename="TabCBBESE.cpp" line="192"/>
+        <location filename="TabCBBESE.cpp" line="242"/>
+        <source>Preview:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="110"/>
+        <source>BodySlide</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="118"/>
+        <source>Bodyslide files names:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="137"/>
+        <source>Preset names: &amp;#128712;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="138"/>
+        <source>This field represents the name under which the preset will be listed in the BodySlide software.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="165"/>
+        <source>Additional options</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="174"/>
+        <source>Use a custom skeleton? &amp;#128712;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="175"/>
+        <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="178"/>
+        <source>Check this box if the follower or NPC uses a custom skeleton.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="183"/>
+        <source>Skeleton path:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="212"/>
+        <source>Output</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="220"/>
+        <source>Output directory path:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="230"/>
+        <source>Choose a directory...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="234"/>
+        <source>Output subdirectory name/path:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="260"/>
+        <source>Generate the files on my computer</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="355"/>
+        <source>No path given or invalid path given.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="490"/>
+        <source>Error while evaluating the data.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="616"/>
+        <source>Error: no path given to export the files.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="623"/>
+        <source>Error: the path given to export the files seems to be invalid.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="633"/>
+        <location filename="TabCBBESE.cpp" line="639"/>
+        <source>Error while creating the main directory: &quot;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="633"/>
+        <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="639"/>
+        <source>&quot; already exists on your computer.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="646"/>
+        <source>Error: no path has been given for the meshes.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="653"/>
+        <source>Error: no name given for the BodySlide files.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="660"/>
+        <source>Error: no name given for the slider sets (names that appear in the BodySlide software).</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="672"/>
+        <location filename="TabCBBESE.cpp" line="764"/>
+        <source>Error while creating the meshes directory: &quot;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="672"/>
+        <location filename="TabCBBESE.cpp" line="764"/>
+        <source>&quot; already exists.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="692"/>
+        <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="701"/>
+        <location filename="TabCBBESE.cpp" line="709"/>
+        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="726"/>
+        <location filename="TabCBBESE.cpp" line="745"/>
+        <location filename="TabCBBESE.cpp" line="801"/>
+        <location filename="TabCBBESE.cpp" line="828"/>
+        <source>Error while trying to open the file &quot;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="726"/>
+        <location filename="TabCBBESE.cpp" line="745"/>
+        <location filename="TabCBBESE.cpp" line="801"/>
+        <location filename="TabCBBESE.cpp" line="828"/>
+        <source>&quot;.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="751"/>
+        <source>Error while trying to parse the XML BodySlide file.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="776"/>
+        <location filename="TabCBBESE.cpp" line="784"/>
+        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="834"/>
+        <source>Error while trying to parse the OSP BodySlide file.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="848"/>
+        <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="854"/>
+        <source>Error: no path given for the custom skeleton.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="865"/>
+        <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="868"/>
+        <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="871"/>
+        <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="874"/>
+        <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="878"/>
+        <source>Generation successful</source>
         <translation></translation>
     </message>
 </context>

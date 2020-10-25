@@ -30,7 +30,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
-  lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1);
+  lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
 
   // Second line
   auto lMeshesPathLabel{new QLabel(tr("Meshes path:"), this)};
@@ -39,7 +39,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lMeshesPathLineEdit{new QLineEdit("", this)};
   lMeshesPathLineEdit->setObjectName("meshes_path_input");
   lMeshesPathLineEdit->setPlaceholderText("meshes/");
-  lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1);
+  lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1, 1, 2);
 
   // Third line
   auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
@@ -47,7 +47,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
   lNeedBeastHands->setObjectName("use_beast_hands");
-  lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1);
+  lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1, 1, 2);
 
   // Fourth line
   auto lMeshestitlePreview{new QLabel(tr("Meshes names:"), this)};

@@ -29,12 +29,12 @@ void MFBOPresetCreator::initializeGUI()
 {
   // Main window container
   auto lMainVertical{new QVBoxLayout(this->ui.mainContainer)};
+  lMainVertical->setContentsMargins(0, 0, 0, 0);
 
   // Create the tabs
   auto lTabsContainer{new QTabWidget()};
-  lTabsContainer->addTab(new TabCBBESE(this, mSettings), QString("CBBE"));
-  lTabsContainer->addTab(new TabVanillaSE(this, mSettings), QString("Vanilla SE"));
-  lTabsContainer->addTab(new TabUNPSE(this, mSettings), QString("UNP SE"));
+  lTabsContainer->setMovable(true);
+  lTabsContainer->addTab(new TabCBBESE(this, mSettings), QString("CBBE SE"));
   lMainVertical->addWidget(lTabsContainer);
 }
 

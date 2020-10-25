@@ -1,9 +1,9 @@
 #include "Tab.h"
 
 Tab::Tab(QWidget* aParent, Struct::Settings aSettings)
-  : QTabWidget(aParent)
+  : QWidget(aParent)
   , mSettings(aSettings)
 {
-  mMainVertical = new QVBoxLayout();
+  mMainVertical = new QVBoxLayout(this);
   this->setLayout(mMainVertical);
 }
