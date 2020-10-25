@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// FranÃ§ais (France) resources
+// Français (France) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
 LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
@@ -54,7 +54,53 @@ END
 // remains consistent on all systems.
 IDI_ICON1               ICON                    "ressources/software/icon.ico"
 
-#endif    // FranÃ§ais (France) resources
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,7,5,0
+ PRODUCTVERSION 1,7,5,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000904b0"
+        BEGIN
+            VALUE "FileDescription", "Launch the preset creator"
+            VALUE "FileVersion", "1.7.5.0"
+            VALUE "InternalName", "MFBOPresetCreator.exe"
+            VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
+            VALUE "ProductName", "MFBO: Preset Creator"
+            VALUE "ProductVersion", "1.7.5.0"
+        END
+        BLOCK "000c04b0"
+        BEGIN
+            VALUE "FileDescription", "Lancer le créateur de preset"
+            VALUE "FileVersion", "1.7.5.0"
+            VALUE "InternalName", "MFBOPresetCreator.exe"
+            VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
+            VALUE "ProductName", "MFBO : Créateur de preset"
+            VALUE "ProductVersion", "1.7.5.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x9, 1200, 0xc, 1200
+    END
+END
+
+#endif    // Français (France) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

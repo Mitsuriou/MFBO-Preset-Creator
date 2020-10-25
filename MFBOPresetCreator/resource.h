@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // fichier Include Microsoft Visual C++.
-// Utilisï¿½ paMFBOPresetCreatoror.rc
+// Utilisé par MFBOPresetCreator.rc
 //
 #define IDI_ICON1                       101
 
