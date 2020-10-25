@@ -4,8 +4,6 @@
 #include "Settings.h"
 #include "Tab.h"
 #include "TabCBBESE.h"
-#include "TabUNPSE.h"
-#include "TabVanillaSE.h"
 #include "Utils.h"
 #include "WinUser.h"
 #include "stdafx.h"
@@ -26,6 +24,7 @@ protected:
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
+  std::vector<Tab*> mTabs;
 
   void initializeGUI();
   void setupMenuBar();

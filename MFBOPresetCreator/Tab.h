@@ -11,6 +11,7 @@ class Tab : public QWidget
 
 public:
   explicit Tab(QWidget* aParent, Struct::Settings aSettings);
+  void updateSettings(Struct::Settings aSettings);
 
 protected:
   QVBoxLayout* mMainVertical = nullptr;

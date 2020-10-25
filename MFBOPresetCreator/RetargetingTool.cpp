@@ -38,7 +38,6 @@ void RetargetingTool::setWindowProperties()
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-  this->setMinimumWidth(650);
   this->setWindowTitle(tr("CBBE 3BBB Version Retargeting Tool"));
 }
 

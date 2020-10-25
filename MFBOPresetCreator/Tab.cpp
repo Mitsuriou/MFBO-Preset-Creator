@@ -7,3 +7,8 @@ Tab::Tab(QWidget* aParent, Struct::Settings aSettings)
   mMainVertical = new QVBoxLayout(this);
   this->setLayout(mMainVertical);
 }
+
+void Tab::updateSettings(Struct::Settings aSettings)
+{
+  this->mSettings = aSettings;
+}

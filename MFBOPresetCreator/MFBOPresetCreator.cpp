@@ -34,7 +34,10 @@ void MFBOPresetCreator::initializeGUI()
   // Create the tabs
   auto lTabsContainer{new QTabWidget()};
   lTabsContainer->setMovable(true);
-  lTabsContainer->addTab(new TabCBBESE(this, mSettings), QString("CBBE SE"));
+
+  auto lCBBETab{new TabCBBESE(this, mSettings)};
+  this->mTabs.push_back(lCBBETab);
+  lTabsContainer->addTab(lCBBETab, QString("CBBE SE"));
   lMainVertical->addWidget(lTabsContainer);
 }
 
@@ -213,8 +216,15 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
 
     mSettings = aSettings;
 
+    // Update the settings of each tab
+    for (auto lTab : this->mTabs)
+    {
+      lTab->updateSettings(aSettings);
+    }
+
     if (lOldAppTheme != lNewAppTheme)
     {
+      // Refresh the status bar to swap dark and white icons if needed
       this->setupMenuBar();
 
       // Apply the chosen theme

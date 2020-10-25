@@ -60,12 +60,18 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
+  auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 3, 2);
+
   auto lFeetMeshNameInput{new QLineEdit("", this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
   lMeshesGridLayout->addWidget(lFeetMeshNameInput, 4, 1);
   lFeetMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
+
+  auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 4, 2);
 
   auto lHandsMeshNameInput{new QLineEdit("", this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
@@ -74,23 +80,17 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
-  auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 3, 2);
-
-  auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 4, 2);
-
   auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"), this)};
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 5, 2);
 
   // Preview
   auto lLabelPreview{new QLabel(this)};
   lLabelPreview->setText(tr("Preview:"));
-  lMeshesGridLayout->addWidget(lLabelPreview);
+  lMeshesGridLayout->addWidget(lLabelPreview, 6, 0);
 
   auto lMeshesPreview{new QLabel(this)};
   lMeshesPreview->setObjectName("meshes_preview");
-  lMeshesGridLayout->addWidget(lMeshesPreview);
+  lMeshesGridLayout->addWidget(lMeshesPreview, 6, 1, 1, 2);
 
   // Initialization functions
   this->updateMeshesPreview();
