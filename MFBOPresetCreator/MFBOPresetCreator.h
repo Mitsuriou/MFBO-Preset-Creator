@@ -4,6 +4,7 @@
 #include "Settings.h"
 #include "Tab.h"
 #include "TabCBBESE.h"
+#include "Update.h"
 #include "Utils.h"
 #include "WinUser.h"
 #include "stdafx.h"
@@ -38,5 +39,6 @@ private slots:
   void quickRelaunch();
   void launchRetargetingTool();
   void showSettingsDialog();
+  void showUpdateDialog();
   void showAboutDialog();
 };

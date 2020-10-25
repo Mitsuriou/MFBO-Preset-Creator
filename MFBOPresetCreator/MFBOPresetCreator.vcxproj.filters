@@ -31,6 +31,9 @@
     <ClCompile Include="TabCBBESE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Update.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum.h">
@@ -103,6 +106,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="TabCBBESE.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Update.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

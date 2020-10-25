@@ -40,8 +40,8 @@ QStringList DataLists::getAppThemes()
 QStringList DataLists::getLanguages()
 {
   QStringList lLanguages;
-  lLanguages.append(tr("English"));
-  lLanguages.append(tr("Français"));
+  lLanguages.append("English");
+  lLanguages.append("Français");
 
   return lLanguages;
 }

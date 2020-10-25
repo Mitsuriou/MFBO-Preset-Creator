@@ -29,6 +29,7 @@
         <file alias="exit">ressources/software/icons/black/exit-run.png</file>
         <file alias="information">ressources/software/icons/black/information-outline.png</file>
         <file alias="reload">ressources/software/icons/black/refresh.png</file>
+        <file alias="download">ressources/software/icons/black/download-outline.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="exit">ressources/software/icons/white/exit-run.png</file>
@@ -36,6 +37,7 @@
         <file alias="arrow_up">ressources/software/icons/white/arrow-up-bold-outline.png</file>
         <file alias="information">ressources/software/icons/white/information-outline.png</file>
         <file alias="reload">ressources/software/icons/white/refresh.png</file>
+        <file alias="download">ressources/software/icons/white/download-outline.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

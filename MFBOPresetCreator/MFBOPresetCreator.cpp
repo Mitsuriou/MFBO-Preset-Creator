@@ -90,6 +90,12 @@ void MFBOPresetCreator::setupMenuBar()
   auto lHelpMenu{new QMenu(tr("Help"), this)};
   lMenuBar->addMenu(lHelpMenu);
 
+  // Submenu: Check for updates
+  auto lCheckUpdateAction{new QAction(this)};
+  lCheckUpdateAction->setText(tr("Check for updates"));
+  lCheckUpdateAction->setIcon(QIcon(":/" + lIconFolder + "/download"));
+  lHelpMenu->addAction(lCheckUpdateAction);
+
   // Submenu: About
   auto lAboutAction{new QAction(this)};
   lAboutAction->setText(tr("About"));
@@ -102,6 +108,7 @@ void MFBOPresetCreator::setupMenuBar()
   connect(lExitAction, SIGNAL(triggered()), this, SLOT(close()));
   connect(lRetargetingToolAction, SIGNAL(triggered()), this, SLOT(launchRetargetingTool()));
   connect(lSettingsAction, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
+  connect(lCheckUpdateAction, SIGNAL(triggered()), this, SLOT(showUpdateDialog()));
   connect(lAboutAction, SIGNAL(triggered()), this, SLOT(showAboutDialog()));
 }
 
@@ -268,6 +275,11 @@ void MFBOPresetCreator::showSettingsDialog()
   auto lSettings{new Settings(this)};
 
   connect(lSettings, SIGNAL(refreshMainUI(Struct::Settings, bool)), this, SLOT(refreshUI(Struct::Settings, bool)));
+}
+
+void MFBOPresetCreator::showUpdateDialog()
+{
+  new Update(this);
 }
 
 void MFBOPresetCreator::showAboutDialog()

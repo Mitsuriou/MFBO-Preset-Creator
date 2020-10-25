@@ -62,6 +62,7 @@
     <Link />
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
       <Command>xcopy /C /Y /R "$(TargetPath)"  "$(SolutionDir)client release\$(TargetFileName)"</Command>
@@ -72,14 +73,14 @@
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtModules>core;gui;widgets;xml</QtModules>
+    <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtModules>core;gui;widgets;xml</QtModules>
+    <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
@@ -131,8 +132,10 @@
     <ClCompile Include="TabCBBESE.cpp" />
     <ClCompile Include="TabUNPSE.cpp" />
     <ClCompile Include="TabVanillaSE.cpp" />
+    <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClInclude Include="buildnumber.h" />
+    <QtMoc Include="Update.h" />
     <QtMoc Include="TabCBBESE.h" />
     <QtMoc Include="TabUNPSE.h" />
     <QtMoc Include="TabVanillaSE.h" />
