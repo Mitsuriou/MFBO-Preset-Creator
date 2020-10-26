@@ -32,7 +32,8 @@ void Update::initializeGUI()
 
 void Update::setupInterface(QGridLayout& aLayout)
 {
-  // http://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest
+  QLabel* lLastVersion{new QLabel(this->getLastAvailableVersion(), this)};
+  aLayout.addWidget(lLastVersion);
 }
 
 void Update::refreshUI()
@@ -41,4 +42,17 @@ void Update::refreshUI()
   QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
   this->setFont(lFont);
   this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
+}
+
+QString Update::getLastAvailableVersion()
+{
+  // Fetch HTTP url
+  HTTPDownloader downloader;
+  std::string content{downloader.download("https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest")};
+  QString lFetchedHTTPData{QString::fromStdString(content)};
+
+  // Create a JSON from the fetched string and parse the "tag_name" data
+  QJsonDocument doc{QJsonDocument::fromJson(lFetchedHTTPData.toUtf8())};
+  QJsonObject obj{doc.object()};
+  return obj["tag_name"].toString();
 }

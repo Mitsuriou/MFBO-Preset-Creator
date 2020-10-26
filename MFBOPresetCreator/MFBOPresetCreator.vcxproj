@@ -35,9 +35,11 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="cURL.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="cURL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -126,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataLists.cpp" />
+    <ClCompile Include="HTTPDownloader.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="Tab.cpp" />
@@ -142,6 +145,7 @@
     <QtMoc Include="Tab.h" />
     <QtMoc Include="DataLists.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="HTTPDownloader.hpp" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Settings.h" />
     <ClInclude Include="stdafx.h" />
