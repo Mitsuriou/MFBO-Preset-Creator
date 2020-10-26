@@ -37,6 +37,7 @@ To launch the software, simply click on the **MFBOPresetCreator.exe** file (the 
 ### Developer side
 - [ ] Create test classes
 - [X] (1.7.6) Splashscreen when the software is being launched
+- [ ] In-app update checker
 - [ ] In-app automatic updater
 - [ ] Executable to install the app on C:/ProgramFiles (InnoSetup?)
 - [X] (1.7.4) Change the source code auto-formatter for more compatibility with Visual Studio 2019
