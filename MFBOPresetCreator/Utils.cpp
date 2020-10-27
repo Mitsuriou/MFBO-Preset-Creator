@@ -7,24 +7,7 @@ void Utils::cleanPathString(QString& aPath)
 
 QString Utils::getSoftwareVersion()
 {
-  auto lBuildNumber{BUILDNUMBER};
-
-  if (lBuildNumber < 10)
-  {
-    return QString("1.7.6.000" + QString::fromStdString(BUILDNUMBER_STR));
-  }
-
-  if (lBuildNumber < 100)
-  {
-    return QString("1.7.6.00" + QString::fromStdString(BUILDNUMBER_STR));
-  }
-
-  if (lBuildNumber < 1000)
-  {
-    return QString("1.7.6.0" + QString::fromStdString(BUILDNUMBER_STR));
-  }
-
-  return QString("1.7.6." + QString::fromStdString(BUILDNUMBER_STR));
+  return "1.8.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -109,7 +92,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
   return true;
 }
 
-bool Utils::isThemeDark(const GUITheme aTheme)
+bool Utils::isThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
   {

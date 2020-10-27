@@ -51,12 +51,6 @@
     <ClInclude Include="Struct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="buildnumber.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HTTPDownloader.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
@@ -115,6 +109,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Update.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="HTTPDownloader.hpp">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

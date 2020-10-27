@@ -26,6 +26,8 @@ private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
   std::vector<Tab*> mTabs;
+  QSplashScreen* mSplashScreen;
+  bool mNewVersionAvailable;
 
   void initializeGUI();
   void setupMenuBar();
@@ -34,6 +36,8 @@ private:
 
 public slots:
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
+  void checkForUpdate();
+  void pageFetched(const QString&);
 
 private slots:
   void quickRelaunch();

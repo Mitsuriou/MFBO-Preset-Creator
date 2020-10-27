@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/software">
         <file alias="icon">ressources/software/icon.png</file>
+        <file alias="splashscreen">ressources/software/splashscreen.png</file>
     </qresource>
     <qresource prefix="/ressources">
         <file alias="skeleton_female">ressources/skeleton/skeleton_female.nif</file>
@@ -30,6 +31,9 @@
         <file alias="information">ressources/software/icons/black/information-outline.png</file>
         <file alias="reload">ressources/software/icons/black/refresh.png</file>
         <file alias="download">ressources/software/icons/black/download-outline.png</file>
+        <file alias="error">ressources/software/icons/black/alert-circle-outline.png</file>
+        <file alias="valid">ressources/software/icons/black/check-circle-outline.png</file>
+        <file alias="cloud_search">ressources/software/icons/black/cloud-search-outline.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="exit">ressources/software/icons/white/exit-run.png</file>
@@ -38,6 +42,9 @@
         <file alias="information">ressources/software/icons/white/information-outline.png</file>
         <file alias="reload">ressources/software/icons/white/refresh.png</file>
         <file alias="download">ressources/software/icons/white/download-outline.png</file>
+        <file alias="error">ressources/software/icons/white/alert-circle-outline.png</file>
+        <file alias="valid">ressources/software/icons/white/check-circle-outline.png</file>
+        <file alias="cloud_search">ressources/software/icons/white/cloud-search-outline.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

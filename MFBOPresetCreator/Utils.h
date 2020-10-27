@@ -2,7 +2,6 @@
 
 #include "Enum.h"
 #include "Struct.h"
-#include "buildnumber.h"
 #include "stdafx.h"
 #include <QtXml/QDomDocument>
 
@@ -17,7 +16,7 @@ public:
   static void displayWarningMessage(const QString& aMessage);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
-  static bool isThemeDark(const GUITheme aTheme);
+  static bool isThemeDark(const GUITheme& aTheme);
 
   // XML and OSP file parse
   static QString getPresetNameFromXMLFile(const QString& aPath);

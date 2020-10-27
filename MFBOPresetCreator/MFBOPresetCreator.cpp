@@ -3,12 +3,21 @@
 MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   : QMainWindow(parent)
   , mSettings(Utils::loadSettingsFromFile())
+  , mNewVersionAvailable(false)
 {
   // Construct the GUI
   ui.setupUi(this);
-  this->initializeGUI();
-  this->refreshUI(mSettings, false);
-  this->showWindow();
+
+  // Show the splash screen
+  QPixmap lSplashScreenBackground(":/software/splashscreen");
+  lSplashScreenBackground = lSplashScreenBackground.scaled(800, 450, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+  mSplashScreen = new QSplashScreen(lSplashScreenBackground);
+  mSplashScreen->showMessage("MFBOPC (v." + Utils::getSoftwareVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
+  mSplashScreen->show();
+
+  // Check for new versions
+  QTimer::singleShot(1000, this, &MFBOPresetCreator::checkForUpdate);
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -75,7 +84,7 @@ void MFBOPresetCreator::setupMenuBar()
   // Submenu: Upgrader
   auto lRetargetingToolAction{new QAction(this)};
   lRetargetingToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
-  lRetargetingToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
+  lRetargetingToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
   lRetargetingToolAction->setIcon(QIcon(":/" + lIconFolder + "/arrow_up"));
   lToolsMenu->addAction(lRetargetingToolAction);
 
@@ -87,12 +96,20 @@ void MFBOPresetCreator::setupMenuBar()
   lToolsMenu->addAction(lSettingsAction);
 
   // Help
-  auto lHelpMenu{new QMenu(tr("Help"), this)};
+  auto lUpdateAvailableText{QString("")};
+
+  if (this->mNewVersionAvailable)
+  {
+    lUpdateAvailableText = tr(" (update available)");
+  }
+
+  auto lHelpMenu{new QMenu(tr("Help") + lUpdateAvailableText, this)};
   lMenuBar->addMenu(lHelpMenu);
 
   // Submenu: Check for updates
   auto lCheckUpdateAction{new QAction(this)};
-  lCheckUpdateAction->setText(tr("Check for updates"));
+  lCheckUpdateAction->setText(tr("Check for updates") + lUpdateAvailableText);
+  lCheckUpdateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
   lCheckUpdateAction->setIcon(QIcon(":/" + lIconFolder + "/download"));
   lHelpMenu->addAction(lCheckUpdateAction);
 
@@ -257,6 +274,67 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
     this->setFont(lFont);
     this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
+  }
+}
+
+void MFBOPresetCreator::checkForUpdate()
+{
+  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
+
+  HTTPDownloader* lHTTPDownloader{new HTTPDownloader(lGitHubURL, this)};
+  connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &MFBOPresetCreator::pageFetched);
+  connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
+  lHTTPDownloader->start();
+}
+
+void MFBOPresetCreator::pageFetched(const QString& aResult)
+{
+  // Display a message based on new available versions
+  auto lTitle{QString("")};
+  auto lMessage{QString("")};
+
+  if (aResult == "fetch_error")
+  {
+    lTitle = "Error while searching for a new update";
+    lMessage = tr("An error has occured while searching for a new version... Make sure your internet connection is operational and try again.");
+  }
+  else
+  {
+    // Create a JSON from the fetched string and parse the "tag_name" data
+    QJsonDocument doc{QJsonDocument::fromJson(aResult.toUtf8())};
+    QJsonObject obj{doc.object()};
+    auto lTagName = obj["tag_name"].toString();
+    auto lCurrentVersion{Utils::getSoftwareVersion()};
+
+    if (lCurrentVersion != lTagName)
+    {
+
+#ifdef DEBUG
+
+      lTitle = "Running a developper version";
+      lMessage = tr("[DEV]\nYou are currently running the unreleased version \"%1\".\nThe last available version on GitHub is tagged \"%2\".").arg(lCurrentVersion).arg(lTagName);
+
+#else
+
+      this->mNewVersionAvailable = true;
+      lTitle = tr("New update available");
+      lMessage = tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.").arg(lCurrentVersion).arg(lTagName);
+
+#endif
+    }
+  }
+
+  this->initializeGUI();
+  this->refreshUI(mSettings, false);
+
+  delete this->mSplashScreen;
+  this->mSplashScreen = nullptr;
+
+  this->showWindow();
+
+  if (aResult == "fetch_error" || this->mNewVersionAvailable)
+  {
+    QMessageBox::information(this, lTitle, lMessage, QMessageBox::StandardButton::Ok);
   }
 }
 

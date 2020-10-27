@@ -10,20 +10,12 @@ int main(int argc, char* argv[])
 
   // Create the main GUI handler
   QApplication lMainApplication(argc, argv);
-  lMainApplication.setApplicationDisplayName("MFBOPC v." + Utils::getSoftwareVersion());
+  lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getSoftwareVersion() + ")");
   lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
   lMainApplication.setWindowIcon(QIcon(":/software/icon"));
 
   do
   {
-    //// Show the splash screen
-    //QPixmap lSplashScreenBackground(":/software/splashscreen");
-    //lSplashScreenBackground = lSplashScreenBackground.scaled(800, 450, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-
-    //QSplashScreen lSplashScreen(lSplashScreenBackground);
-    //lSplashScreen.showMessage("MFBOPC v." + Utils::getSoftwareVersion(), Qt::AlignBottom | Qt::AlignRight, Qt::white);
-    //lSplashScreen.show();
-
     // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(Utils::loadSettingsFromFile().language))};
     auto lTranslator{new QTranslator()};

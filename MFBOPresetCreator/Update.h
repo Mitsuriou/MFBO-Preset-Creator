@@ -25,7 +25,11 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
-  void setupInterface(QGridLayout& aLayout);
+  void setupInterface(QVBoxLayout& aLayout);
   void refreshUI();
-  QString getLastAvailableVersion();
+
+private slots:
+  void getLastAvailableVersion();
+  void pageFetched(const QString&);
+  void openGithubInBrowser();
 };

@@ -1,16 +1,22 @@
-#ifndef HTTPDOWNLOADER_HPP
-#define HTTPDOWNLOADER_HPP
-#include <string>
+#include "stdafx.h"
 
-class HTTPDownloader
+class HTTPDownloader : public QThread
 {
+  Q_OBJECT
+
 public:
-  HTTPDownloader();
+  HTTPDownloader(const QString& aURL, QWidget* aParent);
   ~HTTPDownloader();
 
-  std::string download(const std::string& url);
+protected:
+  void run() override;
 
 private:
   void* curl;
+  std::string mURL;
+
+  std::string download();
+
+signals:
+  void resultReady(const QString&);
 };
-#endif /* HTTPDOWNLOADER_HPP */

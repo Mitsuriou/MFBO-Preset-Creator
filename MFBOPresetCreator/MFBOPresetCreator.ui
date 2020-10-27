@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MFBOPresetCreator</string>
+   <string>Preset Creator</string>
   </property>
   <widget class="QWidget" name="mainContainer"/>
   <action name="actionExit">
