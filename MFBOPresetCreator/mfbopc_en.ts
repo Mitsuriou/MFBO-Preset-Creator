@@ -19,67 +19,95 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="43"/>
-        <source>English</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="DataLists.cpp" line="44"/>
         <source>Français</source>
         <oldsource>Fran�ais</oldsource>
-        <translation>Français</translation>
+        <translation type="vanished">Français</translation>
     </message>
 </context>
 <context>
     <name>MFBOPresetCreator</name>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="16"/>
+        <location filename="MFBOPresetCreator.cpp" line="25"/>
         <source>Quitting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="51"/>
+        <location filename="MFBOPresetCreator.cpp" line="63"/>
         <source>File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="63"/>
+        <location filename="MFBOPresetCreator.cpp" line="75"/>
         <source>Exit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="69"/>
+        <location filename="MFBOPresetCreator.cpp" line="81"/>
         <source>Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="81"/>
+        <location filename="MFBOPresetCreator.cpp" line="93"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="87"/>
+        <location filename="MFBOPresetCreator.cpp" line="103"/>
+        <source> (update available)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="106"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="92"/>
-        <location filename="MFBOPresetCreator.cpp" line="294"/>
+        <location filename="MFBOPresetCreator.cpp" line="111"/>
+        <source>Check for updates</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="118"/>
+        <location filename="MFBOPresetCreator.cpp" line="394"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="16"/>
+        <location filename="MFBOPresetCreator.cpp" line="299"/>
+        <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
+        <oldsource>An error has occured while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="315"/>
+        <source>[DEV]
+You are currently running the unreleased version &quot;%1&quot;.
+The last available version on GitHub is tagged &quot;%2&quot;.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="320"/>
+        <source>New update available</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="321"/>
+        <source>You are currently running the version &quot;%1&quot;.
+The new version &quot;%2&quot; is available on GitHub.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="25"/>
         <source>Are you sure you want to quit the software?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="56"/>
+        <location filename="MFBOPresetCreator.cpp" line="68"/>
         <source>Quick relaunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="74"/>
+        <location filename="MFBOPresetCreator.cpp" line="86"/>
         <source>CBBE 3BBB Version Retargeting Tool</source>
         <translation></translation>
     </message>
@@ -88,7 +116,8 @@
     <name>MFBOPresetCreatorClass</name>
     <message>
         <location filename="MFBOPresetCreator.ui" line="14"/>
-        <source>MFBOPresetCreator</source>
+        <source>Preset Creator</source>
+        <oldsource>MFBOPresetCreator</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -111,112 +140,112 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="42"/>
+        <location filename="RetargetingTool.cpp" line="41"/>
         <source>CBBE 3BBB Version Retargeting Tool</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="56"/>
+        <location filename="RetargetingTool.cpp" line="55"/>
         <source>Targeted CBBE 3BBB version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="66"/>
+        <location filename="RetargetingTool.cpp" line="65"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="75"/>
-        <location filename="RetargetingTool.cpp" line="97"/>
+        <location filename="RetargetingTool.cpp" line="74"/>
+        <location filename="RetargetingTool.cpp" line="96"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="79"/>
+        <location filename="RetargetingTool.cpp" line="78"/>
         <source>Keep a backup?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="82"/>
+        <location filename="RetargetingTool.cpp" line="81"/>
         <source>You should always check this box to avoid any data loss or corruption.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="87"/>
+        <location filename="RetargetingTool.cpp" line="86"/>
         <source>Backup directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="102"/>
+        <location filename="RetargetingTool.cpp" line="101"/>
         <source>Backup subdirectory name/path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="111"/>
+        <location filename="RetargetingTool.cpp" line="110"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="274"/>
+        <location filename="RetargetingTool.cpp" line="273"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="291"/>
+        <location filename="RetargetingTool.cpp" line="290"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="320"/>
+        <location filename="RetargetingTool.cpp" line="319"/>
         <source>Parsing XML files. Please wait.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="330"/>
-        <location filename="RetargetingTool.cpp" line="376"/>
-        <location filename="RetargetingTool.cpp" line="532"/>
+        <location filename="RetargetingTool.cpp" line="329"/>
+        <location filename="RetargetingTool.cpp" line="375"/>
+        <location filename="RetargetingTool.cpp" line="531"/>
         <source>Process aborted by user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="316"/>
+        <location filename="RetargetingTool.cpp" line="315"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="351"/>
+        <location filename="RetargetingTool.cpp" line="350"/>
         <source>Error while parsing the XML file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="586"/>
-        <location filename="RetargetingTool.cpp" line="594"/>
+        <location filename="RetargetingTool.cpp" line="585"/>
+        <location filename="RetargetingTool.cpp" line="593"/>
         <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="463"/>
-        <location filename="RetargetingTool.cpp" line="502"/>
-        <location filename="RetargetingTool.cpp" line="612"/>
-        <location filename="RetargetingTool.cpp" line="632"/>
+        <location filename="RetargetingTool.cpp" line="462"/>
+        <location filename="RetargetingTool.cpp" line="501"/>
+        <location filename="RetargetingTool.cpp" line="611"/>
+        <location filename="RetargetingTool.cpp" line="631"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="463"/>
-        <location filename="RetargetingTool.cpp" line="502"/>
-        <location filename="RetargetingTool.cpp" line="612"/>
-        <location filename="RetargetingTool.cpp" line="632"/>
+        <location filename="RetargetingTool.cpp" line="462"/>
+        <location filename="RetargetingTool.cpp" line="501"/>
+        <location filename="RetargetingTool.cpp" line="611"/>
+        <location filename="RetargetingTool.cpp" line="631"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="638"/>
+        <location filename="RetargetingTool.cpp" line="637"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="402"/>
+        <location filename="RetargetingTool.cpp" line="401"/>
         <source>Error while parsing the OSP file &quot;</source>
         <translation></translation>
     </message>
@@ -226,99 +255,99 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="351"/>
-        <location filename="RetargetingTool.cpp" line="402"/>
+        <location filename="RetargetingTool.cpp" line="350"/>
+        <location filename="RetargetingTool.cpp" line="401"/>
         <source>&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="360"/>
+        <location filename="RetargetingTool.cpp" line="359"/>
         <source>Parsing and patching OSP files. Please wait.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="422"/>
+        <location filename="RetargetingTool.cpp" line="421"/>
         <source>No data found from the associated XML file. The file </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="422"/>
+        <location filename="RetargetingTool.cpp" line="421"/>
         <source> was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="437"/>
-        <location filename="RetargetingTool.cpp" line="445"/>
+        <location filename="RetargetingTool.cpp" line="436"/>
+        <location filename="RetargetingTool.cpp" line="444"/>
         <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="508"/>
+        <location filename="RetargetingTool.cpp" line="507"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="522"/>
+        <location filename="RetargetingTool.cpp" line="521"/>
         <source>Patching XML files. Please wait.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="558"/>
+        <location filename="RetargetingTool.cpp" line="557"/>
         <source>Since the associated OSP file has not been modified, the file </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="558"/>
+        <location filename="RetargetingTool.cpp" line="557"/>
         <source> has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="653"/>
+        <location filename="RetargetingTool.cpp" line="652"/>
         <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="656"/>
+        <location filename="RetargetingTool.cpp" line="655"/>
         <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="659"/>
+        <location filename="RetargetingTool.cpp" line="658"/>
         <source>All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="662"/>
+        <location filename="RetargetingTool.cpp" line="661"/>
         <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="666"/>
+        <location filename="RetargetingTool.cpp" line="665"/>
         <source>Upgrade or downgarde successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="120"/>
+        <location filename="RetargetingTool.cpp" line="119"/>
         <source>Retarget all the files under the input path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="185"/>
+        <location filename="RetargetingTool.cpp" line="184"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="238"/>
+        <location filename="RetargetingTool.cpp" line="237"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="258"/>
+        <location filename="RetargetingTool.cpp" line="257"/>
         <source>Error: no path given to backup the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="265"/>
+        <location filename="RetargetingTool.cpp" line="264"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation></translation>
     </message>
@@ -480,8 +509,8 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="77"/>
-        <location filename="TabCBBESE.cpp" line="80"/>
+        <location filename="TabCBBESE.cpp" line="63"/>
+        <location filename="TabCBBESE.cpp" line="73"/>
         <location filename="TabCBBESE.cpp" line="83"/>
         <source>_0.nif/_1.nif</source>
         <translation></translation>
@@ -708,29 +737,74 @@
     </message>
 </context>
 <context>
+    <name>Update</name>
+    <message>
+        <location filename="Update.cpp" line="22"/>
+        <source>Check for updates</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="48"/>
+        <source>Click on the button above to check for new updates</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="69"/>
+        <source>Searching for a new version on GitHub. Please wait...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="90"/>
+        <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
+        <oldsource>An error has occured while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="108"/>
+        <source>[DEV]
+You are currently running the unreleased version &quot;%1&quot;.
+The last available version on GitHub is tagged &quot;%2&quot;.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="122"/>
+        <source>You are currently running the version &quot;%1&quot;.
+The new version &quot;%2&quot; is available on GitHub.
+
+Click on the download button to be redirected on Github.com to download the latest MFBOPC version.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="132"/>
+        <source>You are running the latest version &quot;%1&quot;.</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="32"/>
+        <location filename="Utils.cpp" line="15"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="89"/>
-        <location filename="Utils.cpp" line="104"/>
-        <source>An unknown error has occured while creating the backup. Process aborted.</source>
+        <location filename="Utils.cpp" line="72"/>
+        <location filename="Utils.cpp" line="87"/>
+        <source>An unknown error has occurred while creating the backup. Process aborted.</source>
+        <oldsource>An unknown error has occured while creating the backup. Process aborted.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="142"/>
-        <location filename="Utils.cpp" line="175"/>
-        <location filename="Utils.cpp" line="245"/>
+        <location filename="Utils.cpp" line="125"/>
+        <location filename="Utils.cpp" line="158"/>
+        <location filename="Utils.cpp" line="228"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="142"/>
-        <location filename="Utils.cpp" line="175"/>
-        <location filename="Utils.cpp" line="245"/>
+        <location filename="Utils.cpp" line="125"/>
+        <location filename="Utils.cpp" line="158"/>
+        <location filename="Utils.cpp" line="228"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>

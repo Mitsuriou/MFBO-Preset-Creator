@@ -87,7 +87,7 @@ void Update::pageFetched(const QString& aResult)
     lSearchButton->setIcon(QIcon(lPath));
     lSearchButton->setIconSize(QSize(48, 48));
 
-    lFetchStatus->setText(tr("An error has occured while searching for a new version... Make sure your internet connection is operational and try again."));
+    lFetchStatus->setText(tr("An error has occurred while searching for a new version... Make sure your internet connection is operational and try again."));
   }
   else
   {

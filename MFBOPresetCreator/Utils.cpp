@@ -69,7 +69,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
 
     if (!lIsSuccess)
     {
-      Utils::displayWarningMessage(tr("An unknown error has occured while creating the backup. Process aborted."));
+      Utils::displayWarningMessage(tr("An unknown error has occurred while creating the backup. Process aborted."));
       return false;
     }
   }
@@ -84,7 +84,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
 
     if (!lIsSuccess)
     {
-      Utils::displayWarningMessage(tr("An unknown error has occured while creating the backup. Process aborted."));
+      Utils::displayWarningMessage(tr("An unknown error has occurred while creating the backup. Process aborted."));
       return false;
     }
   }

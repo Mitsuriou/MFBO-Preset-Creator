@@ -296,7 +296,7 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
   if (aResult == "fetch_error")
   {
     lTitle = "Error while searching for a new update";
-    lMessage = tr("An error has occured while searching for a new version... Make sure your internet connection is operational and try again.");
+    lMessage = tr("An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.");
   }
   else
   {
