@@ -10,7 +10,7 @@ class About : public QDialog
   Q_OBJECT
 
 public:
-  About(QWidget* parent = Q_NULLPTR);
+  About(QWidget* parent, Struct::Settings aSettings);
 
 private:
   Struct::Settings mSettings;

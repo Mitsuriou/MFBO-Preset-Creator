@@ -1,8 +1,8 @@
 ﻿#include "RetargetingTool.h"
 
-RetargetingTool::RetargetingTool(QWidget* parent)
+RetargetingTool::RetargetingTool(QWidget* parent, Struct::Settings aSettings)
   : QDialog(parent)
-  , mSettings(Utils::loadSettingsFromFile())
+  , mSettings(aSettings)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -118,11 +118,11 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding
-  connect(lInputPathChooser, SIGNAL(clicked()), this, SLOT(chooseInputDirectory()));
-  connect(lKeepBackup, SIGNAL(clicked()), this, SLOT(switchBackupState()));
-  connect(lBackupPathChooser, SIGNAL(clicked()), this, SLOT(chooseBackupDirectory()));
-  connect(lBackupSubpathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateBackupPreview()));
-  connect(lGenerateButton, SIGNAL(clicked()), this, SLOT(launchUpDownGradeProcess()));
+  connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
+  connect(lKeepBackup, &QCheckBox::clicked, this, &RetargetingTool::switchBackupState);
+  connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
+  connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
+  connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
 
   // Pre-filled data
   lKeepBackup->setChecked(true);

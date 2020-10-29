@@ -33,7 +33,7 @@ private:
   void initializeGUI();
   void setupMenuBar();
   void showWindow();
-  void applyStyleSheet();
+  void applyGlobalStyleSheet();
 
 public slots:
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);

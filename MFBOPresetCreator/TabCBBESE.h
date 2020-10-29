@@ -27,7 +27,6 @@ private slots:
   void updateSkeletonPreview(QString aText);
   void chooseExportDirectory();
   void generateDirectoryStructure();
-  void refreshAllPreviewFields(QString aText);
   void refreshAllPreviewFields(int);
   void refreshAllPreviewFields();
 };

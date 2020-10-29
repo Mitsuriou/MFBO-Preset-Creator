@@ -96,12 +96,12 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->updateMeshesPreview();
 
   // Event binding
-  connect(lMeshesPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
-  connect(lBodyMeshNameInput, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
-  connect(lFeetMeshNameInput, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
-  connect(lHandsMeshNameInput, SIGNAL(textChanged(QString)), this, SLOT(refreshAllPreviewFields(QString)));
-  connect(lCbbe3BBBVersionSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(refreshAllPreviewFields(int)));
-  connect(lNeedBeastHands, SIGNAL(clicked()), this, SLOT(refreshAllPreviewFields()));
+  connect(lMeshesPathLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&TabCBBESE::refreshAllPreviewFields));
+  connect(lNeedBeastHands, &QCheckBox::clicked, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
 }
 
 void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
@@ -155,8 +155,8 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   this->updateBodyslideNamesPreview(QString(""));
 
   // Event binding
-  connect(lOSPXMLNamesLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateOSPXMLPreview(QString)));
-  connect(lNamesInAppLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateBodyslideNamesPreview(QString)));
+  connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOSPXMLPreview);
+  connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateBodyslideNamesPreview);
 }
 
 void TabCBBESE::setupOptionsGUI(QVBoxLayout& aLayout)
@@ -200,10 +200,10 @@ void TabCBBESE::setupOptionsGUI(QVBoxLayout& aLayout)
   this->updateSkeletonPreview(QString(""));
 
   // Event binding
-  connect(lNeedCustomSkeleton, SIGNAL(stateChanged(int)), this, SLOT(updateSkeletonPathState(int)));
+  connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &TabCBBESE::updateSkeletonPathState);
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
-  connect(lSkeletonPathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateSkeletonPreview(QString)));
+  connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
 }
 
 void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
@@ -247,8 +247,8 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
   // Event binding
-  connect(lOutputPathChooser, SIGNAL(clicked()), this, SLOT(chooseExportDirectory()));
-  connect(lOutputSubpathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateOutputPreview()));
+  connect(lOutputPathChooser, &QPushButton::clicked, this, &TabCBBESE::chooseExportDirectory);
+  connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOutputPreview);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -261,7 +261,7 @@ void TabCBBESE::setupRemainingGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
-  connect(lGenerateButton, SIGNAL(clicked()), this, SLOT(generateDirectoryStructure()));
+  connect(lGenerateButton, &QPushButton::clicked, this, &TabCBBESE::generateDirectoryStructure);
 }
 
 void TabCBBESE::updateMeshesPreview()
@@ -885,11 +885,6 @@ void TabCBBESE::generateDirectoryStructure()
       QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
     }
   }
-}
-
-void TabCBBESE::refreshAllPreviewFields(QString aText)
-{
-  this->refreshAllPreviewFields();
 }
 
 void TabCBBESE::refreshAllPreviewFields(int)

@@ -1,8 +1,8 @@
 #include "Update.h"
 
-Update::Update(QWidget* parent)
+Update::Update(QWidget* parent, Struct::Settings aSettings)
   : QDialog(parent)
-  , mSettings(Utils::loadSettingsFromFile())
+  , mSettings(aSettings)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -50,7 +50,7 @@ void Update::setupInterface(QVBoxLayout& aLayout)
   aLayout.addWidget(lCheckForUpdates);
 
   // Event binding
-  connect(lUpdateButton, SIGNAL(clicked()), this, SLOT(getLastAvailableVersion()));
+  connect(lUpdateButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
 }
 
 void Update::getLastAvailableVersion()

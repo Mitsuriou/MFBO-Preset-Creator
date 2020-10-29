@@ -121,12 +121,12 @@ void MFBOPresetCreator::setupMenuBar()
   lHelpMenu->addAction(lAboutAction);
 
   // Event binding
-  connect(lQuickRelaunch, SIGNAL(triggered()), this, SLOT(quickRelaunch()));
-  connect(lExitAction, SIGNAL(triggered()), this, SLOT(close()));
-  connect(lRetargetingToolAction, SIGNAL(triggered()), this, SLOT(launchRetargetingTool()));
-  connect(lSettingsAction, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
-  connect(lCheckUpdateAction, SIGNAL(triggered()), this, SLOT(showUpdateDialog()));
-  connect(lAboutAction, SIGNAL(triggered()), this, SLOT(showAboutDialog()));
+  connect(lQuickRelaunch, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
+  connect(lExitAction, &QAction::triggered, this, &MFBOPresetCreator::close);
+  connect(lRetargetingToolAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingTool);
+  connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::showSettingsDialog);
+  connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::showUpdateDialog);
+  connect(lAboutAction, &QAction::triggered, this, &MFBOPresetCreator::showAboutDialog);
 }
 
 void MFBOPresetCreator::showWindow()
@@ -171,7 +171,7 @@ void MFBOPresetCreator::showWindow()
   }
 }
 
-void MFBOPresetCreator::applyStyleSheet()
+void MFBOPresetCreator::applyGlobalStyleSheet()
 {
   auto lQSSFileName{QString("")};
 
@@ -206,8 +206,6 @@ void MFBOPresetCreator::applyStyleSheet()
     case GUITheme::QuasarAppVisualStudioDark:
       lQSSFileName = "QuasarApp's Visual Studio Dark";
       break;
-    default:
-      break;
   }
 
   if (lQSSFileName == "")
@@ -232,11 +230,9 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     // Store old values to check if GUI modifications are needed
     auto lOldAppTheme = mSettings.appTheme;
     auto lOldFontFamily = mSettings.fontFamily;
-    auto lOldFontSize = mSettings.fontSize;
 
     auto lNewAppTheme = aSettings.appTheme;
     auto lNewFontFamily = aSettings.fontFamily;
-    auto lNewFontSize = aSettings.fontSize;
 
     mSettings = aSettings;
 
@@ -252,14 +248,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
       this->setupMenuBar();
 
       // Apply the chosen theme
-      this->applyStyleSheet();
-    }
-
-    if (lOldFontFamily != lNewFontFamily || lOldFontSize != lNewFontSize)
-    {
-      // Set the font properties
-      QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
-      qApp->setFont(lFont);
+      this->applyGlobalStyleSheet();
     }
   }
   else
@@ -267,7 +256,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     this->setupMenuBar();
 
     // Apply the chosen theme
-    this->applyStyleSheet();
+    this->applyGlobalStyleSheet();
 
     // Set the font properties
     QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
@@ -344,22 +333,22 @@ void MFBOPresetCreator::quickRelaunch()
 
 void MFBOPresetCreator::launchRetargetingTool()
 {
-  new RetargetingTool(this);
+  new RetargetingTool(this, this->mSettings);
 }
 
 void MFBOPresetCreator::showSettingsDialog()
 {
-  auto lSettings{new Settings(this)};
+  auto lSettings{new Settings(this, this->mSettings)};
 
-  connect(lSettings, SIGNAL(refreshMainUI(Struct::Settings, bool)), this, SLOT(refreshUI(Struct::Settings, bool)));
+  connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 
 void MFBOPresetCreator::showUpdateDialog()
 {
-  new Update(this);
+  new Update(this, this->mSettings);
 }
 
 void MFBOPresetCreator::showAboutDialog()
 {
-  new About(this);
+  new About(this, this->mSettings);
 }

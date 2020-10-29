@@ -1,15 +1,13 @@
 #include "Settings.h"
 
-Settings::Settings(QWidget* parent)
+Settings::Settings(QWidget* parent, Struct::Settings aSettings)
   : QDialog(parent)
-  , mSettings(Utils::loadSettingsFromFile())
+  , mSettings(aSettings)
   , mMustRebootMainApp{false}
 {
   // Build the window's interface
   this->setWindowProperties();
   this->initializeGUI();
-
-  this->refreshUI();
 
   // Show the window when it's completely built
   this->show();
@@ -126,6 +124,10 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lFontSizeInput->setValidator(new QIntValidator(1, 99, this));
   lDisplayLayout->addWidget(lFontSizeInput);
 
+  // WIP
+  auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
+  lDisplayLayout->addWidget(lFontChooser);
+
   // GUI THEME
   auto lGUIThemeLabel{new QLabel(tr("Application Theme:"), this)};
   lDisplayLayout->addWidget(lGUIThemeLabel);
@@ -165,6 +167,9 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
   lDisplayLayout->addWidget(lWinHeightInput);
+
+  // Event binding
+  connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
 }
 
 void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
@@ -205,7 +210,7 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
   lPresetCreatorLayout->addWidget(lAutoOpenDirCheckbox, 4, 0, 1, 2);
 
   // Event binding
-  connect(lOutputPathChooser, SIGNAL(clicked()), this, SLOT(chooseExportDirectory()));
+  connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
 }
 
 void Settings::setupRetargetingToolTab(QTabWidget* aTabs)
@@ -247,9 +252,9 @@ void Settings::setupButtons(QHBoxLayout* aLayout)
   aLayout->addWidget(lCloseButton);
 
   // Event binding
-  connect(lRestoreDefaultButton, SIGNAL(clicked()), this, SLOT(restoreDefaultSettings()));
-  connect(lSaveButton, SIGNAL(clicked()), this, SLOT(saveSettings()));
-  connect(lCloseButton, SIGNAL(clicked()), this, SLOT(close()));
+  connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
+  connect(lSaveButton, &QPushButton::clicked, this, &Settings::saveSettings);
+  connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
 }
 
 void Settings::loadSettings()
@@ -445,22 +450,6 @@ Struct::Settings Settings::getSettingsFromGUI()
   return lSettings;
 }
 
-void Settings::refreshUI()
-{
-  emit refreshMainUI(mSettings, true);
-
-  if (mMustRebootMainApp)
-  {
-    auto lResult{QMessageBox::question(this, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
-
-    if (lResult == QMessageBox::Yes)
-    {
-      // Reboot the application in case the language is changed
-      qApp->exit(Settings::EXIT_CODE_REBOOT);
-    }
-  }
-}
-
 void Settings::restoreDefaultSettings()
 {
   // Store the current settings
@@ -494,6 +483,21 @@ void Settings::chooseExportDirectory()
   lLineEdit->setText(lPath);
 }
 
+void Settings::chooseFont()
+{
+  auto lInitialFont{qApp->font()};
+  bool lHasUserChangedFont{false};
+
+  QFont lFont = QFontDialog::getFont(&lHasUserChangedFont, lInitialFont, this);
+
+  // WIP
+  if (lHasUserChangedFont && lFont != lInitialFont)
+  {
+    lFont.setStyleStrategy(QFont::PreferAntialias);
+    qApp->setFont(lFont);
+  }
+}
+
 void Settings::saveSettings()
 {
   auto lSettings{this->getSettingsFromGUI()};
@@ -503,6 +507,18 @@ void Settings::saveSettings()
   Utils::saveSettingsToFile(lSettings);
   mSettings = lSettings;
 
-  this->refreshUI();
+  emit refreshMainUI(mSettings, true);
+
+  if (mMustRebootMainApp)
+  {
+    auto lResult{QMessageBox::question(this, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+
+    if (lResult == QMessageBox::Yes)
+    {
+      // Reboot the application in case the language is changed
+      qApp->exit(Settings::EXIT_CODE_REBOOT);
+    }
+  }
+
   this->close();
 }

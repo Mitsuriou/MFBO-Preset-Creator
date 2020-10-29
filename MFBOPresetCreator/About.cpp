@@ -1,8 +1,8 @@
 #include "About.h"
 
-About::About(QWidget* parent)
+About::About(QWidget* parent, Struct::Settings aSettings)
   : QDialog(parent)
-  , mSettings(Utils::loadSettingsFromFile())
+  , mSettings(aSettings)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -37,7 +37,7 @@ void About::initializeGUI()
   auto lDescription(
     QStringLiteral(
       "<h1 style=\"text-align: center; padding: 0px; margin: 0px;\">About this software</h1><br />"
-      "<p style=\"padding: 0px; margin: 0px; margin-left: 20px; margin-right: 20px;\">"
+      "<p style=\"padding: 0px; margin: 0px; margin-left: 25px; margin-right: 25px;\">"
       "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is a software "
       "created by Dylan Jacquemin (also known under the nickname <a href=\"https://www.nexusmods.com/users/37026145\">Mitsuriou</a>).<br />"
       "This software has been developed to be provided for free to any user that wants to use the software.<br />"
