@@ -26,7 +26,6 @@ private:
   void setWindowProperties();
   void initializeGUI();
   void setupInterface(QVBoxLayout& aLayout);
-  void refreshUI();
 
 private slots:
   void getLastAvailableVersion();

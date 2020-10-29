@@ -8,8 +8,6 @@ RetargetingTool::RetargetingTool(QWidget* parent)
   this->setWindowProperties();
   this->initializeGUI();
 
-  this->refreshUI();
-
   // Show the window when it's completely built
   this->show();
 }
@@ -130,14 +128,6 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lKeepBackup->setChecked(true);
   this->switchBackupState();
   this->updateBackupPreview();
-}
-
-void RetargetingTool::refreshUI()
-{
-  // Set the font properties
-  QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
-  this->setFont(lFont);
-  this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
 }
 
 void RetargetingTool::chooseInputDirectory()

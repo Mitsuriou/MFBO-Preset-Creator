@@ -37,6 +37,12 @@
     <ClCompile Include="HTTPDownloader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AssistedConversionTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="About.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum.h">
@@ -112,6 +118,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="HTTPDownloader.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AssistedConversionTool.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="About.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

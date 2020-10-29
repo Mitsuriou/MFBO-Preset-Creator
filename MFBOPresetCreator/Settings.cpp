@@ -447,11 +447,6 @@ Struct::Settings Settings::getSettingsFromGUI()
 
 void Settings::refreshUI()
 {
-  // Set the font properties
-  QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
-  this->setFont(lFont);
-  this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
-
   emit refreshMainUI(mSettings, true);
 
   if (mMustRebootMainApp)

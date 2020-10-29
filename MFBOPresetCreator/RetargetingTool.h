@@ -23,7 +23,6 @@ private:
   void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
-  void refreshUI();
 
 private slots:
   void chooseInputDirectory();

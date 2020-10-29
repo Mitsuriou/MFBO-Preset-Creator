@@ -8,8 +8,6 @@ Update::Update(QWidget* parent)
   this->setWindowProperties();
   this->initializeGUI();
 
-  this->refreshUI();
-
   // Show the window when it's completely built
   this->show();
 }
@@ -53,14 +51,6 @@ void Update::setupInterface(QVBoxLayout& aLayout)
 
   // Event binding
   connect(lUpdateButton, SIGNAL(clicked()), this, SLOT(getLastAvailableVersion()));
-}
-
-void Update::refreshUI()
-{
-  // Set the font properties
-  QFont lFont(mSettings.fontFamily, mSettings.fontSize, -1, false);
-  this->setFont(lFont);
-  this->setStyleSheet("font-family: \"" + mSettings.fontFamily + "\"; font-size: " + QString::number(mSettings.fontSize) + "px;");
 }
 
 void Update::getLastAvailableVersion()

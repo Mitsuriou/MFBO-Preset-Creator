@@ -259,8 +259,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     {
       // Set the font properties
       QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
-      this->setFont(lFont);
-      this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
+      qApp->setFont(lFont);
     }
   }
   else
@@ -272,8 +271,8 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
 
     // Set the font properties
     QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
-    this->setFont(lFont);
-    this->setStyleSheet("font-family: \"" + aSettings.fontFamily + "\"; font-size: " + QString::number(aSettings.fontSize) + "px;");
+    lFont.setStyleStrategy(QFont::PreferAntialias);
+    qApp->setFont(lFont);
   }
 }
 
@@ -362,39 +361,5 @@ void MFBOPresetCreator::showUpdateDialog()
 
 void MFBOPresetCreator::showAboutDialog()
 {
-  // Build the description
-  auto lDescription(
-    QStringLiteral(
-      "<h1 style=\"text-align: center; padding: 0; margin: 0; margin-right: 20px;\">About this software</h1><br />"
-      "<p style=\"font-size: 12px; padding: 0; margin: 0; margin-right: 20px;\">"
-      "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is a software "
-      "created by Dylan Jacquemin (also known under the nickname <a href=\"https://www.nexusmods.com/users/37026145\">Mitsuriou</a>).<br />"
-      "This software has been developed to be provided for free to any user that wants to use the software.<br />"
-      "The totality of the source code is available on "
-      "<a href=\"https://github.com/Mitsuriou/MFBO-Preset-Creator\">GitHub.com</a>."
-      "<br /><br />"
-      "Ressources used to make this software:<br />"
-      "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
-      "&bull; <a href='http://buildnumber.sourceforge.net/'>BuildNumber</a> is used for version number auto-incrementat.<br />"
-      "&bull; All the icons were taken from <a href=\"https://materialdesignicons.com\">MaterialDesignIcons.com</a>.<br />"
-      "&bull; Some GUI themes were taken from <a href=\"https://github.com/6788-00\">6788-00's GitHub repository</a>.<br />"
-      "&bull; Some GUI themes were taken from <a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\">Alexhuszagh/BreezeStyleSheets GitHub page</a>.<br />"
-      "&bull; Some GUI themes were taken from <a href=\"https://github.com/QuasarApp/QStyleSheet\">QuasarApp/QStyleSheet GitHub page</a>.<br />"
-      "<br />"
-      "Ressources bundled in this software:<br />"
-      "&bull; The BodySlide (OSP and XML) files that are generated with MFBOPC were taken from the "
-      "<a href=\"https://www.nexusmods.com/skyrimspecialedition/mods/30174\">CBBE 3BBB</a> mod on NexusMod "
-      "and modified by Dylan Jacquemin.<br />"
-      "&bull; The \"female_skeleton.nif\" file has been taken from the "
-      "<a href=\"https://www.nexusmods.com/skyrimspecialedition/mods/1988\">XP32 Maximum Skeleton Special Extended - XPMSSE</a> "
-      "mod on NexusMod. The file has not been modified."
-      "</p>"));
-
-  // Construct the message box
-  QMessageBox lDialog(QMessageBox::Icon::NoIcon, tr("About"), lDescription, QMessageBox::StandardButton::Close);
-  lDialog.setTextFormat(Qt::RichText);
-  lDialog.adjustSize();
-
-  // Display the message box
-  lDialog.exec();
+  new About(this);
 }

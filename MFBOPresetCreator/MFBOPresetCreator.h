@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "About.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
 #include "Tab.h"
