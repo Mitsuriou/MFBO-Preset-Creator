@@ -34,6 +34,7 @@ private:
   void setupMenuBar();
   void showWindow();
   void applyGlobalStyleSheet();
+  void applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut);
 
 public slots:
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);

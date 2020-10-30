@@ -265,14 +265,14 @@ Struct::Settings Utils::loadSettingsFromFile()
   lSettingsFile.close();
 
   QJsonDocument lJsonDocument(QJsonDocument::fromJson(lSettingsData.toUtf8()));
-  QJsonObject lJsonObject = lJsonDocument.object();
+  QJsonObject lSettingsJSON = lJsonDocument.object();
 
   Struct::Settings lSettings;
 
   // Language
-  if (lJsonObject.contains("lang") && lJsonObject["lang"].isDouble())
+  if (lSettingsJSON.contains("lang") && lSettingsJSON["lang"].isDouble())
   {
-    auto lFoundLanguage{lJsonObject["lang"].toInt()};
+    auto lFoundLanguage{lSettingsJSON["lang"].toInt()};
 
     switch (lFoundLanguage)
     {
@@ -289,21 +289,50 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Font family
-  if (lJsonObject.contains("fontFamily") && lJsonObject["fontFamily"].isString())
+  if (lSettingsJSON.contains("font"))
   {
-    lSettings.fontFamily = lJsonObject["fontFamily"].toString();
-  }
+    auto lFontJSON = lSettingsJSON["font"].toObject();
 
-  // Font size
-  if (lJsonObject.contains("fontSize") && lJsonObject["fontSize"].isDouble())
-  {
-    lSettings.fontSize = lJsonObject["fontSize"].toInt();
+    if (lFontJSON.contains("family") && lFontJSON["family"].isString())
+    {
+      lSettings.font.family = lFontJSON["family"].toString();
+    }
+
+    if (lFontJSON.contains("styleName") && lFontJSON["styleName"].isString())
+    {
+      lSettings.font.styleName = lFontJSON["styleName"].toString();
+    }
+
+    if (lFontJSON.contains("size") && lFontJSON["size"].isDouble())
+    {
+      lSettings.font.size = lFontJSON["size"].toInt();
+    }
+
+    if (lFontJSON.contains("weight") && lFontJSON["weight"].isDouble())
+    {
+      lSettings.font.weight = lFontJSON["weight"].toInt();
+    }
+
+    if (lFontJSON.contains("italic") && lFontJSON["italic"].isBool())
+    {
+      lSettings.font.italic = lFontJSON["italic"].toBool();
+    }
+
+    if (lFontJSON.contains("underline") && lFontJSON["underline"].isBool())
+    {
+      lSettings.font.underline = lFontJSON["underline"].toBool();
+    }
+
+    if (lFontJSON.contains("strikeOut") && lFontJSON["strikeOut"].isBool())
+    {
+      lSettings.font.strikeOut = lFontJSON["strikeOut"].toBool();
+    }
   }
 
   // Dark theme
-  if (lJsonObject.contains("appTheme") && lJsonObject["appTheme"].isDouble())
+  if (lSettingsJSON.contains("appTheme") && lSettingsJSON["appTheme"].isDouble())
   {
-    auto lFoundAppTheme{lJsonObject["appTheme"].toInt()};
+    auto lFoundAppTheme{lSettingsJSON["appTheme"].toInt()};
 
     switch (lFoundAppTheme)
     {
@@ -344,21 +373,21 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Default window width
-  if (lJsonObject.contains("windowWidth") && lJsonObject["windowWidth"].isDouble())
+  if (lSettingsJSON.contains("windowWidth") && lSettingsJSON["windowWidth"].isDouble())
   {
-    lSettings.mainWindowWidth = lJsonObject["windowWidth"].toInt();
+    lSettings.mainWindowWidth = lSettingsJSON["windowWidth"].toInt();
   }
 
   // Default window height
-  if (lJsonObject.contains("windowHeight") && lJsonObject["windowHeight"].isDouble())
+  if (lSettingsJSON.contains("windowHeight") && lSettingsJSON["windowHeight"].isDouble())
   {
-    lSettings.mainWindowHeight = lJsonObject["windowHeight"].toInt();
+    lSettings.mainWindowHeight = lSettingsJSON["windowHeight"].toInt();
   }
 
   // Main window opening mode
-  if (lJsonObject.contains("main_window_opening_mode") && lJsonObject["main_window_opening_mode"].isDouble())
+  if (lSettingsJSON.contains("main_window_opening_mode") && lSettingsJSON["main_window_opening_mode"].isDouble())
   {
-    auto lFoundWindowOpeningMode{lJsonObject["main_window_opening_mode"].toInt()};
+    auto lFoundWindowOpeningMode{lSettingsJSON["main_window_opening_mode"].toInt()};
 
     switch (lFoundWindowOpeningMode)
     {
@@ -377,9 +406,9 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Default CBBE 3BBB Version
-  if (lJsonObject.contains("default_3bbb_version") && lJsonObject["default_3bbb_version"].isDouble())
+  if (lSettingsJSON.contains("default_3bbb_version") && lSettingsJSON["default_3bbb_version"].isDouble())
   {
-    auto lFoundVersion{lJsonObject["default_3bbb_version"].toInt()};
+    auto lFoundVersion{lSettingsJSON["default_3bbb_version"].toInt()};
 
     switch (lFoundVersion)
     {
@@ -398,9 +427,9 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Default Retargeting Tool CBBE 3BBB Version
-  if (lJsonObject.contains("retargeting_tool_3bbb_version") && lJsonObject["retargeting_tool_3bbb_version"].isDouble())
+  if (lSettingsJSON.contains("retargeting_tool_3bbb_version") && lSettingsJSON["retargeting_tool_3bbb_version"].isDouble())
   {
-    auto lFoundVersion{lJsonObject["retargeting_tool_3bbb_version"].toInt()};
+    auto lFoundVersion{lSettingsJSON["retargeting_tool_3bbb_version"].toInt()};
 
     switch (lFoundVersion)
     {
@@ -419,15 +448,15 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Main window output path
-  if (lJsonObject.contains("mainWindowOutputPath") && lJsonObject["mainWindowOutputPath"].isString())
+  if (lSettingsJSON.contains("mainWindowOutputPath") && lSettingsJSON["mainWindowOutputPath"].isString())
   {
-    lSettings.mainWindowOutputPath = lJsonObject["mainWindowOutputPath"].toString();
+    lSettings.mainWindowOutputPath = lSettingsJSON["mainWindowOutputPath"].toString();
   }
 
   // Main window auto open generated dir
-  if (lJsonObject.contains("mainWindowAutomaticallyOpenGeneratedDirectory") && lJsonObject["mainWindowAutomaticallyOpenGeneratedDirectory"].isBool())
+  if (lSettingsJSON.contains("mainWindowAutomaticallyOpenGeneratedDirectory") && lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].isBool())
   {
-    lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lJsonObject["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
+    lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
   }
 
   return lSettings;
@@ -448,11 +477,20 @@ void Utils::saveSettingsToFile(Struct::Settings aSettings)
 
 QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
 {
-  QJsonObject lObj;
+  // Construct a font subobject
+  QJsonObject lFontObj;
+  lFontObj["family"] = aSettings.font.family;
+  lFontObj["styleName"] = aSettings.font.styleName;
+  lFontObj["size"] = aSettings.font.size;
+  lFontObj["weight"] = aSettings.font.weight;
+  lFontObj["italic"] = aSettings.font.italic;
+  lFontObj["underline"] = aSettings.font.underline;
+  lFontObj["strikeOut"] = aSettings.font.strikeOut;
 
+  // Construct the full settings object
+  QJsonObject lObj;
   lObj["lang"] = static_cast<int>(aSettings.language);
-  lObj["fontFamily"] = aSettings.fontFamily;
-  lObj["fontSize"] = static_cast<int>(aSettings.fontSize);
+  lObj["font"] = lFontObj;
   lObj["appTheme"] = static_cast<int>(aSettings.appTheme);
   lObj["windowWidth"] = aSettings.mainWindowWidth;
   lObj["windowHeight"] = aSettings.mainWindowHeight;

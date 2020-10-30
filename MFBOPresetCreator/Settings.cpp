@@ -4,6 +4,7 @@ Settings::Settings(QWidget* parent, Struct::Settings aSettings)
   : QDialog(parent)
   , mSettings(aSettings)
   , mMustRebootMainApp{false}
+  , mNewFont{qApp->font()}
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -73,7 +74,7 @@ void Settings::initializeGUI()
   this->setupButtons(lButtonsContainer);
 
   // Load the settings in the interface
-  this->loadSettings();
+  this->loadSettings(mSettings);
 }
 
 void Settings::setupTabs(QVBoxLayout* aLayout)
@@ -106,26 +107,11 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lDisplayLayout->addWidget(lLanguageSelector);
 
   // FONT FAMILY
-  auto lFontFamilyLabel{new QLabel(tr("Font family:"), this)};
-  lDisplayLayout->addWidget(lFontFamilyLabel);
+  auto lFontLabel{new QLabel(tr("Font:"), this)};
+  lDisplayLayout->addWidget(lFontLabel);
 
-  auto lFontFamilySelector{new QComboBox(this)};
-  QFontDatabase lFontDB;
-  lFontFamilySelector->addItems(lFontDB.families(QFontDatabase::WritingSystem::Any));
-  lFontFamilySelector->setObjectName(QString("font_family"));
-  lDisplayLayout->addWidget(lFontFamilySelector);
-
-  // FONT SIZE
-  auto lFontSizeLabel{new QLabel(tr("Font size:"), this)};
-  lDisplayLayout->addWidget(lFontSizeLabel);
-
-  auto lFontSizeInput{new QLineEdit("", this)};
-  lFontSizeInput->setObjectName(QString("font_size"));
-  lFontSizeInput->setValidator(new QIntValidator(1, 99, this));
-  lDisplayLayout->addWidget(lFontSizeInput);
-
-  // WIP
   auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
+  lFontChooser->setObjectName("font_chooser");
   lDisplayLayout->addWidget(lFontChooser);
 
   // GUI THEME
@@ -257,49 +243,39 @@ void Settings::setupButtons(QHBoxLayout* aLayout)
   connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
 }
 
-void Settings::loadSettings()
+void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 {
   auto lLang{this->findChild<QComboBox*>("language")};
-  lLang->setCurrentIndex(static_cast<int>(mSettings.language));
-
-  auto lFontFamily{this->findChild<QComboBox*>("font_family")};
-  QFontDatabase lFontDB;
-  auto lFamilyFontIndex{lFontDB.families(QFontDatabase::WritingSystem::Any).indexOf(QRegularExpression(mSettings.fontFamily))};
-  lFontFamily->setCurrentIndex(lFamilyFontIndex);
-
-  auto lFontSize{this->findChild<QLineEdit*>("font_size")};
-  lFontSize->setText(QString::number(mSettings.fontSize));
+  lLang->setCurrentIndex(static_cast<int>(aSettingsToLoad.language));
 
   auto lAppTheme{this->findChild<QComboBox*>("app_theme")};
-  lAppTheme->setCurrentIndex(static_cast<int>(mSettings.appTheme));
+  lAppTheme->setCurrentIndex(static_cast<int>(aSettingsToLoad.appTheme));
 
   auto lWindowWidth{this->findChild<QLineEdit*>("window_width")};
-  lWindowWidth->setText(QString::number(mSettings.mainWindowWidth));
+  lWindowWidth->setText(QString::number(aSettingsToLoad.mainWindowWidth));
 
   auto lWindowHeight{this->findChild<QLineEdit*>("window_height")};
-  lWindowHeight->setText(QString::number(mSettings.mainWindowHeight));
+  lWindowHeight->setText(QString::number(aSettingsToLoad.mainWindowHeight));
 
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")};
-  lWindowOpeningMode->setCurrentIndex(static_cast<int>(mSettings.mainWindowOpeningMode));
+  lWindowOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.mainWindowOpeningMode));
 
   auto lDefaultCBBE3BBBVersion{this->findChild<QComboBox*>("default_cbbe_3bbb_version")};
-  lDefaultCBBE3BBBVersion->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
+  lDefaultCBBE3BBBVersion->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainWindowCBBE3BBBVersion));
 
   auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")};
-  lDefaultUpgradeCBBE3BBBVersion->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
+  lDefaultUpgradeCBBE3BBBVersion->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolCBBE3BBBVersion));
 
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")};
-  lMainWindowOutputPath->setText(mSettings.mainWindowOutputPath);
+  lMainWindowOutputPath->setText(aSettingsToLoad.mainWindowOutputPath);
 
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")};
-  lAutoOpenGeneratedDir->setChecked(mSettings.mainWindowAutomaticallyOpenGeneratedDirectory);
+  lAutoOpenGeneratedDir->setChecked(aSettingsToLoad.mainWindowAutomaticallyOpenGeneratedDirectory);
 }
 
 Struct::Settings Settings::getSettingsFromGUI()
 {
   auto lLang{this->findChild<QComboBox*>("language")->currentIndex()};
-  auto lFontFamily{this->findChild<QComboBox*>("font_family")->currentText().trimmed()};
-  auto lFontSize{this->findChild<QLineEdit*>("font_size")->text().trimmed()};
   auto lAppTheme{this->findChild<QComboBox*>("app_theme")->currentIndex()};
   auto lWindowWidth{this->findChild<QLineEdit*>("window_width")->text().trimmed()};
   auto lWindowHeight{this->findChild<QLineEdit*>("window_height")->text().trimmed()};
@@ -326,16 +302,13 @@ Struct::Settings Settings::getSettingsFromGUI()
   }
 
   // Font family
-  if (lFontFamily.size() > 0)
-  {
-    lSettings.fontFamily = lFontFamily;
-  }
-
-  // Font size
-  if (lFontSize.size() > 0)
-  {
-    lSettings.fontSize = lFontSize.toInt();
-  }
+  lSettings.font.family = this->mNewFont.family();
+  lSettings.font.styleName = this->mNewFont.styleName();
+  lSettings.font.size = this->mNewFont.pointSize();
+  lSettings.font.weight = this->mNewFont.weight();
+  lSettings.font.italic = this->mNewFont.italic();
+  lSettings.font.underline = this->mNewFont.underline();
+  lSettings.font.strikeOut = this->mNewFont.strikeOut();
 
   // Application theme
   switch (lAppTheme)
@@ -452,16 +425,9 @@ Struct::Settings Settings::getSettingsFromGUI()
 
 void Settings::restoreDefaultSettings()
 {
-  // Store the current settings
-  auto lStoredSettings = mSettings;
-
   // Create a default settings object and load it into the GUI
   Struct::Settings lSettings;
-  mSettings = lSettings;
-  this->loadSettings();
-
-  // Reload the settings that were previously set
-  mSettings = lStoredSettings;
+  this->loadSettings(lSettings);
 }
 
 void Settings::chooseExportDirectory()
@@ -485,17 +451,20 @@ void Settings::chooseExportDirectory()
 
 void Settings::chooseFont()
 {
-  auto lInitialFont{qApp->font()};
-  bool lHasUserChangedFont{false};
+  bool lUserPressedOK{false};
+  QFont lFont = QFontDialog::getFont(&lUserPressedOK, this->mNewFont, this);
 
-  QFont lFont = QFontDialog::getFont(&lHasUserChangedFont, lInitialFont, this);
-
-  // WIP
-  if (lHasUserChangedFont && lFont != lInitialFont)
+  if (!lUserPressedOK)
   {
-    lFont.setStyleStrategy(QFont::PreferAntialias);
-    qApp->setFont(lFont);
+    return;
   }
+
+  // Read and store new font's information
+  this->mNewFont = lFont;
+
+  // Display a preview on the font chooser's button directly
+  auto lFontChooserButton{this->findChild<QPushButton*>("font_chooser")};
+  lFontChooserButton->setFont(lFont);
 }
 
 void Settings::saveSettings()

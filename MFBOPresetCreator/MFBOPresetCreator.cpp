@@ -223,16 +223,27 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   }
 }
 
+void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut)
+{
+  // Set the font properties
+  QFont lFont(aFamily, aSize, aWeight, aItalic);
+  lFont.setStyleName(aStyleName);
+  lFont.setUnderline(aUnderline);
+  lFont.setStrikeOut(aStrikeOut);
+  lFont.setStyleStrategy(QFont::PreferAntialias);
+  qApp->setFont(lFont);
+}
+
 void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings)
 {
   if (aMustUpdateSettings)
   {
     // Store old values to check if GUI modifications are needed
-    auto lOldAppTheme = mSettings.appTheme;
-    auto lOldFontFamily = mSettings.fontFamily;
+    auto lOldAppTheme{mSettings.appTheme};
+    auto lOldFont{mSettings.font};
 
-    auto lNewAppTheme = aSettings.appTheme;
-    auto lNewFontFamily = aSettings.fontFamily;
+    auto lNewAppTheme{aSettings.appTheme};
+    auto lNewFont{aSettings.font};
 
     mSettings = aSettings;
 
@@ -247,21 +258,36 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
       // Refresh the status bar to swap dark and white icons if needed
       this->setupMenuBar();
 
-      // Apply the chosen theme
+      // Apply the chosen QSS theme
       this->applyGlobalStyleSheet();
+    }
+
+    if (lOldFont != lNewFont)
+    {
+      applyFont(lNewFont.family,
+                lNewFont.styleName,
+                lNewFont.size,
+                lNewFont.weight,
+                lNewFont.italic,
+                lNewFont.underline,
+                lNewFont.strikeOut);
     }
   }
   else
   {
     this->setupMenuBar();
 
-    // Apply the chosen theme
+    // Apply the QSS theme
     this->applyGlobalStyleSheet();
 
     // Set the font properties
-    QFont lFont(aSettings.fontFamily, aSettings.fontSize, -1, false);
-    lFont.setStyleStrategy(QFont::PreferAntialias);
-    qApp->setFont(lFont);
+    applyFont(aSettings.font.family,
+              aSettings.font.styleName,
+              aSettings.font.size,
+              aSettings.font.weight,
+              aSettings.font.italic,
+              aSettings.font.underline,
+              aSettings.font.strikeOut);
   }
 }
 
@@ -339,7 +365,6 @@ void MFBOPresetCreator::launchRetargetingTool()
 void MFBOPresetCreator::showSettingsDialog()
 {
   auto lSettings{new Settings(this, this->mSettings)};
-
   connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 

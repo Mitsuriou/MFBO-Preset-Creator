@@ -18,6 +18,7 @@ protected:
 
 private:
   Struct::Settings mSettings;
+  QFont mNewFont;
   bool mMustRebootMainApp;
 
   void setWindowProperties();
@@ -29,7 +30,7 @@ private:
   void setupRetargetingToolTab(QTabWidget* aTabs);
   void setupButtons(QHBoxLayout* aLayout);
 
-  void loadSettings();
+  void loadSettings(const Struct::Settings& aSettingsToLoad);
   Struct::Settings getSettingsFromGUI();
 
 signals:

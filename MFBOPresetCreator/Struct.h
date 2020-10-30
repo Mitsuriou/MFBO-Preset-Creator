@@ -14,13 +14,47 @@ namespace Struct
     QString outputfile;
   };
 
+  struct Font
+  {
+  public:
+    QString family{"MS Shell Dlg 2"};
+    QString styleName{""};
+    int size{10};
+    int weight{-1};
+    bool italic{false};
+    bool underline{false};
+    bool strikeOut{false};
+
+    bool operator==(const Struct::Font& aSettings)
+    {
+      return (
+        this->family == aSettings.family
+        && this->styleName == aSettings.styleName
+        && this->size == aSettings.size
+        && this->weight == aSettings.weight
+        && this->italic == aSettings.italic
+        && this->underline == aSettings.underline
+        && this->strikeOut == aSettings.strikeOut);
+    };
+
+    bool operator!=(const Struct::Font& aSettings)
+    {
+      return (this->family != aSettings.family
+              || this->styleName != aSettings.styleName
+              || this->size != aSettings.size
+              || this->weight != aSettings.weight
+              || this->italic != aSettings.italic
+              || this->underline != aSettings.underline
+              || this->strikeOut != aSettings.strikeOut);
+    };
+  };
+
   struct Settings
   {
   public:
     GUITheme appTheme{GUITheme::WindowsVista};
     CBBE3BBBVersion defaultMainWindowCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
-    QString fontFamily{"MS Shell Dlg 2"};
-    int fontSize{11};
+    Struct::Font font;
     ApplicationLanguage language{ApplicationLanguage::English};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
     CBBE3BBBVersion defaultRetargetingToolCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
@@ -34,12 +68,12 @@ namespace Struct
       return (
         this->appTheme == aSettings.appTheme
         && this->defaultMainWindowCBBE3BBBVersion == aSettings.defaultMainWindowCBBE3BBBVersion
-        && this->fontFamily == aSettings.fontFamily
-        && this->fontSize == aSettings.fontSize
+        && this->font == aSettings.font
         && this->language == aSettings.language
         && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
         && this->defaultRetargetingToolCBBE3BBBVersion == aSettings.defaultRetargetingToolCBBE3BBBVersion
-        && this->mainWindowHeight == aSettings.mainWindowHeight && this->mainWindowWidth == aSettings.mainWindowWidth
+        && this->mainWindowHeight == aSettings.mainWindowHeight
+        && this->mainWindowWidth == aSettings.mainWindowWidth
         && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
         && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory);
     };
@@ -49,12 +83,12 @@ namespace Struct
       return (
         this->appTheme != aSettings.appTheme
         || this->defaultMainWindowCBBE3BBBVersion != aSettings.defaultMainWindowCBBE3BBBVersion
-        || this->fontFamily != aSettings.fontFamily
-        || this->fontSize != aSettings.fontSize
+        || this->font != aSettings.font
         || this->language != aSettings.language
         || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode
         || this->defaultRetargetingToolCBBE3BBBVersion != aSettings.defaultRetargetingToolCBBE3BBBVersion
-        || this->mainWindowHeight != aSettings.mainWindowHeight && this->mainWindowWidth == aSettings.mainWindowWidth
+        || this->mainWindowHeight != aSettings.mainWindowHeight
+        || this->mainWindowWidth != aSettings.mainWindowWidth
         || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory);
     };
