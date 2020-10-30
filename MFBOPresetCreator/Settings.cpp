@@ -112,6 +112,8 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
 
   auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
   lFontChooser->setObjectName("font_chooser");
+  lFontChooser->setAutoDefault(false);
+  lFontChooser->setDefault(false);
   lDisplayLayout->addWidget(lFontChooser);
 
   // GUI THEME
@@ -188,6 +190,8 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
 
   // OUTPUT PATH CHOOSER
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lOutputPathChooser->setAutoDefault(false);
+  lOutputPathChooser->setDefault(false);
   lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY

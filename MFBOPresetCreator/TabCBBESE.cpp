@@ -90,6 +90,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   auto lMeshesPreview{new QLabel(this)};
   lMeshesPreview->setObjectName("meshes_preview");
+  lMeshesPreview->setAutoFillBackground(true);
   lMeshesGridLayout->addWidget(lMeshesPreview, 6, 1, 1, 2);
 
   // Initialization functions
@@ -129,6 +130,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
   lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
+  lPathsNamesOspXmlNames->setAutoFillBackground(true);
   lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 1, 1);
 
   // Third line
@@ -244,6 +246,7 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
 
   auto lOutputPathsPreview{new QLabel("", this)};
   lOutputPathsPreview->setObjectName("output_path_preview");
+  lOutputPathsPreview->setAutoFillBackground(true);
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
   // Event binding
@@ -307,21 +310,24 @@ void TabCBBESE::updateMeshesPreview()
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lHandsName);
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif").arg(lMeshesPath).arg(lHandsName);
 
+  QPalette pal;
+
   if (lIsValidPath)
   {
-    if (lMeshesPath.startsWith("meshes/") && lMeshesPath.length() > 7)
+    if (!lMeshesPath.startsWith("meshes/") || (lMeshesPath.startsWith("meshes/") && lMeshesPath.length() < 8))
     {
-      lPreviewLabel->setStyleSheet("");
-    }
-    else
-    {
-      lPreviewLabel->setStyleSheet("QLabel {color: #FF9800;}");
+      pal = lPreviewLabel->palette();
+      pal.setColor(QPalette::WindowText, QColor("#FF9800"));
     }
   }
   else
   {
-    lPreviewLabel->setStyleSheet("QLabel {color: #F44336;}");
+    pal = lPreviewLabel->palette();
+    pal.setColor(QPalette::WindowText, QColor("#F44336"));
   }
+
+  pal.setColor(QPalette::Window, Qt::transparent);
+  lPreviewLabel->setPalette(pal);
 
   lPreviewLabel->setText(lFullPreview);
 }
@@ -360,22 +366,24 @@ void TabCBBESE::updateOutputPreview()
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("output_path_preview")};
 
+  QPalette pal;
+
   if (lIsValidPath)
   {
     if (QDir(lFullPath).exists())
     {
-      lOutputPathsPreview->setStyleSheet("QLabel {color: #FF9800;}");
-    }
-    else
-    {
-      lOutputPathsPreview->setStyleSheet("");
+      pal = lOutputPathsPreview->palette();
+      pal.setColor(QPalette::WindowText, QColor("#FF9800"));
     }
   }
   else
   {
-    lOutputPathsPreview->setStyleSheet("QLabel {color: #F44336;}");
+    pal = lOutputPathsPreview->palette();
+    pal.setColor(QPalette::WindowText, QColor("#F44336"));
   }
 
+  pal.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathsPreview->setPalette(pal);
   lOutputPathsPreview->setText(lFullPath);
 }
 
@@ -397,15 +405,16 @@ void TabCBBESE::updateOSPXMLPreview(QString aText)
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
 
-  if (lIsValidPath)
+  QPalette pal;
+
+  if (!lIsValidPath)
   {
-    lOutputPathsPreview->setStyleSheet("");
-  }
-  else
-  {
-    lOutputPathsPreview->setStyleSheet("QLabel {color: #F44336;}");
+    pal = lOutputPathsPreview->palette();
+    pal.setColor(QPalette::WindowText, QColor("#F44336"));
   }
 
+  pal.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathsPreview->setPalette(pal);
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
@@ -491,14 +500,16 @@ void TabCBBESE::updateBodyslideNamesPreview(QString aText)
       break;
   }
 
-  if (lIsValidPath)
+  QPalette pal;
+
+  if (!lIsValidPath)
   {
-    lOutputPathsPreview->setStyleSheet("");
+    pal = lOutputPathsPreview->palette();
+    pal.setColor(QPalette::WindowText, QColor("#F44336"));
   }
-  else
-  {
-    lOutputPathsPreview->setStyleSheet("QLabel {color: #F44336;}");
-  }
+
+  pal.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathsPreview->setPalette(pal);
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
@@ -508,12 +519,13 @@ void TabCBBESE::updateSkeletonPathState(int aState)
   auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
   auto lSkeletonPreview{this->findChild<QLabel*>("skeleton_path_preview")};
 
+  QPalette pal;
+
   switch (aState)
   {
     case Qt::Unchecked:
       lSkeletonPathLineEdit->setDisabled(true);
       lSkeletonPreview->setDisabled(true);
-      lSkeletonPreview->setStyleSheet("");
       break;
     case Qt::Checked:
       lSkeletonPathLineEdit->setDisabled(false);
@@ -521,13 +533,13 @@ void TabCBBESE::updateSkeletonPathState(int aState)
 
       if (this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed().length() == 0)
       {
-        lSkeletonPreview->setStyleSheet("QLabel {color: #F44336;}");
+        pal = lSkeletonPreview->palette();
+        pal.setColor(QPalette::WindowText, QColor("#F44336"));
       }
-
-      break;
-    default:
-      break;
   }
+
+  pal.setColor(QPalette::Window, Qt::transparent);
+  lSkeletonPreview->setPalette(pal);
 }
 
 void TabCBBESE::updateSkeletonPreview(QString aText)
@@ -544,14 +556,16 @@ void TabCBBESE::updateSkeletonPreview(QString aText)
   auto lConstructedPath(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/skeleton_female.nif").arg(aText));
   auto lOutputPathPreview{this->findChild<QLabel*>("skeleton_path_preview")};
 
-  if (lIsValidPath)
+  QPalette pal;
+
+  if (!lIsValidPath && this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
   {
-    lOutputPathPreview->setStyleSheet("");
+    pal = lOutputPathPreview->palette();
+    pal.setColor(QPalette::WindowText, QColor("#F44336"));
   }
-  else if (this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
-  {
-    lOutputPathPreview->setStyleSheet("QLabel {color: #F44336;}");
-  }
+
+  pal.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathPreview->setPalette(pal);
 
   lOutputPathPreview->setText(lConstructedPath);
 }
