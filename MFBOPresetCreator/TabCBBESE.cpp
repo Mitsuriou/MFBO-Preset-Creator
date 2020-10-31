@@ -188,6 +188,7 @@ void TabCBBESE::setupOptionsGUI(QVBoxLayout& aLayout)
   auto lSkeletonPathLineEdit{new QLineEdit("", this)};
   lSkeletonPathLineEdit->setDisabled(true);
   lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
+  lSkeletonPathLineEdit->setPlaceholderText("meshes/");
   lOptionsGridLayout->addWidget(lSkeletonPathLineEdit, 1, 1);
 
   // Skeleton path preview
@@ -314,7 +315,7 @@ void TabCBBESE::updateMeshesPreview()
 
   if (lIsValidPath)
   {
-    if (!lMeshesPath.startsWith("meshes/") || (lMeshesPath.startsWith("meshes/") && lMeshesPath.length() < 8))
+    if (!lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPath.length() < 8))
     {
       pal = lPreviewLabel->palette();
       pal.setColor(QPalette::WindowText, QColor("#FF9800"));
@@ -558,7 +559,17 @@ void TabCBBESE::updateSkeletonPreview(QString aText)
 
   QPalette pal;
 
-  if (!lIsValidPath && this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
+  if (lIsValidPath)
+  {
+    auto lStart{aText.startsWith("meshes/", Qt::CaseInsensitive)};
+
+    if (!lStart || (lStart && aText.length() < 8))
+    {
+      pal = lOutputPathPreview->palette();
+      pal.setColor(QPalette::WindowText, QColor("#FF9800"));
+    }
+  }
+  else if (this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
   {
     pal = lOutputPathPreview->palette();
     pal.setColor(QPalette::WindowText, QColor("#F44336"));
