@@ -309,7 +309,7 @@ void TabCBBESE::updateMeshesPreview()
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lFeetName);
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPath).arg(lFeetName);
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lHandsName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif").arg(lMeshesPath).arg(lHandsName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif").arg(lMeshesPath).arg(lHandsName);
 
   QPalette pal;
 
@@ -655,7 +655,7 @@ void TabCBBESE::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkdir(lEntryDirectory))
     {
-      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
       return;
     }
   }
@@ -723,7 +723,7 @@ void TabCBBESE::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
     {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
       return;
     }
   }
@@ -731,7 +731,7 @@ void TabCBBESE::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
     {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
       return;
     }
   }
@@ -798,7 +798,7 @@ void TabCBBESE::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
       return;
     }
   }
@@ -806,7 +806,7 @@ void TabCBBESE::generateDirectoryStructure()
   {
     if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
       return;
     }
   }
@@ -870,7 +870,7 @@ void TabCBBESE::generateDirectoryStructure()
 
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + QDir::separator() + "skeleton_female.nif"))
       {
-        Utils::displayWarningMessage(tr("The skeleton file could not be created. Did you execute the program with limited permissions?"));
+        Utils::displayWarningMessage(tr("The skeleton file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
         return;
       }
     }

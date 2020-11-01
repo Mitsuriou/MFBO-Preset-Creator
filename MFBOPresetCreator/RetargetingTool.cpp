@@ -423,7 +423,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
         return;
       }
     }
@@ -431,7 +431,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The OSP file could not be created. Did you execute the program with limited permissions?"));
+        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
         return;
       }
     }
@@ -572,7 +572,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
         return;
       }
     }
@@ -580,7 +580,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Did you execute the program with limited permissions?"));
+        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
         return;
       }
     }

@@ -26,15 +26,6 @@
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
-    <message>
-        <source>English</source>
-        <translation type="vanished">English</translation>
-    </message>
-    <message>
-        <source>Français</source>
-        <oldsource>Fran�ais</oldsource>
-        <translation type="vanished">Français</translation>
-    </message>
 </context>
 <context>
     <name>MFBOPresetCreator</name>
@@ -111,30 +102,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <source>CBBE body meshes</source>
-        <translation type="vanished">Meshes de corps CBBE</translation>
-    </message>
-    <message>
-        <source>CBBE 3BBB version:</source>
-        <translation type="vanished">Version de CBBE 3BBB :</translation>
-    </message>
-    <message>
-        <source>Use beast hands?</source>
-        <translation type="vanished">Utiliser des main de bête ?</translation>
-    </message>
-    <message>
-        <source>Check this box if the follower or NPC uses beast hands.</source>
-        <translation type="vanished">Cocher cette case si le follower ou le NPC utilise des mains de bête.</translation>
-    </message>
-    <message>
-        <source>Preview:</source>
-        <translation type="vanished">Aperçu :</translation>
-    </message>
-    <message>
-        <source>BodySlide</source>
-        <translation type="vanished">BodySlide</translation>
-    </message>
-    <message>
         <location filename="MFBOPresetCreator.cpp" line="25"/>
         <source>Are you sure you want to quit the software?</source>
         <translation>Êtes-vous sûr de vouloir quitter le programme ?</translation>
@@ -148,170 +115,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="MFBOPresetCreator.cpp" line="86"/>
         <source>CBBE 3BBB Version Retargeting Tool</source>
         <translation>Outil de Re-ciblage de Version de CBBE 3BBB</translation>
-    </message>
-    <message>
-        <source>Meshes path:</source>
-        <translation type="vanished">Emplacement des meshes :</translation>
-    </message>
-    <message>
-        <source>Meshes names:</source>
-        <translation type="vanished">Noms des meshes :</translation>
-    </message>
-    <message>
-        <source>_0.nif/_1.nif</source>
-        <translation type="vanished">_0.nif/_1.nif</translation>
-    </message>
-    <message>
-        <source>Bodyslide files names:</source>
-        <translation type="vanished">Noms des fichiers BodySlide :</translation>
-    </message>
-    <message>
-        <source>Preset names: &amp;#128712;</source>
-        <translation type="vanished">Noms des presets : &amp;#128712;</translation>
-    </message>
-    <message>
-        <source>This field represents the name under which the preset will be listed in the BodySlide software.</source>
-        <translation type="vanished">Ce champ répresente le nom sous lequel le preset va être listé dans le logiciel BodySlide.</translation>
-    </message>
-    <message>
-        <source>Additional options</source>
-        <translation type="vanished">Options supplémentaires</translation>
-    </message>
-    <message>
-        <source>Use a custom skeleton? &amp;#128712;</source>
-        <translation type="vanished">Utiliser un squelette personnalisé ? &amp;#128712;</translation>
-    </message>
-    <message>
-        <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
-        <translation type="vanished">Note : ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
-    </message>
-    <message>
-        <source>Check this box if the follower or NPC uses a custom skeleton.</source>
-        <translation type="vanished">Cocher cette case si le follower ou le NPC utilise un squelette personnalisé.</translation>
-    </message>
-    <message>
-        <source>Skeleton path:</source>
-        <translation type="vanished">Emplacement du squelette :</translation>
-    </message>
-    <message>
-        <source>Output</source>
-        <translation type="vanished">Sortie</translation>
-    </message>
-    <message>
-        <source>Output directory path:</source>
-        <translation type="vanished">Emplacement du répertoire de sortie :</translation>
-    </message>
-    <message>
-        <source>Choose a directory...</source>
-        <translation type="vanished">Choisir un répertoire...</translation>
-    </message>
-    <message>
-        <source>Output subdirectory name/path:</source>
-        <translation type="vanished">Nom/Emplacement du sous-répertoire de sortie :</translation>
-    </message>
-    <message>
-        <source>Generate the files on my computer</source>
-        <translation type="vanished">Générer les fichiers sur mon ordinateur</translation>
-    </message>
-    <message>
-        <source>No path given or invalid path given.</source>
-        <translation type="vanished">Aucun emplacement donné ou emplacement invalide donné.</translation>
-    </message>
-    <message>
-        <source>Error while evaluating the data.</source>
-        <translation type="vanished">Erreur en tantant d&apos;évaluer les données.</translation>
-    </message>
-    <message>
-        <source>Error: no path given to export the files.</source>
-        <translation type="vanished">Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
-    </message>
-    <message>
-        <source>Error: the path given to export the files seems to be invalid.</source>
-        <translation type="vanished">Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
-    </message>
-    <message>
-        <source>Error while creating the main directory: &quot;</source>
-        <translation type="vanished">Erreur pendant la création du répertoire principal : &quot;</translation>
-    </message>
-    <message>
-        <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
-        <translation type="vanished">&quot; n&apos;a pas pû être créé sur votre ordinateur. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
-    </message>
-    <message>
-        <source>&quot; already exists on your computer.</source>
-        <translation type="vanished">&quot; existe déjà sur votre ordinateur.</translation>
-    </message>
-    <message>
-        <source>Error: no path has been given for the meshes.</source>
-        <translation type="vanished">Erreur : aucun emplacement n&apos;a été donné pour les meshes.</translation>
-    </message>
-    <message>
-        <source>Error: no name given for the BodySlide files.</source>
-        <translation type="vanished">Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
-    </message>
-    <message>
-        <source>Error: no name given for the slider sets (names that appear in the BodySlide software).</source>
-        <translation type="vanished">Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans le logiciel BodySlide).</translation>
-    </message>
-    <message>
-        <source>Error while creating the meshes directory: &quot;</source>
-        <translation type="vanished">Erreur en créant le répertoire des meshes : &quot;</translation>
-    </message>
-    <message>
-        <source>&quot; already exists.</source>
-        <translation type="vanished">&quot; existe déjà.</translation>
-    </message>
-    <message>
-        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
-        <translation type="vanished">Le fichier XML n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
-    </message>
-    <message>
-        <source>Error while trying to open the file &quot;</source>
-        <translation type="vanished">Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
-    </message>
-    <message>
-        <source>&quot;.</source>
-        <translation type="vanished">&quot;.</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the XML BodySlide file.</source>
-        <translation type="vanished">Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
-    </message>
-    <message>
-        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
-        <translation type="vanished">Le fichier OSP n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the OSP BodySlide file.</source>
-        <translation type="vanished">Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
-    </message>
-    <message>
-        <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
-        <translation type="vanished">Le fichier du squelette n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
-    </message>
-    <message>
-        <source>Error: no path given for the custom skeleton.</source>
-        <translation type="vanished">Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés, pour la version 1.40 et plus bas de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés, pour la version 1.50 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés, pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>Generation successful</source>
-        <translation type="vanished">Génération réussie</translation>
     </message>
 </context>
 <context>
@@ -422,8 +225,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="575"/>
         <location filename="RetargetingTool.cpp" line="583"/>
-        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
-        <translation>Le fichier XML n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
+        <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="452"/>
@@ -480,8 +284,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="426"/>
         <location filename="RetargetingTool.cpp" line="434"/>
-        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
-        <translation>Le fichier OSP n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
+        <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="497"/>
@@ -602,14 +407,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Français</translation>
     </message>
     <message>
-        <source>Font family:</source>
-        <translation type="vanished">Famille de police :</translation>
-    </message>
-    <message>
-        <source>Font size:</source>
-        <translation type="vanished">Taille de police :</translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="120"/>
         <source>Application Theme:</source>
         <translation>Thème de l&apos;application :</translation>
@@ -651,6 +448,11 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Restaurer par défaut</translation>
     </message>
     <message>
+        <location filename="Settings.cpp" line="233"/>
+        <source>Save and close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Settings.cpp" line="239"/>
         <source>Close</source>
         <translation>Fermer</translation>
@@ -679,27 +481,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="Settings.cpp" line="151"/>
         <source>Default main window height:</source>
         <translation>Hauteur par défaut de la fenêtre principale :</translation>
-    </message>
-    <message>
-        <source>Default selected CBBE 3BBB version (main window):</source>
-        <translation type="vanished">Version de CBBE 3BBB sélectionnée par défaut (fenêtre principale) :</translation>
-    </message>
-    <message>
-        <source>Default selected CBBE 3BBB version (Retargeting tool):</source>
-        <translation type="vanished">Version de CBBE 3BBB sélectionnée par défaut (Outil de re-ciblage) :</translation>
-    </message>
-    <message>
-        <source>Restore default without saving</source>
-        <translation type="vanished">Restaurer par défaut sans sauvegarder</translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="233"/>
-        <source>Save and close</source>
-        <translation>Sauvegarder et fermer</translation>
-    </message>
-    <message>
-        <source>Close without saving</source>
-        <translation type="vanished">Fermer sans sauvegarder</translation>
     </message>
 </context>
 <context>
@@ -848,8 +629,8 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="658"/>
-        <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
-        <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
+        <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="664"/>
@@ -886,13 +667,14 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="TabCBBESE.cpp" line="717"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
-        <translation>Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le dévéloppeur.</translation>
+        <translation>Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le développeur.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="726"/>
         <location filename="TabCBBESE.cpp" line="734"/>
-        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
-        <translation>Le fichier XML n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
+        <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="751"/>
@@ -918,8 +700,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="TabCBBESE.cpp" line="801"/>
         <location filename="TabCBBESE.cpp" line="809"/>
-        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
-        <translation>Le fichier OSP n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
+        <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="859"/>
@@ -928,8 +711,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="873"/>
-        <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
-        <translation>Le fichier du squelette n&apos;a pas pu être créé. Avez-vous exécuter le programme avec des permissions limitées ?</translation>
+        <source>The skeleton file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The skeleton file could not be created. Did you execute the program with limited permissions?</oldsource>
+        <translation>Le fichier du squelette n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="879"/>

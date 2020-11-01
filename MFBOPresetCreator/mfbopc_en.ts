@@ -26,11 +26,6 @@
         <source>Maximized</source>
         <translation></translation>
     </message>
-    <message>
-        <source>Français</source>
-        <oldsource>Fran�ais</oldsource>
-        <translation type="vanished">Français</translation>
-    </message>
 </context>
 <context>
     <name>MFBOPresetCreator</name>
@@ -227,7 +222,8 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="RetargetingTool.cpp" line="575"/>
         <location filename="RetargetingTool.cpp" line="583"/>
-        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -285,7 +281,8 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="RetargetingTool.cpp" line="426"/>
         <location filename="RetargetingTool.cpp" line="434"/>
-        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -629,7 +626,7 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="658"/>
-        <source>&quot; could not be created on your computer. Did you execute the program with limited permissions?</source>
+        <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <translation></translation>
     </message>
     <message>
@@ -672,7 +669,8 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="TabCBBESE.cpp" line="726"/>
         <location filename="TabCBBESE.cpp" line="734"/>
-        <source>The XML file could not be created. Did you execute the program with limited permissions?</source>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -699,7 +697,8 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="TabCBBESE.cpp" line="801"/>
         <location filename="TabCBBESE.cpp" line="809"/>
-        <source>The OSP file could not be created. Did you execute the program with limited permissions?</source>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -709,7 +708,8 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="873"/>
-        <source>The skeleton file could not be created. Did you execute the program with limited permissions?</source>
+        <source>The skeleton file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
+        <oldsource>The skeleton file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation></translation>
     </message>
     <message>
