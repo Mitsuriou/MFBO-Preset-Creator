@@ -252,6 +252,15 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lLang{this->findChild<QComboBox*>("language")};
   lLang->setCurrentIndex(static_cast<int>(aSettingsToLoad.language));
 
+  // Reset the font
+  QFont lFont(aSettingsToLoad.font.family, aSettingsToLoad.font.size, aSettingsToLoad.font.weight, aSettingsToLoad.font.italic);
+  lFont.setStyleName(aSettingsToLoad.font.styleName);
+  lFont.setUnderline(aSettingsToLoad.font.underline);
+  lFont.setStrikeOut(aSettingsToLoad.font.strikeOut);
+  lFont.setStyleStrategy(QFont::PreferAntialias);
+  this->mNewFont = lFont;
+  this->applyFontButtonStyle(this->mNewFont);
+
   auto lAppTheme{this->findChild<QComboBox*>("app_theme")};
   lAppTheme->setCurrentIndex(static_cast<int>(aSettingsToLoad.appTheme));
 
@@ -456,19 +465,26 @@ void Settings::chooseExportDirectory()
 void Settings::chooseFont()
 {
   bool lUserPressedOK{false};
-  QFont lFont = QFontDialog::getFont(&lUserPressedOK, this->mNewFont, this);
+  auto lFont{QFontDialog::getFont(&lUserPressedOK, this->mNewFont, this)};
 
   if (!lUserPressedOK)
   {
     return;
   }
 
+  lFont.setStyleStrategy(QFont::PreferAntialias);
+
   // Read and store new font's information
   this->mNewFont = lFont;
 
   // Display a preview on the font chooser's button directly
+  this->applyFontButtonStyle(this->mNewFont);
+}
+
+void Settings::applyFontButtonStyle(const QFont& aFont)
+{
   auto lFontChooserButton{this->findChild<QPushButton*>("font_chooser")};
-  lFontChooserButton->setFont(lFont);
+  lFontChooserButton->setFont(aFont);
 }
 
 void Settings::saveSettings()

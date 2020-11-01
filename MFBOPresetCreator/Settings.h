@@ -41,4 +41,5 @@ private slots:
   void restoreDefaultSettings();
   void chooseExportDirectory();
   void chooseFont();
+  void applyFontButtonStyle(const QFont& aFont);
 };
