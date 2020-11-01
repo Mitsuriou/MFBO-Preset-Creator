@@ -816,7 +816,7 @@ Cliquez sur le bouton de téléchargement pour être redirigé(e) sur Github.com
     <message>
         <location filename="Update.cpp" line="123"/>
         <source>You are running the latest version &quot;%1&quot;.</source>
-        <translation>You are running the latest version &quot;%1&quot;.</translation>
+        <translation>Vous utilisez la dernière version &quot;%1&quot;.</translation>
     </message>
 </context>
 <context>
