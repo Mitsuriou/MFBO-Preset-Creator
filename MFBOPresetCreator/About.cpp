@@ -1,6 +1,6 @@
 #include "About.h"
 
-About::About(QWidget* parent, Struct::Settings aSettings)
+About::About(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)
   , mSettings(aSettings)
 {

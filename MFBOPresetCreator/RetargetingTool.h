@@ -11,7 +11,7 @@ class RetargetingTool : public QDialog
   Q_OBJECT
 
 public:
-  RetargetingTool(QWidget* parent, Struct::Settings aSettings);
+  RetargetingTool(QWidget* parent, const Struct::Settings& aSettings);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

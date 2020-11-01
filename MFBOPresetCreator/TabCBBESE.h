@@ -7,7 +7,7 @@ class TabCBBESE : public Tab
   Q_OBJECT
 
 public:
-  explicit TabCBBESE(QWidget* aParent, Struct::Settings aSettings);
+  explicit TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings);
 
 private:
   int mMinimumFirstColmunWidth;

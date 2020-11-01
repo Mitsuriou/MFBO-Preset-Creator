@@ -6,5 +6,5 @@ class TabVanillaSE : public Tab
   Q_OBJECT
 
 public:
-  explicit TabVanillaSE(QWidget* aParent, Struct::Settings aSettings);
+  explicit TabVanillaSE(QWidget* aParent, const Struct::Settings& aSettings);
 };

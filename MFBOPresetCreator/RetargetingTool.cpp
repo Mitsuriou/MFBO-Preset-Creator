@@ -1,6 +1,6 @@
 ﻿#include "RetargetingTool.h"
 
-RetargetingTool::RetargetingTool(QWidget* parent, Struct::Settings aSettings)
+RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)
   , mSettings(aSettings)
 {

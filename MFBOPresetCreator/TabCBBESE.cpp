@@ -1,8 +1,8 @@
 #include "TabCBBESE.h"
 
-TabCBBESE::TabCBBESE(QWidget* aParent, Struct::Settings aSettings)
+TabCBBESE::TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings)
   : Tab(aParent, aSettings)
-  , mMinimumFirstColmunWidth(275)
+  , mMinimumFirstColmunWidth(300)
 {
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(*mMainVertical);
@@ -171,7 +171,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   lSkeletonGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
 
   // Skeleton
-  auto lLabelSkeleton{new QLabel("", this)};
+  auto lLabelSkeleton{new QLabel(this)};
   lLabelSkeleton->setTextFormat(Qt::RichText);
   lLabelSkeleton->setText(tr("Use a custom skeleton? &#128712;"));
   lLabelSkeleton->setToolTip(QString(tr("Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
@@ -224,7 +224,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
   lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 4, 0);
 
-  auto lSkeletonPathsPreview{new QLabel("", this)};
+  auto lSkeletonPathsPreview{new QLabel(this)};
   lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
   lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 4, 1);
 

@@ -1,6 +1,6 @@
 #include "Update.h"
 
-Update::Update(QWidget* parent, Struct::Settings aSettings)
+Update::Update(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)
   , mSettings(aSettings)
 {
@@ -46,6 +46,7 @@ void Update::setupInterface(QVBoxLayout& aLayout)
   auto lCheckForUpdates{new QLabel(tr("Click on the button above to check for new updates"), this)};
   lCheckForUpdates->setAlignment(Qt::AlignCenter);
   lCheckForUpdates->setObjectName("fetch_status");
+  lCheckForUpdates->setWordWrap(true);
 
   aLayout.addWidget(lCheckForUpdates);
 

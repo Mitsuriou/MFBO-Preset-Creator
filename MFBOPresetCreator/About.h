@@ -1,16 +1,16 @@
 #pragma once
 
+#include "Enum.h"
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"
-#include "Enum.h"
 
 class About : public QDialog
 {
   Q_OBJECT
 
 public:
-  About(QWidget* parent, Struct::Settings aSettings);
+  About(QWidget* parent, const Struct::Settings& aSettings);
 
 private:
   Struct::Settings mSettings;

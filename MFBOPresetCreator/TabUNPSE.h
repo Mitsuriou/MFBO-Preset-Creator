@@ -6,5 +6,5 @@ class TabUNPSE : public Tab
   Q_OBJECT
 
 public:
-  explicit TabUNPSE(QWidget* aParent, Struct::Settings aSettings);
+  explicit TabUNPSE(QWidget* aParent, const Struct::Settings& aSettings);
 };
