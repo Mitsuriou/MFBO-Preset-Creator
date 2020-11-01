@@ -43,6 +43,9 @@
     <ClCompile Include="About.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LangManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum.h">
@@ -55,6 +58,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LangManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

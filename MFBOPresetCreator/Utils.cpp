@@ -7,7 +7,7 @@ void Utils::cleanPathString(QString& aPath)
 
 QString Utils::getSoftwareVersion()
 {
-  return "1.8.1";
+  return "1.8.2";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -245,11 +245,6 @@ void Utils::checkSettingsFileExistence()
   {
     // Create a default setting file if it does not exist
     Struct::Settings lSettings;
-
-    // Get the user's system language by default
-    auto lSystemLanguage{QLocale::languageToString(QLocale::system().language())};
-    lSettings.language = Utils::getStructLanguageFromName(lSystemLanguage);
-
     Utils::saveSettingsToFile(lSettings);
   }
 }

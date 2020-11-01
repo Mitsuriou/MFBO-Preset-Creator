@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Enum.h"
+#include "LangManager.h"
 #include <QString>
 
 namespace Struct
@@ -55,7 +56,7 @@ namespace Struct
     GUITheme appTheme{GUITheme::WindowsVista};
     CBBE3BBBVersion defaultMainWindowCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
     Struct::Font font;
-    ApplicationLanguage language{ApplicationLanguage::English};
+    ApplicationLanguage language{LangManager::getSystemLanguage()};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
     CBBE3BBBVersion defaultRetargetingToolCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
     int mainWindowHeight{600};
