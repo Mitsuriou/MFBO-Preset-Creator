@@ -14,7 +14,7 @@ private:
 
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
   void setupBodySlideGUI(QVBoxLayout& aLayout);
-  void setupOptionsGUI(QVBoxLayout& aLayout);
+  void setupSkeletonGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
 
@@ -25,7 +25,7 @@ private slots:
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
   void updateSkeletonPathState(int aState);
-  void updateSkeletonPreview(QString aText);
+  void updateSkeletonPreview();
   void chooseExportDirectory();
   void generateDirectoryStructure();
   void refreshAllPreviewFields(int);

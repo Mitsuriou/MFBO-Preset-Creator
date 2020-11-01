@@ -7,7 +7,7 @@ TabCBBESE::TabCBBESE(QWidget* aParent, Struct::Settings aSettings)
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(*mMainVertical);
   this->setupBodySlideGUI(*mMainVertical);
-  this->setupOptionsGUI(*mMainVertical);
+  this->setupSkeletonGUI(*mMainVertical);
   this->setupOutputGUI(*mMainVertical);
   this->setupRemainingGUI(*mMainVertical);
 }
@@ -36,7 +36,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lMeshesPathLabel{new QLabel(tr("Meshes path:"), this)};
   lMeshesGridLayout->addWidget(lMeshesPathLabel, 1, 0);
 
-  auto lMeshesPathLineEdit{new QLineEdit("", this)};
+  auto lMeshesPathLineEdit{new QLineEdit(this)};
   lMeshesPathLineEdit->setObjectName("meshes_path_input");
   lMeshesPathLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1, 1, 2);
@@ -53,7 +53,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lMeshestitlePreview{new QLabel(tr("Meshes names:"), this)};
   lMeshesGridLayout->addWidget(lMeshestitlePreview, 3, 0, 3, 1);
 
-  auto lBodyMeshNameInput{new QLineEdit("", this)};
+  auto lBodyMeshNameInput{new QLineEdit(this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
   lMeshesGridLayout->addWidget(lBodyMeshNameInput, 3, 1);
   lBodyMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
@@ -63,7 +63,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 3, 2);
 
-  auto lFeetMeshNameInput{new QLineEdit("", this)};
+  auto lFeetMeshNameInput{new QLineEdit(this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
   lMeshesGridLayout->addWidget(lFeetMeshNameInput, 4, 1);
   lFeetMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
@@ -73,7 +73,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 4, 2);
 
-  auto lHandsMeshNameInput{new QLineEdit("", this)};
+  auto lHandsMeshNameInput{new QLineEdit(this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
   lMeshesGridLayout->addWidget(lHandsMeshNameInput, 5, 1);
   lHandsMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
@@ -119,7 +119,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
   lBodyslideGridLayout->addWidget(lOSPXMLNames, 0, 0);
 
-  auto lOSPXMLNamesLineEdit{new QLineEdit("", this)};
+  auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
   lOSPXMLNamesLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 0, 1);
@@ -140,7 +140,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   lNamesInApp->setToolTip(QString(tr("This field represents the name under which the preset will be listed in the BodySlide software.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 2, 0);
 
-  auto lNamesInAppLineEdit{new QLineEdit("", this)};
+  auto lNamesInAppLineEdit{new QLineEdit(this)};
   lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 2, 1);
 
@@ -161,7 +161,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateBodyslideNamesPreview);
 }
 
-void TabCBBESE::setupOptionsGUI(QVBoxLayout& aLayout)
+void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
 {
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Additional options"), this)};
@@ -201,28 +201,44 @@ void TabCBBESE::setupOptionsGUI(QVBoxLayout& aLayout)
   auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
   lSkeletonGridLayout->addWidget(lLabelSkeletonPath, 2, 0);
 
-  auto lSkeletonPathLineEdit{new QLineEdit("", this)};
+  auto lSkeletonPathLineEdit{new QLineEdit(this)};
   lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
   lSkeletonPathLineEdit->setPlaceholderText("meshes/");
   lSkeletonGridLayout->addWidget(lSkeletonPathLineEdit, 2, 1);
 
+  // Skeleton name
+  auto lSkeletonNameLabel{new QLabel(tr("Skeleton file name:"), this)};
+  lSkeletonGridLayout->addWidget(lSkeletonNameLabel, 3, 0);
+
+  auto lSkeletonName{new QLineEdit(this)};
+  lSkeletonName->setObjectName("skeleton_name");
+  lSkeletonName->setPlaceholderText("skeleton_female");
+  lSkeletonName->setText("skeleton_female");
+  lSkeletonGridLayout->addWidget(lSkeletonName, 3, 1);
+
+  auto lSkeletonNameExtension{new QLabel(tr(".nif"), this)};
+  lSkeletonNameExtension->setObjectName("skeleton_name_extension");
+  lSkeletonGridLayout->addWidget(lSkeletonNameExtension, 3, 2);
+
   // Skeleton path preview
   auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
-  lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 3, 0);
+  lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 4, 0);
 
   auto lSkeletonPathsPreview{new QLabel("", this)};
   lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
-  lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 3, 1);
+  lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 4, 1);
 
   // Initialization functions
-  this->updateSkeletonPreview(QString(""));
+  this->updateSkeletonPreview();
 
   // Event binding
   connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &TabCBBESE::updateSkeletonPathState);
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
+
   connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
   connect(lSkeletonRefresher, &QPushButton::clicked, this, &TabCBBESE::populateSkeletonChooser);
+  connect(lSkeletonName, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
 }
 
 void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
@@ -239,7 +255,7 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
   lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
 
-  auto lOutputPathLineEdit{new QLineEdit("", this)};
+  auto lOutputPathLineEdit{new QLineEdit(this)};
   lOutputPathLineEdit->setReadOnly(true);
   lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lOutputPathLineEdit->setObjectName("output_path_directory");
@@ -253,7 +269,7 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
   auto lLabelSubDirectoryPath{new QLabel(tr("Output subdirectory name/path:"), this)};
   lOutputGridLayout->addWidget(lLabelSubDirectoryPath, 1, 0);
 
-  auto lOutputSubpathLineEdit{new QLineEdit("", this)};
+  auto lOutputSubpathLineEdit{new QLineEdit(this)};
   lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
   lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
@@ -347,24 +363,24 @@ void TabCBBESE::updateMeshesPreview()
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lHandsName);
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif").arg(lMeshesPath).arg(lHandsName);
 
-  QPalette pal;
+  QPalette lPalette;
 
   if (lIsValidPath)
   {
     if (!lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPath.length() < 8))
     {
-      pal = lPreviewLabel->palette();
-      pal.setColor(QPalette::WindowText, QColor("#FF9800"));
+      lPalette = lPreviewLabel->palette();
+      lPalette.setColor(QPalette::WindowText, QColor("#FF9800"));
     }
   }
   else
   {
-    pal = lPreviewLabel->palette();
-    pal.setColor(QPalette::WindowText, QColor("#F44336"));
+    lPalette = lPreviewLabel->palette();
+    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
   }
 
-  pal.setColor(QPalette::Window, Qt::transparent);
-  lPreviewLabel->setPalette(pal);
+  lPalette.setColor(QPalette::Window, Qt::transparent);
+  lPreviewLabel->setPalette(lPalette);
 
   lPreviewLabel->setText(lFullPreview);
 }
@@ -403,24 +419,24 @@ void TabCBBESE::updateOutputPreview()
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("output_path_preview")};
 
-  QPalette pal;
+  QPalette lPalette;
 
   if (lIsValidPath)
   {
     if (QDir(lFullPath).exists())
     {
-      pal = lOutputPathsPreview->palette();
-      pal.setColor(QPalette::WindowText, QColor("#FF9800"));
+      lPalette = lOutputPathsPreview->palette();
+      lPalette.setColor(QPalette::WindowText, QColor("#FF9800"));
     }
   }
   else
   {
-    pal = lOutputPathsPreview->palette();
-    pal.setColor(QPalette::WindowText, QColor("#F44336"));
+    lPalette = lOutputPathsPreview->palette();
+    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
   }
 
-  pal.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathsPreview->setPalette(pal);
+  lPalette.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathsPreview->setPalette(lPalette);
   lOutputPathsPreview->setText(lFullPath);
 }
 
@@ -442,16 +458,16 @@ void TabCBBESE::updateOSPXMLPreview(QString aText)
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
 
-  QPalette pal;
+  QPalette lPalette;
 
   if (!lIsValidPath)
   {
-    pal = lOutputPathsPreview->palette();
-    pal.setColor(QPalette::WindowText, QColor("#F44336"));
+    lPalette = lOutputPathsPreview->palette();
+    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
   }
 
-  pal.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathsPreview->setPalette(pal);
+  lPalette.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathsPreview->setPalette(lPalette);
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
@@ -537,16 +553,16 @@ void TabCBBESE::updateBodyslideNamesPreview(QString aText)
       break;
   }
 
-  QPalette pal;
+  QPalette lPalette;
 
   if (!lIsValidPath)
   {
-    pal = lOutputPathsPreview->palette();
-    pal.setColor(QPalette::WindowText, QColor("#F44336"));
+    lPalette = lOutputPathsPreview->palette();
+    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
   }
 
-  pal.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathsPreview->setPalette(pal);
+  lPalette.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathsPreview->setPalette(lPalette);
 
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
@@ -555,11 +571,12 @@ void TabCBBESE::updateSkeletonPathState(int aState)
 {
   auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
   auto lSkeletonPreview{this->findChild<QLabel*>("skeleton_path_preview")};
-
   auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
   auto lSkeletonChooserRefresher{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
+  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")};
+  auto lSkeletonNameExtension{this->findChild<QLabel*>("skeleton_name_extension")};
 
-  QPalette pal;
+  QPalette lPalette;
 
   switch (aState)
   {
@@ -568,58 +585,69 @@ void TabCBBESE::updateSkeletonPathState(int aState)
       lSkeletonPreview->setDisabled(true);
       lSkeletonChooser->setDisabled(true);
       lSkeletonChooserRefresher->setDisabled(true);
+      lSkeletonName->setDisabled(true);
+      lSkeletonNameExtension->setDisabled(true);
       break;
     case Qt::Checked:
       lSkeletonPathLineEdit->setDisabled(false);
       lSkeletonPreview->setDisabled(false);
       lSkeletonChooser->setDisabled(false);
       lSkeletonChooserRefresher->setDisabled(false);
+      lSkeletonName->setDisabled(false);
+      lSkeletonNameExtension->setDisabled(false);
 
       if (this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed().length() == 0)
       {
-        pal = lSkeletonPreview->palette();
-        pal.setColor(QPalette::WindowText, QColor("#F44336"));
+        lPalette = lSkeletonPreview->palette();
+        lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
       }
   }
 
-  pal.setColor(QPalette::Window, Qt::transparent);
-  lSkeletonPreview->setPalette(pal);
+  lPalette.setColor(QPalette::Window, Qt::transparent);
+  lSkeletonPreview->setPalette(lPalette);
 }
 
-void TabCBBESE::updateSkeletonPreview(QString aText)
+void TabCBBESE::updateSkeletonPreview()
 {
-  Utils::cleanPathString(aText);
+  auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text()};
+  Utils::cleanPathString(lSkeletonPath);
+  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
   auto lIsValidPath{true};
 
-  if (aText.trimmed().length() == 0)
+  if (lSkeletonPath.trimmed().length() == 0)
   {
-    aText = QString::fromStdString("*");
+    lSkeletonPath = QString::fromStdString("*");
     lIsValidPath = false;
   }
 
-  auto lConstructedPath(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/skeleton_female.nif").arg(aText));
+  if (lSkeletonName.trimmed().length() == 0)
+  {
+    lSkeletonName = "skeleton_female";
+  }
+
+  auto lConstructedPath(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath).arg(lSkeletonName));
   auto lOutputPathPreview{this->findChild<QLabel*>("skeleton_path_preview")};
 
-  QPalette pal;
+  QPalette lPalette;
 
   if (lIsValidPath)
   {
-    auto lStart{aText.startsWith("meshes/", Qt::CaseInsensitive)};
+    auto lStart{lSkeletonPath.startsWith("meshes/", Qt::CaseInsensitive)};
 
-    if (!lStart || (lStart && aText.length() < 8))
+    if (!lStart || (lStart && lSkeletonPath.length() < 8))
     {
-      pal = lOutputPathPreview->palette();
-      pal.setColor(QPalette::WindowText, QColor("#FF9800"));
+      lPalette = lOutputPathPreview->palette();
+      lPalette.setColor(QPalette::WindowText, QColor("#FF9800"));
     }
   }
   else if (this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
   {
-    pal = lOutputPathPreview->palette();
-    pal.setColor(QPalette::WindowText, QColor("#F44336"));
+    lPalette = lOutputPathPreview->palette();
+    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
   }
 
-  pal.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathPreview->setPalette(pal);
+  lPalette.setColor(QPalette::Window, Qt::transparent);
+  lOutputPathPreview->setPalette(lPalette);
 
   lOutputPathPreview->setText(lConstructedPath);
 }
@@ -908,19 +936,25 @@ void TabCBBESE::generateDirectoryStructure()
   {
     if (lSkeletonPath.length() > 0)
     {
+      Utils::cleanPathString(lSkeletonPath);
+
       auto lSkeletonDirectory{lEntryDirectory + QDir::separator() + lSkeletonPath};
       QDir().mkpath(lSkeletonDirectory);
 
+      auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
+
       // V.1.8.2: Custom skeleton chooser
       auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
-      auto lPath{QCoreApplication::applicationDirPath() + "/assets/skeletons/" + lSkeletonChooser->currentText()};
+      auto lPath{QString("%1/assets/skeletons/%2").arg(QCoreApplication::applicationDirPath()).arg(lSkeletonChooser->currentText())};
 
-      if (!QFile::copy(lPath, lSkeletonDirectory + QDir::separator() + "skeleton_female.nif"))
+      auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
+
+      if (!QFile::copy(lPath, lSkeletonWriteLocation))
       {
         Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The software will try with the default XPMSSE (v4.72) skeleton instead..."));
 
         // Fallback option if the custom skeleton could not be copied
-        if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + QDir::separator() + "skeleton_female.nif"))
+        if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
         {
           Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
           return;
