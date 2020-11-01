@@ -8,14 +8,14 @@ int main(int argc, char* argv[])
   QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-  // Create the main GUI handler
-  QApplication lMainApplication(argc, argv);
-  lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getSoftwareVersion() + ")");
-  lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
-  lMainApplication.setWindowIcon(QIcon(":/software/icon"));
-
   do
   {
+    // Create the main GUI handler
+    QApplication lMainApplication(argc, argv);
+    lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getSoftwareVersion() + ")");
+    lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
+    lMainApplication.setWindowIcon(QIcon(":/software/icon"));
+
     // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(Utils::loadSettingsFromFile().language))};
     auto lTranslator{new QTranslator()};

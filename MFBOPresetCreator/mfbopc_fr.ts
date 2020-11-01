@@ -450,7 +450,7 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="Settings.cpp" line="233"/>
         <source>Save and close</source>
-        <translation type="unfinished"></translation>
+        <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="239"/>
