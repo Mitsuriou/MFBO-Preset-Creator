@@ -163,41 +163,56 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
 
 void TabCBBESE::setupOptionsGUI(QVBoxLayout& aLayout)
 {
-  // Custom skeleton and textures group box
-  auto lOptionsGroupBox{new QGroupBox(tr("Additional options"), this)};
-  aLayout.addWidget(lOptionsGroupBox);
+  // Custom skeleton group box
+  auto lSkeletonGroupBox{new QGroupBox(tr("Additional options"), this)};
+  aLayout.addWidget(lSkeletonGroupBox);
 
-  auto lOptionsGridLayout{new QGridLayout(lOptionsGroupBox)};
-  lOptionsGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
+  auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
+  lSkeletonGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
 
   // Skeleton
   auto lLabelSkeleton{new QLabel("", this)};
   lLabelSkeleton->setTextFormat(Qt::RichText);
   lLabelSkeleton->setText(tr("Use a custom skeleton? &#128712;"));
   lLabelSkeleton->setToolTip(QString(tr("Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
-  lOptionsGridLayout->addWidget(lLabelSkeleton, 0, 0);
+  lSkeletonGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
   auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
   lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
-  lOptionsGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
+  lSkeletonGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
+
+  // Choose the skeleton file
+  auto lLabelSkeletonChooser{new QLabel(tr("Skeleton file:"), this)};
+  lSkeletonGridLayout->addWidget(lLabelSkeletonChooser, 1, 0);
+
+  auto lSkeletonChooser{new QComboBox(this)};
+  lSkeletonChooser->setObjectName("skeleton_chooser");
+  lSkeletonGridLayout->addWidget(lSkeletonChooser, 1, 1);
+
+  this->populateSkeletonChooser();
+
+  auto lSkeletonRefresher{new QPushButton(this)};
+  lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
+  auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  lSkeletonRefresher->setIcon(QIcon(":/" + lIconFolder + "/reload"));
+  lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Skeleton path
   auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
-  lOptionsGridLayout->addWidget(lLabelSkeletonPath, 1, 0);
+  lSkeletonGridLayout->addWidget(lLabelSkeletonPath, 2, 0);
 
   auto lSkeletonPathLineEdit{new QLineEdit("", this)};
-  lSkeletonPathLineEdit->setDisabled(true);
   lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
   lSkeletonPathLineEdit->setPlaceholderText("meshes/");
-  lOptionsGridLayout->addWidget(lSkeletonPathLineEdit, 1, 1);
+  lSkeletonGridLayout->addWidget(lSkeletonPathLineEdit, 2, 1);
 
   // Skeleton path preview
   auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
-  lOptionsGridLayout->addWidget(lSkeletontitlePreview, 2, 0);
+  lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 3, 0);
 
   auto lSkeletonPathsPreview{new QLabel("", this)};
   lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
-  lOptionsGridLayout->addWidget(lSkeletonPathsPreview, 2, 1);
+  lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 3, 1);
 
   // Initialization functions
   this->updateSkeletonPreview(QString(""));
@@ -207,6 +222,7 @@ void TabCBBESE::setupOptionsGUI(QVBoxLayout& aLayout)
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
   connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
+  connect(lSkeletonRefresher, &QPushButton::clicked, this, &TabCBBESE::populateSkeletonChooser);
 }
 
 void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
@@ -266,6 +282,26 @@ void TabCBBESE::setupRemainingGUI(QVBoxLayout& aLayout)
 
   // Event binding
   connect(lGenerateButton, &QPushButton::clicked, this, &TabCBBESE::generateDirectoryStructure);
+}
+
+void TabCBBESE::populateSkeletonChooser()
+{
+  auto lRootDir{QCoreApplication::applicationDirPath() + "/assets/skeletons/"};
+  auto lRelativeDirs{QString("")};
+  auto lAvailableSkeletons{QStringList()};
+
+  // Search for all "*.nif" files
+  QDirIterator it(lRootDir, QStringList() << QString("*.nif"), QDir::Files, QDirIterator::Subdirectories);
+  while (it.hasNext())
+  {
+    it.next();
+    lAvailableSkeletons.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
+  }
+
+  // Clear the combo box and add the found files to it
+  auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+  lSkeletonChooser->clear();
+  lSkeletonChooser->addItems(lAvailableSkeletons);
 }
 
 void TabCBBESE::updateMeshesPreview()
@@ -520,6 +556,9 @@ void TabCBBESE::updateSkeletonPathState(int aState)
   auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
   auto lSkeletonPreview{this->findChild<QLabel*>("skeleton_path_preview")};
 
+  auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+  auto lSkeletonChooserRefresher{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
+
   QPalette pal;
 
   switch (aState)
@@ -527,10 +566,14 @@ void TabCBBESE::updateSkeletonPathState(int aState)
     case Qt::Unchecked:
       lSkeletonPathLineEdit->setDisabled(true);
       lSkeletonPreview->setDisabled(true);
+      lSkeletonChooser->setDisabled(true);
+      lSkeletonChooserRefresher->setDisabled(true);
       break;
     case Qt::Checked:
       lSkeletonPathLineEdit->setDisabled(false);
       lSkeletonPreview->setDisabled(false);
+      lSkeletonChooser->setDisabled(false);
+      lSkeletonChooserRefresher->setDisabled(false);
 
       if (this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed().length() == 0)
       {
@@ -868,10 +911,20 @@ void TabCBBESE::generateDirectoryStructure()
       auto lSkeletonDirectory{lEntryDirectory + QDir::separator() + lSkeletonPath};
       QDir().mkpath(lSkeletonDirectory);
 
-      if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + QDir::separator() + "skeleton_female.nif"))
+      // V.1.8.2: Custom skeleton chooser
+      auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+      auto lPath{QCoreApplication::applicationDirPath() + "/assets/skeletons/" + lSkeletonChooser->currentText()};
+
+      if (!QFile::copy(lPath, lSkeletonDirectory + QDir::separator() + "skeleton_female.nif"))
       {
-        Utils::displayWarningMessage(tr("The skeleton file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
-        return;
+        Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The software will try with the default XPMSSE (v4.72) skeleton instead..."));
+
+        // Fallback option if the custom skeleton could not be copied
+        if (!QFile::copy(":/ressources/skeleton_female", lSkeletonDirectory + QDir::separator() + "skeleton_female.nif"))
+        {
+          Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+          return;
+        }
       }
     }
     else

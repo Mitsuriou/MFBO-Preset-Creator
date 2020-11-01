@@ -19,6 +19,7 @@ private:
   void setupRemainingGUI(QVBoxLayout& aLayout);
 
 private slots:
+  void populateSkeletonChooser();
   void updateMeshesPreview();
   void updateOutputPreview();
   void updateOSPXMLPreview(QString aText);
