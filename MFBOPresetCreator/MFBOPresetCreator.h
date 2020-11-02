@@ -27,7 +27,6 @@ private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
   std::vector<Tab*> mTabs;
-  QSplashScreen* mSplashScreen;
   bool mNewVersionAvailable;
 
   void initializeGUI();

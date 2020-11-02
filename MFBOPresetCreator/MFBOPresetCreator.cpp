@@ -8,16 +8,8 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   // Construct the GUI
   ui.setupUi(this);
 
-  // Show the splash screen
-  QPixmap lSplashScreenBackground(":/software/splashscreen");
-  lSplashScreenBackground = lSplashScreenBackground.scaled(800, 450, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-
-  mSplashScreen = new QSplashScreen(lSplashScreenBackground);
-  mSplashScreen->showMessage("MFBOPC (v." + Utils::getSoftwareVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
-  mSplashScreen->show();
-
   // Check for new versions
-  QTimer::singleShot(1000, this, &MFBOPresetCreator::checkForUpdate);
+  this->checkForUpdate();
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -67,14 +59,14 @@ void MFBOPresetCreator::setupMenuBar()
   auto lQuickRelaunch{new QAction(this)};
   lQuickRelaunch->setText(tr("Quick relaunch"));
   lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
-  lQuickRelaunch->setIcon(QIcon(":/" + lIconFolder + "/reload"));
+  lQuickRelaunch->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
   lFileMenu->addAction(lQuickRelaunch);
 
   // Submenu: Exit
   auto lExitAction{new QAction(this)};
   lExitAction->setText(tr("Exit"));
   lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
-  lExitAction->setIcon(QIcon(":/" + lIconFolder + "/exit"));
+  lExitAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/exit")));
   lFileMenu->addAction(lExitAction);
 
   // Tools
@@ -85,14 +77,14 @@ void MFBOPresetCreator::setupMenuBar()
   auto lRetargetingToolAction{new QAction(this)};
   lRetargetingToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
   lRetargetingToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-  lRetargetingToolAction->setIcon(QIcon(":/" + lIconFolder + "/arrow_up"));
+  lRetargetingToolAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/arrow_up")));
   lToolsMenu->addAction(lRetargetingToolAction);
 
   // Submenu: Settings
   auto lSettingsAction{new QAction(this)};
   lSettingsAction->setText(tr("Settings"));
   lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
-  lSettingsAction->setIcon(QIcon(":/" + lIconFolder + "/cog"));
+  lSettingsAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cog")));
   lToolsMenu->addAction(lSettingsAction);
 
   // Help
@@ -110,14 +102,14 @@ void MFBOPresetCreator::setupMenuBar()
   auto lCheckUpdateAction{new QAction(this)};
   lCheckUpdateAction->setText(tr("Check for updates") + lUpdateAvailableText);
   lCheckUpdateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-  lCheckUpdateAction->setIcon(QIcon(":/" + lIconFolder + "/download"));
+  lCheckUpdateAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/download")));
   lHelpMenu->addAction(lCheckUpdateAction);
 
   // Submenu: About
   auto lAboutAction{new QAction(this)};
   lAboutAction->setText(tr("About"));
   lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-  lAboutAction->setIcon(QIcon(":/" + lIconFolder + "/information"));
+  lAboutAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/information")));
   lHelpMenu->addAction(lAboutAction);
 
   // Event binding
@@ -340,9 +332,6 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
 
   this->initializeGUI();
   this->refreshUI(mSettings, false);
-
-  delete this->mSplashScreen;
-  this->mSplashScreen = nullptr;
 
   this->showWindow();
 

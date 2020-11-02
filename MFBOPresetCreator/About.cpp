@@ -19,6 +19,7 @@ void About::setWindowProperties()
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("About"));
+  this->setWindowIcon(QIcon(QPixmap(":/black/information")));
 
   // Hacky color change for Windows Vista theme
   if (this->mSettings.appTheme == GUITheme::WindowsVista)

@@ -56,6 +56,7 @@ void Settings::setWindowProperties()
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Settings"));
+  this->setWindowIcon(QIcon(QPixmap(":/black/cog")));
 }
 
 void Settings::initializeGUI()

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BodySlideFiltersEditor.h"
 #include "Tab.h"
 
 class TabCBBESE : public Tab
@@ -10,7 +11,7 @@ public:
   explicit TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings);
 
 private:
-  int mMinimumFirstColmunWidth;
+  int mMinimumFirstColumnWidth;
 
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
   void setupBodySlideGUI(QVBoxLayout& aLayout);
@@ -30,4 +31,5 @@ private slots:
   void generateDirectoryStructure();
   void refreshAllPreviewFields(int);
   void refreshAllPreviewFields();
+  void openBodySlideFiltersEditor();
 };

@@ -46,6 +46,9 @@
     <ClCompile Include="LangManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BodySlideFiltersEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum.h">
@@ -130,6 +133,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="About.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="BodySlideFiltersEditor.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

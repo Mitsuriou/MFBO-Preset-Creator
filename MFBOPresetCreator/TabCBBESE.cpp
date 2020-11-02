@@ -2,7 +2,7 @@
 
 TabCBBESE::TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings)
   : Tab(aParent, aSettings)
-  , mMinimumFirstColmunWidth(300)
+  , mMinimumFirstColumnWidth(300)
 {
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(*mMainVertical);
@@ -20,7 +20,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
-  lMeshesGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
+  lMeshesGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
 
   // First line
   auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"), this)};
@@ -113,7 +113,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
+  lBodyslideGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
 
   // First line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
@@ -152,6 +152,19 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 3, 1);
 
+  // Fifth line
+  auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
+  lBodyslideGridLayout->addWidget(lLabelFilters, 4, 0);
+
+  auto lFiltersList{new QLabel("", this)};
+  lFiltersList->setObjectName("bodyslide_filters");
+  lBodyslideGridLayout->addWidget(lFiltersList, 4, 1);
+
+  auto lEditFilters{new QPushButton(this)};
+  auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
+  lBodyslideGridLayout->addWidget(lEditFilters, 4, 2);
+
   // Initialization functions
   this->updateOSPXMLPreview(QString(""));
   this->updateBodyslideNamesPreview(QString(""));
@@ -159,6 +172,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   // Event binding
   connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOSPXMLPreview);
   connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateBodyslideNamesPreview);
+  connect(lEditFilters, &QPushButton::clicked, this, &TabCBBESE::openBodySlideFiltersEditor);
 }
 
 void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
@@ -168,7 +182,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lSkeletonGroupBox);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
-  lSkeletonGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
+  lSkeletonGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
 
   // Skeleton
   auto lLabelSkeleton{new QLabel(this)};
@@ -194,7 +208,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   auto lSkeletonRefresher{new QPushButton(this)};
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
   auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
-  lSkeletonRefresher->setIcon(QIcon(":/" + lIconFolder + "/reload"));
+  lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Skeleton path
@@ -249,7 +263,7 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
-  lOutputGridLayout->setColumnMinimumWidth(0, mMinimumFirstColmunWidth);
+  lOutputGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
 
   // First line
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
@@ -1012,4 +1026,9 @@ void TabCBBESE::refreshAllPreviewFields()
   // Refresh the names in the bodyslide software
   auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
+}
+
+void TabCBBESE::openBodySlideFiltersEditor()
+{
+  auto lEditor{new BodySlideFiltersEditor(this)};
 }

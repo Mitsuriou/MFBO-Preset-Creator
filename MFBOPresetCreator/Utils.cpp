@@ -7,7 +7,7 @@ void Utils::cleanPathString(QString& aPath)
 
 QString Utils::getSoftwareVersion()
 {
-  return "1.8.3";
+  return "1.8.4";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)

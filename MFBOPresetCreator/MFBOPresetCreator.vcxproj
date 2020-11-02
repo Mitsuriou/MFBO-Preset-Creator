@@ -132,6 +132,7 @@
     <ClCompile Include="About.cpp" />
     <ClCompile Include="AssistedConversionTool.cpp" />
     <ClCompile Include="DataLists.cpp" />
+    <ClCompile Include="BodySlideFiltersEditor.cpp" />
     <ClCompile Include="HTTPDownloader.cpp" />
     <ClCompile Include="LangManager.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -152,6 +153,7 @@
     <QtMoc Include="About.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="HTTPDownloader.hpp" />
+    <QtMoc Include="BodySlideFiltersEditor.h" />
     <ClInclude Include="LangManager.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Settings.h" />

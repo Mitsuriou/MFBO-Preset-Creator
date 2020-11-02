@@ -37,6 +37,7 @@ void RetargetingTool::setWindowProperties()
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("CBBE 3BBB Version Retargeting Tool"));
+  this->setWindowIcon(QIcon(QPixmap(":/black/arrow_up")));
 }
 
 void RetargetingTool::initializeGUI()

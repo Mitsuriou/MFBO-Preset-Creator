@@ -14,7 +14,16 @@ int main(int argc, char* argv[])
     QApplication lMainApplication(argc, argv);
     lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getSoftwareVersion() + ")");
     lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
-    lMainApplication.setWindowIcon(QIcon(":/software/icon"));
+    lMainApplication.setWindowIcon(QIcon(QPixmap(":/software/icon")));
+
+    // Show the splash screen
+    QPixmap lSplashScreenBackground(":/software/splashscreen");
+
+    QSplashScreen lSplashScreen(lSplashScreenBackground);
+    lSplashScreen.showMessage("MFBOPC (v." + Utils::getSoftwareVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    lSplashScreen.show();
+
+    lMainApplication.processEvents();
 
     // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(Utils::loadSettingsFromFile().language))};
@@ -33,6 +42,9 @@ int main(int argc, char* argv[])
 
     // Create and show the main window
     MFBOPresetCreator lMainWindow;
+
+    // Make the splash screen disappear when the main window is displayed
+    lSplashScreen.finish(&lMainWindow);
 
     // Launch the application
     currentExitCode = lMainApplication.exec();
