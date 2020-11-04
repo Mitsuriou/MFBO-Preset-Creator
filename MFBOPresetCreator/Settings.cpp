@@ -158,7 +158,7 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lDisplayLayout->addWidget(lWinHeightInput);
 
   // Event binding
-  connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
+  this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
 }
 
 void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
@@ -201,7 +201,7 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
   lPresetCreatorLayout->addWidget(lAutoOpenDirCheckbox, 4, 0, 1, 2);
 
   // Event binding
-  connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
+  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
 }
 
 void Settings::setupRetargetingToolTab(QTabWidget* aTabs)
@@ -243,9 +243,9 @@ void Settings::setupButtons(QHBoxLayout* aLayout)
   aLayout->addWidget(lCloseButton);
 
   // Event binding
-  connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
-  connect(lSaveButton, &QPushButton::clicked, this, &Settings::saveSettings);
-  connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
+  this->connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
+  this->connect(lSaveButton, &QPushButton::clicked, this, &Settings::saveSettings);
+  this->connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
 }
 
 void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)

@@ -119,11 +119,11 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding
-  connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
-  connect(lKeepBackup, &QCheckBox::clicked, this, &RetargetingTool::switchBackupState);
-  connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
-  connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
-  connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
+  this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
+  this->connect(lKeepBackup, &QCheckBox::clicked, this, &RetargetingTool::switchBackupState);
+  this->connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
+  this->connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
 
   // Pre-filled data
   lKeepBackup->setChecked(true);

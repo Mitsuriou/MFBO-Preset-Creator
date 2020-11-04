@@ -113,12 +113,12 @@ void MFBOPresetCreator::setupMenuBar()
   lHelpMenu->addAction(lAboutAction);
 
   // Event binding
-  connect(lQuickRelaunch, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
-  connect(lExitAction, &QAction::triggered, this, &MFBOPresetCreator::close);
-  connect(lRetargetingToolAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingTool);
-  connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::showSettingsDialog);
-  connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::showUpdateDialog);
-  connect(lAboutAction, &QAction::triggered, this, &MFBOPresetCreator::showAboutDialog);
+  this->connect(lQuickRelaunch, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
+  this->connect(lExitAction, &QAction::triggered, this, &MFBOPresetCreator::close);
+  this->connect(lRetargetingToolAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingTool);
+  this->connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::showSettingsDialog);
+  this->connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::showUpdateDialog);
+  this->connect(lAboutAction, &QAction::triggered, this, &MFBOPresetCreator::showAboutDialog);
 }
 
 void MFBOPresetCreator::showWindow()
@@ -346,8 +346,8 @@ void MFBOPresetCreator::checkForUpdate()
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
 
   HTTPDownloader* lHTTPDownloader{new HTTPDownloader(lGitHubURL, this)};
-  connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &MFBOPresetCreator::pageFetched);
-  connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
+  this->connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &MFBOPresetCreator::pageFetched);
+  this->connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
   lHTTPDownloader->start();
 }
 
@@ -412,7 +412,7 @@ void MFBOPresetCreator::launchRetargetingTool()
 void MFBOPresetCreator::showSettingsDialog()
 {
   auto lSettings{new Settings(this, this->mSettings)};
-  connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
+  this->connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 
 void MFBOPresetCreator::showUpdateDialog()

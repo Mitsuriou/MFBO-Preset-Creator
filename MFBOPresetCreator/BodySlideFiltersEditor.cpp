@@ -86,28 +86,28 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lAddNewRow->setCursor(Qt::PointingHandCursor);
   lAddNewRow->setIcon(QIcon(QPixmap(QString(":/%1/new_line").arg(lIconFolder))));
   lButtonLayout->addWidget(lAddNewRow);
-  connect(lAddNewRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::addRow);
+  this->connect(lAddNewRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::addRow);
 
   // Delete row button
   auto lDeleteRow{new QPushButton(this)};
   lDeleteRow->setCursor(Qt::PointingHandCursor);
   lDeleteRow->setIcon(QIcon(QPixmap(QString(":/%1/bin").arg(lIconFolder))));
   lButtonLayout->addWidget(lDeleteRow);
-  connect(lDeleteRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteRow);
+  this->connect(lDeleteRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteRow);
 
   // Delete all rows button
   auto lDeleteAllRows{new QPushButton(this)};
   lDeleteAllRows->setCursor(Qt::PointingHandCursor);
   lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/delete_all").arg(lIconFolder))));
   lButtonLayout->addWidget(lDeleteAllRows);
-  connect(lDeleteAllRows, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteAllRows);
+  this->connect(lDeleteAllRows, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteAllRows);
 
   // Delete row action
   auto lDelAction{new QAction(this->mListWidget)};
   lDelAction->setShortcut(Qt::Key_Delete);
   lDelAction->setShortcutContext(Qt::WidgetShortcut);
   this->mListWidget->addAction(lDelAction);
-  connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
+  this->connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
 }
 
 void BodySlideFiltersEditor::addRow()

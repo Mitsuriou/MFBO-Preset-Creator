@@ -52,7 +52,7 @@ void Update::setupInterface(QVBoxLayout& aLayout)
   aLayout.addWidget(lCheckForUpdates);
 
   // Event binding
-  connect(lUpdateButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
+  this->connect(lUpdateButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
 }
 
 void Update::getLastAvailableVersion()
@@ -63,8 +63,8 @@ void Update::getLastAvailableVersion()
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
 
   HTTPDownloader* lHTTPDownloader{new HTTPDownloader(lGitHubURL, this)};
-  connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &Update::pageFetched);
-  connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
+  this->connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &Update::pageFetched);
+  this->connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
   lHTTPDownloader->start();
 }
 
@@ -108,8 +108,8 @@ void Update::pageFetched(const QString& aResult)
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(48, 48));
 
-      disconnect(lSearchButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
-      connect(lSearchButton, &QPushButton::clicked, this, &Update::openGithubInBrowser);
+      this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
+      this->connect(lSearchButton, &QPushButton::clicked, this, &Update::openGithubInBrowser);
 
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.\n\nClick on the download button to be redirected on Github.com to download the latest MFBOPC version.").arg(lCurrentVersion).arg(lTagName));
     }
