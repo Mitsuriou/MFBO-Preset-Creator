@@ -18,7 +18,7 @@ protected:
   void reject();
 
 private:
-  Struct::Settings mSettings;
+  const Struct::Settings mSettings;
 
   void setWindowProperties();
   void initializeGUI();

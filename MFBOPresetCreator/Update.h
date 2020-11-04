@@ -15,7 +15,7 @@ public:
   Update(QWidget* parent, const Struct::Settings& aSettings);
 
 private:
-  Struct::Settings mSettings;
+  const Struct::Settings mSettings;
 
   struct MemoryStruct
   {

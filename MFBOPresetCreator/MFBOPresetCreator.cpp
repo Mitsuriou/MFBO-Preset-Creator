@@ -200,6 +200,8 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
       break;
   }
 
+  this->disableLineEditPlaceholders();
+
   if (lQSSFileName == "")
   {
     qApp->setStyleSheet("");
@@ -207,12 +209,24 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   else
   {
     QFile lQSSFile(":qss/" + lQSSFileName + ".qss");
-
-    lQSSFile.open(QFile::ReadOnly);
-    QString lStyleSheet{QLatin1String(lQSSFile.readAll())};
-
-    qApp->setStyleSheet(lStyleSheet);
+    if (lQSSFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+      QTextStream lStream(&lQSSFile);
+      qApp->setStyleSheet(lStream.readAll());
+      lQSSFile.close();
+    }
   }
+
+  this->enableLineEditPlaceholders();
+
+  // Reset icons color
+  auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+
+  auto lEditFiltersButton{this->findChild<QPushButton*>("edit_filters")};
+  lEditFiltersButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
+
+  auto lSkeletonRefresherButton{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
+  lSkeletonRefresherButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
 }
 
 void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut)
@@ -224,6 +238,50 @@ void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize
   lFont.setStrikeOut(aStrikeOut);
   lFont.setStyleStrategy(QFont::PreferAntialias);
   qApp->setFont(lFont);
+}
+
+void MFBOPresetCreator::disableLineEditPlaceholders()
+{
+  // Workaround for style glitch with QSS and QLineEdit
+  auto lMeshesPathLineEdit{this->findChild<QLineEdit*>("meshes_path_input")};
+  lMeshesPathLineEdit->setDisabled(true);
+
+  auto lBodyMeshNameInput{this->findChild<QLineEdit*>("body_mesh_name_input")};
+  lBodyMeshNameInput->setDisabled(true);
+
+  auto lFeetMeshNameInput{this->findChild<QLineEdit*>("feet_mesh_name_input")};
+  lFeetMeshNameInput->setDisabled(true);
+
+  auto lHandsMeshNameInput{this->findChild<QLineEdit*>("hands_mesh_name_input")};
+  lHandsMeshNameInput->setDisabled(true);
+
+  auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
+  lSkeletonPathLineEdit->setDisabled(true);
+
+  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")};
+  lSkeletonName->setDisabled(true);
+}
+
+void MFBOPresetCreator::enableLineEditPlaceholders()
+{
+  // Workaround for style glitch with QSS and QLineEdit
+  auto lMeshesPathLineEdit{this->findChild<QLineEdit*>("meshes_path_input")};
+  lMeshesPathLineEdit->setDisabled(false);
+
+  auto lBodyMeshNameInput{this->findChild<QLineEdit*>("body_mesh_name_input")};
+  lBodyMeshNameInput->setDisabled(false);
+
+  auto lFeetMeshNameInput{this->findChild<QLineEdit*>("feet_mesh_name_input")};
+  lFeetMeshNameInput->setDisabled(false);
+
+  auto lHandsMeshNameInput{this->findChild<QLineEdit*>("hands_mesh_name_input")};
+  lHandsMeshNameInput->setDisabled(false);
+
+  auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
+  lSkeletonPathLineEdit->setDisabled(false);
+
+  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")};
+  lSkeletonName->setDisabled(false);
 }
 
 void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings)

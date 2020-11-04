@@ -35,6 +35,9 @@
         <file alias="cloud_search">ressources/software/icons/black/cloud-search-outline.png</file>
         <file alias="cog">ressources/software/icons/black/cog-outline.png</file>
         <file alias="pencil">ressources/software/icons/black/pencil-outline.png</file>
+        <file alias="bin">ressources/software/icons/black/delete-outline.png</file>
+        <file alias="delete_all">ressources/software/icons/black/delete-sweep-outline.png</file>
+        <file alias="new_line">ressources/software/icons/black/playlist-plus.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="exit">ressources/software/icons/white/exit-run.png</file>
@@ -47,6 +50,9 @@
         <file alias="cloud_search">ressources/software/icons/white/cloud-search-outline.png</file>
         <file alias="cog">ressources/software/icons/white/cog-outline.png</file>
         <file alias="pencil">ressources/software/icons/white/pencil-outline.png</file>
+        <file alias="bin">ressources/software/icons/white/delete-outline.png</file>
+        <file alias="delete_all">ressources/software/icons/white/delete-sweep-outline.png</file>
+        <file alias="new_line">ressources/software/icons/white/playlist-plus.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

@@ -19,6 +19,8 @@ private:
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
 
+  QStringList bodySlideFiltersStringToList();
+
 private slots:
   void populateSkeletonChooser();
   void updateMeshesPreview();
@@ -32,4 +34,5 @@ private slots:
   void refreshAllPreviewFields(int);
   void refreshAllPreviewFields();
   void openBodySlideFiltersEditor();
+  void updateBodySlideFiltersList(QStringList aList);
 };

@@ -498,6 +498,24 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   return lObj;
 }
 
+QStringList Utils::loadFiltersFromFile()
+{
+  QFile lFiltersFile(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt");
+  lFiltersFile.open(QIODevice::ReadOnly | QIODevice::Text);
+  QStringList lSettingsData = QString::fromUtf8(lFiltersFile.readAll()).split(",");
+  lFiltersFile.close();
+
+  return lSettingsData;
+}
+
+void Utils::saveFiltersToFile(QStringList aList)
+{
+  QFile lFiltersFile(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt");
+  lFiltersFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
+  lFiltersFile.write(aList.join(",").toUtf8());
+  lFiltersFile.close();
+}
+
 QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
 {
   switch (aEnumValue)

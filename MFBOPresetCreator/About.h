@@ -13,7 +13,7 @@ public:
   About(QWidget* parent, const Struct::Settings& aSettings);
 
 private:
-  Struct::Settings mSettings;
+  const Struct::Settings mSettings;
 
   void setWindowProperties();
   void initializeGUI();

@@ -29,6 +29,10 @@ public:
   static void saveSettingsToFile(Struct::Settings aSettings);
   static QJsonObject settingsStructToJson(Struct::Settings aSettings);
 
+  // Filters
+  static QStringList loadFiltersFromFile();
+  static void saveFiltersToFile(QStringList aList);
+
   // Language
   static QString getShortLanguageNameFromEnum(const int aEnumValue);
   static QString getLongLanguageNameFromEnum(const int aEnumValue);

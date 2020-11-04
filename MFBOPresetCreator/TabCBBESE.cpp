@@ -20,7 +20,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
-  lMeshesGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
+  lMeshesGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
   auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"), this)};
@@ -97,12 +97,12 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->updateMeshesPreview();
 
   // Event binding
-  connect(lMeshesPathLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&TabCBBESE::refreshAllPreviewFields));
-  connect(lNeedBeastHands, &QCheckBox::clicked, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lMeshesPathLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lNeedBeastHands, &QCheckBox::clicked, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
 }
 
 void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
@@ -113,7 +113,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
+  lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
@@ -158,9 +158,12 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName("bodyslide_filters");
+  lFiltersList->setWordWrap(true);
+  this->updateBodySlideFiltersList(Utils::loadFiltersFromFile());
   lBodyslideGridLayout->addWidget(lFiltersList, 4, 1);
 
   auto lEditFilters{new QPushButton(this)};
+  lEditFilters->setObjectName("edit_filters");
   auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
   lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
   lBodyslideGridLayout->addWidget(lEditFilters, 4, 2);
@@ -170,9 +173,9 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   this->updateBodyslideNamesPreview(QString(""));
 
   // Event binding
-  connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOSPXMLPreview);
-  connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateBodyslideNamesPreview);
-  connect(lEditFilters, &QPushButton::clicked, this, &TabCBBESE::openBodySlideFiltersEditor);
+  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOSPXMLPreview);
+  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateBodyslideNamesPreview);
+  this->connect(lEditFilters, &QPushButton::clicked, this, &TabCBBESE::openBodySlideFiltersEditor);
 }
 
 void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
@@ -182,7 +185,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lSkeletonGroupBox);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
-  lSkeletonGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
+  lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Skeleton
   auto lLabelSkeleton{new QLabel(this)};
@@ -246,13 +249,13 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   this->updateSkeletonPreview();
 
   // Event binding
-  connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &TabCBBESE::updateSkeletonPathState);
+  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &TabCBBESE::updateSkeletonPathState);
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
 
-  connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
-  connect(lSkeletonRefresher, &QPushButton::clicked, this, &TabCBBESE::populateSkeletonChooser);
-  connect(lSkeletonName, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
+  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
+  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &TabCBBESE::populateSkeletonChooser);
+  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
 }
 
 void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
@@ -263,7 +266,7 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
-  lOutputGridLayout->setColumnMinimumWidth(0, mMinimumFirstColumnWidth);
+  lOutputGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
@@ -297,8 +300,8 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
   // Event binding
-  connect(lOutputPathChooser, &QPushButton::clicked, this, &TabCBBESE::chooseExportDirectory);
-  connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOutputPreview);
+  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &TabCBBESE::chooseExportDirectory);
+  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOutputPreview);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -311,7 +314,13 @@ void TabCBBESE::setupRemainingGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
-  connect(lGenerateButton, &QPushButton::clicked, this, &TabCBBESE::generateDirectoryStructure);
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &TabCBBESE::generateDirectoryStructure);
+}
+
+QStringList TabCBBESE::bodySlideFiltersStringToList()
+{
+  auto LFilters{this->findChild<QLabel*>("bodyslide_filters")->text()};
+  return LFilters.split(QString("; "));
 }
 
 void TabCBBESE::populateSkeletonChooser()
@@ -1030,5 +1039,12 @@ void TabCBBESE::refreshAllPreviewFields()
 
 void TabCBBESE::openBodySlideFiltersEditor()
 {
-  auto lEditor{new BodySlideFiltersEditor(this)};
+  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->bodySlideFiltersStringToList())};
+  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &TabCBBESE::updateBodySlideFiltersList);
+}
+
+void TabCBBESE::updateBodySlideFiltersList(QStringList aList)
+{
+  auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
+  LFiltersLabel->setText(aList.join(QString("; ")));
 }
