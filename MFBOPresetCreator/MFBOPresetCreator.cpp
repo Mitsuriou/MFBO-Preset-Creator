@@ -200,7 +200,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
       break;
   }
 
-  this->disableLineEditPlaceholders();
+  auto lLineEditsToReactivate{this->disableLineEditPlaceholders()};
 
   if (lQSSFileName == "")
   {
@@ -217,7 +217,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
     }
   }
 
-  this->enableLineEditPlaceholders();
+  this->enableLineEditPlaceholders(lLineEditsToReactivate);
 
   // Reset icons color
   auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
@@ -240,48 +240,63 @@ void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize
   qApp->setFont(lFont);
 }
 
-void MFBOPresetCreator::disableLineEditPlaceholders()
+std::vector<QLineEdit*> MFBOPresetCreator::disableLineEditPlaceholders()
 {
+  std::vector<QLineEdit*> lList;
+
   // Workaround for style glitch with QSS and QLineEdit
   auto lMeshesPathLineEdit{this->findChild<QLineEdit*>("meshes_path_input")};
-  lMeshesPathLineEdit->setDisabled(true);
+  if (lMeshesPathLineEdit->isEnabled())
+  {
+    lMeshesPathLineEdit->setDisabled(true);
+    lList.push_back(lMeshesPathLineEdit);
+  }
 
   auto lBodyMeshNameInput{this->findChild<QLineEdit*>("body_mesh_name_input")};
-  lBodyMeshNameInput->setDisabled(true);
+  if (lBodyMeshNameInput->isEnabled())
+  {
+    lBodyMeshNameInput->setDisabled(true);
+    lList.push_back(lBodyMeshNameInput);
+  }
 
   auto lFeetMeshNameInput{this->findChild<QLineEdit*>("feet_mesh_name_input")};
-  lFeetMeshNameInput->setDisabled(true);
+  if (lFeetMeshNameInput->isEnabled())
+  {
+    lFeetMeshNameInput->setDisabled(true);
+    lList.push_back(lFeetMeshNameInput);
+  }
 
   auto lHandsMeshNameInput{this->findChild<QLineEdit*>("hands_mesh_name_input")};
-  lHandsMeshNameInput->setDisabled(true);
+  if (lHandsMeshNameInput->isEnabled())
+  {
+    lHandsMeshNameInput->setDisabled(true);
+    lList.push_back(lHandsMeshNameInput);
+  }
 
   auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
-  lSkeletonPathLineEdit->setDisabled(true);
+  if (lSkeletonPathLineEdit->isEnabled())
+  {
+    lSkeletonPathLineEdit->setDisabled(true);
+    lList.push_back(lSkeletonPathLineEdit);
+  }
 
   auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")};
-  lSkeletonName->setDisabled(true);
+  if (lSkeletonName->isEnabled())
+  {
+    lSkeletonName->setDisabled(true);
+    lList.push_back(lSkeletonName);
+  }
+
+  return lList;
 }
 
-void MFBOPresetCreator::enableLineEditPlaceholders()
+void MFBOPresetCreator::enableLineEditPlaceholders(std::vector<QLineEdit*> aLineEditsToReactivate)
 {
   // Workaround for style glitch with QSS and QLineEdit
-  auto lMeshesPathLineEdit{this->findChild<QLineEdit*>("meshes_path_input")};
-  lMeshesPathLineEdit->setDisabled(false);
-
-  auto lBodyMeshNameInput{this->findChild<QLineEdit*>("body_mesh_name_input")};
-  lBodyMeshNameInput->setDisabled(false);
-
-  auto lFeetMeshNameInput{this->findChild<QLineEdit*>("feet_mesh_name_input")};
-  lFeetMeshNameInput->setDisabled(false);
-
-  auto lHandsMeshNameInput{this->findChild<QLineEdit*>("hands_mesh_name_input")};
-  lHandsMeshNameInput->setDisabled(false);
-
-  auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
-  lSkeletonPathLineEdit->setDisabled(false);
-
-  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")};
-  lSkeletonName->setDisabled(false);
+  for (auto lLineEdit : aLineEditsToReactivate)
+  {
+    lLineEdit->setDisabled(false);
+  }
 }
 
 void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings)
