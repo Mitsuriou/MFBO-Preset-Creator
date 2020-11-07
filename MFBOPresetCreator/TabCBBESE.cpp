@@ -4,12 +4,14 @@ TabCBBESE::TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings)
   : Tab(aParent, aSettings)
   , mMinimumFirstColumnWidth(300)
 {
+  auto lMainLayout{this->getMainLayout()};
+
   // Setup all the different GUI components
-  this->setupBodyMeshesGUI(*mMainVertical);
-  this->setupBodySlideGUI(*mMainVertical);
-  this->setupSkeletonGUI(*mMainVertical);
-  this->setupOutputGUI(*mMainVertical);
-  this->setupRemainingGUI(*mMainVertical);
+  this->setupBodyMeshesGUI(*lMainLayout);
+  this->setupBodySlideGUI(*lMainLayout);
+  this->setupSkeletonGUI(*lMainLayout);
+  this->setupOutputGUI(*lMainLayout);
+  this->setupRemainingGUI(*lMainLayout);
 }
 
 void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)

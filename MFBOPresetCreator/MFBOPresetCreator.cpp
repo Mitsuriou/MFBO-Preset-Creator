@@ -28,18 +28,15 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 
 void MFBOPresetCreator::initializeGUI()
 {
-  // Main window container
-  auto lMainVertical{new QVBoxLayout(this->ui.mainContainer)};
-  lMainVertical->setContentsMargins(0, 0, 0, 0);
-
   // Create the tabs
-  auto lTabsContainer{new QTabWidget()};
+  auto lTabsContainer{new QTabWidget(this)};
   lTabsContainer->setMovable(true);
 
   auto lCBBETab{new TabCBBESE(this, mSettings)};
   this->mTabs.push_back(lCBBETab);
   lTabsContainer->addTab(lCBBETab, QString("CBBE SE"));
-  lMainVertical->addWidget(lTabsContainer);
+
+  this->setCentralWidget(lTabsContainer);
 }
 
 void MFBOPresetCreator::setupMenuBar()

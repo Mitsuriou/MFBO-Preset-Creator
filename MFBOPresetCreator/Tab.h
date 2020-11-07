@@ -14,6 +14,10 @@ public:
   void updateSettings(Struct::Settings aSettings);
 
 protected:
-  QVBoxLayout* mMainVertical = nullptr;
   Struct::Settings mSettings;
+
+  QVBoxLayout* getMainLayout();
+
+private:
+  QVBoxLayout* mMainVertical;
 };
