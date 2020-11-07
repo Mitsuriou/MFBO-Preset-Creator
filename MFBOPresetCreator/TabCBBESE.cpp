@@ -320,7 +320,18 @@ void TabCBBESE::setupRemainingGUI(QVBoxLayout& aLayout)
 QStringList TabCBBESE::bodySlideFiltersStringToList()
 {
   auto LFilters{this->findChild<QLabel*>("bodyslide_filters")->text()};
-  return LFilters.split(QString("; "));
+
+  auto lList{LFilters.split(QString("; "))};
+
+  auto lSize{lList.size()};
+  for (int i = 0; i < lSize; i++)
+  {
+    if (lList.at(i).trimmed().compare("", Qt::CaseInsensitive) == 0)
+    {
+      lList.removeAt(i);
+    }
+  }
+  return lList;
 }
 
 void TabCBBESE::populateSkeletonChooser()
@@ -813,9 +824,14 @@ void TabCBBESE::generateDirectoryStructure()
   }
 
   // Copy the XML file
+  auto lUserFilters{this->bodySlideFiltersStringToList()};
+  auto lUserFiltersListSize{lUserFilters.size()};
+  auto lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
+
   if (lMustUseBeastHands)
   {
-    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lXMLPathName))
+    auto lRessourcePath{QString(":/%1/bodyslide_beast_hands_xml%2").arg(lRessourcesFolder).arg(lCustomSuffix)};
+    if (!QFile::copy(lRessourcePath, lXMLPathName))
     {
       Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
       return;
@@ -823,7 +839,8 @@ void TabCBBESE::generateDirectoryStructure()
   }
   else
   {
-    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lXMLPathName))
+    auto lRessourcePath{QString(":/%1/bodyslide_xml%2").arg(lRessourcesFolder).arg(lCustomSuffix)};
+    if (!QFile::copy(lRessourcePath, lXMLPathName))
     {
       Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
       return;
@@ -851,6 +868,21 @@ void TabCBBESE::generateDirectoryStructure()
     if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
     {
       auto lTextToParse{static_cast<QString>(lTempXMLContent)};
+
+      // Custom BodySlide filters
+      if (lUserFiltersListSize > 0)
+      {
+        auto lUserFiltersConcat{QString("")};
+
+        for (auto lUserFilter : lUserFilters)
+        {
+          lUserFiltersConcat += Utils::getFilterBlockFromBody(lCBBE3BBBVersionSelected, lMustUseBeastHands, lUserFilter);
+        }
+
+        lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
+      }
+
+      // BodySlide preset name
       lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lBodyslideSlidersetsNames);
 
       QTextStream lTextStream(&lXMLFile);

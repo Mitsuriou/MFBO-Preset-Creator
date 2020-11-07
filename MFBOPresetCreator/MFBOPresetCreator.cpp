@@ -123,6 +123,8 @@ void MFBOPresetCreator::setupMenuBar()
 
 void MFBOPresetCreator::showWindow()
 {
+  this->adjustSize();
+
   // Set the size of the window
   auto lDesktopScreen{QGuiApplication::primaryScreen()};
   QRect lScreenGeom{lDesktopScreen->availableGeometry()};

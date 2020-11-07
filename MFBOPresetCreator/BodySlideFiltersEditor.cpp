@@ -13,6 +13,7 @@ BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings
   this->initializeGUI();
 
   // Show the window when it's completely built
+  this->adjustSize();
   this->show();
 }
 

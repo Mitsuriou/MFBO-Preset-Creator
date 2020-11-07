@@ -32,6 +32,7 @@ public:
   // Filters
   static QStringList loadFiltersFromFile();
   static void saveFiltersToFile(QStringList aList);
+  static QString getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
 
   // Language
   static QString getShortLanguageNameFromEnum(const int aEnumValue);

@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     // Show the splash screen
     QPixmap lSplashScreenBackground(":/software/splashscreen");
 
-    QSplashScreen lSplashScreen(lSplashScreenBackground);
+    QSplashScreen lSplashScreen(lSplashScreenBackground.scaled(800, 450));
     lSplashScreen.showMessage("MFBOPC (v." + Utils::getSoftwareVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lSplashScreen.show();
 

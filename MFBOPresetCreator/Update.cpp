@@ -9,6 +9,7 @@ Update::Update(QWidget* parent, const Struct::Settings& aSettings)
   this->initializeGUI();
 
   // Show the window when it's completely built
+  this->adjustSize();
   this->show();
 }
 

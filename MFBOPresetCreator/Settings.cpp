@@ -11,6 +11,7 @@ Settings::Settings(QWidget* parent, Struct::Settings aSettings)
   this->initializeGUI();
 
   // Show the window when it's completely built
+  this->adjustSize();
   this->show();
 }
 
@@ -63,6 +64,7 @@ void Settings::initializeGUI()
 {
   // Main layout
   auto lMainContainer{new QVBoxLayout(this)};
+  this->setLayout(lMainContainer);
 
   // Tabs
   auto lTabsContainer{new QVBoxLayout()};

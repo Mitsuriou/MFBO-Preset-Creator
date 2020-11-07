@@ -516,6 +516,68 @@ void Utils::saveFiltersToFile(QStringList aList)
   lFiltersFile.close();
 }
 
+QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
+{
+  switch (aBody)
+  {
+    case static_cast<int>(CBBE3BBBVersion::Version1_40):
+      if (aBeastHands)
+      {
+        return QStringLiteral("    <Group name=\"%1\">\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - 3BBB Body Amazing\"/>\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - Beast Hands\"/>\n"
+                              "    </Group>\n")
+          .arg(aGroupName);
+      }
+
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - 3BBB Body Amazing\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+
+    case static_cast<int>(CBBE3BBBVersion::Version1_50):
+      if (aBeastHands)
+      {
+        return QStringLiteral("    <Group name=\"%1\">\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE Beast Hands\"/>\n"
+                              "    </Group>\n")
+          .arg(aGroupName);
+      }
+
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+
+    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+      if (aBeastHands)
+      {
+        return QStringLiteral("    <Group name=\"%1\">\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
+                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands Beast\"/>\n"
+                              "    </Group>\n")
+          .arg(aGroupName);
+      }
+
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+  }
+
+  return "";
+}
+
 QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
 {
   switch (aEnumValue)

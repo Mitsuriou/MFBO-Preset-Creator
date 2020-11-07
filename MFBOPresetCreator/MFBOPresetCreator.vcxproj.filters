@@ -1,70 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MFBOPresetCreator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RetargetingTool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Settings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DataLists.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tab.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TabVanillaSE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TabUNPSE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TabCBBESE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Update.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HTTPDownloader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="About.cpp">
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="AssistedConversionTool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="About.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LangManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="BodySlideFiltersEditor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DataLists.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="HTTPDownloader.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="LangManager.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MFBOPresetCreator.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="RetargetingTool.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Tab.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TabCBBESE.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TabUNPSE.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TabVanillaSE.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Update.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="Struct.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="LangManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -94,49 +94,61 @@
       <Extensions>ui</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{8a4b793f-900e-4e09-9359-d9f025aa87f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{ee977981-9006-4f73-814e-ee67fa79098b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GUI">
+      <UniqueIdentifier>{70d90964-5ddf-4c0e-a065-7fe432724b1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{2348a2dc-c069-4280-8862-91451fd9ce91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MFBOPresetCreator.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="RetargetingTool.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Settings.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="DataLists.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Tab.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TabVanillaSE.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TabUNPSE.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TabCBBESE.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Update.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="HTTPDownloader.hpp">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="About.h">
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="AssistedConversionTool.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="About.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="BodySlideFiltersEditor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="MFBOPresetCreator.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="RetargetingTool.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Settings.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Tab.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TabCBBESE.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TabUNPSE.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TabVanillaSE.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Update.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="DataLists.h">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="HTTPDownloader.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="Utils.h">
+      <Filter>Header Files\Utils</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

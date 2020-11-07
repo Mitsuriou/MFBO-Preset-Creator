@@ -11,18 +11,24 @@
         <file alias="bodyslide_xml">ressources/bodyslide files/1.40/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/1.40/bodyslide_beast_hands.osp</file>
         <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/1.40/bodyslide_beast_hands.xml</file>
+        <file alias="bodyslide_beast_hands_xml_custom">ressources/bodyslide files/1.40/bodyslide_beast_hands_custom.xml</file>
+        <file alias="bodyslide_xml_custom">ressources/bodyslide files/1.40/bodyslide_custom.xml</file>
     </qresource>
     <qresource prefix="/cbbe_3bbb_1.50">
         <file alias="bodyslide_osp">ressources/bodyslide files/1.50/bodyslide.osp</file>
         <file alias="bodyslide_xml">ressources/bodyslide files/1.50/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/1.50/bodyslide_beast_hands.osp</file>
         <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/1.50/bodyslide_beast_hands.xml</file>
+        <file alias="bodyslide_beast_hands_xml_custom">ressources/bodyslide files/1.50/bodyslide_beast_hands_custom.xml</file>
+        <file alias="bodyslide_xml_custom">ressources/bodyslide files/1.50/bodyslide_custom.xml</file>
     </qresource>
     <qresource prefix="/cbbe_3bbb_1.51">
         <file alias="bodyslide_osp">ressources/bodyslide files/1.51/bodyslide.osp</file>
         <file alias="bodyslide_xml">ressources/bodyslide files/1.51/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/1.51/bodyslide_beast_hands.osp</file>
         <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/1.51/bodyslide_beast_hands.xml</file>
+        <file alias="bodyslide_beast_hands_xml_custom">ressources/bodyslide files/1.51/bodyslide_beast_hands_custom.xml</file>
+        <file alias="bodyslide_xml_custom">ressources/bodyslide files/1.51/bodyslide_custom.xml</file>
     </qresource>
     <qresource prefix="/black">
         <file alias="arrow_up">ressources/software/icons/black/arrow-up-bold-outline.png</file>

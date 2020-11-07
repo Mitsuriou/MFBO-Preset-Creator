@@ -9,6 +9,7 @@ RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSetti
   this->initializeGUI();
 
   // Show the window when it's completely built
+  this->adjustSize();
   this->show();
 }
 
