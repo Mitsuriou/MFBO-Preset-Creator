@@ -31,7 +31,7 @@ To launch the software, simply click on the **MFBOPresetCreator.exe** file (the 
 - [ ] Better software linking with Mod Organizer 2
 - [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation
 - [X] (1.8.2) Be able to import a custom *female_skeleton.nif* file
-- [ ] Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
+- [X] (1.8.4) Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
 - [X] (1.7.4) Be able to set a default export path that would be chosen automatically when the software launches
 
 ### Developer side
