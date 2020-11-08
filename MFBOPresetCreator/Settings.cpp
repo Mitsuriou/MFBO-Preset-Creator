@@ -64,15 +64,21 @@ void Settings::initializeGUI()
 {
   // Main layout
   auto lMainContainer{new QVBoxLayout(this)};
+  lMainContainer->setContentsMargins(0, 0, 0, 0);
+
   this->setLayout(lMainContainer);
 
   // Tabs
   auto lTabsContainer{new QVBoxLayout()};
+  lTabsContainer->setContentsMargins(0, 0, 0, 0);
+
   lMainContainer->addLayout(lTabsContainer);
   this->setupTabs(lTabsContainer);
 
   // Buttons
   auto lButtonsContainer{new QHBoxLayout()};
+  lButtonsContainer->setContentsMargins(0, 0, 0, 0);
+
   lMainContainer->addLayout(lButtonsContainer);
   this->setupButtons(lButtonsContainer);
 
@@ -96,6 +102,7 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   aTabs->addTab(lDisplayTab, tr("Display"));
 
   auto lDisplayLayout{new QVBoxLayout(lDisplayTab)};
+  lDisplayLayout->setContentsMargins(0, 0, 0, 0);
   lDisplayLayout->setAlignment(Qt::AlignTop);
   lDisplayTab->setLayout(lDisplayLayout);
 
@@ -105,6 +112,7 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lDisplayLayout->addWidget(lLanguageLabel);
 
   auto lLanguageSelector{new QComboBox(this)};
+  lLanguageSelector->setCursor(Qt::PointingHandCursor);
   lLanguageSelector->addItems(DataLists::getLanguages());
   lLanguageSelector->setObjectName(QString("language"));
   lDisplayLayout->addWidget(lLanguageSelector);
@@ -114,6 +122,7 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lDisplayLayout->addWidget(lFontLabel);
 
   auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
+  lFontChooser->setCursor(Qt::PointingHandCursor);
   lFontChooser->setObjectName("font_chooser");
   lFontChooser->setAutoDefault(false);
   lFontChooser->setDefault(false);
@@ -124,6 +133,7 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lDisplayLayout->addWidget(lGUIThemeLabel);
 
   auto lGUIThemeSelector{new QComboBox(this)};
+  lGUIThemeSelector->setCursor(Qt::PointingHandCursor);
   lGUIThemeSelector->addItems(DataLists::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   lDisplayLayout->addWidget(lGUIThemeSelector);
@@ -137,6 +147,7 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lSupportedWindowOpeningMode.append(tr("Français"));
 
   auto lWindowOpeningModeSelector{new QComboBox(this)};
+  lWindowOpeningModeSelector->setCursor(Qt::PointingHandCursor);
   lWindowOpeningModeSelector->addItems(DataLists::getWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("window_opening_mode"));
   lDisplayLayout->addWidget(lWindowOpeningModeSelector);
@@ -169,6 +180,7 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
   aTabs->addTab(lPresetCreatorTab, tr("Preset Creator"));
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorTab)};
+  lPresetCreatorLayout->setContentsMargins(0, 0, 0, 0);
   lPresetCreatorLayout->setAlignment(Qt::AlignTop);
   lPresetCreatorTab->setLayout(lPresetCreatorLayout);
 
@@ -177,6 +189,7 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
   lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionLabel, 0, 0, 1, 2);
 
   auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
+  ldefaultCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
   lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionSelector, 1, 0, 1, 2);
@@ -193,6 +206,7 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
 
   // OUTPUT PATH CHOOSER
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lOutputPathChooser->setCursor(Qt::PointingHandCursor);
   lOutputPathChooser->setAutoDefault(false);
   lOutputPathChooser->setDefault(false);
   lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);
@@ -212,6 +226,7 @@ void Settings::setupRetargetingToolTab(QTabWidget* aTabs)
   aTabs->addTab(lRetargetingToolTab, tr("Retargeting Tool"));
 
   auto lRetargetingToolLayout{new QVBoxLayout(lRetargetingToolTab)};
+  lRetargetingToolLayout->setContentsMargins(0, 0, 0, 0);
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
   lRetargetingToolTab->setLayout(lRetargetingToolLayout);
 
@@ -220,6 +235,7 @@ void Settings::setupRetargetingToolTab(QTabWidget* aTabs)
   lRetargetingToolLayout->addWidget(lupgradeCbbe3BBBVersionLabel);
 
   auto lUpgradeCbbe3BBBVersionSelector{new QComboBox(this)};
+  lUpgradeCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
   lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
@@ -229,17 +245,20 @@ void Settings::setupButtons(QHBoxLayout* aLayout)
 {
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
+  lRestoreDefaultButton->setCursor(Qt::PointingHandCursor);
   lRestoreDefaultButton->setAutoDefault(false);
   lRestoreDefaultButton->setDefault(false);
   aLayout->addWidget(lRestoreDefaultButton);
 
   auto lSaveButton{new QPushButton(tr("Save and close"), this)};
+  lSaveButton->setCursor(Qt::PointingHandCursor);
   lSaveButton->setObjectName("save_close");
   lSaveButton->setAutoDefault(false);
   lSaveButton->setDefault(false);
   aLayout->addWidget(lSaveButton);
 
   auto lCloseButton{new QPushButton(tr("Close"), this)};
+  lCloseButton->setCursor(Qt::PointingHandCursor);
   lCloseButton->setAutoDefault(false);
   lCloseButton->setDefault(false);
   aLayout->addWidget(lCloseButton);

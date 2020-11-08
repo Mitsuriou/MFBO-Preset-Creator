@@ -32,11 +32,11 @@ void MFBOPresetCreator::initializeGUI()
   auto lTabsContainer{new QTabWidget(this)};
   lTabsContainer->setMovable(true);
 
-  auto lCBBETab{new TabCBBESE(this, mSettings)};
-  this->mTabs.push_back(lCBBETab);
-  lTabsContainer->addTab(lCBBETab, QString("CBBE SE"));
-
   this->setCentralWidget(lTabsContainer);
+
+  auto lCBBETab{new TabCBBESE(lTabsContainer, mSettings)};
+  lTabsContainer->addTab(lCBBETab, QString("CBBE SE"));
+  this->mTabs.push_back(lCBBETab);
 }
 
 void MFBOPresetCreator::setupMenuBar()
@@ -166,7 +166,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
 {
   auto lQSSFileName{QString("")};
 
-  switch (mSettings.appTheme)
+  switch (this->mSettings.appTheme)
   {
     case GUITheme::WindowsVista:
       break;
@@ -296,7 +296,7 @@ std::vector<QLineEdit*> MFBOPresetCreator::disableLineEditPlaceholders()
 void MFBOPresetCreator::enableLineEditPlaceholders(std::vector<QLineEdit*> aLineEditsToReactivate)
 {
   // Workaround for style glitch with QSS and QLineEdit
-  for (auto lLineEdit : aLineEditsToReactivate)
+  for (auto& lLineEdit : aLineEditsToReactivate)
   {
     lLineEdit->setDisabled(false);
   }
@@ -316,7 +316,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     mSettings = aSettings;
 
     // Update the settings of each tab
-    for (auto lTab : this->mTabs)
+    for (auto& lTab : this->mTabs)
     {
       lTab->updateSettings(aSettings);
     }

@@ -179,8 +179,6 @@
     <None Include="mfbopc_en.ts" />
     <None Include="mfbopc_fr.qm" />
     <None Include="mfbopc_fr.ts" />
-    <None Include="ressources\qss\Mitsuriou%27s Dark Theme.qss" />
-    <None Include="ressources\qss\Mitsuriou%27s Light Theme.qss" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

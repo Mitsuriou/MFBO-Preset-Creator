@@ -35,6 +35,7 @@ void Update::setupInterface(QVBoxLayout& aLayout)
 {
   // Button
   auto lUpdateButton{new QPushButton(this)};
+  lUpdateButton->setCursor(Qt::PointingHandCursor);
 
   QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud_search" : ":/black/cloud_search"};
   lUpdateButton->setObjectName("search_button");

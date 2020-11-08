@@ -29,6 +29,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
+  lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
@@ -165,6 +166,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->addWidget(lFiltersList, 4, 1);
 
   auto lEditFilters{new QPushButton(this)};
+  lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
   auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
   lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
@@ -205,12 +207,14 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   lSkeletonGridLayout->addWidget(lLabelSkeletonChooser, 1, 0);
 
   auto lSkeletonChooser{new QComboBox(this)};
+  lSkeletonChooser->setCursor(Qt::PointingHandCursor);
   lSkeletonChooser->setObjectName("skeleton_chooser");
   lSkeletonGridLayout->addWidget(lSkeletonChooser, 1, 1);
 
   this->populateSkeletonChooser();
 
   auto lSkeletonRefresher{new QPushButton(this)};
+  lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
   auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
   lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
@@ -282,6 +286,7 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lOutputPathChooser->setCursor(Qt::PointingHandCursor);
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Second line
@@ -313,6 +318,7 @@ void TabCBBESE::setupRemainingGUI(QVBoxLayout& aLayout)
 {
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
+  lGenerateButton->setCursor(Qt::PointingHandCursor);
   aLayout.addWidget(lGenerateButton);
 
   // Event binding

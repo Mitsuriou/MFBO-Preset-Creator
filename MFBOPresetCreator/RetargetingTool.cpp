@@ -56,6 +56,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
+  lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
@@ -72,6 +73,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lInputPathLineEdit, 1, 1);
 
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lInputPathChooser->setCursor(Qt::PointingHandCursor);
   aLayout.addWidget(lInputPathChooser, 1, 2);
 
   // Third line
@@ -94,6 +96,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lBackupPathLineEdit, 3, 1);
 
   auto lBackupPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lBackupPathChooser->setCursor(Qt::PointingHandCursor);
   lBackupPathChooser->setObjectName("backup_dir_chooser");
   aLayout.addWidget(lBackupPathChooser, 3, 2);
 
@@ -117,6 +120,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"), this)};
+  lGenerateButton->setCursor(Qt::PointingHandCursor);
   aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding

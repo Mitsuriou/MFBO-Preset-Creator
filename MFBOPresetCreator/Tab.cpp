@@ -11,6 +11,7 @@ Tab::Tab(QWidget* aParent, const Struct::Settings& aSettings)
 
   auto lMainWidget{new QWidget(this)};
   mMainVertical = new QVBoxLayout(lMainWidget);
+  mMainVertical->setContentsMargins(0, 0, 0, 0);
 
   lScrollArea->setWidget(lMainWidget);
   lBaseLayout->addWidget(lScrollArea);
