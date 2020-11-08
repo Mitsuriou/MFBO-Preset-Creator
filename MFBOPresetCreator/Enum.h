@@ -24,7 +24,9 @@ enum class GUITheme
   AlexhuszaghBreezeDark = 6,
   QuasarAppDarkStyle = 7,
   QuasarAppMaterialStyle = 8,
-  QuasarAppVisualStudioDark = 9
+  QuasarAppVisualStudioDark = 9,
+  MitsuriouLightTheme = 10,
+  MitsuriouDarkTheme = 11
 };
 
 enum class WindowOpeningMode

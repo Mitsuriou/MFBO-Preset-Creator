@@ -74,6 +74,8 @@
         <file alias="QuasarApp's Dark Style.qss">ressources/qss/QuasarApp's Dark Style.qss</file>
         <file alias="QuasarApp's Material Style.qss">ressources/qss/QuasarApp's Material Style.qss</file>
         <file alias="QuasarApp's Visual Studio Dark.qss">ressources/qss/QuasarApp's Visual Studio Dark.qss</file>
+        <file alias="Mitsuriou's Dark Theme.qss">ressources/qss/Mitsuriou's Dark Theme.qss</file>
+        <file alias="Mitsuriou's Light Theme.qss">ressources/qss/Mitsuriou's Light Theme.qss</file>
     </qresource>
     <qresource prefix="/qss-ressources">
         <file>ressources/qss/Paper/Dark/backup.svg</file>

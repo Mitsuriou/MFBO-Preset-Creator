@@ -359,6 +359,12 @@ Struct::Settings Settings::getSettingsFromGUI()
     case static_cast<int>(GUITheme::QuasarAppVisualStudioDark):
       lSettings.appTheme = GUITheme::QuasarAppVisualStudioDark;
       break;
+    case static_cast<int>(GUITheme::MitsuriouLightTheme):
+      lSettings.appTheme = GUITheme::MitsuriouLightTheme;
+      break;
+    case static_cast<int>(GUITheme::MitsuriouDarkTheme):
+      lSettings.appTheme = GUITheme::MitsuriouDarkTheme;
+      break;
     default:
       lSettings.appTheme = GUITheme::WindowsVista;
       break;

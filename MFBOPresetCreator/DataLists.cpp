@@ -33,6 +33,8 @@ QStringList DataLists::getAppThemes()
   lAppThemes.append(QString("QuasarApp's Dark Style"));
   lAppThemes.append(QString("QuasarApp's Material Style"));
   lAppThemes.append(QString("QuasarApp's Visual Studio Dark"));
+  lAppThemes.append(QString("Mitsuriou's Light Theme"));
+  lAppThemes.append(QString("Mitsuriou's Dark Theme"));
 
   return lAppThemes;
 }

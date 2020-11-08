@@ -106,6 +106,9 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{2348a2dc-c069-4280-8862-91451fd9ce91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StyleSheets">
+      <UniqueIdentifier>{8c571b9b-9cda-4c1d-9b2c-5a4cdef10cf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="About.h">
@@ -185,5 +188,11 @@
       <Filter>Translation Files</Filter>
     </None>
     <None Include="..\README.md" />
+    <None Include="ressources\qss\Mitsuriou%27s Dark Theme.qss">
+      <Filter>StyleSheets</Filter>
+    </None>
+    <None Include="ressources\qss\Mitsuriou%27s Light Theme.qss">
+      <Filter>StyleSheets</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -102,6 +102,7 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
     case GUITheme::QuasarAppDarkStyle:
     case GUITheme::QuasarAppMaterialStyle:
     case GUITheme::QuasarAppVisualStudioDark:
+    case GUITheme::MitsuriouDarkTheme:
       return true;
     default:
       return false;
@@ -360,6 +361,12 @@ Struct::Settings Utils::loadSettingsFromFile()
         break;
       case static_cast<int>(GUITheme::QuasarAppVisualStudioDark):
         lSettings.appTheme = GUITheme::QuasarAppVisualStudioDark;
+        break;
+      case static_cast<int>(GUITheme::MitsuriouLightTheme):
+        lSettings.appTheme = GUITheme::MitsuriouLightTheme;
+        break;
+      case static_cast<int>(GUITheme::MitsuriouDarkTheme):
+        lSettings.appTheme = GUITheme::MitsuriouDarkTheme;
         break;
       default:
         lSettings.appTheme = GUITheme::WindowsVista;

@@ -197,15 +197,19 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
     case GUITheme::QuasarAppVisualStudioDark:
       lQSSFileName = "QuasarApp's Visual Studio Dark";
       break;
+    case GUITheme::MitsuriouLightTheme:
+      lQSSFileName = "Mitsuriou's Light Theme";
+      break;
+    case GUITheme::MitsuriouDarkTheme:
+      lQSSFileName = "Mitsuriou's Dark Theme";
+      break;
   }
 
   auto lLineEditsToReactivate{this->disableLineEditPlaceholders()};
 
-  if (lQSSFileName == "")
-  {
-    qApp->setStyleSheet("");
-  }
-  else
+  qApp->setStyleSheet("");
+
+  if (lQSSFileName != "")
   {
     QFile lQSSFile(":qss/" + lQSSFileName + ".qss");
     if (lQSSFile.open(QIODevice::ReadOnly | QIODevice::Text))
