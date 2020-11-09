@@ -8,9 +8,6 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   // Construct the GUI
   ui.setupUi(this);
 
-  // Remove shadows on QMenu dropdowns
-  this->setWindowFlags(this->windowFlags() | Qt::NoDropShadowWindowHint);
-
   // Check for new versions
   this->checkForUpdate();
 }
