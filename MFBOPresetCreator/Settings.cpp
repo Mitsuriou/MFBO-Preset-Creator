@@ -55,7 +55,7 @@ void Settings::setWindowProperties()
 {
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Settings"));
   this->setWindowIcon(QIcon(QPixmap(":/black/cog")));
 }
@@ -64,7 +64,6 @@ void Settings::initializeGUI()
 {
   // Main layout
   auto lMainContainer{new QVBoxLayout(this)};
-  lMainContainer->setContentsMargins(0, 0, 0, 0);
 
   this->setLayout(lMainContainer);
 
@@ -89,6 +88,7 @@ void Settings::initializeGUI()
 void Settings::setupTabs(QVBoxLayout* aLayout)
 {
   auto lTabs{new QTabWidget(this)};
+  lTabs->tabBar()->setCursor(Qt::PointingHandCursor);
   aLayout->addWidget(lTabs);
 
   this->setupDisplayTab(lTabs);

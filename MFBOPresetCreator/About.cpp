@@ -18,7 +18,7 @@ void About::setWindowProperties()
   this->setModal(true);
   this->setMaximumWidth(500);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("About"));
   this->setWindowIcon(QIcon(QPixmap(":/black/information")));
 

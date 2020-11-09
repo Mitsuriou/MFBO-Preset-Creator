@@ -8,6 +8,9 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
   // Construct the GUI
   ui.setupUi(this);
 
+  // Remove shadows on QMenu dropdowns
+  this->setWindowFlags(this->windowFlags() | Qt::NoDropShadowWindowHint);
+
   // Check for new versions
   this->checkForUpdate();
 }
@@ -30,6 +33,7 @@ void MFBOPresetCreator::initializeGUI()
 {
   // Create the tabs
   auto lTabsContainer{new QTabWidget(this)};
+  lTabsContainer->tabBar()->setCursor(Qt::PointingHandCursor);
   lTabsContainer->setMovable(true);
 
   this->setCentralWidget(lTabsContainer);
@@ -46,10 +50,12 @@ void MFBOPresetCreator::setupMenuBar()
 
   // Construct the menu bar
   auto lMenuBar{new QMenuBar(this)};
+  lMenuBar->setCursor(Qt::PointingHandCursor);
   this->setMenuBar(lMenuBar);
 
   // File
   auto lFileMenu{new QMenu(tr("File"), this)};
+  lFileMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lFileMenu);
 
   // Submenu: relaunch the app
@@ -68,6 +74,7 @@ void MFBOPresetCreator::setupMenuBar()
 
   // Tools
   auto lToolsMenu{new QMenu(tr("Tools"), this)};
+  lToolsMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lToolsMenu);
 
   // Submenu: Upgrader
@@ -93,6 +100,7 @@ void MFBOPresetCreator::setupMenuBar()
   }
 
   auto lHelpMenu{new QMenu(tr("Help") + lUpdateAvailableText, this)};
+  lHelpMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lHelpMenu);
 
   // Submenu: Check for updates
