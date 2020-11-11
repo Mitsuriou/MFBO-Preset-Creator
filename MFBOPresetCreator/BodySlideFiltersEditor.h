@@ -8,7 +8,7 @@ class BodySlideFiltersEditor : public QDialog
   Q_OBJECT
 
 public:
-  BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, QStringList aInitialList);
+  BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const QStringList& aInitialList);
 
 signals:
   void listEdited(QStringList);
@@ -21,7 +21,7 @@ private:
   QListWidget* mListWidget;
 
   void setWindowProperties();
-  void initializeGUI();
+  void initializeGUI(const QStringList& aInitialList);
   void setupInterface(QGridLayout& aLayout);
 
 private slots:

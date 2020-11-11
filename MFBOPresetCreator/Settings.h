@@ -24,11 +24,11 @@ private:
   void setWindowProperties();
   void initializeGUI();
 
-  void setupTabs(QVBoxLayout* aLayout);
-  void setupDisplayTab(QTabWidget* aTabs);
-  void setupPresetCreatorTab(QTabWidget* aTabs);
-  void setupRetargetingToolTab(QTabWidget* aTabs);
-  void setupButtons(QHBoxLayout* aLayout);
+  void setupTabs(QVBoxLayout& aLayout);
+  void setupDisplayTab(QTabWidget& aTabs);
+  void setupPresetCreatorTab(QTabWidget& aTabs);
+  void setupRetargetingToolTab(QTabWidget& aTabs);
+  void setupButtons(QHBoxLayout& aLayout);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   Struct::Settings getSettingsFromGUI();

@@ -311,13 +311,6 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
 {
   if (aMustUpdateSettings)
   {
-    // Store old values to check if GUI modifications are needed
-    auto lOldAppTheme{mSettings.appTheme};
-    auto lOldFont{mSettings.font};
-
-    auto lNewAppTheme{aSettings.appTheme};
-    auto lNewFont{aSettings.font};
-
     mSettings = aSettings;
 
     // Update the settings of each tab
@@ -325,31 +318,9 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     {
       lTab->updateSettings(aSettings);
     }
-
-    if (lOldAppTheme != lNewAppTheme)
-    {
-      // Refresh the status bar to swap dark and white icons if needed
-      this->setupMenuBar();
-
-      // Apply the chosen QSS theme
-      this->applyGlobalStyleSheet();
-    }
-
-    if (lOldFont != lNewFont)
-    {
-      applyFont(lNewFont.family,
-                lNewFont.styleName,
-                lNewFont.size,
-                lNewFont.weight,
-                lNewFont.italic,
-                lNewFont.underline,
-                lNewFont.strikeOut);
-    }
   }
   else
   {
-    this->setupMenuBar();
-
     // Apply the QSS theme
     this->applyGlobalStyleSheet();
 
@@ -411,6 +382,7 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     }
   }
 
+  this->setupMenuBar();
   this->initializeGUI();
   this->refreshUI(mSettings, false);
 

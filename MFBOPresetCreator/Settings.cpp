@@ -27,7 +27,7 @@ void Settings::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  if (this->getSettingsFromGUI() != mSettings)
+  if (this->getSettingsFromGUI() != this->mSettings)
   {
     auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the Settings window without saving?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
 
@@ -64,7 +64,6 @@ void Settings::initializeGUI()
 {
   // Main layout
   auto lMainContainer{new QVBoxLayout(this)};
-
   this->setLayout(lMainContainer);
 
   // Tabs
@@ -72,53 +71,57 @@ void Settings::initializeGUI()
   lTabsContainer->setContentsMargins(0, 0, 0, 0);
 
   lMainContainer->addLayout(lTabsContainer);
-  this->setupTabs(lTabsContainer);
+  this->setupTabs(*lTabsContainer);
 
   // Buttons
   auto lButtonsContainer{new QHBoxLayout()};
+  lButtonsContainer->setSpacing(10);
   lButtonsContainer->setContentsMargins(0, 0, 0, 0);
 
   lMainContainer->addLayout(lButtonsContainer);
-  this->setupButtons(lButtonsContainer);
+  this->setupButtons(*lButtonsContainer);
 
   // Load the settings in the interface
-  this->loadSettings(mSettings);
+  this->loadSettings(this->mSettings);
 }
 
-void Settings::setupTabs(QVBoxLayout* aLayout)
+void Settings::setupTabs(QVBoxLayout& aLayout)
 {
   auto lTabs{new QTabWidget(this)};
   lTabs->tabBar()->setCursor(Qt::PointingHandCursor);
-  aLayout->addWidget(lTabs);
+  aLayout.addWidget(lTabs);
 
-  this->setupDisplayTab(lTabs);
-  this->setupPresetCreatorTab(lTabs);
-  this->setupRetargetingToolTab(lTabs);
+  this->setupDisplayTab(*lTabs);
+  this->setupPresetCreatorTab(*lTabs);
+  this->setupRetargetingToolTab(*lTabs);
 }
 
-void Settings::setupDisplayTab(QTabWidget* aTabs)
+void Settings::setupDisplayTab(QTabWidget& aTabs)
 {
-  auto lDisplayTab{new QWidget(aTabs)};
-  aTabs->addTab(lDisplayTab, tr("Display"));
+  auto lDisplayTab{new QWidget(&aTabs)};
+  aTabs.addTab(lDisplayTab, tr("Display"));
 
   auto lDisplayLayout{new QVBoxLayout(lDisplayTab)};
-  lDisplayLayout->setContentsMargins(0, 0, 0, 0);
+  lDisplayLayout->setSpacing(10);
+  lDisplayLayout->setContentsMargins(0, 10, 0, 0);
   lDisplayLayout->setAlignment(Qt::AlignTop);
   lDisplayTab->setLayout(lDisplayLayout);
 
   // LANGUAGE
-  auto lLangLabelText = "* " + tr("Language:");
+  auto lLangLabelText{"* " + tr("Language:")};
   auto lLanguageLabel{new QLabel(lLangLabelText, this)};
   lDisplayLayout->addWidget(lLanguageLabel);
 
   auto lLanguageSelector{new QComboBox(this)};
+  lLanguageSelector->setItemDelegate(new QStyledItemDelegate());
   lLanguageSelector->setCursor(Qt::PointingHandCursor);
   lLanguageSelector->addItems(DataLists::getLanguages());
   lLanguageSelector->setObjectName(QString("language"));
   lDisplayLayout->addWidget(lLanguageSelector);
 
   // FONT FAMILY
-  auto lFontLabel{new QLabel(tr("Font:"), this)};
+  auto lFontLabelText{"* " + tr("Font:")};
+  auto lFontLabel{new QLabel(lFontLabelText, this)};
   lDisplayLayout->addWidget(lFontLabel);
 
   auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
@@ -129,10 +132,12 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lDisplayLayout->addWidget(lFontChooser);
 
   // GUI THEME
-  auto lGUIThemeLabel{new QLabel(tr("Application Theme:"), this)};
+  auto lThemeLabelText{"* " + tr("Application Theme:")};
+  auto lGUIThemeLabel{new QLabel(lThemeLabelText, this)};
   lDisplayLayout->addWidget(lGUIThemeLabel);
 
   auto lGUIThemeSelector{new QComboBox(this)};
+  lGUIThemeSelector->setItemDelegate(new QStyledItemDelegate());
   lGUIThemeSelector->setCursor(Qt::PointingHandCursor);
   lGUIThemeSelector->addItems(DataLists::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
@@ -147,6 +152,7 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   lSupportedWindowOpeningMode.append(tr("Français"));
 
   auto lWindowOpeningModeSelector{new QComboBox(this)};
+  lWindowOpeningModeSelector->setItemDelegate(new QStyledItemDelegate());
   lWindowOpeningModeSelector->setCursor(Qt::PointingHandCursor);
   lWindowOpeningModeSelector->addItems(DataLists::getWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("window_opening_mode"));
@@ -174,13 +180,14 @@ void Settings::setupDisplayTab(QTabWidget* aTabs)
   this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
 }
 
-void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
+void Settings::setupPresetCreatorTab(QTabWidget& aTabs)
 {
-  QWidget* lPresetCreatorTab{new QWidget(aTabs)};
-  aTabs->addTab(lPresetCreatorTab, tr("Preset Creator"));
+  QWidget* lPresetCreatorTab{new QWidget(&aTabs)};
+  aTabs.addTab(lPresetCreatorTab, tr("Preset Creator"));
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorTab)};
-  lPresetCreatorLayout->setContentsMargins(0, 0, 0, 0);
+  lPresetCreatorLayout->setSpacing(10);
+  lPresetCreatorLayout->setContentsMargins(0, 10, 0, 0);
   lPresetCreatorLayout->setAlignment(Qt::AlignTop);
   lPresetCreatorTab->setLayout(lPresetCreatorLayout);
 
@@ -189,6 +196,7 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
   lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionLabel, 0, 0, 1, 2);
 
   auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
+  ldefaultCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   ldefaultCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
@@ -221,13 +229,14 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
 }
 
-void Settings::setupRetargetingToolTab(QTabWidget* aTabs)
+void Settings::setupRetargetingToolTab(QTabWidget& aTabs)
 {
-  QWidget* lRetargetingToolTab{new QWidget(aTabs)};
-  aTabs->addTab(lRetargetingToolTab, tr("Retargeting Tool"));
+  QWidget* lRetargetingToolTab{new QWidget(&aTabs)};
+  aTabs.addTab(lRetargetingToolTab, tr("Retargeting Tool"));
 
   auto lRetargetingToolLayout{new QVBoxLayout(lRetargetingToolTab)};
-  lRetargetingToolLayout->setContentsMargins(0, 0, 0, 0);
+  lRetargetingToolLayout->setSpacing(10);
+  lRetargetingToolLayout->setContentsMargins(0, 10, 0, 0);
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
   lRetargetingToolTab->setLayout(lRetargetingToolLayout);
 
@@ -236,33 +245,34 @@ void Settings::setupRetargetingToolTab(QTabWidget* aTabs)
   lRetargetingToolLayout->addWidget(lupgradeCbbe3BBBVersionLabel);
 
   auto lUpgradeCbbe3BBBVersionSelector{new QComboBox(this)};
+  lUpgradeCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lUpgradeCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
   lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
 }
 
-void Settings::setupButtons(QHBoxLayout* aLayout)
+void Settings::setupButtons(QHBoxLayout& aLayout)
 {
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
   lRestoreDefaultButton->setCursor(Qt::PointingHandCursor);
   lRestoreDefaultButton->setAutoDefault(false);
   lRestoreDefaultButton->setDefault(false);
-  aLayout->addWidget(lRestoreDefaultButton);
+  aLayout.addWidget(lRestoreDefaultButton);
 
   auto lSaveButton{new QPushButton(tr("Save and close"), this)};
   lSaveButton->setCursor(Qt::PointingHandCursor);
   lSaveButton->setObjectName("save_close");
   lSaveButton->setAutoDefault(false);
   lSaveButton->setDefault(false);
-  aLayout->addWidget(lSaveButton);
+  aLayout.addWidget(lSaveButton);
 
-  auto lCloseButton{new QPushButton(tr("Close"), this)};
+  auto lCloseButton{new QPushButton(tr("Cancel"), this)};
   lCloseButton->setCursor(Qt::PointingHandCursor);
   lCloseButton->setAutoDefault(false);
   lCloseButton->setDefault(false);
-  aLayout->addWidget(lCloseButton);
+  aLayout.addWidget(lCloseButton);
 
   // Event binding
   this->connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
@@ -520,12 +530,14 @@ void Settings::saveSettings()
 {
   auto lSettings{this->getSettingsFromGUI()};
 
-  mMustRebootMainApp = (mSettings.language != lSettings.language);
+  mMustRebootMainApp = (this->mSettings.language != lSettings.language
+                        || this->mSettings.appTheme != lSettings.appTheme
+                        || this->mSettings.font != lSettings.font);
 
   Utils::saveSettingsToFile(lSettings);
-  mSettings = lSettings;
+  this->mSettings = lSettings;
 
-  emit refreshMainUI(mSettings, true);
+  emit refreshMainUI(this->mSettings, true);
 
   if (mMustRebootMainApp)
   {

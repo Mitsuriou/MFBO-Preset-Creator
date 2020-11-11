@@ -213,6 +213,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   lSkeletonGridLayout->addWidget(lLabelSkeletonChooser, 1, 0);
 
   auto lSkeletonChooser{new QComboBox(this)};
+  lSkeletonChooser->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooser->setCursor(Qt::PointingHandCursor);
   lSkeletonChooser->setObjectName("skeleton_chooser");
   lSkeletonGridLayout->addWidget(lSkeletonChooser, 1, 1);
@@ -412,25 +413,21 @@ void TabCBBESE::updateMeshesPreview()
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lHandsName);
   lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif").arg(lMeshesPath).arg(lHandsName);
 
-  QPalette lPalette;
+  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
   if (lIsValidPath)
   {
     if (!lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPath.length() < 8))
     {
-      lPalette = lPreviewLabel->palette();
-      lPalette.setColor(QPalette::WindowText, QColor("#FF9800"));
+      lNewTextColor = "hsl(33, 100%, 71%)";
     }
   }
   else
   {
-    lPalette = lPreviewLabel->palette();
-    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
+    lNewTextColor = "hsl(4, 90%, 58%)";
   }
 
-  lPalette.setColor(QPalette::Window, Qt::transparent);
-  lPreviewLabel->setPalette(lPalette);
-
+  lPreviewLabel->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lPreviewLabel->setText(lFullPreview);
 }
 
@@ -468,24 +465,21 @@ void TabCBBESE::updateOutputPreview()
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("output_path_preview")};
 
-  QPalette lPalette;
+  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
   if (lIsValidPath)
   {
     if (QDir(lFullPath).exists())
     {
-      lPalette = lOutputPathsPreview->palette();
-      lPalette.setColor(QPalette::WindowText, QColor("#FF9800"));
+      lNewTextColor = "hsl(33, 100%, 71%)";
     }
   }
   else
   {
-    lPalette = lOutputPathsPreview->palette();
-    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
+    lNewTextColor = "hsl(4, 90%, 58%)";
   }
 
-  lPalette.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathsPreview->setPalette(lPalette);
+  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lFullPath);
 }
 
@@ -507,16 +501,14 @@ void TabCBBESE::updateOSPXMLPreview(QString aText)
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
 
-  QPalette lPalette;
+  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
   if (!lIsValidPath)
   {
-    lPalette = lOutputPathsPreview->palette();
-    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
+    lNewTextColor = "hsl(4, 90%, 58%)";
   }
 
-  lPalette.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathsPreview->setPalette(lPalette);
+  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
@@ -602,17 +594,14 @@ void TabCBBESE::updateBodyslideNamesPreview(QString aText)
       break;
   }
 
-  QPalette lPalette;
+  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
   if (!lIsValidPath)
   {
-    lPalette = lOutputPathsPreview->palette();
-    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
+    lNewTextColor = "hsl(4, 90%, 58%)";
   }
 
-  lPalette.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathsPreview->setPalette(lPalette);
-
+  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
@@ -625,11 +614,12 @@ void TabCBBESE::updateSkeletonPathState(int aState)
   auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")};
   auto lSkeletonNameExtension{this->findChild<QLabel*>("skeleton_name_extension")};
 
-  QPalette lPalette;
-
   switch (aState)
   {
     case Qt::Unchecked:
+      lSkeletonPreview->setStyleSheet("color: blue;");
+      lSkeletonPreview->setStyleSheet("");
+
       lSkeletonPathLineEdit->setDisabled(true);
       lSkeletonPreview->setDisabled(true);
       lSkeletonChooser->setDisabled(true);
@@ -638,22 +628,22 @@ void TabCBBESE::updateSkeletonPathState(int aState)
       lSkeletonNameExtension->setDisabled(true);
       break;
     case Qt::Checked:
+      if (this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed().length() == 0)
+      {
+        lSkeletonPreview->setStyleSheet(QString("QLabel{color:hsl(4, 90%, 58%);}"));
+      }
+      else
+      {
+        lSkeletonPreview->setStyleSheet(QString("QLabel{color:hsl(141, 53%, 53%);}"));
+      }
+
       lSkeletonPathLineEdit->setDisabled(false);
       lSkeletonPreview->setDisabled(false);
       lSkeletonChooser->setDisabled(false);
       lSkeletonChooserRefresher->setDisabled(false);
       lSkeletonName->setDisabled(false);
       lSkeletonNameExtension->setDisabled(false);
-
-      if (this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed().length() == 0)
-      {
-        lPalette = lSkeletonPreview->palette();
-        lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
-      }
   }
-
-  lPalette.setColor(QPalette::Window, Qt::transparent);
-  lSkeletonPreview->setPalette(lPalette);
 }
 
 void TabCBBESE::updateSkeletonPreview()
@@ -677,7 +667,7 @@ void TabCBBESE::updateSkeletonPreview()
   auto lConstructedPath(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath).arg(lSkeletonName));
   auto lOutputPathPreview{this->findChild<QLabel*>("skeleton_path_preview")};
 
-  QPalette lPalette;
+  auto lNewTextColor{QString("")};
 
   if (lIsValidPath)
   {
@@ -685,19 +675,19 @@ void TabCBBESE::updateSkeletonPreview()
 
     if (!lStart || (lStart && lSkeletonPath.length() < 8))
     {
-      lPalette = lOutputPathPreview->palette();
-      lPalette.setColor(QPalette::WindowText, QColor("#FF9800"));
+      lNewTextColor = "hsl(33, 100%, 71%)";
+    }
+    else
+    {
+      lNewTextColor = "hsl(141, 53%, 53%)";
     }
   }
   else if (this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
   {
-    lPalette = lOutputPathPreview->palette();
-    lPalette.setColor(QPalette::WindowText, QColor("#F44336"));
+    lNewTextColor = "hsl(4, 90%, 58%)";
   }
 
-  lPalette.setColor(QPalette::Window, Qt::transparent);
-  lOutputPathPreview->setPalette(lPalette);
-
+  lOutputPathPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathPreview->setText(lConstructedPath);
 }
 

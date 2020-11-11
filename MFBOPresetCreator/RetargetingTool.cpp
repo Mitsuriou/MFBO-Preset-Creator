@@ -56,6 +56,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
+  lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
@@ -81,6 +82,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lKeepBackupLabel, 2, 0);
 
   auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."), this)};
+  lKeepBackup->setCursor(Qt::PointingHandCursor);
   lKeepBackup->setObjectName("keep_backup");
   aLayout.addWidget(lKeepBackup, 2, 1, 1, 2);
 

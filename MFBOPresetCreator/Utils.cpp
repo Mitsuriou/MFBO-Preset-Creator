@@ -13,6 +13,11 @@ QString Utils::getSoftwareVersion()
 void Utils::displayWarningMessage(const QString& aMessage)
 {
   QMessageBox lMessageBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
+
+  QPushButton lButton(tr("OK"));
+  lButton.setCursor(Qt::PointingHandCursor);
+  lMessageBox.addButton(&lButton, QMessageBox::ButtonRole::AcceptRole);
+
   lMessageBox.exec();
 }
 

@@ -11,6 +11,13 @@ QWidget::focus {
   outline: none;
 }
 
+/*******/
+/*LABEL*/
+/*******/
+QLabel::disabled {
+  color: #535355;
+}
+
 /**************/
 /*RADIO BUTTON*/
 /**************/
@@ -55,6 +62,7 @@ QRadioButton::indicator::pressed {
 /*CHECK BOX*/
 /***********/
 QCheckBox {
+  border: 1px solid transparent;
   min-height: 26px;
 }
 
@@ -89,11 +97,16 @@ QCheckBox::indicator::checked {
   background-color: #e95985;
 }
 
+QCheckBox::indicator::checked::hover {
+  background-color: #b32258;
+}
+
 QCheckBox::indicator::hover {
   border-color: #cccccc;
 }
 
-QCheckBox::indicator::pressed {
+QCheckBox::indicator::pressed,
+QCheckBox::indicator::checked::hover::pressed {
   background-color: white;
 }
 
@@ -118,8 +131,8 @@ QPushButton::focus {
 
 QPushButton::pressed {
   background-color: white;
-  color: #e95985;
-  border-color: #e95985;
+  color: #b32258;
+  border-color: #b32258;
 }
 
 QPushButton::disabled {
@@ -252,22 +265,22 @@ QTabBar::tab::selected {
   color: #e95985;
 }
 
-QTabBar::tab::selected::hover {
+/* QTabBar::tab::selected::hover {
   border-color: #b32258;
   color: #b32258;
-}
+} */
 
 QTabBar::tab::!selected {
   border-color: #e95985;
 }
 
 QTabBar::tab::!selected::hover {
-  background-color: #e95985;
-  border-color: white;
+  border-color: #b32258;
 }
 
-QTabBar::tab {
+QTabBar::tab::focus {
   border-color: white;
+  color: white;
 }
 
 /******/
@@ -319,31 +332,39 @@ QMenu::item::selected {
 /*************/
 QListWidget {
   border: 1px solid #1a191d;
+  color: white;
+  background-color: #1a191d;
+  alternate-background-color: #25252a;
 }
 
 QListWidget::item {
-  background-color: #1a191d;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 4px;
+  border: 1px solid transparent;
   min-height: 26px;
+  background-color: #1a191d;
 }
 
 QListWidget::item::alternate {
   background-color: #25252a;
 }
 
-/* WIP */
-/* QListWidget::item QWidget {
-  background-color: #1a191d;
-  color: blue;
-  outline: none;
-  border: none;
+QListWidget::item::focus {
+  border: 1px solid white;
 }
 
-QListWidget::item QWidget::alternate {
-  background-color: #25252a;
-  color: green;
-  outline: none;
-  border: none;
-} */
+QListWidget::item::hover,
+QListWidget::item::focus::hover {
+  border: 1px solid #b32258;
+  color: white;
+}
+
+QListWidget::item QWidget {
+  padding: 0px;
+  margin: 0px;
+  min-height: 14px;
+}
 
 /*********************/
 /*VERTICAL SCROLL BAR*/

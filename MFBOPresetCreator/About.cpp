@@ -25,9 +25,7 @@ void About::setWindowProperties()
   // Hacky color change for Windows Vista theme
   if (this->mSettings.appTheme == GUITheme::WindowsVista)
   {
-    QPalette lPalette;
-    lPalette.setColor(QPalette::Window, Qt::white);
-    this->setPalette(lPalette);
+    this->setStyleSheet("background-color: white;");
   }
 }
 

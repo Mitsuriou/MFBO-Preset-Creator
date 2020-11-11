@@ -1,16 +1,13 @@
 #include "BodySlideFiltersEditor.h"
 
-BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, QStringList aInitialList)
+BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const QStringList& aInitialList)
   : QDialog(parent)
   , mSettings(aSettings)
   , mListWidget{new QListWidget(this)}
 {
-  // Populate the list
-  this->mListWidget->addItems(aInitialList);
-
   // Build the window's interface
   this->setWindowProperties();
-  this->initializeGUI();
+  this->initializeGUI(aInitialList);
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -48,12 +45,19 @@ void BodySlideFiltersEditor::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/pencil")));
 }
 
-void BodySlideFiltersEditor::initializeGUI()
+void BodySlideFiltersEditor::initializeGUI(const QStringList& aInitialList)
 {
   // Main window container
   auto lMainLayout{new QGridLayout(this)};
-
   this->setupInterface(*lMainLayout);
+
+  // Populate the list from the user data
+  for (auto lFilter : aInitialList)
+  {
+    this->mListWidget->addItem(lFilter);
+    auto lItem{this->mListWidget->item(this->mListWidget->count() - 1)};
+    lItem->setFlags(lItem->flags() | Qt::ItemFlag::ItemIsEditable);
+  }
 
   // Focus the first line of the list
   this->mListWidget->setAlternatingRowColors(true);
@@ -126,7 +130,6 @@ void BodySlideFiltersEditor::addRow()
 
   this->mListWidget->setCurrentRow(lLastLineIndex);
   this->mListWidget->editItem(lItem);
-  //this->mListWidget->setFocus();
 }
 
 void BodySlideFiltersEditor::deleteRow()

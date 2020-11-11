@@ -12,13 +12,22 @@ Tab::Tab(QWidget* aParent, const Struct::Settings& aSettings)
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->setWidgetResizable(true);
 
-  auto lMainWidget{new QWidget(this)};
+  auto lMainWidget{new QFrame(this)};
+
+  // Hacky color change for Windows Vista theme
+  if (this->mSettings.appTheme == GUITheme::WindowsVista)
+  {
+    lScrollArea->setStyleSheet("QScrollArea{border:none;}");
+    lMainWidget->setStyleSheet("QFrame{background-color:white;}");
+  }
+
   mMainVertical = new QVBoxLayout(lMainWidget);
   mMainVertical->setContentsMargins(0, 0, 0, 0);
 
   lScrollArea->setWidget(lMainWidget);
   lBaseLayout->addWidget(lScrollArea);
 
+  // Cursor change for the scroll bar
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &Tab::mouseCursorPressed);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &Tab::mouseCursorReleased);
 
