@@ -213,6 +213,7 @@ void Settings::setupPresetCreatorTab(QTabWidget* aTabs)
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation"), this)};
+  lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("auto_open_generated_dir"));
   lPresetCreatorLayout->addWidget(lAutoOpenDirCheckbox, 4, 0, 1, 2);
 

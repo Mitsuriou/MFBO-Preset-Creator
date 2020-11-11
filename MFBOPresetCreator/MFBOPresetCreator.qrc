@@ -346,4 +346,7 @@
         <file>ressources/qss/QuasarApp QStyleSheet/Vmovetoolbar.png</file>
         <file>ressources/qss/QuasarApp QStyleSheet/Vsepartoolbar.png</file>
     </qresource>
+    <qresource prefix="/mitsuriou_dark">
+        <file alias="menu-down">ressources/qss/Mitsuriou's Dark Theme/menu-down.png</file>
+    </qresource>
 </RCC>

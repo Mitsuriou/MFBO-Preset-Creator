@@ -20,4 +20,8 @@ protected:
 
 private:
   QVBoxLayout* mMainVertical;
+
+private slots:
+  void mouseCursorPressed();
+  void mouseCursorReleased();
 };

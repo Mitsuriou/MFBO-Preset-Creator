@@ -56,6 +56,7 @@ void BodySlideFiltersEditor::initializeGUI()
   this->setupInterface(*lMainLayout);
 
   // Focus the first line of the list
+  this->mListWidget->setAlternatingRowColors(true);
   this->mListWidget->setCurrentRow(0);
   this->mListWidget->setFocus();
 }
@@ -70,6 +71,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   for (int i = 0; i < lLineCount; i++)
   {
     auto lItem{this->mListWidget->item(i)};
+    lItem->setSizeHint(QSize(-1, 30));
     lItem->setFlags(lItem->flags() | Qt::ItemFlag::ItemIsEditable);
   }
 

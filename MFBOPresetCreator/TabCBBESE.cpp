@@ -22,6 +22,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
+  lMeshesGridLayout->setSpacing(10);
   lMeshesGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
@@ -29,6 +30,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
+  lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
@@ -49,6 +51,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->addWidget(lLabelBeastHands, 2, 0);
 
   auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
+  lNeedBeastHands->setCursor(Qt::PointingHandCursor);
   lNeedBeastHands->setObjectName("use_beast_hands");
   lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1, 1, 2);
 
@@ -116,6 +119,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
+  lBodyslideGridLayout->setSpacing(10);
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
@@ -189,6 +193,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lSkeletonGroupBox);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
+  lSkeletonGridLayout->setSpacing(10);
   lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Skeleton
@@ -199,6 +204,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   lSkeletonGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
   auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
+  lNeedCustomSkeleton->setCursor(Qt::PointingHandCursor);
   lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
   lSkeletonGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
 
@@ -272,6 +278,7 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
+  lOutputGridLayout->setSpacing(10);
   lOutputGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
