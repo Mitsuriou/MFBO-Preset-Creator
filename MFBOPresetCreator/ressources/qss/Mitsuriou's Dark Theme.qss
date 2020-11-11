@@ -223,17 +223,18 @@ QComboBox::drop-down {
 /*GROUP BOX*/
 /***********/
 QGroupBox {
-  margin-top: 10px;
+  margin-top: 8px;
   border: 1px solid #1a191d;
   border-radius: 6px;
+  font-size: 16px;
 }
 
 QGroupBox::title {
   subcontrol-origin: margin;
   subcontrol-position: top left;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  left: 10px;
+  padding: 0px;
+  top: -1px;
+  left: 7px;
   color: #e95985;
 }
 
