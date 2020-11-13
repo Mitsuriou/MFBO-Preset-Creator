@@ -460,3 +460,17 @@ QScrollBar::handle::horizontal::pressed {
 QScrollBar::handle::horizontal::focus {
   border-color: white;
 }
+
+/**************/
+/*PROGRESS BAR*/
+/**************/
+QProgressBar {
+  border-radius: 4px;
+  border: 1px solid white;
+  text-align: center;
+}
+
+QProgressBar::chunk {
+  background-color: #e95985;
+  border-radius: 4px;
+}
