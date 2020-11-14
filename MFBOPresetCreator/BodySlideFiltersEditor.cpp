@@ -42,7 +42,7 @@ void BodySlideFiltersEditor::setWindowProperties()
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("BodySlide filters editor"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/pencil")));
+  this->setWindowIcon(QIcon(QPixmap(":/black/filter")));
 }
 
 void BodySlideFiltersEditor::initializeGUI(const QStringList& aInitialList)
@@ -86,7 +86,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   aLayout.addLayout(lButtonLayout, 1, 1, Qt::AlignTop);
 
   // User theme accent
-  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
 
   // Add row button
   auto lAddNewRow{new QPushButton(this)};

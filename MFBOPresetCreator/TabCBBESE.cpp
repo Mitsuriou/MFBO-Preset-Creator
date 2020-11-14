@@ -172,8 +172,8 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lEditFilters{new QPushButton(this)};
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
-  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
-  lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
+  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
+  lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
   lBodyslideGridLayout->addWidget(lEditFilters, 4, 2);
 
   // Initialization functions
@@ -223,7 +223,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   auto lSkeletonRefresher{new QPushButton(this)};
   lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
-  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
   lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 

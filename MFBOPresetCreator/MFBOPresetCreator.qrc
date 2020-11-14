@@ -44,6 +44,7 @@
         <file alias="bin">ressources/software/icons/black/delete-outline.png</file>
         <file alias="delete_all">ressources/software/icons/black/delete-sweep-outline.png</file>
         <file alias="new_line">ressources/software/icons/black/playlist-plus.png</file>
+        <file alias="filter">ressources/software/icons/black/filter-outline.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="exit">ressources/software/icons/white/exit-run.png</file>
@@ -59,6 +60,7 @@
         <file alias="bin">ressources/software/icons/white/delete-outline.png</file>
         <file alias="delete_all">ressources/software/icons/white/delete-sweep-outline.png</file>
         <file alias="new_line">ressources/software/icons/white/playlist-plus.png</file>
+        <file alias="filter">ressources/software/icons/white/filter-outline.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

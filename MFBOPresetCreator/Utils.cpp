@@ -5,9 +5,9 @@ void Utils::cleanPathString(QString& aPath)
   aPath.replace("\\", "/");
 }
 
-QString Utils::getSoftwareVersion()
+const QString Utils::getSoftwareVersion()
 {
-  return "1.8.4";
+  return "1.9.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -21,7 +21,7 @@ void Utils::displayWarningMessage(const QString& aMessage)
   lMessageBox.exec();
 }
 
-int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+const int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
   auto lAbsFilePath{QString("")};
@@ -47,7 +47,7 @@ int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFi
   return lNumber;
 }
 
-bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
+const bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
 {
   auto lIsSuccess{false};
   QDir lSourceDirectory(aSourcePath);
@@ -63,7 +63,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
     lDestinationDirectory.mkdir(aDestinationPath);
   }
 
-  auto lFilesList{lSourceDirectory.entryList(QDir::Files)};
+  QStringList lFilesList{lSourceDirectory.entryList(QDir::Files)};
   auto lFilesListSize{lFilesList.count()};
 
   for (int i = 0; i < lFilesListSize; i++)
@@ -81,6 +81,8 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
 
   lFilesList.clear();
   lFilesList = lSourceDirectory.entryList(QDir::AllDirs | QDir::NoDotAndDotDot);
+  lFilesListSize = lFilesList.count();
+
   for (int i = 0; i < lFilesListSize; i++)
   {
     auto lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
@@ -97,7 +99,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
   return true;
 }
 
-bool Utils::isThemeDark(const GUITheme& aTheme)
+const bool Utils::isThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
   {
@@ -114,7 +116,12 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
   }
 }
 
-QString Utils::getPresetNameFromXMLFile(const QString& aPath)
+const QString Utils::getIconFolder(const GUITheme& aTheme)
+{
+  return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
+}
+
+const QString Utils::getPresetNameFromXMLFile(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -145,7 +152,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
 }
 
-std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
+const std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
 {
   std::vector<Struct::SliderSet> lPaths;
 
@@ -217,7 +224,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   return lPaths;
 }
 
-bool Utils::isPresetUsingBeastHands(const QString& aPath)
+const bool Utils::isPresetUsingBeastHands(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -255,7 +262,7 @@ void Utils::checkSettingsFileExistence()
   }
 }
 
-Struct::Settings Utils::loadSettingsFromFile()
+const Struct::Settings Utils::loadSettingsFromFile()
 {
   Utils::checkSettingsFileExistence();
 
@@ -482,7 +489,7 @@ void Utils::saveSettingsToFile(Struct::Settings aSettings)
   lSettingsFile.close();
 }
 
-QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
+const QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
 {
   // Construct a font subobject
   QJsonObject lFontObj;
@@ -510,7 +517,7 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   return lObj;
 }
 
-QStringList Utils::loadFiltersFromFile()
+const QStringList Utils::loadFiltersFromFile()
 {
   QFile lFiltersFile(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt");
   lFiltersFile.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -528,7 +535,7 @@ void Utils::saveFiltersToFile(QStringList aList)
   lFiltersFile.close();
 }
 
-QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
+const QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
 {
   switch (aBody)
   {
@@ -590,7 +597,7 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
   return "";
 }
 
-QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
+const QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
 {
   switch (aEnumValue)
   {
@@ -604,7 +611,7 @@ QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
   }
 }
 
-QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
+const QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
 {
   switch (aEnumValue)
   {
@@ -618,7 +625,7 @@ QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
   }
 }
 
-ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
+const ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
 {
   if (aShortName.compare("English") == 0)
   {

@@ -12,32 +12,33 @@ class Utils : public QObject
 public:
   // General functions
   static void cleanPathString(QString& aPath);
-  static QString getSoftwareVersion();
+  static const QString getSoftwareVersion();
   static void displayWarningMessage(const QString& aMessage);
-  static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
-  static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
-  static bool isThemeDark(const GUITheme& aTheme);
+  static const int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+  static const bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
+  static const bool isThemeDark(const GUITheme& aTheme);
+  static const QString getIconFolder(const GUITheme& aTheme);
 
   // XML and OSP file parse
-  static QString getPresetNameFromXMLFile(const QString& aPath);
-  static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(const QString& aPath);
-  static bool isPresetUsingBeastHands(const QString& aPath);
+  static const QString getPresetNameFromXMLFile(const QString& aPath);
+  static const std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(const QString& aPath);
+  static const bool isPresetUsingBeastHands(const QString& aPath);
 
   // Settings
   static void checkSettingsFileExistence();
-  static Struct::Settings loadSettingsFromFile();
+  static const Struct::Settings loadSettingsFromFile();
   static void saveSettingsToFile(Struct::Settings aSettings);
-  static QJsonObject settingsStructToJson(Struct::Settings aSettings);
+  static const QJsonObject settingsStructToJson(Struct::Settings aSettings);
 
   // Filters
-  static QStringList loadFiltersFromFile();
+  static const QStringList loadFiltersFromFile();
   static void saveFiltersToFile(QStringList aList);
-  static QString getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
+  static const QString getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
 
   // Language
-  static QString getShortLanguageNameFromEnum(const int aEnumValue);
-  static QString getLongLanguageNameFromEnum(const int aEnumValue);
-  static ApplicationLanguage getStructLanguageFromName(const QString& aShortName);
+  static const QString getShortLanguageNameFromEnum(const int aEnumValue);
+  static const QString getLongLanguageNameFromEnum(const int aEnumValue);
+  static const ApplicationLanguage getStructLanguageFromName(const QString& aShortName);
 
 private:
   Utils(){};

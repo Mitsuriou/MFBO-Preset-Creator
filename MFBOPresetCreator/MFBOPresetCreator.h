@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "About.h"
+#include "AssistedConversion.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
 #include "Tab.h"
@@ -44,6 +45,7 @@ public slots:
 
 private slots:
   void quickRelaunch();
+  void launchAssistedConversion();
   void launchRetargetingTool();
   void showSettingsDialog();
   void showUpdateDialog();

@@ -43,7 +43,7 @@ void MFBOPresetCreator::initializeGUI()
 void MFBOPresetCreator::setupMenuBar()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
 
   // Construct the menu bar
   auto lMenuBar{new QMenuBar(this)};
@@ -55,7 +55,7 @@ void MFBOPresetCreator::setupMenuBar()
   lFileMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lFileMenu);
 
-  // Submenu: relaunch the app
+  // Submenu: Relaunch the app
   auto lQuickRelaunch{new QAction(this)};
   lQuickRelaunch->setText(tr("Quick relaunch"));
   lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
@@ -73,6 +73,13 @@ void MFBOPresetCreator::setupMenuBar()
   auto lToolsMenu{new QMenu(tr("Tools"), this)};
   lToolsMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lToolsMenu);
+
+  // Submenu: Assisted conversion
+  auto lAssistedConversionAction{new QAction(this)};
+  lAssistedConversionAction->setText(tr("Assisted Conversion"));
+  lAssistedConversionAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
+  lAssistedConversionAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
+  lToolsMenu->addAction(lAssistedConversionAction);
 
   // Submenu: Upgrader
   auto lRetargetingToolAction{new QAction(this)};
@@ -117,6 +124,7 @@ void MFBOPresetCreator::setupMenuBar()
   // Event binding
   this->connect(lQuickRelaunch, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
   this->connect(lExitAction, &QAction::triggered, this, &MFBOPresetCreator::close);
+  this->connect(lAssistedConversionAction, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
   this->connect(lRetargetingToolAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingTool);
   this->connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::showSettingsDialog);
   this->connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::showUpdateDialog);
@@ -144,13 +152,16 @@ void MFBOPresetCreator::showWindow()
     this->showMinimized();
 
     // Make the icon in the taskbar blink
-    FLASHWINFO finfo;
-    finfo.cbSize = sizeof(FLASHWINFO);
-    finfo.hwnd = (HWND)this->winId();
-    finfo.uCount = 5;
-    finfo.dwTimeout = 500;
-    finfo.dwFlags = FLASHW_ALL;
-    FlashWindowEx(&finfo);
+    FLASHWINFO* finfo = new FLASHWINFO();
+    finfo->cbSize = sizeof(FLASHWINFO);
+    finfo->hwnd = (HWND)this->winId();
+    finfo->uCount = 5;
+    finfo->dwTimeout = 500;
+    finfo->dwFlags = FLASHW_ALL;
+    FlashWindowEx(finfo);
+
+    delete finfo;
+    finfo = nullptr;
   }
   else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Windowed)
   {
@@ -228,10 +239,10 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   this->enableLineEditPlaceholders(lLineEditsToReactivate);
 
   // Reset icons color
-  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>("edit_filters")};
-  lEditFiltersButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
+  lEditFiltersButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
 
   auto lSkeletonRefresherButton{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
   lSkeletonRefresherButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
@@ -397,6 +408,11 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
 void MFBOPresetCreator::quickRelaunch()
 {
   qApp->exit(Settings::EXIT_CODE_REBOOT);
+}
+
+void MFBOPresetCreator::launchAssistedConversion()
+{
+  new AssistedConversion(this, this->mSettings);
 }
 
 void MFBOPresetCreator::launchRetargetingTool()

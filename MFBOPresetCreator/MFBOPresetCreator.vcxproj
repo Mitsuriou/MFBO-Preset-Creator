@@ -134,7 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
-    <ClCompile Include="AssistedConversionTool.cpp" />
+    <ClCompile Include="AssistedConversion.cpp" />
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
     <ClCompile Include="HTTPDownloader.cpp" />
@@ -153,7 +153,7 @@
     <QtMoc Include="TabVanillaSE.h" />
     <QtMoc Include="Tab.h" />
     <QtMoc Include="DataLists.h" />
-    <QtMoc Include="AssistedConversionTool.h" />
+    <QtMoc Include="AssistedConversion.h" />
     <QtMoc Include="About.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="HTTPDownloader.hpp" />

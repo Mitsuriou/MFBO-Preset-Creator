@@ -247,7 +247,8 @@ void RetargetingTool::launchUpDownGradeProcess()
     Utils::cleanPathString(lSubDirectory);
 
     // Full extract path
-    const auto& lFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
+    auto lFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
+    Utils::cleanPathString(lFullBackupDirectory);
 
     // Check if the full extract path has been given by the user
     if (lFullBackupDirectory.length() == 0)
@@ -359,7 +360,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   lTreatedFiles = 0;
 
   std::vector<QPair<QString, QString>> lOSPBuffer;
-  for (auto lPair : lNamesBuffer)
+  for (const auto& lPair : lNamesBuffer)
   {
     lOSPBuffer.push_back(lPair);
   }
@@ -404,7 +405,8 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lPresetName{QString("")};
     auto lBufferLocationToRemove{-1};
 
-    for (int i = 0; i < lOSPBuffer.size(); i++)
+    auto lOSPBufSize{lOSPBuffer.size()};
+    for (int i = 0; i < lOSPBufSize; i++)
     {
       if (lFileName == lOSPBuffer.at(i).first)
       {
@@ -548,7 +550,8 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lFileName{it3.fileInfo().completeBaseName()};
 
     // Check if the OSP file has skiped the parsing
-    for (int i = 0; i < lOSPBuffer.size(); i++)
+    auto lOSPBufSize{lOSPBuffer.size()};
+    for (int i = 0; i < lOSPBufSize; i++)
     {
       if (lFileName == lOSPBuffer.at(i).first)
       {
@@ -559,8 +562,9 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Searching for the preset name in the buffer
     auto lPresetName{QString("")};
+    auto lNamesBufSize{lNamesBuffer.size()};
 
-    for (int i = 0; i < lNamesBuffer.size(); i++)
+    for (int i = 0; i < lNamesBufSize; i++)
     {
       if (lFileName == lNamesBuffer.at(i).first)
       {

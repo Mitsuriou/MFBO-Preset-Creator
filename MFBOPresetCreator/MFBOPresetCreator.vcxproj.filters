@@ -7,9 +7,6 @@
     <ClCompile Include="About.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="AssistedConversionTool.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="BodySlideFiltersEditor.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
@@ -48,6 +45,9 @@
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="AssistedConversion.cpp">
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,9 +111,6 @@
     <QtMoc Include="About.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="AssistedConversionTool.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
     <QtMoc Include="BodySlideFiltersEditor.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
@@ -149,6 +146,9 @@
     </QtMoc>
     <QtMoc Include="Utils.h">
       <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="AssistedConversion.h">
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
