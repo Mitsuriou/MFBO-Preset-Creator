@@ -52,7 +52,7 @@ void BodySlideFiltersEditor::initializeGUI(const QStringList& aInitialList)
   this->setupInterface(*lMainLayout);
 
   // Populate the list from the user data
-  for (auto lFilter : aInitialList)
+  for (const auto& lFilter : aInitialList)
   {
     this->mListWidget->addItem(lFilter);
     auto lItem{this->mListWidget->item(this->mListWidget->count() - 1)};
@@ -86,7 +86,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   aLayout.addLayout(lButtonLayout, 1, 1, Qt::AlignTop);
 
   // User theme accent
-  auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
 
   // Add row button
   auto lAddNewRow{new QPushButton(this)};
@@ -135,6 +135,7 @@ void BodySlideFiltersEditor::addRow()
 void BodySlideFiltersEditor::deleteRow()
 {
   auto lItem{this->mListWidget->currentItem()};
+
   delete lItem;
   lItem = nullptr;
 

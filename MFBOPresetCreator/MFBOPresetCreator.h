@@ -18,7 +18,7 @@ class MFBOPresetCreator : public QMainWindow
   Q_OBJECT
 
 public:
-  MFBOPresetCreator(QWidget* parent = Q_NULLPTR);
+  explicit MFBOPresetCreator(QWidget* parent = Q_NULLPTR);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

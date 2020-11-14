@@ -9,7 +9,7 @@ class Settings : public QDialog
   Q_OBJECT
 
 public:
-  Settings(QWidget* parent, Struct::Settings aSettings);
+  explicit Settings(QWidget* parent, Struct::Settings aSettings);
   static int const EXIT_CODE_REBOOT{-123456789};
 
 protected:

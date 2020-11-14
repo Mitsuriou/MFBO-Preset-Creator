@@ -8,7 +8,7 @@ class BodySlideFiltersEditor : public QDialog
   Q_OBJECT
 
 public:
-  BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const QStringList& aInitialList);
+  explicit BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const QStringList& aInitialList);
 
 signals:
   void listEdited(QStringList);

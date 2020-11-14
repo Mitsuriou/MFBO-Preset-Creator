@@ -172,7 +172,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lEditFilters{new QPushButton(this)};
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
-  auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
   lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
   lBodyslideGridLayout->addWidget(lEditFilters, 4, 2);
 
@@ -223,7 +223,7 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   auto lSkeletonRefresher{new QPushButton(this)};
   lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
-  auto lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
+  const auto& lIconFolder{Utils::isThemeDark(mSettings.appTheme) ? QString("white") : QString("black")};
   lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
@@ -743,7 +743,7 @@ void TabCBBESE::generateDirectoryStructure()
   Utils::cleanPathString(lSubDirectory);
 
   // Full extract path
-  auto lEntryDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
+  const auto& lEntryDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
 
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.length() == 0)
@@ -831,7 +831,7 @@ void TabCBBESE::generateDirectoryStructure()
   // Copy the XML file
   auto lUserFilters{this->bodySlideFiltersStringToList()};
   auto lUserFiltersListSize{lUserFilters.size()};
-  auto lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
+  const auto& lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
 
   if (lMustUseBeastHands)
   {
@@ -879,7 +879,7 @@ void TabCBBESE::generateDirectoryStructure()
       {
         auto lUserFiltersConcat{QString("")};
 
-        for (auto lUserFilter : lUserFilters)
+        for (const auto& lUserFilter : lUserFilters)
         {
           lUserFiltersConcat += Utils::getFilterBlockFromBody(lCBBE3BBBVersionSelected, lMustUseBeastHands, lUserFilter);
         }

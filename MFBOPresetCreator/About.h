@@ -10,7 +10,7 @@ class About : public QDialog
   Q_OBJECT
 
 public:
-  About(QWidget* parent, const Struct::Settings& aSettings);
+  explicit About(QWidget* parent, const Struct::Settings& aSettings);
 
 private:
   const Struct::Settings mSettings;

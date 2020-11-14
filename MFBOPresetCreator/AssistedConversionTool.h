@@ -7,6 +7,6 @@ class AssistedConversionTool : public QDialog
   Q_OBJECT
 
 public:
-  AssistedConversionTool(QWidget* parent = Q_NULLPTR);
+  explicit AssistedConversionTool(QWidget* parent = Q_NULLPTR);
   ~AssistedConversionTool();
 };

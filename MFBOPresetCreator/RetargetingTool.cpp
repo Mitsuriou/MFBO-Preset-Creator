@@ -247,7 +247,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     Utils::cleanPathString(lSubDirectory);
 
     // Full extract path
-    auto lFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
+    const auto& lFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
 
     // Check if the full extract path has been given by the user
     if (lFullBackupDirectory.length() == 0)
@@ -469,7 +469,7 @@ void RetargetingTool::launchUpDownGradeProcess()
         auto lTextToParse{static_cast<QString>(lOSPFileContent)};
         lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
 
-        for (auto lSliderSet : lParsedSliderSets)
+        for (const auto& lSliderSet : lParsedSliderSets)
         {
           if (lSliderSet.meshpart == "Body")
           {

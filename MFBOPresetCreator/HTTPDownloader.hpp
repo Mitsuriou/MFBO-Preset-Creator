@@ -5,7 +5,7 @@ class HTTPDownloader : public QThread
   Q_OBJECT
 
 public:
-  HTTPDownloader(const QString& aURL, QWidget* aParent);
+  explicit HTTPDownloader(const QString& aURL, QWidget* aParent);
   ~HTTPDownloader();
 
 protected:

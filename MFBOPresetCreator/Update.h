@@ -12,7 +12,7 @@ class Update : public QDialog
   Q_OBJECT
 
 public:
-  Update(QWidget* parent, const Struct::Settings& aSettings);
+  explicit Update(QWidget* parent, const Struct::Settings& aSettings);
 
 private:
   const Struct::Settings mSettings;
