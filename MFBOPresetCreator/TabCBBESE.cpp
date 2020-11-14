@@ -617,7 +617,6 @@ void TabCBBESE::updateSkeletonPathState(int aState)
   switch (aState)
   {
     case Qt::Unchecked:
-      lSkeletonPreview->setStyleSheet("color: blue;");
       lSkeletonPreview->setStyleSheet("");
 
       lSkeletonPathLineEdit->setDisabled(true);
@@ -628,21 +627,14 @@ void TabCBBESE::updateSkeletonPathState(int aState)
       lSkeletonNameExtension->setDisabled(true);
       break;
     case Qt::Checked:
-      if (this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed().length() == 0)
-      {
-        lSkeletonPreview->setStyleSheet(QString("QLabel{color:hsl(4, 90%, 58%);}"));
-      }
-      else
-      {
-        lSkeletonPreview->setStyleSheet(QString("QLabel{color:hsl(141, 53%, 53%);}"));
-      }
-
       lSkeletonPathLineEdit->setDisabled(false);
       lSkeletonPreview->setDisabled(false);
       lSkeletonChooser->setDisabled(false);
       lSkeletonChooserRefresher->setDisabled(false);
       lSkeletonName->setDisabled(false);
       lSkeletonNameExtension->setDisabled(false);
+
+      this->updateSkeletonPreview();
   }
 }
 
@@ -694,19 +686,7 @@ void TabCBBESE::updateSkeletonPreview()
 void TabCBBESE::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
-
-  auto lSetGUIPath{lLineEdit->text()};
-  auto lPreSelectedDirectory{QString("")};
-  if (lSetGUIPath == "")
-  {
-    lPreSelectedDirectory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-  }
-  else
-  {
-    lPreSelectedDirectory = lSetGUIPath;
-  }
-
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lPreSelectedDirectory)};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
   this->updateOutputPreview();
 }

@@ -485,19 +485,7 @@ void Settings::restoreDefaultSettings()
 void Settings::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
-
-  auto lSetGUIPath{lLineEdit->text()};
-  auto lPreSelectedDirectory{QString("")};
-  if (lSetGUIPath == "")
-  {
-    lPreSelectedDirectory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-  }
-  else
-  {
-    lPreSelectedDirectory = lSetGUIPath;
-  }
-
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lPreSelectedDirectory)};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
 }
 

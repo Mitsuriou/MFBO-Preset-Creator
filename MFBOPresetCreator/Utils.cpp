@@ -5,6 +5,13 @@ void Utils::cleanPathString(QString& aPath)
   aPath.replace("\\", "/");
 }
 
+QString Utils::cleanPathString(const QString& aPath)
+{
+  QString lPath(aPath);
+  lPath.replace("\\", "/");
+  return lPath;
+}
+
 QString Utils::getSoftwareVersion()
 {
   return "1.9.0";

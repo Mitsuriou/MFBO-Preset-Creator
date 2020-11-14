@@ -27,7 +27,7 @@ private:
 private slots:
   void chooseInputDirectory();
   void chooseBackupDirectory();
+  void updateBackupState(int aState);
   void updateBackupPreview();
-  void switchBackupState();
   void launchUpDownGradeProcess();
 };

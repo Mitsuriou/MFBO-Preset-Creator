@@ -75,6 +75,8 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lInputPathChooser->setCursor(Qt::PointingHandCursor);
+  lInputPathChooser->setAutoDefault(false);
+  lInputPathChooser->setDefault(false);
   aLayout.addWidget(lInputPathChooser, 1, 2);
 
   // Third line
@@ -99,6 +101,8 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   auto lBackupPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lBackupPathChooser->setCursor(Qt::PointingHandCursor);
+  lBackupPathChooser->setAutoDefault(false);
+  lBackupPathChooser->setDefault(false);
   lBackupPathChooser->setObjectName("backup_dir_chooser");
   aLayout.addWidget(lBackupPathChooser, 3, 2);
 
@@ -123,35 +127,70 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"), this)};
   lGenerateButton->setCursor(Qt::PointingHandCursor);
+  lGenerateButton->setAutoDefault(false);
+  lGenerateButton->setDefault(false);
   aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
-  this->connect(lKeepBackup, &QCheckBox::clicked, this, &RetargetingTool::switchBackupState);
+  this->connect(lKeepBackup, &QCheckBox::stateChanged, this, &RetargetingTool::updateBackupState);
+  lKeepBackup->setChecked(true);
+
   this->connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
   this->connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
-
-  // Pre-filled data
-  lKeepBackup->setChecked(true);
-  this->switchBackupState();
-  this->updateBackupPreview();
 }
 
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
 }
 
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
 
   this->updateBackupPreview();
+}
+
+void RetargetingTool::updateBackupState(int aState)
+{
+  auto lBackupPathLabel{this->findChild<QLabel*>("backup_path_label")};
+  auto lBackupPathLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
+  auto lBackupPathChooser{this->findChild<QPushButton*>("backup_dir_chooser")};
+  auto lLabelSubDirectoryBackupPath{this->findChild<QLabel*>("backup_subdir_label")};
+  auto lBackupSubpathLineEdit{this->findChild<QLineEdit*>("backup_path_subdirectory")};
+  auto lOutputPathsPreviewLabel{this->findChild<QLabel*>("backup_path_preview_label")};
+  auto lOutputPathsPreview{this->findChild<QLabel*>("backup_path_preview")};
+
+  switch (aState)
+  {
+    case Qt::Unchecked:
+      lOutputPathsPreview->setStyleSheet("");
+
+      lBackupPathLabel->setDisabled(true);
+      lBackupPathLineEdit->setDisabled(true);
+      lBackupPathChooser->setDisabled(true);
+      lLabelSubDirectoryBackupPath->setDisabled(true);
+      lBackupSubpathLineEdit->setDisabled(true);
+      lOutputPathsPreviewLabel->setDisabled(true);
+      lOutputPathsPreview->setDisabled(true);
+      break;
+    case Qt::Checked:
+      lBackupPathLabel->setDisabled(false);
+      lBackupPathLineEdit->setDisabled(false);
+      lBackupPathChooser->setDisabled(false);
+      lLabelSubDirectoryBackupPath->setDisabled(false);
+      lBackupSubpathLineEdit->setDisabled(false);
+      lOutputPathsPreviewLabel->setDisabled(false);
+      lOutputPathsPreview->setDisabled(false);
+
+      this->updateBackupPreview();
+  }
 }
 
 void RetargetingTool::updateBackupPreview()
@@ -164,6 +203,7 @@ void RetargetingTool::updateBackupPreview()
   // Get subdirectory
   auto lSubDirectory{this->findChild<QLineEdit*>("backup_path_subdirectory")->text().trimmed()};
   Utils::cleanPathString(lSubDirectory);
+  auto lIsValidPath{true};
 
   // Construct full path
   auto lFullPath(QString(""));
@@ -181,47 +221,34 @@ void RetargetingTool::updateBackupPreview()
   {
     lFullPath = tr("No path given or invalid path given.");
     lMainDirTextEdit->setDisabled(true);
+    lIsValidPath = false;
   }
 
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("backup_path_preview")};
-  lOutputPathsPreview->setText(lFullPath);
-}
 
-void RetargetingTool::switchBackupState()
-{
-  auto lKeepBackup{this->findChild<QCheckBox*>("keep_backup")};
+  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
-  auto lBackupPathLabel{this->findChild<QLabel*>("backup_path_label")};
-  auto lBackupPathLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
-  auto lBackupPathChooser{this->findChild<QPushButton*>("backup_dir_chooser")};
-  auto lLabelSubDirectoryBackupPath{this->findChild<QLabel*>("backup_subdir_label")};
-  auto lBackupSubpathLineEdit{this->findChild<QLineEdit*>("backup_path_subdirectory")};
-  auto lOutputPathsPreviewLabel{this->findChild<QLabel*>("backup_path_preview_label")};
-  auto lOutputPathsPreview{this->findChild<QLabel*>("backup_path_preview")};
-
-  if (lKeepBackup->isChecked())
+  if (lIsValidPath)
   {
-    lBackupPathLabel->setDisabled(false);
-    lBackupPathLineEdit->setDisabled(false);
-    lBackupPathChooser->setDisabled(false);
-    lLabelSubDirectoryBackupPath->setDisabled(false);
-    lBackupSubpathLineEdit->setDisabled(false);
-    lOutputPathsPreviewLabel->setDisabled(false);
-    lOutputPathsPreview->setDisabled(false);
-    this->updateBackupPreview();
+    // Check if the user is trying to backup the directory into itself
+    if (lFullPath.startsWith(this->findChild<QLineEdit*>("input_path_directory")->text()))
+    {
+      lNewTextColor = "hsl(4, 90%, 58%)";
+    }
+    // Check if the wanted backup directory already exists
+    else if (QDir(lFullPath).exists())
+    {
+      lNewTextColor = "hsl(33, 100%, 71%)";
+    }
   }
   else
   {
-    this->updateBackupPreview();
-    lBackupPathLabel->setDisabled(true);
-    lBackupPathLineEdit->setDisabled(true);
-    lBackupPathChooser->setDisabled(true);
-    lLabelSubDirectoryBackupPath->setDisabled(true);
-    lBackupSubpathLineEdit->setDisabled(true);
-    lOutputPathsPreviewLabel->setDisabled(true);
-    lOutputPathsPreview->setDisabled(true);
+    lNewTextColor = "hsl(4, 90%, 58%)";
   }
+
+  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
+  lOutputPathsPreview->setText(lFullPath);
 }
 
 void RetargetingTool::launchUpDownGradeProcess()
@@ -247,13 +274,22 @@ void RetargetingTool::launchUpDownGradeProcess()
     Utils::cleanPathString(lSubDirectory);
 
     // Full extract path
-    auto lFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
-    Utils::cleanPathString(lFullBackupDirectory);
+    const auto& lDirtyFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
+    auto lFullBackupDirectory{Utils::cleanPathString(lDirtyFullBackupDirectory)};
 
     // Check if the full extract path has been given by the user
     if (lFullBackupDirectory.length() == 0)
     {
       Utils::displayWarningMessage(tr("Error: no path given to backup the files."));
+      return;
+    }
+
+    // Check if the user is trying to backup the directory into itself
+    auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+
+    if (lFullBackupDirectory.startsWith(lInputPath))
+    {
+      Utils::displayWarningMessage(tr("Error: it is not possible to backup a directory inside itself. Choose another backup location."));
       return;
     }
 
