@@ -5,7 +5,7 @@ void Utils::cleanPathString(QString& aPath)
   aPath.replace("\\", "/");
 }
 
-const QString Utils::getSoftwareVersion()
+QString Utils::getSoftwareVersion()
 {
   return "1.9.0";
 }
@@ -21,7 +21,7 @@ void Utils::displayWarningMessage(const QString& aMessage)
   lMessageBox.exec();
 }
 
-const int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
   auto lAbsFilePath{QString("")};
@@ -47,17 +47,19 @@ const int Utils::getNumberFilesByExtension(const QString& aRootDir, const QStrin
   return lNumber;
 }
 
-const bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
+bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
 {
-  auto lIsSuccess{false};
   QDir lSourceDirectory(aSourcePath);
-
   if (!lSourceDirectory.exists())
   {
     return false;
   }
 
   QDir lDestinationDirectory(aDestinationPath);
+  if (lDestinationDirectory.exists())
+  {
+    return false;
+  }
   if (!lDestinationDirectory.exists())
   {
     lDestinationDirectory.mkdir(aDestinationPath);
@@ -70,11 +72,9 @@ const bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDe
   {
     auto lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
     auto lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
-    lIsSuccess = QFile::copy(lSourceName, lDestinationName);
 
-    if (!lIsSuccess)
+    if (!QFile::copy(lSourceName, lDestinationName))
     {
-      Utils::displayWarningMessage(tr("An unknown error has occurred while creating the backup. Process aborted."));
       return false;
     }
   }
@@ -87,11 +87,9 @@ const bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDe
   {
     auto lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
     auto lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
-    lIsSuccess = copyRecursively(lSourceName, lDestinationName);
 
-    if (!lIsSuccess)
+    if (!copyRecursively(lSourceName, lDestinationName))
     {
-      Utils::displayWarningMessage(tr("An unknown error has occurred while creating the backup. Process aborted."));
       return false;
     }
   }
@@ -99,7 +97,7 @@ const bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDe
   return true;
 }
 
-const bool Utils::isThemeDark(const GUITheme& aTheme)
+bool Utils::isThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
   {
@@ -116,12 +114,12 @@ const bool Utils::isThemeDark(const GUITheme& aTheme)
   }
 }
 
-const QString Utils::getIconFolder(const GUITheme& aTheme)
+QString Utils::getIconFolder(const GUITheme& aTheme)
 {
   return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-const QString Utils::getPresetNameFromXMLFile(const QString& aPath)
+QString Utils::getPresetNameFromXMLFile(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -152,7 +150,7 @@ const QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
 }
 
-const std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
+std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
 {
   std::vector<Struct::SliderSet> lPaths;
 
@@ -224,7 +222,7 @@ const std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QStr
   return lPaths;
 }
 
-const bool Utils::isPresetUsingBeastHands(const QString& aPath)
+bool Utils::isPresetUsingBeastHands(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -262,7 +260,7 @@ void Utils::checkSettingsFileExistence()
   }
 }
 
-const Struct::Settings Utils::loadSettingsFromFile()
+Struct::Settings Utils::loadSettingsFromFile()
 {
   Utils::checkSettingsFileExistence();
 
@@ -489,7 +487,7 @@ void Utils::saveSettingsToFile(Struct::Settings aSettings)
   lSettingsFile.close();
 }
 
-const QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
+QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
 {
   // Construct a font subobject
   QJsonObject lFontObj;
@@ -517,7 +515,7 @@ const QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   return lObj;
 }
 
-const QStringList Utils::loadFiltersFromFile()
+QStringList Utils::loadFiltersFromFile()
 {
   QFile lFiltersFile(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt");
   lFiltersFile.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -535,7 +533,7 @@ void Utils::saveFiltersToFile(QStringList aList)
   lFiltersFile.close();
 }
 
-const QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
+QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
 {
   switch (aBody)
   {
@@ -597,7 +595,7 @@ const QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastH
   return "";
 }
 
-const QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
+QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
 {
   switch (aEnumValue)
   {
@@ -611,7 +609,7 @@ const QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
   }
 }
 
-const QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
+QString Utils::getLongLanguageNameFromEnum(const int& aEnumValue)
 {
   switch (aEnumValue)
   {
@@ -625,7 +623,7 @@ const QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
   }
 }
 
-const ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
+ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
 {
   if (aShortName.compare("English") == 0)
   {

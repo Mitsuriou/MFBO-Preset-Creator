@@ -265,9 +265,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Copy the directory and its content
-    auto lBackupDoneSuccessfully{Utils::copyRecursively(lRootDir, lFullBackupDirectory)};
-
-    if (!lBackupDoneSuccessfully)
+    if (!Utils::copyRecursively(lRootDir, lFullBackupDirectory))
     {
       Utils::displayWarningMessage(tr("Error: the backup could not be created. Please try again."));
       return;
