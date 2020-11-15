@@ -27,7 +27,6 @@ void Update::initializeGUI()
   // Main window container
   auto lMainVertical{new QVBoxLayout(this)};
   lMainVertical->setAlignment(Qt::AlignCenter);
-
   this->setupInterface(*lMainVertical);
 }
 

@@ -68,6 +68,7 @@ void MFBOPresetCreator::setupMenuBar()
 
   // Submenu: Relaunch the app
   auto lQuickRelaunch{new QAction(this)};
+  lQuickRelaunch->setObjectName("action_quick_relaunch");
   lQuickRelaunch->setText(tr("Quick relaunch"));
   lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
   lQuickRelaunch->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));

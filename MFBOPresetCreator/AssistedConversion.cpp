@@ -19,14 +19,13 @@ void AssistedConversion::setWindowProperties()
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Assisted Conversion"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/arrow_up")));
+  this->setWindowIcon(QIcon(QPixmap(":/black/pencil")));
 }
 
 void AssistedConversion::initializeGUI()
 {
   // Main window container
   auto lMainVertical{new QGridLayout(this)};
-
   this->setupInterface(*lMainVertical);
 }
 
@@ -108,5 +107,5 @@ void AssistedConversion::launchSearchProcess()
   auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
   auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
 
-  auto STOP = true;
+  // TODO: popup to make the user choose from these paths
 }

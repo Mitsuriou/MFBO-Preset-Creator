@@ -56,7 +56,6 @@ void RetargetingTool::initializeGUI()
 {
   // Main window container
   auto lMainVertical{new QGridLayout(this)};
-
   this->setupInterface(*lMainVertical);
 }
 

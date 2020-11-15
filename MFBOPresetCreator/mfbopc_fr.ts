@@ -133,13 +133,13 @@
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="379"/>
+        <location filename="MFBOPresetCreator.cpp" line="393"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <oldsource>An error has occured while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="395"/>
+        <location filename="MFBOPresetCreator.cpp" line="409"/>
         <source>[DEV]
 You are currently running the unreleased version &quot;%1&quot;.
 The last available version on GitHub is tagged &quot;%2&quot;.</source>
@@ -148,25 +148,21 @@ Vous utilisez actuellement la version non publiée &quot;%1&quot;.
 La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="400"/>
+        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>New update available</source>
         <translation>Nouvelle version disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="401"/>
+        <location filename="MFBOPresetCreator.cpp" line="415"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="417"/>
+        <location filename="MFBOPresetCreator.cpp" line="431"/>
         <source>OK</source>
         <translation>OK</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to quit the software?</source>
-        <translation type="vanished">Êtes-vous sûr de vouloir quitter le programme ?</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="71"/>
@@ -268,154 +264,150 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="303"/>
+        <location filename="RetargetingTool.cpp" line="329"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation>Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="317"/>
+        <location filename="RetargetingTool.cpp" line="343"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation>Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="334"/>
+        <location filename="RetargetingTool.cpp" line="360"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="363"/>
+        <location filename="RetargetingTool.cpp" line="389"/>
         <source>Parsing XML files. Please wait.</source>
         <translation>Analyse des fichiers XML. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="373"/>
-        <location filename="RetargetingTool.cpp" line="419"/>
-        <location filename="RetargetingTool.cpp" line="576"/>
+        <location filename="RetargetingTool.cpp" line="399"/>
+        <location filename="RetargetingTool.cpp" line="445"/>
+        <location filename="RetargetingTool.cpp" line="602"/>
         <source>Process aborted by user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="714"/>
+        <location filename="RetargetingTool.cpp" line="740"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="359"/>
+        <location filename="RetargetingTool.cpp" line="385"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation>Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le dévéloppeur.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="394"/>
+        <location filename="RetargetingTool.cpp" line="420"/>
         <source>Error while parsing the XML file &quot;</source>
         <translation>Erreur lors de l&apos;analyse du fichier XML &quot;</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="632"/>
-        <location filename="RetargetingTool.cpp" line="640"/>
+        <location filename="RetargetingTool.cpp" line="658"/>
+        <location filename="RetargetingTool.cpp" line="666"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="507"/>
-        <location filename="RetargetingTool.cpp" line="546"/>
-        <location filename="RetargetingTool.cpp" line="658"/>
-        <location filename="RetargetingTool.cpp" line="678"/>
+        <location filename="RetargetingTool.cpp" line="533"/>
+        <location filename="RetargetingTool.cpp" line="572"/>
+        <location filename="RetargetingTool.cpp" line="684"/>
+        <location filename="RetargetingTool.cpp" line="704"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="507"/>
-        <location filename="RetargetingTool.cpp" line="546"/>
-        <location filename="RetargetingTool.cpp" line="658"/>
-        <location filename="RetargetingTool.cpp" line="678"/>
+        <location filename="RetargetingTool.cpp" line="533"/>
+        <location filename="RetargetingTool.cpp" line="572"/>
+        <location filename="RetargetingTool.cpp" line="684"/>
+        <location filename="RetargetingTool.cpp" line="704"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="684"/>
+        <location filename="RetargetingTool.cpp" line="710"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="445"/>
+        <location filename="RetargetingTool.cpp" line="471"/>
         <source>Error while parsing the OSP file &quot;</source>
         <translation>Erreur lors de l&apos;analyse du fichier OSP &quot;</translation>
     </message>
     <message>
-        <source>Are you sure you want to close the CBBE 3BBB Version Retargeting Tool?</source>
-        <translation type="vanished">Êtes-vous sûr de vouloir quitter l&apos;Outil de Re-ciblage de Version de CBBE 3BBB ?</translation>
-    </message>
-    <message>
-        <location filename="RetargetingTool.cpp" line="394"/>
-        <location filename="RetargetingTool.cpp" line="445"/>
+        <location filename="RetargetingTool.cpp" line="420"/>
+        <location filename="RetargetingTool.cpp" line="471"/>
         <source>&quot;. Aborting process.</source>
         <translation>&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="403"/>
+        <location filename="RetargetingTool.cpp" line="429"/>
         <source>Parsing and patching OSP files. Please wait.</source>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="466"/>
+        <location filename="RetargetingTool.cpp" line="492"/>
         <source>No data found from the associated XML file. The file </source>
         <translation>Aucune donnée trouvée dans le fichier XML associé. Le fichier </translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="466"/>
+        <location filename="RetargetingTool.cpp" line="492"/>
         <source> was not modified.</source>
         <translation> n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="481"/>
-        <location filename="RetargetingTool.cpp" line="489"/>
+        <location filename="RetargetingTool.cpp" line="507"/>
+        <location filename="RetargetingTool.cpp" line="515"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="552"/>
+        <location filename="RetargetingTool.cpp" line="578"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="566"/>
+        <location filename="RetargetingTool.cpp" line="592"/>
         <source>Patching XML files. Please wait.</source>
         <translation>Patch des fichiers XML. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="603"/>
+        <location filename="RetargetingTool.cpp" line="629"/>
         <source>Since the associated OSP file has not been modified, the file </source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier </translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="603"/>
+        <location filename="RetargetingTool.cpp" line="629"/>
         <source> has not been modified.</source>
         <translation> n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="699"/>
+        <location filename="RetargetingTool.cpp" line="725"/>
         <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.40 et plus bas de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="702"/>
+        <location filename="RetargetingTool.cpp" line="728"/>
         <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.50 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="705"/>
+        <location filename="RetargetingTool.cpp" line="731"/>
         <source>All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="708"/>
+        <location filename="RetargetingTool.cpp" line="734"/>
         <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version sélectionnée de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="712"/>
+        <location filename="RetargetingTool.cpp" line="738"/>
         <source>Upgrade or downgarde successful</source>
         <translation>Re-ciblage réussi</translation>
     </message>
@@ -425,22 +417,22 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Re-cibler tous les fichiers sous l&apos;emplacement d&apos;entrée</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="233"/>
+        <location filename="RetargetingTool.cpp" line="259"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="273"/>
+        <location filename="RetargetingTool.cpp" line="299"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation>Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="294"/>
+        <location filename="RetargetingTool.cpp" line="320"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="310"/>
+        <location filename="RetargetingTool.cpp" line="336"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
@@ -451,10 +443,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="Settings.cpp" line="32"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to close the Settings window without saving?</source>
-        <translation type="vanished">Êtes-vous sûr de vouloir fermer la fenêtre des Paramètres sans sauvegarder ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="65"/>
@@ -569,10 +557,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Revenir sur l&apos;application et redémarrer plus tard</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation type="vanished">Fermer</translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="538"/>
         <source>Application settings changed</source>
         <translation>Paramètres de l&apos;application modifiés</translation>
@@ -612,288 +596,289 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
         <location filename="TabCBBESE.cpp" line="41"/>
-        <source>Meshes path:</source>
-        <translation>Emplacement des meshes :</translation>
+        <source>Meshes paths and names:</source>
+        <oldsource>Meshes path:</oldsource>
+        <translation>Emplacements et noms des meshes :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="50"/>
+        <location filename="TabCBBESE.cpp" line="93"/>
         <source>Use beast hands?</source>
         <translation>Utiliser des main de bête ?</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="53"/>
+        <location filename="TabCBBESE.cpp" line="96"/>
         <source>Check this box if the follower or NPC uses beast hands.</source>
         <translation>Cocher cette case si le follower ou le NPC utilise des mains de bête.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="59"/>
-        <source>Meshes names:</source>
-        <translation>Noms des meshes :</translation>
-    </message>
-    <message>
-        <location filename="TabCBBESE.cpp" line="69"/>
-        <location filename="TabCBBESE.cpp" line="79"/>
+        <location filename="TabCBBESE.cpp" line="57"/>
+        <location filename="TabCBBESE.cpp" line="73"/>
         <location filename="TabCBBESE.cpp" line="89"/>
         <source>_0.nif/_1.nif</source>
         <translation>_0.nif/_1.nif</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="94"/>
-        <location filename="TabCBBESE.cpp" line="135"/>
-        <location filename="TabCBBESE.cpp" line="155"/>
-        <location filename="TabCBBESE.cpp" line="254"/>
-        <location filename="TabCBBESE.cpp" line="309"/>
+        <location filename="TabCBBESE.cpp" line="103"/>
+        <location filename="TabCBBESE.cpp" line="146"/>
+        <location filename="TabCBBESE.cpp" line="166"/>
+        <location filename="TabCBBESE.cpp" line="265"/>
+        <location filename="TabCBBESE.cpp" line="320"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="117"/>
+        <location filename="TabCBBESE.cpp" line="128"/>
         <source>BodySlide</source>
         <translation>BodySlide</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="126"/>
+        <location filename="TabCBBESE.cpp" line="137"/>
         <source>Bodyslide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="146"/>
+        <location filename="TabCBBESE.cpp" line="157"/>
         <source>Preset names: &amp;#128712;</source>
         <translation>Noms des presets : &amp;#128712;</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="147"/>
+        <location filename="TabCBBESE.cpp" line="158"/>
         <source>This field represents the name under which the preset will be listed in the BodySlide application.</source>
         <oldsource>This field represents the name under which the preset will be listed in the BodySlide software.</oldsource>
         <translation>Ce champ répresente le nom sous lequel le preset va être listé dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="163"/>
+        <location filename="TabCBBESE.cpp" line="174"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="192"/>
+        <location filename="TabCBBESE.cpp" line="203"/>
         <source>Additional options</source>
         <translation>Options supplémentaires</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="202"/>
+        <location filename="TabCBBESE.cpp" line="213"/>
         <source>Use a custom skeleton? &amp;#128712;</source>
         <translation>Utiliser un squelette personnalisé ? &amp;#128712;</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="203"/>
+        <location filename="TabCBBESE.cpp" line="214"/>
         <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation>Note : ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="206"/>
+        <location filename="TabCBBESE.cpp" line="217"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation>Cocher cette case si le follower ou le NPC utilise un squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="212"/>
+        <location filename="TabCBBESE.cpp" line="223"/>
         <source>Skeleton file:</source>
         <translation>Fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="231"/>
+        <location filename="TabCBBESE.cpp" line="242"/>
         <source>Skeleton path:</source>
         <translation>Emplacement du squelette :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="240"/>
+        <location filename="TabCBBESE.cpp" line="251"/>
         <source>Skeleton file name:</source>
         <translation>Nom du fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="249"/>
+        <location filename="TabCBBESE.cpp" line="260"/>
         <source>.nif</source>
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="277"/>
+        <location filename="TabCBBESE.cpp" line="288"/>
         <source>Output</source>
         <translation>Sortie</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="286"/>
+        <location filename="TabCBBESE.cpp" line="297"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="296"/>
+        <location filename="TabCBBESE.cpp" line="307"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="301"/>
+        <location filename="TabCBBESE.cpp" line="312"/>
         <source>Output subdirectory name/path:</source>
         <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="328"/>
+        <location filename="TabCBBESE.cpp" line="339"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="460"/>
+        <location filename="TabCBBESE.cpp" line="492"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="593"/>
+        <location filename="TabCBBESE.cpp" line="625"/>
         <source>Error while evaluating the data.</source>
         <translation>Erreur en tantant d&apos;évaluer les données.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="731"/>
+        <location filename="TabCBBESE.cpp" line="769"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="738"/>
+        <location filename="TabCBBESE.cpp" line="776"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="748"/>
-        <location filename="TabCBBESE.cpp" line="754"/>
+        <location filename="TabCBBESE.cpp" line="786"/>
+        <location filename="TabCBBESE.cpp" line="792"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="748"/>
+        <location filename="TabCBBESE.cpp" line="786"/>
         <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="754"/>
+        <location filename="TabCBBESE.cpp" line="792"/>
         <source>&quot; already exists on your computer.</source>
         <translation>&quot; existe déjà sur votre ordinateur.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="761"/>
-        <source>Error: no path has been given for the meshes.</source>
-        <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes.</translation>
+        <location filename="TabCBBESE.cpp" line="799"/>
+        <source>Error: no path has been given for the body meshes.</source>
+        <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="768"/>
+        <location filename="TabCBBESE.cpp" line="805"/>
+        <source>Error: no path has been given for the feet meshes.</source>
+        <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="811"/>
+        <source>Error: no path has been given for the hands meshes.</source>
+        <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
+    </message>
+    <message>
+        <location filename="TabCBBESE.cpp" line="818"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="775"/>
+        <location filename="TabCBBESE.cpp" line="825"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <oldsource>Error: no name given for the slider sets (names that appear in the BodySlide software).</oldsource>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="787"/>
-        <location filename="TabCBBESE.cpp" line="900"/>
+        <location filename="TabCBBESE.cpp" line="837"/>
+        <location filename="TabCBBESE.cpp" line="950"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="787"/>
-        <location filename="TabCBBESE.cpp" line="900"/>
+        <location filename="TabCBBESE.cpp" line="837"/>
+        <location filename="TabCBBESE.cpp" line="950"/>
         <source>&quot; already exists.</source>
         <translation>&quot; existe déjà.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="807"/>
+        <location filename="TabCBBESE.cpp" line="857"/>
         <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <translation>Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le développeur.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="821"/>
-        <location filename="TabCBBESE.cpp" line="830"/>
+        <location filename="TabCBBESE.cpp" line="871"/>
+        <location filename="TabCBBESE.cpp" line="880"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="847"/>
-        <location filename="TabCBBESE.cpp" line="881"/>
-        <location filename="TabCBBESE.cpp" line="937"/>
-        <location filename="TabCBBESE.cpp" line="964"/>
+        <location filename="TabCBBESE.cpp" line="897"/>
+        <location filename="TabCBBESE.cpp" line="931"/>
+        <location filename="TabCBBESE.cpp" line="987"/>
+        <location filename="TabCBBESE.cpp" line="1014"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="847"/>
-        <location filename="TabCBBESE.cpp" line="881"/>
-        <location filename="TabCBBESE.cpp" line="937"/>
-        <location filename="TabCBBESE.cpp" line="964"/>
+        <location filename="TabCBBESE.cpp" line="897"/>
+        <location filename="TabCBBESE.cpp" line="931"/>
+        <location filename="TabCBBESE.cpp" line="987"/>
+        <location filename="TabCBBESE.cpp" line="1014"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="887"/>
+        <location filename="TabCBBESE.cpp" line="937"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="912"/>
-        <location filename="TabCBBESE.cpp" line="920"/>
+        <location filename="TabCBBESE.cpp" line="962"/>
+        <location filename="TabCBBESE.cpp" line="970"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="970"/>
+        <location filename="TabCBBESE.cpp" line="1020"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="994"/>
+        <location filename="TabCBBESE.cpp" line="1044"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <oldsource>The custom skeleton file was not found or could not be copied. The software will try with the default XPMSSE (v4.72) skeleton instead...</oldsource>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="999"/>
+        <location filename="TabCBBESE.cpp" line="1049"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="1032"/>
+        <location filename="TabCBBESE.cpp" line="1082"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <source>The skeleton file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
-        <oldsource>The skeleton file could not be created. Did you execute the program with limited permissions?</oldsource>
-        <translation type="vanished">Le fichier du squelette n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
-    </message>
-    <message>
-        <location filename="TabCBBESE.cpp" line="1006"/>
+        <location filename="TabCBBESE.cpp" line="1056"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="1017"/>
+        <location filename="TabCBBESE.cpp" line="1067"/>
         <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation>Tous les fichiers ont été correctement générés, pour la version 1.40 et plus bas de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="1020"/>
+        <location filename="TabCBBESE.cpp" line="1070"/>
         <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation>Tous les fichiers ont été correctement générés, pour la version 1.50 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="1023"/>
+        <location filename="TabCBBESE.cpp" line="1073"/>
         <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
         <translation>Tous les fichiers ont été correctement générés, pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="1026"/>
+        <location filename="TabCBBESE.cpp" line="1076"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="TabCBBESE.cpp" line="1030"/>
+        <location filename="TabCBBESE.cpp" line="1080"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -960,21 +945,16 @@ Cliquez sur le bouton de téléchargement pour être redirigé(e) sur Github.com
         <translation>OK</translation>
     </message>
     <message>
-        <source>An unknown error has occurred while creating the backup. Process aborted.</source>
-        <oldsource>An unknown error has occured while creating the backup. Process aborted.</oldsource>
-        <translation type="vanished">Une erreur inattendue s&apos;est produite lors de la création du backup. Processus interrompu.</translation>
-    </message>
-    <message>
-        <location filename="Utils.cpp" line="143"/>
-        <location filename="Utils.cpp" line="176"/>
-        <location filename="Utils.cpp" line="246"/>
+        <location filename="Utils.cpp" line="145"/>
+        <location filename="Utils.cpp" line="178"/>
+        <location filename="Utils.cpp" line="248"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="143"/>
-        <location filename="Utils.cpp" line="176"/>
-        <location filename="Utils.cpp" line="246"/>
+        <location filename="Utils.cpp" line="145"/>
+        <location filename="Utils.cpp" line="178"/>
+        <location filename="Utils.cpp" line="248"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>
