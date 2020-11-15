@@ -144,7 +144,7 @@ void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lNamesInApp{new QLabel(this)};
   lNamesInApp->setTextFormat(Qt::RichText);
   lNamesInApp->setText(tr("Preset names: &#128712;"));
-  lNamesInApp->setToolTip(QString(tr("This field represents the name under which the preset will be listed in the BodySlide software.")));
+  lNamesInApp->setToolTip(QString(tr("This field represents the name under which the preset will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 2, 0);
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
@@ -772,7 +772,7 @@ void TabCBBESE::generateDirectoryStructure()
   // Check if a name has been given for the presets
   if (lBodyslideSlidersetsNames.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide software)."));
+    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."));
     return;
   }
 
@@ -991,7 +991,7 @@ void TabCBBESE::generateDirectoryStructure()
 
       if (!QFile::copy(lPath, lSkeletonWriteLocation))
       {
-        Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The software will try with the default XPMSSE (v4.72) skeleton instead..."));
+        Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
 
         // Fallback option if the custom skeleton could not be copied
         if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
@@ -1051,7 +1051,7 @@ void TabCBBESE::refreshAllPreviewFields()
   // Refresh the preview of the body meshes parts
   this->updateMeshesPreview();
 
-  // Refresh the names in the bodyslide software
+  // Refresh the names in the bodyslide application
   auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }

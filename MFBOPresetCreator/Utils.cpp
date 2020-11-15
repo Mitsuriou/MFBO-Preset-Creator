@@ -12,7 +12,7 @@ QString Utils::cleanPathString(const QString& aPath)
   return lPath;
 }
 
-QString Utils::getSoftwareVersion()
+QString Utils::getApplicationVersion()
 {
   return "1.9.0";
 }

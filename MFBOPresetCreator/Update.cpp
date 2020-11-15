@@ -90,7 +90,7 @@ void Update::pageFetched(const QString& aResult)
     QJsonObject obj{doc.object()};
     auto lTagName = obj["tag_name"].toString();
 
-    auto lCurrentVersion{Utils::getSoftwareVersion()};
+    auto lCurrentVersion{Utils::getApplicationVersion()};
 
 #ifdef DEBUG
 

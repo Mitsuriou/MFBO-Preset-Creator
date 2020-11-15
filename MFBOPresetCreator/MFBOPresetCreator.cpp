@@ -14,13 +14,13 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 {
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Quitting"), tr("Do you want to quit the software?"), QMessageBox::StandardButton::NoButton, this);
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Quitting"), tr("Do you want to quit the application?"), QMessageBox::StandardButton::NoButton, this);
 
-  auto lCloseButton{lConfirmationBox.addButton(tr("Quit the software"), QMessageBox::ButtonRole::YesRole)};
+  auto lCloseButton{lConfirmationBox.addButton(tr("Quit the application"), QMessageBox::ButtonRole::YesRole)};
   lCloseButton->setCursor(Qt::PointingHandCursor);
   lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
 
-  auto lStayButton{lConfirmationBox.addButton(tr("Go back to the software"), QMessageBox::ButtonRole::NoRole)};
+  auto lStayButton{lConfirmationBox.addButton(tr("Go back to the application"), QMessageBox::ButtonRole::NoRole)};
   lStayButton->setCursor(Qt::PointingHandCursor);
   lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
 
@@ -384,7 +384,7 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     QJsonDocument doc{QJsonDocument::fromJson(aResult.toUtf8())};
     QJsonObject obj{doc.object()};
     auto lTagName = obj["tag_name"].toString();
-    auto lCurrentVersion{Utils::getSoftwareVersion()};
+    auto lCurrentVersion{Utils::getApplicationVersion()};
 
     if (lCurrentVersion != lTagName)
     {

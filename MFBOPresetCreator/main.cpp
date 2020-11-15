@@ -12,15 +12,15 @@ int main(int argc, char* argv[])
   {
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
-    lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getSoftwareVersion() + ")");
-    lMainApplication.setApplicationVersion(Utils::getSoftwareVersion());
-    lMainApplication.setWindowIcon(QIcon(QPixmap(":/software/icon")));
+    lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getApplicationVersion() + ")");
+    lMainApplication.setApplicationVersion(Utils::getApplicationVersion());
+    lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
 
     // Show the splash screen
-    QPixmap lSplashScreenBackground(":/software/splashscreen");
+    QPixmap lSplashScreenBackground(":/application/splashscreen");
 
     QSplashScreen lSplashScreen(lSplashScreenBackground.scaled(800, 450));
-    lSplashScreen.showMessage("MFBOPC (v." + Utils::getSoftwareVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    lSplashScreen.showMessage("MFBOPC (v." + Utils::getApplicationVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lSplashScreen.show();
 
     lMainApplication.processEvents();

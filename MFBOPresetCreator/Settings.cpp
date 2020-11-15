@@ -535,12 +535,12 @@ void Settings::saveSettings()
 
   if (mMustRebootMainApp)
   {
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the software to be applied. Would you like to restart the software now?"), QMessageBox::StandardButton::NoButton, this);
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::StandardButton::NoButton, this);
 
     auto lRestartNowButton{lConfirmationBox.addButton(tr("Restart now"), QMessageBox::ButtonRole::YesRole)};
     lRestartNowButton->setCursor(Qt::PointingHandCursor);
 
-    auto lRestartLaterButton{lConfirmationBox.addButton(tr("Go back to the software and restart later"), QMessageBox::ButtonRole::NoRole)};
+    auto lRestartLaterButton{lConfirmationBox.addButton(tr("Go back to the application and restart later"), QMessageBox::ButtonRole::NoRole)};
     lRestartLaterButton->setCursor(Qt::PointingHandCursor);
 
     lConfirmationBox.setDefaultButton(lRestartLaterButton);

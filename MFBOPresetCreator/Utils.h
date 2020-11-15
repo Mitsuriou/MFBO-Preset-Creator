@@ -13,7 +13,7 @@ public:
   // General functions
   static void cleanPathString(QString& aPath);
   static QString cleanPathString(const QString& aPath);
-  static QString getSoftwareVersion();
+  static QString getApplicationVersion();
   static void displayWarningMessage(const QString& aMessage);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);

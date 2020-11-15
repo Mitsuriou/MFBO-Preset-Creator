@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/software">
+    <qresource prefix="/application">
         <file alias="icon">ressources/software/icon.png</file>
         <file alias="splashscreen">ressources/software/splashscreen.png</file>
     </qresource>

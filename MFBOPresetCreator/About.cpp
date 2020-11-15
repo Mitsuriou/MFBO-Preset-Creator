@@ -38,15 +38,15 @@ void About::initializeGUI()
   // Build the description
   auto lDescription(
     QStringLiteral(
-      "<h1 style=\"text-align: center; padding: 0px; margin: 0px;\">About this software</h1><br />"
+      "<h1 style=\"text-align: center; padding: 0px; margin: 0px;\">About this application</h1><br />"
       "<p style=\"padding: 0px; margin: 0px; margin-left: 25px; margin-right: 25px;\">"
-      "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is a software "
+      "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is an application "
       "created by Dylan Jacquemin (also known under the nickname <a href=\"https://www.nexusmods.com/users/37026145\">Mitsuriou</a>).<br />"
-      "This software has been developed to be provided for free to any user that wants to use the software.<br />"
+      "This application has been developed to be provided for free to any user that wants to use the application.<br />"
       "The totality of the source code is available on "
       "<a href=\"https://github.com/Mitsuriou/MFBO-Preset-Creator\">GitHub.com</a>."
       "<br /><br />"
-      "Ressources used to make this software:<br />"
+      "Ressources used to make this application:<br />"
       "&bull; <a href='https://www.qt.io'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).<br />"
       "&bull; <a href='http://buildnumber.sourceforge.net/'>BuildNumber</a> is used for version number auto-incrementat.<br />"
       "&bull; All the icons were taken from <a href=\"https://materialdesignicons.com\">MaterialDesignIcons.com</a>.<br />"
@@ -54,7 +54,7 @@ void About::initializeGUI()
       "&bull; Some GUI themes were taken from <a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\">Alexhuszagh/BreezeStyleSheets GitHub page</a>.<br />"
       "&bull; Some GUI themes were taken from <a href=\"https://github.com/QuasarApp/QStyleSheet\">QuasarApp/QStyleSheet GitHub page</a>.<br />"
       "<br />"
-      "Ressources bundled in this software:<br />"
+      "Ressources bundled in this application:<br />"
       "&bull; The BodySlide (OSP and XML) files that are generated with MFBOPC were taken from the "
       "<a href=\"https://www.nexusmods.com/skyrimspecialedition/mods/30174\">CBBE 3BBB</a> mod on NexusMod "
       "and modified by Dylan Jacquemin.<br />"

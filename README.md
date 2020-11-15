@@ -1,20 +1,20 @@
 # Mitsuriou's Follower Bodies Overhaul: Preset Creator
-MFBOPC is a GUI software that should able anyone to change a body mesh of a follower or an NPC to a CBBE 3BBB 3BA body mesh.
-In addition, the user is able to generate files that the BodySlide software is able to read, to custom the follower's or NPC's body shape.
+MFBOPC is a GUI application that should able anyone to change a body mesh of a follower or an NPC to a CBBE 3BBB 3BA body mesh.
+In addition, the user is able to generate files that the BodySlide application is able to read, to custom the follower's or NPC's body shape.
 
-MFBOPC has been designed to work with **Skyrim: Special Edition only**. The software might be able to work for other games with future updated...
+MFBOPC has been designed to work with **Skyrim: Special Edition only**. The application might be able to work for other games with future updated...
 
-At this time, the software is only capable of changing the body, hands and feet meshes and cannot convert any cloth, outfit or armor: it is a difficult and very time consuming task even for a Human being, I'm not sure of being able to make the software that powerful.
+At this time, the application is only capable of changing the body, hands and feet meshes and cannot convert any cloth, outfit or armor: it is a difficult and very time consuming task even for a Human being, I'm not sure of being able to make the application that powerful.
 
 # How to install and run MFBO: PC
 ### Download
 Choose the **latest release** on https://github.com/Mitsuriou/MFBO-Preset-Creator/releases and download either the **.7z** file or the **.zip** file that is named **MFBO.Preset.Creator.[*version number*].[*7z|zip*]**. They are the same, but some people do not know how to open .7z files, so I try to always provide both alternatives.
 
 ### Install
-The software is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the folder of your choice the content of the archive.
+The application is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the folder of your choice the content of the archive.
 
 ### Launch
-To launch the software, simply click on the **MFBOPresetCreator.exe** file (the one with a black and white icon).
+To launch the application, simply click on the **MFBOPresetCreator.exe** file (the one with a black and white icon).
 
 # Roadmap (not ordered by priority)
 ### GUI modifications
@@ -32,11 +32,11 @@ To launch the software, simply click on the **MFBOPresetCreator.exe** file (the 
 - [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation
 - [X] (1.8.2) Be able to import a custom *female_skeleton.nif* file
 - [X] (1.8.4) Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
-- [X] (1.7.4) Be able to set a default export path that would be chosen automatically when the software launches
+- [X] (1.7.4) Be able to set a default export path that would be chosen automatically when the application launches
 
 ### Developer side
 - [ ] Create test classes
-- [X] (1.7.6) Splashscreen when the software is being launched
+- [X] (1.7.6) Splashscreen when the application is being launched
 - [X] (1.8.0) In-app update checker
 - [ ] In-app automatic updater
 - [ ] Executable to install the app on C:/ProgramFiles (InnoSetup?)
