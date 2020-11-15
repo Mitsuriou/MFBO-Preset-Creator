@@ -20,10 +20,13 @@ private:
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
 
-  std::map<std::string, QString, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+  // TODO: Optimize the code to avoid the multimap below:
+  std::multimap<std::string, QString, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
+  std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface();
 
 private slots:
   void chooseInputDirectory();
   void launchSearchProcess();
+  void validateSelection();
 };

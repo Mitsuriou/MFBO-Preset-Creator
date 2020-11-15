@@ -94,4 +94,12 @@ namespace Struct
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory);
     };
   };
+
+  struct AssistedConversionResult
+  {
+  public:
+    QString path;
+    QString name;
+    int role;
+  };
 }

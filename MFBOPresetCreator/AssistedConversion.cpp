@@ -64,10 +64,11 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
 }
 
-std::map<std::string, QString, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+// TODO: Optimize the code to avoid the multimap below:
+std::multimap<std::string, QString, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
-  // vector<pair<file name, path>>
-  std::map<std::string, QString, std::greater<std::string>> lScannedValues;
+  // TODO: Optimize the code to avoid the multimap below:
+  std::multimap<std::string, QString, std::greater<std::string>> lScannedValues;
 
   auto lAbsFilePath{QString("")};
   auto lRelativeDirPath{QString("")};
@@ -83,8 +84,13 @@ std::map<std::string, QString, std::greater<std::string>> AssistedConversion::sc
     lRelativeDirPath = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
 
     lFileName = it.fileInfo().fileName();
-    lFileName.remove("_0.nif", Qt::CaseInsensitive);
-    lFileName.remove("_1.nif", Qt::CaseInsensitive);
+
+    // TODO: Re-add or change this line based on the multimap changes
+    // Clean the file name from any artifact
+    //lFileName.remove("_0.nif", Qt::CaseInsensitive);
+    //lFileName.remove("_1.nif", Qt::CaseInsensitive);
+    //lFileName.remove(".nif", Qt::CaseInsensitive);
+
     lScannedValues.insert(std::make_pair(lFileName.toStdString(), lRelativeDirPath));
   }
 
@@ -109,10 +115,17 @@ void AssistedConversion::chooseInputDirectory()
 
 void AssistedConversion::launchSearchProcess()
 {
-  auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
-  auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
+  // TODO: Add a check before doing anything: the root directory should at least contain an ESP, ESL or ESM file to be scanned
+  // If it does not contain one of the wanted files, ask the user to start or cancel the scan
 
-  // Create the scroll area chooser
+  // Delete already existing layout and validation button
+  auto lOldValidationButton{this->findChild<QPushButton*>("validate_selection")};
+  if (lOldValidationButton)
+  {
+    delete lOldValidationButton;
+    lOldValidationButton = nullptr;
+  }
+
   auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   if (lOldScrollArea)
   {
@@ -120,6 +133,7 @@ void AssistedConversion::launchSearchProcess()
     lOldScrollArea = nullptr;
   }
 
+  // Create the scroll area chooser
   auto lMainLayout{this->findChild<QGridLayout*>("main_layout")};
 
   auto lScrollArea{new QScrollArea(this)};
@@ -128,24 +142,41 @@ void AssistedConversion::launchSearchProcess()
 
   auto lMainWidget{new QFrame(this)};
 
-  auto lVerticalContentContainer = new QGridLayout(lMainWidget);
-  lVerticalContentContainer->setContentsMargins(0, 0, 0, 0);
+  auto lDataContainer = new QGridLayout(lMainWidget);
+  lDataContainer->setObjectName("data_container");
+  lDataContainer->setContentsMargins(0, 0, 0, 0);
 
   lScrollArea->setWidget(lMainWidget);
   lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
 
   // Columns header
-  lVerticalContentContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignLeft);
-  lVerticalContentContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignLeft);
-  lVerticalContentContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignRight);
+  lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignLeft);
+  lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignLeft);
+  lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignRight);
+
+  // Fetch all the "*.nif" files
+  auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+  auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
 
   auto lNextRow{1};
+
   for (const auto& lNifFile : lFoundNifFiles)
   {
-    this->createSelectionBlock(*lVerticalContentContainer, QString::fromStdString(lNifFile.first), lNifFile.second, lNextRow++);
+    this->createSelectionBlock(*lDataContainer, QString::fromStdString(lNifFile.first), lNifFile.second, lNextRow++);
   }
 
-  // Create validate button
+  // Create the validation button
+  auto lValidateSelection{new QPushButton(tr("Validate the selection(s) above and go back to the main window"), this)};
+  lValidateSelection->setObjectName("validate_selection");
+  lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
+  this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
+}
+
+void AssistedConversion::validateSelection()
+{
+  auto lChosenValues{this->getChosenValuesFromInterface()};
+
+  // TODO: emit an event to refresh the main GUI
 }
 
 void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex)
@@ -156,4 +187,51 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
   auto lChoiceCombo{new QComboBox(this)};
   lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
   aLayout.addWidget(lChoiceCombo, aRowIndex, 2, Qt::AlignRight);
+}
+
+std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValuesFromInterface()
+{
+  // Fetch the grid layout
+  auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
+
+  // Iterate in the layout
+  auto lLinesToTreat{lDataContainer->rowCount()};
+
+  if (lLinesToTreat <= 1)
+  {
+    return std::vector<Struct::AssistedConversionResult>();
+  }
+
+  std::vector<Struct::AssistedConversionResult> lResults;
+  QComboBox* lComboBox{nullptr};
+  auto lFilePath{QString("")};
+  auto lFileName{QString("")};
+
+  // For each row (skip the row 0 because it is a "header")
+  for (int i = 1; i < lLinesToTreat; i++)
+  {
+    lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
+
+    // Third column is the chosen action on the line
+    if (lComboBox->currentIndex() == 0)
+    {
+      continue;
+    }
+
+    // First column is the file path
+    lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
+
+    // Second column is the file name
+    lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
+
+    // Save the gotten values
+    Struct::AssistedConversionResult lResult;
+    lResult.path = lFilePath;
+    lResult.name = lFileName;
+    lResult.role = lComboBox->currentIndex();
+
+    lResults.push_back(lResult);
+  }
+
+  return lResults;
 }
