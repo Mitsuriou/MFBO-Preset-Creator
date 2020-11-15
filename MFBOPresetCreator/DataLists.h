@@ -13,6 +13,7 @@ public:
   static QStringList getWindowOpeningModes();
   static QStringList getAppThemes();
   static QStringList getLanguages();
+  static QStringList getAssistedConversionActions();
 
 private:
   DataLists(){};

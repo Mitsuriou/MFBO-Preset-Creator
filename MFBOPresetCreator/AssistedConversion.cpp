@@ -16,6 +16,7 @@ AssistedConversion::AssistedConversion(QWidget* parent, const Struct::Settings& 
 void AssistedConversion::setWindowProperties()
 {
   this->setModal(true);
+  this->setMinimumWidth(700);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Assisted Conversion"));
@@ -25,8 +26,9 @@ void AssistedConversion::setWindowProperties()
 void AssistedConversion::initializeGUI()
 {
   // Main window container
-  auto lMainVertical{new QGridLayout(this)};
-  this->setupInterface(*lMainVertical);
+  auto lMainGrid{new QGridLayout(this)};
+  lMainGrid->setObjectName("main_layout");
+  this->setupInterface(*lMainGrid);
 }
 
 void AssistedConversion::setupInterface(QGridLayout& aLayout)
@@ -107,5 +109,48 @@ void AssistedConversion::launchSearchProcess()
   auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
   auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
 
-  // TODO: popup to make the user choose from these paths
+  // Create the scroll area chooser
+  auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  if (lOldScrollArea)
+  {
+    delete lOldScrollArea;
+    lOldScrollArea = nullptr;
+  }
+
+  auto lMainLayout{this->findChild<QGridLayout*>("main_layout")};
+
+  auto lScrollArea{new QScrollArea(this)};
+  lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->setWidgetResizable(true);
+
+  auto lMainWidget{new QFrame(this)};
+
+  auto lVerticalContentContainer = new QGridLayout(lMainWidget);
+  lVerticalContentContainer->setContentsMargins(0, 0, 0, 0);
+
+  lScrollArea->setWidget(lMainWidget);
+  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
+
+  // Columns header
+  lVerticalContentContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignLeft);
+  lVerticalContentContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignLeft);
+  lVerticalContentContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignRight);
+
+  int lNextRow{1};
+  for (const auto& lNifFile : lFoundNifFiles)
+  {
+    this->createSelectionBlock(*lVerticalContentContainer, lNifFile.first, lNifFile.second, lNextRow++);
+  }
+
+  // Create validate button
+}
+
+void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex)
+{
+  aLayout.addWidget(new QLabel(aPath + "/", this), aRowIndex, 0, Qt::AlignLeft);
+  aLayout.addWidget(new QLabel(aFileName, this), aRowIndex, 1, Qt::AlignLeft);
+
+  auto lChoiceCombo{new QComboBox(this)};
+  lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
+  aLayout.addWidget(lChoiceCombo, aRowIndex, 2, Qt::AlignRight);
 }

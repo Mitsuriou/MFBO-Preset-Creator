@@ -47,3 +47,15 @@ QStringList DataLists::getLanguages()
 
   return lLanguages;
 }
+
+QStringList DataLists::getAssistedConversionActions()
+{
+  QStringList lActions;
+  lActions.append(tr("[ignored]"));
+  lActions.append(tr("body mesh"));
+  lActions.append(tr("feet mesh"));
+  lActions.append(tr("hands mesh"));
+  lActions.append(tr("skeleton"));
+
+  return lActions;
+}

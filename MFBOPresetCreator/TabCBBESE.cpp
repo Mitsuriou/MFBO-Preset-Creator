@@ -348,7 +348,7 @@ QStringList TabCBBESE::bodySlideFiltersStringToList()
 {
   auto LFilters{this->findChild<QLabel*>("bodyslide_filters")->text()};
 
-  auto lList{LFilters.split(QString("; "))};
+  auto lList{LFilters.split(QString(" ; "))};
 
   auto lSize{lList.size()};
   for (int i = 0; i < lSize; i++)
@@ -1112,5 +1112,5 @@ void TabCBBESE::openBodySlideFiltersEditor()
 void TabCBBESE::updateBodySlideFiltersList(QStringList aList)
 {
   auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
-  LFiltersLabel->setText(aList.join(QString("; ")));
+  LFiltersLabel->setText(aList.join(QString(" ; ")));
 }

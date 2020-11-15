@@ -1,7 +1,6 @@
 #pragma once
 
 #include "DataLists.h"
-#include "Enum.h"
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"
@@ -22,6 +21,7 @@ private:
   void setupInterface(QGridLayout& aLayout);
 
   std::vector<std::pair<QString, QString>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+  void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
 
 private slots:
   void chooseInputDirectory();
