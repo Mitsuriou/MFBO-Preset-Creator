@@ -117,7 +117,7 @@ QPushButton {
   padding: 4px;
   border-radius: 6px;
   border: 1px solid #e95985;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 QPushButton::hover,
@@ -148,9 +148,9 @@ QLineEdit {
   padding: 4px;
   border-radius: 6px;
   border: none;
-  border: 1px solid #F5F5F5;
+  border: 1px solid #f5f5f5;
   border-bottom: 1px solid #e95985;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 QLineEdit::hover {
@@ -177,7 +177,7 @@ QComboBox {
   padding: 4px;
   border-radius: 6px;
   border: 1px solid #e95985;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 QComboBox::hover,
@@ -207,7 +207,7 @@ QComboBox QAbstractItemView::item {
 QListView::item::selected {
   color: #e95985;
   border-radius: 4px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 QComboBox::drop-down {
@@ -224,7 +224,7 @@ QComboBox::drop-down {
 /***********/
 QGroupBox {
   margin-top: 8px;
-  border: 1px solid #F5F5F5;
+  border: 1px solid #f5f5f5;
   border-radius: 6px;
   font-size: 16px;
 }
@@ -258,7 +258,7 @@ QTabBar::tab {
   margin-left: 2px;
   margin-right: 2px;
   color: black;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 QTabBar::tab::selected {
@@ -288,7 +288,7 @@ QTabBar::tab::focus {
 /*MENU*/
 /******/
 QMenuBar {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 QMenuBar::item {
@@ -324,7 +324,7 @@ QMenu::icon {
 }
 
 QMenu::item::selected {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   color: #e95985;
 }
 
@@ -332,9 +332,9 @@ QMenu::item::selected {
 /*LIST WIDGET*/
 /*************/
 QListWidget {
-  border: 1px solid #F5F5F5;
+  border: 1px solid #f5f5f5;
   color: black;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   alternate-background-color: white;
 }
 
@@ -344,7 +344,7 @@ QListWidget::item {
   border-radius: 4px;
   border: 1px solid transparent;
   min-height: 26px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 QListWidget::item::alternate {
@@ -377,7 +377,7 @@ QScrollBar::vertical {
   padding: 0px;
   border: 1px solid transparent;
   border-radius: 4px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   width: 14px;
 }
 
@@ -393,7 +393,7 @@ QScrollBar::add-line::vertical {
 
 QScrollBar::sub-page::vertical,
 QScrollBar::add-page::vertical {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   border-radius: 4px;
   width: 12px;
 }
@@ -424,7 +424,7 @@ QScrollBar::horizontal {
   padding: 0px;
   border: 1px solid transparent;
   border-radius: 4px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   height: 14px;
 }
 
@@ -440,7 +440,7 @@ QScrollBar::add-line::horizontal {
 
 QScrollBar::sub-page::horizontal,
 QScrollBar::add-page::horizontal {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   border-radius: 4px;
   height: 12px;
 }
