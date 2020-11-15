@@ -1027,15 +1027,17 @@ void TabCBBESE::generateDirectoryStructure()
       break;
   }
 
-  auto lReply{QMessageBox::information(this, tr("Generation successful"), lSuccessText, QMessageBox::Ok, QMessageBox::Ok)};
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Generation successful"), lSuccessText, QMessageBox::StandardButton::NoButton, this);
 
-  if (lReply == QMessageBox::Ok)
+  auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+  lOKButton->setCursor(Qt::PointingHandCursor);
+  lConfirmationBox.setDefaultButton(lOKButton);
+  lConfirmationBox.exec();
+
+  if (lConfirmationBox.clickedButton() == lOKButton && mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
   {
-    if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
-    {
-      // Open the folder where the file structure has been created
-      QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
-    }
+    // Open the folder where the file structure has been created
+    QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
 }
 

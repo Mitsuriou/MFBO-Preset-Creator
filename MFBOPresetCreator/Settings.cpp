@@ -29,21 +29,27 @@ void Settings::closeEvent(QCloseEvent* aEvent)
 
   if (this->getSettingsFromGUI() != this->mSettings)
   {
-    auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the Settings window without saving?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
 
-    if (lResult != QMessageBox::Yes)
+    auto lCloseButton{lConfirmationBox.addButton(tr("Close the settings window without saving"), QMessageBox::ButtonRole::YesRole)};
+    lCloseButton->setCursor(Qt::PointingHandCursor);
+    lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+    auto lStayButton{lConfirmationBox.addButton(tr("Go back to the settings window"), QMessageBox::ButtonRole::NoRole)};
+    lStayButton->setCursor(Qt::PointingHandCursor);
+    lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+
+    lConfirmationBox.setDefaultButton(lStayButton);
+    lConfirmationBox.exec();
+
+    if (lConfirmationBox.clickedButton() != lCloseButton)
     {
       aEvent->ignore();
-    }
-    else
-    {
-      aEvent->accept();
+      return;
     }
   }
-  else
-  {
-    aEvent->accept();
-  }
+
+  aEvent->accept();
 }
 
 void Settings::reject()
@@ -529,9 +535,18 @@ void Settings::saveSettings()
 
   if (mMustRebootMainApp)
   {
-    auto lResult{QMessageBox::question(this, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the software to be applied. Would you like to restart the software now?"), QMessageBox::StandardButton::NoButton, this);
 
-    if (lResult == QMessageBox::Yes)
+    auto lRestartNowButton{lConfirmationBox.addButton(tr("Restart now"), QMessageBox::ButtonRole::YesRole)};
+    lRestartNowButton->setCursor(Qt::PointingHandCursor);
+
+    auto lRestartLaterButton{lConfirmationBox.addButton(tr("Go back to the software and restart later"), QMessageBox::ButtonRole::NoRole)};
+    lRestartLaterButton->setCursor(Qt::PointingHandCursor);
+
+    lConfirmationBox.setDefaultButton(lRestartLaterButton);
+    lConfirmationBox.exec();
+
+    if (lConfirmationBox.clickedButton() == lRestartNowButton)
     {
       // Reboot the application in case the language is changed
       qApp->exit(Settings::EXIT_CODE_REBOOT);

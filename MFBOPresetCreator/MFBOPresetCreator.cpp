@@ -14,9 +14,20 @@ MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 {
-  auto lResult{QMessageBox::question(this, tr("Quitting"), tr("Are you sure you want to quit the software?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Quitting"), tr("Do you want to quit the software?"), QMessageBox::StandardButton::NoButton, this);
 
-  if (lResult != QMessageBox::Yes)
+  auto lCloseButton{lConfirmationBox.addButton(tr("Quit the software"), QMessageBox::ButtonRole::YesRole)};
+  lCloseButton->setCursor(Qt::PointingHandCursor);
+  lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+  auto lStayButton{lConfirmationBox.addButton(tr("Go back to the software"), QMessageBox::ButtonRole::NoRole)};
+  lStayButton->setCursor(Qt::PointingHandCursor);
+  lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+
+  lConfirmationBox.setDefaultButton(lStayButton);
+  lConfirmationBox.exec();
+
+  if (lConfirmationBox.clickedButton() != lCloseButton)
   {
     aEvent->ignore();
   }
@@ -401,7 +412,12 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
 
   if (aResult == "fetch_error" || this->mNewVersionAvailable)
   {
-    QMessageBox::information(this, lTitle, lMessage, QMessageBox::StandardButton::Ok);
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
+
+    auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+    lOKButton->setCursor(Qt::PointingHandCursor);
+    lConfirmationBox.setDefaultButton(lOKButton);
+    lConfirmationBox.exec();
   }
 }
 

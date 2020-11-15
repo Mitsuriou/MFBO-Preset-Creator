@@ -15,9 +15,20 @@ RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSetti
 
 void RetargetingTool::closeEvent(QCloseEvent* aEvent)
 {
-  auto lResult{QMessageBox::question(this, tr("Closing"), tr("Are you sure you want to close the CBBE 3BBB Version Retargeting Tool?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No)};
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
 
-  if (lResult != QMessageBox::Yes)
+  auto lCloseButton{lConfirmationBox.addButton(tr("Close the window"), QMessageBox::ButtonRole::YesRole)};
+  lCloseButton->setCursor(Qt::PointingHandCursor);
+  lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+  auto lStayButton{lConfirmationBox.addButton(tr("Go back to the retargeting tool window"), QMessageBox::ButtonRole::NoRole)};
+  lStayButton->setCursor(Qt::PointingHandCursor);
+  lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+
+  lConfirmationBox.setDefaultButton(lStayButton);
+  lConfirmationBox.exec();
+
+  if (lConfirmationBox.clickedButton() != lCloseButton)
   {
     aEvent->ignore();
   }
@@ -698,5 +709,10 @@ void RetargetingTool::launchUpDownGradeProcess()
       break;
   }
 
-  QMessageBox::information(this, tr("Upgrade or downgarde successful"), lSuccessText, QMessageBox::Ok, QMessageBox::Ok);
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Upgrade or downgarde successful"), lSuccessText, QMessageBox::StandardButton::NoButton, this);
+
+  auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+  lOKButton->setCursor(Qt::PointingHandCursor);
+  lConfirmationBox.setDefaultButton(lOKButton);
+  lConfirmationBox.exec();
 }
