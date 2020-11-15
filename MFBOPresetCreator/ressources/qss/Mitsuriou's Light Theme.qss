@@ -207,7 +207,7 @@ QComboBox QAbstractItemView::item {
 QListView::item::selected {
   color: #e95985;
   border-radius: 4px;
-  background-color: #F5F5F5
+  background-color: #F5F5F5;
 }
 
 QComboBox::drop-down {
