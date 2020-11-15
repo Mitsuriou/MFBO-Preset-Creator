@@ -20,7 +20,7 @@ private:
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
 
-  std::vector<std::pair<QString, QString>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+  std::map<std::string, QString, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
 
 private slots:

@@ -64,10 +64,10 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
 }
 
-std::vector<std::pair<QString, QString>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+std::map<std::string, QString, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
   // vector<pair<file name, path>>
-  std::vector<std::pair<QString, QString>> lScannedValues;
+  std::map<std::string, QString, std::greater<std::string>> lScannedValues;
 
   auto lAbsFilePath{QString("")};
   auto lRelativeDirPath{QString("")};
@@ -82,7 +82,10 @@ std::vector<std::pair<QString, QString>> AssistedConversion::scanForFilesByExten
     lAbsFilePath = it.fileInfo().absolutePath();
     lRelativeDirPath = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
 
-    lScannedValues.push_back(std::make_pair(it.fileInfo().fileName(), lRelativeDirPath));
+    lFileName = it.fileInfo().fileName();
+    lFileName.remove("_0.nif", Qt::CaseInsensitive);
+    lFileName.remove("_1.nif", Qt::CaseInsensitive);
+    lScannedValues.insert(std::make_pair(lFileName.toStdString(), lRelativeDirPath));
   }
 
   return lScannedValues;
@@ -136,10 +139,10 @@ void AssistedConversion::launchSearchProcess()
   lVerticalContentContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignLeft);
   lVerticalContentContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignRight);
 
-  int lNextRow{1};
+  auto lNextRow{1};
   for (const auto& lNifFile : lFoundNifFiles)
   {
-    this->createSelectionBlock(*lVerticalContentContainer, lNifFile.first, lNifFile.second, lNextRow++);
+    this->createSelectionBlock(*lVerticalContentContainer, QString::fromStdString(lNifFile.first), lNifFile.second, lNextRow++);
   }
 
   // Create validate button
