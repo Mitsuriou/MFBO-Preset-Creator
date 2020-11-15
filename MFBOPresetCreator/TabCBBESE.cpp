@@ -25,7 +25,7 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->setSpacing(10);
   lMeshesGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
-  // First line
+  // CBBE 3BBB version
   auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"), this)};
   lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
@@ -35,59 +35,68 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
-  lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
+  lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 3);
 
-  // Second line
-  auto lMeshesPathLabel{new QLabel(tr("Meshes path:"), this)};
-  lMeshesGridLayout->addWidget(lMeshesPathLabel, 1, 0);
+  // Body meshes names
+  auto lMeshestitlePreview{new QLabel(tr("Meshes paths and names:"), this)};
+  lMeshesGridLayout->addWidget(lMeshestitlePreview, 2, 0, 3, 1);
 
-  auto lMeshesPathLineEdit{new QLineEdit(this)};
-  lMeshesPathLineEdit->setObjectName("meshes_path_input");
-  lMeshesPathLineEdit->setPlaceholderText("meshes/");
-  lMeshesGridLayout->addWidget(lMeshesPathLineEdit, 1, 1, 1, 2);
-
-  // Third line
-  auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
-  lMeshesGridLayout->addWidget(lLabelBeastHands, 2, 0);
-
-  auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
-  lNeedBeastHands->setCursor(Qt::PointingHandCursor);
-  lNeedBeastHands->setObjectName("use_beast_hands");
-  lMeshesGridLayout->addWidget(lNeedBeastHands, 2, 1, 1, 2);
-
-  // Fourth line
-  auto lMeshestitlePreview{new QLabel(tr("Meshes names:"), this)};
-  lMeshesGridLayout->addWidget(lMeshestitlePreview, 3, 0, 3, 1);
+  // femalebody
+  auto lMeshesPathFemaleBodyLineEdit{new QLineEdit(this)};
+  lMeshesPathFemaleBodyLineEdit->setObjectName("meshes_path_input_femalebody");
+  lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/");
+  lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 2, 1);
 
   auto lBodyMeshNameInput{new QLineEdit(this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
-  lMeshesGridLayout->addWidget(lBodyMeshNameInput, 3, 1);
+  lMeshesGridLayout->addWidget(lBodyMeshNameInput, 2, 2);
   lBodyMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
   auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 3, 2);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 2, 3);
+
+  // femalefeet
+  auto lMeshesPathFemaleFeetLineEdit{new QLineEdit(this)};
+  lMeshesPathFemaleFeetLineEdit->setObjectName("meshes_path_input_femalefeet");
+  lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/");
+  lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 3, 1);
 
   auto lFeetMeshNameInput{new QLineEdit(this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
-  lMeshesGridLayout->addWidget(lFeetMeshNameInput, 4, 1);
+  lMeshesGridLayout->addWidget(lFeetMeshNameInput, 3, 2);
   lFeetMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
   auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 4, 2);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 3, 3);
+
+  // femalehands
+  auto lMeshesPathFemaleHandsLineEdit{new QLineEdit(this)};
+  lMeshesPathFemaleHandsLineEdit->setObjectName("meshes_path_input_femalehands");
+  lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/");
+  lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 4, 1);
 
   auto lHandsMeshNameInput{new QLineEdit(this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
-  lMeshesGridLayout->addWidget(lHandsMeshNameInput, 5, 1);
+  lMeshesGridLayout->addWidget(lHandsMeshNameInput, 4, 2);
   lHandsMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
   auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 5, 2);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 4, 3);
+
+  // Fourth line
+  auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
+  lMeshesGridLayout->addWidget(lLabelBeastHands, 5, 0);
+
+  auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
+  lNeedBeastHands->setCursor(Qt::PointingHandCursor);
+  lNeedBeastHands->setObjectName("use_beast_hands");
+  lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 2);
 
   // Preview
   auto lLabelPreview{new QLabel(this)};
@@ -103,7 +112,9 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->updateMeshesPreview();
 
   // Event binding
-  this->connect(lMeshesPathLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleFeetLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleHandsLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
   this->connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
   this->connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
   this->connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
@@ -372,12 +383,19 @@ void TabCBBESE::populateSkeletonChooser()
 
 void TabCBBESE::updateMeshesPreview()
 {
-  // Get all input fields
-  auto lMeshesPath{this->findChild<QLineEdit*>("meshes_path_input")->text().trimmed()};
-  Utils::cleanPathString(lMeshesPath);
-
+  // Body meshes path and name
+  auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
+  Utils::cleanPathString(lMeshesPathBody);
   auto lBodyName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
+
+  // Feet meshes path and name
+  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->text().trimmed()};
+  Utils::cleanPathString(lMeshesPathFeet);
   auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
+
+  // Hands meshes path and name
+  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")->text().trimmed()};
+  Utils::cleanPathString(lMeshesPathHands);
   auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
 
   // Get preview label
@@ -385,9 +403,21 @@ void TabCBBESE::updateMeshesPreview()
   auto lFullPreview(QString(""));
   auto lIsValidPath{true};
 
-  if (lMeshesPath == "")
+  if (lMeshesPathBody == "")
   {
-    lMeshesPath = "*";
+    lMeshesPathBody = "*";
+    lIsValidPath = false;
+  }
+
+  if (lMeshesPathFeet == "")
+  {
+    lMeshesPathFeet = "*";
+    lIsValidPath = false;
+  }
+
+  if (lMeshesPathHands == "")
+  {
+    lMeshesPathHands = "*";
     lIsValidPath = false;
   }
 
@@ -406,18 +436,20 @@ void TabCBBESE::updateMeshesPreview()
     lHandsName = "femalehands";
   }
 
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lBodyName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPath).arg(lBodyName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lFeetName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPath).arg(lFeetName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif\n").arg(lMeshesPath).arg(lHandsName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif").arg(lMeshesPath).arg(lHandsName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif  |  ").arg(lMeshesPathBody).arg(lBodyName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPathBody).arg(lBodyName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif  |  ").arg(lMeshesPathFeet).arg(lFeetName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPathFeet).arg(lFeetName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif  |  ").arg(lMeshesPathHands).arg(lHandsName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif").arg(lMeshesPathHands).arg(lHandsName);
 
   auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
   if (lIsValidPath)
   {
-    if (!lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPath.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPath.length() < 8))
+    if ((!lMeshesPathBody.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathBody.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathBody.length() < 8))
+        || (!lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathFeet.length() < 8))
+        || (!lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathHands.length() < 8)))
     {
       lNewTextColor = "hsl(33, 100%, 71%)";
     }
@@ -699,14 +731,20 @@ void TabCBBESE::generateDirectoryStructure()
   // Beast hands
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
 
-  // Body meshes path
-  auto lBodyMeshesPath{this->findChild<QLineEdit*>("meshes_path_input")->text().trimmed()};
-  Utils::cleanPathString(lBodyMeshesPath);
+  // Body meshes path and name
+  auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
+  Utils::cleanPathString(lMeshesPathBody);
+  auto lBodyName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
 
-  // Nif files names
-  auto lFemaleBodyNifName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
-  auto lFemaleFeetNifName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
-  auto lFemaleHandsNifName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
+  // Feet meshes path and name
+  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->text().trimmed()};
+  Utils::cleanPathString(lMeshesPathFeet);
+  auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
+
+  // Hands meshes path and name
+  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")->text().trimmed()};
+  Utils::cleanPathString(lMeshesPathHands);
+  auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
 
   // BodySlide names
   auto lOSPXMLNames{this->findChild<QLineEdit*>("names_osp_xml_input")->text().trimmed()};
@@ -756,9 +794,21 @@ void TabCBBESE::generateDirectoryStructure()
   }
 
   // Export the meshes
-  if (lBodyMeshesPath.length() == 0)
+  if (lMeshesPathBody.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no path has been given for the meshes."));
+    Utils::displayWarningMessage(tr("Error: no path has been given for the body meshes."));
+    return;
+  }
+
+  if (lMeshesPathFeet.length() == 0)
+  {
+    Utils::displayWarningMessage(tr("Error: no path has been given for the feet meshes."));
+    return;
+  }
+
+  if (lMeshesPathHands.length() == 0)
+  {
+    Utils::displayWarningMessage(tr("Error: no path has been given for the hands meshes."));
     return;
   }
 
@@ -945,13 +995,13 @@ void TabCBBESE::generateDirectoryStructure()
     {
       auto lTextToParse{static_cast<QString>(lTempOSPContent)};
       lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lBodyslideSlidersetsNames);
-      lTextToParse.replace(QString("{%%body_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
-      lTextToParse.replace(QString("{%%feet_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
-      lTextToParse.replace(QString("{%%hands_output_path%%}"), lBodyMeshesPath.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%body_output_path%%}"), lMeshesPathBody.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%feet_output_path%%}"), lMeshesPathFeet.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%hands_output_path%%}"), lMeshesPathHands.replace("/", "\\"));
 
-      lTextToParse.replace(QString("{%%body_output_file%%}"), lFemaleBodyNifName.size() > 0 ? lFemaleBodyNifName : "femalebody");
-      lTextToParse.replace(QString("{%%feet_output_file%%}"), lFemaleFeetNifName.size() > 0 ? lFemaleFeetNifName : "femalefeet");
-      lTextToParse.replace(QString("{%%hands_output_file%%}"), lFemaleHandsNifName.size() > 0 ? lFemaleHandsNifName : "femalehands");
+      lTextToParse.replace(QString("{%%body_output_file%%}"), lBodyName.size() > 0 ? lBodyName : "femalebody");
+      lTextToParse.replace(QString("{%%feet_output_file%%}"), lFeetName.size() > 0 ? lFeetName : "femalefeet");
+      lTextToParse.replace(QString("{%%hands_output_file%%}"), lHandsName.size() > 0 ? lHandsName : "femalehands");
 
       QTextStream lTextStream(&lOSPFile);
       lTextStream << lTextToParse;
@@ -1034,7 +1084,7 @@ void TabCBBESE::generateDirectoryStructure()
   lConfirmationBox.setDefaultButton(lOKButton);
   lConfirmationBox.exec();
 
-  if (lConfirmationBox.clickedButton() == lOKButton && mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
+  if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
   {
     // Open the folder where the file structure has been created
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));

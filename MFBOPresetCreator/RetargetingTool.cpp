@@ -152,6 +152,32 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   this->connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
 }
 
+int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+{
+  auto lNumber{0};
+  auto lAbsFilePath{QString("")};
+  auto lRelativeDirs{QString("")};
+
+  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  while (it.hasNext())
+  {
+    it.next();
+
+    // Ignore FOMOD directory
+    lAbsFilePath = it.fileInfo().absoluteFilePath();
+    lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
+
+    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    {
+      continue;
+    }
+
+    lNumber++;
+  }
+
+  return lNumber;
+}
+
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
@@ -320,8 +346,8 @@ void RetargetingTool::launchUpDownGradeProcess()
   }
 
   // Scan the number of files to treat
-  auto lNumberOSPFiles{Utils::getNumberFilesByExtension(lRootDir, "osp")};
-  auto lNumberXMLFiles{Utils::getNumberFilesByExtension(lRootDir, "xml")};
+  auto lNumberOSPFiles{this->getNumberFilesByExtension(lRootDir, "*.osp")};
+  auto lNumberXMLFiles{this->getNumberFilesByExtension(lRootDir, "*.xml")};
   auto lTreatedFiles{0};
 
   // Progress bar

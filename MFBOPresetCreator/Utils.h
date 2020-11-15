@@ -16,6 +16,7 @@ public:
   static QString getApplicationVersion();
   static void displayWarningMessage(const QString& aMessage);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+  static int getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions);
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconFolder(const GUITheme& aTheme);

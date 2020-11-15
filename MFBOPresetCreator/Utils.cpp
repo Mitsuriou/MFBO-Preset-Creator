@@ -31,23 +31,25 @@ void Utils::displayWarningMessage(const QString& aMessage)
 int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
-  auto lAbsFilePath{QString("")};
-  auto lRelativeDirs{QString("")};
 
-  QDirIterator it(aRootDir, QStringList() << QString("*." + aFileExtension), QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     it.next();
+    lNumber++;
+  }
 
-    // Ignore FOMOD directory
-    lAbsFilePath = it.fileInfo().absoluteFilePath();
-    lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
+  return lNumber;
+}
 
-    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
-    {
-      continue;
-    }
+int Utils::getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions)
+{
+  auto lNumber{0};
 
+  QDirIterator it(aRootDir, aFileExtensions, QDir::Files, QDirIterator::Subdirectories);
+  while (it.hasNext())
+  {
+    it.next();
     lNumber++;
   }
 
@@ -612,7 +614,6 @@ QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
       return "fr";
     default:
       return "en";
-      break;
   }
 }
 
@@ -626,7 +627,6 @@ QString Utils::getLongLanguageNameFromEnum(const int& aEnumValue)
       return "Français";
     default:
       return "English";
-      break;
   }
 }
 

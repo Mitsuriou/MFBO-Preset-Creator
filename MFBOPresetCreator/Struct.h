@@ -9,10 +9,10 @@ namespace Struct
   struct SliderSet
   {
   public:
-    QString name;
-    QString meshpart;
-    QString outputpath;
-    QString outputfile;
+    QString name{""};
+    QString meshpart{""};
+    QString outputpath{""};
+    QString outputfile{""};
   };
 
   struct Font

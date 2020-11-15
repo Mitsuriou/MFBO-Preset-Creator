@@ -21,7 +21,7 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 - [X] (1.7.4+) Separate the main GUI into tabs for the different body types
 - [ ] Create the tabs for all the most popular body types
 - [ ] Add compatibility with CBBE 3BBB SMP
-- [ ] Allow the user to type different paths for the body, hands and feet
+- [X] (1.9.0) Allow the user to type different paths for the body, hands and feet
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
 
 ### New tools

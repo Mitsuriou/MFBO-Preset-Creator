@@ -5,6 +5,7 @@
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"
+#include <utility>
 
 class AssistedConversion : public QDialog
 {
@@ -20,7 +21,9 @@ private:
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
 
+  std::vector<std::pair<QString, QString>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+
 private slots:
   void chooseInputDirectory();
-  void launchUpDownGradeProcess();
+  void launchSearchProcess();
 };

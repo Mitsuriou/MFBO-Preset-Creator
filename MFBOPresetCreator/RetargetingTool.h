@@ -24,6 +24,8 @@ private:
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
 
+  int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+
 private slots:
   void chooseInputDirectory();
   void chooseBackupDirectory();

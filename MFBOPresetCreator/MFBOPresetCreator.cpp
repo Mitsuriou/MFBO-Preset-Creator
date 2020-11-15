@@ -272,14 +272,28 @@ void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize
 
 std::vector<QLineEdit*> MFBOPresetCreator::disableLineEditPlaceholders()
 {
+  // Workaround function for style glitch with QSS and QLineEdit
   std::vector<QLineEdit*> lList;
 
-  // Workaround for style glitch with QSS and QLineEdit
-  auto lMeshesPathLineEdit{this->findChild<QLineEdit*>("meshes_path_input")};
-  if (lMeshesPathLineEdit->isEnabled())
+  auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")};
+  if (lMeshesPathBody->isEnabled())
   {
-    lMeshesPathLineEdit->setDisabled(true);
-    lList.push_back(lMeshesPathLineEdit);
+    lMeshesPathBody->setDisabled(true);
+    lList.push_back(lMeshesPathBody);
+  }
+
+  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")};
+  if (lMeshesPathFeet->isEnabled())
+  {
+    lMeshesPathFeet->setDisabled(true);
+    lList.push_back(lMeshesPathFeet);
+  }
+
+  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")};
+  if (lMeshesPathHands->isEnabled())
+  {
+    lMeshesPathHands->setDisabled(true);
+    lList.push_back(lMeshesPathHands);
   }
 
   auto lBodyMeshNameInput{this->findChild<QLineEdit*>("body_mesh_name_input")};

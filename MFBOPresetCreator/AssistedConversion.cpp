@@ -50,25 +50,63 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lInputPathChooser, 0, 2);
 
   // Generate button
-  auto lGenerateButton{new QPushButton(tr("[WIP] Launch the files search"), this)};
-  lGenerateButton->setCursor(Qt::PointingHandCursor);
-  lGenerateButton->setAutoDefault(false);
-  lGenerateButton->setDefault(false);
-  aLayout.addWidget(lGenerateButton, 1, 0, 1, 3, Qt::AlignBottom);
+  auto lLaunchSearchButton{new QPushButton(tr("[WIP] Launch the files search"), this)};
+  lLaunchSearchButton->setObjectName("launch_search_button");
+  lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
+  lLaunchSearchButton->setAutoDefault(false);
+  lLaunchSearchButton->setDefault(false);
+  lLaunchSearchButton->setDisabled(true);
+  aLayout.addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignBottom);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &AssistedConversion::chooseInputDirectory);
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &AssistedConversion::launchUpDownGradeProcess);
+  this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
+}
+
+std::vector<std::pair<QString, QString>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+{
+  // vector<pair<file name, path>>
+  std::vector<std::pair<QString, QString>> lScannedValues;
+
+  auto lAbsFilePath{QString("")};
+  auto lRelativeDirPath{QString("")};
+  auto lFileName{QString("")};
+
+  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  while (it.hasNext())
+  {
+    it.next();
+
+    // Get the current directory
+    lAbsFilePath = it.fileInfo().absolutePath();
+    lRelativeDirPath = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
+
+    lScannedValues.push_back(std::make_pair(it.fileInfo().fileName(), lRelativeDirPath));
+  }
+
+  return lScannedValues;
 }
 
 void AssistedConversion::chooseInputDirectory()
 {
+  // Fetch GUI components
+  auto lLaunchSearchButton{this->findChild<QPushButton*>("launch_search_button")};
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
+
+  // Open a directory chooser dialog
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
-  lLineEdit->setDisabled(lPath.compare("", Qt::CaseInsensitive) == 0);
+
+  // Enable or disable path viewer label and launch button
+  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
+  lLineEdit->setDisabled(lMustDisableButton);
+  lLaunchSearchButton->setDisabled(lMustDisableButton);
 }
 
-void AssistedConversion::launchUpDownGradeProcess()
+void AssistedConversion::launchSearchProcess()
 {
+  auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+  auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
+
+  auto STOP = true;
 }
