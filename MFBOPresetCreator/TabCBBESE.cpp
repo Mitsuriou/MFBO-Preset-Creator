@@ -436,12 +436,9 @@ void TabCBBESE::updateMeshesPreview()
     lHandsName = "femalehands";
   }
 
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif  |  ").arg(lMeshesPathBody).arg(lBodyName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPathBody).arg(lBodyName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif  |  ").arg(lMeshesPathFeet).arg(lFeetName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif\n").arg(lMeshesPathFeet).arg(lFeetName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_0.nif  |  ").arg(lMeshesPathHands).arg(lHandsName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_1.nif").arg(lMeshesPathHands).arg(lHandsName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName);
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName);
 
   auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 

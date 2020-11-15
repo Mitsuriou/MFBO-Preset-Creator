@@ -539,9 +539,11 @@ void Settings::saveSettings()
 
     auto lRestartNowButton{lConfirmationBox.addButton(tr("Restart now"), QMessageBox::ButtonRole::YesRole)};
     lRestartNowButton->setCursor(Qt::PointingHandCursor);
+    lRestartNowButton->setStyleSheet("color: hsl(4, 90%, 58%);");
 
     auto lRestartLaterButton{lConfirmationBox.addButton(tr("Go back to the application and restart later"), QMessageBox::ButtonRole::NoRole)};
     lRestartLaterButton->setCursor(Qt::PointingHandCursor);
+    lRestartLaterButton->setStyleSheet("color: hsl(33, 100%, 71%);");
 
     lConfirmationBox.setDefaultButton(lRestartLaterButton);
     lConfirmationBox.exec();
