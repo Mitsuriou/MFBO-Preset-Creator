@@ -57,18 +57,17 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   lLaunchSearchButton->setAutoDefault(false);
   lLaunchSearchButton->setDefault(false);
   lLaunchSearchButton->setDisabled(true);
-  aLayout.addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignBottom);
+  aLayout.addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &AssistedConversion::chooseInputDirectory);
   this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
 }
 
-// TODO: Optimize the code to avoid the multimap below:
-std::multimap<std::string, QString, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
-  // TODO: Optimize the code to avoid the multimap below:
-  std::multimap<std::string, QString, std::greater<std::string>> lScannedValues;
+  // map<path+fileName, pair<path, fileName>>
+  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
 
   auto lAbsFilePath{QString("")};
   auto lRelativeDirPath{QString("")};
@@ -85,16 +84,82 @@ std::multimap<std::string, QString, std::greater<std::string>> AssistedConversio
 
     lFileName = it.fileInfo().fileName();
 
-    // TODO: Re-add or change this line based on the multimap changes
     // Clean the file name from any artifact
-    //lFileName.remove("_0.nif", Qt::CaseInsensitive);
-    //lFileName.remove("_1.nif", Qt::CaseInsensitive);
-    //lFileName.remove(".nif", Qt::CaseInsensitive);
+    lFileName.remove("_0.nif", Qt::CaseInsensitive);
+    lFileName.remove("_1.nif", Qt::CaseInsensitive);
+    lFileName.remove(".nif", Qt::CaseInsensitive);
 
-    lScannedValues.insert(std::make_pair(lFileName.toStdString(), lRelativeDirPath));
+    auto lKey{lRelativeDirPath.toStdString() + lFileName.toStdString()};
+    auto lValue{std::make_pair(lRelativeDirPath, lFileName)};
+    lScannedValues.insert(std::make_pair(lKey, lValue));
   }
 
   return lScannedValues;
+}
+
+void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex)
+{
+  aLayout.addWidget(new QLabel(aPath, this), aRowIndex, 0, Qt::AlignLeft);
+  aLayout.addWidget(new QLabel(aFileName, this), aRowIndex, 1, Qt::AlignLeft);
+
+  auto lChoiceCombo{new QComboBox(this)};
+  lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
+  lChoiceCombo->setCursor(Qt::PointingHandCursor);
+  lChoiceCombo->setItemDelegate(new QStyledItemDelegate());
+  aLayout.addWidget(lChoiceCombo, aRowIndex, 2, Qt::AlignRight);
+
+  // Add a new index store to the list
+  this->mBoxSelectedIndexes.push_back(0);
+
+  // Event binding
+  this->connect(lChoiceCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+}
+
+std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValuesFromInterface()
+{
+  // Fetch the grid layout
+  auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
+
+  // Iterate in the layout
+  auto lLinesToTreat{lDataContainer->rowCount()};
+
+  if (lLinesToTreat <= 1)
+  {
+    return std::vector<Struct::AssistedConversionResult>();
+  }
+
+  std::vector<Struct::AssistedConversionResult> lResults;
+  QComboBox* lComboBox{nullptr};
+  auto lFilePath{QString("")};
+  auto lFileName{QString("")};
+
+  // For each row (skip the row 0 because it is a "header")
+  for (int i = 1; i < lLinesToTreat; i++)
+  {
+    lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
+
+    // Third column is the chosen action on the line
+    if (lComboBox->currentIndex() == 0)
+    {
+      continue;
+    }
+
+    // First column is the file path
+    lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
+
+    // Second column is the file name
+    lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
+
+    // Save the gotten values
+    Struct::AssistedConversionResult lResult;
+    lResult.path = lFilePath;
+    lResult.name = lFileName;
+    lResult.role = lComboBox->currentIndex();
+
+    lResults.push_back(lResult);
+  }
+
+  return lResults;
 }
 
 void AssistedConversion::chooseInputDirectory()
@@ -150,9 +215,9 @@ void AssistedConversion::launchSearchProcess()
   lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
 
   // Columns header
-  lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignLeft);
-  lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignLeft);
-  lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignRight);
+  lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);
+  lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignCenter);
+  lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignCenter);
 
   // Fetch all the "*.nif" files
   auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
@@ -162,7 +227,7 @@ void AssistedConversion::launchSearchProcess()
 
   for (const auto& lNifFile : lFoundNifFiles)
   {
-    this->createSelectionBlock(*lDataContainer, QString::fromStdString(lNifFile.first), lNifFile.second, lNextRow++);
+    this->createSelectionBlock(*lDataContainer, lNifFile.second.second, lNifFile.second.first, lNextRow++);
   }
 
   // Create the validation button
@@ -179,59 +244,57 @@ void AssistedConversion::validateSelection()
   // TODO: emit an event to refresh the main GUI
 }
 
-void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex)
+void AssistedConversion::modifyComboBoxLockState(int aIndex)
 {
-  aLayout.addWidget(new QLabel(aPath + "/", this), aRowIndex, 0, Qt::AlignLeft);
-  aLayout.addWidget(new QLabel(aFileName, this), aRowIndex, 1, Qt::AlignLeft);
+  // Catch the sender of the event
+  auto lEventSource{qobject_cast<QComboBox*>(sender())};
 
-  auto lChoiceCombo{new QComboBox(this)};
-  lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
-  aLayout.addWidget(lChoiceCombo, aRowIndex, 2, Qt::AlignRight);
-}
-
-std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValuesFromInterface()
-{
   // Fetch the grid layout
   auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
-
-  // Iterate in the layout
   auto lLinesToTreat{lDataContainer->rowCount()};
-
-  if (lLinesToTreat <= 1)
-  {
-    return std::vector<Struct::AssistedConversionResult>();
-  }
-
-  std::vector<Struct::AssistedConversionResult> lResults;
   QComboBox* lComboBox{nullptr};
-  auto lFilePath{QString("")};
-  auto lFileName{QString("")};
+  auto lComboBoxIndex{0};
 
   // For each row (skip the row 0 because it is a "header")
   for (int i = 1; i < lLinesToTreat; i++)
   {
+    // Get the combobox
     lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
 
-    // Third column is the chosen action on the line
-    if (lComboBox->currentIndex() == 0)
+    if (lComboBox == lEventSource)
+    {
+      lComboBoxIndex = i - 1;
+      break;
+    }
+  }
+
+  // Keep the old index and store the new selected index
+  auto lOldIndex{this->mBoxSelectedIndexes.at(lComboBoxIndex)};
+  this->mBoxSelectedIndexes.at(lComboBoxIndex) = aIndex;
+
+  // For each row (skip the row 0 because it is a "header")
+  for (int i = 1; i < lLinesToTreat; i++)
+  {
+    // Get the combobox
+    lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
+
+    if (lComboBox == lEventSource)
     {
       continue;
     }
 
-    // First column is the file path
-    lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
+    QListView* view = qobject_cast<QListView*>(lComboBox->view());
 
-    // Second column is the file name
-    lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
+    // Disable the new selected option
+    if (aIndex != 0)
+    {
+      view->setRowHidden(aIndex, true);
+    }
 
-    // Save the gotten values
-    Struct::AssistedConversionResult lResult;
-    lResult.path = lFilePath;
-    lResult.name = lFileName;
-    lResult.role = lComboBox->currentIndex();
-
-    lResults.push_back(lResult);
+    // Enable the old option
+    QStandardItemModel* model = qobject_cast<QStandardItemModel*>(lComboBox->model());
+    QStandardItem* item = model->item(lOldIndex);
+    view->setRowHidden(lOldIndex, false);
+    item->setFlags(item->flags() | Qt::ItemIsEnabled);
   }
-
-  return lResults;
 }

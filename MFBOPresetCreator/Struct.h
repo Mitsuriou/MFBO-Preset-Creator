@@ -98,8 +98,8 @@ namespace Struct
   struct AssistedConversionResult
   {
   public:
-    QString path;
-    QString name;
-    int role;
+    QString path{""};
+    QString name{""};
+    int role{0};
   };
 }
