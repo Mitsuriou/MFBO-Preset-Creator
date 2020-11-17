@@ -28,6 +28,7 @@ void AssistedConversion::initializeGUI()
   // Main window container
   auto lMainGrid{new QGridLayout(this)};
   lMainGrid->setObjectName("main_layout");
+  lMainGrid->setAlignment(Qt::AlignTop);
   this->setupInterface(*lMainGrid);
 }
 
@@ -51,13 +52,20 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lInputPathChooser, 0, 2);
 
   // Generate button
-  auto lLaunchSearchButton{new QPushButton(tr("[WIP] Launch the files search"), this)};
+  auto lLaunchSearchButton{new QPushButton(tr("Launch the scan of the mod"), this)};
   lLaunchSearchButton->setObjectName("launch_search_button");
   lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
   lLaunchSearchButton->setAutoDefault(false);
   lLaunchSearchButton->setDefault(false);
   lLaunchSearchButton->setDisabled(true);
   aLayout.addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
+
+  // Hint zone
+  auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
+  lHintZone->setMinimumHeight(300);
+  lHintZone->setObjectName("hint_zone");
+  lHintZone->setAlignment(Qt::AlignCenter);
+  aLayout.addWidget(lHintZone, 2, 0, 1, 3);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &AssistedConversion::chooseInputDirectory);
@@ -66,7 +74,7 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
 
 std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
-  // map<path+fileName, pair<path, fileName>>
+  // The map is storing <path+fileName, <path, fileName>>
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
 
   auto lAbsFilePath{QString("")};
@@ -105,6 +113,8 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
   auto lChoiceCombo{new QComboBox(this)};
   lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
   lChoiceCombo->setCursor(Qt::PointingHandCursor);
+  lChoiceCombo->setMouseTracking(true);
+  lChoiceCombo->view()->setMouseTracking(true);
   lChoiceCombo->setItemDelegate(new QStyledItemDelegate());
   aLayout.addWidget(lChoiceCombo, aRowIndex, 2, Qt::AlignRight);
 
@@ -183,7 +193,14 @@ void AssistedConversion::launchSearchProcess()
   // TODO: Add a check before doing anything: the root directory should at least contain an ESP, ESL or ESM file to be scanned
   // If it does not contain one of the wanted files, ask the user to start or cancel the scan
 
-  // Delete already existing layout and validation button
+  // Delete already existing hint label, layout and validation button
+  auto lHintZone{this->findChild<QPushButton*>("hint_zone")};
+  if (lHintZone)
+  {
+    delete lHintZone;
+    lHintZone = nullptr;
+  }
+
   auto lOldValidationButton{this->findChild<QPushButton*>("validate_selection")};
   if (lOldValidationButton)
   {
@@ -209,6 +226,7 @@ void AssistedConversion::launchSearchProcess()
 
   auto lDataContainer = new QGridLayout(lMainWidget);
   lDataContainer->setObjectName("data_container");
+  lDataContainer->setAlignment(Qt::AlignTop);
   lDataContainer->setContentsMargins(0, 0, 0, 0);
 
   lScrollArea->setWidget(lMainWidget);
@@ -222,6 +240,7 @@ void AssistedConversion::launchSearchProcess()
   // Fetch all the "*.nif" files
   auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
   auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
+  this->mScannedDirName = QDir(lInputPath).dirName();
 
   auto lNextRow{1};
 
@@ -233,13 +252,14 @@ void AssistedConversion::launchSearchProcess()
   // Create the validation button
   auto lValidateSelection{new QPushButton(tr("Validate the selection(s) above and go back to the main window"), this)};
   lValidateSelection->setObjectName("validate_selection");
+  lValidateSelection->setCursor(Qt::PointingHandCursor);
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
 }
 
 void AssistedConversion::validateSelection()
 {
-  emit valuesChosen(this->getChosenValuesFromInterface());
+  emit valuesChosen(this->mScannedDirName, this->getChosenValuesFromInterface());
   this->close();
 }
 

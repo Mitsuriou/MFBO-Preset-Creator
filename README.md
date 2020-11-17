@@ -25,7 +25,7 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
 
 ### New tools
-- [ ] Automatic conversion (choose a folder to automatically try to find where are located the meshes for the NPC that needs to be converted)
+- [X] (1.9.0) Automatic conversion (choose a folder to automatically try to find where are located the meshes for the NPC that needs to be converted)
 
 ### Other cool features and improvements
 - [ ] Better software linking with Mod Organizer 2

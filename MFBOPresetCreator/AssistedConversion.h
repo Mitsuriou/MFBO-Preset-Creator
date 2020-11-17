@@ -16,6 +16,7 @@ public:
 private:
   const Struct::Settings mSettings;
   std::vector<int> mBoxSelectedIndexes;
+  QString mScannedDirName;
 
   void setWindowProperties();
   void initializeGUI();
@@ -26,7 +27,7 @@ private:
   std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface();
 
 signals:
-  void valuesChosen(std::vector<Struct::AssistedConversionResult>);
+  void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
 
 private slots:
   void chooseInputDirectory();

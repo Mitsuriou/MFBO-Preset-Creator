@@ -51,11 +51,11 @@ QStringList DataLists::getLanguages()
 QStringList DataLists::getAssistedConversionActions()
 {
   QStringList lActions;
-  lActions.append(tr("[ignored]"));
-  lActions.append(tr("body mesh"));
-  lActions.append(tr("feet mesh"));
-  lActions.append(tr("hands mesh"));
-  lActions.append(tr("skeleton"));
+  lActions.append(tr("[ignore]"));
+  lActions.append(tr("Body mesh"));
+  lActions.append(tr("Feet mesh"));
+  lActions.append(tr("Hands mesh"));
+  lActions.append(tr("Skeleton mesh"));
 
   return lActions;
 }

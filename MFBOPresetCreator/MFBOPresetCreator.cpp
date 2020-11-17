@@ -448,11 +448,16 @@ void MFBOPresetCreator::launchAssistedConversion()
   this->connect(lDialog, &AssistedConversion::valuesChosen, this, &MFBOPresetCreator::fillUIByAssistedConversionValues);
 }
 
-void MFBOPresetCreator::fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList)
+void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
 {
+  if (aResultsList.size() == 0)
+  {
+    return;
+  }
+
   // Proxy the event to the current tab
   auto lCurrentTabIndex{this->findChild<QTabWidget*>("tabs_container")->currentIndex()};
-  this->mTabs.at(lCurrentTabIndex)->fillUIByAssistedConversionValues(aResultsList);
+  this->mTabs.at(lCurrentTabIndex)->fillUIByAssistedConversionValues(aPresetName, aResultsList);
 }
 
 void MFBOPresetCreator::launchRetargetingTool()

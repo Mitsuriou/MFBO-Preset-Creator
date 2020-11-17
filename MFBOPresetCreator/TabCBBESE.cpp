@@ -14,8 +14,12 @@ TabCBBESE::TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings)
   this->setupRemainingGUI(*lMainLayout);
 }
 
-void TabCBBESE::fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList)
+void TabCBBESE::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
 {
+  // Change preset name
+  this->findChild<QLineEdit*>("names_osp_xml_input")->setText(aPresetName);
+  this->findChild<QLineEdit*>("names_bodyslide_input")->setText(aPresetName);
+
   for (const auto& lResult : aResultsList)
   {
     switch (lResult.role)

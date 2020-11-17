@@ -11,7 +11,7 @@ class Tab : public QWidget
 
 public:
   void updateSettings(Struct::Settings aSettings);
-  virtual void fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList) = 0;
+  virtual void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList) = 0;
 
 protected:
   explicit Tab(QWidget* aParent, const Struct::Settings& aSettings);

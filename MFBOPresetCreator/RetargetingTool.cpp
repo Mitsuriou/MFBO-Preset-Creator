@@ -128,10 +128,12 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // Sixth line
   auto lBackupPathPreviewLabel{new QLabel(tr("Preview:"), this)};
   lBackupPathPreviewLabel->setObjectName("backup_path_preview_label");
+  lBackupPathPreviewLabel->setAlignment(Qt::AlignTop);
   aLayout.addWidget(lBackupPathPreviewLabel, 5, 0);
 
   auto lBackupPathsPreview{new QLabel("", this)};
   lBackupPathsPreview->setObjectName("backup_path_preview");
+  lBackupPathsPreview->setAlignment(Qt::AlignTop);
   aLayout.addWidget(lBackupPathsPreview, 5, 1, 1, 2);
 
   // Generate button
