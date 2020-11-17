@@ -10,10 +10,11 @@ class Tab : public QWidget
   Q_OBJECT
 
 public:
-  explicit Tab(QWidget* aParent, const Struct::Settings& aSettings);
   void updateSettings(Struct::Settings aSettings);
+  virtual void fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList) = 0;
 
 protected:
+  explicit Tab(QWidget* aParent, const Struct::Settings& aSettings);
   Struct::Settings mSettings;
 
   QVBoxLayout* getMainLayout();

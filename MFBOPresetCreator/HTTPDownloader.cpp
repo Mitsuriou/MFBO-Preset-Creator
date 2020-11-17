@@ -27,8 +27,7 @@ HTTPDownloader::~HTTPDownloader()
 
 void HTTPDownloader::run()
 {
-  QString lResult{QString::fromStdString(this->download())};
-  emit resultReady(lResult);
+  emit resultReady(QString::fromStdString(this->download()));
 }
 
 std::string HTTPDownloader::download()

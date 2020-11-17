@@ -14,6 +14,46 @@ TabCBBESE::TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings)
   this->setupRemainingGUI(*lMainLayout);
 }
 
+void TabCBBESE::fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList)
+{
+  for (const auto& lResult : aResultsList)
+  {
+    switch (lResult.role)
+    {
+      case static_cast<int>(AssistedConversionRole::Body):
+        // Path
+        this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText(lResult.path);
+        // File name
+        this->findChild<QLineEdit*>("body_mesh_name_input")->setText(lResult.name);
+        break;
+      case static_cast<int>(AssistedConversionRole::Feet):
+        // Path
+        this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText(lResult.path);
+        // File name
+        this->findChild<QLineEdit*>("feet_mesh_name_input")->setText(lResult.name);
+        break;
+      case static_cast<int>(AssistedConversionRole::Hands):
+        // Path
+        this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText(lResult.path);
+        // File name
+        this->findChild<QLineEdit*>("hands_mesh_name_input")->setText(lResult.name);
+        break;
+      case static_cast<int>(AssistedConversionRole::Skeleton):
+        auto lNeedCustomSkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")};
+        if (!lNeedCustomSkeleton->isChecked())
+        {
+          lNeedCustomSkeleton->setChecked(true);
+        }
+
+        // Path
+        this->findChild<QLineEdit*>("skeleton_path_directory")->setText(lResult.path);
+        // File name
+        this->findChild<QLineEdit*>("skeleton_name")->setText(lResult.name);
+        break;
+    }
+  }
+}
+
 void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 {
   // CBBE body meshes group box

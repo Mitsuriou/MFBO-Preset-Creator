@@ -1,5 +1,10 @@
 #include "Tab.h"
 
+void Tab::updateSettings(Struct::Settings aSettings)
+{
+  this->mSettings = aSettings;
+}
+
 Tab::Tab(QWidget* aParent, const Struct::Settings& aSettings)
   : QWidget(aParent)
   , mSettings(aSettings)
@@ -33,11 +38,6 @@ Tab::Tab(QWidget* aParent, const Struct::Settings& aSettings)
 
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &Tab::mouseCursorPressed);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &Tab::mouseCursorReleased);
-}
-
-void Tab::updateSettings(Struct::Settings aSettings)
-{
-  this->mSettings = aSettings;
 }
 
 QVBoxLayout* Tab::getMainLayout()

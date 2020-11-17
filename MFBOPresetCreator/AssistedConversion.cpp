@@ -80,7 +80,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
 
     // Get the current directory
     lAbsFilePath = it.fileInfo().absolutePath();
-    lRelativeDirPath = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
+    lRelativeDirPath = lAbsFilePath.remove(aRootDir + "/", Qt::CaseInsensitive);
 
     lFileName = it.fileInfo().fileName();
 
@@ -239,9 +239,8 @@ void AssistedConversion::launchSearchProcess()
 
 void AssistedConversion::validateSelection()
 {
-  auto lChosenValues{this->getChosenValuesFromInterface()};
-
-  // TODO: emit an event to refresh the main GUI
+  emit valuesChosen(this->getChosenValuesFromInterface());
+  this->close();
 }
 
 void AssistedConversion::modifyComboBoxLockState(int aIndex)

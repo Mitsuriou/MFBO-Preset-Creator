@@ -35,3 +35,11 @@ enum class WindowOpeningMode
   Windowed = 1,
   Maximized = 2
 };
+
+enum class AssistedConversionRole
+{
+  Body = 1,
+  Feet = 2,
+  Hands = 3,
+  Skeleton = 4
+};

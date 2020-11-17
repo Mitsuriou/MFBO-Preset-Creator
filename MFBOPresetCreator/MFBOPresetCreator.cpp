@@ -41,6 +41,7 @@ void MFBOPresetCreator::initializeGUI()
 {
   // Create the tabs
   auto lTabsContainer{new QTabWidget(this)};
+  lTabsContainer->setObjectName("tabs_container");
   lTabsContainer->tabBar()->setCursor(Qt::PointingHandCursor);
   lTabsContainer->setMovable(true);
 
@@ -138,9 +139,9 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lExitAction, &QAction::triggered, this, &MFBOPresetCreator::close);
   this->connect(lAssistedConversionAction, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
   this->connect(lRetargetingToolAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingTool);
-  this->connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::showSettingsDialog);
-  this->connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::showUpdateDialog);
-  this->connect(lAboutAction, &QAction::triggered, this, &MFBOPresetCreator::showAboutDialog);
+  this->connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
+  this->connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
+  this->connect(lAboutAction, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
 }
 
 void MFBOPresetCreator::showWindow()
@@ -443,7 +444,15 @@ void MFBOPresetCreator::quickRelaunch()
 
 void MFBOPresetCreator::launchAssistedConversion()
 {
-  new AssistedConversion(this, this->mSettings);
+  auto lDialog{new AssistedConversion(this, this->mSettings)};
+  this->connect(lDialog, &AssistedConversion::valuesChosen, this, &MFBOPresetCreator::fillUIByAssistedConversionValues);
+}
+
+void MFBOPresetCreator::fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList)
+{
+  // Proxy the event to the current tab
+  auto lCurrentTabIndex{this->findChild<QTabWidget*>("tabs_container")->currentIndex()};
+  this->mTabs.at(lCurrentTabIndex)->fillUIByAssistedConversionValues(aResultsList);
 }
 
 void MFBOPresetCreator::launchRetargetingTool()
@@ -451,18 +460,18 @@ void MFBOPresetCreator::launchRetargetingTool()
   new RetargetingTool(this, this->mSettings);
 }
 
-void MFBOPresetCreator::showSettingsDialog()
+void MFBOPresetCreator::launchSettingsDialog()
 {
   auto lSettings{new Settings(this, this->mSettings)};
   this->connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 
-void MFBOPresetCreator::showUpdateDialog()
+void MFBOPresetCreator::launchUpdateDialog()
 {
   new Update(this, this->mSettings);
 }
 
-void MFBOPresetCreator::showAboutDialog()
+void MFBOPresetCreator::launchAboutDialog()
 {
   new About(this, this->mSettings);
 }

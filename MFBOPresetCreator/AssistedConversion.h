@@ -25,6 +25,9 @@ private:
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
   std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface();
 
+signals:
+  void valuesChosen(std::vector<Struct::AssistedConversionResult>);
+
 private slots:
   void chooseInputDirectory();
   void launchSearchProcess();

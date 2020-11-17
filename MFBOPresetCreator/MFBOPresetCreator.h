@@ -46,8 +46,9 @@ public slots:
 private slots:
   void quickRelaunch();
   void launchAssistedConversion();
+  void fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList);
   void launchRetargetingTool();
-  void showSettingsDialog();
-  void showUpdateDialog();
-  void showAboutDialog();
+  void launchSettingsDialog();
+  void launchUpdateDialog();
+  void launchAboutDialog();
 };

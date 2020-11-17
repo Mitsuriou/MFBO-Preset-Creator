@@ -10,6 +10,8 @@ class TabCBBESE : public Tab
 public:
   explicit TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings);
 
+  void fillUIByAssistedConversionValues(std::vector<Struct::AssistedConversionResult> aResultsList);
+
 private:
   int mMinimumFirstColumnWidth;
 
