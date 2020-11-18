@@ -190,8 +190,40 @@ void AssistedConversion::chooseInputDirectory()
 
 void AssistedConversion::launchSearchProcess()
 {
-  // TODO: Add a check before doing anything: the root directory should at least contain an ESP, ESL or ESM file to be scanned
+  auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+
+  // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
   // If it does not contain one of the wanted files, ask the user to start or cancel the scan
+  auto lFilesExtensions{QStringList()};
+  lFilesExtensions.append("*.esl");
+  lFilesExtensions.append("*.esm");
+  lFilesExtensions.append("*.esp");
+
+  auto lIsESPPresent{Utils::getNumberFilesByExtensions(lInputPath, lFilesExtensions) > 0};
+  if (!lIsESPPresent)
+  {
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question,
+                                 tr("No root file has been found"),
+                                 tr("No ESL, ESM or ESP file has been found in the scanned directory. Do you still want to continue the scan?"),
+                                 QMessageBox::StandardButton::NoButton,
+                                 this);
+
+    auto lContinueButton{lConfirmationBox.addButton(tr("Continue the scan"), QMessageBox::ButtonRole::YesRole)};
+    lContinueButton->setCursor(Qt::PointingHandCursor);
+    lContinueButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+
+    auto lStopButton{lConfirmationBox.addButton(tr("Cancel the scan"), QMessageBox::ButtonRole::NoRole)};
+    lStopButton->setCursor(Qt::PointingHandCursor);
+    lStopButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+    lConfirmationBox.setDefaultButton(lContinueButton);
+    lConfirmationBox.exec();
+
+    if (lConfirmationBox.clickedButton() != lContinueButton)
+    {
+      return;
+    }
+  }
 
   // Delete already existing hint label, layout and validation button
   auto lHintZone{this->findChild<QPushButton*>("hint_zone")};
@@ -238,7 +270,6 @@ void AssistedConversion::launchSearchProcess()
   lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignCenter);
 
   // Fetch all the "*.nif" files
-  auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
   auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
   this->mScannedDirName = QDir(lInputPath).dirName();
 

@@ -32,6 +32,20 @@ int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFi
 {
   auto lNumber{0};
 
+  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::NoIteratorFlags);
+  while (it.hasNext())
+  {
+    it.next();
+    lNumber++;
+  }
+
+  return lNumber;
+}
+
+int Utils::getNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension)
+{
+  auto lNumber{0};
+
   QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
@@ -43,6 +57,20 @@ int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFi
 }
 
 int Utils::getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions)
+{
+  auto lNumber{0};
+
+  QDirIterator it(aRootDir, aFileExtensions, QDir::Files, QDirIterator::NoIteratorFlags);
+  while (it.hasNext())
+  {
+    it.next();
+    lNumber++;
+  }
+
+  return lNumber;
+}
+
+int Utils::getNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions)
 {
   auto lNumber{0};
 
