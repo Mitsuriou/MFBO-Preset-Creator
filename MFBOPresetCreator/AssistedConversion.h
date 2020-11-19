@@ -21,6 +21,8 @@ private:
   void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
+  void displayHintZone();
+  void deleteAlreadyExistingWindowBottom();
 
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);

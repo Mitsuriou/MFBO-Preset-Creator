@@ -61,15 +61,47 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
-  auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
-  lHintZone->setMinimumHeight(300);
-  lHintZone->setObjectName("hint_zone");
-  lHintZone->setAlignment(Qt::AlignCenter);
-  aLayout.addWidget(lHintZone, 2, 0, 1, 3);
+  this->displayHintZone();
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &AssistedConversion::chooseInputDirectory);
   this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
+}
+
+void AssistedConversion::displayHintZone()
+{
+  this->deleteAlreadyExistingWindowBottom();
+
+  auto lMainLayout{this->findChild<QGridLayout*>("main_layout")};
+  auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
+  lHintZone->setMinimumHeight(300);
+  lHintZone->setObjectName("hint_zone");
+  lHintZone->setAlignment(Qt::AlignCenter);
+  lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
+}
+
+void AssistedConversion::deleteAlreadyExistingWindowBottom()
+{
+  auto lHintZone{this->findChild<QPushButton*>("hint_zone")};
+  if (lHintZone)
+  {
+    delete lHintZone;
+    lHintZone = nullptr;
+  }
+
+  auto lOldValidationButton{this->findChild<QPushButton*>("validate_selection")};
+  if (lOldValidationButton)
+  {
+    delete lOldValidationButton;
+    lOldValidationButton = nullptr;
+  }
+
+  auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  if (lOldScrollArea)
+  {
+    delete lOldScrollArea;
+    lOldScrollArea = nullptr;
+  }
 }
 
 std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
@@ -186,6 +218,8 @@ void AssistedConversion::chooseInputDirectory()
   auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
   lLineEdit->setDisabled(lMustDisableButton);
   lLaunchSearchButton->setDisabled(lMustDisableButton);
+
+  this->displayHintZone();
 }
 
 void AssistedConversion::launchSearchProcess()
@@ -225,27 +259,8 @@ void AssistedConversion::launchSearchProcess()
     }
   }
 
-  // Delete already existing hint label, layout and validation button
-  auto lHintZone{this->findChild<QPushButton*>("hint_zone")};
-  if (lHintZone)
-  {
-    delete lHintZone;
-    lHintZone = nullptr;
-  }
-
-  auto lOldValidationButton{this->findChild<QPushButton*>("validate_selection")};
-  if (lOldValidationButton)
-  {
-    delete lOldValidationButton;
-    lOldValidationButton = nullptr;
-  }
-
-  auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  if (lOldScrollArea)
-  {
-    delete lOldScrollArea;
-    lOldScrollArea = nullptr;
-  }
+  // Delete already existing the hint label or the layout and the validation button
+  this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
   auto lMainLayout{this->findChild<QGridLayout*>("main_layout")};
@@ -274,6 +289,7 @@ void AssistedConversion::launchSearchProcess()
   this->mScannedDirName = QDir(lInputPath).dirName();
 
   auto lNextRow{1};
+  this->mBoxSelectedIndexes.clear();
 
   for (const auto& lNifFile : lFoundNifFiles)
   {
