@@ -33,28 +33,48 @@
         <translation>Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="64"/>
+        <location filename="AssistedConversion.cpp" line="76"/>
         <source>Awaiting the launch of a scan...</source>
         <oldsource>Waiting on a scan to be launched...</oldsource>
         <translation>En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="236"/>
+        <location filename="AssistedConversion.cpp" line="240"/>
+        <source>No root file has been found</source>
+        <translation>Aucun fichier racine n&apos;a été trouvé</translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="241"/>
+        <source>No ESL, ESM or ESP file has been found in the scanned directory. Do you still want to continue the scan?</source>
+        <translation>Aucun fichier ESL, ESM ou ESP n&apos;a été trouvé dans le répertoire scanné. Voulez-vous quand même continuer le scan ?</translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="245"/>
+        <source>Continue the scan</source>
+        <translation>Continuer le scan</translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="249"/>
+        <source>Cancel the scan</source>
+        <translation>Annuler le scan</translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="283"/>
         <source>File path</source>
         <translation>Emplacement du fichier</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="237"/>
+        <location filename="AssistedConversion.cpp" line="284"/>
         <source>*.nif file name</source>
         <translation>Nom du fichier *.nif</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="238"/>
+        <location filename="AssistedConversion.cpp" line="285"/>
         <source>Action</source>
         <translation>Action</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="253"/>
+        <location filename="AssistedConversion.cpp" line="300"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>Valider la (les) sélection(s) ci-dessus et revenir sur la fenêtre principale</translation>
     </message>
@@ -1006,16 +1026,16 @@ Cliquez sur le bouton de téléchargement pour être redirigé(e) sur Github.com
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="145"/>
-        <location filename="Utils.cpp" line="178"/>
-        <location filename="Utils.cpp" line="248"/>
+        <location filename="Utils.cpp" line="173"/>
+        <location filename="Utils.cpp" line="206"/>
+        <location filename="Utils.cpp" line="276"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="145"/>
-        <location filename="Utils.cpp" line="178"/>
-        <location filename="Utils.cpp" line="248"/>
+        <location filename="Utils.cpp" line="173"/>
+        <location filename="Utils.cpp" line="206"/>
+        <location filename="Utils.cpp" line="276"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>

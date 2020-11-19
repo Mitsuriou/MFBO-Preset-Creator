@@ -33,28 +33,48 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="64"/>
+        <location filename="AssistedConversion.cpp" line="76"/>
         <source>Awaiting the launch of a scan...</source>
         <oldsource>Waiting on a scan to be launched...</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="236"/>
+        <location filename="AssistedConversion.cpp" line="240"/>
+        <source>No root file has been found</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="241"/>
+        <source>No ESL, ESM or ESP file has been found in the scanned directory. Do you still want to continue the scan?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="245"/>
+        <source>Continue the scan</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="249"/>
+        <source>Cancel the scan</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="283"/>
         <source>File path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="237"/>
+        <location filename="AssistedConversion.cpp" line="284"/>
         <source>*.nif file name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="238"/>
+        <location filename="AssistedConversion.cpp" line="285"/>
         <source>Action</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="253"/>
+        <location filename="AssistedConversion.cpp" line="300"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation></translation>
     </message>
@@ -994,16 +1014,16 @@ Click on the download button to be redirected on Github.com to download the late
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="145"/>
-        <location filename="Utils.cpp" line="178"/>
-        <location filename="Utils.cpp" line="248"/>
+        <location filename="Utils.cpp" line="173"/>
+        <location filename="Utils.cpp" line="206"/>
+        <location filename="Utils.cpp" line="276"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="145"/>
-        <location filename="Utils.cpp" line="178"/>
-        <location filename="Utils.cpp" line="248"/>
+        <location filename="Utils.cpp" line="173"/>
+        <location filename="Utils.cpp" line="206"/>
+        <location filename="Utils.cpp" line="276"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>
