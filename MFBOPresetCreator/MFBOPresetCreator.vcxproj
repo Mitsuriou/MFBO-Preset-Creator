@@ -142,13 +142,13 @@
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="Tab.cpp" />
-    <ClCompile Include="TabCBBESE.cpp" />
+    <ClCompile Include="TabCBBE3BBB3BA.cpp" />
     <ClCompile Include="TabUNPSE.cpp" />
     <ClCompile Include="TabVanillaSE.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
     <QtMoc Include="Update.h" />
-    <QtMoc Include="TabCBBESE.h" />
+    <QtMoc Include="TabCBBE3BBB3BA.h" />
     <QtMoc Include="TabUNPSE.h" />
     <QtMoc Include="TabVanillaSE.h" />
     <QtMoc Include="Tab.h" />

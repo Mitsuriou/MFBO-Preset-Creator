@@ -47,8 +47,8 @@ void MFBOPresetCreator::initializeGUI()
 
   this->setCentralWidget(lTabsContainer);
 
-  auto lCBBETab{new TabCBBESE(lTabsContainer, mSettings)};
-  lTabsContainer->addTab(lCBBETab, QString("CBBE SE"));
+  auto lCBBETab{new TabCBBE3BBB3BA(lTabsContainer, mSettings)};
+  lTabsContainer->addTab(lCBBETab, QString("CBBE 3BBB 3BA"));
   this->mTabs.push_back(lCBBETab);
 }
 
@@ -67,7 +67,7 @@ void MFBOPresetCreator::setupMenuBar()
   lFileMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lFileMenu);
 
-  // Submenu: Relaunch the app
+  // Action: Relaunch the app
   auto lQuickRelaunch{new QAction(this)};
   lQuickRelaunch->setObjectName("action_quick_relaunch");
   lQuickRelaunch->setText(tr("Quick relaunch"));
@@ -75,7 +75,7 @@ void MFBOPresetCreator::setupMenuBar()
   lQuickRelaunch->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
   lFileMenu->addAction(lQuickRelaunch);
 
-  // Submenu: Exit
+  // Action: Exit
   auto lExitAction{new QAction(this)};
   lExitAction->setText(tr("Exit"));
   lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
@@ -87,7 +87,7 @@ void MFBOPresetCreator::setupMenuBar()
   lToolsMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lToolsMenu);
 
-  // Submenu: Assisted conversion
+  // Action: Assisted conversion
   auto lAssistedConversionAction{new QAction(this)};
   lAssistedConversionAction->setText(tr("Assisted Conversion"));
   lAssistedConversionAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
@@ -95,13 +95,16 @@ void MFBOPresetCreator::setupMenuBar()
   lToolsMenu->addAction(lAssistedConversionAction);
 
   // Submenu: Upgrader
-  auto lRetargetingToolAction{new QAction(this)};
-  lRetargetingToolAction->setText(tr("CBBE 3BBB Version Retargeting Tool"));
-  lRetargetingToolAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-  lRetargetingToolAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/arrow_up")));
-  lToolsMenu->addAction(lRetargetingToolAction);
+  auto lRetargetingToolsMenu{new QMenu(tr("BodySlide Presets' Version Retargeting"), this)};
+  lRetargetingToolsMenu->setCursor(Qt::PointingHandCursor);
+  lRetargetingToolsMenu->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/arrow_up")));
+  lToolsMenu->addMenu(lRetargetingToolsMenu);
 
-  // Submenu: Settings
+  auto lRTCBBE3BBB3BAAction{new QAction(this)};
+  lRTCBBE3BBB3BAAction->setText(tr("CBBE 3BBB 3BA"));
+  lRetargetingToolsMenu->addAction(lRTCBBE3BBB3BAAction);
+
+  // Action: Settings
   auto lSettingsAction{new QAction(this)};
   lSettingsAction->setText(tr("Settings"));
   lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
@@ -120,14 +123,14 @@ void MFBOPresetCreator::setupMenuBar()
   lHelpMenu->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lHelpMenu);
 
-  // Submenu: Check for updates
+  // Action: Check for updates
   auto lCheckUpdateAction{new QAction(this)};
   lCheckUpdateAction->setText(tr("Check for updates") + lUpdateAvailableText);
   lCheckUpdateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
   lCheckUpdateAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/download")));
   lHelpMenu->addAction(lCheckUpdateAction);
 
-  // Submenu: About
+  // Action: About
   auto lAboutAction{new QAction(this)};
   lAboutAction->setText(tr("About"));
   lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
@@ -138,7 +141,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lQuickRelaunch, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
   this->connect(lExitAction, &QAction::triggered, this, &MFBOPresetCreator::close);
   this->connect(lAssistedConversionAction, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
-  this->connect(lRetargetingToolAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingTool);
+  this->connect(lRTCBBE3BBB3BAAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA);
   this->connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
   this->connect(lAboutAction, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
@@ -460,7 +463,7 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
   this->mTabs.at(lCurrentTabIndex)->fillUIByAssistedConversionValues(aPresetName, aResultsList);
 }
 
-void MFBOPresetCreator::launchRetargetingTool()
+void MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA()
 {
   new RetargetingTool(this, this->mSettings);
 }

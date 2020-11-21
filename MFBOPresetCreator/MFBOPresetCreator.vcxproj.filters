@@ -31,7 +31,7 @@
     <ClCompile Include="Tab.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="TabCBBESE.cpp">
+    <ClCompile Include="TabCBBE3BBB3BA.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="TabUNPSE.cpp">
@@ -126,7 +126,7 @@
     <QtMoc Include="Tab.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="TabCBBESE.h">
+    <QtMoc Include="TabCBBE3BBB3BA.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="TabUNPSE.h">

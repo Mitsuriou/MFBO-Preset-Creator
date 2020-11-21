@@ -5,7 +5,7 @@
 #include "RetargetingTool.h"
 #include "Settings.h"
 #include "Tab.h"
-#include "TabCBBESE.h"
+#include "TabCBBE3BBB3BA.h"
 #include "Update.h"
 #include "Utils.h"
 #include "WinUser.h"
@@ -47,7 +47,7 @@ private slots:
   void quickRelaunch();
   void launchAssistedConversion();
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
-  void launchRetargetingTool();
+  void launchRetargetingToolCBBE3BBB3BA();
   void launchSettingsDialog();
   void launchUpdateDialog();
   void launchAboutDialog();

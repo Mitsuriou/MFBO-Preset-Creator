@@ -13,7 +13,7 @@ At this time, the application is only capable of changing the body, hands and fe
 Choose the **latest release** on https://github.com/Mitsuriou/MFBO-Preset-Creator/releases and download either the **.7z** file or the **.zip** file that is named **MFBO.Preset.Creator.[*version number*].[*7z|zip*]**. They are the same, but some people do not know how to open .7z files, so I try to always provide both alternatives.
 
 ### Install
-The application is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the folder of your choice the content of the archive.
+The application is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the directory of your choice the content of the archive.
 
 ### Launch
 To launch the application, simply click on the **MFBOPresetCreator.exe** file (the one with a black and white icon).
@@ -27,7 +27,7 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 - [ ] Add compatibility with CBBE 3BBB SMP
 
 ### New tools
-- [X] (1.9.0) Automatic conversion (choose a folder to automatically try to find where are located the meshes for the NPC that needs to be converted)
+- [X] (1.9.0) Automatic conversion (choose a directory to automatically try to find where are located the meshes for the NPC that needs to be converted)
 
 ### Other cool features and improvements
 - [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation

@@ -3,12 +3,12 @@
 #include "BodySlideFiltersEditor.h"
 #include "Tab.h"
 
-class TabCBBESE : public Tab
+class TabCBBE3BBB3BA : public Tab
 {
   Q_OBJECT
 
 public:
-  explicit TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings);
+  explicit TabCBBE3BBB3BA(QWidget* aParent, const Struct::Settings& aSettings);
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
 
 private:

@@ -1,6 +1,6 @@
-#include "TabCBBESE.h"
+#include "TabCBBE3BBB3BA.h"
 
-TabCBBESE::TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings)
+TabCBBE3BBB3BA::TabCBBE3BBB3BA(QWidget* aParent, const Struct::Settings& aSettings)
   : Tab(aParent, aSettings)
   , mMinimumFirstColumnWidth(300)
 {
@@ -8,13 +8,13 @@ TabCBBESE::TabCBBESE(QWidget* aParent, const Struct::Settings& aSettings)
 
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(*lMainLayout);
-  this->setupBodySlideGUI(*lMainLayout);
   this->setupSkeletonGUI(*lMainLayout);
+  this->setupBodySlideGUI(*lMainLayout);
   this->setupOutputGUI(*lMainLayout);
   this->setupRemainingGUI(*lMainLayout);
 }
 
-void TabCBBESE::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
+void TabCBBE3BBB3BA::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
 {
   // Change preset name
   this->findChild<QLineEdit*>("names_osp_xml_input")->setText(aPresetName);
@@ -58,10 +58,10 @@ void TabCBBESE::fillUIByAssistedConversionValues(QString aPresetName, std::vecto
   }
 }
 
-void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
+void TabCBBE3BBB3BA::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 {
   // CBBE body meshes group box
-  auto lMeshesGroupBox{new QGroupBox(tr("CBBE body meshes"), this)};
+  auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes"), this)};
   aLayout.addWidget(lMeshesGroupBox);
 
   // Grid layout
@@ -69,71 +69,69 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesGridLayout->setSpacing(10);
   lMeshesGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
-  // CBBE 3BBB version
-  auto lCbbe3BBBVersionLabel{new QLabel(tr("CBBE 3BBB version:"), this)};
-  lMeshesGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
-
-  auto lCbbe3BBBVersionSelector{new QComboBox(this)};
-  lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
-  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
-  lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
-  lMeshesGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 3);
-
   // Body meshes names
   auto lMeshestitlePreview{new QLabel(tr("Meshes paths and names:"), this)};
-  lMeshesGridLayout->addWidget(lMeshestitlePreview, 2, 0, 3, 1);
+  lMeshesGridLayout->addWidget(lMeshestitlePreview, 1, 0, 3, 1);
 
   // femalebody
   auto lMeshesPathFemaleBodyLineEdit{new QLineEdit(this)};
   lMeshesPathFemaleBodyLineEdit->setObjectName("meshes_path_input_femalebody");
   lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/");
-  lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 2, 1);
+  lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 1, 1);
 
   auto lBodyMeshNameInput{new QLineEdit(this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
-  lMeshesGridLayout->addWidget(lBodyMeshNameInput, 2, 2);
+  lMeshesGridLayout->addWidget(lBodyMeshNameInput, 1, 2);
   lBodyMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
   auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 2, 3);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 1, 3);
 
   // femalefeet
   auto lMeshesPathFemaleFeetLineEdit{new QLineEdit(this)};
   lMeshesPathFemaleFeetLineEdit->setObjectName("meshes_path_input_femalefeet");
   lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/");
-  lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 3, 1);
+  lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 2, 1);
 
   auto lFeetMeshNameInput{new QLineEdit(this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
-  lMeshesGridLayout->addWidget(lFeetMeshNameInput, 3, 2);
+  lMeshesGridLayout->addWidget(lFeetMeshNameInput, 2, 2);
   lFeetMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
   auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 3, 3);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 2, 3);
 
   // femalehands
   auto lMeshesPathFemaleHandsLineEdit{new QLineEdit(this)};
   lMeshesPathFemaleHandsLineEdit->setObjectName("meshes_path_input_femalehands");
   lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/");
-  lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 4, 1);
+  lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 3, 1);
 
   auto lHandsMeshNameInput{new QLineEdit(this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
-  lMeshesGridLayout->addWidget(lHandsMeshNameInput, 4, 2);
+  lMeshesGridLayout->addWidget(lHandsMeshNameInput, 3, 2);
   lHandsMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
   auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 4, 3);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 3, 3);
 
-  // Fourth line
+  // Preview
+  auto lLabelPreview{new QLabel(this)};
+  lLabelPreview->setText(tr("Preview:"));
+  lMeshesGridLayout->addWidget(lLabelPreview, 4, 0);
+
+  auto lMeshesPreview{new QLabel(this)};
+  lMeshesPreview->setObjectName("meshes_preview");
+  lMeshesPreview->setAutoFillBackground(true);
+  lMeshesGridLayout->addWidget(lMeshesPreview, 4, 1, 1, 2);
+
+  // Beast hands
   auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
   lMeshesGridLayout->addWidget(lLabelBeastHands, 5, 0);
 
@@ -142,109 +140,114 @@ void TabCBBESE::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lNeedBeastHands->setObjectName("use_beast_hands");
   lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 2);
 
-  // Preview
-  auto lLabelPreview{new QLabel(this)};
-  lLabelPreview->setText(tr("Preview:"));
-  lMeshesGridLayout->addWidget(lLabelPreview, 6, 0);
-
-  auto lMeshesPreview{new QLabel(this)};
-  lMeshesPreview->setObjectName("meshes_preview");
-  lMeshesPreview->setAutoFillBackground(true);
-  lMeshesGridLayout->addWidget(lMeshesPreview, 6, 1, 1, 2);
-
   // Initialization functions
   this->updateMeshesPreview();
 
   // Event binding
-  this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  this->connect(lMeshesPathFemaleFeetLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  this->connect(lMeshesPathFemaleHandsLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  this->connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  this->connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  this->connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
-  this->connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&TabCBBESE::refreshAllPreviewFields));
-  this->connect(lNeedBeastHands, &QCheckBox::clicked, this, qOverload<>(&TabCBBESE::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleFeetLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleHandsLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lNeedBeastHands, &QCheckBox::clicked, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
 }
 
-void TabCBBESE::setupBodySlideGUI(QVBoxLayout& aLayout)
+void TabCBBE3BBB3BA::setupBodySlideGUI(QVBoxLayout& aLayout)
 {
   // BodySlide defined names group box
-  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide"), this)};
+  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output"), this)};
   aLayout.addWidget(lBodyslideGroupBox);
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
+  lBodyslideGridLayout->setColumnStretch(0, 0);
+  lBodyslideGridLayout->setColumnStretch(1, 1);
+  lBodyslideGridLayout->setColumnStretch(2, 0);
   lBodyslideGridLayout->setSpacing(10);
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
-  // First line
+  // CBBE 3BBB version
+  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB 3BA version:"), this)};
+  lBodyslideGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
+
+  auto lCbbe3BBBVersionSelector{new QComboBox(this)};
+  lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
+  lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
+  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
+  lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
+  lBodyslideGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
+
+  // Second line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
-  lBodyslideGridLayout->addWidget(lOSPXMLNames, 0, 0);
+  lBodyslideGridLayout->addWidget(lOSPXMLNames, 1, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
   lOSPXMLNamesLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
-  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 0, 1);
+  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 2);
 
-  // Second line
+  // Third line
   auto lLabelOspXmlNames{new QLabel(tr("Preview:"), this)};
-  lBodyslideGridLayout->addWidget(lLabelOspXmlNames, 1, 0);
+  lBodyslideGridLayout->addWidget(lLabelOspXmlNames, 2, 0);
 
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
   lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
   lPathsNamesOspXmlNames->setAutoFillBackground(true);
-  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 1, 1);
+  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 2);
 
-  // Third line
+  // Fourth line
   auto lNamesInApp{new QLabel(this)};
   lNamesInApp->setTextFormat(Qt::RichText);
   lNamesInApp->setText(tr("Preset names: &#128712;"));
   lNamesInApp->setToolTip(QString(tr("This field represents the name under which the preset will be listed in the BodySlide application.")));
-  lBodyslideGridLayout->addWidget(lNamesInApp, 2, 0);
+  lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
   lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
-  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 2, 1);
+  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 2);
 
-  // Fourth line
+  // Fifth line
   auto lLabelNamesInApp{new QLabel(tr("Preview:"), this)};
-  lBodyslideGridLayout->addWidget(lLabelNamesInApp, 3, 0);
+  lBodyslideGridLayout->addWidget(lLabelNamesInApp, 4, 0);
 
   auto lResultNamesInApp{new QLabel("", this)};
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
-  lBodyslideGridLayout->addWidget(lResultNamesInApp, 3, 1);
+  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 2);
 
-  // Fifth line
+  // Sixth line
   auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
-  lBodyslideGridLayout->addWidget(lLabelFilters, 4, 0);
+  lBodyslideGridLayout->addWidget(lLabelFilters, 5, 0);
 
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName("bodyslide_filters");
   lFiltersList->setWordWrap(true);
   this->updateBodySlideFiltersList(Utils::loadFiltersFromFile());
-  lBodyslideGridLayout->addWidget(lFiltersList, 4, 1);
+  lBodyslideGridLayout->addWidget(lFiltersList, 5, 1);
 
   auto lEditFilters{new QPushButton(this)};
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
   const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
   lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
-  lBodyslideGridLayout->addWidget(lEditFilters, 4, 2);
+  lBodyslideGridLayout->addWidget(lEditFilters, 5, 2);
 
   // Initialization functions
   this->updateOSPXMLPreview(QString(""));
   this->updateBodyslideNamesPreview(QString(""));
 
   // Event binding
-  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOSPXMLPreview);
-  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateBodyslideNamesPreview);
-  this->connect(lEditFilters, &QPushButton::clicked, this, &TabCBBESE::openBodySlideFiltersEditor);
+  this->connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateOSPXMLPreview);
+  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateBodyslideNamesPreview);
+  this->connect(lEditFilters, &QPushButton::clicked, this, &TabCBBE3BBB3BA::openBodySlideFiltersEditor);
 }
 
-void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
+void TabCBBE3BBB3BA::setupSkeletonGUI(QVBoxLayout& aLayout)
 {
   // Custom skeleton group box
-  auto lSkeletonGroupBox{new QGroupBox(tr("Additional options"), this)};
+  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton"), this)};
   aLayout.addWidget(lSkeletonGroupBox);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
@@ -317,19 +320,19 @@ void TabCBBESE::setupSkeletonGUI(QVBoxLayout& aLayout)
   this->updateSkeletonPreview();
 
   // Event binding
-  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &TabCBBESE::updateSkeletonPathState);
+  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &TabCBBE3BBB3BA::updateSkeletonPathState);
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
 
-  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
-  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &TabCBBESE::populateSkeletonChooser);
-  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &TabCBBESE::updateSkeletonPreview);
+  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateSkeletonPreview);
+  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &TabCBBE3BBB3BA::populateSkeletonChooser);
+  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateSkeletonPreview);
 }
 
-void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
+void TabCBBE3BBB3BA::setupOutputGUI(QVBoxLayout& aLayout)
 {
   // Output group box
-  auto lOutputGroupBox{new QGroupBox(tr("Output"), this)};
+  auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location"), this)};
   aLayout.addWidget(lOutputGroupBox);
 
   // Grid layout
@@ -370,14 +373,14 @@ void TabCBBESE::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
   // Event binding
-  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &TabCBBESE::chooseExportDirectory);
-  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TabCBBESE::updateOutputPreview);
+  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &TabCBBE3BBB3BA::chooseExportDirectory);
+  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateOutputPreview);
 
   // Pre-filled data
   this->updateOutputPreview();
 }
 
-void TabCBBESE::setupRemainingGUI(QVBoxLayout& aLayout)
+void TabCBBE3BBB3BA::setupRemainingGUI(QVBoxLayout& aLayout)
 {
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
@@ -385,10 +388,10 @@ void TabCBBESE::setupRemainingGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &TabCBBESE::generateDirectoryStructure);
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &TabCBBE3BBB3BA::generateDirectoryStructure);
 }
 
-QStringList TabCBBESE::bodySlideFiltersStringToList()
+QStringList TabCBBE3BBB3BA::bodySlideFiltersStringToList()
 {
   auto LFilters{this->findChild<QLabel*>("bodyslide_filters")->text()};
 
@@ -405,7 +408,7 @@ QStringList TabCBBESE::bodySlideFiltersStringToList()
   return lList;
 }
 
-void TabCBBESE::populateSkeletonChooser()
+void TabCBBE3BBB3BA::populateSkeletonChooser()
 {
   auto lRootDir{QCoreApplication::applicationDirPath() + "/assets/skeletons/"};
   auto lRelativeDirs{QString("")};
@@ -425,7 +428,7 @@ void TabCBBESE::populateSkeletonChooser()
   lSkeletonChooser->addItems(lAvailableSkeletons);
 }
 
-void TabCBBESE::updateMeshesPreview()
+void TabCBBE3BBB3BA::updateMeshesPreview()
 {
   // Body meshes path and name
   auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
@@ -504,7 +507,7 @@ void TabCBBESE::updateMeshesPreview()
   lPreviewLabel->setText(lFullPreview);
 }
 
-void TabCBBESE::updateOutputPreview()
+void TabCBBE3BBB3BA::updateOutputPreview()
 {
   // Get main directory
   auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
@@ -556,7 +559,7 @@ void TabCBBESE::updateOutputPreview()
   lOutputPathsPreview->setText(lFullPath);
 }
 
-void TabCBBESE::updateOSPXMLPreview(QString aText)
+void TabCBBE3BBB3BA::updateOSPXMLPreview(QString aText)
 {
   auto lOutputPathsPreview{this->findChild<QLabel*>("names_osp_xml_preview")};
 
@@ -585,7 +588,7 @@ void TabCBBESE::updateOSPXMLPreview(QString aText)
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
-void TabCBBESE::updateBodyslideNamesPreview(QString aText)
+void TabCBBE3BBB3BA::updateBodyslideNamesPreview(QString aText)
 {
   // Selected CBBE 3BBB version
   auto lCBBE3BBBVersionSelected{this->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex()};
@@ -678,7 +681,7 @@ void TabCBBESE::updateBodyslideNamesPreview(QString aText)
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
-void TabCBBESE::updateSkeletonPathState(int aState)
+void TabCBBE3BBB3BA::updateSkeletonPathState(int aState)
 {
   auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
   auto lSkeletonPreview{this->findChild<QLabel*>("skeleton_path_preview")};
@@ -711,7 +714,7 @@ void TabCBBESE::updateSkeletonPathState(int aState)
   }
 }
 
-void TabCBBESE::updateSkeletonPreview()
+void TabCBBE3BBB3BA::updateSkeletonPreview()
 {
   auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text()};
   Utils::cleanPathString(lSkeletonPath);
@@ -756,7 +759,7 @@ void TabCBBESE::updateSkeletonPreview()
   lOutputPathPreview->setText(lConstructedPath);
 }
 
-void TabCBBESE::chooseExportDirectory()
+void TabCBBE3BBB3BA::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
@@ -764,7 +767,7 @@ void TabCBBESE::chooseExportDirectory()
   this->updateOutputPreview();
 }
 
-void TabCBBESE::generateDirectoryStructure()
+void TabCBBE3BBB3BA::generateDirectoryStructure()
 {
   // Selected CBBE 3BBB version
   auto lCBBE3BBBVersionSelected{this->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex()};
@@ -834,7 +837,7 @@ void TabCBBESE::generateDirectoryStructure()
     // Since the directory already exist, ask the user to generate another preset in it
     QMessageBox lConfirmationBox(QMessageBox::Icon::Question,
                                  tr("Already existing directory"),
-                                 tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this folder?").arg(lEntryDirectory),
+                                 tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this directory?").arg(lEntryDirectory),
                                  QMessageBox::StandardButton::NoButton,
                                  this);
 
@@ -1150,17 +1153,17 @@ void TabCBBESE::generateDirectoryStructure()
 
   if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
   {
-    // Open the folder where the file structure has been created
+    // Open the directory where the file structure has been created
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
 }
 
-void TabCBBESE::refreshAllPreviewFields(int)
+void TabCBBE3BBB3BA::refreshAllPreviewFields(int)
 {
   this->refreshAllPreviewFields();
 }
 
-void TabCBBESE::refreshAllPreviewFields()
+void TabCBBE3BBB3BA::refreshAllPreviewFields()
 {
   // Refresh the preview of the body meshes parts
   this->updateMeshesPreview();
@@ -1170,13 +1173,13 @@ void TabCBBESE::refreshAllPreviewFields()
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }
 
-void TabCBBESE::openBodySlideFiltersEditor()
+void TabCBBE3BBB3BA::openBodySlideFiltersEditor()
 {
   auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->bodySlideFiltersStringToList())};
-  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &TabCBBESE::updateBodySlideFiltersList);
+  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &TabCBBE3BBB3BA::updateBodySlideFiltersList);
 }
 
-void TabCBBESE::updateBodySlideFiltersList(QStringList aList)
+void TabCBBE3BBB3BA::updateBodySlideFiltersList(QStringList aList)
 {
   auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
   LFiltersLabel->setText(aList.join(QString(" ; ")));

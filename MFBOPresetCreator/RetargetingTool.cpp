@@ -48,7 +48,7 @@ void RetargetingTool::setWindowProperties()
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-  this->setWindowTitle(tr("CBBE 3BBB Version Retargeting Tool"));
+  this->setWindowTitle(tr("CBBE 3BBB 3BA BodySlide Presets' Version Retargeting Tool"));
   this->setWindowIcon(QIcon(QPixmap(":/black/arrow_up")));
 }
 
@@ -62,7 +62,7 @@ void RetargetingTool::initializeGUI()
 void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
   // First line
-  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB version:"), this)};
+  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB 3BA version:"), this)};
   aLayout.addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
