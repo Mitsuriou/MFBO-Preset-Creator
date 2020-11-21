@@ -4,8 +4,7 @@
 #include "AssistedConversion.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
-#include "Tab.h"
-#include "TabCBBE3BBB3BA.h"
+#include "PresetCreator.h"
 #include "Update.h"
 #include "Utils.h"
 #include "WinUser.h"
@@ -27,10 +26,8 @@ protected:
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
-  std::vector<Tab*> mTabs;
   bool mNewVersionAvailable;
 
-  void initializeGUI();
   void setupMenuBar();
   void showWindow();
   void applyGlobalStyleSheet();

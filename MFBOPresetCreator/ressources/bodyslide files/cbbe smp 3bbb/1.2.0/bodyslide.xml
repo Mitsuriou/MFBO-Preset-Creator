@@ -1,0 +1,11 @@
+<SliderGroups>
+    <Group name="MFBO">
+        <Member name="{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)"/>
+    </Group>
+    <Group name="CBBE">
+        <Member name="{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)"/>
+    </Group>
+    <Group name="CBBE Bodies">
+        <Member name="{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)"/>
+    </Group>
+</SliderGroups>

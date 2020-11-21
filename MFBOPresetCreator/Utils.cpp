@@ -14,7 +14,7 @@ QString Utils::cleanPathString(const QString& aPath)
 
 QString Utils::getApplicationVersion()
 {
-  return "1.9.1";
+  return "1.10.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -142,7 +142,6 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
     case GUITheme::PaperBlackMono:
     case GUITheme::AlexhuszaghBreezeDark:
     case GUITheme::QuasarAppDarkStyle:
-    case GUITheme::QuasarAppMaterialStyle:
     case GUITheme::QuasarAppVisualStudioDark:
     case GUITheme::MitsuriouDarkTheme:
       return true;
@@ -154,6 +153,24 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
 QString Utils::getIconFolder(const GUITheme& aTheme)
 {
   return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
+}
+
+QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
+{
+  switch (aBody)
+  {
+    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
+      return "cbbe_3bbb_1.40";
+    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+      return "cbbe_3bbb_1.50";
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52:
+      return "cbbe_3bbb_1.51_1.52";
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+      return "cbbe_smp_3bbb";
+    default:
+      Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
+      return "";
+  }
 }
 
 QString Utils::getPresetNameFromXMLFile(const QString& aPath)
@@ -387,17 +404,17 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Default CBBE 3BBB Version
-  if (lSettingsJSON.contains("default_3bbb_version") && lSettingsJSON["default_3bbb_version"].isDouble())
+  if (lSettingsJSON.contains("default_body") && lSettingsJSON["default_body"].isDouble())
   {
-    auto lFoundVersion{lSettingsJSON["default_3bbb_version"].toInt()};
-    lSettings.defaultMainWindowCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lFoundVersion);
+    auto lFoundBody{lSettingsJSON["default_body"].toInt()};
+    lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
   }
 
   // Default Retargeting Tool CBBE 3BBB Version
-  if (lSettingsJSON.contains("retargeting_tool_3bbb_version") && lSettingsJSON["retargeting_tool_3bbb_version"].isDouble())
+  if (lSettingsJSON.contains("retargeting_tool_default_body") && lSettingsJSON["retargeting_tool_default_body"].isDouble())
   {
-    auto lFoundVersion{lSettingsJSON["retargeting_tool_3bbb_version"].toInt()};
-    lSettings.defaultRetargetingToolCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lFoundVersion);
+    auto lFoundBody{lSettingsJSON["retargeting_tool_default_body"].toInt()};
+    lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
   }
 
   // Main window output path
@@ -447,8 +464,8 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   lObj["appTheme"] = static_cast<int>(aSettings.appTheme);
   lObj["windowWidth"] = aSettings.mainWindowWidth;
   lObj["windowHeight"] = aSettings.mainWindowHeight;
-  lObj["default_3bbb_version"] = static_cast<int>(aSettings.defaultMainWindowCBBE3BBBVersion);
-  lObj["retargeting_tool_3bbb_version"] = static_cast<int>(aSettings.defaultRetargetingToolCBBE3BBBVersion);
+  lObj["default_body"] = static_cast<int>(aSettings.defaultMainWindowBody);
+  lObj["retargeting_tool_default_body"] = static_cast<int>(aSettings.defaultRetargetingToolBody);
   lObj["main_window_opening_mode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
   lObj["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
   lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
@@ -478,7 +495,8 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
 {
   switch (aBody)
   {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
+    // CBBE_3BBB_3BA_1_40
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
       if (aBeastHands)
       {
         return QStringLiteral("    <Group name=\"%1\">\n"
@@ -496,7 +514,8 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
                             "    </Group>\n")
         .arg(aGroupName);
 
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
+    // CBBE_3BBB_3BA_1_50
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
       if (aBeastHands)
       {
         return QStringLiteral("    <Group name=\"%1\">\n"
@@ -514,7 +533,8 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
                             "    </Group>\n")
         .arg(aGroupName);
 
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+    // CBBE_3BBB_3BA_1_51_and_1_52
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
       if (aBeastHands)
       {
         return QStringLiteral("    <Group name=\"%1\">\n"
@@ -529,6 +549,13 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
                             "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
                             "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
                             "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+
+    // CBBE_SMP_3BBB_1_2_0
+    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)\"/>\n"
                             "    </Group>\n")
         .arg(aGroupName);
   }

@@ -204,7 +204,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabs)
   auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
   ldefaultCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   ldefaultCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
+  ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
   ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
   lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionSelector, 1, 0, 1, 2);
 
@@ -253,7 +253,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabs)
   auto lUpgradeCbbe3BBBVersionSelector{new QComboBox(this)};
   lUpgradeCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lUpgradeCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
+  lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
   lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
   lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
 }
@@ -312,11 +312,11 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")};
   lWindowOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.mainWindowOpeningMode));
 
-  auto lDefaultCBBE3BBBVersion{this->findChild<QComboBox*>("default_cbbe_3bbb_version")};
-  lDefaultCBBE3BBBVersion->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainWindowCBBE3BBBVersion));
+  auto lDefaultBody{this->findChild<QComboBox*>("default_cbbe_3bbb_version")};
+  lDefaultBody->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainWindowBody));
 
-  auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")};
-  lDefaultUpgradeCBBE3BBBVersion->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolCBBE3BBBVersion));
+  auto lDefaultUpgradeBody{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")};
+  lDefaultUpgradeBody->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolBody));
 
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")};
   lMainWindowOutputPath->setText(aSettingsToLoad.mainWindowOutputPath);
@@ -381,10 +381,10 @@ Struct::Settings Settings::getSettingsFromGUI()
   lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lWindowOpeningMode);
 
   // Default selected CBBE 3BBB version (main)
-  lSettings.defaultMainWindowCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lDefaultCBBE3BBBVersion);
+  lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lDefaultCBBE3BBBVersion);
 
   // Default selected CBBE 3BBB version (Retargeting tool)
-  lSettings.defaultRetargetingToolCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lDefaultUpgradeCBBE3BBBVersion);
+  lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lDefaultUpgradeCBBE3BBBVersion);
 
   // Main window output path
   if (lMainWindowOutputPath.size() > 0)

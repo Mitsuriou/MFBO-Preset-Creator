@@ -68,8 +68,8 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
   lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
-  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolCBBE3BBBVersion));
+  lCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
+  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolBody));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
 
@@ -291,7 +291,7 @@ void RetargetingTool::updateBackupPreview()
 
 void RetargetingTool::launchUpDownGradeProcess()
 {
-  auto lCBBE3BBBVersionSelected{this->findChild<QComboBox*>("cbbe_3bbb_version")->currentIndex()};
+  auto lBodySelected{this->findChild<QComboBox*>("cbbe_3bbb_version")->currentIndex()};
   auto lRootDir{this->findChild<QLineEdit*>("input_path_directory")->text()};
 
   // Check if the input path has been given by the user
@@ -369,22 +369,10 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lAbsFilePath{QString("")};
   auto lRelativeDirs{QString("")};
   std::vector<Struct::SliderSet> lParsedSliderSets;
-
-  auto lRessourcesFolder{QString("")};
-  switch (lCBBE3BBBVersionSelected)
+  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected))};
+  if (lRessourcesFolder.length() == 0)
   {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
-      lRessourcesFolder = "cbbe_3bbb_1.40";
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
-      lRessourcesFolder = "cbbe_3bbb_1.50";
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lRessourcesFolder = "cbbe_3bbb_1.51";
-      break;
-    default:
-      Utils::displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
-      return;
+    return;
   }
 
   lProgressDialog.setLabelText(tr("Parsing XML files. Please wait."));
@@ -720,15 +708,15 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Message when the downgrade/upgrade has been completed successfully
   auto lSuccessText{QString("")};
 
-  switch (lCBBE3BBBVersionSelected)
+  switch (lBodySelected)
   {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
       lSuccessText = tr("All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)");
       break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
       lSuccessText = tr("All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)");
       break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
       lSuccessText = tr("All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)");
       break;
     default:

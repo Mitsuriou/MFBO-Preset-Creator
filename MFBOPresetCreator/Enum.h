@@ -1,10 +1,11 @@
 ﻿#pragma once
 
-enum class CBBE3BBBVersion
+enum class BodyNameVersion
 {
-  Version1_40 = 0,
-  Version1_50 = 1,
-  Version1_51_and_1_52 = 2
+  CBBE_3BBB_3BA_1_40 = 0,
+  CBBE_3BBB_3BA_1_50 = 1,
+  CBBE_3BBB_3BA_1_51_and_1_52 = 2,
+  CBBE_SMP_3BBB_1_2_0 = 3
 };
 
 enum class ApplicationLanguage
@@ -23,10 +24,9 @@ enum class GUITheme
   AlexhuszaghBreezeLight = 5,
   AlexhuszaghBreezeDark = 6,
   QuasarAppDarkStyle = 7,
-  QuasarAppMaterialStyle = 8,
-  QuasarAppVisualStudioDark = 9,
-  MitsuriouLightTheme = 10,
-  MitsuriouDarkTheme = 11
+  QuasarAppVisualStudioDark = 8,
+  MitsuriouLightTheme = 9,
+  MitsuriouDarkTheme = 10
 };
 
 enum class WindowOpeningMode

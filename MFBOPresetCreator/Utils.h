@@ -22,6 +22,7 @@ public:
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconFolder(const GUITheme& aTheme);
+  static QString getBodyRessourceFolder(const BodyNameVersion& aBody);
 
   // XML and OSP file parse
   static QString getPresetNameFromXMLFile(const QString& aPath);

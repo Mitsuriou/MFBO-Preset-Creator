@@ -54,11 +54,11 @@ namespace Struct
   {
   public:
     GUITheme appTheme{GUITheme::WindowsVista};
-    CBBE3BBBVersion defaultMainWindowCBBE3BBBVersion{CBBE3BBBVersion::Version1_40};
+    BodyNameVersion defaultMainWindowBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
     Struct::Font font;
     ApplicationLanguage language{LangManager::getSystemLanguage()};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
-    CBBE3BBBVersion defaultRetargetingToolCBBE3BBBVersion{CBBE3BBBVersion::Version1_51_and_1_52};
+    BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
     int mainWindowHeight{600};
     int mainWindowWidth{800};
     QString mainWindowOutputPath{""};
@@ -68,11 +68,11 @@ namespace Struct
     {
       return (
         this->appTheme == aSettings.appTheme
-        && this->defaultMainWindowCBBE3BBBVersion == aSettings.defaultMainWindowCBBE3BBBVersion
+        && this->defaultMainWindowBody == aSettings.defaultMainWindowBody
         && this->font == aSettings.font
         && this->language == aSettings.language
         && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
-        && this->defaultRetargetingToolCBBE3BBBVersion == aSettings.defaultRetargetingToolCBBE3BBBVersion
+        && this->defaultRetargetingToolBody == aSettings.defaultRetargetingToolBody
         && this->mainWindowHeight == aSettings.mainWindowHeight
         && this->mainWindowWidth == aSettings.mainWindowWidth
         && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
@@ -83,11 +83,11 @@ namespace Struct
     {
       return (
         this->appTheme != aSettings.appTheme
-        || this->defaultMainWindowCBBE3BBBVersion != aSettings.defaultMainWindowCBBE3BBBVersion
+        || this->defaultMainWindowBody != aSettings.defaultMainWindowBody
         || this->font != aSettings.font
         || this->language != aSettings.language
         || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode
-        || this->defaultRetargetingToolCBBE3BBBVersion != aSettings.defaultRetargetingToolCBBE3BBBVersion
+        || this->defaultRetargetingToolBody != aSettings.defaultRetargetingToolBody
         || this->mainWindowHeight != aSettings.mainWindowHeight
         || this->mainWindowWidth != aSettings.mainWindowWidth
         || this->mainWindowOutputPath != aSettings.mainWindowOutputPath

@@ -37,21 +37,6 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void MFBOPresetCreator::initializeGUI()
-{
-  // Create the tabs
-  auto lTabsContainer{new QTabWidget(this)};
-  lTabsContainer->setObjectName("tabs_container");
-  lTabsContainer->tabBar()->setCursor(Qt::PointingHandCursor);
-  lTabsContainer->setMovable(true);
-
-  this->setCentralWidget(lTabsContainer);
-
-  auto lCBBETab{new TabCBBE3BBB3BA(lTabsContainer, mSettings)};
-  lTabsContainer->addTab(lCBBETab, QString("CBBE 3BBB 3BA"));
-  this->mTabs.push_back(lCBBETab);
-}
-
 void MFBOPresetCreator::setupMenuBar()
 {
   // Keep a reference to the user theme
@@ -223,9 +208,6 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
     case GUITheme::QuasarAppDarkStyle:
       lQSSFileName = "QuasarApp's Dark Style";
       break;
-    case GUITheme::QuasarAppMaterialStyle:
-      lQSSFileName = "QuasarApp's Material Style";
-      break;
     case GUITheme::QuasarAppVisualStudioDark:
       lQSSFileName = "QuasarApp's Visual Studio Dark";
       break;
@@ -354,11 +336,9 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
   {
     mSettings = aSettings;
 
-    // Update the settings of each tab
-    for (auto& lTab : this->mTabs)
-    {
-      lTab->updateSettings(aSettings);
-    }
+    // Update the settings
+    auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+    lMainContainer->updateSettings(aSettings);
   }
   else
   {
@@ -411,7 +391,7 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
 #ifdef DEBUG
 
       lTitle = "Running a developper version";
-      lMessage = tr("[DEV]\nYou are currently running the unreleased version \"%1\".\nThe last available version on GitHub is tagged \"%2\".").arg(lCurrentVersion).arg(lTagName);
+      lMessage = tr("[DEV]\nYou are currently running the version \"%1\".\nThe last available version on GitHub is tagged \"%2\".").arg(lCurrentVersion).arg(lTagName);
 
 #else
 
@@ -424,7 +404,11 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
   }
 
   this->setupMenuBar();
-  this->initializeGUI();
+
+  auto lMainContainer{new PresetCreator(this, mSettings)};
+  lMainContainer->setObjectName("main_container");
+  this->setCentralWidget(lMainContainer);
+
   this->refreshUI(mSettings, false);
 
   this->showWindow();
@@ -459,8 +443,8 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
   }
 
   // Proxy the event to the current tab
-  auto lCurrentTabIndex{this->findChild<QTabWidget*>("tabs_container")->currentIndex()};
-  this->mTabs.at(lCurrentTabIndex)->fillUIByAssistedConversionValues(aPresetName, aResultsList);
+  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+  lMainContainer->fillUIByAssistedConversionValues(aPresetName, aResultsList);
 }
 
 void MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA()

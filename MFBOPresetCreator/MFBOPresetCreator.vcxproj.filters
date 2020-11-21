@@ -28,16 +28,7 @@
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Tab.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="TabCBBE3BBB3BA.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="TabUNPSE.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="TabVanillaSE.cpp">
+    <ClCompile Include="PresetCreator.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="Update.cpp">
@@ -123,16 +114,7 @@
     <QtMoc Include="Settings.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="Tab.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="TabCBBE3BBB3BA.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="TabUNPSE.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="TabVanillaSE.h">
+    <QtMoc Include="PresetCreator.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="Update.h">

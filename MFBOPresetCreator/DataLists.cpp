@@ -1,13 +1,14 @@
 #include "DataLists.h"
 
-QStringList DataLists::getCBBE3BBBVersions()
+QStringList DataLists::getBodiesNameVersions()
 {
-  QStringList lVersions;
-  lVersions.append(QString("1.40"));
-  lVersions.append(QString("1.50"));
-  lVersions.append(QString("1.51 - 1.52"));
+  QStringList lBodies;
+  lBodies.append(QString("CBBE 3BBB 3BA [v.1.40]"));
+  lBodies.append(QString("CBBE 3BBB 3BA [v.1.50]"));
+  lBodies.append(QString("CBBE 3BBB 3BA [v.1.51 -> v.1.52]"));
+  lBodies.append(QString("CBBE SMP (3BBB) [v.1.2.0]"));
 
-  return lVersions;
+  return lBodies;
 }
 
 QStringList DataLists::getWindowOpeningModes()
@@ -31,7 +32,6 @@ QStringList DataLists::getAppThemes()
   lAppThemes.append(QString("Alexhuszagh's Breeze Light"));
   lAppThemes.append(QString("Alexhuszagh's Breeze Dark"));
   lAppThemes.append(QString("QuasarApp's Dark Style"));
-  lAppThemes.append(QString("QuasarApp's Material Style"));
   lAppThemes.append(QString("QuasarApp's Visual Studio Dark"));
   lAppThemes.append(QString("Mitsuriou's Light Theme"));
   lAppThemes.append(QString("Mitsuriou's Dark Theme"));

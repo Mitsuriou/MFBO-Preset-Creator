@@ -1,10 +1,34 @@
-#include "TabCBBE3BBB3BA.h"
+#include "PresetCreator.h"
 
-TabCBBE3BBB3BA::TabCBBE3BBB3BA(QWidget* aParent, const Struct::Settings& aSettings)
-  : Tab(aParent, aSettings)
+PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings)
+  : QWidget(aParent)
+  , mSettings(aSettings)
   , mMinimumFirstColumnWidth(300)
 {
-  auto lMainLayout{this->getMainLayout()};
+  auto lBaseLayout{new QVBoxLayout(this)};
+  lBaseLayout->setContentsMargins(0, 0, 0, 0);
+
+  auto lScrollArea{new QScrollArea(this)};
+  lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->setContentsMargins(0, 0, 0, 0);
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->setWidgetResizable(true);
+
+  auto lMainWidget{new QFrame(this)};
+
+  // Hacky color change
+  if (this->mSettings.appTheme == GUITheme::WindowsVista)
+  {
+    lMainWidget->setStyleSheet("QFrame{background-color:white;}");
+  }
+  lScrollArea->setStyleSheet("QScrollArea{border:none;}");
+
+  auto lMainLayout{new QVBoxLayout(lMainWidget)};
+  lMainLayout->setContentsMargins(10, 10, 10, 10);
+
+  lScrollArea->setWidget(lMainWidget);
+  lBaseLayout->addWidget(lScrollArea);
 
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(*lMainLayout);
@@ -12,9 +36,21 @@ TabCBBE3BBB3BA::TabCBBE3BBB3BA(QWidget* aParent, const Struct::Settings& aSettin
   this->setupBodySlideGUI(*lMainLayout);
   this->setupOutputGUI(*lMainLayout);
   this->setupRemainingGUI(*lMainLayout);
+
+  // Cursor change for the scroll bar
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::mouseCursorPressed);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::mouseCursorReleased);
+
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::mouseCursorPressed);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::mouseCursorReleased);
 }
 
-void TabCBBE3BBB3BA::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
+void PresetCreator::updateSettings(Struct::Settings aSettings)
+{
+  this->mSettings = aSettings;
+}
+
+void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
 {
   // Change preset name
   this->findChild<QLineEdit*>("names_osp_xml_input")->setText(aPresetName);
@@ -58,7 +94,7 @@ void TabCBBE3BBB3BA::fillUIByAssistedConversionValues(QString aPresetName, std::
   }
 }
 
-void TabCBBE3BBB3BA::setupBodyMeshesGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 {
   // CBBE body meshes group box
   auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes"), this)};
@@ -67,6 +103,7 @@ void TabCBBE3BBB3BA::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
   lMeshesGridLayout->setSpacing(10);
+  lMeshesGridLayout->setAlignment(Qt::AlignTop);
   lMeshesGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Body meshes names
@@ -144,16 +181,16 @@ void TabCBBE3BBB3BA::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->updateMeshesPreview();
 
   // Event binding
-  this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
-  this->connect(lMeshesPathFemaleFeetLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
-  this->connect(lMeshesPathFemaleHandsLineEdit, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
-  this->connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
-  this->connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
-  this->connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
-  this->connect(lNeedBeastHands, &QCheckBox::clicked, this, qOverload<>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleFeetLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lMeshesPathFemaleHandsLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lNeedBeastHands, &QCheckBox::clicked, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
 }
 
-void TabCBBE3BBB3BA::setupBodySlideGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 {
   // BodySlide defined names group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output"), this)};
@@ -165,17 +202,18 @@ void TabCBBE3BBB3BA::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->setColumnStretch(1, 1);
   lBodyslideGridLayout->setColumnStretch(2, 0);
   lBodyslideGridLayout->setSpacing(10);
+  lBodyslideGridLayout->setAlignment(Qt::AlignTop);
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // CBBE 3BBB version
-  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB 3BA version:"), this)};
+  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted body and version:"), this)};
   lBodyslideGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
 
   auto lCbbe3BBBVersionSelector{new QComboBox(this)};
   lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  lCbbe3BBBVersionSelector->addItems(DataLists::getCBBE3BBBVersions());
-  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowCBBE3BBBVersion));
+  lCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
+  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowBody));
   lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
   lBodyslideGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
 
@@ -238,13 +276,13 @@ void TabCBBE3BBB3BA::setupBodySlideGUI(QVBoxLayout& aLayout)
   this->updateBodyslideNamesPreview(QString(""));
 
   // Event binding
-  this->connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&TabCBBE3BBB3BA::refreshAllPreviewFields));
-  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateOSPXMLPreview);
-  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateBodyslideNamesPreview);
-  this->connect(lEditFilters, &QPushButton::clicked, this, &TabCBBE3BBB3BA::openBodySlideFiltersEditor);
+  this->connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
+  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
+  this->connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
 }
 
-void TabCBBE3BBB3BA::setupSkeletonGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 {
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton"), this)};
@@ -252,6 +290,7 @@ void TabCBBE3BBB3BA::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
   lSkeletonGridLayout->setSpacing(10);
+  lSkeletonGridLayout->setAlignment(Qt::AlignTop);
   lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Skeleton
@@ -320,16 +359,16 @@ void TabCBBE3BBB3BA::setupSkeletonGUI(QVBoxLayout& aLayout)
   this->updateSkeletonPreview();
 
   // Event binding
-  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &TabCBBE3BBB3BA::updateSkeletonPathState);
+  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &PresetCreator::updateSkeletonPathState);
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
 
-  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateSkeletonPreview);
-  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &TabCBBE3BBB3BA::populateSkeletonChooser);
-  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateSkeletonPreview);
+  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
+  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &PresetCreator::populateSkeletonChooser);
+  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
 }
 
-void TabCBBE3BBB3BA::setupOutputGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 {
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location"), this)};
@@ -338,6 +377,7 @@ void TabCBBE3BBB3BA::setupOutputGUI(QVBoxLayout& aLayout)
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
   lOutputGridLayout->setSpacing(10);
+  lOutputGridLayout->setAlignment(Qt::AlignTop);
   lOutputGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
@@ -373,14 +413,14 @@ void TabCBBE3BBB3BA::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
 
   // Event binding
-  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &TabCBBE3BBB3BA::chooseExportDirectory);
-  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TabCBBE3BBB3BA::updateOutputPreview);
+  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &PresetCreator::chooseExportDirectory);
+  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOutputPreview);
 
   // Pre-filled data
   this->updateOutputPreview();
 }
 
-void TabCBBE3BBB3BA::setupRemainingGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 {
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
@@ -388,10 +428,10 @@ void TabCBBE3BBB3BA::setupRemainingGUI(QVBoxLayout& aLayout)
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &TabCBBE3BBB3BA::generateDirectoryStructure);
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &PresetCreator::generateDirectoryStructure);
 }
 
-QStringList TabCBBE3BBB3BA::bodySlideFiltersStringToList()
+QStringList PresetCreator::bodySlideFiltersStringToList()
 {
   auto LFilters{this->findChild<QLabel*>("bodyslide_filters")->text()};
 
@@ -408,7 +448,248 @@ QStringList TabCBBE3BBB3BA::bodySlideFiltersStringToList()
   return lList;
 }
 
-void TabCBBE3BBB3BA::populateSkeletonChooser()
+bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
+                                    const bool& aGenerateFilesInExistingMainDirectory,
+                                    const QString& aOSPXMLNames,
+                                    const bool& aMustUseBeastHands,
+                                    const QString& aRessourcesFolder,
+                                    const int& aBodySelected,
+                                    const QString& aBodyslideSlidersetsNames,
+                                    QString aMeshesPathBody,
+                                    QString aMeshesPathFeet,
+                                    QString aMeshesPathHands)
+{
+  // Create the SliderGroups directory
+  auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
+  if (!QDir(lSliderGroupsDirectory).exists())
+  {
+    QDir().mkpath(lSliderGroupsDirectory);
+  }
+  else if (!aGenerateFilesInExistingMainDirectory)
+  {
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
+    return false;
+  }
+
+  // Copy the XML file
+  auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml"};
+  auto lUserFilters{this->bodySlideFiltersStringToList()};
+  auto lUserFiltersListSize{lUserFilters.size()};
+  const auto& lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
+
+  if (aMustUseBeastHands)
+  {
+    auto lRessourcePath{QString(":/%1/bodyslide_beast_hands_xml%2").arg(aRessourcesFolder).arg(lCustomSuffix)};
+    if (!QFile::copy(lRessourcePath, lXMLPathName))
+    {
+      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      return false;
+    }
+  }
+  else
+  {
+    auto lRessourcePath{QString(":/%1/bodyslide_xml%2").arg(aRessourcesFolder).arg(lCustomSuffix)};
+    if (!QFile::copy(lRessourcePath, lXMLPathName))
+    {
+      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      return false;
+    }
+  }
+
+  QFile lXMLFile(lXMLPathName);
+  lXMLFile.setPermissions(QFile::WriteUser);
+
+  QByteArray lTempXMLContent;
+
+  if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    lTempXMLContent = lXMLFile.readAll();
+    lXMLFile.close();
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+    return false;
+  }
+
+  if (lTempXMLContent.length() > 0)
+  {
+    if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+    {
+      auto lTextToParse{static_cast<QString>(lTempXMLContent)};
+
+      // Custom BodySlide filters
+      if (lUserFiltersListSize > 0)
+      {
+        auto lUserFiltersConcat{QString("")};
+
+        for (const auto& lUserFilter : lUserFilters)
+        {
+          lUserFiltersConcat += Utils::getFilterBlockFromBody(aBodySelected, aMustUseBeastHands, lUserFilter);
+        }
+
+        lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
+      }
+
+      // BodySlide preset name
+      lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);
+
+      QTextStream lTextStream(&lXMLFile);
+      lTextStream << lTextToParse;
+      lTextStream.flush();
+
+      lXMLFile.close();
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+      return false;
+    }
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
+    return false;
+  }
+
+  return true;
+}
+
+bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
+                                    const bool& aGenerateFilesInExistingMainDirectory,
+                                    const QString& aOSPXMLNames,
+                                    const bool& aMustUseBeastHands,
+                                    const QString& aRessourcesFolder,
+                                    const QString& aBodyslideSlidersetsNames,
+                                    QString aMeshesPathBody,
+                                    QString aMeshesPathFeet,
+                                    QString aMeshesPathHands,
+                                    const QString& aBodyName,
+                                    const QString& aFeetName,
+                                    const QString& aHandsName)
+{
+  // Create the SliderSets directory
+  auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
+
+  if (!QDir(lSliderSetsDirectory).exists())
+  {
+    QDir().mkpath(lSliderSetsDirectory);
+  }
+  else if (!aGenerateFilesInExistingMainDirectory)
+  {
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
+    return false;
+  }
+
+  // Copy the OSP file
+  auto lOSPPathName(lSliderSetsDirectory + QDir::separator() + aOSPXMLNames + ".osp");
+  if (aMustUseBeastHands)
+  {
+    if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
+    {
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      return false;
+    }
+  }
+  else
+  {
+    if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_osp", lOSPPathName))
+    {
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      return false;
+    }
+  }
+
+  QFile lOSPFile(lOSPPathName);
+  lOSPFile.setPermissions(QFile::WriteUser);
+
+  QByteArray lTempOSPContent;
+
+  if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    lTempOSPContent = lOSPFile.readAll();
+    lOSPFile.close();
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+    return false;
+  }
+
+  // Replace the slider sets names
+  if (lTempOSPContent.length() > 0)
+  {
+    if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+    {
+      auto lTextToParse{static_cast<QString>(lTempOSPContent)};
+      lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);
+      lTextToParse.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%feet_output_path%%}"), aMeshesPathFeet.replace("/", "\\"));
+      lTextToParse.replace(QString("{%%hands_output_path%%}"), aMeshesPathHands.replace("/", "\\"));
+
+      lTextToParse.replace(QString("{%%body_output_file%%}"), aBodyName.length() > 0 ? aBodyName : "femalebody");
+      lTextToParse.replace(QString("{%%feet_output_file%%}"), aFeetName.length() > 0 ? aFeetName : "femalefeet");
+      lTextToParse.replace(QString("{%%hands_output_file%%}"), aHandsName.length() > 0 ? aHandsName : "femalehands");
+
+      QTextStream lTextStream(&lOSPFile);
+      lTextStream << lTextToParse;
+      lTextStream.flush();
+
+      lOSPFile.close();
+    }
+    else
+    {
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+      return false;
+    }
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
+    return false;
+  }
+
+  return true;
+}
+
+bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath)
+{
+  if (aSkeletonPath.length() > 0)
+  {
+    auto lSkeletonPath{Utils::cleanPathString(aSkeletonPath)};
+    auto lSkeletonDirectory{aEntryDirectory + QDir::separator() + lSkeletonPath};
+    QDir().mkpath(lSkeletonDirectory);
+
+    auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
+
+    // Custom skeleton chooser
+    auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+    auto lPath{QString("%1/assets/skeletons/%2").arg(QCoreApplication::applicationDirPath()).arg(lSkeletonChooser->currentText())};
+
+    auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
+
+    if (!QFile::copy(lPath, lSkeletonWriteLocation))
+    {
+      Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
+
+      // Fallback option if the custom skeleton could not be copied
+      if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
+      {
+        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+        return false;
+      }
+    }
+  }
+  else
+  {
+    Utils::displayWarningMessage(tr("Error: no path given for the custom skeleton."));
+    return false;
+  }
+
+  return true;
+}
+
+void PresetCreator::populateSkeletonChooser()
 {
   auto lRootDir{QCoreApplication::applicationDirPath() + "/assets/skeletons/"};
   auto lRelativeDirs{QString("")};
@@ -428,7 +709,7 @@ void TabCBBE3BBB3BA::populateSkeletonChooser()
   lSkeletonChooser->addItems(lAvailableSkeletons);
 }
 
-void TabCBBE3BBB3BA::updateMeshesPreview()
+void PresetCreator::updateMeshesPreview()
 {
   // Body meshes path and name
   auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
@@ -507,7 +788,7 @@ void TabCBBE3BBB3BA::updateMeshesPreview()
   lPreviewLabel->setText(lFullPreview);
 }
 
-void TabCBBE3BBB3BA::updateOutputPreview()
+void PresetCreator::updateOutputPreview()
 {
   // Get main directory
   auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
@@ -559,7 +840,7 @@ void TabCBBE3BBB3BA::updateOutputPreview()
   lOutputPathsPreview->setText(lFullPath);
 }
 
-void TabCBBE3BBB3BA::updateOSPXMLPreview(QString aText)
+void PresetCreator::updateOSPXMLPreview(QString aText)
 {
   auto lOutputPathsPreview{this->findChild<QLabel*>("names_osp_xml_preview")};
 
@@ -588,7 +869,7 @@ void TabCBBE3BBB3BA::updateOSPXMLPreview(QString aText)
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
-void TabCBBE3BBB3BA::updateBodyslideNamesPreview(QString aText)
+void PresetCreator::updateBodyslideNamesPreview(QString aText)
 {
   // Selected CBBE 3BBB version
   auto lCBBE3BBBVersionSelected{this->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex()};
@@ -611,59 +892,26 @@ void TabCBBE3BBB3BA::updateBodyslideNamesPreview(QString aText)
 
   switch (lCBBE3BBBVersionSelected)
   {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
       if (lMustUseBeastHands)
-      {
-        lConstructedPreviewText = QStringLiteral(
-                                    "%1 - 3BBB Body Amazing\n"
-                                    "%1 - Feet\n"
-                                    "%1 - Beast Hands")
-                                    .arg(aText);
-      }
+        lConstructedPreviewText = QStringLiteral("%1 - 3BBB Body Amazing\n%1 - Feet\n%1 - Beast Hands").arg(aText);
       else
-      {
-        lConstructedPreviewText = QStringLiteral(
-                                    "%1 - 3BBB Body Amazing\n"
-                                    "%1 - Feet\n"
-                                    "%1 - Hands ")
-                                    .arg(aText);
-      }
+        lConstructedPreviewText = QStringLiteral("%1 - 3BBB Body Amazing\n%1 - Feet\n%1 - Hands ").arg(aText);
       break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
       if (lMustUseBeastHands)
-      {
-        lConstructedPreviewText = QStringLiteral(
-                                    "%1 - CBBE 3BBB Body Amazing\n"
-                                    "%1 - CBBE 3BBB Feet\n"
-                                    "%1 - CBBE Beast Hands")
-                                    .arg(aText);
-      }
+        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE Beast Hands").arg(aText);
       else
-      {
-        lConstructedPreviewText = QStringLiteral(
-                                    "%1 - CBBE 3BBB Body Amazing\n"
-                                    "%1 - CBBE 3BBB Feet\n"
-                                    "%1 - CBBE 3BBB Hands")
-                                    .arg(aText);
-      }
+        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
       break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
       if (lMustUseBeastHands)
-      {
-        lConstructedPreviewText = QStringLiteral(
-                                    "%1 - CBBE 3BBB Body Amazing\n"
-                                    "%1 - CBBE 3BBB Feet\n"
-                                    "%1 - CBBE 3BBB Hands Beast")
-                                    .arg(aText);
-      }
+        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands Beast").arg(aText);
       else
-      {
-        lConstructedPreviewText = QStringLiteral(
-                                    "%1 - CBBE 3BBB Body Amazing\n"
-                                    "%1 - CBBE 3BBB Feet\n"
-                                    "%1 - CBBE 3BBB Hands")
-                                    .arg(aText);
-      }
+        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
+      break;
+    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
+      lConstructedPreviewText = QStringLiteral("\n%1 - CBBE Body SMP (3BBB)\n").arg(aText);
       break;
     default:
       lConstructedPreviewText = tr("Error while evaluating the data.");
@@ -681,7 +929,7 @@ void TabCBBE3BBB3BA::updateBodyslideNamesPreview(QString aText)
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
-void TabCBBE3BBB3BA::updateSkeletonPathState(int aState)
+void PresetCreator::updateSkeletonPathState(int aState)
 {
   auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
   auto lSkeletonPreview{this->findChild<QLabel*>("skeleton_path_preview")};
@@ -714,7 +962,7 @@ void TabCBBE3BBB3BA::updateSkeletonPathState(int aState)
   }
 }
 
-void TabCBBE3BBB3BA::updateSkeletonPreview()
+void PresetCreator::updateSkeletonPreview()
 {
   auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text()};
   Utils::cleanPathString(lSkeletonPath);
@@ -759,7 +1007,7 @@ void TabCBBE3BBB3BA::updateSkeletonPreview()
   lOutputPathPreview->setText(lConstructedPath);
 }
 
-void TabCBBE3BBB3BA::chooseExportDirectory()
+void PresetCreator::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
@@ -767,10 +1015,10 @@ void TabCBBE3BBB3BA::chooseExportDirectory()
   this->updateOutputPreview();
 }
 
-void TabCBBE3BBB3BA::generateDirectoryStructure()
+void PresetCreator::generateDirectoryStructure()
 {
   // Selected CBBE 3BBB version
-  auto lCBBE3BBBVersionSelected{this->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex()};
+  auto lBodySelected{this->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex()};
 
   // Beast hands
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
@@ -893,258 +1141,36 @@ void TabCBBE3BBB3BA::generateDirectoryStructure()
     return;
   }
 
-  // Create the SliderGroups directory
-  auto lSliderGroupsDirectory{lEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
-  if (!QDir(lSliderGroupsDirectory).exists())
+  // Get the virtual ressources' directory
+  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected))};
+  if (lRessourcesFolder.length() == 0)
   {
-    QDir().mkpath(lSliderGroupsDirectory);
-  }
-  else if (!lGenerateFilesInExistingMainDirectory)
-  {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
     return;
   }
 
-  // Copy the QRC file and change the slidergroups names in the XML file
-  auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + lOSPXMLNames + ".xml"};
-  auto lRessourcesFolder{QString("")};
-
-  switch (lCBBE3BBBVersionSelected)
+  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodySelected, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands))
   {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
-      lRessourcesFolder = "cbbe_3bbb_1.40";
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
-      lRessourcesFolder = "cbbe_3bbb_1.50";
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lRessourcesFolder = "cbbe_3bbb_1.51";
-      break;
-    default:
-      Utils::displayWarningMessage(tr("Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
-      return;
-  }
-
-  // Copy the XML file
-  auto lUserFilters{this->bodySlideFiltersStringToList()};
-  auto lUserFiltersListSize{lUserFilters.size()};
-  const auto& lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
-
-  if (lMustUseBeastHands)
-  {
-    auto lRessourcePath{QString(":/%1/bodyslide_beast_hands_xml%2").arg(lRessourcesFolder).arg(lCustomSuffix)};
-    if (!QFile::copy(lRessourcePath, lXMLPathName))
-    {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
-      return;
-    }
-  }
-  else
-  {
-    auto lRessourcePath{QString(":/%1/bodyslide_xml%2").arg(lRessourcesFolder).arg(lCustomSuffix)};
-    if (!QFile::copy(lRessourcePath, lXMLPathName))
-    {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
-      return;
-    }
-  }
-
-  QFile lXMLFile(lXMLPathName);
-  lXMLFile.setPermissions(QFile::WriteUser);
-
-  QByteArray lTempXMLContent;
-
-  if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
-  {
-    lTempXMLContent = lXMLFile.readAll();
-    lXMLFile.close();
-  }
-  else
-  {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
     return;
   }
 
-  if (lTempXMLContent.length() > 0)
+  if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
   {
-    if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-      auto lTextToParse{static_cast<QString>(lTempXMLContent)};
-
-      // Custom BodySlide filters
-      if (lUserFiltersListSize > 0)
-      {
-        auto lUserFiltersConcat{QString("")};
-
-        for (const auto& lUserFilter : lUserFilters)
-        {
-          lUserFiltersConcat += Utils::getFilterBlockFromBody(lCBBE3BBBVersionSelected, lMustUseBeastHands, lUserFilter);
-        }
-
-        lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
-      }
-
-      // BodySlide preset name
-      lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lBodyslideSlidersetsNames);
-
-      QTextStream lTextStream(&lXMLFile);
-      lTextStream << lTextToParse;
-      lTextStream.flush();
-
-      lXMLFile.close();
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
-      return;
-    }
-  }
-  else
-  {
-    Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
-    return;
-  }
-
-  // Create the SliderSets directory
-  auto lSliderSetsDirectory{lEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
-
-  if (!QDir(lSliderSetsDirectory).exists())
-  {
-    QDir().mkpath(lSliderSetsDirectory);
-  }
-  else if (!lGenerateFilesInExistingMainDirectory)
-  {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
-    return;
-  }
-
-  // Copy the QRC file and change the slidergroups names in the OSP file
-  auto lOSPPathName(lSliderSetsDirectory + QDir::separator() + lOSPXMLNames + ".osp");
-
-  // Copy the OSP file
-  if (lMustUseBeastHands)
-  {
-    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
-    {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
-      return;
-    }
-  }
-  else
-  {
-    if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lOSPPathName))
-    {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
-      return;
-    }
-  }
-
-  QFile lOSPFile(lOSPPathName);
-  lOSPFile.setPermissions(QFile::WriteUser);
-
-  QByteArray lTempOSPContent;
-
-  if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
-  {
-    lTempOSPContent = lOSPFile.readAll();
-    lOSPFile.close();
-  }
-  else
-  {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
-    return;
-  }
-
-  // Replace the slider sets names
-  if (lTempOSPContent.length() > 0)
-  {
-    if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-      auto lTextToParse{static_cast<QString>(lTempOSPContent)};
-      lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lBodyslideSlidersetsNames);
-      lTextToParse.replace(QString("{%%body_output_path%%}"), lMeshesPathBody.replace("/", "\\"));
-      lTextToParse.replace(QString("{%%feet_output_path%%}"), lMeshesPathFeet.replace("/", "\\"));
-      lTextToParse.replace(QString("{%%hands_output_path%%}"), lMeshesPathHands.replace("/", "\\"));
-
-      lTextToParse.replace(QString("{%%body_output_file%%}"), lBodyName.size() > 0 ? lBodyName : "femalebody");
-      lTextToParse.replace(QString("{%%feet_output_file%%}"), lFeetName.size() > 0 ? lFeetName : "femalefeet");
-      lTextToParse.replace(QString("{%%hands_output_file%%}"), lHandsName.size() > 0 ? lHandsName : "femalehands");
-
-      QTextStream lTextStream(&lOSPFile);
-      lTextStream << lTextToParse;
-      lTextStream.flush();
-
-      lOSPFile.close();
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
-      return;
-    }
-  }
-  else
-  {
-    Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
     return;
   }
 
   // If the user checked the custom skeleton
   if (lMustCopySkeleton)
   {
-    if (lSkeletonPath.length() > 0)
+    if (!this->generateSkeletonFile(lEntryDirectory, lSkeletonPath))
     {
-      Utils::cleanPathString(lSkeletonPath);
-
-      auto lSkeletonDirectory{lEntryDirectory + QDir::separator() + lSkeletonPath};
-      QDir().mkpath(lSkeletonDirectory);
-
-      auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
-
-      // V.1.8.2: Custom skeleton chooser
-      auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
-      auto lPath{QString("%1/assets/skeletons/%2").arg(QCoreApplication::applicationDirPath()).arg(lSkeletonChooser->currentText())};
-
-      auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
-
-      if (!QFile::copy(lPath, lSkeletonWriteLocation))
-      {
-        Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
-
-        // Fallback option if the custom skeleton could not be copied
-        if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
-        {
-          Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
-          return;
-        }
-      }
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error: no path given for the custom skeleton."));
       return;
     }
   }
 
-  // Message when the generation has completed successfully
-  auto lSuccessText{QString("")};
+  // Update the color of the output directory preview
+  this->updateOutputPreview();
 
-  switch (lCBBE3BBBVersionSelected)
-  {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
-      lSuccessText = tr("Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)");
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
-      lSuccessText = tr("Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lSuccessText = tr("Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)");
-      break;
-    default:
-      lSuccessText = tr("Every file has been correctly generated. You can now exit the program or create another conversion! :)");
-      break;
-  }
-
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Generation successful"), lSuccessText, QMessageBox::StandardButton::NoButton, this);
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Generation successful"), tr("Every file has been correctly generated. You can now exit the program or create another conversion!"), QMessageBox::StandardButton::NoButton, this);
 
   auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
   lOKButton->setCursor(Qt::PointingHandCursor);
@@ -1158,12 +1184,12 @@ void TabCBBE3BBB3BA::generateDirectoryStructure()
   }
 }
 
-void TabCBBE3BBB3BA::refreshAllPreviewFields(int)
+void PresetCreator::refreshAllPreviewFields(int)
 {
   this->refreshAllPreviewFields();
 }
 
-void TabCBBE3BBB3BA::refreshAllPreviewFields()
+void PresetCreator::refreshAllPreviewFields()
 {
   // Refresh the preview of the body meshes parts
   this->updateMeshesPreview();
@@ -1173,14 +1199,28 @@ void TabCBBE3BBB3BA::refreshAllPreviewFields()
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }
 
-void TabCBBE3BBB3BA::openBodySlideFiltersEditor()
+void PresetCreator::openBodySlideFiltersEditor()
 {
   auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->bodySlideFiltersStringToList())};
-  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &TabCBBE3BBB3BA::updateBodySlideFiltersList);
+  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &PresetCreator::updateBodySlideFiltersList);
 }
 
-void TabCBBE3BBB3BA::updateBodySlideFiltersList(QStringList aList)
+void PresetCreator::updateBodySlideFiltersList(QStringList aList)
 {
   auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
   LFiltersLabel->setText(aList.join(QString(" ; ")));
+}
+
+void PresetCreator::mouseCursorPressed()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
+}
+
+void PresetCreator::mouseCursorReleased()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
