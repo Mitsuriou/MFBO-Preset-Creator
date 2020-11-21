@@ -819,6 +819,7 @@ void TabCBBESE::generateDirectoryStructure()
   }
 
   // Create main directory
+  auto lGenerateFilesInExistingMainDirectory{false};
   if (!QDir(lEntryDirectory).exists())
   {
     // Wait to know the result of the mkdir()
@@ -830,8 +831,30 @@ void TabCBBESE::generateDirectoryStructure()
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" already exists on your computer."));
-    return;
+    // Since the directory already exist, ask the user to generate another preset in it
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question,
+                                 tr("Already existing directory"),
+                                 tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this folder?").arg(lEntryDirectory),
+                                 QMessageBox::StandardButton::NoButton,
+                                 this);
+
+    auto lContinueButton{lConfirmationBox.addButton(tr("Continue the files generation"), QMessageBox::ButtonRole::YesRole)};
+    lContinueButton->setCursor(Qt::PointingHandCursor);
+    lContinueButton->setStyleSheet("color: hsl(33, 100%, 71%);");
+
+    auto lStopButton{lConfirmationBox.addButton(tr("Cancel the files generation"), QMessageBox::ButtonRole::NoRole)};
+    lStopButton->setCursor(Qt::PointingHandCursor);
+    lStopButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+    lConfirmationBox.setDefaultButton(lContinueButton);
+    lConfirmationBox.exec();
+
+    if (lConfirmationBox.clickedButton() != lContinueButton)
+    {
+      return;
+    }
+
+    lGenerateFilesInExistingMainDirectory = true;
   }
 
   // Export the meshes
@@ -873,7 +896,7 @@ void TabCBBESE::generateDirectoryStructure()
   {
     QDir().mkpath(lSliderGroupsDirectory);
   }
-  else
+  else if (!lGenerateFilesInExistingMainDirectory)
   {
     Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
     return;
@@ -986,7 +1009,7 @@ void TabCBBESE::generateDirectoryStructure()
   {
     QDir().mkpath(lSliderSetsDirectory);
   }
-  else
+  else if (!lGenerateFilesInExistingMainDirectory)
   {
     Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
     return;

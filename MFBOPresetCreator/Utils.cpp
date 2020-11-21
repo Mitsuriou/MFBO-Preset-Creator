@@ -14,7 +14,7 @@ QString Utils::cleanPathString(const QString& aPath)
 
 QString Utils::getApplicationVersion()
 {
-  return "1.9.0";
+  return "1.9.1";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
