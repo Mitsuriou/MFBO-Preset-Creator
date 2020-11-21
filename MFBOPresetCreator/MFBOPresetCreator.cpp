@@ -1,8 +1,8 @@
 ﻿#include "MFBOPresetCreator.h"
 
-MFBOPresetCreator::MFBOPresetCreator(QWidget* parent)
+MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent)
   : QMainWindow(parent)
-  , mSettings(Utils::loadSettingsFromFile())
+  , mSettings(aSettings)
   , mNewVersionAvailable(false)
 {
   // Construct the GUI

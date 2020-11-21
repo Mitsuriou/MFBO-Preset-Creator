@@ -25,8 +25,11 @@ int main(int argc, char* argv[])
 
     lMainApplication.processEvents();
 
+    // Read settings file
+    auto lSettings{Utils::loadSettingsFromFile()};
+
     // Apply custom language and translation
-    auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(Utils::loadSettingsFromFile().language))};
+    auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(lSettings.language))};
     auto lTranslator{new QTranslator()};
     if (lTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))
     {
@@ -41,7 +44,7 @@ int main(int argc, char* argv[])
     }
 
     // Create and show the main window
-    MFBOPresetCreator lMainWindow;
+    MFBOPresetCreator lMainWindow(lSettings);
 
     // Make the splash screen disappear when the main window is displayed
     lSplashScreen.finish(&lMainWindow);
