@@ -316,19 +316,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   if (lSettingsJSON.contains("lang") && lSettingsJSON["lang"].isDouble())
   {
     auto lFoundLanguage{lSettingsJSON["lang"].toInt()};
-
-    switch (lFoundLanguage)
-    {
-      case static_cast<int>(ApplicationLanguage::English):
-        lSettings.language = ApplicationLanguage::English;
-        break;
-      case static_cast<int>(ApplicationLanguage::French):
-        lSettings.language = ApplicationLanguage::French;
-        break;
-      default:
-        lSettings.language = ApplicationLanguage::English;
-        break;
-    }
+    lSettings.language = static_cast<ApplicationLanguage>(lFoundLanguage);
   }
 
   // Font family
@@ -376,49 +364,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   if (lSettingsJSON.contains("appTheme") && lSettingsJSON["appTheme"].isDouble())
   {
     auto lFoundAppTheme{lSettingsJSON["appTheme"].toInt()};
-
-    switch (lFoundAppTheme)
-    {
-      case static_cast<int>(GUITheme::WindowsVista):
-        lSettings.appTheme = GUITheme::WindowsVista;
-        break;
-      case static_cast<int>(GUITheme::PaperLight):
-        lSettings.appTheme = GUITheme::PaperLight;
-        break;
-      case static_cast<int>(GUITheme::PaperDark):
-        lSettings.appTheme = GUITheme::PaperDark;
-        break;
-      case static_cast<int>(GUITheme::PaperWhiteMono):
-        lSettings.appTheme = GUITheme::PaperWhiteMono;
-        break;
-      case static_cast<int>(GUITheme::PaperBlackMono):
-        lSettings.appTheme = GUITheme::PaperBlackMono;
-        break;
-      case static_cast<int>(GUITheme::AlexhuszaghBreezeLight):
-        lSettings.appTheme = GUITheme::AlexhuszaghBreezeLight;
-        break;
-      case static_cast<int>(GUITheme::AlexhuszaghBreezeDark):
-        lSettings.appTheme = GUITheme::AlexhuszaghBreezeDark;
-        break;
-      case static_cast<int>(GUITheme::QuasarAppDarkStyle):
-        lSettings.appTheme = GUITheme::QuasarAppDarkStyle;
-        break;
-      case static_cast<int>(GUITheme::QuasarAppMaterialStyle):
-        lSettings.appTheme = GUITheme::QuasarAppMaterialStyle;
-        break;
-      case static_cast<int>(GUITheme::QuasarAppVisualStudioDark):
-        lSettings.appTheme = GUITheme::QuasarAppVisualStudioDark;
-        break;
-      case static_cast<int>(GUITheme::MitsuriouLightTheme):
-        lSettings.appTheme = GUITheme::MitsuriouLightTheme;
-        break;
-      case static_cast<int>(GUITheme::MitsuriouDarkTheme):
-        lSettings.appTheme = GUITheme::MitsuriouDarkTheme;
-        break;
-      default:
-        lSettings.appTheme = GUITheme::WindowsVista;
-        break;
-    }
+    lSettings.appTheme = static_cast<GUITheme>(lFoundAppTheme);
   }
 
   // Default window width
@@ -437,63 +383,21 @@ Struct::Settings Utils::loadSettingsFromFile()
   if (lSettingsJSON.contains("main_window_opening_mode") && lSettingsJSON["main_window_opening_mode"].isDouble())
   {
     auto lFoundWindowOpeningMode{lSettingsJSON["main_window_opening_mode"].toInt()};
-
-    switch (lFoundWindowOpeningMode)
-    {
-      case static_cast<int>(WindowOpeningMode::Minimized):
-        lSettings.mainWindowOpeningMode = WindowOpeningMode::Minimized;
-        break;
-      case static_cast<int>(WindowOpeningMode::Windowed):
-        lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
-        break;
-      case static_cast<int>(WindowOpeningMode::Maximized):
-        lSettings.mainWindowOpeningMode = WindowOpeningMode::Maximized;
-        break;
-      default:
-        lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
-    }
+    lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lFoundWindowOpeningMode);
   }
 
   // Default CBBE 3BBB Version
   if (lSettingsJSON.contains("default_3bbb_version") && lSettingsJSON["default_3bbb_version"].isDouble())
   {
     auto lFoundVersion{lSettingsJSON["default_3bbb_version"].toInt()};
-
-    switch (lFoundVersion)
-    {
-      case static_cast<int>(CBBE3BBBVersion::Version1_40):
-        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-        break;
-      case static_cast<int>(CBBE3BBBVersion::Version1_50):
-        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
-        break;
-      case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
-        break;
-      default:
-        lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-    }
+    lSettings.defaultMainWindowCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lFoundVersion);
   }
 
   // Default Retargeting Tool CBBE 3BBB Version
   if (lSettingsJSON.contains("retargeting_tool_3bbb_version") && lSettingsJSON["retargeting_tool_3bbb_version"].isDouble())
   {
     auto lFoundVersion{lSettingsJSON["retargeting_tool_3bbb_version"].toInt()};
-
-    switch (lFoundVersion)
-    {
-      case static_cast<int>(CBBE3BBBVersion::Version1_40):
-        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-        break;
-      case static_cast<int>(CBBE3BBBVersion::Version1_50):
-        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
-        break;
-      case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
-        break;
-      default:
-        lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-    }
+    lSettings.defaultRetargetingToolCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lFoundVersion);
   }
 
   // Main window output path

@@ -363,48 +363,7 @@ Struct::Settings Settings::getSettingsFromGUI()
   lSettings.font.strikeOut = this->mNewFont.strikeOut();
 
   // Application theme
-  switch (lAppTheme)
-  {
-    case static_cast<int>(GUITheme::WindowsVista):
-      lSettings.appTheme = GUITheme::WindowsVista;
-      break;
-    case static_cast<int>(GUITheme::PaperLight):
-      lSettings.appTheme = GUITheme::PaperLight;
-      break;
-    case static_cast<int>(GUITheme::PaperDark):
-      lSettings.appTheme = GUITheme::PaperDark;
-      break;
-    case static_cast<int>(GUITheme::PaperWhiteMono):
-      lSettings.appTheme = GUITheme::PaperWhiteMono;
-      break;
-    case static_cast<int>(GUITheme::PaperBlackMono):
-      lSettings.appTheme = GUITheme::PaperBlackMono;
-      break;
-    case static_cast<int>(GUITheme::AlexhuszaghBreezeLight):
-      lSettings.appTheme = GUITheme::AlexhuszaghBreezeLight;
-      break;
-    case static_cast<int>(GUITheme::AlexhuszaghBreezeDark):
-      lSettings.appTheme = GUITheme::AlexhuszaghBreezeDark;
-      break;
-    case static_cast<int>(GUITheme::QuasarAppDarkStyle):
-      lSettings.appTheme = GUITheme::QuasarAppDarkStyle;
-      break;
-    case static_cast<int>(GUITheme::QuasarAppMaterialStyle):
-      lSettings.appTheme = GUITheme::QuasarAppMaterialStyle;
-      break;
-    case static_cast<int>(GUITheme::QuasarAppVisualStudioDark):
-      lSettings.appTheme = GUITheme::QuasarAppVisualStudioDark;
-      break;
-    case static_cast<int>(GUITheme::MitsuriouLightTheme):
-      lSettings.appTheme = GUITheme::MitsuriouLightTheme;
-      break;
-    case static_cast<int>(GUITheme::MitsuriouDarkTheme):
-      lSettings.appTheme = GUITheme::MitsuriouDarkTheme;
-      break;
-    default:
-      lSettings.appTheme = GUITheme::WindowsVista;
-      break;
-  }
+  lSettings.appTheme = static_cast<GUITheme>(lAppTheme);
 
   // Window width
   if (lWindowWidth.size() > 0)
@@ -419,55 +378,13 @@ Struct::Settings Settings::getSettingsFromGUI()
   }
 
   // Main window opening mode
-  switch (lWindowOpeningMode)
-  {
-    case static_cast<int>(WindowOpeningMode::Minimized):
-      lSettings.mainWindowOpeningMode = WindowOpeningMode::Minimized;
-      break;
-    case static_cast<int>(WindowOpeningMode::Windowed):
-      lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
-      break;
-    case static_cast<int>(WindowOpeningMode::Maximized):
-      lSettings.mainWindowOpeningMode = WindowOpeningMode::Maximized;
-      break;
-    default:
-      lSettings.mainWindowOpeningMode = WindowOpeningMode::Windowed;
-      break;
-  }
+  lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lWindowOpeningMode);
 
   // Default selected CBBE 3BBB version (main)
-  switch (lDefaultCBBE3BBBVersion)
-  {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
-      lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
-      lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
-      break;
-    default:
-      lSettings.defaultMainWindowCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-      break;
-  }
+  lSettings.defaultMainWindowCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lDefaultCBBE3BBBVersion);
 
   // Default selected CBBE 3BBB version (Retargeting tool)
-  switch (lDefaultUpgradeCBBE3BBBVersion)
-  {
-    case static_cast<int>(CBBE3BBBVersion::Version1_40):
-      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_50):
-      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_50;
-      break;
-    case static_cast<int>(CBBE3BBBVersion::Version1_51_and_1_52):
-      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_51_and_1_52;
-      break;
-    default:
-      lSettings.defaultRetargetingToolCBBE3BBBVersion = CBBE3BBBVersion::Version1_40;
-      break;
-  }
+  lSettings.defaultRetargetingToolCBBE3BBBVersion = static_cast<CBBE3BBBVersion>(lDefaultUpgradeCBBE3BBBVersion);
 
   // Main window output path
   if (lMainWindowOutputPath.size() > 0)
