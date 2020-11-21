@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator/badge)](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator)
+
 # Mitsuriou's Follower Bodies Overhaul: Preset Creator
 MFBOPC is a GUI application that should able anyone to change a body mesh of a follower or an NPC to a CBBE 3BBB 3BA body mesh.
 In addition, the user is able to generate files that the BodySlide application is able to read, to custom the follower's or NPC's body shape.
