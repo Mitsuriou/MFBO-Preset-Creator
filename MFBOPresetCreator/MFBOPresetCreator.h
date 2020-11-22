@@ -28,6 +28,7 @@ private:
   Struct::Settings mSettings;
   bool mNewVersionAvailable;
 
+  void initializeGUI();
   void setupMenuBar();
   void showWindow();
   void applyGlobalStyleSheet();

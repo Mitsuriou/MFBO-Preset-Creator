@@ -445,6 +445,12 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
   }
 
+  // Check for updates at startup
+  if (lSettingsJSON.contains("checkForUpdatesAtStartup") && lSettingsJSON["checkForUpdatesAtStartup"].isBool())
+  {
+    lSettings.checkForUpdatesAtStartup = lSettingsJSON["checkForUpdatesAtStartup"].toBool();
+  }
+
   return lSettings;
 }
 
@@ -485,6 +491,7 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   lObj["main_window_opening_mode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
   lObj["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
   lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
+  lObj["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
 
   return lObj;
 }

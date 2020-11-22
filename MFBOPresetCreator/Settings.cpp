@@ -69,6 +69,7 @@ void Settings::initializeGUI()
   this->setLayout(lMainLayout);
 
   this->setupDisplayGroup(*lMainLayout);
+  this->setupGeneralGroup(*lMainLayout);
   this->setupPresetCreatorGroup(*lMainLayout);
   this->setupRetargetingToolGroup(*lMainLayout);
   this->setupButtons(*lMainLayout);
@@ -81,7 +82,7 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
 {
   // Display group box
   auto lDisplayGroupBox{new QGroupBox(tr("Display"), this)};
-  aLayout.addWidget(lDisplayGroupBox, 0, 0, 2, 1);
+  aLayout.addWidget(lDisplayGroupBox, 0, 0, 3, 1);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
@@ -162,11 +163,30 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
 }
 
+void Settings::setupGeneralGroup(QGridLayout& aLayout)
+{
+  // Display group box
+  auto lGeneralGroupBox{new QGroupBox(tr("General"), this)};
+  aLayout.addWidget(lGeneralGroupBox, 0, 1);
+
+  // Container layout
+  auto lDisplayLayout{new QVBoxLayout(lGeneralGroupBox)};
+  lDisplayLayout->setSpacing(10);
+  lDisplayLayout->setContentsMargins(15, 20, 15, 15);
+  lDisplayLayout->setAlignment(Qt::AlignTop);
+
+  // CHECK UPDATE AT SOFTWARE STARTUP
+  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Check update at program startup"), this)};
+  lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
+  lAutoOpenDirCheckbox->setObjectName(QString("check_update_startup"));
+  lDisplayLayout->addWidget(lAutoOpenDirCheckbox);
+}
+
 void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
 {
   // Preset Creator group box
   auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator"), this)};
-  aLayout.addWidget(lPresetCreatorGroupBox, 0, 1);
+  aLayout.addWidget(lPresetCreatorGroupBox, 1, 1);
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
   lPresetCreatorLayout->setSpacing(10);
@@ -215,7 +235,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
 {
   // Retargeting Tool group box
   auto lRetToolGroupBox{new QGroupBox(tr("Retargeting Tool"), this)};
-  aLayout.addWidget(lRetToolGroupBox, 1, 1);
+  aLayout.addWidget(lRetToolGroupBox, 2, 1);
 
   auto lRetargetingToolLayout{new QVBoxLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
@@ -239,7 +259,7 @@ void Settings::setupButtons(QGridLayout& aLayout)
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
-  aLayout.addLayout(lButtonsContainer, 2, 0, 1, 2);
+  aLayout.addLayout(lButtonsContainer, 3, 0, 1, 2);
 
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
@@ -304,6 +324,9 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")};
   lAutoOpenGeneratedDir->setChecked(aSettingsToLoad.mainWindowAutomaticallyOpenGeneratedDirectory);
+
+  auto lCheckUpdateStartup{this->findChild<QCheckBox*>("check_update_startup")};
+  lCheckUpdateStartup->setChecked(aSettingsToLoad.checkForUpdatesAtStartup);
 }
 
 Struct::Settings Settings::getSettingsFromGUI()
@@ -317,6 +340,7 @@ Struct::Settings Settings::getSettingsFromGUI()
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};
+  auto lCheckUpdateStartup{this->findChild<QCheckBox*>("check_update_startup")->isChecked()};
 
   Struct::Settings lSettings;
 
@@ -375,6 +399,9 @@ Struct::Settings Settings::getSettingsFromGUI()
 
   // Automatically open generated directory
   lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lAutoOpenGeneratedDir;
+
+  // Check for updates at startup
+  lSettings.checkForUpdatesAtStartup = lCheckUpdateStartup;
 
   return lSettings;
 }

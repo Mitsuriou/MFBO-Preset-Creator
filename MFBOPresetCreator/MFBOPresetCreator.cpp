@@ -9,7 +9,14 @@ MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent
   ui.setupUi(this);
 
   // Check for new versions
-  this->checkForUpdate();
+  if (mSettings.checkForUpdatesAtStartup)
+  {
+    this->checkForUpdate();
+  }
+  else
+  {
+    this->initializeGUI();
+  }
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -35,6 +42,19 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   {
     aEvent->accept();
   }
+}
+
+void MFBOPresetCreator::initializeGUI()
+{
+  this->setupMenuBar();
+
+  auto lMainContainer{new PresetCreator(this, mSettings)};
+  lMainContainer->setObjectName("main_container");
+  this->setCentralWidget(lMainContainer);
+
+  this->refreshUI(mSettings, false);
+
+  this->showWindow();
 }
 
 void MFBOPresetCreator::setupMenuBar()
@@ -113,7 +133,7 @@ void MFBOPresetCreator::setupMenuBar()
   auto lCheckUpdateAction{new QAction(this)};
   lCheckUpdateAction->setText(tr("Check for updates") + lUpdateAvailableText);
   lCheckUpdateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-  lCheckUpdateAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/download")));
+  lCheckUpdateAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cloud_search")));
   lHelpMenu->addAction(lCheckUpdateAction);
 
   // Action: About
@@ -374,7 +394,6 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
 void MFBOPresetCreator::checkForUpdate()
 {
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
-
   HTTPDownloader* lHTTPDownloader{new HTTPDownloader(lGitHubURL, this)};
   this->connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &MFBOPresetCreator::pageFetched);
   this->connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
@@ -383,6 +402,8 @@ void MFBOPresetCreator::checkForUpdate()
 
 void MFBOPresetCreator::pageFetched(const QString& aResult)
 {
+  this->initializeGUI();
+
   // Display a message based on new available versions
   auto lTitle{QString("")};
   auto lMessage{QString("")};
@@ -400,33 +421,15 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     auto lTagName = obj["tag_name"].toString();
     auto lCurrentVersion{Utils::getApplicationVersion()};
 
+#ifndef DEBUG
     if (lCurrentVersion != lTagName)
     {
-
-#ifdef DEBUG
-
-      lTitle = "Running a developper version";
-      lMessage = tr("[DEV]\nYou are currently running the version \"%1\".\nThe last available version on GitHub is tagged \"%2\".").arg(lCurrentVersion).arg(lTagName);
-
-#else
-
       this->mNewVersionAvailable = true;
-      lTitle = tr("New update available");
+      lTitle = tr("Software update available");
       lMessage = tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.").arg(lCurrentVersion).arg(lTagName);
-
-#endif
     }
+#endif
   }
-
-  this->setupMenuBar();
-
-  auto lMainContainer{new PresetCreator(this, mSettings)};
-  lMainContainer->setObjectName("main_container");
-  this->setCentralWidget(lMainContainer);
-
-  this->refreshUI(mSettings, false);
-
-  this->showWindow();
 
   if (aResult == "fetch_error" || this->mNewVersionAvailable)
   {

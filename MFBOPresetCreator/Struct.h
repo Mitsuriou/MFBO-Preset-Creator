@@ -63,6 +63,7 @@ namespace Struct
     int mainWindowWidth{900};
     QString mainWindowOutputPath{""};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
+    bool checkForUpdatesAtStartup{true};
 
     bool operator==(const Struct::Settings& aSettings)
     {

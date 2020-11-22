@@ -22,9 +22,10 @@ private:
   void setWindowProperties();
   void initializeGUI();
 
-  void setupDisplayGroup(QGridLayout& aTabs);
-  void setupPresetCreatorGroup(QGridLayout& aTabs);
-  void setupRetargetingToolGroup(QGridLayout& aTabs);
+  void setupDisplayGroup(QGridLayout& aLayout);
+  void setupGeneralGroup(QGridLayout& aLayout);
+  void setupPresetCreatorGroup(QGridLayout& aLayout);
+  void setupRetargetingToolGroup(QGridLayout& aLayout);
   void setupButtons(QGridLayout& aLayout);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);
