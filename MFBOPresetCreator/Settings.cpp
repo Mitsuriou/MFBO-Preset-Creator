@@ -174,7 +174,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   lPresetCreatorLayout->setAlignment(Qt::AlignTop);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION
-  auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version:"), this)};
+  auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected body:"), this)};
   lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionLabel, 0, 0, 1, 2);
 
   auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
@@ -223,7 +223,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION (RETARGETING TOOL)
-  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version:"), this)};
+  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected body:"), this)};
   lRetargetingToolLayout->addWidget(lupgradeCbbe3BBBVersionLabel);
 
   auto lUpgradeCbbe3BBBVersionSelector{new QComboBox(this)};

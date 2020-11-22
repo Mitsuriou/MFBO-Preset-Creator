@@ -807,7 +807,7 @@ void PresetCreator::updateMeshesPreview()
       lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName);
       break;
     case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
-      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n\n").arg(lMeshesPathBody).arg(lBodyName);
+      lFullPreview += QStringLiteral("\n[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
   }
 
   auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
@@ -953,7 +953,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
       break;
     case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
-      lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n\n").arg(aText);
+      lConstructedPreviewText = QStringLiteral("\n%1 - CBBE Body SMP (3BBB)\n").arg(aText);
       break;
     default:
       lConstructedPreviewText = tr("Error while evaluating the data.");

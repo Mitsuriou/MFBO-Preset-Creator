@@ -174,8 +174,8 @@ QLineEdit::focus {
 }
 
 QLineEdit::disabled {
-  color: #8d8c8e;
-  border-color: #8d8c8e;
+  color: #535355;
+  border-color: #535355;
 }
 
 /***********/
@@ -198,8 +198,8 @@ QComboBox::focus {
 }
 
 QComboBox::disabled {
-  border-color: #8d8c8e;
-  color: #8d8c8e;
+  border-color: #535355;
+  color: #535355;
 }
 
 QComboBox QAbstractItemView {
@@ -288,6 +288,12 @@ QMenu::icon {
 QMenu::item::selected {
   background-color: #1a191d;
   color: #e95985;
+}
+
+QMenu::item::disabled {
+  color: #535355;
+  border-color: #535355;
+  background-color: #25252a;
 }
 
 /*************/

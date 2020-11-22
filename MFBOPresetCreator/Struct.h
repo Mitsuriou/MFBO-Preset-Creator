@@ -60,7 +60,7 @@ namespace Struct
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
     BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
     int mainWindowHeight{600};
-    int mainWindowWidth{800};
+    int mainWindowWidth{900};
     QString mainWindowOutputPath{""};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
 

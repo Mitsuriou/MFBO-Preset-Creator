@@ -144,8 +144,22 @@ void MFBOPresetCreator::showWindow()
   // If the window size is correct for the user's screen
   if (mSettings.mainWindowWidth < lScreenGeom.width() && mSettings.mainWindowHeight < lScreenGeom.height())
   {
-    // resize the window
-    this->resize(mSettings.mainWindowWidth - 2, mSettings.mainWindowHeight - 62);
+    auto lWidth{mSettings.mainWindowWidth};
+    auto lHeight{mSettings.mainWindowHeight};
+
+    // The window should not be too small
+    if (lWidth < 900)
+    {
+      lWidth = 900;
+    }
+
+    if (lHeight < 600)
+    {
+      lHeight = 600;
+    }
+
+    // Resize the window
+    this->resize(lWidth - 2, lHeight - 62);
   }
 
   // Select the main window opening mode

@@ -38,7 +38,7 @@ private:
 public slots:
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
   void checkForUpdate();
-  void pageFetched(const QString&);
+  void pageFetched(const QString& aResult);
 
 private slots:
   void quickRelaunch();
