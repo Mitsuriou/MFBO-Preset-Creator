@@ -21,10 +21,9 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 # Roadmap (not ordered by priority)
 ### GUI modifications
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
-- [X] (1.7.4+) Separate the main GUI into tabs for the different body types
 - [X] (1.9.0) Allow the user to type different paths for the body, hands and feet
-- [ ] Create the tabs for all the most popular body types
-- [ ] Add compatibility with CBBE 3BBB SMP
+- [X] (1.10.0) Add compatibility with CBBE 3BBB SMP
+- [ ] (1.10.*) Add compatibility for all the most popular body types
 
 ### New tools
 - [X] (1.9.0) Automatic conversion (choose a directory to automatically try to find where are located the meshes for the NPC that needs to be converted)
