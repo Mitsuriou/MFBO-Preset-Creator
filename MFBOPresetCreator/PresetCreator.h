@@ -12,6 +12,8 @@ class PresetCreator : public QWidget
 
 public:
   explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings);
+
+  // Function that will to be called from the outside
   void updateSettings(Struct::Settings aSettings);
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
 

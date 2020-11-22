@@ -22,12 +22,6 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   // Add a QFrame to permit automatic expanding of the content inside the scroll area
   auto lMainWidget{new QFrame(this)};
 
-  // Hacky color change
-  if (this->mSettings.appTheme == GUITheme::WindowsVista)
-  {
-    lMainWidget->setStyleSheet("QFrame{background-color: white;}");
-  }
-
   // Main container
   auto lMainLayout{new QVBoxLayout(lMainWidget)};
   lMainLayout->setContentsMargins(10, 10, 10, 10);
@@ -111,6 +105,7 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
   lMeshesGridLayout->setSpacing(10);
+  lMeshesGridLayout->setContentsMargins(15, 20, 15, 15);
   lMeshesGridLayout->setAlignment(Qt::AlignTop);
   lMeshesGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
@@ -211,6 +206,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->setColumnStretch(1, 1);
   lBodyslideGridLayout->setColumnStretch(2, 0);
   lBodyslideGridLayout->setSpacing(10);
+  lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
   lBodyslideGridLayout->setAlignment(Qt::AlignTop);
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
@@ -299,6 +295,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
   lSkeletonGridLayout->setSpacing(10);
+  lSkeletonGridLayout->setContentsMargins(15, 20, 15, 15);
   lSkeletonGridLayout->setAlignment(Qt::AlignTop);
   lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
@@ -390,6 +387,7 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
   lOutputGridLayout->setSpacing(10);
+  lOutputGridLayout->setContentsMargins(15, 20, 15, 15);
   lOutputGridLayout->setAlignment(Qt::AlignTop);
   lOutputGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
@@ -507,7 +505,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
 
   // Copy the XML file
   auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml"};
-  auto lUserFilters{Utils::splitStringRef(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
+  auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
   auto lUserFiltersListSize{lUserFilters.size()};
   const auto& lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
 
@@ -1278,7 +1276,7 @@ void PresetCreator::refreshAllPreviewFields()
 
 void PresetCreator::openBodySlideFiltersEditor()
 {
-  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->bodySlideFiltersStringToList())};
+  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; "))};
   this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &PresetCreator::updateBodySlideFiltersList);
 }
 

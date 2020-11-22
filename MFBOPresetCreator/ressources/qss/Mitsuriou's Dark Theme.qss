@@ -246,52 +246,6 @@ QGroupBox::title {
   color: #e95985;
 }
 
-/************/
-/*TAB WIDGET*/
-/************/
-QTabWidget::pane {
-  border-top: 1px solid #e95985;
-  margin-left: 2px;
-  margin-right: 2px;
-}
-
-QTabBar::tab {
-  border: none;
-  border-left: 1px solid #e95985;
-  border-right: 1px solid #e95985;
-  border-top: 1px solid #e95985;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  padding: 4px;
-  margin-left: 2px;
-  margin-right: 2px;
-  color: white;
-  background-color: #1a191d;
-}
-
-QTabBar::tab::selected {
-  border-color: #e95985;
-  color: #e95985;
-}
-
-/* QTabBar::tab::selected::hover {
-  border-color: #b32258;
-  color: #b32258;
-} */
-
-QTabBar::tab::!selected {
-  border-color: #e95985;
-}
-
-QTabBar::tab::!selected::hover {
-  border-color: #b32258;
-}
-
-QTabBar::tab::focus {
-  border-color: white;
-  color: white;
-}
-
 /******/
 /*MENU*/
 /******/

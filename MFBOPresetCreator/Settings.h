@@ -10,11 +10,9 @@ class Settings : public QDialog
 
 public:
   explicit Settings(QWidget* parent, Struct::Settings aSettings);
-  static int const EXIT_CODE_REBOOT{-123456789};
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject();
 
 private:
   Struct::Settings mSettings;
@@ -24,11 +22,10 @@ private:
   void setWindowProperties();
   void initializeGUI();
 
-  void setupTabs(QVBoxLayout& aLayout);
-  void setupDisplayTab(QTabWidget& aTabs);
-  void setupPresetCreatorTab(QTabWidget& aTabs);
-  void setupRetargetingToolTab(QTabWidget& aTabs);
-  void setupButtons(QHBoxLayout& aLayout);
+  void setupDisplayGroup(QGridLayout& aTabs);
+  void setupPresetCreatorGroup(QGridLayout& aTabs);
+  void setupRetargetingToolGroup(QGridLayout& aTabs);
+  void setupButtons(QGridLayout& aLayout);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   Struct::Settings getSettingsFromGUI();

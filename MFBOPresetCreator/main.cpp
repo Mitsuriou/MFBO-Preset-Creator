@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 
     // Launch the application
     currentExitCode = lMainApplication.exec();
-  } while (currentExitCode == Settings::EXIT_CODE_REBOOT);
+  } while (currentExitCode == Utils::EXIT_CODE_REBOOT);
 
   return currentExitCode;
 }

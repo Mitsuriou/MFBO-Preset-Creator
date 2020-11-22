@@ -427,7 +427,7 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
 
 void MFBOPresetCreator::quickRelaunch()
 {
-  qApp->exit(Settings::EXIT_CODE_REBOOT);
+  qApp->exit(Utils::EXIT_CODE_REBOOT);
 }
 
 void MFBOPresetCreator::launchAssistedConversion()

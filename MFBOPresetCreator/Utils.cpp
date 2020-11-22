@@ -28,22 +28,6 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
   return lList;
 }
 
-QStringList Utils::splitStringRef(QString& aString, const QString& aSeparator)
-{
-  auto lList{aString.split(QString(aSeparator))};
-
-  auto lSize{lList.size()};
-  for (int i = 0; i < lSize; i++)
-  {
-    if (lList.at(i).trimmed().compare("", Qt::CaseInsensitive) == 0)
-    {
-      lList.removeAt(i);
-    }
-  }
-
-  return lList;
-}
-
 QString Utils::getApplicationVersion()
 {
   return "1.10.0";

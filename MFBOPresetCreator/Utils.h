@@ -10,11 +10,12 @@ class Utils : public QObject
   Q_OBJECT
 
 public:
+  static int const EXIT_CODE_REBOOT{-123456789};
+
   // General functions
   static void cleanPathString(QString& aPath);
   static QString cleanPathString(const QString& aPath);
   static QStringList splitString(QString aString, const QString& aSeparator);
-  static QStringList splitStringRef(QString& aString, const QString& aSeparator);
   static QString getApplicationVersion();
   static void displayWarningMessage(const QString& aMessage);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);

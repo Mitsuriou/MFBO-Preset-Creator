@@ -427,32 +427,32 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="881"/>
+        <location filename="PresetCreator.cpp" line="861"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="981"/>
+        <location filename="PresetCreator.cpp" line="961"/>
         <source>Error while evaluating the data.</source>
         <translation>Erreur en tantant d&apos;évaluer les données.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1143"/>
+        <location filename="PresetCreator.cpp" line="1128"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1150"/>
+        <location filename="PresetCreator.cpp" line="1135"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1161"/>
+        <location filename="PresetCreator.cpp" line="1146"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1161"/>
+        <location filename="PresetCreator.cpp" line="1146"/>
         <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
@@ -461,40 +461,40 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">&quot; existe déjà sur votre ordinateur.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1196"/>
+        <location filename="PresetCreator.cpp" line="1181"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1202"/>
+        <location filename="PresetCreator.cpp" line="1187"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1208"/>
+        <location filename="PresetCreator.cpp" line="1193"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1215"/>
+        <location filename="PresetCreator.cpp" line="1200"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1222"/>
+        <location filename="PresetCreator.cpp" line="1207"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <oldsource>Error: no name given for the slider sets (names that appear in the BodySlide software).</oldsource>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="524"/>
-        <location filename="PresetCreator.cpp" line="634"/>
+        <location filename="PresetCreator.cpp" line="504"/>
+        <location filename="PresetCreator.cpp" line="614"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="524"/>
-        <location filename="PresetCreator.cpp" line="634"/>
+        <location filename="PresetCreator.cpp" line="504"/>
+        <location filename="PresetCreator.cpp" line="614"/>
         <source>&quot; already exists.</source>
         <translation>&quot; existe déjà.</translation>
     </message>
@@ -503,68 +503,68 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le développeur.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="539"/>
-        <location filename="PresetCreator.cpp" line="548"/>
+        <location filename="PresetCreator.cpp" line="519"/>
+        <location filename="PresetCreator.cpp" line="528"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="565"/>
-        <location filename="PresetCreator.cpp" line="599"/>
-        <location filename="PresetCreator.cpp" line="669"/>
-        <location filename="PresetCreator.cpp" line="696"/>
+        <location filename="PresetCreator.cpp" line="545"/>
+        <location filename="PresetCreator.cpp" line="579"/>
+        <location filename="PresetCreator.cpp" line="649"/>
+        <location filename="PresetCreator.cpp" line="676"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="565"/>
-        <location filename="PresetCreator.cpp" line="599"/>
-        <location filename="PresetCreator.cpp" line="669"/>
-        <location filename="PresetCreator.cpp" line="696"/>
+        <location filename="PresetCreator.cpp" line="545"/>
+        <location filename="PresetCreator.cpp" line="579"/>
+        <location filename="PresetCreator.cpp" line="649"/>
+        <location filename="PresetCreator.cpp" line="676"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="605"/>
+        <location filename="PresetCreator.cpp" line="585"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="644"/>
-        <location filename="PresetCreator.cpp" line="652"/>
+        <location filename="PresetCreator.cpp" line="624"/>
+        <location filename="PresetCreator.cpp" line="632"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="702"/>
+        <location filename="PresetCreator.cpp" line="682"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="727"/>
+        <location filename="PresetCreator.cpp" line="707"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <oldsource>The custom skeleton file was not found or could not be copied. The software will try with the default XPMSSE (v4.72) skeleton instead...</oldsource>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="732"/>
+        <location filename="PresetCreator.cpp" line="712"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1262"/>
+        <location filename="PresetCreator.cpp" line="1247"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1264"/>
+        <location filename="PresetCreator.cpp" line="1249"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="739"/>
+        <location filename="PresetCreator.cpp" line="719"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
@@ -584,23 +584,23 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1169"/>
+        <location filename="PresetCreator.cpp" line="1154"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1170"/>
+        <location filename="PresetCreator.cpp" line="1155"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <oldsource>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this folder?</oldsource>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1174"/>
+        <location filename="PresetCreator.cpp" line="1159"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1178"/>
+        <location filename="PresetCreator.cpp" line="1163"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
@@ -621,7 +621,7 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1262"/>
+        <location filename="PresetCreator.cpp" line="1247"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1069,32 +1069,32 @@ Cliquez sur le bouton de téléchargement pour être redirigé(e) sur Github.com
 <context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="22"/>
+        <location filename="Utils.cpp" line="38"/>
         <source>Warning</source>
         <translation>Attention</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="24"/>
+        <location filename="Utils.cpp" line="40"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="171"/>
+        <location filename="Utils.cpp" line="187"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
         <oldsource>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</oldsource>
         <translation>Erreur en cherchant le corps ciblé. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le développeur.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="190"/>
-        <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="293"/>
+        <location filename="Utils.cpp" line="206"/>
+        <location filename="Utils.cpp" line="239"/>
+        <location filename="Utils.cpp" line="309"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="190"/>
-        <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="293"/>
+        <location filename="Utils.cpp" line="206"/>
+        <location filename="Utils.cpp" line="239"/>
+        <location filename="Utils.cpp" line="309"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>

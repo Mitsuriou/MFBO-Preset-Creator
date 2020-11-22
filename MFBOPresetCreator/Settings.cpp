@@ -52,11 +52,6 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void Settings::reject()
-{
-  this->close();
-}
-
 void Settings::setWindowProperties()
 {
   this->setModal(true);
@@ -69,49 +64,30 @@ void Settings::setWindowProperties()
 void Settings::initializeGUI()
 {
   // Main layout
-  auto lMainContainer{new QVBoxLayout(this)};
-  this->setLayout(lMainContainer);
+  auto lMainLayout{new QGridLayout(this)};
+  lMainLayout->setContentsMargins(10, 10, 10, 10);
+  this->setLayout(lMainLayout);
 
-  // Tabs
-  auto lTabsContainer{new QVBoxLayout()};
-  lTabsContainer->setContentsMargins(0, 0, 0, 0);
+  this->setupDisplayGroup(*lMainLayout);
+  this->setupPresetCreatorGroup(*lMainLayout);
+  this->setupRetargetingToolGroup(*lMainLayout);
+  this->setupButtons(*lMainLayout);
 
-  lMainContainer->addLayout(lTabsContainer);
-  this->setupTabs(*lTabsContainer);
-
-  // Buttons
-  auto lButtonsContainer{new QHBoxLayout()};
-  lButtonsContainer->setSpacing(10);
-  lButtonsContainer->setContentsMargins(0, 0, 0, 0);
-
-  lMainContainer->addLayout(lButtonsContainer);
-  this->setupButtons(*lButtonsContainer);
-
-  // Load the settings in the interface
+  // Load the settings into the interface
   this->loadSettings(this->mSettings);
 }
 
-void Settings::setupTabs(QVBoxLayout& aLayout)
+void Settings::setupDisplayGroup(QGridLayout& aLayout)
 {
-  auto lTabs{new QTabWidget(this)};
-  lTabs->tabBar()->setCursor(Qt::PointingHandCursor);
-  aLayout.addWidget(lTabs);
+  // Display group box
+  auto lDisplayGroupBox{new QGroupBox(tr("Display"), this)};
+  aLayout.addWidget(lDisplayGroupBox, 0, 0, 2, 1);
 
-  this->setupDisplayTab(*lTabs);
-  this->setupPresetCreatorTab(*lTabs);
-  this->setupRetargetingToolTab(*lTabs);
-}
-
-void Settings::setupDisplayTab(QTabWidget& aTabs)
-{
-  auto lDisplayTab{new QWidget(&aTabs)};
-  aTabs.addTab(lDisplayTab, tr("Display"));
-
-  auto lDisplayLayout{new QVBoxLayout(lDisplayTab)};
+  // Container layout
+  auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
   lDisplayLayout->setSpacing(10);
-  lDisplayLayout->setContentsMargins(0, 10, 0, 0);
+  lDisplayLayout->setContentsMargins(15, 20, 15, 15);
   lDisplayLayout->setAlignment(Qt::AlignTop);
-  lDisplayTab->setLayout(lDisplayLayout);
 
   // LANGUAGE
   auto lLangLabelText{"* " + tr("Language:")};
@@ -186,16 +162,16 @@ void Settings::setupDisplayTab(QTabWidget& aTabs)
   this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
 }
 
-void Settings::setupPresetCreatorTab(QTabWidget& aTabs)
+void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
 {
-  QWidget* lPresetCreatorTab{new QWidget(&aTabs)};
-  aTabs.addTab(lPresetCreatorTab, tr("Preset Creator"));
+  // Preset Creator group box
+  auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator"), this)};
+  aLayout.addWidget(lPresetCreatorGroupBox, 0, 1);
 
-  auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorTab)};
+  auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
   lPresetCreatorLayout->setSpacing(10);
-  lPresetCreatorLayout->setContentsMargins(0, 10, 0, 0);
+  lPresetCreatorLayout->setContentsMargins(15, 20, 15, 15);
   lPresetCreatorLayout->setAlignment(Qt::AlignTop);
-  lPresetCreatorTab->setLayout(lPresetCreatorLayout);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION
   auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version:"), this)};
@@ -235,16 +211,16 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabs)
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
 }
 
-void Settings::setupRetargetingToolTab(QTabWidget& aTabs)
+void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
 {
-  QWidget* lRetargetingToolTab{new QWidget(&aTabs)};
-  aTabs.addTab(lRetargetingToolTab, tr("Retargeting Tool"));
+  // Retargeting Tool group box
+  auto lRetToolGroupBox{new QGroupBox(tr("Retargeting Tool"), this)};
+  aLayout.addWidget(lRetToolGroupBox, 1, 1);
 
-  auto lRetargetingToolLayout{new QVBoxLayout(lRetargetingToolTab)};
+  auto lRetargetingToolLayout{new QVBoxLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
-  lRetargetingToolLayout->setContentsMargins(0, 10, 0, 0);
+  lRetargetingToolLayout->setContentsMargins(15, 20, 15, 15);
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
-  lRetargetingToolTab->setLayout(lRetargetingToolLayout);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION (RETARGETING TOOL)
   auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected CBBE 3BBB version:"), this)};
@@ -258,27 +234,32 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabs)
   lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
 }
 
-void Settings::setupButtons(QHBoxLayout& aLayout)
+void Settings::setupButtons(QGridLayout& aLayout)
 {
+  // Vertical layout for the buttons
+  auto lButtonsContainer{new QHBoxLayout()};
+  lButtonsContainer->setSpacing(10);
+  aLayout.addLayout(lButtonsContainer, 2, 0, 1, 2);
+
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
   lRestoreDefaultButton->setCursor(Qt::PointingHandCursor);
   lRestoreDefaultButton->setAutoDefault(false);
   lRestoreDefaultButton->setDefault(false);
-  aLayout.addWidget(lRestoreDefaultButton);
+  lButtonsContainer->addWidget(lRestoreDefaultButton);
 
   auto lSaveButton{new QPushButton(tr("Save and close"), this)};
   lSaveButton->setCursor(Qt::PointingHandCursor);
   lSaveButton->setObjectName("save_close");
   lSaveButton->setAutoDefault(false);
   lSaveButton->setDefault(false);
-  aLayout.addWidget(lSaveButton);
+  lButtonsContainer->addWidget(lSaveButton);
 
   auto lCloseButton{new QPushButton(tr("Cancel"), this)};
   lCloseButton->setCursor(Qt::PointingHandCursor);
   lCloseButton->setAutoDefault(false);
   lCloseButton->setDefault(false);
-  aLayout.addWidget(lCloseButton);
+  lButtonsContainer->addWidget(lCloseButton);
 
   // Event binding
   this->connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
@@ -468,7 +449,7 @@ void Settings::saveSettings()
     if (lConfirmationBox.clickedButton() == lRestartNowButton)
     {
       // Reboot the application in case the language is changed
-      qApp->exit(Settings::EXIT_CODE_REBOOT);
+      qApp->exit(Utils::EXIT_CODE_REBOOT);
     }
   }
 
