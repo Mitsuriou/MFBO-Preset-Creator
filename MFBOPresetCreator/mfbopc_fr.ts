@@ -78,10 +78,6 @@
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>Valider la (les) sélection(s) ci-dessus et revenir sur la fenêtre principale</translation>
     </message>
-    <message>
-        <source>[WIP] Launch the files search</source>
-        <translation type="vanished">[WIP] Lancer la recherche de fichiers</translation>
-    </message>
 </context>
 <context>
     <name>BodySlideFiltersEditor</name>
@@ -234,14 +230,6 @@ Vous utilisez actuellement la version &quot;%1&quot;.
 La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
     </message>
     <message>
-        <source>[DEV]
-You are currently running the unreleased version &quot;%1&quot;.
-The last available version on GitHub is tagged &quot;%2&quot;.</source>
-        <translation type="vanished">[DEV]
-Vous utilisez actuellement la version non publiée &quot;%1&quot;.
-La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
-    </message>
-    <message>
         <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>New update available</source>
         <translation>Nouvelle version disponible</translation>
@@ -262,10 +250,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="MFBOPresetCreator.cpp" line="58"/>
         <source>Quick relaunch</source>
         <translation>Relancement rapide</translation>
-    </message>
-    <message>
-        <source>CBBE 3BBB Version Retargeting Tool</source>
-        <translation type="vanished">Outil de Re-ciblage de Version de CBBE 3BBB</translation>
     </message>
 </context>
 <context>
@@ -295,10 +279,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <source>Original mod&apos;s body meshes</source>
         <oldsource>Original mod body meshes</oldsource>
         <translation>Meshes de corps du mod original</translation>
-    </message>
-    <message>
-        <source>CBBE 3BBB version:</source>
-        <translation type="vanished">Version de CBBE 3BBB :</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="113"/>
@@ -339,10 +319,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Sortie BodySlide</translation>
     </message>
     <message>
-        <source>Targeted CBBE 3BBB 3BA version:</source>
-        <translation type="vanished">Version de CBBE 3BBB 3BA ciblée :</translation>
-    </message>
-    <message>
         <location filename="PresetCreator.cpp" line="226"/>
         <source>Bodyslide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
@@ -362,10 +338,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="263"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
-    </message>
-    <message>
-        <source>Additional options</source>
-        <translation type="vanished">Options supplémentaires</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="305"/>
@@ -401,10 +373,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="355"/>
         <source>.nif</source>
         <translation>.nif</translation>
-    </message>
-    <message>
-        <source>Output</source>
-        <translation type="vanished">Sortie</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="395"/>
@@ -457,10 +425,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <source>&quot; already exists on your computer.</source>
-        <translation type="vanished">&quot; existe déjà sur votre ordinateur.</translation>
-    </message>
-    <message>
         <location filename="PresetCreator.cpp" line="1179"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
@@ -497,10 +461,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="612"/>
         <source>&quot; already exists.</source>
         <translation>&quot; existe déjà.</translation>
-    </message>
-    <message>
-        <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
-        <translation type="vanished">Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le développeur.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="517"/>
@@ -603,22 +563,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="1161"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated, for the version 1.40 and lower of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés, pour la version 1.40 et plus bas de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated, for the version 1.50 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés, pour la version 1.50 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated, for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés, pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>Every file has been correctly generated. You can now exit the program or create another conversion! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1245"/>
@@ -727,10 +671,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="RetargetingTool.cpp" line="729"/>
         <source>OK</source>
         <translation>OK</translation>
-    </message>
-    <message>
-        <source>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
-        <translation type="vanished">Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le dévéloppeur.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="409"/>
@@ -946,10 +886,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="Settings.cpp" line="168"/>
         <source>Preset Creator</source>
         <translation>Créateur de preset</translation>
-    </message>
-    <message>
-        <source>Default selected CBBE 3BBB version:</source>
-        <translation type="vanished">Version de CBBE 3BBB sélectionnée par défaut :</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="188"/>
