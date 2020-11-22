@@ -425,7 +425,7 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     if (lCurrentVersion != lTagName)
     {
       this->mNewVersionAvailable = true;
-      lTitle = tr("Software update available");
+      lTitle = tr("Application update available");
       lMessage = tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.").arg(lCurrentVersion).arg(lTagName);
     }
 #endif

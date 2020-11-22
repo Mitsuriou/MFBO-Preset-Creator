@@ -44,7 +44,7 @@ void Update::setupInterface(QVBoxLayout& aLayout)
   aLayout.addWidget(lUpdateButton);
 
   // Fetch status
-  auto lCheckForUpdates{new QLabel(tr("Click on the button above to check for new updates."), this)};
+  auto lCheckForUpdates{new QLabel(tr("Click on the button above to search for new updates."), this)};
   lCheckForUpdates->setAlignment(Qt::AlignCenter);
   lCheckForUpdates->setObjectName("fetch_status");
   aLayout.addWidget(lCheckForUpdates);

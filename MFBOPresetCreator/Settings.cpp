@@ -176,7 +176,7 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout)
   lDisplayLayout->setAlignment(Qt::AlignTop);
 
   // CHECK UPDATE AT SOFTWARE STARTUP
-  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Check update at program startup"), this)};
+  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Check for updates at application startup"), this)};
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("check_update_startup"));
   lDisplayLayout->addWidget(lAutoOpenDirCheckbox);

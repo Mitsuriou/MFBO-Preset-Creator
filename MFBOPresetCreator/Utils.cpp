@@ -184,7 +184,7 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return "cbbe_smp_3bbb";
     default:
-      Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer."));
+      Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
       return "";
   }
 }

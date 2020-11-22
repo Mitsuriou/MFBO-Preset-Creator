@@ -143,111 +143,115 @@
 <context>
     <name>MFBOPresetCreator</name>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="17"/>
+        <location filename="MFBOPresetCreator.cpp" line="24"/>
         <source>Quitting</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="17"/>
+        <location filename="MFBOPresetCreator.cpp" line="24"/>
         <source>Do you want to quit the application?</source>
         <translation>Voulez-vous quitter l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="19"/>
+        <location filename="MFBOPresetCreator.cpp" line="26"/>
         <source>Quit the application</source>
         <oldsource>Quit the software</oldsource>
         <translation>Quitter l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="23"/>
+        <location filename="MFBOPresetCreator.cpp" line="30"/>
         <source>Go back to the application</source>
         <oldsource>Go back to the software</oldsource>
         <translation>Revenir sur l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="51"/>
+        <location filename="MFBOPresetCreator.cpp" line="71"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="65"/>
+        <location filename="MFBOPresetCreator.cpp" line="85"/>
         <source>Exit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="71"/>
+        <location filename="MFBOPresetCreator.cpp" line="91"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="77"/>
+        <location filename="MFBOPresetCreator.cpp" line="97"/>
         <source>Assisted Conversion</source>
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="83"/>
+        <location filename="MFBOPresetCreator.cpp" line="103"/>
         <source>BodySlide Presets&apos; Version Retargeting</source>
         <translation>Outil de Re-ciblage de Version de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="95"/>
+        <location filename="MFBOPresetCreator.cpp" line="115"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="105"/>
+        <location filename="MFBOPresetCreator.cpp" line="125"/>
         <source> (update available)</source>
         <translation> (mise à jour disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="108"/>
+        <location filename="MFBOPresetCreator.cpp" line="128"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="114"/>
+        <location filename="MFBOPresetCreator.cpp" line="134"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="121"/>
+        <location filename="MFBOPresetCreator.cpp" line="141"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="393"/>
+        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <oldsource>An error has occured while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="409"/>
+        <location filename="MFBOPresetCreator.cpp" line="428"/>
+        <source>Application update available</source>
+        <oldsource>Software update available</oldsource>
+        <translation>Mise à jour de l&apos;application disponible</translation>
+    </message>
+    <message>
         <source>[DEV]
 You are currently running the version &quot;%1&quot;.
 The last available version on GitHub is tagged &quot;%2&quot;.</source>
-        <translation>[DEV]
+        <translation type="vanished">[DEV]
 Vous utilisez actuellement la version &quot;%1&quot;.
 La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>New update available</source>
-        <translation>Nouvelle version disponible</translation>
+        <translation type="vanished">Nouvelle version disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="415"/>
+        <location filename="MFBOPresetCreator.cpp" line="429"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="435"/>
+        <location filename="MFBOPresetCreator.cpp" line="438"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="58"/>
+        <location filename="MFBOPresetCreator.cpp" line="78"/>
         <source>Quick relaunch</source>
         <translation>Relancement rapide</translation>
     </message>
@@ -420,9 +424,13 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Erreur pendant la création du répertoire principal : &quot;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1144"/>
+        <location filename="PresetCreator.cpp" line="1245"/>
+        <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
+        <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
+    </message>
+    <message>
         <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
-        <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
+        <translation type="vanished">&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1179"/>
@@ -465,9 +473,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="PresetCreator.cpp" line="517"/>
         <location filename="PresetCreator.cpp" line="526"/>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
-        <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
-        <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
+        <oldsource>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</oldsource>
+        <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="543"/>
@@ -493,9 +501,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="PresetCreator.cpp" line="622"/>
         <location filename="PresetCreator.cpp" line="630"/>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
-        <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
-        <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
+        <oldsource>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</oldsource>
+        <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="680"/>
@@ -510,13 +518,13 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="710"/>
-        <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
-        <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
+        <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
+        <oldsource>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</oldsource>
+        <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1245"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion!</source>
-        <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion !</translation>
+        <translation type="vanished">Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion !</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1247"/>
@@ -542,6 +550,11 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="384"/>
         <source>Files generation&apos;s output location</source>
         <translation>Emplacement de sortie de la génération de fichiers</translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="1144"/>
+        <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
+        <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1152"/>
@@ -680,9 +693,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="647"/>
         <location filename="RetargetingTool.cpp" line="655"/>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
-        <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
-        <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
+        <oldsource>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</oldsource>
+        <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="522"/>
@@ -734,9 +747,9 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="496"/>
         <location filename="RetargetingTool.cpp" line="504"/>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
-        <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
-        <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
+        <oldsource>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</oldsource>
+        <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="567"/>
@@ -822,48 +835,48 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="83"/>
+        <location filename="Settings.cpp" line="84"/>
         <source>Display</source>
         <translation>Affichage</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="93"/>
+        <location filename="Settings.cpp" line="94"/>
         <source>Language:</source>
         <translation>Langage :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="105"/>
+        <location filename="Settings.cpp" line="106"/>
         <source>Font:</source>
         <translation>Police de caractères :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="109"/>
+        <location filename="Settings.cpp" line="110"/>
         <source>Choose a font</source>
         <translation>Choisir une police de caractères</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="133"/>
+        <location filename="Settings.cpp" line="134"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="134"/>
+        <location filename="Settings.cpp" line="135"/>
         <source>Français</source>
         <translation>Français</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="177"/>
-        <location filename="Settings.cpp" line="226"/>
+        <location filename="Settings.cpp" line="197"/>
+        <location filename="Settings.cpp" line="246"/>
         <source>Default selected body:</source>
         <translation>Corps sélectionné par défaut :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="258"/>
+        <location filename="Settings.cpp" line="278"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="117"/>
+        <location filename="Settings.cpp" line="118"/>
         <source>Application Theme:</source>
         <translation>Thème de l&apos;application :</translation>
     </message>
@@ -883,73 +896,84 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Revenir sur la fenêtre de paramètres</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="168"/>
+        <location filename="Settings.cpp" line="169"/>
+        <source>General</source>
+        <translation>Général</translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="179"/>
+        <source>Check for updates at application startup</source>
+        <oldsource>Check update at application startup</oldsource>
+        <translation>Vérifier les mises à jour au démarrage de l&apos;application</translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="188"/>
         <source>Preset Creator</source>
         <translation>Créateur de preset</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="188"/>
+        <location filename="Settings.cpp" line="208"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="198"/>
+        <location filename="Settings.cpp" line="218"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="205"/>
+        <location filename="Settings.cpp" line="225"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation>Ouvrir automatiquement le dossier d&apos;export du preset après une génération</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="217"/>
+        <location filename="Settings.cpp" line="237"/>
         <source>Retargeting Tool</source>
         <translation>Outil de Re-ciblage de Version</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="245"/>
+        <location filename="Settings.cpp" line="265"/>
         <source>Restore default</source>
         <translation>Restaurer par défaut</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="251"/>
+        <location filename="Settings.cpp" line="271"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="438"/>
+        <location filename="Settings.cpp" line="465"/>
         <source>Restart now</source>
         <translation>Redémarrer maintenant</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="442"/>
+        <location filename="Settings.cpp" line="469"/>
         <source>Go back to the application and restart later</source>
         <oldsource>Go back to the software and restart later</oldsource>
         <translation>Revenir sur l&apos;application et redémarrer plus tard</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="436"/>
+        <location filename="Settings.cpp" line="463"/>
         <source>Application settings changed</source>
         <translation>Paramètres de l&apos;application modifiés</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="436"/>
+        <location filename="Settings.cpp" line="463"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation>Tous les paramètres ont été sauvegardé. Vous avez changé un paramètre qui nécessite un redémarrage de l&apos;application pour être appliqué. Voulez-vous redémarrer l&apos;application maintenant ?</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="129"/>
+        <location filename="Settings.cpp" line="130"/>
         <source>Window opening mode:</source>
         <translation>Mode d&apos;ouverture de la fenêtre :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="144"/>
+        <location filename="Settings.cpp" line="145"/>
         <source>Default main window width:</source>
         <translation>Largeur par défaut de la fenêtre principale :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="153"/>
+        <location filename="Settings.cpp" line="154"/>
         <source>Default main window height:</source>
         <translation>Hauteur par défaut de la fenêtre principale :</translation>
     </message>
@@ -962,46 +986,68 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="48"/>
+        <location filename="Update.cpp" line="47"/>
+        <source>Click on the button above to search for new updates.</source>
+        <oldsource>Click on the button above to check for new updates.</oldsource>
+        <translation>Cliquez sur le bouton ci-dessus pour chercher des nouvelles mises à jour.</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="94"/>
+        <source>You are currently running the developer version &quot;%1&quot;.
+The last available version on GitHub is tagged &quot;%2&quot;.</source>
+        <translation>Vous exécutez actuellement la version développeur &quot;%1&quot;.
+La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="108"/>
+        <source>You are currently running the version &quot;%1&quot;.
+The new version &quot;%2&quot; is available on GitHub.
+
+Click on the download button to be redirected
+on Github.com to download the latest MFBOPC version.</source>
+        <translation>Vous exécutez actuellement la version &quot;%1&quot;.
+La nouvelle version &quot;%2&quot; est disponible sur GitHub.
+
+Cliquez sur le bouton de téléchargement pour être redirigé(e)
+sur Github.com afin de télécharger la dernière version de MFBOPC.</translation>
+    </message>
+    <message>
         <source>Click on the button above to check for new updates</source>
-        <translation>Cliquez sur le bouton ci-dessus pour chercher de nouvelles mises à jour</translation>
+        <translation type="vanished">Cliquez sur le bouton ci-dessus pour chercher de nouvelles mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="62"/>
         <source>Searching for a new version on GitHub. Please wait...</source>
-        <translation>Recherche d&apos;une nouvelle version sur GitHub... Veuillez patienter...</translation>
+        <translation type="vanished">Recherche d&apos;une nouvelle version sur GitHub... Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="83"/>
+        <location filename="Update.cpp" line="76"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <oldsource>An error has occured while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="101"/>
         <source>[DEV]
 You are currently running the version &quot;%1&quot;.
 The last available version on GitHub is tagged &quot;%2&quot;.</source>
         <oldsource>[DEV]
 You are currently running the unreleased version &quot;%1&quot;.
 The last available version on GitHub is tagged &quot;%2&quot;.</oldsource>
-        <translation>[DEV]
+        <translation type="vanished">[DEV]
 Vous utilisez actuellement la version &quot;%1&quot;.
 La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="115"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.
 
 Click on the download button to be redirected on Github.com to download the latest MFBOPC version.</source>
-        <translation>Vous utilisez actuellement la version &quot;%1&quot;.
+        <translation type="vanished">Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.
 
 Cliquez sur le bouton de téléchargement pour être redirigé(e) sur Github.com afin de télécharger la dernière version de MFBOPC.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="125"/>
+        <location filename="Update.cpp" line="118"/>
         <source>You are running the latest version &quot;%1&quot;.</source>
         <translation>Vous utilisez la dernière version &quot;%1&quot;.</translation>
     </message>
@@ -1020,9 +1066,9 @@ Cliquez sur le bouton de téléchargement pour être redirigé(e) sur Github.com
     </message>
     <message>
         <location filename="Utils.cpp" line="187"/>
-        <source>Error while searching for the targeted body. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</source>
-        <oldsource>Error while searching for the CBBE 3BBB version. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</oldsource>
-        <translation>Erreur en cherchant le corps ciblé. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le développeur.</translation>
+        <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
+        <oldsource>Error while searching for the targeted body. If it happens, try restarting the program. If the error is still here after restarting the program, contact the developer.</oldsource>
+        <translation>Erreur en cherchant le corps ciblé. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après avoir redémarré l&apos;application, contactez le développeur.</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="206"/>

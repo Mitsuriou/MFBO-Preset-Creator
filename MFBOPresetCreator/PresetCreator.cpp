@@ -514,7 +514,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
     auto lRessourcePath{QString(":/%1/bodyslide_beast_hands_xml%2").arg(aRessourcesFolder).arg(lCustomSuffix)};
     if (!QFile::copy(lRessourcePath, lXMLPathName))
     {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
       return false;
     }
   }
@@ -523,7 +523,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
     auto lRessourcePath{QString(":/%1/bodyslide_xml%2").arg(aRessourcesFolder).arg(lCustomSuffix)};
     if (!QFile::copy(lRessourcePath, lXMLPathName))
     {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
       return false;
     }
   }
@@ -619,7 +619,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
       return false;
     }
   }
@@ -627,7 +627,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
       return false;
     }
   }
@@ -707,7 +707,7 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
       // Fallback option if the custom skeleton could not be copied
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
       {
-        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
         return false;
       }
     }
@@ -1141,7 +1141,7 @@ void PresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkdir(lEntryDirectory))
     {
-      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions."));
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
       return;
     }
   }
@@ -1242,7 +1242,7 @@ void PresetCreator::generateDirectoryStructure()
   // Update the color of the output directory preview
   this->updateOutputPreview();
 
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Generation successful"), tr("Every file has been correctly generated. You can now exit the program or create another conversion!"), QMessageBox::StandardButton::NoButton, this);
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Generation successful"), tr("Every file has been correctly generated. You can now exit the application or create another conversion!"), QMessageBox::StandardButton::NoButton, this);
 
   auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
   lOKButton->setCursor(Qt::PointingHandCursor);
