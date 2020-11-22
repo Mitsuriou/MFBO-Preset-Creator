@@ -110,6 +110,14 @@ QCheckBox::indicator::checked::hover::pressed {
   background-color: white;
 }
 
+QCheckBox::disabled {
+  color: #535355;
+}
+
+QCheckBox::indicator::disabled {
+  border-color: #535355;
+}
+
 /*************/
 /*PUSH BUTTON*/
 /*************/

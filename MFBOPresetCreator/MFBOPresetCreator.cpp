@@ -86,7 +86,8 @@ void MFBOPresetCreator::setupMenuBar()
   lToolsMenu->addMenu(lRetargetingToolsMenu);
 
   auto lRTCBBE3BBB3BAAction{new QAction(this)};
-  lRTCBBE3BBB3BAAction->setText(tr("CBBE 3BBB 3BA"));
+  lRTCBBE3BBB3BAAction->setText("[TO BE REWORKED] CBBE 3BBB 3BA");
+  lRTCBBE3BBB3BAAction->setDisabled(true); // TODO: repair the retargeting tool
   lRetargetingToolsMenu->addAction(lRTCBBE3BBB3BAAction);
 
   // Action: Settings

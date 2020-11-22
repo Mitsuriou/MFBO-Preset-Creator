@@ -205,7 +205,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabs)
   ldefaultCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   ldefaultCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
-  ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_cbbe_3bbb_version"));
+  ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_body_selector"));
   lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionSelector, 1, 0, 1, 2);
 
   // OUTPUT PATH PREVIEW
@@ -254,7 +254,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabs)
   lUpgradeCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lUpgradeCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
-  lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_cbbe_3bbb_version"));
+  lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_body_selector"));
   lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
 }
 
@@ -312,10 +312,10 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")};
   lWindowOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.mainWindowOpeningMode));
 
-  auto lDefaultBody{this->findChild<QComboBox*>("default_cbbe_3bbb_version")};
+  auto lDefaultBody{this->findChild<QComboBox*>("default_body_selector")};
   lDefaultBody->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainWindowBody));
 
-  auto lDefaultUpgradeBody{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")};
+  auto lDefaultUpgradeBody{this->findChild<QComboBox*>("upgrade_body_selector")};
   lDefaultUpgradeBody->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolBody));
 
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")};
@@ -331,8 +331,8 @@ Struct::Settings Settings::getSettingsFromGUI()
   auto lAppTheme{this->findChild<QComboBox*>("app_theme")->currentIndex()};
   auto lWindowWidth{this->findChild<QLineEdit*>("window_width")->text().trimmed()};
   auto lWindowHeight{this->findChild<QLineEdit*>("window_height")->text().trimmed()};
-  auto lDefaultCBBE3BBBVersion{this->findChild<QComboBox*>("default_cbbe_3bbb_version")->currentIndex()};
-  auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_cbbe_3bbb_version")->currentIndex()};
+  auto lDefaultCBBE3BBBVersion{this->findChild<QComboBox*>("default_body_selector")->currentIndex()};
+  auto lDefaultUpgradeCBBE3BBBVersion{this->findChild<QComboBox*>("upgrade_body_selector")->currentIndex()};
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};

@@ -98,7 +98,7 @@ void Update::pageFetched(const QString& aResult)
     lSearchButton->setIconSize(QSize(48, 48));
     lSearchButton->setDisabled(true);
 
-    lFetchStatus->setText(tr("[DEV]\nYou are currently running the unreleased version \"%1\".\nThe last available version on GitHub is tagged \"%2\".").arg(lCurrentVersion).arg(lTagName));
+    lFetchStatus->setText(tr("[DEV]\nYou are currently running the version \"%1\".\nThe last available version on GitHub is tagged \"%2\".").arg(lCurrentVersion).arg(lTagName));
 
 #else
 

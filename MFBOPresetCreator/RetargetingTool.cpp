@@ -70,7 +70,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
   lCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
   lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolBody));
-  lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
+  lCbbe3BBBVersionSelector->setObjectName(QString("body_selector"));
   aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
 
   // Second line
@@ -291,7 +291,7 @@ void RetargetingTool::updateBackupPreview()
 
 void RetargetingTool::launchUpDownGradeProcess()
 {
-  auto lBodySelected{this->findChild<QComboBox*>("cbbe_3bbb_version")->currentIndex()};
+  auto lBodySelected{this->findChild<QComboBox*>("body_selector")->currentIndex()};
   auto lRootDir{this->findChild<QLineEdit*>("input_path_directory")->text()};
 
   // Check if the input path has been given by the user

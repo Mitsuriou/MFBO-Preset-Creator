@@ -194,43 +194,38 @@
         <translation>Outil de Re-ciblage de Version de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="89"/>
-        <source>CBBE 3BBB 3BA</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="94"/>
+        <location filename="MFBOPresetCreator.cpp" line="95"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="104"/>
+        <location filename="MFBOPresetCreator.cpp" line="105"/>
         <source> (update available)</source>
         <translation> (mise à jour disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="107"/>
+        <location filename="MFBOPresetCreator.cpp" line="108"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="113"/>
+        <location filename="MFBOPresetCreator.cpp" line="114"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="120"/>
+        <location filename="MFBOPresetCreator.cpp" line="121"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="378"/>
+        <location filename="MFBOPresetCreator.cpp" line="379"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <oldsource>An error has occured while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="394"/>
+        <location filename="MFBOPresetCreator.cpp" line="395"/>
         <source>[DEV]
 You are currently running the version &quot;%1&quot;.
 The last available version on GitHub is tagged &quot;%2&quot;.</source>
@@ -247,19 +242,19 @@ Vous utilisez actuellement la version non publiée &quot;%1&quot;.
 La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="399"/>
+        <location filename="MFBOPresetCreator.cpp" line="400"/>
         <source>New update available</source>
         <translation>Nouvelle version disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="400"/>
+        <location filename="MFBOPresetCreator.cpp" line="401"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="420"/>
+        <location filename="MFBOPresetCreator.cpp" line="421"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -296,7 +291,7 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
 <context>
     <name>PresetCreator</name>
     <message>
-        <location filename="PresetCreator.cpp" line="100"/>
+        <location filename="PresetCreator.cpp" line="108"/>
         <source>Original mod&apos;s body meshes</source>
         <oldsource>Original mod body meshes</oldsource>
         <translation>Meshes de corps du mod original</translation>
@@ -306,39 +301,39 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Version de CBBE 3BBB :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="110"/>
+        <location filename="PresetCreator.cpp" line="118"/>
         <source>Meshes paths and names:</source>
         <oldsource>Meshes path:</oldsource>
         <translation>Emplacements et noms des meshes :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="172"/>
+        <location filename="PresetCreator.cpp" line="183"/>
         <source>Use beast hands?</source>
         <translation>Utiliser des main de bête ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="175"/>
+        <location filename="PresetCreator.cpp" line="187"/>
         <source>Check this box if the follower or NPC uses beast hands.</source>
         <translation>Cocher cette case si le follower ou le NPC utilise des mains de bête.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="126"/>
-        <location filename="PresetCreator.cpp" line="142"/>
-        <location filename="PresetCreator.cpp" line="158"/>
+        <location filename="PresetCreator.cpp" line="134"/>
+        <location filename="PresetCreator.cpp" line="151"/>
+        <location filename="PresetCreator.cpp" line="168"/>
         <source>_0.nif/_1.nif</source>
         <translation>_0.nif/_1.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="163"/>
-        <location filename="PresetCreator.cpp" line="230"/>
-        <location filename="PresetCreator.cpp" line="250"/>
-        <location filename="PresetCreator.cpp" line="351"/>
-        <location filename="PresetCreator.cpp" line="407"/>
+        <location filename="PresetCreator.cpp" line="174"/>
+        <location filename="PresetCreator.cpp" line="239"/>
+        <location filename="PresetCreator.cpp" line="259"/>
+        <location filename="PresetCreator.cpp" line="363"/>
+        <location filename="PresetCreator.cpp" line="420"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="196"/>
+        <location filename="PresetCreator.cpp" line="205"/>
         <source>BodySlide output</source>
         <oldsource>BodySlide</oldsource>
         <translation>Sortie BodySlide</translation>
@@ -348,23 +343,23 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Version de CBBE 3BBB 3BA ciblée :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="221"/>
+        <location filename="PresetCreator.cpp" line="230"/>
         <source>Bodyslide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="241"/>
+        <location filename="PresetCreator.cpp" line="250"/>
         <source>Preset names: &amp;#128712;</source>
         <translation>Noms des presets : &amp;#128712;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="242"/>
+        <location filename="PresetCreator.cpp" line="251"/>
         <source>This field represents the name under which the preset will be listed in the BodySlide application.</source>
         <oldsource>This field represents the name under which the preset will be listed in the BodySlide software.</oldsource>
         <translation>Ce champ répresente le nom sous lequel le preset va être listé dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="258"/>
+        <location filename="PresetCreator.cpp" line="267"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
@@ -373,37 +368,37 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Options supplémentaires</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="299"/>
+        <location filename="PresetCreator.cpp" line="308"/>
         <source>Use a custom skeleton? &amp;#128712;</source>
         <translation>Utiliser un squelette personnalisé ? &amp;#128712;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="300"/>
+        <location filename="PresetCreator.cpp" line="309"/>
         <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation>Note : ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="303"/>
+        <location filename="PresetCreator.cpp" line="312"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation>Cocher cette case si le follower ou le NPC utilise un squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="309"/>
+        <location filename="PresetCreator.cpp" line="318"/>
         <source>Skeleton file:</source>
         <translation>Fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="328"/>
+        <location filename="PresetCreator.cpp" line="338"/>
         <source>Skeleton path:</source>
         <translation>Emplacement du squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="337"/>
+        <location filename="PresetCreator.cpp" line="348"/>
         <source>Skeleton file name:</source>
         <translation>Nom du fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="346"/>
+        <location filename="PresetCreator.cpp" line="358"/>
         <source>.nif</source>
         <translation>.nif</translation>
     </message>
@@ -412,52 +407,52 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Sortie</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="384"/>
+        <location filename="PresetCreator.cpp" line="397"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="394"/>
+        <location filename="PresetCreator.cpp" line="407"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="399"/>
+        <location filename="PresetCreator.cpp" line="412"/>
         <source>Output subdirectory name/path:</source>
         <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="426"/>
+        <location filename="PresetCreator.cpp" line="439"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="817"/>
+        <location filename="PresetCreator.cpp" line="881"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="917"/>
+        <location filename="PresetCreator.cpp" line="981"/>
         <source>Error while evaluating the data.</source>
         <translation>Erreur en tantant d&apos;évaluer les données.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1061"/>
+        <location filename="PresetCreator.cpp" line="1143"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1068"/>
+        <location filename="PresetCreator.cpp" line="1150"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1079"/>
+        <location filename="PresetCreator.cpp" line="1161"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1079"/>
+        <location filename="PresetCreator.cpp" line="1161"/>
         <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <translation>&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
@@ -466,40 +461,40 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">&quot; existe déjà sur votre ordinateur.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1114"/>
+        <location filename="PresetCreator.cpp" line="1196"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1120"/>
+        <location filename="PresetCreator.cpp" line="1202"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1126"/>
+        <location filename="PresetCreator.cpp" line="1208"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1133"/>
+        <location filename="PresetCreator.cpp" line="1215"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1140"/>
+        <location filename="PresetCreator.cpp" line="1222"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <oldsource>Error: no name given for the slider sets (names that appear in the BodySlide software).</oldsource>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="470"/>
-        <location filename="PresetCreator.cpp" line="580"/>
+        <location filename="PresetCreator.cpp" line="524"/>
+        <location filename="PresetCreator.cpp" line="634"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="470"/>
-        <location filename="PresetCreator.cpp" line="580"/>
+        <location filename="PresetCreator.cpp" line="524"/>
+        <location filename="PresetCreator.cpp" line="634"/>
         <source>&quot; already exists.</source>
         <translation>&quot; existe déjà.</translation>
     </message>
@@ -508,104 +503,104 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Erreur en cherchant la version de CBBE 3BBB. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après un redémarrage du programme, contactez le développeur.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="485"/>
-        <location filename="PresetCreator.cpp" line="494"/>
+        <location filename="PresetCreator.cpp" line="539"/>
+        <location filename="PresetCreator.cpp" line="548"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The XML file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="511"/>
-        <location filename="PresetCreator.cpp" line="545"/>
-        <location filename="PresetCreator.cpp" line="615"/>
-        <location filename="PresetCreator.cpp" line="642"/>
+        <location filename="PresetCreator.cpp" line="565"/>
+        <location filename="PresetCreator.cpp" line="599"/>
+        <location filename="PresetCreator.cpp" line="669"/>
+        <location filename="PresetCreator.cpp" line="696"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="511"/>
-        <location filename="PresetCreator.cpp" line="545"/>
-        <location filename="PresetCreator.cpp" line="615"/>
-        <location filename="PresetCreator.cpp" line="642"/>
+        <location filename="PresetCreator.cpp" line="565"/>
+        <location filename="PresetCreator.cpp" line="599"/>
+        <location filename="PresetCreator.cpp" line="669"/>
+        <location filename="PresetCreator.cpp" line="696"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="551"/>
+        <location filename="PresetCreator.cpp" line="605"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="590"/>
-        <location filename="PresetCreator.cpp" line="598"/>
+        <location filename="PresetCreator.cpp" line="644"/>
+        <location filename="PresetCreator.cpp" line="652"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <oldsource>The OSP file could not be created. Did you execute the program with limited permissions?</oldsource>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="648"/>
+        <location filename="PresetCreator.cpp" line="702"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="673"/>
+        <location filename="PresetCreator.cpp" line="727"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <oldsource>The custom skeleton file was not found or could not be copied. The software will try with the default XPMSSE (v4.72) skeleton instead...</oldsource>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="678"/>
+        <location filename="PresetCreator.cpp" line="732"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the program with sufficient permissions.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter le programme avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1173"/>
+        <location filename="PresetCreator.cpp" line="1262"/>
         <source>Every file has been correctly generated. You can now exit the program or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1175"/>
+        <location filename="PresetCreator.cpp" line="1264"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="685"/>
+        <location filename="PresetCreator.cpp" line="739"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="209"/>
+        <location filename="PresetCreator.cpp" line="218"/>
         <source>Targeted body and version:</source>
         <translation>Corps et version ciblé :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="288"/>
+        <location filename="PresetCreator.cpp" line="297"/>
         <source>Skeleton</source>
         <translation>Squelette</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="374"/>
+        <location filename="PresetCreator.cpp" line="387"/>
         <source>Files generation&apos;s output location</source>
         <translation>Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1087"/>
+        <location filename="PresetCreator.cpp" line="1169"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1088"/>
+        <location filename="PresetCreator.cpp" line="1170"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <oldsource>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this folder?</oldsource>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1092"/>
+        <location filename="PresetCreator.cpp" line="1174"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1096"/>
+        <location filename="PresetCreator.cpp" line="1178"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
@@ -626,7 +621,7 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation type="vanished">Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1173"/>
+        <location filename="PresetCreator.cpp" line="1262"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1045,10 +1040,13 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="Update.cpp" line="101"/>
         <source>[DEV]
-You are currently running the unreleased version &quot;%1&quot;.
+You are currently running the version &quot;%1&quot;.
 The last available version on GitHub is tagged &quot;%2&quot;.</source>
+        <oldsource>[DEV]
+You are currently running the unreleased version &quot;%1&quot;.
+The last available version on GitHub is tagged &quot;%2&quot;.</oldsource>
         <translation>[DEV]
-Vous utilisez actuellement la version non publiée &quot;%1&quot;.
+Vous utilisez actuellement la version &quot;%1&quot;.
 La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
     </message>
     <message>

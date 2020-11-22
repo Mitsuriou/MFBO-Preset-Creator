@@ -19,53 +19,44 @@ private:
   Struct::Settings mSettings;
   int mMinimumFirstColumnWidth;
 
+  // GUI creation
   void setupBodyMeshesGUI(QVBoxLayout& aLayout);
   void setupBodySlideGUI(QVBoxLayout& aLayout);
   void setupSkeletonGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
 
-  QStringList bodySlideFiltersStringToList();
+  // GUI update scripts
+  void updateGUIOnBodyChange();
 
   // Files generation
-  bool generateXMLFile(const QString& aEntryDirectory,
-                       const bool& aGenerateFilesInExistingMainDirectory,
-                       const QString& aOSPXMLNames,
-                       const bool& aMustUseBeastHands,
-                       const QString& aRessourcesFolder,
-                       const int& aBodySelected,
-                       const QString& aBodyslideSlidersetsNames,
-                       QString aMeshesPathBody,
-                       QString aMeshesPathFeet,
-                       QString aMeshesPathHands);
-  bool generateOSPFile(const QString& aEntryDirectory,
-                       const bool& aGenerateFilesInExistingMainDirectory,
-                       const QString& aOSPXMLNames,
-                       const bool& aMustUseBeastHands,
-                       const QString& aRessourcesFolder,
-                       const QString& aBodyslideSlidersetsNames,
-                       QString aMeshesPathBody,
-                       QString aMeshesPathFeet,
-                       QString aMeshesPathHands,
-                       const QString& aBodyName,
-                       const QString& aFeetName,
-                       const QString& aHandsName);
+  bool generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const int& aBodySelected, const QString& aBodyslideSlidersetsNames);
+  bool generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName);
   bool generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath);
 
 private slots:
   void populateSkeletonChooser();
+
+  // Update the GUI preview
   void updateMeshesPreview();
   void updateOutputPreview();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
   void updateSkeletonPathState(int aState);
   void updateSkeletonPreview();
+
   void chooseExportDirectory();
+
   void generateDirectoryStructure();
+
   void refreshAllPreviewFields(int);
   void refreshAllPreviewFields();
+
+  // BodySlide Filters Editor
   void openBodySlideFiltersEditor();
   void updateBodySlideFiltersList(QStringList aList);
+
+  // Scrollbar events
   void mouseCursorPressed();
   void mouseCursorReleased();
 };

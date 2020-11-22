@@ -5,25 +5,30 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   , mSettings(aSettings)
   , mMinimumFirstColumnWidth(300)
 {
+  // Very first container in which the scroll area will be added
   auto lBaseLayout{new QVBoxLayout(this)};
   lBaseLayout->setContentsMargins(0, 0, 0, 0);
 
+  // Create a scroll area
   auto lScrollArea{new QScrollArea(this)};
   lScrollArea->setObjectName("scrollable_zone");
   lScrollArea->setContentsMargins(0, 0, 0, 0);
   lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->setWidgetResizable(true);
+  // Remove the borders of the scroll area
+  lScrollArea->setStyleSheet("QScrollArea{border: none;}");
 
+  // Add a QFrame to permit automatic expanding of the content inside the scroll area
   auto lMainWidget{new QFrame(this)};
 
   // Hacky color change
   if (this->mSettings.appTheme == GUITheme::WindowsVista)
   {
-    lMainWidget->setStyleSheet("QFrame{background-color:white;}");
+    lMainWidget->setStyleSheet("QFrame{background-color: white;}");
   }
-  lScrollArea->setStyleSheet("QScrollArea{border:none;}");
 
+  // Main container
   auto lMainLayout{new QVBoxLayout(lMainWidget)};
   lMainLayout->setContentsMargins(10, 10, 10, 10);
 
@@ -36,6 +41,9 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->setupBodySlideGUI(*lMainLayout);
   this->setupOutputGUI(*lMainLayout);
   this->setupRemainingGUI(*lMainLayout);
+
+  // Update the GUI based on the values entered
+  this->refreshAllPreviewFields();
 
   // Cursor change for the scroll bar
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::mouseCursorPressed);
@@ -52,7 +60,7 @@ void PresetCreator::updateSettings(Struct::Settings aSettings)
 
 void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
 {
-  // Change preset name
+  // Set the preset name
   this->findChild<QLineEdit*>("names_osp_xml_input")->setText(aPresetName);
   this->findChild<QLineEdit*>("names_bodyslide_input")->setText(aPresetName);
 
@@ -124,6 +132,7 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
   auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
+  lBodyMeshNameLabel1->setObjectName("body_mesh_name_extension");
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 1, 3);
 
   // femalefeet
@@ -140,6 +149,7 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
   auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
+  lBodyMeshNameLabel2->setObjectName("feet_mesh_name_extension");
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 2, 3);
 
   // femalehands
@@ -156,6 +166,7 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
   auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"), this)};
+  lBodyMeshNameLabel3->setObjectName("hands_mesh_name_extension");
   lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 3, 3);
 
   // Preview
@@ -170,15 +181,13 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
   // Beast hands
   auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
+  lLabelBeastHands->setObjectName("label_use_beast_hands");
   lMeshesGridLayout->addWidget(lLabelBeastHands, 5, 0);
 
   auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
   lNeedBeastHands->setCursor(Qt::PointingHandCursor);
   lNeedBeastHands->setObjectName("use_beast_hands");
   lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 2);
-
-  // Initialization functions
-  this->updateMeshesPreview();
 
   // Event binding
   this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
@@ -206,16 +215,16 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // CBBE 3BBB version
-  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted body and version:"), this)};
-  lBodyslideGridLayout->addWidget(lCbbe3BBBVersionLabel, 0, 0);
+  auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
+  lBodyslideGridLayout->addWidget(lBodyLabel, 0, 0);
 
-  auto lCbbe3BBBVersionSelector{new QComboBox(this)};
-  lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  lCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
-  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowBody));
-  lCbbe3BBBVersionSelector->setObjectName(QString("cbbe_3bbb_version"));
-  lBodyslideGridLayout->addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
+  auto lBodySelector{new QComboBox(this)};
+  lBodySelector->setItemDelegate(new QStyledItemDelegate());
+  lBodySelector->setCursor(Qt::PointingHandCursor);
+  lBodySelector->addItems(DataLists::getBodiesNameVersions());
+  lBodySelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowBody));
+  lBodySelector->setObjectName(QString("body_selector"));
+  lBodyslideGridLayout->addWidget(lBodySelector, 0, 1, 1, 2);
 
   // Second line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
@@ -276,7 +285,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   this->updateBodyslideNamesPreview(QString(""));
 
   // Event binding
-  this->connect(lCbbe3BBBVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lBodySelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
   this->connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
@@ -307,6 +316,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   // Choose the skeleton file
   auto lLabelSkeletonChooser{new QLabel(tr("Skeleton file:"), this)};
+  lLabelSkeletonChooser->setObjectName("label_skeleton_chooser");
   lSkeletonGridLayout->addWidget(lLabelSkeletonChooser, 1, 0);
 
   auto lSkeletonChooser{new QComboBox(this)};
@@ -326,6 +336,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   // Skeleton path
   auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
+  lLabelSkeletonPath->setObjectName("label_skeleton_path_directory");
   lSkeletonGridLayout->addWidget(lLabelSkeletonPath, 2, 0);
 
   auto lSkeletonPathLineEdit{new QLineEdit(this)};
@@ -335,6 +346,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   // Skeleton name
   auto lSkeletonNameLabel{new QLabel(tr("Skeleton file name:"), this)};
+  lSkeletonNameLabel->setObjectName("label_skeleton_female");
   lSkeletonGridLayout->addWidget(lSkeletonNameLabel, 3, 0);
 
   auto lSkeletonName{new QLineEdit(this)};
@@ -349,6 +361,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   // Skeleton path preview
   auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
+  lSkeletontitlePreview->setObjectName("label_skeleton_path_preview");
   lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 4, 0);
 
   auto lSkeletonPathsPreview{new QLabel(this)};
@@ -431,21 +444,45 @@ void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
   this->connect(lGenerateButton, &QPushButton::clicked, this, &PresetCreator::generateDirectoryStructure);
 }
 
-QStringList PresetCreator::bodySlideFiltersStringToList()
+void PresetCreator::updateGUIOnBodyChange()
 {
-  auto LFilters{this->findChild<QLabel*>("bodyslide_filters")->text()};
+  // Get the GUI components
+  auto lLabelBeastHands{this->findChild<QLabel*>("label_use_beast_hands")};
+  auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
+  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")};
+  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")};
+  auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")};
+  auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")};
+  auto lFeetExtension{this->findChild<QLabel*>("feet_mesh_name_extension")};
+  auto lHandsExtension{this->findChild<QLabel*>("hands_mesh_name_extension")};
 
-  auto lList{LFilters.split(QString(" ; "))};
-
-  auto lSize{lList.size()};
-  for (int i = 0; i < lSize; i++)
+  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
+  switch (lBodySelected)
   {
-    if (lList.at(i).trimmed().compare("", Qt::CaseInsensitive) == 0)
-    {
-      lList.removeAt(i);
-    }
+    // These bodies can have every input filled
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
+      lLabelBeastHands->setDisabled(false);
+      lMustUseBeastHands->setDisabled(false);
+      lMeshesPathFeet->setDisabled(false);
+      lMeshesPathHands->setDisabled(false);
+      lFeetName->setDisabled(false);
+      lHandsName->setDisabled(false);
+      lFeetExtension->setDisabled(false);
+      lHandsExtension->setDisabled(false);
+      break;
+    // This body cannot have hands and feet inputs filled
+    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
+      lLabelBeastHands->setDisabled(true);
+      lMustUseBeastHands->setDisabled(true);
+      lMeshesPathFeet->setDisabled(true);
+      lMeshesPathHands->setDisabled(true);
+      lFeetName->setDisabled(true);
+      lHandsName->setDisabled(true);
+      lFeetExtension->setDisabled(true);
+      lHandsExtension->setDisabled(true);
   }
-  return lList;
 }
 
 bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
@@ -454,10 +491,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
                                     const bool& aMustUseBeastHands,
                                     const QString& aRessourcesFolder,
                                     const int& aBodySelected,
-                                    const QString& aBodyslideSlidersetsNames,
-                                    QString aMeshesPathBody,
-                                    QString aMeshesPathFeet,
-                                    QString aMeshesPathHands)
+                                    const QString& aBodyslideSlidersetsNames)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -473,7 +507,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
 
   // Copy the XML file
   auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml"};
-  auto lUserFilters{this->bodySlideFiltersStringToList()};
+  auto lUserFilters{Utils::splitStringRef(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
   auto lUserFiltersListSize{lUserFilters.size()};
   const auto& lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
 
@@ -764,9 +798,19 @@ void PresetCreator::updateMeshesPreview()
     lHandsName = "femalehands";
   }
 
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName);
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName);
+  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
+  switch (lBodySelected)
+  {
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
+    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
+      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
+      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName);
+      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName);
+      break;
+    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
+      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n\n").arg(lMeshesPathBody).arg(lBodyName);
+  }
 
   auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
@@ -872,7 +916,7 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
 void PresetCreator::updateBodyslideNamesPreview(QString aText)
 {
   // Selected CBBE 3BBB version
-  auto lCBBE3BBBVersionSelected{this->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex()};
+  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
 
   // Beast hands
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
@@ -890,7 +934,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
 
   auto lConstructedPreviewText{QString("")};
 
-  switch (lCBBE3BBBVersionSelected)
+  switch (lBodySelected)
   {
     case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
       if (lMustUseBeastHands)
@@ -911,7 +955,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
       break;
     case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
-      lConstructedPreviewText = QStringLiteral("\n%1 - CBBE Body SMP (3BBB)\n").arg(aText);
+      lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n\n").arg(aText);
       break;
     default:
       lConstructedPreviewText = tr("Error while evaluating the data.");
@@ -931,33 +975,56 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
 
 void PresetCreator::updateSkeletonPathState(int aState)
 {
-  auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>("skeleton_path_directory")};
-  auto lSkeletonPreview{this->findChild<QLabel*>("skeleton_path_preview")};
-  auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
-  auto lSkeletonChooserRefresher{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
-  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")};
-  auto lSkeletonNameExtension{this->findChild<QLabel*>("skeleton_name_extension")};
+  // Chooser
+  auto lLabelChooser{this->findChild<QLabel*>("label_skeleton_chooser")};
+  auto lChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+  auto lChooserRefresher{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
+
+  // Directory
+  auto lLabelPathDir{this->findChild<QLabel*>("label_skeleton_path_directory")};
+  auto lPathDir{this->findChild<QLineEdit*>("skeleton_path_directory")};
+
+  // Name
+  auto lLabelSkeleton{this->findChild<QLabel*>("label_skeleton_female")};
+  auto lSkeleton{this->findChild<QLineEdit*>("skeleton_name")};
+  auto lSkeletonExtension{this->findChild<QLabel*>("skeleton_name_extension")};
+
+  // Preview
+  auto lLabelPreview{this->findChild<QLabel*>("label_skeleton_path_preview")};
+  auto lPreview{this->findChild<QLabel*>("skeleton_path_preview")};
 
   switch (aState)
   {
     case Qt::Unchecked:
-      lSkeletonPreview->setStyleSheet("");
+      // Remove any dynamically applied color
+      lPreview->setStyleSheet("");
 
-      lSkeletonPathLineEdit->setDisabled(true);
-      lSkeletonPreview->setDisabled(true);
-      lSkeletonChooser->setDisabled(true);
-      lSkeletonChooserRefresher->setDisabled(true);
-      lSkeletonName->setDisabled(true);
-      lSkeletonNameExtension->setDisabled(true);
+      // Disable every graphical components
+      lLabelChooser->setDisabled(true);
+      lChooser->setDisabled(true);
+      lChooserRefresher->setDisabled(true);
+      lLabelPathDir->setDisabled(true);
+      lPathDir->setDisabled(true);
+      lLabelSkeleton->setDisabled(true);
+      lSkeleton->setDisabled(true);
+      lSkeletonExtension->setDisabled(true);
+      lLabelPreview->setDisabled(true);
+      lPreview->setDisabled(true);
       break;
     case Qt::Checked:
-      lSkeletonPathLineEdit->setDisabled(false);
-      lSkeletonPreview->setDisabled(false);
-      lSkeletonChooser->setDisabled(false);
-      lSkeletonChooserRefresher->setDisabled(false);
-      lSkeletonName->setDisabled(false);
-      lSkeletonNameExtension->setDisabled(false);
+      // Enable back every graphical components
+      lLabelChooser->setDisabled(false);
+      lChooser->setDisabled(false);
+      lChooserRefresher->setDisabled(false);
+      lLabelPathDir->setDisabled(false);
+      lPathDir->setDisabled(false);
+      lLabelSkeleton->setDisabled(false);
+      lSkeleton->setDisabled(false);
+      lSkeletonExtension->setDisabled(false);
+      lLabelPreview->setDisabled(false);
+      lPreview->setDisabled(false);
 
+      // Re-apply colors dynamically
       this->updateSkeletonPreview();
   }
 }
@@ -1017,11 +1084,12 @@ void PresetCreator::chooseExportDirectory()
 
 void PresetCreator::generateDirectoryStructure()
 {
-  // Selected CBBE 3BBB version
-  auto lBodySelected{this->findChild<QComboBox*>(QString("cbbe_3bbb_version"))->currentIndex()};
+  // Selected body
+  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
 
   // Beast hands
-  auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
+  auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
+  auto lMustUseBeastHands{lCheckboxUseBeastHands->isEnabled() && lCheckboxUseBeastHands->isChecked()};
 
   // Body meshes path and name
   auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
@@ -1029,23 +1097,22 @@ void PresetCreator::generateDirectoryStructure()
   auto lBodyName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
 
   // Feet meshes path and name
-  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->text().trimmed()};
+  auto lInputMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")};
+  auto lSkipFeetCheck{!lInputMeshesPathFeet->isEnabled()};
+  auto lMeshesPathFeet{lInputMeshesPathFeet->text().trimmed()};
   Utils::cleanPathString(lMeshesPathFeet);
   auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
 
   // Hands meshes path and name
-  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")->text().trimmed()};
+  auto lInputMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")};
+  auto lSkipHandsCheck{!lInputMeshesPathHands->isEnabled()};
+  auto lMeshesPathHands{lInputMeshesPathHands->text().trimmed()};
   Utils::cleanPathString(lMeshesPathHands);
   auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
 
   // BodySlide names
   auto lOSPXMLNames{this->findChild<QLineEdit*>("names_osp_xml_input")->text().trimmed()};
   auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
-
-  // Options
-  auto lMustCopySkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked()};
-  auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed()};
-  Utils::cleanPathString(lSkeletonPath);
 
   // Output paths
   auto lMainDirectory{this->findChild<QLineEdit*>("output_path_directory")->text().trimmed()};
@@ -1115,13 +1182,13 @@ void PresetCreator::generateDirectoryStructure()
     return;
   }
 
-  if (lMeshesPathFeet.length() == 0)
+  if (lMeshesPathFeet.length() == 0 && !lSkipFeetCheck)
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the feet meshes."));
     return;
   }
 
-  if (lMeshesPathHands.length() == 0)
+  if (lMeshesPathHands.length() == 0 && !lSkipHandsCheck)
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the hands meshes."));
     return;
@@ -1148,19 +1215,26 @@ void PresetCreator::generateDirectoryStructure()
     return;
   }
 
-  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodySelected, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands))
+  // XML file
+  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodySelected, lBodyslideSlidersetsNames))
   {
     return;
   }
 
+  // OSP file
   if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
   {
     return;
   }
 
-  // If the user checked the custom skeleton
+  // Skeleton
+  auto lMustCopySkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked()};
+
   if (lMustCopySkeleton)
   {
+    auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed()};
+    Utils::cleanPathString(lSkeletonPath);
+
     if (!this->generateSkeletonFile(lEntryDirectory, lSkeletonPath))
     {
       return;
@@ -1191,6 +1265,9 @@ void PresetCreator::refreshAllPreviewFields(int)
 
 void PresetCreator::refreshAllPreviewFields()
 {
+  // Update the GUI based on the available
+  this->updateGUIOnBodyChange();
+
   // Refresh the preview of the body meshes parts
   this->updateMeshesPreview();
 
