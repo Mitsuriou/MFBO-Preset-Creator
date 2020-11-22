@@ -61,8 +61,8 @@ IDI_ICON1               ICON                    "ressources/software/icon.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,10,0,0
- PRODUCTVERSION 1,10,0,0
+ FILEVERSION 2,0,0,0
+ PRODUCTVERSION 2,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -77,27 +77,27 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
-            VALUE "FileVersion", "1.10.0.0"
+            VALUE "FileVersion", "2.0.0.0"
             VALUE "InternalName", "MFBO Preset Creator"
             VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
             VALUE "ProductName", "MFBO: Preset Creator"
-            VALUE "ProductVersion", "1.10.0.0"
+            VALUE "ProductVersion", "2.0.0.0"
         END
         BLOCK "000904b0"
         BEGIN
-            VALUE "FileVersion", "1.10.0.0"
+            VALUE "FileVersion", "2.0.0.0"
             VALUE "InternalName", "MFBO Preset Creator"
             VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
             VALUE "ProductName", "MFBO: Preset Creator"
-            VALUE "ProductVersion", "1.10.0.0"
+            VALUE "ProductVersion", "2.0.0.0"
         END
         BLOCK "000c04b0"
         BEGIN
-            VALUE "FileVersion", "1.10.0.0"
+            VALUE "FileVersion", "2.0.0.0"
             VALUE "InternalName", "MFBO Preset Creator"
             VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
             VALUE "ProductName", "MFBO : Créateur de preset"
-            VALUE "ProductVersion", "1.10.0.0"
+            VALUE "ProductVersion", "2.0.0.0"
         END
     END
     BLOCK "VarFileInfo"
