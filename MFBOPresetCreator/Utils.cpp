@@ -183,6 +183,14 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "cbbe_3bbb_1.51_1.52";
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return "cbbe_smp_3bbb";
+    case BodyNameVersion::BHUNP_3BBB_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+    case BodyNameVersion::BHUNP_BBP_2_13:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_TBBP_2_13:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+      return "bhunp_2.13";
     default:
       Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
       return "";

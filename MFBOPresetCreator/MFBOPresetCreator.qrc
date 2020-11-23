@@ -35,6 +35,23 @@
         <file alias="bodyslide_xml">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.xml</file>
         <file alias="bodyslide_xml_custom">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide_custom.xml</file>
     </qresource>
+    <qresource prefix="/bhunp_2.13">
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_3bbb.osp</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_3bbb.xml</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced.osp</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced.xml</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced_ver_2.osp</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced_ver_2.xml</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_bbp.osp</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_bbp.xml</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_bbp_advanced.osp</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_bbp_advanced.xml</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_tbbp.osp</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_tbbp.osp.xml</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_tbbp_advanced.osp</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bhunp_tbbp_advanced.xml</file>
+        <file>ressources/bodyslide files/bhunp/2.13/bodyslide_custom.xml</file>
+    </qresource>
     <qresource prefix="/black">
         <file alias="arrow_up">ressources/software/icons/black/arrow-up-bold-outline.png</file>
         <file alias="exit">ressources/software/icons/black/exit-run.png</file>

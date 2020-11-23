@@ -454,33 +454,38 @@ void PresetCreator::updateGUIOnBodyChange()
   auto lFeetExtension{this->findChild<QLabel*>("feet_mesh_name_extension")};
   auto lHandsExtension{this->findChild<QLabel*>("hands_mesh_name_extension")};
 
-  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
+  // The new "disabled" state to apply
+  auto lDisableBeastHands{false};
+  auto lDisableFeet{false};
+  auto lDisableHands{false};
+
+  auto lBodySelected{static_cast<BodyNameVersion>(this->findChild<QComboBox*>(QString("body_selector"))->currentIndex())};
   switch (lBodySelected)
   {
-    // These bodies can have every input filled
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
-      lLabelBeastHands->setDisabled(false);
-      lMustUseBeastHands->setDisabled(false);
-      lMeshesPathFeet->setDisabled(false);
-      lMeshesPathHands->setDisabled(false);
-      lFeetName->setDisabled(false);
-      lHandsName->setDisabled(false);
-      lFeetExtension->setDisabled(false);
-      lHandsExtension->setDisabled(false);
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+      lDisableBeastHands = true;
+      lDisableFeet = true;
+      lDisableHands = true;
       break;
-    // This body cannot have hands and feet inputs filled
-    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
-      lLabelBeastHands->setDisabled(true);
-      lMustUseBeastHands->setDisabled(true);
-      lMeshesPathFeet->setDisabled(true);
-      lMeshesPathHands->setDisabled(true);
-      lFeetName->setDisabled(true);
-      lHandsName->setDisabled(true);
-      lFeetExtension->setDisabled(true);
-      lHandsExtension->setDisabled(true);
+    case BodyNameVersion::BHUNP_3BBB_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+    case BodyNameVersion::BHUNP_BBP_2_13:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_TBBP_2_13:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+      lDisableBeastHands = true;
+      break;
   }
+
+  lLabelBeastHands->setDisabled(lDisableBeastHands);
+  lMustUseBeastHands->setDisabled(lDisableBeastHands);
+  lMeshesPathFeet->setDisabled(lDisableFeet);
+  lMeshesPathHands->setDisabled(lDisableHands);
+  lFeetName->setDisabled(lDisableFeet);
+  lHandsName->setDisabled(lDisableHands);
+  lFeetExtension->setDisabled(lDisableFeet);
+  lHandsExtension->setDisabled(lDisableHands);
 }
 
 bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
@@ -796,18 +801,17 @@ void PresetCreator::updateMeshesPreview()
     lHandsName = "femalehands";
   }
 
-  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
-  switch (lBodySelected)
+  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
+
+  auto lBodySelected{static_cast<BodyNameVersion>(this->findChild<QComboBox*>(QString("body_selector"))->currentIndex())};
+  if (lBodySelected == BodyNameVersion::CBBE_SMP_3BBB_1_2_0)
   {
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
-      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
-      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName);
-      lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName);
-      break;
-    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
-      lFullPreview += QStringLiteral("\n[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
+    lFullPreview.append("  -\n  -");
+  }
+  else
+  {
+    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName));
+    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName));
   }
 
   auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
@@ -913,15 +917,10 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
 
 void PresetCreator::updateBodyslideNamesPreview(QString aText)
 {
-  // Selected CBBE 3BBB version
-  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
-
   // Beast hands
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
 
   // Path
-  auto lOutputPathsPreview{this->findChild<QLabel*>("names_bodyslide_preview")};
-
   auto lIsValidPath{true};
 
   if (aText.trimmed().length() == 0)
@@ -930,33 +929,52 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
     lIsValidPath = false;
   }
 
+  auto lBodySelected{static_cast<BodyNameVersion>(this->findChild<QComboBox*>(QString("body_selector"))->currentIndex())};
   auto lConstructedPreviewText{QString("")};
 
   switch (lBodySelected)
   {
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
+    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
       if (lMustUseBeastHands)
         lConstructedPreviewText = QStringLiteral("%1 - 3BBB Body Amazing\n%1 - Feet\n%1 - Beast Hands").arg(aText);
       else
         lConstructedPreviewText = QStringLiteral("%1 - 3BBB Body Amazing\n%1 - Feet\n%1 - Hands ").arg(aText);
       break;
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
+    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
       if (lMustUseBeastHands)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE Beast Hands").arg(aText);
       else
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
       break;
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52:
       if (lMustUseBeastHands)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands Beast").arg(aText);
       else
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
       break;
-    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
-      lConstructedPreviewText = QStringLiteral("\n%1 - CBBE Body SMP (3BBB)\n").arg(aText);
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+      lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n  -\n  -").arg(aText);
       break;
-    default:
-      lConstructedPreviewText = tr("Error while evaluating the data.");
+    case BodyNameVersion::BHUNP_3BBB_2_13:
+      lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
+      break;
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+      lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
+      break;
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+      lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced Ver 2\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
+      break;
+    case BodyNameVersion::BHUNP_BBP_2_13:
+      lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
+      break;
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+      lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
+      break;
+    case BodyNameVersion::BHUNP_TBBP_2_13:
+      lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
+      break;
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+      lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
   }
 
@@ -967,6 +985,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
     lNewTextColor = "hsl(4, 90%, 58%)";
   }
 
+  auto lOutputPathsPreview{this->findChild<QLabel*>("names_bodyslide_preview")};
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }

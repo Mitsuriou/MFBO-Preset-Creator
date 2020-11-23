@@ -7,6 +7,13 @@ QStringList DataLists::getBodiesNameVersions()
   lBodies.append(QString("CBBE 3BBB 3BA [v.1.50]"));
   lBodies.append(QString("CBBE 3BBB 3BA [v.1.51 -> v.1.52]"));
   lBodies.append(QString("CBBE SMP (3BBB) [v.1.2.0]"));
+  lBodies.append(QString("BHUNP 3BBB [v.2.13]"));
+  lBodies.append(QString("BHUNP 3BBB Advanced [v.2.13]"));
+  lBodies.append(QString("BHUNP 3BBB Advanced ver 2 [v.2.13]"));
+  lBodies.append(QString("BHUNP BBP [v.2.13]"));
+  lBodies.append(QString("BHUNP BBP Advanced [v.2.13]"));
+  lBodies.append(QString("BHUNP TBBP [v.2.13]"));
+  lBodies.append(QString("BHUNP TBBP Advanced [v.2.13]"));
 
   return lBodies;
 }

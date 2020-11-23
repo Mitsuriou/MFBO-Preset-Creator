@@ -5,7 +5,14 @@ enum class BodyNameVersion
   CBBE_3BBB_3BA_1_40 = 0,
   CBBE_3BBB_3BA_1_50 = 1,
   CBBE_3BBB_3BA_1_51_and_1_52 = 2,
-  CBBE_SMP_3BBB_1_2_0 = 3
+  CBBE_SMP_3BBB_1_2_0 = 3,
+  BHUNP_3BBB_2_13 = 4,
+  BHUNP_3BBB_Advanced_2_13 = 5,
+  BHUNP_3BBB_Advanced_ver_2_2_13 = 6,
+  BHUNP_BBP_2_13 = 7,
+  BHUNP_BBP_Advanced_2_13 = 8,
+  BHUNP_TBBP_2_13 = 9,
+  BHUNP_TBBP_Advanced_2_13 = 10
 };
 
 enum class ApplicationLanguage
