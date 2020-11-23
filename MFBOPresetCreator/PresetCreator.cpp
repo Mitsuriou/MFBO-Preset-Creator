@@ -512,25 +512,29 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
   auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml"};
   auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
   auto lUserFiltersListSize{lUserFilters.size()};
-  const auto& lCustomSuffix{lUserFiltersListSize > 0 ? QString("_custom") : QString("")};
 
-  if (aMustUseBeastHands)
+  auto lRessourcePath{QString("")};
+
+  // Use custom filters
+  if (lUserFiltersListSize > 0)
   {
-    auto lRessourcePath{QString(":/%1/bodyslide_beast_hands_xml%2").arg(aRessourcesFolder).arg(lCustomSuffix)};
-    if (!QFile::copy(lRessourcePath, lXMLPathName))
-    {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
-      return false;
-    }
+    lRessourcePath = ":/ressources/bodyslide_xml_custom";
   }
+  // Use beast hands
+  else if (aMustUseBeastHands)
+  {
+    lRessourcePath = QString(":/%1/%2").arg(aRessourcesFolder).arg("bodyslide_beast_hands_xml");
+  }
+  // Use classic XML
   else
   {
-    auto lRessourcePath{QString(":/%1/bodyslide_xml%2").arg(aRessourcesFolder).arg(lCustomSuffix)};
-    if (!QFile::copy(lRessourcePath, lXMLPathName))
-    {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
-      return false;
-    }
+    lRessourcePath = QString(":/%1/%2").arg(aRessourcesFolder).arg("bodyslide_xml");
+  }
+
+  if (!QFile::copy(lRessourcePath, lXMLPathName))
+  {
+    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+    return false;
   }
 
   QFile lXMLFile(lXMLPathName);

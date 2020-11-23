@@ -182,15 +182,21 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52:
       return "cbbe_3bbb_1.51_1.52";
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      return "cbbe_smp_3bbb";
+      return "cbbe_smp_3bbb_1.2.0";
     case BodyNameVersion::BHUNP_3BBB_2_13:
+      return "bhunp_2.13/bhunp_3bbb";
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+      return "bhunp_2.13/bhunp_3bbb_advanced";
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+      return "bhunp_2.13/bhunp_3bbb_advanced_ver_2";
     case BodyNameVersion::BHUNP_BBP_2_13:
+      return "bhunp_2.13/bhunp_bbp";
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+      return "bhunp_2.13/bhunp_bbp_advanced";
     case BodyNameVersion::BHUNP_TBBP_2_13:
+      return "bhunp_2.13/bhunp_tbbp";
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
-      return "bhunp_2.13";
+      return "bhunp_2.13/bhunp_tbbp_advanced";
     default:
       Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
       return "";
@@ -524,10 +530,10 @@ void Utils::saveFiltersToFile(QStringList aList)
 
 QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
 {
-  switch (aBody)
+  auto lBody = static_cast<BodyNameVersion>(aBody);
+  switch (lBody)
   {
-    // CBBE_3BBB_3BA_1_40
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
+    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
       if (aBeastHands)
       {
         return QStringLiteral("    <Group name=\"%1\">\n"
@@ -544,9 +550,7 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
                             "        <Member name=\"{%%bodyslide_set_name%%} - Hands\"/>\n"
                             "    </Group>\n")
         .arg(aGroupName);
-
-    // CBBE_3BBB_3BA_1_50
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
+    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
       if (aBeastHands)
       {
         return QStringLiteral("    <Group name=\"%1\">\n"
@@ -563,9 +567,7 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
                             "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n"
                             "    </Group>\n")
         .arg(aGroupName);
-
-    // CBBE_3BBB_3BA_1_51_and_1_52
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52:
       if (aBeastHands)
       {
         return QStringLiteral("    <Group name=\"%1\">\n"
@@ -582,13 +584,62 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
                             "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n"
                             "    </Group>\n")
         .arg(aGroupName);
-
-    // CBBE_SMP_3BBB_1_2_0
-    case static_cast<int>(BodyNameVersion::CBBE_SMP_3BBB_1_2_0):
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return QStringLiteral("    <Group name=\"%1\">\n"
                             "        <Member name=\"{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)\"/>\n"
                             "    </Group>\n")
         .arg(aGroupName);
+    case BodyNameVersion::BHUNP_3BBB_2_13:
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Ver 2\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+    case BodyNameVersion::BHUNP_BBP_2_13:
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP Advanced\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+    case BodyNameVersion::BHUNP_TBBP_2_13:
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+      return QStringLiteral("    <Group name=\"%1\">\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP Advanced\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
+                            "    </Group>\n")
+        .arg(aGroupName);
+    default:
+      break;
   }
 
   return "";
