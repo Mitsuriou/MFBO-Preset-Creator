@@ -166,7 +166,7 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
   }
 }
 
-QString Utils::getIconFolder(const GUITheme& aTheme)
+QString Utils::getIconRessourceFolder(const GUITheme& aTheme)
 {
   return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
 }
@@ -332,11 +332,34 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   return false;
 }
 
+void Utils::saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath)
+{
+  // Open (or create and open) the file
+  QFile lFile(aFilePath);
+  lFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
+  lFile.write(QJsonDocument(aJsonToSave).toJson());
+  lFile.close();
+}
+
+QJsonObject Utils::loadFromJsonFile(const QString& aFilePath)
+{
+  // Open and read the file
+  QFile lFile(aFilePath);
+  lFile.open(QIODevice::ReadOnly | QIODevice::Text);
+  const QString lReadData = lFile.readAll();
+  lFile.close();
+
+  // Convert the text content into a QJsonDocument
+  QJsonDocument lJsonDocument(QJsonDocument::fromJson(lReadData.toUtf8()));
+
+  // Return the QJsonObject containing the read data
+  return lJsonDocument.object();
+}
+
 void Utils::checkSettingsFileExistence()
 {
-  QFile lSettingsFile(QCoreApplication::applicationDirPath() + QDir::separator() + "config.json");
-
-  if (!lSettingsFile.exists())
+  auto lSettingsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "config.json"};
+  if (!QFile(lSettingsFilePath).exists())
   {
     // Create a default setting file if it does not exist
     Struct::Settings lSettings;
@@ -348,14 +371,8 @@ Struct::Settings Utils::loadSettingsFromFile()
 {
   Utils::checkSettingsFileExistence();
 
-  // Open and read the settings file
-  QFile lSettingsFile(QCoreApplication::applicationDirPath() + QDir::separator() + "config.json");
-  lSettingsFile.open(QIODevice::ReadOnly | QIODevice::Text);
-  QString lSettingsData = lSettingsFile.readAll();
-  lSettingsFile.close();
-
-  QJsonDocument lJsonDocument(QJsonDocument::fromJson(lSettingsData.toUtf8()));
-  QJsonObject lSettingsJSON = lJsonDocument.object();
+  auto lSettingsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "config.json"};
+  QJsonObject lSettingsJSON{Utils::loadFromJsonFile(lSettingsFilePath)};
 
   Struct::Settings lSettings;
 
@@ -470,15 +487,8 @@ Struct::Settings Utils::loadSettingsFromFile()
 
 void Utils::saveSettingsToFile(Struct::Settings aSettings)
 {
-  QFile lSettingsFile(QCoreApplication::applicationDirPath() + QDir::separator() + "config.json");
-
-  lSettingsFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
-
-  auto gameObject{Utils::settingsStructToJson(aSettings)};
-  QJsonDocument saveDoc(gameObject);
-  lSettingsFile.write(saveDoc.toJson());
-
-  lSettingsFile.close();
+  auto lSettingsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "config.json"};
+  Utils::saveAsJsonFile(Utils::settingsStructToJson(aSettings), lSettingsFilePath);
 }
 
 QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
@@ -528,7 +538,7 @@ void Utils::saveFiltersToFile(QStringList aList)
   lFiltersFile.close();
 }
 
-QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
+QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
 {
   auto lBody = static_cast<BodyNameVersion>(aBody);
   switch (lBody)
@@ -638,8 +648,6 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
                             "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
                             "    </Group>\n")
         .arg(aGroupName);
-    default:
-      break;
   }
 
   return "";
@@ -647,11 +655,12 @@ QString Utils::getFilterBlockFromBody(const int& aBody, const int& aBeastHands, 
 
 QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
 {
-  switch (aEnumValue)
+  auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
+  switch (lEnumLang)
   {
-    case static_cast<int>(ApplicationLanguage::English):
+    case ApplicationLanguage::English:
       return "en";
-    case static_cast<int>(ApplicationLanguage::French):
+    case ApplicationLanguage::French:
       return "fr";
     default:
       return "en";
@@ -660,11 +669,12 @@ QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
 
 QString Utils::getLongLanguageNameFromEnum(const int& aEnumValue)
 {
-  switch (aEnumValue)
+  auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
+  switch (lEnumLang)
   {
-    case static_cast<int>(ApplicationLanguage::English):
+    case ApplicationLanguage::English:
       return "English";
-    case static_cast<int>(ApplicationLanguage::French):
+    case ApplicationLanguage::French:
       return "Français";
     default:
       return "English";

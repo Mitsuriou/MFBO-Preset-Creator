@@ -345,12 +345,13 @@ Struct::Settings Settings::getSettingsFromGUI()
   Struct::Settings lSettings;
 
   // Language
-  switch (lLang)
+  auto lEnumLang{static_cast<ApplicationLanguage>(lLang)};
+  switch (lEnumLang)
   {
-    case static_cast<int>(ApplicationLanguage::English):
+    case ApplicationLanguage::English:
       lSettings.language = ApplicationLanguage::English;
       break;
-    case static_cast<int>(ApplicationLanguage::French):
+    case ApplicationLanguage::French:
       lSettings.language = ApplicationLanguage::French;
       break;
     default:

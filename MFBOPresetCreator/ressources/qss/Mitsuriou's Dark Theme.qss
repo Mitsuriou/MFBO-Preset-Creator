@@ -257,9 +257,9 @@ QMenu::item::disabled {
 /*LIST WIDGET*/
 /*************/
 QListWidget {
-  border: 1px solid #282A3B;
+  border: 1px solid #222433;
   color: white;
-  background-color: #282A3B;
+  background-color: #222433;
   alternate-background-color: #282A3B;
 }
 
@@ -268,7 +268,7 @@ QListWidget::item {
   margin: 0px;
   border: 1px solid transparent;
   min-height: 26px;
-  background-color: #282A3B;
+  background-color: #222433;
 }
 
 QListWidget::item::alternate {

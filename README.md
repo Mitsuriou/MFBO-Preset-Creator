@@ -10,7 +10,7 @@ At this time, the application is only capable of changing the body, hands and fe
 
 # How to install and run MFBO: PC
 ### Download
-Choose the **latest release** on https://github.com/Mitsuriou/MFBO-Preset-Creator/releases and download either the **.7z** file or the **.zip** file that is named **MFBO.Preset.Creator.[*version number*].[*7z|zip*]**. They are the same, but some people do not know how to open .7z files, so I try to always provide both alternatives.
+Choose the **latest release** on https://github.com/Mitsuriou/MFBO-Preset-Creator/releases and download either the **.7z** file or the **.zip** file that is named **MFBO.Preset.Creator.[*7z|zip*]**. They are the same, but some people do not know how to open .7z files, so I try to always provide both alternatives.
 
 ### Install
 The application is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the directory of your choice the content of the archive.

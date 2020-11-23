@@ -60,7 +60,7 @@ void MFBOPresetCreator::initializeGUI()
 void MFBOPresetCreator::setupMenuBar()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Construct the menu bar
   auto lMenuBar{new QMenuBar(this)};
@@ -272,7 +272,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   this->enableLineEditPlaceholders(lLineEditsToReactivate);
 
   // Reset icons color
-  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>("edit_filters")};
   lEditFiltersButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));

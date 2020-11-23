@@ -24,13 +24,17 @@ public:
   static int getNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions);
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
   static bool isThemeDark(const GUITheme& aTheme);
-  static QString getIconFolder(const GUITheme& aTheme);
+  static QString getIconRessourceFolder(const GUITheme& aTheme);
   static QString getBodyRessourceFolder(const BodyNameVersion& aBody);
 
   // XML and OSP file parse
   static QString getPresetNameFromXMLFile(const QString& aPath);
   static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(const QString& aPath);
   static bool isPresetUsingBeastHands(const QString& aPath);
+
+  // Load and save
+  static void saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath);
+  static QJsonObject loadFromJsonFile(const QString& aFilePath);
 
   // Settings
   static void checkSettingsFileExistence();
@@ -41,7 +45,7 @@ public:
   // Filters
   static QStringList loadFiltersFromFile();
   static void saveFiltersToFile(QStringList aList);
-  static QString getFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
+  static QString getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
 
   // Language
   static QString getShortLanguageNameFromEnum(const int& aEnumValue);

@@ -1,0 +1,21 @@
+{
+    "appTheme": 0,
+    "checkForUpdatesAtStartup": true,
+    "default_body": 0,
+    "font": {
+        "family": "MS Shell Dlg 2",
+        "italic": false,
+        "size": 10,
+        "strikeOut": false,
+        "styleName": "",
+        "underline": false,
+        "weight": -1
+    },
+    "lang": 1,
+    "mainWindowAutomaticallyOpenGeneratedDirectory": true,
+    "mainWindowOutputPath": "",
+    "main_window_opening_mode": 1,
+    "retargeting_tool_default_body": 0,
+    "windowHeight": 600,
+    "windowWidth": 900
+}

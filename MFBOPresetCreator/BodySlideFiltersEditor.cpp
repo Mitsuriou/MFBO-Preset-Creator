@@ -86,10 +86,11 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   aLayout.addLayout(lButtonLayout, 1, 1, Qt::AlignTop);
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Add row button
   auto lAddNewRow{new QPushButton(this)};
+  lAddNewRow->setToolTip(tr("Add a new empty filter"));
   lAddNewRow->setCursor(Qt::PointingHandCursor);
   lAddNewRow->setIcon(QIcon(QPixmap(QString(":/%1/new_line").arg(lIconFolder))));
   lButtonLayout->addWidget(lAddNewRow);
@@ -97,6 +98,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
   // Delete row button
   auto lDeleteRow{new QPushButton(this)};
+  lDeleteRow->setToolTip(tr("Delete the selected filter"));
   lDeleteRow->setCursor(Qt::PointingHandCursor);
   lDeleteRow->setIcon(QIcon(QPixmap(QString(":/%1/bin").arg(lIconFolder))));
   lButtonLayout->addWidget(lDeleteRow);
@@ -104,6 +106,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
   // Delete all rows button
   auto lDeleteAllRows{new QPushButton(this)};
+  lDeleteAllRows->setToolTip(tr("Delete all filters"));
   lDeleteAllRows->setCursor(Qt::PointingHandCursor);
   lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/delete_all").arg(lIconFolder))));
   lButtonLayout->addWidget(lDeleteAllRows);

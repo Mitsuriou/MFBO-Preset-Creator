@@ -60,36 +60,29 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 
   for (const auto& lResult : aResultsList)
   {
-    switch (lResult.role)
+    auto lRole{static_cast<AssistedConversionRole>(lResult.role)};
+    switch (lRole)
     {
-      case static_cast<int>(AssistedConversionRole::Body):
-        // Path
+      case AssistedConversionRole::Body:
         this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText(lResult.path);
-        // File name
         this->findChild<QLineEdit*>("body_mesh_name_input")->setText(lResult.name);
         break;
-      case static_cast<int>(AssistedConversionRole::Feet):
-        // Path
+      case AssistedConversionRole::Feet:
         this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText(lResult.path);
-        // File name
         this->findChild<QLineEdit*>("feet_mesh_name_input")->setText(lResult.name);
         break;
-      case static_cast<int>(AssistedConversionRole::Hands):
-        // Path
+      case AssistedConversionRole::Hands:
         this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText(lResult.path);
-        // File name
         this->findChild<QLineEdit*>("hands_mesh_name_input")->setText(lResult.name);
         break;
-      case static_cast<int>(AssistedConversionRole::Skeleton):
+      case AssistedConversionRole::Skeleton:
         auto lNeedCustomSkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")};
         if (!lNeedCustomSkeleton->isChecked())
         {
           lNeedCustomSkeleton->setChecked(true);
         }
 
-        // Path
         this->findChild<QLineEdit*>("skeleton_path_directory")->setText(lResult.path);
-        // File name
         this->findChild<QLineEdit*>("skeleton_name")->setText(lResult.name);
         break;
     }
@@ -272,7 +265,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lEditFilters{new QPushButton(this)};
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
-  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
   lBodyslideGridLayout->addWidget(lEditFilters, 5, 2);
 
@@ -327,7 +320,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
   auto lSkeletonRefresher{new QPushButton(this)};
   lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
-  const auto& lIconFolder{Utils::getIconFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
@@ -566,7 +559,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
 
         for (const auto& lUserFilter : lUserFilters)
         {
-          lUserFiltersConcat += Utils::getFilterBlockFromBody(aBodySelected, aMustUseBeastHands, lUserFilter);
+          lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(aBodySelected, aMustUseBeastHands, lUserFilter);
         }
 
         lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
