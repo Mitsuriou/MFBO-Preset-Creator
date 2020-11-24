@@ -540,117 +540,103 @@ void Utils::saveFiltersToFile(QStringList aList)
 
 QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
 {
+  auto lXMLBlock{QString("    <Group name=\"%1\">\n").arg(aGroupName)};
+
   auto lBody = static_cast<BodyNameVersion>(aBody);
   switch (lBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - 3BBB Body Amazing\"/>\n");
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n");
+
       if (aBeastHands)
       {
-        return QStringLiteral("    <Group name=\"%1\">\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - 3BBB Body Amazing\"/>\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - Beast Hands\"/>\n"
-                              "    </Group>\n")
-          .arg(aGroupName);
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Beast Hands\"/>\n");
+      }
+      else
+      {
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Hands\"/>\n");
       }
 
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - 3BBB Body Amazing\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
+
       if (aBeastHands)
       {
-        return QStringLiteral("    <Group name=\"%1\">\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE Beast Hands\"/>\n"
-                              "    </Group>\n")
-          .arg(aGroupName);
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Beast Hands\"/>\n");
+      }
+      else
+      {
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n");
       }
 
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52:
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
+
       if (aBeastHands)
       {
-        return QStringLiteral("    <Group name=\"%1\">\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
-                              "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands Beast\"/>\n"
-                              "    </Group>\n")
-          .arg(aGroupName);
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands Beast\"/>\n");
+      }
+      else
+      {
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n");
       }
 
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)\"/>\n");
+
+      break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+
+      break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+
+      break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Ver 2\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Ver 2\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+
+      break;
     case BodyNameVersion::BHUNP_BBP_2_13:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+
+      break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP Advanced\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP Advanced\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+
+      break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+
+      break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
-      return QStringLiteral("    <Group name=\"%1\">\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP Advanced\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                            "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n"
-                            "    </Group>\n")
-        .arg(aGroupName);
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP Advanced\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
+                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+
+      break;
   }
 
-  return "";
+  lXMLBlock.append("    </Group>\n");
+  return lXMLBlock;
 }
 
 QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
