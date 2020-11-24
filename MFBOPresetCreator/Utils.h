@@ -39,12 +39,13 @@ public:
   // Settings
   static void checkSettingsFileExistence();
   static Struct::Settings loadSettingsFromFile();
-  static void saveSettingsToFile(Struct::Settings aSettings);
-  static QJsonObject settingsStructToJson(Struct::Settings aSettings);
+  static void saveSettingsToFile(const Struct::Settings& aSettings);
+  static QJsonObject settingsStructToJson(const Struct::Settings& aSettings);
 
   // Filters
-  static Struct::FilterList loadFiltersFromFile();
-  static void saveFiltersToFile(QStringList aList);
+  static std::map<QString, QStringList> loadFiltersFromFile();
+  static void saveFiltersToFile(const std::map<QString, QStringList>& aList);
+  static QJsonObject filtersMapToJson(const std::map<QString, QStringList>& aList);
   static QString getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
 
   // Language

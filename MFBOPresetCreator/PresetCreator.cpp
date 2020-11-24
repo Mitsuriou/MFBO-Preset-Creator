@@ -40,11 +40,11 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->refreshAllPreviewFields();
 
   // Cursor change for the scroll bar
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::mouseCursorPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::mouseCursorReleased);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
 
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::mouseCursorPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::mouseCursorReleased);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
 }
 
 void PresetCreator::updateSettings(Struct::Settings aSettings)
@@ -256,20 +256,26 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
   lBodyslideGridLayout->addWidget(lLabelFilters, 5, 0);
 
+  auto lFiltersListChooser{new QComboBox(this)};
+  lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
+  lFiltersListChooser->setCursor(Qt::PointingHandCursor);
+  lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
+  lBodyslideGridLayout->addWidget(lFiltersListChooser, 5, 1);
+
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName("bodyslide_filters");
   lFiltersList->setWordWrap(true);
-  this->updateBodySlideFiltersList(Utils::loadFiltersFromFile());
-  lBodyslideGridLayout->addWidget(lFiltersList, 5, 1);
+  lBodyslideGridLayout->addWidget(lFiltersList, 5, 2);
 
   auto lEditFilters{new QPushButton(this)};
+  lEditFilters->setText("Edit custom BodySlide filters");
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
-  lBodyslideGridLayout->addWidget(lEditFilters, 5, 2);
+  lBodyslideGridLayout->addWidget(lEditFilters, 5, 3);
 
-  // Initialization functions
+  // Pre-bind initialization functions
   this->updateOSPXMLPreview(QString(""));
   this->updateBodyslideNamesPreview(QString(""));
 
@@ -277,7 +283,11 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   this->connect(lBodySelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
+  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::updateBodySlideFiltersListPreview));
   this->connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
+
+  // Post-bind initialization functions
+  this->initBodySlideFiltersList();
 }
 
 void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
@@ -1292,25 +1302,87 @@ void PresetCreator::refreshAllPreviewFields()
 
 void PresetCreator::openBodySlideFiltersEditor()
 {
-  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; "))};
+  auto lCurrentKey{this->findChild<QComboBox*>("bodyslide_filters_chooser")->currentText()};
+  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList, lCurrentKey)};
   this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &PresetCreator::updateBodySlideFiltersList);
 }
 
-void PresetCreator::updateBodySlideFiltersList(const Struct::FilterList& aFilterList)
+void PresetCreator::initBodySlideFiltersList()
 {
-  auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
-  auto lActivePreset{aFilterList.active};
-  LFiltersLabel->setText(aFilterList.filters.at(lActivePreset).join(QString(" ; ")));
+  // Load and save the filters list
+  this->mFiltersList = Utils::loadFiltersFromFile();
+
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+
+  // Disable the combobox if there is not any available filter
+  if (this->mFiltersList.size() == 0)
+  {
+    lChooser->setDisabled(true);
+    return;
+  }
+
+  // Fill the combobox
+  for (const auto& lPair : this->mFiltersList)
+  {
+    lChooser->addItem(lPair.first);
+  }
+
+  lChooser->setCurrentIndex(0);
 }
 
-void PresetCreator::mouseCursorPressed()
+void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
+{
+  // Update the filters list
+  this->mFiltersList = aFilterList;
+
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+
+  // Disable the combobox if there is not any available filter
+  if (this->mFiltersList.size() == 0)
+  {
+    lChooser->setDisabled(true);
+    return;
+  }
+
+  lChooser->setDisabled(false);
+
+  auto lPrevKey{lChooser->currentText()};
+
+  // Fill the combobox
+  lChooser->clear();
+  for (const auto& lPair : this->mFiltersList)
+  {
+    lChooser->addItem(lPair.first);
+  }
+
+  if (lPrevKey != "" || aFilterList.count(lPrevKey) == 0)
+  {
+    lChooser->setCurrentIndex(0);
+  }
+  else
+  {
+    // TODO
+    //lChooser->setCurrentIndex(??);
+  }
+}
+
+void PresetCreator::updateBodySlideFiltersListPreview(int)
+{
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
+
+  auto lText{this->mFiltersList.find(lChooser->currentText())->second.join(QString(" ; "))};
+  LFiltersLabel->setText(lText);
+}
+
+void PresetCreator::scrollbarPressed()
 {
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
   lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
 }
 
-void PresetCreator::mouseCursorReleased()
+void PresetCreator::scrollbarReleased()
 {
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);

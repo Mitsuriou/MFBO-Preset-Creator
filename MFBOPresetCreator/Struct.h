@@ -3,7 +3,6 @@
 #include "Enum.h"
 #include "LangManager.h"
 #include <QString>
-#include <map>
 
 namespace Struct
 {
@@ -103,12 +102,5 @@ namespace Struct
     QString path{""};
     QString name{""};
     int role{0};
-  };
-
-  struct FilterList
-  {
-  public:
-    QString active{""};
-    std::map<QString, QStringList> filters;
   };
 }

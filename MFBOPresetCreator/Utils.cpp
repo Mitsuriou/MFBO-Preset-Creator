@@ -485,13 +485,13 @@ Struct::Settings Utils::loadSettingsFromFile()
   return lSettings;
 }
 
-void Utils::saveSettingsToFile(Struct::Settings aSettings)
+void Utils::saveSettingsToFile(const Struct::Settings& aSettings)
 {
   auto lSettingsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "config.json"};
   Utils::saveAsJsonFile(Utils::settingsStructToJson(aSettings), lSettingsFilePath);
 }
 
-QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
+QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
 {
   // Construct a font subobject
   QJsonObject lFontObj;
@@ -520,39 +520,41 @@ QJsonObject Utils::settingsStructToJson(Struct::Settings aSettings)
   return lObj;
 }
 
-Struct::FilterList Utils::loadFiltersFromFile()
+std::map<QString, QStringList> Utils::loadFiltersFromFile()
 {
+  // TO TEST
   auto lFiltersFilePath(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt");
   QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lFiltersFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
-  Struct::FilterList lFilters;
+  std::map<QString, QStringList> lFiltersList;
 
-  // Active filter
-  if (lObtainedJSON.contains("active") && lObtainedJSON["active"].isString())
+  for (const auto& lKey : lVariantMap.keys())
   {
-    lFilters.active = lObtainedJSON["active"].toString();
+    lFiltersList.insert({lKey, lVariantMap.value(lKey, "").toStringList()});
   }
 
-  // Filters list
-  if (lObtainedJSON.contains("filters"))
-  {
-    auto lFoundFiltersLists{lObtainedJSON["filters"].toVariant().toMap()};
-    for (const auto& lKey : lFoundFiltersLists.keys())
-    {
-      lFilters.filters.insert({lKey, lFoundFiltersLists.value(lKey, "").toStringList()});
-    }
-  }
-
-  return lFilters;
+  return lFiltersList;
 }
 
-void Utils::saveFiltersToFile(QStringList aList)
+void Utils::saveFiltersToFile(const std::map<QString, QStringList>& aList)
 {
-  QFile lFiltersFile(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt");
-  lFiltersFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
-  lFiltersFile.write(aList.join(",").toUtf8());
-  lFiltersFile.close();
+  // TO TEST
+  auto lFiltersFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt"};
+  Utils::saveAsJsonFile(Utils::filtersMapToJson(aList), lFiltersFilePath);
+}
+
+QJsonObject Utils::filtersMapToJson(const std::map<QString, QStringList>& aList)
+{
+  // TO TEST
+  QVariantMap lVarMap;
+
+  for (const auto& lPair : aList)
+  {
+    lVarMap.insert(lPair.first, lPair.second);
+  }
+
+  return QJsonObject::fromVariantMap(lVarMap);
 }
 
 QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)

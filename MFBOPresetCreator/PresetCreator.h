@@ -19,6 +19,7 @@ public:
 
 private:
   Struct::Settings mSettings;
+  std::map<QString, QStringList> mFiltersList;
   int mMinimumFirstColumnWidth;
 
   // GUI creation
@@ -56,9 +57,11 @@ private slots:
 
   // BodySlide Filters Editor
   void openBodySlideFiltersEditor();
-  void updateBodySlideFiltersList(const Struct::FilterList& aFilterList);
+  void initBodySlideFiltersList();
+  void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
+  void updateBodySlideFiltersListPreview(int);
 
   // Scrollbar events
-  void mouseCursorPressed();
-  void mouseCursorReleased();
+  void scrollbarPressed();
+  void scrollbarReleased();
 };
