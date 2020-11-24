@@ -43,7 +43,7 @@ public:
   static QJsonObject settingsStructToJson(Struct::Settings aSettings);
 
   // Filters
-  static QStringList loadFiltersFromFile();
+  static Struct::FilterList loadFiltersFromFile();
   static void saveFiltersToFile(QStringList aList);
   static QString getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
 

@@ -1296,10 +1296,11 @@ void PresetCreator::openBodySlideFiltersEditor()
   this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &PresetCreator::updateBodySlideFiltersList);
 }
 
-void PresetCreator::updateBodySlideFiltersList(QStringList aList)
+void PresetCreator::updateBodySlideFiltersList(const Struct::FilterList& aFilterList)
 {
   auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
-  LFiltersLabel->setText(aList.join(QString(" ; ")));
+  auto lActivePreset{aFilterList.active};
+  LFiltersLabel->setText(aFilterList.filters.at(lActivePreset).join(QString(" ; ")));
 }
 
 void PresetCreator::mouseCursorPressed()

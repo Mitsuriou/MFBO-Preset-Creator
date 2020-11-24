@@ -32,7 +32,7 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
   // Save the filters in a file
   Utils::saveFiltersToFile(lList);
 
-  emit listEdited(lList);
+  emit listEdited(Struct::FilterList());
   aEvent->accept();
 }
 

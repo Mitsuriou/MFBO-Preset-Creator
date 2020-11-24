@@ -11,7 +11,7 @@ public:
   explicit BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const QStringList& aInitialList);
 
 signals:
-  void listEdited(QStringList);
+  void listEdited(const Struct::FilterList& aFilterList);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

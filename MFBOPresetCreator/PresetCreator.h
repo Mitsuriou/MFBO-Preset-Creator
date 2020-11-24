@@ -56,7 +56,7 @@ private slots:
 
   // BodySlide Filters Editor
   void openBodySlideFiltersEditor();
-  void updateBodySlideFiltersList(QStringList aList);
+  void updateBodySlideFiltersList(const Struct::FilterList& aFilterList);
 
   // Scrollbar events
   void mouseCursorPressed();
