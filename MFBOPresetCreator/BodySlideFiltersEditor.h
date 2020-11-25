@@ -21,11 +21,17 @@ private:
   std::map<QString, QStringList> mFiltersList;
   QListWidget* mListWidget;
 
+  int prevIndex = -1;
+  int newIndex = -1;
+
   void setWindowProperties();
   void initializeGUI(const QString& aKey);
   void setupInterface(QGridLayout& aLayout);
+  void initBodySlideFiltersList();
 
 private slots:
+  void showFiltersList(int aIndex);
+  void handleSetRenaming();
   void addRow();
   void deleteRow();
   void deleteAllRows();

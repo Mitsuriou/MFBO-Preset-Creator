@@ -59,7 +59,7 @@ private slots:
   void openBodySlideFiltersEditor();
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
-  void updateBodySlideFiltersListPreview(int);
+  void updateBodySlideFiltersListPreview(int aIndex);
 
   // Scrollbar events
   void scrollbarPressed();

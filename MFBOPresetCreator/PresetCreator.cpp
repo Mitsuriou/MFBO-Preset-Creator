@@ -1346,7 +1346,7 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
 
   lChooser->setDisabled(false);
 
-  auto lPrevKey{lChooser->currentText()};
+  auto lPrevKey{lChooser->itemText(lChooser->currentIndex())};
 
   // Fill the combobox
   lChooser->clear();
@@ -1355,23 +1355,40 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
     lChooser->addItem(lPair.first);
   }
 
-  if (lPrevKey != "" || aFilterList.count(lPrevKey) == 0)
+  if (lPrevKey == "" || this->mFiltersList.count(lPrevKey) == 0)
   {
     lChooser->setCurrentIndex(0);
   }
   else
   {
-    // TODO
-    //lChooser->setCurrentIndex(??);
+    auto lLoop{0};
+    auto lPrevIndex{-1};
+    for (const auto& lPair : this->mFiltersList)
+    {
+      if (lPair.first.compare(lPrevKey, Qt::CaseSensitive) == 0)
+      {
+        lPrevIndex = lLoop;
+        break;
+      }
+
+      lLoop++;
+    }
+
+    lChooser->setCurrentIndex(lPrevIndex);
   }
 }
 
-void PresetCreator::updateBodySlideFiltersListPreview(int)
+void PresetCreator::updateBodySlideFiltersListPreview(int aIndex)
 {
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
   auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
 
-  auto lText{this->mFiltersList.find(lChooser->currentText())->second.join(QString(" ; "))};
+  auto lText{QString("")};
+  if (aIndex != -1)
+  {
+    lText = this->mFiltersList.find(lChooser->itemText(aIndex))->second.join(QString(" ; "));
+  }
+
   LFiltersLabel->setText(lText);
 }
 
