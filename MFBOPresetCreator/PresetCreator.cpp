@@ -1361,17 +1361,19 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
   }
   else
   {
-    auto lLoop{0};
-    auto lPrevIndex{-1};
+    auto lPrevIndex{0};
     for (const auto& lPair : this->mFiltersList)
     {
       if (lPair.first.compare(lPrevKey, Qt::CaseSensitive) == 0)
       {
-        lPrevIndex = lLoop;
         break;
       }
+      lPrevIndex++;
+    }
 
-      lLoop++;
+    if (lPrevIndex == this->mFiltersList.size())
+    {
+      lPrevIndex = 0;
     }
 
     lChooser->setCurrentIndex(lPrevIndex);

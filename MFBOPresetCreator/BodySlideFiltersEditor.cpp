@@ -122,7 +122,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   this->connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
 
   // Event binding
-  this->connect(lSetNameEditor, &QLineEdit::textEdited, this, &BodySlideFiltersEditor::handleSetRenaming);
+  this->connect(lSetNameEditor, &QLineEdit::editingFinished, this, &BodySlideFiltersEditor::handleSetRenaming);
 
   // Post-bind initialization functions
   this->mFiltersList = Utils::loadFiltersFromFile();
@@ -160,6 +160,8 @@ void BodySlideFiltersEditor::initBodySlideFiltersList()
 
 void BodySlideFiltersEditor::showFiltersList(int aIndex)
 {
+  // Save the previously displayed list
+
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
 
   // Change the displayed name to be edited
@@ -187,11 +189,17 @@ void BodySlideFiltersEditor::showFiltersList(int aIndex)
 
 void BodySlideFiltersEditor::handleSetRenaming()
 {
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lPreviousText{lChooser->currentText()};
+
   auto lSetNameEditor{this->findChild<QLineEdit*>("current_filter_set_name")};
   auto lNewText{lSetNameEditor->text()};
 
-  // WIP/TODO: I need to check were was positioned the key before and after the modification
-  // in order to restore the good index in the filter set combobox
+  // If the set name has not been changed but validated by the user, skip the renaming part
+  if (lPreviousText.compare(lNewText, Qt::CaseSensitive) == 0)
+  {
+    return;
+  }
 
   // Prevent two sets being named the same way
   if (this->mFiltersList.count(lNewText) > 0)
@@ -201,11 +209,28 @@ void BodySlideFiltersEditor::handleSetRenaming()
   }
 
   // Rename the filters set
-  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto lIterator{this->mFiltersList.find(lChooser->currentText())};
+  auto lIterator{this->mFiltersList.find(lPreviousText)};
   std::swap(this->mFiltersList[lNewText], lIterator->second);
   this->mFiltersList.erase(lIterator);
   this->initBodySlideFiltersList();
+
+  // Iterate the map to find the new key position
+  auto lNewIndex{0};
+  for (const auto& lPair : this->mFiltersList)
+  {
+    if (lPair.first.compare(lNewText, Qt::CaseSensitive) == 0)
+    {
+      break;
+    }
+    lNewIndex++;
+  }
+
+  if (lNewIndex == this->mFiltersList.size())
+  {
+    lNewIndex = 0;
+  }
+
+  lChooser->setCurrentIndex(lNewIndex);
 }
 
 void BodySlideFiltersEditor::addRow()
