@@ -1302,8 +1302,7 @@ void PresetCreator::refreshAllPreviewFields()
 
 void PresetCreator::openBodySlideFiltersEditor()
 {
-  auto lCurrentKey{this->findChild<QComboBox*>("bodyslide_filters_chooser")->currentText()};
-  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList, lCurrentKey)};
+  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList)};
   this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &PresetCreator::updateBodySlideFiltersList);
 }
 

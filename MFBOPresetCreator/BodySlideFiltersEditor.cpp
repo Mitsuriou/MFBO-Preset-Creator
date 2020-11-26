@@ -1,6 +1,6 @@
 #include "BodySlideFiltersEditor.h"
 
-BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList, const QString& aKey)
+BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList)
   : QDialog(parent)
   , mSettings(aSettings)
   , mFiltersList(aInitialList)
@@ -8,7 +8,7 @@ BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings
 {
   // Build the window's interface
   this->setWindowProperties();
-  this->initializeGUI(aKey);
+  this->initializeGUI();
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -17,8 +17,19 @@ BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings
 
 void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
 {
-  Utils::saveFiltersToFile(mFiltersList);
-  emit listEdited(mFiltersList);
+  auto lEventButton{qobject_cast<QPushButton*>(sender())};
+  auto lSaveButton{this->findChild<QPushButton*>("save_close")};
+
+  if (lEventButton == lSaveButton)
+  {
+    // Save the list
+    auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+    this->saveGUIListToFiltersMap(lChooser->itemText(this->mPreviousChooserIndex));
+
+    Utils::saveFiltersToFile(this->mFiltersList);
+    emit listEdited(this->mFiltersList);
+  }
+
   aEvent->accept();
 }
 
@@ -31,11 +42,12 @@ void BodySlideFiltersEditor::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/filter")));
 }
 
-void BodySlideFiltersEditor::initializeGUI(const QString& aKey)
+void BodySlideFiltersEditor::initializeGUI()
 {
   // Main window container
   auto lMainLayout{new QGridLayout(this)};
   this->setupInterface(*lMainLayout);
+  this->setupButtons(*lMainLayout);
 
   // Focus the first line of the list
   this->mListWidget->setAlternatingRowColors(true);
@@ -56,13 +68,15 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lFiltersListChooser->setDisabled(true);
   aLayout.addWidget(lFiltersListChooser, 0, 1);
 
-  auto lNewSetButton{new QPushButton(this)};
-  lNewSetButton->setText("+");
-  aLayout.addWidget(lNewSetButton, 0, 2);
+  auto lAddSetBtn{new QPushButton(this)};
+  lAddSetBtn->setText("+");
+  lAddSetBtn->setObjectName("add-set");
+  aLayout.addWidget(lAddSetBtn, 0, 2);
 
-  auto lDelSetButton{new QPushButton(this)};
-  lDelSetButton->setText("-");
-  aLayout.addWidget(lDelSetButton, 0, 3);
+  auto lRemoveSetBtn{new QPushButton(this)};
+  lRemoveSetBtn->setText("-");
+  lAddSetBtn->setObjectName("remove-set");
+  aLayout.addWidget(lRemoveSetBtn, 0, 3);
 
   // Global label
   auto lListLabel{new QLabel(tr("Current filter's name:"), this)};
@@ -122,6 +136,8 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   this->connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
 
   // Event binding
+  this->connect(lAddSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::addSet);
+  this->connect(lRemoveSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::removeSet);
   this->connect(lSetNameEditor, &QLineEdit::editingFinished, this, &BodySlideFiltersEditor::handleSetRenaming);
 
   // Post-bind initialization functions
@@ -130,12 +146,37 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lFiltersListChooser->setCurrentIndex(0);
 }
 
+void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
+{
+  // Vertical layout for the buttons
+  auto lButtonsContainer{new QHBoxLayout()};
+  lButtonsContainer->setSpacing(10);
+  aLayout.addLayout(lButtonsContainer, 3, 0, 1, 4);
+
+  // Create the buttons
+  auto lSaveBtn{new QPushButton(tr("Save and close"), this)};
+  lSaveBtn->setCursor(Qt::PointingHandCursor);
+  lSaveBtn->setObjectName("save_close");
+  lSaveBtn->setAutoDefault(false);
+  lSaveBtn->setDefault(false);
+  lButtonsContainer->addWidget(lSaveBtn);
+
+  auto lCancelBtn{new QPushButton(tr("Cancel"), this)};
+  lCancelBtn->setCursor(Qt::PointingHandCursor);
+  lCancelBtn->setAutoDefault(false);
+  lCancelBtn->setDefault(false);
+  lButtonsContainer->addWidget(lCancelBtn);
+
+  // Event binding
+  this->connect(lSaveBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::close);
+  this->connect(lCancelBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::close);
+}
+
 void BodySlideFiltersEditor::initBodySlideFiltersList()
 {
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
   this->disconnect(lChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BodySlideFiltersEditor::showFiltersList));
   lChooser->clear();
-  // Event binding
   this->connect(lChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BodySlideFiltersEditor::showFiltersList));
 
   auto lSetNameEditor{this->findChild<QLineEdit*>("current_filter_set_name")};
@@ -158,11 +199,39 @@ void BodySlideFiltersEditor::initBodySlideFiltersList()
   }
 }
 
+void BodySlideFiltersEditor::saveGUIListToFiltersMap(const QString& aMapKey)
+{
+  if (aMapKey.length() == 0)
+  {
+    return;
+  }
+
+  // Construct the filters list from GUI
+  QStringList lList;
+
+  auto lRowCount{this->mListWidget->count()};
+  for (int i = 0; i < lRowCount; i++)
+  {
+    auto lText{this->mListWidget->item(i)->text()};
+    if (lText.trimmed().size() > 0)
+    {
+      lList.append(lText);
+    }
+  }
+
+  auto lIterator{this->mFiltersList.find(aMapKey)};
+  lIterator->second = lList;
+}
+
 void BodySlideFiltersEditor::showFiltersList(int aIndex)
 {
-  // Save the previously displayed list
-
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+
+  // Save the previously displayed list
+  this->saveGUIListToFiltersMap(lChooser->itemText(this->mPreviousChooserIndex));
+
+  // Update the selected index of the combobox
+  this->mPreviousChooserIndex = aIndex;
 
   // Change the displayed name to be edited
   auto lSetNameEditor{this->findChild<QLineEdit*>("current_filter_set_name")};
@@ -187,6 +256,18 @@ void BodySlideFiltersEditor::showFiltersList(int aIndex)
   }
 }
 
+void BodySlideFiltersEditor::addSet()
+{
+}
+
+void BodySlideFiltersEditor::removeSet()
+{
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lIterator{this->mFiltersList.find(lChooser->currentText())};
+  this->mFiltersList.erase(lIterator);
+  this->initBodySlideFiltersList();
+}
+
 void BodySlideFiltersEditor::handleSetRenaming()
 {
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
@@ -204,9 +285,12 @@ void BodySlideFiltersEditor::handleSetRenaming()
   // Prevent two sets being named the same way
   if (this->mFiltersList.count(lNewText) > 0)
   {
-    lSetNameEditor->setText(lNewText.prepend("~"));
+    lSetNameEditor->setText(lNewText.append("(2)"));
     return;
   }
+
+  // Save the list
+  this->saveGUIListToFiltersMap(lChooser->itemText(this->mPreviousChooserIndex));
 
   // Rename the filters set
   auto lIterator{this->mFiltersList.find(lPreviousText)};

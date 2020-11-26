@@ -8,7 +8,7 @@ class BodySlideFiltersEditor : public QDialog
   Q_OBJECT
 
 public:
-  explicit BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList, const QString& aKey);
+  explicit BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList);
 
 signals:
   void listEdited(const std::map<QString, QStringList>&);
@@ -20,17 +20,19 @@ private:
   const Struct::Settings mSettings;
   std::map<QString, QStringList> mFiltersList;
   QListWidget* mListWidget;
-
-  int prevIndex = -1;
-  int newIndex = -1;
+  int mPreviousChooserIndex = -1;
 
   void setWindowProperties();
-  void initializeGUI(const QString& aKey);
+  void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
+  void setupButtons(QGridLayout& aLayout);
   void initBodySlideFiltersList();
+  void saveGUIListToFiltersMap(const QString& aMapKey);
 
 private slots:
   void showFiltersList(int aIndex);
+  void addSet();
+  void removeSet();
   void handleSetRenaming();
   void addRow();
   void deleteRow();
