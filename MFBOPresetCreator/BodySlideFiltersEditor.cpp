@@ -58,6 +58,9 @@ void BodySlideFiltersEditor::initializeGUI()
 
 void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Body filter set chooser
   auto lLabelFilters{new QLabel(tr("Edit set:"), this)};
   aLayout.addWidget(lLabelFilters, 0, 0);
@@ -69,17 +72,25 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lFiltersListChooser->setDisabled(true);
   aLayout.addWidget(lFiltersListChooser, 0, 1);
 
-  auto lAddSetBtn{new QPushButton(this)};
-  lAddSetBtn->setText("+");
-  lAddSetBtn->setObjectName("add-set");
-  aLayout.addWidget(lAddSetBtn, 0, 2);
+  // Add filters set
+  auto lNewSetBtn{new QPushButton(this)};
+  lNewSetBtn->setCursor(Qt::PointingHandCursor);
+  lNewSetBtn->setToolTip(tr("Add a new BodySlide filters set"));
+  lNewSetBtn->setText("New set");
+  lNewSetBtn->setIcon(QIcon(QPixmap(QString(":/%1/plus").arg(lIconFolder))));
+  lNewSetBtn->setObjectName("add-set");
+  aLayout.addWidget(lNewSetBtn, 0, 2);
 
-  auto lRemoveSetBtn{new QPushButton(this)};
-  lRemoveSetBtn->setText("-");
-  lAddSetBtn->setObjectName("remove-set");
-  aLayout.addWidget(lRemoveSetBtn, 0, 3);
+  // Remove filters set
+  auto lDelSetBtn{new QPushButton(this)};
+  lDelSetBtn->setCursor(Qt::PointingHandCursor);
+  lDelSetBtn->setToolTip(tr("Remove the selected BodySlide filters set"));
+  lDelSetBtn->setText("Remove set");
+  lDelSetBtn->setIcon(QIcon(QPixmap(QString(":/%1/minus").arg(lIconFolder))));
+  lNewSetBtn->setObjectName("remove-set");
+  aLayout.addWidget(lDelSetBtn, 0, 3);
 
-  // Global label
+  // Filter's name
   auto lListLabel{new QLabel(tr("Current filter's name:"), this)};
   aLayout.addWidget(lListLabel, 1, 0);
 
@@ -88,6 +99,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lSetNameEditor->setDisabled(true);
   aLayout.addWidget(lSetNameEditor, 1, 1);
 
+  // Filters list
   auto lLineCount{this->mListWidget->count()};
   for (int i = 0; i < lLineCount; i++)
   {
@@ -96,50 +108,54 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
     lItem->setFlags(lItem->flags() | Qt::ItemFlag::ItemIsEditable);
   }
 
-  aLayout.addWidget(this->mListWidget, 2, 0, 1, 2);
+  aLayout.addWidget(this->mListWidget, 2, 0, 1, 3);
 
-  // Right layout
+  // Right buttons layout
   auto lButtonLayout{new QVBoxLayout(this)};
-  aLayout.addLayout(lButtonLayout, 2, 2, 1, 2, Qt::AlignTop);
+  aLayout.addLayout(lButtonLayout, 2, 3, Qt::AlignTop);
 
-  // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-
-  // Add row button
+  // New filter
   auto lAddNewRow{new QPushButton(this)};
-  lAddNewRow->setToolTip(tr("Add a new empty filter"));
+  lAddNewRow->setStyleSheet("text-align:left;");
   lAddNewRow->setCursor(Qt::PointingHandCursor);
+  lAddNewRow->setToolTip(tr("Add a new BodySlide filter"));
+  lAddNewRow->setText("New filter");
   lAddNewRow->setIcon(QIcon(QPixmap(QString(":/%1/new_line").arg(lIconFolder))));
   lButtonLayout->addWidget(lAddNewRow);
-  this->connect(lAddNewRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::addRow);
 
-  // Delete row button
+  // Remove filter
   auto lDeleteRow{new QPushButton(this)};
-  lDeleteRow->setToolTip(tr("Delete the selected filter"));
+  lDeleteRow->setStyleSheet("text-align:left;");
   lDeleteRow->setCursor(Qt::PointingHandCursor);
+  lDeleteRow->setToolTip(tr("Remove the selected BodySlide filter"));
+  lDeleteRow->setText("Remove filter");
   lDeleteRow->setIcon(QIcon(QPixmap(QString(":/%1/bin").arg(lIconFolder))));
   lButtonLayout->addWidget(lDeleteRow);
-  this->connect(lDeleteRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteRow);
 
-  // Delete all rows button
+  // Remove all filters
   auto lDeleteAllRows{new QPushButton(this)};
-  lDeleteAllRows->setToolTip(tr("Delete all filters"));
+  lDeleteAllRows->setStyleSheet("text-align:left;");
   lDeleteAllRows->setCursor(Qt::PointingHandCursor);
+  lDeleteAllRows->setToolTip(tr("Remove all the BodySlide filters"));
+  lDeleteAllRows->setText("Clear");
   lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/delete_all").arg(lIconFolder))));
   lButtonLayout->addWidget(lDeleteAllRows);
-  this->connect(lDeleteAllRows, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteAllRows);
 
   // Delete row action
   auto lDelAction{new QAction(this->mListWidget)};
   lDelAction->setShortcut(Qt::Key_Delete);
   lDelAction->setShortcutContext(Qt::WidgetShortcut);
   this->mListWidget->addAction(lDelAction);
-  this->connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
 
   // Event binding
-  this->connect(lAddSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::addSet);
-  this->connect(lRemoveSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::removeSet);
+  this->connect(lNewSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::addSet);
+  this->connect(lDelSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::removeSet);
   this->connect(lSetNameEditor, &QLineEdit::editingFinished, this, &BodySlideFiltersEditor::handleSetRenaming);
+
+  this->connect(lAddNewRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::addRow);
+  this->connect(lDeleteRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteRow);
+  this->connect(lDeleteAllRows, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteAllRows);
+  this->connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
 
   // Post-bind initialization functions
   this->mFiltersList = Utils::loadFiltersFromFile();
@@ -152,7 +168,7 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
-  aLayout.addLayout(lButtonsContainer, 3, 0, 1, 4);
+  aLayout.addLayout(lButtonsContainer, 6, 0, 1, 4);
 
   // Create the buttons
   auto lSaveBtn{new QPushButton(tr("Save and close"), this)};

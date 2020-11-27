@@ -62,6 +62,8 @@
         <file alias="filter">ressources/software/icons/black/filter-outline.png</file>
         <file alias="dev_mode">ressources/software/icons/black/developer_mode.png</file>
         <file alias="open_in_browser">ressources/software/icons/black/open_in_browser.png</file>
+        <file alias="minus">ressources/software/icons/black/minus.png</file>
+        <file alias="plus">ressources/software/icons/black/plus.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="exit">ressources/software/icons/white/exit-run.png</file>
@@ -80,6 +82,8 @@
         <file alias="filter">ressources/software/icons/white/filter-outline.png</file>
         <file alias="dev_mode">ressources/software/icons/white/developer_mode.png</file>
         <file alias="open_in_browser">ressources/software/icons/white/open_in_browser.png</file>
+        <file alias="minus">ressources/software/icons/white/minus.png</file>
+        <file alias="plus">ressources/software/icons/white/plus.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>
