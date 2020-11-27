@@ -142,8 +142,10 @@
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="PresetCreator.cpp" />
+    <ClCompile Include="TextInputDialog.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <QtMoc Include="TextInputDialog.h" />
     <QtMoc Include="Update.h" />
     <QtMoc Include="PresetCreator.h" />
     <QtMoc Include="DataLists.h" />

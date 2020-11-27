@@ -522,8 +522,7 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
 
 std::map<QString, QStringList> Utils::loadFiltersFromFile()
 {
-  // TO TEST
-  auto lFiltersFilePath(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt");
+  auto lFiltersFilePath(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.json");
   QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lFiltersFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
@@ -539,14 +538,12 @@ std::map<QString, QStringList> Utils::loadFiltersFromFile()
 
 void Utils::saveFiltersToFile(const std::map<QString, QStringList>& aList)
 {
-  // TO TEST
-  auto lFiltersFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "filters.txt"};
+  auto lFiltersFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "filters.json"};
   Utils::saveAsJsonFile(Utils::filtersMapToJson(aList), lFiltersFilePath);
 }
 
 QJsonObject Utils::filtersMapToJson(const std::map<QString, QStringList>& aList)
 {
-  // TO TEST
   QVariantMap lVarMap;
 
   for (const auto& lPair : aList)

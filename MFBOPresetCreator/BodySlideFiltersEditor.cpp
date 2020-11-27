@@ -48,6 +48,7 @@ void BodySlideFiltersEditor::initializeGUI()
   auto lMainLayout{new QGridLayout(this)};
   this->setupInterface(*lMainLayout);
   this->setupButtons(*lMainLayout);
+  this->setLayout(lMainLayout);
 
   // Focus the first line of the list
   this->mListWidget->setAlternatingRowColors(true);
@@ -258,6 +259,45 @@ void BodySlideFiltersEditor::showFiltersList(int aIndex)
 
 void BodySlideFiltersEditor::addSet()
 {
+  auto lDialog{new TextInputDialog(tr("Add a new BodySlide filters set"), tr("Filters set name:"), this)};
+  this->connect(lDialog, &TextInputDialog::getTextValue, this, &BodySlideFiltersEditor::addNewSetEntry);
+  lDialog->exec();
+
+  delete lDialog;
+  lDialog = nullptr;
+}
+
+void BodySlideFiltersEditor::addNewSetEntry(const QString& aSetName)
+{
+  // Check if the value already exist
+  if (aSetName.size() == 0)
+  {
+    return;
+  }
+
+  if (this->mFiltersList.count(aSetName) > 0)
+  {
+    Utils::displayWarningMessage(tr("Error: there is already one set with the name \"%1\".").arg(aSetName));
+    return;
+  }
+
+  this->mFiltersList.insert({aSetName, QStringList()});
+  this->initBodySlideFiltersList();
+
+  // Iterate the map to find the created key
+  auto lNewIndex{0};
+  for (const auto& lPair : this->mFiltersList)
+  {
+    if (lPair.first.compare(aSetName, Qt::CaseSensitive) == 0)
+    {
+      break;
+    }
+    lNewIndex++;
+  }
+
+  // Select the new key
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  lChooser->setCurrentIndex(lNewIndex);
 }
 
 void BodySlideFiltersEditor::removeSet()

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "TextInputDialog.h"
 #include "Utils.h"
 #include "stdafx.h"
 
@@ -32,6 +33,7 @@ private:
 private slots:
   void showFiltersList(int aIndex);
   void addSet();
+  void addNewSetEntry(const QString& aSetName);
   void removeSet();
   void handleSetRenaming();
   void addRow();
