@@ -20,23 +20,31 @@ protected:
 private:
   const Struct::Settings mSettings;
   std::map<QString, QStringList> mFiltersList;
-  QListWidget* mListWidget;
-  int mPreviousChooserIndex = -1;
+  QComboBox* mFiltersListChooser = nullptr;
+  QListWidget* mListWidget = nullptr;
 
+  // GUI construction
   void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
   void setupButtons(QGridLayout& aLayout);
-  void initBodySlideFiltersList();
-  void saveGUIListToFiltersMap(const QString& aMapKey);
+  void updateFiltersCombobox();
+
+  // Utility function
+  void displayFilterAt(const int& aIndex);
 
 private slots:
   void showFiltersList(int aIndex);
+
+  // Filter set
   void addSet();
   void addNewSetEntry(const QString& aSetName);
   void removeSet();
-  void handleSetRenaming();
+  void handleSetRenaming(const QString& aNewSetName);
+
+  // Filter row
   void addRow();
   void deleteRow();
   void deleteAllRows();
+  void handleRowRenaming();
 };

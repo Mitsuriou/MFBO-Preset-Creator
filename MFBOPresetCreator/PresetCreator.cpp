@@ -197,7 +197,8 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
   lBodyslideGridLayout->setColumnStretch(0, 0);
   lBodyslideGridLayout->setColumnStretch(1, 1);
-  lBodyslideGridLayout->setColumnStretch(2, 0);
+  lBodyslideGridLayout->setColumnStretch(2, 2);
+  lBodyslideGridLayout->setColumnStretch(3, 0);
   lBodyslideGridLayout->setSpacing(10);
   lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
   lBodyslideGridLayout->setAlignment(Qt::AlignTop);
@@ -213,7 +214,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodySelector->addItems(DataLists::getBodiesNameVersions());
   lBodySelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowBody));
   lBodySelector->setObjectName(QString("body_selector"));
-  lBodyslideGridLayout->addWidget(lBodySelector, 0, 1, 1, 2);
+  lBodyslideGridLayout->addWidget(lBodySelector, 0, 1, 1, 3);
 
   // Second line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
@@ -222,7 +223,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
   lOSPXMLNamesLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
-  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 2);
+  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 3);
 
   // Third line
   auto lLabelOspXmlNames{new QLabel(tr("Preview:"), this)};
@@ -231,7 +232,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
   lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
   lPathsNamesOspXmlNames->setAutoFillBackground(true);
-  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 2);
+  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 3);
 
   // Fourth line
   auto lNamesInApp{new QLabel(this)};
@@ -242,7 +243,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
   lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
-  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 2);
+  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 3);
 
   // Fifth line
   auto lLabelNamesInApp{new QLabel(tr("Preview:"), this)};
@@ -250,7 +251,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lResultNamesInApp{new QLabel("", this)};
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
-  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 2);
+  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 3);
 
   // Sixth line
   auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
