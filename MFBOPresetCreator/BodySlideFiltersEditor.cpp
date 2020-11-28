@@ -3,6 +3,7 @@
 BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList)
   : QDialog(parent)
   , mSettings(aSettings)
+  , mOriginalFiltersList(aInitialList)
   , mFiltersList(aInitialList)
   , mListWidget{new QListWidget(this)}
 {
@@ -30,6 +31,31 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
 
     Utils::saveFiltersToFile(this->mFiltersList);
     emit listEdited(this->mFiltersList);
+    aEvent->accept();
+    return;
+  }
+
+  if (this->mOriginalFiltersList.size() != this->mFiltersList.size()
+      || !(std::equal(this->mOriginalFiltersList.begin(), this->mOriginalFiltersList.end(), this->mFiltersList.begin())))
+  {
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
+
+    auto lCloseButton{lConfirmationBox.addButton(tr("Close the editor window without saving"), QMessageBox::ButtonRole::YesRole)};
+    lCloseButton->setCursor(Qt::PointingHandCursor);
+    lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+    auto lStayButton{lConfirmationBox.addButton(tr("Go back to the editor window"), QMessageBox::ButtonRole::NoRole)};
+    lStayButton->setCursor(Qt::PointingHandCursor);
+    lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+
+    lConfirmationBox.setDefaultButton(lStayButton);
+    lConfirmationBox.exec();
+
+    if (lConfirmationBox.clickedButton() != lCloseButton)
+    {
+      aEvent->ignore();
+      return;
+    }
   }
 
   aEvent->accept();
