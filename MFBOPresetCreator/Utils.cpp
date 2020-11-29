@@ -362,8 +362,7 @@ void Utils::checkSettingsFileExistence()
   if (!QFile(lSettingsFilePath).exists())
   {
     // Create a default setting file if it does not exist
-    Struct::Settings lSettings;
-    Utils::saveSettingsToFile(lSettings);
+    Utils::saveSettingsToFile(Struct::Settings());
   }
 }
 
@@ -520,8 +519,20 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   return lObj;
 }
 
+void Utils::checkFiltersFileExistence()
+{
+  auto lFiltersFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "filters.json"};
+  if (!QFile(lFiltersFilePath).exists())
+  {
+    // Create a default filters file if it does not exist
+    Utils::saveFiltersToFile(std::map<QString, QStringList>());
+  }
+}
+
 std::map<QString, QStringList> Utils::loadFiltersFromFile()
 {
+  Utils::checkFiltersFileExistence();
+
   auto lFiltersFilePath(QCoreApplication::applicationDirPath() + QDir::separator() + "filters.json");
   QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lFiltersFilePath)};
 

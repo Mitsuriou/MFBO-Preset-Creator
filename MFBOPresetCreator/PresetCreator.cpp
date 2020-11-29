@@ -1347,7 +1347,9 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
   // Disable the combobox if there is not any available filter
   if (this->mFiltersList.size() == 0)
   {
+    lChooser->clear();
     lChooser->setDisabled(true);
+    this->findChild<QLabel*>("bodyslide_filters")->setText("");
     return;
   }
 

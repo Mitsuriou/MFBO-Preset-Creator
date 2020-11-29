@@ -43,6 +43,7 @@ public:
   static QJsonObject settingsStructToJson(const Struct::Settings& aSettings);
 
   // Filters
+  static void checkFiltersFileExistence();
   static std::map<QString, QStringList> loadFiltersFromFile();
   static void saveFiltersToFile(const std::map<QString, QStringList>& aList);
   static QJsonObject filtersMapToJson(const std::map<QString, QStringList>& aList);
