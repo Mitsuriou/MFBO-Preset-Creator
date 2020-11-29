@@ -13,6 +13,9 @@ class AssistedConversion : public QDialog
 public:
   explicit AssistedConversion(QWidget* parent, const Struct::Settings& aSettings);
 
+protected:
+  void closeEvent(QCloseEvent* aEvent) override;
+
 private:
   const Struct::Settings mSettings;
   std::vector<int> mBoxSelectedIndexes;

@@ -10,6 +10,9 @@ int main(int argc, char* argv[])
 
   do
   {
+    // Reset the value
+    Utils::RESTART_PENDING = false;
+
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
     lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getApplicationVersion() + ")");

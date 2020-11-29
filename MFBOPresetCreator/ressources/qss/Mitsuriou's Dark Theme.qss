@@ -368,3 +368,13 @@ QProgressBar {
 QProgressBar::chunk {
   background-color: #FF558D;
 }
+
+/*********/
+/*TOOLTIP*/
+/*********/
+QToolTip {
+  border: none;
+  padding: 4px;
+  color: white;
+  background-color: #282A3B;
+}

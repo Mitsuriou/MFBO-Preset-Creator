@@ -1,5 +1,7 @@
 ﻿#include "Utils.h"
 
+bool Utils::RESTART_PENDING = false;
+
 void Utils::cleanPathString(QString& aPath)
 {
   aPath.replace("\\", "/");
@@ -33,15 +35,16 @@ QString Utils::getApplicationVersion()
   return "2.0.0";
 }
 
-void Utils::displayWarningMessage(const QString& aMessage)
+void Utils::displayWarningMessage(const QString& aMessage, const QString& aIconRessourceFolder)
 {
-  QMessageBox lMessageBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
+  QMessageBox lBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
+  lBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(aIconRessourceFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
   QPushButton lButton(tr("OK"));
   lButton.setCursor(Qt::PointingHandCursor);
-  lMessageBox.addButton(&lButton, QMessageBox::ButtonRole::AcceptRole);
+  lBox.addButton(&lButton, QMessageBox::ButtonRole::AcceptRole);
 
-  lMessageBox.exec();
+  lBox.exec();
 }
 
 int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
@@ -171,7 +174,7 @@ QString Utils::getIconRessourceFolder(const GUITheme& aTheme)
   return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
+QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody, const QString& aIconRessourceFolder)
 {
   switch (aBody)
   {
@@ -198,12 +201,12 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
       return "bhunp_2.13/bhunp_tbbp_advanced";
     default:
-      Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
+      Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."), aIconRessourceFolder);
       return "";
   }
 }
 
-QString Utils::getPresetNameFromXMLFile(const QString& aPath)
+QString Utils::getPresetNameFromXMLFile(const QString& aPath, const QString& aIconRessourceFolder)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -217,7 +220,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."), aIconRessourceFolder);
     return "";
   }
 
@@ -234,7 +237,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
 }
 
-std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
+std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath, const QString& aIconRessourceFolder)
 {
   std::vector<Struct::SliderSet> lPaths;
 
@@ -250,7 +253,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."), aIconRessourceFolder);
     return std::vector<Struct::SliderSet>();
   }
 
@@ -306,7 +309,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   return lPaths;
 }
 
-bool Utils::isPresetUsingBeastHands(const QString& aPath)
+bool Utils::isPresetUsingBeastHands(const QString& aPath, const QString& aIconRessourceFolder)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -320,7 +323,7 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."), aIconRessourceFolder);
     return false;
   }
 

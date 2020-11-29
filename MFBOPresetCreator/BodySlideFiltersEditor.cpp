@@ -38,7 +38,11 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
   if (this->mOriginalFiltersList.size() != this->mFiltersList.size()
       || !(std::equal(this->mOriginalFiltersList.begin(), this->mOriginalFiltersList.end(), this->mFiltersList.begin())))
   {
+    // User theme accent
+    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
     QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
     auto lCloseButton{lConfirmationBox.addButton(tr("Close the editor window without saving"), QMessageBox::ButtonRole::YesRole)};
     lCloseButton->setCursor(Qt::PointingHandCursor);
@@ -297,7 +301,7 @@ void BodySlideFiltersEditor::addNewSetEntry(const QString& aSetName)
 
   if (this->mFiltersList.count(aSetName) > 0)
   {
-    Utils::displayWarningMessage(tr("Error: there is already one set with the name \"%1\".").arg(aSetName));
+    Utils::displayWarningMessage(tr("Error: there is already one set with the name \"%1\".").arg(aSetName), Utils::getIconRessourceFolder(mSettings.appTheme));
     return;
   }
 

@@ -189,6 +189,9 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 
 void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // BodySlide defined names group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output"), this)};
   aLayout.addWidget(lBodyslideGroupBox);
@@ -237,8 +240,16 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   // Fourth line
   auto lNamesInApp{new QLabel(this)};
   lNamesInApp->setTextFormat(Qt::RichText);
-  lNamesInApp->setText(tr("Preset names: &#128712;"));
-  lNamesInApp->setToolTip(QString(tr("This field represents the name under which the preset will be listed in the BodySlide application.")));
+  auto lText{tr("Presets names:")};
+  auto lRichText{
+    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
+                   " %2"
+                   "</p>")
+      .arg(lIconFolder)
+      .arg(lText)};
+  lNamesInApp->setText(lRichText);
+  lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
@@ -272,8 +283,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lEditFilters->setText(tr("Edit BodySlide filters sets"));
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-  lEditFilters->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
+  lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
   lBodyslideGridLayout->addWidget(lEditFilters, 5, 3);
 
   // Pre-bind initialization functions
@@ -293,6 +303,9 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
 void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton"), this)};
   aLayout.addWidget(lSkeletonGroupBox);
@@ -305,8 +318,16 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   // Skeleton
   auto lLabelSkeleton{new QLabel(this)};
+  auto lText{tr("Use a custom skeleton?")};
+  auto lRichText{
+    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
+                   " %2"
+                   "</p>")
+      .arg(lIconFolder)
+      .arg(lText)};
+  lLabelSkeleton->setText(lRichText);
   lLabelSkeleton->setTextFormat(Qt::RichText);
-  lLabelSkeleton->setText(tr("Use a custom skeleton? &#128712;"));
   lLabelSkeleton->setToolTip(QString(tr("Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
   lSkeletonGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
@@ -331,8 +352,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
   auto lSkeletonRefresher{new QPushButton(this)};
   lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-  lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
+  lSkeletonRefresher->setIcon(QIcon(QPixmap(QString(":/%1/reload").arg(lIconFolder))));
   lSkeletonRefresher->setText(tr("Refresh"));
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
@@ -410,7 +430,7 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder")));
+  lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Second line
@@ -499,14 +519,11 @@ void PresetCreator::updateGUIOnBodyChange()
   lHandsExtension->setDisabled(lDisableHands);
 }
 
-bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
-                                    const bool& aGenerateFilesInExistingMainDirectory,
-                                    const QString& aOSPXMLNames,
-                                    const bool& aMustUseBeastHands,
-                                    const QString& aRessourcesFolder,
-                                    const int& aBodySelected,
-                                    const QString& aBodyslideSlidersetsNames)
+bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const int& aBodySelected, const QString& aBodyslideSlidersetsNames)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
   if (!QDir(lSliderGroupsDirectory).exists())
@@ -515,7 +532,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
   }
   else if (!aGenerateFilesInExistingMainDirectory)
   {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."), lIconFolder);
     return false;
   }
 
@@ -544,7 +561,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
 
   if (!QFile::copy(lRessourcePath, lXMLPathName))
   {
-    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
     return false;
   }
 
@@ -560,7 +577,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."), lIconFolder);
     return false;
   }
 
@@ -594,32 +611,24 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory,
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."), lIconFolder);
       return false;
     }
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."), lIconFolder);
     return false;
   }
 
   return true;
 }
 
-bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
-                                    const bool& aGenerateFilesInExistingMainDirectory,
-                                    const QString& aOSPXMLNames,
-                                    const bool& aMustUseBeastHands,
-                                    const QString& aRessourcesFolder,
-                                    const QString& aBodyslideSlidersetsNames,
-                                    QString aMeshesPathBody,
-                                    QString aMeshesPathFeet,
-                                    QString aMeshesPathHands,
-                                    const QString& aBodyName,
-                                    const QString& aFeetName,
-                                    const QString& aHandsName)
+bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
 
@@ -629,7 +638,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
   }
   else if (!aGenerateFilesInExistingMainDirectory)
   {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."), lIconFolder);
     return false;
   }
 
@@ -639,7 +648,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
       return false;
     }
   }
@@ -647,7 +656,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
       return false;
     }
   }
@@ -664,7 +673,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."), lIconFolder);
     return false;
   }
 
@@ -691,13 +700,13 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."), lIconFolder);
       return false;
     }
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."), lIconFolder);
     return false;
   }
 
@@ -706,6 +715,9 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory,
 
 bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   if (aSkeletonPath.length() > 0)
   {
     auto lSkeletonPath{Utils::cleanPathString(aSkeletonPath)};
@@ -722,19 +734,19 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
     if (!QFile::copy(lPath, lSkeletonWriteLocation))
     {
-      Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
+      Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."), lIconFolder);
 
       // Fallback option if the custom skeleton could not be copied
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
       {
-        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
         return false;
       }
     }
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error: no path given for the custom skeleton."));
+    Utils::displayWarningMessage(tr("Error: no path given for the custom skeleton."), lIconFolder);
     return false;
   }
 
@@ -1116,6 +1128,9 @@ void PresetCreator::chooseExportDirectory()
 
 void PresetCreator::generateDirectoryStructure()
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Selected body
   auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
 
@@ -1157,14 +1172,14 @@ void PresetCreator::generateDirectoryStructure()
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no path given to export the files."));
+    Utils::displayWarningMessage(tr("Error: no path given to export the files."), lIconFolder);
     return;
   }
 
   // Check if the path could be valid
   if (lEntryDirectory.startsWith(QDir::separator()))
   {
-    Utils::displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
+    Utils::displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."), lIconFolder);
     return;
   }
 
@@ -1175,7 +1190,7 @@ void PresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkdir(lEntryDirectory))
     {
-      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
       return;
     }
   }
@@ -1187,6 +1202,8 @@ void PresetCreator::generateDirectoryStructure()
                                  tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this directory?").arg(lEntryDirectory),
                                  QMessageBox::StandardButton::NoButton,
                                  this);
+
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
     auto lContinueButton{lConfirmationBox.addButton(tr("Continue the files generation"), QMessageBox::ButtonRole::YesRole)};
     lContinueButton->setCursor(Qt::PointingHandCursor);
@@ -1210,38 +1227,38 @@ void PresetCreator::generateDirectoryStructure()
   // Export the meshes
   if (lMeshesPathBody.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no path has been given for the body meshes."));
+    Utils::displayWarningMessage(tr("Error: no path has been given for the body meshes."), lIconFolder);
     return;
   }
 
   if (lMeshesPathFeet.length() == 0 && !lSkipFeetCheck)
   {
-    Utils::displayWarningMessage(tr("Error: no path has been given for the feet meshes."));
+    Utils::displayWarningMessage(tr("Error: no path has been given for the feet meshes."), lIconFolder);
     return;
   }
 
   if (lMeshesPathHands.length() == 0 && !lSkipHandsCheck)
   {
-    Utils::displayWarningMessage(tr("Error: no path has been given for the hands meshes."));
+    Utils::displayWarningMessage(tr("Error: no path has been given for the hands meshes."), lIconFolder);
     return;
   }
 
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no name given for the BodySlide files."));
+    Utils::displayWarningMessage(tr("Error: no name given for the BodySlide files."), lIconFolder);
     return;
   }
 
   // Check if a name has been given for the presets
   if (lBodyslideSlidersetsNames.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."));
+    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."), lIconFolder);
     return;
   }
 
   // Get the virtual ressources' directory
-  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected))};
+  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected), lIconFolder)};
   if (lRessourcesFolder.length() == 0)
   {
     return;
@@ -1277,6 +1294,7 @@ void PresetCreator::generateDirectoryStructure()
   this->updateOutputPreview();
 
   QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Generation successful"), tr("Every file has been correctly generated. You can now exit the application or create another conversion!"), QMessageBox::StandardButton::NoButton, this);
+  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/info-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
   auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
   lOKButton->setCursor(Qt::PointingHandCursor);

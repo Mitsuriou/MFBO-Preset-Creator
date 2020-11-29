@@ -21,7 +21,11 @@ MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Quitting"), tr("Do you want to quit the application?"), QMessageBox::StandardButton::NoButton, this);
+  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
   auto lCloseButton{lConfirmationBox.addButton(tr("Quit the application"), QMessageBox::ButtonRole::YesRole)};
   lCloseButton->setCursor(Qt::PointingHandCursor);
@@ -68,89 +72,85 @@ void MFBOPresetCreator::setupMenuBar()
   this->setMenuBar(lMenuBar);
 
   // File
-  auto lFileMenu{new QMenu(tr("File"), this)};
-  lFileMenu->setCursor(Qt::PointingHandCursor);
-  lMenuBar->addMenu(lFileMenu);
+  auto lFile{new QMenu(tr("File"), this)};
+  lFile->setCursor(Qt::PointingHandCursor);
+  lMenuBar->addMenu(lFile);
 
   // Action: Relaunch the app
-  auto lQuickRelaunch{new QAction(this)};
-  lQuickRelaunch->setObjectName("action_quick_relaunch");
-  lQuickRelaunch->setText(tr("Quick relaunch"));
-  lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
-  lQuickRelaunch->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/refresh")));
-  lFileMenu->addAction(lQuickRelaunch);
+  auto lRelaunchApp{new QAction(this)};
+  lRelaunchApp->setObjectName("action_quick_relaunch");
+  lRelaunchApp->setText(tr("Quick relaunch"));
+  lRelaunchApp->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
+  lRelaunchApp->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
+  lFile->addAction(lRelaunchApp);
 
   // Action: Exit
-  auto lExitAction{new QAction(this)};
-  lExitAction->setText(tr("Exit"));
-  lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
-  lExitAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cross")));
-  lFileMenu->addAction(lExitAction);
+  auto lExitApp{new QAction(this)};
+  lExitApp->setText(tr("Exit"));
+  lExitApp->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
+  lExitApp->setIcon(QIcon(QPixmap(QString(":/%1/cross").arg(lIconFolder))));
+  lFile->addAction(lExitApp);
 
   // Tools
-  auto lToolsMenu{new QMenu(tr("Tools"), this)};
-  lToolsMenu->setCursor(Qt::PointingHandCursor);
-  lMenuBar->addMenu(lToolsMenu);
+  auto lTools{new QMenu(tr("Tools"), this)};
+  lTools->setCursor(Qt::PointingHandCursor);
+  lMenuBar->addMenu(lTools);
 
   // Action: Assisted conversion
-  auto lAssistedConversionAction{new QAction(this)};
-  lAssistedConversionAction->setText(tr("Assisted Conversion"));
-  lAssistedConversionAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
-  lAssistedConversionAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/pencil")));
-  lToolsMenu->addAction(lAssistedConversionAction);
+  auto lOpenAssiConv{new QAction(this)};
+  lOpenAssiConv->setText(tr("Assisted Conversion"));
+  lOpenAssiConv->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
+  lOpenAssiConv->setIcon(QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder))));
+  lTools->addAction(lOpenAssiConv);
 
-  // Submenu: Upgrader
-  auto lRetargetingToolsMenu{new QMenu(tr("BodySlide Presets' Version Retargeting"), this)};
-  lRetargetingToolsMenu->setCursor(Qt::PointingHandCursor);
-  lRetargetingToolsMenu->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/arrow-up")));
-  lToolsMenu->addMenu(lRetargetingToolsMenu);
+  // Submenu: Retargeting Tools
+  auto lRetaToolsSubmenu{new QMenu(tr("BodySlide Presets' Version Retargeting"), this)};
+  lRetaToolsSubmenu->setCursor(Qt::PointingHandCursor);
+  lRetaToolsSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))));
+  lTools->addMenu(lRetaToolsSubmenu);
 
-  auto lRTCBBE3BBB3BAAction{new QAction(this)};
-  lRTCBBE3BBB3BAAction->setText("[TO BE REWORKED] CBBE 3BBB 3BA");
-  lRTCBBE3BBB3BAAction->setDisabled(true); // TODO: repair the retargeting tool
-  lRetargetingToolsMenu->addAction(lRTCBBE3BBB3BAAction);
+  // Action: CBBE 3BBB 3BA Retargeting Tool
+  auto lOpenRT_CBBE3BBB3BA{new QAction(this)};
+  lOpenRT_CBBE3BBB3BA->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y));
+  lOpenRT_CBBE3BBB3BA->setText(tr("CBBE 3BBB 3BA"));
+  lRetaToolsSubmenu->addAction(lOpenRT_CBBE3BBB3BA);
 
   // Action: Settings
-  auto lSettingsAction{new QAction(this)};
-  lSettingsAction->setText(tr("Settings"));
-  lSettingsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
-  lSettingsAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cog")));
-  lToolsMenu->addAction(lSettingsAction);
+  auto lOpenSettings{new QAction(this)};
+  lOpenSettings->setText(tr("Settings"));
+  lOpenSettings->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
+  lOpenSettings->setIcon(QIcon(QPixmap(QString(":/%1/cog").arg(lIconFolder))));
+  lTools->addAction(lOpenSettings);
 
   // Help
-  auto lUpdateAvailableText{QString("")};
+  const auto& lUpdateAvailableText{this->mNewVersionAvailable ? tr(" (update available)") : QString("")};
 
-  if (this->mNewVersionAvailable)
-  {
-    lUpdateAvailableText = tr(" (update available)");
-  }
-
-  auto lHelpMenu{new QMenu(tr("Help") + lUpdateAvailableText, this)};
-  lHelpMenu->setCursor(Qt::PointingHandCursor);
-  lMenuBar->addMenu(lHelpMenu);
+  auto lHelp{new QMenu(tr("Help") + lUpdateAvailableText, this)};
+  lHelp->setCursor(Qt::PointingHandCursor);
+  lMenuBar->addMenu(lHelp);
 
   // Action: Check for updates
-  auto lCheckUpdateAction{new QAction(this)};
-  lCheckUpdateAction->setText(tr("Check for updates") + lUpdateAvailableText);
-  lCheckUpdateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-  lCheckUpdateAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cloud-search")));
-  lHelpMenu->addAction(lCheckUpdateAction);
+  auto lOpenUpdate{new QAction(this)};
+  lOpenUpdate->setText(tr("Check for updates") + lUpdateAvailableText);
+  lOpenUpdate->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
+  lOpenUpdate->setIcon(QIcon(QPixmap(QString(":/%1/cloud-search").arg(lIconFolder))));
+  lHelp->addAction(lOpenUpdate);
 
   // Action: About
-  auto lAboutAction{new QAction(this)};
-  lAboutAction->setText(tr("About"));
-  lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-  lAboutAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/info-circle")));
-  lHelpMenu->addAction(lAboutAction);
+  auto lOpenAbout{new QAction(this)};
+  lOpenAbout->setText(tr("About"));
+  lOpenAbout->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
+  lOpenAbout->setIcon(QIcon(QPixmap(QString(":/%1/info-circle").arg(lIconFolder))));
+  lHelp->addAction(lOpenAbout);
 
   // Event binding
-  this->connect(lQuickRelaunch, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
-  this->connect(lExitAction, &QAction::triggered, this, &MFBOPresetCreator::close);
-  this->connect(lAssistedConversionAction, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
-  this->connect(lRTCBBE3BBB3BAAction, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA);
-  this->connect(lSettingsAction, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
-  this->connect(lCheckUpdateAction, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
-  this->connect(lAboutAction, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
+  this->connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
+  this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
+  this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
+  this->connect(lOpenRT_CBBE3BBB3BA, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA);
+  this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
+  this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
+  this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
 }
 
 void MFBOPresetCreator::showWindow()
@@ -275,10 +275,10 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>("edit_filters")};
-  lEditFiltersButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
+  lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
 
   auto lSkeletonRefresherButton{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
-  lSkeletonRefresherButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/refresh")));
+  lSkeletonRefresherButton->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
 }
 
 void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut)
@@ -433,7 +433,11 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
 
   if (aResult == "fetch_error" || this->mNewVersionAvailable)
   {
+    // User theme accent
+    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
     QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/info-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
     auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
     lOKButton->setCursor(Qt::PointingHandCursor);

@@ -13,6 +13,35 @@ AssistedConversion::AssistedConversion(QWidget* parent, const Struct::Settings& 
   this->show();
 }
 
+void AssistedConversion::closeEvent(QCloseEvent* aEvent)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
+  QMessageBox lBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
+  lBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+
+  auto lCloseBtn{lBox.addButton(tr("Close the window"), QMessageBox::ButtonRole::YesRole)};
+  lCloseBtn->setCursor(Qt::PointingHandCursor);
+  lCloseBtn->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+  auto lStayBtn{lBox.addButton(tr("Go back to the assisted conversion tool window"), QMessageBox::ButtonRole::NoRole)};
+  lStayBtn->setCursor(Qt::PointingHandCursor);
+  lStayBtn->setStyleSheet("color: hsl(141, 53%, 53%)");
+
+  lBox.setDefaultButton(lStayBtn);
+  lBox.exec();
+
+  if (lBox.clickedButton() != lCloseBtn)
+  {
+    aEvent->ignore();
+  }
+  else
+  {
+    aEvent->accept();
+  }
+}
+
 void AssistedConversion::setWindowProperties()
 {
   this->setModal(true);
@@ -52,7 +81,7 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   // Input chooser
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lInputPathChooser->setCursor(Qt::PointingHandCursor);
-  lInputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder")));
+  lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lInputPathChooser->setAutoDefault(false);
   lInputPathChooser->setDefault(false);
   aLayout.addWidget(lInputPathChooser, 0, 2);
@@ -60,7 +89,7 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   // Launch search button
   auto lLaunchSearchButton{new QPushButton(tr("Launch the scan of the mod"), this)};
   lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
-  lLaunchSearchButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/search")));
+  lLaunchSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/search").arg(lIconFolder))));
   lLaunchSearchButton->setObjectName("launch_search_button");
   lLaunchSearchButton->setAutoDefault(false);
   lLaunchSearchButton->setDefault(false);
@@ -251,6 +280,7 @@ void AssistedConversion::launchSearchProcess()
                                  tr("No ESL, ESM or ESP file has been found in the scanned directory. Do you still want to continue the scan?"),
                                  QMessageBox::StandardButton::NoButton,
                                  this);
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
     auto lContinueButton{lConfirmationBox.addButton(tr("Continue the scan"), QMessageBox::ButtonRole::YesRole)};
     lContinueButton->setCursor(Qt::PointingHandCursor);

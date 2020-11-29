@@ -29,7 +29,11 @@ void Settings::closeEvent(QCloseEvent* aEvent)
 
   if (this->getSettingsFromGUI() != this->mSettings)
   {
+    // User theme accent
+    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
     QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
     auto lCloseButton{lConfirmationBox.addButton(tr("Close the settings window without saving"), QMessageBox::ButtonRole::YesRole)};
     lCloseButton->setCursor(Qt::PointingHandCursor);
@@ -68,21 +72,30 @@ void Settings::initializeGUI()
   lMainLayout->setContentsMargins(10, 10, 10, 10);
   this->setLayout(lMainLayout);
 
-  this->setupDisplayGroup(*lMainLayout);
-  this->setupGeneralGroup(*lMainLayout);
-  this->setupPresetCreatorGroup(*lMainLayout);
-  this->setupRetargetingToolGroup(*lMainLayout);
-  this->setupButtons(*lMainLayout);
+  auto lIndex{0};
+
+  if (Utils::RESTART_PENDING)
+  {
+    auto lRestartPending{new QLabel(tr("Warning: A restart of the application is pending. You should not modify any value marked with the \"*\" character until you restart the application."), this)};
+    lRestartPending->setStyleSheet("color: hsl(4, 90%, 58%);");
+    lMainLayout->addWidget(lRestartPending, lIndex++, 0, 1, 2);
+  }
+
+  this->setupDisplayGroup(*lMainLayout, lIndex);
+  this->setupGeneralGroup(*lMainLayout, lIndex);
+  this->setupPresetCreatorGroup(*lMainLayout, lIndex);
+  this->setupRetargetingToolGroup(*lMainLayout, lIndex);
+  this->setupButtons(*lMainLayout, lIndex);
 
   // Load the settings into the interface
   this->loadSettings(this->mSettings);
 }
 
-void Settings::setupDisplayGroup(QGridLayout& aLayout)
+void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   // Display group box
   auto lDisplayGroupBox{new QGroupBox(tr("Display"), this)};
-  aLayout.addWidget(lDisplayGroupBox, 0, 0, 3, 1);
+  aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 3, 1);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
@@ -91,8 +104,7 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   lDisplayLayout->setAlignment(Qt::AlignTop);
 
   // LANGUAGE
-  auto lLangLabelText{"* " + tr("Language:")};
-  auto lLanguageLabel{new QLabel(lLangLabelText, this)};
+  auto lLanguageLabel{new QLabel(QString("* " + tr("Language:")), this)};
   lDisplayLayout->addWidget(lLanguageLabel);
 
   auto lLanguageSelector{new QComboBox(this)};
@@ -103,22 +115,20 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   lDisplayLayout->addWidget(lLanguageSelector);
 
   // FONT FAMILY
-  auto lFontLabelText{"* " + tr("Font:")};
-  auto lFontLabel{new QLabel(lFontLabelText, this)};
+  auto lFontLabel{new QLabel(QString("* " + tr("Font:")), this)};
   lDisplayLayout->addWidget(lFontLabel);
 
   auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
   lFontChooser->setCursor(Qt::PointingHandCursor);
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-  lFontChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/text")));
+  lFontChooser->setIcon(QIcon(QPixmap(QString(":/%1/text").arg(lIconFolder))));
   lFontChooser->setObjectName("font_chooser");
   lFontChooser->setAutoDefault(false);
   lFontChooser->setDefault(false);
   lDisplayLayout->addWidget(lFontChooser);
 
   // GUI THEME
-  auto lThemeLabelText{"* " + tr("Application Theme:")};
-  auto lGUIThemeLabel{new QLabel(lThemeLabelText, this)};
+  auto lGUIThemeLabel{new QLabel(QString("* " + tr("Application Theme:")), this)};
   lDisplayLayout->addWidget(lGUIThemeLabel);
 
   auto lGUIThemeSelector{new QComboBox(this)};
@@ -165,11 +175,11 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
 }
 
-void Settings::setupGeneralGroup(QGridLayout& aLayout)
+void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   // Display group box
   auto lGeneralGroupBox{new QGroupBox(tr("General"), this)};
-  aLayout.addWidget(lGeneralGroupBox, 0, 1);
+  aLayout.addWidget(lGeneralGroupBox, aNextRowIndex, 1);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lGeneralGroupBox)};
@@ -184,11 +194,11 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout)
   lDisplayLayout->addWidget(lAutoOpenDirCheckbox);
 }
 
-void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
+void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   // Preset Creator group box
   auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator"), this)};
-  aLayout.addWidget(lPresetCreatorGroupBox, 1, 1);
+  aLayout.addWidget(lPresetCreatorGroupBox, aNextRowIndex + 1, 1);
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
   lPresetCreatorLayout->setSpacing(10);
@@ -220,7 +230,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder")));
+  lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lOutputPathChooser->setAutoDefault(false);
   lOutputPathChooser->setDefault(false);
   lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);
@@ -235,11 +245,11 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
 }
 
-void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
+void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   // Retargeting Tool group box
   auto lRetToolGroupBox{new QGroupBox(tr("Retargeting Tool"), this)};
-  aLayout.addWidget(lRetToolGroupBox, 2, 1);
+  aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1);
 
   auto lRetargetingToolLayout{new QVBoxLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
@@ -247,37 +257,43 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
 
   // DEFAULT SELECTED CBBE 3BBB VERSION (RETARGETING TOOL)
-  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected body:"), this)};
+  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("[CBBE 3BBB 3BA] Default selected body:"), this)};
   lRetargetingToolLayout->addWidget(lupgradeCbbe3BBBVersionLabel);
 
   auto lUpgradeCbbe3BBBVersionSelector{new QComboBox(this)};
   lUpgradeCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lUpgradeCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
+
+  auto lBodies{DataLists::getBodiesNameVersions()};
+  for (int i = 0; i < 3; i++)
+  {
+    lUpgradeCbbe3BBBVersionSelector->addItem(lBodies.at(i));
+  }
+
   lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_body_selector"));
   lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
 }
 
-void Settings::setupButtons(QGridLayout& aLayout)
+void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
-  aLayout.addLayout(lButtonsContainer, 3, 0, 1, 2);
+  aLayout.addLayout(lButtonsContainer, aNextRowIndex + 3, 0, 1, 2);
 
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
   lRestoreDefaultButton->setCursor(Qt::PointingHandCursor);
-  lRestoreDefaultButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/restore")));
+  lRestoreDefaultButton->setIcon(QIcon(QPixmap(QString(":/%1/restore").arg(lIconFolder))));
   lRestoreDefaultButton->setAutoDefault(false);
   lRestoreDefaultButton->setDefault(false);
   lButtonsContainer->addWidget(lRestoreDefaultButton);
 
   auto lSaveButton{new QPushButton(tr("Save and close"), this)};
   lSaveButton->setCursor(Qt::PointingHandCursor);
-  lSaveButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/save")));
+  lSaveButton->setIcon(QIcon(QPixmap(QString(":/%1/save").arg(lIconFolder))));
   lSaveButton->setObjectName("save_close");
   lSaveButton->setAutoDefault(false);
   lSaveButton->setDefault(false);
@@ -285,7 +301,7 @@ void Settings::setupButtons(QGridLayout& aLayout)
 
   auto lCloseButton{new QPushButton(tr("Cancel"), this)};
   lCloseButton->setCursor(Qt::PointingHandCursor);
-  lCloseButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/undo")));
+  lCloseButton->setIcon(QIcon(QPixmap(QString(":/%1/undo").arg(lIconFolder))));
   lCloseButton->setAutoDefault(false);
   lCloseButton->setDefault(false);
   lButtonsContainer->addWidget(lCloseButton);
@@ -459,18 +475,15 @@ void Settings::saveSettings()
 {
   auto lSettings{this->getSettingsFromGUI()};
 
-  mMustRebootMainApp = (this->mSettings.language != lSettings.language
-                        || this->mSettings.appTheme != lSettings.appTheme
-                        || this->mSettings.font != lSettings.font);
-
-  Utils::saveSettingsToFile(lSettings);
-  this->mSettings = lSettings;
-
-  emit refreshMainUI(this->mSettings, true);
+  mMustRebootMainApp = (this->mSettings.language != lSettings.language || this->mSettings.appTheme != lSettings.appTheme || this->mSettings.font != lSettings.font);
 
   if (mMustRebootMainApp)
   {
+    // User theme accent
+    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
     QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::StandardButton::NoButton, this);
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
     auto lRestartNowButton{lConfirmationBox.addButton(tr("Restart now"), QMessageBox::ButtonRole::YesRole)};
     lRestartNowButton->setCursor(Qt::PointingHandCursor);
@@ -488,7 +501,16 @@ void Settings::saveSettings()
       // Reboot the application in case the language is changed
       qApp->exit(Utils::EXIT_CODE_REBOOT);
     }
+    else if (!Utils::RESTART_PENDING)
+    {
+      Utils::RESTART_PENDING = true;
+    }
   }
+
+  Utils::saveSettingsToFile(lSettings);
+  this->mSettings = lSettings;
+
+  emit refreshMainUI(this->mSettings, true);
 
   this->close();
 }
