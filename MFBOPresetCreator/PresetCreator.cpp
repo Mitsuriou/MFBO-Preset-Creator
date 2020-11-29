@@ -269,7 +269,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->addWidget(lFiltersList, 5, 2);
 
   auto lEditFilters{new QPushButton(this)};
-  lEditFilters->setText("Edit custom BodySlide filters");
+  lEditFilters->setText(tr("Edit BodySlide filters sets"));
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -333,7 +333,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
-  lSkeletonRefresher->setText("Refresh");
+  lSkeletonRefresher->setText(tr("Refresh"));
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Skeleton path
@@ -410,7 +410,7 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder-open")));
+  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder")));
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Second line
@@ -445,7 +445,7 @@ void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
-  lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/file-tree").arg(lIconFolder))));
+  lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/build").arg(lIconFolder))));
   lGenerateButton->setCursor(Qt::PointingHandCursor);
   aLayout.addWidget(lGenerateButton);
 

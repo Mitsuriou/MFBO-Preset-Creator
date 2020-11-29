@@ -52,7 +52,7 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   // Input chooser
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lInputPathChooser->setCursor(Qt::PointingHandCursor);
-  lInputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder-open")));
+  lInputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder")));
   lInputPathChooser->setAutoDefault(false);
   lInputPathChooser->setDefault(false);
   aLayout.addWidget(lInputPathChooser, 0, 2);
@@ -231,6 +231,9 @@ void AssistedConversion::chooseInputDirectory()
 
 void AssistedConversion::launchSearchProcess()
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
@@ -305,8 +308,9 @@ void AssistedConversion::launchSearchProcess()
 
   // Create the validation button
   auto lValidateSelection{new QPushButton(tr("Validate the selection(s) above and go back to the main window"), this)};
-  lValidateSelection->setObjectName("validate_selection");
   lValidateSelection->setCursor(Qt::PointingHandCursor);
+  lValidateSelection->setIcon(QIcon(QPixmap(QString(":/%1/playlist-check").arg(lIconFolder))));
+  lValidateSelection->setObjectName("validate_selection");
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
 }

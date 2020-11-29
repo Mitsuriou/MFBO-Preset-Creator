@@ -220,7 +220,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder-open")));
+  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder")));
   lOutputPathChooser->setAutoDefault(false);
   lOutputPathChooser->setDefault(false);
   lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);

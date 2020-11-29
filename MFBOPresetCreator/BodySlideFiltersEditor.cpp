@@ -106,7 +106,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   auto lNewSetBtn{new QPushButton(this)};
   lNewSetBtn->setCursor(Qt::PointingHandCursor);
   lNewSetBtn->setToolTip(tr("Add a new BodySlide filters set"));
-  lNewSetBtn->setText("New set");
+  lNewSetBtn->setText(tr("New set"));
   lNewSetBtn->setIcon(QIcon(QPixmap(QString(":/%1/plus").arg(lIconFolder))));
   lNewSetBtn->setObjectName("add-set");
   lNewSetBtn->setAutoDefault(false);
@@ -117,7 +117,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   auto lDelSetBtn{new QPushButton(this)};
   lDelSetBtn->setCursor(Qt::PointingHandCursor);
   lDelSetBtn->setToolTip(tr("Remove the selected BodySlide filters set"));
-  lDelSetBtn->setText("Remove set");
+  lDelSetBtn->setText(tr("Remove set"));
   lDelSetBtn->setIcon(QIcon(QPixmap(QString(":/%1/minus").arg(lIconFolder))));
   lDelSetBtn->setAutoDefault(false);
   lDelSetBtn->setDefault(false);
@@ -135,7 +135,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lAddNewRow->setStyleSheet("text-align:left;");
   lAddNewRow->setCursor(Qt::PointingHandCursor);
   lAddNewRow->setToolTip(tr("Add a new BodySlide filter"));
-  lAddNewRow->setText("New filter");
+  lAddNewRow->setText(tr("New filter"));
   lAddNewRow->setIcon(QIcon(QPixmap(QString(":/%1/playlist-plus").arg(lIconFolder))));
   lAddNewRow->setAutoDefault(false);
   lAddNewRow->setDefault(false);
@@ -157,7 +157,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lDeleteAllRows->setStyleSheet("text-align:left;");
   lDeleteAllRows->setCursor(Qt::PointingHandCursor);
   lDeleteAllRows->setToolTip(tr("Remove all the BodySlide filters"));
-  lDeleteAllRows->setText("Clear");
+  lDeleteAllRows->setText(tr("Clear"));
   lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/trash-lines").arg(lIconFolder))));
   lDeleteAllRows->setAutoDefault(false);
   lDeleteAllRows->setDefault(false);

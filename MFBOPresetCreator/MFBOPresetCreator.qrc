@@ -54,8 +54,8 @@
         <file alias="cog">ressources/software/icons/black/cog.png</file>
         <file alias="cross">ressources/software/icons/black/cross.png</file>
         <file alias="developer">ressources/software/icons/black/developer.png</file>
-        <file alias="file-tree">ressources/software/icons/black/file-tree.png</file>
         <file alias="filter">ressources/software/icons/black/filter.png</file>
+        <file alias="folder">ressources/software/icons/black/folder.png</file>
         <file alias="folder-open">ressources/software/icons/black/folder-open.png</file>
         <file alias="info-circle">ressources/software/icons/black/info-circle.png</file>
         <file alias="minus">ressources/software/icons/black/minus.png</file>
@@ -71,6 +71,8 @@
         <file alias="trash">ressources/software/icons/black/trash.png</file>
         <file alias="trash-lines">ressources/software/icons/black/trash-lines.png</file>
         <file alias="undo">ressources/software/icons/black/undo.png</file>
+        <file alias="build">ressources/software/icons/black/build.png</file>
+        <file alias="playlist-check">ressources/software/icons/black/playlist-check.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -81,8 +83,8 @@
         <file alias="cog">ressources/software/icons/white/cog.png</file>
         <file alias="cross">ressources/software/icons/white/cross.png</file>
         <file alias="developer">ressources/software/icons/white/developer.png</file>
-        <file alias="file-tree">ressources/software/icons/white/file-tree.png</file>
         <file alias="filter">ressources/software/icons/white/filter.png</file>
+        <file alias="folder">ressources/software/icons/white/folder.png</file>
         <file alias="folder-open">ressources/software/icons/white/folder-open.png</file>
         <file alias="info-circle">ressources/software/icons/white/info-circle.png</file>
         <file alias="minus">ressources/software/icons/white/minus.png</file>
@@ -98,6 +100,8 @@
         <file alias="trash">ressources/software/icons/white/trash.png</file>
         <file alias="trash-lines">ressources/software/icons/white/trash-lines.png</file>
         <file alias="undo">ressources/software/icons/white/undo.png</file>
+        <file alias="build">ressources/software/icons/white/build.png</file>
+        <file alias="playlist-check">ressources/software/icons/white/playlist-check.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>
