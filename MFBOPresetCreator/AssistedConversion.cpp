@@ -15,6 +15,16 @@ AssistedConversion::AssistedConversion(QWidget* parent, const Struct::Settings& 
 
 void AssistedConversion::closeEvent(QCloseEvent* aEvent)
 {
+  // Catch the sender of the event
+  auto lEventSource{qobject_cast<QPushButton*>(sender())};
+  auto lValidationBtn{this->findChild<QPushButton*>("validate_selection")};
+
+  if (lEventSource && lValidationBtn)
+  {
+    aEvent->accept();
+    return;
+  }
+
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
