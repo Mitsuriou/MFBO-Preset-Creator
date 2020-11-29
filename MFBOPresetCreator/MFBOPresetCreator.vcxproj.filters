@@ -41,7 +41,7 @@
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="TextInputDialog.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,7 +136,7 @@
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="TextInputDialog.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

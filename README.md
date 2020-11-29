@@ -1,25 +1,34 @@
+# Mirrors
 [![CodeFactor](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator/badge)](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator)
 
+The source code is available on:
+- [Github](https://github.com/Mitsuriou/MFBO-Preset-Creator)
+- [GitLab](https://gitlab.com/Mitsuriou/MFBO-Preset-Creator)
+
 # Mitsuriou's Follower Bodies Overhaul: Preset Creator
-MFBOPC is a GUI application that should able anyone to change a body mesh of a follower or an NPC to a CBBE 3BBB 3BA body mesh.
-In addition, the user is able to generate files that the BodySlide application is able to read, to custom the follower's or NPC's body shape.
+MFBOPC is a relatively simple GUI application that should allow anyone to change a body mesh of a follower or an NPC to another body mesh (currently supporting CBBE 3BBB 3BA, CBBE 3BBB SMP and BHUNP SSE).
+In addition, the user will generate files that the BodySlide application is able to read, to easily custom the follower's or NPC's body shape.
 
-MFBOPC has been designed to work with **Skyrim: Special Edition only**. The application might be able to work for other games with future updated...
+MFBOPC has been designed to work with **Skyrim: Special Edition only**. The application might be able to work for other games with future updates...
 
-At this time, the application is only capable of changing the body, hands and feet meshes and cannot convert any cloth, outfit or armor: it is a difficult and very time consuming task even for a Human being, I'm not sure of being able to make the application that powerful.
+At this time, the application is only capable of changing the body, hands and feet meshes and cannot convert any cloth, outfit or armor: it is a difficult and very time consuming task even for a Human being, I'm not sure of being able to make the application that is that powerful.
 
-# How to install and run MFBO: PC
+# How to install and run MFBOPC
 ### Download
-Choose the **latest release** on https://github.com/Mitsuriou/MFBO-Preset-Creator/releases and download either the **.7z** file or the **.zip** file that is named **MFBO.Preset.Creator.[*7z|zip*]**. They are the same, but some people do not know how to open .7z files, so I try to always provide both alternatives.
+Find the **latest release** on [Github](https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest) and download either the **.7z** file or the **.zip** file that is named **MFBO.Preset.Creator.[*7z|zip*]**. They provide the same exact application, but some people do not know how to open **.7z** files, so I try to always provide both alternatives.
 
-### Install
+### Installation
 The application is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the directory of your choice the content of the archive.
+Note: you cannot execute the app from the archive itself, it really needs to be extracted on your computer.
 
 ### Launch
 To launch the application, simply click on the **MFBOPresetCreator.exe** file (the one with a black and white icon).
 
-# Roadmap (not ordered by priority)
-### GUI modifications
+# Development roadmap (not ordered by priority and not exhaustive)
+### Ressources
+- [ ] User guides and video tutorials
+
+### Graphical User Interface (GUI) improvements
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
 - [X] (1.9.0) Allow the user to type different paths for the body, hands and feet
 - [X] (2.0.0) Add compatibility with CBBE 3BBB SMP

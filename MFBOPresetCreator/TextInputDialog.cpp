@@ -1,7 +1,8 @@
 #include "TextInputDialog.h"
 
-TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, QWidget* aParent)
+TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme& aAppTheme, QWidget* aParent)
   : QDialog(aParent)
+  , mAppTheme(aAppTheme)
 {
   // Build the window's interface
   this->setWindowProperties(aTitle);
@@ -35,6 +36,9 @@ void TextInputDialog::setWindowProperties(const QString& aTitle)
 
 void TextInputDialog::initializeGUI(const QString& aLabel)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mAppTheme)};
+
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
   this->setLayout(lMainLayout);
@@ -60,11 +64,13 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
   // Add
   auto lAddBtn{new QPushButton(tr("Add"), this)};
   lAddBtn->setCursor(Qt::PointingHandCursor);
+  lAddBtn->setIcon(QIcon(QPixmap(QString(":/%1/plus").arg(lIconFolder))));
   lAddBtn->setObjectName("add_button");
   lBtnsContainer->addWidget(lAddBtn);
 
   // Cancel
   auto lCancelBtn{new QPushButton(tr("Cancel"), this)};
+  lCancelBtn->setIcon(QIcon(QPixmap(QString(":/%1/cross").arg(lIconFolder))));
   lCancelBtn->setCursor(Qt::PointingHandCursor);
   lBtnsContainer->addWidget(lCancelBtn);
 

@@ -333,6 +333,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lSkeletonRefresher->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
+  lSkeletonRefresher->setText("Refresh");
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Skeleton path
@@ -408,6 +409,8 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder-open")));
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Second line
@@ -437,8 +440,12 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 
 void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
+  lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/file-tree").arg(lIconFolder))));
   lGenerateButton->setCursor(Qt::PointingHandCursor);
   aLayout.addWidget(lGenerateButton);
 

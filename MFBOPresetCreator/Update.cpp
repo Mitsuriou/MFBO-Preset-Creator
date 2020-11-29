@@ -19,7 +19,7 @@ void Update::setWindowProperties()
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Check for updates"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/download")));
+  this->setWindowIcon(QIcon(QPixmap(":/black/cloud-search")));
 }
 
 void Update::initializeGUI()
@@ -36,7 +36,7 @@ void Update::setupInterface(QVBoxLayout& aLayout)
   auto lUpdateButton{new QPushButton(this)};
   lUpdateButton->setCursor(Qt::PointingHandCursor);
 
-  QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud_search" : ":/black/cloud_search"};
+  QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-search" : ":/black/cloud-search"};
   lUpdateButton->setObjectName("search_button");
   lUpdateButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
   lUpdateButton->setIconSize(QSize(48, 48));
@@ -69,7 +69,7 @@ void Update::pageFetched(const QString& aResult)
 
   if (aResult == "fetch_error")
   {
-    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/error" : ":/black/error"};
+    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(48, 48));
 
@@ -86,7 +86,7 @@ void Update::pageFetched(const QString& aResult)
 
 #ifdef DEBUG
 
-    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/dev_mode" : ":/black/dev_mode"};
+    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/developer" : ":/black/developer"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(48, 48));
     lSearchButton->setDisabled(true);
@@ -98,7 +98,7 @@ void Update::pageFetched(const QString& aResult)
     if (lCurrentVersion != lTagName)
     {
       // A new version available
-      QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/open_in_browser" : ":/black/open_in_browser"};
+      QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/open-in-browser" : ":/black/open-in-browser"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
       lSearchButton->setIconSize(QSize(48, 48));
 
@@ -110,7 +110,7 @@ void Update::pageFetched(const QString& aResult)
     else
     {
       // The user runs the latest version
-      QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/valid" : ":/black/valid"};
+      QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
       lSearchButton->setIconSize(QSize(48, 48));
       lSearchButton->setDisabled(true);

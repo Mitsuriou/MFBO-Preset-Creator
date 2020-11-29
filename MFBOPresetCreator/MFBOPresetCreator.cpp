@@ -77,14 +77,14 @@ void MFBOPresetCreator::setupMenuBar()
   lQuickRelaunch->setObjectName("action_quick_relaunch");
   lQuickRelaunch->setText(tr("Quick relaunch"));
   lQuickRelaunch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
-  lQuickRelaunch->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
+  lQuickRelaunch->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/refresh")));
   lFileMenu->addAction(lQuickRelaunch);
 
   // Action: Exit
   auto lExitAction{new QAction(this)};
   lExitAction->setText(tr("Exit"));
   lExitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
-  lExitAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/exit")));
+  lExitAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cross")));
   lFileMenu->addAction(lExitAction);
 
   // Tools
@@ -102,7 +102,7 @@ void MFBOPresetCreator::setupMenuBar()
   // Submenu: Upgrader
   auto lRetargetingToolsMenu{new QMenu(tr("BodySlide Presets' Version Retargeting"), this)};
   lRetargetingToolsMenu->setCursor(Qt::PointingHandCursor);
-  lRetargetingToolsMenu->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/arrow_up")));
+  lRetargetingToolsMenu->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/arrow-up")));
   lToolsMenu->addMenu(lRetargetingToolsMenu);
 
   auto lRTCBBE3BBB3BAAction{new QAction(this)};
@@ -133,14 +133,14 @@ void MFBOPresetCreator::setupMenuBar()
   auto lCheckUpdateAction{new QAction(this)};
   lCheckUpdateAction->setText(tr("Check for updates") + lUpdateAvailableText);
   lCheckUpdateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-  lCheckUpdateAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cloud_search")));
+  lCheckUpdateAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/cloud-search")));
   lHelpMenu->addAction(lCheckUpdateAction);
 
   // Action: About
   auto lAboutAction{new QAction(this)};
   lAboutAction->setText(tr("About"));
   lAboutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-  lAboutAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/information")));
+  lAboutAction->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/info-circle")));
   lHelpMenu->addAction(lAboutAction);
 
   // Event binding
@@ -278,7 +278,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   lEditFiltersButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/filter")));
 
   auto lSkeletonRefresherButton{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
-  lSkeletonRefresherButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/reload")));
+  lSkeletonRefresherButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/refresh")));
 }
 
 void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut)

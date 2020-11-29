@@ -136,7 +136,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lAddNewRow->setCursor(Qt::PointingHandCursor);
   lAddNewRow->setToolTip(tr("Add a new BodySlide filter"));
   lAddNewRow->setText("New filter");
-  lAddNewRow->setIcon(QIcon(QPixmap(QString(":/%1/new_line").arg(lIconFolder))));
+  lAddNewRow->setIcon(QIcon(QPixmap(QString(":/%1/playlist-plus").arg(lIconFolder))));
   lAddNewRow->setAutoDefault(false);
   lAddNewRow->setDefault(false);
   lButtonLayout->addWidget(lAddNewRow);
@@ -147,7 +147,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lDeleteRow->setCursor(Qt::PointingHandCursor);
   lDeleteRow->setToolTip(tr("Remove the selected BodySlide filter"));
   lDeleteRow->setText("Remove filter");
-  lDeleteRow->setIcon(QIcon(QPixmap(QString(":/%1/bin").arg(lIconFolder))));
+  lDeleteRow->setIcon(QIcon(QPixmap(QString(":/%1/trash").arg(lIconFolder))));
   lDeleteRow->setAutoDefault(false);
   lDeleteRow->setDefault(false);
   lButtonLayout->addWidget(lDeleteRow);
@@ -158,7 +158,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lDeleteAllRows->setCursor(Qt::PointingHandCursor);
   lDeleteAllRows->setToolTip(tr("Remove all the BodySlide filters"));
   lDeleteAllRows->setText("Clear");
-  lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/delete_all").arg(lIconFolder))));
+  lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/trash-lines").arg(lIconFolder))));
   lDeleteAllRows->setAutoDefault(false);
   lDeleteAllRows->setDefault(false);
   lButtonLayout->addWidget(lDeleteAllRows);
@@ -186,6 +186,9 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
 void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
@@ -194,6 +197,7 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
   // Create the buttons
   auto lSaveBtn{new QPushButton(tr("Save and close"), this)};
   lSaveBtn->setCursor(Qt::PointingHandCursor);
+  lSaveBtn->setIcon(QIcon(QPixmap(QString(":/%1/save").arg(lIconFolder))));
   lSaveBtn->setObjectName("save_close");
   lSaveBtn->setAutoDefault(false);
   lSaveBtn->setDefault(false);
@@ -201,6 +205,7 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
 
   auto lCancelBtn{new QPushButton(tr("Cancel"), this)};
   lCancelBtn->setCursor(Qt::PointingHandCursor);
+  lCancelBtn->setIcon(QIcon(QPixmap(QString(":/%1/undo").arg(lIconFolder))));
   lCancelBtn->setAutoDefault(false);
   lCancelBtn->setDefault(false);
   lButtonsContainer->addWidget(lCancelBtn);
@@ -273,7 +278,7 @@ void BodySlideFiltersEditor::showFiltersList(int aIndex)
 
 void BodySlideFiltersEditor::addSet()
 {
-  auto lDialog{new TextInputDialog(tr("Add a new BodySlide filters set"), tr("Filters set name:"), this)};
+  auto lDialog{new TextInputDialog(tr("Add a new BodySlide filters set"), tr("Filters set name:"), this->mSettings.appTheme, this)};
   this->connect(lDialog, &TextInputDialog::getTextValue, this, &BodySlideFiltersEditor::addNewSetEntry);
   lDialog->exec();
 

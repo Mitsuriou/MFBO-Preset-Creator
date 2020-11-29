@@ -109,6 +109,8 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
 
   auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
   lFontChooser->setCursor(Qt::PointingHandCursor);
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  lFontChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/text")));
   lFontChooser->setObjectName("font_chooser");
   lFontChooser->setAutoDefault(false);
   lFontChooser->setDefault(false);
@@ -217,6 +219,8 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   // OUTPUT PATH CHOOSER
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  lOutputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder-open")));
   lOutputPathChooser->setAutoDefault(false);
   lOutputPathChooser->setDefault(false);
   lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);
@@ -256,6 +260,8 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
 
 void Settings::setupButtons(QGridLayout& aLayout)
 {
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
@@ -264,12 +270,14 @@ void Settings::setupButtons(QGridLayout& aLayout)
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
   lRestoreDefaultButton->setCursor(Qt::PointingHandCursor);
+  lRestoreDefaultButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/restore")));
   lRestoreDefaultButton->setAutoDefault(false);
   lRestoreDefaultButton->setDefault(false);
   lButtonsContainer->addWidget(lRestoreDefaultButton);
 
   auto lSaveButton{new QPushButton(tr("Save and close"), this)};
   lSaveButton->setCursor(Qt::PointingHandCursor);
+  lSaveButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/save")));
   lSaveButton->setObjectName("save_close");
   lSaveButton->setAutoDefault(false);
   lSaveButton->setDefault(false);
@@ -277,6 +285,7 @@ void Settings::setupButtons(QGridLayout& aLayout)
 
   auto lCloseButton{new QPushButton(tr("Cancel"), this)};
   lCloseButton->setCursor(Qt::PointingHandCursor);
+  lCloseButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/undo")));
   lCloseButton->setAutoDefault(false);
   lCloseButton->setDefault(false);
   lButtonsContainer->addWidget(lCloseButton);

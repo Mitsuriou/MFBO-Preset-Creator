@@ -34,10 +34,14 @@ void AssistedConversion::initializeGUI()
 
 void AssistedConversion::setupInterface(QGridLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // First line
   auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
   aLayout.addWidget(lInputPathLabel, 0, 0);
 
+  // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
@@ -45,16 +49,19 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   lInputPathLineEdit->setDisabled(true);
   aLayout.addWidget(lInputPathLineEdit, 0, 1);
 
+  // Input chooser
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lInputPathChooser->setCursor(Qt::PointingHandCursor);
+  lInputPathChooser->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/folder-open")));
   lInputPathChooser->setAutoDefault(false);
   lInputPathChooser->setDefault(false);
   aLayout.addWidget(lInputPathChooser, 0, 2);
 
-  // Generate button
+  // Launch search button
   auto lLaunchSearchButton{new QPushButton(tr("Launch the scan of the mod"), this)};
-  lLaunchSearchButton->setObjectName("launch_search_button");
   lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
+  lLaunchSearchButton->setIcon(QIcon(QPixmap(":/" + lIconFolder + "/search")));
+  lLaunchSearchButton->setObjectName("launch_search_button");
   lLaunchSearchButton->setAutoDefault(false);
   lLaunchSearchButton->setDefault(false);
   lLaunchSearchButton->setDisabled(true);
