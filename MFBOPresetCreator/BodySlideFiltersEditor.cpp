@@ -227,6 +227,7 @@ void BodySlideFiltersEditor::updateFiltersCombobox()
   if (this->mFiltersList.size() == 0)
   {
     this->mFiltersListChooser->setDisabled(true);
+    this->mListWidget->clear();
     return;
   }
 
