@@ -21,7 +21,7 @@ namespace Struct
     QString family{"MS Shell Dlg 2"};
     QString styleName{""};
     int size{10};
-    int weight{-1};
+    int weight{50};
     bool italic{false};
     bool underline{false};
     bool strikeOut{false};
