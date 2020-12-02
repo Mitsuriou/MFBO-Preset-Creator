@@ -5,8 +5,6 @@
 int main(int argc, char* argv[])
 {
   auto currentExitCode{0};
-  QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
   do
   {
@@ -18,6 +16,13 @@ int main(int argc, char* argv[])
     lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getApplicationVersion() + ")");
     lMainApplication.setApplicationVersion(Utils::getApplicationVersion());
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
+    lMainApplication.setAttribute(Qt::AA_EnableHighDpiScaling);
+
+    // Set the codec
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+
+    // Embed custom fonts
+    QFontDatabase::addApplicationFont(":/fonts/Roboto");
 
     // Show the splash screen
     QPixmap lSplashScreenBackground(":/application/splashscreen");
@@ -26,6 +31,7 @@ int main(int argc, char* argv[])
     lSplashScreen.showMessage("MFBOPC (v." + Utils::getApplicationVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lSplashScreen.show();
 
+    // Refresh the screen to show the splash screen event though the main thread is busy
     lMainApplication.processEvents();
 
     // Read settings file

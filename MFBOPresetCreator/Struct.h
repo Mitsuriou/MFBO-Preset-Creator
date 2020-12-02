@@ -18,8 +18,8 @@ namespace Struct
   struct Font
   {
   public:
-    QString family{"MS Shell Dlg 2"};
-    QString styleName{""};
+    QString family{"Roboto"};
+    QString styleName{"Regular"};
     int size{10};
     int weight{50};
     bool italic{false};

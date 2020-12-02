@@ -3,11 +3,11 @@
     "checkForUpdatesAtStartup": true,
     "default_body": 0,
     "font": {
-        "family": "MS Shell Dlg 2",
+        "family": "Roboto",
         "italic": false,
         "size": 10,
         "strikeOut": false,
-        "styleName": "",
+        "styleName": "Regular",
         "underline": false,
         "weight": 50
     },

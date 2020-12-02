@@ -533,14 +533,14 @@
             <Data name="FeetFeetFeminine" target="Feet" local="true">CBBE Feet.osd\FeetFeetFeminine</Data>
         </Slider>
     </SliderSet>
-    <SliderSet name="{%%bodyslide_set_name%%} - CBBE Hands">
+    <SliderSet name="{%%bodyslide_set_name%%} - CBBE Hands Beast">
         <DataFolder>CBBE</DataFolder>
-        <SourceFile>CBBE Hands.nif</SourceFile>
+        <SourceFile>CBBE Hands Beast.nif</SourceFile>
         <OutputPath>{%%hands_output_path%%}</OutputPath>
         <OutputFile GenWeights="true">{%%hands_output_file%%}</OutputFile>
-        <Shape target="Hands">Hands</Shape>
+        <Shape target="Hands" DataFolder="CBBE">Hands</Shape>
         <Slider name="WristSize" invert="false" small="100" big="0">
-            <Data name="HandsWristSize" target="Hands" local="true">CBBE Hands.osd\HandsWristSize</Data>
+            <Data name="HandsWristSize" target="Hands" local="true">CBBE Hands Beast.osd\HandsWristSize</Data>
         </Slider>
     </SliderSet>
 </SliderSetInfo>

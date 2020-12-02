@@ -2,16 +2,16 @@
     <Group name="MFBO">
         <Member name="{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)"/>
         <Member name="{%%bodyslide_set_name%%} - CBBE Feet"/>
-        <Member name="{%%bodyslide_set_name%%} - CBBE Hands"/>
+        <Member name="{%%bodyslide_set_name%%} - CBBE Hands Beast"/>
     </Group>
     <Group name="CBBE">
         <Member name="{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)"/>
         <Member name="{%%bodyslide_set_name%%} - CBBE Feet"/>
-        <Member name="{%%bodyslide_set_name%%} - CBBE Hands"/>
+        <Member name="{%%bodyslide_set_name%%} - CBBE Hands Beast"/>
     </Group>
     <Group name="CBBE Bodies">
         <Member name="{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)"/>
         <Member name="{%%bodyslide_set_name%%} - CBBE Feet"/>
-        <Member name="{%%bodyslide_set_name%%} - CBBE Hands"/>
+        <Member name="{%%bodyslide_set_name%%} - CBBE Hands Beast"/>
     </Group>
 </SliderGroups>

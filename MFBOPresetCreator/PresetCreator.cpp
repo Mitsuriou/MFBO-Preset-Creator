@@ -54,6 +54,8 @@ void PresetCreator::updateSettings(Struct::Settings aSettings)
 
 void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
 {
+  auto lSkeletonHasBeenSet{false};
+
   // Set the preset name
   this->findChild<QLineEdit*>("names_osp_xml_input")->setText(aPresetName);
   this->findChild<QLineEdit*>("names_bodyslide_input")->setText(aPresetName);
@@ -84,8 +86,18 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 
         this->findChild<QLineEdit*>("skeleton_path_directory")->setText(lResult.path);
         this->findChild<QLineEdit*>("skeleton_name")->setText(lResult.name);
+
+        lSkeletonHasBeenSet = true;
         break;
     }
+  }
+
+  if (!lSkeletonHasBeenSet)
+  {
+    this->findChild<QCheckBox*>("use_custom_skeleton")->setChecked(true);
+    this->findChild<QLineEdit*>("skeleton_path_directory")->setText("");
+    this->findChild<QLineEdit*>("skeleton_name")->setText("skeleton_female");
+    this->findChild<QCheckBox*>("use_custom_skeleton")->setChecked(false);
   }
 }
 
@@ -478,26 +490,13 @@ void PresetCreator::updateGUIOnBodyChange()
   // Get the GUI components
   auto lLabelBeastHands{this->findChild<QLabel*>("label_use_beast_hands")};
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
-  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")};
-  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")};
-  auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")};
-  auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")};
-  auto lFeetExtension{this->findChild<QLabel*>("feet_mesh_name_extension")};
-  auto lHandsExtension{this->findChild<QLabel*>("hands_mesh_name_extension")};
 
   // The new "disabled" state to apply
   auto lDisableBeastHands{false};
-  auto lDisableFeet{false};
-  auto lDisableHands{false};
 
   auto lBodySelected{static_cast<BodyNameVersion>(this->findChild<QComboBox*>(QString("body_selector"))->currentIndex())};
   switch (lBodySelected)
   {
-    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      lDisableBeastHands = true;
-      lDisableFeet = true;
-      lDisableHands = true;
-      break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
@@ -506,17 +505,12 @@ void PresetCreator::updateGUIOnBodyChange()
     case BodyNameVersion::BHUNP_TBBP_2_13:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
       lDisableBeastHands = true;
+      lMustUseBeastHands->setChecked(false);
       break;
   }
 
   lLabelBeastHands->setDisabled(lDisableBeastHands);
   lMustUseBeastHands->setDisabled(lDisableBeastHands);
-  lMeshesPathFeet->setDisabled(lDisableFeet);
-  lMeshesPathHands->setDisabled(lDisableHands);
-  lFeetName->setDisabled(lDisableFeet);
-  lHandsName->setDisabled(lDisableHands);
-  lFeetExtension->setDisabled(lDisableFeet);
-  lHandsExtension->setDisabled(lDisableHands);
 }
 
 bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const int& aBodySelected, const QString& aBodyslideSlidersetsNames)
@@ -828,18 +822,9 @@ void PresetCreator::updateMeshesPreview()
     lHandsName = "femalehands";
   }
 
-  lFullPreview += QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName);
-
-  auto lBodySelected{static_cast<BodyNameVersion>(this->findChild<QComboBox*>(QString("body_selector"))->currentIndex())};
-  if (lBodySelected == BodyNameVersion::CBBE_SMP_3BBB_1_2_0)
-  {
-    lFullPreview.append("  -\n  -");
-  }
-  else
-  {
-    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName));
-    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName));
-  }
+  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName));
+  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName));
+  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName));
 
   auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
 
@@ -980,7 +965,10 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
       break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n  -\n  -").arg(aText);
+      if (lMustUseBeastHands)
+        lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n%1 - CBBE Feet\n%1 - CBBE Hands Beast").arg(aText);
+      else
+        lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n%1 - CBBE Feet\n%1 - CBBE Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);

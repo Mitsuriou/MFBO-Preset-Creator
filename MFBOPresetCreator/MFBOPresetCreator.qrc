@@ -28,6 +28,8 @@
     <qresource prefix="/cbbe_smp_3bbb_1.2.0">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.osp</file>
         <file alias="bodyslide_xml">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.xml</file>
+        <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide_beast_hands.osp</file>
+        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/bhunp_2.13">
         <file alias="bhunp_3bbb/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_3bbb.osp</file>
@@ -397,5 +399,8 @@
     </qresource>
     <qresource prefix="/mitsuriou_light">
         <file alias="menu-down">ressources/qss/Mitsuriou's Light Theme/menu-down.png</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file alias="Roboto">ressources/fonts/Roboto-Regular.ttf</file>
     </qresource>
 </RCC>

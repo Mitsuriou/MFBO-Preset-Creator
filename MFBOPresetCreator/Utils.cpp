@@ -32,7 +32,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.0.0";
+  return "2.0.2";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage, const QString& aIconRessourceFolder)
@@ -619,6 +619,16 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)\"/>\n");
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Feet\"/>\n");
+
+      if (aBeastHands)
+      {
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Hands Beast\"/>\n");
+      }
+      else
+      {
+        lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Hands\"/>\n");
+      }
 
       break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
