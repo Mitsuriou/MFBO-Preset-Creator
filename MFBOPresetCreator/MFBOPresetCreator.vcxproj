@@ -58,8 +58,11 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>echo #####################################################
+echo #####################################################
+echo ####### STARTING BUILDING MFBO:Preset Creator #######
+echo #####################################################
+echo #####################################################</Command>
     </PreBuildEvent>
     <Link>
       <AdditionalOptions>/NODEFAULTLIB:library</AdditionalOptions>
@@ -72,11 +75,20 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
-      <Command>echo F | xcopy /C /Y /R "$(TargetPath)"  "$(SolutionDir)client release\$(TargetFileName)"</Command>
+      <Command>echo #####################################################
+echo #####################################################
+echo ############# FINISHED BUILDING MFBO:PC #############
+echo ### COPYING EXECUTABLE INTO CLIENT RELEASE FOLDER ###
+echo #####################################################
+echo #####################################################
+echo F | xcopy /C /Y /R "$(TargetPath)"  "$(SolutionDir)client release\$(TargetFileName)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>echo #####################################################
+echo #####################################################
+echo ####### STARTING BUILDING MFBO:Preset Creator #######
+echo #####################################################
+echo #####################################################</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
