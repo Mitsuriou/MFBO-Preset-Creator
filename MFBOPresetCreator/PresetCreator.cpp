@@ -127,7 +127,6 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lBodyMeshNameInput{new QLineEdit(this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
   lMeshesGridLayout->addWidget(lBodyMeshNameInput, 1, 2);
-  lBodyMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
@@ -144,7 +143,6 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lFeetMeshNameInput{new QLineEdit(this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
   lMeshesGridLayout->addWidget(lFeetMeshNameInput, 2, 2);
-  lFeetMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
@@ -161,7 +159,6 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lHandsMeshNameInput{new QLineEdit(this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
   lMeshesGridLayout->addWidget(lHandsMeshNameInput, 3, 2);
-  lHandsMeshNameInput->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
@@ -237,7 +234,6 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
-  lOSPXMLNamesLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_ -]+"), this));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 3);
 
   // Third line
@@ -555,7 +551,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
 
   if (!QFile::copy(lRessourcePath, lXMLPathName))
   {
-    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."), lIconFolder);
     return false;
   }
 
@@ -642,7 +638,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."), lIconFolder);
       return false;
     }
   }
@@ -650,7 +646,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."), lIconFolder);
       return false;
     }
   }
@@ -733,7 +729,7 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
       // Fallback option if the custom skeleton could not be copied
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
       {
-        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."), lIconFolder);
         return false;
       }
     }
@@ -1178,7 +1174,7 @@ void PresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkdir(lEntryDirectory))
     {
-      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."), lIconFolder);
       return;
     }
   }

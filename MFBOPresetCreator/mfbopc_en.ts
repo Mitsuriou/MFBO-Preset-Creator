@@ -350,17 +350,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <source>Preset Creator</source>
         <translation></translation>
     </message>
-    <message>
-        <location filename="MFBOPresetCreator.ui" line="19"/>
-        <source>Switch theme</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.ui" line="24"/>
-        <location filename="MFBOPresetCreator.ui" line="29"/>
-        <source>Exit</source>
-        <translation></translation>
-    </message>
 </context>
 <context>
     <name>PresetCreator</name>
@@ -375,282 +364,282 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="183"/>
+        <location filename="PresetCreator.cpp" line="180"/>
         <source>Use beast hands?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="187"/>
+        <location filename="PresetCreator.cpp" line="184"/>
         <source>Check this box if the follower or NPC uses beast hands.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="134"/>
-        <location filename="PresetCreator.cpp" line="151"/>
-        <location filename="PresetCreator.cpp" line="168"/>
+        <location filename="PresetCreator.cpp" line="133"/>
+        <location filename="PresetCreator.cpp" line="149"/>
+        <location filename="PresetCreator.cpp" line="165"/>
         <source>_0.nif/_1.nif</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="174"/>
-        <location filename="PresetCreator.cpp" line="244"/>
-        <location filename="PresetCreator.cpp" line="272"/>
-        <location filename="PresetCreator.cpp" line="397"/>
-        <location filename="PresetCreator.cpp" line="457"/>
+        <location filename="PresetCreator.cpp" line="171"/>
+        <location filename="PresetCreator.cpp" line="240"/>
+        <location filename="PresetCreator.cpp" line="268"/>
+        <location filename="PresetCreator.cpp" line="393"/>
+        <location filename="PresetCreator.cpp" line="453"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="208"/>
+        <location filename="PresetCreator.cpp" line="205"/>
         <source>BodySlide output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="235"/>
+        <location filename="PresetCreator.cpp" line="232"/>
         <source>Bodyslide files names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="264"/>
+        <location filename="PresetCreator.cpp" line="260"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="280"/>
+        <location filename="PresetCreator.cpp" line="276"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="295"/>
+        <location filename="PresetCreator.cpp" line="291"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="322"/>
+        <location filename="PresetCreator.cpp" line="318"/>
         <source>Skeleton</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="343"/>
+        <location filename="PresetCreator.cpp" line="339"/>
         <source>Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="346"/>
+        <location filename="PresetCreator.cpp" line="342"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="352"/>
+        <location filename="PresetCreator.cpp" line="348"/>
         <source>Skeleton file:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="368"/>
+        <location filename="PresetCreator.cpp" line="364"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="372"/>
+        <location filename="PresetCreator.cpp" line="368"/>
         <source>Skeleton path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="382"/>
+        <location filename="PresetCreator.cpp" line="378"/>
         <source>Skeleton file name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="392"/>
+        <location filename="PresetCreator.cpp" line="388"/>
         <source>.nif</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="421"/>
+        <location filename="PresetCreator.cpp" line="417"/>
         <source>Files generation&apos;s output location</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="432"/>
+        <location filename="PresetCreator.cpp" line="428"/>
         <source>Output directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="442"/>
+        <location filename="PresetCreator.cpp" line="438"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="449"/>
+        <location filename="PresetCreator.cpp" line="445"/>
         <source>Output subdirectory name/path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="479"/>
+        <location filename="PresetCreator.cpp" line="475"/>
         <source>Generate the files on my computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="875"/>
+        <location filename="PresetCreator.cpp" line="554"/>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="641"/>
+        <location filename="PresetCreator.cpp" line="649"/>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="732"/>
+        <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="871"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1163"/>
+        <location filename="PresetCreator.cpp" line="1159"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1170"/>
+        <location filename="PresetCreator.cpp" line="1166"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1181"/>
+        <location filename="PresetCreator.cpp" line="1177"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1284"/>
+        <location filename="PresetCreator.cpp" line="1177"/>
+        <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="1280"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1189"/>
+        <location filename="PresetCreator.cpp" line="1185"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1190"/>
+        <location filename="PresetCreator.cpp" line="1186"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1196"/>
+        <location filename="PresetCreator.cpp" line="1192"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1200"/>
+        <location filename="PresetCreator.cpp" line="1196"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1218"/>
+        <location filename="PresetCreator.cpp" line="1214"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1224"/>
+        <location filename="PresetCreator.cpp" line="1220"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1230"/>
+        <location filename="PresetCreator.cpp" line="1226"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1237"/>
+        <location filename="PresetCreator.cpp" line="1233"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1244"/>
+        <location filename="PresetCreator.cpp" line="1240"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="529"/>
-        <location filename="PresetCreator.cpp" line="635"/>
+        <location filename="PresetCreator.cpp" line="525"/>
+        <location filename="PresetCreator.cpp" line="631"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="223"/>
+        <location filename="PresetCreator.cpp" line="220"/>
         <source>Targeted body and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="255"/>
+        <location filename="PresetCreator.cpp" line="251"/>
         <source>Presets names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="333"/>
+        <location filename="PresetCreator.cpp" line="329"/>
         <source>Use a custom skeleton?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="529"/>
-        <location filename="PresetCreator.cpp" line="635"/>
+        <location filename="PresetCreator.cpp" line="525"/>
+        <location filename="PresetCreator.cpp" line="631"/>
         <source>&quot; already exists.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="558"/>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="574"/>
-        <location filename="PresetCreator.cpp" line="608"/>
-        <location filename="PresetCreator.cpp" line="670"/>
-        <location filename="PresetCreator.cpp" line="697"/>
+        <location filename="PresetCreator.cpp" line="570"/>
+        <location filename="PresetCreator.cpp" line="604"/>
+        <location filename="PresetCreator.cpp" line="666"/>
+        <location filename="PresetCreator.cpp" line="693"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="574"/>
-        <location filename="PresetCreator.cpp" line="608"/>
-        <location filename="PresetCreator.cpp" line="670"/>
-        <location filename="PresetCreator.cpp" line="697"/>
+        <location filename="PresetCreator.cpp" line="570"/>
+        <location filename="PresetCreator.cpp" line="604"/>
+        <location filename="PresetCreator.cpp" line="666"/>
+        <location filename="PresetCreator.cpp" line="693"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="614"/>
+        <location filename="PresetCreator.cpp" line="610"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="645"/>
-        <location filename="PresetCreator.cpp" line="653"/>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="703"/>
+        <location filename="PresetCreator.cpp" line="699"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="731"/>
+        <location filename="PresetCreator.cpp" line="727"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="736"/>
-        <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="743"/>
+        <location filename="PresetCreator.cpp" line="739"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1181"/>
-        <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="1284"/>
+        <location filename="PresetCreator.cpp" line="1280"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1287"/>
+        <location filename="PresetCreator.cpp" line="1283"/>
         <source>OK</source>
         <translation></translation>
     </message>
