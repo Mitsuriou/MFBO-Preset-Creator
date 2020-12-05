@@ -35,10 +35,10 @@ QString Utils::getApplicationVersion()
   return "2.0.2";
 }
 
-void Utils::displayWarningMessage(const QString& aMessage, const QString& aIconRessourceFolder)
+void Utils::displayWarningMessage(const QString& aMessage)
 {
   QMessageBox lBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
-  lBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(aIconRessourceFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+  lBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(48, Qt::SmoothTransformation));
 
   QPushButton lButton(tr("OK"));
   lButton.setCursor(Qt::PointingHandCursor);
@@ -174,7 +174,7 @@ QString Utils::getIconRessourceFolder(const GUITheme& aTheme)
   return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody, const QString& aIconRessourceFolder)
+QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
 {
   switch (aBody)
   {
@@ -201,12 +201,12 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody, const QStrin
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
       return "bhunp_2.13/bhunp_tbbp_advanced";
     default:
-      Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."), aIconRessourceFolder);
+      Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
       return "";
   }
 }
 
-QString Utils::getPresetNameFromXMLFile(const QString& aPath, const QString& aIconRessourceFolder)
+QString Utils::getPresetNameFromXMLFile(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -220,7 +220,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath, const QString& aIc
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."), aIconRessourceFolder);
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
     return "";
   }
 
@@ -237,7 +237,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath, const QString& aIc
   return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
 }
 
-std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath, const QString& aIconRessourceFolder)
+std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
 {
   std::vector<Struct::SliderSet> lPaths;
 
@@ -253,7 +253,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."), aIconRessourceFolder);
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
     return std::vector<Struct::SliderSet>();
   }
 
@@ -309,7 +309,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   return lPaths;
 }
 
-bool Utils::isPresetUsingBeastHands(const QString& aPath, const QString& aIconRessourceFolder)
+bool Utils::isPresetUsingBeastHands(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -323,7 +323,7 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath, const QString& aIconRe
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."), aIconRessourceFolder);
+    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
     return false;
   }
 

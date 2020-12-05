@@ -301,7 +301,7 @@ void BodySlideFiltersEditor::addNewSetEntry(const QString& aSetName)
 
   if (this->mFiltersList.count(aSetName) > 0)
   {
-    Utils::displayWarningMessage(tr("Error: there is already one set with the name \"%1\".").arg(aSetName), Utils::getIconRessourceFolder(mSettings.appTheme));
+    Utils::displayWarningMessage(tr("Error: there is already one set with the name \"%1\".").arg(aSetName));
     return;
   }
 

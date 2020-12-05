@@ -403,4 +403,8 @@
     <qresource prefix="/fonts">
         <file alias="Roboto">ressources/fonts/Roboto-Regular.ttf</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file alias="green-info-circle">ressources/software/icons/common/green-info-circle.png</file>
+        <file alias="red-alert-circle">ressources/software/icons/common/red-alert-circle.png</file>
+    </qresource>
 </RCC>

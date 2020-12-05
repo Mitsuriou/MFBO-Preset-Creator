@@ -301,16 +301,13 @@ void RetargetingTool::updateBackupPreview()
 
 void RetargetingTool::launchUpDownGradeProcess()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-
   auto lBodySelected{this->findChild<QComboBox*>("body_selector")->currentIndex()};
   auto lRootDir{this->findChild<QLineEdit*>("input_path_directory")->text()};
 
   // Check if the input path has been given by the user
   if (lRootDir.length() == 0)
   {
-    Utils::displayWarningMessage(tr("Error: no path path given for the retargeting."), lIconFolder);
+    Utils::displayWarningMessage(tr("Error: no path path given for the retargeting."));
     return;
   }
 
@@ -331,7 +328,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Check if the full extract path has been given by the user
     if (lFullBackupDirectory.length() == 0)
     {
-      Utils::displayWarningMessage(tr("Error: no path given to backup the files."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error: no path given to backup the files."));
       return;
     }
 
@@ -340,21 +337,21 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     if (lFullBackupDirectory.startsWith(lInputPath))
     {
-      Utils::displayWarningMessage(tr("Error: it is not possible to backup a directory inside itself. Choose another backup location."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error: it is not possible to backup a directory inside itself. Choose another backup location."));
       return;
     }
 
     // Check if the path could be valid
     if (lFullBackupDirectory.startsWith("/"))
     {
-      Utils::displayWarningMessage(tr("Error: the path given to backup the files seems to be invalid."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error: the path given to backup the files seems to be invalid."));
       return;
     }
 
     // Copy the directory and its content
     if (!Utils::copyRecursively(lRootDir, lFullBackupDirectory))
     {
-      Utils::displayWarningMessage(tr("Error: the backup could not be created. Please try again."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error: the backup could not be created. Please try again."));
       return;
     }
   }
@@ -382,7 +379,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lAbsFilePath{QString("")};
   auto lRelativeDirs{QString("")};
   std::vector<Struct::SliderSet> lParsedSliderSets;
-  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected), lIconFolder)};
+  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected))};
   if (lRessourcesFolder.length() == 0)
   {
     return;
@@ -398,7 +395,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by user."), lIconFolder);
+      Utils::displayWarningMessage(tr("Process aborted by user."));
       return;
     }
 
@@ -415,11 +412,11 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Build the names buffer
-    lNamesBuffer.push_back(QPair<QString, QString>(it.fileInfo().completeBaseName(), Utils::getPresetNameFromXMLFile(lAbsFilePath, lIconFolder)));
+    lNamesBuffer.push_back(QPair<QString, QString>(it.fileInfo().completeBaseName(), Utils::getPresetNameFromXMLFile(lAbsFilePath)));
 
     if (lNamesBuffer.at(lNamesBuffer.size() - 1).second == "")
     {
-      Utils::displayWarningMessage(tr("Error while parsing the XML file \"") + lAbsFilePath + tr("\". Aborting process."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error while parsing the XML file \"") + lAbsFilePath + tr("\". Aborting process."));
       return;
     }
 
@@ -444,7 +441,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by user."), lIconFolder);
+      Utils::displayWarningMessage(tr("Process aborted by user."));
       return;
     }
 
@@ -461,16 +458,16 @@ void RetargetingTool::launchUpDownGradeProcess()
       continue;
     }
 
-    auto lMustUseBeastHands{Utils::isPresetUsingBeastHands(lAbsFilePath, lIconFolder)};
+    auto lMustUseBeastHands{Utils::isPresetUsingBeastHands(lAbsFilePath)};
 
     // Check the file extension
     auto lFileName{it2.fileInfo().completeBaseName()};
 
-    lParsedSliderSets = Utils::getOutputPathsFromOSPFile(lAbsFilePath, lIconFolder);
+    lParsedSliderSets = Utils::getOutputPathsFromOSPFile(lAbsFilePath);
 
     if (lParsedSliderSets.size() == 0)
     {
-      Utils::displayWarningMessage(tr("Error while parsing the OSP file \"") + lAbsFilePath + tr("\". Aborting process."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error while parsing the OSP file \"") + lAbsFilePath + tr("\". Aborting process."));
       return;
     }
 
@@ -491,7 +488,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     if (lPresetName == "")
     {
-      Utils::displayWarningMessage(tr("No data found from the associated XML file. The file ") + it2.fileInfo().absoluteFilePath() + tr(" was not modified."), lIconFolder);
+      Utils::displayWarningMessage(tr("No data found from the associated XML file. The file ") + it2.fileInfo().absoluteFilePath() + tr(" was not modified."));
       continue;
     }
 
@@ -506,7 +503,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
         return;
       }
     }
@@ -514,7 +511,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
         return;
       }
     }
@@ -532,7 +529,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
       return;
     }
 
@@ -571,13 +568,13 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."), lIconFolder);
+        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
         return;
       }
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
       return;
     }
 
@@ -601,7 +598,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by user."), lIconFolder);
+      Utils::displayWarningMessage(tr("Process aborted by user."));
       return;
     }
 
@@ -617,7 +614,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       continue;
     }
 
-    auto lMustUseBeastHands{Utils::isPresetUsingBeastHands(lAbsFilePath, lIconFolder)};
+    auto lMustUseBeastHands{Utils::isPresetUsingBeastHands(lAbsFilePath)};
 
     // Check the file extension
     auto lFileName{it3.fileInfo().completeBaseName()};
@@ -628,7 +625,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (lFileName == lOSPBuffer.at(i).first)
       {
-        Utils::displayWarningMessage(tr("Since the associated OSP file has not been modified, the file ") + it3.fileInfo().absoluteFilePath() + tr(" has not been modified."), lIconFolder);
+        Utils::displayWarningMessage(tr("Since the associated OSP file has not been modified, the file ") + it3.fileInfo().absoluteFilePath() + tr(" has not been modified."));
         continue;
       }
     }
@@ -657,7 +654,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
         return;
       }
     }
@@ -665,7 +662,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."), lIconFolder);
+        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
         return;
       }
     }
@@ -683,7 +680,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
       return;
     }
 
@@ -703,13 +700,13 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."), lIconFolder);
+        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
         return;
       }
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."), lIconFolder);
+      Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
       return;
     }
 
@@ -738,7 +735,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   }
 
   QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Upgrade or downgarde successful"), lSuccessText, QMessageBox::StandardButton::NoButton, this);
-  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/info-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+  lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
 
   auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
   lOKButton->setCursor(Qt::PointingHandCursor);

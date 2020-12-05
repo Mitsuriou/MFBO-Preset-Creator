@@ -18,7 +18,7 @@ public:
   static QString cleanPathString(const QString& aPath);
   static QStringList splitString(QString aString, const QString& aSeparator);
   static QString getApplicationVersion();
-  static void displayWarningMessage(const QString& aMessage, const QString& aIconRessourceFolder);
+  static void displayWarningMessage(const QString& aMessage);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions);
@@ -26,12 +26,12 @@ public:
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconRessourceFolder(const GUITheme& aTheme);
-  static QString getBodyRessourceFolder(const BodyNameVersion& aBody, const QString& aIconRessourceFolder);
+  static QString getBodyRessourceFolder(const BodyNameVersion& aBody);
 
   // XML and OSP file parse
-  static QString getPresetNameFromXMLFile(const QString& aPath, const QString& aIconRessourceFolder);
-  static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(const QString& aPath, const QString& aIconRessourceFolder);
-  static bool isPresetUsingBeastHands(const QString& aPath, const QString& aIconRessourceFolder);
+  static QString getPresetNameFromXMLFile(const QString& aPath);
+  static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(const QString& aPath);
+  static bool isPresetUsingBeastHands(const QString& aPath);
 
   // Load and save
   static void saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath);
