@@ -385,6 +385,37 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
     }
   }
 
+  // Check if an option can be set before actually setting it.
+  // This will prevent the mouse scrolling bug that permits the user
+  // to select a hidden option from the combobox.
+  if (aIndex != 0)
+  {
+    auto lStep{1};
+    if (aIndex < this->mBoxSelectedIndexes.at(lComboBoxIndex))
+    {
+      // If the user took an option that is placed first
+      lStep = -1;
+    }
+
+    QListView* lSourceView{qobject_cast<QListView*>(lEventSource->view())};
+
+    auto lTestIndex{aIndex};
+    while (lSourceView->isRowHidden(lTestIndex) && lTestIndex <= lEventSource->count())
+    {
+      lTestIndex += lStep;
+    }
+
+    if (lTestIndex == lEventSource->count())
+    {
+      return;
+    }
+
+    this->disconnect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+    lEventSource->setCurrentIndex(lTestIndex);
+    aIndex = lTestIndex;
+    this->connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+  }
+
   // Keep the old index and store the new selected index
   auto lOldIndex{this->mBoxSelectedIndexes.at(lComboBoxIndex)};
   this->mBoxSelectedIndexes.at(lComboBoxIndex) = aIndex;
@@ -400,18 +431,18 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
       continue;
     }
 
-    QListView* view = qobject_cast<QListView*>(lComboBox->view());
+    QListView* lView{qobject_cast<QListView*>(lComboBox->view())};
 
     // Disable the new selected option
     if (aIndex != 0)
     {
-      view->setRowHidden(aIndex, true);
+      lView->setRowHidden(aIndex, true);
     }
 
     // Enable the old option
     QStandardItemModel* model = qobject_cast<QStandardItemModel*>(lComboBox->model());
     QStandardItem* item = model->item(lOldIndex);
-    view->setRowHidden(lOldIndex, false);
+    lView->setRowHidden(lOldIndex, false);
     item->setFlags(item->flags() | Qt::ItemIsEnabled);
   }
 }

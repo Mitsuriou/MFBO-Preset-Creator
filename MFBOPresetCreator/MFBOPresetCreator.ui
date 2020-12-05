@@ -14,21 +14,6 @@
    <string>Preset Creator</string>
   </property>
   <widget class="QWidget" name="mainContainer"/>
-  <action name="actionExit">
-   <property name="text">
-    <string>Switch theme</string>
-   </property>
-  </action>
-  <action name="actionSwitch_theme">
-   <property name="text">
-    <string>Exit</string>
-   </property>
-  </action>
-  <action name="actionExit_2">
-   <property name="text">
-    <string>Exit</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
