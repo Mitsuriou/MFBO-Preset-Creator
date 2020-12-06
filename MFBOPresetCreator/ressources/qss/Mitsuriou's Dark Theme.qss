@@ -116,7 +116,7 @@ QPushButton::disabled {
 /*LINE EDIT*/
 /*************/
 QLineEdit {
-  padding: 4px;
+  padding: 2px;
   border: 1px solid #282A3B;
   border-bottom: 1px solid qlineargradient(x1:0 y1:0, x2:1 y2:1, stop:0 #FF558D, stop:1 rgb(106,130,251));
   background-color: #282A3B;
@@ -264,10 +264,9 @@ QListWidget {
 }
 
 QListWidget::item {
-  padding: 0px;
+  padding: 4px;
   margin: 0px;
   border: 1px solid transparent;
-  min-height: 26px;
   background-color: #222433;
 }
 
@@ -288,7 +287,6 @@ QListWidget::item::focus::hover {
 QListWidget::item QWidget {
   padding: 0px;
   margin: 0px;
-  min-height: 14px;
 }
 
 /************/
