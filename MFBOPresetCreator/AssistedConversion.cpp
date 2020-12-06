@@ -435,12 +435,15 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
       lTestIndex += lStep;
     }
 
+    this->disconnect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+
     if (lTestIndex == lEventSource->count())
     {
+      lEventSource->setCurrentIndex(this->mBoxSelectedIndexes.at(lComboBoxIndex));
+      this->connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
       return;
     }
 
-    this->disconnect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
     lEventSource->setCurrentIndex(lTestIndex);
     aIndex = lTestIndex;
     this->connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
