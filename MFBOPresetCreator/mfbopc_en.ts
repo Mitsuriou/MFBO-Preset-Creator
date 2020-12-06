@@ -68,31 +68,43 @@
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="295"/>
+        <location filename="AssistedConversion.cpp" line="325"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="299"/>
+        <location filename="AssistedConversion.cpp" line="329"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="333"/>
+        <location filename="AssistedConversion.cpp" line="319"/>
+        <source>BSA file found</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="320"/>
+        <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="363"/>
         <source>File path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="334"/>
+        <location filename="AssistedConversion.cpp" line="364"/>
         <source>*.nif file name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="335"/>
+        <location filename="AssistedConversion.cpp" line="365"/>
         <source>Action</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="350"/>
+        <location filename="AssistedConversion.cpp" line="380"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation></translation>
     </message>
@@ -480,99 +492,99 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="554"/>
+        <location filename="PresetCreator.cpp" line="551"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="641"/>
-        <location filename="PresetCreator.cpp" line="649"/>
+        <location filename="PresetCreator.cpp" line="635"/>
+        <location filename="PresetCreator.cpp" line="643"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="732"/>
+        <location filename="PresetCreator.cpp" line="723"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="871"/>
+        <location filename="PresetCreator.cpp" line="862"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1159"/>
+        <location filename="PresetCreator.cpp" line="1150"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1166"/>
+        <location filename="PresetCreator.cpp" line="1157"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1177"/>
+        <location filename="PresetCreator.cpp" line="1168"/>
         <source>Error while creating the main directory: &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1177"/>
+        <location filename="PresetCreator.cpp" line="1168"/>
         <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1280"/>
+        <location filename="PresetCreator.cpp" line="1271"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1185"/>
+        <location filename="PresetCreator.cpp" line="1176"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1186"/>
+        <location filename="PresetCreator.cpp" line="1177"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1192"/>
+        <location filename="PresetCreator.cpp" line="1183"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1196"/>
+        <location filename="PresetCreator.cpp" line="1187"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1214"/>
+        <location filename="PresetCreator.cpp" line="1205"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1220"/>
+        <location filename="PresetCreator.cpp" line="1211"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1226"/>
+        <location filename="PresetCreator.cpp" line="1217"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1233"/>
+        <location filename="PresetCreator.cpp" line="1224"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1240"/>
+        <location filename="PresetCreator.cpp" line="1231"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="525"/>
-        <location filename="PresetCreator.cpp" line="631"/>
+        <location filename="PresetCreator.cpp" line="522"/>
+        <location filename="PresetCreator.cpp" line="625"/>
         <source>Error while creating the meshes directory: &quot;</source>
         <translation></translation>
     </message>
@@ -592,54 +604,54 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="525"/>
-        <location filename="PresetCreator.cpp" line="631"/>
+        <location filename="PresetCreator.cpp" line="522"/>
+        <location filename="PresetCreator.cpp" line="625"/>
         <source>&quot; already exists.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="570"/>
-        <location filename="PresetCreator.cpp" line="604"/>
-        <location filename="PresetCreator.cpp" line="666"/>
-        <location filename="PresetCreator.cpp" line="693"/>
+        <location filename="PresetCreator.cpp" line="567"/>
+        <location filename="PresetCreator.cpp" line="601"/>
+        <location filename="PresetCreator.cpp" line="660"/>
+        <location filename="PresetCreator.cpp" line="687"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="570"/>
-        <location filename="PresetCreator.cpp" line="604"/>
-        <location filename="PresetCreator.cpp" line="666"/>
-        <location filename="PresetCreator.cpp" line="693"/>
+        <location filename="PresetCreator.cpp" line="567"/>
+        <location filename="PresetCreator.cpp" line="601"/>
+        <location filename="PresetCreator.cpp" line="660"/>
+        <location filename="PresetCreator.cpp" line="687"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="610"/>
+        <location filename="PresetCreator.cpp" line="607"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="699"/>
+        <location filename="PresetCreator.cpp" line="693"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="727"/>
+        <location filename="PresetCreator.cpp" line="718"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="739"/>
+        <location filename="PresetCreator.cpp" line="730"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1280"/>
+        <location filename="PresetCreator.cpp" line="1271"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1283"/>
+        <location filename="PresetCreator.cpp" line="1274"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -708,71 +720,71 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="343"/>
+        <location filename="RetargetingTool.cpp" line="340"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="357"/>
+        <location filename="RetargetingTool.cpp" line="354"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="374"/>
+        <location filename="RetargetingTool.cpp" line="371"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="391"/>
+        <location filename="RetargetingTool.cpp" line="388"/>
         <source>Parsing XML files. Please wait.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="401"/>
-        <location filename="RetargetingTool.cpp" line="447"/>
-        <location filename="RetargetingTool.cpp" line="604"/>
+        <location filename="RetargetingTool.cpp" line="398"/>
+        <location filename="RetargetingTool.cpp" line="444"/>
+        <location filename="RetargetingTool.cpp" line="601"/>
         <source>Process aborted by user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="743"/>
+        <location filename="RetargetingTool.cpp" line="740"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="422"/>
+        <location filename="RetargetingTool.cpp" line="419"/>
         <source>Error while parsing the XML file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="660"/>
-        <location filename="RetargetingTool.cpp" line="668"/>
+        <location filename="RetargetingTool.cpp" line="657"/>
+        <location filename="RetargetingTool.cpp" line="665"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="535"/>
-        <location filename="RetargetingTool.cpp" line="574"/>
-        <location filename="RetargetingTool.cpp" line="686"/>
-        <location filename="RetargetingTool.cpp" line="706"/>
+        <location filename="RetargetingTool.cpp" line="532"/>
+        <location filename="RetargetingTool.cpp" line="571"/>
+        <location filename="RetargetingTool.cpp" line="683"/>
+        <location filename="RetargetingTool.cpp" line="703"/>
         <source>Error while trying to open the file &quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="535"/>
-        <location filename="RetargetingTool.cpp" line="574"/>
-        <location filename="RetargetingTool.cpp" line="686"/>
-        <location filename="RetargetingTool.cpp" line="706"/>
+        <location filename="RetargetingTool.cpp" line="532"/>
+        <location filename="RetargetingTool.cpp" line="571"/>
+        <location filename="RetargetingTool.cpp" line="683"/>
+        <location filename="RetargetingTool.cpp" line="703"/>
         <source>&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="712"/>
+        <location filename="RetargetingTool.cpp" line="709"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="473"/>
+        <location filename="RetargetingTool.cpp" line="470"/>
         <source>Error while parsing the OSP file &quot;</source>
         <translation></translation>
     </message>
@@ -782,74 +794,74 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="422"/>
-        <location filename="RetargetingTool.cpp" line="473"/>
+        <location filename="RetargetingTool.cpp" line="419"/>
+        <location filename="RetargetingTool.cpp" line="470"/>
         <source>&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="431"/>
+        <location filename="RetargetingTool.cpp" line="428"/>
         <source>Parsing and patching OSP files. Please wait.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="494"/>
+        <location filename="RetargetingTool.cpp" line="491"/>
         <source>No data found from the associated XML file. The file </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="494"/>
+        <location filename="RetargetingTool.cpp" line="491"/>
         <source> was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="509"/>
-        <location filename="RetargetingTool.cpp" line="517"/>
+        <location filename="RetargetingTool.cpp" line="506"/>
+        <location filename="RetargetingTool.cpp" line="514"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="580"/>
+        <location filename="RetargetingTool.cpp" line="577"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="594"/>
+        <location filename="RetargetingTool.cpp" line="591"/>
         <source>Patching XML files. Please wait.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="631"/>
+        <location filename="RetargetingTool.cpp" line="628"/>
         <source>Since the associated OSP file has not been modified, the file </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="631"/>
+        <location filename="RetargetingTool.cpp" line="628"/>
         <source> has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="727"/>
+        <location filename="RetargetingTool.cpp" line="724"/>
         <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="730"/>
+        <location filename="RetargetingTool.cpp" line="727"/>
         <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="733"/>
+        <location filename="RetargetingTool.cpp" line="730"/>
         <source>All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="736"/>
+        <location filename="RetargetingTool.cpp" line="733"/>
         <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="740"/>
+        <location filename="RetargetingTool.cpp" line="737"/>
         <source>Upgrade or downgarde successful</source>
         <translation></translation>
     </message>
@@ -864,17 +876,17 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="313"/>
+        <location filename="RetargetingTool.cpp" line="310"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="334"/>
+        <location filename="RetargetingTool.cpp" line="331"/>
         <source>Error: no path given to backup the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="350"/>
+        <location filename="RetargetingTool.cpp" line="347"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation></translation>
     </message>

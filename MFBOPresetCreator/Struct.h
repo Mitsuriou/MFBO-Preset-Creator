@@ -53,14 +53,14 @@ namespace Struct
   struct Settings
   {
   public:
-    GUITheme appTheme{GUITheme::WindowsVista};
+    GUITheme appTheme{GUITheme::MitsuriouDarkTheme};
     BodyNameVersion defaultMainWindowBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
     Struct::Font font;
     ApplicationLanguage language{LangManager::getSystemLanguage()};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
     BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
-    int mainWindowHeight{600};
-    int mainWindowWidth{900};
+    int mainWindowHeight{620};
+    int mainWindowWidth{1000};
     QString mainWindowOutputPath{""};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
     bool checkForUpdatesAtStartup{true};

@@ -309,6 +309,36 @@ void AssistedConversion::launchSearchProcess()
     }
   }
 
+  // Warn the user if the scan found a BSA file
+  auto lBSAExtension{QStringList("*.bsa")};
+
+  auto lIsBSAPresent{Utils::getNumberFilesByExtensions(lInputPath, lBSAExtension) > 0};
+  if (lIsBSAPresent)
+  {
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question,
+                                 tr("BSA file found"),
+                                 tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
+                                 QMessageBox::StandardButton::NoButton,
+                                 this);
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+
+    auto lContinueButton{lConfirmationBox.addButton(tr("Continue the scan"), QMessageBox::ButtonRole::YesRole)};
+    lContinueButton->setCursor(Qt::PointingHandCursor);
+    lContinueButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+
+    auto lStopButton{lConfirmationBox.addButton(tr("Cancel the scan"), QMessageBox::ButtonRole::NoRole)};
+    lStopButton->setCursor(Qt::PointingHandCursor);
+    lStopButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+
+    lConfirmationBox.setDefaultButton(lContinueButton);
+    lConfirmationBox.exec();
+
+    if (lConfirmationBox.clickedButton() != lContinueButton)
+    {
+      return;
+    }
+  }
+
   // Delete already existing the hint label or the layout and the validation button
   this->deleteAlreadyExistingWindowBottom();
 
