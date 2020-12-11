@@ -402,8 +402,6 @@ void MFBOPresetCreator::checkForUpdate()
 
 void MFBOPresetCreator::pageFetched(const QString& aResult)
 {
-  this->initializeGUI();
-
   // Display a message based on new available versions
   auto lTitle{QString("")};
   auto lMessage{QString("")};
@@ -421,15 +419,17 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     auto lTagName = obj["tag_name"].toString();
     auto lCurrentVersion{Utils::getApplicationVersion()};
 
-#ifndef DEBUG
+    //#ifndef DEBUG
     if (lCurrentVersion != lTagName)
     {
       this->mNewVersionAvailable = true;
       lTitle = tr("Application update available");
       lMessage = tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.").arg(lCurrentVersion).arg(lTagName);
     }
-#endif
+    //#endif
   }
+
+  this->initializeGUI();
 
   if (aResult == "fetch_error" || this->mNewVersionAvailable)
   {

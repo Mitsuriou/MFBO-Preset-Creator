@@ -13,6 +13,7 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
+  void reject() override;
 
 private:
   Struct::Settings mSettings;
@@ -25,6 +26,7 @@ private:
   void setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRowIndex);
+  void setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupButtons(QGridLayout& aLayout, const int& aNextRowIndex);
 

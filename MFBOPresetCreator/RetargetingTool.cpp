@@ -42,6 +42,11 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   }
 }
 
+void RetargetingTool::reject()
+{
+  this->close();
+}
+
 void RetargetingTool::setWindowProperties()
 {
   this->setModal(true);

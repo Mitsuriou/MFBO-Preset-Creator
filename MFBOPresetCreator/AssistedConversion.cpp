@@ -52,6 +52,11 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   }
 }
 
+void AssistedConversion::reject()
+{
+  this->close();
+}
+
 void AssistedConversion::setWindowProperties()
 {
   this->setModal(true);
@@ -155,18 +160,24 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   // The map is storing <path+fileName, <path, fileName>>
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
 
-  auto lAbsFilePath{QString("")};
-  auto lRelativeDirPath{QString("")};
-  auto lFileName{QString("")};
+  auto lRelativeDirPath{QString()};
+  auto lFileName{QString()};
+  auto lKey{std::string()};
+  auto lFirstValue{QString()};
 
-  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  auto lRootDir{aRootDir};
+  if (this->mSettings.assistedConversionScanOnlyMeshesSubdir)
+  {
+    lRootDir.append("/meshes");
+  }
+
+  QDirIterator it(lRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     it.next();
 
     // Get the current directory
-    lAbsFilePath = it.fileInfo().absolutePath();
-    lRelativeDirPath = lAbsFilePath.remove(aRootDir + "/", Qt::CaseInsensitive);
+    lRelativeDirPath = it.fileInfo().absolutePath().remove(aRootDir + "/", Qt::CaseInsensitive);
 
     lFileName = it.fileInfo().fileName();
 
@@ -175,8 +186,25 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
     lFileName.remove("_1.nif", Qt::CaseInsensitive);
     lFileName.remove(".nif", Qt::CaseInsensitive);
 
-    auto lKey{lRelativeDirPath.toStdString() + lFileName.toStdString()};
-    auto lValue{std::make_pair(lRelativeDirPath, lFileName)};
+    // Construct the key of the map
+    lKey = lRelativeDirPath.toStdString();
+    if (this->mSettings.assistedConversionScanOnlyMeshesSubdir)
+    {
+      lKey.append("/meshes");
+    }
+    lKey.append("/");
+    lKey.append(lFileName.toStdString());
+
+    // Construct the value of the map
+    lFirstValue = lRelativeDirPath;
+    if (this->mSettings.assistedConversionScanOnlyMeshesSubdir)
+    {
+      lKey.append("/meshes");
+    }
+
+    auto lValue{std::make_pair(lFirstValue, lFileName)};
+
+    // Insert the key-value into the map
     lScannedValues.insert(std::make_pair(lKey, lValue));
   }
 

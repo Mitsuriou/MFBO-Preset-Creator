@@ -15,6 +15,7 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
+  void reject() override;
 
 private:
   const Struct::Settings mSettings;

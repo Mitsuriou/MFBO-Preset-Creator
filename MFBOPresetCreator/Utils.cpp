@@ -32,7 +32,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.0.5";
+  return "2.0.6";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -484,6 +484,12 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.checkForUpdatesAtStartup = lSettingsJSON["checkForUpdatesAtStartup"].toBool();
   }
 
+  // Assisted Conversion: only scan the meshes subdir
+  if (lSettingsJSON.contains("assistedConversionScanOnlyMeshesSubdir") && lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].isBool())
+  {
+    lSettings.assistedConversionScanOnlyMeshesSubdir = lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].toBool();
+  }
+
   return lSettings;
 }
 
@@ -518,6 +524,7 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lObj["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
   lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
   lObj["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
+  lObj["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
 
   return lObj;
 }

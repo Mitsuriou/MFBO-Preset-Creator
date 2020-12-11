@@ -56,6 +56,11 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
+void Settings::reject()
+{
+  this->close();
+}
+
 void Settings::setWindowProperties()
 {
   this->setModal(true);
@@ -84,6 +89,7 @@ void Settings::initializeGUI()
   this->setupDisplayGroup(*lMainLayout, lIndex);
   this->setupGeneralGroup(*lMainLayout, lIndex);
   this->setupPresetCreatorGroup(*lMainLayout, lIndex);
+  this->setupAssistedConversionGroup(*lMainLayout, lIndex);
   this->setupRetargetingToolGroup(*lMainLayout, lIndex);
   this->setupButtons(*lMainLayout, lIndex);
 
@@ -95,7 +101,7 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   // Display group box
   auto lDisplayGroupBox{new QGroupBox(tr("Display"), this)};
-  aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 3, 1);
+  aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 4, 1);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
@@ -245,11 +251,30 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
 }
 
+void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex)
+{
+  // Assisted Conversion group box
+  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion"), this)};
+  aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 2, 1);
+
+  // Container layout
+  auto lAssistedConversionLayout{new QVBoxLayout(lAssistedConversionGroupBox)};
+  lAssistedConversionLayout->setSpacing(10);
+  lAssistedConversionLayout->setContentsMargins(15, 20, 15, 15);
+  lAssistedConversionLayout->setAlignment(Qt::AlignTop);
+
+  // ONLY SCAN THE MESHES SUBDIRECTORY
+  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory."), this)};
+  lScanOnlyMeshesFolder->setCursor(Qt::PointingHandCursor);
+  lScanOnlyMeshesFolder->setObjectName(QString("assis_conv_only_scan_meshes_dir"));
+  lAssistedConversionLayout->addWidget(lScanOnlyMeshesFolder);
+}
+
 void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   // Retargeting Tool group box
   auto lRetToolGroupBox{new QGroupBox(tr("Retargeting Tool"), this)};
-  aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1);
+  aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 3, 1);
 
   auto lRetargetingToolLayout{new QVBoxLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
@@ -281,7 +306,7 @@ void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
-  aLayout.addLayout(lButtonsContainer, aNextRowIndex + 3, 0, 1, 2);
+  aLayout.addLayout(lButtonsContainer, aNextRowIndex + 4, 0, 1, 2);
 
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
@@ -352,6 +377,9 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 
   auto lCheckUpdateStartup{this->findChild<QCheckBox*>("check_update_startup")};
   lCheckUpdateStartup->setChecked(aSettingsToLoad.checkForUpdatesAtStartup);
+
+  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")};
+  lAssisConvScanOnlyMeshesDir->setChecked(aSettingsToLoad.assistedConversionScanOnlyMeshesSubdir);
 }
 
 Struct::Settings Settings::getSettingsFromGUI()
@@ -366,6 +394,7 @@ Struct::Settings Settings::getSettingsFromGUI()
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};
   auto lCheckUpdateStartup{this->findChild<QCheckBox*>("check_update_startup")->isChecked()};
+  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")->isChecked()};
 
   Struct::Settings lSettings;
 
@@ -428,6 +457,9 @@ Struct::Settings Settings::getSettingsFromGUI()
 
   // Check for updates at startup
   lSettings.checkForUpdatesAtStartup = lCheckUpdateStartup;
+
+  // Assisted Conversion: only scan the meshes subdir
+  lSettings.assistedConversionScanOnlyMeshesSubdir = lAssisConvScanOnlyMeshesDir;
 
   return lSettings;
 }

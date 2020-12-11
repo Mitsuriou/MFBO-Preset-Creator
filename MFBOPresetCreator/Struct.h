@@ -64,6 +64,7 @@ namespace Struct
     QString mainWindowOutputPath{""};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
     bool checkForUpdatesAtStartup{true};
+    bool assistedConversionScanOnlyMeshesSubdir{false};
 
     bool operator==(const Struct::Settings& aSettings)
     {
@@ -77,7 +78,9 @@ namespace Struct
         && this->mainWindowHeight == aSettings.mainWindowHeight
         && this->mainWindowWidth == aSettings.mainWindowWidth
         && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
-        && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory);
+        && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
+        && this->checkForUpdatesAtStartup == aSettings.checkForUpdatesAtStartup
+        && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir);
     };
 
     bool operator!=(const Struct::Settings& aSettings)
@@ -92,7 +95,9 @@ namespace Struct
         || this->mainWindowHeight != aSettings.mainWindowHeight
         || this->mainWindowWidth != aSettings.mainWindowWidth
         || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
-        || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory);
+        || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
+        || this->checkForUpdatesAtStartup != aSettings.checkForUpdatesAtStartup
+        || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir);
     };
   };
 
