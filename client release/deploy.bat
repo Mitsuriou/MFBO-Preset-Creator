@@ -1,0 +1,1 @@
+windeployqt .\MFBOPresetCreator.exe --release
