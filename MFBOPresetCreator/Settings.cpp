@@ -264,7 +264,7 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNe
   lAssistedConversionLayout->setAlignment(Qt::AlignTop);
 
   // ONLY SCAN THE MESHES SUBDIRECTORY
-  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory."), this)};
+  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory"), this)};
   lScanOnlyMeshesFolder->setCursor(Qt::PointingHandCursor);
   lScanOnlyMeshesFolder->setObjectName(QString("assis_conv_only_scan_meshes_dir"));
   lAssistedConversionLayout->addWidget(lScanOnlyMeshesFolder);

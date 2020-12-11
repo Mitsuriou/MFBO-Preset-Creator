@@ -32,79 +32,79 @@
         <translation>Revenir sur la fenêtre de l&apos;outil de conversion assistée</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="61"/>
+        <location filename="AssistedConversion.cpp" line="66"/>
         <source>Assisted Conversion</source>
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="80"/>
+        <location filename="AssistedConversion.cpp" line="85"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="92"/>
+        <location filename="AssistedConversion.cpp" line="97"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="100"/>
+        <location filename="AssistedConversion.cpp" line="105"/>
         <source>Launch the scan of the mod</source>
         <translation>Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="122"/>
+        <location filename="AssistedConversion.cpp" line="127"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="289"/>
+        <location filename="AssistedConversion.cpp" line="317"/>
         <source>No root file has been found</source>
         <translation>Aucun fichier racine n&apos;a été trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="290"/>
+        <location filename="AssistedConversion.cpp" line="318"/>
         <source>No ESL, ESM or ESP file has been found in the scanned directory. Do you still want to continue the scan?</source>
         <translation>Aucun fichier ESL, ESM ou ESP n&apos;a été trouvé dans le répertoire scanné. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="295"/>
-        <location filename="AssistedConversion.cpp" line="325"/>
+        <location filename="AssistedConversion.cpp" line="323"/>
+        <location filename="AssistedConversion.cpp" line="353"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="299"/>
-        <location filename="AssistedConversion.cpp" line="329"/>
+        <location filename="AssistedConversion.cpp" line="327"/>
+        <location filename="AssistedConversion.cpp" line="357"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="319"/>
+        <location filename="AssistedConversion.cpp" line="347"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="320"/>
+        <location filename="AssistedConversion.cpp" line="348"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="363"/>
+        <location filename="AssistedConversion.cpp" line="391"/>
         <source>File path</source>
         <translation>Emplacement du fichier</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="364"/>
+        <location filename="AssistedConversion.cpp" line="392"/>
         <source>*.nif file name</source>
         <translation>Nom du fichier *.nif</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="393"/>
         <source>Action</source>
         <translation>Action</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="380"/>
+        <location filename="AssistedConversion.cpp" line="408"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>Valider la (les) sélection(s) ci-dessus et revenir sur la fenêtre principale</translation>
     </message>
@@ -329,17 +329,17 @@
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="414"/>
+        <location filename="MFBOPresetCreator.cpp" line="412"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="428"/>
+        <location filename="MFBOPresetCreator.cpp" line="426"/>
         <source>Application update available</source>
         <translation>Mise à jour de l&apos;application disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="429"/>
+        <location filename="MFBOPresetCreator.cpp" line="427"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
@@ -704,214 +704,214 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Revenir sur la fenêtre de l&apos;outil de re-ciblage</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="67"/>
+        <location filename="RetargetingTool.cpp" line="72"/>
         <source>Targeted CBBE 3BBB 3BA version:</source>
         <translation>Version de CBBE 3BBB 3BA ciblée :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="84"/>
+        <location filename="RetargetingTool.cpp" line="89"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="93"/>
-        <location filename="RetargetingTool.cpp" line="120"/>
+        <location filename="RetargetingTool.cpp" line="98"/>
+        <location filename="RetargetingTool.cpp" line="125"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="101"/>
+        <location filename="RetargetingTool.cpp" line="106"/>
         <source>Keep a backup?</source>
         <translation>Garder un backup ?</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="104"/>
+        <location filename="RetargetingTool.cpp" line="109"/>
         <source>You should always check this box to avoid any data loss or corruption.</source>
         <translation>Vous devriez toujours avoir cette case cochée pour éviter de perdre ou de corrompre des données.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="110"/>
+        <location filename="RetargetingTool.cpp" line="115"/>
         <source>Backup directory path:</source>
         <translation>Emplacement du répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="129"/>
+        <location filename="RetargetingTool.cpp" line="134"/>
         <source>Backup subdirectory name/path:</source>
-        <translation>Nom/emplacement du répertoire du backup :</translation>
+        <translation>Nom/emplacement du sous-répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="138"/>
+        <location filename="RetargetingTool.cpp" line="143"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="340"/>
+        <location filename="RetargetingTool.cpp" line="345"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation>Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="354"/>
+        <location filename="RetargetingTool.cpp" line="359"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation>Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="371"/>
+        <location filename="RetargetingTool.cpp" line="376"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="388"/>
+        <location filename="RetargetingTool.cpp" line="393"/>
         <source>Parsing XML files. Please wait.</source>
         <translation>Analyse des fichiers XML. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="398"/>
-        <location filename="RetargetingTool.cpp" line="444"/>
-        <location filename="RetargetingTool.cpp" line="601"/>
+        <location filename="RetargetingTool.cpp" line="403"/>
+        <location filename="RetargetingTool.cpp" line="449"/>
+        <location filename="RetargetingTool.cpp" line="606"/>
         <source>Process aborted by user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="740"/>
+        <location filename="RetargetingTool.cpp" line="745"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="419"/>
+        <location filename="RetargetingTool.cpp" line="424"/>
         <source>Error while parsing the XML file &quot;</source>
         <translation>Erreur lors de l&apos;analyse du fichier XML &quot;</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="657"/>
-        <location filename="RetargetingTool.cpp" line="665"/>
+        <location filename="RetargetingTool.cpp" line="662"/>
+        <location filename="RetargetingTool.cpp" line="670"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="532"/>
-        <location filename="RetargetingTool.cpp" line="571"/>
-        <location filename="RetargetingTool.cpp" line="683"/>
-        <location filename="RetargetingTool.cpp" line="703"/>
+        <location filename="RetargetingTool.cpp" line="537"/>
+        <location filename="RetargetingTool.cpp" line="576"/>
+        <location filename="RetargetingTool.cpp" line="688"/>
+        <location filename="RetargetingTool.cpp" line="708"/>
         <source>Error while trying to open the file &quot;</source>
         <translation>Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="532"/>
-        <location filename="RetargetingTool.cpp" line="571"/>
-        <location filename="RetargetingTool.cpp" line="683"/>
-        <location filename="RetargetingTool.cpp" line="703"/>
+        <location filename="RetargetingTool.cpp" line="537"/>
+        <location filename="RetargetingTool.cpp" line="576"/>
+        <location filename="RetargetingTool.cpp" line="688"/>
+        <location filename="RetargetingTool.cpp" line="708"/>
         <source>&quot;.</source>
         <translation>&quot;.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="709"/>
+        <location filename="RetargetingTool.cpp" line="714"/>
         <source>Error while trying to parse the XML BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="470"/>
+        <location filename="RetargetingTool.cpp" line="475"/>
         <source>Error while parsing the OSP file &quot;</source>
         <translation>Erreur lors de l&apos;analyse du fichier OSP &quot;</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="50"/>
+        <location filename="RetargetingTool.cpp" line="55"/>
         <source>BodySlide Presets&apos; Version Retargeting: CBBE 3BBB 3BA</source>
         <translation>Re-ciblage de Version de Presets BodySlide : CBBE 3BBB 3BA</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="419"/>
-        <location filename="RetargetingTool.cpp" line="470"/>
+        <location filename="RetargetingTool.cpp" line="424"/>
+        <location filename="RetargetingTool.cpp" line="475"/>
         <source>&quot;. Aborting process.</source>
         <translation>&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="428"/>
+        <location filename="RetargetingTool.cpp" line="433"/>
         <source>Parsing and patching OSP files. Please wait.</source>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="491"/>
+        <location filename="RetargetingTool.cpp" line="496"/>
         <source>No data found from the associated XML file. The file </source>
         <translation>Aucune donnée trouvée dans le fichier XML associé. Le fichier </translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="491"/>
+        <location filename="RetargetingTool.cpp" line="496"/>
         <source> was not modified.</source>
         <translation> n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="506"/>
-        <location filename="RetargetingTool.cpp" line="514"/>
+        <location filename="RetargetingTool.cpp" line="511"/>
+        <location filename="RetargetingTool.cpp" line="519"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="577"/>
+        <location filename="RetargetingTool.cpp" line="582"/>
         <source>Error while trying to parse the OSP BodySlide file.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="591"/>
+        <location filename="RetargetingTool.cpp" line="596"/>
         <source>Patching XML files. Please wait.</source>
         <translation>Patch des fichiers XML. Veuillez patienter.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="628"/>
+        <location filename="RetargetingTool.cpp" line="633"/>
         <source>Since the associated OSP file has not been modified, the file </source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier </translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="628"/>
+        <location filename="RetargetingTool.cpp" line="633"/>
         <source> has not been modified.</source>
         <translation> n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="724"/>
+        <location filename="RetargetingTool.cpp" line="729"/>
         <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.40 et plus bas de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="727"/>
+        <location filename="RetargetingTool.cpp" line="732"/>
         <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.50 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="730"/>
+        <location filename="RetargetingTool.cpp" line="735"/>
         <source>All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="733"/>
+        <location filename="RetargetingTool.cpp" line="738"/>
         <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
         <translation>Tous les fichiers ont été correctement re-ciblés pour la version sélectionnée de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="737"/>
+        <location filename="RetargetingTool.cpp" line="742"/>
         <source>Upgrade or downgarde successful</source>
         <translation>Re-ciblage réussi</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="149"/>
+        <location filename="RetargetingTool.cpp" line="154"/>
         <source>Retarget all the files under the input path</source>
         <translation>Re-cibler tous les fichiers sous l&apos;emplacement d&apos;entrée</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="270"/>
+        <location filename="RetargetingTool.cpp" line="275"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="310"/>
+        <location filename="RetargetingTool.cpp" line="315"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation>Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="331"/>
+        <location filename="RetargetingTool.cpp" line="336"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="347"/>
+        <location filename="RetargetingTool.cpp" line="352"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
@@ -924,52 +924,52 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="64"/>
+        <location filename="Settings.cpp" line="69"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="97"/>
+        <location filename="Settings.cpp" line="103"/>
         <source>Display</source>
         <translation>Affichage</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="107"/>
+        <location filename="Settings.cpp" line="113"/>
         <source>Language:</source>
         <translation>Langage :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="118"/>
+        <location filename="Settings.cpp" line="124"/>
         <source>Font:</source>
         <translation>Police de caractères :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="121"/>
+        <location filename="Settings.cpp" line="127"/>
         <source>Choose a font</source>
         <translation>Choisir une police de caractères</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="146"/>
+        <location filename="Settings.cpp" line="152"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="147"/>
+        <location filename="Settings.cpp" line="153"/>
         <source>Français</source>
         <translation>Français</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="209"/>
+        <location filename="Settings.cpp" line="215"/>
         <source>Default selected body:</source>
         <translation>Corps sélectionné par défaut :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="302"/>
+        <location filename="Settings.cpp" line="327"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="131"/>
+        <location filename="Settings.cpp" line="137"/>
         <source>Application Theme:</source>
         <translation>Thème de l&apos;application :</translation>
     </message>
@@ -989,92 +989,103 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Revenir sur la fenêtre de paramètres</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="79"/>
+        <location filename="Settings.cpp" line="84"/>
         <source>Warning: A restart of the application is pending. You should not modify any value marked with the &quot;*&quot; character until you restart the application.</source>
         <translation>Attention : Un redémarrage de l&apos;application est en attente. Vous ne devriez modifier aucune valeur marquée du caractère &quot;*&quot; tant que vous n&apos;avez pas redémarré l&apos;application.</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="181"/>
+        <location filename="Settings.cpp" line="187"/>
         <source>General</source>
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="191"/>
+        <location filename="Settings.cpp" line="197"/>
         <source>Check for updates at application startup</source>
         <translation>Vérifier les mises à jour au démarrage de l&apos;application</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="200"/>
+        <location filename="Settings.cpp" line="206"/>
         <source>Preset Creator</source>
         <translation>Créateur de preset</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="220"/>
+        <location filename="Settings.cpp" line="226"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="230"/>
+        <location filename="Settings.cpp" line="236"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="239"/>
+        <location filename="Settings.cpp" line="245"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation>Ouvrir automatiquement le dossier d&apos;export du preset après une génération</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="251"/>
+        <location filename="Settings.cpp" line="257"/>
+        <source>Assisted Conversion</source>
+        <translation>Conversion assistée</translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="267"/>
+        <source>Only scan the &quot;meshes&quot; subdirectory</source>
+        <oldsource>Only scan the &quot;meshes&quot; subdirectory.</oldsource>
+        <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="276"/>
         <source>Retargeting Tool</source>
         <translation>Outil de Re-ciblage de Version</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="260"/>
+        <location filename="Settings.cpp" line="285"/>
         <source>[CBBE 3BBB 3BA] Default selected body:</source>
         <translation>[CBBE 3BBB 3BA] Corps sélectionné par défaut :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="287"/>
+        <location filename="Settings.cpp" line="312"/>
         <source>Restore default</source>
         <translation>Restaurer par défaut</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="294"/>
+        <location filename="Settings.cpp" line="319"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="488"/>
+        <location filename="Settings.cpp" line="520"/>
         <source>Restart now</source>
         <translation>Redémarrer maintenant</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="492"/>
+        <location filename="Settings.cpp" line="524"/>
         <source>Go back to the application and restart later</source>
         <translation>Revenir sur l&apos;application et redémarrer plus tard</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="485"/>
+        <location filename="Settings.cpp" line="517"/>
         <source>Application settings changed</source>
         <translation>Paramètres de l&apos;application modifiés</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="485"/>
+        <location filename="Settings.cpp" line="517"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation>Tous les paramètres ont été sauvegardé. Vous avez changé un paramètre qui nécessite un redémarrage de l&apos;application pour être appliqué. Voulez-vous redémarrer l&apos;application maintenant ?</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="142"/>
+        <location filename="Settings.cpp" line="148"/>
         <source>Window opening mode:</source>
         <translation>Mode d&apos;ouverture de la fenêtre :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="157"/>
+        <location filename="Settings.cpp" line="163"/>
         <source>Default main window width:</source>
         <translation>Largeur par défaut de la fenêtre principale :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="166"/>
+        <location filename="Settings.cpp" line="172"/>
         <source>Default main window height:</source>
         <translation>Hauteur par défaut de la fenêtre principale :</translation>
     </message>
