@@ -4,13 +4,35 @@ bool Utils::RESTART_PENDING = false;
 
 void Utils::cleanPathString(QString& aPath)
 {
+  // Replace backslashes
   aPath.replace("\\", "/");
+
+  // Remove any '\n' character
+  Utils::cleanBreaksString(aPath);
 }
 
 QString Utils::cleanPathString(const QString& aPath)
 {
+  // Replace backslashes
   QString lPath(aPath);
   lPath.replace("\\", "/");
+
+  // Remove any '\n' character
+  const QString lCleanedPath(lPath);
+  lPath = Utils::cleanBreaksString(lCleanedPath);
+
+  return lPath;
+}
+
+void Utils::cleanBreaksString(QString& aPath)
+{
+  aPath.replace("\n", "");
+}
+
+QString Utils::cleanBreaksString(const QString& aPath)
+{
+  QString lPath(aPath);
+  lPath.replace("\n", "");
   return lPath;
 }
 
@@ -118,7 +140,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
   }
   if (!lDestinationDirectory.exists())
   {
-    lDestinationDirectory.mkdir(aDestinationPath);
+    lDestinationDirectory.mkpath(aDestinationPath);
   }
 
   QStringList lFilesList{lSourceDirectory.entryList(QDir::Files)};
