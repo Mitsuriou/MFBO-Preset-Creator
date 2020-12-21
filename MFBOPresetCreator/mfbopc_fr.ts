@@ -193,10 +193,6 @@
         <translation>Supprimer tous</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation type="vanished">Effacer</translation>
-    </message>
-    <message>
         <location filename="BodySlideFiltersEditor.cpp" line="202"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
@@ -303,14 +299,6 @@
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <source>BodySlide Presets&apos; Version Retargeting</source>
-        <translation type="vanished">Outil de Re-ciblage de Version de Presets BodySlide</translation>
-    </message>
-    <message>
-        <source>CBBE 3BBB 3BA</source>
-        <translation type="vanished">CBBE 3BBB 3BA</translation>
-    </message>
-    <message>
         <location filename="MFBOPresetCreator.cpp" line="108"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Re-ciblage de Presets BodySlide</translation>
@@ -374,14 +362,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="MFBOPresetCreator.ui" line="14"/>
         <source>Preset Creator</source>
         <translation>Créateur de preset</translation>
-    </message>
-    <message>
-        <source>Switch theme</source>
-        <translation type="vanished">Changer de thème</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation type="vanished">Quitter</translation>
     </message>
 </context>
 <context>
@@ -505,7 +485,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="PresetCreator.cpp" line="578"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
-        <oldsource>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</oldsource>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
     </message>
     <message>
@@ -517,7 +496,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="662"/>
         <location filename="PresetCreator.cpp" line="670"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
-        <oldsource>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</oldsource>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
     </message>
     <message>
@@ -551,13 +529,8 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <source>Error while creating the main directory: &quot;</source>
-        <translation type="vanished">Erreur pendant la création du répertoire principal : &quot;</translation>
-    </message>
-    <message>
         <location filename="PresetCreator.cpp" line="1203"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
-        <oldsource>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</oldsource>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
@@ -594,7 +567,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="549"/>
         <location filename="PresetCreator.cpp" line="652"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
-        <oldsource>Error while creating the meshes directory: &quot;</oldsource>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
     <message>
@@ -608,47 +580,24 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <source>&quot; already exists.</source>
-        <translation type="vanished">&quot; existe déjà.</translation>
-    </message>
-    <message>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation type="vanished">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
-    </message>
-    <message>
         <location filename="PresetCreator.cpp" line="594"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to open the file &quot;</oldsource>
         <translation>Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>&quot;.</source>
-        <translation type="vanished">&quot;.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="634"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to parse the XML BodySlide file.</oldsource>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation type="vanished">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="720"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to parse the OSP BodySlide file.</oldsource>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="744"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
-    </message>
-    <message>
-        <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation type="vanished">Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1309"/>
@@ -674,10 +623,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="PresetCreator.cpp" line="444"/>
         <source>Files generation&apos;s output location</source>
         <translation>Emplacement de sortie de la génération de fichiers</translation>
-    </message>
-    <message>
-        <source>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation type="vanished">&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1211"/>
@@ -726,10 +671,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="RetargetingTool.cpp" line="28"/>
         <source>Go back to the retargeting tool window</source>
         <translation>Revenir sur la fenêtre de l&apos;outil de re-ciblage</translation>
-    </message>
-    <message>
-        <source>Targeted CBBE 3BBB 3BA version:</source>
-        <translation type="vanished">Version de CBBE 3BBB 3BA ciblée :</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="95"/>
@@ -805,7 +746,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="447"/>
         <source>Parsing XML files. Please wait...</source>
-        <oldsource>Parsing XML files. Please wait.</oldsource>
         <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
@@ -813,7 +753,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="RetargetingTool.cpp" line="502"/>
         <location filename="RetargetingTool.cpp" line="670"/>
         <source>Process aborted by the user.</source>
-        <oldsource>Process aborted by user.</oldsource>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
@@ -884,93 +823,28 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>OK</translation>
     </message>
     <message>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation type="vanished">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
-    </message>
-    <message>
-        <source>Error while trying to open the file &quot;</source>
-        <translation type="vanished">Erreur en essayant d&apos;ouvrir le fichier &quot;</translation>
-    </message>
-    <message>
-        <source>&quot;.</source>
-        <translation type="vanished">&quot;.</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the XML BodySlide file.</source>
-        <translation type="vanished">Erreur en essayant d&apos;analyser le fichier BodySlide XML.</translation>
-    </message>
-    <message>
-        <source>Error while parsing the OSP file &quot;</source>
-        <translation type="vanished">Erreur lors de l&apos;analyse du fichier OSP &quot;</translation>
-    </message>
-    <message>
         <location filename="RetargetingTool.cpp" line="55"/>
         <source>BodySlide Presets&apos; Retargeting</source>
-        <oldsource>BodySlide Presets&apos; Version Retargeting: CBBE 3BBB 3BA</oldsource>
         <translation>Re-ciblage de Presets BodySlide</translation>
-    </message>
-    <message>
-        <source>&quot;. Aborting process.</source>
-        <translation type="vanished">&quot;. Interruption du processus.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="486"/>
         <source>Parsing and patching OSP files. Please wait...</source>
-        <oldsource>Parsing and patching OSP files. Please wait.</oldsource>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
-    </message>
-    <message>
-        <source>No data found from the associated XML file. The file </source>
-        <translation type="vanished">Aucune donnée trouvée dans le fichier XML associé. Le fichier </translation>
-    </message>
-    <message>
-        <source> was not modified.</source>
-        <translation type="vanished"> n&apos;a pas été modifié.</translation>
-    </message>
-    <message>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.</source>
-        <translation type="vanished">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the OSP BodySlide file.</source>
-        <translation type="vanished">Erreur en essayant d&apos;analyser le fichier BodySlide OSP.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="660"/>
         <source>Patching XML files. Please wait...</source>
-        <oldsource>Patching XML files. Please wait.</oldsource>
         <translation>Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="698"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
-        <oldsource>Since the associated OSP file has not been modified, the file </oldsource>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
-    </message>
-    <message>
-        <source> has not been modified.</source>
-        <translation type="vanished"> n&apos;a pas été modifié.</translation>
-    </message>
-    <message>
-        <source>All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement re-ciblés pour la version 1.40 et plus bas de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement re-ciblés pour la version 1.50 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement re-ciblés pour la version 1.51 et 1.52 de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
-    </message>
-    <message>
-        <source>All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)</source>
-        <translation type="vanished">Tous les fichiers ont été correctement re-ciblés pour la version sélectionnée de CBBE 3BBB. Vous pouvez maintenant quitter le programme ou créer une autre conversion ! :)</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="818"/>
         <source>Retargeting successful</source>
-        <oldsource>Upgrade or downgarde successful</oldsource>
         <translation>Re-ciblage réussi</translation>
     </message>
     <message>
@@ -1125,7 +999,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="Settings.cpp" line="267"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
-        <oldsource>Only scan the &quot;meshes&quot; subdirectory.</oldsource>
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
     </message>
     <message>
@@ -1257,12 +1130,7 @@ sur Github.com afin de télécharger la dernière version de MFBOPC.</translatio
         <location filename="Utils.cpp" line="292"/>
         <location filename="Utils.cpp" line="362"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
-        <oldsource>Error while trying to open the file &quot;</oldsource>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
-    </message>
-    <message>
-        <source>&quot;.</source>
-        <translation type="vanished">&quot;.</translation>
     </message>
 </context>
 </TS>

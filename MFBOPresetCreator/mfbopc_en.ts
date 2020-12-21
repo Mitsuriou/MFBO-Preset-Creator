@@ -494,7 +494,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="PresetCreator.cpp" line="578"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
-        <oldsource>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -506,7 +505,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <location filename="PresetCreator.cpp" line="662"/>
         <location filename="PresetCreator.cpp" line="670"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
-        <oldsource>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -542,7 +540,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="PresetCreator.cpp" line="1203"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
-        <oldsource>&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -599,7 +596,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <location filename="PresetCreator.cpp" line="549"/>
         <location filename="PresetCreator.cpp" line="652"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
-        <oldsource>Error while creating the meshes directory: &quot;</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -620,19 +616,16 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="PresetCreator.cpp" line="594"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to open the file &quot;</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="634"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to parse the XML BodySlide file.</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="720"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to parse the OSP BodySlide file.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -752,7 +745,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="RetargetingTool.cpp" line="447"/>
         <source>Parsing XML files. Please wait...</source>
-        <oldsource>Parsing XML files. Please wait.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -760,7 +752,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <location filename="RetargetingTool.cpp" line="502"/>
         <location filename="RetargetingTool.cpp" line="670"/>
         <source>Process aborted by the user.</source>
-        <oldsource>Process aborted by user.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -829,31 +820,26 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="RetargetingTool.cpp" line="55"/>
         <source>BodySlide Presets&apos; Retargeting</source>
-        <oldsource>BodySlide Presets&apos; Version Retargeting: CBBE 3BBB 3BA</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="486"/>
         <source>Parsing and patching OSP files. Please wait...</source>
-        <oldsource>Parsing and patching OSP files. Please wait.</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="660"/>
         <source>Patching XML files. Please wait...</source>
-        <oldsource>Patching XML files. Please wait.</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="698"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
-        <oldsource>Since the associated OSP file has not been modified, the file </oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="818"/>
         <source>Retargeting successful</source>
-        <oldsource>Upgrade or downgarde successful</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1008,7 +994,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="Settings.cpp" line="267"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
-        <oldsource>Only scan the &quot;meshes&quot; subdirectory.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1135,7 +1120,6 @@ on Github.com to download the latest MFBOPC version.</source>
         <location filename="Utils.cpp" line="292"/>
         <location filename="Utils.cpp" line="362"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
-        <oldsource>Error while trying to open the file &quot;</oldsource>
         <translation></translation>
     </message>
 </context>
