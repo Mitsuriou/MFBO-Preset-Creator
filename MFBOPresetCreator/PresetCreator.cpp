@@ -546,7 +546,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
   }
   else if (!aGenerateFilesInExistingMainDirectory)
   {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderGroupsDirectory + tr("\" already exists."));
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderGroupsDirectory));
     return false;
   }
 
@@ -575,7 +575,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
 
   if (!QFile::copy(lRessourcePath, lXMLPathName))
   {
-    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."));
+    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
     return false;
   }
 
@@ -591,7 +591,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to read the XML file \"%1\". Aborting process.").arg(lXMLPathName));
     return false;
   }
 
@@ -625,13 +625,13 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lXMLPathName + tr("\"."));
+      Utils::displayWarningMessage(tr("Error while trying to write in the XML file \"%1\". Aborting process.").arg(lXMLPathName));
       return false;
     }
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lXMLPathName));
     return false;
   }
 
@@ -649,7 +649,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   }
   else if (!aGenerateFilesInExistingMainDirectory)
   {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"") + lSliderSetsDirectory + tr("\" already exists."));
+    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderSetsDirectory));
     return false;
   }
 
@@ -659,7 +659,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
       return false;
     }
   }
@@ -667,7 +667,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   {
     if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_osp", lOSPPathName))
     {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."));
+      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
       return false;
     }
   }
@@ -684,7 +684,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to read the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
     return false;
   }
 
@@ -711,13 +711,13 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lOSPPathName + tr("\"."));
+      Utils::displayWarningMessage(tr("Error while trying to write in the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
       return false;
     }
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
+    Utils::displayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
     return false;
   }
 
@@ -1200,7 +1200,7 @@ void PresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkpath(lEntryDirectory))
     {
-      Utils::displayWarningMessage(tr("Error while creating the main directory: \"") + lEntryDirectory + tr("\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."));
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"%1\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.").arg(lEntryDirectory));
       return;
     }
   }

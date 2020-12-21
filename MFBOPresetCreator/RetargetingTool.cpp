@@ -444,7 +444,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     return;
   }
 
-  lProgressDialog.setLabelText(tr("Parsing XML files. Please wait."));
+  lProgressDialog.setLabelText(tr("Parsing XML files. Please wait..."));
   lProgressbar->setRange(0, lNumberXMLFiles);
   lTreatedFiles = 0;
 
@@ -454,7 +454,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by user."));
+      Utils::displayWarningMessage(tr("Process aborted by the user."));
       return;
     }
 
@@ -475,7 +475,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     if (lNamesBuffer.at(lNamesBuffer.size() - 1).second == "")
     {
-      Utils::displayWarningMessage(tr("Error while parsing the XML file \"") + lAbsFilePath + tr("\". Aborting process."));
+      Utils::displayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 
@@ -483,7 +483,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     qApp->processEvents();
   }
 
-  lProgressDialog.setLabelText(tr("Parsing and patching OSP files. Please wait."));
+  lProgressDialog.setLabelText(tr("Parsing and patching OSP files. Please wait..."));
   lProgressbar->setRange(0, lNumberOSPFiles);
   lTreatedFiles = 0;
 
@@ -499,7 +499,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by user."));
+      Utils::displayWarningMessage(tr("Process aborted by the user."));
       return;
     }
 
@@ -657,7 +657,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     qApp->processEvents();
   }
 
-  lProgressDialog.setLabelText(tr("Patching XML files. Please wait."));
+  lProgressDialog.setLabelText(tr("Patching XML files. Please wait..."));
   lProgressbar->setRange(0, lNumberOSPFiles);
   lTreatedFiles = 0;
 
@@ -667,7 +667,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by user."));
+      Utils::displayWarningMessage(tr("Process aborted by the user."));
       return;
     }
 
@@ -695,7 +695,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (lFileName == lOSPBuffer.at(i).first)
       {
-        Utils::displayWarningMessage(tr("Since the associated OSP file has not been modified, the file ") + it3.fileInfo().absoluteFilePath() + tr(" has not been modified."));
+        Utils::displayWarningMessage(tr("Since the associated OSP file has not been modified, the file \"%1\" has not been modified.").arg(it3.fileInfo().absoluteFilePath()));
         lSkipXMLLastTreatment = true;
         break;
       }
@@ -815,7 +815,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     qApp->processEvents();
   }
 
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Upgrade or downgarde successful"), tr("All the files have been correctly re-targeted. You can now exit this window!"), QMessageBox::StandardButton::NoButton, this);
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Retargeting successful"), tr("All the files have been correctly re-targeted. You can now close this window!"), QMessageBox::StandardButton::NoButton, this);
   lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
 
   auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};

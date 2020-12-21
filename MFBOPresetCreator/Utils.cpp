@@ -256,7 +256,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
     return "";
   }
 
@@ -289,7 +289,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
     return std::vector<Struct::SliderSet>();
   }
 
@@ -359,7 +359,7 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to open the file \"") + aPath + tr("\"."));
+    Utils::displayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
     return false;
   }
 
