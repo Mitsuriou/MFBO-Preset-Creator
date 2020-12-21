@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "BodySlideFiltersEditor.h"
 #include "DataLists.h"
 #include "Enum.h"
 #include "Struct.h"
@@ -19,6 +20,7 @@ protected:
 
 private:
   const Struct::Settings mSettings;
+  std::map<QString, QStringList> mFiltersList;
 
   void setWindowProperties();
   void initializeGUI();
@@ -32,4 +34,10 @@ private slots:
   void updateBackupState(int aState);
   void updateBackupPreview();
   void launchUpDownGradeProcess();
+
+  // BodySlide Filters Editor
+  void openBodySlideFiltersEditor();
+  void initBodySlideFiltersList();
+  void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
+  void updateBodySlideFiltersListPreview(int aIndex);
 };

@@ -68,59 +68,97 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  // First line
-  auto lCbbe3BBBVersionLabel{new QLabel(tr("Targeted CBBE 3BBB 3BA version:"), this)};
-  aLayout.addWidget(lCbbe3BBBVersionLabel, 0, 0);
+  // General group box
+  auto lGeneralGroupBox{new QGroupBox(tr("Backup"), this)};
+  aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
-  auto lCbbe3BBBVersionSelector{new QComboBox(this)};
-  lCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
+  // Grid layout
+  auto lGeneralGridLayout{new QGridLayout(lGeneralGroupBox)};
+  lGeneralGridLayout->setSpacing(10);
+  lGeneralGridLayout->setContentsMargins(15, 20, 15, 15);
+  lGeneralGridLayout->setAlignment(Qt::AlignTop);
+  lGeneralGridLayout->setColumnStretch(2, 1);
 
-  auto lBodies{DataLists::getBodiesNameVersions()};
-  for (int i = 0; i < 3; i++)
-  {
-    lCbbe3BBBVersionSelector->addItem(lBodies.at(i));
-  }
-  lCbbe3BBBVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolBody));
-  lCbbe3BBBVersionSelector->setObjectName(QString("body_selector"));
-  aLayout.addWidget(lCbbe3BBBVersionSelector, 0, 1, 1, 2);
+  // Targeted body and version
+  auto lBodyVersionLabel{new QLabel(tr("Targeted body and version:"), this)};
+  lGeneralGridLayout->addWidget(lBodyVersionLabel, 0, 0);
 
-  // Second line
+  auto lBodyVersionSelector{new QComboBox(this)};
+  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
+  lBodyVersionSelector->addItems(DataLists::getBodiesNameVersions());
+  lBodyVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolBody));
+  lBodyVersionSelector->setObjectName(QString("body_selector"));
+  lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 1, 1, 3);
+
+  // Input path
   auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  aLayout.addWidget(lInputPathLabel, 1, 0);
+  lGeneralGridLayout->addWidget(lInputPathLabel, 1, 0);
 
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
-  aLayout.addWidget(lInputPathLineEdit, 1, 1);
+  lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 2);
 
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lInputPathChooser->setCursor(Qt::PointingHandCursor);
   lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lInputPathChooser->setAutoDefault(false);
   lInputPathChooser->setDefault(false);
-  aLayout.addWidget(lInputPathChooser, 1, 2);
+  lGeneralGridLayout->addWidget(lInputPathChooser, 1, 3);
 
-  // Third line
+  // BodySlide filters
+  auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
+  lGeneralGridLayout->addWidget(lLabelFilters, 2, 0);
+
+  auto lFiltersListChooser{new QComboBox(this)};
+  lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
+  lFiltersListChooser->setCursor(Qt::PointingHandCursor);
+  lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
+  lGeneralGridLayout->addWidget(lFiltersListChooser, 2, 1);
+
+  auto lFiltersList{new QLabel("", this)};
+  lFiltersList->setObjectName("bodyslide_filters");
+  lFiltersList->setWordWrap(true);
+  lGeneralGridLayout->addWidget(lFiltersList, 2, 2);
+
+  auto lEditFilters{new QPushButton(this)};
+  lEditFilters->setText(tr("Edit BodySlide filters sets"));
+  lEditFilters->setCursor(Qt::PointingHandCursor);
+  lEditFilters->setObjectName("edit_filters");
+  lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
+  lGeneralGridLayout->addWidget(lEditFilters, 2, 3);
+
+  // Backup group box
+  auto lBackupGroupBox{new QGroupBox(tr("Backup"), this)};
+  aLayout.addWidget(lBackupGroupBox, 1, 0);
+
+  // Grid layout
+  auto lBackupGridLayout{new QGridLayout(lBackupGroupBox)};
+  lBackupGridLayout->setSpacing(10);
+  lBackupGridLayout->setContentsMargins(15, 20, 15, 15);
+  lBackupGridLayout->setAlignment(Qt::AlignTop);
+
+  // Keep backup checkbox
   auto lKeepBackupLabel{new QLabel(tr("Keep a backup?"), this)};
-  aLayout.addWidget(lKeepBackupLabel, 2, 0);
+  lBackupGridLayout->addWidget(lKeepBackupLabel, 0, 0);
 
   auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."), this)};
   lKeepBackup->setCursor(Qt::PointingHandCursor);
   lKeepBackup->setObjectName("keep_backup");
-  aLayout.addWidget(lKeepBackup, 2, 1, 1, 2);
+  lBackupGridLayout->addWidget(lKeepBackup, 0, 1, 1, 2);
 
-  // Fourth line
+  // Backup directory path
   auto lBackupPathLabel{new QLabel(tr("Backup directory path:"), this)};
   lBackupPathLabel->setObjectName("backup_path_label");
-  aLayout.addWidget(lBackupPathLabel, 3, 0);
+  lBackupGridLayout->addWidget(lBackupPathLabel, 1, 0);
 
   auto lBackupPathLineEdit{new QLineEdit("", this)};
   lBackupPathLineEdit->setReadOnly(true);
   lBackupPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lBackupPathLineEdit->setObjectName("backup_path_directory");
-  aLayout.addWidget(lBackupPathLineEdit, 3, 1);
+  lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
 
   auto lBackupPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lBackupPathChooser->setCursor(Qt::PointingHandCursor);
@@ -128,27 +166,27 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupPathChooser->setAutoDefault(false);
   lBackupPathChooser->setDefault(false);
   lBackupPathChooser->setObjectName("backup_dir_chooser");
-  aLayout.addWidget(lBackupPathChooser, 3, 2);
+  lBackupGridLayout->addWidget(lBackupPathChooser, 1, 2);
 
-  // Fifth line
+  // Backup subdirectory name/path
   auto lLabelSubDirectoryBackupPath{new QLabel(tr("Backup subdirectory name/path:"), this)};
   lLabelSubDirectoryBackupPath->setObjectName("backup_subdir_label");
-  aLayout.addWidget(lLabelSubDirectoryBackupPath, 4, 0);
+  lBackupGridLayout->addWidget(lLabelSubDirectoryBackupPath, 2, 0);
 
   auto lBackupSubpathLineEdit{new QLineEdit("", this)};
   lBackupSubpathLineEdit->setObjectName("backup_path_subdirectory");
-  aLayout.addWidget(lBackupSubpathLineEdit, 4, 1);
+  lBackupGridLayout->addWidget(lBackupSubpathLineEdit, 2, 1);
 
-  // Sixth line
+  // Backup preview
   auto lBackupPathPreviewLabel{new QLabel(tr("Preview:"), this)};
   lBackupPathPreviewLabel->setObjectName("backup_path_preview_label");
   lBackupPathPreviewLabel->setAlignment(Qt::AlignTop);
-  aLayout.addWidget(lBackupPathPreviewLabel, 5, 0);
+  lBackupGridLayout->addWidget(lBackupPathPreviewLabel, 3, 0);
 
   auto lBackupPathsPreview{new QLabel("", this)};
   lBackupPathsPreview->setObjectName("backup_path_preview");
   lBackupPathsPreview->setAlignment(Qt::AlignTop);
-  aLayout.addWidget(lBackupPathsPreview, 5, 1, 1, 2);
+  lBackupGridLayout->addWidget(lBackupPathsPreview, 3, 1, 1, 2);
 
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"), this)};
@@ -156,7 +194,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))));
   lGenerateButton->setAutoDefault(false);
   lGenerateButton->setDefault(false);
-  aLayout.addWidget(lGenerateButton, 6, 0, 1, 3, Qt::AlignBottom);
+  aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
@@ -166,6 +204,11 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   this->connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
   this->connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
+  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::updateBodySlideFiltersListPreview));
+  this->connect(lEditFilters, &QPushButton::clicked, this, &RetargetingTool::openBodySlideFiltersEditor);
+
+  // Post-bind initialization functions
+  this->initBodySlideFiltersList();
 }
 
 int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
@@ -321,6 +364,8 @@ void RetargetingTool::launchUpDownGradeProcess()
 
   if (lMustKeepBackup)
   {
+    // TOOD: add a messagebox/progressbar to know that the backup is being processed
+
     // Backup paths
     auto lMainDirectory{this->findChild<QLineEdit*>("backup_path_directory")->text().trimmed()};
     auto lSubDirectory{this->findChild<QLineEdit*>("backup_path_subdirectory")->text().trimmed()};
@@ -426,7 +471,6 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
-    // Update the GUI
     qApp->processEvents();
   }
 
@@ -472,7 +516,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     if (lParsedSliderSets.size() == 0)
     {
-      Utils::displayWarningMessage(tr("Error while parsing the OSP file \"") + lAbsFilePath + tr("\". Aborting process."));
+      Utils::displayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 
@@ -493,103 +537,114 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     if (lPresetName == "")
     {
-      Utils::displayWarningMessage(tr("No data found from the associated XML file. The file ") + it2.fileInfo().absoluteFilePath() + tr(" was not modified."));
+      Utils::displayWarningMessage(tr("No data found from the associated XML file. The file \"%1\" was not modified.").arg(it2.fileInfo().absoluteFilePath()));
       continue;
     }
 
-    // Remove the file once all data has been read
-    if (QFile::exists(lAbsFilePath))
+    // Check, if the preset is using beast hands, if the chosen body does not support beast hands
+    auto lSkipBeastHands{false};
+    if (lMustUseBeastHands && !Utils::isBodySupportingBeastHands(static_cast<BodyNameVersion>(lBodySelected)))
     {
-      QFile::remove(lAbsFilePath);
+        Utils::displayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
+        lSkipBeastHands = true;
     }
 
-    // Copy the OSP file
-    if (lMustUseBeastHands)
+    // If the preset is using beast hands but the chosen body does not support beast hands, skip this OSP file's treatment
+    if (!lSkipBeastHands)
     {
-      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lAbsFilePath))
+      // Remove the file once all data has been read
+      if (QFile::exists(lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
-        return;
+        QFile::remove(lAbsFilePath);
       }
-    }
-    else
-    {
-      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lAbsFilePath))
+
+      // Copy the OSP file
+      if (lMustUseBeastHands)
       {
-        Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
-        return;
-      }
-    }
-
-    // Read the created OSP file
-    QFile lOSPFile(lAbsFilePath);
-    lOSPFile.setPermissions(QFile::WriteUser);
-
-    QByteArray lOSPFileContent;
-
-    if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-      lOSPFileContent = lOSPFile.readAll();
-      lOSPFile.close();
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
-      return;
-    }
-
-    // Replace the custom tags in the file
-    if (lOSPFileContent.length() > 0)
-    {
-      if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-      {
-        auto lTextToParse{static_cast<QString>(lOSPFileContent)};
-        lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
-
-        for (const auto& lSliderSet : lParsedSliderSets)
+        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lAbsFilePath))
         {
-          if (lSliderSet.meshpart == "Body")
-          {
-            lTextToParse.replace(QString("{%%body_output_path%%}"), lSliderSet.outputpath);
-            lTextToParse.replace(QString("{%%body_output_file%%}"), lSliderSet.outputfile);
-          }
-          else if (lSliderSet.meshpart == "Feet")
-          {
-            lTextToParse.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputpath);
-            lTextToParse.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputfile);
-          }
-          else if (lSliderSet.meshpart == "Hands")
-          {
-            lTextToParse.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputpath);
-            lTextToParse.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputfile);
-          }
+          Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
+          return;
         }
+      }
+      else
+      {
+        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lAbsFilePath))
+        {
+          Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
+          return;
+        }
+      }
 
-        QTextStream lTextStream(&lOSPFile);
-        lTextStream << lTextToParse;
-        lTextStream.flush();
+      // Read the created OSP file
+      QFile lOSPFile(lAbsFilePath);
+      lOSPFile.setPermissions(QFile::WriteUser);
 
+      QByteArray lOSPFileContent;
+
+      if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
+      {
+        lOSPFileContent = lOSPFile.readAll();
         lOSPFile.close();
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
+        Utils::displayWarningMessage(tr("Error while trying to read the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
         return;
       }
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error while trying to parse the OSP BodySlide file."));
-      return;
-    }
 
-    if (lBufferLocationToRemove != -1)
-    {
-      lOSPBuffer.erase(lOSPBuffer.begin() + lBufferLocationToRemove);
+      // Replace the custom tags in the file
+      if (lOSPFileContent.length() > 0)
+      {
+        if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+        {
+          auto lTextToParse{static_cast<QString>(lOSPFileContent)};
+          lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
+
+          for (const auto& lSliderSet : lParsedSliderSets)
+          {
+            if (lSliderSet.meshPart == "Body")
+            {
+              lTextToParse.replace(QString("{%%body_output_path%%}"), lSliderSet.outputPath);
+              lTextToParse.replace(QString("{%%body_output_file%%}"), lSliderSet.outputFile);
+            }
+            else if (lSliderSet.meshPart == "Feet")
+            {
+              lTextToParse.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputPath);
+              lTextToParse.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputFile);
+            }
+            else if (lSliderSet.meshPart == "Hands")
+            {
+              lTextToParse.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputPath);
+              lTextToParse.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputFile);
+            }
+          }
+
+          QTextStream lTextStream(&lOSPFile);
+          lTextStream << lTextToParse;
+          lTextStream.flush();
+
+          lOSPFile.close();
+        }
+        else
+        {
+          Utils::displayWarningMessage(tr("Error while trying to write in the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
+          return;
+        }
+      }
+      else
+      {
+        Utils::displayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
+        return;
+      }
+
+      if (lBufferLocationToRemove != -1)
+      {
+        lOSPBuffer.erase(lOSPBuffer.begin() + lBufferLocationToRemove);
+      }
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
-    // Update the GUI
     qApp->processEvents();
   }
 
@@ -625,14 +680,23 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lFileName{it3.fileInfo().completeBaseName()};
 
     // Check if the OSP file has skiped the parsing
+    auto lSkipXMLLastTreatment{false};
     auto lOSPBufSize{lOSPBuffer.size()};
     for (int i = 0; i < lOSPBufSize; i++)
     {
       if (lFileName == lOSPBuffer.at(i).first)
       {
         Utils::displayWarningMessage(tr("Since the associated OSP file has not been modified, the file ") + it3.fileInfo().absoluteFilePath() + tr(" has not been modified."));
-        continue;
+        lSkipXMLLastTreatment = true;
+        break;
       }
+    }
+
+    if (lSkipXMLLastTreatment)
+    {
+      lProgressDialog.setValue(++lTreatedFiles);
+      qApp->processEvents();
+      continue;
     }
 
     // Searching for the preset name in the buffer
@@ -659,7 +723,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
         return;
       }
     }
@@ -667,7 +731,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lAbsFilePath))
       {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions."));
+        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
         return;
       }
     }
@@ -685,7 +749,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
+      Utils::displayWarningMessage(tr("Error while trying to read the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 
@@ -705,45 +769,120 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to open the file \"") + lAbsFilePath + tr("\"."));
+        Utils::displayWarningMessage(tr("Error while trying to write in the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
         return;
       }
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to parse the XML BodySlide file."));
+      Utils::displayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
-    // Update the GUI
     qApp->processEvents();
   }
 
-  // Message when the downgrade/upgrade has been completed successfully
-  auto lSuccessText{QString("")};
-
-  switch (lBodySelected)
-  {
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_40):
-      lSuccessText = tr("All the files have been re-targeted for the version 1.40 and lower of CBBE 3BBB. You can now exit this window! :)");
-      break;
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_50):
-      lSuccessText = tr("All the files have been re-targeted for the version 1.50 of CBBE 3BBB. You can now exit this window! :)");
-      break;
-    case static_cast<int>(BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52):
-      lSuccessText = tr("All the files have been re-targeted for the version 1.51 and 1.52 of CBBE 3BBB. You can now exit this window! :)");
-      break;
-    default:
-      lSuccessText = tr("All the files have been re-targeted for the selected CBBE 3BBB version. You can now exit this window! :)");
-      break;
-  }
-
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Upgrade or downgarde successful"), lSuccessText, QMessageBox::StandardButton::NoButton, this);
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Upgrade or downgarde successful"), tr("All the files have been correctly re-targeted. You can now exit this window!"), QMessageBox::StandardButton::NoButton, this);
   lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
 
   auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
   lOKButton->setCursor(Qt::PointingHandCursor);
   lConfirmationBox.setDefaultButton(lOKButton);
   lConfirmationBox.exec();
+}
+
+void RetargetingTool::openBodySlideFiltersEditor()
+{
+  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList)};
+  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &RetargetingTool::updateBodySlideFiltersList);
+}
+
+void RetargetingTool::initBodySlideFiltersList()
+{
+  // Load and save the filters list
+  this->mFiltersList = Utils::loadFiltersFromFile();
+
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+
+  // Disable the combobox if there is not any available filter
+  if (this->mFiltersList.size() == 0)
+  {
+    lChooser->setDisabled(true);
+    return;
+  }
+
+  // Fill the combobox
+  for (const auto& lPair : this->mFiltersList)
+  {
+    lChooser->addItem(lPair.first);
+  }
+
+  lChooser->setCurrentIndex(0);
+}
+
+void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
+{
+  // Update the filters list
+  this->mFiltersList = aFilterList;
+
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+
+  // Disable the combobox if there is not any available filter
+  if (this->mFiltersList.size() == 0)
+  {
+    lChooser->clear();
+    lChooser->setDisabled(true);
+    this->findChild<QLabel*>("bodyslide_filters")->setText("");
+    return;
+  }
+
+  lChooser->setDisabled(false);
+
+  auto lPrevKey{lChooser->itemText(lChooser->currentIndex())};
+
+  // Fill the combobox
+  lChooser->clear();
+  for (const auto& lPair : this->mFiltersList)
+  {
+    lChooser->addItem(lPair.first);
+  }
+
+  if (lPrevKey == "" || this->mFiltersList.count(lPrevKey) == 0)
+  {
+    lChooser->setCurrentIndex(0);
+  }
+  else
+  {
+    auto lPrevIndex{0};
+    for (const auto& lPair : this->mFiltersList)
+    {
+      if (lPair.first.compare(lPrevKey, Qt::CaseSensitive) == 0)
+      {
+        break;
+      }
+      lPrevIndex++;
+    }
+
+    if (lPrevIndex == this->mFiltersList.size())
+    {
+      lPrevIndex = 0;
+    }
+
+    lChooser->setCurrentIndex(lPrevIndex);
+  }
+}
+
+void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
+{
+  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
+
+  auto lText{QString("")};
+  if (aIndex != -1)
+  {
+    lText = this->mFiltersList.find(lChooser->itemText(aIndex))->second.join(QString(" ; "));
+  }
+
+  LFiltersLabel->setText(lText);
 }

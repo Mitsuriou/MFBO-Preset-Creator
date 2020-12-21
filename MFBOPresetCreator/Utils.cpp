@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.0.6";
+  return "2.1.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -228,6 +228,20 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
   }
 }
 
+bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
+{
+  switch (aBody)
+  {
+    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_52:
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+      return true;
+    default:
+      return false;
+  }
+}
+
 QString Utils::getPresetNameFromXMLFile(const QString& aPath)
 {
   QFile lReadFile(aPath);
@@ -291,15 +305,15 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       lTempSet.name = lSliderSet.attribute("name", "");
       if (lTempSet.name.contains("body", Qt::CaseInsensitive))
       {
-        lTempSet.meshpart = "Body";
+        lTempSet.meshPart = "Body";
       }
       else if (lTempSet.name.contains("hands", Qt::CaseInsensitive))
       {
-        lTempSet.meshpart = "Hands";
+        lTempSet.meshPart = "Hands";
       }
       else if (lTempSet.name.contains("feet", Qt::CaseInsensitive))
       {
-        lTempSet.meshpart = "Feet";
+        lTempSet.meshPart = "Feet";
       }
 
       auto lChild{lSliderSet.firstChild().toElement()};
@@ -307,14 +321,14 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       {
         if (lChild.tagName() == "OutputPath")
         {
-          lTempSet.outputpath = lChild.firstChild().toText().data();
+          lTempSet.outputPath = lChild.firstChild().toText().data();
         }
         else if (lChild.tagName() == "OutputFile")
         {
-          lTempSet.outputfile = lChild.firstChild().toText().data();
+          lTempSet.outputFile = lChild.firstChild().toText().data();
         }
 
-        if (lTempSet.outputpath != "" && lTempSet.outputfile != "")
+        if (lTempSet.outputPath != "" && lTempSet.outputFile != "")
         {
           break;
         }

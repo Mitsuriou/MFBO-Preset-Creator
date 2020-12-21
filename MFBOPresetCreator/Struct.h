@@ -10,9 +10,9 @@ namespace Struct
   {
   public:
     QString name{""};
-    QString meshpart{""};
-    QString outputpath{""};
-    QString outputfile{""};
+    QString meshPart{""};
+    QString outputPath{""};
+    QString outputFile{""};
   };
 
   struct Font

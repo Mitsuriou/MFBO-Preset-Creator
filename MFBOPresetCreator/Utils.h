@@ -29,6 +29,7 @@ public:
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconRessourceFolder(const GUITheme& aTheme);
   static QString getBodyRessourceFolder(const BodyNameVersion& aBody);
+  static bool isBodySupportingBeastHands(const BodyNameVersion& aBody);
 
   // XML and OSP file parse
   static QString getPresetNameFromXMLFile(const QString& aPath);

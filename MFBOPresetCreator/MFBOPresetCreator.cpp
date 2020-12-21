@@ -103,17 +103,12 @@ void MFBOPresetCreator::setupMenuBar()
   lOpenAssiConv->setIcon(QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder))));
   lTools->addAction(lOpenAssiConv);
 
-  // Submenu: Retargeting Tools
-  auto lRetaToolsSubmenu{new QMenu(tr("BodySlide Presets' Version Retargeting"), this)};
-  lRetaToolsSubmenu->setCursor(Qt::PointingHandCursor);
+  // Submenu: BodySlide Presets' Retargeting
+  auto lRetaToolsSubmenu{new QAction(this)};
+  lRetaToolsSubmenu->setText(tr("BodySlide Presets' Retargeting"));
+  lRetaToolsSubmenu->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y));
   lRetaToolsSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))));
-  lTools->addMenu(lRetaToolsSubmenu);
-
-  // Action: CBBE 3BBB 3BA Retargeting Tool
-  auto lOpenRT_CBBE3BBB3BA{new QAction(this)};
-  lOpenRT_CBBE3BBB3BA->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y));
-  lOpenRT_CBBE3BBB3BA->setText(tr("CBBE 3BBB 3BA"));
-  lRetaToolsSubmenu->addAction(lOpenRT_CBBE3BBB3BA);
+  lTools->addAction(lRetaToolsSubmenu);
 
   // Action: Settings
   auto lOpenSettings{new QAction(this)};
@@ -147,7 +142,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
   this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
-  this->connect(lOpenRT_CBBE3BBB3BA, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA);
+  this->connect(lRetaToolsSubmenu, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA);
   this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
   this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
