@@ -212,15 +212,15 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   lPresetCreatorLayout->setAlignment(Qt::AlignTop);
 
   // DEFAULT SELECTED BODY AND VERSION
-  auto ldefaultCbbe3BBBVersionLabel{new QLabel(tr("Default selected body:"), this)};
-  lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionLabel, 0, 0, 1, 2);
+  auto lDefaultBodyVersionLabel{new QLabel(tr("Default selected body:"), this)};
+  lPresetCreatorLayout->addWidget(lDefaultBodyVersionLabel, 0, 0, 1, 2);
 
-  auto ldefaultCbbe3BBBVersionSelector{new QComboBox(this)};
-  ldefaultCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  ldefaultCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  ldefaultCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
-  ldefaultCbbe3BBBVersionSelector->setObjectName(QString("default_body_selector"));
-  lPresetCreatorLayout->addWidget(ldefaultCbbe3BBBVersionSelector, 1, 0, 1, 2);
+  auto lDefaultBodyVersionLabelSelector{new QComboBox(this)};
+  lDefaultBodyVersionLabelSelector->setItemDelegate(new QStyledItemDelegate());
+  lDefaultBodyVersionLabelSelector->setCursor(Qt::PointingHandCursor);
+  lDefaultBodyVersionLabelSelector->addItems(DataLists::getBodiesNameVersions());
+  lDefaultBodyVersionLabelSelector->setObjectName(QString("default_body_selector"));
+  lPresetCreatorLayout->addWidget(lDefaultBodyVersionLabelSelector, 1, 0, 1, 2);
 
   // OUTPUT PATH PREVIEW
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
@@ -282,15 +282,15 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
-  auto lupgradeCbbe3BBBVersionLabel{new QLabel(tr("Default selected body:"), this)};
-  lRetargetingToolLayout->addWidget(lupgradeCbbe3BBBVersionLabel);
+  auto lUpgradeBodyNameVersionLabel{new QLabel(tr("Default selected body:"), this)};
+  lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionLabel);
 
-  auto lUpgradeCbbe3BBBVersionSelector{new QComboBox(this)};
-  lUpgradeCbbe3BBBVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lUpgradeCbbe3BBBVersionSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeCbbe3BBBVersionSelector->addItems(DataLists::getBodiesNameVersions());
-  lUpgradeCbbe3BBBVersionSelector->setObjectName(QString("upgrade_body_selector"));
-  lRetargetingToolLayout->addWidget(lUpgradeCbbe3BBBVersionSelector);
+  auto lUpgradeBodyNameVersionSelector{new QComboBox(this)};
+  lUpgradeBodyNameVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lUpgradeBodyNameVersionSelector->setCursor(Qt::PointingHandCursor);
+  lUpgradeBodyNameVersionSelector->addItems(DataLists::getBodiesNameVersions());
+  lUpgradeBodyNameVersionSelector->setObjectName(QString("upgrade_body_selector"));
+  lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionSelector);
 }
 
 void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)

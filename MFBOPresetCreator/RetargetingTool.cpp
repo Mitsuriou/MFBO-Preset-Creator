@@ -52,7 +52,7 @@ void RetargetingTool::setWindowProperties()
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-  this->setWindowTitle(tr("BodySlide Presets' Version Retargeting: CBBE 3BBB 3BA"));
+  this->setWindowTitle(tr("BodySlide Presets' Retargeting"));
   this->setWindowIcon(QIcon(QPixmap(":/black/arrow-up")));
 }
 
@@ -69,7 +69,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // General group box
-  auto lGeneralGroupBox{new QGroupBox(tr("Backup"), this)};
+  auto lGeneralGroupBox{new QGroupBox(tr("General"), this)};
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -364,8 +364,6 @@ void RetargetingTool::launchUpDownGradeProcess()
 
   if (lMustKeepBackup)
   {
-    // TOOD: add a messagebox/progressbar to know that the backup is being processed
-
     // Backup paths
     auto lMainDirectory{this->findChild<QLineEdit*>("backup_path_directory")->text().trimmed()};
     auto lSubDirectory{this->findChild<QLineEdit*>("backup_path_subdirectory")->text().trimmed()};
@@ -397,6 +395,17 @@ void RetargetingTool::launchUpDownGradeProcess()
       Utils::displayWarningMessage(tr("Error: the path given to backup the files seems to be invalid."));
       return;
     }
+
+    // Display a message to the user that the backup is being created
+    QDialog lDialog(this);
+    lDialog.setWindowFlags(lDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    QVBoxLayout lLayout;
+    lDialog.setLayout(&lLayout);
+    QLabel lLabel(tr("The backup is currently being created. Depending on your computer, it can take a certain time. Please wait..."), this);
+    lLayout.addWidget(&lLabel);
+    lDialog.show();
+
+    qApp->processEvents();
 
     // Copy the directory and its content
     if (!Utils::copyRecursively(lRootDir, lFullBackupDirectory))

@@ -130,7 +130,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 
 void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 {
-  // CBBE body meshes group box
+  // Body meshes group box
   auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes"), this)};
   aLayout.addWidget(lMeshesGroupBox);
 
@@ -228,7 +228,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  // BodySlide defined names group box
+  // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output"), this)};
   aLayout.addWidget(lBodyslideGroupBox);
 
@@ -243,7 +243,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->setAlignment(Qt::AlignTop);
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
-  // CBBE 3BBB version
+  // Targeted body and version
   auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
   lBodyslideGridLayout->addWidget(lBodyLabel, 0, 0);
 

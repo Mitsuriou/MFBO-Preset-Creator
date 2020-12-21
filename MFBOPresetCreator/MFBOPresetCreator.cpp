@@ -142,7 +142,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
   this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
-  this->connect(lRetaToolsSubmenu, &QAction::triggered, this, &MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA);
+  this->connect(lRetaToolsSubmenu, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
   this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
   this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
@@ -464,7 +464,7 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
   lMainContainer->fillUIByAssistedConversionValues(aPresetName, aResultsList);
 }
 
-void MFBOPresetCreator::launchRetargetingToolCBBE3BBB3BA()
+void MFBOPresetCreator::launchPresetsRetargeting()
 {
   new RetargetingTool(this, this->mSettings);
 }

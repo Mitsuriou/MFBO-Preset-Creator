@@ -2,9 +2,9 @@
 
 #include "About.h"
 #include "AssistedConversion.h"
+#include "PresetCreator.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
-#include "PresetCreator.h"
 #include "Update.h"
 #include "Utils.h"
 #include "WinUser.h"
@@ -45,7 +45,7 @@ private slots:
   void quickRelaunch();
   void launchAssistedConversion();
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
-  void launchRetargetingToolCBBE3BBB3BA();
+  void launchPresetsRetargeting();
   void launchSettingsDialog();
   void launchUpdateDialog();
   void launchAboutDialog();

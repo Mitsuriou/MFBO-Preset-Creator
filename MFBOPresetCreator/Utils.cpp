@@ -488,14 +488,14 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lFoundWindowOpeningMode);
   }
 
-  // Default CBBE 3BBB Version
+  // Default body name and version
   if (lSettingsJSON.contains("default_body") && lSettingsJSON["default_body"].isDouble())
   {
     auto lFoundBody{lSettingsJSON["default_body"].toInt()};
     lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
   }
 
-  // Default Retargeting Tool CBBE 3BBB Version
+  // Default BodySlide Presets' Retargeting body name and version
   if (lSettingsJSON.contains("retargeting_tool_default_body") && lSettingsJSON["retargeting_tool_default_body"].isDouble())
   {
     auto lFoundBody{lSettingsJSON["retargeting_tool_default_body"].toInt()};

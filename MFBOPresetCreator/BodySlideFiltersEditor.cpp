@@ -150,7 +150,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lDeleteRow->setStyleSheet("text-align:left;");
   lDeleteRow->setCursor(Qt::PointingHandCursor);
   lDeleteRow->setToolTip(tr("Remove the selected BodySlide filter"));
-  lDeleteRow->setText("Remove filter");
+  lDeleteRow->setText(tr("Remove filter"));
   lDeleteRow->setIcon(QIcon(QPixmap(QString(":/%1/trash").arg(lIconFolder))));
   lDeleteRow->setAutoDefault(false);
   lDeleteRow->setDefault(false);
@@ -161,7 +161,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   lDeleteAllRows->setStyleSheet("text-align:left;");
   lDeleteAllRows->setCursor(Qt::PointingHandCursor);
   lDeleteAllRows->setToolTip(tr("Remove all the BodySlide filters"));
-  lDeleteAllRows->setText(tr("Clear"));
+  lDeleteAllRows->setText(tr("Remove all"));
   lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/trash-lines").arg(lIconFolder))));
   lDeleteAllRows->setAutoDefault(false);
   lDeleteAllRows->setDefault(false);
