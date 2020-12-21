@@ -927,6 +927,11 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="Settings.cpp" line="276"/>
+        <source>BodySlide Presets&apos; Retargeting</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="Settings.cpp" line="321"/>
         <source>Cancel</source>
         <translation></translation>
@@ -994,11 +999,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="Settings.cpp" line="267"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="276"/>
-        <source>Retargeting Tool</source>
         <translation></translation>
     </message>
     <message>

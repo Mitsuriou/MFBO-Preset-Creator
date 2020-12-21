@@ -393,8 +393,6 @@ void BodySlideFiltersEditor::addRow()
   auto lItem{this->mListWidget->item(lLastLineIndex)};
   lItem->setFlags(lItem->flags() | Qt::ItemFlag::ItemIsEditable);
 
-  // TODO: lock the data to QRegExp("[A-Za-z0-9_ -]+")
-
   this->mListWidget->setCurrentRow(lLastLineIndex);
   this->mListWidget->editItem(lItem);
 }

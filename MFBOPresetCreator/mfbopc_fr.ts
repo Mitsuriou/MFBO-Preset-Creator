@@ -932,6 +932,11 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Corps sélectionné par défaut :</translation>
     </message>
     <message>
+        <location filename="Settings.cpp" line="276"/>
+        <source>BodySlide Presets&apos; Retargeting</source>
+        <translation>Re-ciblage de Presets BodySlide</translation>
+    </message>
+    <message>
         <location filename="Settings.cpp" line="321"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
@@ -1002,9 +1007,8 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="276"/>
         <source>Retargeting Tool</source>
-        <translation>Outil de Re-ciblage de Version</translation>
+        <translation type="vanished">Outil de Re-ciblage de Version</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="306"/>

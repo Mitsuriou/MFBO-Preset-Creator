@@ -89,8 +89,8 @@ void Settings::initializeGUI()
   this->setupDisplayGroup(*lMainLayout, lIndex);
   this->setupGeneralGroup(*lMainLayout, lIndex);
   this->setupPresetCreatorGroup(*lMainLayout, lIndex);
-  this->setupAssistedConversionGroup(*lMainLayout, lIndex);
   this->setupRetargetingToolGroup(*lMainLayout, lIndex);
+  this->setupAssistedConversionGroup(*lMainLayout, lIndex);
   this->setupButtons(*lMainLayout, lIndex);
 
   // Load the settings into the interface
@@ -255,7 +255,7 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNe
 {
   // Assisted Conversion group box
   auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion"), this)};
-  aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 2, 1);
+  aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 3, 1);
 
   // Container layout
   auto lAssistedConversionLayout{new QVBoxLayout(lAssistedConversionGroupBox)};
@@ -272,9 +272,9 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNe
 
 void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
-  // Retargeting Tool group box
-  auto lRetToolGroupBox{new QGroupBox(tr("Retargeting Tool"), this)};
-  aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 3, 1);
+  // BodySlide Presets' Retargeting group box
+  auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting"), this)};
+  aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1);
 
   auto lRetargetingToolLayout{new QVBoxLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
