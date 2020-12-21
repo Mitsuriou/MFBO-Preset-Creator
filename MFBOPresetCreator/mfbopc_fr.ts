@@ -1007,10 +1007,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
     </message>
     <message>
-        <source>Retargeting Tool</source>
-        <translation type="vanished">Outil de Re-ciblage de Version</translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="306"/>
         <source>Restore default</source>
         <translation>Restaurer par défaut</translation>
