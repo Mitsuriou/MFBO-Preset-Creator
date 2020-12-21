@@ -545,8 +545,8 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lSkipBeastHands{false};
     if (lMustUseBeastHands && !Utils::isBodySupportingBeastHands(static_cast<BodyNameVersion>(lBodySelected)))
     {
-        Utils::displayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
-        lSkipBeastHands = true;
+      Utils::displayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
+      lSkipBeastHands = true;
     }
 
     // If the preset is using beast hands but the chosen body does not support beast hands, skip this OSP file's treatment
@@ -719,32 +719,41 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Copy the XML file
-    if (lMustUseBeastHands)
+    auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
+    auto lUserFiltersListSize{lUserFilters.size()};
+
+    auto lRessourcePath{QString("")};
+
+    // Use custom filters
+    if (lUserFiltersListSize > 0)
     {
-      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_xml", lAbsFilePath))
-      {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
-        return;
-      }
+      lRessourcePath = ":/ressources/bodyslide_xml_custom";
     }
+    // Use beast hands
+    else if (lMustUseBeastHands)
+    {
+      lRessourcePath = QString(":/%1/%2").arg(lRessourcesFolder).arg("bodyslide_beast_hands_xml");
+    }
+    // Use classic XML
     else
     {
-      if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_xml", lAbsFilePath))
-      {
-        Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
-        return;
-      }
+      lRessourcePath = QString(":/%1/%2").arg(lRessourcesFolder).arg("bodyslide_xml");
     }
 
-    // Read the created XML file
+    if (!QFile::copy(lRessourcePath, lAbsFilePath))
+    {
+      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
+      return;
+    }
+
     QFile lXMLFile(lAbsFilePath);
     lXMLFile.setPermissions(QFile::WriteUser);
 
-    QByteArray lXMLFileContent;
+    QByteArray lTempXMLContent;
 
     if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-      lXMLFileContent = lXMLFile.readAll();
+      lTempXMLContent = lXMLFile.readAll();
       lXMLFile.close();
     }
     else
@@ -753,12 +762,26 @@ void RetargetingTool::launchUpDownGradeProcess()
       return;
     }
 
-    // Replace the custom tags in the file
-    if (lXMLFileContent.length() > 0)
+    if (lTempXMLContent.length() > 0)
     {
       if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
       {
-        auto lTextToParse{static_cast<QString>(lXMLFileContent)};
+        auto lTextToParse{static_cast<QString>(lTempXMLContent)};
+
+        // Custom BodySlide filters
+        if (lUserFiltersListSize > 0)
+        {
+          auto lUserFiltersConcat{QString("")};
+
+          for (const auto& lUserFilter : lUserFilters)
+          {
+            lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(lBodySelected, lMustUseBeastHands, lUserFilter);
+          }
+
+          lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
+        }
+
+        // BodySlide preset name
         lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
 
         QTextStream lTextStream(&lXMLFile);
