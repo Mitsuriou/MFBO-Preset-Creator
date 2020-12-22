@@ -80,8 +80,7 @@ void Update::pageFetched(const QString& aResult)
     // Create a JSON from the fetched string and parse the "tag_name" data
     QJsonDocument doc{QJsonDocument::fromJson(aResult.toUtf8())};
     QJsonObject obj{doc.object()};
-    auto lTagName = obj["tag_name"].toString();
-
+    auto lTagName{obj["tag_name"].toString()};
     auto lCurrentVersion{Utils::getApplicationVersion()};
 
 #ifdef DEBUG

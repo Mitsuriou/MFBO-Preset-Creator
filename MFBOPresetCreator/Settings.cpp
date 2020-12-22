@@ -501,7 +501,7 @@ void Settings::saveSettings()
 {
   auto lSettings{this->getSettingsFromGUI()};
 
-  mMustRebootMainApp = (this->mSettings.language != lSettings.language || this->mSettings.appTheme != lSettings.appTheme || this->mSettings.font != lSettings.font);
+  this->mMustRebootMainApp = (this->mSettings.language != lSettings.language || this->mSettings.appTheme != lSettings.appTheme || this->mSettings.font != lSettings.font);
 
   if (mMustRebootMainApp)
   {

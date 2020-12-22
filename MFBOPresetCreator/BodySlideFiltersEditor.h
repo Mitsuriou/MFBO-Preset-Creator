@@ -21,8 +21,8 @@ private:
   const Struct::Settings mSettings;
   std::map<QString, QStringList> mOriginalFiltersList;
   std::map<QString, QStringList> mFiltersList;
-  QComboBox* mFiltersListChooser = nullptr;
-  QListWidget* mListWidget = nullptr;
+  QComboBox* mFiltersListChooser{nullptr};
+  QListWidget* mListWidget{nullptr};
 
   // GUI construction
   void setWindowProperties();

@@ -953,7 +953,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
 
   if (aText.trimmed().length() == 0)
   {
-    aText = QString::fromStdString("*");
+    aText = QString("*");
     lIsValidPath = false;
   }
 

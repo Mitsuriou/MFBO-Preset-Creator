@@ -260,13 +260,13 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
     return "";
   }
 
-  auto lXMLGroup = lXMLDocument.documentElement().firstChild().toElement();
+  auto lXMLGroup{lXMLDocument.documentElement().firstChild().toElement()};
   auto lPresetName{QString("")};
 
   if (lXMLGroup.tagName() == "Group")
   {
     // Get the first "Member" tag to read its "name" attribute
-    QDomElement lXMLMember = lXMLGroup.firstChild().toElement();
+    auto lXMLMember{lXMLGroup.firstChild().toElement()};
     lPresetName = lXMLMember.attribute("name", "");
   }
 
@@ -385,11 +385,11 @@ QJsonObject Utils::loadFromJsonFile(const QString& aFilePath)
   // Open and read the file
   QFile lFile(aFilePath);
   lFile.open(QIODevice::ReadOnly | QIODevice::Text);
-  const QString lReadData = lFile.readAll();
+  const QString lReadData{lFile.readAll()};
   lFile.close();
 
   // Convert the text content into a QJsonDocument
-  QJsonDocument lJsonDocument(QJsonDocument::fromJson(lReadData.toUtf8()));
+  auto lJsonDocument(QJsonDocument::fromJson(lReadData.toUtf8()));
 
   // Return the QJsonObject containing the read data
   return lJsonDocument.object();
@@ -424,7 +424,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   // Font family
   if (lSettingsJSON.contains("font"))
   {
-    auto lFontJSON = lSettingsJSON["font"].toObject();
+    auto lFontJSON{lSettingsJSON["font"].toObject()};
 
     if (lFontJSON.contains("family") && lFontJSON["family"].isString())
     {
@@ -615,7 +615,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 {
   auto lXMLBlock{QString("    <Group name=\"%1\">\n").arg(aGroupName)};
 
-  auto lBody = static_cast<BodyNameVersion>(aBody);
+  auto lBody{static_cast<BodyNameVersion>(aBody)};
   switch (lBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:

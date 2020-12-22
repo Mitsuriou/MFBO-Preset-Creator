@@ -379,7 +379,7 @@ void AssistedConversion::launchSearchProcess()
 
   auto lMainWidget{new QFrame(this)};
 
-  auto lDataContainer = new QGridLayout(lMainWidget);
+  auto lDataContainer{new QGridLayout(lMainWidget)};
   lDataContainer->setObjectName("data_container");
   lDataContainer->setAlignment(Qt::AlignTop);
   lDataContainer->setContentsMargins(0, 0, 0, 0);
@@ -455,7 +455,7 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
       lStep = -1;
     }
 
-    QListView* lSourceView{qobject_cast<QListView*>(lEventSource->view())};
+    auto lSourceView{qobject_cast<QListView*>(lEventSource->view())};
 
     auto lTestIndex{aIndex};
     while (lSourceView->isRowHidden(lTestIndex) && lTestIndex <= lEventSource->count())
@@ -492,7 +492,7 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
       continue;
     }
 
-    QListView* lView{qobject_cast<QListView*>(lComboBox->view())};
+    auto lView{qobject_cast<QListView*>(lComboBox->view())};
 
     // Disable the new selected option
     if (aIndex != 0)
@@ -501,9 +501,9 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
     }
 
     // Enable the old option
-    QStandardItemModel* model = qobject_cast<QStandardItemModel*>(lComboBox->model());
-    QStandardItem* item = model->item(lOldIndex);
+    auto lModel{qobject_cast<QStandardItemModel*>(lComboBox->model())};
+    auto lItem{lModel->item(lOldIndex)};
     lView->setRowHidden(lOldIndex, false);
-    item->setFlags(item->flags() | Qt::ItemIsEnabled);
+    lItem->setFlags(lItem->flags() | Qt::ItemIsEnabled);
   }
 }
