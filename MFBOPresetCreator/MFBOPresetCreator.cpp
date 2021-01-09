@@ -412,6 +412,7 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     QJsonDocument doc{QJsonDocument::fromJson(aResult.toUtf8())};
     QJsonObject obj{doc.object()};
     auto lTagName{obj["tag_name"].toString()};
+    Utils::cleanBreaksString(lTagName);
     auto lCurrentVersion{Utils::getApplicationVersion()};
 
 #ifndef DEBUG
