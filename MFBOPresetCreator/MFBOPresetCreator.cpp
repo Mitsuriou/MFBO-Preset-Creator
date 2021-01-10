@@ -183,7 +183,7 @@ void MFBOPresetCreator::showWindow()
     this->showMinimized();
 
     // Make the icon in the taskbar blink
-    FLASHWINFO* finfo = new FLASHWINFO();
+    FLASHWINFO* finfo{new FLASHWINFO()};
     finfo->cbSize = sizeof(FLASHWINFO);
     finfo->hwnd = (HWND)this->winId();
     finfo->uCount = 5;

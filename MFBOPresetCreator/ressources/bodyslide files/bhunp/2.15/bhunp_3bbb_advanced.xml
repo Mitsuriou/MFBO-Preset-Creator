@@ -1,0 +1,22 @@
+<SliderGroups>
+    <Group name="MFBO">
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands"/>
+    </Group>
+    <Group name="BHUNP 3BBB">
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands"/>
+    </Group>
+    <Group name="UUNP 3BBB">
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands"/>
+    </Group>
+    <Group name="Unified UNP">
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet"/>
+        <Member name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands"/>
+    </Group>
+</SliderGroups>

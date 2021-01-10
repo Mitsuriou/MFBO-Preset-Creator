@@ -216,42 +216,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="24"/>
+        <location filename="DataLists.cpp" line="31"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="25"/>
+        <location filename="DataLists.cpp" line="32"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="26"/>
+        <location filename="DataLists.cpp" line="33"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="61"/>
+        <location filename="DataLists.cpp" line="68"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="62"/>
+        <location filename="DataLists.cpp" line="69"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="63"/>
+        <location filename="DataLists.cpp" line="70"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="64"/>
+        <location filename="DataLists.cpp" line="71"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="65"/>
+        <location filename="DataLists.cpp" line="72"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -329,18 +329,18 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="421"/>
+        <location filename="MFBOPresetCreator.cpp" line="422"/>
         <source>Application update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="422"/>
+        <location filename="MFBOPresetCreator.cpp" line="423"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="437"/>
+        <location filename="MFBOPresetCreator.cpp" line="438"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1111,14 +1111,14 @@ on Github.com to download the latest MFBOPC version.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="226"/>
+        <location filename="Utils.cpp" line="240"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="259"/>
-        <location filename="Utils.cpp" line="292"/>
-        <location filename="Utils.cpp" line="362"/>
+        <location filename="Utils.cpp" line="273"/>
+        <location filename="Utils.cpp" line="306"/>
+        <location filename="Utils.cpp" line="376"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>

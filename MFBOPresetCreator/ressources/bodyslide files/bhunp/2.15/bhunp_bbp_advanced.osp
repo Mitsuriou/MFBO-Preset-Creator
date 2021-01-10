@@ -1,0 +1,1195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SliderSetInfo version="1">
+    <SliderSet name="{%%bodyslide_set_name%%} - BHUNP BBP Advanced">
+        <DataFolder>BHUNP 3BBB Advanced</DataFolder>
+        <SourceFile>BHUNP BBP Advanced.nif</SourceFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
+        <Shape target="BaseShape" DataFolder="BHUNP 3BBB Advanced">BaseShape</Shape>
+        <Shape target="BaseShapeAnus">BaseShapeAnus</Shape>
+        <Shape target="BaseShapeCanal">BaseShapeCanal</Shape>
+        <Slider name="Breasts" invert="true" small="100" big="100">
+            <Data name="BaseShapeBreasts" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreasts</Data>
+        </Slider>
+        <Slider name="BreastsSmall" invert="true" small="100" big="100">
+            <Data name="BaseShapeBreastsSmall" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastsSmall</Data>
+        </Slider>
+        <Slider name="BreastsSH" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastsSH" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastsSH</Data>
+        </Slider>
+        <Slider name="BreastsSSH" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastsSSH" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastsSSH</Data>
+        </Slider>
+        <Slider name="BreastsFantasy" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastsFantasy" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastsFantasy</Data>
+        </Slider>
+        <Slider name="DoubleMelon" invert="false" small="0" big="0">
+            <Data name="BaseShapeDoubleMelon" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeDoubleMelon</Data>
+        </Slider>
+        <Slider name="BreastCleavage" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastCleavage" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastCleavage</Data>
+        </Slider>
+        <Slider name="BreastFlatness" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastFlatness" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastFlatness</Data>
+        </Slider>
+        <Slider name="BreastGravity" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastGravity" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastGravity</Data>
+        </Slider>
+        <Slider name="PushUp" invert="false" small="0" big="0">
+            <Data name="BaseShapePushUp" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePushUp</Data>
+        </Slider>
+        <Slider name="BreastHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastHeight" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastHeight</Data>
+        </Slider>
+        <Slider name="BreastPerkiness" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastPerkiness" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastPerkiness</Data>
+        </Slider>
+        <Slider name="BreastWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastWidth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastWidth</Data>
+        </Slider>
+        <Slider name="NippleDistance" invert="true" small="100" big="100">
+            <Data name="BaseShapeNippleDistance" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleDistance</Data>
+        </Slider>
+        <Slider name="NipplePerkiness" invert="false" small="0" big="0">
+            <Data name="BaseShapeNipplePerkiness" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNipplePerkiness</Data>
+        </Slider>
+        <Slider name="NippleLength" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleLength" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleLength</Data>
+        </Slider>
+        <Slider name="NippleSize" invert="true" small="100" big="100">
+            <Data name="BaseShapeNippleSize" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleSize</Data>
+        </Slider>
+        <Slider name="NippleAreola" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleAreola" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleAreola</Data>
+        </Slider>
+        <Slider name="NippleUp" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleUp" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleUp</Data>
+        </Slider>
+        <Slider name="NippleDown" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleDown" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleDown</Data>
+        </Slider>
+        <Slider name="NippleTip" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleTip" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleTip</Data>
+        </Slider>
+        <Slider name="Arms" invert="true" small="100" big="100">
+            <Data name="BaseShapeArms" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeArms</Data>
+        </Slider>
+        <Slider name="ChubbyArms" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyArms" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeChubbyArms</Data>
+        </Slider>
+        <Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+            <Data name="BaseShapeShoulderSmooth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeShoulderSmooth</Data>
+        </Slider>
+        <Slider name="ShoulderWidth" invert="true" small="100" big="100">
+            <Data name="BaseShapeShoulderWidth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeShoulderWidth</Data>
+        </Slider>
+        <Slider name="BigTorso" invert="false" small="0" big="0">
+            <Data name="BaseShapeBigTorso" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBigTorso</Data>
+            <Data name="BaseShapeAnusBigTorso" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusBigTorso</Data>
+        </Slider>
+        <Slider name="Waist" invert="false" small="0" big="0">
+            <Data name="BaseShapeWaist" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeWaist</Data>
+        </Slider>
+        <Slider name="WideWaistLine" invert="false" small="0" big="0">
+            <Data name="BaseShapeWideWaistLine" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeWideWaistLine</Data>
+        </Slider>
+        <Slider name="ChubbyWaist" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyWaist" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeChubbyWaist</Data>
+            <Data name="BaseShapeAnusChubbyWaist" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusChubbyWaist</Data>
+        </Slider>
+        <Slider name="Belly" invert="false" small="0" big="0">
+            <Data name="BaseShapeBelly" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBelly</Data>
+        </Slider>
+        <Slider name="BigBelly" invert="false" small="0" big="0">
+            <Data name="BaseShapeBigBelly" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBigBelly</Data>
+        </Slider>
+        <Slider name="PregnancyBelly" invert="false" small="0" big="0">
+            <Data name="BaseShapePregnancyBelly" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePregnancyBelly</Data>
+            <Data name="BaseShapeCanalPregnancyBelly" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPregnancyBelly</Data>
+        </Slider>
+        <Slider name="TummyTuck" invert="false" small="0" big="0">
+            <Data name="BaseShapeTummyTuck" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeTummyTuck</Data>
+        </Slider>
+        <Slider name="Back" invert="false" small="0" big="0">
+            <Data name="BaseShapeBack" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBack</Data>
+            <Data name="BaseShapeAnusBack" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusBack</Data>
+        </Slider>
+        <Slider name="Hipbone" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipbone" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeHipbone</Data>
+        </Slider>
+        <Slider name="Hips" invert="false" small="0" big="0">
+            <Data name="BaseShapeHips" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeHips</Data>
+            <Data name="BaseShapeAnusHips" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusHips</Data>
+            <Data name="BaseShapeCanalHips" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalHips</Data>
+        </Slider>
+        <Slider name="ButtCrack" invert="true" small="100" big="100">
+            <Data name="BaseShapeButtCrack" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeButtCrack</Data>
+            <Data name="BaseShapeAnusButtCrack" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusButtCrack</Data>
+            <Data name="BaseShapeCanalButtCrack" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalButtCrack</Data>
+        </Slider>
+        <Slider name="Butt" invert="true" small="100" big="100">
+            <Data name="BaseShapeButt" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeButt</Data>
+            <Data name="BaseShapeAnusButt" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusButt</Data>
+            <Data name="BaseShapeCanalButt" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalButt</Data>
+        </Slider>
+        <Slider name="ButtSmall" invert="true" small="100" big="100">
+            <Data name="BaseShapeButtSmall" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeButtSmall</Data>
+            <Data name="BaseShapeAnusButtSmall" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusButtSmall</Data>
+            <Data name="BaseShapeCanalButtSmall" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalButtSmall</Data>
+        </Slider>
+        <Slider name="ButtShape2" invert="false" small="0" big="0">
+            <Data name="BaseShapeButtShape2" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeButtShape2</Data>
+            <Data name="BaseShapeAnusButtShape2" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusButtShape2</Data>
+            <Data name="BaseShapeCanalButtShape2" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalButtShape2</Data>
+        </Slider>
+        <Slider name="BigButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeBigButt" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBigButt</Data>
+            <Data name="BaseShapeAnusBigButt" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusBigButt</Data>
+            <Data name="BaseShapeCanalBigButt" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalBigButt</Data>
+        </Slider>
+        <Slider name="ChubbyButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyButt" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeChubbyButt</Data>
+            <Data name="BaseShapeAnusChubbyButt" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusChubbyButt</Data>
+            <Data name="BaseShapeCanalChubbyButt" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalChubbyButt</Data>
+        </Slider>
+        <Slider name="AppleCheeks" invert="false" small="0" big="0">
+            <Data name="BaseShapeAppleCheeks" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeAppleCheeks</Data>
+            <Data name="BaseShapeAnusAppleCheeks" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusAppleCheeks</Data>
+            <Data name="BaseShapeCanalAppleCheeks" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalAppleCheeks</Data>
+        </Slider>
+        <Slider name="RoundAss" invert="false" small="0" big="0">
+            <Data name="BaseShapeRoundAss" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeRoundAss</Data>
+            <Data name="BaseShapeAnusRoundAss" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusRoundAss</Data>
+            <Data name="BaseShapeCanalRoundAss" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalRoundAss</Data>
+        </Slider>
+        <Slider name="SlimThighs" invert="false" small="0" big="0">
+            <Data name="BaseShapeSlimThighs" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeSlimThighs</Data>
+            <Data name="BaseShapeAnusSlimThighs" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusSlimThighs</Data>
+            <Data name="BaseShapeCanalSlimThighs" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalSlimThighs</Data>
+        </Slider>
+        <Slider name="Thighs" invert="false" small="0" big="0">
+            <Data name="BaseShapeThighs" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeThighs</Data>
+            <Data name="BaseShapeAnusThighs" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusThighs</Data>
+            <Data name="BaseShapeCanalThighs" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalThighs</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyLegs" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeChubbyLegs</Data>
+            <Data name="BaseShapeAnusChubbyLegs" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusChubbyLegs</Data>
+            <Data name="BaseShapeCanalChubbyLegs" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalChubbyLegs</Data>
+        </Slider>
+        <Slider name="Legs" invert="true" small="100" big="100">
+            <Data name="BaseShapeLegs" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeLegs</Data>
+            <Data name="BaseShapeAnusLegs" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusLegs</Data>
+            <Data name="BaseShapeCanalLegs" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalLegs</Data>
+        </Slider>
+        <Slider name="KneeHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeKneeHeight" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeKneeHeight</Data>
+            <Data name="BaseShapeCanalKneeHeight" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalKneeHeight</Data>
+        </Slider>
+        <Slider name="CalfSize" invert="false" small="0" big="0">
+            <Data name="BaseShapeCalfSize" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCalfSize</Data>
+        </Slider>
+        <Slider name="CalfSmooth" invert="false" small="0" big="0">
+            <Data name="BaseShapeCalfSmooth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCalfSmooth</Data>
+        </Slider>
+        <Slider name="Neck" invert="false" small="100" big="0" hidden="true">
+            <Data name="BaseShapeNeck" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNeck</Data>
+        </Slider>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Low</Data>
+            <Data name="BaseShapeAnus7B Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Low</Data>
+            <Data name="BaseShapeCanal7B Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B High</Data>
+            <Data name="BaseShapeAnus7B High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B High</Data>
+            <Data name="BaseShapeCanal7B High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Bombshell Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Bombshell Low</Data>
+            <Data name="BaseShapeAnus7B Bombshell Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Bombshell Low</Data>
+            <Data name="BaseShapeCanal7B Bombshell Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Bombshell High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Bombshell High</Data>
+            <Data name="BaseShapeAnus7B Bombshell High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Bombshell High</Data>
+            <Data name="BaseShapeCanal7B Bombshell High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Natural Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Natural Low</Data>
+            <Data name="BaseShapeAnus7B Natural Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Natural Low</Data>
+            <Data name="BaseShapeCanal7B Natural Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Natural High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Natural High</Data>
+            <Data name="BaseShapeAnus7B Natural High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Natural High</Data>
+            <Data name="BaseShapeCanal7B Natural High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Cleavage Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Cleavage Low</Data>
+            <Data name="BaseShapeAnus7B Cleavage Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Cleavage Low</Data>
+            <Data name="BaseShapeCanal7B Cleavage Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Cleavage High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Cleavage High</Data>
+            <Data name="BaseShapeAnus7B Cleavage High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Cleavage High</Data>
+            <Data name="BaseShapeCanal7B Cleavage High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B BCup Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B BCup Low</Data>
+            <Data name="BaseShapeAnus7B BCup Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B BCup Low</Data>
+            <Data name="BaseShapeCanal7B BCup Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B BCup High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B BCup High</Data>
+            <Data name="BaseShapeAnus7B BCup High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B BCup High</Data>
+            <Data name="BaseShapeCanal7B BCup High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B BCup High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7BUNP Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7BUNP Low</Data>
+            <Data name="BaseShapeAnus7BUNP Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7BUNP Low</Data>
+            <Data name="BaseShapeCanal7BUNP Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7BUNP Low</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="BaseShape7BUNP High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7BUNP High</Data>
+            <Data name="BaseShapeAnus7BUNP High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7BUNP High</Data>
+            <Data name="BaseShapeCanal7BUNP High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7BUNP High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Oppai Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Oppai Low</Data>
+            <Data name="BaseShapeAnus7B Oppai Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Oppai Low</Data>
+            <Data name="BaseShapeCanal7B Oppai Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Oppai High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B Oppai High</Data>
+            <Data name="BaseShapeAnus7B Oppai High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B Oppai High</Data>
+            <Data name="BaseShapeCanal7B Oppai High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B CH Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B CH Low</Data>
+            <Data name="BaseShapeAnus7B CH Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B CH Low</Data>
+            <Data name="BaseShapeCanal7B CH Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B CH High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShape7B CH High</Data>
+            <Data name="BaseShapeAnus7B CH High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnus7B CH High</Data>
+            <Data name="BaseShapeCanal7B CH High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanal7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP Low</Data>
+            <Data name="BaseShapeAnusUNP Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP Low</Data>
+            <Data name="BaseShapeCanalUNP Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP High</Data>
+            <Data name="BaseShapeAnusUNP High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP High</Data>
+            <Data name="BaseShapeCanalUNP High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Pushup Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP Pushup Low</Data>
+            <Data name="BaseShapeAnusUNP Pushup Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP Pushup Low</Data>
+            <Data name="BaseShapeCanalUNP Pushup Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Pushup High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP Pushup High</Data>
+            <Data name="BaseShapeAnusUNP Pushup High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP Pushup High</Data>
+            <Data name="BaseShapeCanalUNP Pushup High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Skinny Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP Skinny Low</Data>
+            <Data name="BaseShapeAnusUNP Skinny Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP Skinny Low</Data>
+            <Data name="BaseShapeCanalUNP Skinny Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Skinny High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP Skinny High</Data>
+            <Data name="BaseShapeAnusUNP Skinny High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP Skinny High</Data>
+            <Data name="BaseShapeCanalUNP Skinny High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Perky Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP Perky Low</Data>
+            <Data name="BaseShapeAnusUNP Perky Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP Perky Low</Data>
+            <Data name="BaseShapeCanalUNP Perky Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Perky High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNP Perky High</Data>
+            <Data name="BaseShapeAnusUNP Perky High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNP Perky High</Data>
+            <Data name="BaseShapeCanalUNP Perky High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPB Low</Data>
+            <Data name="BaseShapeAnusUNPB Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPB Low</Data>
+            <Data name="BaseShapeCanalUNPB Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPB High</Data>
+            <Data name="BaseShapeAnusUNPB High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPB High</Data>
+            <Data name="BaseShapeCanalUNPB High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Chapi" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPB Chapi</Data>
+            <Data name="BaseShapeAnusUNPB Chapi" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPB Chapi</Data>
+            <Data name="BaseShapeCanalUNPB Chapi" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Oppai v1" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPB Oppai v1</Data>
+            <Data name="BaseShapeAnusUNPB Oppai v1" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPB Oppai v1</Data>
+            <Data name="BaseShapeCanalUNPB Oppai v1" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Oppai v3.2 Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPB Oppai v3.2 Low</Data>
+            <Data name="BaseShapeAnusUNPB Oppai v3.2 Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPB Oppai v3.2 Low</Data>
+            <Data name="BaseShapeCanalUNPB Oppai v3.2 Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Oppai v3.2 High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPB Oppai v3.2 High</Data>
+            <Data name="BaseShapeAnusUNPB Oppai v3.2 High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPB Oppai v3.2 High</Data>
+            <Data name="BaseShapeCanalUNPB Oppai v3.2 High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPetite Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPetite Low</Data>
+            <Data name="BaseShapeAnusUNPetite Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPetite Low</Data>
+            <Data name="BaseShapeCanalUNPetite Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPetite High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPetite High</Data>
+            <Data name="BaseShapeAnusUNPetite High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPetite High</Data>
+            <Data name="BaseShapeCanalUNPetite High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPC Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPC Low</Data>
+            <Data name="BaseShapeAnusUNPC Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPC Low</Data>
+            <Data name="BaseShapeCanalUNPC Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPC High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPC High</Data>
+            <Data name="BaseShapeAnusUNPC High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPC High</Data>
+            <Data name="BaseShapeCanalUNPC High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPCM Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPCM Low</Data>
+            <Data name="BaseShapeAnusUNPCM Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPCM Low</Data>
+            <Data name="BaseShapeCanalUNPCM Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPCM High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPCM High</Data>
+            <Data name="BaseShapeAnusUNPCM High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPCM High</Data>
+            <Data name="BaseShapeCanalUNPCM High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPSH Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPSH Low</Data>
+            <Data name="BaseShapeAnusUNPSH Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPSH Low</Data>
+            <Data name="BaseShapeCanalUNPSH Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPSH High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPSH High</Data>
+            <Data name="BaseShapeAnusUNPSH High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPSH High</Data>
+            <Data name="BaseShapeCanalUNPSH High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPK Low</Data>
+            <Data name="BaseShapeAnusUNPK Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPK Low</Data>
+            <Data name="BaseShapeCanalUNPK Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPK High</Data>
+            <Data name="BaseShapeAnusUNPK High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPK High</Data>
+            <Data name="BaseShapeCanalUNPK High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK Bonus Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPK Bonus Low</Data>
+            <Data name="BaseShapeAnusUNPK Bonus Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPK Bonus Low</Data>
+            <Data name="BaseShapeCanalUNPK Bonus Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK Bonus High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPK Bonus High</Data>
+            <Data name="BaseShapeAnusUNPK Bonus High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPK Bonus High</Data>
+            <Data name="BaseShapeCanalUNPK Bonus High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUN7B Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUN7B Low</Data>
+            <Data name="BaseShapeAnusUN7B Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUN7B Low</Data>
+            <Data name="BaseShapeCanalUN7B Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUN7B High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUN7B High</Data>
+            <Data name="BaseShapeAnusUN7B High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUN7B High</Data>
+            <Data name="BaseShapeCanalUN7B High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPBB Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPBB Low</Data>
+            <Data name="BaseShapeAnusUNPBB Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPBB Low</Data>
+            <Data name="BaseShapeCanalUNPBB Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPBB High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPBB High</Data>
+            <Data name="BaseShapeAnusUNPBB High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPBB High</Data>
+            <Data name="BaseShapeCanalUNPBB High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeSeraphim Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeSeraphim Low</Data>
+            <Data name="BaseShapeAnusSeraphim Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusSeraphim Low</Data>
+            <Data name="BaseShapeCanalSeraphim Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="BaseShapeSeraphim High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeSeraphim High</Data>
+            <Data name="BaseShapeAnusSeraphim High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusSeraphim High</Data>
+            <Data name="BaseShapeCanalSeraphim High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeDemonfet Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeDemonfet Low</Data>
+            <Data name="BaseShapeAnusDemonfet Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusDemonfet Low</Data>
+            <Data name="BaseShapeCanalDemonfet Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="BaseShapeDemonfet High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeDemonfet High</Data>
+            <Data name="BaseShapeAnusDemonfet High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusDemonfet High</Data>
+            <Data name="BaseShapeCanalDemonfet High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeDream Girl Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeDream Girl Low</Data>
+            <Data name="BaseShapeAnusDream Girl Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusDream Girl Low</Data>
+            <Data name="BaseShapeCanalDream Girl Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="BaseShapeDream Girl High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeDream Girl High</Data>
+            <Data name="BaseShapeAnusDream Girl High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusDream Girl High</Data>
+            <Data name="BaseShapeCanalDream Girl High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeTop Model Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeTop Model Low</Data>
+            <Data name="BaseShapeAnusTop Model Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusTop Model Low</Data>
+            <Data name="BaseShapeCanalTop Model Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="BaseShapeTop Model High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeTop Model High</Data>
+            <Data name="BaseShapeAnusTop Model High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusTop Model High</Data>
+            <Data name="BaseShapeCanalTop Model High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeLeito Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeLeito Low</Data>
+            <Data name="BaseShapeAnusLeito Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusLeito Low</Data>
+            <Data name="BaseShapeCanalLeito Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="BaseShapeLeito High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeLeito High</Data>
+            <Data name="BaseShapeAnusLeito High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusLeito High</Data>
+            <Data name="BaseShapeCanalLeito High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPF Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPF Low</Data>
+            <Data name="BaseShapeAnusUNPF Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPF Low</Data>
+            <Data name="BaseShapeCanalUNPF Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPF High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPF High</Data>
+            <Data name="BaseShapeAnusUNPF High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPF High</Data>
+            <Data name="BaseShapeCanalUNPF High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPFx Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPFx Low</Data>
+            <Data name="BaseShapeAnusUNPFx Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPFx Low</Data>
+            <Data name="BaseShapeCanalUNPFx Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPFx High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeUNPFx High</Data>
+            <Data name="BaseShapeAnusUNPFx High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusUNPFx High</Data>
+            <Data name="BaseShapeCanalUNPFx High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalUNPFx High</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCNHF Low</Data>
+            <Data name="BaseShapeAnusCNHF Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusCNHF Low</Data>
+            <Data name="BaseShapeCanalCNHF Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCNHF High</Data>
+            <Data name="BaseShapeAnusCNHF High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusCNHF High</Data>
+            <Data name="BaseShapeCanalCNHF High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF Bonus Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCNHF Bonus Low</Data>
+            <Data name="BaseShapeAnusCNHF Bonus Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusCNHF Bonus Low</Data>
+            <Data name="BaseShapeCanalCNHF Bonus Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF Bonus High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCNHF Bonus High</Data>
+            <Data name="BaseShapeAnusCNHF Bonus High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusCNHF Bonus High</Data>
+            <Data name="BaseShapeCanalCNHF Bonus High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeMCBM Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeMCBM Low</Data>
+            <Data name="BaseShapeAnusMCBM Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusMCBM Low</Data>
+            <Data name="BaseShapeCanalMCBM Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="BaseShapeMCBM High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeMCBM High</Data>
+            <Data name="BaseShapeAnusMCBM High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusMCBM High</Data>
+            <Data name="BaseShapeCanalMCBM High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeVenus Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeVenus Low</Data>
+            <Data name="BaseShapeAnusVenus Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusVenus Low</Data>
+            <Data name="BaseShapeCanalVenus Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="BaseShapeVenus High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeVenus High</Data>
+            <Data name="BaseShapeAnusVenus High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusVenus High</Data>
+            <Data name="BaseShapeCanalVenus High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalVenus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeZGGB-R2 Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeZGGB-R2 Low</Data>
+            <Data name="BaseShapeAnusZGGB-R2 Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusZGGB-R2 Low</Data>
+            <Data name="BaseShapeCanalZGGB-R2 Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="BaseShapeZGGB-R2 High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeZGGB-R2 High</Data>
+            <Data name="BaseShapeAnusZGGB-R2 High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusZGGB-R2 High</Data>
+            <Data name="BaseShapeCanalZGGB-R2 High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalZGGB-R2 High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeManga Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeManga Low</Data>
+            <Data name="BaseShapeAnusManga Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusManga Low</Data>
+            <Data name="BaseShapeCanalManga Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="BaseShapeManga High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeManga High</Data>
+            <Data name="BaseShapeAnusManga High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusManga High</Data>
+            <Data name="BaseShapeCanalManga High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeCHSBHC Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCHSBHC Low</Data>
+            <Data name="BaseShapeAnusCHSBHC Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusCHSBHC Low</Data>
+            <Data name="BaseShapeCanalCHSBHC Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="BaseShapeCHSBHC High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCHSBHC High</Data>
+            <Data name="BaseShapeAnusCHSBHC High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusCHSBHC High</Data>
+            <Data name="BaseShapeCanalCHSBHC High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalCHSBHC High</Data>
+        </Slider>
+        <Slider name="Aruru6Duck Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeAruru6Duck Low" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeAruru6Duck Low</Data>
+            <Data name="BaseShapeAnusAruru6Duck Low" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusAruru6Duck Low</Data>
+            <Data name="BaseShapeCanalAruru6Duck Low" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalAruru6Duck Low</Data>
+        </Slider>
+        <Slider name="Aruru6Duck High" invert="false" small="0" big="0">
+            <Data name="BaseShapeAruru6Duck High" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeAruru6Duck High</Data>
+            <Data name="BaseShapeAnusAruru6Duck High" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusAruru6Duck High</Data>
+            <Data name="BaseShapeCanalAruru6Duck High" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalAruru6Duck High</Data>
+        </Slider>
+        <Slider name="NippleErection" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleErection" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNippleErection</Data>
+            <Data name="BaseShapeAnusNippleErection" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusNippleErection</Data>
+            <Data name="BaseShapeCanalNippleErection" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalNippleErection</Data>
+        </Slider>
+        <Slider name="BreastConverge" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastConverge" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastConverge</Data>
+            <Data name="BaseShapeAnusBreastConverge" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusBreastConverge</Data>
+            <Data name="BaseShapeCanalBreastConverge" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalBreastConverge</Data>
+        </Slider>
+        <Slider name="PussyCute" invert="false" small="0" big="0">
+            <Data name="BaseShapePussyCute" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePussyCute</Data>
+            <Data name="BaseShapeAnusPussyCute" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusPussyCute</Data>
+            <Data name="BaseShapeCanalPussyCute" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPussyCute</Data>
+        </Slider>
+        <Slider name="PussyHilly" invert="false" small="0" big="0">
+            <Data name="BaseShapePussyHilly" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePussyHilly</Data>
+            <Data name="BaseShapeCanalPussyHilly" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPussyHilly</Data>
+        </Slider>
+        <Slider name="ClitorisErection" invert="false" small="0" big="0">
+            <Data name="BaseShapeClitorisErection" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeClitorisErection</Data>
+        </Slider>
+        <Slider name="PussyMajora" invert="false" small="0" big="0">
+            <Data name="BaseShapePussyMajora" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePussyMajora</Data>
+            <Data name="BaseShapeCanalPussyMajora" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPussyMajora</Data>
+        </Slider>
+        <Slider name="PussyMinora" invert="false" small="0" big="0">
+            <Data name="BaseShapePussyMinora" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePussyMinora</Data>
+            <Data name="BaseShapeCanalPussyMinora" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPussyMinora</Data>
+        </Slider>
+        <Slider name="PussyMajoraBig" invert="false" small="0" big="0">
+            <Data name="BaseShapePussyMajoraBig" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePussyMajoraBig</Data>
+            <Data name="BaseShapeCanalPussyMajoraBig" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPussyMajoraBig</Data>
+        </Slider>
+        <Slider name="BackArch" invert="false" small="0" big="0">
+            <Data name="BaseShapeBackArch" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBackArch</Data>
+            <Data name="BaseShapeAnusBackArch" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusBackArch</Data>
+        </Slider>
+        <Slider name="BreastCenter" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastCenter" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastCenter</Data>
+        </Slider>
+        <Slider name="BreastCenterBig" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastCenterBig" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastCenterBig</Data>
+        </Slider>
+        <Slider name="BotePregnancy" invert="false" small="0" big="0">
+            <Data name="BaseShapeBotePregnancy" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBotePregnancy</Data>
+        </Slider>
+        <Slider name="ChestDepth" invert="false" small="0" big="0">
+            <Data name="BaseShapeChestDepth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeChestDepth</Data>
+        </Slider>
+        <Slider name="ChestWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeChestWidth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeChestWidth</Data>
+        </Slider>
+        <Slider name="CrotchBack" invert="false" small="0" big="0">
+            <Data name="BaseShapeCrotchBack" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeCrotchBack</Data>
+            <Data name="BaseShapeAnusCrotchBack" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusCrotchBack</Data>
+            <Data name="BaseShapeCanalCrotchBack" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalCrotchBack</Data>
+        </Slider>
+        <Slider name="ForearmSize" invert="false" small="0" big="0">
+            <Data name="BaseShapeForearmSize" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeForearmSize</Data>
+        </Slider>
+        <Slider name="Groin" invert="false" small="0" big="0">
+            <Data name="BaseShapeGroin" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeGroin</Data>
+            <Data name="BaseShapeAnusGroin" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusGroin</Data>
+            <Data name="BaseShapeCanalGroin" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalGroin</Data>
+        </Slider>
+        <Slider name="HipBone" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipBone" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeHipBone</Data>
+            <Data name="BaseShapeCanalHipBone" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalHipBone</Data>
+        </Slider>
+        <Slider name="HipForward" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipForward" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeHipForward</Data>
+            <Data name="BaseShapeAnusHipForward" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusHipForward</Data>
+            <Data name="BaseShapeCanalHipForward" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalHipForward</Data>
+        </Slider>
+        <Slider name="HipUpperWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipUpperWidth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeHipUpperWidth</Data>
+        </Slider>
+        <Slider name="KneeShape" invert="false" small="0" big="0">
+            <Data name="BaseShapeKneeShape" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeKneeShape</Data>
+        </Slider>
+        <Slider name="LeftBreastFuck" invert="false" small="0" big="0">
+            <Data name="BaseShapeLeftBreastFuck" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeLeftBreastFuck</Data>
+        </Slider>
+        <Slider name="LegsThin" invert="false" small="0" big="0">
+            <Data name="BaseShapeLegsThin" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeLegsThin</Data>
+        </Slider>
+        <Slider name="MuscleArms" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleArms" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeMuscleArms</Data>
+        </Slider>
+        <Slider name="MuscleLegs" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleLegs" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeMuscleLegs</Data>
+            <Data name="BaseShapeCanalMuscleLegs" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalMuscleLegs</Data>
+        </Slider>
+        <Slider name="MuscleButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleButt" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeMuscleButt</Data>
+            <Data name="BaseShapeAnusMuscleButt" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusMuscleButt</Data>
+        </Slider>
+        <Slider name="MusclePecs" invert="false" small="0" big="0">
+            <Data name="BaseShapeMusclePecs" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeMusclePecs</Data>
+        </Slider>
+        <Slider name="MuscleAbs" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleAbs" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeMuscleAbs</Data>
+            <Data name="BaseShapeCanalMuscleAbs" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalMuscleAbs</Data>
+        </Slider>
+        <Slider name="NipplePuffyAreola" invert="false" small="0" big="0">
+            <Data name="BaseShapeNipplePuffyAreola" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNipplePuffyAreola</Data>
+        </Slider>
+        <Slider name="PussyOpen" invert="false" small="0" big="0">
+            <Data name="BaseShapePussyOpen" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePussyOpen</Data>
+            <Data name="BaseShapeCanalPussyOpen" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPussyOpen</Data>
+        </Slider>
+        <Slider name="RightBreastFuck" invert="false" small="0" big="0">
+            <Data name="BaseShapeRightBreastFuck" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeRightBreastFuck</Data>
+        </Slider>
+        <Slider name="RibsProminance" invert="false" small="0" big="0">
+            <Data name="BaseShapeRibsProminance" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeRibsProminance</Data>
+        </Slider>
+        <Slider name="ShoulderTweak" invert="false" small="0" big="0">
+            <Data name="BaseShapeShoulderTweak" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeShoulderTweak</Data>
+        </Slider>
+        <Slider name="SternumDepth" invert="false" small="0" big="0">
+            <Data name="BaseShapeSternumDepth" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeSternumDepth</Data>
+        </Slider>
+        <Slider name="SternumHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeSternumHeight" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeSternumHeight</Data>
+        </Slider>
+        <Slider name="Top Slope" invert="false" small="0" big="0">
+            <Data name="BaseShapeTop Slope" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeTop Slope</Data>
+        </Slider>
+        <Slider name="WaistHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeWaistHeight" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeWaistHeight</Data>
+            <Data name="BaseShapeAnusWaistHeight" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusWaistHeight</Data>
+        </Slider>
+        <Slider name="PussyWide" invert="false" small="0" big="0">
+            <Data name="BaseShapePussyWide" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapePussyWide</Data>
+            <Data name="BaseShapeCanalPussyWide" target="BaseShapeCanal" local="true">BHUNP BBP Advanced.osd\BaseShapeCanalPussyWide</Data>
+        </Slider>
+        <Slider name="AnusSpread" invert="false" small="0" big="0">
+            <Data name="BaseShapeAnusSpread" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusSpread</Data>
+            <Data name="BaseShapeAnusAnusSpread" target="BaseShapeAnus" local="true">BHUNP BBP Advanced.osd\BaseShapeAnusAnusSpread</Data>
+        </Slider>
+        <Slider name="BreastsGone" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastsGone" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeBreastsGone</Data>
+        </Slider>
+        <Slider name="NipBGone" invert="false" small="0" big="0">
+            <Data name="BaseShapeNipBGone" target="BaseShape" local="true">BHUNP BBP Advanced.osd\BaseShapeNipBGone</Data>
+        </Slider>
+    </SliderSet>
+    <SliderSet name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet">
+        <DataFolder>BHUNP 3BBB Advanced</DataFolder>
+        <SourceFile>BHUNP 3BBB Advanced Feet.nif</SourceFile>
+        <OutputPath>{%%feet_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
+        <Shape target="Feet">Feet</Shape>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="Feet7B High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Bombshell Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="Feet7B Bombshell High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Natural Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="Feet7B Natural High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Cleavage Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="Feet7B Cleavage High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="Feet7B BCup Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="Feet7B BCup High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B BCup High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Oppai Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="Feet7B Oppai High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="Feet7B CH Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="Feet7B CH High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="FeetUNP High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Pushup Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Pushup High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Skinny Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Skinny High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Perky Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Perky High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="FeetUNPB High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Chapi" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v1" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v3.2 Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v3.2 High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPetite Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="FeetUNPetite High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPC Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="FeetUNPC High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPCM Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="FeetUNPCM High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPSH Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="FeetUNPSH High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="FeetUNPK High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Bonus Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Bonus High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="FeetUN7B Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="FeetUN7B High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPBB Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="FeetUNPBB High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="FeetSeraphim Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="FeetSeraphim High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="FeetDemonfet Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="FeetDemonfet High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="FeetDream Girl Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="FeetDream Girl High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="FeetTop Model Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="FeetTop Model High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="FeetLeito Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="FeetLeito High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPF Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="FeetUNPF High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPFx Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="FeetUNPFx High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPFx High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="FeetMCBM Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="FeetMCBM High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="FeetVenus Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="FeetVenus High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetVenus High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="FeetManga Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="FeetManga High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="FeetCHSBHC Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="FeetCHSBHC High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCHSBHC High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="Feet7BUNP Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7BUNP Low</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="FeetCNHF High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Bonus Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Bonus High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="FeetZGGB-R2 Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="HighHeel" invert="false" small="0" big="0">
+            <Data name="FeetHighHeel" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetHighHeel</Data>
+        </Slider>
+    </SliderSet>
+    <SliderSet name="{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands">
+        <DataFolder>BHUNP 3BBB Advanced</DataFolder>
+        <SourceFile>BHUNP 3BBB Advanced Hands.nif</SourceFile>
+        <OutputPath>{%%hands_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%hands_output_file%%}</OutputFile>
+        <Shape target="Hands">Hands</Shape>
+        <Shape target="Nails">Nails</Shape>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="Hands7B High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Bombshell Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="Hands7B Bombshell High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Natural Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="Hands7B Natural High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Cleavage Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="Hands7B Cleavage High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="Hands7B BCup Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="Hands7B BCup High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B BCup High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Oppai Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="Hands7B Oppai High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="Hands7B CH Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="Hands7B CH High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="HandsUNP High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Pushup Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="HandsUNP Pushup High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Skinny Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="HandsUNP Skinny High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Perky Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="HandsUNP Perky High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="HandsUNPB High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Chapi" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Oppai v1" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Oppai v3.2 Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Oppai v3.2 High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPetite Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="HandsUNPetite High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPC Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="HandsUNPC High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPCM Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="HandsUNPCM High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPSH Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="HandsUNPSH High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPK Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="HandsUNPK High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPK Bonus Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="HandsUNPK Bonus High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="HandsUN7B Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="HandsUN7B High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPBB Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="HandsUNPBB High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="HandsSeraphim Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="HandsSeraphim High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="HandsDemonfet Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="HandsDemonfet High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="HandsDream Girl Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="HandsDream Girl High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="HandsTop Model Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="HandsTop Model High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="HandsLeito Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="HandsLeito High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPF Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="HandsUNPF High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPFx Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="HandsUNPFx High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsUNPFx High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="HandsMCBM Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="HandsMCBM High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="HandsVenus Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="HandsVenus High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsVenus High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="HandsManga Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="HandsManga High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="HandsCHSBHC Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="HandsCHSBHC High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsCHSBHC High</Data>
+        </Slider>
+        <Slider name="Aruru6Duck High" invert="false" small="0" big="0">
+            <Data name="HandsAruru6Duck High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsAruru6Duck High</Data>
+        </Slider>
+        <Slider name="Arms" invert="true" small="100" big="100">
+            <Data name="HandsArms" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsArms</Data>
+        </Slider>
+        <Slider name="NippleErection" invert="false" small="0" big="0">
+            <Data name="HandsNippleErection" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsNippleErection</Data>
+        </Slider>
+        <Slider name="BreastConverge" invert="false" small="0" big="0">
+            <Data name="HandsBreastConverge" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsBreastConverge</Data>
+        </Slider>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7B Low</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="Hands7BUNP Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7BUNP Low</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="Hands7BUNP High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\Hands7BUNP High</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="HandsCNHF Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="HandsCNHF High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="HandsCNHF Bonus Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="HandsCNHF Bonus High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="HandsZGGB-R2 Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="HandsZGGB-R2 High" target="Hands" local="true">BHUNP 3BBB Advanced Hands.osd\HandsZGGB-R2 High</Data>
+        </Slider>
+    </SliderSet>
+</SliderSetInfo>
