@@ -3,6 +3,7 @@
 AssistedConversion::AssistedConversion(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)
   , mSettings(aSettings)
+  , mHasUserDoneSomething(false)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -19,7 +20,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   auto lEventSource{qobject_cast<QPushButton*>(sender())};
   auto lValidationBtn{this->findChild<QPushButton*>("validate_selection")};
 
-  if (lEventSource && lValidationBtn)
+  if ((lEventSource && lValidationBtn) || !this->mHasUserDoneSomething)
   {
     aEvent->accept();
     return;
@@ -287,6 +288,11 @@ void AssistedConversion::chooseInputDirectory()
   // Open a directory chooser dialog
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
+
+  if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
+  {
+    this->mHasUserDoneSomething = true;
+  }
 
   // Enable or disable path viewer label and launch button
   auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};

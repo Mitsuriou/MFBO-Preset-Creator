@@ -19,6 +19,7 @@ protected:
 
 private:
   const Struct::Settings mSettings;
+  bool mHasUserDoneSomething;
   std::vector<int> mBoxSelectedIndexes;
   QString mScannedDirName;
 

@@ -5,7 +5,7 @@ QStringList DataLists::getBodiesNameVersions()
   QStringList lBodies;
   lBodies.append(QString("CBBE 3BBB 3BA [v.1.40]"));
   lBodies.append(QString("CBBE 3BBB 3BA [v.1.50]"));
-  lBodies.append(QString("CBBE 3BBB 3BA [v.1.51 -> v.1.52]"));
+  lBodies.append(QString("CBBE 3BBB 3BA [v.1.51 -> v.1.53]"));
   lBodies.append(QString("CBBE SMP (3BBB) [v.1.2.0]"));
   lBodies.append(QString("BHUNP 3BBB [v.2.13]"));
   lBodies.append(QString("BHUNP 3BBB Advanced [v.2.13]"));
