@@ -19,7 +19,14 @@ enum class BodyNameVersion
   BHUNP_BBP_2_15 = 14,
   BHUNP_BBP_Advanced_2_15 = 15,
   BHUNP_TBBP_2_15 = 16,
-  BHUNP_TBBP_Advanced_2_15 = 17
+  BHUNP_TBBP_Advanced_2_15 = 17,
+  BHUNP_3BBB_2_20 = 18,
+  BHUNP_3BBB_Advanced_2_20 = 19,
+  BHUNP_3BBB_Advanced_ver_2_2_20 = 20,
+  BHUNP_BBP_2_20 = 21,
+  BHUNP_BBP_Advanced_2_20 = 22,
+  BHUNP_TBBP_2_20 = 23,
+  BHUNP_TBBP_Advanced_2_20 = 24
 };
 
 enum class ApplicationLanguage

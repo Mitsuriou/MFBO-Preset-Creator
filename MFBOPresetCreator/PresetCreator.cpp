@@ -527,6 +527,20 @@ void PresetCreator::updateGUIOnBodyChange()
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_TBBP_2_13:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
+    case BodyNameVersion::BHUNP_BBP_2_15:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_TBBP_2_15:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
+    case BodyNameVersion::BHUNP_BBP_2_20:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_TBBP_2_20:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
       lDisableBeastHands = true;
       lMustUseBeastHands->setChecked(false);
       break;
@@ -987,24 +1001,38 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n%1 - CBBE Feet\n%1 - CBBE Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
+    case BodyNameVersion::BHUNP_3BBB_2_15:
+    case BodyNameVersion::BHUNP_3BBB_2_20:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced Ver 2\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_BBP_2_13:
+    case BodyNameVersion::BHUNP_BBP_2_15:
+    case BodyNameVersion::BHUNP_BBP_2_20:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
+    case BodyNameVersion::BHUNP_TBBP_2_15:
+    case BodyNameVersion::BHUNP_TBBP_2_20:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
   }

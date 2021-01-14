@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.1.3";
+  return "2.1.4";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -236,6 +236,20 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "bhunp_2.15/bhunp_tbbp";
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
       return "bhunp_2.15/bhunp_tbbp_advanced";
+    case BodyNameVersion::BHUNP_3BBB_2_20:
+      return "bhunp_2.20/bhunp_3bbb";
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
+      return "bhunp_2.20/bhunp_3bbb_advanced";
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
+      return "bhunp_2.20/bhunp_3bbb_advanced_ver_2";
+    case BodyNameVersion::BHUNP_BBP_2_20:
+      return "bhunp_2.20/bhunp_bbp";
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
+      return "bhunp_2.20/bhunp_bbp_advanced";
+    case BodyNameVersion::BHUNP_TBBP_2_20:
+      return "bhunp_2.20/bhunp_tbbp";
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
+      return "bhunp_2.20/bhunp_tbbp_advanced";
     default:
       Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
       return "";
@@ -690,6 +704,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
     case BodyNameVersion::BHUNP_3BBB_2_15:
+    case BodyNameVersion::BHUNP_3BBB_2_20:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -697,6 +712,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -704,6 +720,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Ver 2\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -711,6 +728,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::BHUNP_BBP_2_13:
     case BodyNameVersion::BHUNP_BBP_2_15:
+    case BodyNameVersion::BHUNP_BBP_2_20:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -718,6 +736,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP Advanced\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -725,6 +744,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
     case BodyNameVersion::BHUNP_TBBP_2_15:
+    case BodyNameVersion::BHUNP_TBBP_2_20:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -732,6 +752,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP Advanced\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
