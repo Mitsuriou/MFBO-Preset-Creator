@@ -204,8 +204,8 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "cbbe_3bbb_1.40";
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
       return "cbbe_3bbb_1.50";
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_53:
-      return "cbbe_3bbb_1.51_1.53";
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_54:
+      return "cbbe_3bbb_1.51_1.54";
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return "cbbe_smp_3bbb_1.2.0";
     case BodyNameVersion::BHUNP_3BBB_2_13:
@@ -262,7 +262,7 @@ bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_53:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_54:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return true;
     default:
@@ -674,7 +674,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
       }
 
       break;
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_53:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_54:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
 
