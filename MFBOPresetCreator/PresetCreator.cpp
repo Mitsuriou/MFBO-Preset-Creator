@@ -517,33 +517,13 @@ void PresetCreator::updateGUIOnBodyChange()
   // The new "disabled" state to apply
   auto lDisableBeastHands{false};
 
-  auto lBodySelected{static_cast<BodyNameVersion>(this->findChild<QComboBox*>(QString("body_selector"))->currentIndex())};
-  switch (lBodySelected)
+  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
+
+  // Between BodyNameVersion::BHUNP_3BBB_2_13 and BodyNameVersion::BHUNP_TBBP_Advanced_2_20
+  if (lBodySelected >= 4 && lBodySelected <= 24)
   {
-    case BodyNameVersion::BHUNP_3BBB_2_13:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
-    case BodyNameVersion::BHUNP_BBP_2_13:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
-    case BodyNameVersion::BHUNP_TBBP_2_13:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
-    case BodyNameVersion::BHUNP_3BBB_2_15:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
-    case BodyNameVersion::BHUNP_BBP_2_15:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
-    case BodyNameVersion::BHUNP_TBBP_2_15:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
-    case BodyNameVersion::BHUNP_3BBB_2_20:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
-    case BodyNameVersion::BHUNP_BBP_2_20:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
-    case BodyNameVersion::BHUNP_TBBP_2_20:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
-      lDisableBeastHands = true;
-      lMustUseBeastHands->setChecked(false);
-      break;
+    lDisableBeastHands = true;
+    lMustUseBeastHands->setChecked(false);
   }
 
   lLabelBeastHands->setDisabled(lDisableBeastHands);
