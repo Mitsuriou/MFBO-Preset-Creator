@@ -29,6 +29,19 @@ enum class BodyNameVersion
   BHUNP_TBBP_Advanced_2_20 = 24
 };
 
+enum class BodyName
+{
+  CBBE_3BBB_3BA = 0,
+  CBBE_SMP_3BBB = 1,
+  BHUNP_3BBB = 2,
+  BHUNP_3BBB_Advanced = 3,
+  BHUNP_3BBB_Advanced_ver_2 = 4,
+  BHUNP_BBP = 5,
+  BHUNP_BBP_Advanced = 6,
+  BHUNP_TBBP = 7,
+  BHUNP_TBBP_Advanced = 8
+};
+
 enum class ApplicationLanguage
 {
   English = 0,

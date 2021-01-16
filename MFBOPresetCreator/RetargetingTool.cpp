@@ -86,7 +86,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::getBodiesNameVersions());
+  lBodyVersionSelector->addItems(DataLists::getBodiesNamesVersions());
   lBodyVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolBody));
   lBodyVersionSelector->setObjectName(QString("body_selector"));
   lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 1, 1, 3);

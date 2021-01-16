@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.1.5";
+  return "2.2.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)

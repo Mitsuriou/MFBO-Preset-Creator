@@ -218,7 +218,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   auto lDefaultBodyVersionLabelSelector{new QComboBox(this)};
   lDefaultBodyVersionLabelSelector->setItemDelegate(new QStyledItemDelegate());
   lDefaultBodyVersionLabelSelector->setCursor(Qt::PointingHandCursor);
-  lDefaultBodyVersionLabelSelector->addItems(DataLists::getBodiesNameVersions());
+  lDefaultBodyVersionLabelSelector->addItems(DataLists::getBodiesNamesVersions());
   lDefaultBodyVersionLabelSelector->setObjectName(QString("default_body_selector"));
   lPresetCreatorLayout->addWidget(lDefaultBodyVersionLabelSelector, 1, 0, 1, 2);
 
@@ -288,7 +288,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   auto lUpgradeBodyNameVersionSelector{new QComboBox(this)};
   lUpgradeBodyNameVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lUpgradeBodyNameVersionSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeBodyNameVersionSelector->addItems(DataLists::getBodiesNameVersions());
+  lUpgradeBodyNameVersionSelector->addItems(DataLists::getBodiesNamesVersions());
   lUpgradeBodyNameVersionSelector->setObjectName(QString("upgrade_body_selector"));
   lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionSelector);
 }

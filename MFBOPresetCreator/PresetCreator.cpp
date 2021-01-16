@@ -236,24 +236,35 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
   lBodyslideGridLayout->setColumnStretch(0, 0);
   lBodyslideGridLayout->setColumnStretch(1, 1);
-  lBodyslideGridLayout->setColumnStretch(2, 2);
-  lBodyslideGridLayout->setColumnStretch(3, 0);
+  lBodyslideGridLayout->setColumnStretch(2, 1);
+  lBodyslideGridLayout->setColumnStretch(3, 2);
+  lBodyslideGridLayout->setColumnStretch(4, 0);
   lBodyslideGridLayout->setSpacing(10);
   lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
   lBodyslideGridLayout->setAlignment(Qt::AlignTop);
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
+  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultMainWindowBody)};
+
   auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
   lBodyslideGridLayout->addWidget(lBodyLabel, 0, 0);
 
-  auto lBodySelector{new QComboBox(this)};
-  lBodySelector->setItemDelegate(new QStyledItemDelegate());
-  lBodySelector->setCursor(Qt::PointingHandCursor);
-  lBodySelector->addItems(DataLists::getBodiesNameVersions());
-  lBodySelector->setCurrentIndex(static_cast<int>(mSettings.defaultMainWindowBody));
-  lBodySelector->setObjectName(QString("body_selector"));
-  lBodyslideGridLayout->addWidget(lBodySelector, 0, 1, 1, 3);
+  auto lBodyNameSelector{new QComboBox(this)};
+  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
+  lBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
+  lBodyNameSelector->setObjectName(QString("body_selector_name"));
+  lBodyslideGridLayout->addWidget(lBodyNameSelector, 0, 1);
+
+  auto lBodyVersionSelector{new QComboBox(this)};
+  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
+  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
+  lBodyVersionSelector->setObjectName(QString("body_selector_version"));
+  lBodyslideGridLayout->addWidget(lBodyVersionSelector, 0, 2);
 
   // Second line
   auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
@@ -261,7 +272,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
-  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 3);
+  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
 
   // Third line
   auto lLabelOspXmlNames{new QLabel(tr("Preview:"), this)};
@@ -270,7 +281,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
   lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
   lPathsNamesOspXmlNames->setAutoFillBackground(true);
-  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 3);
+  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 4);
 
   // Fourth line
   auto lNamesInApp{new QLabel(this)};
@@ -289,7 +300,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
   lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
-  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 3);
+  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
 
   // Fifth line
   auto lLabelNamesInApp{new QLabel(tr("Preview:"), this)};
@@ -297,7 +308,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   auto lResultNamesInApp{new QLabel("", this)};
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
-  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 3);
+  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
 
   // Sixth line
   auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
@@ -312,21 +323,22 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName("bodyslide_filters");
   lFiltersList->setWordWrap(true);
-  lBodyslideGridLayout->addWidget(lFiltersList, 5, 2);
+  lBodyslideGridLayout->addWidget(lFiltersList, 5, 2, 1, 2);
 
   auto lEditFilters{new QPushButton(this)};
   lEditFilters->setText(tr("Edit BodySlide filters sets"));
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
   lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
-  lBodyslideGridLayout->addWidget(lEditFilters, 5, 3);
+  lBodyslideGridLayout->addWidget(lEditFilters, 5, 4);
 
   // Pre-bind initialization functions
   this->updateOSPXMLPreview(QString(""));
   this->updateBodyslideNamesPreview(QString(""));
 
   // Event binding
-  this->connect(lBodySelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateAvailableBodyVersions);
+  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::updateBodySlideFiltersListPreview));
@@ -517,7 +529,13 @@ void PresetCreator::updateGUIOnBodyChange()
   // The new "disabled" state to apply
   auto lDisableBeastHands{false};
 
-  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  if (lBodyVersionSelected == -1)
+  {
+    return;
+  }
+  auto lBodySelected{static_cast<int>(DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
 
   // Between BodyNameVersion::BHUNP_3BBB_2_13 and BodyNameVersion::BHUNP_TBBP_Advanced_2_20
   if (lBodySelected >= 4 && lBodySelected <= 24)
@@ -528,6 +546,15 @@ void PresetCreator::updateGUIOnBodyChange()
 
   lLabelBeastHands->setDisabled(lDisableBeastHands);
   lMustUseBeastHands->setDisabled(lDisableBeastHands);
+}
+
+void PresetCreator::updateAvailableBodyVersions()
+{
+  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
+  lBodyVersionSelector->clear();
+  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->setCurrentIndex(0);
 }
 
 bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const int& aBodySelected, const QString& aBodyslideSlidersetsNames)
@@ -951,7 +978,10 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
     lIsValidPath = false;
   }
 
-  auto lBodySelected{static_cast<BodyNameVersion>(this->findChild<QComboBox*>(QString("body_selector"))->currentIndex())};
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+
   auto lConstructedPreviewText{QString("")};
 
   switch (lBodySelected)
@@ -1145,7 +1175,9 @@ void PresetCreator::generateDirectoryStructure()
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Selected body
-  auto lBodySelected{this->findChild<QComboBox*>(QString("body_selector"))->currentIndex()};
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  auto lBodySelected{static_cast<int>(DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
 
   // Beast hands
   auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
