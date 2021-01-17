@@ -74,22 +74,36 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Grid layout
   auto lGeneralGridLayout{new QGridLayout(lGeneralGroupBox)};
+  lGeneralGridLayout->setColumnStretch(0, 0);
+  lGeneralGridLayout->setColumnStretch(1, 1);
+  lGeneralGridLayout->setColumnStretch(2, 1);
+  lGeneralGridLayout->setColumnStretch(3, 2);
+  lGeneralGridLayout->setColumnStretch(4, 0);
   lGeneralGridLayout->setSpacing(10);
   lGeneralGridLayout->setContentsMargins(15, 20, 15, 15);
   lGeneralGridLayout->setAlignment(Qt::AlignTop);
-  lGeneralGridLayout->setColumnStretch(2, 1);
 
   // Targeted body and version
-  auto lBodyVersionLabel{new QLabel(tr("Targeted body and version:"), this)};
-  lGeneralGridLayout->addWidget(lBodyVersionLabel, 0, 0);
+  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+
+  auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
+  lGeneralGridLayout->addWidget(lBodyLabel, 0, 0);
+
+  auto lBodyNameSelector{new QComboBox(this)};
+  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
+  lBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
+  lBodyNameSelector->setObjectName(QString("body_selector_name"));
+  lGeneralGridLayout->addWidget(lBodyNameSelector, 0, 1);
 
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::getBodiesNamesVersions());
-  lBodyVersionSelector->setCurrentIndex(static_cast<int>(mSettings.defaultRetargetingToolBody));
-  lBodyVersionSelector->setObjectName(QString("body_selector"));
-  lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 1, 1, 3);
+  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
+  lBodyVersionSelector->setObjectName(QString("body_selector_version"));
+  lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 2);
 
   // Input path
   auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
@@ -99,14 +113,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
-  lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 2);
+  lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 3);
 
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lInputPathChooser->setCursor(Qt::PointingHandCursor);
   lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lInputPathChooser->setAutoDefault(false);
   lInputPathChooser->setDefault(false);
-  lGeneralGridLayout->addWidget(lInputPathChooser, 1, 3);
+  lGeneralGridLayout->addWidget(lInputPathChooser, 1, 4);
 
   // BodySlide filters
   auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
@@ -121,14 +135,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName("bodyslide_filters");
   lFiltersList->setWordWrap(true);
-  lGeneralGridLayout->addWidget(lFiltersList, 2, 2);
+  lGeneralGridLayout->addWidget(lFiltersList, 2, 2, 1, 2);
 
   auto lEditFilters{new QPushButton(this)};
   lEditFilters->setText(tr("Edit BodySlide filters sets"));
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
   lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
-  lGeneralGridLayout->addWidget(lEditFilters, 2, 3);
+  lGeneralGridLayout->addWidget(lEditFilters, 2, 4);
 
   // Backup group box
   auto lBackupGroupBox{new QGroupBox(tr("Backup"), this)};
@@ -197,6 +211,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
 
   // Event binding
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateAvailableBodyVersions);
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
   this->connect(lKeepBackup, &QCheckBox::stateChanged, this, &RetargetingTool::updateBackupState);
   lKeepBackup->setChecked(true);
@@ -235,6 +250,15 @@ int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QS
   }
 
   return lNumber;
+}
+
+void RetargetingTool::updateAvailableBodyVersions()
+{
+  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
+  lBodyVersionSelector->clear();
+  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->setCurrentIndex(0);
 }
 
 void RetargetingTool::chooseInputDirectory()
@@ -349,7 +373,9 @@ void RetargetingTool::updateBackupPreview()
 
 void RetargetingTool::launchUpDownGradeProcess()
 {
-  auto lBodySelected{this->findChild<QComboBox*>("body_selector")->currentIndex()};
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
   auto lRootDir{this->findChild<QLineEdit*>("input_path_directory")->text()};
 
   // Check if the input path has been given by the user
@@ -438,7 +464,8 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lAbsFilePath{QString("")};
   auto lRelativeDirs{QString("")};
   std::vector<Struct::SliderSet> lParsedSliderSets;
-  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected))};
+  auto lRessourcesFolder{Utils::getBodyRessourceFolder(lBodySelected)};
+
   if (lRessourcesFolder.length() == 0)
   {
     return;
@@ -552,7 +579,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Check, if the preset is using beast hands, if the chosen body does not support beast hands
     auto lSkipBeastHands{false};
-    if (lMustUseBeastHands && !Utils::isBodySupportingBeastHands(static_cast<BodyNameVersion>(lBodySelected)))
+    if (lMustUseBeastHands && !Utils::isBodySupportingBeastHands(lBodySelected))
     {
       Utils::displayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
       lSkipBeastHands = true;
@@ -784,7 +811,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
           for (const auto& lUserFilter : lUserFilters)
           {
-            lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(lBodySelected, lMustUseBeastHands, lUserFilter);
+            lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(static_cast<int>(lBodySelected), lMustUseBeastHands, lUserFilter);
           }
 
           lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);

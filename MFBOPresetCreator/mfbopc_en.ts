@@ -672,148 +672,148 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="95"/>
+        <location filename="RetargetingTool.cpp" line="109"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="104"/>
-        <location filename="RetargetingTool.cpp" line="163"/>
+        <location filename="RetargetingTool.cpp" line="118"/>
+        <location filename="RetargetingTool.cpp" line="177"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="112"/>
+        <location filename="RetargetingTool.cpp" line="126"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="127"/>
+        <location filename="RetargetingTool.cpp" line="141"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="134"/>
+        <location filename="RetargetingTool.cpp" line="148"/>
         <source>Backup</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="144"/>
+        <location filename="RetargetingTool.cpp" line="158"/>
         <source>Keep a backup?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="147"/>
+        <location filename="RetargetingTool.cpp" line="161"/>
         <source>You should always check this box to avoid any data loss or corruption.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="153"/>
+        <location filename="RetargetingTool.cpp" line="167"/>
         <source>Backup directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="172"/>
+        <location filename="RetargetingTool.cpp" line="186"/>
         <source>Backup subdirectory name/path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="181"/>
+        <location filename="RetargetingTool.cpp" line="195"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="388"/>
+        <location filename="RetargetingTool.cpp" line="414"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="404"/>
+        <location filename="RetargetingTool.cpp" line="430"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="413"/>
+        <location filename="RetargetingTool.cpp" line="439"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="430"/>
+        <location filename="RetargetingTool.cpp" line="456"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="447"/>
+        <location filename="RetargetingTool.cpp" line="474"/>
         <source>Parsing XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="457"/>
-        <location filename="RetargetingTool.cpp" line="502"/>
-        <location filename="RetargetingTool.cpp" line="670"/>
+        <location filename="RetargetingTool.cpp" line="484"/>
+        <location filename="RetargetingTool.cpp" line="529"/>
+        <location filename="RetargetingTool.cpp" line="697"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="528"/>
-        <location filename="RetargetingTool.cpp" line="646"/>
+        <location filename="RetargetingTool.cpp" line="555"/>
+        <location filename="RetargetingTool.cpp" line="673"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="549"/>
+        <location filename="RetargetingTool.cpp" line="576"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="557"/>
+        <location filename="RetargetingTool.cpp" line="584"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="575"/>
-        <location filename="RetargetingTool.cpp" line="583"/>
+        <location filename="RetargetingTool.cpp" line="602"/>
+        <location filename="RetargetingTool.cpp" line="610"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="601"/>
+        <location filename="RetargetingTool.cpp" line="628"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="640"/>
+        <location filename="RetargetingTool.cpp" line="667"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="754"/>
+        <location filename="RetargetingTool.cpp" line="781"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="770"/>
+        <location filename="RetargetingTool.cpp" line="797"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="804"/>
+        <location filename="RetargetingTool.cpp" line="831"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="478"/>
-        <location filename="RetargetingTool.cpp" line="810"/>
+        <location filename="RetargetingTool.cpp" line="505"/>
+        <location filename="RetargetingTool.cpp" line="837"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="818"/>
+        <location filename="RetargetingTool.cpp" line="845"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="821"/>
+        <location filename="RetargetingTool.cpp" line="848"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -823,27 +823,27 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="486"/>
+        <location filename="RetargetingTool.cpp" line="513"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="660"/>
+        <location filename="RetargetingTool.cpp" line="687"/>
         <source>Patching XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="698"/>
+        <location filename="RetargetingTool.cpp" line="725"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="818"/>
+        <location filename="RetargetingTool.cpp" line="845"/>
         <source>Retargeting successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="192"/>
+        <location filename="RetargetingTool.cpp" line="206"/>
         <source>Retarget all the files under the input path</source>
         <translation></translation>
     </message>
@@ -853,27 +853,27 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="83"/>
+        <location filename="RetargetingTool.cpp" line="89"/>
         <source>Targeted body and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="318"/>
+        <location filename="RetargetingTool.cpp" line="342"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="358"/>
+        <location filename="RetargetingTool.cpp" line="384"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="379"/>
+        <location filename="RetargetingTool.cpp" line="405"/>
         <source>Error: no path given to backup the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="395"/>
+        <location filename="RetargetingTool.cpp" line="421"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation></translation>
     </message>

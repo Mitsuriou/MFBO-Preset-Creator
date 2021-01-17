@@ -29,6 +29,7 @@ private:
   int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
 
 private slots:
+  void updateAvailableBodyVersions();
   void chooseInputDirectory();
   void chooseBackupDirectory();
   void updateBackupState(int aState);
