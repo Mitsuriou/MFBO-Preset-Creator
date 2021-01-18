@@ -26,7 +26,7 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 
 # Development roadmap (not ordered by priority and not exhaustive)
 ### Ressources
-- [ ] User guides and video tutorials
+- [X] A "User Guide & Tutorials" document is currently being written [here](https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing).
 
 ### Graphical User Interface (GUI) improvements
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
