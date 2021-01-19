@@ -443,9 +443,9 @@ Struct::Settings Utils::loadSettingsFromFile()
   Struct::Settings lSettings;
 
   // Language
-  if (lSettingsJSON.contains("lang") && lSettingsJSON["lang"].isDouble())
+  if (lSettingsJSON.contains("language") && lSettingsJSON["language"].isDouble())
   {
-    auto lFoundLanguage{lSettingsJSON["lang"].toInt()};
+    auto lFoundLanguage{lSettingsJSON["language"].toInt()};
     lSettings.language = static_cast<ApplicationLanguage>(lFoundLanguage);
   }
 
@@ -510,23 +510,23 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Main window opening mode
-  if (lSettingsJSON.contains("main_window_opening_mode") && lSettingsJSON["main_window_opening_mode"].isDouble())
+  if (lSettingsJSON.contains("mainWindowOpeningMode") && lSettingsJSON["mainWindowOpeningMode"].isDouble())
   {
-    auto lFoundWindowOpeningMode{lSettingsJSON["main_window_opening_mode"].toInt()};
+    auto lFoundWindowOpeningMode{lSettingsJSON["mainWindowOpeningMode"].toInt()};
     lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lFoundWindowOpeningMode);
   }
 
   // Default body name and version
-  if (lSettingsJSON.contains("default_body") && lSettingsJSON["default_body"].isDouble())
+  if (lSettingsJSON.contains("defaultBody") && lSettingsJSON["defaultBody"].isDouble())
   {
-    auto lFoundBody{lSettingsJSON["default_body"].toInt()};
+    auto lFoundBody{lSettingsJSON["defaultBody"].toInt()};
     lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
   }
 
   // Default BodySlide Presets' Retargeting body name and version
-  if (lSettingsJSON.contains("retargeting_tool_default_body") && lSettingsJSON["retargeting_tool_default_body"].isDouble())
+  if (lSettingsJSON.contains("retargetingToolDefaultBody") && lSettingsJSON["retargetingToolDefaultBody"].isDouble())
   {
-    auto lFoundBody{lSettingsJSON["retargeting_tool_default_body"].toInt()};
+    auto lFoundBody{lSettingsJSON["retargetingToolDefaultBody"].toInt()};
     lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
   }
 
@@ -762,6 +762,106 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
   lXMLBlock.append("    </Group>\n");
   return lXMLBlock;
+}
+
+void Utils::checkLastPathsFileExistence()
+{
+  auto lLastPathsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "last_paths.json"};
+  if (!QFile(lLastPathsFilePath).exists())
+  {
+    // Create a default "last paths" file if it does not exist
+    std::map<QString, QString> lMap;
+    for (const auto& lKey : DataLists::getLastPathsKeys())
+    {
+      lMap.insert({lKey, QString("")});
+    }
+
+    Utils::saveLastPathsToFile(lMap);
+  }
+}
+
+std::map<QString, QString> Utils::loadLastPathsFromFile()
+{
+  Utils::checkLastPathsFileExistence();
+
+  auto lLastPathsFilePath(QCoreApplication::applicationDirPath() + QDir::separator() + "last_paths.json");
+  QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lLastPathsFilePath)};
+
+  auto lVariantMap{lObtainedJSON.toVariantMap()};
+  std::map<QString, QString> lLastPathsList;
+
+  for (const auto& lKey : lVariantMap.keys())
+  {
+    lLastPathsList.insert({lKey, lVariantMap.value(lKey, "").toString()});
+  }
+
+  return lLastPathsList;
+}
+
+void Utils::saveLastPathsToFile(const std::map<QString, QString>& aList)
+{
+  auto lLastPathsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "last_paths.json"};
+  Utils::saveAsJsonFile(Utils::lastPathsStructToJson(aList), lLastPathsFilePath);
+}
+
+QJsonObject Utils::lastPathsStructToJson(const std::map<QString, QString>& aList)
+{
+  QVariantMap lVarMap;
+
+  for (const auto& lPair : aList)
+  {
+    lVarMap.insert(lPair.first, lPair.second);
+  }
+
+  return QJsonObject::fromVariantMap(lVarMap);
+}
+
+QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath)
+{
+  QString lPath{""};
+
+  for (auto lIt = aMap->begin(); lIt != aMap->end(); lIt++)
+  {
+    if (lIt->first == aKey)
+    {
+      lPath = lIt->second;
+      break;
+    }
+  }
+
+  if (lPath.length() > 0 && QFile::exists(lPath))
+  {
+    return lPath;
+  }
+
+  if (aFallbackPath.length() > 0 && QFile::exists(aFallbackPath))
+  {
+    return aFallbackPath;
+  }
+
+  return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+}
+
+void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath)
+{
+  if (aPath.length() == 0)
+  {
+    return;
+  }
+
+  auto lModifiedPaths{0};
+  for (auto lIt = aMap->begin(); lIt != aMap->end(); lIt++)
+  {
+    if (lIt->first == "general" || lIt->first == aKey)
+    {
+      lIt->second = aPath;
+
+      if (++lModifiedPaths == 2)
+      {
+        return;
+      }
+    }
+  }
 }
 
 QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)

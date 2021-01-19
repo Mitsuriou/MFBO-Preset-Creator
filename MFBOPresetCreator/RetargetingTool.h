@@ -12,7 +12,7 @@ class RetargetingTool : public QDialog
   Q_OBJECT
 
 public:
-  explicit RetargetingTool(QWidget* parent, const Struct::Settings& aSettings);
+  explicit RetargetingTool(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -20,6 +20,8 @@ protected:
 
 private:
   const Struct::Settings mSettings;
+  std::map<QString, QString>* mLastPaths;
+  bool mHasUserDoneSomething; // TODO
   std::map<QString, QStringList> mFiltersList;
 
   void setWindowProperties();

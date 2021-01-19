@@ -1,8 +1,9 @@
 #include "PresetCreator.h"
 
-PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings)
+PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QWidget(aParent)
   , mSettings(aSettings)
+  , mLastPaths(aLastPaths)
   , mMinimumFirstColumnWidth(300)
 {
   // Very first container in which the scroll area will be added
@@ -1164,8 +1165,9 @@ void PresetCreator::updateSkeletonPreview()
 void PresetCreator::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text()))};
   lLineEdit->setText(lPath);
+  Utils::updatePathAtKey(this->mLastPaths, "mainWindowOutput", lPath);
   this->updateOutputPreview();
 }
 

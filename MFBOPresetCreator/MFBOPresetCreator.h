@@ -26,6 +26,7 @@ protected:
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
+  std::map<QString, QString> mLastPaths;
   bool mNewVersionAvailable;
 
   void initializeGUI();

@@ -3,6 +3,7 @@
 MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent)
   : QMainWindow(parent)
   , mSettings(aSettings)
+  , mLastPaths(Utils::loadLastPathsFromFile())
   , mNewVersionAvailable(false)
 {
   // Construct the GUI
@@ -44,6 +45,7 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   }
   else
   {
+    Utils::saveLastPathsToFile(this->mLastPaths);
     aEvent->accept();
   }
 }
@@ -52,7 +54,7 @@ void MFBOPresetCreator::initializeGUI()
 {
   this->setupMenuBar();
 
-  auto lMainContainer{new PresetCreator(this, mSettings)};
+  auto lMainContainer{new PresetCreator(this, this->mSettings, &this->mLastPaths)};
   lMainContainer->setObjectName("main_container");
   this->setCentralWidget(lMainContainer);
 
@@ -449,7 +451,7 @@ void MFBOPresetCreator::quickRelaunch()
 
 void MFBOPresetCreator::launchAssistedConversion()
 {
-  auto lDialog{new AssistedConversion(this, this->mSettings)};
+  auto lDialog{new AssistedConversion(this, this->mSettings, &this->mLastPaths)};
   this->connect(lDialog, &AssistedConversion::valuesChosen, this, &MFBOPresetCreator::fillUIByAssistedConversionValues);
 }
 
@@ -467,7 +469,7 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
 
 void MFBOPresetCreator::launchPresetsRetargeting()
 {
-  new RetargetingTool(this, this->mSettings);
+  new RetargetingTool(this, this->mSettings, &this->mLastPaths);
 }
 
 void MFBOPresetCreator::launchSettingsDialog()

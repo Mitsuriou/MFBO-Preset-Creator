@@ -11,7 +11,7 @@ class PresetCreator : public QWidget
   Q_OBJECT
 
 public:
-  explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings);
+  explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
   // Function that will to be called from the outside
   void updateSettings(Struct::Settings aSettings);
@@ -19,6 +19,7 @@ public:
 
 private:
   Struct::Settings mSettings;
+  std::map<QString, QString>* mLastPaths;
   std::map<QString, QStringList> mFiltersList;
   int mMinimumFirstColumnWidth;
 

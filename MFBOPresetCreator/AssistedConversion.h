@@ -11,7 +11,7 @@ class AssistedConversion : public QDialog
   Q_OBJECT
 
 public:
-  explicit AssistedConversion(QWidget* parent, const Struct::Settings& aSettings);
+  explicit AssistedConversion(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -19,6 +19,7 @@ protected:
 
 private:
   const Struct::Settings mSettings;
+  std::map<QString, QString>* mLastPaths;
   bool mHasUserDoneSomething;
   std::vector<int> mBoxSelectedIndexes;
   QString mScannedDirName;

@@ -22,6 +22,7 @@ public:
   static QStringList getAppThemes();
   static QStringList getLanguages();
   static QStringList getAssistedConversionActions();
+  static QStringList getLastPathsKeys();
 
 private:
   DataLists(){};

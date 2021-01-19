@@ -2,7 +2,7 @@
 
 QStringList DataLists::getBodiesNamesVersions()
 {
-  QStringList lBodies{
+  return QStringList{
     QString("CBBE 3BBB 3BA [v.1.40]"),
     QString("CBBE 3BBB 3BA [v.1.50]"),
     QString("CBBE 3BBB 3BA [v.1.51 -> v.1.54]"),
@@ -28,13 +28,11 @@ QStringList DataLists::getBodiesNamesVersions()
     QString("BHUNP BBP Advanced [v.2.20]"),
     QString("BHUNP TBBP [v.2.20]"),
     QString("BHUNP TBBP Advanced [v.2.20]")};
-
-  return lBodies;
 }
 
 QStringList DataLists::getBodiesNames()
 {
-  QStringList lBodies{
+  return QStringList{
     QString("CBBE 3BBB 3BA"),
     QString("CBBE SMP (3BBB)"),
     QString("BHUNP 3BBB"),
@@ -44,8 +42,6 @@ QStringList DataLists::getBodiesNames()
     QString("BHUNP BBP Advanced"),
     QString("BHUNP TBBP"),
     QString("BHUNP TBBP Advanced")};
-
-  return lBodies;
 }
 
 QStringList DataLists::getVersionsFromBodyName(BodyName aBody)
@@ -146,17 +142,15 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
 
 QStringList DataLists::getWindowOpeningModes()
 {
-  QStringList lWindowModes{
+  return QStringList{
     tr("Minimized"),
     tr("Windowed"),
     tr("Maximized")};
-
-  return lWindowModes;
 }
 
 QStringList DataLists::getAppThemes()
 {
-  QStringList lAppThemes{
+  return QStringList{
     QString("Windows Vista"),
     QString("Paper Light by 6788"),
     QString("Paper Dark by 6788"),
@@ -168,27 +162,31 @@ QStringList DataLists::getAppThemes()
     QString("QuasarApp's Visual Studio Dark"),
     QString("Mitsuriou's Light Theme"),
     QString("Mitsuriou's Dark Theme")};
-
-  return lAppThemes;
 }
 
 QStringList DataLists::getLanguages()
 {
-  QStringList lLanguages{
+  return QStringList{
     QString("English"),
     QString("Français")};
-
-  return lLanguages;
 }
 
 QStringList DataLists::getAssistedConversionActions()
 {
-  QStringList lActions{
+  return QStringList{
     tr("[ignore]"),
     tr("Body mesh"),
     tr("Feet mesh"),
     tr("Hands mesh"),
     tr("Skeleton mesh")};
+}
 
-  return lActions;
+QStringList DataLists::getLastPathsKeys()
+{
+  return QStringList{
+    "general",
+    "mainWindowOutput",
+    "assistedConversionInput",
+    "retargetingToolInput",
+    "retargetingToolOutput"};
 }

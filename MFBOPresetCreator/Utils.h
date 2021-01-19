@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "DataLists.h"
 #include "Enum.h"
 #include "Struct.h"
 #include "stdafx.h"
@@ -52,6 +53,14 @@ public:
   static void saveFiltersToFile(const std::map<QString, QStringList>& aList);
   static QJsonObject filtersMapToJson(const std::map<QString, QStringList>& aList);
   static QString getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
+
+  // Paths
+  static void checkLastPathsFileExistence();
+  static std::map<QString, QString> loadLastPathsFromFile();
+  static void saveLastPathsToFile(const std::map<QString, QString>& aLastPaths);
+  static QJsonObject lastPathsStructToJson(const std::map<QString, QString>& aLastPaths);
+  static QString getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath);
+  static void updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath);
 
   // Language
   static QString getShortLanguageNameFromEnum(const int& aEnumValue);

@@ -1,8 +1,10 @@
 ﻿#include "RetargetingTool.h"
 
-RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSettings)
+RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(parent)
   , mSettings(aSettings)
+  , mLastPaths(aLastPaths)
+  , mHasUserDoneSomething(false)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -264,15 +266,17 @@ void RetargetingTool::updateAvailableBodyVersions()
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text()))};
   lLineEdit->setText(lPath);
+  Utils::updatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
 }
 
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text()))};
   lLineEdit->setText(lPath);
+  Utils::updatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
 
   this->updateBackupPreview();
 }

@@ -1,8 +1,9 @@
 #include "AssistedConversion.h"
 
-AssistedConversion::AssistedConversion(QWidget* parent, const Struct::Settings& aSettings)
+AssistedConversion::AssistedConversion(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(parent)
   , mSettings(aSettings)
+  , mLastPaths(aLastPaths)
   , mHasUserDoneSomething(false)
 {
   // Build the window's interface
@@ -286,8 +287,9 @@ void AssistedConversion::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
 
   // Open a directory chooser dialog
-  const auto& lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
+  const auto& lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text()))};
   lLineEdit->setText(lPath);
+  Utils::updatePathAtKey(this->mLastPaths, "assistedConversionInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
