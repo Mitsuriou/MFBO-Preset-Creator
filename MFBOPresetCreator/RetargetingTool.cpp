@@ -266,7 +266,8 @@ void RetargetingTool::updateAvailableBodyVersions()
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text()))};
+  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::updatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
 }
@@ -274,7 +275,8 @@ void RetargetingTool::chooseInputDirectory()
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text()))};
+  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::updatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
 

@@ -1165,7 +1165,8 @@ void PresetCreator::updateSkeletonPreview()
 void PresetCreator::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text()))};
+  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::updatePathAtKey(this->mLastPaths, "mainWindowOutput", lPath);
   this->updateOutputPreview();

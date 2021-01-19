@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.2.1";
+  return "2.3.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -554,6 +554,12 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.assistedConversionScanOnlyMeshesSubdir = lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].toBool();
   }
 
+  // Each button stores the last opened path
+  if (lSettingsJSON.contains("eachButtonSavesItsLastUsedPath") && lSettingsJSON["eachButtonSavesItsLastUsedPath"].isBool())
+  {
+    lSettings.eachButtonSavesItsLastUsedPath = lSettingsJSON["eachButtonSavesItsLastUsedPath"].toBool();
+  }
+
   return lSettings;
 }
 
@@ -577,18 +583,19 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
 
   // Construct the full settings object
   QJsonObject lObj;
-  lObj["lang"] = static_cast<int>(aSettings.language);
+  lObj["language"] = static_cast<int>(aSettings.language);
   lObj["font"] = lFontObj;
   lObj["appTheme"] = static_cast<int>(aSettings.appTheme);
   lObj["windowWidth"] = aSettings.mainWindowWidth;
   lObj["windowHeight"] = aSettings.mainWindowHeight;
-  lObj["default_body"] = static_cast<int>(aSettings.defaultMainWindowBody);
-  lObj["retargeting_tool_default_body"] = static_cast<int>(aSettings.defaultRetargetingToolBody);
-  lObj["main_window_opening_mode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
+  lObj["defaultBody"] = static_cast<int>(aSettings.defaultMainWindowBody);
+  lObj["retargetingToolDefaultBody"] = static_cast<int>(aSettings.defaultRetargetingToolBody);
+  lObj["mainWindowOpeningMode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
   lObj["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
   lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
   lObj["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
   lObj["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
+  lObj["eachButtonSavesItsLastUsedPath"] = aSettings.eachButtonSavesItsLastUsedPath;
 
   return lObj;
 }
@@ -766,7 +773,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
 void Utils::checkLastPathsFileExistence()
 {
-  auto lLastPathsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "last_paths.json"};
+  auto lLastPathsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "paths.json"};
   if (!QFile(lLastPathsFilePath).exists())
   {
     // Create a default "last paths" file if it does not exist
@@ -784,7 +791,7 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
 {
   Utils::checkLastPathsFileExistence();
 
-  auto lLastPathsFilePath(QCoreApplication::applicationDirPath() + QDir::separator() + "last_paths.json");
+  auto lLastPathsFilePath(QCoreApplication::applicationDirPath() + QDir::separator() + "paths.json");
   QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lLastPathsFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
@@ -800,7 +807,7 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
 
 void Utils::saveLastPathsToFile(const std::map<QString, QString>& aList)
 {
-  auto lLastPathsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "last_paths.json"};
+  auto lLastPathsFilePath{QCoreApplication::applicationDirPath() + QDir::separator() + "paths.json"};
   Utils::saveAsJsonFile(Utils::lastPathsStructToJson(aList), lLastPathsFilePath);
 }
 
@@ -816,13 +823,19 @@ QJsonObject Utils::lastPathsStructToJson(const std::map<QString, QString>& aList
   return QJsonObject::fromVariantMap(lVarMap);
 }
 
-QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath)
+QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool& aUseKeyPath)
 {
   QString lPath{""};
+  QString lKey{aKey};
+
+  if (!aUseKeyPath)
+  {
+    lKey = "general";
+  }
 
   for (auto lIt = aMap->begin(); lIt != aMap->end(); lIt++)
   {
-    if (lIt->first == aKey)
+    if (lIt->first == lKey)
     {
       lPath = lIt->second;
       break;

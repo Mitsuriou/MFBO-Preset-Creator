@@ -65,6 +65,7 @@ namespace Struct
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
     bool checkForUpdatesAtStartup{true};
     bool assistedConversionScanOnlyMeshesSubdir{false};
+    bool eachButtonSavesItsLastUsedPath{true};
 
     bool operator==(const Struct::Settings& aSettings)
     {
@@ -80,7 +81,8 @@ namespace Struct
         && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
         && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         && this->checkForUpdatesAtStartup == aSettings.checkForUpdatesAtStartup
-        && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir);
+        && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
+        && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath);
     };
 
     bool operator!=(const Struct::Settings& aSettings)
@@ -97,7 +99,8 @@ namespace Struct
         || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         || this->checkForUpdatesAtStartup != aSettings.checkForUpdatesAtStartup
-        || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir);
+        || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
+        || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath);
     };
   };
 

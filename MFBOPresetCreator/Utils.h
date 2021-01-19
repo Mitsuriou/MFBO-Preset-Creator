@@ -59,7 +59,7 @@ public:
   static std::map<QString, QString> loadLastPathsFromFile();
   static void saveLastPathsToFile(const std::map<QString, QString>& aLastPaths);
   static QJsonObject lastPathsStructToJson(const std::map<QString, QString>& aLastPaths);
-  static QString getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath);
+  static QString getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool& aUseKeyPath);
   static void updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath);
 
   // Language

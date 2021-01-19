@@ -198,6 +198,12 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("check_update_startup"));
   lDisplayLayout->addWidget(lAutoOpenDirCheckbox);
+
+  // Each button stores the last opened path
+  auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each button stores its own last opened path"), this)};
+  lEachButtonSavesItsLastUsedPath->setCursor(Qt::PointingHandCursor);
+  lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
+  lDisplayLayout->addWidget(lEachButtonSavesItsLastUsedPath);
 }
 
 void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRowIndex)
@@ -374,6 +380,9 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 
   auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")};
   lAssisConvScanOnlyMeshesDir->setChecked(aSettingsToLoad.assistedConversionScanOnlyMeshesSubdir);
+
+  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")};
+  lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
 }
 
 Struct::Settings Settings::getSettingsFromGUI()
@@ -389,6 +398,7 @@ Struct::Settings Settings::getSettingsFromGUI()
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};
   auto lCheckUpdateStartup{this->findChild<QCheckBox*>("check_update_startup")->isChecked()};
   auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")->isChecked()};
+  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")->isChecked()};
 
   Struct::Settings lSettings;
 
@@ -454,6 +464,9 @@ Struct::Settings Settings::getSettingsFromGUI()
 
   // Assisted Conversion: only scan the meshes subdir
   lSettings.assistedConversionScanOnlyMeshesSubdir = lAssisConvScanOnlyMeshesDir;
+
+  // Each button stores the last opened path
+  lSettings.eachButtonSavesItsLastUsedPath = lEachButtonSavesItsLastUsedPath;
 
   return lSettings;
 }

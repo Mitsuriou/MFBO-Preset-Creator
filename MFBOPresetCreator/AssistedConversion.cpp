@@ -287,7 +287,8 @@ void AssistedConversion::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
 
   // Open a directory chooser dialog
-  const auto& lPath{QFileDialog::getExistingDirectory(this, "", Utils::getPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text()))};
+  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::updatePathAtKey(this->mLastPaths, "assistedConversionInput", lPath);
 
