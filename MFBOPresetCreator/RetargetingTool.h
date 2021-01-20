@@ -21,16 +21,18 @@ protected:
 private:
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
-  bool mHasUserDoneSomething; // TODO
+  bool mHasUserDoneSomething;
   std::map<QString, QStringList> mFiltersList;
 
   void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
+  void userHasDoneAnAction();
 
   int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
 
 private slots:
+  void userHasDoneAnAction(int);
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
   void chooseBackupDirectory();

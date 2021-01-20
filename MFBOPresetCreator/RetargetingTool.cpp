@@ -4,11 +4,12 @@ RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSetti
   : QDialog(parent)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
-  , mHasUserDoneSomething(false)
 {
   // Build the window's interface
   this->setWindowProperties();
   this->initializeGUI();
+
+  this->mHasUserDoneSomething = false;
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -17,6 +18,12 @@ RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSetti
 
 void RetargetingTool::closeEvent(QCloseEvent* aEvent)
 {
+  if (!this->mHasUserDoneSomething)
+  {
+    aEvent->accept();
+    return;
+  }
+
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
@@ -212,6 +219,10 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGenerateButton->setDefault(false);
   aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
 
+  // Event bindings for user actions (disconnected the first time the user does an action in the GUI)
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
+  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
+
   // Event binding
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateAvailableBodyVersions);
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
@@ -226,6 +237,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
+}
+
+void RetargetingTool::userHasDoneAnAction()
+{
+  if (!this->mHasUserDoneSomething)
+  {
+    this->mHasUserDoneSomething = true;
+  }
 }
 
 int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
@@ -254,6 +273,19 @@ int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QS
   return lNumber;
 }
 
+void RetargetingTool::userHasDoneAnAction(int)
+{
+  this->mHasUserDoneSomething = true;
+
+  // Body name selector
+  auto lBodyNameSelector{this->findChild<QComboBox*>(QString("body_selector_name"))};
+  this->disconnect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
+
+  // Body version selector
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
+  this->disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
+}
+
 void RetargetingTool::updateAvailableBodyVersions()
 {
   auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
@@ -270,6 +302,12 @@ void RetargetingTool::chooseInputDirectory()
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::updatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
+  this->updateBackupPreview();
+
+  if (!this->mHasUserDoneSomething && lPath.size() > 0)
+  {
+    this->userHasDoneAnAction();
+  }
 }
 
 void RetargetingTool::chooseBackupDirectory()
@@ -279,8 +317,12 @@ void RetargetingTool::chooseBackupDirectory()
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::updatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
-
   this->updateBackupPreview();
+
+  if (!this->mHasUserDoneSomething && lPath.size() > 0)
+  {
+    this->userHasDoneAnAction();
+  }
 }
 
 void RetargetingTool::updateBackupState(int aState)
@@ -321,6 +363,15 @@ void RetargetingTool::updateBackupState(int aState)
 
 void RetargetingTool::updateBackupPreview()
 {
+  // Check if the user has typed in the output subdir qlineedit
+  auto lEventSource{qobject_cast<QLineEdit*>(sender())};
+  auto lSubdirLineEdit{this->findChild<QLineEdit*>("backup_path_subdirectory")};
+
+  if (lEventSource == lSubdirLineEdit)
+  {
+    this->userHasDoneAnAction();
+  }
+
   // Get main directory
   auto lMainDirTextEdit{this->findChild<QLineEdit*>("backup_path_directory")};
   auto lMainDirectory{lMainDirTextEdit->text().trimmed()};
@@ -950,4 +1001,6 @@ void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
   }
 
   LFiltersLabel->setText(lText);
+
+  this->userHasDoneAnAction();
 }

@@ -4,6 +4,7 @@
 #include "Enum.h"
 #include "Struct.h"
 #include "stdafx.h"
+#include <QJsonObject>
 #include <QtXml/QDomDocument>
 
 class Utils : public QObject
