@@ -408,7 +408,7 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="271"/>
-        <source>Bodyslide files names:</source>
+        <source>BodySlide files names:</source>
         <translation></translation>
     </message>
     <message>
@@ -974,7 +974,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="Settings.cpp" line="203"/>
         <source>Each button stores its own last opened path</source>
-        <oldsource>Each button stores the last opened path</oldsource>
         <translation></translation>
     </message>
     <message>

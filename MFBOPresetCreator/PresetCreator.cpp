@@ -268,7 +268,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   lBodyslideGridLayout->addWidget(lBodyVersionSelector, 0, 2);
 
   // Second line
-  auto lOSPXMLNames{new QLabel(tr("Bodyslide files names:"), this)};
+  auto lOSPXMLNames{new QLabel(tr("BodySlide files names:"), this)};
   lBodyslideGridLayout->addWidget(lOSPXMLNames, 1, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
