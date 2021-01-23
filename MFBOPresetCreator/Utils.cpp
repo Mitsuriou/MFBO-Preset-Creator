@@ -920,3 +920,12 @@ ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
   // Default language if no supported language has been found
   return ApplicationLanguage::English;
 }
+
+QAction* Utils::buildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder)
+{
+  auto lAction{new QAction(aParent)};
+  lAction->setText(aText);
+  lAction->setShortcut(aKeysCombination);
+  lAction->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName))));
+  return lAction;
+}

@@ -49,6 +49,9 @@ private slots:
   void launchPresetsRetargeting();
   void launchSettingsDialog();
   void launchUpdateDialog();
+  void openNexusPageInDefaultBrowser();
+  void openGitHubSourceCodePageInDefaultBrowser();
+  void openGitLabSourceCodePageInDefaultBrowser();
   void openGuideInDefaultBrowser();
   void launchAboutDialog();
 };

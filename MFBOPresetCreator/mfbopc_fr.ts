@@ -284,79 +284,99 @@
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="91"/>
+        <location filename="MFBOPresetCreator.cpp" line="87"/>
         <source>Exit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="97"/>
+        <location filename="MFBOPresetCreator.cpp" line="91"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="103"/>
+        <location filename="MFBOPresetCreator.cpp" line="96"/>
         <source>Assisted Conversion</source>
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="110"/>
+        <location filename="MFBOPresetCreator.cpp" line="100"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="117"/>
+        <location filename="MFBOPresetCreator.cpp" line="104"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="123"/>
+        <location filename="MFBOPresetCreator.cpp" line="108"/>
         <source> (update available)</source>
         <translation> (mise à jour disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="125"/>
+        <location filename="MFBOPresetCreator.cpp" line="110"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="131"/>
+        <location filename="MFBOPresetCreator.cpp" line="115"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="138"/>
-        <source>User guide and tutorials (Google Docs)</source>
-        <translation type="unfinished">Guide utilisateur et tutoriels (Google Docs)</translation>
+        <location filename="MFBOPresetCreator.cpp" line="119"/>
+        <source>Useful links</source>
+        <translation>Liens utiles</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="145"/>
+        <location filename="MFBOPresetCreator.cpp" line="125"/>
+        <source>Nexus Mods page</source>
+        <translation>Page Nexus Mods</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="129"/>
+        <source>User guide and tutorials (Google Docs)</source>
+        <translation>Guide utilisateur et tutoriels (Google Docs)</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="133"/>
+        <source>View the source code (GitHub.com)</source>
+        <translation>Voir le code source (GitHub.com)</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="137"/>
+        <source>View the source code (GitLab.com)</source>
+        <translation>Voir le code source (GitLab.com)</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="141"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="417"/>
+        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="432"/>
+        <location filename="MFBOPresetCreator.cpp" line="429"/>
         <source>Application update available</source>
         <translation>Mise à jour de l&apos;application disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="433"/>
+        <location filename="MFBOPresetCreator.cpp" line="430"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="448"/>
+        <location filename="MFBOPresetCreator.cpp" line="445"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="84"/>
+        <location filename="MFBOPresetCreator.cpp" line="82"/>
         <source>Quick relaunch</source>
         <translation>Relancement rapide</translation>
     </message>

@@ -68,6 +68,9 @@ public:
   static QString getLongLanguageNameFromEnum(const int& aEnumValue);
   static ApplicationLanguage getStructLanguageFromName(const QString& aShortName);
 
+  // Widgets builder
+  static QAction* buildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder);
+
 private:
   Utils(){};
 };

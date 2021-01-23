@@ -110,6 +110,9 @@
         <file alias="help-circle">ressources/software/icons/black/help-circle.png</file>
         <file alias="info-circle-smaller">ressources/software/icons/black/info-circle-smaller.png</file>
         <file alias="text-file">ressources/software/icons/black/text-file.png</file>
+        <file alias="nexus-logo">ressources/software/icons/black/nexus-logo.png</file>
+        <file alias="code">ressources/software/icons/black/code.png</file>
+        <file alias="link">ressources/software/icons/black/link.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -142,6 +145,9 @@
         <file alias="help-circle">ressources/software/icons/white/help-circle.png</file>
         <file alias="info-circle-smaller">ressources/software/icons/white/info-circle-smaller.png</file>
         <file alias="text-file">ressources/software/icons/white/text-file.png</file>
+        <file alias="nexus-logo">ressources/software/icons/white/nexus-logo.png</file>
+        <file alias="code">ressources/software/icons/white/code.png</file>
+        <file alias="link">ressources/software/icons/white/link.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

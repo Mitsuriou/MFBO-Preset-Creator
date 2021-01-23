@@ -68,58 +68,43 @@ void MFBOPresetCreator::setupMenuBar()
   // Keep a reference to the user theme
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  // Construct the menu bar
+  // Menu bar
   auto lMenuBar{new QMenuBar(this)};
   lMenuBar->setCursor(Qt::PointingHandCursor);
   this->setMenuBar(lMenuBar);
 
-  // File
+  // Menu: File
   auto lFile{new QMenu(tr("File"), this)};
   lFile->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lFile);
 
   // Action: Relaunch the app
-  auto lRelaunchApp{new QAction(this)};
+  auto lRelaunchApp{Utils::buildQAction(this, tr("Quick relaunch"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
   lRelaunchApp->setObjectName("action_quick_relaunch");
-  lRelaunchApp->setText(tr("Quick relaunch"));
-  lRelaunchApp->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
-  lRelaunchApp->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
   lFile->addAction(lRelaunchApp);
 
   // Action: Exit
-  auto lExitApp{new QAction(this)};
-  lExitApp->setText(tr("Exit"));
-  lExitApp->setShortcut(QKeySequence(Qt::ALT + Qt::Key_F4));
-  lExitApp->setIcon(QIcon(QPixmap(QString(":/%1/cross").arg(lIconFolder))));
+  auto lExitApp{Utils::buildQAction(this, tr("Exit"), QKeySequence(Qt::ALT + Qt::Key_F4), "cross", lIconFolder)};
   lFile->addAction(lExitApp);
 
-  // Tools
+  // Menu: Tools
   auto lTools{new QMenu(tr("Tools"), this)};
   lTools->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lTools);
 
   // Action: Assisted conversion
-  auto lOpenAssiConv{new QAction(this)};
-  lOpenAssiConv->setText(tr("Assisted Conversion"));
-  lOpenAssiConv->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
-  lOpenAssiConv->setIcon(QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder))));
+  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::Key_T), "pencil", lIconFolder)};
   lTools->addAction(lOpenAssiConv);
 
-  // Submenu: BodySlide Presets' Retargeting
-  auto lRetaToolsSubmenu{new QAction(this)};
-  lRetaToolsSubmenu->setText(tr("BodySlide Presets' Retargeting"));
-  lRetaToolsSubmenu->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y));
-  lRetaToolsSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))));
-  lTools->addAction(lRetaToolsSubmenu);
+  // Action: BodySlide Presets' Retargeting
+  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::Key_Y), "arrow-up", lIconFolder)};
+  lTools->addAction(lOpenRetaTools);
 
   // Action: Settings
-  auto lOpenSettings{new QAction(this)};
-  lOpenSettings->setText(tr("Settings"));
-  lOpenSettings->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
-  lOpenSettings->setIcon(QIcon(QPixmap(QString(":/%1/cog").arg(lIconFolder))));
+  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::Key_O), "cog", lIconFolder)};
   lTools->addAction(lOpenSettings);
 
-  // Help
+  // Menu: Help
   const auto& lUpdateAvailableText{this->mNewVersionAvailable ? tr(" (update available)") : QString("")};
 
   auto lHelp{new QMenu(tr("Help") + lUpdateAvailableText, this)};
@@ -127,34 +112,46 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lHelp);
 
   // Action: Check for updates
-  auto lOpenUpdate{new QAction(this)};
-  lOpenUpdate->setText(tr("Check for updates") + lUpdateAvailableText);
-  lOpenUpdate->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-  lOpenUpdate->setIcon(QIcon(QPixmap(QString(":/%1/cloud-search").arg(lIconFolder))));
+  auto lOpenUpdate{Utils::buildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL + Qt::Key_U), "cloud-search", lIconFolder)};
   lHelp->addAction(lOpenUpdate);
 
+  // Submenu: Links
+  auto lLinksSubmenu{new QMenu(tr("Useful links"), this)};
+  lLinksSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/link").arg(lIconFolder))));
+  lLinksSubmenu->setCursor(Qt::PointingHandCursor);
+  lHelp->addMenu(lLinksSubmenu);
+
+  // Action: Nexus page link
+  auto lOpenNexus{Utils::buildQAction(this, tr("Nexus Mods page"), QKeySequence(Qt::CTRL + Qt::Key_N), "nexus-logo", lIconFolder)};
+  lLinksSubmenu->addAction(lOpenNexus);
+
   // Action: open URL to Doogle Docs: Guide and tutorials
-  auto lOpenguide{new QAction(this)};
-  lOpenguide->setText(tr("User guide and tutorials (Google Docs)"));
-  lOpenguide->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_G));
-  lOpenguide->setIcon(QIcon(QPixmap(QString(":/%1/text-file").arg(lIconFolder))));
-  lHelp->addAction(lOpenguide);
+  auto lOpenGuide{Utils::buildQAction(this, tr("User guide and tutorials (Google Docs)"), QKeySequence(Qt::CTRL + Qt::Key_G), "text-file", lIconFolder)};
+  lLinksSubmenu->addAction(lOpenGuide);
+
+  // Action: Source code on GitHub
+  auto lOpenSourceCodeGitHub{Utils::buildQAction(this, tr("View the source code (GitHub.com)"), NULL, "code", lIconFolder)};
+  lLinksSubmenu->addAction(lOpenSourceCodeGitHub);
+
+  // Action: Source code on GitLab
+  auto lOpenSourceCodeGitLab{Utils::buildQAction(this, tr("View the source code (GitLab.com)"), NULL, "code", lIconFolder)};
+  lLinksSubmenu->addAction(lOpenSourceCodeGitLab);
 
   // Action: About
-  auto lOpenAbout{new QAction(this)};
-  lOpenAbout->setText(tr("About"));
-  lOpenAbout->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-  lOpenAbout->setIcon(QIcon(QPixmap(QString(":/%1/info-circle").arg(lIconFolder))));
+  auto lOpenAbout{Utils::buildQAction(this, tr("About"), QKeySequence(Qt::CTRL + Qt::Key_I), "info-circle", lIconFolder)};
   lHelp->addAction(lOpenAbout);
 
   // Event binding
   this->connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
   this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
-  this->connect(lRetaToolsSubmenu, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
+  this->connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
   this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
-  this->connect(lOpenguide, &QAction::triggered, this, &MFBOPresetCreator::openGuideInDefaultBrowser);
+  this->connect(lOpenNexus, &QAction::triggered, this, &MFBOPresetCreator::openNexusPageInDefaultBrowser);
+  this->connect(lOpenSourceCodeGitHub, &QAction::triggered, this, &MFBOPresetCreator::openGitHubSourceCodePageInDefaultBrowser);
+  this->connect(lOpenSourceCodeGitLab, &QAction::triggered, this, &MFBOPresetCreator::openGitLabSourceCodePageInDefaultBrowser);
+  this->connect(lOpenGuide, &QAction::triggered, this, &MFBOPresetCreator::openGuideInDefaultBrowser);
   this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
 }
 
@@ -489,6 +486,21 @@ void MFBOPresetCreator::launchSettingsDialog()
 void MFBOPresetCreator::launchUpdateDialog()
 {
   new Update(this, this->mSettings);
+}
+
+void MFBOPresetCreator::openNexusPageInDefaultBrowser()
+{
+  QDesktopServices::openUrl(QUrl("https://www.nexusmods.com/skyrimspecialedition/mods/44706"));
+}
+
+void MFBOPresetCreator::openGitHubSourceCodePageInDefaultBrowser()
+{
+  QDesktopServices::openUrl(QUrl("https://github.com/Mitsuriou/MFBO-Preset-Creator"));
+}
+
+void MFBOPresetCreator::openGitLabSourceCodePageInDefaultBrowser()
+{
+  QDesktopServices::openUrl(QUrl("https://gitlab.com/Mitsuriou/MFBO-Preset-Creator"));
 }
 
 void MFBOPresetCreator::openGuideInDefaultBrowser()
