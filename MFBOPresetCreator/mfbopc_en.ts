@@ -320,27 +320,32 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="138"/>
+        <source>User guide and tutorials (Google Docs)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="145"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="409"/>
+        <location filename="MFBOPresetCreator.cpp" line="417"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="424"/>
+        <location filename="MFBOPresetCreator.cpp" line="432"/>
         <source>Application update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="425"/>
+        <location filename="MFBOPresetCreator.cpp" line="433"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="440"/>
+        <location filename="MFBOPresetCreator.cpp" line="448"/>
         <source>OK</source>
         <translation></translation>
     </message>

@@ -49,5 +49,6 @@ private slots:
   void launchPresetsRetargeting();
   void launchSettingsDialog();
   void launchUpdateDialog();
+  void openGuideInDefaultBrowser();
   void launchAboutDialog();
 };

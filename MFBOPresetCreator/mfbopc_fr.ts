@@ -325,28 +325,33 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="138"/>
+        <source>User guide and tutorials (Google Docs)</source>
+        <translation type="unfinished">Guide utilisateur et tutoriels (Google Docs)</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="145"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="409"/>
+        <location filename="MFBOPresetCreator.cpp" line="417"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="424"/>
+        <location filename="MFBOPresetCreator.cpp" line="432"/>
         <source>Application update available</source>
         <translation>Mise à jour de l&apos;application disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="425"/>
+        <location filename="MFBOPresetCreator.cpp" line="433"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="440"/>
+        <location filename="MFBOPresetCreator.cpp" line="448"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>

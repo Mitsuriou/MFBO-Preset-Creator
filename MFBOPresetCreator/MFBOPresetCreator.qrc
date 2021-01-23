@@ -109,6 +109,7 @@
         <file alias="playlist-check">ressources/software/icons/black/playlist-check.png</file>
         <file alias="help-circle">ressources/software/icons/black/help-circle.png</file>
         <file alias="info-circle-smaller">ressources/software/icons/black/info-circle-smaller.png</file>
+        <file alias="text-file">ressources/software/icons/black/text-file.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -140,6 +141,7 @@
         <file alias="playlist-check">ressources/software/icons/white/playlist-check.png</file>
         <file alias="help-circle">ressources/software/icons/white/help-circle.png</file>
         <file alias="info-circle-smaller">ressources/software/icons/white/info-circle-smaller.png</file>
+        <file alias="text-file">ressources/software/icons/white/text-file.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

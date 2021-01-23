@@ -133,6 +133,13 @@ void MFBOPresetCreator::setupMenuBar()
   lOpenUpdate->setIcon(QIcon(QPixmap(QString(":/%1/cloud-search").arg(lIconFolder))));
   lHelp->addAction(lOpenUpdate);
 
+  // Action: open URL to Doogle Docs: Guide and tutorials
+  auto lOpenguide{new QAction(this)};
+  lOpenguide->setText(tr("User guide and tutorials (Google Docs)"));
+  lOpenguide->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_G));
+  lOpenguide->setIcon(QIcon(QPixmap(QString(":/%1/text-file").arg(lIconFolder))));
+  lHelp->addAction(lOpenguide);
+
   // Action: About
   auto lOpenAbout{new QAction(this)};
   lOpenAbout->setText(tr("About"));
@@ -147,6 +154,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lRetaToolsSubmenu, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
   this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
+  this->connect(lOpenguide, &QAction::triggered, this, &MFBOPresetCreator::openGuideInDefaultBrowser);
   this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
 }
 
@@ -481,6 +489,11 @@ void MFBOPresetCreator::launchSettingsDialog()
 void MFBOPresetCreator::launchUpdateDialog()
 {
   new Update(this, this->mSettings);
+}
+
+void MFBOPresetCreator::openGuideInDefaultBrowser()
+{
+  QDesktopServices::openUrl(QUrl("https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing"));
 }
 
 void MFBOPresetCreator::launchAboutDialog()
