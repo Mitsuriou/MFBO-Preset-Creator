@@ -32,10 +32,11 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
 - [X] (1.9.0) Allow the user to type different paths for the body, hands and feet
 - [X] (2.0.0) Add compatibility with CBBE 3BBB SMP
-- [X] (2.0.0) Add compatibility for all the most popular body types
+- [X] (2.0.0+) Add compatibility for all the most popular body types
 
 ### New tools
 - [X] (1.9.0) Automatic conversion (choose a directory to automatically try to find where are located the meshes for the NPC that needs to be converted)
+- [] Tool to help users to swap converted follower's textures in a simpler way.
 
 ### Other cool features and improvements
 - [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation
@@ -44,12 +45,11 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 - [X] (1.8.4) Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
 - [X] (1.9.1) Be able to generate more then one preset in the output directory.
 - [ ] Batch conversion (multiple conversions at once)
-- [ ] Better software linking with Mod Organizer 2
 
 ### Developer side
 - [X] (1.7.4) Change the source code auto-formatter for more compatibility with Visual Studio 2019
 - [X] (1.7.6) Splashscreen when the application is being launched
 - [X] (1.8.0) In-app update checker
+- [ ] Executable installer
 - [ ] In-app automatic updater
-- [ ] Executable to install the app on C:/ProgramFiles (InnoSetup?)
 - [ ] Create test classes
