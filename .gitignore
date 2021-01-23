@@ -360,3 +360,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ignore compiled wizard files
+Wizard ressources/compiled-wizards/*.exe

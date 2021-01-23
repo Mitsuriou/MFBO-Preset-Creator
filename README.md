@@ -38,7 +38,7 @@ You can find the "User guide and tutorials" [here](https://docs.google.com/docum
 - [X] (1.7.4) Change the source code auto-formatter for more compatibility with Visual Studio 2019
 - [X] (1.7.6) Splashscreen when the application is being launched
 - [X] (1.8.0) In-app update checker
-- [ ] Executable installer
+- [X] (2.3.0) Executable installer
 - [ ] In-app automatic updater
 - [ ] Create test classes
 
