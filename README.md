@@ -1,11 +1,6 @@
-# Mirrors
+# Mitsuriou's Follower Bodies Overhaul: Preset Creator
 [![CodeFactor](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator/badge)](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator)
 
-The source code is available on:
-- [Github](https://github.com/Mitsuriou/MFBO-Preset-Creator)
-- [GitLab](https://gitlab.com/Mitsuriou/MFBO-Preset-Creator)
-
-# Mitsuriou's Follower Bodies Overhaul: Preset Creator
 MFBOPC is a relatively simple GUI application that should allow anyone to change a body mesh of a follower or an NPC to another body mesh (currently supporting CBBE 3BBB 3BA, CBBE 3BBB SMP and BHUNP SSE).
 In addition, the user will generate files that the BodySlide application is able to read, to easily custom the follower's or NPC's body shape.
 
@@ -13,20 +8,13 @@ MFBOPC has been designed to work with **Skyrim: Special Edition only**. The appl
 
 At this time, the application is only capable of changing the body, hands and feet meshes and cannot convert any cloth, outfit or armor: it is a difficult and very time consuming task even for a Human being, I'm not sure of being able to make the application that is that powerful.
 
-# How to install and run MFBOPC
-### Download
-Find the **latest release** on [Github](https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest) and download either the **.7z** file or the **.zip** file that is named **MFBO.Preset.Creator.[*7z|zip*]**. They provide the same exact application, but some people do not know how to open **.7z** files, so I try to always provide both alternatives.
-
-### Installation
-The application is currently a simple executable file and not any installer is provided to the user. So, when the download is finished, unzip in the directory of your choice the content of the archive.
-Note: you cannot execute the app from the archive itself, it really needs to be extracted on your computer.
-
-### Launch
-To launch the application, simply click on the **MFBOPresetCreator.exe** file (the one with a black and white icon).
+# User guide and tutorials
+You can find the "User guide and tutorials" [here](https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing). It is currently being written, but will be completed as things progress ;)
 
 # Development roadmap (not ordered by priority and not exhaustive)
 ### Ressources
-- [X] A "User Guide & Tutorials" document is currently being written [here](https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing).
+- [ ] User guide
+- [ ] Tutorials
 
 ### Graphical User Interface (GUI) improvements
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
@@ -36,7 +24,7 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 
 ### New tools
 - [X] (1.9.0) Automatic conversion (choose a directory to automatically try to find where are located the meshes for the NPC that needs to be converted)
-- [] Tool to help users to swap converted follower's textures in a simpler way.
+- [ ] Tool to help users to swap converted follower's textures in a simpler way.
 
 ### Other cool features and improvements
 - [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation
@@ -53,3 +41,10 @@ To launch the application, simply click on the **MFBOPresetCreator.exe** file (t
 - [ ] Executable installer
 - [ ] In-app automatic updater
 - [ ] Create test classes
+
+# Mirrors
+The source code is available on:
+- [Github](https://github.com/Mitsuriou/MFBO-Preset-Creator)
+- [GitLab](https://gitlab.com/Mitsuriou/MFBO-Preset-Creator)
+
+You can find the Nexus Mods page [here](https://www.nexusmods.com/skyrimspecialedition/mods/44706).
