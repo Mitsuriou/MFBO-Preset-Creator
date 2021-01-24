@@ -37,11 +37,11 @@ void Settings::closeEvent(QCloseEvent* aEvent)
 
     auto lCloseButton{lConfirmationBox.addButton(tr("Close the settings window without saving"), QMessageBox::ButtonRole::YesRole)};
     lCloseButton->setCursor(Qt::PointingHandCursor);
-    lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+    lCloseButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
 
     auto lStayButton{lConfirmationBox.addButton(tr("Go back to the settings window"), QMessageBox::ButtonRole::NoRole)};
     lStayButton->setCursor(Qt::PointingHandCursor);
-    lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+    lStayButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
 
     lConfirmationBox.setDefaultButton(lStayButton);
     lConfirmationBox.exec();
@@ -82,7 +82,7 @@ void Settings::initializeGUI()
   if (Utils::RESTART_PENDING)
   {
     auto lRestartPending{new QLabel(tr("Warning: A restart of the application is pending. You should not modify any value marked with the \"*\" character until you restart the application."), this)};
-    lRestartPending->setStyleSheet("color: hsl(4, 90%, 58%);");
+    lRestartPending->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
     lMainLayout->addWidget(lRestartPending, lIndex++, 0, 1, 2);
   }
 
@@ -99,6 +99,9 @@ void Settings::initializeGUI()
 
 void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Display group box
   auto lDisplayGroupBox{new QGroupBox(tr("Display"), this)};
   aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 4, 1);
@@ -126,7 +129,6 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 
   auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
   lFontChooser->setCursor(Qt::PointingHandCursor);
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lFontChooser->setIcon(QIcon(QPixmap(QString(":/%1/text").arg(lIconFolder))));
   lFontChooser->setObjectName("font_chooser");
   lFontChooser->setAutoDefault(false);
@@ -177,8 +179,42 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
   lDisplayLayout->addWidget(lWinHeightInput);
 
+  // COLORS
+  auto lColorsLabel{new QLabel(QString("* " + tr("Texts' accent colors:")), this)};
+  lDisplayLayout->addWidget(lColorsLabel);
+
+  // Success
+  auto lSuccessColorChooser{new QPushButton(tr("Choose a success color"), this)};
+  lSuccessColorChooser->setCursor(Qt::PointingHandCursor);
+  lSuccessColorChooser->setIcon(QIcon(QPixmap(QString(":/%1/color").arg(lIconFolder))));
+  lSuccessColorChooser->setObjectName("success_color_chooser");
+  lSuccessColorChooser->setAutoDefault(false);
+  lSuccessColorChooser->setDefault(false);
+  lDisplayLayout->addWidget(lSuccessColorChooser);
+
+  // Warning
+  auto lWarningColorChooser{new QPushButton(tr("Choose a warning color"), this)};
+  lWarningColorChooser->setCursor(Qt::PointingHandCursor);
+  lWarningColorChooser->setIcon(QIcon(QPixmap(QString(":/%1/color").arg(lIconFolder))));
+  lWarningColorChooser->setObjectName("warning_color_chooser");
+  lWarningColorChooser->setAutoDefault(false);
+  lWarningColorChooser->setDefault(false);
+  lDisplayLayout->addWidget(lWarningColorChooser);
+
+  // Danger
+  auto lDangerColorChooser{new QPushButton(tr("Choose a danger color"), this)};
+  lDangerColorChooser->setCursor(Qt::PointingHandCursor);
+  lDangerColorChooser->setIcon(QIcon(QPixmap(QString(":/%1/color").arg(lIconFolder))));
+  lDangerColorChooser->setObjectName("danger_color_chooser");
+  lDangerColorChooser->setAutoDefault(false);
+  lDangerColorChooser->setDefault(false);
+  lDisplayLayout->addWidget(lDangerColorChooser);
+
   // Event binding
   this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
+  this->connect(lSuccessColorChooser, &QPushButton::clicked, this, &Settings::chooseSuccessColor);
+  this->connect(lWarningColorChooser, &QPushButton::clicked, this, &Settings::chooseWarningColor);
+  this->connect(lDangerColorChooser, &QPushButton::clicked, this, &Settings::chooseDangerColor);
 }
 
 void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
@@ -383,6 +419,15 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")};
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
+
+  this->mNewSuccessColor = aSettingsToLoad.successColor;
+  this->applySuccessColorButton(this->mNewSuccessColor);
+
+  this->mNewWarningColor = aSettingsToLoad.warningColor;
+  this->applyWarningColorButton(this->mNewWarningColor);
+
+  this->mNewDangerColor = aSettingsToLoad.dangerColor;
+  this->applyDangerColorButton(this->mNewDangerColor);
 }
 
 Struct::Settings Settings::getSettingsFromGUI()
@@ -468,7 +513,85 @@ Struct::Settings Settings::getSettingsFromGUI()
   // Each button stores the last opened path
   lSettings.eachButtonSavesItsLastUsedPath = lEachButtonSavesItsLastUsedPath;
 
+  // Colors
+  lSettings.successColor = this->mNewSuccessColor;
+  lSettings.warningColor = this->mNewWarningColor;
+  lSettings.dangerColor = this->mNewDangerColor;
+
   return lSettings;
+}
+
+void Settings::applyFontButtonStyle(const QFont& aFont)
+{
+  auto lFontChooserButton{this->findChild<QPushButton*>("font_chooser")};
+  lFontChooserButton->setFont(aFont);
+}
+
+void Settings::applySuccessColorButton(const QString& aColor)
+{
+  auto lColorChooser{this->findChild<QPushButton*>("success_color_chooser")};
+  lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
+}
+
+void Settings::applyWarningColorButton(const QString& aColor)
+{
+  auto lColorChooser{this->findChild<QPushButton*>("warning_color_chooser")};
+  lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
+}
+
+void Settings::applyDangerColorButton(const QString& aColor)
+{
+  auto lColorChooser{this->findChild<QPushButton*>("danger_color_chooser")};
+  lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
+}
+
+void Settings::saveSettings()
+{
+  auto lSettings{this->getSettingsFromGUI()};
+
+  this->mMustRebootMainApp = (this->mSettings.language != lSettings.language
+                              || this->mSettings.appTheme != lSettings.appTheme
+                              || this->mSettings.font != lSettings.font
+                              || this->mSettings.successColor != lSettings.successColor
+                              || this->mSettings.warningColor != lSettings.warningColor
+                              || this->mSettings.dangerColor != lSettings.dangerColor);
+
+  if (mMustRebootMainApp)
+  {
+    // User theme accent
+    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::StandardButton::NoButton, this);
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+
+    auto lRestartNowButton{lConfirmationBox.addButton(tr("Restart now"), QMessageBox::ButtonRole::YesRole)};
+    lRestartNowButton->setCursor(Qt::PointingHandCursor);
+    lRestartNowButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
+
+    auto lRestartLaterButton{lConfirmationBox.addButton(tr("Go back to the application and restart later"), QMessageBox::ButtonRole::NoRole)};
+    lRestartLaterButton->setCursor(Qt::PointingHandCursor);
+    lRestartLaterButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.warningColor));
+
+    lConfirmationBox.setDefaultButton(lRestartLaterButton);
+    lConfirmationBox.exec();
+
+    if (lConfirmationBox.clickedButton() == lRestartNowButton)
+    {
+      // Reboot the application in case the language is changed
+      qApp->exit(Utils::EXIT_CODE_REBOOT);
+    }
+    else if (!Utils::RESTART_PENDING)
+    {
+      Utils::RESTART_PENDING = true;
+    }
+  }
+
+  Utils::saveSettingsToFile(lSettings);
+  this->mSettings = lSettings;
+
+  emit refreshMainUI(this->mSettings, true);
+
+  this->close();
 }
 
 void Settings::restoreDefaultSettings()
@@ -504,52 +627,38 @@ void Settings::chooseFont()
   this->applyFontButtonStyle(this->mNewFont);
 }
 
-void Settings::applyFontButtonStyle(const QFont& aFont)
+void Settings::chooseSuccessColor()
 {
-  auto lFontChooserButton{this->findChild<QPushButton*>("font_chooser")};
-  lFontChooserButton->setFont(aFont);
+  // Show a color piocker dialog to the user
+  auto lSuccessColor{QColorDialog::getColor(QColor(this->mNewSuccessColor), this)};
+
+  // Read and store new color's information
+  this->mNewSuccessColor = lSuccessColor.name();
+
+  // Display a preview on the color chooser's button directly
+  this->applySuccessColorButton(this->mNewSuccessColor);
 }
 
-void Settings::saveSettings()
+void Settings::chooseWarningColor()
 {
-  auto lSettings{this->getSettingsFromGUI()};
+  // Show a color piocker dialog to the user
+  auto lWarningColor{QColorDialog::getColor(QColor(this->mNewWarningColor), this)};
 
-  this->mMustRebootMainApp = (this->mSettings.language != lSettings.language || this->mSettings.appTheme != lSettings.appTheme || this->mSettings.font != lSettings.font);
+  // Read and store new color's information
+  this->mNewWarningColor = lWarningColor.name();
 
-  if (mMustRebootMainApp)
-  {
-    // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  // Display a preview on the color chooser's button directly
+  this->applyWarningColorButton(this->mNewWarningColor);
+}
 
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+void Settings::chooseDangerColor()
+{
+  // Show a color piocker dialog to the user
+  auto lDangerColor{QColorDialog::getColor(QColor(this->mNewDangerColor), this)};
 
-    auto lRestartNowButton{lConfirmationBox.addButton(tr("Restart now"), QMessageBox::ButtonRole::YesRole)};
-    lRestartNowButton->setCursor(Qt::PointingHandCursor);
-    lRestartNowButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+  // Read and store new color's information
+  this->mNewDangerColor = lDangerColor.name();
 
-    auto lRestartLaterButton{lConfirmationBox.addButton(tr("Go back to the application and restart later"), QMessageBox::ButtonRole::NoRole)};
-    lRestartLaterButton->setCursor(Qt::PointingHandCursor);
-    lRestartLaterButton->setStyleSheet("color: hsl(33, 100%, 71%);");
-
-    lConfirmationBox.setDefaultButton(lRestartLaterButton);
-    lConfirmationBox.exec();
-
-    if (lConfirmationBox.clickedButton() == lRestartNowButton)
-    {
-      // Reboot the application in case the language is changed
-      qApp->exit(Utils::EXIT_CODE_REBOOT);
-    }
-    else if (!Utils::RESTART_PENDING)
-    {
-      Utils::RESTART_PENDING = true;
-    }
-  }
-
-  Utils::saveSettingsToFile(lSettings);
-  this->mSettings = lSettings;
-
-  emit refreshMainUI(this->mSettings, true);
-
-  this->close();
+  // Display a preview on the color chooser's button directly
+  this->applyDangerColorButton(this->mNewDangerColor);
 }

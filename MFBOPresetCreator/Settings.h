@@ -18,6 +18,9 @@ protected:
 private:
   Struct::Settings mSettings;
   QFont mNewFont;
+  QString mNewSuccessColor;
+  QString mNewWarningColor;
+  QString mNewDangerColor;
   bool mMustRebootMainApp;
 
   void setWindowProperties();
@@ -33,6 +36,12 @@ private:
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   Struct::Settings getSettingsFromGUI();
 
+  // Preview on buttons
+  void applyFontButtonStyle(const QFont& aFont);
+  void applySuccessColorButton(const QString& aColor);
+  void applyWarningColorButton(const QString& aColor);
+  void applyDangerColorButton(const QString& aColor);
+
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
 
@@ -41,5 +50,7 @@ private slots:
   void restoreDefaultSettings();
   void chooseExportDirectory();
   void chooseFont();
-  void applyFontButtonStyle(const QFont& aFont);
+  void chooseSuccessColor();
+  void chooseWarningColor();
+  void chooseDangerColor();
 };

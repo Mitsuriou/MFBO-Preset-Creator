@@ -113,6 +113,7 @@
         <file alias="nexus-logo">ressources/software/icons/black/nexus-logo.png</file>
         <file alias="code">ressources/software/icons/black/code.png</file>
         <file alias="link">ressources/software/icons/black/link.png</file>
+        <file alias="color">ressources/software/icons/black/color.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -148,6 +149,7 @@
         <file alias="nexus-logo">ressources/software/icons/white/nexus-logo.png</file>
         <file alias="code">ressources/software/icons/white/code.png</file>
         <file alias="link">ressources/software/icons/white/link.png</file>
+        <file alias="color">ressources/software/icons/white/color.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

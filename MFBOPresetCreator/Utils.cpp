@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.3.0";
+  return "2.4.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -560,6 +560,24 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.eachButtonSavesItsLastUsedPath = lSettingsJSON["eachButtonSavesItsLastUsedPath"].toBool();
   }
 
+  // Success color
+  if (lSettingsJSON.contains("successColor") && lSettingsJSON["successColor"].isString())
+  {
+    lSettings.successColor = lSettingsJSON["successColor"].toString();
+  }
+
+  // Warning color
+  if (lSettingsJSON.contains("warningColor") && lSettingsJSON["warningColor"].isString())
+  {
+    lSettings.warningColor = lSettingsJSON["warningColor"].toString();
+  }
+
+  // Danger color
+  if (lSettingsJSON.contains("dangerColor") && lSettingsJSON["dangerColor"].isString())
+  {
+    lSettings.dangerColor = lSettingsJSON["dangerColor"].toString();
+  }
+
   return lSettings;
 }
 
@@ -596,6 +614,9 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lObj["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
   lObj["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
   lObj["eachButtonSavesItsLastUsedPath"] = aSettings.eachButtonSavesItsLastUsedPath;
+  lObj["successColor"] = aSettings.successColor;
+  lObj["warningColor"] = aSettings.warningColor;
+  lObj["dangerColor"] = aSettings.dangerColor;
 
   return lObj;
 }
@@ -871,10 +892,13 @@ void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
 
       if (++lModifiedPaths == 2)
       {
-        return;
+        break;
       }
     }
   }
+
+  // Save the new list
+  Utils::saveLastPathsToFile(*aMap);
 }
 
 QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)

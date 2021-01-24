@@ -35,11 +35,11 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
 
   auto lCloseBtn{lBox.addButton(tr("Close the window"), QMessageBox::ButtonRole::YesRole)};
   lCloseBtn->setCursor(Qt::PointingHandCursor);
-  lCloseBtn->setStyleSheet("color: hsl(4, 90%, 58%);");
+  lCloseBtn->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
 
   auto lStayBtn{lBox.addButton(tr("Go back to the assisted conversion tool window"), QMessageBox::ButtonRole::NoRole)};
   lStayBtn->setCursor(Qt::PointingHandCursor);
-  lStayBtn->setStyleSheet("color: hsl(141, 53%, 53%)");
+  lStayBtn->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
 
   lBox.setDefaultButton(lStayBtn);
   lBox.exec();
@@ -331,11 +331,11 @@ void AssistedConversion::launchSearchProcess()
 
     auto lContinueButton{lConfirmationBox.addButton(tr("Continue the scan"), QMessageBox::ButtonRole::YesRole)};
     lContinueButton->setCursor(Qt::PointingHandCursor);
-    lContinueButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+    lContinueButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
 
     auto lStopButton{lConfirmationBox.addButton(tr("Cancel the scan"), QMessageBox::ButtonRole::NoRole)};
     lStopButton->setCursor(Qt::PointingHandCursor);
-    lStopButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+    lStopButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
 
     lConfirmationBox.setDefaultButton(lContinueButton);
     lConfirmationBox.exec();
@@ -361,11 +361,11 @@ void AssistedConversion::launchSearchProcess()
 
     auto lContinueButton{lConfirmationBox.addButton(tr("Continue the scan"), QMessageBox::ButtonRole::YesRole)};
     lContinueButton->setCursor(Qt::PointingHandCursor);
-    lContinueButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+    lContinueButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
 
     auto lStopButton{lConfirmationBox.addButton(tr("Cancel the scan"), QMessageBox::ButtonRole::NoRole)};
     lStopButton->setCursor(Qt::PointingHandCursor);
-    lStopButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+    lStopButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
 
     lConfirmationBox.setDefaultButton(lContinueButton);
     lConfirmationBox.exec();

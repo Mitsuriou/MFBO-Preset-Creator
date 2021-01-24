@@ -32,11 +32,11 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
 
   auto lCloseButton{lConfirmationBox.addButton(tr("Close the window"), QMessageBox::ButtonRole::YesRole)};
   lCloseButton->setCursor(Qt::PointingHandCursor);
-  lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+  lCloseButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
 
   auto lStayButton{lConfirmationBox.addButton(tr("Go back to the retargeting tool window"), QMessageBox::ButtonRole::NoRole)};
   lStayButton->setCursor(Qt::PointingHandCursor);
-  lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+  lStayButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
 
   lConfirmationBox.setDefaultButton(lStayButton);
   lConfirmationBox.exec();
@@ -404,24 +404,24 @@ void RetargetingTool::updateBackupPreview()
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("backup_path_preview")};
 
-  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
+  auto lNewTextColor{this->mSettings.successColor};
 
   if (lIsValidPath)
   {
     // Check if the user is trying to backup the directory into itself
     if (lFullPath.startsWith(this->findChild<QLineEdit*>("input_path_directory")->text()))
     {
-      lNewTextColor = "hsl(4, 90%, 58%)";
+      lNewTextColor = this->mSettings.dangerColor;
     }
     // Check if the wanted backup directory already exists
     else if (QDir(lFullPath).exists())
     {
-      lNewTextColor = "hsl(33, 100%, 71%)";
+      lNewTextColor = this->mSettings.warningColor;
     }
   }
   else
   {
-    lNewTextColor = "hsl(4, 90%, 58%)";
+    lNewTextColor = this->mSettings.dangerColor;
   }
 
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));

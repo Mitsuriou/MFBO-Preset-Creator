@@ -46,11 +46,11 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
 
     auto lCloseButton{lConfirmationBox.addButton(tr("Close the editor window without saving"), QMessageBox::ButtonRole::YesRole)};
     lCloseButton->setCursor(Qt::PointingHandCursor);
-    lCloseButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+    lCloseButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
 
     auto lStayButton{lConfirmationBox.addButton(tr("Go back to the editor window"), QMessageBox::ButtonRole::NoRole)};
     lStayButton->setCursor(Qt::PointingHandCursor);
-    lStayButton->setStyleSheet("color: hsl(141, 53%, 53%)");
+    lStayButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
 
     lConfirmationBox.setDefaultButton(lStayButton);
     lConfirmationBox.exec();

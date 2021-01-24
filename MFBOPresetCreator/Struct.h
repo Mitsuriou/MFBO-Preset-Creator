@@ -66,6 +66,9 @@ namespace Struct
     bool checkForUpdatesAtStartup{true};
     bool assistedConversionScanOnlyMeshesSubdir{false};
     bool eachButtonSavesItsLastUsedPath{true};
+    QString successColor{"#48c774"};
+    QString warningColor{"#ffbc6b"};
+    QString dangerColor{"#f44034"};
 
     bool operator==(const Struct::Settings& aSettings)
     {
@@ -82,7 +85,10 @@ namespace Struct
         && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         && this->checkForUpdatesAtStartup == aSettings.checkForUpdatesAtStartup
         && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
-        && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath);
+        && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath
+        && this->successColor == aSettings.successColor
+        && this->warningColor == aSettings.warningColor
+        && this->dangerColor == aSettings.dangerColor);
     };
 
     bool operator!=(const Struct::Settings& aSettings)
@@ -100,7 +106,10 @@ namespace Struct
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         || this->checkForUpdatesAtStartup != aSettings.checkForUpdatesAtStartup
         || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
-        || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath);
+        || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath
+        || this->successColor != aSettings.successColor
+        || this->warningColor != aSettings.warningColor
+        || this->dangerColor != aSettings.dangerColor);
     };
   };
 

@@ -875,7 +875,7 @@ void PresetCreator::updateMeshesPreview()
   lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName));
   lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName));
 
-  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
+  auto lNewTextColor{this->mSettings.successColor};
 
   if (lIsValidPath)
   {
@@ -883,12 +883,12 @@ void PresetCreator::updateMeshesPreview()
         || (!lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathFeet.length() < 8))
         || (!lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathHands.length() < 8)))
     {
-      lNewTextColor = "hsl(33, 100%, 71%)";
+      lNewTextColor = this->mSettings.warningColor;
     }
   }
   else
   {
-    lNewTextColor = "hsl(4, 90%, 58%)";
+    lNewTextColor = this->mSettings.dangerColor;
   }
 
   lPreviewLabel->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -960,18 +960,18 @@ void PresetCreator::updateOutputPreview()
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("output_path_preview")};
 
-  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
+  auto lNewTextColor{this->mSettings.successColor};
 
   if (lIsValidPath)
   {
     if (QDir(lFullPath).exists() || lUseOnlySubdir)
     {
-      lNewTextColor = "hsl(33, 100%, 71%)";
+      lNewTextColor = this->mSettings.warningColor;
     }
   }
   else
   {
-    lNewTextColor = "hsl(4, 90%, 58%)";
+    lNewTextColor = this->mSettings.dangerColor;
   }
 
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -997,11 +997,11 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
 
-  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
+  auto lNewTextColor{this->mSettings.successColor};
 
   if (!lIsValidPath)
   {
-    lNewTextColor = "hsl(4, 90%, 58%)";
+    lNewTextColor = this->mSettings.dangerColor;
   }
 
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -1090,11 +1090,11 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
       break;
   }
 
-  auto lNewTextColor{QString("hsl(141, 53%, 53%)")};
+  auto lNewTextColor{this->mSettings.successColor};
 
   if (!lIsValidPath)
   {
-    lNewTextColor = "hsl(4, 90%, 58%)";
+    lNewTextColor = this->mSettings.dangerColor;
   }
 
   auto lOutputPathsPreview{this->findChild<QLabel*>("names_bodyslide_preview")};
@@ -1188,16 +1188,16 @@ void PresetCreator::updateSkeletonPreview()
 
     if (!lStart || (lStart && lSkeletonPath.length() < 8))
     {
-      lNewTextColor = "hsl(33, 100%, 71%)";
+      lNewTextColor = this->mSettings.warningColor;
     }
     else
     {
-      lNewTextColor = "hsl(141, 53%, 53%)";
+      lNewTextColor = this->mSettings.successColor;
     }
   }
   else if (this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
   {
-    lNewTextColor = "hsl(4, 90%, 58%)";
+    lNewTextColor = this->mSettings.dangerColor;
   }
 
   lOutputPathPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -1309,11 +1309,11 @@ void PresetCreator::generateDirectoryStructure()
 
     auto lContinueButton{lConfirmationBox.addButton(tr("Continue the files generation"), QMessageBox::ButtonRole::YesRole)};
     lContinueButton->setCursor(Qt::PointingHandCursor);
-    lContinueButton->setStyleSheet("color: hsl(33, 100%, 71%);");
+    lContinueButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.warningColor));
 
     auto lStopButton{lConfirmationBox.addButton(tr("Cancel the files generation"), QMessageBox::ButtonRole::NoRole)};
     lStopButton->setCursor(Qt::PointingHandCursor);
-    lStopButton->setStyleSheet("color: hsl(4, 90%, 58%);");
+    lStopButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
 
     lConfirmationBox.setDefaultButton(lContinueButton);
     lConfirmationBox.exec();
