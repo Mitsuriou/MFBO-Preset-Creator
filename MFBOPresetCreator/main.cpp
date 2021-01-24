@@ -14,6 +14,8 @@ int main(int argc, char* argv[])
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
     lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getApplicationVersion() + ")");
+    lMainApplication.setApplicationName("MFBOPresetCreator");
+    //lMainApplication.setOrganizationName("Mitsuriou");
     lMainApplication.setApplicationVersion(Utils::getApplicationVersion());
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
     lMainApplication.setAttribute(Qt::AA_EnableHighDpiScaling);

@@ -514,8 +514,8 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="497"/>
-        <source>Check this box to define the export path only by the subdirectory field (use at your own risk, no verification is made).</source>
-        <translation>Cocher cette case pour définir le répertoire de sortie uniquement par le champ sous-répertoire (à utiliser à votre risque, aucune vérification n&apos;est effectuée).</translation>
+        <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
+        <translation>Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="526"/>
@@ -562,7 +562,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="PresetCreator.cpp" line="948"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <oldsource>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;</oldsource>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
@@ -975,7 +974,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="Settings.cpp" line="183"/>
         <source>Texts accent color:</source>
-        <oldsource>Texts&apos; accent colors:</oldsource>
         <translation>Couleur d&apos;accentuation des textes :</translation>
     </message>
     <message>
@@ -1048,10 +1046,6 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
         <location filename="Settings.cpp" line="233"/>
         <source>Check for updates at application startup</source>
         <translation>Vérifier les mises à jour au démarrage de l&apos;application</translation>
-    </message>
-    <message>
-        <source>Each button stores its own last opened path</source>
-        <translation type="vanished">Chaque bouton stocke son propre dernier chemin ouvert</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="248"/>

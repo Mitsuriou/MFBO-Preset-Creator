@@ -494,7 +494,7 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   auto lLabelUseOnlySubdir{new QLabel(tr("Use only subdirectory path?"), this)};
   lOutputGridLayout->addWidget(lLabelUseOnlySubdir, 2, 0);
 
-  auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export path only by the subdirectory field (use at your own risk, no verification is made)."))};
+  auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
   lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
   lUseOnlySubdir->setObjectName("only_use_subdirectory");
   lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
@@ -768,6 +768,8 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
     // Custom skeleton chooser
     auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+
+    Utils::createRoamingPathIfNotExists();
     auto lPath{QString("%1/assets/skeletons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::DataLocation)).arg(lSkeletonChooser->currentText())};
 
     auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
@@ -795,6 +797,7 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
 void PresetCreator::populateSkeletonChooser()
 {
+  Utils::createRoamingPathIfNotExists();
   auto lRootDir{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/assets/skeletons/"};
   auto lRelativeDirs{QString("")};
   auto lAvailableSkeletons{QStringList()};

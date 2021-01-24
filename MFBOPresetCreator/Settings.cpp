@@ -604,6 +604,7 @@ void Settings::restoreDefaultSettings()
 void Settings::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
+  Utils::createRoamingPathIfNotExists();
   auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
 }

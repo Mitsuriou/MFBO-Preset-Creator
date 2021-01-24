@@ -523,7 +523,7 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="497"/>
-        <source>Check this box to define the export path only by the subdirectory field (use at your own risk, no verification is made).</source>
+        <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
         <translation></translation>
     </message>
     <message>
@@ -571,7 +571,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="PresetCreator.cpp" line="948"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <oldsource>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -970,7 +969,6 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     <message>
         <location filename="Settings.cpp" line="183"/>
         <source>Texts accent color:</source>
-        <oldsource>Texts&apos; accent colors:</oldsource>
         <translation></translation>
     </message>
     <message>
