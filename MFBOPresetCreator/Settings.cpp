@@ -200,7 +200,7 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   lDisplayLayout->addWidget(lAutoOpenDirCheckbox);
 
   // Each button stores the last opened path
-  auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each button stores its own last opened path"), this)};
+  auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path"), this)};
   lEachButtonSavesItsLastUsedPath->setCursor(Qt::PointingHandCursor);
   lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
   lDisplayLayout->addWidget(lEachButtonSavesItsLastUsedPath);

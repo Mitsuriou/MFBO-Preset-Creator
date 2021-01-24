@@ -464,7 +464,7 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputGridLayout->setAlignment(Qt::AlignTop);
   lOutputGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
-  // First line
+  // Main directory
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
   lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
 
@@ -475,32 +475,43 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   lOutputPathLineEdit->setText(mSettings.mainWindowOutputPath);
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
+  // Main directory's file chooser button
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
-  // Second line
-  auto lLabelSubDirectoryPath{new QLabel(tr("Output subdirectory name/path:"), this)};
-  lOutputGridLayout->addWidget(lLabelSubDirectoryPath, 1, 0);
+  // Subdirectory
+  auto lLabelSubpath{new QLabel(tr("Output subdirectory name/path:"), this)};
+  lOutputGridLayout->addWidget(lLabelSubpath, 1, 0);
 
   auto lOutputSubpathLineEdit{new QLineEdit(this)};
   lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
   lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
-  // Third line
-  auto lOutputtitlePreview{new QLabel(tr("Preview:"), this)};
-  lOutputGridLayout->addWidget(lOutputtitlePreview, 2, 0);
+  // Use only subdirectory path
+  auto lLabelUseOnlySubdir{new QLabel(tr("Use only subdirectory path?"), this)};
+  lOutputGridLayout->addWidget(lLabelUseOnlySubdir, 2, 0);
+
+  auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export path only by the subdirectory field (use at your own risk, no verification is made)."))};
+  lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
+  lUseOnlySubdir->setObjectName("only_use_subdirectory");
+  lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
+
+  // Preview
+  auto lOutputTitlePreview{new QLabel(tr("Preview:"), this)};
+  lOutputGridLayout->addWidget(lOutputTitlePreview, 3, 0);
 
   auto lOutputPathsPreview{new QLabel("", this)};
   lOutputPathsPreview->setObjectName("output_path_preview");
   lOutputPathsPreview->setAutoFillBackground(true);
-  lOutputGridLayout->addWidget(lOutputPathsPreview, 2, 1);
+  lOutputGridLayout->addWidget(lOutputPathsPreview, 3, 1);
 
   // Event binding
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &PresetCreator::chooseExportDirectory);
   this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOutputPreview);
+  this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &PresetCreator::useOnlySubdirStateChanged);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -884,6 +895,11 @@ void PresetCreator::updateMeshesPreview()
   lPreviewLabel->setText(lFullPreview);
 }
 
+void PresetCreator::useOnlySubdirStateChanged(int)
+{
+  this->updateOutputPreview();
+}
+
 void PresetCreator::updateOutputPreview()
 {
   // Get main directory
@@ -896,23 +912,49 @@ void PresetCreator::updateOutputPreview()
   Utils::cleanPathString(lSubDirectory);
   auto lIsValidPath{true};
 
+  // Does the user want to define the path only through the secondary path?
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
+
   // Construct full path
   auto lFullPath(QString(""));
-  if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
+  if (lUseOnlySubdir)
   {
-    lFullPath = lMainDirectory + "/" + lSubDirectory;
-    lMainDirTextEdit->setDisabled(false);
-  }
-  else if (lMainDirectory.length() > 0 && lSubDirectory.length() == 0)
-  {
-    lFullPath = lMainDirectory;
-    lMainDirTextEdit->setDisabled(false);
+    lMainDirTextEdit->setDisabled(true);
+
+    if (lSubDirectory.length() > 0)
+    {
+      lFullPath = lSubDirectory;
+    }
+    else
+    {
+      lFullPath = tr("No path given or invalid path given.");
+      lIsValidPath = false;
+    }
   }
   else
   {
-    lFullPath = tr("No path given or invalid path given.");
-    lMainDirTextEdit->setDisabled(true);
-    lIsValidPath = false;
+    if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
+    {
+      lFullPath = lMainDirectory + "/" + lSubDirectory;
+      lMainDirTextEdit->setDisabled(false);
+    }
+    else if (lMainDirectory.length() > 0 && lSubDirectory.length() == 0)
+    {
+      lFullPath = lMainDirectory;
+      lMainDirTextEdit->setDisabled(false);
+    }
+    else if (lMainDirectory.length() == 0 && lSubDirectory.length() > 0)
+    {
+      lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%2\"").arg(lSubDirectory);
+      lMainDirTextEdit->setDisabled(true);
+      lIsValidPath = false;
+    }
+    else
+    {
+      lFullPath = tr("No path given or invalid path given.");
+      lMainDirTextEdit->setDisabled(true);
+      lIsValidPath = false;
+    }
   }
 
   // Set the full path value in the preview label
@@ -922,7 +964,7 @@ void PresetCreator::updateOutputPreview()
 
   if (lIsValidPath)
   {
-    if (QDir(lFullPath).exists())
+    if (QDir(lFullPath).exists() || lUseOnlySubdir)
     {
       lNewTextColor = "hsl(33, 100%, 71%)";
     }
@@ -1193,8 +1235,8 @@ void PresetCreator::generateDirectoryStructure()
   Utils::cleanPathString(lBodyName);
 
   // Feet meshes path and name
-  auto lInputMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")};
-  auto lSkipFeetCheck{!lInputMeshesPathFeet->isEnabled()};
+  const auto lInputMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")};
+  const auto lSkipFeetCheck{!lInputMeshesPathFeet->isEnabled()};
   auto lMeshesPathFeet{lInputMeshesPathFeet->text().trimmed()};
   Utils::cleanPathString(lMeshesPathFeet);
   auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
@@ -1219,8 +1261,15 @@ void PresetCreator::generateDirectoryStructure()
   auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
   Utils::cleanPathString(lSubDirectory);
 
+  // Does the user want to define the path only through the secondary path?
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
+
   // Full extract path
-  const auto& lEntryDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory))};
+  auto lEntryDirectory{lSubDirectory};
+  if (!lUseOnlySubdir)
+  {
+    lEntryDirectory = (lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
+  }
 
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.length() == 0)

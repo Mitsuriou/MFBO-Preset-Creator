@@ -44,6 +44,7 @@ private slots:
 
   // Update the GUI preview
   void updateMeshesPreview();
+  void useOnlySubdirStateChanged(int);
   void updateOutputPreview();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
