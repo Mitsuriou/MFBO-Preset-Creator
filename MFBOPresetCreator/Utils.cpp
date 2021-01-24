@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.4.0";
+  return "2.4.1";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -138,6 +138,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
   {
     return false;
   }
+
   if (!lDestinationDirectory.exists())
   {
     lDestinationDirectory.mkpath(aDestinationPath);
@@ -270,10 +271,15 @@ bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
   }
 }
 
-void Utils::createRoamingPathIfNotExists()
+QString Utils::getAppDataPathFolder()
 {
+#ifdef DEBUG
+  return QCoreApplication::applicationDirPath() + QDir::separator();
+#else
   QDir lDir;
   lDir.mkpath(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+  return QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator();
+#endif
 }
 
 QString Utils::getPresetNameFromXMLFile(const QString& aPath)
@@ -431,9 +437,7 @@ QJsonObject Utils::loadFromJsonFile(const QString& aFilePath)
 
 void Utils::checkSettingsFileExistence()
 {
-  Utils::createRoamingPathIfNotExists();
-
-  auto lSettingsFilePath{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "config.json"};
+  auto lSettingsFilePath{Utils::getAppDataPathFolder() + "config.json"};
   if (!QFile(lSettingsFilePath).exists())
   {
     // Create a default setting file if it does not exist
@@ -445,7 +449,7 @@ Struct::Settings Utils::loadSettingsFromFile()
 {
   Utils::checkSettingsFileExistence();
 
-  auto lSettingsFilePath{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "config.json"};
+  auto lSettingsFilePath{Utils::getAppDataPathFolder() + "config.json"};
   QJsonObject lSettingsJSON{Utils::loadFromJsonFile(lSettingsFilePath)};
 
   Struct::Settings lSettings;
@@ -591,8 +595,7 @@ Struct::Settings Utils::loadSettingsFromFile()
 
 void Utils::saveSettingsToFile(const Struct::Settings& aSettings)
 {
-  Utils::createRoamingPathIfNotExists();
-  auto lSettingsFilePath{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "config.json"};
+  auto lSettingsFilePath{Utils::getAppDataPathFolder() + "config.json"};
   Utils::saveAsJsonFile(Utils::settingsStructToJson(aSettings), lSettingsFilePath);
 }
 
@@ -632,9 +635,7 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
 
 void Utils::checkFiltersFileExistence()
 {
-  Utils::createRoamingPathIfNotExists();
-
-  auto lFiltersFilePath{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "filters.json"};
+  auto lFiltersFilePath{Utils::getAppDataPathFolder() + "filters.json"};
   if (!QFile(lFiltersFilePath).exists())
   {
     // Create a default filters file if it does not exist
@@ -646,7 +647,7 @@ std::map<QString, QStringList> Utils::loadFiltersFromFile()
 {
   Utils::checkFiltersFileExistence();
 
-  auto lFiltersFilePath(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "filters.json");
+  auto lFiltersFilePath(Utils::getAppDataPathFolder() + "filters.json");
   QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lFiltersFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
@@ -662,8 +663,7 @@ std::map<QString, QStringList> Utils::loadFiltersFromFile()
 
 void Utils::saveFiltersToFile(const std::map<QString, QStringList>& aList)
 {
-  Utils::createRoamingPathIfNotExists();
-  auto lFiltersFilePath{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "filters.json"};
+  auto lFiltersFilePath{Utils::getAppDataPathFolder() + "filters.json"};
   Utils::saveAsJsonFile(Utils::filtersMapToJson(aList), lFiltersFilePath);
 }
 
@@ -806,9 +806,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
 void Utils::checkLastPathsFileExistence()
 {
-  Utils::createRoamingPathIfNotExists();
-
-  auto lLastPathsFilePath{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "paths.json"};
+  auto lLastPathsFilePath{Utils::getAppDataPathFolder() + "paths.json"};
   if (!QFile(lLastPathsFilePath).exists())
   {
     // Create a default "last paths" file if it does not exist
@@ -826,7 +824,7 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
 {
   Utils::checkLastPathsFileExistence();
 
-  auto lLastPathsFilePath(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "paths.json");
+  auto lLastPathsFilePath(Utils::getAppDataPathFolder() + "paths.json");
   QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lLastPathsFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
@@ -842,8 +840,7 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
 
 void Utils::saveLastPathsToFile(const std::map<QString, QString>& aList)
 {
-  Utils::createRoamingPathIfNotExists();
-  auto lLastPathsFilePath{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator() + "paths.json"};
+  auto lLastPathsFilePath{Utils::getAppDataPathFolder() + "paths.json"};
   Utils::saveAsJsonFile(Utils::lastPathsStructToJson(aList), lLastPathsFilePath);
 }
 

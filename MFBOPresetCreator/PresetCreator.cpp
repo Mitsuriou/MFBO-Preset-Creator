@@ -768,9 +768,7 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
     // Custom skeleton chooser
     auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
-
-    Utils::createRoamingPathIfNotExists();
-    auto lPath{QString("%1/assets/skeletons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::DataLocation)).arg(lSkeletonChooser->currentText())};
+    auto lPath{QString("%1assets/skeletons/%2").arg(Utils::getAppDataPathFolder()).arg(lSkeletonChooser->currentText())};
 
     auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
 
@@ -797,9 +795,8 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
 void PresetCreator::populateSkeletonChooser()
 {
-  Utils::createRoamingPathIfNotExists();
-  auto lRootDir{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/assets/skeletons/"};
-  auto lRelativeDirs{QString("")};
+  auto lRootDir{Utils::getAppDataPathFolder() + "assets/skeletons/"};
+  Utils::cleanPathString(lRootDir);
   auto lAvailableSkeletons{QStringList()};
 
   // Search for all "*.nif" files

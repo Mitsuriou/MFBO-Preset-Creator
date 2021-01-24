@@ -1192,14 +1192,14 @@ sur Github.com afin de télécharger la dernière version de MFBOPC.</translatio
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="254"/>
+        <location filename="Utils.cpp" line="255"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation>Erreur en cherchant le corps ciblé. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après avoir redémarré l&apos;application, contactez le développeur.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="287"/>
-        <location filename="Utils.cpp" line="320"/>
-        <location filename="Utils.cpp" line="390"/>
+        <location filename="Utils.cpp" line="299"/>
+        <location filename="Utils.cpp" line="332"/>
+        <location filename="Utils.cpp" line="402"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>

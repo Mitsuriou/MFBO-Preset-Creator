@@ -11,33 +11,44 @@ int main(int argc, char* argv[])
     // Reset the value
     Utils::RESTART_PENDING = false;
 
+    const auto& lAppVersion{Utils::getApplicationVersion()};
+
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
-    lMainApplication.setApplicationDisplayName("MFBOPC (v." + Utils::getApplicationVersion() + ")");
+    lMainApplication.setApplicationDisplayName(QString("MFBOPC (v.%1)").arg(lAppVersion));
     lMainApplication.setApplicationName("MFBOPresetCreator");
-    //lMainApplication.setOrganizationName("Mitsuriou");
-    lMainApplication.setApplicationVersion(Utils::getApplicationVersion());
+    lMainApplication.setApplicationVersion(lAppVersion);
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
     lMainApplication.setAttribute(Qt::AA_EnableHighDpiScaling);
 
     // Set the codec
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
+    // Show the splash screen
+    const QPixmap lSplashScreenBackground(":/application/splashscreen");
+
+    QSplashScreen lSplashScreen(lSplashScreenBackground.scaled(800, 450));
+    lSplashScreen.showMessage(QString("MFBOPC (v.%1): Starting the application...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    lSplashScreen.show();
+    lMainApplication.processEvents();
+
+    // Update the message
+    lSplashScreen.showMessage(QString("MFBOPC (v.%1): Reading and applying custom fonts...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    lMainApplication.processEvents();
+
     // Embed custom fonts
     QFontDatabase::addApplicationFont(":/fonts/Roboto");
 
-    // Show the splash screen
-    QPixmap lSplashScreenBackground(":/application/splashscreen");
-
-    QSplashScreen lSplashScreen(lSplashScreenBackground.scaled(800, 450));
-    lSplashScreen.showMessage("MFBOPC (v." + Utils::getApplicationVersion() + ")", Qt::AlignBottom | Qt::AlignRight, Qt::white);
-    lSplashScreen.show();
-
-    // Refresh the screen to show the splash screen event though the main thread is busy
+    // Update the message
+    lSplashScreen.showMessage(QString("MFBOPC (v.%1): Loading settings...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
     // Read settings file
     auto lSettings{Utils::loadSettingsFromFile()};
+
+    // Update the message
+    lSplashScreen.showMessage(QString("MFBOPC (v.%1): Applying translation files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    lMainApplication.processEvents();
 
     // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(lSettings.language))};
@@ -53,6 +64,10 @@ int main(int argc, char* argv[])
     {
       lMainApplication.installTranslator(lQtBaseTranslator);
     }
+
+    // Update the message
+    lSplashScreen.showMessage(QString("MFBOPC (v.%1): Creating the main window...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    lMainApplication.processEvents();
 
     // Create and show the main window
     MFBOPresetCreator lMainWindow(lSettings);

@@ -229,7 +229,7 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   lDisplayLayout->setContentsMargins(15, 20, 15, 15);
   lDisplayLayout->setAlignment(Qt::AlignTop);
 
-  // CHECK UPDATE AT SOFTWARE STARTUP
+  // CHECK UPDATE AT APPLICATION STARTUP
   auto lAutoOpenDirCheckbox{new QCheckBox(tr("Check for updates at application startup"), this)};
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("check_update_startup"));
@@ -604,7 +604,6 @@ void Settings::restoreDefaultSettings()
 void Settings::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
-  Utils::createRoamingPathIfNotExists();
   auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
 }
