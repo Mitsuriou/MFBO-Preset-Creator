@@ -180,7 +180,7 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   lDisplayLayout->addWidget(lWinHeightInput);
 
   // COLORS
-  auto lColorsLabel{new QLabel(QString("* " + tr("Texts' accent colors:")), this)};
+  auto lColorsLabel{new QLabel(QString("* " + tr("Texts accent color:")), this)};
   lDisplayLayout->addWidget(lColorsLabel);
 
   // Success

@@ -768,7 +768,7 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
     // Custom skeleton chooser
     auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
-    auto lPath{QString("%1/assets/skeletons/%2").arg(QCoreApplication::applicationDirPath()).arg(lSkeletonChooser->currentText())};
+    auto lPath{QString("%1/assets/skeletons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::DataLocation)).arg(lSkeletonChooser->currentText())};
 
     auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
 
@@ -795,7 +795,7 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
 void PresetCreator::populateSkeletonChooser()
 {
-  auto lRootDir{QCoreApplication::applicationDirPath() + "/assets/skeletons/"};
+  auto lRootDir{QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/assets/skeletons/"};
   auto lRelativeDirs{QString("")};
   auto lAvailableSkeletons{QStringList()};
 
@@ -945,7 +945,7 @@ void PresetCreator::updateOutputPreview()
     }
     else if (lMainDirectory.length() == 0 && lSubDirectory.length() > 0)
     {
-      lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%2\"").arg(lSubDirectory);
+      lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%1\".").arg(lSubDirectory);
       lMainDirTextEdit->setDisabled(true);
       lIsValidPath = false;
     }

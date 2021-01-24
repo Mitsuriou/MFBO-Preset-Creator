@@ -1,1 +1,1 @@
-windeployqt "..\client release\MFBOPresetCreator.exe" --release
+windeployqt ".\client release\MFBOPresetCreator.exe" --release
