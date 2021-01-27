@@ -13,9 +13,6 @@
     <ClCompile Include="DataLists.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="HTTPDownloader.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="LangManager.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
@@ -42,6 +39,12 @@
     </ClCompile>
     <ClCompile Include="TextInputDialog.cpp">
       <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="HTTPRequesterGet.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="HTTPRequesterFile.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,9 +129,6 @@
     <QtMoc Include="DataLists.h">
       <Filter>Header Files\Utils</Filter>
     </QtMoc>
-    <QtMoc Include="HTTPDownloader.hpp">
-      <Filter>Header Files\Utils</Filter>
-    </QtMoc>
     <QtMoc Include="Utils.h">
       <Filter>Header Files\Utils</Filter>
     </QtMoc>
@@ -137,6 +137,12 @@
     </QtMoc>
     <QtMoc Include="TextInputDialog.h">
       <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="HTTPRequesterGet.h">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="HTTPRequesterFile.h">
+      <Filter>Header Files\Utils</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

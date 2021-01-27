@@ -28,11 +28,11 @@ private:
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
   void displayHintZone();
-  void deleteAlreadyExistingWindowBottom();
+  void deleteAlreadyExistingWindowBottom() const;
 
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
+  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
-  std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface();
+  std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface() const;
 
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);

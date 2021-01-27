@@ -34,13 +34,13 @@ private:
   void setupButtons(QGridLayout& aLayout, const int& aNextRowIndex);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);
-  Struct::Settings getSettingsFromGUI();
+  Struct::Settings getSettingsFromGUI() const;
 
   // Preview on buttons
-  void applyFontButtonStyle(const QFont& aFont);
-  void applySuccessColorButton(const QString& aColor);
-  void applyWarningColorButton(const QString& aColor);
-  void applyDangerColorButton(const QString& aColor);
+  void applyFontButtonStyle(const QFont& aFont) const;
+  void applySuccessColorButton(const QString& aColor) const;
+  void applyWarningColorButton(const QString& aColor) const;
+  void applyDangerColorButton(const QString& aColor) const;
 
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);

@@ -29,10 +29,10 @@ private:
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
   void setupButtons(QGridLayout& aLayout);
-  void updateFiltersCombobox();
+  void updateFiltersCombobox() const;
 
   // Utility function
-  void displayFilterAt(const int& aIndex);
+  void displayFilterAt(const int& aIndex) const;
 
 private slots:
   void showFiltersList(int aIndex);

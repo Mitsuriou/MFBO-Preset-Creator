@@ -22,6 +22,8 @@ MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent
   {
     this->initializeGUI();
   }
+
+  this->downloadLatestUpdate();
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -399,9 +401,18 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
 void MFBOPresetCreator::checkForUpdate()
 {
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
-  HTTPDownloader* lHTTPDownloader{new HTTPDownloader(lGitHubURL, this)};
-  this->connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &MFBOPresetCreator::pageFetched);
-  this->connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
+  HTTPRequesterGet* lHTTPDownloader{new HTTPRequesterGet(lGitHubURL, this)};
+  this->connect(lHTTPDownloader, &HTTPRequesterGet::resultReady, this, &MFBOPresetCreator::pageFetched);
+  this->connect(lHTTPDownloader, &HTTPRequesterGet::finished, lHTTPDownloader, &QObject::deleteLater);
+  lHTTPDownloader->start();
+}
+
+void MFBOPresetCreator::downloadLatestUpdate()
+{
+  QString lGitHubURL{"https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest/download/mfbopc-install-wizard.exe"};
+  HTTPRequesterFile* lHTTPDownloader{new HTTPRequesterFile(lGitHubURL, this)};
+  this->connect(lHTTPDownloader, &HTTPRequesterFile::resultReady, this, &MFBOPresetCreator::fileFetched);
+  this->connect(lHTTPDownloader, &HTTPRequesterFile::finished, lHTTPDownloader, &QObject::deleteLater);
   lHTTPDownloader->start();
 }
 
@@ -450,6 +461,11 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     lConfirmationBox.setDefaultButton(lOKButton);
     lConfirmationBox.exec();
   }
+}
+
+void MFBOPresetCreator::fileFetched(const bool& aResult)
+{
+  auto stop = true;
 }
 
 void MFBOPresetCreator::quickRelaunch()

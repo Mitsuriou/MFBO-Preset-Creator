@@ -247,7 +247,7 @@ void RetargetingTool::userHasDoneAnAction()
   }
 }
 
-int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
 {
   auto lNumber{0};
   auto lAbsFilePath{QString("")};

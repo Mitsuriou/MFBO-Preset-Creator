@@ -1,6 +1,6 @@
 #pragma once
 
-#include "HTTPDownloader.hpp"
+#include "HTTPRequesterGet.h"
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"

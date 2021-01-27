@@ -2,6 +2,8 @@
 
 #include "About.h"
 #include "AssistedConversion.h"
+#include "HTTPRequesterFile.h"
+#include "HTTPRequesterGet.h"
 #include "PresetCreator.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
@@ -40,7 +42,9 @@ private:
 public slots:
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
   void checkForUpdate();
+  void downloadLatestUpdate();
   void pageFetched(const QString& aResult);
+  void fileFetched(const bool& aResult);
 
 private slots:
   void quickRelaunch();

@@ -430,7 +430,7 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   this->applyDangerColorButton(this->mNewDangerColor);
 }
 
-Struct::Settings Settings::getSettingsFromGUI()
+Struct::Settings Settings::getSettingsFromGUI() const
 {
   auto lLang{this->findChild<QComboBox*>("language")->currentIndex()};
   auto lAppTheme{this->findChild<QComboBox*>("app_theme")->currentIndex()};
@@ -521,25 +521,25 @@ Struct::Settings Settings::getSettingsFromGUI()
   return lSettings;
 }
 
-void Settings::applyFontButtonStyle(const QFont& aFont)
+void Settings::applyFontButtonStyle(const QFont& aFont) const
 {
   auto lFontChooserButton{this->findChild<QPushButton*>("font_chooser")};
   lFontChooserButton->setFont(aFont);
 }
 
-void Settings::applySuccessColorButton(const QString& aColor)
+void Settings::applySuccessColorButton(const QString& aColor) const
 {
   auto lColorChooser{this->findChild<QPushButton*>("success_color_chooser")};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
-void Settings::applyWarningColorButton(const QString& aColor)
+void Settings::applyWarningColorButton(const QString& aColor) const
 {
   auto lColorChooser{this->findChild<QPushButton*>("warning_color_chooser")};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
-void Settings::applyDangerColorButton(const QString& aColor)
+void Settings::applyDangerColorButton(const QString& aColor) const
 {
   auto lColorChooser{this->findChild<QPushButton*>("danger_color_chooser")};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));

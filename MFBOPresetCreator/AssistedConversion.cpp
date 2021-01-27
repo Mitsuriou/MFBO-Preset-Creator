@@ -133,7 +133,7 @@ void AssistedConversion::displayHintZone()
   lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
 }
 
-void AssistedConversion::deleteAlreadyExistingWindowBottom()
+void AssistedConversion::deleteAlreadyExistingWindowBottom() const
 {
   auto lHintZone{this->findChild<QPushButton*>("hint_zone")};
   if (lHintZone)
@@ -157,7 +157,7 @@ void AssistedConversion::deleteAlreadyExistingWindowBottom()
   }
 }
 
-std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
 {
   // The map is storing <path+fileName, <path, fileName>>
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
@@ -233,7 +233,7 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
   this->connect(lChoiceCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
 }
 
-std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValuesFromInterface()
+std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValuesFromInterface() const
 {
   // Fetch the grid layout
   auto lDataContainer{this->findChild<QGridLayout*>("data_container")};

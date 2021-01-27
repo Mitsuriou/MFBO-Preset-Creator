@@ -219,7 +219,7 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
   this->connect(lCancelBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::close);
 }
 
-void BodySlideFiltersEditor::updateFiltersCombobox()
+void BodySlideFiltersEditor::updateFiltersCombobox() const
 {
   this->disconnect(this->mFiltersListChooser, &QComboBox::currentTextChanged, this, &BodySlideFiltersEditor::handleSetRenaming);
   this->disconnect(this->mFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BodySlideFiltersEditor::showFiltersList);
@@ -248,7 +248,7 @@ void BodySlideFiltersEditor::updateFiltersCombobox()
   this->connect(this->mFiltersListChooser, &QComboBox::currentTextChanged, this, &BodySlideFiltersEditor::handleSetRenaming);
 }
 
-void BodySlideFiltersEditor::displayFilterAt(const int& aIndex)
+void BodySlideFiltersEditor::displayFilterAt(const int& aIndex) const
 {
   this->mFiltersListChooser->setCurrentIndex(-1);
   this->mFiltersListChooser->setCurrentIndex(aIndex);

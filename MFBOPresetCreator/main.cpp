@@ -13,13 +13,14 @@ int main(int argc, char* argv[])
 
     const auto& lAppVersion{Utils::getApplicationVersion()};
 
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
     lMainApplication.setApplicationDisplayName(QString("MFBOPC (v.%1)").arg(lAppVersion));
     lMainApplication.setApplicationName("MFBOPresetCreator");
     lMainApplication.setApplicationVersion(lAppVersion);
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
-    lMainApplication.setAttribute(Qt::AA_EnableHighDpiScaling);
 
     // Set the codec
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));

@@ -56,9 +56,9 @@ void Update::setupInterface(QVBoxLayout& aLayout)
 void Update::getLastAvailableVersion()
 {
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
-  HTTPDownloader* lHTTPDownloader{new HTTPDownloader(lGitHubURL, this)};
-  this->connect(lHTTPDownloader, &HTTPDownloader::resultReady, this, &Update::pageFetched);
-  this->connect(lHTTPDownloader, &HTTPDownloader::finished, lHTTPDownloader, &QObject::deleteLater);
+  HTTPRequesterGet* lHTTPDownloader{new HTTPRequesterGet(lGitHubURL, this)};
+  this->connect(lHTTPDownloader, &HTTPRequesterGet::resultReady, this, &Update::pageFetched);
+  this->connect(lHTTPDownloader, &HTTPRequesterGet::finished, lHTTPDownloader, &QObject::deleteLater);
   lHTTPDownloader->start();
 }
 
