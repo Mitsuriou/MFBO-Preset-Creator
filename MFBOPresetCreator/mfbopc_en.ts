@@ -376,7 +376,8 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="13"/>
-        <source> (DEV)</source>
+        <source>[DEV] </source>
+        <oldsource> (DEV)</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1134,38 +1135,103 @@ The new version &quot;%2&quot; is available on GitHub.</source>
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="21"/>
+        <location filename="Update.cpp" line="23"/>
+        <location filename="Update.cpp" line="45"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="47"/>
-        <source>Click on the button above to search for new updates.</source>
+        <location filename="Update.cpp" line="34"/>
+        <source>Current version: v.%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="94"/>
-        <source>You are currently running the developer version &quot;%1&quot;.
-The last available version on GitHub is tagged &quot;%2&quot;.</source>
+        <location filename="Update.cpp" line="80"/>
+        <source>Contacting GitHub.com...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="108"/>
-        <source>You are currently running the version &quot;%1&quot;.
-The new version &quot;%2&quot; is available on GitHub.
+        <location filename="Update.cpp" line="100"/>
+        <source>Check for updates once again</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="102"/>
+        <source>An error has occurred while searching for a new version.
+Please make sure your internet connection is working correctly and try again.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="121"/>
+        <source>You are running a developer version</source>
+        <oldsource>You are running a developper version</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="123"/>
+        <source>You are currently running the developer version &quot;v.%1&quot;.
+The last available version on GitHub is tagged &quot;v.%2&quot;.
 
-Click on the download button to be redirected
-on Github.com to download the latest MFBOPC version.</source>
+Below are the release notes for the latest stable version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="76"/>
-        <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
+        <location filename="Update.cpp" line="131"/>
+        <source>Download the update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="118"/>
-        <source>You are running the latest version &quot;%1&quot;.</source>
+        <location filename="Update.cpp" line="137"/>
+        <source>You are currently running the version &quot;v.%1&quot;.
+The new version &quot;v.%2&quot; is available on GitHub.
+
+Click on the download button above to start downloading the update.
+The download size is about 10MB~.
+The download will be saved under &quot;%3&quot;.
+
+Below are the release notes for this update:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="146"/>
+        <source>You are already running the latest version</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="148"/>
+        <source>Awesome! You are already running the latest version (&quot;v.%1&quot;).
+Below are the release notes for this version:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="173"/>
+        <source>Download in progress...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="188"/>
+        <source>Download successful. Click the button above to start updating MFBOPC.
+Make sure that you saved everything before starting the update as the application will be closed!
+
+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="189"/>
+        <source>An error has occurred while downloading the update.
+Please make sure your internet connection is working correctly and try again.
+
+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="198"/>
+        <source>Close MFBOPC and install the update</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="223"/>
+        <source>Try to download the update once again</source>
         <translation></translation>
     </message>
 </context>

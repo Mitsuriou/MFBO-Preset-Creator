@@ -260,8 +260,9 @@
     <name>MFBOPresetCreator</name>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="13"/>
-        <source> (DEV)</source>
-        <translation></translation>
+        <source>[DEV] </source>
+        <oldsource> (DEV)</oldsource>
+        <translation>[DEV] </translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="32"/>
@@ -1139,44 +1140,121 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="21"/>
+        <location filename="Update.cpp" line="23"/>
+        <location filename="Update.cpp" line="45"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="47"/>
-        <source>Click on the button above to search for new updates.</source>
-        <translation>Cliquez sur le bouton ci-dessus pour chercher des nouvelles mises à jour.</translation>
+        <location filename="Update.cpp" line="34"/>
+        <source>Current version: v.%1</source>
+        <translation>Version actuelle : v.%1</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="94"/>
-        <source>You are currently running the developer version &quot;%1&quot;.
-The last available version on GitHub is tagged &quot;%2&quot;.</source>
-        <translation>Vous exécutez actuellement la version développeur &quot;%1&quot;.
-La dernière version disponible sur GitHub est étiquetée &quot;%2&quot;.</translation>
+        <location filename="Update.cpp" line="80"/>
+        <source>Contacting GitHub.com...</source>
+        <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="108"/>
-        <source>You are currently running the version &quot;%1&quot;.
-The new version &quot;%2&quot; is available on GitHub.
+        <location filename="Update.cpp" line="100"/>
+        <source>Check for updates once again</source>
+        <translation>Vérifiez une nouvelle fois les mises à jour</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="102"/>
+        <source>An error has occurred while searching for a new version.
+Please make sure your internet connection is working correctly and try again.</source>
+        <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version.
+Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="121"/>
+        <source>You are running a developer version</source>
+        <translation>Vous utilisez une version développeur</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="123"/>
+        <source>You are currently running the developer version &quot;v.%1&quot;.
+The last available version on GitHub is tagged &quot;v.%2&quot;.
 
-Click on the download button to be redirected
-on Github.com to download the latest MFBOPC version.</source>
-        <translation>Vous exécutez actuellement la version &quot;%1&quot;.
-La nouvelle version &quot;%2&quot; est disponible sur GitHub.
+Below are the release notes for the latest stable version:</source>
+        <translation>Vous utilisez actuellement la version développeur &quot;v.%1&quot;.
+La dernière version disponible sur GitHub est étiquetée &quot;v.%2&quot;.
 
-Cliquez sur le bouton de téléchargement pour être redirigé(e)
-sur Github.com afin de télécharger la dernière version de MFBOPC.</translation>
+Vous trouverez ci-dessous les notes de version pour la dernière version stable :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="76"/>
-        <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
-        <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
+        <location filename="Update.cpp" line="131"/>
+        <source>Download the update</source>
+        <translation>Télécharger la mise à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="118"/>
-        <source>You are running the latest version &quot;%1&quot;.</source>
-        <translation>Vous utilisez la dernière version &quot;%1&quot;.</translation>
+        <location filename="Update.cpp" line="137"/>
+        <source>You are currently running the version &quot;v.%1&quot;.
+The new version &quot;v.%2&quot; is available on GitHub.
+
+Click on the download button above to start downloading the update.
+The download size is about 10MB~.
+The download will be saved under &quot;%3&quot;.
+
+Below are the release notes for this update:</source>
+        <translation>Vous utilisez actuellement la version &quot;v.%1&quot;.
+La nouvelle version &quot;v.%2&quot; est disponible sur GitHub.
+
+Cliquez sur le bouton de téléchargement ci-dessus pour commencer à télécharger la mise à jour.
+La taille du téléchargement est d&apos;environ 10Mo~.
+Le téléchargement sera enregistré sous &quot;%3&quot;.
+
+Vous trouverez ci-dessous les notes de mise à jour pour cette mise à jour :</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="146"/>
+        <source>You are already running the latest version</source>
+        <translation>Vous utilisez déjà la dernière version</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="148"/>
+        <source>Awesome! You are already running the latest version (&quot;v.%1&quot;).
+Below are the release notes for this version:</source>
+        <translation>Génial ! Vous utilisez déjà la dernière version (&quot;v.%1&quot;).
+Vous trouverez ci-dessous les notes de mise à jour de cette version :</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="173"/>
+        <source>Download in progress...</source>
+        <translation>Téléchargement en cours…</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="188"/>
+        <source>Download successful. Click the button above to start updating MFBOPC.
+Make sure that you saved everything before starting the update as the application will be closed!
+
+</source>
+        <translation>Téléchargement réussi. Cliquez sur le bouton ci-dessus pour commencer la mise à jour de MFBOPC.
+Assurez-vous que vous avez tout enregistré avant de commencer la mise à jour car l&apos;application sera fermée !
+
+</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="189"/>
+        <source>An error has occurred while downloading the update.
+Please make sure your internet connection is working correctly and try again.
+
+</source>
+        <translation>Une erreur s&apos;est produite lors du téléchargement de la mise à jour.
+Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.
+
+</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="198"/>
+        <source>Close MFBOPC and install the update</source>
+        <translation>Fermez MFBOPC et installer la mise à jour</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="223"/>
+        <source>Try to download the update once again</source>
+        <translation>Essayer de télécharger la mise à jour une nouvelle fois</translation>
     </message>
 </context>
 <context>

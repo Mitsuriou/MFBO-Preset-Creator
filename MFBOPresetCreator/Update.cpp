@@ -113,12 +113,12 @@ void Update::pageFetched(const QString& aResult)
   this->mNewVersionTag.replace(".", "-");
   auto lCurrentVersion{Utils::getApplicationVersion()};
 
-#ifndef DEBUG
+#ifdef DEBUG
   QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/developer" : ":/black/developer"};
   lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
   lSearchButton->setIconSize(QSize(48, 48));
   lSearchButton->setDisabled(true);
-  lSearchButton->setText(tr("You are running a developper version"));
+  lSearchButton->setText(tr("You are running a developer version"));
 
   lFetchStatus->setText(tr("You are currently running the developer version \"v.%1\".\nThe last available version on GitHub is tagged \"v.%2\".\n\nBelow are the release notes for the latest stable version:").arg(lCurrentVersion).arg(lTagName));
 #else

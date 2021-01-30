@@ -10,7 +10,7 @@ MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent
   ui.setupUi(this);
 
 #ifdef DEBUG
-  qApp->setApplicationDisplayName(qApp->applicationDisplayName() + tr(" (DEV)"));
+  qApp->setApplicationDisplayName(tr("[DEV] ") + qApp->applicationDisplayName());
 #endif
 
   // Check for new versions
