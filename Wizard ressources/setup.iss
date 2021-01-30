@@ -31,7 +31,7 @@ Source: ".\filters.json"; DestDir: "{localappdata}\MFBOPresetCreator"; Flags: ig
 Source: ".\assets\*"; DestDir: "{localappdata}\MFBOPresetCreator\assets"; Flags: ignoreversion recursesubdirs createallsubdirs uninsneveruninstall onlyifdoesntexist
 
 [Icons]
-Name: "{autoprograms}\MFBO Preset Creator (v.2.5.0)"; Filename: "{app}\MFBOPresetCreator.exe"
+Name: "{autoprograms}\MFBO Preset Creator"; Filename: "{app}\MFBOPresetCreator.exe"
 Name: "{autodesktop}\MFBO Preset Creator (v.2.5.0)"; Filename: "{app}\MFBOPresetCreator.exe"; Tasks: desktopicon
 
 [Run]
