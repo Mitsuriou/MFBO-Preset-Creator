@@ -1,5 +1,6 @@
 #pragma once
 
+#include "HTTPRequesterFile.h"
 #include "HTTPRequesterGet.h"
 #include "Struct.h"
 #include "Utils.h"
@@ -24,11 +25,12 @@ private:
   };
 
   void setWindowProperties();
-  void initializeGUI();
-  void setupInterface(QVBoxLayout& aLayout);
+  void setupInterface();
+  void overrideHTMLLinksColor(QString& aHTMLString);
 
 private slots:
   void getLastAvailableVersion();
   void pageFetched(const QString&);
-  void openGithubInBrowser();
+  void downloadLatestUpdate();
+  void fileFetched(const bool& aResult);
 };

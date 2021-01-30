@@ -22,8 +22,6 @@ MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent
   {
     this->initializeGUI();
   }
-
-  this->downloadLatestUpdate();
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -407,15 +405,6 @@ void MFBOPresetCreator::checkForUpdate()
   lHTTPDownloader->start();
 }
 
-void MFBOPresetCreator::downloadLatestUpdate()
-{
-  QString lGitHubURL{"https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest/download/mfbopc-install-wizard.exe"};
-  HTTPRequesterFile* lHTTPDownloader{new HTTPRequesterFile(lGitHubURL, this)};
-  this->connect(lHTTPDownloader, &HTTPRequesterFile::resultReady, this, &MFBOPresetCreator::fileFetched);
-  this->connect(lHTTPDownloader, &HTTPRequesterFile::finished, lHTTPDownloader, &QObject::deleteLater);
-  lHTTPDownloader->start();
-}
-
 void MFBOPresetCreator::pageFetched(const QString& aResult)
 {
   // Display a message based on new available versions
@@ -461,11 +450,6 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     lConfirmationBox.setDefaultButton(lOKButton);
     lConfirmationBox.exec();
   }
-}
-
-void MFBOPresetCreator::fileFetched(const bool& aResult)
-{
-  auto stop = true;
 }
 
 void MFBOPresetCreator::quickRelaunch()

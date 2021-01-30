@@ -28,12 +28,12 @@ void HTTPRequesterFile::run()
 
 bool HTTPRequesterFile::download()
 {
-  // TODO: handle HTTP redirection
-
   // Basic fetching setup
   curl_easy_setopt(mCURL, CURLOPT_URL, this->mURL.c_str());
   curl_easy_setopt(mCURL, CURLOPT_NOPROGRESS, 1L);
   curl_easy_setopt(mCURL, CURLOPT_WRITEFUNCTION, write_file);
+  // Handle HTTP redirection
+  curl_easy_setopt(mCURL, CURLOPT_FOLLOWLOCATION, 1L);
 
   // Output setup
   auto lPath = QString("%1/wizard.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
