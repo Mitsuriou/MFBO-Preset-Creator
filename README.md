@@ -1,6 +1,6 @@
 # Mitsuriou's Follower Bodies Overhaul: Preset Creator
 ![Latest stable version](https://img.shields.io/github/v/release/Mitsuriou/MFBO-Preset-Creator?label=Latest%20stable%20version&logo=GitHub&logoColor=white&style=flat-square)
-[![CodeFactor](https://img.shields.io/codefactor/grade/github/Mitsuriou/MFBO-Preset-Creator/main?label=Code%20quality(CodeFactor)&style=flat-square&logo=CodeFactor&logoColor=white)](htt&s://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator)
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/Mitsuriou/MFBO-Preset-Creator/main?label=Code%20quality(CodeFactor)&style=flat-square&logo=CodeFactor&logoColor=white)](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator)
 ![All time downloads count](https://img.shields.io/github/downloads/Mitsuriou/MFBO-Preset-Creator/total?label=All%20time%20downloads%20count&logo=Github&logoColor=white&style=flat-square)
 ![Latest release downloads count](https://img.shields.io/github/downloads/Mitsuriou/MFBO-Preset-Creator/latest/total?label=Latest%20release%20downloads%20count&logo=Github&logoColor=white&style=flat-square)
 

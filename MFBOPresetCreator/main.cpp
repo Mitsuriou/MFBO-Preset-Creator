@@ -38,19 +38,19 @@ int main(int argc, char* argv[])
     lMainApplication.processEvents();
 
     // Check if an installer file needs to be removed at launch
-    QFile lFile(Utils::getAppDataPathFolder() + "installer.log");
-    if (lFile.exists())
+    QFile lInstallerLogFile(Utils::getAppDataPathFolder() + "installer.log");
+    if (lInstallerLogFile.exists())
     {
-      if (lFile.open(QIODevice::ReadOnly | QIODevice::Text))
+      if (lInstallerLogFile.open(QIODevice::ReadOnly | QIODevice::Text))
       {
-        QTextStream lStream(&lFile);
+        QTextStream lStream(&lInstallerLogFile);
         auto lPathToDelete{lStream.readAll()};
-        lFile.close();
+        lInstallerLogFile.close();
 
         QFile lInstallerFile(lPathToDelete);
         lInstallerFile.remove();
 
-        lFile.remove();
+        lInstallerLogFile.remove();
       }
     }
 
