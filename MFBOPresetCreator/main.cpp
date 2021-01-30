@@ -34,6 +34,27 @@ int main(int argc, char* argv[])
     lMainApplication.processEvents();
 
     // Update the message
+    lSplashScreen.showMessage(QString("MFBOPC (v.%1): Cleaning temporary installer files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+    lMainApplication.processEvents();
+
+    // Check if an installer file needs to be removed at launch
+    QFile lFile(Utils::getAppDataPathFolder() + "installer.log");
+    if (lFile.exists())
+    {
+      if (lFile.open(QIODevice::ReadOnly | QIODevice::Text))
+      {
+        QTextStream lStream(&lFile);
+        auto lPathToDelete{lStream.readAll()};
+        lFile.close();
+
+        QFile lInstallerFile(lPathToDelete);
+        lInstallerFile.remove();
+
+        lFile.remove();
+      }
+    }
+
+    // Update the message
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Reading and applying custom fonts...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
