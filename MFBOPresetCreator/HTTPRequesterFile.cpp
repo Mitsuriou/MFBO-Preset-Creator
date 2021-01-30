@@ -7,17 +7,18 @@ static size_t write_file(void* ptr, size_t size, size_t nmemb, void* stream)
   return written;
 }
 
-HTTPRequesterFile::HTTPRequesterFile(const QString& aURL, QWidget* aParent)
+HTTPRequesterFile::HTTPRequesterFile(const QString& aURL, const QString& aSavedFilePath, QWidget* aParent)
   : QThread(aParent)
   , mURL(aURL.toStdString())
+  , mSavedFilePath(aSavedFilePath.toStdString())
 {
   curl_global_init(CURL_GLOBAL_ALL);
-  mCURL = curl_easy_init();
+  this->mCURL = curl_easy_init();
 }
 
 HTTPRequesterFile::~HTTPRequesterFile()
 {
-  curl_easy_cleanup(mCURL);
+  curl_easy_cleanup(this->mCURL);
   curl_global_cleanup();
 }
 
@@ -29,24 +30,31 @@ void HTTPRequesterFile::run()
 bool HTTPRequesterFile::download()
 {
   // Basic fetching setup
-  curl_easy_setopt(mCURL, CURLOPT_URL, this->mURL.c_str());
-  curl_easy_setopt(mCURL, CURLOPT_NOPROGRESS, 1L);
-  curl_easy_setopt(mCURL, CURLOPT_WRITEFUNCTION, write_file);
+  curl_easy_setopt(this->mCURL, CURLOPT_URL, this->mURL.c_str());
+  curl_easy_setopt(this->mCURL, CURLOPT_NOPROGRESS, 1L);
+  curl_easy_setopt(this->mCURL, CURLOPT_WRITEFUNCTION, write_file);
   // Handle HTTP redirection
-  curl_easy_setopt(mCURL, CURLOPT_FOLLOWLOCATION, 1L);
+  curl_easy_setopt(this->mCURL, CURLOPT_FOLLOWLOCATION, 1L);
 
   // Output setup
-  auto lPath = QString("%1/wizard.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
-  FILE* lFileStream = fopen(lPath.toStdString().c_str(), "wb+");
+  FILE* lFileStream;
+  fopen_s(&lFileStream, this->mSavedFilePath.c_str(), "wb+");
+
   if (lFileStream)
   {
-    curl_easy_setopt(mCURL, CURLOPT_WRITEDATA, lFileStream);
+    curl_easy_setopt(this->mCURL, CURLOPT_WRITEDATA, lFileStream);
 
-    // Execute the HTTP request
-    CURLcode lRes{curl_easy_perform(mCURL)};
+    // Perform the request and get the return code
+    CURLcode lRes{curl_easy_perform(this->mCURL)};
 
     // Close the file stream
     fclose(lFileStream);
+
+    if (lRes != CURLE_OK)
+    {
+      //fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(lRes));
+      return false;
+    }
 
     return true;
   }

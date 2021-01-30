@@ -16,7 +16,8 @@ Update::Update(QWidget* parent, const Struct::Settings& aSettings)
 void Update::setWindowProperties()
 {
   this->setModal(true);
-  this->setMinimumWidth(450);
+  this->setMinimumWidth(700);
+  this->setMinimumHeight(450);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Check for updates"));
@@ -27,6 +28,7 @@ void Update::setupInterface()
 {
   // Set a layout for this dialog box
   this->setLayout(new QVBoxLayout(this));
+  this->layout()->setAlignment(Qt::AlignTop);
 
   // Current version
   auto lCurrentVersion{new QLabel(tr("Current version: v.%1").arg(Utils::getApplicationVersion()), this)};
@@ -55,29 +57,20 @@ void Update::setupInterface()
 
 void Update::overrideHTMLLinksColor(QString& aHTMLString)
 {
+  // If no color change is needed
+  if (this->mSettings.appTheme != GUITheme::MitsuriouLightTheme && this->mSettings.appTheme != GUITheme::MitsuriouDarkTheme)
+  {
+    return;
+  }
+
   // Hacky links' colors override for some themes
-  auto lLinksColorOverride{QString("")};
-  if (this->mSettings.appTheme == GUITheme::MitsuriouLightTheme || this->mSettings.appTheme == GUITheme::MitsuriouDarkTheme)
-  {
-    lLinksColorOverride = " style='color: #e95985;'";
-  }
+  auto lLinksColorOverride{QString("color:#e95985")};
 
-  std::vector<int> lPositions;
-  int j = 0;
-  while ((j = aHTMLString.indexOf("<a ", j)) != -1)
+  // Go through the string to find the link colors
+  auto i{0};
+  while ((i = aHTMLString.indexOf("color:#0000ff", i)) != -1)
   {
-    lPositions.push_back(j);
-    qDebug() << "Found starting \"<a \" tag at index position" << j;
-    //aHTMLString.insert(j, lLinksColorOverride);
-    j++;
-  }
-
-  // WIP / TODO
-  for (auto i = lPositions.rbegin(); i != lPositions.rend(); ++i)
-  {
-    // Not working:
-    aHTMLString.insert(*i, lLinksColorOverride);
-    //aHTMLString.append("TEST");
+    aHTMLString.replace(i, lLinksColorOverride.size(), lLinksColorOverride);
   }
 }
 
@@ -87,19 +80,11 @@ void Update::getLastAvailableVersion()
   lFetchStatus->setText(tr("Contacting GitHub.com..."));
   lFetchStatus->show();
 
-  qApp->processEvents();
-
-#ifdef DEBUG
-  // DEBUG MODE TO NOT EXHAUST GITHUB API REQUESTS QUOTA
-  pageFetched("{\"url\":\"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/36828575\",\"assets_url\":\"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/36828575/assets\",\"upload_url\":\"https://uploads.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/36828575/assets{?name,label}\",\"html_url\":\"https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/tag/2.4.0\",\"id\":36828575,\"author\":{\"login\":\"Mitsuriou\",\"id\":37184309,\"node_id\":\"MDQ6VXNlcjM3MTg0MzA5\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/37184309?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Mitsuriou\",\"html_url\":\"https://github.com/Mitsuriou\",\"followers_url\":\"https://api.github.com/users/Mitsuriou/followers\",\"following_url\":\"https://api.github.com/users/Mitsuriou/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Mitsuriou/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Mitsuriou/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Mitsuriou/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Mitsuriou/orgs\",\"repos_url\":\"https://api.github.com/users/Mitsuriou/repos\",\"events_url\":\"https://api.github.com/users/Mitsuriou/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Mitsuriou/received_events\",\"type\":\"User\",\"site_admin\":false},\"node_id\":\"MDc6UmVsZWFzZTM2ODI4NTc1\",\"tag_name\":\"2.4.0\",\"target_commitish\":\"main\",\"name\":\"MFBOPC v2.4.0\",\"draft\":false,\"prerelease\":false,\"created_at\":\"2021-01-24T18:31:58Z\",\"published_at\":\"2021-01-24T18:40:14Z\",\"assets\":[{\"url\":\"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/assets/31124926\",\"id\":31124926,\"node_id\":\"MDEyOlJlbGVhc2VBc3NldDMxMTI0OTI2\",\"name\":\"Manual.install.7z\",\"label\":null,\"uploader\":{\"login\":\"Mitsuriou\",\"id\":37184309,\"node_id\":\"MDQ6VXNlcjM3MTg0MzA5\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/37184309?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Mitsuriou\",\"html_url\":\"https://github.com/Mitsuriou\",\"followers_url\":\"https://api.github.com/users/Mitsuriou/followers\",\"following_url\":\"https://api.github.com/users/Mitsuriou/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Mitsuriou/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Mitsuriou/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Mitsuriou/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Mitsuriou/orgs\",\"repos_url\":\"https://api.github.com/users/Mitsuriou/repos\",\"events_url\":\"https://api.github.com/users/Mitsuriou/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Mitsuriou/received_events\",\"type\":\"User\",\"site_admin\":false},\"content_type\":\"application/octet-stream\",\"state\":\"uploaded\",\"size\":8171484,\"download_count\":5,\"created_at\":\"2021-01-24T20:26:01Z\",\"updated_at\":\"2021-01-24T20:26:08Z\",\"browser_download_url\":\"https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/2.4.0/Manual.install.7z\"},{\"url\":\"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/assets/31124929\",\"id\":31124929,\"node_id\":\"MDEyOlJlbGVhc2VBc3NldDMxMTI0OTI5\",\"name\":\"Manual.install.zip\",\"label\":null,\"uploader\":{\"login\":\"Mitsuriou\",\"id\":37184309,\"node_id\":\"MDQ6VXNlcjM3MTg0MzA5\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/37184309?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Mitsuriou\",\"html_url\":\"https://github.com/Mitsuriou\",\"followers_url\":\"https://api.github.com/users/Mitsuriou/followers\",\"following_url\":\"https://api.github.com/users/Mitsuriou/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Mitsuriou/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Mitsuriou/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Mitsuriou/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Mitsuriou/orgs\",\"repos_url\":\"https://api.github.com/users/Mitsuriou/repos\",\"events_url\":\"https://api.github.com/users/Mitsuriou/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Mitsuriou/received_events\",\"type\":\"User\",\"site_admin\":false},\"content_type\":\"application/x-zip-compressed\",\"state\":\"uploaded\",\"size\":11464911,\"download_count\":1,\"created_at\":\"2021-01-24T20:26:06Z\",\"updated_at\":\"2021-01-24T20:26:15Z\",\"browser_download_url\":\"https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/2.4.0/Manual.install.zip\"},{\"url\":\"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/assets/31122274\",\"id\":31122274,\"node_id\":\"MDEyOlJlbGVhc2VBc3NldDMxMTIyMjc0\",\"name\":\"mfbopc-install-wizard.exe\",\"label\":null,\"uploader\":{\"login\":\"Mitsuriou\",\"id\":37184309,\"node_id\":\"MDQ6VXNlcjM3MTg0MzA5\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/37184309?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Mitsuriou\",\"html_url\":\"https://github.com/Mitsuriou\",\"followers_url\":\"https://api.github.com/users/Mitsuriou/followers\",\"following_url\":\"https://api.github.com/users/Mitsuriou/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Mitsuriou/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Mitsuriou/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Mitsuriou/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Mitsuriou/orgs\",\"repos_url\":\"https://api.github.com/users/Mitsuriou/repos\",\"events_url\":\"https://api.github.com/users/Mitsuriou/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Mitsuriou/received_events\",\"type\":\"User\",\"site_admin\":false},\"content_type\":\"application/x-msdownload\",\"state\":\"uploaded\",\"size\":10179154,\"download_count\":33,\"created_at\":\"2021-01-24T18:34:22Z\",\"updated_at\":\"2021-01-24T18:34:37Z\",\"browser_download_url\":\"https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/2.4.0/mfbopc-install-wizard.exe\"}],\"tarball_url\":\"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/tarball/2.4.0\",\"zipball_url\":\"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/zipball/2.4.0\",\"body\":\"## VERSION 2.4.0\r\n### GENERAL IMPROVEMENTS\r\n- Added a checkbox to use only the subdirectory field as the export path.\r\n- Added color choosers in the Settings window. It allows the user to modify the success, warning and danger colors.\r\n- Moved the JSON configurations files to AppData/Local/MFBOPresetCreator/*.\r\n\r\n### BUGS FIXED\r\n- Quick restarting the application makes the user lose all its last opened paths.\r\n- The user cannot save their settings, filters list nor last opened path when using the Installer version.\r\n- The user loses their custom filters list if reinstalling the app through the Installer version.\r\n\r\n## PREVIOUS VERSIONS NOTES\r\n#### [Patch note for the version 2.3.0 is available here](https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/tag/2.3.0).\"}");
-  //pageFetched("fetch_error");
-#else
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
   HTTPRequesterGet* lHTTPDownloader{new HTTPRequesterGet(lGitHubURL, this)};
   this->connect(lHTTPDownloader, &HTTPRequesterGet::resultReady, this, &Update::pageFetched);
   this->connect(lHTTPDownloader, &HTTPRequesterGet::finished, lHTTPDownloader, &QObject::deleteLater);
   lHTTPDownloader->start();
-#endif
 }
 
 void Update::pageFetched(const QString& aResult)
@@ -112,16 +97,20 @@ void Update::pageFetched(const QString& aResult)
     QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(48, 48));
+    lSearchButton->setText(tr("Check for updates once again"));
 
-    lFetchStatus->setText(tr("An error has occurred while searching for a new version... Make sure your internet connection is operational and try again."));
+    lFetchStatus->setText(tr("An error has occurred while searching for a new version.\nPlease make sure your internet connection is working correctly and try again."));
     return;
   }
 
-  // Create a JSON from the fetched string and parse the "tag_name" data
-  QJsonDocument doc{QJsonDocument::fromJson(aResult.toUtf8())};
-  QJsonObject obj{doc.object()};
-  auto lTagName{obj["tag_name"].toString()};
+  // Create a JSON object from the fetched string
+  const auto lJSONObject{QJsonDocument::fromJson(aResult.toUtf8()).object()};
+
+  // Get the "tag_name" value
+  auto lTagName{lJSONObject["tag_name"].toString()};
   Utils::cleanBreaksString(lTagName);
+  this->mNewVersionTag = lTagName;
+  this->mNewVersionTag.replace(".", "-");
   auto lCurrentVersion{Utils::getApplicationVersion()};
 
 #ifndef DEBUG
@@ -129,9 +118,9 @@ void Update::pageFetched(const QString& aResult)
   lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
   lSearchButton->setIconSize(QSize(48, 48));
   lSearchButton->setDisabled(true);
-  lSearchButton->setText(tr("You are running a developper version."));
+  lSearchButton->setText(tr("You are running a developper version"));
 
-  lFetchStatus->setText(tr("You are currently running the developer version v.\"%1\".\nThe last available version on GitHub is tagged v.\"%2\".\n\nBelow are the release notes for the latest stable version:").arg(lCurrentVersion).arg(lTagName));
+  lFetchStatus->setText(tr("You are currently running the developer version \"v.%1\".\nThe last available version on GitHub is tagged \"v.%2\".\n\nBelow are the release notes for the latest stable version:").arg(lCurrentVersion).arg(lTagName));
 #else
   if (lCurrentVersion != lTagName)
   {
@@ -143,8 +132,9 @@ void Update::pageFetched(const QString& aResult)
 
     this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-
-    lFetchStatus->setText(tr("You are currently running the version v.\"%1\".\nThe new version v.\"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 10MB~.").arg(lCurrentVersion).arg(lTagName));
+    this->mSaveFilePath = QString("%1/mfbopc-wizard-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(this->mNewVersionTag);
+    Utils::cleanPathString(this->mSaveFilePath);
+    lFetchStatus->setText(tr("You are currently running the version \"v.%1\".\nThe new version \"v.%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 10MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for this update:").arg(lCurrentVersion).arg(lTagName).arg(this->mSaveFilePath));
   }
   else
   {
@@ -153,13 +143,14 @@ void Update::pageFetched(const QString& aResult)
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(48, 48));
     lSearchButton->setDisabled(true);
+    lSearchButton->setText(tr("You are already running the latest version"));
 
-    lFetchStatus->setText(tr("You are already running the latest version (v.\"%1\").").arg(lCurrentVersion));
+    lFetchStatus->setText(tr("Awesome! You are already running the latest version (\"v.%1\").\nBelow are the release notes for this version:").arg(lCurrentVersion));
   }
 #endif
 
   // Display the latest release's full release notes as markdown format
-  auto lDescription{obj["body"].toString()};
+  auto lDescription{lJSONObject["body"].toString()};
   Utils::cleanBreaksString(lDescription);
   auto lTextContainer{new QTextBrowser(this)};
   lTextContainer->setOpenExternalLinks(true);
@@ -169,14 +160,21 @@ void Update::pageFetched(const QString& aResult)
   lTextContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
   this->layout()->addWidget(lTextContainer);
 
-  auto lA = lTextContainer->toHtml();
-  this->overrideHTMLLinksColor(lA);
+  // Links color override
+  auto lHTMLString{lTextContainer->toHtml()};
+  this->overrideHTMLLinksColor(lHTMLString);
+  lTextContainer->setHtml(lHTMLString);
 }
 
 void Update::downloadLatestUpdate()
 {
+  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  lSearchButton->setDisabled(true);
+  lSearchButton->setText(tr("Download in progress..."));
+
+  // Create and execute the HTTP request
   auto lGitHubURL{QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest/download/mfbopc-install-wizard.exe")};
-  HTTPRequesterFile* lHTTPDownloader{new HTTPRequesterFile(lGitHubURL, this)};
+  HTTPRequesterFile* lHTTPDownloader{new HTTPRequesterFile(lGitHubURL, this->mSaveFilePath, this)};
   this->connect(lHTTPDownloader, &HTTPRequesterFile::resultReady, this, &Update::fileFetched);
   this->connect(lHTTPDownloader, &HTTPRequesterFile::finished, lHTTPDownloader, &QObject::deleteLater);
   lHTTPDownloader->start();
@@ -184,5 +182,69 @@ void Update::downloadLatestUpdate()
 
 void Update::fileFetched(const bool& aResult)
 {
-  // TODO
+  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
+  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+
+  auto lSuccessText{tr("Download successful. Click the button above to start updating MFBOPC.\nMake sure that you saved everything before starting the update as the application will be closed!\n\n")};
+  auto lErrorText{tr("An error has occurred while downloading the update.\nPlease make sure your internet connection is working correctly and try again.\n\n")};
+
+  if (aResult)
+  {
+    // The app has been downloaded
+    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
+    lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
+    lSearchButton->setIconSize(QSize(48, 48));
+    lSearchButton->setDisabled(false);
+    lSearchButton->setText(tr("Close MFBOPC and install the update"));
+
+    // Display an success message in the status label
+    auto lStatusText{lFetchStatus->text()};
+    if (lStatusText.startsWith(lErrorText))
+    {
+      lStatusText.replace(lErrorText, lSuccessText);
+      lFetchStatus->setText(lStatusText);
+    }
+    else if (!lStatusText.startsWith(lSuccessText))
+    {
+      lStatusText.prepend(lSuccessText);
+      lFetchStatus->setText(lStatusText);
+    }
+
+    this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+  }
+  else
+  {
+    // Error while downloading
+    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
+    lSearchButton->setIconSize(QSize(48, 48));
+    lSearchButton->setDisabled(false);
+    lSearchButton->setText(tr("Try to download the update once again"));
+
+    // Display an error message in the status label
+    auto lStatusText{lFetchStatus->text()};
+    if (lStatusText.startsWith(lSuccessText))
+    {
+      lStatusText.replace(lSuccessText, lErrorText);
+      lFetchStatus->setText(lStatusText);
+    }
+    else if (!lStatusText.startsWith(lErrorText))
+    {
+      lStatusText.prepend(lErrorText);
+      lFetchStatus->setText(lStatusText);
+    }
+  }
+}
+
+void Update::installLatestUpdate()
+{
+  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  lSearchButton->setDisabled(true);
+
+  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+
+  // Start the update process
+  QProcess::startDetached(this->mSaveFilePath, QStringList());
+  qApp->exit();
 }

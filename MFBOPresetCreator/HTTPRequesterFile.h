@@ -15,7 +15,7 @@ class HTTPRequesterFile : public QThread
   Q_OBJECT
 
 public:
-  explicit HTTPRequesterFile(const QString& aURL, QWidget* aParent);
+  explicit HTTPRequesterFile(const QString& aURL, const QString& aSavedFilePath, QWidget* aParent);
   ~HTTPRequesterFile();
 
 protected:
@@ -24,6 +24,7 @@ protected:
 private:
   void* mCURL;
   std::string mURL;
+  std::string mSavedFilePath;
 
   bool download();
 

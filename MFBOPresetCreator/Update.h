@@ -17,6 +17,8 @@ public:
 
 private:
   const Struct::Settings mSettings;
+  QString mNewVersionTag;
+  QString mSaveFilePath;
 
   struct MemoryStruct
   {
@@ -33,4 +35,5 @@ private slots:
   void pageFetched(const QString&);
   void downloadLatestUpdate();
   void fileFetched(const bool& aResult);
+  void installLatestUpdate();
 };
