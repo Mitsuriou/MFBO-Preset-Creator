@@ -119,6 +119,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
   // Remove filters set
   auto lDelSetBtn{new QPushButton(this)};
+  lDelSetBtn->setObjectName("remove_set");
   lDelSetBtn->setCursor(Qt::PointingHandCursor);
   lDelSetBtn->setToolTip(tr("Remove the selected BodySlide filters set"));
   lDelSetBtn->setText(tr("Remove set"));
@@ -136,6 +137,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
   // New filter
   auto lAddNewRow{new QPushButton(this)};
+  lAddNewRow->setObjectName("add_filter");
   lAddNewRow->setStyleSheet("text-align:left;");
   lAddNewRow->setCursor(Qt::PointingHandCursor);
   lAddNewRow->setToolTip(tr("Add a new BodySlide filter"));
@@ -147,6 +149,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
   // Remove filter
   auto lDeleteRow{new QPushButton(this)};
+  lDeleteRow->setObjectName("remove_filter");
   lDeleteRow->setStyleSheet("text-align:left;");
   lDeleteRow->setCursor(Qt::PointingHandCursor);
   lDeleteRow->setToolTip(tr("Remove the selected BodySlide filter"));
@@ -158,6 +161,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
   // Remove all filters
   auto lDeleteAllRows{new QPushButton(this)};
+  lDeleteAllRows->setObjectName("remove_all_filters");
   lDeleteAllRows->setStyleSheet("text-align:left;");
   lDeleteAllRows->setCursor(Qt::PointingHandCursor);
   lDeleteAllRows->setToolTip(tr("Remove all the BodySlide filters"));
@@ -221,8 +225,8 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
 
 void BodySlideFiltersEditor::updateFiltersCombobox() const
 {
-  this->disconnect(this->mFiltersListChooser, &QComboBox::currentTextChanged, this, &BodySlideFiltersEditor::handleSetRenaming);
   this->disconnect(this->mFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BodySlideFiltersEditor::showFiltersList);
+  this->disconnect(this->mFiltersListChooser, &QComboBox::currentTextChanged, this, &BodySlideFiltersEditor::handleSetRenaming);
   this->disconnect(this->mListWidget, &QListWidget::itemChanged, this, &BodySlideFiltersEditor::handleRowRenaming);
 
   this->mFiltersListChooser->clear();
@@ -243,15 +247,39 @@ void BodySlideFiltersEditor::updateFiltersCombobox() const
     this->mFiltersListChooser->addItem(lPair.first);
   }
 
-  this->connect(this->mListWidget, &QListWidget::itemChanged, this, &BodySlideFiltersEditor::handleRowRenaming);
   this->connect(this->mFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BodySlideFiltersEditor::showFiltersList);
   this->connect(this->mFiltersListChooser, &QComboBox::currentTextChanged, this, &BodySlideFiltersEditor::handleSetRenaming);
+  this->connect(this->mListWidget, &QListWidget::itemChanged, this, &BodySlideFiltersEditor::handleRowRenaming);
 }
 
 void BodySlideFiltersEditor::displayFilterAt(const int& aIndex) const
 {
   this->mFiltersListChooser->setCurrentIndex(-1);
   this->mFiltersListChooser->setCurrentIndex(aIndex);
+}
+
+void BodySlideFiltersEditor::shouldDisableFiltersControls()
+{
+  // Fetch the button in the GUI
+  auto lDelSetBtn{this->findChild<QPushButton*>("remove_set")};
+  auto lAddNewRow{this->findChild<QPushButton*>("add_filter")};
+  auto lDeleteRow{this->findChild<QPushButton*>("remove_filter")};
+  auto lDeleteAllRows{this->findChild<QPushButton*>("remove_all_filters")};
+
+  if (this->mFiltersList.size() > 0)
+  {
+    lDelSetBtn->setDisabled(false);
+    lAddNewRow->setDisabled(false);
+    lDeleteRow->setDisabled(false);
+    lDeleteAllRows->setDisabled(false);
+  }
+  else
+  {
+    lDelSetBtn->setDisabled(true);
+    lAddNewRow->setDisabled(true);
+    lDeleteRow->setDisabled(true);
+    lDeleteAllRows->setDisabled(true);
+  }
 }
 
 void BodySlideFiltersEditor::showFiltersList(int aIndex)
@@ -319,6 +347,8 @@ void BodySlideFiltersEditor::addNewSetEntry(const QString& aSetName)
 
   // Select the new key
   this->displayFilterAt(lNewIndex);
+
+  this->shouldDisableFiltersControls();
 }
 
 void BodySlideFiltersEditor::removeSet()
@@ -329,6 +359,8 @@ void BodySlideFiltersEditor::removeSet()
 
   // Select the first available element
   this->displayFilterAt(0);
+
+  this->shouldDisableFiltersControls();
 }
 
 void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
@@ -346,9 +378,35 @@ void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
   }
 
   // Prevent two sets being named the same way
-  if (this->mFiltersList.count(lNewSetName) > 0)
+  auto lOpenIndex{0};
+  auto lCloseIndex{-1};
+  auto lNextValue{-1};
+  auto lLength{-1};
+  auto lSuccessfullyCasted{false};
+
+  while (this->mFiltersList.count(lNewSetName) > 0)
   {
-    lNewSetName.append("(2)");
+    // Find last opening and closing parenthesis
+    lOpenIndex = lNewSetName.lastIndexOf("(");
+    lCloseIndex = lNewSetName.lastIndexOf(")");
+
+    // Calculate the number of characters between the two parenthesis
+    lLength = lCloseIndex - lOpenIndex - 1;
+
+    // If two parenthesis have been found
+    if (lOpenIndex != -1 && lCloseIndex != -1 && lLength > 0)
+    {
+      lNextValue = lNewSetName.mid(lOpenIndex + 1, lLength).toInt(&lSuccessfullyCasted);
+      if (!lSuccessfullyCasted)
+      {
+        lNextValue = 2;
+      }
+      lNewSetName.replace(lOpenIndex + 1, lLength, QString::number(lNextValue + 1));
+    }
+    else
+    {
+      lNewSetName.append(" (2)");
+    }
   }
 
   // Rename the filters set

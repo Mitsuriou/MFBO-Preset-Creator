@@ -31,8 +31,9 @@ private:
   void setupButtons(QGridLayout& aLayout);
   void updateFiltersCombobox() const;
 
-  // Utility function
+  // Utility functions
   void displayFilterAt(const int& aIndex) const;
+  void shouldDisableFiltersControls();
 
 private slots:
   void showFiltersList(int aIndex);
