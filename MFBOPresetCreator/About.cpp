@@ -52,7 +52,7 @@ void About::initializeGUI()
       "This application has been developed to be provided for free to any user that wants to use the application.<br />"
       "The totality of the source code is available on <a%1 href='https://github.com/Mitsuriou/MFBO-Preset-Creator'>GitHub.com</a>.<br /><br />"
       "Ressources used to make this application:"
-      "<ul style='margin: 0;'><li><a%1 href='https://www.qt.io/download-open-source'>Qt</a> (free version) is used for the Graphical User Iterface (GUI).</li>"
+      "<ul style='margin: 0;'><li><a%1 href='https://www.qt.io/download-open-source'>Qt</a> (free version) is used for the Graphical User Interface (GUI).</li>"
       "<li>Some icons were taken from Google's <a%1 href='https://material.io/resources/icons'>Material Design</a> website.</li>"
       "<li>Some icons were taken from <a%1 href='https://materialdesignicons.com'>MaterialDesignIcons</a> website.</li>"
       "<li>Some GUI themes were taken from <a%1 href='https://github.com/6788-00'>6788-00's GitHub repository</a>.</li>"

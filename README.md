@@ -16,7 +16,7 @@ You can find the "User guide and tutorials" [here](https://docs.google.com/docum
 
 # Development roadmap (not ordered by priority and not exhaustive)
 ### Ressources
-- [ ] User guide
+- [X] (2.5.1) User guide
 - [ ] Tutorials
 
 ### Graphical User Interface (GUI) improvements

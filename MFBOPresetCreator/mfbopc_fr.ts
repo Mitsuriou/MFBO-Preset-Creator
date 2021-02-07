@@ -143,7 +143,7 @@
     </message>
     <message>
         <location filename="BodySlideFiltersEditor.cpp" line="112"/>
-        <location filename="BodySlideFiltersEditor.cpp" line="286"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="314"/>
         <source>Add a new BodySlide filters set</source>
         <translation>Ajouter un nouveau set de filtres BodySlide</translation>
     </message>
@@ -153,62 +153,62 @@
         <translation>Nouveau set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="123"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="124"/>
         <source>Remove the selected BodySlide filters set</source>
         <translation>Supprimer le set de filtres BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="124"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="125"/>
         <source>Remove set</source>
         <translation>Supprimer le set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="141"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="143"/>
         <source>Add a new BodySlide filter</source>
         <translation>Ajouter un nouveau filtre BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="142"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="144"/>
         <source>New filter</source>
         <translation>Nouveau filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="152"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="155"/>
         <source>Remove the selected BodySlide filter</source>
         <translation>Supprimer le filtre BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="153"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="156"/>
         <source>Remove filter</source>
         <translation>Supprimer le filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="163"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="167"/>
         <source>Remove all the BodySlide filters</source>
         <translation>Supprimer tous les filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="164"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="168"/>
         <source>Remove all</source>
         <translation>Supprimer tous</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="202"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="206"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="210"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="214"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="286"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="314"/>
         <source>Filters set name:</source>
         <translation>Nom du set de filtres :</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="304"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="332"/>
         <source>Error: there is already one set with the name &quot;%1&quot;.</source>
         <translation>Erreur : il y a déjà un set portant le nom &quot;%1&quot;.</translation>
     </message>
