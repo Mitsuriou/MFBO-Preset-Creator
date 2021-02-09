@@ -1,7 +1,7 @@
 #include "AssistedConversion.h"
 
-AssistedConversion::AssistedConversion(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(parent)
+AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
+  : QDialog(aParent)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mHasUserDoneSomething(false)
@@ -71,21 +71,25 @@ void AssistedConversion::setWindowProperties()
 
 void AssistedConversion::initializeGUI()
 {
-  // Main window container
+  // Main window layout
   auto lMainGrid{new QGridLayout(this)};
-  lMainGrid->setObjectName("main_layout");
   lMainGrid->setAlignment(Qt::AlignTop);
-  this->setupInterface(*lMainGrid);
+  this->setLayout(lMainGrid);
+
+  this->setupInterface();
 }
 
-void AssistedConversion::setupInterface(QGridLayout& aLayout)
+void AssistedConversion::setupInterface()
 {
+  // Get the window's layout
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // First line
   auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  aLayout.addWidget(lInputPathLabel, 0, 0);
+  lMainLayout->addWidget(lInputPathLabel, 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
@@ -93,7 +97,7 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lInputPathLineEdit->setDisabled(true);
-  aLayout.addWidget(lInputPathLineEdit, 0, 1);
+  lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
@@ -101,7 +105,7 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lInputPathChooser->setAutoDefault(false);
   lInputPathChooser->setDefault(false);
-  aLayout.addWidget(lInputPathChooser, 0, 2);
+  lMainLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
   auto lLaunchSearchButton{new QPushButton(tr("Launch the scan of the mod"), this)};
@@ -111,7 +115,7 @@ void AssistedConversion::setupInterface(QGridLayout& aLayout)
   lLaunchSearchButton->setAutoDefault(false);
   lLaunchSearchButton->setDefault(false);
   lLaunchSearchButton->setDisabled(true);
-  aLayout.addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
+  lMainLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
   this->displayHintZone();
@@ -125,7 +129,8 @@ void AssistedConversion::displayHintZone()
 {
   this->deleteAlreadyExistingWindowBottom();
 
-  auto lMainLayout{this->findChild<QGridLayout*>("main_layout")};
+  // Get the window's layout
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setMinimumHeight(300);
   lHintZone->setObjectName("hint_zone");
@@ -380,7 +385,7 @@ void AssistedConversion::launchSearchProcess()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lMainLayout{this->findChild<QGridLayout*>("main_layout")};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
 
   auto lScrollArea{new QScrollArea(this)};
   lScrollArea->setObjectName("scrollable_zone");

@@ -11,7 +11,7 @@ class AssistedConversion : public QDialog
   Q_OBJECT
 
 public:
-  explicit AssistedConversion(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+  explicit AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -26,7 +26,7 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
-  void setupInterface(QGridLayout& aLayout);
+  void setupInterface();
   void displayHintZone();
   void deleteAlreadyExistingWindowBottom() const;
 

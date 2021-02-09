@@ -6,6 +6,7 @@
 #include "PresetCreator.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
+#include "TexturesAssistant.h"
 #include "Update.h"
 #include "Utils.h"
 #include "WinUser.h"
@@ -48,6 +49,7 @@ private slots:
   void launchAssistedConversion();
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
   void launchPresetsRetargeting();
+  void launchTexturesAssistant();
   void launchSettingsDialog();
   void launchUpdateDialog();
   void openNexusPageInDefaultBrowser();

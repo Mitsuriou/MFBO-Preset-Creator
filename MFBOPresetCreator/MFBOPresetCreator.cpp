@@ -95,12 +95,16 @@ void MFBOPresetCreator::setupMenuBar()
   lTools->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lTools);
 
-  // Action: Assisted conversion
-  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::Key_T), "pencil", lIconFolder)};
+  // Action: Textures Assistant
+  auto lOpenTextAssist{Utils::buildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::Key_T), "textures", lIconFolder)};
+  lTools->addAction(lOpenTextAssist);
+
+  // Action: Assisted Conversion
+  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::Key_Y), "pencil", lIconFolder)};
   lTools->addAction(lOpenAssiConv);
 
   // Action: BodySlide Presets' Retargeting
-  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::Key_Y), "arrow-up", lIconFolder)};
+  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::Key_H), "arrow-up", lIconFolder)};
   lTools->addAction(lOpenRetaTools);
 
   // Action: Settings
@@ -149,6 +153,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
   this->connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
+  this->connect(lOpenTextAssist, &QAction::triggered, this, &MFBOPresetCreator::launchTexturesAssistant);
   this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
   this->connect(lOpenNexus, &QAction::triggered, this, &MFBOPresetCreator::openNexusPageInDefaultBrowser);
@@ -478,6 +483,11 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
 void MFBOPresetCreator::launchPresetsRetargeting()
 {
   new RetargetingTool(this, this->mSettings, &this->mLastPaths);
+}
+
+void MFBOPresetCreator::launchTexturesAssistant()
+{
+  new TexturesAssistant(this, this->mSettings, &this->mLastPaths);
 }
 
 void MFBOPresetCreator::launchSettingsDialog()

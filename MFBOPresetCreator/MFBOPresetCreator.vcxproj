@@ -156,8 +156,10 @@ echo #####################################################</Command>
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="PresetCreator.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
+    <ClCompile Include="TexturesAssistant.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <QtMoc Include="TexturesAssistant.h" />
     <QtMoc Include="TextInputDialog.h" />
     <QtMoc Include="Update.h" />
     <QtMoc Include="PresetCreator.h" />
