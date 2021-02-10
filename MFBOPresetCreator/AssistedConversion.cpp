@@ -319,10 +319,7 @@ void AssistedConversion::launchSearchProcess()
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
   // If it does not contain one of the wanted files, ask the user to start or cancel the scan
-  auto lFilesExtensions{QStringList()};
-  lFilesExtensions.append("*.esl");
-  lFilesExtensions.append("*.esm");
-  lFilesExtensions.append("*.esp");
+  auto lFilesExtensions{QStringList({"*.esl", "*.esm", "*.esp"})};
 
   auto lIsESPPresent{Utils::getNumberFilesByExtensions(lInputPath, lFilesExtensions) > 0};
   if (!lIsESPPresent)

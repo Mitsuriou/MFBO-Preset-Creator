@@ -47,7 +47,7 @@
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="TexturesAssistant.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,7 +148,7 @@
       <Filter>Header Files\Utils</Filter>
     </QtMoc>
     <QtMoc Include="TexturesAssistant.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
