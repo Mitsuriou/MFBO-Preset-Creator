@@ -32,21 +32,17 @@ void Settings::closeEvent(QCloseEvent* aEvent)
     // User theme accent
     const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-    auto lCloseButton{lConfirmationBox.addButton(tr("Close the settings window without saving"), QMessageBox::ButtonRole::YesRole)};
-    lCloseButton->setCursor(Qt::PointingHandCursor);
-    lCloseButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-    auto lStayButton{lConfirmationBox.addButton(tr("Go back to the settings window"), QMessageBox::ButtonRole::NoRole)};
-    lStayButton->setCursor(Qt::PointingHandCursor);
-    lStayButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
-
-    lConfirmationBox.setDefaultButton(lStayButton);
-    lConfirmationBox.exec();
-
-    if (lConfirmationBox.clickedButton() != lCloseButton)
+    if (Utils::displayQuestionMessage(this,
+                                      tr("Closing"),
+                                      tr("Do you want to close the window?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Close the settings window without saving"),
+                                      tr("Go back to the settings window"),
+                                      this->mSettings.dangerColor,
+                                      this->mSettings.successColor,
+                                      false)
+        != ButtonClicked::Yes)
     {
       aEvent->ignore();
       return;
@@ -561,21 +557,17 @@ void Settings::saveSettings()
     // User theme accent
     const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Application settings changed"), tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"), QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-    auto lRestartNowButton{lConfirmationBox.addButton(tr("Restart now"), QMessageBox::ButtonRole::YesRole)};
-    lRestartNowButton->setCursor(Qt::PointingHandCursor);
-    lRestartNowButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-    auto lRestartLaterButton{lConfirmationBox.addButton(tr("Go back to the application and restart later"), QMessageBox::ButtonRole::NoRole)};
-    lRestartLaterButton->setCursor(Qt::PointingHandCursor);
-    lRestartLaterButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.warningColor));
-
-    lConfirmationBox.setDefaultButton(lRestartLaterButton);
-    lConfirmationBox.exec();
-
-    if (lConfirmationBox.clickedButton() == lRestartNowButton)
+    if (Utils::displayQuestionMessage(this,
+                                      tr("Application settings changed"),
+                                      tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Restart now"),
+                                      tr("Go back to the application and restart later"),
+                                      this->mSettings.dangerColor,
+                                      this->mSettings.warningColor,
+                                      false)
+        == ButtonClicked::Yes)
     {
       // Reboot the application in case the language is changed
       qApp->exit(Utils::EXIT_CODE_REBOOT);

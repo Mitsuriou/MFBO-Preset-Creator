@@ -17,11 +17,7 @@ TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& a
 
 void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
 {
-  // Catch the sender of the event
-  auto lEventSource{qobject_cast<QPushButton*>(sender())};
-  auto lValidationBtn{this->findChild<QPushButton*>("validate_selection")};
-
-  if ((lEventSource && lValidationBtn) || !this->mHasUserDoneSomething)
+  if (!this->mHasUserDoneSomething)
   {
     aEvent->accept();
     return;
@@ -30,27 +26,23 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  QMessageBox lBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
-  lBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-  auto lCloseBtn{lBox.addButton(tr("Close the window"), QMessageBox::ButtonRole::YesRole)};
-  lCloseBtn->setCursor(Qt::PointingHandCursor);
-  lCloseBtn->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-  auto lStayBtn{lBox.addButton(tr("Go back to the textures assistant window"), QMessageBox::ButtonRole::NoRole)};
-  lStayBtn->setCursor(Qt::PointingHandCursor);
-  lStayBtn->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
-
-  lBox.setDefaultButton(lStayBtn);
-  lBox.exec();
-
-  if (lBox.clickedButton() != lCloseBtn)
+  if (Utils::displayQuestionMessage(this,
+                                    tr("Closing"),
+                                    tr("Do you want to close the window?"),
+                                    lIconFolder,
+                                    "help-circle",
+                                    tr("Close the window"),
+                                    tr("Go back to the textures assistant window"),
+                                    this->mSettings.dangerColor,
+                                    this->mSettings.successColor,
+                                    false)
+      == ButtonClicked::Yes)
   {
-    aEvent->ignore();
+    aEvent->accept();
   }
   else
   {
-    aEvent->accept();
+    aEvent->ignore();
   }
 }
 
@@ -140,18 +132,11 @@ void TexturesAssistant::displayHintZone()
 
 void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
 {
-  auto lHintZone{this->findChild<QPushButton*>("hint_zone")};
+  auto lHintZone{this->findChild<QLabel*>("hint_zone")};
   if (lHintZone)
   {
     delete lHintZone;
     lHintZone = nullptr;
-  }
-
-  auto lOldValidationButton{this->findChild<QPushButton*>("validate_selection")};
-  if (lOldValidationButton)
-  {
-    delete lOldValidationButton;
-    lOldValidationButton = nullptr;
   }
 
   auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
@@ -170,9 +155,23 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> Te
   auto lRelativeDirPath{QString()};
   auto lFileName{QString()};
   auto lKey{std::string()};
-  auto lFirstValue{QString()};
 
-  auto lRootDir{aRootDir + QString("/textures")};
+  auto lTexturesFilesToFind{
+    QStringList({"femalebody_1.dds",
+                 "femalebody_1_msn.dds",
+                 "femalebody_1_s.dds",
+                 "femalebody_1_sk.dds",
+                 "femalehands_1.dds",
+                 "femalehands_1_msn.dds",
+                 "femalehands_1_s.dds",
+                 "femalehands_1_sk.dds",
+                 "femalehead.dds",
+                 "femalehead_msn.dds",
+                 "femalehead_s.dds",
+                 "femalehead_sk.dds"})};
+
+  // Suffix the root directory to earch only in the "textures" subfolder
+  auto lRootDir{QString("%1/textures").arg(aRootDir)};
 
   QDirIterator it(lRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
@@ -184,19 +183,16 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> Te
 
     lFileName = it.fileInfo().fileName();
 
-    // Clean the file name from any artifact
-    lFileName.remove("_0.nif", Qt::CaseInsensitive);
-    lFileName.remove("_1.nif", Qt::CaseInsensitive);
-    lFileName.remove(".nif", Qt::CaseInsensitive);
+    // If the file is not a body, hands or head textures file, continue to iterate
+    if (!lTexturesFilesToFind.contains(lFileName))
+    {
+      continue;
+    }
 
     // Construct the key of the map
     lKey = lRelativeDirPath.toStdString() + "/textures/" + lFileName.toStdString();
 
-    // Construct the value of the map
-    lFirstValue = lRelativeDirPath;
-    lKey.append("/textures");
-
-    auto lValue{std::make_pair(lFirstValue, lFileName)};
+    auto lValue{std::make_pair(lRelativeDirPath, lFileName)};
 
     // Insert the key-value into the map
     lScannedValues.insert(std::make_pair(lKey, lValue));
@@ -209,67 +205,6 @@ void TexturesAssistant::createSelectionBlock(QGridLayout& aLayout, const QString
 {
   aLayout.addWidget(new QLabel(aPath, this), aRowIndex, 0, Qt::AlignLeft);
   aLayout.addWidget(new QLabel(aFileName, this), aRowIndex, 1, Qt::AlignLeft);
-
-  auto lChoiceCombo{new QComboBox(this)};
-  lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
-  lChoiceCombo->setCursor(Qt::PointingHandCursor);
-  lChoiceCombo->setMouseTracking(true);
-  lChoiceCombo->view()->setMouseTracking(true);
-  lChoiceCombo->setItemDelegate(new QStyledItemDelegate());
-  aLayout.addWidget(lChoiceCombo, aRowIndex, 2, Qt::AlignRight);
-
-  // Add a new index store to the list
-  this->mBoxSelectedIndexes.push_back(0);
-
-  // Event binding
-  this->connect(lChoiceCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TexturesAssistant::modifyComboBoxLockState);
-}
-
-std::vector<Struct::AssistedConversionResult> TexturesAssistant::getChosenValuesFromInterface() const
-{
-  // Fetch the grid layout
-  auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
-
-  // Iterate in the layout
-  auto lLinesToTreat{lDataContainer->rowCount()};
-
-  if (lLinesToTreat <= 1)
-  {
-    return std::vector<Struct::AssistedConversionResult>();
-  }
-
-  std::vector<Struct::AssistedConversionResult> lResults;
-  QComboBox* lComboBox{nullptr};
-  auto lFilePath{QString("")};
-  auto lFileName{QString("")};
-
-  // For each row (skip the row 0 because it is a "header")
-  for (int i = 1; i < lLinesToTreat; i++)
-  {
-    lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
-
-    // Third column is the chosen action on the line
-    if (lComboBox->currentIndex() == 0)
-    {
-      continue;
-    }
-
-    // First column is the file path
-    lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
-
-    // Second column is the file name
-    lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
-
-    // Save the gotten values
-    Struct::AssistedConversionResult lResult;
-    lResult.path = lFilePath;
-    lResult.name = lFileName;
-    lResult.role = lComboBox->currentIndex();
-
-    lResults.push_back(lResult);
-  }
-
-  return lResults;
 }
 
 void TexturesAssistant::chooseInputDirectory()
@@ -279,10 +214,10 @@ void TexturesAssistant::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "assistedConversionInput", lPath);
+  Utils::updatePathAtKey(this->mLastPaths, "texturesAssistantInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
@@ -302,145 +237,78 @@ void TexturesAssistant::launchSearchProcess()
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+
+  // Warn the user if the scan found a BSA file
+  if (Utils::getNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
+  {
+    if (Utils::displayQuestionMessage(this,
+                                      tr("BSA file found"),
+                                      tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the scan"),
+                                      tr("Cancel the scan"),
+                                      this->mSettings.successColor,
+                                      this->mSettings.dangerColor,
+                                      true)
+        != ButtonClicked::Yes)
+    {
+      return;
+    }
+  }
+
+  // The root directory should at least contain a DDS file to be scanned.
+  if (!QDir(QString("%1/textures").arg(lInputPath)).exists())
+  {
+    Utils::displayWarningMessage(tr("No \"textures\" directory has been found in the scanned directory."));
+  }
+
+  // Fetch all the "*dds" files
+  const auto& lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.dds")};
+  this->mScannedDirName = QDir(lInputPath).dirName();
+
+  // No file found
+  if (lFoundNifFiles.size() == 0)
+  {
+    this->displayHintZone();
+    auto lHintZone{this->findChild<QLabel*>("hint_zone")};
+    if (lHintZone)
+    {
+      lHintZone->setText(tr("No DDS files were found in the scanned directory."));
+    }
+    return;
+  }
 
   // Delete already existing the hint label or the layout and the validation button
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
-
   auto lScrollArea{new QScrollArea(this)};
   lScrollArea->setObjectName("scrollable_zone");
   lScrollArea->setWidgetResizable(true);
 
   auto lMainWidget{new QFrame(this)};
+  lScrollArea->setWidget(lMainWidget);
 
-  auto lDataContainer{new QGridLayout(lMainWidget)};
+  auto lDataContainer{new QGridLayout(this)};
   lDataContainer->setObjectName("data_container");
   lDataContainer->setAlignment(Qt::AlignTop);
   lDataContainer->setContentsMargins(0, 0, 0, 0);
 
-  lScrollArea->setWidget(lMainWidget);
-  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
-
   // Columns header
   lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);
-  lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignCenter);
-  lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignCenter);
+  lDataContainer->addWidget(new QLabel(tr("*.dds file name"), this), 0, 1, Qt::AlignCenter);
 
-  // Fetch all the "*.nif" files
-  auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.dds")};
-  this->mScannedDirName = QDir(lInputPath).dirName();
+  lMainWidget->setLayout(lDataContainer);
+
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
 
   auto lNextRow{1};
-  this->mBoxSelectedIndexes.clear();
-
   for (const auto& lNifFile : lFoundNifFiles)
   {
+    // TODO: Create a better display block:
     this->createSelectionBlock(*lDataContainer, lNifFile.second.second, lNifFile.second.first, lNextRow++);
-  }
-
-  // Create the validation button
-  auto lValidateSelection{new QPushButton(tr("Validate the selection(s) above and go back to the main window"), this)};
-  lValidateSelection->setCursor(Qt::PointingHandCursor);
-  lValidateSelection->setIcon(QIcon(QPixmap(QString(":/%1/playlist-check").arg(lIconFolder))));
-  lValidateSelection->setObjectName("validate_selection");
-  lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
-  this->connect(lValidateSelection, &QPushButton::clicked, this, &TexturesAssistant::validateSelection);
-}
-
-void TexturesAssistant::validateSelection()
-{
-  emit valuesChosen(this->mScannedDirName, this->getChosenValuesFromInterface());
-  this->close();
-}
-
-void TexturesAssistant::modifyComboBoxLockState(int aIndex)
-{
-  // Catch the sender of the event
-  auto lEventSource{qobject_cast<QComboBox*>(sender())};
-
-  // Fetch the grid layout
-  auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
-  auto lLinesToTreat{lDataContainer->rowCount()};
-  QComboBox* lComboBox{nullptr};
-  auto lComboBoxIndex{0};
-
-  // For each row (skip the row 0 because it is a "header")
-  for (int i = 1; i < lLinesToTreat; i++)
-  {
-    // Get the combobox
-    lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
-
-    if (lComboBox == lEventSource)
-    {
-      lComboBoxIndex = i - 1;
-      break;
-    }
-  }
-
-  // Check if an option can be set before actually setting it.
-  // This will prevent the mouse scrolling bug that permits the user
-  // to select a hidden option from the combobox.
-  if (aIndex != 0)
-  {
-    auto lStep{1};
-    if (aIndex < this->mBoxSelectedIndexes.at(lComboBoxIndex))
-    {
-      // If the user took an option that is placed first
-      lStep = -1;
-    }
-
-    auto lSourceView{qobject_cast<QListView*>(lEventSource->view())};
-
-    auto lTestIndex{aIndex};
-    while (lSourceView->isRowHidden(lTestIndex) && lTestIndex <= lEventSource->count())
-    {
-      lTestIndex += lStep;
-    }
-
-    this->disconnect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TexturesAssistant::modifyComboBoxLockState);
-
-    if (lTestIndex == lEventSource->count())
-    {
-      lEventSource->setCurrentIndex(this->mBoxSelectedIndexes.at(lComboBoxIndex));
-      this->connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TexturesAssistant::modifyComboBoxLockState);
-      return;
-    }
-
-    lEventSource->setCurrentIndex(lTestIndex);
-    aIndex = lTestIndex;
-    this->connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TexturesAssistant::modifyComboBoxLockState);
-  }
-
-  // Keep the old index and store the new selected index
-  auto lOldIndex{this->mBoxSelectedIndexes.at(lComboBoxIndex)};
-  this->mBoxSelectedIndexes.at(lComboBoxIndex) = aIndex;
-
-  // For each row (skip the row 0 because it is a "header")
-  for (int i = 1; i < lLinesToTreat; i++)
-  {
-    // Get the combobox
-    lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
-
-    if (lComboBox == lEventSource)
-    {
-      continue;
-    }
-
-    auto lView{qobject_cast<QListView*>(lComboBox->view())};
-
-    // Disable the new selected option
-    if (aIndex != 0)
-    {
-      lView->setRowHidden(aIndex, true);
-    }
-
-    // Enable the old option
-    auto lModel{qobject_cast<QStandardItemModel*>(lComboBox->model())};
-    auto lItem{lModel->item(lOldIndex)};
-    lView->setRowHidden(lOldIndex, false);
-    lItem->setFlags(lItem->flags() | Qt::ItemIsEnabled);
   }
 }

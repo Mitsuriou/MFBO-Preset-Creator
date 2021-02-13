@@ -1299,26 +1299,17 @@ void PresetCreator::generateDirectoryStructure()
   else
   {
     // Since the directory already exist, ask the user to generate another preset in it
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question,
-                                 tr("Already existing directory"),
-                                 tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this directory?").arg(lEntryDirectory),
-                                 QMessageBox::StandardButton::NoButton,
-                                 this);
-
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-    auto lContinueButton{lConfirmationBox.addButton(tr("Continue the files generation"), QMessageBox::ButtonRole::YesRole)};
-    lContinueButton->setCursor(Qt::PointingHandCursor);
-    lContinueButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.warningColor));
-
-    auto lStopButton{lConfirmationBox.addButton(tr("Cancel the files generation"), QMessageBox::ButtonRole::NoRole)};
-    lStopButton->setCursor(Qt::PointingHandCursor);
-    lStopButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-    lConfirmationBox.setDefaultButton(lContinueButton);
-    lConfirmationBox.exec();
-
-    if (lConfirmationBox.clickedButton() != lContinueButton)
+    if (Utils::displayQuestionMessage(this,
+                                      tr("Already existing directory"),
+                                      tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this directory?").arg(lEntryDirectory),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the files generation"),
+                                      tr("Cancel the files generation"),
+                                      this->mSettings.warningColor,
+                                      this->mSettings.dangerColor,
+                                      true)
+        != ButtonClicked::Yes)
     {
       return;
     }

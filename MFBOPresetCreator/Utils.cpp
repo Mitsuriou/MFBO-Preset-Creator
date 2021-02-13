@@ -69,6 +69,44 @@ void Utils::displayWarningMessage(const QString& aMessage)
   lBox.exec();
 }
 
+ButtonClicked Utils::displayQuestionMessage(QWidget* aParent,
+                                            const QString& aTitle,
+                                            const QString& aMessage,
+                                            const QString& aIconFolder,
+                                            const QString& aIconName,
+                                            const QString& aTextBtnYes,
+                                            const QString& aTextBtnNo,
+                                            const QString& aColorYesBtn,
+                                            const QString& aColorNoBtn,
+                                            const bool& aIsYesBtnDefault)
+{
+  QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
+  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation));
+
+  auto lYesButton{lConfirmationBox.addButton(aTextBtnYes, QMessageBox::ButtonRole::YesRole)};
+  lYesButton->setCursor(Qt::PointingHandCursor);
+  lYesButton->setStyleSheet(QString("color: %1;").arg(aColorYesBtn));
+
+  auto lNoButton{lConfirmationBox.addButton(aTextBtnNo, QMessageBox::ButtonRole::NoRole)};
+  lNoButton->setCursor(Qt::PointingHandCursor);
+  lNoButton->setStyleSheet(QString("color: %1;").arg(aColorNoBtn));
+
+  lConfirmationBox.setDefaultButton(aIsYesBtnDefault ? lYesButton : lNoButton);
+  lConfirmationBox.exec();
+
+  // Return the clicked button
+  const auto lClickedButton{lConfirmationBox.clickedButton()};
+  if (lClickedButton == lYesButton)
+  {
+    return ButtonClicked::Yes;
+  }
+  if (lClickedButton == lNoButton)
+  {
+    return ButtonClicked::No;
+  }
+  return ButtonClicked::CloseWindow;
+}
+
 int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
@@ -907,6 +945,13 @@ void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
         break;
       }
     }
+  }
+
+  // The key did not exist, this happens when updating MFBOPC
+  if (lModifiedPaths == 1)
+  {
+    // Create the new entry
+    aMap->insert(std::pair<QString, QString>(aKey, aPath));
   }
 
   // Save the new list

@@ -41,21 +41,17 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
     // User theme accent
     const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-    auto lCloseButton{lConfirmationBox.addButton(tr("Close the editor window without saving"), QMessageBox::ButtonRole::YesRole)};
-    lCloseButton->setCursor(Qt::PointingHandCursor);
-    lCloseButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-    auto lStayButton{lConfirmationBox.addButton(tr("Go back to the editor window"), QMessageBox::ButtonRole::NoRole)};
-    lStayButton->setCursor(Qt::PointingHandCursor);
-    lStayButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
-
-    lConfirmationBox.setDefaultButton(lStayButton);
-    lConfirmationBox.exec();
-
-    if (lConfirmationBox.clickedButton() != lCloseButton)
+    if (Utils::displayQuestionMessage(this,
+                                      tr("Closing"),
+                                      tr("Do you want to close the window?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Close the editor window without saving"),
+                                      tr("Go back to the editor window"),
+                                      this->mSettings.dangerColor,
+                                      this->mSettings.successColor,
+                                      false)
+        != ButtonClicked::Yes)
     {
       aEvent->ignore();
       return;

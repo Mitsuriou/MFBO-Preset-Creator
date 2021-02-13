@@ -29,21 +29,17 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Question, tr("Quitting"), tr("Do you want to quit the application?"), QMessageBox::StandardButton::NoButton, this);
-  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-  auto lCloseButton{lConfirmationBox.addButton(tr("Quit the application"), QMessageBox::ButtonRole::YesRole)};
-  lCloseButton->setCursor(Qt::PointingHandCursor);
-  lCloseButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-  auto lStayButton{lConfirmationBox.addButton(tr("Go back to the application"), QMessageBox::ButtonRole::NoRole)};
-  lStayButton->setCursor(Qt::PointingHandCursor);
-  lStayButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
-
-  lConfirmationBox.setDefaultButton(lStayButton);
-  lConfirmationBox.exec();
-
-  if (lConfirmationBox.clickedButton() != lCloseButton)
+  if (Utils::displayQuestionMessage(this,
+                                    tr("Quitting"),
+                                    tr("Do you want to quit the application?"),
+                                    lIconFolder,
+                                    "help-circle",
+                                    tr("Quit the application"),
+                                    tr("Go back to the application"),
+                                    this->mSettings.dangerColor,
+                                    this->mSettings.successColor,
+                                    false)
+      != ButtonClicked::Yes)
   {
     aEvent->ignore();
   }

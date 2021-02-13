@@ -132,9 +132,6 @@
     <QtMoc Include="DataLists.h">
       <Filter>Header Files\Utils</Filter>
     </QtMoc>
-    <QtMoc Include="Utils.h">
-      <Filter>Header Files\Utils</Filter>
-    </QtMoc>
     <QtMoc Include="AssistedConversion.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
@@ -149,6 +146,9 @@
     </QtMoc>
     <QtMoc Include="TexturesAssistant.h">
       <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Utils.h">
+      <Filter>Header Files\Utils</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

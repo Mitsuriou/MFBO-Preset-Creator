@@ -77,3 +77,10 @@ enum class AssistedConversionRole
   Hands = 3,
   Skeleton = 4
 };
+
+enum class ButtonClicked
+{
+  Yes = 0,
+  No = 1,
+  CloseWindow = 2
+};

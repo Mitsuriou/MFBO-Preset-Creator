@@ -188,5 +188,6 @@ QStringList DataLists::getLastPathsKeys()
     "mainWindowOutput",
     "assistedConversionInput",
     "retargetingToolInput",
-    "retargetingToolOutput"};
+    "retargetingToolOutput",
+    "texturesAssistantInput"};
 }

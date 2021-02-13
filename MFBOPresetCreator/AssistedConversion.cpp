@@ -21,7 +21,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   auto lEventSource{qobject_cast<QPushButton*>(sender())};
   auto lValidationBtn{this->findChild<QPushButton*>("validate_selection")};
 
-  if ((lEventSource && lValidationBtn) || !this->mHasUserDoneSomething)
+  if ((lEventSource == lValidationBtn) || !this->mHasUserDoneSomething)
   {
     aEvent->accept();
     return;
@@ -30,27 +30,23 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  QMessageBox lBox(QMessageBox::Icon::Question, tr("Closing"), tr("Do you want to close the window?"), QMessageBox::StandardButton::NoButton, this);
-  lBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-  auto lCloseBtn{lBox.addButton(tr("Close the window"), QMessageBox::ButtonRole::YesRole)};
-  lCloseBtn->setCursor(Qt::PointingHandCursor);
-  lCloseBtn->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-  auto lStayBtn{lBox.addButton(tr("Go back to the assisted conversion tool window"), QMessageBox::ButtonRole::NoRole)};
-  lStayBtn->setCursor(Qt::PointingHandCursor);
-  lStayBtn->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
-
-  lBox.setDefaultButton(lStayBtn);
-  lBox.exec();
-
-  if (lBox.clickedButton() != lCloseBtn)
+  if (Utils::displayQuestionMessage(this,
+                                    tr("Closing"),
+                                    tr("Do you want to close the window?"),
+                                    lIconFolder,
+                                    "help-circle",
+                                    tr("Close the window"),
+                                    tr("Go back to the assisted conversion tool window"),
+                                    this->mSettings.dangerColor,
+                                    this->mSettings.successColor,
+                                    false)
+      == ButtonClicked::Yes)
   {
-    aEvent->ignore();
+    aEvent->accept();
   }
   else
   {
-    aEvent->accept();
+    aEvent->ignore();
   }
 }
 
@@ -140,7 +136,7 @@ void AssistedConversion::displayHintZone()
 
 void AssistedConversion::deleteAlreadyExistingWindowBottom() const
 {
-  auto lHintZone{this->findChild<QPushButton*>("hint_zone")};
+  auto lHintZone{this->findChild<QLabel*>("hint_zone")};
   if (lHintZone)
   {
     delete lHintZone;
@@ -170,7 +166,6 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   auto lRelativeDirPath{QString()};
   auto lFileName{QString()};
   auto lKey{std::string()};
-  auto lFirstValue{QString()};
 
   auto lRootDir{aRootDir};
   if (this->mSettings.assistedConversionScanOnlyMeshesSubdir)
@@ -194,25 +189,10 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
     lFileName.remove(".nif", Qt::CaseInsensitive);
 
     // Construct the key of the map
-    lKey = lRelativeDirPath.toStdString();
-    if (this->mSettings.assistedConversionScanOnlyMeshesSubdir)
-    {
-      lKey.append("/meshes");
-    }
-    lKey.append("/");
-    lKey.append(lFileName.toStdString());
-
-    // Construct the value of the map
-    lFirstValue = lRelativeDirPath;
-    if (this->mSettings.assistedConversionScanOnlyMeshesSubdir)
-    {
-      lKey.append("/meshes");
-    }
-
-    auto lValue{std::make_pair(lFirstValue, lFileName)};
+    lKey = QString("%1/%2").arg(lRelativeDirPath).arg(lFileName).toStdString();
 
     // Insert the key-value into the map
-    lScannedValues.insert(std::make_pair(lKey, lValue));
+    lScannedValues.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));
   }
 
   return lScannedValues;
@@ -315,97 +295,88 @@ void AssistedConversion::launchSearchProcess()
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
-  auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
-  // If it does not contain one of the wanted files, ask the user to start or cancel the scan
-  auto lFilesExtensions{QStringList({"*.esl", "*.esm", "*.esp"})};
-
-  auto lIsESPPresent{Utils::getNumberFilesByExtensions(lInputPath, lFilesExtensions) > 0};
-  if (!lIsESPPresent)
+  if (Utils::getNumberFilesByExtensions(lInputPath, QStringList({"*.esl", "*.esm", "*.esp"})) == 0)
   {
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question,
-                                 tr("No root file has been found"),
-                                 tr("No ESL, ESM or ESP file has been found in the scanned directory. Do you still want to continue the scan?"),
-                                 QMessageBox::StandardButton::NoButton,
-                                 this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-    auto lContinueButton{lConfirmationBox.addButton(tr("Continue the scan"), QMessageBox::ButtonRole::YesRole)};
-    lContinueButton->setCursor(Qt::PointingHandCursor);
-    lContinueButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
-
-    auto lStopButton{lConfirmationBox.addButton(tr("Cancel the scan"), QMessageBox::ButtonRole::NoRole)};
-    lStopButton->setCursor(Qt::PointingHandCursor);
-    lStopButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-    lConfirmationBox.setDefaultButton(lContinueButton);
-    lConfirmationBox.exec();
-
-    if (lConfirmationBox.clickedButton() != lContinueButton)
+    // If it does not contain one of the wanted files, ask the user to start or cancel the scan
+    if (Utils::displayQuestionMessage(this,
+                                      tr("No root file has been found"),
+                                      tr("No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the scan"),
+                                      tr("Cancel the scan"),
+                                      this->mSettings.successColor,
+                                      this->mSettings.dangerColor,
+                                      true)
+        != ButtonClicked::Yes)
     {
       return;
     }
   }
 
   // Warn the user if the scan found a BSA file
-  auto lBSAExtension{QStringList("*.bsa")};
-
-  auto lIsBSAPresent{Utils::getNumberFilesByExtensions(lInputPath, lBSAExtension) > 0};
-  if (lIsBSAPresent)
+  if (Utils::getNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
   {
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Question,
-                                 tr("BSA file found"),
-                                 tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
-                                 QMessageBox::StandardButton::NoButton,
-                                 this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/help-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-    auto lContinueButton{lConfirmationBox.addButton(tr("Continue the scan"), QMessageBox::ButtonRole::YesRole)};
-    lContinueButton->setCursor(Qt::PointingHandCursor);
-    lContinueButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.successColor));
-
-    auto lStopButton{lConfirmationBox.addButton(tr("Cancel the scan"), QMessageBox::ButtonRole::NoRole)};
-    lStopButton->setCursor(Qt::PointingHandCursor);
-    lStopButton->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-
-    lConfirmationBox.setDefaultButton(lContinueButton);
-    lConfirmationBox.exec();
-
-    if (lConfirmationBox.clickedButton() != lContinueButton)
+    if (Utils::displayQuestionMessage(this,
+                                      tr("BSA file found"),
+                                      tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the scan"),
+                                      tr("Cancel the scan"),
+                                      this->mSettings.successColor,
+                                      this->mSettings.dangerColor,
+                                      true)
+        != ButtonClicked::Yes)
     {
       return;
     }
+  }
+
+  // Fetch all the "*.nif" files
+  const auto& lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
+  this->mScannedDirName = QDir(lInputPath).dirName();
+
+  // No file found
+  if (lFoundNifFiles.size() == 0)
+  {
+    this->displayHintZone();
+    auto lHintZone{this->findChild<QLabel*>("hint_zone")};
+    if (lHintZone)
+    {
+      lHintZone->setText(tr("No NIF files were found in the scanned directory."));
+    }
+    return;
   }
 
   // Delete already existing the hint label or the layout and the validation button
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
-
   auto lScrollArea{new QScrollArea(this)};
   lScrollArea->setObjectName("scrollable_zone");
   lScrollArea->setWidgetResizable(true);
 
   auto lMainWidget{new QFrame(this)};
+  lScrollArea->setWidget(lMainWidget);
 
-  auto lDataContainer{new QGridLayout(lMainWidget)};
+  auto lDataContainer{new QGridLayout(this)};
   lDataContainer->setObjectName("data_container");
   lDataContainer->setAlignment(Qt::AlignTop);
   lDataContainer->setContentsMargins(0, 0, 0, 0);
-
-  lScrollArea->setWidget(lMainWidget);
-  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
 
   // Columns header
   lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);
   lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignCenter);
   lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignCenter);
 
-  // Fetch all the "*.nif" files
-  auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
-  this->mScannedDirName = QDir(lInputPath).dirName();
+  lMainWidget->setLayout(lDataContainer);
+
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
 
   auto lNextRow{1};
   this->mBoxSelectedIndexes.clear();
@@ -421,6 +392,7 @@ void AssistedConversion::launchSearchProcess()
   lValidateSelection->setIcon(QIcon(QPixmap(QString(":/%1/playlist-check").arg(lIconFolder))));
   lValidateSelection->setObjectName("validate_selection");
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
+
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
 }
 
