@@ -311,4 +311,24 @@ void TexturesAssistant::launchSearchProcess()
     // TODO: Create a better display block:
     this->createSelectionBlock(*lDataContainer, lNifFile.second.second, lNifFile.second.first, lNextRow++);
   }
+
+  // Cursor change for the scroll bar
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &TexturesAssistant::scrollbarPressed);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &TexturesAssistant::scrollbarReleased);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &TexturesAssistant::scrollbarPressed);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &TexturesAssistant::scrollbarReleased);
+}
+
+void TexturesAssistant::scrollbarPressed()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
+}
+
+void TexturesAssistant::scrollbarReleased()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }

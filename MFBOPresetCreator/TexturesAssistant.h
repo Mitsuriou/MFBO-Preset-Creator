@@ -38,4 +38,8 @@ signals:
 private slots:
   void chooseInputDirectory();
   void launchSearchProcess();
+
+  // Scrollbar events
+  void scrollbarPressed();
+  void scrollbarReleased();
 };

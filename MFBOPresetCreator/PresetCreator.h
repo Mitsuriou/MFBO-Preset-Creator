@@ -13,7 +13,8 @@ class PresetCreator : public QWidget
 public:
   explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
-  // Function that will to be called from the outside
+  // Function that will to be called from outside this class
+  bool hasUserDoneSomething();
   void updateSettings(Struct::Settings aSettings);
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
 
@@ -21,6 +22,7 @@ private:
   Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   std::map<QString, QStringList> mFiltersList;
+  bool mHasUserDoneSomething;
   int mMinimumFirstColumnWidth;
 
   // GUI creation

@@ -43,9 +43,15 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   // Cursor change for the scroll bar
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
-
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
+
+  this->mHasUserDoneSomething = false;
+}
+
+bool PresetCreator::hasUserDoneSomething()
+{
+  return this->mHasUserDoneSomething;
 }
 
 void PresetCreator::updateSettings(Struct::Settings aSettings)
@@ -902,6 +908,8 @@ void PresetCreator::useOnlySubdirStateChanged(int)
 
 void PresetCreator::updateOutputPreview()
 {
+  this->mHasUserDoneSomething = true;
+
   // Get main directory
   auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
   auto lMainDirectory{lMainDirTextEdit->text().trimmed()};
@@ -980,6 +988,8 @@ void PresetCreator::updateOutputPreview()
 
 void PresetCreator::updateOSPXMLPreview(QString aText)
 {
+  this->mHasUserDoneSomething = true;
+
   auto lOutputPathsPreview{this->findChild<QLabel*>("names_osp_xml_preview")};
   auto lIsValidPath{true};
 
@@ -1010,6 +1020,8 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
 
 void PresetCreator::updateBodyslideNamesPreview(QString aText)
 {
+  this->mHasUserDoneSomething = true;
+
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
   auto lIsValidPath{true};
 
@@ -1160,6 +1172,8 @@ void PresetCreator::updateSkeletonPathState(int aState)
 
 void PresetCreator::updateSkeletonPreview()
 {
+  this->mHasUserDoneSomething = true;
+
   auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text()};
   Utils::cleanPathString(lSkeletonPath);
   auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
@@ -1408,6 +1422,8 @@ void PresetCreator::refreshAllPreviewFields(int)
 
 void PresetCreator::refreshAllPreviewFields()
 {
+  this->mHasUserDoneSomething = true;
+
   // Update the GUI based on the available
   this->updateGUIOnBodyChange();
 
@@ -1502,6 +1518,8 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
 
 void PresetCreator::updateBodySlideFiltersListPreview(int aIndex)
 {
+  this->mHasUserDoneSomething = true;
+
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
   auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
 

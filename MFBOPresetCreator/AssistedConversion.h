@@ -42,4 +42,8 @@ private slots:
   void launchSearchProcess();
   void validateSelection();
   void modifyComboBoxLockState(int aIndex);
+
+  // Scrollbar events
+  void scrollbarPressed();
+  void scrollbarReleased();
 };

@@ -29,6 +29,13 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
+  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+  if (!lMainContainer->hasUserDoneSomething())
+  {
+    aEvent->accept();
+    return;
+  }
+
   if (Utils::displayQuestionMessage(this,
                                     tr("Quitting"),
                                     tr("Do you want to quit the application?"),
