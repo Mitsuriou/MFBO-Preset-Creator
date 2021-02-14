@@ -388,7 +388,7 @@ void TexturesAssistant::launchSearchProcess()
     auto lHintZone{this->findChild<QLabel*>("hint_zone")};
     if (lHintZone)
     {
-      lHintZone->setText(tr("No DDS files were found in the scanned directory."));
+      lHintZone->setText(tr("No DDS file was found in the scanned directory."));
     }
     return;
   }

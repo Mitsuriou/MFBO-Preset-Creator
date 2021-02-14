@@ -347,7 +347,7 @@ void AssistedConversion::launchSearchProcess()
     auto lHintZone{this->findChild<QLabel*>("hint_zone")};
     if (lHintZone)
     {
-      lHintZone->setText(tr("No NIF files were found in the scanned directory."));
+      lHintZone->setText(tr("No NIF file was found in the scanned directory."));
     }
     return;
   }
