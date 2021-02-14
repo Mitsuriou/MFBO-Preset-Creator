@@ -115,6 +115,9 @@
         <file alias="link">ressources/software/icons/black/link.png</file>
         <file alias="color">ressources/software/icons/black/color.png</file>
         <file alias="textures">ressources/software/icons/black/textures.png</file>
+        <file alias="body">ressources/software/icons/black/body.png</file>
+        <file alias="hand">ressources/software/icons/black/hand.png</file>
+        <file alias="woman-head">ressources/software/icons/black/woman-head.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -152,6 +155,9 @@
         <file alias="link">ressources/software/icons/white/link.png</file>
         <file alias="color">ressources/software/icons/white/color.png</file>
         <file alias="textures">ressources/software/icons/white/textures.png</file>
+        <file alias="body">ressources/software/icons/white/body.png</file>
+        <file alias="hand">ressources/software/icons/white/hand.png</file>
+        <file alias="woman-head">ressources/software/icons/white/woman-head.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

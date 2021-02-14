@@ -27,7 +27,7 @@ You can find the "User guide and tutorials" [here](https://docs.google.com/docum
 
 ### New tools
 - [X] (1.9.0) Automatic conversion (choose a directory to automatically try to find where are located the meshes for the NPC that needs to be converted)
-- [ ] Tool to help users to swap converted follower's textures in a simpler way.
+- [X] (2.6.0) Tool to help users to swap converted follower's textures in a simpler way.
 
 ### Other cool features and improvements
 - [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation

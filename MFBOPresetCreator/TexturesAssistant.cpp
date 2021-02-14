@@ -184,27 +184,97 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> Te
     lFileName = it.fileInfo().fileName();
 
     // If the file is not a body, hands or head textures file, continue to iterate
-    if (!lTexturesFilesToFind.contains(lFileName))
+    if (lTexturesFilesToFind.contains(lFileName))
     {
-      continue;
+      // Construct the key of the map
+      lKey = QString("%1/textures/%2").arg(lRelativeDirPath).arg(lFileName).toStdString();
+
+      // Insert the key-value into the map
+      lScannedValues.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));
     }
-
-    // Construct the key of the map
-    lKey = lRelativeDirPath.toStdString() + "/textures/" + lFileName.toStdString();
-
-    auto lValue{std::make_pair(lRelativeDirPath, lFileName)};
-
-    // Insert the key-value into the map
-    lScannedValues.insert(std::make_pair(lKey, lValue));
+    else
+    {
+      // TODO: Add others DDS files in an complete other map
+    }
   }
 
   return lScannedValues;
 }
 
-void TexturesAssistant::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex)
+void TexturesAssistant::createFoundRessourcesBlocks(QGridLayout* aLayout, const TexturesAssistant::GroupedData& aGroupedPaths)
 {
-  aLayout.addWidget(new QLabel(aPath, this), aRowIndex, 0, Qt::AlignLeft);
-  aLayout.addWidget(new QLabel(aFileName, this), aRowIndex, 1, Qt::AlignLeft);
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  auto lRowIndex{0};
+
+  // General title
+  aLayout->addWidget(new QLabel(tr("Textures related to a female body found during the scan:"), this), lRowIndex++, 0, 1, 3, Qt::AlignLeft);
+
+  // Head icon and title
+  auto lHeadIconLabel{new QLabel(this)};
+  lHeadIconLabel->setPixmap(QPixmap(QString(":/%1/woman-head").arg(lIconFolder)).scaledToHeight(16, Qt::SmoothTransformation));
+  aLayout->addWidget(lHeadIconLabel, lRowIndex, 0, 1, 1, Qt::AlignLeft);
+  aLayout->addWidget(new QLabel(tr("Head textures:"), this), lRowIndex++, 1, 1, 2, Qt::AlignLeft);
+
+  // Head ressources blocks
+  for (const auto& lRootPath : aGroupedPaths.headTextures)
+  {
+    auto lConcatenatedFileNames{QString()};
+
+    for (const auto& lFileName : lRootPath.second)
+    {
+      lConcatenatedFileNames.append(QString("%1\n").arg(lFileName));
+    }
+    lConcatenatedFileNames = lConcatenatedFileNames.left(lConcatenatedFileNames.length() - 1);
+
+    aLayout->addWidget(new QLabel(QString::fromStdString(lRootPath.first), this), lRowIndex, 1, 1, 1, Qt::AlignLeft);
+    aLayout->addWidget(new QLabel(lConcatenatedFileNames, this), lRowIndex++, 2, 1, 2, Qt::AlignLeft);
+  }
+
+  // Hands icon and title
+  auto lHandsIconLabel{new QLabel(this)};
+  lHandsIconLabel->setPixmap(QPixmap(QString(":/%1/hand").arg(lIconFolder)).scaledToHeight(16, Qt::SmoothTransformation));
+  aLayout->addWidget(lHandsIconLabel, lRowIndex, 0, 1, 1, Qt::AlignLeft);
+  aLayout->addWidget(new QLabel(tr("Hands textures:"), this), lRowIndex++, 1, 1, 2, Qt::AlignLeft);
+
+  // Hands ressources blocks
+  for (const auto& lRootPath : aGroupedPaths.handsTextures)
+  {
+    auto lConcatenatedFileNames{QString()};
+
+    for (const auto& lFileName : lRootPath.second)
+    {
+      lConcatenatedFileNames.append(QString("%1\n").arg(lFileName));
+    }
+    lConcatenatedFileNames = lConcatenatedFileNames.left(lConcatenatedFileNames.length() - 1);
+
+    aLayout->addWidget(new QLabel(QString::fromStdString(lRootPath.first), this), lRowIndex, 1, 1, 1, Qt::AlignLeft);
+    aLayout->addWidget(new QLabel(lConcatenatedFileNames, this), lRowIndex++, 2, 1, 2, Qt::AlignLeft);
+  }
+
+  // Body icon and title
+  auto lBodyIconLabel{new QLabel(this)};
+  lBodyIconLabel->setPixmap(QPixmap(QString(":/%1/body").arg(lIconFolder)).scaledToHeight(16, Qt::SmoothTransformation));
+  aLayout->addWidget(lBodyIconLabel, lRowIndex, 0, 1, 1, Qt::AlignLeft);
+  aLayout->addWidget(new QLabel(tr("Body textures:"), this), lRowIndex++, 1, 1, 2, Qt::AlignLeft);
+
+  // Body ressources blocks
+  for (const auto& lRootPath : aGroupedPaths.bodyTextures)
+  {
+    auto lConcatenatedFileNames{QString()};
+
+    for (const auto& lFileName : lRootPath.second)
+    {
+      lConcatenatedFileNames.append(QString("%1\n").arg(lFileName));
+    }
+    lConcatenatedFileNames = lConcatenatedFileNames.left(lConcatenatedFileNames.length() - 1);
+
+    aLayout->addWidget(new QLabel(QString::fromStdString(lRootPath.first), this), lRowIndex, 1, 1, 1, Qt::AlignLeft);
+    aLayout->addWidget(new QLabel(lConcatenatedFileNames, this), lRowIndex++, 2, 1, 2, Qt::AlignLeft);
+  }
+
+  // Other textures files title
+  aLayout->addWidget(new QLabel(tr("Other textures files found during the scan:"), this), lRowIndex++, 0, 1, 3, Qt::AlignLeft);
 }
 
 void TexturesAssistant::chooseInputDirectory()
@@ -286,6 +356,8 @@ void TexturesAssistant::launchSearchProcess()
   // Create the scroll area chooser
   auto lScrollArea{new QScrollArea(this)};
   lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->setWidgetResizable(true);
 
   auto lMainWidget{new QFrame(this)};
@@ -295,22 +367,48 @@ void TexturesAssistant::launchSearchProcess()
   lDataContainer->setObjectName("data_container");
   lDataContainer->setAlignment(Qt::AlignTop);
   lDataContainer->setContentsMargins(0, 0, 0, 0);
-
-  // Columns header
-  lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);
-  lDataContainer->addWidget(new QLabel(tr("*.dds file name"), this), 0, 1, Qt::AlignCenter);
+  lDataContainer->setColumnStretch(0, 0);
+  lDataContainer->setColumnStretch(1, 0);
+  lDataContainer->setColumnStretch(2, 1);
 
   lMainWidget->setLayout(lDataContainer);
 
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
   lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
 
-  auto lNextRow{1};
+  TexturesAssistant::GroupedData lGroupedPaths;
+
   for (const auto& lNifFile : lFoundNifFiles)
   {
-    // TODO: Create a better display block:
-    this->createSelectionBlock(*lDataContainer, lNifFile.second.second, lNifFile.second.first, lNextRow++);
+    const auto& lFilePath{lNifFile.second.first.toStdString()};
+    const auto& lFileName{lNifFile.second.second};
+    std::map<std::string, std::vector<QString>>* lMap = nullptr;
+
+    if (lFileName.contains("head"))
+    {
+      lMap = &lGroupedPaths.headTextures;
+    }
+    else if (lNifFile.second.second.contains("hands"))
+    {
+      lMap = &lGroupedPaths.handsTextures;
+    }
+    else if (lNifFile.second.second.contains("body"))
+    {
+      lMap = &lGroupedPaths.bodyTextures;
+    }
+
+    auto lPosition{lMap->find(lFilePath)};
+    if (lPosition == lMap->end())
+    {
+      lMap->insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
+    }
+    else
+    {
+      lPosition->second.push_back(lFileName);
+    }
   }
+
+  this->createFoundRessourcesBlocks(lDataContainer, lGroupedPaths);
 
   // Cursor change for the scroll bar
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &TexturesAssistant::scrollbarPressed);

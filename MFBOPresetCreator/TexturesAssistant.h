@@ -23,6 +23,14 @@ private:
   bool mHasUserDoneSomething;
   QString mScannedDirName;
 
+  struct GroupedData
+  {
+  public:
+    std::map<std::string, std::vector<QString>> headTextures;
+    std::map<std::string, std::vector<QString>> handsTextures;
+    std::map<std::string, std::vector<QString>> bodyTextures;
+  };
+
   void setWindowProperties();
   void initializeGUI();
   void setupInterface();
@@ -30,7 +38,7 @@ private:
   void deleteAlreadyExistingWindowBottom() const;
 
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
-  void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
+  void createFoundRessourcesBlocks(QGridLayout* aLayout, const TexturesAssistant::GroupedData& aGroupedPaths);
 
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);

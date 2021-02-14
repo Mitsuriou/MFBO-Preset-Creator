@@ -358,6 +358,8 @@ void AssistedConversion::launchSearchProcess()
   // Create the scroll area chooser
   auto lScrollArea{new QScrollArea(this)};
   lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->setWidgetResizable(true);
 
   auto lMainWidget{new QFrame(this)};
