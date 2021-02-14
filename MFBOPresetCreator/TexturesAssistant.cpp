@@ -320,15 +320,6 @@ void TexturesAssistant::createRessourceBlock(const std::map<std::string, std::ve
   }
 }
 
-void TexturesAssistant::preventGroupBoxCheckEvent(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (!aIsChecked)
-  {
-    lGroupBox->setChecked(true);
-  }
-}
-
 void TexturesAssistant::chooseInputDirectory()
 {
   // Fetch GUI components
@@ -446,4 +437,13 @@ void TexturesAssistant::scrollbarReleased()
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
+}
+
+void TexturesAssistant::preventGroupBoxCheckEvent(bool aIsChecked)
+{
+  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
+  if (!aIsChecked)
+  {
+    lGroupBox->setChecked(true);
+  }
 }

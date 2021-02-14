@@ -66,7 +66,8 @@ private slots:
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview(int aIndex);
 
-  // Scrollbar events
+  // GUI widgets events
   void scrollbarPressed();
   void scrollbarReleased();
+  void preventGroupBoxCheckEvent(bool aIsChecked);
 };

@@ -50,8 +50,6 @@ private:
   void displayFoundTextures(QGridLayout* aLayout, const TexturesAssistant::ScannedData& aScannedData);
   void createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout);
 
-  void preventGroupBoxCheckEvent(bool aIsChecked);
-
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
 
@@ -59,7 +57,8 @@ private slots:
   void chooseInputDirectory();
   void launchSearchProcess();
 
-  // Scrollbar events
+  // GUI widgets events
   void scrollbarPressed();
   void scrollbarReleased();
+  void preventGroupBoxCheckEvent(bool aIsChecked);
 };

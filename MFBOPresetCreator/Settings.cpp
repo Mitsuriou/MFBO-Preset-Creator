@@ -100,6 +100,8 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 
   // Display group box
   auto lDisplayGroupBox{new QGroupBox(tr("Display"), this)};
+  Utils::addIconToGroupBox(lDisplayGroupBox, lIconFolder, "monitor");
+  this->connect(lDisplayGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
   aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 4, 1);
 
   // Container layout
@@ -215,8 +217,13 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 
 void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Display group box
   auto lGeneralGroupBox{new QGroupBox(tr("General"), this)};
+  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
+  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
   aLayout.addWidget(lGeneralGroupBox, aNextRowIndex, 1);
 
   // Container layout
@@ -240,8 +247,13 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 
 void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Preset Creator group box
   auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator"), this)};
+  Utils::addIconToGroupBox(lPresetCreatorGroupBox, lIconFolder, "home");
+  this->connect(lPresetCreatorGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
   aLayout.addWidget(lPresetCreatorGroupBox, aNextRowIndex + 1, 1);
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
@@ -273,7 +285,6 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   // OUTPUT PATH CHOOSER
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lOutputPathChooser->setAutoDefault(false);
   lOutputPathChooser->setDefault(false);
@@ -291,8 +302,13 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
 
 void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Assisted Conversion group box
   auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion"), this)};
+  Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
+  this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
   aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 3, 1);
 
   // Container layout
@@ -310,8 +326,13 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNe
 
 void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // BodySlide Presets' Retargeting group box
   auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting"), this)};
+  Utils::addIconToGroupBox(lRetToolGroupBox, lIconFolder, "arrow-up");
+  this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
   aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1);
 
   auto lRetargetingToolLayout{new QVBoxLayout(lRetToolGroupBox)};
@@ -653,4 +674,13 @@ void Settings::chooseDangerColor()
 
   // Display a preview on the color chooser's button directly
   this->applyDangerColorButton(this->mNewDangerColor);
+}
+
+void Settings::preventGroupBoxCheckEvent(bool aIsChecked)
+{
+  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
+  if (!aIsChecked)
+  {
+    lGroupBox->setChecked(true);
+  }
 }

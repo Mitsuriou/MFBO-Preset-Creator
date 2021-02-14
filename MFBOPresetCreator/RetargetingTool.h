@@ -45,4 +45,7 @@ private slots:
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview(int aIndex);
+
+  // GUI widgets events
+  void preventGroupBoxCheckEvent(bool aIsChecked);
 };

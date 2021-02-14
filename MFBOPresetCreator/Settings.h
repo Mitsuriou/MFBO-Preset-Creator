@@ -53,4 +53,7 @@ private slots:
   void chooseSuccessColor();
   void chooseWarningColor();
   void chooseDangerColor();
+
+  // GUI widgets events
+  void preventGroupBoxCheckEvent(bool aIsChecked);
 };

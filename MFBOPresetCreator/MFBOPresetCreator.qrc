@@ -118,6 +118,13 @@
         <file alias="body">ressources/software/icons/black/body.png</file>
         <file alias="hand">ressources/software/icons/black/hand.png</file>
         <file alias="woman-head">ressources/software/icons/black/woman-head.png</file>
+        <file alias="home">ressources/software/icons/black/home.png</file>
+        <file alias="monitor">ressources/software/icons/black/monitor.png</file>
+        <file alias="more">ressources/software/icons/black/more.png</file>
+        <file alias="tune">ressources/software/icons/black/tune.png</file>
+        <file alias="file-tree">ressources/software/icons/black/file-tree.png</file>
+        <file alias="bodyslide-logo">ressources/software/icons/black/bodyslide-logo.png</file>
+        <file alias="vector-polyline">ressources/software/icons/black/vector-polyline.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -158,6 +165,13 @@
         <file alias="body">ressources/software/icons/white/body.png</file>
         <file alias="hand">ressources/software/icons/white/hand.png</file>
         <file alias="woman-head">ressources/software/icons/white/woman-head.png</file>
+        <file alias="home">ressources/software/icons/white/home.png</file>
+        <file alias="monitor">ressources/software/icons/white/monitor.png</file>
+        <file alias="more">ressources/software/icons/white/more.png</file>
+        <file alias="tune">ressources/software/icons/white/tune.png</file>
+        <file alias="file-tree">ressources/software/icons/white/file-tree.png</file>
+        <file alias="bodyslide-logo">ressources/software/icons/white/bodyslide-logo.png</file>
+        <file alias="vector-polyline">ressources/software/icons/white/vector-polyline.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

@@ -75,6 +75,8 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // General group box
   auto lGeneralGroupBox{new QGroupBox(tr("General"), this)};
+  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
+  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &RetargetingTool::preventGroupBoxCheckEvent);
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -151,6 +153,8 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Backup group box
   auto lBackupGroupBox{new QGroupBox(tr("Backup"), this)};
+  Utils::addIconToGroupBox(lBackupGroupBox, lIconFolder, "restore");
+  this->connect(lBackupGroupBox, &QGroupBox::toggled, this, &RetargetingTool::preventGroupBoxCheckEvent);
   aLayout.addWidget(lBackupGroupBox, 1, 0);
 
   // Grid layout
@@ -999,4 +1003,13 @@ void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
   LFiltersLabel->setText(lText);
 
   this->userHasDoneAnAction();
+}
+
+void RetargetingTool::preventGroupBoxCheckEvent(bool aIsChecked)
+{
+  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
+  if (!aIsChecked)
+  {
+    lGroupBox->setChecked(true);
+  }
 }

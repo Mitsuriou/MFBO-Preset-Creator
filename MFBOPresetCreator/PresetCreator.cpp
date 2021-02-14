@@ -137,8 +137,13 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 
 void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Body meshes group box
   auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes"), this)};
+  Utils::addIconToGroupBox(lMeshesGroupBox, lIconFolder, "body");
+  this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
   aLayout.addWidget(lMeshesGroupBox);
 
   // Grid layout
@@ -237,6 +242,8 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output"), this)};
+  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
+  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
   aLayout.addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -362,6 +369,8 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton"), this)};
+  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
+  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
   aLayout.addWidget(lSkeletonGroupBox);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
@@ -382,7 +391,7 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
       .arg(lText)};
   lLabelSkeleton->setText(lRichText);
   lLabelSkeleton->setTextFormat(Qt::RichText);
-  lLabelSkeleton->setToolTip(QString(tr("Note: not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
+  lLabelSkeleton->setToolTip(QString(tr("Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
   lSkeletonGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
   auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
@@ -459,8 +468,13 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
 
 void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location"), this)};
+  Utils::addIconToGroupBox(lOutputGroupBox, lIconFolder, "file-tree");
+  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
   aLayout.addWidget(lOutputGroupBox);
 
   // Grid layout
@@ -484,7 +498,6 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   // Main directory's file chooser button
   auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
   lOutputPathChooser->setCursor(Qt::PointingHandCursor);
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
   lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
@@ -1544,4 +1557,13 @@ void PresetCreator::scrollbarReleased()
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
+}
+
+void PresetCreator::preventGroupBoxCheckEvent(bool aIsChecked)
+{
+  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
+  if (!aIsChecked)
+  {
+    lGroupBox->setChecked(true);
+  }
 }
