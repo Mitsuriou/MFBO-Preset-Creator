@@ -375,3 +375,16 @@ QToolTip {
   color: black;
   background-color: #EDF0F5;
 }
+
+/********/
+/*QFRAME*/
+/********/
+QFrame[frameShape="2"],
+QFrame[frameShape="3"],
+QFrame[frameShape="4"],
+QFrame[frameShape="5"]
+{
+  padding: 0;
+  border: 1px solid #FF558D;
+  background-color: #FF558D;
+}

@@ -81,6 +81,7 @@ public:
 
   // Widgets builder
   static QAction* buildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder);
+  static void addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName);
 
 private:
   Utils(){};

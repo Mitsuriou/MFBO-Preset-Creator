@@ -1010,3 +1010,9 @@ QAction* Utils::buildQAction(QWidget* aParent, const QString& aText, const QKeyS
   lAction->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName))));
   return lAction;
 }
+
+void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName)
+{
+  aGroupBox->setCheckable(true);
+  aGroupBox->setStyleSheet(QString("QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%1/%2)}").arg(aIconFolder).arg(aIconName));
+}

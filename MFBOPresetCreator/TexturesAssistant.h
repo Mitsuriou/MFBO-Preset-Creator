@@ -23,6 +23,15 @@ private:
   bool mHasUserDoneSomething;
   QString mScannedDirName;
 
+  struct ScannedData
+  {
+  public:
+    // The map is storing <path+fileName, <path, fileName>>
+    std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> groupedTextures;
+    // The map is storing <path+fileName, <path, fileName>>
+    std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> otherTextures;
+  };
+
   struct GroupedData
   {
   public:
@@ -37,8 +46,11 @@ private:
   void displayHintZone();
   void deleteAlreadyExistingWindowBottom() const;
 
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
-  void createFoundRessourcesBlocks(QGridLayout* aLayout, const TexturesAssistant::GroupedData& aGroupedPaths);
+  TexturesAssistant::ScannedData scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
+  void displayFoundTextures(QGridLayout* aLayout, const TexturesAssistant::ScannedData& aScannedData);
+  void createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout);
+
+  void preventGroupBoxCheckEvent(bool aIsChecked);
 
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
