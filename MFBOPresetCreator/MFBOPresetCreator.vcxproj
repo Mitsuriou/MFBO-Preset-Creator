@@ -52,7 +52,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link />
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -71,7 +71,7 @@ echo #####################################################</Command>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link />
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
@@ -92,14 +92,14 @@ echo #####################################################</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>$(DefaultQtVersion)</QtInstall>
+    <QtInstall>6.1.0</QtInstall>
     <QtModules>core;gui;widgets;xml</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>$(DefaultQtVersion)</QtInstall>
+    <QtInstall>6.1.0</QtInstall>
     <QtModules>core;gui;widgets;xml</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>

@@ -13,17 +13,12 @@ int main(int argc, char* argv[])
 
     const auto& lAppVersion{Utils::getApplicationVersion()};
 
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
     lMainApplication.setApplicationDisplayName(QString("MFBOPC (v.%1)").arg(lAppVersion));
     lMainApplication.setApplicationName("MFBOPresetCreator");
     lMainApplication.setApplicationVersion(lAppVersion);
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
-
-    // Set the codec
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
     // Show the splash screen
     const QPixmap lSplashScreenBackground(":/application/splashscreen");
@@ -82,7 +77,7 @@ int main(int argc, char* argv[])
 
     // Apply default Qt language and translation
     auto lQtBaseTranslator{new QTranslator()};
-    if (lQtBaseTranslator->load("qt_" + lLanguageToSet + ".qm", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (lQtBaseTranslator->load("qt_" + lLanguageToSet + ".qm", QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
     {
       lMainApplication.installTranslator(lQtBaseTranslator);
     }

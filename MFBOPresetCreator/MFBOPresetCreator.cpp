@@ -85,12 +85,12 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lFile);
 
   // Action: Relaunch the app
-  auto lRelaunchApp{Utils::buildQAction(this, tr("Quick relaunch"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
+  auto lRelaunchApp{Utils::buildQAction(this, tr("Quick relaunch"), QKeySequence(Qt::CTRL | Qt::Key_F5), "refresh", lIconFolder)};
   lRelaunchApp->setObjectName("action_quick_relaunch");
   lFile->addAction(lRelaunchApp);
 
   // Action: Exit
-  auto lExitApp{Utils::buildQAction(this, tr("Exit"), QKeySequence(Qt::ALT + Qt::Key_F4), "cross", lIconFolder)};
+  auto lExitApp{Utils::buildQAction(this, tr("Exit"), QKeySequence(Qt::ALT | Qt::Key_F4), "cross", lIconFolder)};
   lFile->addAction(lExitApp);
 
   // Menu: Tools
@@ -99,19 +99,19 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lTools);
 
   // Action: Textures Assistant
-  auto lOpenTextAssist{Utils::buildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::Key_T), "textures", lIconFolder)};
+  auto lOpenTextAssist{Utils::buildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL | Qt::Key_T), "textures", lIconFolder)};
   lTools->addAction(lOpenTextAssist);
 
   // Action: Assisted Conversion
-  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::Key_Y), "pencil", lIconFolder)};
+  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL | Qt::Key_Y), "pencil", lIconFolder)};
   lTools->addAction(lOpenAssiConv);
 
   // Action: BodySlide Presets' Retargeting
-  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::Key_H), "arrow-up", lIconFolder)};
+  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL | Qt::Key_H), "arrow-up", lIconFolder)};
   lTools->addAction(lOpenRetaTools);
 
   // Action: Settings
-  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::Key_O), "cog", lIconFolder)};
+  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL | Qt::Key_O), "cog", lIconFolder)};
   lTools->addAction(lOpenSettings);
 
   // Menu: Help
@@ -122,7 +122,7 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lHelp);
 
   // Action: Check for updates
-  auto lOpenUpdate{Utils::buildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL + Qt::Key_U), "cloud-search", lIconFolder)};
+  auto lOpenUpdate{Utils::buildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL | Qt::Key_U), "cloud-search", lIconFolder)};
   lHelp->addAction(lOpenUpdate);
 
   // Submenu: Links
@@ -132,11 +132,11 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addMenu(lLinksSubmenu);
 
   // Action: Nexus page link
-  auto lOpenNexus{Utils::buildQAction(this, tr("Nexus Mods page"), QKeySequence(Qt::CTRL + Qt::Key_N), "nexus-logo", lIconFolder)};
+  auto lOpenNexus{Utils::buildQAction(this, tr("Nexus Mods page"), QKeySequence(Qt::CTRL | Qt::Key_N), "nexus-logo", lIconFolder)};
   lLinksSubmenu->addAction(lOpenNexus);
 
   // Action: open URL to Doogle Docs: Guide and tutorials
-  auto lOpenGuide{Utils::buildQAction(this, tr("User guide and tutorials (Google Docs)"), QKeySequence(Qt::CTRL + Qt::Key_G), "text-file", lIconFolder)};
+  auto lOpenGuide{Utils::buildQAction(this, tr("User guide and tutorials (Google Docs)"), QKeySequence(Qt::CTRL | Qt::Key_G), "text-file", lIconFolder)};
   lLinksSubmenu->addAction(lOpenGuide);
 
   // Action: Source code on GitHub
@@ -148,7 +148,7 @@ void MFBOPresetCreator::setupMenuBar()
   lLinksSubmenu->addAction(lOpenSourceCodeGitLab);
 
   // Action: About
-  auto lOpenAbout{Utils::buildQAction(this, tr("About"), QKeySequence(Qt::CTRL + Qt::Key_I), "info-circle", lIconFolder)};
+  auto lOpenAbout{Utils::buildQAction(this, tr("About"), QKeySequence(Qt::CTRL | Qt::Key_I), "info-circle", lIconFolder)};
   lHelp->addAction(lOpenAbout);
 
   // Event binding
