@@ -161,15 +161,16 @@ void Update::checkForUpdate()
 
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
 
-  connect(&this->mManager, &QNetworkAccessManager::finished, this, &Update::updateCheckSuccess);
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
+  connect(lReply, &QNetworkReply::finished, this, &Update::updateCheckSuccess);
   connect(lReply, &QNetworkReply::errorOccurred, this, &Update::updateCheckError);
 }
 
-void Update::updateCheckSuccess(QNetworkReply* aReply)
+void Update::updateCheckSuccess()
 {
-  this->displayUpdateMessage(QString::fromLocal8Bit(aReply->readAll()));
-  aReply->deleteLater();
+  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
+  lReply->deleteLater();
 }
 
 void Update::updateCheckError(QNetworkReply::NetworkError)

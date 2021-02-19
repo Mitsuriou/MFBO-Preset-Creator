@@ -382,8 +382,8 @@ void MFBOPresetCreator::checkForUpdate()
 {
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
 
-  connect(&this->mManager, &QNetworkAccessManager::finished, this, &MFBOPresetCreator::updateCheckSuccess);
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
+  connect(lReply, &QNetworkReply::finished, this, &MFBOPresetCreator::updateCheckSuccess);
   connect(lReply, &QNetworkReply::errorOccurred, this, &MFBOPresetCreator::updateCheckError);
 }
 
@@ -529,10 +529,11 @@ void MFBOPresetCreator::launchAboutDialog()
   new About(this, this->mSettings);
 }
 
-void MFBOPresetCreator::updateCheckSuccess(QNetworkReply* aReply)
+void MFBOPresetCreator::updateCheckSuccess()
 {
-  this->displayUpdateMessage(QString::fromLocal8Bit(aReply->readAll()));
-  aReply->deleteLater();
+  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
+  lReply->deleteLater();
 }
 
 void MFBOPresetCreator::updateCheckError(QNetworkReply::NetworkError)
