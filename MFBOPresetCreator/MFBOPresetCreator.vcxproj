@@ -93,14 +93,14 @@ echo #####################################################</Command>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtModules>core;gui;widgets;xml</QtModules>
+    <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtModules>core;gui;widgets;xml</QtModules>
+    <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
@@ -150,7 +150,6 @@ echo #####################################################</Command>
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
     <ClCompile Include="HTTPRequesterFile.cpp" />
-    <ClCompile Include="HTTPRequesterGet.cpp" />
     <ClCompile Include="LangManager.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
@@ -167,7 +166,6 @@ echo #####################################################</Command>
     <QtMoc Include="AssistedConversion.h" />
     <QtMoc Include="About.h" />
     <ClInclude Include="Enum.h" />
-    <QtMoc Include="HTTPRequesterGet.h" />
     <QtMoc Include="BodySlideFiltersEditor.h" />
     <QtMoc Include="HTTPRequesterFile.h" />
     <ClInclude Include="LangManager.h" />

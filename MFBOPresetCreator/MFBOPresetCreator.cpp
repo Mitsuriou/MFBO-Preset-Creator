@@ -378,42 +378,16 @@ void MFBOPresetCreator::enableLineEditPlaceholders(std::vector<QLineEdit*> aLine
   }
 }
 
-void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings)
-{
-  if (aMustUpdateSettings)
-  {
-    this->mSettings = aSettings;
-
-    // Update the settings
-    auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
-    lMainContainer->updateSettings(aSettings);
-  }
-  else
-  {
-    // Apply the QSS theme
-    this->applyGlobalStyleSheet();
-
-    // Set the font properties
-    applyFont(aSettings.font.family,
-              aSettings.font.styleName,
-              aSettings.font.size,
-              aSettings.font.weight,
-              aSettings.font.italic,
-              aSettings.font.underline,
-              aSettings.font.strikeOut);
-  }
-}
-
 void MFBOPresetCreator::checkForUpdate()
 {
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
-  HTTPRequesterGet* lHTTPDownloader{new HTTPRequesterGet(lGitHubURL, this)};
-  this->connect(lHTTPDownloader, &HTTPRequesterGet::resultReady, this, &MFBOPresetCreator::pageFetched);
-  this->connect(lHTTPDownloader, &HTTPRequesterGet::finished, lHTTPDownloader, &QObject::deleteLater);
-  lHTTPDownloader->start();
+
+  connect(&this->mManager, &QNetworkAccessManager::finished, this, &MFBOPresetCreator::updateCheckSuccess);
+  QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
+  connect(lReply, &QNetworkReply::errorOccurred, this, &MFBOPresetCreator::updateCheckError);
 }
 
-void MFBOPresetCreator::pageFetched(const QString& aResult)
+void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 {
   // Display a message based on new available versions
   auto lTitle{QString("")};
@@ -457,6 +431,32 @@ void MFBOPresetCreator::pageFetched(const QString& aResult)
     lOKButton->setCursor(Qt::PointingHandCursor);
     lConfirmationBox.setDefaultButton(lOKButton);
     lConfirmationBox.exec();
+  }
+}
+
+void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings)
+{
+  if (aMustUpdateSettings)
+  {
+    this->mSettings = aSettings;
+
+    // Update the settings
+    auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+    lMainContainer->updateSettings(aSettings);
+  }
+  else
+  {
+    // Apply the QSS theme
+    this->applyGlobalStyleSheet();
+
+    // Set the font properties
+    applyFont(aSettings.font.family,
+              aSettings.font.styleName,
+              aSettings.font.size,
+              aSettings.font.weight,
+              aSettings.font.italic,
+              aSettings.font.underline,
+              aSettings.font.strikeOut);
   }
 }
 
@@ -527,4 +527,17 @@ void MFBOPresetCreator::openGuideInDefaultBrowser()
 void MFBOPresetCreator::launchAboutDialog()
 {
   new About(this, this->mSettings);
+}
+
+void MFBOPresetCreator::updateCheckSuccess(QNetworkReply* aReply)
+{
+  this->displayUpdateMessage(QString::fromLocal8Bit(aReply->readAll()));
+  aReply->deleteLater();
+}
+
+void MFBOPresetCreator::updateCheckError(QNetworkReply::NetworkError)
+{
+  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  this->displayUpdateMessage("fetch_error");
+  lReply->deleteLater();
 }

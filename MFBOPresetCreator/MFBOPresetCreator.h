@@ -2,7 +2,6 @@
 
 #include "About.h"
 #include "AssistedConversion.h"
-#include "HTTPRequesterGet.h"
 #include "PresetCreator.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
@@ -12,6 +11,9 @@
 #include "WinUser.h"
 #include "stdafx.h"
 #include "windows.h"
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 
 #include "ui_MFBOPresetCreator.h"
 
@@ -30,6 +32,7 @@ private:
   Struct::Settings mSettings;
   std::map<QString, QString> mLastPaths;
   bool mNewVersionAvailable;
+  QNetworkAccessManager mManager;
 
   void initializeGUI();
   void setupMenuBar();
@@ -39,10 +42,12 @@ private:
   std::vector<QLineEdit*> disableLineEditPlaceholders();
   void enableLineEditPlaceholders(std::vector<QLineEdit*> aLineEditsToReactivate);
 
+  // Check for updates
+  void checkForUpdate();
+  void displayUpdateMessage(const QString& aResult);
+
 public slots:
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
-  void checkForUpdate();
-  void pageFetched(const QString& aResult);
 
 private slots:
   void quickRelaunch();
@@ -57,4 +62,8 @@ private slots:
   void openGitLabSourceCodePageInDefaultBrowser();
   void openGuideInDefaultBrowser();
   void launchAboutDialog();
+
+  // Check for updates
+  void updateCheckSuccess(QNetworkReply* aReply);
+  void updateCheckError(QNetworkReply::NetworkError aErrorCode);
 };

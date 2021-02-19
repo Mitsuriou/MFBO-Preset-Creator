@@ -52,7 +52,7 @@ void Update::setupInterface()
   this->layout()->addWidget(lFetchStatus);
 
   // Event binding
-  this->connect(lUpdateButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
+  this->connect(lUpdateButton, &QPushButton::clicked, this, &Update::checkForUpdate);
 }
 
 void Update::overrideHTMLLinksColor(QString& aHTMLString)
@@ -74,20 +74,7 @@ void Update::overrideHTMLLinksColor(QString& aHTMLString)
   }
 }
 
-void Update::getLastAvailableVersion()
-{
-  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
-  lFetchStatus->setText(tr("Contacting GitHub.com..."));
-  lFetchStatus->show();
-
-  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
-  HTTPRequesterGet* lHTTPDownloader{new HTTPRequesterGet(lGitHubURL, this)};
-  this->connect(lHTTPDownloader, &HTTPRequesterGet::resultReady, this, &Update::pageFetched);
-  this->connect(lHTTPDownloader, &HTTPRequesterGet::finished, lHTTPDownloader, &QObject::deleteLater);
-  lHTTPDownloader->start();
-}
-
-void Update::pageFetched(const QString& aResult)
+void Update::displayUpdateMessage(const QString& aResult)
 {
   auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
@@ -164,6 +151,32 @@ void Update::pageFetched(const QString& aResult)
   auto lHTMLString{lTextContainer->toHtml()};
   this->overrideHTMLLinksColor(lHTMLString);
   lTextContainer->setHtml(lHTMLString);
+}
+
+void Update::checkForUpdate()
+{
+  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
+  lFetchStatus->setText(tr("Contacting GitHub.com..."));
+  lFetchStatus->show();
+
+  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
+
+  connect(&this->mManager, &QNetworkAccessManager::finished, this, &Update::updateCheckSuccess);
+  QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
+  connect(lReply, &QNetworkReply::errorOccurred, this, &Update::updateCheckError);
+}
+
+void Update::updateCheckSuccess(QNetworkReply* aReply)
+{
+  this->displayUpdateMessage(QString::fromLocal8Bit(aReply->readAll()));
+  aReply->deleteLater();
+}
+
+void Update::updateCheckError(QNetworkReply::NetworkError)
+{
+  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  this->displayUpdateMessage("fetch_error");
+  lReply->deleteLater();
 }
 
 void Update::downloadLatestUpdate()

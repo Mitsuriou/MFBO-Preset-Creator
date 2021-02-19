@@ -1,10 +1,12 @@
 #pragma once
 
 #include "HTTPRequesterFile.h"
-#include "HTTPRequesterGet.h"
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 #include <iostream>
 #include <string>
 
@@ -19,6 +21,7 @@ private:
   const Struct::Settings mSettings;
   QString mNewVersionTag;
   QString mSaveFilePath;
+  QNetworkAccessManager mManager;
 
   struct MemoryStruct
   {
@@ -30,9 +33,16 @@ private:
   void setupInterface();
   void overrideHTMLLinksColor(QString& aHTMLString);
 
+  // Check for updates
+  void displayUpdateMessage(const QString& aResult);
+
 private slots:
-  void getLastAvailableVersion();
-  void pageFetched(const QString&);
+  // Check for updates
+  void checkForUpdate();
+  void updateCheckSuccess(QNetworkReply* aReply);
+  void updateCheckError(QNetworkReply::NetworkError aErrorCode);
+
+  // Download the update
   void downloadLatestUpdate();
   void fileFetched(const bool& aResult);
   void installLatestUpdate();
