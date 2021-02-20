@@ -45,7 +45,7 @@ void About::initializeGUI()
   // Build the description
   auto lDescription(
     QStringLiteral(
-      "<h1 style='text-align: center; vertical-align: top; padding: 0px; margin: 0px;'><img src=':/application/icon' alt='~MFBOPC icon~' height='48' width='48'>About this application</h1><br />"
+      "<h1 style='text-align: center; vertical-align: top; padding: 0px; margin: 0px;'><img src=':/application/icon' alt='~MFBOPC icon~' height='48' width='48'> About this application</h1><br />"
       "<p style='padding: 0px; margin: 0px;'>"
       "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is an application "
       "created by Dylan Jacquemin (also known under the nickname <a%1 href='https://www.nexusmods.com/users/37026145'>Mitsuriou</a>).<br />"
