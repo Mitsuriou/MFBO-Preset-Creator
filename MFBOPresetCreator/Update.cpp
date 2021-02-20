@@ -266,7 +266,7 @@ void Update::updateCheckError(QNetworkReply::NetworkError)
 void Update::downloadLatestUpdate()
 {
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
-  lSearchButton->setText(tr("Download in progress... Click to cancel."));
+  lSearchButton->setText(tr("Cancel the download"));
 
   // Update the icon in case the user had an error before
   QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
@@ -303,7 +303,7 @@ void Update::cancelCurrentDownload()
 {
   // Update the GUI
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
-  lSearchButton->setText(tr("Download canceled. Click to try to download the update once again"));
+  lSearchButton->setText(tr("Download canceled: click to try to download the update once again"));
 
   // Rebind the correct events
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);

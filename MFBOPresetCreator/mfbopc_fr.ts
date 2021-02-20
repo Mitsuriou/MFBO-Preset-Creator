@@ -369,24 +369,24 @@
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="425"/>
+        <location filename="MFBOPresetCreator.cpp" line="399"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="440"/>
+        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>Application update available</source>
         <translation>Mise à jour de l&apos;application disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="441"/>
+        <location filename="MFBOPresetCreator.cpp" line="415"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="456"/>
+        <location filename="MFBOPresetCreator.cpp" line="430"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1231,40 +1231,45 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="23"/>
-        <location filename="Update.cpp" line="45"/>
+        <location filename="Update.cpp" line="38"/>
+        <location filename="Update.cpp" line="60"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="34"/>
+        <location filename="Update.cpp" line="49"/>
         <source>Current version: v.%1</source>
         <translation>Version actuelle : v.%1</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="80"/>
+        <location filename="Update.cpp" line="242"/>
         <source>Contacting GitHub.com...</source>
         <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="100"/>
+        <location filename="Update.cpp" line="110"/>
         <source>Check for updates once again</source>
         <translation>Vérifiez une nouvelle fois les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="102"/>
+        <location filename="Update.cpp" line="67"/>
+        <source>Initializing...</source>
+        <translation>Initialisation...</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="112"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version.
 Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="121"/>
+        <location filename="Update.cpp" line="131"/>
         <source>You are running a developer version</source>
         <translation>Vous utilisez une version développeur</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="123"/>
+        <location filename="Update.cpp" line="133"/>
         <source>You are currently running the developer version &quot;v.%1&quot;.
 The last available version on GitHub is tagged &quot;v.%2&quot;.
 
@@ -1275,12 +1280,12 @@ La dernière version disponible sur GitHub est étiquetée &quot;v.%2&quot;.
 Vous trouverez ci-dessous les notes de version pour la dernière version stable :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="131"/>
+        <location filename="Update.cpp" line="141"/>
         <source>Download the update</source>
         <translation>Télécharger la mise à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="137"/>
+        <location filename="Update.cpp" line="147"/>
         <source>You are currently running the version &quot;v.%1&quot;.
 The new version &quot;v.%2&quot; is available on GitHub.
 
@@ -1299,21 +1304,31 @@ Le téléchargement sera enregistré sous &quot;%3&quot;.
 Vous trouverez ci-dessous les notes de mise à jour pour cette mise à jour :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="146"/>
+        <location filename="Update.cpp" line="156"/>
         <source>You are already running the latest version</source>
         <translation>Vous utilisez déjà la dernière version</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="148"/>
+        <location filename="Update.cpp" line="158"/>
         <source>Awesome! You are already running the latest version (&quot;v.%1&quot;).
 Below are the release notes for this version:</source>
         <translation>Génial ! Vous utilisez déjà la dernière version (&quot;v.%1&quot;).
 Vous trouverez ci-dessous les notes de mise à jour de cette version :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="173"/>
-        <source>Download in progress...</source>
-        <translation>Téléchargement en cours…</translation>
+        <location filename="Update.cpp" line="269"/>
+        <source>Cancel the download</source>
+        <translation>Annuler le téléchargement</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="306"/>
+        <source>Download canceled: click to try to download the update once again</source>
+        <translation>Téléchargement annulé : cliquez pour essayer de télécharger la mise à jour une nouvelle fois</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="343"/>
+        <source>%1 bytes out of %2 bytes (%p%)</source>
+        <translation>%1 octets sur %2 octets (%p%)</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="188"/>
@@ -1338,12 +1353,12 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="198"/>
+        <location filename="Update.cpp" line="197"/>
         <source>Close MFBOPC and install the update</source>
         <translation>Fermez MFBOPC et installer la mise à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="223"/>
+        <location filename="Update.cpp" line="220"/>
         <source>Try to download the update once again</source>
         <translation>Essayer de télécharger la mise à jour une nouvelle fois</translation>
     </message>

@@ -359,23 +359,23 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="425"/>
+        <location filename="MFBOPresetCreator.cpp" line="399"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="440"/>
+        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>Application update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="441"/>
+        <location filename="MFBOPresetCreator.cpp" line="415"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="456"/>
+        <location filename="MFBOPresetCreator.cpp" line="430"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1222,39 +1222,44 @@ The new version &quot;%2&quot; is available on GitHub.</source>
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="23"/>
-        <location filename="Update.cpp" line="45"/>
+        <location filename="Update.cpp" line="38"/>
+        <location filename="Update.cpp" line="60"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="34"/>
+        <location filename="Update.cpp" line="49"/>
         <source>Current version: v.%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="80"/>
+        <location filename="Update.cpp" line="242"/>
         <source>Contacting GitHub.com...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="100"/>
+        <location filename="Update.cpp" line="110"/>
         <source>Check for updates once again</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="102"/>
+        <location filename="Update.cpp" line="67"/>
+        <source>Initializing...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="112"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="121"/>
+        <location filename="Update.cpp" line="131"/>
         <source>You are running a developer version</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="123"/>
+        <location filename="Update.cpp" line="133"/>
         <source>You are currently running the developer version &quot;v.%1&quot;.
 The last available version on GitHub is tagged &quot;v.%2&quot;.
 
@@ -1262,12 +1267,12 @@ Below are the release notes for the latest stable version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="131"/>
+        <location filename="Update.cpp" line="141"/>
         <source>Download the update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="137"/>
+        <location filename="Update.cpp" line="147"/>
         <source>You are currently running the version &quot;v.%1&quot;.
 The new version &quot;v.%2&quot; is available on GitHub.
 
@@ -1279,19 +1284,29 @@ Below are the release notes for this update:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="146"/>
+        <location filename="Update.cpp" line="156"/>
         <source>You are already running the latest version</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="148"/>
+        <location filename="Update.cpp" line="158"/>
         <source>Awesome! You are already running the latest version (&quot;v.%1&quot;).
 Below are the release notes for this version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="173"/>
-        <source>Download in progress...</source>
+        <location filename="Update.cpp" line="269"/>
+        <source>Cancel the download</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="306"/>
+        <source>Download canceled: click to try to download the update once again</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="343"/>
+        <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation></translation>
     </message>
     <message>
@@ -1311,12 +1326,12 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="198"/>
+        <location filename="Update.cpp" line="197"/>
         <source>Close MFBOPC and install the update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="223"/>
+        <location filename="Update.cpp" line="220"/>
         <source>Try to download the update once again</source>
         <translation></translation>
     </message>
