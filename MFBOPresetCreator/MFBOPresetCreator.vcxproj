@@ -35,11 +35,9 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="[DEBUG]cURL.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="[RELEASE]cURL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -149,7 +147,6 @@ echo #####################################################</Command>
     <ClCompile Include="AssistedConversion.cpp" />
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
-    <ClCompile Include="HTTPRequesterFile.cpp" />
     <ClCompile Include="LangManager.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
@@ -167,7 +164,6 @@ echo #####################################################</Command>
     <QtMoc Include="About.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="BodySlideFiltersEditor.h" />
-    <QtMoc Include="HTTPRequesterFile.h" />
     <ClInclude Include="LangManager.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Settings.h" />

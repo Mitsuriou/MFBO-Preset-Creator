@@ -40,9 +40,6 @@
     <ClCompile Include="TextInputDialog.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="HTTPRequesterFile.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="TexturesAssistant.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
@@ -134,9 +131,6 @@
     </QtMoc>
     <QtMoc Include="TextInputDialog.h">
       <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="HTTPRequesterFile.h">
-      <Filter>Header Files\Utils</Filter>
     </QtMoc>
     <QtMoc Include="TexturesAssistant.h">
       <Filter>Header Files\GUI</Filter>

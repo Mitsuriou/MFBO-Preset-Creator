@@ -3,6 +3,8 @@
 Update::Update(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)
   , mSettings(aSettings)
+  , mHasDownloadBeenCanceled(false)
+  , mDownloadURL(QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest/download/mfbopc-install-wizard.exe"))
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -100,7 +102,7 @@ void Update::displayUpdateMessage(const QString& aResult)
   this->mNewVersionTag.replace(".", "-");
   auto lCurrentVersion{Utils::getApplicationVersion()};
 
-#ifdef DEBUG
+#ifndef DEBUG
   QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/developer" : ":/black/developer"};
   lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
   lSearchButton->setIconSize(QSize(48, 48));
@@ -117,7 +119,7 @@ void Update::displayUpdateMessage(const QString& aResult)
     lSearchButton->setIconSize(QSize(48, 48));
     lSearchButton->setText(tr("Download the update"));
 
-    this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::getLastAvailableVersion);
+    this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
     this->mSaveFilePath = QString("%1/mfbopc-wizard-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(this->mNewVersionTag);
     Utils::cleanPathString(this->mSaveFilePath);
@@ -153,48 +155,7 @@ void Update::displayUpdateMessage(const QString& aResult)
   lTextContainer->setHtml(lHTMLString);
 }
 
-void Update::checkForUpdate()
-{
-  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
-  lFetchStatus->setText(tr("Contacting GitHub.com..."));
-  lFetchStatus->show();
-
-  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
-
-  QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &Update::updateCheckSuccess);
-  connect(lReply, &QNetworkReply::errorOccurred, this, &Update::updateCheckError);
-}
-
-void Update::updateCheckSuccess()
-{
-  auto lReply{qobject_cast<QNetworkReply*>(sender())};
-  this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
-  lReply->deleteLater();
-}
-
-void Update::updateCheckError(QNetworkReply::NetworkError)
-{
-  auto lReply{qobject_cast<QNetworkReply*>(sender())};
-  this->displayUpdateMessage("fetch_error");
-  lReply->deleteLater();
-}
-
-void Update::downloadLatestUpdate()
-{
-  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
-  lSearchButton->setDisabled(true);
-  lSearchButton->setText(tr("Download in progress..."));
-
-  // Create and execute the HTTP request
-  auto lGitHubURL{QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest/download/mfbopc-install-wizard.exe")};
-  HTTPRequesterFile* lHTTPDownloader{new HTTPRequesterFile(lGitHubURL, this->mSaveFilePath, this)};
-  this->connect(lHTTPDownloader, &HTTPRequesterFile::resultReady, this, &Update::fileFetched);
-  this->connect(lHTTPDownloader, &HTTPRequesterFile::finished, lHTTPDownloader, &QObject::deleteLater);
-  lHTTPDownloader->start();
-}
-
-void Update::fileFetched(const bool& aResult)
+void Update::aaaa(const bool& aResult)
 {
   auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
@@ -251,6 +212,75 @@ void Update::fileFetched(const bool& aResult)
   }
 }
 
+void Update::checkForUpdate()
+{
+  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
+  lFetchStatus->setText(tr("Contacting GitHub.com..."));
+  lFetchStatus->show();
+
+  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
+
+  QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
+  connect(lReply, &QNetworkReply::finished, this, &Update::updateCheckSuccess);
+  connect(lReply, &QNetworkReply::errorOccurred, this, &Update::updateCheckError);
+}
+
+void Update::updateCheckSuccess()
+{
+  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
+  lReply->deleteLater();
+}
+
+void Update::updateCheckError(QNetworkReply::NetworkError)
+{
+  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  this->displayUpdateMessage("fetch_error");
+  lReply->deleteLater();
+}
+
+void Update::downloadLatestUpdate()
+{
+  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  lSearchButton->setText(tr("Download in progress... Click to cancel."));
+
+  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+  this->connect(lSearchButton, &QPushButton::clicked, this, &Update::cancelDownload);
+
+  if (QFile::exists(this->mSaveFilePath))
+  {
+    QFile::remove(this->mSaveFilePath);
+  }
+
+  this->mDownloadedFile = new QFile(this->mSaveFilePath);
+  if (!this->mDownloadedFile->open(QIODevice::WriteOnly))
+  {
+    // todo: handle error here
+    delete this->mDownloadedFile;
+    this->mDownloadedFile = nullptr;
+    return;
+  }
+
+  this->mHasDownloadBeenCanceled = false;
+
+  mReply = this->mManager.get(QNetworkRequest(QUrl(this->mDownloadURL)));
+
+  this->connect(this->mReply, &QNetworkReply::readyRead, this, &Update::fileChunkDownloaded);
+  this->connect(mReply, &QNetworkReply::downloadProgress, this, &Update::chunckSizeUpdated);
+  this->connect(mReply, &QNetworkReply::finished, this, &Update::fileDownloadSuccess);
+}
+
+void Update::cancelDownload()
+{
+  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  lSearchButton->setText(tr("Download canceled. Click to try to download the update once again"));
+
+  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelDownload);
+  this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+  this->mHasDownloadBeenCanceled = true;
+  mReply->abort();
+}
+
 void Update::installLatestUpdate()
 {
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
@@ -271,4 +301,69 @@ void Update::installLatestUpdate()
   // Start the update process
   QProcess::startDetached(this->mSaveFilePath, QStringList());
   qApp->exit();
+}
+
+void Update::fileChunkDownloaded()
+{
+  if (this->mDownloadedFile)
+  {
+    auto lReply{qobject_cast<QNetworkReply*>(sender())};
+    this->mDownloadedFile->write(lReply->readAll());
+  }
+}
+
+void Update::chunckSizeUpdated(qint64 bytesRead, qint64 totalBytes)
+{
+  if (this->mHasDownloadBeenCanceled)
+    return;
+
+  qDebug() << "maximum: " << totalBytes;
+  qDebug() << "value: " << bytesRead;
+}
+
+void Update::fileDownloadSuccess()
+{
+  // when canceled
+  if (this->mHasDownloadBeenCanceled)
+  {
+    if (this->mDownloadedFile)
+    {
+      this->mDownloadedFile->close();
+      this->mDownloadedFile->remove();
+      delete this->mDownloadedFile;
+      this->mDownloadedFile = nullptr;
+    }
+
+    this->mReply->deleteLater();
+    return;
+  }
+
+  this->mDownloadedFile->flush();
+  this->mDownloadedFile->close();
+
+  // get redirection url
+  QVariant redirectionTarget = this->mReply->attribute(QNetworkRequest::RedirectionTargetAttribute);
+  if (this->mReply->error())
+  {
+    this->mDownloadedFile->remove();
+  }
+  else if (!redirectionTarget.isNull())
+  {
+    QUrl newUrl = this->mDownloadURL.resolved(redirectionTarget.toUrl());
+    if (QMessageBox::question(this, tr("HTTP"), tr("Redirect to %1 ?").arg(newUrl.toString()), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+    {
+      this->mDownloadURL = newUrl;
+      this->mReply->deleteLater();
+      this->mDownloadedFile->open(QIODevice::WriteOnly);
+      this->mDownloadedFile->resize(0);
+      downloadLatestUpdate();
+      return;
+    }
+  }
+
+  this->mReply->deleteLater();
+  this->mReply = nullptr;
+
+  delete this->mDownloadedFile;
+  this->mDownloadedFile = nullptr;
 }

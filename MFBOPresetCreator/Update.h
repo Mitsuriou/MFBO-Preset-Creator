@@ -1,6 +1,5 @@
 #pragma once
 
-#include "HTTPRequesterFile.h"
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"
@@ -22,6 +21,13 @@ private:
   QString mNewVersionTag;
   QString mSaveFilePath;
   QNetworkAccessManager mManager;
+  // WIP:
+  bool mHasDownloadBeenCanceled;
+  QFile* mDownloadedFile;
+  qint64 mDownloadedFileSize;
+  QNetworkReply* mReply;
+
+  QUrl mDownloadURL;
 
   struct MemoryStruct
   {
@@ -36,6 +42,9 @@ private:
   // Check for updates
   void displayUpdateMessage(const QString& aResult);
 
+  // Download the update
+  void aaaa(const bool& aResult);
+
 private slots:
   // Check for updates
   void checkForUpdate();
@@ -44,6 +53,9 @@ private slots:
 
   // Download the update
   void downloadLatestUpdate();
-  void fileFetched(const bool& aResult);
+  void cancelDownload();
   void installLatestUpdate();
+  void fileChunkDownloaded();
+  void chunckSizeUpdated(qint64, qint64);
+  void fileDownloadSuccess();
 };
