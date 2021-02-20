@@ -3,8 +3,10 @@
 Update::Update(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)
   , mSettings(aSettings)
-  , mHasDownloadBeenCanceled(false)
   , mDownloadURL(QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/latest/download/mfbopc-install-wizard.exe"))
+  , mHasDownloadBeenCanceled(false)
+  , mDownloadedFile(nullptr)
+  , mReply(nullptr)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -15,11 +17,22 @@ Update::Update(QWidget* parent, const Struct::Settings& aSettings)
   this->show();
 }
 
+void Update::reject()
+{
+  // Cancel the download before closing the window
+  if (this->mDownloadedFile && this->mReply)
+  {
+    this->cancelCurrentDownload();
+  }
+
+  this->accept();
+}
+
 void Update::setWindowProperties()
 {
   this->setModal(true);
   this->setMinimumWidth(700);
-  this->setMinimumHeight(450);
+  this->setMinimumHeight(500);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Check for updates"));
@@ -46,6 +59,14 @@ void Update::setupInterface()
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
   lUpdateButton->setText(tr("Check for updates"));
   this->layout()->addWidget(lUpdateButton);
+
+  // Download progress bar
+  auto lDownloadProgressBar{new QProgressBar(this)};
+  lDownloadProgressBar->setObjectName("download_progress_bar");
+  lDownloadProgressBar->setTextVisible(true);
+  lDownloadProgressBar->setFormat(tr("Initializing..."));
+  this->layout()->addWidget(lDownloadProgressBar);
+  lDownloadProgressBar->hide();
 
   // Fetch status
   auto lFetchStatus{new QLabel(this)};
@@ -102,7 +123,7 @@ void Update::displayUpdateMessage(const QString& aResult)
   this->mNewVersionTag.replace(".", "-");
   auto lCurrentVersion{Utils::getApplicationVersion()};
 
-#ifndef DEBUG
+#ifdef DEBUG
   QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/developer" : ":/black/developer"};
   lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
   lSearchButton->setIconSize(QSize(48, 48));
@@ -155,10 +176,14 @@ void Update::displayUpdateMessage(const QString& aResult)
   lTextContainer->setHtml(lHTMLString);
 }
 
-void Update::aaaa(const bool& aResult)
+void Update::displayFileDownloadEndStatus(const bool& aResult)
 {
+  auto lDownloadProgressBar{this->findChild<QProgressBar*>("download_progress_bar")};
+  lDownloadProgressBar->hide();
+
   auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
   auto lSuccessText{tr("Download successful. Click the button above to start updating MFBOPC.\nMake sure that you saved everything before starting the update as the application will be closed!\n\n")};
   auto lErrorText{tr("An error has occurred while downloading the update.\nPlease make sure your internet connection is working correctly and try again.\n\n")};
@@ -169,7 +194,6 @@ void Update::aaaa(const bool& aResult)
     QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(48, 48));
-    lSearchButton->setDisabled(false);
     lSearchButton->setText(tr("Close MFBOPC and install the update"));
 
     // Display an success message in the status label
@@ -185,7 +209,6 @@ void Update::aaaa(const bool& aResult)
       lFetchStatus->setText(lStatusText);
     }
 
-    this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
   }
   else
@@ -194,7 +217,6 @@ void Update::aaaa(const bool& aResult)
     QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(48, 48));
-    lSearchButton->setDisabled(false);
     lSearchButton->setText(tr("Try to download the update once again"));
 
     // Display an error message in the status label
@@ -209,6 +231,8 @@ void Update::aaaa(const bool& aResult)
       lStatusText.prepend(lErrorText);
       lFetchStatus->setText(lStatusText);
     }
+
+    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
   }
 }
 
@@ -244,8 +268,14 @@ void Update::downloadLatestUpdate()
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
   lSearchButton->setText(tr("Download in progress... Click to cancel."));
 
+  // Update the icon in case the user had an error before
+  QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+  lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
+  lSearchButton->setIconSize(QSize(48, 48));
+
+  // Rebind the events to the correct handlers
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-  this->connect(lSearchButton, &QPushButton::clicked, this, &Update::cancelDownload);
+  this->connect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
   if (QFile::exists(this->mSaveFilePath))
   {
@@ -255,7 +285,7 @@ void Update::downloadLatestUpdate()
   this->mDownloadedFile = new QFile(this->mSaveFilePath);
   if (!this->mDownloadedFile->open(QIODevice::WriteOnly))
   {
-    // todo: handle error here
+    this->displayFileDownloadEndStatus(false);
     delete this->mDownloadedFile;
     this->mDownloadedFile = nullptr;
     return;
@@ -263,22 +293,117 @@ void Update::downloadLatestUpdate()
 
   this->mHasDownloadBeenCanceled = false;
 
-  mReply = this->mManager.get(QNetworkRequest(QUrl(this->mDownloadURL)));
-
-  this->connect(this->mReply, &QNetworkReply::readyRead, this, &Update::fileChunkDownloaded);
-  this->connect(mReply, &QNetworkReply::downloadProgress, this, &Update::chunckSizeUpdated);
-  this->connect(mReply, &QNetworkReply::finished, this, &Update::fileDownloadSuccess);
+  this->mReply = this->mManager.get(QNetworkRequest(QUrl(this->mDownloadURL)));
+  this->connect(this->mReply, &QNetworkReply::readyRead, this, &Update::fileChunkReceived);
+  this->connect(mReply, &QNetworkReply::downloadProgress, this, &Update::chunkSizeUpdated);
+  this->connect(mReply, &QNetworkReply::finished, this, &Update::fileDownloadEnded);
 }
 
-void Update::cancelDownload()
+void Update::cancelCurrentDownload()
 {
+  // Update the GUI
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
   lSearchButton->setText(tr("Download canceled. Click to try to download the update once again"));
 
-  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelDownload);
+  // Rebind the correct events
+  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
   this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+
+  // Cancel the currently running download process
   this->mHasDownloadBeenCanceled = true;
-  mReply->abort();
+  this->mReply->abort();
+}
+
+void Update::fileChunkReceived()
+{
+  // Append the new bytes chunk to the file currently being downloaded
+  if (this->mDownloadedFile)
+    this->mDownloadedFile->write(this->mReply->readAll());
+}
+
+void Update::chunkSizeUpdated(qint64 aBytesRead, qint64 aTotal)
+{
+  // Skip the GUI update if the user canceled the download to avoid any possible confusion
+  if (this->mHasDownloadBeenCanceled)
+  {
+    return;
+  }
+
+  auto lDownloadProgressBar{this->findChild<QProgressBar*>("download_progress_bar")};
+
+  // Show the bar only if a relevant download has started
+  if (aTotal > 200000) // 0.20MB
+  {
+    lDownloadProgressBar->show();
+  }
+
+  // Change the value displayed on the progress bar
+  lDownloadProgressBar->setValue(aBytesRead);
+  lDownloadProgressBar->setMaximum(aTotal);
+  lDownloadProgressBar->setFormat(tr("%1 bytes out of %2 bytes (%p%)").arg(QString::number(aBytesRead)).arg(QString::number(aTotal)));
+}
+
+void Update::fileDownloadEnded()
+{
+  // Handle download cancelation
+  if (this->mHasDownloadBeenCanceled)
+  {
+    if (this->mDownloadedFile)
+    {
+      this->mDownloadedFile->close();
+      this->mDownloadedFile->remove();
+
+      delete this->mDownloadedFile;
+      this->mDownloadedFile = nullptr;
+    }
+
+    auto lDownloadProgressBar{this->findChild<QProgressBar*>("download_progress_bar")};
+    lDownloadProgressBar->hide();
+
+    this->mReply->deleteLater();
+    return;
+  }
+
+  // Write the last bytes in the file and close the latter
+  this->mDownloadedFile->flush();
+  this->mDownloadedFile->close();
+
+  // Handle errors and URL redirection
+  QVariant lRedirectionUrl{this->mReply->attribute(QNetworkRequest::RedirectionTargetAttribute)};
+  if (this->mReply->error())
+  {
+    this->mDownloadedFile->remove();
+    this->displayFileDownloadEndStatus(false);
+  }
+  else if (!lRedirectionUrl.isNull())
+  {
+    // Get the new URL
+    this->mDownloadURL = this->mDownloadURL.resolved(lRedirectionUrl.toUrl());
+
+    // Delete the network reply
+    this->mReply->deleteLater();
+
+    // Clear the file on the disk
+    this->mDownloadedFile->open(QIODevice::WriteOnly);
+    this->mDownloadedFile->resize(0);
+    this->mDownloadedFile->close();
+
+    // Relaunch the download with the brand new URL
+    downloadLatestUpdate();
+
+    return;
+  }
+  else
+  {
+    this->displayFileDownloadEndStatus(true);
+  }
+
+  // Memory management
+  this->mReply->deleteLater();
+  this->mReply = nullptr;
+
+  delete this->mDownloadedFile;
+  this->mDownloadedFile = nullptr;
 }
 
 void Update::installLatestUpdate()
@@ -301,69 +426,4 @@ void Update::installLatestUpdate()
   // Start the update process
   QProcess::startDetached(this->mSaveFilePath, QStringList());
   qApp->exit();
-}
-
-void Update::fileChunkDownloaded()
-{
-  if (this->mDownloadedFile)
-  {
-    auto lReply{qobject_cast<QNetworkReply*>(sender())};
-    this->mDownloadedFile->write(lReply->readAll());
-  }
-}
-
-void Update::chunckSizeUpdated(qint64 bytesRead, qint64 totalBytes)
-{
-  if (this->mHasDownloadBeenCanceled)
-    return;
-
-  qDebug() << "maximum: " << totalBytes;
-  qDebug() << "value: " << bytesRead;
-}
-
-void Update::fileDownloadSuccess()
-{
-  // when canceled
-  if (this->mHasDownloadBeenCanceled)
-  {
-    if (this->mDownloadedFile)
-    {
-      this->mDownloadedFile->close();
-      this->mDownloadedFile->remove();
-      delete this->mDownloadedFile;
-      this->mDownloadedFile = nullptr;
-    }
-
-    this->mReply->deleteLater();
-    return;
-  }
-
-  this->mDownloadedFile->flush();
-  this->mDownloadedFile->close();
-
-  // get redirection url
-  QVariant redirectionTarget = this->mReply->attribute(QNetworkRequest::RedirectionTargetAttribute);
-  if (this->mReply->error())
-  {
-    this->mDownloadedFile->remove();
-  }
-  else if (!redirectionTarget.isNull())
-  {
-    QUrl newUrl = this->mDownloadURL.resolved(redirectionTarget.toUrl());
-    if (QMessageBox::question(this, tr("HTTP"), tr("Redirect to %1 ?").arg(newUrl.toString()), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
-    {
-      this->mDownloadURL = newUrl;
-      this->mReply->deleteLater();
-      this->mDownloadedFile->open(QIODevice::WriteOnly);
-      this->mDownloadedFile->resize(0);
-      downloadLatestUpdate();
-      return;
-    }
-  }
-
-  this->mReply->deleteLater();
-  this->mReply = nullptr;
-
-  delete this->mDownloadedFile;
-  this->mDownloadedFile = nullptr;
 }

@@ -9,6 +9,9 @@
 #include <iostream>
 #include <string>
 
+// File downloading made with the great help of
+// https://www.bogotobogo.com/Qt/Qt5_QNetworkRequest_Http_File_Download.php
+
 class Update : public QDialog
 {
   Q_OBJECT
@@ -16,24 +19,20 @@ class Update : public QDialog
 public:
   explicit Update(QWidget* parent, const Struct::Settings& aSettings);
 
+protected:
+  void reject() override;
+
 private:
   const Struct::Settings mSettings;
   QString mNewVersionTag;
   QString mSaveFilePath;
   QNetworkAccessManager mManager;
-  // WIP:
+
+  // File download attributes
+  QUrl mDownloadURL;
   bool mHasDownloadBeenCanceled;
   QFile* mDownloadedFile;
-  qint64 mDownloadedFileSize;
   QNetworkReply* mReply;
-
-  QUrl mDownloadURL;
-
-  struct MemoryStruct
-  {
-    char* memory;
-    size_t size;
-  };
 
   void setWindowProperties();
   void setupInterface();
@@ -42,8 +41,8 @@ private:
   // Check for updates
   void displayUpdateMessage(const QString& aResult);
 
-  // Download the update
-  void aaaa(const bool& aResult);
+  // Download the update file
+  void displayFileDownloadEndStatus(const bool& aResult);
 
 private slots:
   // Check for updates
@@ -51,11 +50,13 @@ private slots:
   void updateCheckSuccess();
   void updateCheckError(QNetworkReply::NetworkError aErrorCode);
 
-  // Download the update
+  // Download the update file
   void downloadLatestUpdate();
-  void cancelDownload();
+  void cancelCurrentDownload();
+  void fileChunkReceived();
+  void chunkSizeUpdated(qint64 aBytesRead, qint64 aTotal);
+  void fileDownloadEnded();
+
+  // Install the update file
   void installLatestUpdate();
-  void fileChunkDownloaded();
-  void chunckSizeUpdated(qint64, qint64);
-  void fileDownloadSuccess();
 };
