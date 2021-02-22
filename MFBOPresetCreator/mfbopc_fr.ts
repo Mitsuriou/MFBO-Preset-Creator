@@ -1254,7 +1254,7 @@ La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     <message>
         <location filename="Update.cpp" line="110"/>
         <source>Check for updates once again</source>
-        <translation>Vérifiez une nouvelle fois les mises à jour</translation>
+        <translation>Vérifier une nouvelle fois les mises à jour</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="67"/>
@@ -1360,7 +1360,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     <message>
         <location filename="Update.cpp" line="197"/>
         <source>Close MFBOPC and install the update</source>
-        <translation>Fermez MFBOPC et installer la mise à jour</translation>
+        <translation>Fermer MFBOPC et installer la mise à jour</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="220"/>
