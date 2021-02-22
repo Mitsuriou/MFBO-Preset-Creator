@@ -359,23 +359,28 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="399"/>
+        <location filename="MFBOPresetCreator.cpp" line="397"/>
+        <source>Error while searching for a new update</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="398"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="414"/>
+        <location filename="MFBOPresetCreator.cpp" line="413"/>
         <source>Application update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="415"/>
+        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="430"/>
+        <location filename="MFBOPresetCreator.cpp" line="429"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1295,17 +1300,17 @@ Below are the release notes for this version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="269"/>
+        <location filename="Update.cpp" line="270"/>
         <source>Cancel the download</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="306"/>
+        <location filename="Update.cpp" line="307"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="343"/>
+        <location filename="Update.cpp" line="344"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation></translation>
     </message>

@@ -64,6 +64,5 @@ private slots:
   void launchAboutDialog();
 
   // Check for updates
-  void updateCheckSuccess();
-  void updateCheckError(QNetworkReply::NetworkError aErrorCode);
+  void updateCheckFinished();
 };

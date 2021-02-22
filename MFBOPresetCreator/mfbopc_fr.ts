@@ -369,24 +369,29 @@
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="399"/>
+        <location filename="MFBOPresetCreator.cpp" line="397"/>
+        <source>Error while searching for a new update</source>
+        <translation>Erreur en cherchant pour une nouvelle mise à jour</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="398"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="414"/>
+        <location filename="MFBOPresetCreator.cpp" line="413"/>
         <source>Application update available</source>
         <translation>Mise à jour de l&apos;application disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="415"/>
+        <location filename="MFBOPresetCreator.cpp" line="414"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="430"/>
+        <location filename="MFBOPresetCreator.cpp" line="429"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1316,17 +1321,17 @@ Below are the release notes for this version:</source>
 Vous trouverez ci-dessous les notes de mise à jour de cette version :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="269"/>
+        <location filename="Update.cpp" line="270"/>
         <source>Cancel the download</source>
         <translation>Annuler le téléchargement</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="306"/>
+        <location filename="Update.cpp" line="307"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation>Téléchargement annulé : cliquez pour essayer de télécharger la mise à jour une nouvelle fois</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="343"/>
+        <location filename="Update.cpp" line="344"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation>%1 octets sur %2 octets (%p%)</translation>
     </message>

@@ -47,8 +47,7 @@ private:
 private slots:
   // Check for updates
   void checkForUpdate();
-  void updateCheckSuccess();
-  void updateCheckError(QNetworkReply::NetworkError aErrorCode);
+  void updateCheckFinished();
 
   // Download the update file
   void downloadLatestUpdate();

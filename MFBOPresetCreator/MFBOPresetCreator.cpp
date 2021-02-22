@@ -383,8 +383,7 @@ void MFBOPresetCreator::checkForUpdate()
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &MFBOPresetCreator::updateCheckSuccess);
-  connect(lReply, &QNetworkReply::errorOccurred, this, &MFBOPresetCreator::updateCheckError);
+  connect(lReply, &QNetworkReply::finished, this, &MFBOPresetCreator::updateCheckFinished);
 }
 
 void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
@@ -395,7 +394,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   if (aResult == "fetch_error")
   {
-    lTitle = "Error while searching for a new update";
+    lTitle = tr("Error while searching for a new update");
     lMessage = tr("An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.");
   }
   else
@@ -529,16 +528,18 @@ void MFBOPresetCreator::launchAboutDialog()
   new About(this, this->mSettings);
 }
 
-void MFBOPresetCreator::updateCheckSuccess()
+void MFBOPresetCreator::updateCheckFinished()
 {
   auto lReply{qobject_cast<QNetworkReply*>(sender())};
-  this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
-  lReply->deleteLater();
-}
 
-void MFBOPresetCreator::updateCheckError(QNetworkReply::NetworkError)
-{
-  auto lReply{qobject_cast<QNetworkReply*>(sender())};
-  this->displayUpdateMessage("fetch_error");
+  if (lReply->error() == QNetworkReply::NoError)
+  {
+    this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
+  }
+  else
+  {
+    this->displayUpdateMessage("fetch_error");
+  }
+
   lReply->deleteLater();
 }
