@@ -16,10 +16,12 @@ MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent
   // Check for new versions
   if (mSettings.checkForUpdatesAtStartup)
   {
+    std::cout << "Checking for updates..." << std::endl;
     this->checkForUpdate();
   }
   else
   {
+    std::cout << "Skipped update checking." << std::endl;
     this->initializeGUI();
   }
 }

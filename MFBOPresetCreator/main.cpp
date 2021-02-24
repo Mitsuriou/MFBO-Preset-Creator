@@ -2,42 +2,34 @@
 #include "Utils.h"
 #include "stdafx.h"
 
-FILE* lOutFile{NULL};
-FILE* lErrFile{NULL};
-
 int main(int argc, char* argv[])
 {
   auto currentExitCode{0};
 
-  if (argc == 2)
+  // Check the launch arguments
+  if (argc >= 2)
   {
-    if (strcmp(argv[1], "--debug") == 0)
-    {
-      AllocConsole();
-      freopen_s(&lOutFile, "CONOUT$", "w", stdout);
-      freopen_s(&lErrFile, "CONOUT$", "w", stderr);
+    // Show the debug console
+    Utils::bindConsoleToStdOut();
 
-      SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
-    }
-    else
+    if (!(argc == 2 && strcmp(argv[1], "--debug") == 0))
     {
-      std::cerr << "Only \"--debug\" parameter is accepted." << std::endl;
+      // If the argument is not '--debug', kill the application
+      SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
+      Utils::printMessageStdOut("Only the \"--debug\" parameter is accepted");
+      system("pause");
       return currentExitCode;
     }
-  }
-  else if (argc > 2)
-  {
-    std::cerr << "Cannot launch the program with more than 1 parameter." << std::endl;
-    return currentExitCode;
   }
 
   do
   {
-    std::cout << "-- Running MFBOPC in debug mode --" << std::endl;
-    std::cout << "Checking support for SSL..." << std::endl;
-    std::cout << "Supports SSL? " << (QSslSocket::supportsSsl() ? "yes" : "no") << std::endl;
-    std::cout << "SSL version information: " << QSslSocket::sslLibraryBuildVersionString().toStdString() << std::endl
-              << std::endl;
+    Utils::printMessageStdOut("");
+    Utils::printMessageStdOut("Running MFBOPC in debug mode");
+    Utils::printMessageStdOut("Checking support for SSL...");
+    Utils::printMessageStdOut(QString("Supports SSL? %1").arg(QSslSocket::supportsSsl() ? "yes" : "no"));
+    Utils::printMessageStdOut(QString("SSL version information: %1").arg(QSslSocket::sslLibraryBuildVersionString()));
+    Utils::printMessageStdOut("");
 
     // Reset the value
     Utils::RESTART_PENDING = false;
@@ -46,7 +38,7 @@ int main(int argc, char* argv[])
 
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    std::cout << "Creating the application instance..." << std::endl;
+    Utils::printMessageStdOut("Creating the application instance...");
 
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
@@ -62,13 +54,13 @@ int main(int argc, char* argv[])
     const QPixmap lSplashScreenBackground(":/application/splashscreen");
 
     QSplashScreen lSplashScreen(lSplashScreenBackground.scaled(800, 450));
-    std::cout << "Starting the application..." << std::endl;
+    Utils::printMessageStdOut("Starting the application...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Starting the application...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lSplashScreen.show();
     lMainApplication.processEvents();
 
     // Update the message
-    std::cout << "Cleaning temporary installer files..." << std::endl;
+    Utils::printMessageStdOut("Cleaning temporary installer files...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Cleaning temporary installer files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
@@ -84,15 +76,15 @@ int main(int argc, char* argv[])
 
         QFile lInstallerFile(lPathToDelete);
         lInstallerFile.remove();
-        std::cout << "Cleaned " << lPathToDelete.toStdString() << std::endl;
+        Utils::printMessageStdOut(QString("Cleaned %1").arg(lPathToDelete));
 
         lInstallerLogFile.remove();
-        std::cout << "Cleaned " << Utils::getAppDataPathFolder().toStdString() << "installer.log" << std::endl;
+        Utils::printMessageStdOut(QString("Cleaned %1installer.log").arg(Utils::getAppDataPathFolder()));
       }
     }
 
     // Update the message
-    std::cout << "Reading and applying custom fonts..." << std::endl;
+    Utils::printMessageStdOut("Reading and applying custom fonts...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Reading and applying custom fonts...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
@@ -100,7 +92,7 @@ int main(int argc, char* argv[])
     QFontDatabase::addApplicationFont(":/fonts/Roboto");
 
     // Update the message
-    std::cout << "Loading user settings..." << std::endl;
+    Utils::printMessageStdOut("Loading user settings...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Loading user settings...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
@@ -108,7 +100,7 @@ int main(int argc, char* argv[])
     auto lSettings{Utils::loadSettingsFromFile()};
 
     // Update the message
-    std::cout << "Applying translation files..." << std::endl;
+    Utils::printMessageStdOut("Applying translation files...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Applying translation files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
@@ -128,7 +120,7 @@ int main(int argc, char* argv[])
     }
 
     // Update the message
-    std::cout << "Creating the main window..." << std::endl;
+    Utils::printMessageStdOut("Creating the main window...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Creating the main window...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
@@ -141,6 +133,8 @@ int main(int argc, char* argv[])
     // Launch the application
     currentExitCode = lMainApplication.exec();
   } while (currentExitCode == Utils::EXIT_CODE_REBOOT);
+
+  FreeConsole();
 
   return currentExitCode;
 }
