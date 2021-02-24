@@ -144,7 +144,7 @@ void Update::displayUpdateMessage(const QString& aResult)
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
     this->mSaveFilePath = QString("%1/mfbopc-wizard-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(this->mNewVersionTag);
     Utils::cleanPathString(this->mSaveFilePath);
-    lFetchStatus->setText(tr("You are currently running the version \"v.%1\".\nThe new version \"v.%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 10MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for this update:").arg(lCurrentVersion).arg(lTagName).arg(this->mSaveFilePath));
+    lFetchStatus->setText(tr("You are currently running the version \"v.%1\".\nThe new version \"v.%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for this update:").arg(lCurrentVersion).arg(lTagName).arg(this->mSaveFilePath));
   }
   else
   {

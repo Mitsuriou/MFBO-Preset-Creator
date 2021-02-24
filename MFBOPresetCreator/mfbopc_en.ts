@@ -1282,10 +1282,18 @@ Below are the release notes for the latest stable version:</source>
 The new version &quot;v.%2&quot; is available on GitHub.
 
 Click on the download button above to start downloading the update.
-The download size is about 10MB~.
+The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
 Below are the release notes for this update:</source>
+        <oldsource>You are currently running the version &quot;v.%1&quot;.
+The new version &quot;v.%2&quot; is available on GitHub.
+
+Click on the download button above to start downloading the update.
+The download size is about 10MB~.
+The download will be saved under &quot;%3&quot;.
+
+Below are the release notes for this update:</oldsource>
         <translation></translation>
     </message>
     <message>

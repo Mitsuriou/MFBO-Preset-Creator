@@ -6,6 +6,7 @@
 #include "stdafx.h"
 #include <QJsonObject>
 #include <QtXml/QDomDocument>
+#include <iostream>
 
 class Utils : public QObject
 {

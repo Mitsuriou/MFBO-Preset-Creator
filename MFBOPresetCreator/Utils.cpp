@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.7.2";
+  return "2.7.3";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -627,6 +627,9 @@ Struct::Settings Utils::loadSettingsFromFile()
   {
     lSettings.dangerColor = lSettingsJSON["dangerColor"].toString();
   }
+
+  std::cout << "User settings: " << std::endl
+            << QJsonDocument(lSettingsJSON).toJson(QJsonDocument::JsonFormat::Indented).toStdString() << std::endl;
 
   return lSettings;
 }
