@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.7.2";
+  return "2.7.3";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -628,6 +628,9 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.dangerColor = lSettingsJSON["dangerColor"].toString();
   }
 
+  Utils::printMessageStdOut("User settings:");
+  Utils::printMessageStdOut(QJsonDocument(lSettingsJSON).toJson(QJsonDocument::JsonFormat::Indented));
+
   return lSettings;
 }
 
@@ -1015,4 +1018,29 @@ void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, 
 {
   aGroupBox->setCheckable(true);
   aGroupBox->setStyleSheet(QString("QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%1/%2)}").arg(aIconFolder).arg(aIconName));
+}
+
+void Utils::bindConsoleToStdOut()
+{
+  FreeConsole();
+  AllocConsole();
+  FILE* lOutFile{NULL};
+  freopen_s(&lOutFile, "CONOUT$", "w", stdout);
+  SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
+}
+
+void Utils::printMessageStdOut(const QString& aMessage)
+{
+  if (aMessage.length() == 0)
+  {
+    std::cout << std::endl;
+  }
+  else if (aMessage.endsWith("..."))
+  {
+    std::cout << aMessage.toStdString() << std::endl;
+  }
+  else
+  {
+    std::cout << aMessage.toStdString() << "." << std::endl;
+  }
 }

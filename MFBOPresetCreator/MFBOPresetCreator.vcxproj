@@ -93,15 +93,15 @@ echo #####################################################</Command>
     <QtInstall>$(DefaultQtVersion)</QtInstall>
     <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
-    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>$(DefaultQtVersion)</QtInstall>
     <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
-    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />

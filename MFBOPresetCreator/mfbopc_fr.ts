@@ -269,134 +269,134 @@
         <translation>[DEV] </translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="40"/>
+        <location filename="MFBOPresetCreator.cpp" line="42"/>
         <source>Quitting</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="41"/>
+        <location filename="MFBOPresetCreator.cpp" line="43"/>
         <source>Do you want to quit the application?</source>
         <translation>Voulez-vous quitter l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="44"/>
+        <location filename="MFBOPresetCreator.cpp" line="46"/>
         <source>Quit the application</source>
         <translation>Quitter l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="45"/>
+        <location filename="MFBOPresetCreator.cpp" line="47"/>
         <source>Go back to the application</source>
         <translation>Revenir sur l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="83"/>
+        <location filename="MFBOPresetCreator.cpp" line="85"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="93"/>
+        <location filename="MFBOPresetCreator.cpp" line="95"/>
         <source>Exit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="97"/>
+        <location filename="MFBOPresetCreator.cpp" line="99"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="102"/>
+        <location filename="MFBOPresetCreator.cpp" line="104"/>
         <source>Textures Assistant</source>
         <translation>Assistant Textures</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="106"/>
+        <location filename="MFBOPresetCreator.cpp" line="108"/>
         <source>Assisted Conversion</source>
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="110"/>
+        <location filename="MFBOPresetCreator.cpp" line="112"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="114"/>
+        <location filename="MFBOPresetCreator.cpp" line="116"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="118"/>
+        <location filename="MFBOPresetCreator.cpp" line="120"/>
         <source> (update available)</source>
         <translation> (mise à jour disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="120"/>
+        <location filename="MFBOPresetCreator.cpp" line="122"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="125"/>
+        <location filename="MFBOPresetCreator.cpp" line="127"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="129"/>
+        <location filename="MFBOPresetCreator.cpp" line="131"/>
         <source>Useful links</source>
         <translation>Liens utiles</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="135"/>
+        <location filename="MFBOPresetCreator.cpp" line="137"/>
         <source>Nexus Mods page</source>
         <translation>Page Nexus Mods</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="139"/>
+        <location filename="MFBOPresetCreator.cpp" line="141"/>
         <source>User guide and tutorials (Google Docs)</source>
         <translation>Guide utilisateur et tutoriels (Google Docs)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="143"/>
+        <location filename="MFBOPresetCreator.cpp" line="145"/>
         <source>View the source code (GitHub.com)</source>
         <translation>Voir le code source (GitHub.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="147"/>
+        <location filename="MFBOPresetCreator.cpp" line="149"/>
         <source>View the source code (GitLab.com)</source>
         <translation>Voir le code source (GitLab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="151"/>
+        <location filename="MFBOPresetCreator.cpp" line="153"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="397"/>
+        <location filename="MFBOPresetCreator.cpp" line="399"/>
         <source>Error while searching for a new update</source>
         <translation>Erreur en cherchant pour une nouvelle mise à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="398"/>
+        <location filename="MFBOPresetCreator.cpp" line="400"/>
         <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="413"/>
+        <location filename="MFBOPresetCreator.cpp" line="415"/>
         <source>Application update available</source>
         <translation>Mise à jour de l&apos;application disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="414"/>
+        <location filename="MFBOPresetCreator.cpp" line="416"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.</source>
         <translation>Vous utilisez actuellement la version &quot;%1&quot;.
 La nouvelle version &quot;%2&quot; est disponible sur GitHub.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="429"/>
+        <location filename="MFBOPresetCreator.cpp" line="431"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="88"/>
+        <location filename="MFBOPresetCreator.cpp" line="90"/>
         <source>Quick relaunch</source>
         <translation>Relancement rapide</translation>
     </message>
@@ -1295,15 +1295,23 @@ Vous trouverez ci-dessous les notes de version pour la dernière version stable 
 The new version &quot;v.%2&quot; is available on GitHub.
 
 Click on the download button above to start downloading the update.
-The download size is about 10MB~.
+The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
 Below are the release notes for this update:</source>
+        <oldsource>You are currently running the version &quot;v.%1&quot;.
+The new version &quot;v.%2&quot; is available on GitHub.
+
+Click on the download button above to start downloading the update.
+The download size is about 10MB~.
+The download will be saved under &quot;%3&quot;.
+
+Below are the release notes for this update:</oldsource>
         <translation>Vous utilisez actuellement la version &quot;v.%1&quot;.
 La nouvelle version &quot;v.%2&quot; est disponible sur GitHub.
 
 Cliquez sur le bouton de téléchargement ci-dessus pour commencer à télécharger la mise à jour.
-La taille du téléchargement est d&apos;environ 10Mo~.
+La taille du téléchargement est d&apos;environ 11Mo~.
 Le téléchargement sera enregistré sous &quot;%3&quot;.
 
 Vous trouverez ci-dessous les notes de mise à jour pour cette mise à jour :</translation>
