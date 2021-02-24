@@ -628,8 +628,8 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.dangerColor = lSettingsJSON["dangerColor"].toString();
   }
 
-  std::cout << "User settings: " << std::endl
-            << QJsonDocument(lSettingsJSON).toJson(QJsonDocument::JsonFormat::Indented).toStdString() << std::endl;
+  Utils::printMessageStdOut("User settings:");
+  Utils::printMessageStdOut(QJsonDocument(lSettingsJSON).toJson(QJsonDocument::JsonFormat::Indented));
 
   return lSettings;
 }

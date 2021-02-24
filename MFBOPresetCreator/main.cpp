@@ -2,17 +2,23 @@
 #include "Utils.h"
 #include "stdafx.h"
 
+#ifdef DEBUG
+bool FORCE_CONSOLE_DISPLAY = true;
+#else
+bool FORCE_CONSOLE_DISPLAY = false;
+#endif
+
 int main(int argc, char* argv[])
 {
   auto currentExitCode{0};
 
   // Check the launch arguments
-  if (argc >= 2)
+  if (argc >= 2 || FORCE_CONSOLE_DISPLAY)
   {
     // Show the debug console
     Utils::bindConsoleToStdOut();
 
-    if (!(argc == 2 && strcmp(argv[1], "--debug") == 0))
+    if (!(argc == 2 && strcmp(argv[1], "--debug") == 0) && !FORCE_CONSOLE_DISPLAY)
     {
       // If the argument is not '--debug', kill the application
       SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
