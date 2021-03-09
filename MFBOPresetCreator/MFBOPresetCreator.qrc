@@ -79,6 +79,22 @@
         <file alias="bhunp_tbbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_tbbp_advanced.osp</file>
         <file alias="bhunp_tbbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_tbbp_advanced.xml</file>
     </qresource>
+    <qresource prefix="/bhunp_2.25">
+        <file alias="bhunp_3bbb/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb.osp</file>
+        <file alias="bhunp_3bbb/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb.xml</file>
+        <file alias="bhunp_3bbb_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced.osp</file>
+        <file alias="bhunp_3bbb_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced.xml</file>
+        <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced_ver_2.osp</file>
+        <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced_ver_2.xml</file>
+        <file alias="bhunp_bbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_bbp.osp</file>
+        <file alias="bhunp_bbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_bbp.xml</file>
+        <file alias="bhunp_bbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_bbp_advanced.osp</file>
+        <file alias="bhunp_bbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_bbp_advanced.xml</file>
+        <file alias="bhunp_tbbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp.osp</file>
+        <file alias="bhunp_tbbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp.xml</file>
+        <file alias="bhunp_tbbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp_advanced.osp</file>
+        <file alias="bhunp_tbbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp_advanced.xml</file>
+    </qresource>
     <qresource prefix="/black">
         <file alias="alert-circle">ressources/software/icons/black/alert-circle.png</file>
         <file alias="arrow-up">ressources/software/icons/black/arrow-up.png</file>

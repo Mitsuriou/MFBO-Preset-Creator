@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.7.3";
+  return "2.8.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -289,6 +289,21 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "bhunp_2.20/bhunp_tbbp";
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
       return "bhunp_2.20/bhunp_tbbp_advanced";
+    case BodyNameVersion::BHUNP_3BBB_2_25:
+      return "bhunp_2.25/bhunp_3bbb";
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
+      return "bhunp_2.25/bhunp_3bbb_advanced";
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
+      return "bhunp_2.25/bhunp_3bbb_advanced_ver_2";
+    case BodyNameVersion::BHUNP_BBP_2_25:
+      return "bhunp_2.25/bhunp_bbp";
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
+      return "bhunp_2.25/bhunp_bbp_advanced";
+    case BodyNameVersion::BHUNP_TBBP_2_25:
+      return "bhunp_2.25/bhunp_tbbp";
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
+      return "bhunp_2.25/bhunp_tbbp_advanced";
+
     default:
       Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
       return "";

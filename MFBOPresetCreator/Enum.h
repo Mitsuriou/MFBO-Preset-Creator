@@ -26,7 +26,14 @@ enum class BodyNameVersion
   BHUNP_BBP_2_20 = 21,
   BHUNP_BBP_Advanced_2_20 = 22,
   BHUNP_TBBP_2_20 = 23,
-  BHUNP_TBBP_Advanced_2_20 = 24
+  BHUNP_TBBP_Advanced_2_20 = 24,
+  BHUNP_3BBB_2_25 = 25,
+  BHUNP_3BBB_Advanced_2_25 = 26,
+  BHUNP_3BBB_Advanced_ver_2_2_25 = 27,
+  BHUNP_BBP_2_25 = 28,
+  BHUNP_BBP_Advanced_2_25 = 29,
+  BHUNP_TBBP_2_25 = 30,
+  BHUNP_TBBP_Advanced_2_25 = 31
 };
 
 enum class BodyName

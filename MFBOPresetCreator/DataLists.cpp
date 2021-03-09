@@ -27,7 +27,14 @@ QStringList DataLists::getBodiesNamesVersions()
     QString("BHUNP BBP [v.2.20]"),
     QString("BHUNP BBP Advanced [v.2.20]"),
     QString("BHUNP TBBP [v.2.20]"),
-    QString("BHUNP TBBP Advanced [v.2.20]")};
+    QString("BHUNP TBBP Advanced [v.2.20]"),
+    QString("BHUNP 3BBB [v.2.25]"),
+    QString("BHUNP 3BBB Advanced [v.2.25]"),
+    QString("BHUNP 3BBB Advanced ver 2 [v.2.25]"),
+    QString("BHUNP BBP [v.2.25]"),
+    QString("BHUNP BBP Advanced [v.2.25]"),
+    QString("BHUNP TBBP [v.2.25]"),
+    QString("BHUNP TBBP Advanced [v.2.25]")};
 }
 
 QStringList DataLists::getBodiesNames()
@@ -68,6 +75,7 @@ QStringList DataLists::getVersionsFromBodyName(BodyName aBody)
       lBodies.append(QString("2.13"));
       lBodies.append(QString("2.15"));
       lBodies.append(QString("2.20"));
+      lBodies.append(QString("2.25"));
   }
 
   return lBodies;
