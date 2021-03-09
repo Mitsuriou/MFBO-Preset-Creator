@@ -568,8 +568,8 @@ void PresetCreator::updateGUIOnBodyChange()
   }
   auto lBodySelected{static_cast<int>(DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
 
-  // Between BodyNameVersion::BHUNP_3BBB_2_13 and BodyNameVersion::BHUNP_TBBP_Advanced_2_20
-  if (lBodySelected >= 4 && lBodySelected <= 24)
+  // Between BodyNameVersion::BHUNP_3BBB_2_13 and BodyNameVersion::BHUNP_TBBP_Advanced_2_25
+  if (lBodySelected >= 4 && lBodySelected <= 31)
   {
     lDisableBeastHands = true;
     lMustUseBeastHands->setChecked(false);
@@ -1081,36 +1081,43 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
     case BodyNameVersion::BHUNP_3BBB_2_13:
     case BodyNameVersion::BHUNP_3BBB_2_15:
     case BodyNameVersion::BHUNP_3BBB_2_20:
+    case BodyNameVersion::BHUNP_3BBB_2_25:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced Ver 2\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_BBP_2_13:
     case BodyNameVersion::BHUNP_BBP_2_15:
     case BodyNameVersion::BHUNP_BBP_2_20:
+    case BodyNameVersion::BHUNP_BBP_2_25:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
     case BodyNameVersion::BHUNP_TBBP_2_15:
     case BodyNameVersion::BHUNP_TBBP_2_20:
+    case BodyNameVersion::BHUNP_TBBP_2_25:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
       lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
       break;
   }

@@ -801,6 +801,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_3BBB_2_13:
     case BodyNameVersion::BHUNP_3BBB_2_15:
     case BodyNameVersion::BHUNP_3BBB_2_20:
+    case BodyNameVersion::BHUNP_3BBB_2_25:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -809,6 +810,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -817,6 +819,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Ver 2\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -825,6 +828,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_BBP_2_13:
     case BodyNameVersion::BHUNP_BBP_2_15:
     case BodyNameVersion::BHUNP_BBP_2_20:
+    case BodyNameVersion::BHUNP_BBP_2_25:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -833,6 +837,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP Advanced\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -841,6 +846,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_TBBP_2_13:
     case BodyNameVersion::BHUNP_TBBP_2_15:
     case BodyNameVersion::BHUNP_TBBP_2_20:
+    case BodyNameVersion::BHUNP_TBBP_2_25:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
@@ -849,6 +855,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP Advanced\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
                        "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
