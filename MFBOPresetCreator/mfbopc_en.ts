@@ -221,42 +221,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="146"/>
+        <location filename="DataLists.cpp" line="120"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="147"/>
+        <location filename="DataLists.cpp" line="121"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="148"/>
+        <location filename="DataLists.cpp" line="122"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="177"/>
+        <location filename="DataLists.cpp" line="151"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="178"/>
+        <location filename="DataLists.cpp" line="152"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="179"/>
+        <location filename="DataLists.cpp" line="153"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="180"/>
+        <location filename="DataLists.cpp" line="154"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="181"/>
+        <location filename="DataLists.cpp" line="155"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -584,67 +584,67 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1304"/>
+        <location filename="PresetCreator.cpp" line="1312"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1311"/>
+        <location filename="PresetCreator.cpp" line="1319"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1322"/>
+        <location filename="PresetCreator.cpp" line="1330"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1416"/>
+        <location filename="PresetCreator.cpp" line="1424"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1330"/>
+        <location filename="PresetCreator.cpp" line="1338"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1331"/>
+        <location filename="PresetCreator.cpp" line="1339"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1334"/>
+        <location filename="PresetCreator.cpp" line="1342"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1335"/>
+        <location filename="PresetCreator.cpp" line="1343"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1350"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1356"/>
+        <location filename="PresetCreator.cpp" line="1364"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1362"/>
+        <location filename="PresetCreator.cpp" line="1370"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1369"/>
+        <location filename="PresetCreator.cpp" line="1377"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1376"/>
+        <location filename="PresetCreator.cpp" line="1384"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
@@ -700,12 +700,12 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1416"/>
+        <location filename="PresetCreator.cpp" line="1424"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1419"/>
+        <location filename="PresetCreator.cpp" line="1427"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1007,18 +1007,18 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="265"/>
-        <location filename="Settings.cpp" line="344"/>
+        <location filename="Settings.cpp" line="267"/>
+        <location filename="Settings.cpp" line="357"/>
         <source>Default selected body:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="333"/>
+        <location filename="Settings.cpp" line="344"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="380"/>
+        <location filename="Settings.cpp" line="402"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
@@ -1063,52 +1063,52 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="276"/>
+        <location filename="Settings.cpp" line="287"/>
         <source>Output directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="286"/>
+        <location filename="Settings.cpp" line="297"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="294"/>
+        <location filename="Settings.cpp" line="305"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="309"/>
+        <location filename="Settings.cpp" line="320"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="321"/>
+        <location filename="Settings.cpp" line="332"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="365"/>
+        <location filename="Settings.cpp" line="387"/>
         <source>Restore default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="582"/>
+        <location filename="Settings.cpp" line="610"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="583"/>
+        <location filename="Settings.cpp" line="611"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="586"/>
+        <location filename="Settings.cpp" line="614"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="587"/>
+        <location filename="Settings.cpp" line="615"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
@@ -1128,7 +1128,7 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="372"/>
+        <location filename="Settings.cpp" line="394"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
@@ -1362,14 +1362,14 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="293"/>
+        <location filename="Utils.cpp" line="310"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="337"/>
-        <location filename="Utils.cpp" line="370"/>
-        <location filename="Utils.cpp" line="440"/>
+        <location filename="Utils.cpp" line="355"/>
+        <location filename="Utils.cpp" line="388"/>
+        <location filename="Utils.cpp" line="458"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
