@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.8.0";
+  return "2.9.0";
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -245,6 +245,8 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "cbbe_3bbb_1.50";
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
       return "cbbe_3bbb_1.51_1.55";
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00:
+      return "cbbe_3bbb_2.00";
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return "cbbe_smp_3bbb_1.2.0";
     case BodyNameVersion::BHUNP_3BBB_2_13:
@@ -317,6 +319,7 @@ bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return true;
     default:
@@ -771,6 +774,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
 

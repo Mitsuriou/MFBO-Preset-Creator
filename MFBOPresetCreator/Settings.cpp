@@ -262,15 +262,26 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   lPresetCreatorLayout->setAlignment(Qt::AlignTop);
 
   // DEFAULT SELECTED BODY AND VERSION
+  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+
   auto lDefaultBodyVersionLabel{new QLabel(tr("Default selected body:"), this)};
   lPresetCreatorLayout->addWidget(lDefaultBodyVersionLabel, 0, 0, 1, 2);
 
-  auto lDefaultBodyVersionLabelSelector{new QComboBox(this)};
-  lDefaultBodyVersionLabelSelector->setItemDelegate(new QStyledItemDelegate());
-  lDefaultBodyVersionLabelSelector->setCursor(Qt::PointingHandCursor);
-  lDefaultBodyVersionLabelSelector->addItems(DataLists::getBodiesNamesVersions());
-  lDefaultBodyVersionLabelSelector->setObjectName(QString("default_body_selector"));
-  lPresetCreatorLayout->addWidget(lDefaultBodyVersionLabelSelector, 1, 0, 1, 2);
+  auto lBodyNameSelector{new QComboBox(this)};
+  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
+  lBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
+  lBodyNameSelector->setObjectName(QString("default_body_selector_name"));
+  lPresetCreatorLayout->addWidget(lBodyNameSelector, 1, 0);
+
+  auto lBodyVersionSelector{new QComboBox(this)};
+  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
+  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
+  lBodyVersionSelector->setObjectName(QString("default_body_selector_version"));
+  lPresetCreatorLayout->addWidget(lBodyVersionSelector, 1, 1);
 
   // OUTPUT PATH PREVIEW
   auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
@@ -341,15 +352,26 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
+  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+
   auto lUpgradeBodyNameVersionLabel{new QLabel(tr("Default selected body:"), this)};
   lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionLabel);
 
-  auto lUpgradeBodyNameVersionSelector{new QComboBox(this)};
-  lUpgradeBodyNameVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lUpgradeBodyNameVersionSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeBodyNameVersionSelector->addItems(DataLists::getBodiesNamesVersions());
-  lUpgradeBodyNameVersionSelector->setObjectName(QString("upgrade_body_selector"));
-  lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionSelector);
+  auto lUpgradeBodyNameSelector{new QComboBox(this)};
+  lUpgradeBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
+  lUpgradeBodyNameSelector->setCursor(Qt::PointingHandCursor);
+  lUpgradeBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lUpgradeBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
+  lUpgradeBodyNameSelector->setObjectName(QString("upgrade_body_selector_name"));
+  lRetargetingToolLayout->addWidget(lUpgradeBodyNameSelector);
+
+  auto lUpgradeBodyVersionSelector{new QComboBox(this)};
+  lUpgradeBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lUpgradeBodyVersionSelector->setCursor(Qt::PointingHandCursor);
+  lUpgradeBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lUpgradeBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
+  lUpgradeBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
+  lRetargetingToolLayout->addWidget(lUpgradeBodyVersionSelector);
 }
 
 void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
@@ -416,11 +438,13 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")};
   lWindowOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.mainWindowOpeningMode));
 
-  auto lDefaultBody{this->findChild<QComboBox*>("default_body_selector")};
-  lDefaultBody->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainWindowBody));
+  auto lDefaultBody{DataLists::getSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultMainWindowBody)};
+  this->findChild<QComboBox*>(QString("default_body_selector_name"))->setCurrentIndex(lDefaultBody.first);
+  this->findChild<QComboBox*>(QString("default_body_selector_version"))->setCurrentIndex(lDefaultBody.second);
 
-  auto lDefaultUpgradeBody{this->findChild<QComboBox*>("upgrade_body_selector")};
-  lDefaultUpgradeBody->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolBody));
+  auto lDefaultUpgradeBody{DataLists::getSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultRetargetingToolBody)};
+  this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->setCurrentIndex(lDefaultUpgradeBody.first);
+  this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->setCurrentIndex(lDefaultUpgradeBody.second);
 
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")};
   lMainWindowOutputPath->setText(aSettingsToLoad.mainWindowOutputPath);
@@ -453,8 +477,12 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lAppTheme{this->findChild<QComboBox*>("app_theme")->currentIndex()};
   auto lWindowWidth{this->findChild<QLineEdit*>("window_width")->text().trimmed()};
   auto lWindowHeight{this->findChild<QLineEdit*>("window_height")->text().trimmed()};
-  auto lDefaultBodyVersion{this->findChild<QComboBox*>("default_body_selector")->currentIndex()};
-  auto lDefaultRetargetBodyVersion{this->findChild<QComboBox*>("upgrade_body_selector")->currentIndex()};
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("default_body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("default_body_selector_version"))->currentIndex()};
+  auto lDefaultBodyVersion{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lUpBodyNameSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex()};
+  auto lUpBodyVersionSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->currentIndex()};
+  auto lDefaultRetargetBodyVersion{DataLists::getBodyNameVersion(static_cast<BodyName>(lUpBodyNameSelected), lUpBodyVersionSelected)};
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};

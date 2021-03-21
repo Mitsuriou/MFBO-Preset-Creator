@@ -11,7 +11,6 @@ class DataLists : public QObject
 
 public:
   // Lists for bodies names and versions
-  static QStringList getBodiesNamesVersions();
   static QStringList getBodiesNames();
   static QStringList getVersionsFromBodyName(BodyName aBody);
   static BodyNameVersion getBodyNameVersion(BodyName aBody, int aRelativeVersion);
