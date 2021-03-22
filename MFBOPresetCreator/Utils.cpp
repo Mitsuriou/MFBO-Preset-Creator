@@ -85,11 +85,17 @@ ButtonClicked Utils::displayQuestionMessage(QWidget* aParent,
 
   auto lYesButton{lConfirmationBox.addButton(aTextBtnYes, QMessageBox::ButtonRole::YesRole)};
   lYesButton->setCursor(Qt::PointingHandCursor);
-  lYesButton->setStyleSheet(QString("color: %1;").arg(aColorYesBtn));
+  if (aColorYesBtn != "")
+  {
+    lYesButton->setStyleSheet(QString("color: %1;").arg(aColorYesBtn));
+  }
 
   auto lNoButton{lConfirmationBox.addButton(aTextBtnNo, QMessageBox::ButtonRole::NoRole)};
   lNoButton->setCursor(Qt::PointingHandCursor);
-  lNoButton->setStyleSheet(QString("color: %1;").arg(aColorNoBtn));
+  if (aColorNoBtn != "")
+  {
+    lNoButton->setStyleSheet(QString("color: %1;").arg(aColorNoBtn));
+  }
 
   lConfirmationBox.setDefaultButton(aIsYesBtnDefault ? lYesButton : lNoButton);
   lConfirmationBox.exec();

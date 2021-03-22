@@ -359,29 +359,44 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="399"/>
+        <location filename="MFBOPresetCreator.cpp" line="402"/>
         <source>Error while searching for a new update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="400"/>
-        <source>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</source>
+        <location filename="MFBOPresetCreator.cpp" line="403"/>
+        <source>An error has occurred while searching for a new version...
+Make sure your internet connection is operational and try again.</source>
+        <oldsource>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="415"/>
+        <location filename="MFBOPresetCreator.cpp" line="418"/>
         <source>Application update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="416"/>
+        <location filename="MFBOPresetCreator.cpp" line="419"/>
         <source>You are currently running the version &quot;%1&quot;.
-The new version &quot;%2&quot; is available on GitHub.</source>
+The new version &quot;%2&quot; is available on GitHub.
+Do you want to download it now?</source>
+        <oldsource>You are currently running the version &quot;%1&quot;.
+The new version &quot;%2&quot; is available on GitHub.</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="431"/>
         <source>OK</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="443"/>
+        <source>Download and install the update now</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="444"/>
+        <source>Download later</source>
         <translation></translation>
     </message>
     <message>
@@ -1227,44 +1242,44 @@ The new version &quot;%2&quot; is available on GitHub.</source>
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="38"/>
-        <location filename="Update.cpp" line="60"/>
+        <location filename="Update.cpp" line="42"/>
+        <location filename="Update.cpp" line="64"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="49"/>
+        <location filename="Update.cpp" line="53"/>
         <source>Current version: v.%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="242"/>
+        <location filename="Update.cpp" line="246"/>
         <source>Contacting GitHub.com...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="110"/>
+        <location filename="Update.cpp" line="114"/>
         <source>Check for updates once again</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="67"/>
+        <location filename="Update.cpp" line="71"/>
         <source>Initializing...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="112"/>
+        <location filename="Update.cpp" line="116"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="131"/>
+        <location filename="Update.cpp" line="135"/>
         <source>You are running a developer version</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="133"/>
+        <location filename="Update.cpp" line="137"/>
         <source>You are currently running the developer version &quot;v.%1&quot;.
 The last available version on GitHub is tagged &quot;v.%2&quot;.
 
@@ -1272,12 +1287,12 @@ Below are the release notes for the latest stable version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="141"/>
+        <location filename="Update.cpp" line="145"/>
         <source>Download the update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="147"/>
+        <location filename="Update.cpp" line="151"/>
         <source>You are currently running the version &quot;v.%1&quot;.
 The new version &quot;v.%2&quot; is available on GitHub.
 
@@ -1297,33 +1312,33 @@ Below are the release notes for this update:</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="156"/>
+        <location filename="Update.cpp" line="160"/>
         <source>You are already running the latest version</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="158"/>
+        <location filename="Update.cpp" line="162"/>
         <source>Awesome! You are already running the latest version (&quot;v.%1&quot;).
 Below are the release notes for this version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="270"/>
+        <location filename="Update.cpp" line="274"/>
         <source>Cancel the download</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="307"/>
+        <location filename="Update.cpp" line="311"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="344"/>
+        <location filename="Update.cpp" line="348"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="188"/>
+        <location filename="Update.cpp" line="192"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -1331,7 +1346,7 @@ Make sure that you saved everything before starting the update as the applicatio
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="189"/>
+        <location filename="Update.cpp" line="193"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -1339,12 +1354,12 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="197"/>
+        <location filename="Update.cpp" line="201"/>
         <source>Close MFBOPC and install the update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="220"/>
+        <location filename="Update.cpp" line="224"/>
         <source>Try to download the update once again</source>
         <translation></translation>
     </message>
@@ -1362,14 +1377,14 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="310"/>
+        <location filename="Utils.cpp" line="316"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="355"/>
-        <location filename="Utils.cpp" line="388"/>
-        <location filename="Utils.cpp" line="458"/>
+        <location filename="Utils.cpp" line="361"/>
+        <location filename="Utils.cpp" line="394"/>
+        <location filename="Utils.cpp" line="464"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>

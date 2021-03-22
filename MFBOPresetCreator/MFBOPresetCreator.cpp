@@ -390,6 +390,9 @@ void MFBOPresetCreator::checkForUpdate()
 
 void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
   // Display a message based on new available versions
   auto lTitle{QString("")};
   auto lMessage{QString("")};
@@ -397,7 +400,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
   if (aResult == "fetch_error")
   {
     lTitle = tr("Error while searching for a new update");
-    lMessage = tr("An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.");
+    lMessage = tr("An error has occurred while searching for a new version...\nMake sure your internet connection is operational and try again.");
   }
   else
   {
@@ -413,25 +416,39 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     {
       this->mNewVersionAvailable = true;
       lTitle = tr("Application update available");
-      lMessage = tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.").arg(lCurrentVersion).arg(lTagName);
+      lMessage = tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lTagName);
     }
 #endif
   }
 
   this->initializeGUI();
 
-  if (aResult == "fetch_error" || this->mNewVersionAvailable)
+  if (aResult == "fetch_error")
   {
-    // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-
     QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/info-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
 
     auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
     lOKButton->setCursor(Qt::PointingHandCursor);
     lConfirmationBox.setDefaultButton(lOKButton);
     lConfirmationBox.exec();
+  }
+  else if (this->mNewVersionAvailable)
+  {
+    if (Utils::displayQuestionMessage(this,
+                                      lTitle,
+                                      lMessage,
+                                      lIconFolder,
+                                      "info-circle",
+                                      tr("Download and install the update now"),
+                                      tr("Download later"),
+                                      this->mSettings.successColor,
+                                      this->mSettings.dangerColor,
+                                      true)
+        == ButtonClicked::Yes)
+    {
+      this->launchUpdateDialog();
+    }
   }
 }
 

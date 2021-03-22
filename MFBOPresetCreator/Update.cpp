@@ -15,6 +15,10 @@ Update::Update(QWidget* parent, const Struct::Settings& aSettings)
   // Show the window when it's completely built
   this->adjustSize();
   this->show();
+
+  // Search for an update instantly
+  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  lSearchButton->click();
 }
 
 void Update::reject()
