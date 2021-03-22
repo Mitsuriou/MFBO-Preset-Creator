@@ -309,6 +309,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
 
   // Event binding
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBodyVersions);
 }
 
 void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex)
@@ -346,7 +347,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
   aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1);
 
-  auto lRetargetingToolLayout{new QVBoxLayout(lRetToolGroupBox)};
+  auto lRetargetingToolLayout{new QGridLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
   lRetargetingToolLayout->setContentsMargins(15, 20, 15, 15);
   lRetargetingToolLayout->setAlignment(Qt::AlignTop);
@@ -355,7 +356,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
   auto lUpgradeBodyNameVersionLabel{new QLabel(tr("Default selected body:"), this)};
-  lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionLabel);
+  lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionLabel, 0, 0, 1, 2);
 
   auto lUpgradeBodyNameSelector{new QComboBox(this)};
   lUpgradeBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -363,7 +364,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   lUpgradeBodyNameSelector->addItems(DataLists::getBodiesNames());
   lUpgradeBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lUpgradeBodyNameSelector->setObjectName(QString("upgrade_body_selector_name"));
-  lRetargetingToolLayout->addWidget(lUpgradeBodyNameSelector);
+  lRetargetingToolLayout->addWidget(lUpgradeBodyNameSelector, 1, 0);
 
   auto lUpgradeBodyVersionSelector{new QComboBox(this)};
   lUpgradeBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
@@ -371,7 +372,10 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   lUpgradeBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lUpgradeBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lUpgradeBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
-  lRetargetingToolLayout->addWidget(lUpgradeBodyVersionSelector);
+  lRetargetingToolLayout->addWidget(lUpgradeBodyVersionSelector, 1, 1);
+
+  // Event binding
+  this->connect(lUpgradeBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
 }
 
 void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
@@ -633,6 +637,24 @@ void Settings::saveSettings()
   emit refreshMainUI(this->mSettings, true);
 
   this->close();
+}
+
+void Settings::updateAvailableBodyVersions()
+{
+  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("default_body_selector_name"))->currentIndex())};
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("default_body_selector_version"))};
+  lBodyVersionSelector->clear();
+  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->setCurrentIndex(0);
+}
+
+void Settings::updateAvailableUpgradeBodyVersions()
+{
+  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex())};
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))};
+  lBodyVersionSelector->clear();
+  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->setCurrentIndex(0);
 }
 
 void Settings::restoreDefaultSettings()

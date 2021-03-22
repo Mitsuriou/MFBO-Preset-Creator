@@ -47,6 +47,8 @@ signals:
 
 private slots:
   void saveSettings();
+  void updateAvailableBodyVersions();
+  void updateAvailableUpgradeBodyVersions();
   void restoreDefaultSettings();
   void chooseExportDirectory();
   void chooseFont();

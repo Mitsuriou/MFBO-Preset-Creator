@@ -54,7 +54,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return "2.9.0";
+  return QApplication::applicationVersion();
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -246,7 +246,7 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
       return "cbbe_3bbb_1.51_1.55";
     case BodyNameVersion::CBBE_3BBB_3BA_2_00:
-      return "cbbe_3bbb_2.00";
+      return "cbbe_3bbb_2.00_2.02";
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return "cbbe_smp_3bbb_1.2.0";
     case BodyNameVersion::BHUNP_3BBB_2_13:

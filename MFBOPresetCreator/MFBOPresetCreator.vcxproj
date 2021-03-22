@@ -84,7 +84,8 @@ echo ############# FINISHED BUILDING MFBO:PC #############
 echo ### COPYING EXECUTABLE INTO CLIENT RELEASE FOLDER ###
 echo #####################################################
 echo #####################################################
-echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard ressources\client release\$(TargetFileName)"      </Command>
+echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard ressources\client release\$(TargetFileName)"
+echo F | xcopy /C /Y /R /S "$(TargetDir)mfbopc_*.qm" "$(SolutionDir)Wizard ressources\client release\translations\"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>echo #####################################################

@@ -40,9 +40,9 @@ int main(int argc, char* argv[])
     // Reset the value
     Utils::RESTART_PENDING = false;
 
-    const auto& lAppVersion{Utils::getApplicationVersion()};
-
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication::setApplicationVersion("2.9.1");
+    const auto& lAppVersion{Utils::getApplicationVersion()};
 
     Utils::printMessageStdOut("Creating the application instance...");
 
@@ -113,14 +113,14 @@ int main(int argc, char* argv[])
     // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(lSettings.language))};
     auto lTranslator{new QTranslator()};
-    if (lTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))
+    if (lTranslator->load(QString("mfbopc_%2.qm").arg(lLanguageToSet), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
     {
       lMainApplication.installTranslator(lTranslator);
     }
 
     // Apply default Qt language and translation
     auto lQtBaseTranslator{new QTranslator()};
-    if (lQtBaseTranslator->load("qt_" + lLanguageToSet + ".qm", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (lQtBaseTranslator->load(QString("qt_%1.qm").arg(lLanguageToSet), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
     {
       lMainApplication.installTranslator(lQtBaseTranslator);
     }

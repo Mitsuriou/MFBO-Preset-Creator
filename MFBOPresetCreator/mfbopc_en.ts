@@ -221,42 +221,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="120"/>
+        <location filename="DataLists.cpp" line="128"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="121"/>
+        <location filename="DataLists.cpp" line="129"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="122"/>
+        <location filename="DataLists.cpp" line="130"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="151"/>
+        <location filename="DataLists.cpp" line="159"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="152"/>
+        <location filename="DataLists.cpp" line="160"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="153"/>
+        <location filename="DataLists.cpp" line="161"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="154"/>
+        <location filename="DataLists.cpp" line="162"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="155"/>
+        <location filename="DataLists.cpp" line="163"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -1008,17 +1008,17 @@ The new version &quot;%2&quot; is available on GitHub.</source>
     </message>
     <message>
         <location filename="Settings.cpp" line="267"/>
-        <location filename="Settings.cpp" line="357"/>
+        <location filename="Settings.cpp" line="358"/>
         <source>Default selected body:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="344"/>
+        <location filename="Settings.cpp" line="345"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="402"/>
+        <location filename="Settings.cpp" line="406"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
@@ -1078,37 +1078,37 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="320"/>
+        <location filename="Settings.cpp" line="321"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="332"/>
+        <location filename="Settings.cpp" line="333"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="387"/>
+        <location filename="Settings.cpp" line="391"/>
         <source>Restore default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="610"/>
+        <location filename="Settings.cpp" line="614"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="611"/>
+        <location filename="Settings.cpp" line="615"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="614"/>
+        <location filename="Settings.cpp" line="618"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="615"/>
+        <location filename="Settings.cpp" line="619"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
@@ -1128,7 +1128,7 @@ The new version &quot;%2&quot; is available on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="394"/>
+        <location filename="Settings.cpp" line="398"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
