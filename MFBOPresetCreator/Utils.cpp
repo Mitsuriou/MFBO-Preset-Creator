@@ -145,10 +145,10 @@ int Utils::getNumberFilesByExtensions(const QString& aRootDir, const QStringList
 {
   auto lNumber{0};
 
-  QDirIterator it(aRootDir, aFileExtensions, QDir::Files, QDirIterator::NoIteratorFlags);
-  while (it.hasNext())
+  QDirIterator lIt(aRootDir, aFileExtensions, QDir::Files, QDirIterator::NoIteratorFlags);
+  while (lIt.hasNext())
   {
-    it.next();
+    lIt.next();
     lNumber++;
   }
 
@@ -159,10 +159,10 @@ int Utils::getNumberFilesByExtensionsRecursive(const QString& aRootDir, const QS
 {
   auto lNumber{0};
 
-  QDirIterator it(aRootDir, aFileExtensions, QDir::Files, QDirIterator::Subdirectories);
-  while (it.hasNext())
+  QDirIterator lIt(aRootDir, aFileExtensions, QDir::Files, QDirIterator::Subdirectories);
+  while (lIt.hasNext())
   {
-    it.next();
+    lIt.next();
     lNumber++;
   }
 
@@ -251,8 +251,8 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "cbbe_3bbb_1.50";
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
       return "cbbe_3bbb_1.51_1.55";
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00:
-      return "cbbe_3bbb_2.00_2.02";
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_and_2_04:
+      return "cbbe_3bbb_2.00_2.04";
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return "cbbe_smp_3bbb_1.2.0";
     case BodyNameVersion::BHUNP_3BBB_2_13:
@@ -311,7 +311,6 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "bhunp_2.25/bhunp_tbbp";
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
       return "bhunp_2.25/bhunp_tbbp_advanced";
-
     default:
       Utils::displayWarningMessage(tr("Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer."));
       return "";
@@ -325,7 +324,7 @@ bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_and_2_04:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return true;
     default:
@@ -780,7 +779,7 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_and_2_04:
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
 

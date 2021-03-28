@@ -51,16 +51,21 @@ public slots:
 
 private slots:
   void quickRelaunch();
+  // Assisted Conversion
   void launchAssistedConversion();
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
+  // Other tools
   void launchPresetsRetargeting();
   void launchTexturesAssistant();
+  // Dialog
   void launchSettingsDialog();
   void launchUpdateDialog();
+  // URL links
   void openNexusPageInDefaultBrowser();
   void openGitHubSourceCodePageInDefaultBrowser();
   void openGitLabSourceCodePageInDefaultBrowser();
   void openGuideInDefaultBrowser();
+  // Dialog
   void launchAboutDialog();
 
   // Check for updates

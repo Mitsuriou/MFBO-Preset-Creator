@@ -1377,14 +1377,14 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="316"/>
+        <location filename="Utils.cpp" line="315"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="361"/>
-        <location filename="Utils.cpp" line="394"/>
-        <location filename="Utils.cpp" line="464"/>
+        <location filename="Utils.cpp" line="360"/>
+        <location filename="Utils.cpp" line="393"/>
+        <location filename="Utils.cpp" line="463"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>

@@ -25,11 +25,11 @@
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/1.51_1.55/bodyslide_beast_hands.osp</file>
         <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/1.51_1.55/bodyslide_beast_hands.xml</file>
     </qresource>
-    <qresource prefix="/cbbe_3bbb_2.00_2.02">
-        <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.02/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.02/bodyslide.xml</file>
-        <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.02/bodyslide_beast_hands.osp</file>
-        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.02/bodyslide_beast_hands.xml</file>
+    <qresource prefix="/cbbe_3bbb_2.00_2.04">
+        <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide.osp</file>
+        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide.xml</file>
+        <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide_beast_hands.osp</file>
+        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/cbbe_smp_3bbb_1.2.0">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.osp</file>
