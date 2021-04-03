@@ -4,7 +4,7 @@ enum class BodyNameVersion
 {
   CBBE_3BBB_3BA_1_40 = 0,
   CBBE_3BBB_3BA_1_50 = 1,
-  CBBE_3BBB_3BA_1_51_and_1_55 = 2,
+  CBBE_3BBB_3BA_1_51_to_1_55 = 2,
   CBBE_SMP_3BBB_1_2_0 = 3,
   BHUNP_3BBB_2_13 = 4,
   BHUNP_3BBB_Advanced_2_13 = 5,
@@ -34,7 +34,8 @@ enum class BodyNameVersion
   BHUNP_BBP_Advanced_2_25 = 29,
   BHUNP_TBBP_2_25 = 30,
   BHUNP_TBBP_Advanced_2_25 = 31,
-  CBBE_3BBB_3BA_2_00_and_2_04 = 32,
+  CBBE_3BBB_3BA_2_00_to_2_04 = 32,
+  CBBE_3BBB_3BA_2_05 = 33,
 };
 
 enum class BodyName

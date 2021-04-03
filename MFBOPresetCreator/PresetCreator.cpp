@@ -1066,8 +1066,9 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
       else
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
       break;
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_and_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_and_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
       if (lMustUseBeastHands)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands Beast").arg(aText);
       else

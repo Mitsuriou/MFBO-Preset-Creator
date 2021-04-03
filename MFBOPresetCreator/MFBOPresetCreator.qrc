@@ -31,6 +31,12 @@
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide_beast_hands.osp</file>
         <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide_beast_hands.xml</file>
     </qresource>
+    <qresource prefix="/cbbe_3bbb_2.05">
+        <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide.osp</file>
+        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide.xml</file>
+        <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide_beast_hands.osp</file>
+        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide_beast_hands.xml</file>
+    </qresource>
     <qresource prefix="/cbbe_smp_3bbb_1.2.0">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.osp</file>
         <file alias="bodyslide_xml">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.xml</file>
@@ -194,10 +200,6 @@
         <file alias="file-tree">ressources/software/icons/white/file-tree.png</file>
         <file alias="bodyslide-logo">ressources/software/icons/white/bodyslide-logo.png</file>
         <file alias="vector-polyline">ressources/software/icons/white/vector-polyline.png</file>
-    </qresource>
-    <qresource prefix="/translations">
-        <file>x64/Release/mfbopc_en.qm</file>
-        <file>x64/Release/mfbopc_fr.qm</file>
     </qresource>
     <qresource prefix="/qss">
         <file alias="Paper Black Mono.qss">ressources/qss/Paper Black Mono.qss</file>

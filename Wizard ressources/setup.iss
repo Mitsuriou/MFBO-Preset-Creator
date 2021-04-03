@@ -1,12 +1,15 @@
-[Setup]
+[Setup]  
+#define AppVersion GetVersionNumbersString(".\client release\MFBOPresetCreator.exe")
+#define AppName "MFBO Preset Creator"
+
 AppId={{F0572980-4893-4828-B9EC-B9AD99DBCE35}
 AppName=MFBO Preset Creator
-AppVersion=2.9.3
+AppVersion={#AppVersion}
 AppPublisher=Mitsuriou
 AppPublisherURL=https://github.com/Mitsuriou/MFBO-Preset-Creator
 AppSupportURL=https://github.com/Mitsuriou/MFBO-Preset-Creator
 AppUpdatesURL=https://github.com/Mitsuriou/MFBO-Preset-Creator
-DefaultDirName={commonpf64}\MFBO Preset Creator
+DefaultDirName={commonpf64}\{#AppName}
 DisableProgramGroupPage=yes
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=wizard
@@ -16,7 +19,7 @@ Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
 UninstallDisplayIcon={app}\MFBOPresetCreator.exe
-UninstallDisplayName=MFBO Preset Creator (v.2.9.3)
+UninstallDisplayName=MFBO Preset Creator (v.{#AppVersion})
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -31,8 +34,8 @@ Source: ".\filters.json"; DestDir: "{localappdata}\MFBOPresetCreator"; Flags: ig
 Source: ".\assets\*"; DestDir: "{localappdata}\MFBOPresetCreator\assets"; Flags: ignoreversion recursesubdirs createallsubdirs uninsneveruninstall onlyifdoesntexist
 
 [Icons]
-Name: "{autoprograms}\MFBO Preset Creator"; Filename: "{app}\MFBOPresetCreator.exe"
-Name: "{autodesktop}\MFBO Preset Creator (v.2.9.3)"; Filename: "{app}\MFBOPresetCreator.exe"; Tasks: desktopicon
+Name: "{autoprograms}\{#AppName}"; Filename: "{app}\MFBOPresetCreator.exe"
+Name: "{autodesktop}\{#AppName} (v.{#AppVersion})"; Filename: "{app}\MFBOPresetCreator.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\MFBOPresetCreator.exe"; Description: "{cm:LaunchProgram,MFBO Preset Creator}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\MFBOPresetCreator.exe"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
