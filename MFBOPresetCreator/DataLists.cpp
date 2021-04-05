@@ -23,9 +23,9 @@ QStringList DataLists::getVersionsFromBodyName(BodyName aBody)
     case BodyName::CBBE_3BBB_3BA:
       lBodies.append(QString("1.40"));
       lBodies.append(QString("1.50"));
-      lBodies.append(QString("1.51 -> 1.55"));
-      lBodies.append(QString("2.00 -> 2.04"));
-      lBodies.append(QString("2.05"));
+      lBodies.append(QString("1.51 to 1.55"));
+      lBodies.append(QString("2.00 to 2.04"));
+      lBodies.append(QString("2.05 to 2.06"));
       break;
     case BodyName::CBBE_SMP_3BBB:
       lBodies.append(QString("1.2.0"));
