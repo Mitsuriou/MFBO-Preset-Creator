@@ -200,9 +200,32 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
 
 void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex)
 {
-  aLayout.addWidget(new QLabel(aPath, this), aRowIndex, 0, Qt::AlignLeft);
-  aLayout.addWidget(new QLabel(aFileName, this), aRowIndex, 1, Qt::AlignLeft);
+  // Path
+  auto lPathLabel{new QLabel(aPath, this)};
+  if (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
+      || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
+      || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
+      || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0)
+  {
+    lPathLabel->setTextFormat(Qt::TextFormat::RichText);
+    lPathLabel->setText(QString("<span style=\"font-weight: 900;\">%1</span>").arg(aPath));
+  }
+  aLayout.addWidget(lPathLabel, aRowIndex, 0, Qt::AlignLeft);
 
+  // File name
+  auto lFileNameLabel{new QLabel(aFileName, this)};
+  if (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
+      || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
+      || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
+      || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0)
+  {
+    lFileNameLabel->setTextFormat(Qt::TextFormat::RichText);
+    lFileNameLabel->setText(QString("<span style=\"font-weight: 900;\">%1</span>").arg(aFileName));
+  }
+
+  aLayout.addWidget(lFileNameLabel, aRowIndex, 1, Qt::AlignLeft);
+
+  // Choice combobox
   auto lChoiceCombo{new QComboBox(this)};
   lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
   lChoiceCombo->setCursor(Qt::PointingHandCursor);

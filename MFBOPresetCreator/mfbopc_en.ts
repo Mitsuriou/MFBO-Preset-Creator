@@ -57,59 +57,59 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="305"/>
+        <location filename="AssistedConversion.cpp" line="328"/>
         <source>No root file has been found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="306"/>
+        <location filename="AssistedConversion.cpp" line="329"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="309"/>
-        <location filename="AssistedConversion.cpp" line="328"/>
+        <location filename="AssistedConversion.cpp" line="332"/>
+        <location filename="AssistedConversion.cpp" line="351"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="310"/>
-        <location filename="AssistedConversion.cpp" line="329"/>
+        <location filename="AssistedConversion.cpp" line="333"/>
+        <location filename="AssistedConversion.cpp" line="352"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="324"/>
+        <location filename="AssistedConversion.cpp" line="347"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="325"/>
+        <location filename="AssistedConversion.cpp" line="348"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="350"/>
+        <location filename="AssistedConversion.cpp" line="373"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="374"/>
+        <location filename="AssistedConversion.cpp" line="397"/>
         <source>File path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="375"/>
+        <location filename="AssistedConversion.cpp" line="398"/>
         <source>*.nif file name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="376"/>
+        <location filename="AssistedConversion.cpp" line="399"/>
         <source>Action</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="392"/>
+        <location filename="AssistedConversion.cpp" line="415"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation></translation>
     </message>
