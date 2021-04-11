@@ -1357,18 +1357,39 @@ void PresetCreator::generateDirectoryStructure()
   if (lMeshesPathBody.length() == 0)
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the body meshes."));
+
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+    }
+
     return;
   }
 
   if (lMeshesPathFeet.length() == 0 && !lSkipFeetCheck)
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the feet meshes."));
+
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+    }
+
     return;
   }
 
   if (lMeshesPathHands.length() == 0 && !lSkipHandsCheck)
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the hands meshes."));
+
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+    }
+
     return;
   }
 
@@ -1376,6 +1397,13 @@ void PresetCreator::generateDirectoryStructure()
   if (lOSPXMLNames.length() == 0)
   {
     Utils::displayWarningMessage(tr("Error: no name given for the BodySlide files."));
+
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+    }
+
     return;
   }
 
@@ -1383,6 +1411,13 @@ void PresetCreator::generateDirectoryStructure()
   if (lBodyslideSlidersetsNames.length() == 0)
   {
     Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."));
+
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+    }
+
     return;
   }
 
@@ -1390,18 +1425,31 @@ void PresetCreator::generateDirectoryStructure()
   auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected))};
   if (lRessourcesFolder.length() == 0)
   {
+    // It should not be possible to reach this statement, but in case an update is buggy, keep this security
     return;
   }
 
   // XML file
   if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodySelected, lBodyslideSlidersetsNames))
   {
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+    }
+
     return;
   }
 
   // OSP file
   if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
   {
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+    }
+
     return;
   }
 
@@ -1415,6 +1463,12 @@ void PresetCreator::generateDirectoryStructure()
 
     if (!this->generateSkeletonFile(lEntryDirectory, lSkeletonPath))
     {
+      // Remove the directory since the generation is incomplete
+      if (!lGenerateFilesInExistingMainDirectory)
+      {
+        Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      }
+
       return;
     }
   }

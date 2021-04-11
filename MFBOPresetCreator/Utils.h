@@ -39,6 +39,7 @@ public:
   static int getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions);
   static int getNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions);
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
+  static bool removeDirectoryAndSubDirs(const QString& aPath);
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconRessourceFolder(const GUITheme& aTheme);
   static QString getBodyRessourceFolder(const BodyNameVersion& aBody);

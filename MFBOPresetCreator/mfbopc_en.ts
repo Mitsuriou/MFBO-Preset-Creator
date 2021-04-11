@@ -59,22 +59,23 @@
     <message>
         <location filename="AssistedConversion.cpp" line="448"/>
         <source>No entry selected</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="449"/>
-        <source>You did not select any file. Do you still want to validate this selection as is?</source>
+        <source>You did not select any entry. Do you still want to validate this selection as is?</source>
+        <oldsource>You did not select any file. Do you still want to validate this selection as is?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="452"/>
         <source>Validate as is</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="453"/>
         <source>Cancel, I wanted to select values</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="338"/>
@@ -634,7 +635,7 @@ The new version &quot;%2&quot; is available on GitHub.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1425"/>
+        <location filename="PresetCreator.cpp" line="1479"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
@@ -664,22 +665,22 @@ The new version &quot;%2&quot; is available on GitHub.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1365"/>
+        <location filename="PresetCreator.cpp" line="1372"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1371"/>
+        <location filename="PresetCreator.cpp" line="1385"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1378"/>
+        <location filename="PresetCreator.cpp" line="1399"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1385"/>
+        <location filename="PresetCreator.cpp" line="1413"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
@@ -735,12 +736,12 @@ The new version &quot;%2&quot; is available on GitHub.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1425"/>
+        <location filename="PresetCreator.cpp" line="1479"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1428"/>
+        <location filename="PresetCreator.cpp" line="1482"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1397,14 +1398,14 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="317"/>
+        <location filename="Utils.cpp" line="328"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="363"/>
-        <location filename="Utils.cpp" line="396"/>
-        <location filename="Utils.cpp" line="466"/>
+        <location filename="Utils.cpp" line="374"/>
+        <location filename="Utils.cpp" line="407"/>
+        <location filename="Utils.cpp" line="477"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>

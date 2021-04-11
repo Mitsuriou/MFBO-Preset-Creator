@@ -59,22 +59,23 @@
     <message>
         <location filename="AssistedConversion.cpp" line="448"/>
         <source>No entry selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune entrée sélectionnée</translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="449"/>
-        <source>You did not select any file. Do you still want to validate this selection as is?</source>
-        <translation type="unfinished"></translation>
+        <source>You did not select any entry. Do you still want to validate this selection as is?</source>
+        <oldsource>You did not select any file. Do you still want to validate this selection as is?</oldsource>
+        <translation>Vous n&apos;avez sélectionné aucune entrée. Voulez-vous quand même valider la sélection telle quelle ?</translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="452"/>
         <source>Validate as is</source>
-        <translation type="unfinished"></translation>
+        <translation>Valider tel quel</translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="453"/>
         <source>Cancel, I wanted to select values</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler, je veux sélectionner des valeurs</translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="338"/>
@@ -627,7 +628,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1425"/>
+        <location filename="PresetCreator.cpp" line="1479"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
@@ -637,22 +638,22 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1365"/>
+        <location filename="PresetCreator.cpp" line="1372"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1371"/>
+        <location filename="PresetCreator.cpp" line="1385"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1378"/>
+        <location filename="PresetCreator.cpp" line="1399"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1385"/>
+        <location filename="PresetCreator.cpp" line="1413"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
@@ -693,7 +694,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1428"/>
+        <location filename="PresetCreator.cpp" line="1482"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -743,7 +744,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1425"/>
+        <location filename="PresetCreator.cpp" line="1479"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1426,14 +1427,14 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="317"/>
+        <location filename="Utils.cpp" line="328"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation>Erreur en cherchant le corps ciblé. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après avoir redémarré l&apos;application, contactez le développeur.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="363"/>
-        <location filename="Utils.cpp" line="396"/>
-        <location filename="Utils.cpp" line="466"/>
+        <location filename="Utils.cpp" line="374"/>
+        <location filename="Utils.cpp" line="407"/>
+        <location filename="Utils.cpp" line="477"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>

@@ -201,6 +201,10 @@
         <file alias="bodyslide-logo">ressources/software/icons/white/bodyslide-logo.png</file>
         <file alias="vector-polyline">ressources/software/icons/white/vector-polyline.png</file>
     </qresource>
+    <qresource prefix="/translations">
+        <file>mfbopc_en.qm</file>
+        <file>mfbopc_fr.qm</file>
+    </qresource>
     <qresource prefix="/qss">
         <file alias="Paper Black Mono.qss">ressources/qss/Paper Black Mono.qss</file>
         <file alias="Paper Dark by 6788.qss">ressources/qss/Paper Dark by 6788.qss</file>

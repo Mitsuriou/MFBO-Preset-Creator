@@ -67,6 +67,7 @@ echo #####################################################</Command>
     </Link>
     <QtTranslation>
       <BuildAction>lupdate_lrelease</BuildAction>
+      <QmOutputDir>$(ProjectDir)</QmOutputDir>
     </QtTranslation>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -83,8 +84,7 @@ echo ############# FINISHED BUILDING MFBO:PC #############
 echo ### COPYING EXECUTABLE INTO CLIENT RELEASE FOLDER ###
 echo #####################################################
 echo #####################################################
-echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard ressources\client release\$(TargetFileName)"
-xcopy /C /Y /R "$(TargetDir)*.qm" "$(SolutionDir)Wizard ressources\client release\translations\*.qm"</Command>
+echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard ressources\client release\$(TargetFileName)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>echo #####################################################
@@ -95,6 +95,7 @@ echo #####################################################</Command>
     </PreBuildEvent>
     <QtTranslation>
       <BuildAction>lupdate_lrelease</BuildAction>
+      <QmOutputDir>$(ProjectDir)</QmOutputDir>
     </QtTranslation>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">

@@ -446,7 +446,7 @@ void AssistedConversion::validateSelection()
     // If not any file as been tagged, ask the user to continue or reselect values
     if (Utils::displayQuestionMessage(this,
                                       tr("No entry selected"),
-                                      tr("You did not select any file. Do you still want to validate this selection as is?"),
+                                      tr("You did not select any entry. Do you still want to validate this selection as is?"),
                                       Utils::getIconRessourceFolder(mSettings.appTheme),
                                       "help-circle",
                                       tr("Validate as is"),

@@ -220,6 +220,17 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
   return true;
 }
 
+bool Utils::removeDirectoryAndSubDirs(const QString& aPath)
+{
+  QFileInfo lFileInfo(aPath);
+  if (!lFileInfo.isDir())
+  {
+    return false;
+  }
+
+  return QDir(aPath).removeRecursively();
+}
+
 bool Utils::isThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
