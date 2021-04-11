@@ -272,9 +272,19 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
 
     // First column is the file path
     lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
+    if (lFilePath.startsWith("<span"))
+    {
+      lFilePath.remove("<span style=\"font-weight: 900;\">");
+      lFilePath.remove("</span>");
+    }
 
     // Second column is the file name
     lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
+    if (lFileName.startsWith("<span"))
+    {
+      lFileName.remove("<span style=\"font-weight: 900;\">");
+      lFileName.remove("</span>");
+    }
 
     // Save the gotten values
     Struct::AssistedConversionResult lResult;
@@ -429,7 +439,28 @@ void AssistedConversion::launchSearchProcess()
 
 void AssistedConversion::validateSelection()
 {
-  emit valuesChosen(this->mScannedDirName, this->getChosenValuesFromInterface());
+  auto lValues{this->getChosenValuesFromInterface()};
+
+  if (lValues.size() == 0)
+  {
+    // If not any file as been tagged, ask the user to continue or reselect values
+    if (Utils::displayQuestionMessage(this,
+                                      tr("No entry selected"),
+                                      tr("You did not select any file. Do you still want to validate this selection as is?"),
+                                      Utils::getIconRessourceFolder(mSettings.appTheme),
+                                      "help-circle",
+                                      tr("Validate as is"),
+                                      tr("Cancel, I wanted to select values"),
+                                      this->mSettings.successColor,
+                                      this->mSettings.dangerColor,
+                                      true)
+        != ButtonClicked::Yes)
+    {
+      return;
+    }
+  }
+
+  emit valuesChosen(this->mScannedDirName, lValues);
   this->close();
 }
 
