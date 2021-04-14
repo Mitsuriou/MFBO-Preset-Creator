@@ -66,7 +66,7 @@ echo #####################################################</Command>
       <AdditionalOptions>/NODEFAULTLIB:library</AdditionalOptions>
     </Link>
     <QtTranslation>
-      <BuildAction>false</BuildAction>
+      <BuildAction>lupdate_lrelease</BuildAction>
       <QmOutputDir>$(ProjectDir)</QmOutputDir>
     </QtTranslation>
   </ItemDefinitionGroup>
