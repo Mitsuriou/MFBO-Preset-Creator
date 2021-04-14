@@ -40,7 +40,7 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 
   if (Utils::displayQuestionMessage(this,
                                     tr("Quitting"),
-                                    tr("Do you want to quit the application?"),
+                                    tr("You will lose all the unsaved data. Do you still want to quit the application?"),
                                     lIconFolder,
                                     "help-circle",
                                     tr("Quit the application"),
@@ -86,6 +86,23 @@ void MFBOPresetCreator::setupMenuBar()
   lFile->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lFile);
 
+  // Action: Open project file
+  auto lOpenProjectFile{Utils::buildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL + Qt::Key_O), "file", lIconFolder)};
+  lOpenProjectFile->setObjectName("action_open_project");
+  lFile->addAction(lOpenProjectFile);
+
+  // Action: Save current project
+  auto lSaveProject{Utils::buildQAction(this, tr("Save"), QKeySequence(Qt::CTRL + Qt::Key_S), "save", lIconFolder)};
+  lSaveProject->setObjectName("action_save_project");
+  lFile->addAction(lSaveProject);
+
+  // Action: Save current project as
+  auto lSaveProjectAs{Utils::buildQAction(this, tr("Save as"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), "save", lIconFolder)};
+  lSaveProjectAs->setObjectName("action_save_project_as");
+  lFile->addAction(lSaveProjectAs);
+
+  lFile->addSeparator();
+
   // Action: Relaunch the app
   auto lRelaunchApp{Utils::buildQAction(this, tr("Quick relaunch"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
   lRelaunchApp->setObjectName("action_quick_relaunch");
@@ -101,19 +118,19 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lTools);
 
   // Action: Textures Assistant
-  auto lOpenTextAssist{Utils::buildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::Key_T), "textures", lIconFolder)};
+  auto lOpenTextAssist{Utils::buildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T), "textures", lIconFolder)};
   lTools->addAction(lOpenTextAssist);
 
   // Action: Assisted Conversion
-  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::Key_Y), "pencil", lIconFolder)};
+  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Y), "pencil", lIconFolder)};
   lTools->addAction(lOpenAssiConv);
 
   // Action: BodySlide Presets' Retargeting
-  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::Key_H), "arrow-up", lIconFolder)};
+  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_H), "arrow-up", lIconFolder)};
   lTools->addAction(lOpenRetaTools);
 
   // Action: Settings
-  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::Key_O), "cog", lIconFolder)};
+  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O), "cog", lIconFolder)};
   lTools->addAction(lOpenSettings);
 
   // Menu: Help
@@ -480,7 +497,30 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
 
 void MFBOPresetCreator::quickRelaunch()
 {
-  qApp->exit(Utils::EXIT_CODE_REBOOT);
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
+  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+  if (!lMainContainer->hasUserDoneSomething())
+  {
+    qApp->exit(Utils::EXIT_CODE_REBOOT);
+    return;
+  }
+
+  if (Utils::displayQuestionMessage(this,
+                                    tr("Quick relaunch"),
+                                    tr("You will lose all the unsaved data. Do you still want to quick relaunch the application?"),
+                                    lIconFolder,
+                                    "help-circle",
+                                    tr("Quick relaunch the application"),
+                                    tr("Go back to the application"),
+                                    this->mSettings.dangerColor,
+                                    this->mSettings.successColor,
+                                    false)
+      == ButtonClicked::Yes)
+  {
+    qApp->exit(Utils::EXIT_CODE_REBOOT);
+  }
 }
 
 void MFBOPresetCreator::launchAssistedConversion()
