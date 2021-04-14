@@ -429,6 +429,14 @@ void Update::installLatestUpdate()
   lLogFile.close();
 
   // Start the update process
-  QProcess::startDetached(this->mSaveFilePath, QStringList());
-  qApp->exit();
+  if (QProcess::startDetached(this->mSaveFilePath, QStringList()))
+  {
+    qApp->exit();
+  }
+  else
+  {
+    Utils::displayWarningMessage("The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.");
+    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+    lSearchButton->setDisabled(false);
+  }
 }
