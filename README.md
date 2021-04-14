@@ -12,12 +12,12 @@ MFBOPC has been designed to work with **Skyrim: Special Edition only**. The appl
 At this time, the application is only capable of changing the body, hands and feet meshes and cannot convert any cloth, outfit or armor: it is a difficult and very time consuming task even for a Human being, I'm not sure of being able to make the application that is that powerful.
 
 # User guide and tutorials
-You can find the "User guide and tutorials" [here](https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing). It is currently being written, but will be completed as things progress ;)
+If you want to understand how the software works; if you have any doubt on any feature or button; if you just want tutorials and examples: you can consult the [User guide and tutorials](https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing) (link to Google Docs).
 
 # Development roadmap (not ordered by priority and not exhaustive)
 ### Ressources
-- [X] (2.5.1) User guide
-- [ ] Tutorials
+- [X] (2.5.1) User guide and written tutorials
+- [ ] Video tutorials (I am not sure I will ever do them)
 
 ### Graphical User Interface (GUI) improvements
 - [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
@@ -43,7 +43,6 @@ You can find the "User guide and tutorials" [here](https://docs.google.com/docum
 - [X] (1.8.0) In-app update checker
 - [X] (2.3.0) Executable installer
 - [X] (2.5.0) In-app automatic updater
-- [ ] Create test classes
 
 # Mirrors
 The source code is available on:
