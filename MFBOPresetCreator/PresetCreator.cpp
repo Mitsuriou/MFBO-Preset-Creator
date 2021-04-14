@@ -108,22 +108,96 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
     }
   }
 
-  if (!lBodiesHaveBeenSet)
+  // Check if at least one mesh has not been set previously
+  if (!lBodiesHaveBeenSet || !lFeetHaveBeenSet || !lHandsHaveBeenSet)
   {
-    this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText("");
-    this->findChild<QLineEdit*>("body_mesh_name_input")->setText("");
-  }
+    // Compose the detailed string of errors
+    auto lUnassignedEntries{QString("")};
+    auto lItemsNumber{0};
 
-  if (!lFeetHaveBeenSet)
-  {
-    this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText("");
-    this->findChild<QLineEdit*>("feet_mesh_name_input")->setText("");
-  }
+    if (!lBodiesHaveBeenSet)
+    {
+      lUnassignedEntries += tr("the body");
+      lItemsNumber++;
+    }
 
-  if (!lHandsHaveBeenSet)
-  {
-    this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText("");
-    this->findChild<QLineEdit*>("hands_mesh_name_input")->setText("");
+    if (!lFeetHaveBeenSet)
+    {
+      if (lItemsNumber == 1 && lHandsHaveBeenSet)
+      {
+        lUnassignedEntries += tr(" and the feet");
+      }
+      else if (lItemsNumber == 1)
+      {
+        lUnassignedEntries += tr(", the feet");
+      }
+      else
+      {
+        lUnassignedEntries += tr("the feet");
+      }
+
+      lItemsNumber++;
+    }
+
+    if (!lHandsHaveBeenSet)
+    {
+      if (lItemsNumber > 0)
+      {
+        lUnassignedEntries += tr(" and the hands");
+      }
+      else
+      {
+        lUnassignedEntries += tr("the hands");
+      }
+
+      lItemsNumber++;
+    }
+
+    auto lMessage{QString("")};
+    if (lItemsNumber > 1)
+    {
+      // Plural
+      lMessage = tr("You did not select any file for %1 meshes. Would you like to clear all these unassigned entries or keep their currently set values?").arg(lUnassignedEntries);
+    }
+    else
+    {
+      // Singular
+      lMessage = tr("You did not select any file for %1 mesh. Would you like to clear this unassigned entry or keep its currently set value?").arg(lUnassignedEntries);
+    }
+
+    if (Utils::displayQuestionMessage(this,
+                                      tr("One mesh data was not assigned"),
+                                      lMessage,
+                                      Utils::getIconRessourceFolder(mSettings.appTheme),
+                                      "help-circle",
+                                      tr("Clear all the unassigned entries"),
+                                      tr("Keep the currently set values for the unassigned entries"),
+                                      this->mSettings.warningColor,
+                                      this->mSettings.warningColor,
+                                      false)
+        == ButtonClicked::Yes)
+    {
+      // Clear the body path
+      if (!lBodiesHaveBeenSet)
+      {
+        this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText("");
+        this->findChild<QLineEdit*>("body_mesh_name_input")->setText("");
+      }
+
+      // Clear the feet path
+      if (!lFeetHaveBeenSet)
+      {
+        this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText("");
+        this->findChild<QLineEdit*>("feet_mesh_name_input")->setText("");
+      }
+
+      // Clear the hands path
+      if (!lHandsHaveBeenSet)
+      {
+        this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText("");
+        this->findChild<QLineEdit*>("hands_mesh_name_input")->setText("");
+      }
+    }
   }
 
   if (!lSkeletonHasBeenSet)
@@ -163,15 +237,18 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 1, 1);
 
+  auto lSeparator1{new QLabel("/", this)};
+  lMeshesGridLayout->addWidget(lSeparator1, 1, 2);
+
   auto lBodyMeshNameInput{new QLineEdit(this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
-  lMeshesGridLayout->addWidget(lBodyMeshNameInput, 1, 2);
+  lMeshesGridLayout->addWidget(lBodyMeshNameInput, 1, 3);
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
   auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
   lBodyMeshNameLabel1->setObjectName("body_mesh_name_extension");
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 1, 3);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 1, 4);
 
   // femalefeet
   auto lMeshesPathFemaleFeetLineEdit{new QLineEdit(this)};
@@ -179,15 +256,18 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 2, 1);
 
+  auto lSeparator2{new QLabel("/", this)};
+  lMeshesGridLayout->addWidget(lSeparator2, 2, 2);
+
   auto lFeetMeshNameInput{new QLineEdit(this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
-  lMeshesGridLayout->addWidget(lFeetMeshNameInput, 2, 2);
+  lMeshesGridLayout->addWidget(lFeetMeshNameInput, 2, 3);
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
   auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
   lBodyMeshNameLabel2->setObjectName("feet_mesh_name_extension");
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 2, 3);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 2, 4);
 
   // femalehands
   auto lMeshesPathFemaleHandsLineEdit{new QLineEdit(this)};
@@ -195,15 +275,18 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 3, 1);
 
+  auto lSeparator3{new QLabel("/", this)};
+  lMeshesGridLayout->addWidget(lSeparator3, 3, 2);
+
   auto lHandsMeshNameInput{new QLineEdit(this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
-  lMeshesGridLayout->addWidget(lHandsMeshNameInput, 3, 2);
+  lMeshesGridLayout->addWidget(lHandsMeshNameInput, 3, 3);
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
   auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"), this)};
   lBodyMeshNameLabel3->setObjectName("hands_mesh_name_extension");
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 3, 3);
+  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 3, 4);
 
   // Preview
   auto lLabelPreview{new QLabel(this)};
@@ -213,7 +296,7 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lMeshesPreview{new QLabel(this)};
   lMeshesPreview->setObjectName("meshes_preview");
   lMeshesPreview->setAutoFillBackground(true);
-  lMeshesGridLayout->addWidget(lMeshesPreview, 4, 1, 1, 2);
+  lMeshesGridLayout->addWidget(lMeshesPreview, 4, 1, 1, 4);
 
   // Beast hands
   auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
@@ -223,7 +306,7 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
   lNeedBeastHands->setCursor(Qt::PointingHandCursor);
   lNeedBeastHands->setObjectName("use_beast_hands");
-  lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 2);
+  lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 4);
 
   // Event binding
   this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
