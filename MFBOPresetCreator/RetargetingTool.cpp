@@ -13,7 +13,7 @@ RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSetti
 
   // Show the window when it's completely built
   this->adjustSize();
-  this->show();
+  this->exec();
 }
 
 void RetargetingTool::closeEvent(QCloseEvent* aEvent)

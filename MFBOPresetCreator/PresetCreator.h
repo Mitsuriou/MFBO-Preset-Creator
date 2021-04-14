@@ -16,6 +16,7 @@ public:
   // Function that will to be called from outside this class
   bool hasUserDoneSomething();
   void updateSettings(Struct::Settings aSettings);
+  void updateBodySlideSets();
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
 
 private:

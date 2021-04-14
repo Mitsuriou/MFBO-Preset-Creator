@@ -59,6 +59,11 @@ void PresetCreator::updateSettings(Struct::Settings aSettings)
   this->mSettings = aSettings;
 }
 
+void PresetCreator::updateBodySlideSets()
+{
+  this->updateBodySlideFiltersList(Utils::loadFiltersFromFile());
+}
+
 void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
 {
   auto lBodiesHaveBeenSet{false};

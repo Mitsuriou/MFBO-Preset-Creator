@@ -459,8 +459,8 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     this->mSettings = aSettings;
 
     // Update the settings
-    auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
-    lMainContainer->updateSettings(aSettings);
+    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+    lMainHandler->updateSettings(aSettings);
   }
   else
   {
@@ -504,6 +504,10 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
 void MFBOPresetCreator::launchPresetsRetargeting()
 {
   new RetargetingTool(this, this->mSettings, &this->mLastPaths);
+
+  // Update the BodySlide sets in case they were modified through the RetargetingTool's window
+  auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+  lMainHandler->updateBodySlideSets();
 }
 
 void MFBOPresetCreator::launchTexturesAssistant()
