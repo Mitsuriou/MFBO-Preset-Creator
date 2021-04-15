@@ -49,25 +49,29 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->mHasUserDoneSomething = false;
 }
 
-void PresetCreator::loadProject()
+void PresetCreator::loadProject(const QString& lFilePath, const bool& aIsLaunchingContext)
 {
-  // Open a file chooser dialog
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
-  const auto& lFilePath{QFileDialog::getOpenFileName(this, "", lContextPath, "*.pcp *.json")};
-  Utils::updatePathAtKey(this->mLastPaths, "lastLoadedProject", lFilePath);
+  QString lFileToLoad{lFilePath};
+  if (!aIsLaunchingContext)
+  {
+    // Open a file chooser dialog
+    const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
+    lFileToLoad = QFileDialog::getOpenFileName(this, "", lContextPath, "*.pcp *.json");
+  }
+
+  if (lFileToLoad.compare("") == 0)
+  {
+    return;
+  }
+
+  Utils::updatePathAtKey(this->mLastPaths, "lastLoadedProject", lFileToLoad);
 
   // Load the project only if a path is defined
-  if (lFilePath.compare("") != 0)
-  {
-    this->loadValuesFromJsonObject(Utils::loadFromJsonFile(lFilePath));
-    this->mLastUsedSavePath = lFilePath;
-    this->parentWidget()->findChild<QAction*>("action_save_project")->setDisabled(false);
-  }
+  this->loadValuesFromJsonObject(Utils::loadFromJsonFile(lFileToLoad));
+  this->mLastUsedSavePath = lFileToLoad;
+  this->parentWidget()->findChild<QAction*>("action_save_project")->setDisabled(false);
 
-  if (!this->mHasUserDoneSomething && lFilePath.compare("") != 0)
-  {
-    this->mHasUserDoneSomething = true;
-  }
+  this->mHasUserDoneSomething = true;
 }
 
 void PresetCreator::saveProject(const bool& aIsSaveAsContext)

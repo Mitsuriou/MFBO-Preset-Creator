@@ -1,8 +1,9 @@
 ﻿#include "MFBOPresetCreator.h"
 
-MFBOPresetCreator::MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent)
+MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QString& aInjectedFilePath, QWidget* parent)
   : QMainWindow(parent)
   , mSettings(aSettings)
+  , mInjectedFilePath(aInjectedFilePath)
   , mLastPaths(Utils::loadLastPathsFromFile())
   , mNewVersionAvailable(false)
 {
@@ -69,6 +70,9 @@ void MFBOPresetCreator::initializeGUI()
   this->refreshUI(mSettings, false);
 
   this->showWindow();
+
+  Utils::cleanPathString(this->mInjectedFilePath);
+  lMainContainer->loadProject(this->mInjectedFilePath, true);
 }
 
 void MFBOPresetCreator::setupMenuBar()

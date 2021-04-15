@@ -8,21 +8,73 @@ bool FORCE_CONSOLE_DISPLAY = true;
 bool FORCE_CONSOLE_DISPLAY = false;
 #endif
 
+bool isArgValidFilePath(const QString& aPathToTest)
+{
+  QFile lFileToTest{aPathToTest};
+  QFileInfo lFileInfo{lFileToTest};
+  return (lFileToTest.exists() && lFileInfo.completeSuffix().compare("pcp") == 0);
+}
+
 int main(int argc, char* argv[])
 {
   auto currentExitCode{0};
+  auto lInjectedFilePath{QString()};
 
   // Check the launch arguments
   if (argc >= 2 || FORCE_CONSOLE_DISPLAY)
   {
-    // Show the debug console
-    Utils::bindConsoleToStdOut();
-
-    if (!(argc == 2 && strcmp(argv[1], "--debug") == 0) && !FORCE_CONSOLE_DISPLAY)
+    if (FORCE_CONSOLE_DISPLAY)
     {
-      // If the argument is not '--debug', kill the application
+      // Show the debug console
+      Utils::bindConsoleToStdOut();
+    }
+
+    if (argc == 2)
+    {
+      if (strcmp(argv[1], "--debug") == 0)
+      {
+        // Show the debug console
+        Utils::bindConsoleToStdOut();
+      }
+      else
+      {
+        // Test if it is a file
+        auto lArgPath{QString(argv[1])};
+        if (isArgValidFilePath(lArgPath))
+        {
+          lInjectedFilePath = lArgPath;
+        }
+      }
+    }
+    else if (argc == 3)
+    {
+      if (strcmp(argv[1], "--debug") == 0 || strcmp(argv[2], "--debug") == 0)
+      {
+        // Show the debug console
+        Utils::bindConsoleToStdOut();
+      }
+
+      // Test if the first argument is a file
+      auto lArgPath{QString(argv[1])};
+      if (isArgValidFilePath(lArgPath))
+      {
+        lInjectedFilePath = lArgPath;
+      }
+      else
+      {
+        // Test if the second argument is a file
+        lArgPath = QString(argv[2]);
+        if (isArgValidFilePath(lArgPath))
+        {
+          lInjectedFilePath = lArgPath;
+        }
+      }
+    }
+    else if (argc > 3)
+    {
+      // Too many arguments, kill the application
       SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-      Utils::printMessageStdOut("Only the \"--debug\" parameter is accepted");
+      Utils::printMessageStdOut("To many starting arguments");
       system("pause");
       return currentExitCode;
     }
@@ -131,7 +183,10 @@ int main(int argc, char* argv[])
     lMainApplication.processEvents();
 
     // Create and show the main window
-    MFBOPresetCreator lMainWindow(lSettings);
+    MFBOPresetCreator lMainWindow(lSettings, lInjectedFilePath);
+
+    // Avoid re-injecting the file a second time if quick reloading the application
+    lInjectedFilePath = "";
 
     // Make the splash screen disappear when the main window is displayed
     lSplashScreen.finish(&lMainWindow);

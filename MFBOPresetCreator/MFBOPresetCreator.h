@@ -22,7 +22,7 @@ class MFBOPresetCreator : public QMainWindow
   Q_OBJECT
 
 public:
-  explicit MFBOPresetCreator(Struct::Settings aSettings, QWidget* parent = Q_NULLPTR);
+  explicit MFBOPresetCreator(const Struct::Settings& aSettings, const QString& aInjectedFilePath, QWidget* parent = Q_NULLPTR);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -30,6 +30,7 @@ protected:
 private:
   Ui::MFBOPresetCreatorClass ui;
   Struct::Settings mSettings;
+  QString mInjectedFilePath;
   std::map<QString, QString> mLastPaths;
   bool mNewVersionAvailable;
   QNetworkAccessManager mManager;

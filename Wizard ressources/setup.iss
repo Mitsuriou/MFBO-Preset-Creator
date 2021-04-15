@@ -20,6 +20,7 @@ SolidCompression=yes
 WizardStyle=modern
 UninstallDisplayIcon={app}\MFBOPresetCreator.exe
 UninstallDisplayName=MFBO Preset Creator (v.{#AppVersion})
+ChangesAssociations = yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -39,3 +40,9 @@ Name: "{autodesktop}\{#AppName} (v.{#AppVersion})"; Filename: "{app}\MFBOPresetC
 
 [Run]
 Filename: "{app}\MFBOPresetCreator.exe"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
+
+[Registry]
+Root: HKCR; Subkey: ".pcp"; ValueData: "{#AppName}"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""
+Root: HKCR; Subkey: "{#AppName}"; ValueData: "Program {#AppName}";  Flags: uninsdeletekey; ValueType: string;  ValueName: ""
+Root: HKCR; Subkey: "{#AppName}\DefaultIcon"; ValueData: "{app}\MFBOPresetCreator.exe,0"; ValueType: string;  ValueName: ""
+Root: HKCR; Subkey: "{#AppName}\shell\open\command";  ValueData: """{app}\MFBOPresetCreator.exe"" ""%1"""; ValueType: string;  ValueName: ""
