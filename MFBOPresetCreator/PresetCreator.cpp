@@ -728,78 +728,76 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
 {
   QJsonObject lValuesObj;
 
-  //
+  // Body
   auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
   Utils::cleanPathString(lMeshesPathBody);
   lValuesObj["meshes_path_input_femalebody"] = lMeshesPathBody;
 
-  //
   auto lBodyName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
   Utils::cleanBreaksString(lBodyName);
   lValuesObj["body_mesh_name_input"] = lBodyName;
 
-  //
+  // Feet
   auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->text().trimmed()};
   Utils::cleanPathString(lMeshesPathFeet);
   lValuesObj["meshes_path_input_femalefeet"] = lMeshesPathFeet;
 
-  //
   auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
   Utils::cleanBreaksString(lFeetName);
   lValuesObj["feet_mesh_name_input"] = lFeetName;
 
+  // Hands
   auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")->text().trimmed()};
   Utils::cleanPathString(lMeshesPathHands);
   lValuesObj["meshes_path_input_femalehands"] = lMeshesPathHands;
 
-  //
   auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
   Utils::cleanBreaksString(lHandsName);
   lValuesObj["hands_mesh_name_input"] = lHandsName;
 
-  //
+  // Use beast hands
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
   lValuesObj["use_beast_hands"] = lMustUseBeastHands;
 
-  //
+  // Use skeleton
   auto lMustCopySkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked()};
   lValuesObj["use_custom_skeleton"] = lMustCopySkeleton;
 
-  //
+  // Skeleton path
   auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed()};
   Utils::cleanPathString(lSkeletonPath);
   lValuesObj["skeleton_path_directory"] = lSkeletonPath;
 
-  //
+  // Skeleton name
   auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
   lValuesObj["skeleton_name"] = lSkeletonName;
 
-  //
+  // Body name
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   lValuesObj["body_selector_name"] = lBodyNameSelected;
 
-  //
+  // Body version
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   lValuesObj["body_selector_version"] = lBodyVersionSelected;
 
-  //
+  // OSP and XML names
   auto lOSPXMLNames{this->findChild<QLineEdit*>("names_osp_xml_input")->text().trimmed()};
   lValuesObj["names_osp_xml_input"] = lOSPXMLNames;
 
-  //
+  // SliderSets names
   auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
   lValuesObj["names_bodyslide_input"] = lBodyslideSlidersetsNames;
 
-  //
+  // Output
   auto lMainDirectory{this->findChild<QLineEdit*>("output_path_directory")->text().trimmed()};
   Utils::cleanPathString(lMainDirectory);
   lValuesObj["output_path_directory"] = lMainDirectory;
 
-  //
   auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
   Utils::cleanPathString(lSubDirectory);
   lValuesObj["output_path_subdirectory"] = lSubDirectory;
 
+  // Return the generated object
   return lValuesObj;
 }
 
