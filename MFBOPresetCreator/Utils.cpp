@@ -376,7 +376,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   }
 
   auto lXMLGroup{lXMLDocument.documentElement().firstChild().toElement()};
-  auto lPresetName{QString("")};
+  auto lPresetName{QString()};
 
   if (lXMLGroup.tagName() == "Group")
   {
@@ -465,7 +465,7 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
 
-  auto lFileContent{QString("")};
+  auto lFileContent{QString()};
 
   if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {

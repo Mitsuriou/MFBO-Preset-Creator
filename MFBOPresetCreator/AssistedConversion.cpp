@@ -256,8 +256,8 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
 
   std::vector<Struct::AssistedConversionResult> lResults;
   QComboBox* lComboBox{nullptr};
-  auto lFilePath{QString("")};
-  auto lFileName{QString("")};
+  auto lFilePath{QString()};
+  auto lFileName{QString()};
 
   // For each row (skip the row 0 because it is a "header")
   for (int i = 1; i < lLinesToTreat; i++)

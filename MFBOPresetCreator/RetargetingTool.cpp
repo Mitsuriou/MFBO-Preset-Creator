@@ -250,8 +250,8 @@ void RetargetingTool::userHasDoneAnAction()
 int RetargetingTool::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
 {
   auto lNumber{0};
-  auto lAbsFilePath{QString("")};
-  auto lRelativeDirs{QString("")};
+  auto lAbsFilePath{QString()};
+  auto lRelativeDirs{QString()};
 
   QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
@@ -518,8 +518,8 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Iterate through all the files
   std::vector<QPair<QString, QString>> lNamesBuffer;
 
-  auto lAbsFilePath{QString("")};
-  auto lRelativeDirs{QString("")};
+  auto lAbsFilePath{QString()};
+  auto lRelativeDirs{QString()};
   std::vector<Struct::SliderSet> lParsedSliderSets;
   auto lRessourcesFolder{Utils::getBodyRessourceFolder(lBodySelected)};
 
@@ -614,7 +614,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Search for the preset name in the buffer
-    auto lPresetName{QString("")};
+    auto lPresetName{QString()};
     auto lBufferLocationToRemove{-1};
 
     auto lOSPBufSize{lOSPBuffer.size()};
@@ -793,7 +793,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Searching for the preset name in the buffer
-    auto lPresetName{QString("")};
+    auto lPresetName{QString()};
     auto lNamesBufSize{lNamesBuffer.size()};
 
     for (int i = 0; i < lNamesBufSize; i++)
@@ -815,7 +815,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
     auto lUserFiltersListSize{lUserFilters.size()};
 
-    auto lRessourcePath{QString("")};
+    auto lRessourcePath{QString()};
 
     // Use custom filters
     if (lUserFiltersListSize > 0)
@@ -864,7 +864,7 @@ void RetargetingTool::launchUpDownGradeProcess()
         // Custom BodySlide filters
         if (lUserFiltersListSize > 0)
         {
-          auto lUserFiltersConcat{QString("")};
+          auto lUserFiltersConcat{QString()};
 
           for (const auto& lUserFilter : lUserFilters)
           {
@@ -994,7 +994,7 @@ void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
   auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
 
-  auto lText{QString("")};
+  auto lText{QString()};
   if (aIndex != -1)
   {
     lText = this->mFiltersList.find(lChooser->itemText(aIndex))->second.join(QString(" ; "));

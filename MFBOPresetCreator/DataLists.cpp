@@ -174,5 +174,7 @@ QStringList DataLists::getLastPathsKeys()
     "assistedConversionInput",
     "retargetingToolInput",
     "retargetingToolOutput",
-    "texturesAssistantInput"};
+    "texturesAssistantInput",
+    "lastLoadedProject",
+    "lastSavedProject"};
 }

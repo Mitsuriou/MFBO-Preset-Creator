@@ -14,6 +14,8 @@ public:
   explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
   // Function that will to be called from outside this class
+  void loadProject();
+  void saveProject(const bool& aIsSaveAsContext);
   bool hasUserDoneSomething();
   void updateSettings(Struct::Settings aSettings);
   void updateBodySlideSets();
@@ -24,6 +26,7 @@ private:
   std::map<QString, QString>* mLastPaths;
   std::map<QString, QStringList> mFiltersList;
   bool mHasUserDoneSomething;
+  QString mLastUsedSavePath;
   int mMinimumFirstColumnWidth;
 
   // GUI creation
@@ -32,6 +35,10 @@ private:
   void setupSkeletonGUI(QVBoxLayout& aLayout);
   void setupOutputGUI(QVBoxLayout& aLayout);
   void setupRemainingGUI(QVBoxLayout& aLayout);
+
+  // Load and save project
+  void loadValuesFromJsonObject(const QJsonObject& lFile);
+  QJsonObject saveValuesToJsonObject();
 
   // GUI update scripts
   void updateGUIOnBodyChange();

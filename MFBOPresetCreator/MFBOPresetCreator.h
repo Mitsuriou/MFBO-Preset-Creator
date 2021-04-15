@@ -50,6 +50,9 @@ public slots:
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
 
 private slots:
+  // Base functionalities
+  void loadProject();
+  void saveProject();
   void quickRelaunch();
   // Assisted Conversion
   void launchAssistedConversion();

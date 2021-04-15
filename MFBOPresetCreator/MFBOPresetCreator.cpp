@@ -94,6 +94,7 @@ void MFBOPresetCreator::setupMenuBar()
   // Action: Save current project
   auto lSaveProject{Utils::buildQAction(this, tr("Save"), QKeySequence(Qt::CTRL + Qt::Key_S), "save", lIconFolder)};
   lSaveProject->setObjectName("action_save_project");
+  lSaveProject->setDisabled(true);
   lFile->addAction(lSaveProject);
 
   // Action: Save current project as
@@ -105,7 +106,6 @@ void MFBOPresetCreator::setupMenuBar()
 
   // Action: Relaunch the app
   auto lRelaunchApp{Utils::buildQAction(this, tr("Quick relaunch"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
-  lRelaunchApp->setObjectName("action_quick_relaunch");
   lFile->addAction(lRelaunchApp);
 
   // Action: Exit
@@ -171,6 +171,9 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addAction(lOpenAbout);
 
   // Event binding
+  this->connect(lOpenProjectFile, &QAction::triggered, this, &MFBOPresetCreator::loadProject);
+  this->connect(lSaveProject, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
+  this->connect(lSaveProjectAs, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
   this->connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
   this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
@@ -248,7 +251,7 @@ void MFBOPresetCreator::showWindow()
 
 void MFBOPresetCreator::applyGlobalStyleSheet()
 {
-  auto lQSSFileName{QString("")};
+  auto lQSSFileName{QString()};
 
   switch (this->mSettings.appTheme)
   {
@@ -411,8 +414,8 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Display a message based on new available versions
-  auto lTitle{QString("")};
-  auto lMessage{QString("")};
+  auto lTitle{QString()};
+  auto lMessage{QString()};
 
   if (aResult == "fetch_error")
   {
@@ -492,6 +495,24 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
               aSettings.font.italic,
               aSettings.font.underline,
               aSettings.font.strikeOut);
+  }
+}
+
+void MFBOPresetCreator::loadProject()
+{
+  qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))->loadProject();
+}
+
+void MFBOPresetCreator::saveProject()
+{
+  auto lEventSource{qobject_cast<QAction*>(sender())};
+  if (lEventSource->objectName().compare("action_save_project") == 0)
+  {
+    qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))->saveProject(false);
+  }
+  else if (lEventSource->objectName().compare("action_save_project_as") == 0)
+  {
+    qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))->saveProject(true);
   }
 }
 
