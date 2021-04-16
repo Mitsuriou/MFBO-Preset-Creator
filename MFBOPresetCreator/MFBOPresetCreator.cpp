@@ -623,7 +623,7 @@ void MFBOPresetCreator::launchTexturesAssistant()
 
 void MFBOPresetCreator::launchSettingsDialog()
 {
-  auto lSettings{new Settings(this, this->mSettings)};
+  auto lSettings{new Settings(this, this->mSettings, this->mLastPaths)};
   this->connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 

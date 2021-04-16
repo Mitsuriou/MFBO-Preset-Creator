@@ -1,8 +1,9 @@
 #include "Settings.h"
 
-Settings::Settings(QWidget* parent, Struct::Settings aSettings)
+Settings::Settings(QWidget* parent, const Struct::Settings& aSettings, const std::map<QString, QString>& aLastPaths)
   : QDialog(parent)
   , mSettings(aSettings)
+  , mLastPaths(aLastPaths)
   , mMustRebootMainApp{false}
   , mNewFont{qApp->font()}
 {
@@ -87,6 +88,7 @@ void Settings::initializeGUI()
   this->setupPresetCreatorGroup(*lMainLayout, lIndex);
   this->setupRetargetingToolGroup(*lMainLayout, lIndex);
   this->setupAssistedConversionGroup(*lMainLayout, lIndex);
+  this->setupLastPaths(*lMainLayout, lIndex);
   this->setupButtons(*lMainLayout, lIndex);
 
   // Load the settings into the interface
@@ -312,30 +314,6 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBodyVersions);
 }
 
-void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex)
-{
-  // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-
-  // Assisted Conversion group box
-  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion"), this)};
-  Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
-  this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 3, 1);
-
-  // Container layout
-  auto lAssistedConversionLayout{new QVBoxLayout(lAssistedConversionGroupBox)};
-  lAssistedConversionLayout->setSpacing(10);
-  lAssistedConversionLayout->setContentsMargins(15, 20, 15, 15);
-  lAssistedConversionLayout->setAlignment(Qt::AlignTop);
-
-  // ONLY SCAN THE MESHES SUBDIRECTORY
-  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory"), this)};
-  lScanOnlyMeshesFolder->setCursor(Qt::PointingHandCursor);
-  lScanOnlyMeshesFolder->setObjectName(QString("assis_conv_only_scan_meshes_dir"));
-  lAssistedConversionLayout->addWidget(lScanOnlyMeshesFolder);
-}
-
 void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   // User theme accent
@@ -378,6 +356,61 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   this->connect(lUpgradeBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
 }
 
+void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
+  // Assisted Conversion group box
+  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion"), this)};
+  Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
+  this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
+  aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 3, 1);
+
+  // Container layout
+  auto lAssistedConversionLayout{new QVBoxLayout(lAssistedConversionGroupBox)};
+  lAssistedConversionLayout->setSpacing(10);
+  lAssistedConversionLayout->setContentsMargins(15, 20, 15, 15);
+  lAssistedConversionLayout->setAlignment(Qt::AlignTop);
+
+  // ONLY SCAN THE MESHES SUBDIRECTORY
+  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory"), this)};
+  lScanOnlyMeshesFolder->setCursor(Qt::PointingHandCursor);
+  lScanOnlyMeshesFolder->setObjectName(QString("assis_conv_only_scan_meshes_dir"));
+  lAssistedConversionLayout->addWidget(lScanOnlyMeshesFolder);
+}
+
+void Settings::setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
+  // BodySlide Presets' Retargeting group box
+  auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths"), this)};
+  Utils::addIconToGroupBox(lPathsGroupBox, lIconFolder, "folder");
+  this->connect(lPathsGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
+  aLayout.addWidget(lPathsGroupBox, aNextRowIndex + 4, 0, 1, 2);
+
+  auto lPathsLayout{new QGridLayout(lPathsGroupBox)};
+  lPathsLayout->setSpacing(10);
+  lPathsLayout->setContentsMargins(15, 20, 15, 15);
+  lPathsLayout->setAlignment(Qt::AlignTop);
+
+  // general
+  Utils::addLastPathLine(this, lPathsLayout, 0, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 1, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 2, tr("Assist. conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Ret. Tool: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Ret. Tool: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 5, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Project load location"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Project save location"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+
+  // TODO: optimize the GUI because there are too many lines
+  // TOOD: Bind the clear button to clear events
+  // TODO: Save the paths on quit
+}
+
 void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
 {
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -385,7 +418,7 @@ void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
-  aLayout.addLayout(lButtonsContainer, aNextRowIndex + 4, 0, 1, 2);
+  aLayout.addLayout(lButtonsContainer, aNextRowIndex + 5, 0, 1, 2);
 
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};

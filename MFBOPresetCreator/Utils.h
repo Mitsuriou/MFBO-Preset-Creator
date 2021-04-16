@@ -84,6 +84,7 @@ public:
   // Widgets builder
   static QAction* buildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder);
   static void addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName);
+  static void addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName);
 
   // Windows console
   static void bindConsoleToStdOut();

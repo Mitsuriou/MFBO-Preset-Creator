@@ -9,7 +9,7 @@ class Settings : public QDialog
   Q_OBJECT
 
 public:
-  explicit Settings(QWidget* parent, Struct::Settings aSettings);
+  explicit Settings(QWidget* parent, const Struct::Settings& aSettings, const std::map<QString, QString>& aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -17,6 +17,7 @@ protected:
 
 private:
   Struct::Settings mSettings;
+  std::map<QString, QString> mLastPaths;
   QFont mNewFont;
   QString mNewSuccessColor;
   QString mNewWarningColor;
@@ -29,8 +30,9 @@ private:
   void setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRowIndex);
-  void setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextRowIndex);
+  void setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNextRowIndex);
+  void setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupButtons(QGridLayout& aLayout, const int& aNextRowIndex);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);

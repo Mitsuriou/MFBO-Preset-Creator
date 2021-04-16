@@ -1066,6 +1066,23 @@ void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, 
   aGroupBox->setStyleSheet(QString("QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%1/%2)}").arg(aIconFolder).arg(aIconName));
 }
 
+void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
+{
+  auto lLabel{new QLabel(aLabel, aParent)};
+  aLayout->addWidget(lLabel, aRow, 0);
+
+  auto lGeneralValue{new QLineEdit(aValue, aParent)};
+  lGeneralValue->setDisabled(true);
+  aLayout->addWidget(lGeneralValue, aRow, 1);
+
+  auto lGeneralEmptyButton{new QPushButton(QString(""), aParent)};
+  lGeneralEmptyButton->setCursor(Qt::PointingHandCursor);
+  lGeneralEmptyButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName))));
+  lGeneralEmptyButton->setAutoDefault(false);
+  lGeneralEmptyButton->setDefault(false);
+  aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
+}
+
 void Utils::bindConsoleToStdOut()
 {
   FreeConsole();
