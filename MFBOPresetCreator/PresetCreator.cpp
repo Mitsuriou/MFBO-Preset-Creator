@@ -49,10 +49,10 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->mHasUserDoneSomething = false;
 }
 
-void PresetCreator::loadProject(const QString& lFilePath, const bool& aIsLaunchingContext)
+void PresetCreator::loadProject(const QString& lFilePath, const bool& aSkipFileChooser)
 {
   QString lFileToLoad{lFilePath};
-  if (!aIsLaunchingContext)
+  if (!aSkipFileChooser)
   {
     // Open a file chooser dialog
     const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};

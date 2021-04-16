@@ -14,7 +14,7 @@ public:
   explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
   // Function that will to be called from outside this class
-  void loadProject(const QString& lFilePath = "", const bool& aIsLaunchingContext = false);
+  void loadProject(const QString& lFilePath = "", const bool& aSkipFileChooser = false);
   void saveProject(const bool& aIsSaveAsContext);
   bool hasUserDoneSomething();
   void updateSettings(Struct::Settings aSettings);

@@ -59,6 +59,45 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   }
 }
 
+void MFBOPresetCreator::dragEnterEvent(QDragEnterEvent* aEvent)
+{
+  auto lAcceptEvent{false};
+
+  for (const QUrl& lUrl : aEvent->mimeData()->urls())
+  {
+    auto lFileName{lUrl.toLocalFile()};
+    QFileInfo lFileInfo(lFileName);
+    if (lFileInfo.exists() && lFileInfo.isFile() && lFileInfo.completeSuffix().compare("pcp") == 0)
+    {
+      lAcceptEvent = true;
+    }
+  }
+
+  if (lAcceptEvent)
+  {
+    aEvent->setDropAction(Qt::DropAction::MoveAction);
+    aEvent->accept();
+  }
+  else
+  {
+    aEvent->ignore();
+  }
+}
+
+void MFBOPresetCreator::dropEvent(QDropEvent* aEvent)
+{
+  for (const QUrl& lUrl : aEvent->mimeData()->urls())
+  {
+    auto lFileName{lUrl.toLocalFile()};
+    QFileInfo lFileInfo(lFileName);
+    if (lFileInfo.exists() && lFileInfo.isFile() && lFileInfo.completeSuffix().compare("pcp") == 0)
+    {
+      aEvent->acceptProposedAction();
+      qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))->loadProject(lFileName, true);
+    }
+  }
+}
+
 void MFBOPresetCreator::initializeGUI()
 {
   this->setupMenuBar();
@@ -70,6 +109,8 @@ void MFBOPresetCreator::initializeGUI()
   this->refreshUI(mSettings, false);
 
   this->showWindow();
+
+  this->setAcceptDrops(true);
 
   Utils::cleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
