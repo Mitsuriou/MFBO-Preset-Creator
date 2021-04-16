@@ -575,10 +575,10 @@ void MFBOPresetCreator::quickRelaunch()
 
   if (Utils::displayQuestionMessage(this,
                                     tr("Quick relaunch"),
-                                    tr("You will lose all the unsaved data. Do you still want to quick relaunch the application?"),
+                                    tr("You will lose all the unsaved data. Do you still want to quickly relaunch the application?"),
                                     lIconFolder,
                                     "help-circle",
-                                    tr("Quick relaunch the application"),
+                                    tr("Quickly relaunch the application"),
                                     tr("Go back to the application"),
                                     this->mSettings.dangerColor,
                                     this->mSettings.successColor,

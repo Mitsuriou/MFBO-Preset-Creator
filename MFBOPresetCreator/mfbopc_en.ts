@@ -64,8 +64,7 @@
     <message>
         <location filename="AssistedConversion.cpp" line="449"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
-        <oldsource>You did not select any file. Do you still want to validate this selection as is?</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="452"/>
@@ -308,18 +307,17 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="135"/>
         <source>Open project...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="140"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="146"/>
         <source>Save as</source>
-        <oldsource>Save project as...</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="157"/>
@@ -405,7 +403,6 @@
         <location filename="MFBOPresetCreator.cpp" line="468"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
-        <oldsource>An error has occurred while searching for a new version... Make sure your internet connection is operational and try again.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -418,8 +415,6 @@ Make sure your internet connection is operational and try again.</source>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
-        <oldsource>You are currently running the version &quot;%1&quot;.
-The new version &quot;%2&quot; is available on GitHub.</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -439,13 +434,15 @@ The new version &quot;%2&quot; is available on GitHub.</oldsource>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="578"/>
-        <source>You will lose all the unsaved data. Do you still want to quick relaunch the application?</source>
-        <translation type="unfinished"></translation>
+        <source>You will lose all the unsaved data. Do you still want to quickly relaunch the application?</source>
+        <oldsource>You will lose all the unsaved data. Do you still want to quick relaunch the application?</oldsource>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="581"/>
-        <source>Quick relaunch the application</source>
-        <translation type="unfinished"></translation>
+        <source>Quickly relaunch the application</source>
+        <oldsource>Quick relaunch the application</oldsource>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="153"/>
@@ -461,8 +458,7 @@ The new version &quot;%2&quot; is available on GitHub.</oldsource>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="44"/>
         <source>You will lose all the unsaved data. Do you still want to quit the application?</source>
-        <oldsource>Do you want to quit the application?</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -505,32 +501,32 @@ The new version &quot;%2&quot; is available on GitHub.</oldsource>
     <message>
         <location filename="PresetCreator.cpp" line="207"/>
         <source> and the hands</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="221"/>
         <source>You did not select any file for %1 meshes. Would you like to clear all these unassigned entries or keep their currently set values?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="226"/>
         <source>You did not select any file for %1 mesh. Would you like to clear this unassigned entry or keep its currently set value?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="230"/>
         <source>One mesh data was not assigned</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="234"/>
         <source>Clear all the unassigned entries</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="235"/>
         <source>Keep the currently set values for the unassigned entries</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="351"/>
@@ -752,27 +748,27 @@ The new version &quot;%2&quot; is available on GitHub.</oldsource>
     <message>
         <location filename="PresetCreator.cpp" line="181"/>
         <source>the body</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="189"/>
         <source> and the feet</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="193"/>
         <source>, the feet</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="197"/>
         <source>the feet</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="211"/>
         <source>the hands</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="405"/>
@@ -1406,14 +1402,6 @@ The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
 Below are the release notes for this update:</source>
-        <oldsource>You are currently running the version &quot;v.%1&quot;.
-The new version &quot;v.%2&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 10MB~.
-The download will be saved under &quot;%3&quot;.
-
-Below are the release notes for this update:</oldsource>
         <translation></translation>
     </message>
     <message>
