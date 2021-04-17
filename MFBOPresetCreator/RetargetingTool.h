@@ -47,5 +47,5 @@ private slots:
   void updateBodySlideFiltersListPreview(int aIndex);
 
   // GUI widgets events
-  void preventGroupBoxCheckEvent(bool aIsChecked);
+  void groupBoxChecked(bool aIsChecked);
 };

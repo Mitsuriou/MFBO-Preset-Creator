@@ -1095,12 +1095,12 @@ void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed)
   if (aIsCollapsed)
   {
     aGroupBox->setChecked(false);
-    aGroupBox->setMaximumHeight(qApp->fontMetrics().height() * 2);
+    aGroupBox->setMaximumHeight(qApp->fontMetrics().height() * 1.5);
     lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F5));
   }
   else
   {
-    aGroupBox->setMaximumHeight(INT32_MAX);
+    aGroupBox->setMaximumHeight(QWIDGETSIZE_MAX);
     lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F7));
   }
 

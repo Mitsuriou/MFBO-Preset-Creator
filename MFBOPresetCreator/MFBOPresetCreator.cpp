@@ -150,7 +150,7 @@ void MFBOPresetCreator::setupMenuBar()
   lFile->addSeparator();
 
   // Action: Relaunch the app
-  auto lRelaunchApp{Utils::buildQAction(this, tr("Quick relaunch"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
+  auto lRelaunchApp{Utils::buildQAction(this, tr("Quick restart"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
   lFile->addAction(lRelaunchApp);
 
   // Action: Exit
@@ -574,11 +574,11 @@ void MFBOPresetCreator::quickRelaunch()
   }
 
   if (Utils::displayQuestionMessage(this,
-                                    tr("Quick relaunch"),
-                                    tr("You will lose all the unsaved data. Do you still want to quickly relaunch the application?"),
+                                    tr("Quick restart"),
+                                    tr("You will lose all the unsaved data. Do you still want to quickly restart the application?"),
                                     lIconFolder,
                                     "help-circle",
-                                    tr("Quickly relaunch the application"),
+                                    tr("Quickly restart the application"),
                                     tr("Go back to the application"),
                                     this->mSettings.dangerColor,
                                     this->mSettings.successColor,

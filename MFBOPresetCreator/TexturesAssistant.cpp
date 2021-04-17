@@ -258,9 +258,10 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   auto lRowIndex{0};
 
   // Head ressources blocks
-  auto lHeadGroup{new QGroupBox("Head textures", this)};
+  auto lHeadGroup{new QGroupBox(tr("Head textures").append("  "), this)};
   Utils::addIconToGroupBox(lHeadGroup, lIconFolder, "woman-head");
-  this->connect(lHeadGroup, &QGroupBox::toggled, this, &TexturesAssistant::preventGroupBoxCheckEvent);
+  this->connect(lHeadGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::setGroupBoxState(lHeadGroup, false);
 
   auto lHeadGroupContainer{new QGridLayout(this)};
   lHeadGroupContainer->setSpacing(16);
@@ -269,9 +270,10 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   aLayout->addWidget(lHeadGroup, lRowIndex++, 0);
 
   // Hands ressources blocks
-  auto lHandsGroup{new QGroupBox("Hands textures", this)};
+  auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
   Utils::addIconToGroupBox(lHandsGroup, lIconFolder, "hand");
-  this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::preventGroupBoxCheckEvent);
+  this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::setGroupBoxState(lHandsGroup, false);
 
   auto lHandsGroupContainer{new QGridLayout(this)};
   lHandsGroupContainer->setSpacing(16);
@@ -280,9 +282,10 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   aLayout->addWidget(lHandsGroup, lRowIndex++, 0);
 
   // Body ressources blocks
-  auto lBodyGroup{new QGroupBox("Body textures", this)};
+  auto lBodyGroup{new QGroupBox(tr("Body textures").append("  "), this)};
   Utils::addIconToGroupBox(lBodyGroup, lIconFolder, "body");
-  this->connect(lBodyGroup, &QGroupBox::toggled, this, &TexturesAssistant::preventGroupBoxCheckEvent);
+  this->connect(lBodyGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::setGroupBoxState(lBodyGroup, false);
 
   auto lBodyGroupContainer{new QGridLayout(this)};
   lBodyGroupContainer->setSpacing(16);
@@ -291,9 +294,10 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   aLayout->addWidget(lBodyGroup, lRowIndex++, 0);
 
   // Other textures files
-  auto lOtherGroup{new QGroupBox("Other .DDS textures", this)};
+  auto lOtherGroup{new QGroupBox(tr("Other .DDS textures").append("  "), this)};
   Utils::addIconToGroupBox(lOtherGroup, lIconFolder, "textures");
-  this->connect(lOtherGroup, &QGroupBox::toggled, this, &TexturesAssistant::preventGroupBoxCheckEvent);
+  this->connect(lOtherGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::setGroupBoxState(lOtherGroup, false);
 
   auto lOtherGroupContainer{new QGridLayout(this)};
   lOtherGroupContainer->setSpacing(16);
@@ -439,11 +443,11 @@ void TexturesAssistant::scrollbarReleased()
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
-void TexturesAssistant::preventGroupBoxCheckEvent(bool aIsChecked)
+void TexturesAssistant::groupBoxChecked(bool aIsChecked)
 {
   auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (!aIsChecked)
-  {
-    lGroupBox->setChecked(true);
-  }
+  if (lGroupBox == nullptr)
+    return;
+
+  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
 }

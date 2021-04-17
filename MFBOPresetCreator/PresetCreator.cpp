@@ -692,7 +692,7 @@ void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
   lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/build").arg(lIconFolder))));
   lGenerateButton->setCursor(Qt::PointingHandCursor);
-  aLayout.addStretch(1);
+  aLayout.addStretch(0);
   aLayout.addWidget(lGenerateButton, Qt::AlignBottom);
 
   // Event binding

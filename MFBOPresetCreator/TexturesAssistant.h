@@ -60,5 +60,5 @@ private slots:
   // GUI widgets events
   void scrollbarPressed();
   void scrollbarReleased();
-  void preventGroupBoxCheckEvent(bool aIsChecked);
+  void groupBoxChecked(bool aIsChecked);
 };

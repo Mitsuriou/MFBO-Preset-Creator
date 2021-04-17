@@ -65,6 +65,9 @@ void RetargetingTool::initializeGUI()
 {
   // Main window container
   auto lMainVertical{new QGridLayout(this)};
+  lMainVertical->setRowStretch(0, 0);
+  lMainVertical->setRowStretch(1, 0);
+  lMainVertical->setRowStretch(2, 2);
   this->setupInterface(*lMainVertical);
 }
 
@@ -74,9 +77,10 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // General group box
-  auto lGeneralGroupBox{new QGroupBox(tr("General"), this)};
+  auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
   Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
-  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &RetargetingTool::preventGroupBoxCheckEvent);
+  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
+  Utils::setGroupBoxState(lGeneralGroupBox, false);
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -152,9 +156,10 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->addWidget(lEditFilters, 2, 4);
 
   // Backup group box
-  auto lBackupGroupBox{new QGroupBox(tr("Backup"), this)};
+  auto lBackupGroupBox{new QGroupBox(tr("Backup").append("  "), this)};
   Utils::addIconToGroupBox(lBackupGroupBox, lIconFolder, "restore");
-  this->connect(lBackupGroupBox, &QGroupBox::toggled, this, &RetargetingTool::preventGroupBoxCheckEvent);
+  this->connect(lBackupGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
+  Utils::setGroupBoxState(lBackupGroupBox, false);
   aLayout.addWidget(lBackupGroupBox, 1, 0);
 
   // Grid layout
@@ -1005,11 +1010,14 @@ void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
   this->userHasDoneAnAction();
 }
 
-void RetargetingTool::preventGroupBoxCheckEvent(bool aIsChecked)
+void RetargetingTool::groupBoxChecked(bool aIsChecked)
 {
   auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (!aIsChecked)
-  {
-    lGroupBox->setChecked(true);
-  }
+  if (lGroupBox == nullptr)
+    return;
+
+  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+
+  // Resize the window
+  this->adjustSize();
 }
