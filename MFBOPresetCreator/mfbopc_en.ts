@@ -435,13 +435,11 @@ Do you want to download it now?</source>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="578"/>
         <source>You will lose all the unsaved data. Do you still want to quickly relaunch the application?</source>
-        <oldsource>You will lose all the unsaved data. Do you still want to quick relaunch the application?</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="581"/>
         <source>Quickly relaunch the application</source>
-        <oldsource>Quick relaunch the application</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1069,9 +1067,8 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="Settings.cpp" line="112"/>
-        <source>Display a</source>
-        <oldsource>Display [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Display</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="125"/>
@@ -1120,9 +1117,9 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="Settings.cpp" line="235"/>
-        <source>General a</source>
-        <oldsource>General [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <location filename="Settings.cpp" line="414"/>
+        <source>General</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="254"/>
@@ -1131,9 +1128,8 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="Settings.cpp" line="266"/>
-        <source>Preset Creator a</source>
-        <oldsource>Preset Creator [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Preset Creator</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="280"/>
@@ -1173,25 +1169,17 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="Settings.cpp" line="334"/>
-        <source>BodySlide Presets&apos; Retargeting a</source>
-        <oldsource>BodySlide Presets&apos; Retargeting [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <source>BodySlide Presets&apos; Retargeting</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="377"/>
-        <source>Assisted Conversion a</source>
-        <oldsource>Assisted Conversion [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Assisted Conversion</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="402"/>
-        <source>Last used folder and files paths a</source>
-        <oldsource>Last used folder and files paths [+]</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="414"/>
-        <source>General</source>
+        <source>Last used folder and files paths</source>
         <translation></translation>
     </message>
     <message>
@@ -1222,39 +1210,37 @@ Do you want to download it now?</source>
     <message>
         <location filename="Settings.cpp" line="415"/>
         <source>Main window: output</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="416"/>
-        <source>Assist. conv.: input</source>
-        <translation type="unfinished"></translation>
+        <source>Assist. Conv.: input</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="417"/>
-        <source>Ret. Tool: input</source>
-        <translation type="unfinished"></translation>
+        <source>Presets&apos; Ret.: input</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="418"/>
-        <source>Ret. Tool: output</source>
-        <translation type="unfinished"></translation>
+        <source>Presets&apos; Ret.: output</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="419"/>
         <source>Textures Assist.: input</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="420"/>
-        <source>Project load</source>
-        <oldsource>Project load location</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Loaded project</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="421"/>
-        <source>Project save</source>
-        <oldsource>Project save location</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Saved project</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="441"/>

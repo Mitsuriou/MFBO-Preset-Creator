@@ -109,7 +109,7 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Display group box
-  auto lDisplayGroupBox{new QGroupBox(tr("Display a"), this)};
+  auto lDisplayGroupBox{new QGroupBox(tr("Display").append("  "), this)};
   Utils::addIconToGroupBox(lDisplayGroupBox, lIconFolder, "monitor");
   this->connect(lDisplayGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   this->setGroupBoxState(lDisplayGroupBox, false);
@@ -232,7 +232,7 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Display group box
-  auto lGeneralGroupBox{new QGroupBox(tr("General a"), this)};
+  auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
   Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   this->setGroupBoxState(lGeneralGroupBox, false);
@@ -263,7 +263,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Preset Creator group box
-  auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator a"), this)};
+  auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator").append("  "), this)};
   Utils::addIconToGroupBox(lPresetCreatorGroupBox, lIconFolder, "home");
   this->connect(lPresetCreatorGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   this->setGroupBoxState(lPresetCreatorGroupBox, false);
@@ -331,7 +331,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // BodySlide Presets' Retargeting group box
-  auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting a"), this)};
+  auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting").append("  "), this)};
   Utils::addIconToGroupBox(lRetToolGroupBox, lIconFolder, "arrow-up");
   this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   this->setGroupBoxState(lRetToolGroupBox, false);
@@ -374,7 +374,7 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNe
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Assisted Conversion group box
-  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion a"), this)};
+  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion").append("  "), this)};
   Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
   this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   this->setGroupBoxState(lAssistedConversionGroupBox, false);
@@ -399,7 +399,7 @@ void Settings::setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // BodySlide Presets' Retargeting group box
-  auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths a"), this)};
+  auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths").append("  "), this)};
   Utils::addIconToGroupBox(lPathsGroupBox, lIconFolder, "folder");
   this->connect(lPathsGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   this->setGroupBoxState(lPathsGroupBox, true);
@@ -413,12 +413,12 @@ void Settings::setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex)
   // Create a line for each path
   Utils::addLastPathLine(this, lPathsLayout, 0, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 1, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 2, tr("Assist. conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Ret. Tool: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Ret. Tool: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 2, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 5, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Project load"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Project save"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind all the clear buttons
   const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};

@@ -1074,9 +1074,8 @@ Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="112"/>
-        <source>Display a</source>
-        <oldsource>Display [+]</oldsource>
-        <translation type="unfinished">Affichage</translation>
+        <source>Display</source>
+        <translation>Affichage</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="125"/>
@@ -1125,9 +1124,9 @@ Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="235"/>
-        <source>General a</source>
-        <oldsource>General [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <location filename="Settings.cpp" line="414"/>
+        <source>General</source>
+        <translation>Général</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="254"/>
@@ -1136,9 +1135,8 @@ Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="266"/>
-        <source>Preset Creator a</source>
-        <oldsource>Preset Creator [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Preset Creator</source>
+        <translation>Créateur de preset</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="280"/>
@@ -1147,8 +1145,9 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Corps sélectionné par défaut :</translation>
     </message>
     <message>
+        <location filename="Settings.cpp" line="334"/>
         <source>BodySlide Presets&apos; Retargeting</source>
-        <translation type="vanished">Re-ciblage de Presets BodySlide</translation>
+        <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="456"/>
@@ -1181,36 +1180,19 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Attention : Un redémarrage de l&apos;application est en attente. Vous ne devriez modifier aucune valeur marquée du caractère &quot;*&quot; tant que vous n&apos;avez pas redémarré l&apos;application.</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="334"/>
-        <source>BodySlide Presets&apos; Retargeting a</source>
-        <oldsource>BodySlide Presets&apos; Retargeting [+]</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="377"/>
-        <source>Assisted Conversion a</source>
-        <oldsource>Assisted Conversion [+]</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Assisted Conversion</source>
+        <translation>Conversion assistée</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="402"/>
-        <source>Last used folder and files paths a</source>
-        <oldsource>Last used folder and files paths [+]</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="414"/>
-        <source>General</source>
-        <translation>Général</translation>
+        <source>Last used folder and files paths</source>
+        <translation>Derniers emplacements de dossiers et fichiers utilisés</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="248"/>
         <source>Check for updates at application startup</source>
         <translation>Vérifier les mises à jour au démarrage de l&apos;application</translation>
-    </message>
-    <message>
-        <source>Preset Creator</source>
-        <translation type="vanished">Créateur de preset</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="300"/>
@@ -1228,10 +1210,6 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Ouvrir automatiquement le dossier d&apos;export du preset après une génération</translation>
     </message>
     <message>
-        <source>Assisted Conversion</source>
-        <translation type="vanished">Conversion assistée</translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="390"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
@@ -1239,39 +1217,37 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="Settings.cpp" line="415"/>
         <source>Main window: output</source>
-        <translation type="unfinished"></translation>
+        <translation>Fenêtre principale : sortie</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="416"/>
-        <source>Assist. conv.: input</source>
-        <translation type="unfinished"></translation>
+        <source>Assist. Conv.: input</source>
+        <translation>Conv. Assist. : entrée</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="417"/>
-        <source>Ret. Tool: input</source>
-        <translation type="unfinished"></translation>
+        <source>Presets&apos; Ret.: input</source>
+        <translation>Re-ciblage de Pr. : entrée</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="418"/>
-        <source>Ret. Tool: output</source>
-        <translation type="unfinished"></translation>
+        <source>Presets&apos; Ret.: output</source>
+        <translation>Re-ciblage de Pr. : sortie</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="419"/>
         <source>Textures Assist.: input</source>
-        <translation type="unfinished"></translation>
+        <translation>Assist. Tex. : entrée</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="420"/>
-        <source>Project load</source>
-        <oldsource>Project load location</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Loaded project</source>
+        <translation>Projet chargé</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="421"/>
-        <source>Project save</source>
-        <oldsource>Project save location</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Saved project</source>
+        <translation>Projet enregistré</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="441"/>
