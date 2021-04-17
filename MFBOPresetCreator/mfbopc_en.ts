@@ -1058,234 +1058,246 @@ Do you want to download it now?</source>
 <context>
     <name>Settings</name>
     <message>
-        <location filename="Settings.cpp" line="37"/>
+        <location filename="Settings.cpp" line="43"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="66"/>
+        <location filename="Settings.cpp" line="72"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="104"/>
-        <source>Display</source>
-        <translation></translation>
+        <location filename="Settings.cpp" line="112"/>
+        <source>Display a</source>
+        <oldsource>Display [+]</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="116"/>
+        <location filename="Settings.cpp" line="125"/>
         <source>Language:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="127"/>
+        <location filename="Settings.cpp" line="136"/>
         <source>Font:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="130"/>
+        <location filename="Settings.cpp" line="139"/>
         <source>Choose a font</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="154"/>
+        <location filename="Settings.cpp" line="163"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="155"/>
+        <location filename="Settings.cpp" line="164"/>
         <source>Français</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="183"/>
+        <location filename="Settings.cpp" line="192"/>
         <source>Texts accent color:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="187"/>
+        <location filename="Settings.cpp" line="196"/>
         <source>Choose a success color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="196"/>
+        <location filename="Settings.cpp" line="205"/>
         <source>Choose a warning color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="205"/>
+        <location filename="Settings.cpp" line="214"/>
         <source>Choose a danger color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="244"/>
+        <location filename="Settings.cpp" line="235"/>
+        <source>General a</source>
+        <oldsource>General [+]</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="254"/>
         <source>Each directory chooser button stores its own last opened path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="269"/>
-        <location filename="Settings.cpp" line="336"/>
+        <location filename="Settings.cpp" line="266"/>
+        <source>Preset Creator a</source>
+        <oldsource>Preset Creator [+]</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="280"/>
+        <location filename="Settings.cpp" line="348"/>
         <source>Default selected body:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="323"/>
-        <source>BodySlide Presets&apos; Retargeting</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="435"/>
+        <location filename="Settings.cpp" line="456"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="139"/>
+        <location filename="Settings.cpp" line="148"/>
         <source>Application Theme:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="38"/>
+        <location filename="Settings.cpp" line="44"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="41"/>
+        <location filename="Settings.cpp" line="47"/>
         <source>Close the settings window without saving</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="42"/>
+        <location filename="Settings.cpp" line="48"/>
         <source>Go back to the settings window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="81"/>
+        <location filename="Settings.cpp" line="89"/>
         <source>Warning: A restart of the application is pending. You should not modify any value marked with the &quot;*&quot; character until you restart the application.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="226"/>
-        <location filename="Settings.cpp" line="400"/>
-        <source>General</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="238"/>
-        <source>Check for updates at application startup</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="256"/>
-        <source>Preset Creator</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="289"/>
-        <source>Output directory path:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="299"/>
-        <source>Choose a directory...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="307"/>
-        <source>Automatically open the generated preset&apos;s output directory after a generation</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="365"/>
-        <source>Assisted Conversion</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="377"/>
-        <source>Only scan the &quot;meshes&quot; subdirectory</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="389"/>
-        <source>Last used folder and files paths</source>
+        <location filename="Settings.cpp" line="334"/>
+        <source>BodySlide Presets&apos; Retargeting a</source>
+        <oldsource>BodySlide Presets&apos; Retargeting [+]</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="401"/>
-        <source>Main window: output</source>
+        <location filename="Settings.cpp" line="377"/>
+        <source>Assisted Conversion a</source>
+        <oldsource>Assisted Conversion [+]</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="402"/>
+        <source>Last used folder and files paths a</source>
+        <oldsource>Last used folder and files paths [+]</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="414"/>
+        <source>General</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="248"/>
+        <source>Check for updates at application startup</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="300"/>
+        <source>Output directory path:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="310"/>
+        <source>Choose a directory...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="318"/>
+        <source>Automatically open the generated preset&apos;s output directory after a generation</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="390"/>
+        <source>Only scan the &quot;meshes&quot; subdirectory</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="415"/>
+        <source>Main window: output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="416"/>
         <source>Assist. conv.: input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="403"/>
+        <location filename="Settings.cpp" line="417"/>
         <source>Ret. Tool: input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="404"/>
+        <location filename="Settings.cpp" line="418"/>
         <source>Ret. Tool: output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="405"/>
+        <location filename="Settings.cpp" line="419"/>
         <source>Textures Assist.: input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="406"/>
-        <source>Project load location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="407"/>
-        <source>Project save location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="420"/>
+        <source>Project load</source>
+        <oldsource>Project load location</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="421"/>
+        <source>Project save</source>
+        <oldsource>Project save location</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="441"/>
         <source>Restore default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="643"/>
+        <location filename="Settings.cpp" line="684"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="644"/>
+        <location filename="Settings.cpp" line="685"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="647"/>
+        <location filename="Settings.cpp" line="688"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="648"/>
+        <location filename="Settings.cpp" line="689"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="150"/>
+        <location filename="Settings.cpp" line="159"/>
         <source>Window opening mode:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="165"/>
+        <location filename="Settings.cpp" line="174"/>
         <source>Default main window width:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="174"/>
+        <location filename="Settings.cpp" line="183"/>
         <source>Default main window height:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="427"/>
+        <location filename="Settings.cpp" line="448"/>
         <source>Save and close</source>
         <translation></translation>
     </message>

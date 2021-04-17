@@ -975,9 +975,9 @@ QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& a
   return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
-void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath)
+void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool& aAuthorizeEmptyValue, const bool& aMustSaveFile)
 {
-  if (aPath.length() == 0)
+  if (aKey.length() == 0 || (!aAuthorizeEmptyValue && aPath.length() == 0))
   {
     return;
   }
@@ -1003,8 +1003,11 @@ void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
     aMap->insert(std::pair<QString, QString>(aKey, aPath));
   }
 
-  // Save the new list
-  Utils::saveLastPathsToFile(*aMap);
+  if (aMustSaveFile)
+  {
+    // Save the new list
+    Utils::saveLastPathsToFile(*aMap);
+  }
 }
 
 QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
@@ -1073,9 +1076,11 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& a
 
   auto lGeneralValue{new QLineEdit(aValue, aParent)};
   lGeneralValue->setDisabled(true);
+  lGeneralValue->setObjectName(QString("line_edit_path_%1").arg(aRow));
   aLayout->addWidget(lGeneralValue, aRow, 1);
 
   auto lGeneralEmptyButton{new QPushButton(QString(""), aParent)};
+  lGeneralEmptyButton->setObjectName(QString("clear_path_%1").arg(aRow));
   lGeneralEmptyButton->setCursor(Qt::PointingHandCursor);
   lGeneralEmptyButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName))));
   lGeneralEmptyButton->setAutoDefault(false);

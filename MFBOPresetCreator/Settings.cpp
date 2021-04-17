@@ -6,6 +6,7 @@ Settings::Settings(QWidget* parent, const Struct::Settings& aSettings, const std
   , mLastPaths(aLastPaths)
   , mMustRebootMainApp{false}
   , mNewFont{qApp->font()}
+  , mPathEntryCleared(false)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -18,17 +19,22 @@ Settings::Settings(QWidget* parent, const Struct::Settings& aSettings, const std
 
 void Settings::closeEvent(QCloseEvent* aEvent)
 {
-  auto lEventSourceObject{sender()};
-  auto lEventButton{qobject_cast<QPushButton*>(lEventSourceObject)};
+  auto lEventButton{qobject_cast<QPushButton*>(sender())};
   auto lSaveButton{this->findChild<QPushButton*>("save_close")};
 
   if (lEventButton == lSaveButton)
   {
     aEvent->accept();
+
+    if (this->mPathEntryCleared)
+    {
+      Utils::saveLastPathsToFile(this->mLastPaths);
+      emit refreshLastPaths(this->mLastPaths);
+    }
     return;
   }
 
-  if (this->getSettingsFromGUI() != this->mSettings)
+  if (this->getSettingsFromGUI() != this->mSettings || this->mPathEntryCleared)
   {
     // User theme accent
     const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -71,7 +77,9 @@ void Settings::initializeGUI()
 {
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
+  lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(10, 10, 10, 10);
+  lMainLayout->setAlignment(Qt::AlignTop);
   this->setLayout(lMainLayout);
 
   auto lIndex{0};
@@ -80,7 +88,7 @@ void Settings::initializeGUI()
   {
     auto lRestartPending{new QLabel(tr("Warning: A restart of the application is pending. You should not modify any value marked with the \"*\" character until you restart the application."), this)};
     lRestartPending->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
-    lMainLayout->addWidget(lRestartPending, lIndex++, 0, 1, 2);
+    lMainLayout->addWidget(lRestartPending, lIndex++, 0, 1, 2, Qt::AlignTop);
   }
 
   this->setupDisplayGroup(*lMainLayout, lIndex);
@@ -101,10 +109,11 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Display group box
-  auto lDisplayGroupBox{new QGroupBox(tr("Display"), this)};
+  auto lDisplayGroupBox{new QGroupBox(tr("Display a"), this)};
   Utils::addIconToGroupBox(lDisplayGroupBox, lIconFolder, "monitor");
-  this->connect(lDisplayGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 4, 1);
+  this->connect(lDisplayGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
+  this->setGroupBoxState(lDisplayGroupBox, false);
+  aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 4, 1, Qt::AlignTop);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
@@ -223,10 +232,11 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Display group box
-  auto lGeneralGroupBox{new QGroupBox(tr("General"), this)};
+  auto lGeneralGroupBox{new QGroupBox(tr("General a"), this)};
   Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
-  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lGeneralGroupBox, aNextRowIndex, 1);
+  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
+  this->setGroupBoxState(lGeneralGroupBox, false);
+  aLayout.addWidget(lGeneralGroupBox, aNextRowIndex, 1, Qt::AlignTop);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lGeneralGroupBox)};
@@ -253,10 +263,11 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Preset Creator group box
-  auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator"), this)};
+  auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator a"), this)};
   Utils::addIconToGroupBox(lPresetCreatorGroupBox, lIconFolder, "home");
-  this->connect(lPresetCreatorGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lPresetCreatorGroupBox, aNextRowIndex + 1, 1);
+  this->connect(lPresetCreatorGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
+  this->setGroupBoxState(lPresetCreatorGroupBox, false);
+  aLayout.addWidget(lPresetCreatorGroupBox, aNextRowIndex + 1, 1, Qt::AlignTop);
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
   lPresetCreatorLayout->setSpacing(10);
@@ -320,10 +331,11 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // BodySlide Presets' Retargeting group box
-  auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting"), this)};
+  auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting a"), this)};
   Utils::addIconToGroupBox(lRetToolGroupBox, lIconFolder, "arrow-up");
-  this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1);
+  this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
+  this->setGroupBoxState(lRetToolGroupBox, false);
+  aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1, Qt::AlignTop);
 
   auto lRetargetingToolLayout{new QGridLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
@@ -362,10 +374,11 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNe
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Assisted Conversion group box
-  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion"), this)};
+  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion a"), this)};
   Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
-  this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 3, 1);
+  this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
+  this->setGroupBoxState(lAssistedConversionGroupBox, false);
+  aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 3, 1, Qt::AlignTop);
 
   // Container layout
   auto lAssistedConversionLayout{new QVBoxLayout(lAssistedConversionGroupBox)};
@@ -386,29 +399,33 @@ void Settings::setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // BodySlide Presets' Retargeting group box
-  auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths"), this)};
+  auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths a"), this)};
   Utils::addIconToGroupBox(lPathsGroupBox, lIconFolder, "folder");
-  this->connect(lPathsGroupBox, &QGroupBox::toggled, this, &Settings::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lPathsGroupBox, aNextRowIndex + 4, 0, 1, 2);
+  this->connect(lPathsGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
+  this->setGroupBoxState(lPathsGroupBox, true);
+  aLayout.addWidget(lPathsGroupBox, aNextRowIndex + 4, 0, 1, 2, Qt::AlignTop);
 
   auto lPathsLayout{new QGridLayout(lPathsGroupBox)};
   lPathsLayout->setSpacing(10);
   lPathsLayout->setContentsMargins(15, 20, 15, 15);
   lPathsLayout->setAlignment(Qt::AlignTop);
 
-  // general
+  // Create a line for each path
   Utils::addLastPathLine(this, lPathsLayout, 0, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 1, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 2, tr("Assist. conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 3, tr("Ret. Tool: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 4, tr("Ret. Tool: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 5, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Project load location"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Project save location"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Project load"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Project save"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
-  // TODO: optimize the GUI because there are too many lines
-  // TOOD: Bind the clear button to clear events
-  // TODO: Save the paths on quit
+  // Bind all the clear buttons
+  const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};
+  for (const auto lButton : lButtons)
+  {
+    this->connect(lButton, &QPushButton::clicked, this, &Settings::clearPathButtonClicked);
+  }
 }
 
 void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
@@ -447,6 +464,26 @@ void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
   this->connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
   this->connect(lSaveButton, &QPushButton::clicked, this, &Settings::saveSettings);
   this->connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
+}
+
+void Settings::setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed)
+{
+  auto lTitle{aGroupBox->title()};
+
+  if (aIsCollapsed)
+  {
+    aGroupBox->setChecked(false);
+    aGroupBox->setMaximumHeight(qApp->fontMetrics().height() * 2);
+    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F5));
+  }
+  else
+  {
+    aGroupBox->setMaximumHeight(INT32_MAX);
+    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F7));
+  }
+
+  // Update the title
+  aGroupBox->setTitle(lTitle);
 }
 
 void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
@@ -728,11 +765,15 @@ void Settings::chooseSuccessColor()
   // Show a color piocker dialog to the user
   auto lSuccessColor{QColorDialog::getColor(QColor(this->mNewSuccessColor), this)};
 
-  // Read and store new color's information
-  this->mNewSuccessColor = lSuccessColor.name();
+  // The QColor is only valid if the user did not click on "cancel"
+  if (lSuccessColor.isValid())
+  {
+    // Read and store new color's information
+    this->mNewSuccessColor = lSuccessColor.name();
 
-  // Display a preview on the color chooser's button directly
-  this->applySuccessColorButton(this->mNewSuccessColor);
+    // Display a preview on the color chooser's button directly
+    this->applySuccessColorButton(this->mNewSuccessColor);
+  }
 }
 
 void Settings::chooseWarningColor()
@@ -740,11 +781,15 @@ void Settings::chooseWarningColor()
   // Show a color piocker dialog to the user
   auto lWarningColor{QColorDialog::getColor(QColor(this->mNewWarningColor), this)};
 
-  // Read and store new color's information
-  this->mNewWarningColor = lWarningColor.name();
+  // The QColor is only valid if the user did not click on "cancel"
+  if (lWarningColor.isValid())
+  {
+    // Read and store new color's information
+    this->mNewWarningColor = lWarningColor.name();
 
-  // Display a preview on the color chooser's button directly
-  this->applyWarningColorButton(this->mNewWarningColor);
+    // Display a preview on the color chooser's button directly
+    this->applyWarningColorButton(this->mNewWarningColor);
+  }
 }
 
 void Settings::chooseDangerColor()
@@ -752,18 +797,40 @@ void Settings::chooseDangerColor()
   // Show a color piocker dialog to the user
   auto lDangerColor{QColorDialog::getColor(QColor(this->mNewDangerColor), this)};
 
-  // Read and store new color's information
-  this->mNewDangerColor = lDangerColor.name();
+  // The QColor is only valid if the user did not click on "cancel"
+  if (lDangerColor.isValid())
+  {
+    // Read and store new color's information
+    this->mNewDangerColor = lDangerColor.name();
 
-  // Display a preview on the color chooser's button directly
-  this->applyDangerColorButton(this->mNewDangerColor);
+    // Display a preview on the color chooser's button directly
+    this->applyDangerColorButton(this->mNewDangerColor);
+  }
 }
 
-void Settings::preventGroupBoxCheckEvent(bool aIsChecked)
+void Settings::groupBoxChecked(bool aIsChecked)
 {
   auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (!aIsChecked)
-  {
-    lGroupBox->setChecked(true);
-  }
+  if (lGroupBox == nullptr)
+    return;
+
+  this->setGroupBoxState(lGroupBox, !aIsChecked);
+
+  // Resize the window
+  this->adjustSize();
+}
+
+void Settings::clearPathButtonClicked()
+{
+  auto lButton{qobject_cast<QPushButton*>(this->sender())};
+  if (lButton == nullptr)
+    return;
+
+  auto lRowIndex{lButton->objectName().remove(QString("clear_path_"), Qt::CaseSensitivity::CaseSensitive).toInt()};
+  auto lKey{DataLists::getLastPathsKeys().at(lRowIndex)};
+  Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(""), true, false);
+
+  this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))->setText(this->mLastPaths.find(lKey)->second);
+
+  this->mPathEntryCleared = true;
 }

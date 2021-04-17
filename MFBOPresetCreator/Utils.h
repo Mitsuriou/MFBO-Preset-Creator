@@ -74,7 +74,7 @@ public:
   static void saveLastPathsToFile(const std::map<QString, QString>& aLastPaths);
   static QJsonObject lastPathsStructToJson(const std::map<QString, QString>& aLastPaths);
   static QString getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool& aUseKeyPath);
-  static void updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath);
+  static void updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool& aAuthorizeEmptyValue = false, const bool& aMustSaveFile = true);
 
   // Language
   static QString getShortLanguageNameFromEnum(const int& aEnumValue);

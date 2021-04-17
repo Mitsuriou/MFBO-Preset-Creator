@@ -625,6 +625,7 @@ void MFBOPresetCreator::launchSettingsDialog()
 {
   auto lSettings{new Settings(this, this->mSettings, this->mLastPaths)};
   this->connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
+  this->connect(lSettings, &Settings::refreshLastPaths, this, [=](const std::map<QString, QString>& aLastPaths) { this->mLastPaths = aLastPaths; });
 }
 
 void MFBOPresetCreator::launchUpdateDialog()

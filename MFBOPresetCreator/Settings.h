@@ -23,6 +23,7 @@ private:
   QString mNewWarningColor;
   QString mNewDangerColor;
   bool mMustRebootMainApp;
+  bool mPathEntryCleared;
 
   void setWindowProperties();
   void initializeGUI();
@@ -35,6 +36,8 @@ private:
   void setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupButtons(QGridLayout& aLayout, const int& aNextRowIndex);
 
+  void setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed);
+
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   Struct::Settings getSettingsFromGUI() const;
 
@@ -46,6 +49,7 @@ private:
 
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
+  void refreshLastPaths(const std::map<QString, QString>& aLastPaths);
 
 private slots:
   void saveSettings();
@@ -59,5 +63,6 @@ private slots:
   void chooseDangerColor();
 
   // GUI widgets events
-  void preventGroupBoxCheckEvent(bool aIsChecked);
+  void groupBoxChecked(bool aIsChecked);
+  void clearPathButtonClicked();
 };
