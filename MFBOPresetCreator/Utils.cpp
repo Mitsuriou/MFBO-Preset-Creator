@@ -1088,6 +1088,26 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& a
   aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
 }
 
+void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed)
+{
+  auto lTitle{aGroupBox->title()};
+
+  if (aIsCollapsed)
+  {
+    aGroupBox->setChecked(false);
+    aGroupBox->setMaximumHeight(qApp->fontMetrics().height() * 2);
+    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F5));
+  }
+  else
+  {
+    aGroupBox->setMaximumHeight(INT32_MAX);
+    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F7));
+  }
+
+  // Update the title with the updated chevron state
+  aGroupBox->setTitle(lTitle);
+}
+
 void Utils::bindConsoleToStdOut()
 {
   FreeConsole();

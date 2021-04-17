@@ -36,8 +36,6 @@ private:
   void setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex);
   void setupButtons(QGridLayout& aLayout, const int& aNextRowIndex);
 
-  void setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed);
-
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   Struct::Settings getSettingsFromGUI() const;
 

@@ -112,8 +112,8 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   auto lDisplayGroupBox{new QGroupBox(tr("Display").append("  "), this)};
   Utils::addIconToGroupBox(lDisplayGroupBox, lIconFolder, "monitor");
   this->connect(lDisplayGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  this->setGroupBoxState(lDisplayGroupBox, false);
-  aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 4, 1, Qt::AlignTop);
+  Utils::setGroupBoxState(lDisplayGroupBox, false);
+  aLayout.addWidget(lDisplayGroupBox, aNextRowIndex, 0, 5, 1, Qt::AlignTop);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
@@ -235,7 +235,7 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout, const int& aNextRowIndex)
   auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
   Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  this->setGroupBoxState(lGeneralGroupBox, false);
+  Utils::setGroupBoxState(lGeneralGroupBox, false);
   aLayout.addWidget(lGeneralGroupBox, aNextRowIndex, 1, Qt::AlignTop);
 
   // Container layout
@@ -266,7 +266,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout, const int& aNextRow
   auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator").append("  "), this)};
   Utils::addIconToGroupBox(lPresetCreatorGroupBox, lIconFolder, "home");
   this->connect(lPresetCreatorGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  this->setGroupBoxState(lPresetCreatorGroupBox, false);
+  Utils::setGroupBoxState(lPresetCreatorGroupBox, false);
   aLayout.addWidget(lPresetCreatorGroupBox, aNextRowIndex + 1, 1, Qt::AlignTop);
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
@@ -334,7 +334,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout, const int& aNextR
   auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting").append("  "), this)};
   Utils::addIconToGroupBox(lRetToolGroupBox, lIconFolder, "arrow-up");
   this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  this->setGroupBoxState(lRetToolGroupBox, false);
+  Utils::setGroupBoxState(lRetToolGroupBox, false);
   aLayout.addWidget(lRetToolGroupBox, aNextRowIndex + 2, 1, Qt::AlignTop);
 
   auto lRetargetingToolLayout{new QGridLayout(lRetToolGroupBox)};
@@ -377,7 +377,7 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout, const int& aNe
   auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion").append("  "), this)};
   Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
   this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  this->setGroupBoxState(lAssistedConversionGroupBox, false);
+  Utils::setGroupBoxState(lAssistedConversionGroupBox, false);
   aLayout.addWidget(lAssistedConversionGroupBox, aNextRowIndex + 3, 1, Qt::AlignTop);
 
   // Container layout
@@ -402,8 +402,8 @@ void Settings::setupLastPaths(QGridLayout& aLayout, const int& aNextRowIndex)
   auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths").append("  "), this)};
   Utils::addIconToGroupBox(lPathsGroupBox, lIconFolder, "folder");
   this->connect(lPathsGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  this->setGroupBoxState(lPathsGroupBox, true);
-  aLayout.addWidget(lPathsGroupBox, aNextRowIndex + 4, 0, 1, 2, Qt::AlignTop);
+  Utils::setGroupBoxState(lPathsGroupBox, true);
+  aLayout.addWidget(lPathsGroupBox, aNextRowIndex + 5, 0, 1, 2, Qt::AlignTop);
 
   auto lPathsLayout{new QGridLayout(lPathsGroupBox)};
   lPathsLayout->setSpacing(10);
@@ -435,7 +435,8 @@ void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
-  aLayout.addLayout(lButtonsContainer, aNextRowIndex + 5, 0, 1, 2);
+  aLayout.setRowStretch(aNextRowIndex + 6, 2);
+  aLayout.addLayout(lButtonsContainer, aNextRowIndex + 6, 0, 1, 2, Qt::AlignBottom);
 
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
@@ -464,26 +465,6 @@ void Settings::setupButtons(QGridLayout& aLayout, const int& aNextRowIndex)
   this->connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
   this->connect(lSaveButton, &QPushButton::clicked, this, &Settings::saveSettings);
   this->connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
-}
-
-void Settings::setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed)
-{
-  auto lTitle{aGroupBox->title()};
-
-  if (aIsCollapsed)
-  {
-    aGroupBox->setChecked(false);
-    aGroupBox->setMaximumHeight(qApp->fontMetrics().height() * 2);
-    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F5));
-  }
-  else
-  {
-    aGroupBox->setMaximumHeight(INT32_MAX);
-    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F7));
-  }
-
-  // Update the title
-  aGroupBox->setTitle(lTitle);
 }
 
 void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
@@ -814,7 +795,7 @@ void Settings::groupBoxChecked(bool aIsChecked)
   if (lGroupBox == nullptr)
     return;
 
-  this->setGroupBoxState(lGroupBox, !aIsChecked);
+  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
 
   // Resize the window
   this->adjustSize();

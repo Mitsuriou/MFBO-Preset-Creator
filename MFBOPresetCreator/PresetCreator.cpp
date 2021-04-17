@@ -25,7 +25,9 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
 
   // Main container
   auto lMainLayout{new QVBoxLayout(lMainWidget)};
+  lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(10, 10, 10, 10);
+  lMainLayout->setAlignment(Qt::AlignTop);
 
   lScrollArea->setWidget(lMainWidget);
   lBaseLayout->addWidget(lScrollArea);
@@ -276,10 +278,11 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Body meshes group box
-  auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes"), this)};
+  auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes").append("  "), this)};
   Utils::addIconToGroupBox(lMeshesGroupBox, lIconFolder, "body");
-  this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lMeshesGroupBox);
+  this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
+  Utils::setGroupBoxState(lMeshesGroupBox, false);
+  aLayout.addWidget(lMeshesGroupBox, Qt::AlignTop);
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
@@ -382,10 +385,11 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // BodySlide output settings group box
-  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output"), this)};
+  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
-  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lBodyslideGroupBox);
+  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
+  Utils::setGroupBoxState(lBodyslideGroupBox, false);
+  aLayout.addWidget(lBodyslideGroupBox, Qt::AlignTop);
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
@@ -509,10 +513,11 @@ void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Custom skeleton group box
-  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton"), this)};
+  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
   Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
-  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lSkeletonGroupBox);
+  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
+  Utils::setGroupBoxState(lSkeletonGroupBox, false);
+  aLayout.addWidget(lSkeletonGroupBox, Qt::AlignTop);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
   lSkeletonGridLayout->setSpacing(10);
@@ -613,10 +618,11 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Output group box
-  auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location"), this)};
+  auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), this)};
   Utils::addIconToGroupBox(lOutputGroupBox, lIconFolder, "file-tree");
-  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::preventGroupBoxCheckEvent);
-  aLayout.addWidget(lOutputGroupBox);
+  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
+  Utils::setGroupBoxState(lOutputGroupBox, false);
+  aLayout.addWidget(lOutputGroupBox, Qt::AlignTop);
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
@@ -686,7 +692,8 @@ void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
   lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/build").arg(lIconFolder))));
   lGenerateButton->setCursor(Qt::PointingHandCursor);
-  aLayout.addWidget(lGenerateButton);
+  aLayout.addStretch(1);
+  aLayout.addWidget(lGenerateButton, Qt::AlignBottom);
 
   // Event binding
   this->connect(lGenerateButton, &QPushButton::clicked, this, &PresetCreator::generateDirectoryStructure);
@@ -1876,11 +1883,11 @@ void PresetCreator::scrollbarReleased()
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
-void PresetCreator::preventGroupBoxCheckEvent(bool aIsChecked)
+void PresetCreator::groupBoxChecked(bool aIsChecked)
 {
   auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (!aIsChecked)
-  {
-    lGroupBox->setChecked(true);
-  }
+  if (lGroupBox == nullptr)
+    return;
+
+  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
 }

@@ -86,6 +86,9 @@ public:
   static void addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName);
   static void addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName);
 
+  // GUI modifiers
+  static void setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed);
+
   // Windows console
   static void bindConsoleToStdOut();
   static void printMessageStdOut(const QString& aMessage);
