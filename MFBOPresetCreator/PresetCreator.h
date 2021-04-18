@@ -30,11 +30,11 @@ private:
   int mMinimumFirstColumnWidth;
 
   // GUI creation
-  void setupBodyMeshesGUI(QVBoxLayout& aLayout);
-  void setupBodySlideGUI(QVBoxLayout& aLayout);
-  void setupSkeletonGUI(QVBoxLayout& aLayout);
-  void setupOutputGUI(QVBoxLayout& aLayout);
-  void setupRemainingGUI(QVBoxLayout& aLayout);
+  void setupBodyMeshesGUI(QGridLayout* aLayout);
+  void setupSkeletonGUI(QGridLayout* aLayout);
+  void setupBodySlideGUI(QGridLayout* aLayout);
+  void setupOutputGUI(QGridLayout* aLayout);
+  void setupRemainingGUI(QGridLayout* aLayout);
 
   // Load and save project
   void loadValuesFromJsonObject(const QJsonObject& lFile);

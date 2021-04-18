@@ -65,6 +65,8 @@ void TexturesAssistant::initializeGUI()
 {
   // Main window layout
   auto lMainGrid{new QGridLayout(this)};
+  lMainGrid->setSpacing(10);
+  lMainGrid->setContentsMargins(10, 10, 10, 10);
   lMainGrid->setAlignment(Qt::AlignTop);
   this->setLayout(lMainGrid);
 

@@ -534,65 +534,65 @@ Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="354"/>
-        <location filename="PresetCreator.cpp" line="437"/>
-        <location filename="PresetCreator.cpp" line="465"/>
-        <location filename="PresetCreator.cpp" line="594"/>
+        <location filename="PresetCreator.cpp" line="466"/>
+        <location filename="PresetCreator.cpp" line="542"/>
+        <location filename="PresetCreator.cpp" line="570"/>
         <location filename="PresetCreator.cpp" line="669"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="388"/>
+        <location filename="PresetCreator.cpp" line="493"/>
         <source>BodySlide output</source>
         <translation>Sortie BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="429"/>
+        <location filename="PresetCreator.cpp" line="534"/>
         <source>BodySlide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="457"/>
+        <location filename="PresetCreator.cpp" line="562"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation>Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="473"/>
+        <location filename="PresetCreator.cpp" line="578"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="488"/>
+        <location filename="PresetCreator.cpp" line="593"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="543"/>
+        <location filename="PresetCreator.cpp" line="415"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation>Cocher cette case si le follower ou le NPC utilise un squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="549"/>
+        <location filename="PresetCreator.cpp" line="421"/>
         <source>Skeleton file:</source>
         <translation>Fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="565"/>
+        <location filename="PresetCreator.cpp" line="437"/>
         <source>Refresh</source>
         <translation>Rafraîchir</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="569"/>
+        <location filename="PresetCreator.cpp" line="441"/>
         <source>Skeleton path:</source>
         <translation>Emplacement du squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="579"/>
+        <location filename="PresetCreator.cpp" line="451"/>
         <source>Skeleton file name:</source>
         <translation>Nom du fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="589"/>
+        <location filename="PresetCreator.cpp" line="461"/>
         <source>.nif</source>
         <translation>.nif</translation>
     </message>
@@ -720,12 +720,12 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="448"/>
+        <location filename="PresetCreator.cpp" line="553"/>
         <source>Presets names:</source>
         <translation>Noms des presets :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="530"/>
+        <location filename="PresetCreator.cpp" line="402"/>
         <source>Use a custom skeleton?</source>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
@@ -785,17 +785,17 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>des mains</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="409"/>
+        <location filename="PresetCreator.cpp" line="514"/>
         <source>Targeted body and version:</source>
         <translation>Corps et version ciblés :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="516"/>
+        <location filename="PresetCreator.cpp" line="388"/>
         <source>Skeleton</source>
         <translation>Squelette</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="540"/>
+        <location filename="PresetCreator.cpp" line="412"/>
         <source>Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
@@ -1345,72 +1345,72 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Assistant Textures</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="83"/>
+        <location filename="TexturesAssistant.cpp" line="85"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="95"/>
+        <location filename="TexturesAssistant.cpp" line="97"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="103"/>
+        <location filename="TexturesAssistant.cpp" line="105"/>
         <source>Launch the scan of the mod</source>
         <translation>Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="126"/>
+        <location filename="TexturesAssistant.cpp" line="128"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="261"/>
+        <location filename="TexturesAssistant.cpp" line="263"/>
         <source>Head textures</source>
         <translation>Textures de tête</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="273"/>
+        <location filename="TexturesAssistant.cpp" line="275"/>
         <source>Hands textures</source>
         <translation>Textures de mains</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="285"/>
+        <location filename="TexturesAssistant.cpp" line="287"/>
         <source>Body textures</source>
         <translation>Textures de corps</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="297"/>
+        <location filename="TexturesAssistant.cpp" line="299"/>
         <source>Other .DDS textures</source>
         <translation>Autres textures .DDS</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="363"/>
+        <location filename="TexturesAssistant.cpp" line="365"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="364"/>
+        <location filename="TexturesAssistant.cpp" line="366"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="367"/>
+        <location filename="TexturesAssistant.cpp" line="369"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="368"/>
+        <location filename="TexturesAssistant.cpp" line="370"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="381"/>
+        <location filename="TexturesAssistant.cpp" line="383"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>Aucun répertoire &quot;textures&quot; n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="395"/>
+        <location filename="TexturesAssistant.cpp" line="397"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>Aucun fichier DDS n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>

@@ -24,7 +24,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   auto lMainWidget{new QFrame(this)};
 
   // Main container
-  auto lMainLayout{new QVBoxLayout(lMainWidget)};
+  auto lMainLayout{new QGridLayout(lMainWidget)};
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(10, 10, 10, 10);
   lMainLayout->setAlignment(Qt::AlignTop);
@@ -33,11 +33,11 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   lBaseLayout->addWidget(lScrollArea);
 
   // Setup all the different GUI components
-  this->setupBodyMeshesGUI(*lMainLayout);
-  this->setupSkeletonGUI(*lMainLayout);
-  this->setupBodySlideGUI(*lMainLayout);
-  this->setupOutputGUI(*lMainLayout);
-  this->setupRemainingGUI(*lMainLayout);
+  this->setupBodyMeshesGUI(lMainLayout);
+  this->setupSkeletonGUI(lMainLayout);
+  this->setupBodySlideGUI(lMainLayout);
+  this->setupOutputGUI(lMainLayout);
+  this->setupRemainingGUI(lMainLayout);
 
   // Update the GUI based on the values entered
   this->refreshAllPreviewFields();
@@ -272,7 +272,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
   }
 }
 
-void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -282,7 +282,7 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   Utils::addIconToGroupBox(lMeshesGroupBox, lIconFolder, "body");
   this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lMeshesGroupBox, false);
-  aLayout.addWidget(lMeshesGroupBox, Qt::AlignTop);
+  aLayout->addWidget(lMeshesGroupBox, 0, 0);
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
@@ -379,7 +379,112 @@ void PresetCreator::setupBodyMeshesGUI(QVBoxLayout& aLayout)
   this->connect(lNeedBeastHands, &QCheckBox::stateChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
 }
 
-void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
+  // Custom skeleton group box
+  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
+  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
+  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
+  Utils::setGroupBoxState(lSkeletonGroupBox, false);
+  aLayout->addWidget(lSkeletonGroupBox, 1, 0);
+
+  auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
+  lSkeletonGridLayout->setSpacing(10);
+  lSkeletonGridLayout->setContentsMargins(15, 20, 15, 15);
+  lSkeletonGridLayout->setAlignment(Qt::AlignTop);
+  lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+
+  // Skeleton
+  auto lLabelSkeleton{new QLabel(this)};
+  auto lText{tr("Use a custom skeleton?")};
+  auto lRichText{
+    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
+                   " %2"
+                   "</p>")
+      .arg(lIconFolder)
+      .arg(lText)};
+  lLabelSkeleton->setText(lRichText);
+  lLabelSkeleton->setTextFormat(Qt::RichText);
+  lLabelSkeleton->setToolTip(QString(tr("Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
+  lSkeletonGridLayout->addWidget(lLabelSkeleton, 0, 0);
+
+  auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
+  lNeedCustomSkeleton->setCursor(Qt::PointingHandCursor);
+  lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
+  lSkeletonGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
+
+  // Choose the skeleton file
+  auto lLabelSkeletonChooser{new QLabel(tr("Skeleton file:"), this)};
+  lLabelSkeletonChooser->setObjectName("label_skeleton_chooser");
+  lSkeletonGridLayout->addWidget(lLabelSkeletonChooser, 1, 0);
+
+  auto lSkeletonChooser{new QComboBox(this)};
+  lSkeletonChooser->setItemDelegate(new QStyledItemDelegate());
+  lSkeletonChooser->setCursor(Qt::PointingHandCursor);
+  lSkeletonChooser->setObjectName("skeleton_chooser");
+  lSkeletonGridLayout->addWidget(lSkeletonChooser, 1, 1);
+
+  this->populateSkeletonChooser();
+
+  auto lSkeletonRefresher{new QPushButton(this)};
+  lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
+  lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
+  lSkeletonRefresher->setIcon(QIcon(QPixmap(QString(":/%1/reload").arg(lIconFolder))));
+  lSkeletonRefresher->setText(tr("Refresh"));
+  lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
+
+  // Skeleton path
+  auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
+  lLabelSkeletonPath->setObjectName("label_skeleton_path_directory");
+  lSkeletonGridLayout->addWidget(lLabelSkeletonPath, 2, 0);
+
+  auto lSkeletonPathLineEdit{new QLineEdit(this)};
+  lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
+  lSkeletonPathLineEdit->setPlaceholderText("meshes/");
+  lSkeletonGridLayout->addWidget(lSkeletonPathLineEdit, 2, 1);
+
+  // Skeleton name
+  auto lSkeletonNameLabel{new QLabel(tr("Skeleton file name:"), this)};
+  lSkeletonNameLabel->setObjectName("label_skeleton_female");
+  lSkeletonGridLayout->addWidget(lSkeletonNameLabel, 3, 0);
+
+  auto lSkeletonName{new QLineEdit(this)};
+  lSkeletonName->setObjectName("skeleton_name");
+  lSkeletonName->setPlaceholderText("skeleton_female");
+  lSkeletonName->setText("skeleton_female");
+  lSkeletonGridLayout->addWidget(lSkeletonName, 3, 1);
+
+  auto lSkeletonNameExtension{new QLabel(tr(".nif"), this)};
+  lSkeletonNameExtension->setObjectName("skeleton_name_extension");
+  lSkeletonGridLayout->addWidget(lSkeletonNameExtension, 3, 2);
+
+  // Skeleton path preview
+  auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
+  lSkeletontitlePreview->setObjectName("label_skeleton_path_preview");
+  lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 4, 0);
+
+  auto lSkeletonPathsPreview{new QLabel(this)};
+  lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
+  lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 4, 1);
+
+  // Initialization functions
+  this->updateSkeletonPreview();
+
+  // Event binding
+  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &PresetCreator::updateSkeletonPathState);
+  lNeedCustomSkeleton->setChecked(true);
+  lNeedCustomSkeleton->setChecked(false);
+
+  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
+  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &PresetCreator::populateSkeletonChooser);
+  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
+}
+
+void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -389,7 +494,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
-  aLayout.addWidget(lBodyslideGroupBox, Qt::AlignTop);
+  aLayout->addWidget(lBodyslideGroupBox, 2, 0);
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
@@ -507,112 +612,7 @@ void PresetCreator::setupBodySlideGUI(QVBoxLayout& aLayout)
   this->initBodySlideFiltersList();
 }
 
-void PresetCreator::setupSkeletonGUI(QVBoxLayout& aLayout)
-{
-  // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
-
-  // Custom skeleton group box
-  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
-  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
-  Utils::setGroupBoxState(lSkeletonGroupBox, false);
-  aLayout.addWidget(lSkeletonGroupBox, Qt::AlignTop);
-
-  auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
-  lSkeletonGridLayout->setSpacing(10);
-  lSkeletonGridLayout->setContentsMargins(15, 20, 15, 15);
-  lSkeletonGridLayout->setAlignment(Qt::AlignTop);
-  lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
-
-  // Skeleton
-  auto lLabelSkeleton{new QLabel(this)};
-  auto lText{tr("Use a custom skeleton?")};
-  auto lRichText{
-    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
-                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
-                   " %2"
-                   "</p>")
-      .arg(lIconFolder)
-      .arg(lText)};
-  lLabelSkeleton->setText(lRichText);
-  lLabelSkeleton->setTextFormat(Qt::RichText);
-  lLabelSkeleton->setToolTip(QString(tr("Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
-  lSkeletonGridLayout->addWidget(lLabelSkeleton, 0, 0);
-
-  auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
-  lNeedCustomSkeleton->setCursor(Qt::PointingHandCursor);
-  lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
-  lSkeletonGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
-
-  // Choose the skeleton file
-  auto lLabelSkeletonChooser{new QLabel(tr("Skeleton file:"), this)};
-  lLabelSkeletonChooser->setObjectName("label_skeleton_chooser");
-  lSkeletonGridLayout->addWidget(lLabelSkeletonChooser, 1, 0);
-
-  auto lSkeletonChooser{new QComboBox(this)};
-  lSkeletonChooser->setItemDelegate(new QStyledItemDelegate());
-  lSkeletonChooser->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooser->setObjectName("skeleton_chooser");
-  lSkeletonGridLayout->addWidget(lSkeletonChooser, 1, 1);
-
-  this->populateSkeletonChooser();
-
-  auto lSkeletonRefresher{new QPushButton(this)};
-  lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
-  lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
-  lSkeletonRefresher->setIcon(QIcon(QPixmap(QString(":/%1/reload").arg(lIconFolder))));
-  lSkeletonRefresher->setText(tr("Refresh"));
-  lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
-
-  // Skeleton path
-  auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
-  lLabelSkeletonPath->setObjectName("label_skeleton_path_directory");
-  lSkeletonGridLayout->addWidget(lLabelSkeletonPath, 2, 0);
-
-  auto lSkeletonPathLineEdit{new QLineEdit(this)};
-  lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
-  lSkeletonPathLineEdit->setPlaceholderText("meshes/");
-  lSkeletonGridLayout->addWidget(lSkeletonPathLineEdit, 2, 1);
-
-  // Skeleton name
-  auto lSkeletonNameLabel{new QLabel(tr("Skeleton file name:"), this)};
-  lSkeletonNameLabel->setObjectName("label_skeleton_female");
-  lSkeletonGridLayout->addWidget(lSkeletonNameLabel, 3, 0);
-
-  auto lSkeletonName{new QLineEdit(this)};
-  lSkeletonName->setObjectName("skeleton_name");
-  lSkeletonName->setPlaceholderText("skeleton_female");
-  lSkeletonName->setText("skeleton_female");
-  lSkeletonGridLayout->addWidget(lSkeletonName, 3, 1);
-
-  auto lSkeletonNameExtension{new QLabel(tr(".nif"), this)};
-  lSkeletonNameExtension->setObjectName("skeleton_name_extension");
-  lSkeletonGridLayout->addWidget(lSkeletonNameExtension, 3, 2);
-
-  // Skeleton path preview
-  auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
-  lSkeletontitlePreview->setObjectName("label_skeleton_path_preview");
-  lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 4, 0);
-
-  auto lSkeletonPathsPreview{new QLabel(this)};
-  lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
-  lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 4, 1);
-
-  // Initialization functions
-  this->updateSkeletonPreview();
-
-  // Event binding
-  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &PresetCreator::updateSkeletonPathState);
-  lNeedCustomSkeleton->setChecked(true);
-  lNeedCustomSkeleton->setChecked(false);
-
-  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
-  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &PresetCreator::populateSkeletonChooser);
-  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
-}
-
-void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -622,7 +622,7 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   Utils::addIconToGroupBox(lOutputGroupBox, lIconFolder, "file-tree");
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lOutputGroupBox, false);
-  aLayout.addWidget(lOutputGroupBox, Qt::AlignTop);
+  aLayout->addWidget(lOutputGroupBox, 3, 0);
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
@@ -683,7 +683,7 @@ void PresetCreator::setupOutputGUI(QVBoxLayout& aLayout)
   this->updateOutputPreview();
 }
 
-void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
+void PresetCreator::setupRemainingGUI(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -692,8 +692,8 @@ void PresetCreator::setupRemainingGUI(QVBoxLayout& aLayout)
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
   lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/build").arg(lIconFolder))));
   lGenerateButton->setCursor(Qt::PointingHandCursor);
-  aLayout.addStretch(0);
-  aLayout.addWidget(lGenerateButton, Qt::AlignBottom);
+  aLayout->addWidget(lGenerateButton, 4, 0, Qt::AlignBottom);
+  aLayout->setRowStretch(4, 1);
 
   // Event binding
   this->connect(lGenerateButton, &QPushButton::clicked, this, &PresetCreator::generateDirectoryStructure);

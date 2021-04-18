@@ -531,70 +531,70 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="354"/>
-        <location filename="PresetCreator.cpp" line="437"/>
-        <location filename="PresetCreator.cpp" line="465"/>
-        <location filename="PresetCreator.cpp" line="594"/>
+        <location filename="PresetCreator.cpp" line="466"/>
+        <location filename="PresetCreator.cpp" line="542"/>
+        <location filename="PresetCreator.cpp" line="570"/>
         <location filename="PresetCreator.cpp" line="669"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="388"/>
+        <location filename="PresetCreator.cpp" line="493"/>
         <source>BodySlide output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="429"/>
+        <location filename="PresetCreator.cpp" line="534"/>
         <source>BodySlide files names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="457"/>
+        <location filename="PresetCreator.cpp" line="562"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="473"/>
+        <location filename="PresetCreator.cpp" line="578"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="488"/>
+        <location filename="PresetCreator.cpp" line="593"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="516"/>
+        <location filename="PresetCreator.cpp" line="388"/>
         <source>Skeleton</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="543"/>
+        <location filename="PresetCreator.cpp" line="415"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="549"/>
+        <location filename="PresetCreator.cpp" line="421"/>
         <source>Skeleton file:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="565"/>
+        <location filename="PresetCreator.cpp" line="437"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="569"/>
+        <location filename="PresetCreator.cpp" line="441"/>
         <source>Skeleton path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="579"/>
+        <location filename="PresetCreator.cpp" line="451"/>
         <source>Skeleton file name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="589"/>
+        <location filename="PresetCreator.cpp" line="461"/>
         <source>.nif</source>
         <translation></translation>
     </message>
@@ -772,22 +772,22 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="409"/>
+        <location filename="PresetCreator.cpp" line="514"/>
         <source>Targeted body and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="448"/>
+        <location filename="PresetCreator.cpp" line="553"/>
         <source>Presets names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="530"/>
+        <location filename="PresetCreator.cpp" line="402"/>
         <source>Use a custom skeleton?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="540"/>
+        <location filename="PresetCreator.cpp" line="412"/>
         <source>Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation></translation>
     </message>
@@ -1338,72 +1338,72 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="83"/>
+        <location filename="TexturesAssistant.cpp" line="85"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="95"/>
+        <location filename="TexturesAssistant.cpp" line="97"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="103"/>
+        <location filename="TexturesAssistant.cpp" line="105"/>
         <source>Launch the scan of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="126"/>
+        <location filename="TexturesAssistant.cpp" line="128"/>
         <source>Awaiting the launch of a scan...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="261"/>
+        <location filename="TexturesAssistant.cpp" line="263"/>
         <source>Head textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="273"/>
+        <location filename="TexturesAssistant.cpp" line="275"/>
         <source>Hands textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="285"/>
+        <location filename="TexturesAssistant.cpp" line="287"/>
         <source>Body textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="297"/>
+        <location filename="TexturesAssistant.cpp" line="299"/>
         <source>Other .DDS textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="363"/>
+        <location filename="TexturesAssistant.cpp" line="365"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="364"/>
+        <location filename="TexturesAssistant.cpp" line="366"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="367"/>
+        <location filename="TexturesAssistant.cpp" line="369"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="368"/>
+        <location filename="TexturesAssistant.cpp" line="370"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="381"/>
+        <location filename="TexturesAssistant.cpp" line="383"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="395"/>
+        <location filename="TexturesAssistant.cpp" line="397"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation></translation>
     </message>
