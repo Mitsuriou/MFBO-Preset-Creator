@@ -93,21 +93,32 @@ void Settings::initializeGUI()
     lStarLabel->setText(tr("Note: Modifying a value marked with the \"*\" character will require a restart of the application to be applied correctly."));
     lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.warningColor));
   }
-  lMainLayout->addWidget(lStarLabel, 0, 0, 1, 2, Qt::AlignTop);
+  lMainLayout->addWidget(lStarLabel, 0, 0, 1, 2);
 
-  this->setupDisplayGroup(*lMainLayout);
-  this->setupGeneralGroup(*lMainLayout);
-  this->setupPresetCreatorGroup(*lMainLayout);
-  this->setupRetargetingToolGroup(*lMainLayout);
-  this->setupAssistedConversionGroup(*lMainLayout);
-  this->setupLastPaths(*lMainLayout);
-  this->setupButtons(*lMainLayout);
+  // Left pane
+  this->setupDisplayGroup(lMainLayout);
+
+  // Right pane
+  auto lLeftPaneLayout{new QGridLayout(this)};
+  lLeftPaneLayout->setSpacing(0);
+  lLeftPaneLayout->setContentsMargins(10, 10, 10, 10);
+  lLeftPaneLayout->setAlignment(Qt::AlignTop);
+  lMainLayout->addLayout(lLeftPaneLayout, 1, 1, Qt::AlignTop);
+
+  this->setupGeneralGroup(lLeftPaneLayout);
+  this->setupPresetCreatorGroup(lLeftPaneLayout);
+  this->setupRetargetingToolGroup(lLeftPaneLayout);
+  this->setupAssistedConversionGroup(lLeftPaneLayout);
+
+  // Other parts
+  this->setupLastPaths(lMainLayout);
+  this->setupButtons(lMainLayout);
 
   // Load the settings into the interface
   this->loadSettings(this->mSettings);
 }
 
-void Settings::setupDisplayGroup(QGridLayout& aLayout)
+void Settings::setupDisplayGroup(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -117,7 +128,7 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   Utils::addIconToGroupBox(lDisplayGroupBox, lIconFolder, "monitor");
   this->connect(lDisplayGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   Utils::setGroupBoxState(lDisplayGroupBox, false);
-  aLayout.addWidget(lDisplayGroupBox, 1, 0, 4, 1, Qt::AlignTop);
+  aLayout->addWidget(lDisplayGroupBox, 1, 0, Qt::AlignTop);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
@@ -230,7 +241,7 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   this->connect(lDangerColorChooser, &QPushButton::clicked, this, &Settings::chooseDangerColor);
 }
 
-void Settings::setupGeneralGroup(QGridLayout& aLayout)
+void Settings::setupGeneralGroup(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -240,7 +251,7 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout)
   Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   Utils::setGroupBoxState(lGeneralGroupBox, false);
-  aLayout.addWidget(lGeneralGroupBox, 1, 1, Qt::AlignTop);
+  aLayout->addWidget(lGeneralGroupBox, 0, 0, Qt::AlignTop);
 
   // Container layout
   auto lDisplayLayout{new QVBoxLayout(lGeneralGroupBox)};
@@ -261,7 +272,7 @@ void Settings::setupGeneralGroup(QGridLayout& aLayout)
   lDisplayLayout->addWidget(lEachButtonSavesItsLastUsedPath);
 }
 
-void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
+void Settings::setupPresetCreatorGroup(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -271,7 +282,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   Utils::addIconToGroupBox(lPresetCreatorGroupBox, lIconFolder, "home");
   this->connect(lPresetCreatorGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   Utils::setGroupBoxState(lPresetCreatorGroupBox, false);
-  aLayout.addWidget(lPresetCreatorGroupBox, 2, 1, Qt::AlignTop);
+  aLayout->addWidget(lPresetCreatorGroupBox, 1, 0, Qt::AlignTop);
 
   auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
   lPresetCreatorLayout->setSpacing(10);
@@ -329,7 +340,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBodyVersions);
 }
 
-void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
+void Settings::setupRetargetingToolGroup(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -339,7 +350,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
   Utils::addIconToGroupBox(lRetToolGroupBox, lIconFolder, "arrow-up");
   this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   Utils::setGroupBoxState(lRetToolGroupBox, false);
-  aLayout.addWidget(lRetToolGroupBox, 3, 1, Qt::AlignTop);
+  aLayout->addWidget(lRetToolGroupBox, 2, 0, Qt::AlignTop);
 
   auto lRetargetingToolLayout{new QGridLayout(lRetToolGroupBox)};
   lRetargetingToolLayout->setSpacing(10);
@@ -372,7 +383,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
   this->connect(lUpgradeBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
 }
 
-void Settings::setupAssistedConversionGroup(QGridLayout& aLayout)
+void Settings::setupAssistedConversionGroup(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -382,7 +393,7 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout)
   Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
   this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   Utils::setGroupBoxState(lAssistedConversionGroupBox, false);
-  aLayout.addWidget(lAssistedConversionGroupBox, 4, 1, Qt::AlignTop);
+  aLayout->addWidget(lAssistedConversionGroupBox, 3, 0, Qt::AlignTop);
 
   // Container layout
   auto lAssistedConversionLayout{new QVBoxLayout(lAssistedConversionGroupBox)};
@@ -397,7 +408,7 @@ void Settings::setupAssistedConversionGroup(QGridLayout& aLayout)
   lAssistedConversionLayout->addWidget(lScanOnlyMeshesFolder);
 }
 
-void Settings::setupLastPaths(QGridLayout& aLayout)
+void Settings::setupLastPaths(QGridLayout* aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
@@ -407,7 +418,7 @@ void Settings::setupLastPaths(QGridLayout& aLayout)
   Utils::addIconToGroupBox(lPathsGroupBox, lIconFolder, "folder");
   this->connect(lPathsGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
   Utils::setGroupBoxState(lPathsGroupBox, true);
-  aLayout.addWidget(lPathsGroupBox, 5, 0, 1, 2, Qt::AlignTop);
+  aLayout->addWidget(lPathsGroupBox, 2, 0, 1, 2);
 
   auto lPathsLayout{new QGridLayout(lPathsGroupBox)};
   lPathsLayout->setSpacing(10);
@@ -432,15 +443,15 @@ void Settings::setupLastPaths(QGridLayout& aLayout)
   }
 }
 
-void Settings::setupButtons(QGridLayout& aLayout)
+void Settings::setupButtons(QGridLayout* aLayout)
 {
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
 
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
-  aLayout.setRowStretch(6, 1);
-  aLayout.addLayout(lButtonsContainer, 6, 0, 1, 2, Qt::AlignBottom);
+  aLayout->addLayout(lButtonsContainer, 3, 0, 1, 2, Qt::AlignBottom);
+  aLayout->setRowStretch(3, 1);
 
   // Create the buttons
   auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
