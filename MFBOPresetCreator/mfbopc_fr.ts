@@ -439,13 +439,13 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="MFBOPresetCreator.cpp" line="578"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <oldsource>You will lose all the unsaved data. Do you still want to quickly relaunch the application?</oldsource>
-        <translation type="unfinished">Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer rapidement l&apos;application ?</translation>
+        <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer rapidement l&apos;application ?</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="581"/>
         <source>Quickly restart the application</source>
         <oldsource>Quickly relaunch the application</oldsource>
-        <translation type="unfinished">Relancer rapidement l&apos;application</translation>
+        <translation>Relancer rapidement l&apos;application</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="496"/>
@@ -462,7 +462,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="MFBOPresetCreator.cpp" line="577"/>
         <source>Quick restart</source>
         <oldsource>Quick relaunch</oldsource>
-        <translation type="unfinished">Relancement rapide</translation>
+        <translation>Relancement rapide</translation>
     </message>
 </context>
 <context>
@@ -853,212 +853,208 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Revenir sur la fenêtre de l&apos;outil de re-ciblage</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="120"/>
+        <location filename="RetargetingTool.cpp" line="121"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="129"/>
-        <location filename="RetargetingTool.cpp" line="191"/>
+        <location filename="RetargetingTool.cpp" line="130"/>
+        <location filename="RetargetingTool.cpp" line="192"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="137"/>
+        <location filename="RetargetingTool.cpp" line="138"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="152"/>
+        <location filename="RetargetingTool.cpp" line="153"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="159"/>
+        <location filename="RetargetingTool.cpp" line="160"/>
         <source>Backup</source>
         <translation>Backup</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="172"/>
+        <location filename="RetargetingTool.cpp" line="173"/>
         <source>Keep a backup?</source>
         <translation>Garder un backup ?</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="175"/>
+        <location filename="RetargetingTool.cpp" line="176"/>
         <source>You should always check this box to avoid any data loss or corruption.</source>
         <translation>Vous devriez toujours avoir cette case cochée pour éviter de perdre ou de corrompre des données.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="181"/>
+        <location filename="RetargetingTool.cpp" line="182"/>
         <source>Backup directory path:</source>
         <translation>Emplacement du répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="200"/>
+        <location filename="RetargetingTool.cpp" line="201"/>
         <source>Backup subdirectory name/path:</source>
         <translation>Nom/emplacement du sous-répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="209"/>
+        <location filename="RetargetingTool.cpp" line="210"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="476"/>
+        <location filename="RetargetingTool.cpp" line="477"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation>Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="492"/>
+        <location filename="RetargetingTool.cpp" line="493"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation>The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="501"/>
+        <location filename="RetargetingTool.cpp" line="502"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation>Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="518"/>
+        <location filename="RetargetingTool.cpp" line="519"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="536"/>
+        <location filename="RetargetingTool.cpp" line="537"/>
         <source>Parsing XML files. Please wait...</source>
         <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="546"/>
-        <location filename="RetargetingTool.cpp" line="591"/>
-        <location filename="RetargetingTool.cpp" line="759"/>
+        <location filename="RetargetingTool.cpp" line="547"/>
+        <location filename="RetargetingTool.cpp" line="592"/>
+        <location filename="RetargetingTool.cpp" line="760"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="617"/>
-        <location filename="RetargetingTool.cpp" line="735"/>
+        <location filename="RetargetingTool.cpp" line="618"/>
+        <location filename="RetargetingTool.cpp" line="736"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="638"/>
+        <location filename="RetargetingTool.cpp" line="639"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation>Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="646"/>
+        <location filename="RetargetingTool.cpp" line="647"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation>Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="664"/>
-        <location filename="RetargetingTool.cpp" line="672"/>
+        <location filename="RetargetingTool.cpp" line="665"/>
+        <location filename="RetargetingTool.cpp" line="673"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="690"/>
+        <location filename="RetargetingTool.cpp" line="691"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="729"/>
+        <location filename="RetargetingTool.cpp" line="730"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="843"/>
+        <location filename="RetargetingTool.cpp" line="844"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="859"/>
+        <location filename="RetargetingTool.cpp" line="860"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="893"/>
+        <location filename="RetargetingTool.cpp" line="894"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="907"/>
+        <location filename="RetargetingTool.cpp" line="908"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="567"/>
-        <location filename="RetargetingTool.cpp" line="899"/>
+        <location filename="RetargetingTool.cpp" line="568"/>
+        <location filename="RetargetingTool.cpp" line="900"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <source>All the files have been correctly re-targeted. You can now exit this window!</source>
-        <translation type="obsolete">Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
-    </message>
-    <message>
-        <location filename="RetargetingTool.cpp" line="910"/>
+        <location filename="RetargetingTool.cpp" line="911"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="60"/>
+        <location filename="RetargetingTool.cpp" line="61"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="575"/>
+        <location filename="RetargetingTool.cpp" line="576"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="749"/>
+        <location filename="RetargetingTool.cpp" line="750"/>
         <source>Patching XML files. Please wait...</source>
         <translation>Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="787"/>
+        <location filename="RetargetingTool.cpp" line="788"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="907"/>
+        <location filename="RetargetingTool.cpp" line="908"/>
         <source>Retargeting successful</source>
         <translation>Re-ciblage réussi</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="220"/>
+        <location filename="RetargetingTool.cpp" line="221"/>
         <source>Retarget all the files under the input path</source>
         <translation>Re-cibler tous les fichiers sous l&apos;emplacement d&apos;entrée</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="80"/>
+        <location filename="RetargetingTool.cpp" line="81"/>
         <source>General</source>
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="100"/>
+        <location filename="RetargetingTool.cpp" line="101"/>
         <source>Targeted body and version:</source>
         <translation>Corps et version ciblé :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="404"/>
+        <location filename="RetargetingTool.cpp" line="405"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="446"/>
+        <location filename="RetargetingTool.cpp" line="447"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation>Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="467"/>
+        <location filename="RetargetingTool.cpp" line="468"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="483"/>
+        <location filename="RetargetingTool.cpp" line="484"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
@@ -1079,7 +1075,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="Settings.cpp" line="93"/>
         <source>Note: Modifying a value marked with the &quot;*&quot; character will require a restart of the application to be applied correctly.</source>
         <oldsource>Modifying a value marked with the &quot;*&quot; character will require a restart of the application to be applied correctly.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Note : Modifier une valeur marquée du caractère &quot;*&quot; nécessitera un redémarrage de l&apos;application pour être appliquée correctement.</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="127"/>
@@ -1186,7 +1182,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="Settings.cpp" line="88"/>
         <source>Warning: A restart of the application is pending. You should not modify any value marked with the &quot;*&quot; character until you restart the application.</source>
-        <translation>Attention : Un redémarrage de l&apos;application est en attente. Vous ne devriez modifier aucune valeur marquée du caractère &quot;*&quot; tant que vous n&apos;avez pas redémarré l&apos;application.</translation>
+        <translation>Attention : Un redémarrage de l&apos;application est en attente. Vous ne devriez modifier aucune valeur marquée du caractère &quot;*&quot; avant d&apos;avoir redémarré l&apos;application.</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="392"/>
@@ -1196,7 +1192,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="Settings.cpp" line="417"/>
         <source>Last used folder and files paths</source>
-        <translation>Derniers emplacements de dossiers et fichiers utilisés</translation>
+        <translation>Derniers chemins de dossiers et fichiers utilisés</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="263"/>
@@ -1414,10 +1410,6 @@ Voulez-vous la télécharger maintenant ?</translation>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>Aucun fichier DDS n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
-    <message>
-        <source>File path</source>
-        <translation type="obsolete">Emplacement du fichier</translation>
-    </message>
 </context>
 <context>
     <name>Update</name>
@@ -1579,8 +1571,9 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <source>General</source>
-        <translation type="obsolete">Général</translation>
+        <location filename="Utils.cpp" line="1082"/>
+        <source>Remove from history</source>
+        <translation>Supprimer de l&apos;historique</translation>
     </message>
 </context>
 </TS>

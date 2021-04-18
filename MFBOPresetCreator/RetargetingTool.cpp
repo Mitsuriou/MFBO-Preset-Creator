@@ -55,6 +55,7 @@ void RetargetingTool::reject()
 void RetargetingTool::setWindowProperties()
 {
   this->setModal(true);
+  this->setMinimumWidth(700);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("BodySlide Presets' Retargeting"));
