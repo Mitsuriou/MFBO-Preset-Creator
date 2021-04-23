@@ -1546,7 +1546,7 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1082"/>
+        <location filename="Utils.cpp" line="1090"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>

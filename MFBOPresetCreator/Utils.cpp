@@ -915,11 +915,19 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
   QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lLastPathsFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
-  std::map<QString, QString> lLastPathsList;
+  std::map<QString, QString> lLastPathsList{
+    {"assistedConversionInput", ""},
+    {"general", ""},
+    {"lastLoadedProject", ""},
+    {"lastSavedProject", ""},
+    {"mainWindowOutput", ""},
+    {"retargetingToolInput", ""},
+    {"retargetingToolOutput", ""},
+    {"texturesAssistantInput", ""}};
 
   for (const auto& lKey : lVariantMap.keys())
   {
-    lLastPathsList.insert({lKey, lVariantMap.value(lKey, "").toString()});
+    lLastPathsList.find(lKey)->second = lVariantMap.value(lKey, "").toString();
   }
 
   return lLastPathsList;
