@@ -34,6 +34,9 @@ private:
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
   std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface() const;
 
+  // Utils functions
+  bool hasUserSelectedAnything() const;
+
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
 

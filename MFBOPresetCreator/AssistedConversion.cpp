@@ -298,6 +298,21 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
   return lResults;
 }
 
+bool AssistedConversion::hasUserSelectedAnything() const
+{
+  for (const auto& lIndex : this->mBoxSelectedIndexes)
+  {
+    // The first index that is different than 0 means that a value has been selected
+    if (lIndex != 0)
+    {
+      return true;
+    }
+  }
+
+  // The user did not select any value
+  return false;
+}
+
 void AssistedConversion::chooseInputDirectory()
 {
   // Fetch GUI components
@@ -327,6 +342,24 @@ void AssistedConversion::launchSearchProcess()
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+
+  if (this->hasUserSelectedAnything())
+  {
+    if (Utils::displayQuestionMessage(this,
+                                      tr("Relaunch the scan"),
+                                      tr("You will lose all the unsaved data. Do you still want to relaunch the scan?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Relaunch the scan"),
+                                      tr("Cancel the relaunch"),
+                                      this->mSettings.dangerColor,
+                                      this->mSettings.successColor,
+                                      false)
+        != ButtonClicked::Yes)
+    {
+      return;
+    }
+  }
 
   const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
 
