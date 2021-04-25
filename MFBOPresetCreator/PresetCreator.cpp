@@ -231,7 +231,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
     if (Utils::displayQuestionMessage(this,
                                       tr("One mesh data was not assigned"),
                                       lMessage,
-                                      Utils::getIconRessourceFolder(mSettings.appTheme),
+                                      Utils::getIconRessourceFolder(this->mSettings.appTheme),
                                       "help-circle",
                                       tr("Clear all the unassigned entries"),
                                       tr("Keep the currently set values for the unassigned entries"),
@@ -275,7 +275,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Body meshes group box
   auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes").append("  "), this)};
@@ -382,7 +382,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
 void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
@@ -433,7 +433,6 @@ void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
   auto lSkeletonRefresher{new QPushButton(this)};
   lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
   lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
-  lSkeletonRefresher->setIcon(QIcon(QPixmap(QString(":/%1/reload").arg(lIconFolder))));
   lSkeletonRefresher->setText(tr("Refresh"));
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
@@ -487,7 +486,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
 void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
@@ -593,7 +592,6 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lEditFilters->setText(tr("Edit BodySlide filters sets"));
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
-  lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
   lBodyslideGridLayout->addWidget(lEditFilters, 5, 4);
 
   // Pre-bind initialization functions
@@ -615,7 +613,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
 void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), this)};
@@ -686,7 +684,7 @@ void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
 void PresetCreator::setupRemainingGUI(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Generate button
   auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
@@ -1514,7 +1512,7 @@ void PresetCreator::chooseExportDirectory()
 void PresetCreator::generateDirectoryStructure()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Selected body
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};

@@ -154,6 +154,7 @@
         <file alias="bodyslide-logo">ressources/software/icons/black/bodyslide-logo.png</file>
         <file alias="vector-polyline">ressources/software/icons/black/vector-polyline.png</file>
         <file alias="file">ressources/software/icons/black/file.png</file>
+        <file alias="reorder">ressources/software/icons/black/reorder.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -202,6 +203,7 @@
         <file alias="bodyslide-logo">ressources/software/icons/white/bodyslide-logo.png</file>
         <file alias="vector-polyline">ressources/software/icons/white/vector-polyline.png</file>
         <file alias="file">ressources/software/icons/white/file.png</file>
+        <file alias="reorder">ressources/software/icons/white/reorder.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

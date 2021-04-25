@@ -28,7 +28,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   if (Utils::displayQuestionMessage(this,
                                     tr("Closing"),
@@ -81,7 +81,7 @@ void AssistedConversion::setupInterface()
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // First line
   auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
@@ -341,7 +341,7 @@ void AssistedConversion::chooseInputDirectory()
 void AssistedConversion::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   if (this->hasUserSelectedAnything())
   {
@@ -480,7 +480,7 @@ void AssistedConversion::validateSelection()
     if (Utils::displayQuestionMessage(this,
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
-                                      Utils::getIconRessourceFolder(mSettings.appTheme),
+                                      Utils::getIconRessourceFolder(this->mSettings.appTheme),
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),

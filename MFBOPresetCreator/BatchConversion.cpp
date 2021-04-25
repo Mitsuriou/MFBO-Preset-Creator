@@ -25,7 +25,7 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   if (Utils::displayQuestionMessage(this,
                                     tr("Closing"),
@@ -55,50 +55,59 @@ void BatchConversion::reject()
 void BatchConversion::setWindowProperties()
 {
   this->setModal(true);
-  this->setMinimumWidth(700);
+  this->setMinimumWidth(800);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-  this->setWindowTitle(tr("BodySlide Presets' Retargeting"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/arrow-up")));
+  this->setWindowTitle(tr("Batch Conversion"));
+  this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
 }
 
 void BatchConversion::initializeGUI()
 {
-  // Main window container
-  auto lMainVertical{new QGridLayout(this)};
-  lMainVertical->setRowStretch(0, 0);
-  lMainVertical->setRowStretch(1, 0);
-  lMainVertical->setRowStretch(2, 2);
-  this->setupInterface(*lMainVertical);
+  // Main window layout
+  auto lMainGrid{new QGridLayout(this)};
+  lMainGrid->setColumnStretch(0, 0);
+  lMainGrid->setColumnStretch(1, 1);
+  lMainGrid->setColumnStretch(2, 1);
+  lMainGrid->setColumnStretch(3, 2);
+  lMainGrid->setColumnStretch(4, 0);
+  lMainGrid->setSpacing(10);
+  lMainGrid->setContentsMargins(15, 20, 15, 15);
+  lMainGrid->setAlignment(Qt::AlignTop);
+  this->setLayout(lMainGrid);
+
+  this->setupInterface(lMainGrid);
 }
 
-void BatchConversion::setupInterface(QGridLayout& aLayout)
+void BatchConversion::setupInterface(QGridLayout* aLayout)
 {
+  // TODO: Split the code below into smaller functions
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // General group box
-  auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
-  Utils::setGroupBoxState(lGeneralGroupBox, false);
-  aLayout.addWidget(lGeneralGroupBox, 0, 0);
+  // First line
+  auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
+  aLayout->addWidget(lInputPathLabel, 0, 0);
 
-  // Grid layout
-  auto lGeneralGridLayout{new QGridLayout(lGeneralGroupBox)};
-  lGeneralGridLayout->setColumnStretch(0, 0);
-  lGeneralGridLayout->setColumnStretch(1, 1);
-  lGeneralGridLayout->setColumnStretch(2, 1);
-  lGeneralGridLayout->setColumnStretch(3, 2);
-  lGeneralGridLayout->setColumnStretch(4, 0);
-  lGeneralGridLayout->setSpacing(10);
-  lGeneralGridLayout->setContentsMargins(15, 20, 15, 15);
-  lGeneralGridLayout->setAlignment(Qt::AlignTop);
+  // Input label
+  auto lInputPathLineEdit{new QLineEdit("", this)};
+  lInputPathLineEdit->setReadOnly(true);
+  lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+  lInputPathLineEdit->setObjectName("input_path_directory");
+  lInputPathLineEdit->setDisabled(true);
+  aLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
+
+  // Input chooser
+  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lInputPathChooser->setCursor(Qt::PointingHandCursor);
+  lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
+  aLayout->addWidget(lInputPathChooser, 0, 4);
 
   // Targeted body and version
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
   auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
-  lGeneralGridLayout->addWidget(lBodyLabel, 0, 0);
+  aLayout->addWidget(lBodyLabel, 1, 0);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -106,7 +115,7 @@ void BatchConversion::setupInterface(QGridLayout& aLayout)
   lBodyNameSelector->addItems(DataLists::getBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  lGeneralGridLayout->addWidget(lBodyNameSelector, 0, 1);
+  aLayout->addWidget(lBodyNameSelector, 1, 1, 1, 3);
 
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
@@ -114,114 +123,101 @@ void BatchConversion::setupInterface(QGridLayout& aLayout)
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 2);
+  aLayout->addWidget(lBodyVersionSelector, 1, 4);
 
-  // Input path
-  auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  lGeneralGridLayout->addWidget(lInputPathLabel, 1, 0);
+  // Human skeleton file
+  aLayout->addWidget(new QLabel(tr("Skeleton file (human):"), this), 2, 0);
 
-  auto lInputPathLineEdit{new QLineEdit("", this)};
-  lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-  lInputPathLineEdit->setObjectName("input_path_directory");
-  lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 3);
+  auto lSkeletonChooserHuman{new QComboBox(this)};
+  lSkeletonChooserHuman->setItemDelegate(new QStyledItemDelegate());
+  lSkeletonChooserHuman->setCursor(Qt::PointingHandCursor);
+  lSkeletonChooserHuman->setObjectName("skeleton_chooser_human");
+  aLayout->addWidget(lSkeletonChooserHuman, 2, 1, 1, 3);
 
-  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lInputPathChooser->setCursor(Qt::PointingHandCursor);
-  lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
-  lInputPathChooser->setAutoDefault(false);
-  lInputPathChooser->setDefault(false);
-  lGeneralGridLayout->addWidget(lInputPathChooser, 1, 4);
+  auto lSkeletonRefresherHuman{new QPushButton(this)};
+  lSkeletonRefresherHuman->setCursor(Qt::PointingHandCursor);
+  lSkeletonRefresherHuman->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
+  lSkeletonRefresherHuman->setText(tr("Refresh"));
+  aLayout->addWidget(lSkeletonRefresherHuman, 2, 4);
+
+  // Beast skeleton file
+  aLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 3, 0);
+
+  auto lSkeletonChooserBeast{new QComboBox(this)};
+  lSkeletonChooserBeast->setItemDelegate(new QStyledItemDelegate());
+  lSkeletonChooserBeast->setCursor(Qt::PointingHandCursor);
+  lSkeletonChooserBeast->setObjectName("skeleton_chooser_beast");
+  aLayout->addWidget(lSkeletonChooserBeast, 3, 1, 1, 3);
+
+  this->populateSkeletonChooser();
+
+  auto lSkeletonRefresherBeast{new QPushButton(this)};
+  lSkeletonRefresherBeast->setCursor(Qt::PointingHandCursor);
+  lSkeletonRefresherBeast->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
+  lSkeletonRefresherBeast->setText(tr("Refresh"));
+  aLayout->addWidget(lSkeletonRefresherBeast, 3, 4);
 
   // BodySlide filters
   auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
-  lGeneralGridLayout->addWidget(lLabelFilters, 2, 0);
+  aLayout->addWidget(lLabelFilters, 4, 0);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   lFiltersListChooser->setCursor(Qt::PointingHandCursor);
   lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
-  lGeneralGridLayout->addWidget(lFiltersListChooser, 2, 1);
+  aLayout->addWidget(lFiltersListChooser, 4, 1);
 
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName("bodyslide_filters");
   lFiltersList->setWordWrap(true);
-  lGeneralGridLayout->addWidget(lFiltersList, 2, 2, 1, 2);
+  aLayout->addWidget(lFiltersList, 4, 2, 1, 2);
 
   auto lEditFilters{new QPushButton(this)};
   lEditFilters->setText(tr("Edit BodySlide filters sets"));
   lEditFilters->setCursor(Qt::PointingHandCursor);
   lEditFilters->setObjectName("edit_filters");
   lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
-  lGeneralGridLayout->addWidget(lEditFilters, 2, 4);
+  aLayout->addWidget(lEditFilters, 4, 4);
 
-  // Backup group box
-  auto lBackupGroupBox{new QGroupBox(tr("Backup").append("  "), this)};
-  Utils::addIconToGroupBox(lBackupGroupBox, lIconFolder, "restore");
-  Utils::setGroupBoxState(lBackupGroupBox, false);
-  aLayout.addWidget(lBackupGroupBox, 1, 0);
+  // BodySlide files names pattern
+  auto lOSPXMLNames{new QLabel(tr("BodySlide files names:"), this)};
+  aLayout->addWidget(lOSPXMLNames, 5, 0);
 
-  // Grid layout
-  auto lBackupGridLayout{new QGridLayout(lBackupGroupBox)};
-  lBackupGridLayout->setSpacing(10);
-  lBackupGridLayout->setContentsMargins(15, 20, 15, 15);
-  lBackupGridLayout->setAlignment(Qt::AlignTop);
+  auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
+  lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
+  aLayout->addWidget(lOSPXMLNamesLineEdit, 5, 1, 1, 4);
 
-  // Keep backup checkbox
-  auto lKeepBackupLabel{new QLabel(tr("Keep a backup?"), this)};
-  lBackupGridLayout->addWidget(lKeepBackupLabel, 0, 0);
+  // BodySlide presets names pattern
+  auto lNamesInApp{new QLabel(this)};
+  lNamesInApp->setTextFormat(Qt::RichText);
+  auto lText{tr("Presets names:")};
+  auto lRichText{
+    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
+                   " %2"
+                   "</p>")
+      .arg(lIconFolder)
+      .arg(lText)};
+  lNamesInApp->setText(lRichText);
+  lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
+  aLayout->addWidget(lNamesInApp, 6, 0);
 
-  auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."), this)};
-  lKeepBackup->setCursor(Qt::PointingHandCursor);
-  lKeepBackup->setObjectName("keep_backup");
-  lBackupGridLayout->addWidget(lKeepBackup, 0, 1, 1, 2);
+  auto lNamesInAppLineEdit{new QLineEdit(this)};
+  lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
+  aLayout->addWidget(lNamesInAppLineEdit, 6, 1, 1, 4);
 
-  // Backup directory path
-  auto lBackupPathLabel{new QLabel(tr("Backup directory path:"), this)};
-  lBackupPathLabel->setObjectName("backup_path_label");
-  lBackupGridLayout->addWidget(lBackupPathLabel, 1, 0);
+  // Output location
+  this->setupOutputGUI(aLayout);
 
-  auto lBackupPathLineEdit{new QLineEdit("", this)};
-  lBackupPathLineEdit->setReadOnly(true);
-  lBackupPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-  lBackupPathLineEdit->setObjectName("backup_path_directory");
-  lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
-
-  auto lBackupPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lBackupPathChooser->setCursor(Qt::PointingHandCursor);
-  lBackupPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
-  lBackupPathChooser->setAutoDefault(false);
-  lBackupPathChooser->setDefault(false);
-  lBackupPathChooser->setObjectName("backup_dir_chooser");
-  lBackupGridLayout->addWidget(lBackupPathChooser, 1, 2);
-
-  // Backup subdirectory name/path
-  auto lLabelSubDirectoryBackupPath{new QLabel(tr("Backup subdirectory name/path:"), this)};
-  lLabelSubDirectoryBackupPath->setObjectName("backup_subdir_label");
-  lBackupGridLayout->addWidget(lLabelSubDirectoryBackupPath, 2, 0);
-
-  auto lBackupSubpathLineEdit{new QLineEdit("", this)};
-  lBackupSubpathLineEdit->setObjectName("backup_path_subdirectory");
-  lBackupGridLayout->addWidget(lBackupSubpathLineEdit, 2, 1);
-
-  // Backup preview
-  auto lBackupPathPreviewLabel{new QLabel(tr("Preview:"), this)};
-  lBackupPathPreviewLabel->setObjectName("backup_path_preview_label");
-  lBackupPathPreviewLabel->setAlignment(Qt::AlignTop);
-  lBackupGridLayout->addWidget(lBackupPathPreviewLabel, 3, 0);
-
-  auto lBackupPathsPreview{new QLabel("", this)};
-  lBackupPathsPreview->setObjectName("backup_path_preview");
-  lBackupPathsPreview->setAlignment(Qt::AlignTop);
-  lBackupGridLayout->addWidget(lBackupPathsPreview, 3, 1, 1, 2);
-
-  // Generate button
-  auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"), this)};
-  lGenerateButton->setCursor(Qt::PointingHandCursor);
-  lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))));
-  lGenerateButton->setAutoDefault(false);
-  lGenerateButton->setDefault(false);
-  aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
+  // Launch search button
+  auto lLaunchSearchButton{new QPushButton(tr("Batch generate the files on my computer"), this)};
+  lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
+  lLaunchSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/build").arg(lIconFolder))));
+  lLaunchSearchButton->setObjectName("launch_search_button");
+  lLaunchSearchButton->setAutoDefault(false);
+  lLaunchSearchButton->setDefault(false);
+  lLaunchSearchButton->setDisabled(true);
+  aLayout->addWidget(lLaunchSearchButton, 8, 0, 1, 5, Qt::AlignTop);
 
   // Event bindings for user actions (disconnected the first time the user does an action in the GUI)
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
@@ -230,17 +226,87 @@ void BatchConversion::setupInterface(QGridLayout& aLayout)
   // Event binding
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateAvailableBodyVersions);
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
-  this->connect(lKeepBackup, &QCheckBox::stateChanged, this, &BatchConversion::updateBackupState);
-  lKeepBackup->setChecked(true);
 
-  this->connect(lBackupPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseBackupDirectory);
-  this->connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateBackupPreview);
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchUpDownGradeProcess);
+  this->connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChooser);
+  this->connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChooser);
+
+  this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::updateBodySlideFiltersListPreview));
   this->connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
+}
+
+void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+
+  // Output group box
+  auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), this)};
+  Utils::addIconToGroupBox(lOutputGroupBox, lIconFolder, "file-tree");
+  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::setGroupBoxState(lOutputGroupBox, false);
+  aLayout->addWidget(lOutputGroupBox, 7, 0, 1, 5);
+
+  // Grid layout
+  auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
+  lOutputGridLayout->setSpacing(10);
+  lOutputGridLayout->setContentsMargins(15, 20, 15, 15);
+  lOutputGridLayout->setAlignment(Qt::AlignTop);
+
+  // Main directory
+  auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
+  lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
+
+  auto lOutputPathLineEdit{new QLineEdit(this)};
+  lOutputPathLineEdit->setReadOnly(true);
+  lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+  lOutputPathLineEdit->setObjectName("output_path_directory");
+  lOutputPathLineEdit->setText(mSettings.mainWindowOutputPath);
+  lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
+
+  // Main directory's file chooser button
+  auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
+  lOutputPathChooser->setCursor(Qt::PointingHandCursor);
+  lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
+  lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
+
+  // Subdirectory
+  auto lLabelSubpath{new QLabel(tr("Output subdirectory name/path:"), this)};
+  lOutputGridLayout->addWidget(lLabelSubpath, 1, 0);
+
+  auto lOutputSubpathLineEdit{new QLineEdit(this)};
+  lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
+  lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
+
+  // Use only subdirectory path
+  auto lLabelUseOnlySubdir{new QLabel(tr("Use only subdirectory path?"), this)};
+  lOutputGridLayout->addWidget(lLabelUseOnlySubdir, 2, 0);
+
+  auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
+  lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
+  lUseOnlySubdir->setObjectName("only_use_subdirectory");
+  lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
+
+  // Preview
+  auto lOutputTitlePreview{new QLabel(tr("Preview:"), this)};
+  lOutputGridLayout->addWidget(lOutputTitlePreview, 3, 0);
+
+  auto lOutputPathsPreview{new QLabel("", this)};
+  lOutputPathsPreview->setObjectName("output_path_preview");
+  lOutputPathsPreview->setAutoFillBackground(true);
+  lOutputGridLayout->addWidget(lOutputPathsPreview, 3, 1);
+
+  // TODO: bind these events
+  //// Event binding
+  //this->connect(lOutputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseExportDirectory);
+  //this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview);
+  //this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
+
+  //// Pre-filled data
+  //this->updateOutputPreview();
 }
 
 void BatchConversion::userHasDoneAnAction()
@@ -301,138 +367,28 @@ void BatchConversion::updateAvailableBodyVersions()
 
 void BatchConversion::chooseInputDirectory()
 {
+  // Fetch GUI components
+  auto lLaunchSearchButton{this->findChild<QPushButton*>("launch_search_button")};
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
+
+  // Open a directory chooser dialog
+  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "batchConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
-  this->updateBackupPreview();
+  Utils::updatePathAtKey(this->mLastPaths, "batchConversionInput", lPath);
 
-  if (!this->mHasUserDoneSomething && lPath.size() > 0)
+  if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
-    this->userHasDoneAnAction();
+    this->mHasUserDoneSomething = true;
   }
+
+  // Enable or disable path viewer label and launch button
+  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
+  lLineEdit->setDisabled(lMustDisableButton);
+  lLaunchSearchButton->setDisabled(lMustDisableButton);
 }
 
-void BatchConversion::chooseBackupDirectory()
-{
-  auto lLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
-  lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
-  this->updateBackupPreview();
-
-  if (!this->mHasUserDoneSomething && lPath.size() > 0)
-  {
-    this->userHasDoneAnAction();
-  }
-}
-
-void BatchConversion::updateBackupState(int aState)
-{
-  auto lBackupPathLabel{this->findChild<QLabel*>("backup_path_label")};
-  auto lBackupPathLineEdit{this->findChild<QLineEdit*>("backup_path_directory")};
-  auto lBackupPathChooser{this->findChild<QPushButton*>("backup_dir_chooser")};
-  auto lLabelSubDirectoryBackupPath{this->findChild<QLabel*>("backup_subdir_label")};
-  auto lBackupSubpathLineEdit{this->findChild<QLineEdit*>("backup_path_subdirectory")};
-  auto lOutputPathsPreviewLabel{this->findChild<QLabel*>("backup_path_preview_label")};
-  auto lOutputPathsPreview{this->findChild<QLabel*>("backup_path_preview")};
-
-  switch (aState)
-  {
-    case Qt::Unchecked:
-      lOutputPathsPreview->setStyleSheet("");
-
-      lBackupPathLabel->setDisabled(true);
-      lBackupPathLineEdit->setDisabled(true);
-      lBackupPathChooser->setDisabled(true);
-      lLabelSubDirectoryBackupPath->setDisabled(true);
-      lBackupSubpathLineEdit->setDisabled(true);
-      lOutputPathsPreviewLabel->setDisabled(true);
-      lOutputPathsPreview->setDisabled(true);
-      break;
-    case Qt::Checked:
-      lBackupPathLabel->setDisabled(false);
-      lBackupPathLineEdit->setDisabled(false);
-      lBackupPathChooser->setDisabled(false);
-      lLabelSubDirectoryBackupPath->setDisabled(false);
-      lBackupSubpathLineEdit->setDisabled(false);
-      lOutputPathsPreviewLabel->setDisabled(false);
-      lOutputPathsPreview->setDisabled(false);
-
-      this->updateBackupPreview();
-  }
-}
-
-void BatchConversion::updateBackupPreview()
-{
-  // Check if the user has typed in the output subdir qlineedit
-  auto lEventSource{qobject_cast<QLineEdit*>(sender())};
-  auto lSubdirLineEdit{this->findChild<QLineEdit*>("backup_path_subdirectory")};
-
-  if (lEventSource == lSubdirLineEdit)
-  {
-    this->userHasDoneAnAction();
-  }
-
-  // Get main directory
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>("backup_path_directory")};
-  auto lMainDirectory{lMainDirTextEdit->text().trimmed()};
-  Utils::cleanPathString(lMainDirectory);
-
-  // Get subdirectory
-  auto lSubDirectory{this->findChild<QLineEdit*>("backup_path_subdirectory")->text().trimmed()};
-  Utils::cleanPathString(lSubDirectory);
-  auto lIsValidPath{true};
-
-  // Construct full path
-  auto lFullPath(QString(""));
-  if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
-  {
-    lFullPath = lMainDirectory + "/" + lSubDirectory;
-    lMainDirTextEdit->setDisabled(false);
-  }
-  else if (lMainDirectory.length() > 0 && lSubDirectory.length() == 0)
-  {
-    lFullPath = lMainDirectory;
-    lMainDirTextEdit->setDisabled(false);
-  }
-  else
-  {
-    lFullPath = tr("No path given or invalid path given.");
-    lMainDirTextEdit->setDisabled(true);
-    lIsValidPath = false;
-  }
-
-  // Set the full path value in the preview label
-  auto lOutputPathsPreview{this->findChild<QLabel*>("backup_path_preview")};
-
-  auto lNewTextColor{this->mSettings.successColor};
-
-  if (lIsValidPath)
-  {
-    // Check if the user is trying to backup the directory into itself
-    if (lFullPath.startsWith(this->findChild<QLineEdit*>("input_path_directory")->text()))
-    {
-      lNewTextColor = this->mSettings.dangerColor;
-    }
-    // Check if the wanted backup directory already exists
-    else if (QDir(lFullPath).exists())
-    {
-      lNewTextColor = this->mSettings.warningColor;
-    }
-  }
-  else
-  {
-    lNewTextColor = this->mSettings.dangerColor;
-  }
-
-  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
-  lOutputPathsPreview->setText(lFullPath);
-}
-
-void BatchConversion::launchUpDownGradeProcess()
+void BatchConversion::launchSearchProcess()
 {
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
@@ -912,6 +868,30 @@ void BatchConversion::launchUpDownGradeProcess()
   lConfirmationBox.exec();
 }
 
+void BatchConversion::populateSkeletonChooser()
+{
+  auto lRootDir{Utils::getAppDataPathFolder() + "assets/skeletons/"};
+  Utils::cleanPathString(lRootDir);
+  auto lAvailableSkeletons{QStringList()};
+
+  // Search for all "*.nif" files
+  QDirIterator it(lRootDir, QStringList() << QString("*.nif"), QDir::Files, QDirIterator::Subdirectories);
+  while (it.hasNext())
+  {
+    it.next();
+    lAvailableSkeletons.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
+  }
+
+  // Clear the combo box and add the found files to it
+  auto lSkeletonChooserHuman{this->findChild<QComboBox*>("skeleton_chooser_human")};
+  lSkeletonChooserHuman->clear();
+  lSkeletonChooserHuman->addItems(lAvailableSkeletons);
+
+  auto lSkeletonChooserBeast{this->findChild<QComboBox*>("skeleton_chooser_beast")};
+  lSkeletonChooserBeast->clear();
+  lSkeletonChooserBeast->addItems(lAvailableSkeletons);
+}
+
 void BatchConversion::openBodySlideFiltersEditor()
 {
   auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList)};
@@ -1007,4 +987,16 @@ void BatchConversion::updateBodySlideFiltersListPreview(int aIndex)
   LFiltersLabel->setText(lText);
 
   this->userHasDoneAnAction();
+}
+
+void BatchConversion::groupBoxChecked(bool aIsChecked)
+{
+  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
+  if (lGroupBox == nullptr)
+    return;
+
+  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+
+  // Resize the window
+  this->adjustSize();
 }

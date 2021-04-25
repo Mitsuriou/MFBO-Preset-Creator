@@ -39,7 +39,7 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
       || !(std::equal(this->mOriginalFiltersList.begin(), this->mOriginalFiltersList.end(), this->mFiltersList.begin())))
   {
     // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+    const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
     if (Utils::displayQuestionMessage(this,
                                       tr("Closing"),
@@ -87,7 +87,7 @@ void BodySlideFiltersEditor::initializeGUI()
 void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Body filter set chooser
   auto lLabelFilters{new QLabel(tr("Edit set:"), this)};
@@ -191,7 +191,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};

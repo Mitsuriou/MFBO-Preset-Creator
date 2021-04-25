@@ -917,6 +917,7 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
   auto lVariantMap{lObtainedJSON.toVariantMap()};
   std::map<QString, QString> lLastPathsList{
     {"assistedConversionInput", ""},
+    {"batchConversionInput", ""},
     {"general", ""},
     {"lastLoadedProject", ""},
     {"lastSavedProject", ""},

@@ -24,7 +24,7 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   if (Utils::displayQuestionMessage(this,
                                     tr("Closing"),
@@ -70,20 +70,17 @@ void TexturesAssistant::initializeGUI()
   lMainGrid->setAlignment(Qt::AlignTop);
   this->setLayout(lMainGrid);
 
-  this->setupInterface();
+  this->setupInterface(lMainGrid);
 }
 
-void TexturesAssistant::setupInterface()
+void TexturesAssistant::setupInterface(QGridLayout* aLayout)
 {
-  // Get the window's layout
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
-
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // First line
   auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  lMainLayout->addWidget(lInputPathLabel, 0, 0);
+  aLayout->addWidget(lInputPathLabel, 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
@@ -91,7 +88,7 @@ void TexturesAssistant::setupInterface()
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lInputPathLineEdit->setDisabled(true);
-  lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
+  aLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
   auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
@@ -99,7 +96,7 @@ void TexturesAssistant::setupInterface()
   lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
   lInputPathChooser->setAutoDefault(false);
   lInputPathChooser->setDefault(false);
-  lMainLayout->addWidget(lInputPathChooser, 0, 2);
+  aLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
   auto lLaunchSearchButton{new QPushButton(tr("Launch the scan of the mod"), this)};
@@ -109,7 +106,7 @@ void TexturesAssistant::setupInterface()
   lLaunchSearchButton->setAutoDefault(false);
   lLaunchSearchButton->setDefault(false);
   lLaunchSearchButton->setDisabled(true);
-  lMainLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
+  aLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
   this->displayHintZone();
@@ -256,7 +253,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
   auto lRowIndex{0};
 
   // Head ressources blocks
@@ -354,7 +351,7 @@ void TexturesAssistant::chooseInputDirectory()
 void TexturesAssistant::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
 

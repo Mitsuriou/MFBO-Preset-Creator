@@ -37,7 +37,7 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   if (this->getSettingsFromGUI() != this->mSettings || this->mPathEntryCleared)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+    const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
     if (Utils::displayQuestionMessage(this,
                                       tr("Closing"),
@@ -121,7 +121,7 @@ void Settings::initializeGUI()
 void Settings::setupDisplayGroup(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Display group box
   auto lDisplayGroupBox{new QGroupBox(tr("Display").append("  "), this)};
@@ -244,7 +244,7 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
 void Settings::setupGeneralGroup(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Display group box
   auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
@@ -275,7 +275,7 @@ void Settings::setupGeneralGroup(QGridLayout* aLayout)
 void Settings::setupPresetCreatorGroup(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Preset Creator group box
   auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator").append("  "), this)};
@@ -343,7 +343,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout* aLayout)
 void Settings::setupRetargetingToolGroup(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // BodySlide Presets' Retargeting group box
   auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting").append("  "), this)};
@@ -386,7 +386,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout* aLayout)
 void Settings::setupAssistedConversionGroup(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Assisted Conversion group box
   auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion").append("  "), this)};
@@ -411,7 +411,7 @@ void Settings::setupAssistedConversionGroup(QGridLayout* aLayout)
 void Settings::setupLastPaths(QGridLayout* aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // BodySlide Presets' Retargeting group box
   auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths").append("  "), this)};
@@ -430,8 +430,8 @@ void Settings::setupLastPaths(QGridLayout* aLayout)
   lClearAllButton->setObjectName("remove_all_filters");
   lClearAllButton->setStyleSheet("text-align:left;");
   lClearAllButton->setCursor(Qt::PointingHandCursor);
-  lClearAllButton->setToolTip(tr("Clear all history"));
-  lClearAllButton->setText(tr("Clear all history"));
+  lClearAllButton->setToolTip(tr("Remove all the history"));
+  lClearAllButton->setText(tr("Remove all the history"));
   lClearAllButton->setIcon(QIcon(QPixmap(QString(":/%1/trash-lines").arg(lIconFolder))));
   lClearAllButton->setAutoDefault(false);
   lClearAllButton->setDefault(false);
@@ -440,12 +440,13 @@ void Settings::setupLastPaths(QGridLayout* aLayout)
   // Create a line for each path
   Utils::addLastPathLine(this, lPathsLayout, 1, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lPathsLayout, 2, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 5, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 8, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Batch Conv.: input"), this->mLastPaths.find("batchConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 5, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 8, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 9, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind all the clear buttons
   this->connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);
@@ -459,7 +460,7 @@ void Settings::setupLastPaths(QGridLayout* aLayout)
 
 void Settings::setupButtons(QGridLayout* aLayout)
 {
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
@@ -688,7 +689,7 @@ void Settings::saveSettings()
   if (mMustRebootMainApp)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+    const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
     if (Utils::displayQuestionMessage(this,
                                       tr("Application settings changed"),
@@ -837,7 +838,14 @@ void Settings::clearPathButtonClicked()
     return;
 
   auto lRowIndex{lButton->objectName().remove(QString("clear_path_"), Qt::CaseSensitivity::CaseSensitive).toInt()};
-  auto lKey{DataLists::getLastPathsKeys().at(lRowIndex)};
+  auto lKey{DataLists::getLastPathsKeys().at(lRowIndex - 1)};
+
+  // If the path is already empty, return instantly
+  if (this->mLastPaths.find(lKey)->second.compare("", Qt::CaseInsensitive) == 0)
+  {
+    return;
+  }
+
   Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(""), true, false);
 
   this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))->setText(this->mLastPaths.find(lKey)->second);

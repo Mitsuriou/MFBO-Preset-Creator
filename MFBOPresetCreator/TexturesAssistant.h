@@ -42,7 +42,7 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
-  void setupInterface();
+  void setupInterface(QGridLayout* aLayout);
   void displayHintZone();
   void deleteAlreadyExistingWindowBottom() const;
 

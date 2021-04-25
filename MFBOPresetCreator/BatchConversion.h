@@ -26,7 +26,8 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
-  void setupInterface(QGridLayout& aLayout);
+  void setupInterface(QGridLayout* aLayout);
+  void setupOutputGUI(QGridLayout* aLayout);
   void userHasDoneAnAction();
 
   int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
@@ -35,14 +36,15 @@ private slots:
   void userHasDoneAnAction(int);
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
-  void chooseBackupDirectory();
-  void updateBackupState(int aState);
-  void updateBackupPreview();
-  void launchUpDownGradeProcess();
+  void launchSearchProcess();
+  void populateSkeletonChooser();
 
   // BodySlide Filters Editor
   void openBodySlideFiltersEditor();
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview(int aIndex);
+
+  // GUI widgets events
+  void groupBoxChecked(bool aIsChecked);
 };

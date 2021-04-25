@@ -30,7 +30,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
   if (!lMainContainer->hasUserDoneSomething())
@@ -119,7 +119,7 @@ void MFBOPresetCreator::initializeGUI()
 void MFBOPresetCreator::setupMenuBar()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Menu bar
   auto lMenuBar{new QMenuBar(this)};
@@ -169,7 +169,7 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lTools);
 
   // Action: Batch conversion
-  auto lOpenBatchConv{Utils::buildQAction(this, tr("Batch Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "", lIconFolder)};
+  auto lOpenBatchConv{Utils::buildQAction(this, tr("Batch Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "reorder", lIconFolder)};
   lTools->addAction(lOpenBatchConv);
 
   // Action: Textures Assistant
@@ -359,7 +359,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   this->enableLineEditPlaceholders(lLineEditsToReactivate);
 
   // Reset icons color
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>("edit_filters")};
   lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
@@ -463,7 +463,7 @@ void MFBOPresetCreator::checkForUpdate()
 void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Display a message based on new available versions
   auto lTitle{QString()};
@@ -571,7 +571,7 @@ void MFBOPresetCreator::saveProject()
 void MFBOPresetCreator::quickRelaunch()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(mSettings.appTheme)};
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
   if (!lMainContainer->hasUserDoneSomething())
