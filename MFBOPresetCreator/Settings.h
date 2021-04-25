@@ -63,4 +63,5 @@ private slots:
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
   void clearPathButtonClicked();
+  void clearAllPaths();
 };

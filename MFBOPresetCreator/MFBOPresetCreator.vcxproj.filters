@@ -43,6 +43,9 @@
     <ClCompile Include="TexturesAssistant.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="BatchConversion.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -137,6 +140,9 @@
     </QtMoc>
     <QtMoc Include="Utils.h">
       <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="BatchConversion.h">
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

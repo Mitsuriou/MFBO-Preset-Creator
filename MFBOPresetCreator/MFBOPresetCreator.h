@@ -2,6 +2,7 @@
 
 #include "About.h"
 #include "AssistedConversion.h"
+#include "BatchConversion.h"
 #include "PresetCreator.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
@@ -61,6 +62,7 @@ private slots:
   void launchAssistedConversion();
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
   // Other tools
+  void launchBatchConversion();
   void launchPresetsRetargeting();
   void launchTexturesAssistant();
   // Dialog

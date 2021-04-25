@@ -149,6 +149,12 @@ void MFBOPresetCreator::setupMenuBar()
 
   lFile->addSeparator();
 
+  // Action: Settings
+  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O), "cog", lIconFolder)};
+  lFile->addAction(lOpenSettings);
+
+  lFile->addSeparator();
+
   // Action: Relaunch the app
   auto lRelaunchApp{Utils::buildQAction(this, tr("Quick restart"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
   lFile->addAction(lRelaunchApp);
@@ -162,6 +168,10 @@ void MFBOPresetCreator::setupMenuBar()
   lTools->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lTools);
 
+  // Action: Batch conversion
+  auto lOpenBatchConv{Utils::buildQAction(this, tr("Batch Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "", lIconFolder)};
+  lTools->addAction(lOpenBatchConv);
+
   // Action: Textures Assistant
   auto lOpenTextAssist{Utils::buildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T), "textures", lIconFolder)};
   lTools->addAction(lOpenTextAssist);
@@ -173,10 +183,6 @@ void MFBOPresetCreator::setupMenuBar()
   // Action: BodySlide Presets' Retargeting
   auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_H), "arrow-up", lIconFolder)};
   lTools->addAction(lOpenRetaTools);
-
-  // Action: Settings
-  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O), "cog", lIconFolder)};
-  lTools->addAction(lOpenSettings);
 
   // Menu: Help
   const auto& lUpdateAvailableText{this->mNewVersionAvailable ? tr(" (update available)") : QString("")};
@@ -219,12 +225,13 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lOpenProjectFile, &QAction::triggered, this, &MFBOPresetCreator::loadProject);
   this->connect(lSaveProject, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
   this->connect(lSaveProjectAs, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
+  this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
   this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
+  this->connect(lOpenBatchConv, &QAction::triggered, this, &MFBOPresetCreator::launchBatchConversion);
+  this->connect(lOpenTextAssist, &QAction::triggered, this, &MFBOPresetCreator::launchTexturesAssistant);
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
   this->connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
-  this->connect(lOpenTextAssist, &QAction::triggered, this, &MFBOPresetCreator::launchTexturesAssistant);
-  this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
   this->connect(lOpenNexus, &QAction::triggered, this, &MFBOPresetCreator::openNexusPageInDefaultBrowser);
   this->connect(lOpenSourceCodeGitHub, &QAction::triggered, this, &MFBOPresetCreator::openGitHubSourceCodePageInDefaultBrowser);
@@ -605,6 +612,15 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
   // Proxy the event to the current tab
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
   lMainContainer->fillUIByAssistedConversionValues(aPresetName, aResultsList);
+}
+
+void MFBOPresetCreator::launchBatchConversion()
+{
+  new BatchConversion(this, this->mSettings, &this->mLastPaths);
+
+  // Update the BodySlide sets in case they were modified through the RetargetingTool's window
+  auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))};
+  lMainHandler->updateBodySlideSets();
 }
 
 void MFBOPresetCreator::launchPresetsRetargeting()

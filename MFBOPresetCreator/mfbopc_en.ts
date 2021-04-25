@@ -151,6 +151,235 @@
     </message>
 </context>
 <context>
+    <name>BatchConversion</name>
+    <message>
+        <location filename="BatchConversion.cpp" line="31"/>
+        <source>Closing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="32"/>
+        <source>Do you want to close the window?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="35"/>
+        <source>Close the window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="36"/>
+        <source>Go back to the batch conversion window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="61"/>
+        <source>BodySlide Presets&apos; Retargeting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="81"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="100"/>
+        <source>Targeted body and version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="120"/>
+        <source>Input path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="129"/>
+        <location filename="BatchConversion.cpp" line="190"/>
+        <source>Choose a directory...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="137"/>
+        <source>BodySlide filters:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="152"/>
+        <source>Edit BodySlide filters sets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="159"/>
+        <source>Backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="171"/>
+        <source>Keep a backup?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="174"/>
+        <source>You should always check this box to avoid any data loss or corruption.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="180"/>
+        <source>Backup directory path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="199"/>
+        <source>Backup subdirectory name/path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="208"/>
+        <source>Preview:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="219"/>
+        <source>Retarget all the files under the input path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="403"/>
+        <source>No path given or invalid path given.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="445"/>
+        <source>Error: no path path given for the retargeting.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="466"/>
+        <source>Error: no path given to backup the files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="475"/>
+        <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="482"/>
+        <source>Error: the path given to backup the files seems to be invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="491"/>
+        <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="500"/>
+        <source>Error: the backup could not be created. Please try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="517"/>
+        <source>Cancel treatment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="535"/>
+        <source>Parsing XML files. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="545"/>
+        <location filename="BatchConversion.cpp" line="590"/>
+        <location filename="BatchConversion.cpp" line="758"/>
+        <source>Process aborted by the user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="566"/>
+        <location filename="BatchConversion.cpp" line="898"/>
+        <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="574"/>
+        <source>Parsing and patching OSP files. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="616"/>
+        <location filename="BatchConversion.cpp" line="734"/>
+        <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="637"/>
+        <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="645"/>
+        <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="663"/>
+        <location filename="BatchConversion.cpp" line="671"/>
+        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="689"/>
+        <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="728"/>
+        <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="748"/>
+        <source>Patching XML files. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="786"/>
+        <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="842"/>
+        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="858"/>
+        <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="892"/>
+        <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="906"/>
+        <source>Retargeting successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="906"/>
+        <source>All the files have been correctly re-targeted. You can now close this window!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="909"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BodySlideFiltersEditor</name>
     <message>
         <location filename="BodySlideFiltersEditor.cpp" line="45"/>
@@ -311,7 +540,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="48"/>
-        <location filename="MFBOPresetCreator.cpp" line="582"/>
+        <location filename="MFBOPresetCreator.cpp" line="589"/>
         <source>Go back to the application</source>
         <translation></translation>
     </message>
@@ -336,131 +565,136 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="157"/>
+        <location filename="MFBOPresetCreator.cpp" line="163"/>
         <source>Exit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="161"/>
+        <location filename="MFBOPresetCreator.cpp" line="167"/>
         <source>Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="166"/>
+        <location filename="MFBOPresetCreator.cpp" line="176"/>
         <source>Textures Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="170"/>
+        <location filename="MFBOPresetCreator.cpp" line="180"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="174"/>
+        <location filename="MFBOPresetCreator.cpp" line="184"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="178"/>
+        <location filename="MFBOPresetCreator.cpp" line="153"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="182"/>
+        <location filename="MFBOPresetCreator.cpp" line="172"/>
+        <source>Batch Conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="188"/>
         <source> (update available)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="184"/>
+        <location filename="MFBOPresetCreator.cpp" line="190"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="189"/>
+        <location filename="MFBOPresetCreator.cpp" line="195"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="193"/>
+        <location filename="MFBOPresetCreator.cpp" line="199"/>
         <source>Useful links</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="199"/>
+        <location filename="MFBOPresetCreator.cpp" line="205"/>
         <source>Nexus Mods page</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="203"/>
+        <location filename="MFBOPresetCreator.cpp" line="209"/>
         <source>User guide and tutorials (Google Docs)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="207"/>
+        <location filename="MFBOPresetCreator.cpp" line="213"/>
         <source>View the source code (GitHub.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="211"/>
+        <location filename="MFBOPresetCreator.cpp" line="217"/>
         <source>View the source code (GitLab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="215"/>
+        <location filename="MFBOPresetCreator.cpp" line="221"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="467"/>
+        <location filename="MFBOPresetCreator.cpp" line="474"/>
         <source>Error while searching for a new update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="468"/>
+        <location filename="MFBOPresetCreator.cpp" line="475"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="483"/>
+        <location filename="MFBOPresetCreator.cpp" line="490"/>
         <source>Application update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="484"/>
+        <location filename="MFBOPresetCreator.cpp" line="491"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="496"/>
+        <location filename="MFBOPresetCreator.cpp" line="503"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="508"/>
+        <location filename="MFBOPresetCreator.cpp" line="515"/>
         <source>Download and install the update now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="509"/>
+        <location filename="MFBOPresetCreator.cpp" line="516"/>
         <source>Download later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="578"/>
+        <location filename="MFBOPresetCreator.cpp" line="585"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="581"/>
+        <location filename="MFBOPresetCreator.cpp" line="588"/>
         <source>Quickly restart the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="153"/>
-        <location filename="MFBOPresetCreator.cpp" line="577"/>
+        <location filename="MFBOPresetCreator.cpp" line="159"/>
+        <location filename="MFBOPresetCreator.cpp" line="584"/>
         <source>Quick restart</source>
         <translation></translation>
     </message>
@@ -1138,7 +1372,7 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="Settings.cpp" line="250"/>
-        <location filename="Settings.cpp" line="429"/>
+        <location filename="Settings.cpp" line="441"/>
         <source>General</source>
         <translation></translation>
     </message>
@@ -1159,7 +1393,13 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="472"/>
+        <location filename="Settings.cpp" line="433"/>
+        <location filename="Settings.cpp" line="434"/>
+        <source>Clear all history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="486"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
@@ -1229,62 +1469,62 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="430"/>
+        <location filename="Settings.cpp" line="442"/>
         <source>Main window: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="431"/>
+        <location filename="Settings.cpp" line="443"/>
         <source>Assist. Conv.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="432"/>
+        <location filename="Settings.cpp" line="444"/>
         <source>Presets&apos; Ret.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="433"/>
+        <location filename="Settings.cpp" line="445"/>
         <source>Presets&apos; Ret.: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="434"/>
+        <location filename="Settings.cpp" line="446"/>
         <source>Textures Assist.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="435"/>
+        <location filename="Settings.cpp" line="447"/>
         <source>Loaded project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="436"/>
+        <location filename="Settings.cpp" line="448"/>
         <source>Saved project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="457"/>
+        <location filename="Settings.cpp" line="471"/>
         <source>Restore default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="680"/>
+        <location filename="Settings.cpp" line="694"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="681"/>
+        <location filename="Settings.cpp" line="695"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="684"/>
+        <location filename="Settings.cpp" line="698"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="685"/>
+        <location filename="Settings.cpp" line="699"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
@@ -1304,7 +1544,7 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="464"/>
+        <location filename="Settings.cpp" line="478"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
@@ -1563,6 +1803,7 @@ Please make sure your internet connection is working correctly and try again.
     </message>
     <message>
         <location filename="Utils.cpp" line="1090"/>
+        <location filename="Utils.cpp" line="1091"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>

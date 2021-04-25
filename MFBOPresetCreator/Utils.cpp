@@ -1088,6 +1088,7 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& a
   aLayout->addWidget(lGeneralValue, aRow, 1);
 
   auto lGeneralEmptyButton{new QPushButton(tr("Remove from history"), aParent)};
+  lGeneralEmptyButton->setToolTip(tr("Remove from history"));
   lGeneralEmptyButton->setObjectName(QString("clear_path_%1").arg(aRow));
   lGeneralEmptyButton->setCursor(Qt::PointingHandCursor);
   lGeneralEmptyButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName))));

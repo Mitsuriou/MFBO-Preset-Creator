@@ -156,6 +156,7 @@ echo #####################################################</Command>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="AssistedConversion.cpp" />
+    <ClCompile Include="BatchConversion.cpp" />
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
     <ClCompile Include="LangManager.cpp" />
@@ -173,6 +174,7 @@ echo #####################################################</Command>
     <QtMoc Include="DataLists.h" />
     <QtMoc Include="AssistedConversion.h" />
     <QtMoc Include="About.h" />
+    <QtMoc Include="BatchConversion.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="BodySlideFiltersEditor.h" />
     <ClInclude Include="LangManager.h" />

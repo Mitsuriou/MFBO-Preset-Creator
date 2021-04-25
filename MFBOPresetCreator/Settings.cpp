@@ -425,17 +425,31 @@ void Settings::setupLastPaths(QGridLayout* aLayout)
   lPathsLayout->setContentsMargins(15, 20, 15, 15);
   lPathsLayout->setAlignment(Qt::AlignTop);
 
+  // "Clear all" button
+  auto lClearAllButton{new QPushButton(this)};
+  lClearAllButton->setObjectName("remove_all_filters");
+  lClearAllButton->setStyleSheet("text-align:left;");
+  lClearAllButton->setCursor(Qt::PointingHandCursor);
+  lClearAllButton->setToolTip(tr("Clear all history"));
+  lClearAllButton->setText(tr("Clear all history"));
+  lClearAllButton->setIcon(QIcon(QPixmap(QString(":/%1/trash-lines").arg(lIconFolder))));
+  lClearAllButton->setAutoDefault(false);
+  lClearAllButton->setDefault(false);
+  lPathsLayout->addWidget(lClearAllButton, 0, 2);
+
   // Create a line for each path
-  Utils::addLastPathLine(this, lPathsLayout, 0, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 1, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 2, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 5, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 1, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 2, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 5, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, 8, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind all the clear buttons
+  this->connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);
+
   const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};
   for (const auto lButton : lButtons)
   {
@@ -827,6 +841,21 @@ void Settings::clearPathButtonClicked()
   Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(""), true, false);
 
   this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))->setText(this->mLastPaths.find(lKey)->second);
+
+  this->mPathEntryCleared = true;
+}
+
+void Settings::clearAllPaths()
+{
+  auto lKeys{DataLists::getLastPathsKeys()};
+  auto lSize{lKeys.length()};
+  for (int i = 0; i < lSize; i++)
+  {
+    auto lKey{lKeys.at(i)};
+    Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(""), true, false);
+
+    this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(i + 1))->setText(this->mLastPaths.find(lKey)->second);
+  }
 
   this->mPathEntryCleared = true;
 }
