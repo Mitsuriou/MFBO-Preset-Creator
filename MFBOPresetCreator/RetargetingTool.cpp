@@ -127,11 +127,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lInputPathLineEdit->setObjectName("input_path_directory");
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 3);
 
-  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lInputPathChooser->setCursor(Qt::PointingHandCursor);
-  lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
-  lInputPathChooser->setAutoDefault(false);
-  lInputPathChooser->setDefault(false);
+  auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lGeneralGridLayout->addWidget(lInputPathChooser, 1, 4);
 
   // BodySlide filters
@@ -149,11 +145,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFiltersList->setWordWrap(true);
   lGeneralGridLayout->addWidget(lFiltersList, 2, 2, 1, 2);
 
-  auto lEditFilters{new QPushButton(this)};
-  lEditFilters->setText(tr("Edit BodySlide filters sets"));
-  lEditFilters->setCursor(Qt::PointingHandCursor);
-  lEditFilters->setObjectName("edit_filters");
-  lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
+  auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters", false, true)};
   lGeneralGridLayout->addWidget(lEditFilters, 2, 4);
 
   // Backup group box
@@ -189,12 +181,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupPathLineEdit->setObjectName("backup_path_directory");
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
 
-  auto lBackupPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lBackupPathChooser->setCursor(Qt::PointingHandCursor);
-  lBackupPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
-  lBackupPathChooser->setAutoDefault(false);
-  lBackupPathChooser->setDefault(false);
-  lBackupPathChooser->setObjectName("backup_dir_chooser");
+  auto lBackupPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "backup_dir_chooser", false, true)};
   lBackupGridLayout->addWidget(lBackupPathChooser, 1, 2);
 
   // Backup subdirectory name/path
@@ -218,11 +205,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupGridLayout->addWidget(lBackupPathsPreview, 3, 1, 1, 2);
 
   // Generate button
-  auto lGenerateButton{new QPushButton(tr("Retarget all the files under the input path"), this)};
-  lGenerateButton->setCursor(Qt::PointingHandCursor);
-  lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))));
-  lGenerateButton->setAutoDefault(false);
-  lGenerateButton->setDefault(false);
+  auto lGenerateButton{ComponentFactory::createButton(this, tr("Retarget all the files under the input path"), "", "arrow-up", lIconFolder, "objectname", false, true)};
   aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
 
   // Event bindings for user actions (disconnected the first time the user does an action in the GUI)

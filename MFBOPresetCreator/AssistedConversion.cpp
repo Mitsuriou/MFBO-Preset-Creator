@@ -96,21 +96,11 @@ void AssistedConversion::setupInterface()
   lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
-  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lInputPathChooser->setCursor(Qt::PointingHandCursor);
-  lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
-  lInputPathChooser->setAutoDefault(false);
-  lInputPathChooser->setDefault(false);
+  auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
-  auto lLaunchSearchButton{new QPushButton(tr("Launch the scan of the mod"), this)};
-  lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
-  lLaunchSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/search").arg(lIconFolder))));
-  lLaunchSearchButton->setObjectName("launch_search_button");
-  lLaunchSearchButton->setAutoDefault(false);
-  lLaunchSearchButton->setDefault(false);
-  lLaunchSearchButton->setDisabled(true);
+  auto lLaunchSearchButton{ComponentFactory::createButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
   lMainLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
@@ -455,10 +445,7 @@ void AssistedConversion::launchSearchProcess()
   }
 
   // Create the validation button
-  auto lValidateSelection{new QPushButton(tr("Validate the selection(s) above and go back to the main window"), this)};
-  lValidateSelection->setCursor(Qt::PointingHandCursor);
-  lValidateSelection->setIcon(QIcon(QPixmap(QString(":/%1/playlist-check").arg(lIconFolder))));
-  lValidateSelection->setObjectName("validate_selection");
+  auto lValidateSelection{ComponentFactory::createButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
 
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);

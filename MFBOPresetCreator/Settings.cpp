@@ -151,12 +151,7 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   auto lFontLabel{new QLabel(QString("* " + tr("Font:")), this)};
   lDisplayLayout->addWidget(lFontLabel);
 
-  auto lFontChooser{new QPushButton(tr("Choose a font"), this)};
-  lFontChooser->setCursor(Qt::PointingHandCursor);
-  lFontChooser->setIcon(QIcon(QPixmap(QString(":/%1/text").arg(lIconFolder))));
-  lFontChooser->setObjectName("font_chooser");
-  lFontChooser->setAutoDefault(false);
-  lFontChooser->setDefault(false);
+  auto lFontChooser{ComponentFactory::createButton(this, tr("Choose a font"), "", "text", lIconFolder, "font_chooser", false, true)};
   lDisplayLayout->addWidget(lFontChooser);
 
   // GUI THEME
@@ -208,30 +203,15 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   lDisplayLayout->addWidget(lColorsLabel);
 
   // Success
-  auto lSuccessColorChooser{new QPushButton(tr("Choose a success color"), this)};
-  lSuccessColorChooser->setCursor(Qt::PointingHandCursor);
-  lSuccessColorChooser->setIcon(QIcon(QPixmap(QString(":/%1/color").arg(lIconFolder))));
-  lSuccessColorChooser->setObjectName("success_color_chooser");
-  lSuccessColorChooser->setAutoDefault(false);
-  lSuccessColorChooser->setDefault(false);
+  auto lSuccessColorChooser{ComponentFactory::createButton(this, tr("Choose a success color"), "", "color", lIconFolder, "success_color_chooser", false, true)};
   lDisplayLayout->addWidget(lSuccessColorChooser);
 
   // Warning
-  auto lWarningColorChooser{new QPushButton(tr("Choose a warning color"), this)};
-  lWarningColorChooser->setCursor(Qt::PointingHandCursor);
-  lWarningColorChooser->setIcon(QIcon(QPixmap(QString(":/%1/color").arg(lIconFolder))));
-  lWarningColorChooser->setObjectName("warning_color_chooser");
-  lWarningColorChooser->setAutoDefault(false);
-  lWarningColorChooser->setDefault(false);
+  auto lWarningColorChooser{ComponentFactory::createButton(this, tr("Choose a warning color"), "", "color", lIconFolder, "warning_color_chooser", false, true)};
   lDisplayLayout->addWidget(lWarningColorChooser);
 
   // Danger
-  auto lDangerColorChooser{new QPushButton(tr("Choose a danger color"), this)};
-  lDangerColorChooser->setCursor(Qt::PointingHandCursor);
-  lDangerColorChooser->setIcon(QIcon(QPixmap(QString(":/%1/color").arg(lIconFolder))));
-  lDangerColorChooser->setObjectName("danger_color_chooser");
-  lDangerColorChooser->setAutoDefault(false);
-  lDangerColorChooser->setDefault(false);
+  auto lDangerColorChooser{ComponentFactory::createButton(this, tr("Choose a danger color"), "", "color", lIconFolder, "danger_color_chooser", false, true)};
   lDisplayLayout->addWidget(lDangerColorChooser);
 
   // Event binding
@@ -322,11 +302,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout* aLayout)
   lPresetCreatorLayout->addWidget(lOutputPathLineEdit, 3, 0);
 
   // OUTPUT PATH CHOOSER
-  auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lOutputPathChooser->setCursor(Qt::PointingHandCursor);
-  lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
-  lOutputPathChooser->setAutoDefault(false);
-  lOutputPathChooser->setDefault(false);
+  auto lOutputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
@@ -426,15 +402,8 @@ void Settings::setupLastPaths(QGridLayout* aLayout)
   lPathsLayout->setAlignment(Qt::AlignTop);
 
   // "Clear all" button
-  auto lClearAllButton{new QPushButton(this)};
-  lClearAllButton->setObjectName("remove_all_filters");
+  auto lClearAllButton{ComponentFactory::createButton(this, tr("Remove all the history"), "", "trash-lines", lIconFolder, "remove_all_filters", false, true)};
   lClearAllButton->setStyleSheet("text-align:left;");
-  lClearAllButton->setCursor(Qt::PointingHandCursor);
-  lClearAllButton->setToolTip(tr("Remove all the history"));
-  lClearAllButton->setText(tr("Remove all the history"));
-  lClearAllButton->setIcon(QIcon(QPixmap(QString(":/%1/trash-lines").arg(lIconFolder))));
-  lClearAllButton->setAutoDefault(false);
-  lClearAllButton->setDefault(false);
   lPathsLayout->addWidget(lClearAllButton, 0, 2);
 
   // Create a line for each path
@@ -469,26 +438,13 @@ void Settings::setupButtons(QGridLayout* aLayout)
   aLayout->setRowStretch(3, 1);
 
   // Create the buttons
-  auto lRestoreDefaultButton{new QPushButton(tr("Restore default"), this)};
-  lRestoreDefaultButton->setCursor(Qt::PointingHandCursor);
-  lRestoreDefaultButton->setIcon(QIcon(QPixmap(QString(":/%1/restore").arg(lIconFolder))));
-  lRestoreDefaultButton->setAutoDefault(false);
-  lRestoreDefaultButton->setDefault(false);
+  auto lRestoreDefaultButton{ComponentFactory::createButton(this, tr("Restore default"), "", "restore", lIconFolder, "", false, true)};
   lButtonsContainer->addWidget(lRestoreDefaultButton);
 
-  auto lSaveButton{new QPushButton(tr("Save and close"), this)};
-  lSaveButton->setCursor(Qt::PointingHandCursor);
-  lSaveButton->setIcon(QIcon(QPixmap(QString(":/%1/save").arg(lIconFolder))));
-  lSaveButton->setObjectName("save_close");
-  lSaveButton->setAutoDefault(false);
-  lSaveButton->setDefault(false);
+  auto lSaveButton{ComponentFactory::createButton(this, tr("Save and close"), "", "save", lIconFolder, "save_close", false, true)};
   lButtonsContainer->addWidget(lSaveButton);
 
-  auto lCloseButton{new QPushButton(tr("Cancel"), this)};
-  lCloseButton->setCursor(Qt::PointingHandCursor);
-  lCloseButton->setIcon(QIcon(QPixmap(QString(":/%1/undo").arg(lIconFolder))));
-  lCloseButton->setAutoDefault(false);
-  lCloseButton->setDefault(false);
+  auto lCloseButton{ComponentFactory::createButton(this, tr("Cancel"), "", "undo", lIconFolder, "", false, true)};
   lButtonsContainer->addWidget(lCloseButton);
 
   // Event binding

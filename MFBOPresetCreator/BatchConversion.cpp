@@ -98,9 +98,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   aLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
 
   // Input chooser
-  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lInputPathChooser->setCursor(Qt::PointingHandCursor);
-  lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
+  auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
   aLayout->addWidget(lInputPathChooser, 0, 4);
 
   // Targeted body and version
@@ -134,10 +132,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   lSkeletonChooserHuman->setObjectName("skeleton_chooser_human");
   aLayout->addWidget(lSkeletonChooserHuman, 2, 1, 1, 3);
 
-  auto lSkeletonRefresherHuman{new QPushButton(this)};
-  lSkeletonRefresherHuman->setCursor(Qt::PointingHandCursor);
-  lSkeletonRefresherHuman->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
-  lSkeletonRefresherHuman->setText(tr("Refresh"));
+  auto lSkeletonRefresherHuman{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
   aLayout->addWidget(lSkeletonRefresherHuman, 2, 4);
 
   // Beast skeleton file
@@ -151,10 +146,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
 
   this->populateSkeletonChooser();
 
-  auto lSkeletonRefresherBeast{new QPushButton(this)};
-  lSkeletonRefresherBeast->setCursor(Qt::PointingHandCursor);
-  lSkeletonRefresherBeast->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
-  lSkeletonRefresherBeast->setText(tr("Refresh"));
+  auto lSkeletonRefresherBeast{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
   aLayout->addWidget(lSkeletonRefresherBeast, 3, 4);
 
   // BodySlide filters
@@ -172,11 +164,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   lFiltersList->setWordWrap(true);
   aLayout->addWidget(lFiltersList, 4, 2, 1, 2);
 
-  auto lEditFilters{new QPushButton(this)};
-  lEditFilters->setText(tr("Edit BodySlide filters sets"));
-  lEditFilters->setCursor(Qt::PointingHandCursor);
-  lEditFilters->setObjectName("edit_filters");
-  lEditFilters->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
+  auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
   aLayout->addWidget(lEditFilters, 4, 4);
 
   // BodySlide files names pattern
@@ -210,14 +198,8 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   this->setupOutputGUI(aLayout);
 
   // Launch search button
-  auto lLaunchSearchButton{new QPushButton(tr("Batch generate the files on my computer"), this)};
-  lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
-  lLaunchSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/build").arg(lIconFolder))));
-  lLaunchSearchButton->setObjectName("launch_search_button");
-  lLaunchSearchButton->setAutoDefault(false);
-  lLaunchSearchButton->setDefault(false);
-  lLaunchSearchButton->setDisabled(true);
-  aLayout->addWidget(lLaunchSearchButton, 8, 0, 1, 5, Qt::AlignTop);
+  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "launch_search_button", true, true)};
+  aLayout->addWidget(lGenerateButton, 8, 0, 1, 5, Qt::AlignTop);
 
   // Event bindings for user actions (disconnected the first time the user does an action in the GUI)
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
@@ -230,7 +212,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   this->connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChooser);
   this->connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChooser);
 
-  this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::updateBodySlideFiltersListPreview));
   this->connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
 
@@ -268,9 +250,7 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
   // Main directory's file chooser button
-  auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lOutputPathChooser->setCursor(Qt::PointingHandCursor);
-  lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
+  auto lOutputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Subdirectory

@@ -54,14 +54,9 @@ void Update::setupInterface()
   this->layout()->addWidget(lCurrentVersion);
 
   // Check for updates
-  auto lUpdateButton{new QPushButton(this)};
-  lUpdateButton->setCursor(Qt::PointingHandCursor);
-  lUpdateButton->setObjectName("search_button");
-  QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-search" : ":/black/cloud-search"};
-  lUpdateButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
+  auto lUpdateButton{ComponentFactory::createButton(this, tr("Check for updates"), "", "cloud-search", Utils::getIconRessourceFolder(this->mSettings.appTheme), "search_button")};
   lUpdateButton->setIconSize(QSize(48, 48));
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
-  lUpdateButton->setText(tr("Check for updates"));
   this->layout()->addWidget(lUpdateButton);
 
   // Download progress bar

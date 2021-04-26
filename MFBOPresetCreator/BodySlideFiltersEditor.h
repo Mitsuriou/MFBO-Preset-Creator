@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ComponentFactory.h"
 #include "TextInputDialog.h"
 #include "Utils.h"
 #include "stdafx.h"

@@ -62,16 +62,11 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
   lMainLayout->addLayout(lBtnsContainer);
 
   // Add
-  auto lAddBtn{new QPushButton(tr("Add"), this)};
-  lAddBtn->setCursor(Qt::PointingHandCursor);
-  lAddBtn->setIcon(QIcon(QPixmap(QString(":/%1/plus").arg(lIconFolder))));
-  lAddBtn->setObjectName("add_button");
+  auto lAddBtn{ComponentFactory::createButton(this, tr("Add"), "", "plus", lIconFolder, "add_button")};
   lBtnsContainer->addWidget(lAddBtn);
 
   // Cancel
-  auto lCancelBtn{new QPushButton(tr("Cancel"), this)};
-  lCancelBtn->setIcon(QIcon(QPixmap(QString(":/%1/cross").arg(lIconFolder))));
-  lCancelBtn->setCursor(Qt::PointingHandCursor);
+  auto lCancelBtn{ComponentFactory::createButton(this, tr("Cancel"), "", "cross", lIconFolder)};
   lBtnsContainer->addWidget(lCancelBtn);
 
   // Events binding

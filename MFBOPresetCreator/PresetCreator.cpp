@@ -430,10 +430,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
 
   this->populateSkeletonChooser();
 
-  auto lSkeletonRefresher{new QPushButton(this)};
-  lSkeletonRefresher->setCursor(Qt::PointingHandCursor);
-  lSkeletonRefresher->setObjectName("skeleton_chooser_refresher");
-  lSkeletonRefresher->setText(tr("Refresh"));
+  auto lSkeletonRefresher{ComponentFactory::createButton(this, tr("Refresh"), "", "", lIconFolder, "skeleton_chooser_refresher")};
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Skeleton path
@@ -588,10 +585,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lFiltersList->setWordWrap(true);
   lBodyslideGridLayout->addWidget(lFiltersList, 5, 2, 1, 2);
 
-  auto lEditFilters{new QPushButton(this)};
-  lEditFilters->setText(tr("Edit BodySlide filters sets"));
-  lEditFilters->setCursor(Qt::PointingHandCursor);
-  lEditFilters->setObjectName("edit_filters");
+  auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "", lIconFolder, "edit_filters")};
   lBodyslideGridLayout->addWidget(lEditFilters, 5, 4);
 
   // Pre-bind initialization functions
@@ -641,9 +635,7 @@ void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
   // Main directory's file chooser button
-  auto lOutputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lOutputPathChooser->setCursor(Qt::PointingHandCursor);
-  lOutputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
+  auto lOutputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Subdirectory
@@ -687,9 +679,7 @@ void PresetCreator::setupRemainingGUI(QGridLayout* aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Generate button
-  auto lGenerateButton{new QPushButton(tr("Generate the files on my computer"), this)};
-  lGenerateButton->setIcon(QIcon(QPixmap(QString(":/%1/build").arg(lIconFolder))));
-  lGenerateButton->setCursor(Qt::PointingHandCursor);
+  auto lGenerateButton{ComponentFactory::createButton(this, tr("Generate the files on my computer"), "", "build", lIconFolder)};
   aLayout->addWidget(lGenerateButton, 4, 0, Qt::AlignBottom);
   aLayout->setRowStretch(4, 1);
 

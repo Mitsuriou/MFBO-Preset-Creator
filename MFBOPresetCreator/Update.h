@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ComponentFactory.h"
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"

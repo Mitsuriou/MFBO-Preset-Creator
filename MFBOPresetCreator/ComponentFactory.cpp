@@ -15,12 +15,19 @@ QPushButton* ComponentFactory::createButton(
   // Icon
   if (aIconFolder.length() > 0 && aIconName.length() > 0)
   {
-    lButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName))));
+    lButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation)));
   }
   // Mouse cursor
   lButton->setCursor(Qt::PointingHandCursor);
   // Tooltip
-  lButton->setToolTip(aTooltipText);
+  if (aTooltipText.length() > 0)
+  {
+    lButton->setToolTip(aTooltipText);
+  }
+  else
+  {
+    lButton->setToolTip(aText);
+  }
   // Object name
   if (aObjectName.length() > 0)
   {

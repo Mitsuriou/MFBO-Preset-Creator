@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BodySlideFiltersEditor.h"
+#include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Enum.h"
 #include "Struct.h"

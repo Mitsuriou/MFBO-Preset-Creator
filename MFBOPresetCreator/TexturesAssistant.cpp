@@ -91,21 +91,11 @@ void TexturesAssistant::setupInterface(QGridLayout* aLayout)
   aLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
-  auto lInputPathChooser{new QPushButton(tr("Choose a directory..."), this)};
-  lInputPathChooser->setCursor(Qt::PointingHandCursor);
-  lInputPathChooser->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))));
-  lInputPathChooser->setAutoDefault(false);
-  lInputPathChooser->setDefault(false);
+  auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   aLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
-  auto lLaunchSearchButton{new QPushButton(tr("Launch the scan of the mod"), this)};
-  lLaunchSearchButton->setCursor(Qt::PointingHandCursor);
-  lLaunchSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/search").arg(lIconFolder))));
-  lLaunchSearchButton->setObjectName("launch_search_button");
-  lLaunchSearchButton->setAutoDefault(false);
-  lLaunchSearchButton->setDefault(false);
-  lLaunchSearchButton->setDisabled(true);
+  auto lLaunchSearchButton{ComponentFactory::createButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
   aLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone

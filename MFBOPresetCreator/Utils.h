@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Enum.h"
 #include "Struct.h"

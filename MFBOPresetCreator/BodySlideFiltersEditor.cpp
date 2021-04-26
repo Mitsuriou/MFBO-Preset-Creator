@@ -103,25 +103,11 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(this->mFiltersListChooser, 0, 1);
 
   // Add filters set
-  auto lNewSetBtn{new QPushButton(this)};
-  lNewSetBtn->setCursor(Qt::PointingHandCursor);
-  lNewSetBtn->setToolTip(tr("Add a new BodySlide filters set"));
-  lNewSetBtn->setText(tr("New set"));
-  lNewSetBtn->setIcon(QIcon(QPixmap(QString(":/%1/plus").arg(lIconFolder))));
-  lNewSetBtn->setObjectName("add-set");
-  lNewSetBtn->setAutoDefault(false);
-  lNewSetBtn->setDefault(false);
+  auto lNewSetBtn{ComponentFactory::createButton(this, tr("New set"), tr("Add a new BodySlide filters set"), "plus", lIconFolder, "", false, true)};
   aLayout.addWidget(lNewSetBtn, 0, 2);
 
   // Remove filters set
-  auto lDelSetBtn{new QPushButton(this)};
-  lDelSetBtn->setObjectName("remove_set");
-  lDelSetBtn->setCursor(Qt::PointingHandCursor);
-  lDelSetBtn->setToolTip(tr("Remove the selected BodySlide filters set"));
-  lDelSetBtn->setText(tr("Remove set"));
-  lDelSetBtn->setIcon(QIcon(QPixmap(QString(":/%1/minus").arg(lIconFolder))));
-  lDelSetBtn->setAutoDefault(false);
-  lDelSetBtn->setDefault(false);
+  auto lDelSetBtn{ComponentFactory::createButton(this, tr("Remove set"), tr("Remove the selected BodySlide filters set"), "minus", lIconFolder, "remove_set", false, true)};
   aLayout.addWidget(lDelSetBtn, 0, 3);
 
   // Filters list
@@ -132,39 +118,18 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   aLayout.addLayout(lButtonLayout, 1, 3, Qt::AlignTop);
 
   // New filter
-  auto lAddNewRow{new QPushButton(this)};
-  lAddNewRow->setObjectName("add_filter");
+  auto lAddNewRow{ComponentFactory::createButton(this, tr("New filter"), tr("Add a new BodySlide filter"), "playlist-plus", lIconFolder, "add_filter", false, true)};
   lAddNewRow->setStyleSheet("text-align:left;");
-  lAddNewRow->setCursor(Qt::PointingHandCursor);
-  lAddNewRow->setToolTip(tr("Add a new BodySlide filter"));
-  lAddNewRow->setText(tr("New filter"));
-  lAddNewRow->setIcon(QIcon(QPixmap(QString(":/%1/playlist-plus").arg(lIconFolder))));
-  lAddNewRow->setAutoDefault(false);
-  lAddNewRow->setDefault(false);
   lButtonLayout->addWidget(lAddNewRow);
 
   // Remove filter
-  auto lDeleteRow{new QPushButton(this)};
-  lDeleteRow->setObjectName("remove_filter");
+  auto lDeleteRow{ComponentFactory::createButton(this, tr("Remove filter"), tr("Remove the selected BodySlide filter"), "trash", lIconFolder, "remove_filter", false, true)};
   lDeleteRow->setStyleSheet("text-align:left;");
-  lDeleteRow->setCursor(Qt::PointingHandCursor);
-  lDeleteRow->setToolTip(tr("Remove the selected BodySlide filter"));
-  lDeleteRow->setText(tr("Remove filter"));
-  lDeleteRow->setIcon(QIcon(QPixmap(QString(":/%1/trash").arg(lIconFolder))));
-  lDeleteRow->setAutoDefault(false);
-  lDeleteRow->setDefault(false);
   lButtonLayout->addWidget(lDeleteRow);
 
   // Remove all filters
-  auto lDeleteAllRows{new QPushButton(this)};
-  lDeleteAllRows->setObjectName("remove_all_filters");
+  auto lDeleteAllRows{ComponentFactory::createButton(this, tr("Remove all"), tr("Remove all the BodySlide filters"), "trash-lines", lIconFolder, "remove_all_filters", false, true)};
   lDeleteAllRows->setStyleSheet("text-align:left;");
-  lDeleteAllRows->setCursor(Qt::PointingHandCursor);
-  lDeleteAllRows->setToolTip(tr("Remove all the BodySlide filters"));
-  lDeleteAllRows->setText(tr("Remove all"));
-  lDeleteAllRows->setIcon(QIcon(QPixmap(QString(":/%1/trash-lines").arg(lIconFolder))));
-  lDeleteAllRows->setAutoDefault(false);
-  lDeleteAllRows->setDefault(false);
   lButtonLayout->addWidget(lDeleteAllRows);
 
   // Delete row action
@@ -199,19 +164,10 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
   aLayout.addLayout(lButtonsContainer, 3, 0, 1, 4);
 
   // Create the buttons
-  auto lSaveBtn{new QPushButton(tr("Save and close"), this)};
-  lSaveBtn->setCursor(Qt::PointingHandCursor);
-  lSaveBtn->setIcon(QIcon(QPixmap(QString(":/%1/save").arg(lIconFolder))));
-  lSaveBtn->setObjectName("save_close");
-  lSaveBtn->setAutoDefault(false);
-  lSaveBtn->setDefault(false);
+  auto lSaveBtn{ComponentFactory::createButton(this, tr("Save and close"), "", "save", lIconFolder, "save_close", false, true)};
   lButtonsContainer->addWidget(lSaveBtn);
 
-  auto lCancelBtn{new QPushButton(tr("Cancel"), this)};
-  lCancelBtn->setCursor(Qt::PointingHandCursor);
-  lCancelBtn->setIcon(QIcon(QPixmap(QString(":/%1/undo").arg(lIconFolder))));
-  lCancelBtn->setAutoDefault(false);
-  lCancelBtn->setDefault(false);
+  auto lCancelBtn{ComponentFactory::createButton(this, tr("Cancel"), "", "undo", lIconFolder, "", false, true)};
   lButtonsContainer->addWidget(lCancelBtn);
 
   // Event binding
