@@ -8,7 +8,7 @@
 #include <QtXml/QDomDocument>
 #include <iostream>
 
-class Utils : public QObject
+class Utils final : public QObject
 {
   Q_OBJECT
 
@@ -94,5 +94,5 @@ public:
   static void printMessageStdOut(const QString& aMessage);
 
 private:
-  Utils(){};
+  explicit Utils(){};
 };

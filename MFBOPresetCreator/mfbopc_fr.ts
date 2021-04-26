@@ -186,18 +186,18 @@
         <translation type="obsolete">Général</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="88"/>
+        <location filename="BatchConversion.cpp" line="89"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="100"/>
-        <location filename="BatchConversion.cpp" line="270"/>
+        <location filename="BatchConversion.cpp" line="101"/>
+        <location filename="BatchConversion.cpp" line="271"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="108"/>
+        <location filename="BatchConversion.cpp" line="109"/>
         <source>Targeted body and version:</source>
         <translation type="unfinished">Corps et version ciblé :</translation>
     </message>
@@ -206,18 +206,18 @@
         <translation type="obsolete">Fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="139"/>
-        <location filename="BatchConversion.cpp" line="156"/>
+        <location filename="BatchConversion.cpp" line="140"/>
+        <location filename="BatchConversion.cpp" line="157"/>
         <source>Refresh</source>
         <translation type="unfinished">Rafraîchir</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="160"/>
+        <location filename="BatchConversion.cpp" line="161"/>
         <source>BodySlide filters:</source>
         <translation type="unfinished">Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="175"/>
+        <location filename="BatchConversion.cpp" line="176"/>
         <source>Edit BodySlide filters sets</source>
         <translation type="unfinished">Éditer les sets de filtres BodySlide</translation>
     </message>
@@ -242,7 +242,7 @@
         <translation type="obsolete">Nom/emplacement du sous-répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="293"/>
+        <location filename="BatchConversion.cpp" line="294"/>
         <source>Preview:</source>
         <translation type="unfinished">Aperçu :</translation>
     </message>
@@ -259,187 +259,187 @@
         <translation type="obsolete">Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="128"/>
+        <location filename="BatchConversion.cpp" line="129"/>
         <source>Skeleton file (human):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="143"/>
+        <location filename="BatchConversion.cpp" line="144"/>
         <source>Skeleton file (beast):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="182"/>
+        <location filename="BatchConversion.cpp" line="183"/>
         <source>BodySlide files names:</source>
         <translation type="unfinished">Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="192"/>
+        <location filename="BatchConversion.cpp" line="193"/>
         <source>Presets names:</source>
         <translation type="unfinished">Noms des presets :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="201"/>
+        <location filename="BatchConversion.cpp" line="202"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="212"/>
+        <location filename="BatchConversion.cpp" line="213"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="246"/>
+        <location filename="BatchConversion.cpp" line="247"/>
         <source>Files generation&apos;s output location</source>
         <translation type="unfinished">Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="259"/>
+        <location filename="BatchConversion.cpp" line="260"/>
         <source>Output directory path:</source>
         <translation type="unfinished">Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="276"/>
+        <location filename="BatchConversion.cpp" line="277"/>
         <source>Output subdirectory name/path:</source>
         <translation type="unfinished">Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="284"/>
+        <location filename="BatchConversion.cpp" line="285"/>
         <source>Use only subdirectory path?</source>
         <translation type="unfinished">Utiliser seulement le sous-répertoire ?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="287"/>
+        <location filename="BatchConversion.cpp" line="288"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
         <translation type="unfinished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="399"/>
+        <location filename="BatchConversion.cpp" line="401"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation type="unfinished">Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="420"/>
+        <location filename="BatchConversion.cpp" line="422"/>
         <source>Error: no path given to backup the files.</source>
         <translation type="unfinished">Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="429"/>
+        <location filename="BatchConversion.cpp" line="431"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation type="unfinished">Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="436"/>
+        <location filename="BatchConversion.cpp" line="438"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation type="unfinished">Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="445"/>
+        <location filename="BatchConversion.cpp" line="447"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation type="unfinished">The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="454"/>
+        <location filename="BatchConversion.cpp" line="456"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation type="unfinished">Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="471"/>
+        <location filename="BatchConversion.cpp" line="473"/>
         <source>Cancel treatment</source>
         <translation type="unfinished">Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="489"/>
+        <location filename="BatchConversion.cpp" line="491"/>
         <source>Parsing XML files. Please wait...</source>
         <translation type="unfinished">Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="499"/>
-        <location filename="BatchConversion.cpp" line="544"/>
-        <location filename="BatchConversion.cpp" line="712"/>
+        <location filename="BatchConversion.cpp" line="501"/>
+        <location filename="BatchConversion.cpp" line="546"/>
+        <location filename="BatchConversion.cpp" line="714"/>
         <source>Process aborted by the user.</source>
         <translation type="unfinished">Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="520"/>
-        <location filename="BatchConversion.cpp" line="852"/>
+        <location filename="BatchConversion.cpp" line="522"/>
+        <location filename="BatchConversion.cpp" line="854"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished">Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="528"/>
+        <location filename="BatchConversion.cpp" line="530"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation type="unfinished">Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="570"/>
-        <location filename="BatchConversion.cpp" line="688"/>
+        <location filename="BatchConversion.cpp" line="572"/>
+        <location filename="BatchConversion.cpp" line="690"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished">Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="591"/>
+        <location filename="BatchConversion.cpp" line="593"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation type="unfinished">Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="599"/>
+        <location filename="BatchConversion.cpp" line="601"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation type="unfinished">Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="617"/>
-        <location filename="BatchConversion.cpp" line="625"/>
+        <location filename="BatchConversion.cpp" line="619"/>
+        <location filename="BatchConversion.cpp" line="627"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation type="unfinished">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="643"/>
+        <location filename="BatchConversion.cpp" line="645"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="682"/>
+        <location filename="BatchConversion.cpp" line="684"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="702"/>
+        <location filename="BatchConversion.cpp" line="704"/>
         <source>Patching XML files. Please wait...</source>
         <translation type="unfinished">Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="740"/>
+        <location filename="BatchConversion.cpp" line="742"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation type="unfinished">Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="796"/>
+        <location filename="BatchConversion.cpp" line="798"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation type="unfinished">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="812"/>
+        <location filename="BatchConversion.cpp" line="814"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished">Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="846"/>
+        <location filename="BatchConversion.cpp" line="848"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="860"/>
+        <location filename="BatchConversion.cpp" line="862"/>
         <source>Retargeting successful</source>
         <translation type="unfinished">Re-ciblage réussi</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="860"/>
+        <location filename="BatchConversion.cpp" line="862"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation type="unfinished">Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="863"/>
+        <location filename="BatchConversion.cpp" line="865"/>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
     </message>

@@ -2,11 +2,12 @@
 
 #include "Enum.h"
 
-class LangManager
+class LangManager final
 {
 public:
   static ApplicationLanguage getSystemLanguage();
 
 private:
-  LangManager(){};
+  ~LangManager() = delete;
+  explicit LangManager(){};
 };

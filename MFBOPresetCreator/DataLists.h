@@ -5,7 +5,7 @@
 #include <QString>
 #include <QStringList>
 
-class DataLists : public QObject
+class DataLists final : public QObject
 {
   Q_OBJECT
 
@@ -24,5 +24,5 @@ public:
   static QStringList getLastPathsKeys();
 
 private:
-  DataLists(){};
+  explicit DataLists(){};
 };
