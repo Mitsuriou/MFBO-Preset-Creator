@@ -44,3 +44,32 @@ QPushButton* ComponentFactory::createButton(
 
   return lButton;
 }
+
+QGridLayout* ComponentFactory::createScrollAreaLayout(QWidget* aParent)
+{
+  // Very first container in which the scroll area will be added
+  auto lBaseLayout{new QVBoxLayout(aParent)};
+  lBaseLayout->setContentsMargins(0, 0, 0, 0);
+
+  // Create a scroll area
+  auto lScrollArea{new QScrollArea(aParent)};
+  lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->setContentsMargins(0, 0, 0, 0);
+  lScrollArea->setWidgetResizable(true);
+  // Remove the borders of the scroll area
+  lScrollArea->setStyleSheet("QScrollArea{border: none;}");
+
+  // Add a QFrame to permit automatic expanding of the content inside the scroll area
+  auto lMainWidget{new QFrame(aParent)};
+
+  // Main container
+  auto lMainLayout{new QGridLayout(lMainWidget)};
+  lMainLayout->setSpacing(10);
+  lMainLayout->setContentsMargins(10, 10, 10, 10);
+  lMainLayout->setAlignment(Qt::AlignTop);
+
+  lScrollArea->setWidget(lMainWidget);
+  lBaseLayout->addWidget(lScrollArea);
+
+  return lMainLayout;
+}

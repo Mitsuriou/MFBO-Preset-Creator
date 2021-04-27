@@ -77,31 +77,8 @@ void Settings::setWindowProperties()
 
 void Settings::initializeGUI()
 {
-  // Very first container in which the scroll area will be added
-  auto lBaseLayout{new QVBoxLayout(this)};
-  lBaseLayout->setContentsMargins(0, 0, 0, 0);
-
-  // Create a scroll area
-  auto lScrollArea{new QScrollArea(this)};
-  lScrollArea->setObjectName("scrollable_zone");
-  lScrollArea->setContentsMargins(0, 0, 0, 0);
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->setWidgetResizable(true);
-  // Remove the borders of the scroll area
-  lScrollArea->setStyleSheet("QScrollArea{border: none;}");
-
-  // Add a QFrame to permit automatic expanding of the content inside the scroll area
-  auto lMainWidget{new QFrame(this)};
-
-  // Main container
-  auto lMainLayout{new QGridLayout(lMainWidget)};
-  lMainLayout->setSpacing(10);
-  lMainLayout->setContentsMargins(10, 10, 10, 10);
-  lMainLayout->setAlignment(Qt::AlignTop);
-
-  lScrollArea->setWidget(lMainWidget);
-  lBaseLayout->addWidget(lScrollArea);
+  // Main layout with scroll area
+  auto lMainLayout{ComponentFactory::createScrollAreaLayout(this)};
 
   auto lStarLabel{new QLabel(this)};
   if (Utils::RESTART_PENDING)
@@ -139,6 +116,9 @@ void Settings::initializeGUI()
   this->loadSettings(this->mSettings);
 
   // Cursor change for the scroll bar
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &Settings::scrollbarReleased);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
