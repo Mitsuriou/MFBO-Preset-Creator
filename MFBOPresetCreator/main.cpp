@@ -23,6 +23,12 @@ int main(int argc, char* argv[])
   // Check the launch arguments
   if (argc >= 2 || FORCE_CONSOLE_DISPLAY)
   {
+    // Too many arguments, kill the application
+    if (argc > 3)
+    {
+      return -1;
+    }
+
     if (FORCE_CONSOLE_DISPLAY)
     {
       // Show the debug console
@@ -69,14 +75,6 @@ int main(int argc, char* argv[])
           lInjectedFilePath = lArgPath;
         }
       }
-    }
-    else if (argc > 3)
-    {
-      // Too many arguments, kill the application
-      SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-      Utils::printMessageStdOut("To many starting arguments");
-      system("pause");
-      return currentExitCode;
     }
   }
 
