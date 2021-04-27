@@ -90,6 +90,7 @@ public:
 
   // GUI modifiers
   static void setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed);
+  static void updateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel);
 
   // Windows console
   static void bindConsoleToStdOut();

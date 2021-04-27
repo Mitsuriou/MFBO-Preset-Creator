@@ -1137,6 +1137,53 @@ void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed)
   aGroupBox->setTitle(lTitle);
 }
 
+void Utils::updateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel)
+{
+  // Disable the combobox if there is not any available filter
+  if (aFilterList.size() == 0)
+  {
+    aComboBox->clear();
+    aComboBox->setDisabled(true);
+    aFiltersLabel->setText("");
+    return;
+  }
+
+  aComboBox->setDisabled(false);
+
+  auto lPrevKey{aComboBox->itemText(aComboBox->currentIndex())};
+
+  // Fill the combobox
+  aComboBox->clear();
+  for (const auto& lPair : aFilterList)
+  {
+    aComboBox->addItem(lPair.first);
+  }
+
+  if (lPrevKey == "" || aFilterList.count(lPrevKey) == 0)
+  {
+    aComboBox->setCurrentIndex(0);
+  }
+  else
+  {
+    auto lPrevIndex{0};
+    for (const auto& lPair : aFilterList)
+    {
+      if (lPair.first.compare(lPrevKey, Qt::CaseSensitive) == 0)
+      {
+        break;
+      }
+      lPrevIndex++;
+    }
+
+    if (lPrevIndex == aFilterList.size())
+    {
+      lPrevIndex = 0;
+    }
+
+    aComboBox->setCurrentIndex(lPrevIndex);
+  }
+}
+
 void Utils::bindConsoleToStdOut()
 {
   FreeConsole();

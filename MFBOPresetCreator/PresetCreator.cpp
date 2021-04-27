@@ -1712,54 +1712,10 @@ void PresetCreator::initBodySlideFiltersList()
 
 void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
 {
-  // Update the filters list
   this->mFiltersList = aFilterList;
-
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-
-  // Disable the combobox if there is not any available filter
-  if (this->mFiltersList.size() == 0)
-  {
-    lChooser->clear();
-    lChooser->setDisabled(true);
-    this->findChild<QLabel*>("bodyslide_filters")->setText("");
-    return;
-  }
-
-  lChooser->setDisabled(false);
-
-  auto lPrevKey{lChooser->itemText(lChooser->currentIndex())};
-
-  // Fill the combobox
-  lChooser->clear();
-  for (const auto& lPair : this->mFiltersList)
-  {
-    lChooser->addItem(lPair.first);
-  }
-
-  if (lPrevKey == "" || this->mFiltersList.count(lPrevKey) == 0)
-  {
-    lChooser->setCurrentIndex(0);
-  }
-  else
-  {
-    auto lPrevIndex{0};
-    for (const auto& lPair : this->mFiltersList)
-    {
-      if (lPair.first.compare(lPrevKey, Qt::CaseSensitive) == 0)
-      {
-        break;
-      }
-      lPrevIndex++;
-    }
-
-    if (lPrevIndex == this->mFiltersList.size())
-    {
-      lPrevIndex = 0;
-    }
-
-    lChooser->setCurrentIndex(lPrevIndex);
-  }
+  auto lLabel{this->findChild<QLabel*>("bodyslide_filters")};
+  Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lChooser, lLabel);
 }
 
 void PresetCreator::updateBodySlideFiltersListPreview(int aIndex)
