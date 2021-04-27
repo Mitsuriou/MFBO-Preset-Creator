@@ -221,64 +221,23 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // Output group box
-  auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), this)};
-  Utils::addIconToGroupBox(lOutputGroupBox, lIconFolder, "file-tree");
+  // Create the group box
+  ComponentFactory::createOutputBox(this, aLayout, lIconFolder);
+  auto lOutputGroupBox{this->findChild<QGroupBox*>("output_group_box")};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::setGroupBoxState(lOutputGroupBox, false);
-  aLayout->addWidget(lOutputGroupBox, 7, 0, 1, 5);
 
-  // Grid layout
-  auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
-  lOutputGridLayout->setSpacing(10);
-  lOutputGridLayout->setContentsMargins(15, 20, 15, 15);
-  lOutputGridLayout->setAlignment(Qt::AlignTop);
+  // Event binding
+  auto lOutputPathChooser{this->findChild<QPushButton*>("output_path_chooser")};
+  //this->connect(lOutputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseExportDirectory); // TODO: Rebind the events
 
-  // Main directory
-  lOutputGridLayout->addWidget(new QLabel(tr("Output directory path:"), this), 0, 0);
+  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>("output_path_subdirectory")};
+  //this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview); // TODO: Rebind the events
 
-  auto lOutputPathLineEdit{new QLineEdit(this)};
-  lOutputPathLineEdit->setReadOnly(true);
-  lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-  lOutputPathLineEdit->setObjectName("output_path_directory");
-  lOutputPathLineEdit->setText(mSettings.mainWindowOutputPath);
-  lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")};
+  //this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged); // TODO: Rebind the events
 
-  // Main directory's file chooser button
-  auto lOutputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
-  lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
-
-  // Subdirectory
-  lOutputGridLayout->addWidget(new QLabel(tr("Output subdirectory name/path:"), this), 1, 0);
-
-  auto lOutputSubpathLineEdit{new QLineEdit(this)};
-  lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
-  lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
-
-  // Use only subdirectory path
-  lOutputGridLayout->addWidget(new QLabel(tr("Use only subdirectory path?"), this), 2, 0);
-
-  auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
-  lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
-  lUseOnlySubdir->setObjectName("only_use_subdirectory");
-  lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
-
-  // Preview
-  lOutputGridLayout->addWidget(new QLabel(tr("Preview:"), this), 3, 0);
-
-  auto lOutputPathsPreview{new QLabel("", this)};
-  lOutputPathsPreview->setObjectName("output_path_preview");
-  lOutputPathsPreview->setAutoFillBackground(true);
-  lOutputGridLayout->addWidget(lOutputPathsPreview, 3, 1);
-
-  // TODO: bind these events
-  //// Event binding
-  //this->connect(lOutputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseExportDirectory);
-  //this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview);
-  //this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
-
-  //// Pre-filled data
-  //this->updateOutputPreview();
+  // Pre-filled data
+  //this->updateOutputPreview(); // TODO: Rebind the events
 }
 
 void BatchConversion::userHasDoneAnAction()

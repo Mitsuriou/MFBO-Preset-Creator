@@ -73,3 +73,64 @@ QGridLayout* ComponentFactory::createScrollAreaLayout(QWidget* aParent)
 
   return lMainLayout;
 }
+
+void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, const QString& aIconFolder, const QString& aInitialOutputPath, const int& aMinimumFirstColumnWidth)
+{
+  // Output group box
+  auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
+  Utils::addIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree");
+  Utils::setGroupBoxState(lOutputGroupBox, false);
+  aLayout->addWidget(lOutputGroupBox, 3, 0);
+
+  // Grid layout
+  auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
+  lOutputGridLayout->setObjectName("output_group_box");
+  lOutputGridLayout->setSpacing(10);
+  lOutputGridLayout->setContentsMargins(15, 20, 15, 15);
+  lOutputGridLayout->setAlignment(Qt::AlignTop);
+
+  if (aMinimumFirstColumnWidth > 0)
+  {
+    lOutputGridLayout->setColumnMinimumWidth(0, aMinimumFirstColumnWidth);
+  }
+
+  // Main directory
+  lOutputGridLayout->addWidget(new QLabel(tr("Output directory path:"), aParent), 0, 0);
+
+  auto lOutputPathLineEdit{new QLineEdit(aParent)};
+  lOutputPathLineEdit->setReadOnly(true);
+  lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+  lOutputPathLineEdit->setObjectName("output_path_directory");
+  if (aInitialOutputPath.length() > 0)
+  {
+    lOutputPathLineEdit->setText(aInitialOutputPath);
+  }
+  lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
+
+  // Main directory's file chooser button
+  auto lOutputPathChooser{ComponentFactory::createButton(aParent, tr("Choose a directory..."), "", "folder", aIconFolder, "output_path_chooser")};
+  lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
+
+  // Subdirectory
+  lOutputGridLayout->addWidget(new QLabel(tr("Output subdirectory name/path:"), aParent), 1, 0);
+
+  auto lOutputSubpathLineEdit{new QLineEdit(aParent)};
+  lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
+  lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
+
+  // Use only subdirectory path
+  lOutputGridLayout->addWidget(new QLabel(tr("Use only subdirectory path?"), aParent), 2, 0);
+
+  auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
+  lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
+  lUseOnlySubdir->setObjectName("only_use_subdirectory");
+  lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
+
+  // Preview
+  lOutputGridLayout->addWidget(new QLabel(tr("Preview:"), aParent), 3, 0);
+
+  auto lOutputPathsPreview{new QLabel("", aParent)};
+  lOutputPathsPreview->setObjectName("output_path_preview");
+  lOutputPathsPreview->setAutoFillBackground(true);
+  lOutputGridLayout->addWidget(lOutputPathsPreview, 3, 1);
+}

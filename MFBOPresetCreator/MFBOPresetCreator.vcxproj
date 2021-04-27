@@ -176,7 +176,7 @@ echo #####################################################</Command>
     <QtMoc Include="AssistedConversion.h" />
     <QtMoc Include="About.h" />
     <QtMoc Include="BatchConversion.h" />
-    <ClInclude Include="ComponentFactory.h" />
+    <QtMoc Include="ComponentFactory.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="BodySlideFiltersEditor.h" />
     <ClInclude Include="LangManager.h" />

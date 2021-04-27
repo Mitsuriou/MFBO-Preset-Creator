@@ -192,7 +192,6 @@
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="100"/>
-        <location filename="BatchConversion.cpp" line="248"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
@@ -242,9 +241,8 @@
         <translation type="obsolete">Nom/emplacement du sous-répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="267"/>
         <source>Preview:</source>
-        <translation type="unfinished">Aperçu :</translation>
+        <translation type="obsolete">Aperçu :</translation>
     </message>
     <message>
         <source>Retarget all the files under the input path</source>
@@ -289,159 +287,124 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="225"/>
         <source>Files generation&apos;s output location</source>
-        <translation type="unfinished">Emplacement de sortie de la génération de fichiers</translation>
+        <translation type="obsolete">Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="238"/>
         <source>Output directory path:</source>
-        <translation type="unfinished">Emplacement du répertoire de sortie :</translation>
+        <translation type="obsolete">Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="252"/>
         <source>Output subdirectory name/path:</source>
-        <translation type="unfinished">Nom/Emplacement du sous-répertoire de sortie :</translation>
+        <translation type="obsolete">Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="259"/>
         <source>Use only subdirectory path?</source>
-        <translation type="unfinished">Utiliser seulement le sous-répertoire ?</translation>
+        <translation type="obsolete">Utiliser seulement le sous-répertoire ?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="261"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
-        <translation type="unfinished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
+        <translation type="obsolete">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="347"/>
         <source>Error: no path path given for the retargeting.</source>
-        <translation type="unfinished">Erreur : aucun emplacement donné pour le re-ciblage.</translation>
+        <translation type="obsolete">Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="368"/>
         <source>Error: no path given to backup the files.</source>
-        <translation type="unfinished">Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
+        <translation type="obsolete">Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="377"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
-        <translation type="unfinished">Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
+        <translation type="obsolete">Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="384"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
-        <translation type="unfinished">Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
+        <translation type="obsolete">Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="393"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
-        <translation type="unfinished">The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
+        <translation type="obsolete">The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="402"/>
         <source>Error: the backup could not be created. Please try again.</source>
-        <translation type="unfinished">Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
+        <translation type="obsolete">Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="419"/>
         <source>Cancel treatment</source>
-        <translation type="unfinished">Annuler le traitement</translation>
+        <translation type="obsolete">Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="437"/>
         <source>Parsing XML files. Please wait...</source>
-        <translation type="unfinished">Analyse des fichiers XML. Veuillez patienter...</translation>
+        <translation type="obsolete">Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="447"/>
-        <location filename="BatchConversion.cpp" line="492"/>
-        <location filename="BatchConversion.cpp" line="660"/>
         <source>Process aborted by the user.</source>
-        <translation type="unfinished">Processus interrompu par l&apos;utilisateur.</translation>
+        <translation type="obsolete">Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="468"/>
-        <location filename="BatchConversion.cpp" line="800"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished">Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
+        <translation type="obsolete">Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="476"/>
         <source>Parsing and patching OSP files. Please wait...</source>
-        <translation type="unfinished">Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
+        <translation type="obsolete">Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="518"/>
-        <location filename="BatchConversion.cpp" line="636"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished">Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
+        <translation type="obsolete">Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="539"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
-        <translation type="unfinished">Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
+        <translation type="obsolete">Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="547"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
-        <translation type="unfinished">Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
+        <translation type="obsolete">Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="565"/>
-        <location filename="BatchConversion.cpp" line="573"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
-        <translation type="unfinished">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
+        <translation type="obsolete">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="591"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
+        <translation type="obsolete">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="630"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
+        <translation type="obsolete">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="650"/>
         <source>Patching XML files. Please wait...</source>
-        <translation type="unfinished">Patching des fichiers XML. Veuillez patienter...</translation>
+        <translation type="obsolete">Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="688"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
-        <translation type="unfinished">Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
+        <translation type="obsolete">Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="744"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
-        <translation type="unfinished">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
+        <translation type="obsolete">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="760"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished">Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
+        <translation type="obsolete">Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="794"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
+        <translation type="obsolete">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="808"/>
         <source>Retargeting successful</source>
-        <translation type="unfinished">Re-ciblage réussi</translation>
+        <translation type="obsolete">Re-ciblage réussi</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="808"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
-        <translation type="unfinished">Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
+        <translation type="obsolete">Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="811"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation type="obsolete">OK</translation>
     </message>
 </context>
 <context>
@@ -546,6 +509,44 @@
         <location filename="BodySlideFiltersEditor.cpp" line="283"/>
         <source>Error: there is already one set with the name &quot;%1&quot;.</source>
         <translation>Erreur : il y a déjà un set portant le nom &quot;%1&quot;.</translation>
+    </message>
+</context>
+<context>
+    <name>ComponentFactory</name>
+    <message>
+        <location filename="ComponentFactory.cpp" line="80"/>
+        <source>Files generation&apos;s output location</source>
+        <translation type="unfinished">Emplacement de sortie de la génération de fichiers</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="98"/>
+        <source>Output directory path:</source>
+        <translation type="unfinished">Emplacement du répertoire de sortie :</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="111"/>
+        <source>Choose a directory...</source>
+        <translation type="unfinished">Choisir un répertoire...</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="115"/>
+        <source>Output subdirectory name/path:</source>
+        <translation type="unfinished">Nom/Emplacement du sous-répertoire de sortie :</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="122"/>
+        <source>Use only subdirectory path?</source>
+        <translation type="unfinished">Utiliser seulement le sous-répertoire ?</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="124"/>
+        <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
+        <translation type="unfinished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="130"/>
+        <source>Preview:</source>
+        <translation type="unfinished">Aperçu :</translation>
     </message>
 </context>
 <context>
@@ -852,7 +853,6 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="PresetCreator.cpp" line="433"/>
         <location filename="PresetCreator.cpp" line="507"/>
         <location filename="PresetCreator.cpp" line="534"/>
-        <location filename="PresetCreator.cpp" line="622"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
@@ -913,125 +913,120 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="593"/>
         <source>Output directory path:</source>
-        <translation>Emplacement du répertoire de sortie :</translation>
+        <translation type="vanished">Emplacement du répertoire de sortie :</translation>
+    </message>
+    <message>
+        <source>Choose a directory...</source>
+        <translation type="vanished">Choisir un répertoire...</translation>
+    </message>
+    <message>
+        <source>Output subdirectory name/path:</source>
+        <translation type="vanished">Nom/Emplacement du sous-répertoire de sortie :</translation>
+    </message>
+    <message>
+        <source>Use only subdirectory path?</source>
+        <translation type="vanished">Utiliser seulement le sous-répertoire ?</translation>
+    </message>
+    <message>
+        <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
+        <translation type="vanished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="603"/>
-        <source>Choose a directory...</source>
-        <translation>Choisir un répertoire...</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="607"/>
-        <source>Output subdirectory name/path:</source>
-        <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="614"/>
-        <source>Use only subdirectory path?</source>
-        <translation>Utiliser seulement le sous-répertoire ?</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="616"/>
-        <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
-        <translation>Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="644"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="841"/>
+        <location filename="PresetCreator.cpp" line="800"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="891"/>
+        <location filename="PresetCreator.cpp" line="850"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="925"/>
-        <location filename="PresetCreator.cpp" line="933"/>
+        <location filename="PresetCreator.cpp" line="884"/>
+        <location filename="PresetCreator.cpp" line="892"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="950"/>
+        <location filename="PresetCreator.cpp" line="909"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="977"/>
+        <location filename="PresetCreator.cpp" line="936"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1012"/>
+        <location filename="PresetCreator.cpp" line="971"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1162"/>
-        <location filename="PresetCreator.cpp" line="1186"/>
+        <location filename="PresetCreator.cpp" line="1121"/>
+        <location filename="PresetCreator.cpp" line="1145"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1180"/>
+        <location filename="PresetCreator.cpp" line="1139"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1524"/>
+        <location filename="PresetCreator.cpp" line="1483"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1531"/>
+        <location filename="PresetCreator.cpp" line="1490"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1542"/>
+        <location filename="PresetCreator.cpp" line="1501"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1690"/>
+        <location filename="PresetCreator.cpp" line="1649"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1570"/>
+        <location filename="PresetCreator.cpp" line="1529"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1583"/>
+        <location filename="PresetCreator.cpp" line="1542"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1596"/>
+        <location filename="PresetCreator.cpp" line="1555"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1610"/>
+        <location filename="PresetCreator.cpp" line="1569"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1624"/>
+        <location filename="PresetCreator.cpp" line="1583"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="812"/>
-        <location filename="PresetCreator.cpp" line="915"/>
+        <location filename="PresetCreator.cpp" line="771"/>
+        <location filename="PresetCreator.cpp" line="874"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
@@ -1046,32 +1041,32 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="857"/>
+        <location filename="PresetCreator.cpp" line="816"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="897"/>
+        <location filename="PresetCreator.cpp" line="856"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="983"/>
+        <location filename="PresetCreator.cpp" line="942"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1007"/>
+        <location filename="PresetCreator.cpp" line="966"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1693"/>
+        <location filename="PresetCreator.cpp" line="1652"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1019"/>
+        <location filename="PresetCreator.cpp" line="978"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
@@ -1116,32 +1111,31 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="579"/>
         <source>Files generation&apos;s output location</source>
-        <translation>Emplacement de sortie de la génération de fichiers</translation>
+        <translation type="vanished">Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1550"/>
+        <location filename="PresetCreator.cpp" line="1509"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1551"/>
+        <location filename="PresetCreator.cpp" line="1510"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1554"/>
+        <location filename="PresetCreator.cpp" line="1513"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1555"/>
+        <location filename="PresetCreator.cpp" line="1514"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1690"/>
+        <location filename="PresetCreator.cpp" line="1649"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>

@@ -47,7 +47,7 @@
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="ComponentFactory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +65,6 @@
     </ClInclude>
     <ClInclude Include="LangManager.h">
       <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ComponentFactory.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +146,9 @@
     </QtMoc>
     <QtMoc Include="BatchConversion.h">
       <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="ComponentFactory.h">
+      <Filter>Header Files\Utils</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
