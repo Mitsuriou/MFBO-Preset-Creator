@@ -141,6 +141,32 @@ int Utils::getNumberFilesByExtensionRecursive(const QString& aRootDir, const QSt
   return lNumber;
 }
 
+int Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension)
+{
+  auto lNumber{0};
+  auto lAbsFilePath{QString()};
+  auto lRelativeDirs{QString()};
+
+  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  while (it.hasNext())
+  {
+    it.next();
+
+    // Ignore FOMOD directory
+    lAbsFilePath = it.fileInfo().absoluteFilePath();
+    lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
+
+    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    {
+      continue;
+    }
+
+    lNumber++;
+  }
+
+  return lNumber;
+}
+
 int Utils::getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions)
 {
   auto lNumber{0};

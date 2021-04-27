@@ -270,132 +270,132 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="373"/>
+        <location filename="BatchConversion.cpp" line="347"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="394"/>
+        <location filename="BatchConversion.cpp" line="368"/>
         <source>Error: no path given to backup the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="403"/>
+        <location filename="BatchConversion.cpp" line="377"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="410"/>
+        <location filename="BatchConversion.cpp" line="384"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="419"/>
+        <location filename="BatchConversion.cpp" line="393"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="428"/>
+        <location filename="BatchConversion.cpp" line="402"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="445"/>
+        <location filename="BatchConversion.cpp" line="419"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="463"/>
+        <location filename="BatchConversion.cpp" line="437"/>
         <source>Parsing XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="473"/>
-        <location filename="BatchConversion.cpp" line="518"/>
-        <location filename="BatchConversion.cpp" line="686"/>
+        <location filename="BatchConversion.cpp" line="447"/>
+        <location filename="BatchConversion.cpp" line="492"/>
+        <location filename="BatchConversion.cpp" line="660"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="494"/>
-        <location filename="BatchConversion.cpp" line="826"/>
+        <location filename="BatchConversion.cpp" line="468"/>
+        <location filename="BatchConversion.cpp" line="800"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="502"/>
+        <location filename="BatchConversion.cpp" line="476"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="544"/>
-        <location filename="BatchConversion.cpp" line="662"/>
+        <location filename="BatchConversion.cpp" line="518"/>
+        <location filename="BatchConversion.cpp" line="636"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="565"/>
+        <location filename="BatchConversion.cpp" line="539"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="573"/>
+        <location filename="BatchConversion.cpp" line="547"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="591"/>
-        <location filename="BatchConversion.cpp" line="599"/>
+        <location filename="BatchConversion.cpp" line="565"/>
+        <location filename="BatchConversion.cpp" line="573"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="617"/>
+        <location filename="BatchConversion.cpp" line="591"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="656"/>
+        <location filename="BatchConversion.cpp" line="630"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="676"/>
+        <location filename="BatchConversion.cpp" line="650"/>
         <source>Patching XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="714"/>
+        <location filename="BatchConversion.cpp" line="688"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="770"/>
+        <location filename="BatchConversion.cpp" line="744"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="786"/>
+        <location filename="BatchConversion.cpp" line="760"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="820"/>
+        <location filename="BatchConversion.cpp" line="794"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="834"/>
+        <location filename="BatchConversion.cpp" line="808"/>
         <source>Retargeting successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="834"/>
+        <location filename="BatchConversion.cpp" line="808"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="837"/>
+        <location filename="BatchConversion.cpp" line="811"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1170,97 +1170,97 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="456"/>
+        <location filename="RetargetingTool.cpp" line="430"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="472"/>
+        <location filename="RetargetingTool.cpp" line="446"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="481"/>
+        <location filename="RetargetingTool.cpp" line="455"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="498"/>
+        <location filename="RetargetingTool.cpp" line="472"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="516"/>
+        <location filename="RetargetingTool.cpp" line="490"/>
         <source>Parsing XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="526"/>
-        <location filename="RetargetingTool.cpp" line="571"/>
-        <location filename="RetargetingTool.cpp" line="739"/>
+        <location filename="RetargetingTool.cpp" line="500"/>
+        <location filename="RetargetingTool.cpp" line="545"/>
+        <location filename="RetargetingTool.cpp" line="713"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="597"/>
-        <location filename="RetargetingTool.cpp" line="715"/>
+        <location filename="RetargetingTool.cpp" line="571"/>
+        <location filename="RetargetingTool.cpp" line="689"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="618"/>
+        <location filename="RetargetingTool.cpp" line="592"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="626"/>
+        <location filename="RetargetingTool.cpp" line="600"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="644"/>
-        <location filename="RetargetingTool.cpp" line="652"/>
+        <location filename="RetargetingTool.cpp" line="618"/>
+        <location filename="RetargetingTool.cpp" line="626"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="670"/>
+        <location filename="RetargetingTool.cpp" line="644"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="709"/>
+        <location filename="RetargetingTool.cpp" line="683"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="823"/>
+        <location filename="RetargetingTool.cpp" line="797"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="839"/>
+        <location filename="RetargetingTool.cpp" line="813"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="873"/>
+        <location filename="RetargetingTool.cpp" line="847"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="547"/>
-        <location filename="RetargetingTool.cpp" line="879"/>
+        <location filename="RetargetingTool.cpp" line="521"/>
+        <location filename="RetargetingTool.cpp" line="853"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="887"/>
+        <location filename="RetargetingTool.cpp" line="861"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="890"/>
+        <location filename="RetargetingTool.cpp" line="864"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1270,22 +1270,22 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="555"/>
+        <location filename="RetargetingTool.cpp" line="529"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="729"/>
+        <location filename="RetargetingTool.cpp" line="703"/>
         <source>Patching XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="767"/>
+        <location filename="RetargetingTool.cpp" line="741"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="887"/>
+        <location filename="RetargetingTool.cpp" line="861"/>
         <source>Retargeting successful</source>
         <translation></translation>
     </message>
@@ -1305,22 +1305,22 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="384"/>
+        <location filename="RetargetingTool.cpp" line="358"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="426"/>
+        <location filename="RetargetingTool.cpp" line="400"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="447"/>
+        <location filename="RetargetingTool.cpp" line="421"/>
         <source>Error: no path given to backup the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="463"/>
+        <location filename="RetargetingTool.cpp" line="437"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation></translation>
     </message>
@@ -1817,19 +1817,19 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="328"/>
+        <location filename="Utils.cpp" line="354"/>
         <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="374"/>
-        <location filename="Utils.cpp" line="407"/>
-        <location filename="Utils.cpp" line="477"/>
+        <location filename="Utils.cpp" line="400"/>
+        <location filename="Utils.cpp" line="433"/>
+        <location filename="Utils.cpp" line="503"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1090"/>
+        <location filename="Utils.cpp" line="1116"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>

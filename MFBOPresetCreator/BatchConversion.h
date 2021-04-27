@@ -31,8 +31,6 @@ private:
   void setupOutputGUI(QGridLayout* aLayout);
   void userHasDoneAnAction();
 
-  int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
-
 private slots:
   void userHasDoneAnAction(int);
   void updateAvailableBodyVersions();

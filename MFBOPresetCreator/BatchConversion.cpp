@@ -289,32 +289,6 @@ void BatchConversion::userHasDoneAnAction()
   }
 }
 
-int BatchConversion::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
-{
-  auto lNumber{0};
-  auto lAbsFilePath{QString()};
-  auto lRelativeDirs{QString()};
-
-  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
-  while (it.hasNext())
-  {
-    it.next();
-
-    // Ignore FOMOD directory
-    lAbsFilePath = it.fileInfo().absoluteFilePath();
-    lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
-
-    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
-    {
-      continue;
-    }
-
-    lNumber++;
-  }
-
-  return lNumber;
-}
-
 void BatchConversion::userHasDoneAnAction(int)
 {
   this->mHasUserDoneSomething = true;
@@ -431,8 +405,8 @@ void BatchConversion::launchSearchProcess()
   }
 
   // Scan the number of files to treat
-  auto lNumberOSPFiles{this->getNumberFilesByExtension(lRootDir, "*.osp")};
-  auto lNumberXMLFiles{this->getNumberFilesByExtension(lRootDir, "*.xml")};
+  auto lNumberOSPFiles{Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.osp")};
+  auto lNumberXMLFiles{Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.xml")};
   auto lTreatedFiles{0};
 
   // Progress bar

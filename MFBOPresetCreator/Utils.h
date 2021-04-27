@@ -37,6 +37,7 @@ public:
                                               const bool& aIsYesBtnDefault);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension);
+  static int getNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions);
   static int getNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions);
   static bool copyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
