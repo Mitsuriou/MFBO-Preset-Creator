@@ -86,8 +86,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // First line
-  auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  aLayout->addWidget(lInputPathLabel, 0, 0);
+  aLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
@@ -104,8 +103,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   // Targeted body and version
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
-  auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
-  aLayout->addWidget(lBodyLabel, 1, 0);
+  aLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 1, 0);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -150,8 +148,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   aLayout->addWidget(lSkeletonRefresherBeast, 3, 4);
 
   // BodySlide filters
-  auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
-  aLayout->addWidget(lLabelFilters, 4, 0);
+  aLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 4, 0);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
@@ -168,8 +165,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   aLayout->addWidget(lEditFilters, 4, 4);
 
   // BodySlide files names pattern
-  auto lOSPXMLNames{new QLabel(tr("BodySlide files names:"), this)};
-  aLayout->addWidget(lOSPXMLNames, 5, 0);
+  aLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 5, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
@@ -239,8 +235,7 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->setAlignment(Qt::AlignTop);
 
   // Main directory
-  auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
-  lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Output directory path:"), this), 0, 0);
 
   auto lOutputPathLineEdit{new QLineEdit(this)};
   lOutputPathLineEdit->setReadOnly(true);
@@ -254,16 +249,14 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Subdirectory
-  auto lLabelSubpath{new QLabel(tr("Output subdirectory name/path:"), this)};
-  lOutputGridLayout->addWidget(lLabelSubpath, 1, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Output subdirectory name/path:"), this), 1, 0);
 
   auto lOutputSubpathLineEdit{new QLineEdit(this)};
   lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
   lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
   // Use only subdirectory path
-  auto lLabelUseOnlySubdir{new QLabel(tr("Use only subdirectory path?"), this)};
-  lOutputGridLayout->addWidget(lLabelUseOnlySubdir, 2, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Use only subdirectory path?"), this), 2, 0);
 
   auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
   lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
@@ -271,8 +264,7 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
 
   // Preview
-  auto lOutputTitlePreview{new QLabel(tr("Preview:"), this)};
-  lOutputGridLayout->addWidget(lOutputTitlePreview, 3, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Preview:"), this), 3, 0);
 
   auto lOutputPathsPreview{new QLabel("", this)};
   lOutputPathsPreview->setObjectName("output_path_preview");

@@ -98,8 +98,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // Targeted body and version
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
-  auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
-  lGeneralGridLayout->addWidget(lBodyLabel, 0, 0);
+  lGeneralGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -118,8 +117,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 2);
 
   // Input path
-  auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  lGeneralGridLayout->addWidget(lInputPathLabel, 1, 0);
+  lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 1, 0);
 
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
@@ -131,8 +129,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->addWidget(lInputPathChooser, 1, 4);
 
   // BodySlide filters
-  auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
-  lGeneralGridLayout->addWidget(lLabelFilters, 2, 0);
+  lGeneralGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 2, 0);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
@@ -162,8 +159,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupGridLayout->setAlignment(Qt::AlignTop);
 
   // Keep backup checkbox
-  auto lKeepBackupLabel{new QLabel(tr("Keep a backup?"), this)};
-  lBackupGridLayout->addWidget(lKeepBackupLabel, 0, 0);
+  lBackupGridLayout->addWidget(new QLabel(tr("Keep a backup?"), this), 0, 0);
 
   auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."), this)};
   lKeepBackup->setCursor(Qt::PointingHandCursor);

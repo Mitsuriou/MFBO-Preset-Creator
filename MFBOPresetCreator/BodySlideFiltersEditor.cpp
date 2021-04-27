@@ -90,8 +90,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Body filter set chooser
-  auto lLabelFilters{new QLabel(tr("Edit set:"), this)};
-  aLayout.addWidget(lLabelFilters, 0, 0);
+  aLayout.addWidget(new QLabel(tr("Edit set:"), this), 0, 0);
 
   this->mFiltersListChooser = new QComboBox(this);
   this->mFiltersListChooser->setItemDelegate(new QStyledItemDelegate());

@@ -137,8 +137,7 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   lDisplayLayout->setAlignment(Qt::AlignTop);
 
   // LANGUAGE
-  auto lLanguageLabel{new QLabel(QString("* " + tr("Language:")), this)};
-  lDisplayLayout->addWidget(lLanguageLabel);
+  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Language:")), this));
 
   auto lLanguageSelector{new QComboBox(this)};
   lLanguageSelector->setItemDelegate(new QStyledItemDelegate());
@@ -148,15 +147,13 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   lDisplayLayout->addWidget(lLanguageSelector);
 
   // FONT FAMILY
-  auto lFontLabel{new QLabel(QString("* " + tr("Font:")), this)};
-  lDisplayLayout->addWidget(lFontLabel);
+  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Font:")), this));
 
   auto lFontChooser{ComponentFactory::createButton(this, tr("Choose a font"), "", "text", lIconFolder, "font_chooser", false, true)};
   lDisplayLayout->addWidget(lFontChooser);
 
   // GUI THEME
-  auto lGUIThemeLabel{new QLabel(QString("* " + tr("Application Theme:")), this)};
-  lDisplayLayout->addWidget(lGUIThemeLabel);
+  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Application Theme:")), this));
 
   auto lGUIThemeSelector{new QComboBox(this)};
   lGUIThemeSelector->setItemDelegate(new QStyledItemDelegate());
@@ -166,8 +163,7 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   lDisplayLayout->addWidget(lGUIThemeSelector);
 
   // MAIN WINDOW OPENING MODE
-  auto lWindowOpeningModeLabel{new QLabel(tr("Window opening mode:"), this)};
-  lDisplayLayout->addWidget(lWindowOpeningModeLabel);
+  lDisplayLayout->addWidget(new QLabel(tr("Window opening mode:"), this));
 
   QStringList lSupportedWindowOpeningMode;
   lSupportedWindowOpeningMode.append(tr("English"));
@@ -181,8 +177,7 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   lDisplayLayout->addWidget(lWindowOpeningModeSelector);
 
   // WINDOW WIDTH
-  auto lWinWidthLabel{new QLabel(tr("Default main window width:"), this)};
-  lDisplayLayout->addWidget(lWinWidthLabel);
+  lDisplayLayout->addWidget(new QLabel(tr("Default main window width:"), this));
 
   auto lWinWidthInput{new QLineEdit("", this)};
   lWinWidthInput->setObjectName(QString("window_width"));
@@ -190,8 +185,7 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   lDisplayLayout->addWidget(lWinWidthInput);
 
   // WINDOW HEIGHT
-  auto lWinHeightLabel{new QLabel(tr("Default main window height:"), this)};
-  lDisplayLayout->addWidget(lWinHeightLabel);
+  lDisplayLayout->addWidget(new QLabel(tr("Default main window height:"), this));
 
   auto lWinHeightInput{new QLineEdit("", this)};
   lWinHeightInput->setObjectName(QString("window_height"));
@@ -199,8 +193,7 @@ void Settings::setupDisplayGroup(QGridLayout* aLayout)
   lDisplayLayout->addWidget(lWinHeightInput);
 
   // COLORS
-  auto lColorsLabel{new QLabel(QString("* " + tr("Texts accent color:")), this)};
-  lDisplayLayout->addWidget(lColorsLabel);
+  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Texts accent color:")), this));
 
   // Success
   auto lSuccessColorChooser{ComponentFactory::createButton(this, tr("Choose a success color"), "", "color", lIconFolder, "success_color_chooser", false, true)};
@@ -272,8 +265,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout* aLayout)
   // DEFAULT SELECTED BODY AND VERSION
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
-  auto lDefaultBodyVersionLabel{new QLabel(tr("Default selected body:"), this)};
-  lPresetCreatorLayout->addWidget(lDefaultBodyVersionLabel, 0, 0, 1, 2);
+  lPresetCreatorLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -292,8 +284,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout* aLayout)
   lPresetCreatorLayout->addWidget(lBodyVersionSelector, 1, 1);
 
   // OUTPUT PATH PREVIEW
-  auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
-  lPresetCreatorLayout->addWidget(lOutputPathLabel, 2, 0, 1, 2);
+  lPresetCreatorLayout->addWidget(new QLabel(tr("Output directory path:"), this), 2, 0, 1, 2);
 
   auto lOutputPathLineEdit{new QLineEdit("", this)};
   lOutputPathLineEdit->setReadOnly(true);
@@ -336,8 +327,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout* aLayout)
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
-  auto lUpgradeBodyNameVersionLabel{new QLabel(tr("Default selected body:"), this)};
-  lRetargetingToolLayout->addWidget(lUpgradeBodyNameVersionLabel, 0, 0, 1, 2);
+  lRetargetingToolLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
   auto lUpgradeBodyNameSelector{new QComboBox(this)};
   lUpgradeBodyNameSelector->setItemDelegate(new QStyledItemDelegate());

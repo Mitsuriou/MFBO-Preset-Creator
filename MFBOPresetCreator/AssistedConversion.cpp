@@ -84,8 +84,7 @@ void AssistedConversion::setupInterface()
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // First line
-  auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  lMainLayout->addWidget(lInputPathLabel, 0, 0);
+  lMainLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};

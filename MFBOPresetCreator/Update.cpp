@@ -50,8 +50,7 @@ void Update::setupInterface()
   this->layout()->setAlignment(Qt::AlignTop);
 
   // Current version
-  auto lCurrentVersion{new QLabel(tr("Current version: v.%1").arg(Utils::getApplicationVersion()), this)};
-  this->layout()->addWidget(lCurrentVersion);
+  this->layout()->addWidget(new QLabel(tr("Current version: v.%1").arg(Utils::getApplicationVersion()), this));
 
   // Check for updates
   auto lUpdateButton{ComponentFactory::createButton(this, tr("Check for updates"), "", "cloud-search", Utils::getIconRessourceFolder(this->mSettings.appTheme), "search_button")};

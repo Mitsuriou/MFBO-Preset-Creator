@@ -292,8 +292,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   lMeshesGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Body meshes names
-  auto lMeshestitlePreview{new QLabel(tr("Meshes paths and names:"), this)};
-  lMeshesGridLayout->addWidget(lMeshestitlePreview, 1, 0, 3, 1);
+  lMeshesGridLayout->addWidget(new QLabel(tr("Meshes paths and names:"), this), 1, 0, 3, 1);
 
   // femalebody
   auto lMeshesPathFemaleBodyLineEdit{new QLineEdit(this)};
@@ -301,8 +300,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 1, 1);
 
-  auto lSeparator1{new QLabel("/", this)};
-  lMeshesGridLayout->addWidget(lSeparator1, 1, 2);
+  lMeshesGridLayout->addWidget(new QLabel("/", this), 1, 2);
 
   auto lBodyMeshNameInput{new QLineEdit(this)};
   lBodyMeshNameInput->setObjectName("body_mesh_name_input");
@@ -310,8 +308,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
 
-  auto lBodyMeshNameLabel1{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel1, 1, 4);
+  lMeshesGridLayout->addWidget(new QLabel(tr("_0.nif/_1.nif"), this), 1, 4);
 
   // femalefeet
   auto lMeshesPathFemaleFeetLineEdit{new QLineEdit(this)};
@@ -319,8 +316,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 2, 1);
 
-  auto lSeparator2{new QLabel("/", this)};
-  lMeshesGridLayout->addWidget(lSeparator2, 2, 2);
+  lMeshesGridLayout->addWidget(new QLabel("/", this), 2, 2);
 
   auto lFeetMeshNameInput{new QLineEdit(this)};
   lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
@@ -328,8 +324,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
 
-  auto lBodyMeshNameLabel2{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel2, 2, 4);
+  lMeshesGridLayout->addWidget(new QLabel(tr("_0.nif/_1.nif"), this), 2, 4);
 
   // femalehands
   auto lMeshesPathFemaleHandsLineEdit{new QLineEdit(this)};
@@ -337,8 +332,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 3, 1);
 
-  auto lSeparator3{new QLabel("/", this)};
-  lMeshesGridLayout->addWidget(lSeparator3, 3, 2);
+  lMeshesGridLayout->addWidget(new QLabel("/", this), 3, 2);
 
   auto lHandsMeshNameInput{new QLineEdit(this)};
   lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
@@ -346,13 +340,10 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
 
-  auto lBodyMeshNameLabel3{new QLabel(tr("_0.nif/_1.nif"), this)};
-  lMeshesGridLayout->addWidget(lBodyMeshNameLabel3, 3, 4);
+  lMeshesGridLayout->addWidget(new QLabel(tr("_0.nif/_1.nif"), this), 3, 4);
 
   // Preview
-  auto lLabelPreview{new QLabel(this)};
-  lLabelPreview->setText(tr("Preview:"));
-  lMeshesGridLayout->addWidget(lLabelPreview, 4, 0);
+  lMeshesGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
 
   auto lMeshesPreview{new QLabel(this)};
   lMeshesPreview->setObjectName("meshes_preview");
@@ -507,8 +498,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   // Targeted body and version
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultMainWindowBody)};
 
-  auto lBodyLabel{new QLabel(tr("Targeted body and version:"), this)};
-  lBodyslideGridLayout->addWidget(lBodyLabel, 0, 0);
+  lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -527,16 +517,14 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lBodyslideGridLayout->addWidget(lBodyVersionSelector, 0, 2);
 
   // Second line
-  auto lOSPXMLNames{new QLabel(tr("BodySlide files names:"), this)};
-  lBodyslideGridLayout->addWidget(lOSPXMLNames, 1, 0);
+  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
 
   // Third line
-  auto lLabelOspXmlNames{new QLabel(tr("Preview:"), this)};
-  lBodyslideGridLayout->addWidget(lLabelOspXmlNames, 2, 0);
+  lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 2, 0);
 
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
   lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
@@ -563,16 +551,14 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
 
   // Fifth line
-  auto lLabelNamesInApp{new QLabel(tr("Preview:"), this)};
-  lBodyslideGridLayout->addWidget(lLabelNamesInApp, 4, 0);
+  lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
 
   auto lResultNamesInApp{new QLabel("", this)};
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
 
   // Sixth line
-  auto lLabelFilters{new QLabel(tr("BodySlide filters:"), this)};
-  lBodyslideGridLayout->addWidget(lLabelFilters, 5, 0);
+  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 5, 0);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
@@ -624,8 +610,7 @@ void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Main directory
-  auto lOutputPathLabel{new QLabel(tr("Output directory path:"), this)};
-  lOutputGridLayout->addWidget(lOutputPathLabel, 0, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Output directory path:"), this), 0, 0);
 
   auto lOutputPathLineEdit{new QLineEdit(this)};
   lOutputPathLineEdit->setReadOnly(true);
@@ -639,16 +624,14 @@ void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Subdirectory
-  auto lLabelSubpath{new QLabel(tr("Output subdirectory name/path:"), this)};
-  lOutputGridLayout->addWidget(lLabelSubpath, 1, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Output subdirectory name/path:"), this), 1, 0);
 
   auto lOutputSubpathLineEdit{new QLineEdit(this)};
   lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
   lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
   // Use only subdirectory path
-  auto lLabelUseOnlySubdir{new QLabel(tr("Use only subdirectory path?"), this)};
-  lOutputGridLayout->addWidget(lLabelUseOnlySubdir, 2, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Use only subdirectory path?"), this), 2, 0);
 
   auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
   lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
@@ -656,8 +639,7 @@ void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
   lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
 
   // Preview
-  auto lOutputTitlePreview{new QLabel(tr("Preview:"), this)};
-  lOutputGridLayout->addWidget(lOutputTitlePreview, 3, 0);
+  lOutputGridLayout->addWidget(new QLabel(tr("Preview:"), this), 3, 0);
 
   auto lOutputPathsPreview{new QLabel("", this)};
   lOutputPathsPreview->setObjectName("output_path_preview");

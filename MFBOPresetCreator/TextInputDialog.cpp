@@ -48,8 +48,7 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
   lMainLayout->addLayout(lTopContainer);
 
   // Label
-  auto lLabel{new QLabel(aLabel, this)};
-  lTopContainer->addWidget(lLabel);
+  lTopContainer->addWidget(new QLabel(aLabel, this));
 
   // LineEdit
   auto lLineEdit{new QLineEdit(this)};

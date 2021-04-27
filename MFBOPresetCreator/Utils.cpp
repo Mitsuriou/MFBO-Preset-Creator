@@ -1080,8 +1080,7 @@ void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, 
 
 void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
 {
-  auto lLabel{new QLabel(aLabel, aParent)};
-  aLayout->addWidget(lLabel, aRow, 0);
+  aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);
 
   auto lGeneralValue{new QLineEdit(aValue, aParent)};
   lGeneralValue->setDisabled(true);

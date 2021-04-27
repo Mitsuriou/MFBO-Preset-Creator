@@ -79,8 +79,7 @@ void TexturesAssistant::setupInterface(QGridLayout* aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // First line
-  auto lInputPathLabel{new QLabel(tr("Input path:"), this)};
-  aLayout->addWidget(lInputPathLabel, 0, 0);
+  aLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
