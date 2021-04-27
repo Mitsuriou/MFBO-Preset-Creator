@@ -67,6 +67,8 @@ void Settings::reject()
 void Settings::setWindowProperties()
 {
   this->setModal(true);
+  this->setMinimumWidth(900);
+  this->setMinimumHeight(650);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Settings"));
@@ -75,12 +77,31 @@ void Settings::setWindowProperties()
 
 void Settings::initializeGUI()
 {
-  // Main layout
-  auto lMainLayout{new QGridLayout(this)};
+  // Very first container in which the scroll area will be added
+  auto lBaseLayout{new QVBoxLayout(this)};
+  lBaseLayout->setContentsMargins(0, 0, 0, 0);
+
+  // Create a scroll area
+  auto lScrollArea{new QScrollArea(this)};
+  lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->setContentsMargins(0, 0, 0, 0);
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->setWidgetResizable(true);
+  // Remove the borders of the scroll area
+  lScrollArea->setStyleSheet("QScrollArea{border: none;}");
+
+  // Add a QFrame to permit automatic expanding of the content inside the scroll area
+  auto lMainWidget{new QFrame(this)};
+
+  // Main container
+  auto lMainLayout{new QGridLayout(lMainWidget)};
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(10, 10, 10, 10);
   lMainLayout->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainLayout);
+
+  lScrollArea->setWidget(lMainWidget);
+  lBaseLayout->addWidget(lScrollArea);
 
   auto lStarLabel{new QLabel(this)};
   if (Utils::RESTART_PENDING)
@@ -116,6 +137,12 @@ void Settings::initializeGUI()
 
   // Load the settings into the interface
   this->loadSettings(this->mSettings);
+
+  // Cursor change for the scroll bar
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &Settings::scrollbarReleased);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &Settings::scrollbarReleased);
 }
 
 void Settings::setupDisplayGroup(QGridLayout* aLayout)
@@ -763,6 +790,20 @@ void Settings::chooseDangerColor()
     // Display a preview on the color chooser's button directly
     this->applyDangerColorButton(this->mNewDangerColor);
   }
+}
+
+void Settings::scrollbarPressed()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
+}
+
+void Settings::scrollbarReleased()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
 void Settings::groupBoxChecked(bool aIsChecked)

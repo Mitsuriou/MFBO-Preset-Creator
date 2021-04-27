@@ -9,6 +9,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   // Very first container in which the scroll area will be added
   auto lBaseLayout{new QVBoxLayout(this)};
   lBaseLayout->setContentsMargins(0, 0, 0, 0);
+  this->setLayout(lBaseLayout);
 
   // Create a scroll area
   auto lScrollArea{new QScrollArea(this)};
