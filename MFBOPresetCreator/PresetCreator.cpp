@@ -7,7 +7,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   , mMinimumFirstColumnWidth(300)
 {
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::createScrollAreaLayout(this)};
+  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
 
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(lMainLayout);
@@ -21,8 +21,6 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
 
   // Cursor change for the scroll bar
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);

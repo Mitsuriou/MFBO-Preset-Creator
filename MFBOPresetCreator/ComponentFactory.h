@@ -25,7 +25,8 @@ public:
                                    const bool& aMustDisableAutoDefaultBehavior = false);
 
   // Constructed components
-  static QGridLayout* createScrollAreaLayout(QWidget* aParent);
+  static QGridLayout* createScrollAreaWindowLayout(QWidget* aParent);
+  static QGridLayout* createScrollAreaComponentLayout(QWidget* aParent);
 
   // Full UI blocks
   static void createOutputBox(QWidget* aParent, QGridLayout* aLayout, const QString& aIconFolder, const QString& aInitialOutputPath = "", const int& aMinimumFirstColumnWidth = -1);

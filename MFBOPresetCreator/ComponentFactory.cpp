@@ -45,7 +45,7 @@ QPushButton* ComponentFactory::createButton(
   return lButton;
 }
 
-QGridLayout* ComponentFactory::createScrollAreaLayout(QWidget* aParent)
+QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent)
 {
   // Very first container in which the scroll area will be added
   auto lBaseLayout{new QVBoxLayout(aParent)};
@@ -53,6 +53,8 @@ QGridLayout* ComponentFactory::createScrollAreaLayout(QWidget* aParent)
 
   // Create a scroll area
   auto lScrollArea{new QScrollArea(aParent)};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->setObjectName("scrollable_zone");
   lScrollArea->setContentsMargins(0, 0, 0, 0);
   lScrollArea->setWidgetResizable(true);
@@ -72,6 +74,30 @@ QGridLayout* ComponentFactory::createScrollAreaLayout(QWidget* aParent)
   lBaseLayout->addWidget(lScrollArea);
 
   return lMainLayout;
+}
+
+QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
+{
+  auto lScrollArea{new QScrollArea(aParent)};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->setWidgetResizable(true);
+
+  auto lMainWidget{new QFrame(aParent)};
+  lScrollArea->setWidget(lMainWidget);
+
+  auto lDataContainer{new QGridLayout(aParent)};
+  lDataContainer->setObjectName("data_container");
+  lDataContainer->setAlignment(Qt::AlignTop);
+  lDataContainer->setContentsMargins(0, 0, 0, 0);
+
+  lMainWidget->setLayout(lDataContainer);
+
+  auto lMainLayout{qobject_cast<QGridLayout*>(aParent->layout())};
+  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
+
+  return lDataContainer;
 }
 
 void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, const QString& aIconFolder, const QString& aInitialOutputPath, const int& aMinimumFirstColumnWidth)

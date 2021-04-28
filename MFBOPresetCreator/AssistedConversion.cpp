@@ -375,16 +375,7 @@ void AssistedConversion::launchSearchProcess()
   // Warn the user if the scan found a BSA file
   if (Utils::getNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
   {
-    if (Utils::displayQuestionMessage(this,
-                                      tr("BSA file found"),
-                                      tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
-                                      lIconFolder,
-                                      "help-circle",
-                                      tr("Continue the scan"),
-                                      tr("Cancel the scan"),
-                                      this->mSettings.successColor,
-                                      this->mSettings.dangerColor,
-                                      true)
+    if (Utils::displayQuestionMessage(this, tr("BSA file found"), tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"), lIconFolder, "help-circle", tr("Continue the scan"), tr("Cancel the scan"), this->mSettings.successColor, this->mSettings.dangerColor, true)
         != ButtonClicked::Yes)
     {
       return;
@@ -411,29 +402,13 @@ void AssistedConversion::launchSearchProcess()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lScrollArea{new QScrollArea(this)};
-  lScrollArea->setObjectName("scrollable_zone");
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->setWidgetResizable(true);
-
-  auto lMainWidget{new QFrame(this)};
-  lScrollArea->setWidget(lMainWidget);
-
-  auto lDataContainer{new QGridLayout(this)};
-  lDataContainer->setObjectName("data_container");
-  lDataContainer->setAlignment(Qt::AlignTop);
-  lDataContainer->setContentsMargins(0, 0, 0, 0);
+  auto lDataContainer{ComponentFactory::createScrollAreaComponentLayout(this)};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
 
   // Columns header
   lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);
   lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignCenter);
   lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignCenter);
-
-  lMainWidget->setLayout(lDataContainer);
-
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
-  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
 
   auto lNextRow{1};
   this->mBoxSelectedIndexes.clear();
@@ -450,6 +425,7 @@ void AssistedConversion::launchSearchProcess()
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
 
   // Cursor change for the scroll bar
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &AssistedConversion::scrollbarPressed);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &AssistedConversion::scrollbarReleased);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &AssistedConversion::scrollbarPressed);

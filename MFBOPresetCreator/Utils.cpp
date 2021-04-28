@@ -69,16 +69,7 @@ void Utils::displayWarningMessage(const QString& aMessage)
   lBox.exec();
 }
 
-ButtonClicked Utils::displayQuestionMessage(QWidget* aParent,
-                                            const QString& aTitle,
-                                            const QString& aMessage,
-                                            const QString& aIconFolder,
-                                            const QString& aIconName,
-                                            const QString& aTextBtnYes,
-                                            const QString& aTextBtnNo,
-                                            const QString& aColorYesBtn,
-                                            const QString& aColorNoBtn,
-                                            const bool& aIsYesBtnDefault)
+ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aColorYesBtn, const QString& aColorNoBtn, const bool& aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
   lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation));

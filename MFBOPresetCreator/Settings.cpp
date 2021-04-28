@@ -78,7 +78,7 @@ void Settings::setWindowProperties()
 void Settings::initializeGUI()
 {
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::createScrollAreaLayout(this)};
+  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
 
   auto lStarLabel{new QLabel(this)};
   if (Utils::RESTART_PENDING)
@@ -117,8 +117,6 @@ void Settings::initializeGUI()
 
   // Cursor change for the scroll bar
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &Settings::scrollbarReleased);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
