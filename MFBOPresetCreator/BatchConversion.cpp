@@ -27,16 +27,7 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (Utils::displayQuestionMessage(this,
-                                    tr("Closing"),
-                                    tr("Do you want to close the window?"),
-                                    lIconFolder,
-                                    "help-circle",
-                                    tr("Close the window"),
-                                    tr("Go back to the batch conversion window"),
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
-                                    false)
+  if (Utils::displayQuestionMessage(this, tr("Closing"), tr("Do you want to close the window?"), lIconFolder, "help-circle", tr("Close the window"), tr("Go back to the batch conversion window"), this->mSettings.dangerColor, this->mSettings.successColor, false)
       == ButtonClicked::Yes)
   {
     aEvent->accept();
@@ -174,15 +165,10 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   // BodySlide presets names pattern
   auto lNamesInApp{new QLabel(this)};
   lNamesInApp->setTextFormat(Qt::RichText);
-  auto lText{tr("Presets names:")};
-  auto lRichText{
-    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
-                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
-                   " %2"
-                   "</p>")
-      .arg(lIconFolder)
-      .arg(lText)};
-  lNamesInApp->setText(lRichText);
+  lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                               "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
+                         .arg(lIconFolder)
+                         .arg(tr("Presets names:")));
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   aLayout->addWidget(lNamesInApp, 6, 0);
 

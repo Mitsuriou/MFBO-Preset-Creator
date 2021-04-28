@@ -514,15 +514,10 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   // Fourth line
   auto lNamesInApp{new QLabel(this)};
   lNamesInApp->setTextFormat(Qt::RichText);
-  auto lText{tr("Presets names:")};
-  auto lRichText{
-    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
-                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
-                   " %2"
-                   "</p>")
-      .arg(lIconFolder)
-      .arg(lText)};
-  lNamesInApp->setText(lRichText);
+  lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                               "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
+                         .arg(lIconFolder)
+                         .arg(tr("Presets names:")));
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 

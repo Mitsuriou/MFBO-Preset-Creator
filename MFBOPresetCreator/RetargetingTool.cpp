@@ -27,16 +27,7 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (Utils::displayQuestionMessage(this,
-                                    tr("Closing"),
-                                    tr("Do you want to close the window?"),
-                                    lIconFolder,
-                                    "help-circle",
-                                    tr("Close the window"),
-                                    tr("Go back to the retargeting tool window"),
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
-                                    false)
+  if (Utils::displayQuestionMessage(this, tr("Closing"), tr("Do you want to close the window?"), lIconFolder, "help-circle", tr("Close the window"), tr("Go back to the retargeting tool window"), this->mSettings.dangerColor, this->mSettings.successColor, false)
       == ButtonClicked::Yes)
   {
     aEvent->accept();
