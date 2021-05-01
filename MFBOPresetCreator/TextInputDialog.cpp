@@ -27,6 +27,20 @@ void TextInputDialog::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
+void TextInputDialog::updateAddButtonStatus(const QString& aText)
+{
+  auto lAddBtn{this->findChild<QPushButton*>("add_button")};
+
+  if (aText.trimmed().length() == 0)
+  {
+    lAddBtn->setDisabled(true);
+  }
+  else
+  {
+    lAddBtn->setDisabled(false);
+  }
+}
+
 void TextInputDialog::setWindowProperties(const QString& aTitle)
 {
   this->setModal(true);
@@ -69,6 +83,10 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
   lBtnsContainer->addWidget(lCancelBtn);
 
   // Events binding
+  this->connect(lLineEdit, &QLineEdit::textChanged, this, &TextInputDialog::updateAddButtonStatus);
   this->connect(lAddBtn, &QPushButton::clicked, this, &TextInputDialog::close);
   this->connect(lCancelBtn, &QPushButton::clicked, this, &TextInputDialog::close);
+
+  // Post-bind initialization functions
+  this->updateAddButtonStatus("");
 }

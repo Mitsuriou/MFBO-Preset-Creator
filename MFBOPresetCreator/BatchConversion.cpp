@@ -1,13 +1,30 @@
 #include "BatchConversion.h"
 
 BatchConversion::BatchConversion(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(parent)
+  : QDialog(parent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
+  , mMinimumFirstColumnWidth(300)
 {
   // Build the window's interface
   this->setWindowProperties();
-  this->initializeGUI();
+
+  // Main layout with scroll area
+  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
+
+  // Setup all the different GUI components
+  this->setupGeneralGUI(lMainLayout);
+  this->setupSkeletonGUI(lMainLayout);
+  this->setupBodySlideGUI(lMainLayout);
+  this->setupOutputGUI(lMainLayout);
+  this->setupRemainingGUI(lMainLayout);
+
+  // Cursor change for the scroll bar
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &BatchConversion::scrollbarPressed);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversion::scrollbarReleased);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &BatchConversion::scrollbarPressed);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversion::scrollbarReleased);
 
   this->mHasUserDoneSomething = false;
 
@@ -46,38 +63,39 @@ void BatchConversion::reject()
 void BatchConversion::setWindowProperties()
 {
   this->setModal(true);
-  this->setMinimumWidth(800);
+  this->setMinimumWidth(900);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Batch Conversion"));
   this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
 }
 
-void BatchConversion::initializeGUI()
+void BatchConversion::setupGeneralGUI(QGridLayout* aLayout)
 {
-  // Main window layout
-  auto lMainGrid{new QGridLayout(this)};
-  lMainGrid->setColumnStretch(0, 0);
-  lMainGrid->setColumnStretch(1, 1);
-  lMainGrid->setColumnStretch(2, 1);
-  lMainGrid->setColumnStretch(3, 2);
-  lMainGrid->setColumnStretch(4, 0);
-  lMainGrid->setSpacing(10);
-  lMainGrid->setContentsMargins(15, 20, 15, 15);
-  lMainGrid->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainGrid);
-
-  this->setupInterface(lMainGrid);
-}
-
-void BatchConversion::setupInterface(QGridLayout* aLayout)
-{
-  // TODO: Split the code below into smaller functions
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
+  // General group box
+  auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
+  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
+  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::setGroupBoxState(lGeneralGroupBox, false);
+  aLayout->addWidget(lGeneralGroupBox, 0, 0);
+
+  // Grid layout
+  auto lGeneralGridLayout{new QGridLayout(lGeneralGroupBox)};
+  lGeneralGridLayout->setColumnStretch(0, 0);
+  lGeneralGridLayout->setColumnStretch(1, 1);
+  lGeneralGridLayout->setColumnStretch(2, 1);
+  lGeneralGridLayout->setColumnStretch(3, 2);
+  lGeneralGridLayout->setColumnStretch(4, 0);
+  lGeneralGridLayout->setSpacing(10);
+  lGeneralGridLayout->setContentsMargins(15, 20, 15, 15);
+  lGeneralGridLayout->setAlignment(Qt::AlignTop);
+  lGeneralGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+
   // First line
-  aLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
+  lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
@@ -85,16 +103,96 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lInputPathLineEdit->setDisabled(true);
-  aLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
+  lGeneralGridLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
 
   // Input chooser
   auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
-  aLayout->addWidget(lInputPathChooser, 0, 4);
+  lGeneralGridLayout->addWidget(lInputPathChooser, 0, 4);
+
+  // Event binding
+  this->connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
+}
+
+void BatchConversion::setupSkeletonGUI(QGridLayout* aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+
+  // Custom skeleton group box
+  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
+  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
+  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::setGroupBoxState(lSkeletonGroupBox, false);
+  aLayout->addWidget(lSkeletonGroupBox, 1, 0);
+
+  auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
+  lSkeletonGridLayout->setColumnStretch(0, 0);
+  lSkeletonGridLayout->setColumnStretch(1, 1);
+  lSkeletonGridLayout->setColumnStretch(2, 0);
+  lSkeletonGridLayout->setSpacing(10);
+  lSkeletonGridLayout->setContentsMargins(15, 20, 15, 15);
+  lSkeletonGridLayout->setAlignment(Qt::AlignTop);
+  lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+
+  // Human skeleton file
+  lSkeletonGridLayout->addWidget(new QLabel(tr("Skeleton file (human):"), this), 1, 0);
+
+  auto lSkeletonChooserHuman{new QComboBox(this)};
+  lSkeletonChooserHuman->setItemDelegate(new QStyledItemDelegate());
+  lSkeletonChooserHuman->setCursor(Qt::PointingHandCursor);
+  lSkeletonChooserHuman->setObjectName("skeleton_chooser_human");
+  lSkeletonGridLayout->addWidget(lSkeletonChooserHuman, 1, 1);
+
+  auto lSkeletonRefresherHuman{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
+  lSkeletonGridLayout->addWidget(lSkeletonRefresherHuman, 1, 2);
+
+  // Beast skeleton file
+  lSkeletonGridLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 2, 0);
+
+  auto lSkeletonChooserBeast{new QComboBox(this)};
+  lSkeletonChooserBeast->setItemDelegate(new QStyledItemDelegate());
+  lSkeletonChooserBeast->setCursor(Qt::PointingHandCursor);
+  lSkeletonChooserBeast->setObjectName("skeleton_chooser_beast");
+  lSkeletonGridLayout->addWidget(lSkeletonChooserBeast, 2, 1);
+
+  auto lSkeletonRefresherBeast{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
+  lSkeletonGridLayout->addWidget(lSkeletonRefresherBeast, 2, 2);
+
+  this->populateSkeletonChoosers();
+
+  // Event binding
+  this->connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
+  this->connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
+}
+
+void BatchConversion::setupBodySlideGUI(QGridLayout* aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+
+  // BodySlide output settings group box
+  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide").append("  "), this)};
+  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
+  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::setGroupBoxState(lBodyslideGroupBox, false);
+  aLayout->addWidget(lBodyslideGroupBox, 2, 0);
+
+  // Grid layout
+  auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
+  lBodyslideGridLayout->setColumnStretch(0, 0);
+  lBodyslideGridLayout->setColumnStretch(1, 1);
+  lBodyslideGridLayout->setColumnStretch(2, 1);
+  lBodyslideGridLayout->setColumnStretch(3, 2);
+  lBodyslideGridLayout->setColumnStretch(4, 0);
+  lBodyslideGridLayout->setSpacing(10);
+  lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
+  lBodyslideGridLayout->setAlignment(Qt::AlignTop);
+  lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultBatchConversionBody)};
 
-  aLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 1, 0);
+  lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -102,7 +200,7 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   lBodyNameSelector->addItems(DataLists::getBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  aLayout->addWidget(lBodyNameSelector, 1, 1, 1, 3);
+  lBodyslideGridLayout->addWidget(lBodyNameSelector, 0, 1);
 
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
@@ -110,59 +208,16 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  aLayout->addWidget(lBodyVersionSelector, 1, 4);
+  lBodyslideGridLayout->addWidget(lBodyVersionSelector, 0, 2);
 
-  // Human skeleton file
-  aLayout->addWidget(new QLabel(tr("Skeleton file (human):"), this), 2, 0);
-
-  auto lSkeletonChooserHuman{new QComboBox(this)};
-  lSkeletonChooserHuman->setItemDelegate(new QStyledItemDelegate());
-  lSkeletonChooserHuman->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooserHuman->setObjectName("skeleton_chooser_human");
-  aLayout->addWidget(lSkeletonChooserHuman, 2, 1, 1, 3);
-
-  auto lSkeletonRefresherHuman{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
-  aLayout->addWidget(lSkeletonRefresherHuman, 2, 4);
-
-  // Beast skeleton file
-  aLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 3, 0);
-
-  auto lSkeletonChooserBeast{new QComboBox(this)};
-  lSkeletonChooserBeast->setItemDelegate(new QStyledItemDelegate());
-  lSkeletonChooserBeast->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooserBeast->setObjectName("skeleton_chooser_beast");
-  aLayout->addWidget(lSkeletonChooserBeast, 3, 1, 1, 3);
-
-  this->populateSkeletonChooser();
-
-  auto lSkeletonRefresherBeast{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
-  aLayout->addWidget(lSkeletonRefresherBeast, 3, 4);
-
-  // BodySlide filters
-  aLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 4, 0);
-
-  auto lFiltersListChooser{new QComboBox(this)};
-  lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
-  lFiltersListChooser->setCursor(Qt::PointingHandCursor);
-  lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
-  aLayout->addWidget(lFiltersListChooser, 4, 1);
-
-  auto lFiltersList{new QLabel("", this)};
-  lFiltersList->setObjectName("bodyslide_filters");
-  lFiltersList->setWordWrap(true);
-  aLayout->addWidget(lFiltersList, 4, 2, 1, 2);
-
-  auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
-  aLayout->addWidget(lEditFilters, 4, 4);
-
-  // BodySlide files names pattern
-  aLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 5, 0);
+  //
+  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
-  aLayout->addWidget(lOSPXMLNamesLineEdit, 5, 1, 1, 4);
+  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
 
-  // BodySlide presets names pattern
+  //
   auto lNamesInApp{new QLabel(this)};
   lNamesInApp->setTextFormat(Qt::RichText);
   lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
@@ -170,31 +225,31 @@ void BatchConversion::setupInterface(QGridLayout* aLayout)
                          .arg(lIconFolder)
                          .arg(tr("Presets names:")));
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
-  aLayout->addWidget(lNamesInApp, 6, 0);
+  lBodyslideGridLayout->addWidget(lNamesInApp, 2, 0);
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
   lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
-  aLayout->addWidget(lNamesInAppLineEdit, 6, 1, 1, 4);
+  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 2, 1, 1, 4);
 
-  // Output location
-  this->setupOutputGUI(aLayout);
+  // BodySlide filters
+  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 3, 0);
 
-  // Launch search button
-  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "launch_search_button", true, true)};
-  aLayout->addWidget(lGenerateButton, 8, 0, 1, 5, Qt::AlignTop);
+  auto lFiltersListChooser{new QComboBox(this)};
+  lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
+  lFiltersListChooser->setCursor(Qt::PointingHandCursor);
+  lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
+  lBodyslideGridLayout->addWidget(lFiltersListChooser, 3, 1);
 
-  // Event bindings for user actions (disconnected the first time the user does an action in the GUI)
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
-  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
+  auto lFiltersList{new QLabel("", this)};
+  lFiltersList->setObjectName("bodyslide_filters");
+  lFiltersList->setWordWrap(true);
+  lBodyslideGridLayout->addWidget(lFiltersList, 3, 2, 1, 2);
+
+  auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
+  lBodyslideGridLayout->addWidget(lEditFilters, 3, 4);
 
   // Event binding
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateAvailableBodyVersions);
-  this->connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
-
-  this->connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChooser);
-  this->connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChooser);
-
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::updateBodySlideFiltersListPreview));
   this->connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
 
@@ -208,7 +263,7 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Create the group box
-  ComponentFactory::createOutputBox(this, aLayout, 7, 0, lIconFolder);
+  ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.batchConversionOutputPath, this->mMinimumFirstColumnWidth);
   auto lOutputGroupBox{this->findChild<QGroupBox*>("output_group_box")};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
 
@@ -224,6 +279,19 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
 
   // Pre-filled data
   this->updateOutputPreview();
+}
+
+void BatchConversion::setupRemainingGUI(QGridLayout* aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+
+  // Launch search button
+  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "launch_search_button", true, true)};
+  aLayout->addWidget(lGenerateButton, 4, 0, Qt::AlignTop);
+
+  // Event binding
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
 }
 
 void BatchConversion::userHasDoneAnAction()
@@ -284,7 +352,7 @@ void BatchConversion::launchSearchProcess()
   // TODO: this function needs to be written
 }
 
-void BatchConversion::populateSkeletonChooser()
+void BatchConversion::populateSkeletonChoosers()
 {
   auto lRootDir{Utils::getAppDataPathFolder() + "assets/skeletons/"};
   Utils::cleanPathString(lRootDir);
@@ -456,6 +524,20 @@ void BatchConversion::updateBodySlideFiltersListPreview(int aIndex)
   this->userHasDoneAnAction();
 }
 
+void BatchConversion::scrollbarPressed()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
+}
+
+void BatchConversion::scrollbarReleased()
+{
+  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
+  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
+}
+
 void BatchConversion::groupBoxChecked(bool aIsChecked)
 {
   auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
@@ -463,7 +545,4 @@ void BatchConversion::groupBoxChecked(bool aIsChecked)
     return;
 
   Utils::setGroupBoxState(lGroupBox, !aIsChecked);
-
-  // Resize the window
-  this->adjustSize();
 }

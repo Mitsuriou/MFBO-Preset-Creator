@@ -16,6 +16,9 @@ signals:
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
+private slots:
+  void updateAddButtonStatus(const QString& aText);
+
 private:
   GUITheme mAppTheme;
 

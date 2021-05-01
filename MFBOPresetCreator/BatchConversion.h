@@ -22,13 +22,16 @@ protected:
 private:
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
-  bool mHasUserDoneSomething;
   std::map<QString, QStringList> mFiltersList;
+  bool mHasUserDoneSomething;
+  int mMinimumFirstColumnWidth;
 
   void setWindowProperties();
-  void initializeGUI();
-  void setupInterface(QGridLayout* aLayout);
+  void setupGeneralGUI(QGridLayout* aLayout);
+  void setupSkeletonGUI(QGridLayout* aLayout);
+  void setupBodySlideGUI(QGridLayout* aLayout);
   void setupOutputGUI(QGridLayout* aLayout);
+  void setupRemainingGUI(QGridLayout* aLayout);
   void userHasDoneAnAction();
 
 private slots:
@@ -36,7 +39,7 @@ private slots:
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
   void launchSearchProcess();
-  void populateSkeletonChooser();
+  void populateSkeletonChoosers();
 
   // Update the GUI preview
   void useOnlySubdirStateChanged(int);
@@ -51,5 +54,7 @@ private slots:
   void updateBodySlideFiltersListPreview(int aIndex);
 
   // GUI widgets events
+  void scrollbarPressed();
+  void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
 };

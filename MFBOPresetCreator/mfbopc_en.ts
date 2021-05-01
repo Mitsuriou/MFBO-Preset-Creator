@@ -153,101 +153,116 @@
 <context>
     <name>BatchConversion</name>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Close the window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Go back to the batch conversion window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="52"/>
+        <location filename="BatchConversion.cpp" line="69"/>
         <source>Batch Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="80"/>
+        <location filename="BatchConversion.cpp" line="79"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="98"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="91"/>
+        <location filename="BatchConversion.cpp" line="109"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="97"/>
-        <source>Targeted body and version:</source>
-        <translation></translation>
+        <location filename="BatchConversion.cpp" line="122"/>
+        <source>Skeleton</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="116"/>
+        <location filename="BatchConversion.cpp" line="138"/>
         <source>Skeleton file (human):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="124"/>
-        <location filename="BatchConversion.cpp" line="138"/>
+        <location filename="BatchConversion.cpp" line="146"/>
+        <location filename="BatchConversion.cpp" line="158"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="128"/>
+        <location filename="BatchConversion.cpp" line="150"/>
         <source>Skeleton file (beast):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="142"/>
-        <source>BodySlide filters:</source>
-        <translation></translation>
+        <location filename="BatchConversion.cpp" line="174"/>
+        <source>BodySlide</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="155"/>
-        <source>Edit BodySlide filters sets</source>
-        <translation></translation>
+        <location filename="BatchConversion.cpp" line="195"/>
+        <source>Targeted body and version:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="159"/>
+        <location filename="BatchConversion.cpp" line="214"/>
         <source>BodySlide files names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="171"/>
+        <location filename="BatchConversion.cpp" line="226"/>
         <source>Presets names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="172"/>
+        <location filename="BatchConversion.cpp" line="227"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="183"/>
-        <source>Batch generate the files on my computer</source>
-        <translation></translation>
+        <location filename="BatchConversion.cpp" line="235"/>
+        <source>BodySlide filters:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="345"/>
-        <location filename="BatchConversion.cpp" line="369"/>
+        <location filename="BatchConversion.cpp" line="248"/>
+        <source>Edit BodySlide filters sets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="413"/>
+        <location filename="BatchConversion.cpp" line="437"/>
         <source>No path given or invalid path given.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="363"/>
+        <location filename="BatchConversion.cpp" line="431"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="290"/>
+        <source>Batch generate the files on my computer</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1441,12 +1456,12 @@ Do you want to download it now?</source>
 <context>
     <name>TextInputDialog</name>
     <message>
-        <location filename="TextInputDialog.cpp" line="64"/>
+        <location filename="TextInputDialog.cpp" line="78"/>
         <source>Add</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TextInputDialog.cpp" line="68"/>
+        <location filename="TextInputDialog.cpp" line="82"/>
         <source>Cancel</source>
         <translation></translation>
     </message>

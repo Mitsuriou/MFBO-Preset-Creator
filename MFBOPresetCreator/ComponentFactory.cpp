@@ -106,11 +106,11 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, c
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
   Utils::addIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree");
   Utils::setGroupBoxState(lOutputGroupBox, false);
+  lOutputGroupBox->setObjectName("output_group_box");
   aLayout->addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol);
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};
-  lOutputGridLayout->setObjectName("output_group_box");
   lOutputGridLayout->setSpacing(10);
   lOutputGridLayout->setContentsMargins(15, 20, 15, 15);
   lOutputGridLayout->setAlignment(Qt::AlignTop);

@@ -153,22 +153,22 @@
 <context>
     <name>BatchConversion</name>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Do you want to close the window?</source>
         <translation>Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Close the window</source>
         <translation>Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="30"/>
+        <location filename="BatchConversion.cpp" line="47"/>
         <source>Go back to the batch conversion window</source>
         <translation type="unfinished"></translation>
     </message>
@@ -177,26 +177,27 @@
         <translation type="obsolete">Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="52"/>
+        <location filename="BatchConversion.cpp" line="69"/>
         <source>Batch Conversion</source>
         <translation type="unfinished">Conversion Multiple</translation>
     </message>
     <message>
+        <location filename="BatchConversion.cpp" line="79"/>
         <source>General</source>
-        <translation type="obsolete">Général</translation>
+        <translation type="unfinished">Général</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="80"/>
+        <location filename="BatchConversion.cpp" line="98"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="91"/>
+        <location filename="BatchConversion.cpp" line="109"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="97"/>
+        <location filename="BatchConversion.cpp" line="195"/>
         <source>Targeted body and version:</source>
         <translation type="unfinished">Corps et version ciblé :</translation>
     </message>
@@ -205,18 +206,18 @@
         <translation type="obsolete">Fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="124"/>
-        <location filename="BatchConversion.cpp" line="138"/>
+        <location filename="BatchConversion.cpp" line="146"/>
+        <location filename="BatchConversion.cpp" line="158"/>
         <source>Refresh</source>
         <translation type="unfinished">Rafraîchir</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="142"/>
+        <location filename="BatchConversion.cpp" line="235"/>
         <source>BodySlide filters:</source>
         <translation type="unfinished">Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="155"/>
+        <location filename="BatchConversion.cpp" line="248"/>
         <source>Edit BodySlide filters sets</source>
         <translation type="unfinished">Éditer les sets de filtres BodySlide</translation>
     </message>
@@ -253,43 +254,53 @@
         <translation type="obsolete">Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="345"/>
-        <location filename="BatchConversion.cpp" line="369"/>
+        <location filename="BatchConversion.cpp" line="413"/>
+        <location filename="BatchConversion.cpp" line="437"/>
         <source>No path given or invalid path given.</source>
         <translation type="unfinished">Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="116"/>
+        <location filename="BatchConversion.cpp" line="138"/>
         <source>Skeleton file (human):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="128"/>
+        <location filename="BatchConversion.cpp" line="122"/>
+        <source>Skeleton</source>
+        <translation type="unfinished">Squelette</translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="150"/>
         <source>Skeleton file (beast):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="159"/>
+        <location filename="BatchConversion.cpp" line="174"/>
+        <source>BodySlide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="214"/>
         <source>BodySlide files names:</source>
         <translation type="unfinished">Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="171"/>
+        <location filename="BatchConversion.cpp" line="226"/>
         <source>Presets names:</source>
         <translation type="unfinished">Noms des presets :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="172"/>
+        <location filename="BatchConversion.cpp" line="227"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="183"/>
+        <location filename="BatchConversion.cpp" line="290"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="363"/>
+        <location filename="BatchConversion.cpp" line="431"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation type="unfinished">Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
@@ -1636,12 +1647,12 @@ Voulez-vous la télécharger maintenant ?</translation>
 <context>
     <name>TextInputDialog</name>
     <message>
-        <location filename="TextInputDialog.cpp" line="64"/>
+        <location filename="TextInputDialog.cpp" line="78"/>
         <source>Add</source>
         <translation>Ajouter</translation>
     </message>
     <message>
-        <location filename="TextInputDialog.cpp" line="68"/>
+        <location filename="TextInputDialog.cpp" line="82"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>

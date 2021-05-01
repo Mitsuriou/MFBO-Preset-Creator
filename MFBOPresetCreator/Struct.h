@@ -55,13 +55,15 @@ namespace Struct
   public:
     GUITheme appTheme{GUITheme::MitsuriouDarkTheme};
     BodyNameVersion defaultMainWindowBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
+    BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
+    BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
     Struct::Font font;
     ApplicationLanguage language{LangManager::getSystemLanguage()};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
-    BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
     int mainWindowHeight{620};
     int mainWindowWidth{1000};
     QString mainWindowOutputPath{""};
+    QString batchConversionOutputPath{""};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
     bool checkForUpdatesAtStartup{true};
     bool assistedConversionScanOnlyMeshesSubdir{false};
@@ -75,13 +77,15 @@ namespace Struct
       return (
         this->appTheme == aSettings.appTheme
         && this->defaultMainWindowBody == aSettings.defaultMainWindowBody
+        && this->defaultRetargetingToolBody == aSettings.defaultRetargetingToolBody
+        && this->defaultBatchConversionBody == aSettings.defaultBatchConversionBody
         && this->font == aSettings.font
         && this->language == aSettings.language
         && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
-        && this->defaultRetargetingToolBody == aSettings.defaultRetargetingToolBody
         && this->mainWindowHeight == aSettings.mainWindowHeight
         && this->mainWindowWidth == aSettings.mainWindowWidth
         && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
+        && this->batchConversionOutputPath == aSettings.batchConversionOutputPath
         && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         && this->checkForUpdatesAtStartup == aSettings.checkForUpdatesAtStartup
         && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
@@ -96,13 +100,15 @@ namespace Struct
       return (
         this->appTheme != aSettings.appTheme
         || this->defaultMainWindowBody != aSettings.defaultMainWindowBody
+        || this->defaultRetargetingToolBody != aSettings.defaultRetargetingToolBody
+        || this->defaultBatchConversionBody != aSettings.defaultBatchConversionBody
         || this->font != aSettings.font
         || this->language != aSettings.language
         || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode
-        || this->defaultRetargetingToolBody != aSettings.defaultRetargetingToolBody
         || this->mainWindowHeight != aSettings.mainWindowHeight
         || this->mainWindowWidth != aSettings.mainWindowWidth
         || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
+        || this->batchConversionOutputPath != aSettings.batchConversionOutputPath
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         || this->checkForUpdatesAtStartup != aSettings.checkForUpdatesAtStartup
         || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
