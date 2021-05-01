@@ -569,7 +569,7 @@ void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Create the group box
-  ComponentFactory::createOutputBox(this, aLayout, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth);
+  ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth);
   auto lOutputGroupBox{this->findChild<QGroupBox*>("output_group_box")};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
 

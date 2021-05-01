@@ -100,13 +100,13 @@ QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
   return lDataContainer;
 }
 
-void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, const QString& aIconFolder, const QString& aInitialOutputPath, const int& aMinimumFirstColumnWidth)
+void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, const int& aLayoutRow, const int& aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int& aMinimumFirstColumnWidth)
 {
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
   Utils::addIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree");
   Utils::setGroupBoxState(lOutputGroupBox, false);
-  aLayout->addWidget(lOutputGroupBox, 3, 0);
+  aLayout->addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol);
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};

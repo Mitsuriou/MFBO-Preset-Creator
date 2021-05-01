@@ -935,6 +935,7 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
   std::map<QString, QString> lLastPathsList{
     {"assistedConversionInput", ""},
     {"batchConversionInput", ""},
+    {"batchConversionOutput", ""},
     {"general", ""},
     {"lastLoadedProject", ""},
     {"lastSavedProject", ""},

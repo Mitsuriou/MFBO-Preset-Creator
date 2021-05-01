@@ -253,8 +253,10 @@
         <translation type="obsolete">Lancer le scan du mod</translation>
     </message>
     <message>
+        <location filename="BatchConversion.cpp" line="345"/>
+        <location filename="BatchConversion.cpp" line="369"/>
         <source>No path given or invalid path given.</source>
-        <translation type="obsolete">Aucun emplacement donné ou emplacement invalide donné.</translation>
+        <translation type="unfinished">Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="116"/>
@@ -285,6 +287,11 @@
         <location filename="BatchConversion.cpp" line="183"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="363"/>
+        <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
+        <translation type="unfinished">Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
         <source>Files generation&apos;s output location</source>
@@ -1439,7 +1446,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="228"/>
-        <location filename="Settings.cpp" line="405"/>
+        <location filename="Settings.cpp" line="406"/>
         <source>General</source>
         <translation>Général</translation>
     </message>
@@ -1471,12 +1478,17 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="407"/>
+        <location filename="Settings.cpp" line="408"/>
         <source>Batch Conv.: input</source>
         <translation>Conv. Multiple : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="442"/>
+        <location filename="Settings.cpp" line="409"/>
+        <source>Batch Conv.: output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="444"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -1541,67 +1553,67 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="406"/>
+        <location filename="Settings.cpp" line="407"/>
         <source>Main window: output</source>
         <translation>Fenêtre principale : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="408"/>
+        <location filename="Settings.cpp" line="410"/>
         <source>Assist. Conv.: input</source>
         <translation>Conv. Assist. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="409"/>
+        <location filename="Settings.cpp" line="411"/>
         <source>Presets&apos; Ret.: input</source>
         <translation>Re-ciblage de Pr. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="410"/>
+        <location filename="Settings.cpp" line="412"/>
         <source>Presets&apos; Ret.: output</source>
         <translation>Re-ciblage de Pr. : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="411"/>
+        <location filename="Settings.cpp" line="413"/>
         <source>Textures Assist.: input</source>
         <translation>Assist. Tex. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="412"/>
+        <location filename="Settings.cpp" line="414"/>
         <source>Loaded project</source>
         <translation>Projet chargé</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="413"/>
+        <location filename="Settings.cpp" line="415"/>
         <source>Saved project</source>
         <translation>Projet enregistré</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="436"/>
+        <location filename="Settings.cpp" line="438"/>
         <source>Restore default</source>
         <translation>Restaurer par défaut</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="439"/>
+        <location filename="Settings.cpp" line="441"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="650"/>
+        <location filename="Settings.cpp" line="652"/>
         <source>Restart now</source>
         <translation>Redémarrer maintenant</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="651"/>
+        <location filename="Settings.cpp" line="653"/>
         <source>Go back to the application and restart later</source>
         <translation>Revenir sur l&apos;application et redémarrer plus tard</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="646"/>
+        <location filename="Settings.cpp" line="648"/>
         <source>Application settings changed</source>
         <translation>Paramètres de l&apos;application modifiés</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="647"/>
+        <location filename="Settings.cpp" line="649"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation>Tous les paramètres ont été sauvegardé. Vous avez changé un paramètre qui nécessite un redémarrage de l&apos;application pour être appliqué. Voulez-vous redémarrer l&apos;application maintenant ?</translation>
     </message>
@@ -1892,7 +1904,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1107"/>
+        <location filename="Utils.cpp" line="1108"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>

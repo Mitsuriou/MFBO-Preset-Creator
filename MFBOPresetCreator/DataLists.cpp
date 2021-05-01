@@ -172,6 +172,7 @@ QStringList DataLists::getLastPathsKeys()
     "general",
     "mainWindowOutput",
     "batchConversionInput",
+    "batchConversionOutput",
     "assistedConversionInput",
     "retargetingToolInput",
     "retargetingToolOutput",

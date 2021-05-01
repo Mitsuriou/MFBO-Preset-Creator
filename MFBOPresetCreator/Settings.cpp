@@ -402,15 +402,17 @@ void Settings::setupLastPaths(QGridLayout* aLayout)
   lPathsLayout->addWidget(lClearAllButton, 0, 2);
 
   // Create a line for each path
-  Utils::addLastPathLine(this, lPathsLayout, 1, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 2, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 3, tr("Batch Conv.: input"), this->mLastPaths.find("batchConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 4, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 5, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 6, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 7, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 8, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, 9, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  auto lRowIndex{1};
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Batch Conv.: input"), this->mLastPaths.find("batchConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Batch Conv.: output"), this->mLastPaths.find("batchConversionOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lPathsLayout, lRowIndex, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind all the clear buttons
   this->connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);

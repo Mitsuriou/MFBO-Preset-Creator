@@ -238,6 +238,17 @@
         <source>Batch generate the files on my computer</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="345"/>
+        <location filename="BatchConversion.cpp" line="369"/>
+        <source>No path given or invalid path given.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="363"/>
+        <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BodySlideFiltersEditor</name>
@@ -1240,7 +1251,7 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="Settings.cpp" line="228"/>
-        <location filename="Settings.cpp" line="405"/>
+        <location filename="Settings.cpp" line="406"/>
         <source>General</source>
         <translation></translation>
     </message>
@@ -1267,12 +1278,17 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="407"/>
+        <location filename="Settings.cpp" line="408"/>
         <source>Batch Conv.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="442"/>
+        <location filename="Settings.cpp" line="409"/>
+        <source>Batch Conv.: output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="444"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
@@ -1342,62 +1358,62 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="406"/>
+        <location filename="Settings.cpp" line="407"/>
         <source>Main window: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="408"/>
+        <location filename="Settings.cpp" line="410"/>
         <source>Assist. Conv.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="409"/>
+        <location filename="Settings.cpp" line="411"/>
         <source>Presets&apos; Ret.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="410"/>
+        <location filename="Settings.cpp" line="412"/>
         <source>Presets&apos; Ret.: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="411"/>
+        <location filename="Settings.cpp" line="413"/>
         <source>Textures Assist.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="412"/>
+        <location filename="Settings.cpp" line="414"/>
         <source>Loaded project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="413"/>
+        <location filename="Settings.cpp" line="415"/>
         <source>Saved project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="436"/>
+        <location filename="Settings.cpp" line="438"/>
         <source>Restore default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="646"/>
+        <location filename="Settings.cpp" line="648"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="647"/>
+        <location filename="Settings.cpp" line="649"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="650"/>
+        <location filename="Settings.cpp" line="652"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="651"/>
+        <location filename="Settings.cpp" line="653"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
@@ -1417,7 +1433,7 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="439"/>
+        <location filename="Settings.cpp" line="441"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
@@ -1675,7 +1691,7 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1107"/>
+        <location filename="Utils.cpp" line="1108"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>

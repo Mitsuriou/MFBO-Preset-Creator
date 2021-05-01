@@ -38,6 +38,12 @@ private slots:
   void launchSearchProcess();
   void populateSkeletonChooser();
 
+  // Update the GUI preview
+  void useOnlySubdirStateChanged(int);
+  void updateOutputPreview();
+
+  void chooseExportDirectory();
+
   // BodySlide Filters Editor
   void openBodySlideFiltersEditor();
   void initBodySlideFiltersList();
