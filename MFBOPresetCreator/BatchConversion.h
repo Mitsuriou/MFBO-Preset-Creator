@@ -32,6 +32,7 @@ private:
   void setupBodySlideGUI(QGridLayout* aLayout);
   void setupOutputGUI(QGridLayout* aLayout);
   void setupRemainingGUI(QGridLayout* aLayout);
+
   void userHasDoneAnAction();
 
 private slots:

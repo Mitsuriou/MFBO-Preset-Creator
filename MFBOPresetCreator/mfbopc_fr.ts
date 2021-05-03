@@ -254,8 +254,8 @@
         <translation type="obsolete">Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="413"/>
-        <location filename="BatchConversion.cpp" line="437"/>
+        <location filename="BatchConversion.cpp" line="412"/>
+        <location filename="BatchConversion.cpp" line="436"/>
         <source>No path given or invalid path given.</source>
         <translation type="unfinished">Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
@@ -300,7 +300,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="431"/>
+        <location filename="BatchConversion.cpp" line="430"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation type="unfinished">Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

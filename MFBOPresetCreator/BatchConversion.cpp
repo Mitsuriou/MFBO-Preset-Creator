@@ -286,9 +286,10 @@ void BatchConversion::setupRemainingGUI(QGridLayout* aLayout)
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // Launch search button
-  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "launch_search_button", true, true)};
-  aLayout->addWidget(lGenerateButton, 4, 0, Qt::AlignTop);
+  // Batch generate button
+  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder)};
+  aLayout->addWidget(lGenerateButton, 4, 0, Qt::AlignBottom);
+  aLayout->setRowStretch(4, 1);
 
   // Event binding
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
@@ -327,7 +328,6 @@ void BatchConversion::updateAvailableBodyVersions()
 void BatchConversion::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLaunchSearchButton{this->findChild<QPushButton*>("launch_search_button")};
   auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
 
   // Open a directory chooser dialog
@@ -344,7 +344,6 @@ void BatchConversion::chooseInputDirectory()
   // Enable or disable path viewer label and launch button
   auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
   lLineEdit->setDisabled(lMustDisableButton);
-  lLaunchSearchButton->setDisabled(lMustDisableButton);
 }
 
 void BatchConversion::launchSearchProcess()
