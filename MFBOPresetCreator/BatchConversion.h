@@ -39,7 +39,7 @@ private slots:
   void userHasDoneAnAction(int);
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
-  void launchSearchProcess();
+  void launchBatchGenerationProcess();
   void populateSkeletonChoosers();
 
   // Update the GUI preview

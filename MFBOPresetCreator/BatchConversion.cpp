@@ -292,7 +292,7 @@ void BatchConversion::setupRemainingGUI(QGridLayout* aLayout)
   aLayout->setRowStretch(4, 1);
 
   // Event binding
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchBatchGenerationProcess);
 }
 
 void BatchConversion::userHasDoneAnAction()
@@ -346,9 +346,52 @@ void BatchConversion::chooseInputDirectory()
   lLineEdit->setDisabled(lMustDisableButton);
 }
 
-void BatchConversion::launchSearchProcess()
+void BatchConversion::launchBatchGenerationProcess()
 {
-  // TODO: this function needs to be written
+  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+
+  // The map is storing <path+fileName, <path, fileName>>
+  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
+
+  auto lRelativeDirPath{QString()};
+  auto lFileName{QString()};
+  auto lKey{std::string()};
+
+  auto lMeshesFilesToFind{
+    QStringList({"femalebody_0.nif",
+                 "femalebody_1.nif",
+                 "femalehands_0.nif",
+                 "femalehands_1.nif",
+                 "femalefeet_0.nif",
+                 "femalefeet_1.nif"})};
+
+  QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
+  while (it.hasNext())
+  {
+    it.next();
+
+    // Get the current directory
+    lRelativeDirPath = it.fileInfo().absolutePath().remove(lInputPath + "/", Qt::CaseInsensitive);
+
+    lFileName = it.fileInfo().fileName();
+
+    // Clean the file name from any artifact
+    lFileName.remove("_0.nif", Qt::CaseInsensitive);
+    lFileName.remove("_1.nif", Qt::CaseInsensitive);
+    lFileName.remove(".nif", Qt::CaseInsensitive);
+
+    // Construct the key of the map
+    lKey = QString("%1/%2").arg(lRelativeDirPath).arg(lFileName).toStdString();
+
+    // Check if the file is relative to a body, hands or head textures
+    if (lMeshesFilesToFind.contains(it.fileInfo().fileName()))
+    {
+      // Insert the key-value into the map
+      lScannedValues.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));
+    }
+  }
+
+  // TODO: use the results stored in lScannedValues
 }
 
 void BatchConversion::populateSkeletonChoosers()

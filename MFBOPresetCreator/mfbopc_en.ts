@@ -249,13 +249,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="412"/>
-        <location filename="BatchConversion.cpp" line="436"/>
+        <location filename="BatchConversion.cpp" line="455"/>
+        <location filename="BatchConversion.cpp" line="479"/>
         <source>No path given or invalid path given.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="430"/>
+        <location filename="BatchConversion.cpp" line="473"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
