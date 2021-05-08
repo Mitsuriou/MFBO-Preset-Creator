@@ -19,34 +19,34 @@ namespace Struct
   {
   public:
     QString family{"Roboto"};
-    QString styleName{"Regular"};
-    int size{10};
-    int weight{50};
     bool italic{false};
-    bool underline{false};
+    int size{10};
     bool strikeOut{false};
+    QString styleName{"Regular"};
+    bool underline{false};
+    int weight{50};
 
     bool operator==(const Struct::Font& aSettings)
     {
       return (
         this->family == aSettings.family
-        && this->styleName == aSettings.styleName
-        && this->size == aSettings.size
-        && this->weight == aSettings.weight
         && this->italic == aSettings.italic
+        && this->size == aSettings.size
+        && this->strikeOut == aSettings.strikeOut
+        && this->styleName == aSettings.styleName
         && this->underline == aSettings.underline
-        && this->strikeOut == aSettings.strikeOut);
+        && this->weight == aSettings.weight);
     };
 
     bool operator!=(const Struct::Font& aSettings)
     {
       return (this->family != aSettings.family
-              || this->styleName != aSettings.styleName
-              || this->size != aSettings.size
-              || this->weight != aSettings.weight
               || this->italic != aSettings.italic
+              || this->size != aSettings.size
+              || this->strikeOut != aSettings.strikeOut
+              || this->styleName != aSettings.styleName
               || this->underline != aSettings.underline
-              || this->strikeOut != aSettings.strikeOut);
+              || this->weight != aSettings.weight);
     };
   };
 
@@ -54,23 +54,25 @@ namespace Struct
   {
   public:
     GUITheme appTheme{GUITheme::MitsuriouDarkTheme};
+    bool assistedConversionScanOnlyMeshesSubdir{false};
+    QString batchConversionOutputPath{""};
+    bool checkForUpdatesAtStartup{true};
+    QString dangerColor{"#f44034"};
+    BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
+    int defaultMainFeetMod{0};
     BodyNameVersion defaultMainWindowBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
     BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
-    BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
+    int defaultRetargetingToolFeetMod{0};
+    bool eachButtonSavesItsLastUsedPath{true};
     Struct::Font font;
     ApplicationLanguage language{LangManager::getSystemLanguage()};
-    WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
-    int mainWindowHeight{620};
-    int mainWindowWidth{1000};
-    QString mainWindowOutputPath{""};
-    QString batchConversionOutputPath{""};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
-    bool checkForUpdatesAtStartup{true};
-    bool assistedConversionScanOnlyMeshesSubdir{false};
-    bool eachButtonSavesItsLastUsedPath{true};
+    int mainWindowHeight{620};
+    WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
+    QString mainWindowOutputPath{""};
+    int mainWindowWidth{1000};
     QString successColor{"#48c774"};
     QString warningColor{"#ffbc6b"};
-    QString dangerColor{"#f44034"};
 
     bool operator==(const Struct::Settings& aSettings)
     {
@@ -79,6 +81,8 @@ namespace Struct
         && this->defaultMainWindowBody == aSettings.defaultMainWindowBody
         && this->defaultRetargetingToolBody == aSettings.defaultRetargetingToolBody
         && this->defaultBatchConversionBody == aSettings.defaultBatchConversionBody
+        && this->defaultMainFeetMod == aSettings.defaultMainFeetMod
+        && this->defaultRetargetingToolFeetMod == aSettings.defaultRetargetingToolFeetMod
         && this->font == aSettings.font
         && this->language == aSettings.language
         && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
@@ -102,6 +106,8 @@ namespace Struct
         || this->defaultMainWindowBody != aSettings.defaultMainWindowBody
         || this->defaultRetargetingToolBody != aSettings.defaultRetargetingToolBody
         || this->defaultBatchConversionBody != aSettings.defaultBatchConversionBody
+        || this->defaultMainFeetMod != aSettings.defaultMainFeetMod
+        || this->defaultRetargetingToolFeetMod != aSettings.defaultRetargetingToolFeetMod
         || this->font != aSettings.font
         || this->language != aSettings.language
         || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode

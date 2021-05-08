@@ -45,7 +45,7 @@ private:
   void updateAvailableBodyVersions();
 
   // Files generation
-  bool generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const int& aBodySelected, const QString& aBodyslideSlidersetsNames);
+  bool generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const QString& aBodyslideSlidersetsNames);
   bool generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName);
   bool generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath);
 

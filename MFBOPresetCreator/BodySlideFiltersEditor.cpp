@@ -82,6 +82,9 @@ void BodySlideFiltersEditor::initializeGUI()
   this->mListWidget->setAlternatingRowColors(true);
   this->mListWidget->setCurrentRow(0);
   this->mListWidget->setFocus();
+
+  // Post-GUI construction initialization functions
+  this->shouldDisableFiltersControls();
 }
 
 void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
@@ -305,11 +308,6 @@ void BodySlideFiltersEditor::addNewSetEntry(const QString& aSetName)
 void BodySlideFiltersEditor::removeSet()
 {
   auto lIterator{this->mFiltersList.find(this->mFiltersListChooser->currentText())};
-
-  if (lIterator == this->mFiltersList.end())
-  {
-    return;
-  }
 
   this->mFiltersList.erase(lIterator);
   this->updateFiltersCombobox();

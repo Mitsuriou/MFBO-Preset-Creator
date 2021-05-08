@@ -107,6 +107,15 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
   lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 2);
 
+  // Feet mod chooser
+  auto lFeetSelector{new QComboBox(this)};
+  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
+  lFeetSelector->setCursor(Qt::PointingHandCursor);
+  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
+  lFeetSelector->setObjectName(QString("feet_selector_version"));
+  lGeneralGridLayout->addWidget(lFeetSelector, 0, 3);
+
   // Input path
   lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 1, 0);
 
@@ -475,6 +484,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
   if (lRessourcesFolder.length() == 0)
   {
+    // It should not be possible to reach this statement, but in case an update is buggy, keep this security
     return;
   }
 
@@ -591,6 +601,8 @@ void RetargetingTool::launchUpDownGradeProcess()
       Utils::displayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
       lSkipBeastHands = true;
     }
+
+    // TODO: Handle feet mod feet_selector_version
 
     // If the preset is using beast hands but the chosen body does not support beast hands, skip this OSP file's treatment
     if (!lSkipBeastHands)
@@ -765,25 +777,12 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
     auto lUserFiltersListSize{lUserFilters.size()};
 
-    auto lRessourcePath{QString()};
-
-    // Use custom filters
-    if (lUserFiltersListSize > 0)
+    if (lUserFilters.size() == 0)
     {
-      lRessourcePath = ":/ressources/bodyslide_xml_custom";
-    }
-    // Use beast hands
-    else if (lMustUseBeastHands)
-    {
-      lRessourcePath = QString(":/%1/%2").arg(lRessourcesFolder).arg("bodyslide_beast_hands_xml");
-    }
-    // Use classic XML
-    else
-    {
-      lRessourcePath = QString(":/%1/%2").arg(lRessourcesFolder).arg("bodyslide_xml");
+      lUserFilters = Utils::getXMLDefaultFiltersFromBody(static_cast<BodyNameVersion>(lBodySelected));
     }
 
-    if (!QFile::copy(lRessourcePath, lAbsFilePath))
+    if (!QFile::copy(":/ressources/bodyslide_xml_custom", lAbsFilePath))
     {
       Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
       return;

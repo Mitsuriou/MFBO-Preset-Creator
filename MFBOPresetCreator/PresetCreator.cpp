@@ -478,6 +478,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
 
   lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
+  // Body Name
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyNameSelector->setCursor(Qt::PointingHandCursor);
@@ -486,6 +487,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
   lBodyslideGridLayout->addWidget(lBodyNameSelector, 0, 1);
 
+  // Body Version
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
@@ -493,6 +495,15 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
   lBodyslideGridLayout->addWidget(lBodyVersionSelector, 0, 2);
+
+  // Feet mod chooser
+  auto lFeetSelector{new QComboBox(this)};
+  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
+  lFeetSelector->setCursor(Qt::PointingHandCursor);
+  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
+  lFeetSelector->setObjectName(QString("feet_selector_version"));
+  lBodyslideGridLayout->addWidget(lFeetSelector, 0, 3);
 
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
@@ -751,7 +762,7 @@ void PresetCreator::updateAvailableBodyVersions()
   lBodyVersionSelector->setCurrentIndex(0);
 }
 
-bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const int& aBodySelected, const QString& aBodyslideSlidersetsNames)
+bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const QString& aBodyslideSlidersetsNames)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -768,27 +779,13 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
   // Copy the XML file
   auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml"};
   auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
-  auto lUserFiltersListSize{lUserFilters.size()};
 
-  auto lRessourcePath{QString()};
-
-  // Use custom filters
-  if (lUserFiltersListSize > 0)
+  if (lUserFilters.size() == 0)
   {
-    lRessourcePath = ":/ressources/bodyslide_xml_custom";
-  }
-  // Use beast hands
-  else if (aMustUseBeastHands)
-  {
-    lRessourcePath = QString(":/%1/%2").arg(aRessourcesFolder).arg("bodyslide_beast_hands_xml");
-  }
-  // Use classic XML
-  else
-  {
-    lRessourcePath = QString(":/%1/%2").arg(aRessourcesFolder).arg("bodyslide_xml");
+    lUserFilters = Utils::getXMLDefaultFiltersFromBody(static_cast<BodyNameVersion>(aBodySelected));
   }
 
-  if (!QFile::copy(lRessourcePath, lXMLPathName))
+  if (!QFile::copy(":/ressources/bodyslide_xml_custom", lXMLPathName))
   {
     Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
     return false;
@@ -817,17 +814,13 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
       auto lTextToParse{static_cast<QString>(lTempXMLContent)};
 
       // Custom BodySlide filters
-      if (lUserFiltersListSize > 0)
+      auto lUserFiltersConcat{QString()};
+      for (const auto& lUserFilter : lUserFilters)
       {
-        auto lUserFiltersConcat{QString()};
-
-        for (const auto& lUserFilter : lUserFilters)
-        {
-          lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(aBodySelected, aMustUseBeastHands, lUserFilter);
-        }
-
-        lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
+        lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(aBodySelected, aMustUseBeastHands, lUserFilter);
       }
+
+      lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
 
       // BodySlide preset name
       lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);
@@ -1593,7 +1586,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // XML file
-  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodySelected, lBodyslideSlidersetsNames))
+  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lBodyslideSlidersetsNames))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1603,6 +1596,8 @@ void PresetCreator::generateDirectoryStructure()
 
     return;
   }
+
+  // TODO: Handle feet mod feet_selector_version
 
   // OSP file
   if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))

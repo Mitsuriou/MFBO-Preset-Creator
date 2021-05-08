@@ -60,6 +60,7 @@ public:
   static void saveFiltersToFile(const std::map<QString, QStringList>& aList);
   static QJsonObject filtersMapToJson(const std::map<QString, QStringList>& aList);
   static QString getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
+  static QStringList getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody);
 
   // Paths
   static void checkLastPathsFileExistence();

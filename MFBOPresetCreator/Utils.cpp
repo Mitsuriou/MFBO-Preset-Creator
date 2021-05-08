@@ -546,13 +546,6 @@ Struct::Settings Utils::loadSettingsFromFile()
 
   Struct::Settings lSettings;
 
-  // Language
-  if (lSettingsJSON.contains("language") && lSettingsJSON["language"].isDouble())
-  {
-    auto lFoundLanguage{lSettingsJSON["language"].toInt()};
-    lSettings.language = static_cast<ApplicationLanguage>(lFoundLanguage);
-  }
-
   // Font family
   if (lSettingsJSON.contains("font"))
   {
@@ -563,9 +556,9 @@ Struct::Settings Utils::loadSettingsFromFile()
       lSettings.font.family = lFontJSON["family"].toString();
     }
 
-    if (lFontJSON.contains("styleName") && lFontJSON["styleName"].isString())
+    if (lFontJSON.contains("italic") && lFontJSON["italic"].isBool())
     {
-      lSettings.font.styleName = lFontJSON["styleName"].toString();
+      lSettings.font.italic = lFontJSON["italic"].toBool();
     }
 
     if (lFontJSON.contains("size") && lFontJSON["size"].isDouble())
@@ -573,14 +566,14 @@ Struct::Settings Utils::loadSettingsFromFile()
       lSettings.font.size = lFontJSON["size"].toInt();
     }
 
-    if (lFontJSON.contains("weight") && lFontJSON["weight"].isDouble())
+    if (lFontJSON.contains("strikeOut") && lFontJSON["strikeOut"].isBool())
     {
-      lSettings.font.weight = lFontJSON["weight"].toInt();
+      lSettings.font.strikeOut = lFontJSON["strikeOut"].toBool();
     }
 
-    if (lFontJSON.contains("italic") && lFontJSON["italic"].isBool())
+    if (lFontJSON.contains("styleName") && lFontJSON["styleName"].isString())
     {
-      lSettings.font.italic = lFontJSON["italic"].toBool();
+      lSettings.font.styleName = lFontJSON["styleName"].toString();
     }
 
     if (lFontJSON.contains("underline") && lFontJSON["underline"].isBool())
@@ -588,9 +581,9 @@ Struct::Settings Utils::loadSettingsFromFile()
       lSettings.font.underline = lFontJSON["underline"].toBool();
     }
 
-    if (lFontJSON.contains("strikeOut") && lFontJSON["strikeOut"].isBool())
+    if (lFontJSON.contains("weight") && lFontJSON["weight"].isDouble())
     {
-      lSettings.font.strikeOut = lFontJSON["strikeOut"].toBool();
+      lSettings.font.weight = lFontJSON["weight"].toInt();
     }
   }
 
@@ -601,16 +594,86 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.appTheme = static_cast<GUITheme>(lFoundAppTheme);
   }
 
-  // Default window width
-  if (lSettingsJSON.contains("windowWidth") && lSettingsJSON["windowWidth"].isDouble())
+  // Assisted Conversion: only scan the meshes subdir
+  if (lSettingsJSON.contains("assistedConversionScanOnlyMeshesSubdir") && lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].isBool())
   {
-    lSettings.mainWindowWidth = lSettingsJSON["windowWidth"].toInt();
+    lSettings.assistedConversionScanOnlyMeshesSubdir = lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].toBool();
+  }
+
+  // Batch Conversion: output path
+  if (lSettingsJSON.contains("batchConversionOutputPath") && lSettingsJSON["batchConversionOutputPath"].isString())
+  {
+    lSettings.batchConversionOutputPath = lSettingsJSON["batchConversionOutputPath"].toString();
+  }
+
+  // Check for updates at startup
+  if (lSettingsJSON.contains("checkForUpdatesAtStartup") && lSettingsJSON["checkForUpdatesAtStartup"].isBool())
+  {
+    lSettings.checkForUpdatesAtStartup = lSettingsJSON["checkForUpdatesAtStartup"].toBool();
+  }
+
+  // Danger color
+  if (lSettingsJSON.contains("dangerColor") && lSettingsJSON["dangerColor"].isString())
+  {
+    lSettings.dangerColor = lSettingsJSON["dangerColor"].toString();
+  }
+
+  // Batch Conversion: Default body name and version
+  if (lSettingsJSON.contains("defaultBatchConversionBody") && lSettingsJSON["defaultBatchConversionBody"].isDouble())
+  {
+    auto lFoundBody{lSettingsJSON["defaultMainWindowBody"].toInt()};
+    lSettings.defaultBatchConversionBody = static_cast<BodyNameVersion>(lFoundBody);
+  }
+
+  // Preset Creator: Default feet mod
+  if (lSettingsJSON.contains("defaultMainFeetMod") && lSettingsJSON["defaultMainFeetMod"].isDouble())
+  {
+    lSettings.defaultMainFeetMod = lSettingsJSON["defaultMainFeetMod"].toInt();
+  }
+
+  // Preset Creator: Default body name and version
+  if (lSettingsJSON.contains("defaultMainWindowBody") && lSettingsJSON["defaultMainWindowBody"].isDouble())
+  {
+    auto lFoundBody{lSettingsJSON["defaultMainWindowBody"].toInt()};
+    lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
+  }
+
+  // Default BodySlide Presets' Retargeting body name and version
+  if (lSettingsJSON.contains("defaultRetargetingToolBody") && lSettingsJSON["defaultRetargetingToolBody"].isDouble())
+  {
+    auto lFoundBody{lSettingsJSON["defaultRetargetingToolBody"].toInt()};
+    lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
+  }
+
+  // Retargeting Tool: Default feet mod
+  if (lSettingsJSON.contains("defaultRetargetingToolFeetMod") && lSettingsJSON["defaultRetargetingToolFeetMod"].isDouble())
+  {
+    lSettings.defaultRetargetingToolFeetMod = lSettingsJSON["defaultRetargetingToolFeetMod"].toInt();
+  }
+
+  // Each button stores the last opened path
+  if (lSettingsJSON.contains("eachButtonSavesItsLastUsedPath") && lSettingsJSON["eachButtonSavesItsLastUsedPath"].isBool())
+  {
+    lSettings.eachButtonSavesItsLastUsedPath = lSettingsJSON["eachButtonSavesItsLastUsedPath"].toBool();
+  }
+
+  // Language
+  if (lSettingsJSON.contains("language") && lSettingsJSON["language"].isDouble())
+  {
+    auto lFoundLanguage{lSettingsJSON["language"].toInt()};
+    lSettings.language = static_cast<ApplicationLanguage>(lFoundLanguage);
+  }
+
+  // Main window auto open generated dir
+  if (lSettingsJSON.contains("mainWindowAutomaticallyOpenGeneratedDirectory") && lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].isBool())
+  {
+    lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
   }
 
   // Default window height
-  if (lSettingsJSON.contains("windowHeight") && lSettingsJSON["windowHeight"].isDouble())
+  if (lSettingsJSON.contains("mainWindowHeight") && lSettingsJSON["mainWindowHeight"].isDouble())
   {
-    lSettings.mainWindowHeight = lSettingsJSON["windowHeight"].toInt();
+    lSettings.mainWindowHeight = lSettingsJSON["mainWindowHeight"].toInt();
   }
 
   // Main window opening mode
@@ -620,48 +683,16 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lFoundWindowOpeningMode);
   }
 
-  // Default body name and version
-  if (lSettingsJSON.contains("defaultBody") && lSettingsJSON["defaultBody"].isDouble())
-  {
-    auto lFoundBody{lSettingsJSON["defaultBody"].toInt()};
-    lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
-  }
-
-  // Default BodySlide Presets' Retargeting body name and version
-  if (lSettingsJSON.contains("retargetingToolDefaultBody") && lSettingsJSON["retargetingToolDefaultBody"].isDouble())
-  {
-    auto lFoundBody{lSettingsJSON["retargetingToolDefaultBody"].toInt()};
-    lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
-  }
-
   // Main window output path
   if (lSettingsJSON.contains("mainWindowOutputPath") && lSettingsJSON["mainWindowOutputPath"].isString())
   {
     lSettings.mainWindowOutputPath = lSettingsJSON["mainWindowOutputPath"].toString();
   }
 
-  // Main window auto open generated dir
-  if (lSettingsJSON.contains("mainWindowAutomaticallyOpenGeneratedDirectory") && lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].isBool())
+  // Default window width
+  if (lSettingsJSON.contains("windowWidth") && lSettingsJSON["windowWidth"].isDouble())
   {
-    lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
-  }
-
-  // Check for updates at startup
-  if (lSettingsJSON.contains("checkForUpdatesAtStartup") && lSettingsJSON["checkForUpdatesAtStartup"].isBool())
-  {
-    lSettings.checkForUpdatesAtStartup = lSettingsJSON["checkForUpdatesAtStartup"].toBool();
-  }
-
-  // Assisted Conversion: only scan the meshes subdir
-  if (lSettingsJSON.contains("assistedConversionScanOnlyMeshesSubdir") && lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].isBool())
-  {
-    lSettings.assistedConversionScanOnlyMeshesSubdir = lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].toBool();
-  }
-
-  // Each button stores the last opened path
-  if (lSettingsJSON.contains("eachButtonSavesItsLastUsedPath") && lSettingsJSON["eachButtonSavesItsLastUsedPath"].isBool())
-  {
-    lSettings.eachButtonSavesItsLastUsedPath = lSettingsJSON["eachButtonSavesItsLastUsedPath"].toBool();
+    lSettings.mainWindowWidth = lSettingsJSON["windowWidth"].toInt();
   }
 
   // Success color
@@ -674,12 +705,6 @@ Struct::Settings Utils::loadSettingsFromFile()
   if (lSettingsJSON.contains("warningColor") && lSettingsJSON["warningColor"].isString())
   {
     lSettings.warningColor = lSettingsJSON["warningColor"].toString();
-  }
-
-  // Danger color
-  if (lSettingsJSON.contains("dangerColor") && lSettingsJSON["dangerColor"].isString())
-  {
-    lSettings.dangerColor = lSettingsJSON["dangerColor"].toString();
   }
 
   Utils::printMessageStdOut("User settings:");
@@ -699,31 +724,35 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   // Construct a font subobject
   QJsonObject lFontObj;
   lFontObj["family"] = aSettings.font.family;
-  lFontObj["styleName"] = aSettings.font.styleName;
-  lFontObj["size"] = aSettings.font.size;
-  lFontObj["weight"] = aSettings.font.weight;
   lFontObj["italic"] = aSettings.font.italic;
-  lFontObj["underline"] = aSettings.font.underline;
+  lFontObj["size"] = aSettings.font.size;
   lFontObj["strikeOut"] = aSettings.font.strikeOut;
+  lFontObj["styleName"] = aSettings.font.styleName;
+  lFontObj["underline"] = aSettings.font.underline;
+  lFontObj["weight"] = aSettings.font.weight;
 
   // Construct the full settings object
   QJsonObject lObj;
-  lObj["language"] = static_cast<int>(aSettings.language);
-  lObj["font"] = lFontObj;
   lObj["appTheme"] = static_cast<int>(aSettings.appTheme);
-  lObj["windowWidth"] = aSettings.mainWindowWidth;
-  lObj["windowHeight"] = aSettings.mainWindowHeight;
-  lObj["defaultBody"] = static_cast<int>(aSettings.defaultMainWindowBody);
-  lObj["retargetingToolDefaultBody"] = static_cast<int>(aSettings.defaultRetargetingToolBody);
+  lObj["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
+  lObj["batchConversionOutputPath"] = aSettings.batchConversionOutputPath;
+  lObj["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
+  lObj["dangerColor"] = aSettings.dangerColor;
+  lObj["defaultBatchConversionBody"] = static_cast<int>(aSettings.defaultBatchConversionBody);
+  lObj["defaultMainFeetMod"] = aSettings.defaultMainFeetMod;
+  lObj["defaultMainWindowBody"] = static_cast<int>(aSettings.defaultMainWindowBody);
+  lObj["defaultRetargetingToolBody"] = static_cast<int>(aSettings.defaultRetargetingToolBody);
+  lObj["defaultRetargetingToolFeetMod"] = aSettings.defaultRetargetingToolFeetMod;
+  lObj["eachButtonSavesItsLastUsedPath"] = aSettings.eachButtonSavesItsLastUsedPath;
+  lObj["font"] = lFontObj;
+  lObj["language"] = static_cast<int>(aSettings.language);
+  lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
+  lObj["mainWindowHeight"] = aSettings.mainWindowHeight;
   lObj["mainWindowOpeningMode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
   lObj["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
-  lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
-  lObj["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
-  lObj["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
-  lObj["eachButtonSavesItsLastUsedPath"] = aSettings.eachButtonSavesItsLastUsedPath;
+  lObj["mainWindowWidth"] = aSettings.mainWindowWidth;
   lObj["successColor"] = aSettings.successColor;
   lObj["warningColor"] = aSettings.warningColor;
-  lObj["dangerColor"] = aSettings.dangerColor;
 
   return lObj;
 }
@@ -906,6 +935,52 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
   lXMLBlock.append("    </Group>\n");
   return lXMLBlock;
+}
+
+QStringList Utils::getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody)
+{
+  switch (aBody)
+  {
+    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+      return QStringList({"MFBO", "CBBE"});
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+      return QStringList({"MFBO", "CBBE", "CBBE Bodies"});
+    case BodyNameVersion::BHUNP_3BBB_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+    case BodyNameVersion::BHUNP_BBP_2_13:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_TBBP_2_13:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
+    case BodyNameVersion::BHUNP_BBP_2_15:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_TBBP_2_15:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
+    case BodyNameVersion::BHUNP_BBP_2_20:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_TBBP_2_20:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_3BBB_2_25:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
+    case BodyNameVersion::BHUNP_BBP_2_25:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
+    case BodyNameVersion::BHUNP_TBBP_2_25:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
+      return QStringList({"MFBO", "BHUNP 3BBB", "UUNP 3BBB", "Unified UNP"});
+    default:
+      return QStringList({"MFBO"});
+  }
 }
 
 void Utils::checkLastPathsFileExistence()

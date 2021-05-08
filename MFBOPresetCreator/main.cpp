@@ -154,6 +154,7 @@ int main(int argc, char* argv[])
 
     // Read settings file
     auto lSettings{Utils::loadSettingsFromFile()};
+    // TODO: handle the "config.json" format upgrade (add a version to the file eventually)
 
     // Update the message
     Utils::printMessageStdOut("Applying translation files...");

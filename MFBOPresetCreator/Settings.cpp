@@ -68,7 +68,7 @@ void Settings::setWindowProperties()
 {
   this->setModal(true);
   this->setMinimumWidth(900);
-  this->setMinimumHeight(650);
+  this->setMinimumHeight(500);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Settings"));
@@ -288,24 +288,35 @@ void Settings::setupPresetCreatorGroup(QGridLayout* aLayout)
   lBodyVersionSelector->setObjectName(QString("default_body_selector_version"));
   lPresetCreatorLayout->addWidget(lBodyVersionSelector, 1, 1);
 
+  // Feet mod
+  lPresetCreatorLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
+
+  auto lFeetSelector{new QComboBox(this)};
+  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
+  lFeetSelector->setCursor(Qt::PointingHandCursor);
+  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
+  lFeetSelector->setObjectName(QString("feet_mod_main"));
+  lPresetCreatorLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
+
   // OUTPUT PATH PREVIEW
-  lPresetCreatorLayout->addWidget(new QLabel(tr("Output directory path:"), this), 2, 0, 1, 2);
+  lPresetCreatorLayout->addWidget(new QLabel(tr("Output directory path:"), this), 4, 0, 1, 2);
 
   auto lOutputPathLineEdit{new QLineEdit("", this)};
   lOutputPathLineEdit->setReadOnly(true);
   lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lOutputPathLineEdit->setObjectName("output_path_directory");
-  lPresetCreatorLayout->addWidget(lOutputPathLineEdit, 3, 0);
+  lPresetCreatorLayout->addWidget(lOutputPathLineEdit, 5, 0);
 
   // OUTPUT PATH CHOOSER
   auto lOutputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
-  lPresetCreatorLayout->addWidget(lOutputPathChooser, 3, 1);
+  lPresetCreatorLayout->addWidget(lOutputPathChooser, 5, 1);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation"), this)};
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("auto_open_generated_dir"));
-  lPresetCreatorLayout->addWidget(lAutoOpenDirCheckbox, 4, 0, 1, 2);
+  lPresetCreatorLayout->addWidget(lAutoOpenDirCheckbox, 6, 0, 1, 2);
 
   // Event binding
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
@@ -349,6 +360,17 @@ void Settings::setupRetargetingToolGroup(QGridLayout* aLayout)
   lUpgradeBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lUpgradeBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
   lRetargetingToolLayout->addWidget(lUpgradeBodyVersionSelector, 1, 1);
+
+  // Feet mod
+  lRetargetingToolLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
+
+  auto lFeetSelector{new QComboBox(this)};
+  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
+  lFeetSelector->setCursor(Qt::PointingHandCursor);
+  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
+  lFeetSelector->setObjectName(QString("feet_mod_retargeting_tool"));
+  lRetargetingToolLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
 
   // Event binding
   this->connect(lUpgradeBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
@@ -484,6 +506,12 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->setCurrentIndex(lDefaultUpgradeBody.first);
   this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->setCurrentIndex(lDefaultUpgradeBody.second);
 
+  auto lDefaultMainFeetMod{this->findChild<QComboBox*>("feet_mod_main")};
+  lDefaultMainFeetMod->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainFeetMod));
+
+  auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>("feet_mod_retargeting_tool")};
+  lDefaultRetargetingToolFeetMod->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolFeetMod));
+
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")};
   lMainWindowOutputPath->setText(aSettingsToLoad.mainWindowOutputPath);
 
@@ -521,6 +549,8 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lUpBodyNameSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex()};
   auto lUpBodyVersionSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->currentIndex()};
   auto lDefaultRetargetBodyVersion{DataLists::getBodyNameVersion(static_cast<BodyName>(lUpBodyNameSelected), lUpBodyVersionSelected)};
+  auto lDefaultMainFeetMod{this->findChild<QComboBox*>(QString("feet_mod_main"))->currentIndex()};
+  auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))->currentIndex()};
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};
@@ -577,6 +607,12 @@ Struct::Settings Settings::getSettingsFromGUI() const
 
   // Default selected body and version (Retargeting tool)
   lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lDefaultRetargetBodyVersion);
+
+  // Default selected feet mod (main)
+  lSettings.defaultMainFeetMod = lDefaultMainFeetMod;
+
+  // Default selected feet mod (Retargeting tool)
+  lSettings.defaultRetargetingToolFeetMod = lDefaultRetargetingToolFeetMod;
 
   // Main window output path
   if (lMainWindowOutputPath.size() > 0)

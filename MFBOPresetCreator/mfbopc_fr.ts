@@ -453,78 +453,78 @@
         <translation>Éditeur de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="93"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="96"/>
         <source>Edit set:</source>
         <translation>Éditer le set :</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="105"/>
-        <location filename="BodySlideFiltersEditor.cpp" line="265"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="108"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="268"/>
         <source>Add a new BodySlide filters set</source>
         <translation>Ajouter un nouveau set de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="105"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="108"/>
         <source>New set</source>
         <translation>Nouveau set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="109"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="112"/>
         <source>Remove the selected BodySlide filters set</source>
         <translation>Supprimer le set de filtres BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="109"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="112"/>
         <source>Remove set</source>
         <translation>Supprimer le set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="120"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="123"/>
         <source>Add a new BodySlide filter</source>
         <translation>Ajouter un nouveau filtre BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="120"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="123"/>
         <source>New filter</source>
         <translation>Nouveau filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="125"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="128"/>
         <source>Remove the selected BodySlide filter</source>
         <translation>Supprimer le filtre BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="125"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="128"/>
         <source>Remove filter</source>
         <translation>Supprimer le filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="130"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="133"/>
         <source>Remove all the BodySlide filters</source>
         <translation>Supprimer tous les filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="130"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="133"/>
         <source>Remove all</source>
         <translation>Supprimer tous</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="166"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="169"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="169"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="172"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="265"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="268"/>
         <source>Filters set name:</source>
         <translation>Nom du set de filtres :</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="283"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="286"/>
         <source>Error: there is already one set with the name &quot;%1&quot;.</source>
         <translation>Erreur : il y a déjà un set portant le nom &quot;%1&quot;.</translation>
     </message>
@@ -570,42 +570,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="131"/>
+        <location filename="DataLists.cpp" line="136"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="132"/>
+        <location filename="DataLists.cpp" line="137"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="133"/>
+        <location filename="DataLists.cpp" line="138"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="162"/>
+        <location filename="DataLists.cpp" line="167"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="163"/>
+        <location filename="DataLists.cpp" line="168"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="164"/>
+        <location filename="DataLists.cpp" line="169"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="165"/>
+        <location filename="DataLists.cpp" line="170"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="166"/>
+        <location filename="DataLists.cpp" line="171"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
@@ -869,8 +869,8 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="PresetCreator.cpp" line="324"/>
         <location filename="PresetCreator.cpp" line="431"/>
-        <location filename="PresetCreator.cpp" line="505"/>
-        <location filename="PresetCreator.cpp" line="527"/>
+        <location filename="PresetCreator.cpp" line="516"/>
+        <location filename="PresetCreator.cpp" line="538"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
@@ -880,22 +880,22 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Sortie BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="498"/>
+        <location filename="PresetCreator.cpp" line="509"/>
         <source>BodySlide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="519"/>
+        <location filename="PresetCreator.cpp" line="530"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation>Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="534"/>
+        <location filename="PresetCreator.cpp" line="545"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="547"/>
+        <location filename="PresetCreator.cpp" line="558"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
@@ -951,105 +951,105 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="596"/>
+        <location filename="PresetCreator.cpp" line="607"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="793"/>
+        <location filename="PresetCreator.cpp" line="790"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="843"/>
+        <location filename="PresetCreator.cpp" line="836"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="877"/>
-        <location filename="PresetCreator.cpp" line="885"/>
+        <location filename="PresetCreator.cpp" line="870"/>
+        <location filename="PresetCreator.cpp" line="878"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="902"/>
+        <location filename="PresetCreator.cpp" line="895"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="929"/>
+        <location filename="PresetCreator.cpp" line="922"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="964"/>
+        <location filename="PresetCreator.cpp" line="957"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1114"/>
-        <location filename="PresetCreator.cpp" line="1138"/>
+        <location filename="PresetCreator.cpp" line="1107"/>
+        <location filename="PresetCreator.cpp" line="1131"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1132"/>
+        <location filename="PresetCreator.cpp" line="1125"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1476"/>
+        <location filename="PresetCreator.cpp" line="1469"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1483"/>
+        <location filename="PresetCreator.cpp" line="1476"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1494"/>
+        <location filename="PresetCreator.cpp" line="1487"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1642"/>
+        <location filename="PresetCreator.cpp" line="1637"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1522"/>
+        <location filename="PresetCreator.cpp" line="1515"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1535"/>
+        <location filename="PresetCreator.cpp" line="1528"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1548"/>
+        <location filename="PresetCreator.cpp" line="1541"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1562"/>
+        <location filename="PresetCreator.cpp" line="1555"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1576"/>
+        <location filename="PresetCreator.cpp" line="1569"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="764"/>
-        <location filename="PresetCreator.cpp" line="867"/>
+        <location filename="PresetCreator.cpp" line="775"/>
+        <location filename="PresetCreator.cpp" line="860"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="518"/>
+        <location filename="PresetCreator.cpp" line="529"/>
         <source>Presets names:</source>
         <translation>Noms des presets :</translation>
     </message>
@@ -1059,32 +1059,32 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="809"/>
+        <location filename="PresetCreator.cpp" line="806"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="849"/>
+        <location filename="PresetCreator.cpp" line="842"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="935"/>
+        <location filename="PresetCreator.cpp" line="928"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="959"/>
+        <location filename="PresetCreator.cpp" line="952"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1645"/>
+        <location filename="PresetCreator.cpp" line="1640"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="971"/>
+        <location filename="PresetCreator.cpp" line="964"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
@@ -1133,27 +1133,27 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1502"/>
+        <location filename="PresetCreator.cpp" line="1495"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1503"/>
+        <location filename="PresetCreator.cpp" line="1496"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1506"/>
+        <location filename="PresetCreator.cpp" line="1499"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1507"/>
+        <location filename="PresetCreator.cpp" line="1500"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1642"/>
+        <location filename="PresetCreator.cpp" line="1637"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1181,148 +1181,148 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Revenir sur la fenêtre de l&apos;outil de re-ciblage</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="111"/>
+        <location filename="RetargetingTool.cpp" line="120"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="119"/>
-        <location filename="RetargetingTool.cpp" line="171"/>
+        <location filename="RetargetingTool.cpp" line="128"/>
+        <location filename="RetargetingTool.cpp" line="180"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="123"/>
+        <location filename="RetargetingTool.cpp" line="132"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="136"/>
+        <location filename="RetargetingTool.cpp" line="145"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="140"/>
+        <location filename="RetargetingTool.cpp" line="149"/>
         <source>Backup</source>
         <translation>Backup</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="153"/>
+        <location filename="RetargetingTool.cpp" line="162"/>
         <source>Keep a backup?</source>
         <translation>Garder un backup ?</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="155"/>
+        <location filename="RetargetingTool.cpp" line="164"/>
         <source>You should always check this box to avoid any data loss or corruption.</source>
         <translation>Vous devriez toujours avoir cette case cochée pour éviter de perdre ou de corrompre des données.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="161"/>
+        <location filename="RetargetingTool.cpp" line="170"/>
         <source>Backup directory path:</source>
         <translation>Emplacement du répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="175"/>
+        <location filename="RetargetingTool.cpp" line="184"/>
         <source>Backup subdirectory name/path:</source>
         <translation>Nom/emplacement du sous-répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="184"/>
+        <location filename="RetargetingTool.cpp" line="193"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="421"/>
+        <location filename="RetargetingTool.cpp" line="430"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation>Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="437"/>
+        <location filename="RetargetingTool.cpp" line="446"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation>The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="446"/>
+        <location filename="RetargetingTool.cpp" line="455"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation>Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="463"/>
+        <location filename="RetargetingTool.cpp" line="472"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="481"/>
+        <location filename="RetargetingTool.cpp" line="491"/>
         <source>Parsing XML files. Please wait...</source>
         <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="491"/>
-        <location filename="RetargetingTool.cpp" line="536"/>
-        <location filename="RetargetingTool.cpp" line="704"/>
+        <location filename="RetargetingTool.cpp" line="501"/>
+        <location filename="RetargetingTool.cpp" line="546"/>
+        <location filename="RetargetingTool.cpp" line="716"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="562"/>
-        <location filename="RetargetingTool.cpp" line="680"/>
+        <location filename="RetargetingTool.cpp" line="572"/>
+        <location filename="RetargetingTool.cpp" line="692"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="583"/>
+        <location filename="RetargetingTool.cpp" line="593"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation>Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="591"/>
+        <location filename="RetargetingTool.cpp" line="601"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation>Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="609"/>
-        <location filename="RetargetingTool.cpp" line="617"/>
+        <location filename="RetargetingTool.cpp" line="621"/>
+        <location filename="RetargetingTool.cpp" line="629"/>
         <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation>Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="635"/>
+        <location filename="RetargetingTool.cpp" line="647"/>
         <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="674"/>
+        <location filename="RetargetingTool.cpp" line="686"/>
         <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="788"/>
+        <location filename="RetargetingTool.cpp" line="787"/>
         <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
         <translation>Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="804"/>
+        <location filename="RetargetingTool.cpp" line="803"/>
         <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="838"/>
+        <location filename="RetargetingTool.cpp" line="837"/>
         <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="852"/>
+        <location filename="RetargetingTool.cpp" line="851"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="512"/>
-        <location filename="RetargetingTool.cpp" line="844"/>
+        <location filename="RetargetingTool.cpp" line="522"/>
+        <location filename="RetargetingTool.cpp" line="843"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="855"/>
+        <location filename="RetargetingTool.cpp" line="854"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1332,27 +1332,27 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="520"/>
+        <location filename="RetargetingTool.cpp" line="530"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="694"/>
+        <location filename="RetargetingTool.cpp" line="706"/>
         <source>Patching XML files. Please wait...</source>
         <translation>Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="732"/>
+        <location filename="RetargetingTool.cpp" line="744"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="852"/>
+        <location filename="RetargetingTool.cpp" line="851"/>
         <source>Retargeting successful</source>
         <translation>Re-ciblage réussi</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="195"/>
+        <location filename="RetargetingTool.cpp" line="204"/>
         <source>Retarget all the files under the input path</source>
         <translation>Re-cibler tous les fichiers sous l&apos;emplacement d&apos;entrée</translation>
     </message>
@@ -1367,22 +1367,22 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Corps et version ciblé :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="349"/>
+        <location filename="RetargetingTool.cpp" line="358"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="391"/>
+        <location filename="RetargetingTool.cpp" line="400"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation>Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="412"/>
+        <location filename="RetargetingTool.cpp" line="421"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="428"/>
+        <location filename="RetargetingTool.cpp" line="437"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
@@ -1457,7 +1457,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="228"/>
-        <location filename="Settings.cpp" line="406"/>
+        <location filename="Settings.cpp" line="428"/>
         <source>General</source>
         <translation>Général</translation>
     </message>
@@ -1473,33 +1473,39 @@ Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="273"/>
-        <location filename="Settings.cpp" line="335"/>
+        <location filename="Settings.cpp" line="346"/>
         <source>Default selected body:</source>
         <translation>Corps sélectionné par défaut :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="321"/>
+        <location filename="Settings.cpp" line="292"/>
+        <location filename="Settings.cpp" line="365"/>
+        <source>Default selected feet mod:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="332"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="400"/>
+        <location filename="Settings.cpp" line="422"/>
         <source>Remove all the history</source>
         <oldsource>Clear all history</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="408"/>
+        <location filename="Settings.cpp" line="430"/>
         <source>Batch Conv.: input</source>
         <translation>Conv. Multiple : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="409"/>
+        <location filename="Settings.cpp" line="431"/>
         <source>Batch Conv.: output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="444"/>
+        <location filename="Settings.cpp" line="466"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -1529,12 +1535,12 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Attention : Un redémarrage de l&apos;application est en attente. Vous ne devriez modifier aucune valeur marquée du caractère &quot;*&quot; avant d&apos;avoir redémarré l&apos;application.</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="363"/>
+        <location filename="Settings.cpp" line="385"/>
         <source>Assisted Conversion</source>
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="388"/>
+        <location filename="Settings.cpp" line="410"/>
         <source>Last used folder and files paths</source>
         <translation>Derniers chemins de dossiers et fichiers utilisés</translation>
     </message>
@@ -1544,87 +1550,87 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Vérifier les mises à jour au démarrage de l&apos;application</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="292"/>
+        <location filename="Settings.cpp" line="303"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="301"/>
+        <location filename="Settings.cpp" line="312"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="305"/>
+        <location filename="Settings.cpp" line="316"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation>Ouvrir automatiquement le dossier d&apos;export du preset après une génération</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="376"/>
+        <location filename="Settings.cpp" line="398"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="407"/>
+        <location filename="Settings.cpp" line="429"/>
         <source>Main window: output</source>
         <translation>Fenêtre principale : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="410"/>
+        <location filename="Settings.cpp" line="432"/>
         <source>Assist. Conv.: input</source>
         <translation>Conv. Assist. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="411"/>
+        <location filename="Settings.cpp" line="433"/>
         <source>Presets&apos; Ret.: input</source>
         <translation>Re-ciblage de Pr. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="412"/>
+        <location filename="Settings.cpp" line="434"/>
         <source>Presets&apos; Ret.: output</source>
         <translation>Re-ciblage de Pr. : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="413"/>
+        <location filename="Settings.cpp" line="435"/>
         <source>Textures Assist.: input</source>
         <translation>Assist. Tex. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="414"/>
+        <location filename="Settings.cpp" line="436"/>
         <source>Loaded project</source>
         <translation>Projet chargé</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="415"/>
+        <location filename="Settings.cpp" line="437"/>
         <source>Saved project</source>
         <translation>Projet enregistré</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="438"/>
+        <location filename="Settings.cpp" line="460"/>
         <source>Restore default</source>
         <translation>Restaurer par défaut</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="441"/>
+        <location filename="Settings.cpp" line="463"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="652"/>
+        <location filename="Settings.cpp" line="688"/>
         <source>Restart now</source>
         <translation>Redémarrer maintenant</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="653"/>
+        <location filename="Settings.cpp" line="689"/>
         <source>Go back to the application and restart later</source>
         <translation>Revenir sur l&apos;application et redémarrer plus tard</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="648"/>
+        <location filename="Settings.cpp" line="684"/>
         <source>Application settings changed</source>
         <translation>Paramètres de l&apos;application modifiés</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="649"/>
+        <location filename="Settings.cpp" line="685"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation>Tous les paramètres ont été sauvegardé. Vous avez changé un paramètre qui nécessite un redémarrage de l&apos;application pour être appliqué. Voulez-vous redémarrer l&apos;application maintenant ?</translation>
     </message>
@@ -1915,7 +1921,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1108"/>
+        <location filename="Utils.cpp" line="1183"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>

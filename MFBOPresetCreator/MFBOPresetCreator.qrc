@@ -9,103 +9,63 @@
     </qresource>
     <qresource prefix="/cbbe_3bbb_1.40">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/1.40/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/1.40/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/1.40/bodyslide_beast_hands.osp</file>
-        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/1.40/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/cbbe_3bbb_1.50">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/1.50/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/1.50/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/1.50/bodyslide_beast_hands.osp</file>
-        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/1.50/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/cbbe_3bbb_1.51_1.55">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/1.51_1.55/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/1.51_1.55/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/1.51_1.55/bodyslide_beast_hands.osp</file>
-        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/1.51_1.55/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/cbbe_3bbb_2.00_2.04">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide_beast_hands.osp</file>
-        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.00_2.04/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/cbbe_3bbb_2.05">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide_beast_hands.osp</file>
-        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe 3bbb 3ba/2.05/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/cbbe_smp_3bbb_1.2.0">
         <file alias="bodyslide_osp">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.osp</file>
-        <file alias="bodyslide_xml">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide.xml</file>
         <file alias="bodyslide_beast_hands_osp">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide_beast_hands.osp</file>
-        <file alias="bodyslide_beast_hands_xml">ressources/bodyslide files/cbbe smp 3bbb/1.2.0/bodyslide_beast_hands.xml</file>
     </qresource>
     <qresource prefix="/bhunp_2.13">
         <file alias="bhunp_3bbb/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_3bbb.osp</file>
-        <file alias="bhunp_3bbb/bodyslide_xml">ressources/bodyslide files/bhunp/2.13/bhunp_3bbb.xml</file>
         <file alias="bhunp_3bbb_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced.osp</file>
-        <file alias="bhunp_3bbb_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced.xml</file>
         <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced_ver_2.osp</file>
-        <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_xml">ressources/bodyslide files/bhunp/2.13/bhunp_3bbb_advanced_ver_2.xml</file>
         <file alias="bhunp_bbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_bbp.osp</file>
-        <file alias="bhunp_bbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.13/bhunp_bbp.xml</file>
         <file alias="bhunp_bbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_bbp_advanced.osp</file>
-        <file alias="bhunp_bbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.13/bhunp_bbp_advanced.xml</file>
         <file alias="bhunp_tbbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_tbbp.osp</file>
-        <file alias="bhunp_tbbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.13/bhunp_tbbp.xml</file>
         <file alias="bhunp_tbbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.13/bhunp_tbbp_advanced.osp</file>
-        <file alias="bhunp_tbbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.13/bhunp_tbbp_advanced.xml</file>
     </qresource>
     <qresource prefix="/bhunp_2.15">
         <file alias="bhunp_3bbb/bodyslide_osp">ressources/bodyslide files/bhunp/2.15/bhunp_3bbb.osp</file>
-        <file alias="bhunp_3bbb/bodyslide_xml">ressources/bodyslide files/bhunp/2.15/bhunp_3bbb.xml</file>
         <file alias="bhunp_3bbb_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.15/bhunp_3bbb_advanced.osp</file>
-        <file alias="bhunp_3bbb_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.15/bhunp_3bbb_advanced.xml</file>
         <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_osp">ressources/bodyslide files/bhunp/2.15/bhunp_3bbb_advanced_ver_2.osp</file>
-        <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_xml">ressources/bodyslide files/bhunp/2.15/bhunp_3bbb_advanced_ver_2.xml</file>
         <file alias="bhunp_bbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.15/bhunp_bbp.osp</file>
-        <file alias="bhunp_bbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.15/bhunp_bbp.xml</file>
         <file alias="bhunp_bbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.15/bhunp_bbp_advanced.osp</file>
-        <file alias="bhunp_bbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.15/bhunp_bbp_advanced.xml</file>
         <file alias="bhunp_tbbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.15/bhunp_tbbp.osp</file>
-        <file alias="bhunp_tbbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.15/bhunp_tbbp.xml</file>
         <file alias="bhunp_tbbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.15/bhunp_tbbp_advanced.osp</file>
-        <file alias="bhunp_tbbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.15/bhunp_tbbp_advanced.xml</file>
     </qresource>
     <qresource prefix="/bhunp_2.20">
         <file alias="bhunp_3bbb/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_3bbb.osp</file>
-        <file alias="bhunp_3bbb/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_3bbb.xml</file>
         <file alias="bhunp_3bbb_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_3bbb_advanced.osp</file>
-        <file alias="bhunp_3bbb_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_3bbb_advanced.xml</file>
         <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_3bbb_advanced_ver_2.osp</file>
-        <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_3bbb_advanced_ver_2.xml</file>
         <file alias="bhunp_bbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_bbp.osp</file>
-        <file alias="bhunp_bbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_bbp.xml</file>
         <file alias="bhunp_bbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_bbp_advanced.osp</file>
-        <file alias="bhunp_bbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_bbp_advanced.xml</file>
         <file alias="bhunp_tbbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_tbbp.osp</file>
-        <file alias="bhunp_tbbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_tbbp.xml</file>
         <file alias="bhunp_tbbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.20/bhunp_tbbp_advanced.osp</file>
-        <file alias="bhunp_tbbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.20/bhunp_tbbp_advanced.xml</file>
     </qresource>
     <qresource prefix="/bhunp_2.25">
         <file alias="bhunp_3bbb/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb.osp</file>
-        <file alias="bhunp_3bbb/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb.xml</file>
         <file alias="bhunp_3bbb_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced.osp</file>
-        <file alias="bhunp_3bbb_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced.xml</file>
         <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced_ver_2.osp</file>
-        <file alias="bhunp_3bbb_advanced_ver_2/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_3bbb_advanced_ver_2.xml</file>
         <file alias="bhunp_bbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_bbp.osp</file>
-        <file alias="bhunp_bbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_bbp.xml</file>
         <file alias="bhunp_bbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_bbp_advanced.osp</file>
-        <file alias="bhunp_bbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_bbp_advanced.xml</file>
         <file alias="bhunp_tbbp/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp.osp</file>
-        <file alias="bhunp_tbbp/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp.xml</file>
         <file alias="bhunp_tbbp_advanced/bodyslide_osp">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp_advanced.osp</file>
-        <file alias="bhunp_tbbp_advanced/bodyslide_xml">ressources/bodyslide files/bhunp/2.25/bhunp_tbbp_advanced.xml</file>
     </qresource>
     <qresource prefix="/black">
         <file alias="alert-circle">ressources/software/icons/black/alert-circle.png</file>

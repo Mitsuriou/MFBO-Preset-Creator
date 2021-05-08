@@ -15,6 +15,7 @@ public:
   static QStringList getVersionsFromBodyName(BodyName aBody);
   static BodyNameVersion getBodyNameVersion(BodyName aBody, int aRelativeVersion);
   static std::pair<int, int> getSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion);
+  static QStringList getFeetModsEntries();
 
   // Other data lists
   static QStringList getWindowOpeningModes();
