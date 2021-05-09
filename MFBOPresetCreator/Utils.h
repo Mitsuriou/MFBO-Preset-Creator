@@ -59,7 +59,8 @@ public:
   static std::map<QString, QStringList> loadFiltersFromFile();
   static void saveFiltersToFile(const std::map<QString, QStringList>& aList);
   static QJsonObject filtersMapToJson(const std::map<QString, QStringList>& aList);
-  static QString getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName);
+  static QString getXMLFilterBlockFromBody(const QString& aGroupName, const int& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex);
+  static QString getFeetLineForBHUNP(const int& aFeetModIndex);
   static QStringList getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody);
 
   // Paths

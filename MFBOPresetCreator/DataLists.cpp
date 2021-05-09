@@ -127,7 +127,10 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
 
 QStringList DataLists::getFeetModsEntries()
 {
-  return QStringList({"Default feet sliders", "More Sliders for Feet"});
+  return QStringList{
+    QString("Default feet sliders"),
+    QString("More Sliders for Feet - Normal"),
+    QString("More Sliders for Feet - High Heels")};
 }
 
 QStringList DataLists::getWindowOpeningModes()

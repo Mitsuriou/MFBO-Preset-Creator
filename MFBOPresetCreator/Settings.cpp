@@ -577,12 +577,12 @@ Struct::Settings Settings::getSettingsFromGUI() const
 
   // Font family
   lSettings.font.family = this->mNewFont.family();
-  lSettings.font.styleName = this->mNewFont.styleName();
-  lSettings.font.size = this->mNewFont.pointSize();
-  lSettings.font.weight = this->mNewFont.weight();
   lSettings.font.italic = this->mNewFont.italic();
-  lSettings.font.underline = this->mNewFont.underline();
+  lSettings.font.size = this->mNewFont.pointSize();
   lSettings.font.strikeOut = this->mNewFont.strikeOut();
+  lSettings.font.styleName = this->mNewFont.styleName();
+  lSettings.font.underline = this->mNewFont.underline();
+  lSettings.font.weight = this->mNewFont.weight();
 
   // Application theme
   lSettings.appTheme = static_cast<GUITheme>(lAppTheme);
@@ -636,6 +636,8 @@ Struct::Settings Settings::getSettingsFromGUI() const
   lSettings.successColor = this->mNewSuccessColor;
   lSettings.warningColor = this->mNewWarningColor;
   lSettings.dangerColor = this->mNewDangerColor;
+
+  // TODO: Add the settings GUI for Batch Conversion
 
   return lSettings;
 }

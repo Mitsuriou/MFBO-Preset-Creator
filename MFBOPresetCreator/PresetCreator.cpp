@@ -762,7 +762,7 @@ void PresetCreator::updateAvailableBodyVersions()
   lBodyVersionSelector->setCurrentIndex(0);
 }
 
-bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const QString& aBodyslideSlidersetsNames)
+bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const int& aFeetModIndex, const QString& aBodyslideSlidersetsNames)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -817,7 +817,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
       auto lUserFiltersConcat{QString()};
       for (const auto& lUserFilter : lUserFilters)
       {
-        lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(aBodySelected, aMustUseBeastHands, lUserFilter);
+        lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(lUserFilter, aBodySelected, aMustUseBeastHands, aFeetModIndex);
       }
 
       lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
@@ -846,8 +846,10 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
   return true;
 }
 
-bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const QString& aRessourcesFolder, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
+bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aFeetModIndex, const QString& aRessourcesFolder, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
 {
+  // TODO: use aFeetModIndex
+
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
 
@@ -1416,6 +1418,9 @@ void PresetCreator::generateDirectoryStructure()
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   auto lBodySelected{static_cast<int>(DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
 
+  // Selected feet
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_selector_version"))->currentIndex()};
+
   // Beast hands
   auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
   auto lMustUseBeastHands{lCheckboxUseBeastHands->isEnabled() && lCheckboxUseBeastHands->isChecked()};
@@ -1586,7 +1591,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // XML file
-  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lBodyslideSlidersetsNames))
+  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1597,10 +1602,8 @@ void PresetCreator::generateDirectoryStructure()
     return;
   }
 
-  // TODO: Handle feet mod feet_selector_version
-
   // OSP file
-  if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lRessourcesFolder, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
+  if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lFeetModIndex, lRessourcesFolder, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1634,18 +1637,39 @@ void PresetCreator::generateDirectoryStructure()
   // Update the color of the output directory preview
   this->updateOutputPreview();
 
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Generation successful"), tr("Every file has been correctly generated. You can now exit the application or create another conversion!"), QMessageBox::StandardButton::NoButton, this);
-  lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
-
-  auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
-  lOKButton->setCursor(Qt::PointingHandCursor);
-  lConfirmationBox.setDefaultButton(lOKButton);
-  lConfirmationBox.exec();
+  auto lTitle{tr("Generation successful")};
+  auto lMessage{tr("Every file has been correctly generated. You can now exit the application or create another conversion!")};
 
   if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
   {
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
+    lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
+
+    auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+    lOKButton->setCursor(Qt::PointingHandCursor);
+    lConfirmationBox.setDefaultButton(lOKButton);
+    lConfirmationBox.exec();
+
     // Open the directory where the file structure has been created
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
+  }
+  else
+  {
+    if (Utils::displayQuestionMessage(this,
+                                      lTitle,
+                                      lMessage,
+                                      "icons",
+                                      "green-info-circle",
+                                      tr("Open the generated directory"),
+                                      tr("OK"),
+                                      "",
+                                      "",
+                                      false)
+        == ButtonClicked::Yes)
+    {
+      // Open the directory where the file structure has been created
+      QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
+    }
   }
 }
 

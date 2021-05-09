@@ -737,6 +737,7 @@ Struct::Settings Utils::loadSettingsFromFile()
     }
 
     Utils::saveSettingsToFile(lSettings);
+    Utils::printMessageStdOut("User settings upgraded!");
   }
   // Put the line below for each new version of the JSON format
   //else if (lSettingsJSON.contains("version") && lSettingsJSON["version"].isString() && lSettingsJSON["version"].toString() == "x.x.x.x")
@@ -841,7 +842,7 @@ QJsonObject Utils::filtersMapToJson(const std::map<QString, QStringList>& aList)
   return QJsonObject::fromVariantMap(lVarMap);
 }
 
-QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHands, const QString& aGroupName)
+QString Utils::getXMLFilterBlockFromBody(const QString& aGroupName, const int& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex)
 {
   auto lXMLBlock{QString("    <Group name=\"%1\">\n").arg(aGroupName)};
 
@@ -849,10 +850,30 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
   switch (lBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:
+      // Body
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - 3BBB Body Amazing\"/>\n");
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n");
 
-      if (aBeastHands)
+      // Feet
+      switch (aFeetModIndex)
+      {
+        case 0:
+          // Default
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n");
+          break;
+        case 1:
+          // More Sliders for Feet - Normal
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - normal)\"/>\n");
+          break;
+        case 2:
+          // More Sliders for Feet - High Heels
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - HH)\"/>\n");
+          break;
+        default:
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet\"/>\n");
+      }
+
+      // Hands
+      if (aMustUseBeastHands)
       {
         lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Beast Hands\"/>\n");
       }
@@ -863,10 +884,30 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+      // Body
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
 
-      if (aBeastHands)
+      // Feet
+      switch (aFeetModIndex)
+      {
+        case 0:
+          // Default
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
+          break;
+        case 1:
+          // More Sliders for Feet - Normal
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - normal)\"/>\n");
+          break;
+        case 2:
+          // More Sliders for Feet - High Heels
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - HH)\"/>\n");
+          break;
+        default:
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
+      }
+
+      // Hands
+      if (aMustUseBeastHands)
       {
         lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Beast Hands\"/>\n");
       }
@@ -879,10 +920,30 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
     case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+      // Body
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
 
-      if (aBeastHands)
+      // Feet
+      switch (aFeetModIndex)
+      {
+        case 0:
+          // Default
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
+          break;
+        case 1:
+          // More Sliders for Feet - Normal
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - normal)\"/>\n");
+          break;
+        case 2:
+          // More Sliders for Feet - High Heels
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - HH)\"/>\n");
+          break;
+        default:
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Feet\"/>\n");
+      }
+
+      // Hands
+      if (aMustUseBeastHands)
       {
         lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Hands Beast\"/>\n");
       }
@@ -893,10 +954,30 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
 
       break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+      // Body
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Body SMP (3BBB)\"/>\n");
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Feet\"/>\n");
 
-      if (aBeastHands)
+      // Feet
+      switch (aFeetModIndex)
+      {
+        case 0:
+          // Default
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Feet\"/>\n");
+          break;
+        case 1:
+          // More Sliders for Feet - Normal
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - normal)\"/>\n");
+          break;
+        case 2:
+          // More Sliders for Feet - High Heels
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - HH)\"/>\n");
+          break;
+        default:
+          lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Feet\"/>\n");
+      }
+
+      // Hands
+      if (aMustUseBeastHands)
       {
         lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE Hands Beast\"/>\n");
       }
@@ -910,69 +991,83 @@ QString Utils::getXMLFilterBlockFromBody(const int& aBody, const int& aBeastHand
     case BodyNameVersion::BHUNP_3BBB_2_15:
     case BodyNameVersion::BHUNP_3BBB_2_20:
     case BodyNameVersion::BHUNP_3BBB_2_25:
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB\"/>\n");
+      lXMLBlock.append(Utils::getFeetLineForBHUNP(aFeetModIndex));
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
 
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced\"/>\n");
+      lXMLBlock.append(Utils::getFeetLineForBHUNP(aFeetModIndex));
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
 
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Ver 2\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
-
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Ver 2\"/>\n");
+      lXMLBlock.append(Utils::getFeetLineForBHUNP(aFeetModIndex));
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
       break;
     case BodyNameVersion::BHUNP_BBP_2_13:
     case BodyNameVersion::BHUNP_BBP_2_15:
     case BodyNameVersion::BHUNP_BBP_2_20:
     case BodyNameVersion::BHUNP_BBP_2_25:
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
-
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP\"/>\n");
+      lXMLBlock.append(Utils::getFeetLineForBHUNP(aFeetModIndex));
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP Advanced\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
-
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP BBP Advanced\"/>\n");
+      lXMLBlock.append(Utils::getFeetLineForBHUNP(aFeetModIndex));
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
       break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
     case BodyNameVersion::BHUNP_TBBP_2_15:
     case BodyNameVersion::BHUNP_TBBP_2_20:
     case BodyNameVersion::BHUNP_TBBP_2_25:
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
-
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP\"/>\n");
+      lXMLBlock.append(Utils::getFeetLineForBHUNP(aFeetModIndex));
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
-      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP Advanced\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n"
-                       "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
-
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP TBBP Advanced\"/>\n");
+      lXMLBlock.append(Utils::getFeetLineForBHUNP(aFeetModIndex));
+      lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Hands\"/>\n");
       break;
   }
 
   lXMLBlock.append("    </Group>\n");
   return lXMLBlock;
+}
+
+QString Utils::getFeetLineForBHUNP(const int& aFeetModIndex)
+{
+  switch (aFeetModIndex)
+  {
+    case 0:
+      // Default
+      return "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n)";
+    case 1:
+      // More Sliders for Feet - Normal
+      return "        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - normal)\"/>\n";
+    case 2:
+      // More Sliders for Feet - High Heels
+      return "        <Member name=\"{%%bodyslide_set_name%%} - Feet (MSF - HH)\"/>\n";
+    default:
+      // Default
+      return "        <Member name=\"{%%bodyslide_set_name%%} - BHUNP 3BBB Advanced Feet\"/>\n)";
+  }
 }
 
 QStringList Utils::getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody)
@@ -1304,7 +1399,7 @@ void Utils::printMessageStdOut(const QString& aMessage)
   {
     std::cout << std::endl;
   }
-  else if (aMessage.endsWith("..."))
+  else if (aMessage.endsWith("...") || aMessage.endsWith(":") || aMessage.endsWith("\n"))
   {
     std::cout << aMessage.toStdString() << std::endl;
   }

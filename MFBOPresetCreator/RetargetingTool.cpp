@@ -389,10 +389,16 @@ void RetargetingTool::updateBackupPreview()
 
 void RetargetingTool::launchUpDownGradeProcess()
 {
+  // Input Directory
+  auto lRootDir{this->findChild<QLineEdit*>("input_path_directory")->text()};
+
+  // Selected body
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-  auto lRootDir{this->findChild<QLineEdit*>("input_path_directory")->text()};
+
+  // Selected feet
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_selector_version"))->currentIndex()};
 
   // Check if the input path has been given by the user
   if (lRootDir.length() == 0)
@@ -601,8 +607,6 @@ void RetargetingTool::launchUpDownGradeProcess()
       Utils::displayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
       lSkipBeastHands = true;
     }
-
-    // TODO: Handle feet mod feet_selector_version
 
     // If the preset is using beast hands but the chosen body does not support beast hands, skip this OSP file's treatment
     if (!lSkipBeastHands)
@@ -817,7 +821,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
           for (const auto& lUserFilter : lUserFilters)
           {
-            lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(static_cast<int>(lBodySelected), lMustUseBeastHands, lUserFilter);
+            lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(lUserFilter, static_cast<int>(lBodySelected), lMustUseBeastHands, lFeetModIndex);
           }
 
           lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
