@@ -690,9 +690,9 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Default window width
-  if (lSettingsJSON.contains("windowWidth") && lSettingsJSON["windowWidth"].isDouble())
+  if (lSettingsJSON.contains("mainWindowWidth") && lSettingsJSON["mainWindowWidth"].isDouble())
   {
-    lSettings.mainWindowWidth = lSettingsJSON["windowWidth"].toInt();
+    lSettings.mainWindowWidth = lSettingsJSON["mainWindowWidth"].toInt();
   }
 
   // Success color
@@ -706,6 +706,41 @@ Struct::Settings Utils::loadSettingsFromFile()
   {
     lSettings.warningColor = lSettingsJSON["warningColor"].toString();
   }
+
+  // JSON format upgrade from v2.10.2.0 to 3.0.0.0
+  if (!lSettingsJSON.contains("applicationVersion"))
+  {
+    //windowWidth -> mainWindowWidth
+    if (lSettingsJSON.contains("windowWidth") && lSettingsJSON["windowWidth"].isDouble())
+    {
+      lSettings.mainWindowWidth = lSettingsJSON["windowWidth"].toInt();
+    }
+
+    //windowHeight -> mainWindowHeight
+    if (lSettingsJSON.contains("windowHeight") && lSettingsJSON["windowHeight"].isDouble())
+    {
+      lSettings.mainWindowHeight = lSettingsJSON["windowHeight"].toInt();
+    }
+
+    //retargetingToolDefaultBody -> defaultRetargetingToolBody
+    if (lSettingsJSON.contains("retargetingToolDefaultBody") && lSettingsJSON["retargetingToolDefaultBody"].isDouble())
+    {
+      auto lFoundBody{lSettingsJSON["retargetingToolDefaultBody"].toInt()};
+      lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
+    }
+
+    //defaultBody -> defaultMainWindowBody
+    if (lSettingsJSON.contains("defaultBody") && lSettingsJSON["defaultBody"].isDouble())
+    {
+      auto lFoundBody{lSettingsJSON["defaultBody"].toInt()};
+      lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
+    }
+
+    Utils::saveSettingsToFile(lSettings);
+  }
+  // Put the line below for each new version of the JSON format
+  //else if (lSettingsJSON.contains("version") && lSettingsJSON["version"].isString() && lSettingsJSON["version"].toString() == "x.x.x.x")
+  //{}
 
   Utils::printMessageStdOut("User settings:");
   Utils::printMessageStdOut(QJsonDocument(lSettingsJSON).toJson(QJsonDocument::JsonFormat::Indented));
@@ -753,6 +788,9 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lObj["mainWindowWidth"] = aSettings.mainWindowWidth;
   lObj["successColor"] = aSettings.successColor;
   lObj["warningColor"] = aSettings.warningColor;
+
+  // Version number string
+  lObj["applicationVersion"] = Utils::getApplicationVersion();
 
   return lObj;
 }

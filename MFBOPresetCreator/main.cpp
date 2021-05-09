@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
     Utils::RESTART_PENDING = false;
 
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QApplication::setApplicationVersion("2.11.0.0");
+    QApplication::setApplicationVersion("3.0.0.0");
     const auto& lAppVersion{Utils::getApplicationVersion()};
 
     Utils::printMessageStdOut("Creating the application instance...");
@@ -154,7 +154,6 @@ int main(int argc, char* argv[])
 
     // Read settings file
     auto lSettings{Utils::loadSettingsFromFile()};
-    // TODO: handle the "config.json" format upgrade (add a version to the file eventually)
 
     // Update the message
     Utils::printMessageStdOut("Applying translation files...");

@@ -1921,7 +1921,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r√
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1183"/>
+        <location filename="Utils.cpp" line="1221"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>

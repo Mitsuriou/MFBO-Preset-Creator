@@ -1712,7 +1712,7 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1183"/>
+        <location filename="Utils.cpp" line="1221"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
