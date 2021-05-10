@@ -785,6 +785,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
     lUserFilters = Utils::getXMLDefaultFiltersFromBody(static_cast<BodyNameVersion>(aBodySelected));
   }
 
+  // TODO: Make bodyslide_xml_custom become a small function instead of a file
   if (!QFile::copy(":/ressources/bodyslide_xml_custom", lXMLPathName))
   {
     Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
@@ -887,7 +888,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to write in the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
+    Utils::displayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
     return false;
   }
 

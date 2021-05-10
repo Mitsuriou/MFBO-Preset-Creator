@@ -617,86 +617,44 @@ void RetargetingTool::launchUpDownGradeProcess()
         QFile::remove(lAbsFilePath);
       }
 
-      // TODO: Update the OSP file generation code block below, based on the PresetCreator.cpp file:
+      // Construct the file content
+      auto lOSPFileContent{SliderSetsHelper::getSliderSetFile(static_cast<BodyNameVersion>(lBodySelected), lMustUseBeastHands, lFeetModIndex)};
 
-      // Copy the OSP file
-      if (lMustUseBeastHands)
+      // Fill the custom variables
+      lOSPFileContent.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
+
+      for (const auto& lSliderSet : lParsedSliderSets)
       {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_beast_hands_osp", lAbsFilePath))
+        if (lSliderSet.meshPart == "Body")
         {
-          Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
-          return;
+          lOSPFileContent.replace(QString("{%%body_output_path%%}"), lSliderSet.outputPath);
+          lOSPFileContent.replace(QString("{%%body_output_file%%}"), lSliderSet.outputFile);
+        }
+        else if (lSliderSet.meshPart == "Feet")
+        {
+          lOSPFileContent.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputPath);
+          lOSPFileContent.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputFile);
+        }
+        else if (lSliderSet.meshPart == "Hands")
+        {
+          lOSPFileContent.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputPath);
+          lOSPFileContent.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputFile);
         }
       }
-      else
-      {
-        if (!QFile::copy(":/" + lRessourcesFolder + "/bodyslide_osp", lAbsFilePath))
-        {
-          Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
-          return;
-        }
-      }
 
-      // Read the created OSP file
+      // Create the OSP file on disk
       QFile lOSPFile(lAbsFilePath);
-      lOSPFile.setPermissions(QFile::WriteUser);
-
-      QByteArray lOSPFileContent;
-
-      if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
+      if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
       {
-        lOSPFileContent = lOSPFile.readAll();
+        QTextStream lTextStream(&lOSPFile);
+        lTextStream << lOSPFileContent;
+        lTextStream.flush();
+
         lOSPFile.close();
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to read the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
-        return;
-      }
-
-      // Replace the custom tags in the file
-      if (lOSPFileContent.length() > 0)
-      {
-        if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-        {
-          auto lTextToParse{static_cast<QString>(lOSPFileContent)};
-          lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
-
-          for (const auto& lSliderSet : lParsedSliderSets)
-          {
-            if (lSliderSet.meshPart == "Body")
-            {
-              lTextToParse.replace(QString("{%%body_output_path%%}"), lSliderSet.outputPath);
-              lTextToParse.replace(QString("{%%body_output_file%%}"), lSliderSet.outputFile);
-            }
-            else if (lSliderSet.meshPart == "Feet")
-            {
-              lTextToParse.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputPath);
-              lTextToParse.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputFile);
-            }
-            else if (lSliderSet.meshPart == "Hands")
-            {
-              lTextToParse.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputPath);
-              lTextToParse.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputFile);
-            }
-          }
-
-          QTextStream lTextStream(&lOSPFile);
-          lTextStream << lTextToParse;
-          lTextStream.flush();
-
-          lOSPFile.close();
-        }
-        else
-        {
-          Utils::displayWarningMessage(tr("Error while trying to write in the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
-          return;
-        }
-      }
-      else
-      {
-        Utils::displayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
-        return;
+        Utils::displayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
       }
 
       if (lBufferLocationToRemove != -1)
@@ -788,6 +746,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       lUserFilters = Utils::getXMLDefaultFiltersFromBody(static_cast<BodyNameVersion>(lBodySelected));
     }
 
+    // TODO: Make bodyslide_xml_custom become a small function instead of a file
     if (!QFile::copy(":/ressources/bodyslide_xml_custom", lAbsFilePath))
     {
       Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
