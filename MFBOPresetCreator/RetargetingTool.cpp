@@ -617,6 +617,8 @@ void RetargetingTool::launchUpDownGradeProcess()
         QFile::remove(lAbsFilePath);
       }
 
+      // TODO: Update the OSP file generation code block below, based on the PresetCreator.cpp file:
+
       // Copy the OSP file
       if (lMustUseBeastHands)
       {
