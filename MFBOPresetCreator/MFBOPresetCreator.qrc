@@ -5,7 +5,6 @@
     </qresource>
     <qresource prefix="/ressources">
         <file alias="skeleton_female">ressources/skeleton/skeleton_female.nif</file>
-        <file alias="bodyslide_xml_custom">ressources/bodyslide files/bodyslide_custom.xml</file>
     </qresource>
     <qresource prefix="/black">
         <file alias="alert-circle">ressources/software/icons/black/alert-circle.png</file>

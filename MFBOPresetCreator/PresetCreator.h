@@ -3,7 +3,7 @@
 #include "BodySlideFiltersEditor.h"
 #include "DataLists.h"
 #include "Settings.h"
-#include "SliderSetsHelper.h"
+#include "SliderFileBuilder.h"
 #include "Utils.h"
 #include "stdafx.h"
 

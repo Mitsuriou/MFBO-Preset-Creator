@@ -768,6 +768,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
+
   if (!QDir(lSliderGroupsDirectory).exists())
   {
     QDir().mkpath(lSliderGroupsDirectory);
@@ -778,71 +779,25 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
     return false;
   }
 
-  // Copy the XML file
-  auto lXMLPathName{lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml"};
+  // Construct the file content
   auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
+  auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(aBodyslideSlidersetsNames, lUserFilters, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
 
-  if (lUserFilters.size() == 0)
-  {
-    lUserFilters = Utils::getXMLDefaultFiltersFromBody(static_cast<BodyNameVersion>(aBodySelected));
-  }
-
-  // TODO: Make bodyslide_xml_custom become a small function instead of a file
-  if (!QFile::copy(":/ressources/bodyslide_xml_custom", lXMLPathName))
-  {
-    Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
-    return false;
-  }
+  // Create the OSP file on disk
+  auto lXMLPathName(lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml");
 
   QFile lXMLFile(lXMLPathName);
-  lXMLFile.setPermissions(QFile::WriteUser);
-
-  QByteArray lTempXMLContent;
-
-  if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
   {
-    lTempXMLContent = lXMLFile.readAll();
+    QTextStream lTextStream(&lXMLFile);
+    lTextStream << lXMLFileContent;
+    lTextStream.flush();
+
     lXMLFile.close();
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to read the XML file \"%1\". Aborting process.").arg(lXMLPathName));
-    return false;
-  }
-
-  if (lTempXMLContent.length() > 0)
-  {
-    if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-      auto lTextToParse{static_cast<QString>(lTempXMLContent)};
-
-      // Custom BodySlide filters
-      auto lUserFiltersConcat{QString()};
-      for (const auto& lUserFilter : lUserFilters)
-      {
-        lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(lUserFilter, aBodySelected, aMustUseBeastHands, aFeetModIndex);
-      }
-
-      lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
-
-      // BodySlide preset name
-      lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);
-
-      QTextStream lTextStream(&lXMLFile);
-      lTextStream << lTextToParse;
-      lTextStream.flush();
-
-      lXMLFile.close();
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error while trying to write in the XML file \"%1\". Aborting process.").arg(lXMLPathName));
-      return false;
-    }
-  }
-  else
-  {
-    Utils::displayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lXMLPathName));
+    Utils::displayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lXMLPathName));
     return false;
   }
 
@@ -865,7 +820,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   }
 
   // Construct the file content
-  auto lOSPFileContent{SliderSetsHelper::getSliderSetFile(static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
+  auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
 
   // Fill the custom variables
   lOSPFileContent.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);

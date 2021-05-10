@@ -611,7 +611,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
 
       // Construct the file content
-      auto lOSPFileContent{SliderSetsHelper::getSliderSetFile(static_cast<BodyNameVersion>(lBodySelected), lMustUseBeastHands, lFeetModIndex)};
+      auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(lBodySelected, lMustUseBeastHands, lFeetModIndex)};
 
       // Fill the custom variables
       lOSPFileContent.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
@@ -648,6 +648,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       else
       {
         Utils::displayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
+        return;
       }
 
       if (lBufferLocationToRemove != -1)
@@ -730,75 +731,23 @@ void RetargetingTool::launchUpDownGradeProcess()
       QFile::remove(lAbsFilePath);
     }
 
-    // Copy the XML file
+    // Construct the file content
     auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
-    auto lUserFiltersListSize{lUserFilters.size()};
+    auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex)};
 
-    if (lUserFilters.size() == 0)
-    {
-      lUserFilters = Utils::getXMLDefaultFiltersFromBody(static_cast<BodyNameVersion>(lBodySelected));
-    }
-
-    // TODO: Make bodyslide_xml_custom become a small function instead of a file
-    if (!QFile::copy(":/ressources/bodyslide_xml_custom", lAbsFilePath))
-    {
-      Utils::displayWarningMessage(tr("The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process."));
-      return;
-    }
-
+    // Create the OSP file on disk
     QFile lXMLFile(lAbsFilePath);
-    lXMLFile.setPermissions(QFile::WriteUser);
-
-    QByteArray lTempXMLContent;
-
-    if (lXMLFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
     {
-      lTempXMLContent = lXMLFile.readAll();
+      QTextStream lTextStream(&lXMLFile);
+      lTextStream << lXMLFileContent;
+      lTextStream.flush();
+
       lXMLFile.close();
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to read the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
-      return;
-    }
-
-    if (lTempXMLContent.length() > 0)
-    {
-      if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-      {
-        auto lTextToParse{static_cast<QString>(lTempXMLContent)};
-
-        // Custom BodySlide filters
-        if (lUserFiltersListSize > 0)
-        {
-          auto lUserFiltersConcat{QString()};
-
-          for (const auto& lUserFilter : lUserFilters)
-          {
-            lUserFiltersConcat += Utils::getXMLFilterBlockFromBody(lUserFilter, static_cast<int>(lBodySelected), lMustUseBeastHands, lFeetModIndex);
-          }
-
-          lTextToParse.replace(QString("{%%bodyslide_filters_block%%}"), lUserFiltersConcat);
-        }
-
-        // BodySlide preset name
-        lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
-
-        QTextStream lTextStream(&lXMLFile);
-        lTextStream << lTextToParse;
-        lTextStream.flush();
-
-        lXMLFile.close();
-      }
-      else
-      {
-        Utils::displayWarningMessage(tr("Error while trying to write in the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
-        return;
-      }
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
+      Utils::displayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 

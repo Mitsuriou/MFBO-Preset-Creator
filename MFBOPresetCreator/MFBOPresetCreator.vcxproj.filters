@@ -49,7 +49,7 @@
     <ClCompile Include="ComponentFactory.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="SliderSetsHelper.cpp">
+    <ClCompile Include="SliderFileBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -69,7 +69,7 @@
     <ClInclude Include="LangManager.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="SliderSetsHelper.h">
+    <ClInclude Include="SliderFileBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
