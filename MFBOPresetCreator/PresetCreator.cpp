@@ -820,10 +820,9 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
   }
 
   // Construct the file content
-  auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
+  auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(aBodyslideSlidersetsNames, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
 
   // Fill the custom variables
-  lOSPFileContent.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);
   lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
   lOSPFileContent.replace(QString("{%%feet_output_path%%}"), aMeshesPathFeet.replace("/", "\\"));
   lOSPFileContent.replace(QString("{%%hands_output_path%%}"), aMeshesPathHands.replace("/", "\\"));

@@ -8,10 +8,11 @@ class SliderFileBuilder
 {
 public:
   // SliderSets
-  static QString buildOSPFileContent(const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex);
-  static QString getHandsBlock(const BodyNameVersion& aBody, const bool& aMustUseBeastHands);
-  static QString getFeetBlock(const BodyNameVersion& aBody, const int& aFeetModIndex);
-  static QString getBodyBlock(const BodyNameVersion& aBody);
+  static QString buildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex);
+  static QString getHandsBlock(const QString& aLineName, const BodyNameVersion& aBody, const bool& aMustUseBeastHands);
+  static QString getFeetBlock(const QString& aLineName, const BodyNameVersion& aBody, const int& aFeetModIndex);
+  static QString getBodyBlock(const QString& aLineName, const BodyNameVersion& aBody);
+
   // SliderGroups
   static QString buildXMLFileContent(const QString& aLineName, const QStringList& aFiltersList, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex);
   static QString getFeetLineForBHUNP(const int& aFeetModIndex);

@@ -611,11 +611,9 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
 
       // Construct the file content
-      auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(lBodySelected, lMustUseBeastHands, lFeetModIndex)};
+      auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(lPresetName, lBodySelected, lMustUseBeastHands, lFeetModIndex)};
 
       // Fill the custom variables
-      lOSPFileContent.replace(QString("{%%bodyslide_set_name%%}"), lPresetName);
-
       for (const auto& lSliderSet : lParsedSliderSets)
       {
         if (lSliderSet.meshPart == "Body")

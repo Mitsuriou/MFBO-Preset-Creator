@@ -905,7 +905,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1573"/>
+        <location filename="PresetCreator.cpp" line="1572"/>
         <source>Open the generated directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -982,69 +982,69 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="848"/>
+        <location filename="PresetCreator.cpp" line="847"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <oldsource>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</oldsource>
         <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="877"/>
+        <location filename="PresetCreator.cpp" line="876"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1027"/>
-        <location filename="PresetCreator.cpp" line="1051"/>
+        <location filename="PresetCreator.cpp" line="1026"/>
+        <location filename="PresetCreator.cpp" line="1050"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1045"/>
+        <location filename="PresetCreator.cpp" line="1044"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1392"/>
+        <location filename="PresetCreator.cpp" line="1391"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1399"/>
+        <location filename="PresetCreator.cpp" line="1398"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1410"/>
+        <location filename="PresetCreator.cpp" line="1409"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1551"/>
+        <location filename="PresetCreator.cpp" line="1550"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1438"/>
+        <location filename="PresetCreator.cpp" line="1437"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1451"/>
+        <location filename="PresetCreator.cpp" line="1450"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1464"/>
+        <location filename="PresetCreator.cpp" line="1463"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1478"/>
+        <location filename="PresetCreator.cpp" line="1477"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1492"/>
+        <location filename="PresetCreator.cpp" line="1491"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
@@ -1077,18 +1077,18 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="872"/>
+        <location filename="PresetCreator.cpp" line="871"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1558"/>
-        <location filename="PresetCreator.cpp" line="1574"/>
+        <location filename="PresetCreator.cpp" line="1557"/>
+        <location filename="PresetCreator.cpp" line="1573"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="884"/>
+        <location filename="PresetCreator.cpp" line="883"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
@@ -1137,27 +1137,27 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1418"/>
+        <location filename="PresetCreator.cpp" line="1417"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1419"/>
+        <location filename="PresetCreator.cpp" line="1418"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1422"/>
+        <location filename="PresetCreator.cpp" line="1421"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1423"/>
+        <location filename="PresetCreator.cpp" line="1422"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1550"/>
+        <location filename="PresetCreator.cpp" line="1549"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1263,7 +1263,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="500"/>
         <location filename="RetargetingTool.cpp" line="545"/>
-        <location filename="RetargetingTool.cpp" line="674"/>
+        <location filename="RetargetingTool.cpp" line="672"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
@@ -1307,7 +1307,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="758"/>
+        <location filename="RetargetingTool.cpp" line="756"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
     </message>
@@ -1317,7 +1317,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="761"/>
+        <location filename="RetargetingTool.cpp" line="759"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1332,27 +1332,27 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="650"/>
+        <location filename="RetargetingTool.cpp" line="648"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="664"/>
+        <location filename="RetargetingTool.cpp" line="662"/>
         <source>Patching XML files. Please wait...</source>
         <translation>Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="702"/>
+        <location filename="RetargetingTool.cpp" line="700"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="750"/>
+        <location filename="RetargetingTool.cpp" line="748"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="758"/>
+        <location filename="RetargetingTool.cpp" line="756"/>
         <source>Retargeting successful</source>
         <translation>Re-ciblage réussi</translation>
     </message>

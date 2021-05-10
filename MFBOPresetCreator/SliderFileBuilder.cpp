@@ -1,14 +1,19 @@
 #include "SliderFileBuilder.h"
 
-QString SliderFileBuilder::buildOSPFileContent(const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex)
+QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex)
 {
-  return QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SliderSetInfo version=\"1\">\n%1\n%2\n%3\n</SliderSetInfo>\n")
-    .arg(SliderFileBuilder::getBodyBlock(aBody))
-    .arg(SliderFileBuilder::getFeetBlock(aBody, aFeetModIndex))
-    .arg(SliderFileBuilder::getHandsBlock(aBody, aMustUseBeastHands));
+  auto lBuiltContent{QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SliderSetInfo version=\"1\">\n")};
+  lBuiltContent.append(SliderFileBuilder::getBodyBlock(aLineName, aBody));
+  lBuiltContent.append("\n");
+  lBuiltContent.append(SliderFileBuilder::getFeetBlock(aLineName, aBody, aFeetModIndex));
+  lBuiltContent.append("\n");
+  lBuiltContent.append(SliderFileBuilder::getHandsBlock(aLineName, aBody, aMustUseBeastHands));
+  lBuiltContent.append("\n</SliderSetInfo>\n");
+
+  return lBuiltContent;
 }
 
-QString SliderFileBuilder::getHandsBlock(const BodyNameVersion& aBody, const bool& aMustUseBeastHands)
+QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNameVersion& aBody, const bool& aMustUseBeastHands)
 {
   auto lSliderSet{QString("")};
 
@@ -79,11 +84,11 @@ QString SliderFileBuilder::getHandsBlock(const BodyNameVersion& aBody, const boo
       break;
   }
 
-  // Replace the "%1" string with identation spaces
-  return lSliderSet.arg("    ");
+  // Replace the "%1" string with identation spaces and "%2" with the name given to the line
+  return lSliderSet.arg("    ").arg(aLineName);
 }
 
-QString SliderFileBuilder::getFeetBlock(const BodyNameVersion& aBody, const int& aFeetModIndex)
+QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyNameVersion& aBody, const int& aFeetModIndex)
 {
   auto lSliderSet{QString("")};
 
@@ -231,11 +236,11 @@ QString SliderFileBuilder::getFeetBlock(const BodyNameVersion& aBody, const int&
       break;
   }
 
-  // Replace the "%1" string with identation spaces
-  return lSliderSet.arg("    ");
+  // Replace the "%1" string with identation spaces and "%2" with the name given to the line
+  return lSliderSet.arg("    ").arg(aLineName);
 }
 
-QString SliderFileBuilder::getBodyBlock(const BodyNameVersion& aBody)
+QString SliderFileBuilder::getBodyBlock(const QString& aLineName, const BodyNameVersion& aBody)
 {
   auto lSliderSet{QString("")};
 
@@ -247,6 +252,10 @@ QString SliderFileBuilder::getBodyBlock(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
     case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+      lSliderSet = QString("%1<SliderSet name=\"%2 - CBBE Body SMP (3BBB)\">\n%1%1<DataFolder>CBBE</DataFolder>\n%1%1<SourceFile>CBBE Body SMP (3BBB).nif</SourceFile>\n%1%1<OutputPath>{%%body_output_path%%}</OutputPath>\n%1%1<OutputFile GenWeights=\"true\">{%%body_output_file%%}</OutputFile>\n%1%1<Shape target=\"CBBE\">CBBE</Shape>\n%1%1<Shape target=\"Labia\">Labia</Shape>\n%1%1<Shape target=\"VirtualArms\">VirtualArms</Shape>\n%1%1<Shape target=\"VirtualBreasts\">VirtualBreasts</Shape>\n%1%1<Shape target=\"VirtualButt\">VirtualButt</Shape>\n%1%1<Shape target=\"VirtualGround\">VirtualGround</Shape>\n%1%1<Shape target=\"VirtualHands\">VirtualHands</Shape>\n%1%1<Shape target=\"VirtualHead\">VirtualHead</Shape>\n%1%1<Shape target=\"VirtualLegs\">VirtualLegs</Shape>\n%1%1<Shape target=\"VirtualVagina\">VirtualVagina</Shape>\n%1%1<Slider name=\"AnkleSize\" invert=\"false\" small=\"100\" big=\"0\">\n%1%1%1<Data name=\"CBBEAnkleSize\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEAnkleSize</Data>\n%1%1%1<Data name=\"VirtualLegsAnkleSize\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsAnkleSize</Data>\n%1%1</Slider>\n%1%1<Slider name=\"AppleCheeks\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEAppleCheeks\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEAppleCheeks</Data>\n%1%1%1<Data name=\"LabiaAppleCheeks\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaAppleCheeks</Data>\n%1%1%1<Data name=\"VirtualBreastsAppleCheeks\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsAppleCheeks</Data>\n%1%1%1<Data name=\"VirtualLegsAppleCheeks\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsAppleCheeks</Data>\n%1%1%1<Data name=\"VirtualButtAppleCheeks\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtAppleCheeks</Data>\n%1%1%1<Data name=\"VirtualVaginaAppleCheeks\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaAppleCheeks</Data>\n%1%1</Slider>\n%1%1<Slider name=\"AreolaSize\" invert=\"false\" small=\"0\" big=\"0\" uv=\"true\">\n%1%1%1<Data name=\"CBBEAreolaSize\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEAreolaSize</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Arms\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEarms\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEarms</Data>\n%1%1%1<Data name=\"VirtualBreastsArms\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsArms</Data>\n%1%1%1<Data name=\"VirtualArmsArms\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsArms</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Back\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBack\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBack</Data>\n%1%1%1<Data name=\"VirtualBreastsBack\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBack</Data>\n%1%1%1<Data name=\"VirtualButtBack\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtBack</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BackArch\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBackArch\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBackArch</Data>\n%1%1%1<Data name=\"VirtualButtBackArch\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtBackArch</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Belly\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBelly\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBelly</Data>\n%1%1%1<Data name=\"VirtualBreastsBelly\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBelly</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BigBelly\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBigBelly\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBigBelly</Data>\n%1%1%1<Data name=\"LabiaBigBelly\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaBigBelly</Data>\n%1%1%1<Data name=\"VirtualBreastsBigBelly\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBigBelly</Data>\n%1%1%1<Data name=\"VirtualLegsBigBelly\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsBigBelly</Data>\n%1%1%1<Data name=\"VirtualButtBigBelly\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtBigBelly</Data>\n%1%1%1<Data name=\"VirtualVaginaBigBelly\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaBigBelly</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BigButt\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBigButt\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBigButt</Data>\n%1%1%1<Data name=\"LabiaBigButt\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaBigButt</Data>\n%1%1%1<Data name=\"VirtualBreastsBigButt\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBigButt</Data>\n%1%1%1<Data name=\"VirtualLegsBigButt\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsBigButt</Data>\n%1%1%1<Data name=\"VirtualButtBigButt\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtBigButt</Data>\n%1%1%1<Data name=\"VirtualVaginaBigButt\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaBigButt</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BigTorso\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBigTorso\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBigTorso</Data>\n%1%1%1<Data name=\"VirtualBreastsBigTorso\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBigTorso</Data>\n%1%1%1<Data name=\"VirtualArmsBigTorso\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsBigTorso</Data>\n%1%1%1<Data name=\"VirtualLegsBigTorso\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsBigTorso</Data>\n%1%1%1<Data name=\"VirtualButtBigTorso\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtBigTorso</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastCenter\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastCenter\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastCenter</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastCenter\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastCenter</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastCenterBig\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastCenterBig\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastCenterBig</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastCenterBig\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastCenterBig</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastCleavage\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastCleavage\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastCleavage</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastCleavage\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastCleavage</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastFlatness2\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastFlatness2\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastFlatness2</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastFlatness2\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastFlatness2</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastFlatness\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastFlattness\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastFlattness</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastFlatness\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastFlatness</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastGravity2\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastGravity2\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastGravity2</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastGravity2\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastGravity2</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastHeight\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastHeight\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastHeight</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastHeight\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastHeight</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastPerkiness\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastPerkiness\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastPerkiness</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastPerkiness\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastPerkiness</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Breasts\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreasts\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreasts</Data>\n%1%1%1<Data name=\"VirtualBreastsBreasts\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreasts</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastsFantasy\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastsFantasy\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastsFantasy</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastsFantasy\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastsFantasy</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastsGone\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastsGone\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastsGone</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastsGone\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastsGone</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastsNewSH\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastsNewSH\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastsNewSH</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastsNewSH\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastsNewSH</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastsNewSHSymmetry\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastsNewSHSymmetry\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastsNewSHSymmetry</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastsNewSHSymmetry\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastsNewSHSymmetry</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastsSmall\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastsSmall\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastsSmall</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastsSmall\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastsSmall</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastsSmall2\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastsSmall2\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastsSmall2</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastsSmall2\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastsSmall2</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastsTogether\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastsTogether\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastsTogether</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastsTogether\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastsTogether</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastTopSlope\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastTopSlope\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastTopSlope</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastTopSlope\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastTopSlope</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastWidth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastWidth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastWidth</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastWidth\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastWidth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastSideShape\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastSideShape\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastSideShape</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastSideShape\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastSideShape</Data>\n%1%1</Slider>\n%1%1<Slider name=\"BreastUnderDepth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEBreastUnderDepth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEBreastUnderDepth</Data>\n%1%1%1<Data name=\"VirtualBreastsBreastUnderDepth\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsBreastUnderDepth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Butt\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEButt\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEButt</Data>\n%1%1%1<Data name=\"LabiaButt\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaButt</Data>\n%1%1%1<Data name=\"VirtualLegsButt\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsButt</Data>\n%1%1%1<Data name=\"VirtualButtButt\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtButt</Data>\n%1%1%1<Data name=\"VirtualVaginaButt\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaButt</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ButtClassic\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEButtClassic\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEButtClassic</Data>\n%1%1%1<Data name=\"LabiaButtClassic\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaButtClassic</Data>\n%1%1%1<Data name=\"VirtualLegsButtClassic\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsButtClassic</Data>\n%1%1%1<Data name=\"VirtualButtButtClassic\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtButtClassic</Data>\n%1%1%1<Data name=\"VirtualVaginaButtClassic\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaButtClassic</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ButtCrack\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEButtCrack\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEButtCrack</Data>\n%1%1%1<Data name=\"LabiaButtCrack\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaButtCrack</Data>\n%1%1%1<Data name=\"VirtualLegsButtCrack\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsButtCrack</Data>\n%1%1%1<Data name=\"VirtualButtButtCrack\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtButtCrack</Data>\n%1%1%1<Data name=\"VirtualVaginaButtCrack\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaButtCrack</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ButtShape2\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEButtShape2\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEButtShape2</Data>\n%1%1%1<Data name=\"LabiaButtShape2\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaButtShape2</Data>\n%1%1%1<Data name=\"VirtualBreastsButtShape2\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsButtShape2</Data>\n%1%1%1<Data name=\"VirtualLegsButtShape2\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsButtShape2</Data>\n%1%1%1<Data name=\"VirtualButtButtShape2\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtButtShape2</Data>\n%1%1%1<Data name=\"VirtualVaginaButtShape2\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaButtShape2</Data>\n%1%1</Slider>\n"
+                           "%1%1<Slider name=\"ButtSmall\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEButtSmall\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEButtSmall</Data>\n%1%1%1<Data name=\"LabiaButtSmall\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaButtSmall</Data>\n%1%1%1<Data name=\"VirtualBreastsButtSmall\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsButtSmall</Data>\n%1%1%1<Data name=\"VirtualLegsButtSmall\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsButtSmall</Data>\n%1%1%1<Data name=\"VirtualButtButtSmall\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtButtSmall</Data>\n%1%1%1<Data name=\"VirtualVaginaButtSmall\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaButtSmall</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ButtDimples\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEButtDimples\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEButtDimples</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ButtUnderFold\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEButtUnderFold\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEButtUnderFold</Data>\n%1%1</Slider>\n%1%1<Slider name=\"CalfSize\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBECalfSize\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBECalfSize</Data>\n%1%1%1<Data name=\"VirtualLegsCalfSize\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsCalfSize</Data>\n%1%1</Slider>\n%1%1<Slider name=\"CalfSmooth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBECalfSmooth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBECalfSmooth</Data>\n%1%1%1<Data name=\"VirtualLegsCalfSmooth\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsCalfSmooth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ChestDepth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEChestDepth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEChestDepth</Data>\n%1%1%1<Data name=\"VirtualBreastsChestDepth\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsChestDepth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ChestWidth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEChestWidth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEChestWidth</Data>\n%1%1%1<Data name=\"VirtualBreastsChestWidth\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsChestWidth</Data>\n%1%1%1<Data name=\"VirtualArmsChestWidth\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsChestWidth</Data>\n%1%1%1<Data name=\"VirtualButtChestWidth\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtChestWidth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ChubbyArms\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEChubbyArms\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEChubbyArms</Data>\n%1%1%1<Data name=\"VirtualBreastsChubbyArms\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsChubbyArms</Data>\n%1%1%1<Data name=\"VirtualArmsChubbyArms\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsChubbyArms</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ChubbyButt\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEChubbyButt\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEChubbyButt</Data>\n%1%1%1<Data name=\"LabiaChubbyButt\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaChubbyButt</Data>\n%1%1%1<Data name=\"VirtualBreastsChubbyButt\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsChubbyButt</Data>\n%1%1%1<Data name=\"VirtualLegsChubbyButt\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsChubbyButt</Data>\n%1%1%1<Data name=\"VirtualButtChubbyButt\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtChubbyButt</Data>\n%1%1%1<Data name=\"VirtualVaginaChubbyButt\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaChubbyButt</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ChubbyLegs\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEChubbyLegs\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEChubbyLegs</Data>\n%1%1%1<Data name=\"LabiaChubbyLegs\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaChubbyLegs</Data>\n%1%1%1<Data name=\"VirtualLegsChubbyLegs\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsChubbyLegs</Data>\n%1%1%1<Data name=\"VirtualButtChubbyLegs\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtChubbyLegs</Data>\n%1%1%1<Data name=\"VirtualVaginaChubbyLegs\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaChubbyLegs</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ChubbyWaist\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEChubbyWaist\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEChubbyWaist</Data>\n%1%1%1<Data name=\"LabiaChubbyWaist\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaChubbyWaist</Data>\n%1%1%1<Data name=\"VirtualBreastsChubbyWaist\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsChubbyWaist</Data>\n%1%1%1<Data name=\"VirtualLegsChubbyWaist\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsChubbyWaist</Data>\n%1%1%1<Data name=\"VirtualButtChubbyWaist\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtChubbyWaist</Data>\n%1%1%1<Data name=\"VirtualVaginaChubbyWaist\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaChubbyWaist</Data>\n%1%1</Slider>\n%1%1<Slider name=\"CrotchBack\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBECrotchBack\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBECrotchBack</Data>\n%1%1%1<Data name=\"LabiaCrotchBack\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaCrotchBack</Data>\n%1%1%1<Data name=\"VirtualLegsCrotchBack\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsCrotchBack</Data>\n%1%1%1<Data name=\"VirtualButtCrotchBack\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtCrotchBack</Data>\n%1%1%1<Data name=\"VirtualVaginaCrotchBack\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaCrotchBack</Data>\n%1%1</Slider>\n%1%1<Slider name=\"DoubleMelon\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEDoubleMelon\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEDoubleMelon</Data>\n%1%1%1<Data name=\"VirtualBreastsDoubleMelon\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsDoubleMelon</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ForearmSize\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEForearmSize\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEForearmSize</Data>\n%1%1%1<Data name=\"VirtualArmsForearmSize\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsForearmSize</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Groin\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEGroin\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEGroin</Data>\n%1%1%1<Data name=\"LabiaGroin\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaGroin</Data>\n%1%1%1<Data name=\"VirtualLegsGroin\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsGroin</Data>\n%1%1%1<Data name=\"VirtualVaginaGroin\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaGroin</Data>\n%1%1</Slider>\n%1%1<Slider name=\"HipBone\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEHipbone\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEHipbone</Data>\n%1%1%1<Data name=\"LabiaHipBone\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaHipBone</Data>\n%1%1%1<Data name=\"VirtualLegsHipBone\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsHipBone</Data>\n%1%1%1<Data name=\"VirtualButtHipBone\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtHipBone</Data>\n%1%1%1<Data name=\"VirtualVaginaHipBone\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaHipBone</Data>\n%1%1</Slider>\n%1%1<Slider name=\"HipForward\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEHipForward\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEHipForward</Data>\n%1%1%1<Data name=\"LabiaHipForward\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaHipForward</Data>\n%1%1%1<Data name=\"VirtualBreastsHipForward\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsHipForward</Data>\n%1%1%1<Data name=\"VirtualLegsHipForward\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsHipForward</Data>\n%1%1%1<Data name=\"VirtualButtHipForward\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtHipForward</Data>\n%1%1%1<Data name=\"VirtualVaginaHipForward\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaHipForward</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Hips\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEHips\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEHips</Data>\n%1%1%1<Data name=\"LabiaHips\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaHips</Data>\n%1%1%1<Data name=\"VirtualBreastsHips\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsHips</Data>\n%1%1%1<Data name=\"VirtualLegsHips\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsHips</Data>\n%1%1%1<Data name=\"VirtualButtHips\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtHips</Data>\n%1%1%1<Data name=\"VirtualVaginaHips\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaHips</Data>\n%1%1</Slider>\n%1%1<Slider name=\"HipUpperWidth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEHipUpperWidth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEHipUpperWidth</Data>\n%1%1%1<Data name=\"VirtualBreastsHipUpperWidth\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsHipUpperWidth</Data>\n%1%1%1<Data name=\"VirtualButtHipUpperWidth\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtHipUpperWidth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"HipCarved\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEHipCarved\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEHipCarved</Data>\n%1%1</Slider>\n%1%1<Slider name=\"KneeHeight\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEKneeHeight\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEKneeHeight</Data>\n%1%1%1<Data name=\"VirtualLegsKneeHeight\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsKneeHeight</Data>\n%1%1</Slider>\n%1%1<Slider name=\"KneeShape\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEKneeShape\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEKneeShape</Data>\n%1%1%1<Data name=\"VirtualLegsKneeShape\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsKneeShape</Data>\n%1%1</Slider>\n%1%1<Slider name=\"LegShapeClassic\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBELegShapeClassic\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBELegShapeClassic</Data>\n%1%1%1<Data name=\"VirtualLegsLegShapeClassic\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsLegShapeClassic</Data>\n%1%1</Slider>\n%1%1<Slider name=\"LegsThin\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBELegsThin\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBELegsThin</Data>\n%1%1%1<Data name=\"VirtualLegsLegsThin\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsLegsThin</Data>\n%1%1%1<Data name=\"VirtualButtLegsThin\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtLegsThin</Data>\n%1%1</Slider>\n%1%1<Slider name=\"MuscleAbs\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEMuscleAbs\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEMuscleAbs</Data>\n%1%1%1<Data name=\"VirtualBreastsMuscleAbs\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsMuscleAbs</Data>\n%1%1%1<Data name=\"VirtualVaginaMuscleAbs\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaMuscleAbs</Data>\n%1%1</Slider>\n%1%1<Slider name=\"MuscleArms\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEMuscleArms\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEMuscleArms</Data>\n%1%1%1<Data name=\"VirtualBreastsMuscleArms\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsMuscleArms</Data>\n%1%1%1<Data name=\"VirtualArmsMuscleArms\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsMuscleArms</Data>\n%1%1</Slider>\n%1%1<Slider name=\"MuscleButt\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEMuscleButt\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEMuscleButt</Data>\n%1%1%1<Data name=\"VirtualLegsMuscleButt\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsMuscleButt</Data>\n%1%1%1<Data name=\"VirtualButtMuscleButt\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtMuscleButt</Data>\n%1%1</Slider>\n%1%1<Slider name=\"MuscleLegs\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEMuscleLegs\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEMuscleLegs</Data>\n%1%1%1<Data name=\"LabiaMuscleLegs\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaMuscleLegs</Data>\n%1%1%1<Data name=\"VirtualLegsMuscleLegs\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsMuscleLegs</Data>\n%1%1%1<Data name=\"VirtualButtMuscleLegs\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtMuscleLegs</Data>\n%1%1%1<Data name=\"VirtualVaginaMuscleLegs\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaMuscleLegs</Data>\n%1%1</Slider>\n%1%1<Slider name=\"MusclePecs\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEMusclePecs\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEMusclePecs</Data>\n%1%1%1<Data name=\"VirtualBreastsMusclePecs\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsMusclePecs</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NavelEven\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENavelEven\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENavelEven</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NeckSeam\" invert=\"false\" small=\"100\" big=\"0\" hidden=\"true\">\n%1%1%1<Data name=\"CBBENeckSeam\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENeckSeam</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NipBGone\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENipBGone\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENipBGone</Data>\n%1%1%1<Data name=\"VirtualBreastsNipBGone\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNipBGone</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleDistance\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleDistance\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleDistance</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleDistance\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleDistance</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleDown\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleDown\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleDown</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleDown\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleDown</Data>\n%1%1</Slider>\n"
+                           "%1%1<Slider name=\"NippleLength\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleLength\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleLength</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleLength\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleLength</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleManga\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleManga\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleManga</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleManga\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleManga</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NipplePerkiness\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENipplePerkiness\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENipplePerkiness</Data>\n%1%1%1<Data name=\"VirtualBreastsNipplePerkiness\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNipplePerkiness</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NipplePerkManga\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENipplePerkManga\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENipplePerkManga</Data>\n%1%1%1<Data name=\"VirtualBreastsNipplePerkManga\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNipplePerkManga</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleSize\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleSize\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleSize</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleSize\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleSize</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleTip\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleTip\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleTip</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleTip\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleTip</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleTipManga\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleTipManga\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleTipManga</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleTipManga\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleTipManga</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleUp\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleUp\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleUp</Data>\n%1%1%1<Data name=\"VirtualBreastsNippleUp\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsNippleUp</Data>\n%1%1</Slider>\n%1%1<Slider name=\"NippleDip\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBENippleDip\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBENippleDip</Data>\n%1%1</Slider>\n%1%1<Slider name=\"PregnancyBelly\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEPregnancyBelly\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEPregnancyBelly</Data>\n%1%1%1<Data name=\"LabiaPregnancyBelly\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaPregnancyBelly</Data>\n%1%1%1<Data name=\"VirtualBreastsPregnancyBelly\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsPregnancyBelly</Data>\n%1%1%1<Data name=\"VirtualLegsPregnancyBelly\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsPregnancyBelly</Data>\n%1%1%1<Data name=\"VirtualVaginaPregnancyBelly\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaPregnancyBelly</Data>\n%1%1</Slider>\n%1%1<Slider name=\"PushUp\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEPushUp\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEPushUp</Data>\n%1%1%1<Data name=\"VirtualBreastsPushUp\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsPushUp</Data>\n%1%1</Slider>\n%1%1<Slider name=\"RibsProminance\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBERibsProminance\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBERibsProminance</Data>\n%1%1%1<Data name=\"VirtualBreastsRibsProminance\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsRibsProminance</Data>\n%1%1</Slider>\n%1%1<Slider name=\"RoundAss\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBERoundAss\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBERoundAss</Data>\n%1%1%1<Data name=\"LabiaRoundAss\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaRoundAss</Data>\n%1%1%1<Data name=\"VirtualLegsRoundAss\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsRoundAss</Data>\n%1%1%1<Data name=\"VirtualButtRoundAss\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtRoundAss</Data>\n%1%1%1<Data name=\"VirtualVaginaRoundAss\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaRoundAss</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ShoulderSmooth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEShoulderSmooth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEShoulderSmooth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ShoulderTweak\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEshouldertweak\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEshouldertweak</Data>\n%1%1</Slider>\n%1%1<Slider name=\"ShoulderWidth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEshoulderWidth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEshoulderWidth</Data>\n%1%1%1<Data name=\"VirtualBreastsShoulderWidth\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsShoulderWidth</Data>\n%1%1%1<Data name=\"VirtualArmsShoulderWidth\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsShoulderWidth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"SlimThighs\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBESlimThighs\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBESlimThighs</Data>\n%1%1%1<Data name=\"LabiaSlimThighs\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaSlimThighs</Data>\n%1%1%1<Data name=\"VirtualLegsSlimThighs\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsSlimThighs</Data>\n%1%1%1<Data name=\"VirtualButtSlimThighs\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtSlimThighs</Data>\n%1%1%1<Data name=\"VirtualVaginaSlimThighs\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaSlimThighs</Data>\n%1%1</Slider>\n%1%1<Slider name=\"SternumDepth\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBESternumDepth\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBESternumDepth</Data>\n%1%1%1<Data name=\"VirtualBreastsSternumDepth\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsSternumDepth</Data>\n%1%1</Slider>\n%1%1<Slider name=\"SternumHeight\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBESternumHeight\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBESternumHeight</Data>\n%1%1%1<Data name=\"VirtualBreastsSternumHeight\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsSternumHeight</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Thighs\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEThighs\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEThighs</Data>\n%1%1%1<Data name=\"LabiaThighs\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaThighs</Data>\n%1%1%1<Data name=\"VirtualLegsThighs\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsThighs</Data>\n%1%1%1<Data name=\"VirtualButtThighs\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtThighs</Data>\n%1%1%1<Data name=\"VirtualVaginaThighs\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaThighs</Data>\n%1%1</Slider>\n%1%1<Slider name=\"TummyTuck\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBETummyTuck\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBETummyTuck</Data>\n%1%1%1<Data name=\"LabiaTummyTuck\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaTummyTuck</Data>\n%1%1%1<Data name=\"VirtualBreastsTummyTuck\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsTummyTuck</Data>\n%1%1%1<Data name=\"VirtualLegsTummyTuck\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsTummyTuck</Data>\n%1%1%1<Data name=\"VirtualVaginaTummyTuck\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaTummyTuck</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Waist\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEwaist\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEwaist</Data>\n%1%1%1<Data name=\"VirtualBreastsWaist\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsWaist</Data>\n%1%1%1<Data name=\"VirtualButtWaist\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtWaist</Data>\n%1%1</Slider>\n%1%1<Slider name=\"WaistHeight\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEWaistHeight\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEWaistHeight</Data>\n%1%1%1<Data name=\"LabiaWaistHeight\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaWaistHeight</Data>\n%1%1%1<Data name=\"VirtualBreastsWaistHeight\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsWaistHeight</Data>\n%1%1%1<Data name=\"VirtualButtWaistHeight\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtWaistHeight</Data>\n%1%1</Slider>\n%1%1<Slider name=\"WideWaistLine\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEWideWaistLine\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEWideWaistLine</Data>\n%1%1%1<Data name=\"VirtualBreastsWideWaistLine\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsWideWaistLine</Data>\n%1%1%1<Data name=\"VirtualLegsWideWaistLine\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsWideWaistLine</Data>\n%1%1%1<Data name=\"VirtualButtWideWaistLine\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtWideWaistLine</Data>\n%1%1</Slider>\n%1%1<Slider name=\"WristSize\" invert=\"false\" small=\"100\" big=\"0\">\n%1%1%1<Data name=\"CBBEWristSize\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEWristSize</Data>\n%1%1%1<Data name=\"VirtualArmsWristSize\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsWristSize</Data>\n%1%1</Slider>\n%1%1<Slider name=\"7B Lower\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBE7B Lower\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBE7B Lower</Data>\n%1%1%1<Data name=\"Labia7B Lower\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\Labia7B Lower</Data>\n%1%1%1<Data name=\"VirtualBreasts7B Lower\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreasts7B Lower</Data>\n%1%1%1<Data name=\"VirtualLegs7B Lower\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegs7B Lower</Data>\n%1%1%1<Data name=\"VirtualButt7B Lower\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButt7B Lower</Data>\n%1%1%1<Data name=\"VirtualVagina7B Lower\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVagina7B Lower</Data>\n%1%1</Slider>\n%1%1<Slider name=\"7B Upper\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBE7B Upper\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBE7B Upper</Data>\n%1%1%1<Data name=\"VirtualBreasts7B Upper\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreasts7B Upper</Data>\n%1%1%1<Data name=\"VirtualArms7B Upper\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArms7B Upper</Data>\n%1%1%1<Data name=\"VirtualLegs7B Upper\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegs7B Upper</Data>\n%1%1</Slider>\n%1%1<Slider name=\"VanillaSSEHi\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEVanillaSSEHi\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEVanillaSSEHi</Data>\n%1%1%1<Data name=\"LabiaVanillaSSEHi\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaVanillaSSEHi</Data>\n%1%1%1<Data name=\"VirtualBreastsVanillaSSEHi\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsVanillaSSEHi</Data>\n%1%1%1<Data name=\"VirtualArmsVanillaSSEHi\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsVanillaSSEHi</Data>\n%1%1%1<Data name=\"VirtualLegsVanillaSSEHi\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsVanillaSSEHi</Data>\n%1%1%1<Data name=\"VirtualButtVanillaSSEHi\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtVanillaSSEHi</Data>\n%1%1%1<Data name=\"VirtualVaginaVanillaSSEHi\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaVanillaSSEHi</Data>\n%1%1</Slider>\n%1%1<Slider name=\"VanillaSSELo\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEVanillaSSELo\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEVanillaSSELo</Data>\n%1%1%1<Data name=\"LabiaVanillaSSELo\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaVanillaSSELo</Data>\n%1%1%1<Data name=\"VirtualBreastsVanillaSSELo\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsVanillaSSELo</Data>\n%1%1%1<Data name=\"VirtualArmsVanillaSSELo\" target=\"VirtualArms\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualArmsVanillaSSELo</Data>\n%1%1%1<Data name=\"VirtualLegsVanillaSSELo\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsVanillaSSELo</Data>\n%1%1%1<Data name=\"VirtualButtVanillaSSELo\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtVanillaSSELo</Data>\n%1%1%1<Data name=\"VirtualVaginaVanillaSSELo\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaVanillaSSELo</Data>\n%1%1</Slider>\n%1%1<Slider name=\"OldBaseShape\" invert=\"false\" small=\"0\" big=\"0\">\n%1%1%1<Data name=\"CBBEOldBaseShape\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBEOldBaseShape</Data>\n%1%1%1<Data name=\"LabiaOldBaseShape\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaOldBaseShape</Data>\n%1%1%1<Data name=\"VirtualBreastsOldBaseShape\" target=\"VirtualBreasts\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualBreastsOldBaseShape</Data>\n%1%1%1<Data name=\"VirtualLegsOldBaseShape\" target=\"VirtualLegs\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualLegsOldBaseShape</Data>\n%1%1%1<Data name=\"VirtualButtOldBaseShape\" target=\"VirtualButt\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualButtOldBaseShape</Data>\n%1%1%1<Data name=\"VirtualVaginaOldBaseShape\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaOldBaseShape</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Labia Slit\" invert=\"false\" small=\"100\" big=\"100\" hidden=\"true\">\n%1%1%1<Data name=\"CBBELabia Slit\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBELabia Slit</Data>\n%1%1%1<Data name=\"VirtualVaginaLabia Slit\" target=\"VirtualVagina\" local=\"true\">CBBE Body SMP (3BBB).osd\\VirtualVaginaLabia Slit</Data>\n%1%1</Slider>\n%1%1<Slider name=\"Labia Small\" invert=\"false\" small=\"100\" big=\"100\" hidden=\"true\">\n%1%1%1<Data name=\"CBBELabia Small\" target=\"CBBE\" local=\"true\">CBBE Body SMP (3BBB).osd\\CBBELabia Small</Data>\n%1%1%1<Data name=\"LabiaLabia Small\" target=\"Labia\" local=\"true\">CBBE Body SMP (3BBB).osd\\LabiaLabia Small</Data>\n%1%1</Slider>\n%1</SliderSet>");
+      break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
@@ -279,83 +288,83 @@ QString SliderFileBuilder::getBodyBlock(const BodyNameVersion& aBody)
       break;
   }
 
-  // Replace the "%1" string with identation spaces
-  return lSliderSet.arg("    ");
+  // Replace the "%1" string with identation spaces and "%2" with the name given to the line
+  return lSliderSet.arg("    ").arg(aLineName);
 }
 
 QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const QStringList& aFiltersList, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex)
 {
-  auto lSliderGroups{QString("<SliderGroups>\n")};
+  auto lBuiltContent{QString("<SliderGroups>\n")};
 
   const auto& lFilters{aFiltersList.size() > 0 ? aFiltersList : SliderFileBuilder::getXMLDefaultFiltersFromBody(aBody)};
 
   for (const auto& lFilter : lFilters)
   {
-    lSliderGroups.append(QString("    <Group name=\"%1\">\n").arg(lFilter));
+    lBuiltContent.append(QString("    <Group name=\"%1\">\n").arg(lFilter));
 
     switch (aBody)
     {
       case BodyNameVersion::CBBE_3BBB_3BA_1_40:
         // Body
-        lSliderGroups.append("%1%1<Member name=\"%2 - 3BBB Body Amazing\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - 3BBB Body Amazing\"/>\n");
 
         // Feet
         switch (aFeetModIndex)
         {
           case 0:
             // Default
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet\"/>\n");
             break;
           case 1:
             // More Sliders for Feet - Normal
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
             break;
           case 2:
             // More Sliders for Feet - High Heels
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
             break;
         }
 
         // Hands
         if (aMustUseBeastHands)
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - Beast Hands\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - Beast Hands\"/>\n");
         }
         else
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - Hands\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - Hands\"/>\n");
         }
 
         break;
       case BodyNameVersion::CBBE_3BBB_3BA_1_50:
         // Body
-        lSliderGroups.append("%1%1<Member name=\"%2 - CBBE 3BBB Body Amazing\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - CBBE 3BBB Body Amazing\"/>\n");
 
         // Feet
         switch (aFeetModIndex)
         {
           case 0:
             // Default
-            lSliderGroups.append("%1%1<Member name=\"%2 - CBBE 3BBB Feet\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - CBBE 3BBB Feet\"/>\n");
             break;
           case 1:
             // More Sliders for Feet - Normal
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
             break;
           case 2:
             // More Sliders for Feet - High Heels
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
             break;
         }
 
         // Hands
         if (aMustUseBeastHands)
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - CBBE Beast Hands\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - CBBE Beast Hands\"/>\n");
         }
         else
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - CBBE 3BBB Hands\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - CBBE 3BBB Hands\"/>\n");
         }
 
         break;
@@ -363,65 +372,65 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const Q
       case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
       case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
         // Body
-        lSliderGroups.append("%1%1<Member name=\"%2 - CBBE 3BBB Body Amazing\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - CBBE 3BBB Body Amazing\"/>\n");
 
         // Feet
         switch (aFeetModIndex)
         {
           case 0:
             // Default
-            lSliderGroups.append("%1%1<Member name=\"%2 - CBBE 3BBB Feet\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - CBBE 3BBB Feet\"/>\n");
             break;
           case 1:
             // More Sliders for Feet - Normal
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
             break;
           case 2:
             // More Sliders for Feet - High Heels
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
             break;
         }
 
         // Hands
         if (aMustUseBeastHands)
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - CBBE 3BBB Hands Beast\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - CBBE 3BBB Hands Beast\"/>\n");
         }
         else
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - CBBE 3BBB Hands\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - CBBE 3BBB Hands\"/>\n");
         }
 
         break;
       case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
         // Body
-        lSliderGroups.append("%1%1<Member name=\"%2 - CBBE Body SMP (3BBB)\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - CBBE Body SMP (3BBB)\"/>\n");
 
         // Feet
         switch (aFeetModIndex)
         {
           case 0:
             // Default
-            lSliderGroups.append("%1%1<Member name=\"%2 - CBBE Feet\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - CBBE Feet\"/>\n");
             break;
           case 1:
             // More Sliders for Feet - Normal
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n");
             break;
           case 2:
             // More Sliders for Feet - High Heels
-            lSliderGroups.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
+            lBuiltContent.append("%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n");
             break;
         }
 
         // Hands
         if (aMustUseBeastHands)
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - CBBE Hands Beast\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - CBBE Hands Beast\"/>\n");
         }
         else
         {
-          lSliderGroups.append("%1%1<Member name=\"%2 - CBBE Hands\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - CBBE Hands\"/>\n");
         }
 
         break;
@@ -429,69 +438,69 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const Q
       case BodyNameVersion::BHUNP_3BBB_2_15:
       case BodyNameVersion::BHUNP_3BBB_2_20:
       case BodyNameVersion::BHUNP_3BBB_2_25:
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB\"/>\n");
-        lSliderGroups.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB\"/>\n");
+        lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
 
         break;
       case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
       case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
       case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
       case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced\"/>\n");
-        lSliderGroups.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced\"/>\n");
+        lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
 
         break;
       case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
       case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
       case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
       case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Ver 2\"/>\n");
-        lSliderGroups.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Ver 2\"/>\n");
+        lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         break;
       case BodyNameVersion::BHUNP_BBP_2_13:
       case BodyNameVersion::BHUNP_BBP_2_15:
       case BodyNameVersion::BHUNP_BBP_2_20:
       case BodyNameVersion::BHUNP_BBP_2_25:
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP BBP\"/>\n");
-        lSliderGroups.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP BBP\"/>\n");
+        lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         break;
       case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
       case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
       case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
       case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP BBP Advanced\"/>\n");
-        lSliderGroups.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP BBP Advanced\"/>\n");
+        lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         break;
       case BodyNameVersion::BHUNP_TBBP_2_13:
       case BodyNameVersion::BHUNP_TBBP_2_15:
       case BodyNameVersion::BHUNP_TBBP_2_20:
       case BodyNameVersion::BHUNP_TBBP_2_25:
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP TBBP\"/>\n");
-        lSliderGroups.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
-        lSliderGroups.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP TBBP\"/>\n");
+        lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+        lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         break;
       case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
       case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
       case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
       case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
-        lSliderGroups.append("%1<Member name=\"%2 - BHUNP TBBP Advanced\"/>\n");
-        lSliderGroups.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
-        lSliderGroups.append("%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+        lBuiltContent.append("%1<Member name=\"%2 - BHUNP TBBP Advanced\"/>\n");
+        lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+        lBuiltContent.append("%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         break;
     }
 
-    lSliderGroups.append("%1</Group>\n");
+    lBuiltContent.append("%1</Group>\n");
   }
 
-  lSliderGroups.append("</SliderGroups>\n");
+  lBuiltContent.append("</SliderGroups>\n");
 
   // Replace the "%1" string with identation spaces and "%2" with the name given to the line
-  return lSliderGroups.arg("    ").arg(aLineName);
+  return lBuiltContent.arg("    ").arg(aLineName);
 }
 
 QString SliderFileBuilder::getFeetLineForBHUNP(const int& aFeetModIndex)
@@ -500,13 +509,13 @@ QString SliderFileBuilder::getFeetLineForBHUNP(const int& aFeetModIndex)
   {
     case 0:
       // Default
-      return "        <Member name=\"%2 - BHUNP 3BBB Advanced Feet\"/>\n)";
+      return "%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Feet\"/>\n)";
     case 1:
       // More Sliders for Feet - Normal
-      return "        <Member name=\"%2 - Feet (MSF - normal)\"/>\n";
+      return "%1%1<Member name=\"%2 - Feet (MSF - normal)\"/>\n";
     case 2:
       // More Sliders for Feet - High Heels
-      return "        <Member name=\"%2 - Feet (MSF - HH)\"/>\n";
+      return "%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n";
   }
 
   return QString("");
