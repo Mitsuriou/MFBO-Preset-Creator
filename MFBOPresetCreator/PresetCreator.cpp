@@ -56,6 +56,8 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool& aSkipFileC
 
 void PresetCreator::saveProject(const bool& aIsSaveAsContext)
 {
+  // TODO: Check if this function needs to take into account some new UI components
+
   auto lFilePath{QString(this->mLastUsedSavePath)};
   // Check the event source
   if (aIsSaveAsContext)
@@ -1540,14 +1542,6 @@ void PresetCreator::generateDirectoryStructure()
       Utils::removeDirectoryAndSubDirs(lEntryDirectory);
     }
 
-    return;
-  }
-
-  // Get the virtual ressources' directory
-  auto lRessourcesFolder{Utils::getBodyRessourceFolder(static_cast<BodyNameVersion>(lBodySelected))};
-  if (lRessourcesFolder.length() == 0)
-  {
-    // It should not be possible to reach this statement, but in case an update is buggy, keep this security
     return;
   }
 

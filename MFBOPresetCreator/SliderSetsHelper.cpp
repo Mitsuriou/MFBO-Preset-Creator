@@ -2,7 +2,7 @@
 
 QString SliderSetsHelper::getSliderSetFile(const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex)
 {
-  return QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SliderSetInfo version=\"1\">\n%1\n%2\n%3\n</SliderSetInfo>")
+  return QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SliderSetInfo version=\"1\">\n%1\n%2\n%3\n</SliderSetInfo>\n")
     .arg(SliderSetsHelper::getBodyBlock(aBody))
     .arg(SliderSetsHelper::getFeetBlock(aBody, aFeetModIndex))
     .arg(SliderSetsHelper::getHandsBlock(aBody, aMustUseBeastHands));
@@ -237,5 +237,48 @@ QString SliderSetsHelper::getFeetBlock(const BodyNameVersion& aBody, const int& 
 
 QString SliderSetsHelper::getBodyBlock(const BodyNameVersion& aBody)
 {
-  return QString("wxcwxc");
+  auto lSliderSet{QString("")};
+
+  switch (aBody)
+  {
+    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+    case BodyNameVersion::BHUNP_3BBB_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+    case BodyNameVersion::BHUNP_BBP_2_13:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_TBBP_2_13:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+    case BodyNameVersion::BHUNP_3BBB_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
+    case BodyNameVersion::BHUNP_BBP_2_15:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_TBBP_2_15:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
+    case BodyNameVersion::BHUNP_3BBB_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
+    case BodyNameVersion::BHUNP_BBP_2_20:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_TBBP_2_20:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
+    case BodyNameVersion::BHUNP_3BBB_2_25:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
+    case BodyNameVersion::BHUNP_BBP_2_25:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
+    case BodyNameVersion::BHUNP_TBBP_2_25:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
+      lSliderSet = QString("");
+      break;
+  }
+
+  // Replace the "%1" string with identation spaces
+  return lSliderSet.arg("    ");
 }

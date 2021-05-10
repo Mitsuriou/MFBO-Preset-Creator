@@ -35,7 +35,6 @@ public:
   static bool removeDirectoryAndSubDirs(const QString& aPath);
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconRessourceFolder(const GUITheme& aTheme);
-  static QString getBodyRessourceFolder(const BodyNameVersion& aBody);
   static bool isBodySupportingBeastHands(const BodyNameVersion& aBody);
   static QString getAppDataPathFolder();
 

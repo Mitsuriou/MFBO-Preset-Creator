@@ -486,13 +486,6 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lAbsFilePath{QString()};
   auto lRelativeDirs{QString()};
   std::vector<Struct::SliderSet> lParsedSliderSets;
-  auto lRessourcesFolder{Utils::getBodyRessourceFolder(lBodySelected)};
-
-  if (lRessourcesFolder.length() == 0)
-  {
-    // It should not be possible to reach this statement, but in case an update is buggy, keep this security
-    return;
-  }
 
   lProgressDialog.setLabelText(tr("Parsing XML files. Please wait..."));
   lProgressbar->setRange(0, lNumberXMLFiles);
