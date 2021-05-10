@@ -35,7 +35,7 @@ enum class BodyNameVersion
   BHUNP_TBBP_2_25 = 30,
   BHUNP_TBBP_Advanced_2_25 = 31,
   CBBE_3BBB_3BA_2_00_to_2_04 = 32,
-  CBBE_3BBB_3BA_2_05 = 33,
+  CBBE_3BBB_3BA_2_05_to_2_06 = 33,
 };
 
 enum class BodyName

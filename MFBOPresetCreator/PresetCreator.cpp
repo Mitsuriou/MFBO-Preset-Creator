@@ -846,10 +846,8 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
   return true;
 }
 
-bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aFeetModIndex, const QString& aRessourcesFolder, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
+bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const int& aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
 {
-  // TODO: use aFeetModIndex
-
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
 
@@ -863,71 +861,33 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& 
     return false;
   }
 
-  // Copy the OSP file
+  // Construct the file content
+  auto lOSPFileContent{SliderSetsHelper::getSliderSetFile(static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
+
+  // Fill the custom variables
+  lOSPFileContent.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);
+  lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
+  lOSPFileContent.replace(QString("{%%feet_output_path%%}"), aMeshesPathFeet.replace("/", "\\"));
+  lOSPFileContent.replace(QString("{%%hands_output_path%%}"), aMeshesPathHands.replace("/", "\\"));
+  lOSPFileContent.replace(QString("{%%body_output_file%%}"), aBodyName.length() > 0 ? aBodyName : "femalebody");
+  lOSPFileContent.replace(QString("{%%feet_output_file%%}"), aFeetName.length() > 0 ? aFeetName : "femalefeet");
+  lOSPFileContent.replace(QString("{%%hands_output_file%%}"), aHandsName.length() > 0 ? aHandsName : "femalehands");
+
+  // Create the OSP file on disk
   auto lOSPPathName(lSliderSetsDirectory + QDir::separator() + aOSPXMLNames + ".osp");
-  if (aMustUseBeastHands)
-  {
-    if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_beast_hands_osp", lOSPPathName))
-    {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
-      return false;
-    }
-  }
-  else
-  {
-    if (!QFile::copy(":/" + aRessourcesFolder + "/bodyslide_osp", lOSPPathName))
-    {
-      Utils::displayWarningMessage(tr("The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process."));
-      return false;
-    }
-  }
 
   QFile lOSPFile(lOSPPathName);
-  lOSPFile.setPermissions(QFile::WriteUser);
-
-  QByteArray lTempOSPContent;
-
-  if (lOSPFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
   {
-    lTempOSPContent = lOSPFile.readAll();
+    QTextStream lTextStream(&lOSPFile);
+    lTextStream << lOSPFileContent;
+    lTextStream.flush();
+
     lOSPFile.close();
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to read the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
-    return false;
-  }
-
-  // Replace the slider sets names
-  if (lTempOSPContent.length() > 0)
-  {
-    if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-      auto lTextToParse{static_cast<QString>(lTempOSPContent)};
-      lTextToParse.replace(QString("{%%bodyslide_set_name%%}"), aBodyslideSlidersetsNames);
-      lTextToParse.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
-      lTextToParse.replace(QString("{%%feet_output_path%%}"), aMeshesPathFeet.replace("/", "\\"));
-      lTextToParse.replace(QString("{%%hands_output_path%%}"), aMeshesPathHands.replace("/", "\\"));
-
-      lTextToParse.replace(QString("{%%body_output_file%%}"), aBodyName.length() > 0 ? aBodyName : "femalebody");
-      lTextToParse.replace(QString("{%%feet_output_file%%}"), aFeetName.length() > 0 ? aFeetName : "femalefeet");
-      lTextToParse.replace(QString("{%%hands_output_file%%}"), aHandsName.length() > 0 ? aHandsName : "femalehands");
-
-      QTextStream lTextStream(&lOSPFile);
-      lTextStream << lTextToParse;
-      lTextStream.flush();
-
-      lOSPFile.close();
-    }
-    else
-    {
-      Utils::displayWarningMessage(tr("Error while trying to write in the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
-      return false;
-    }
-  }
-  else
-  {
-    Utils::displayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
+    Utils::displayWarningMessage(tr("Error while trying to write in the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
     return false;
   }
 
@@ -1226,7 +1186,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
       if (lMustUseBeastHands)
         lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands Beast").arg(aText);
       else
@@ -1603,7 +1563,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // OSP file
-  if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lFeetModIndex, lRessourcesFolder, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
+  if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)

@@ -281,7 +281,7 @@ QString Utils::getBodyRessourceFolder(const BodyNameVersion& aBody)
       return "cbbe_3bbb_1.51_1.55";
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
       return "cbbe_3bbb_2.00_2.04";
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
       return "cbbe_3bbb_2.05";
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return "cbbe_smp_3bbb_1.2.0";
@@ -355,7 +355,7 @@ bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return true;
     default:
@@ -919,7 +919,7 @@ QString Utils::getXMLFilterBlockFromBody(const QString& aGroupName, const int& a
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
       // Body
       lXMLBlock.append("        <Member name=\"{%%bodyslide_set_name%%} - CBBE 3BBB Body Amazing\"/>\n");
 
@@ -1078,7 +1078,7 @@ QStringList Utils::getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
       return QStringList({"MFBO", "CBBE"});
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return QStringList({"MFBO", "CBBE", "CBBE Bodies"});

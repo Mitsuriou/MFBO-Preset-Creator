@@ -83,7 +83,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
       return std::pair<int, int>(0, static_cast<int>(aBodyVersion));
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
       return std::pair<int, int>(0, 3);
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
       return std::pair<int, int>(0, 4);
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return std::pair<int, int>(1, 0);

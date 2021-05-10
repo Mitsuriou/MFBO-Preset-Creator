@@ -164,6 +164,7 @@ echo #####################################################</Command>
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="PresetCreator.cpp" />
+    <ClCompile Include="SliderSetsHelper.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
     <ClCompile Include="TexturesAssistant.cpp" />
     <ClCompile Include="Update.cpp" />
@@ -182,6 +183,7 @@ echo #####################################################</Command>
     <ClInclude Include="LangManager.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Settings.h" />
+    <ClInclude Include="SliderSetsHelper.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Struct.h" />
     <QtMoc Include="RetargetingTool.h" />
