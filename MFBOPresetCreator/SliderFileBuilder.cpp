@@ -244,117 +244,117 @@ QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyName
 
 QString SliderFileBuilder::getBodyBlock(const QString& aLineName, const BodyNameVersion& aBody)
 {
-  QFile lQRCFile;
-  auto lQRCFolderPrefix{QString(":/bodyslides/osp/body/")}; // TODO: refactor the strings below
+  auto lFileName{QString(":/bodyslides/osp/body/")};
 
   switch (aBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:
-      lQRCFile.setFileName("cbbe 3bbb 3ba/1.40");
+      lFileName.append("cbbe 3bbb 3ba/1.40");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-      lQRCFile.setFileName(":/bodyslides/osp/body/cbbe 3bbb 3ba/1.50");
+      lFileName.append("cbbe 3bbb 3ba/1.50");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
-      lQRCFile.setFileName(":/bodyslides/osp/body/cbbe 3bbb 3ba/1.51_to_1.55");
+      lFileName.append("cbbe 3bbb 3ba/1.51_to_1.55");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-      lQRCFile.setFileName(":/bodyslides/osp/body/cbbe 3bbb 3ba/2.00_to_2.04");
+      lFileName.append("cbbe 3bbb 3ba/2.00_to_2.04");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
-      lQRCFile.setFileName(":/bodyslides/osp/body/cbbe 3bbb 3ba/2.05_to_2.06");
+      lFileName.append("cbbe 3bbb 3ba/2.05_to_2.06");
       break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      lQRCFile.setFileName(":/bodyslides/osp/body/cbbe smp 3bbb/1.2.0");
+      lFileName.append("cbbe smp 3bbb/1.2.0");
       break;
     case BodyNameVersion::BHUNP_3BBB_2_13:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb/2.13");
+      lFileName.append("bhunp 3bbb/2.13");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced/2.13");
+      lFileName.append("bhunp 3bbb advanced/2.13");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced ver 2/2.13");
+      lFileName.append("bhunp 3bbb advanced ver 2/2.13");
       break;
     case BodyNameVersion::BHUNP_BBP_2_13:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp/2.13");
+      lFileName.append("bhunp bbp/2.13");
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp advanced/2.13");
+      lFileName.append("bhunp bbp advanced/2.13");
       break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp/2.13");
+      lFileName.append("bhunp tbbp/2.13");
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp advanced/2.13");
+      lFileName.append("bhunp tbbp advanced/2.13");
       break;
     case BodyNameVersion::BHUNP_3BBB_2_15:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb/2.15");
+      lFileName.append("bhunp 3bbb/2.15");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced/2.15");
+      lFileName.append("bhunp 3bbb advanced/2.15");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced ver 2/2.15");
+      lFileName.append("bhunp 3bbb advanced ver 2/2.15");
       break;
     case BodyNameVersion::BHUNP_BBP_2_15:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp/2.15");
+      lFileName.append("bhunp bbp/2.15");
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp advanced/2.15");
+      lFileName.append("bhunp bbp advanced/2.15");
       break;
     case BodyNameVersion::BHUNP_TBBP_2_15:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp/2.15");
+      lFileName.append("bhunp tbbp/2.15");
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp advanced/2.15");
+      lFileName.append("bhunp tbbp advanced/2.15");
       break;
     case BodyNameVersion::BHUNP_3BBB_2_20:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb/2.20");
+      lFileName.append("bhunp 3bbb/2.20");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced/2.20");
+      lFileName.append("bhunp 3bbb advanced/2.20");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced ver 2/2.20");
+      lFileName.append("bhunp 3bbb advanced ver 2/2.20");
       break;
     case BodyNameVersion::BHUNP_BBP_2_20:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp/2.20");
+      lFileName.append("bhunp bbp/2.20");
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp advanced/2.20");
+      lFileName.append("bhunp bbp advanced/2.20");
       break;
     case BodyNameVersion::BHUNP_TBBP_2_20:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp/2.20");
+      lFileName.append("bhunp tbbp/2.20");
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp advanced/2.20");
+      lFileName.append("bhunp tbbp advanced/2.20");
       break;
     case BodyNameVersion::BHUNP_3BBB_2_25:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb/2.25");
+      lFileName.append("bhunp 3bbb/2.25");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced/2.25");
+      lFileName.append("bhunp 3bbb advanced/2.25");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp 3bbb advanced ver 2/2.25");
+      lFileName.append("bhunp 3bbb advanced ver 2/2.25");
       break;
     case BodyNameVersion::BHUNP_BBP_2_25:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp/2.25");
+      lFileName.append("bhunp bbp/2.25");
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp bbp advanced/2.25");
+      lFileName.append("bhunp bbp advanced/2.25");
       break;
     case BodyNameVersion::BHUNP_TBBP_2_25:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp/2.25");
+      lFileName.append("bhunp tbbp/2.25");
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
-      lQRCFile.setFileName(":/bodyslides/osp/body/bhunp tbbp advanced/2.25");
+      lFileName.append("bhunp tbbp advanced/2.25");
       break;
   }
 
   QString lSliderSet;
 
+  QFile lQRCFile(lFileName);
   if (lQRCFile.open(QFile::ReadOnly | QFile::Text))
   {
     QTextStream lFileBuffer(&lQRCFile);
