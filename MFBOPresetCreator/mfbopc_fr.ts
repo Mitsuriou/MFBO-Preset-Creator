@@ -170,7 +170,7 @@
     <message>
         <location filename="BatchConversion.cpp" line="47"/>
         <source>Go back to the batch conversion window</source>
-        <translation type="unfinished"></translation>
+        <translation>Revenir sur la fenêtre de l&apos;outil de conversion multiple</translation>
     </message>
     <message>
         <source>BodySlide Presets&apos; Retargeting</source>
@@ -179,12 +179,12 @@
     <message>
         <location filename="BatchConversion.cpp" line="69"/>
         <source>Batch Conversion</source>
-        <translation type="unfinished">Conversion Multiple</translation>
+        <translation>Conversion Multiple</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="79"/>
         <source>General</source>
-        <translation type="unfinished">Général</translation>
+        <translation>Général</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="98"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="BatchConversion.cpp" line="195"/>
         <source>Targeted body and version:</source>
-        <translation type="unfinished">Corps et version ciblé :</translation>
+        <translation>Corps et version ciblé :</translation>
     </message>
     <message>
         <source>Skeleton file:</source>
@@ -209,17 +209,17 @@
         <location filename="BatchConversion.cpp" line="146"/>
         <location filename="BatchConversion.cpp" line="158"/>
         <source>Refresh</source>
-        <translation type="unfinished">Rafraîchir</translation>
+        <translation>Rafraîchir</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="235"/>
         <source>BodySlide filters:</source>
-        <translation type="unfinished">Filtres BodySlide :</translation>
+        <translation>Filtres BodySlide :</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="248"/>
         <source>Edit BodySlide filters sets</source>
-        <translation type="unfinished">Éditer les sets de filtres BodySlide</translation>
+        <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
         <source>Backup</source>
@@ -257,52 +257,52 @@
         <location filename="BatchConversion.cpp" line="455"/>
         <location filename="BatchConversion.cpp" line="479"/>
         <source>No path given or invalid path given.</source>
-        <translation type="unfinished">Aucun emplacement donné ou emplacement invalide donné.</translation>
+        <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="138"/>
         <source>Skeleton file (human):</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier de squelette (humaine) :</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="122"/>
         <source>Skeleton</source>
-        <translation type="unfinished">Squelette</translation>
+        <translation>Squelette</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="150"/>
         <source>Skeleton file (beast):</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier de squelette (bête) :</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="174"/>
         <source>BodySlide</source>
-        <translation type="unfinished"></translation>
+        <translation>BodySlide</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="214"/>
         <source>BodySlide files names:</source>
-        <translation type="unfinished">Noms des fichiers BodySlide :</translation>
+        <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="226"/>
         <source>Presets names:</source>
-        <translation type="unfinished">Noms des presets :</translation>
+        <translation>Noms des presets :</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="227"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
-        <translation type="unfinished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
+        <translation>Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="290"/>
         <source>Batch generate the files on my computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Générer les multiples fichiers sur mon ordinateur</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="473"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <translation type="unfinished">Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
+        <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
         <source>Files generation&apos;s output location</source>
@@ -534,37 +534,37 @@
     <message>
         <location filename="ComponentFactory.cpp" line="106"/>
         <source>Files generation&apos;s output location</source>
-        <translation type="unfinished">Emplacement de sortie de la génération de fichiers</translation>
+        <translation>Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="124"/>
         <source>Output directory path:</source>
-        <translation type="unfinished">Emplacement du répertoire de sortie :</translation>
+        <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="137"/>
         <source>Choose a directory...</source>
-        <translation type="unfinished">Choisir un répertoire...</translation>
+        <translation>Choisir un répertoire...</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="141"/>
         <source>Output subdirectory name/path:</source>
-        <translation type="unfinished">Nom/Emplacement du sous-répertoire de sortie :</translation>
+        <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="148"/>
         <source>Use only subdirectory path?</source>
-        <translation type="unfinished">Utiliser seulement le sous-répertoire ?</translation>
+        <translation>Utiliser seulement le sous-répertoire ?</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="150"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
-        <translation type="unfinished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
+        <translation>Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="156"/>
         <source>Preview:</source>
-        <translation type="unfinished">Aperçu :</translation>
+        <translation>Aperçu :</translation>
     </message>
 </context>
 <context>
@@ -902,12 +902,12 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="PresetCreator.cpp" line="799"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1582"/>
         <source>Open the generated directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le répertoire généré</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="386"/>
@@ -923,7 +923,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="PresetCreator.cpp" line="404"/>
         <source>Refresh</source>
         <oldsource>aRefresh</oldsource>
-        <translation type="unfinished">Rafraîchir</translation>
+        <translation>Rafraîchir</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="408"/>
@@ -985,7 +985,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="PresetCreator.cpp" line="846"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <oldsource>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</oldsource>
-        <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
+        <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="875"/>
@@ -1334,7 +1334,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="648"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
+        <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="662"/>
@@ -1349,7 +1349,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="748"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="756"/>
@@ -1486,7 +1486,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="Settings.cpp" line="292"/>
         <location filename="Settings.cpp" line="365"/>
         <source>Default selected feet mod:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod de pieds sélectionné par défaut :</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="332"/>
@@ -1497,7 +1497,7 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="Settings.cpp" line="422"/>
         <source>Remove all the history</source>
         <oldsource>Clear all history</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer tout l&apos;historique</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="430"/>
@@ -1507,7 +1507,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="Settings.cpp" line="431"/>
         <source>Batch Conv.: output</source>
-        <translation type="unfinished"></translation>
+        <translation>Conv. Multiple : sortie</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="466"/>

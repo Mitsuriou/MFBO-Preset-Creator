@@ -180,7 +180,7 @@
     <message>
         <location filename="BatchConversion.cpp" line="79"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="98"/>
@@ -195,7 +195,7 @@
     <message>
         <location filename="BatchConversion.cpp" line="122"/>
         <source>Skeleton</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="138"/>
@@ -211,53 +211,53 @@
     <message>
         <location filename="BatchConversion.cpp" line="150"/>
         <source>Skeleton file (beast):</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="174"/>
         <source>BodySlide</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="195"/>
         <source>Targeted body and version:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="214"/>
         <source>BodySlide files names:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="226"/>
         <source>Presets names:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="227"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="235"/>
         <source>BodySlide filters:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="248"/>
         <source>Edit BodySlide filters sets</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="455"/>
         <location filename="BatchConversion.cpp" line="479"/>
         <source>No path given or invalid path given.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="473"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="290"/>
@@ -374,37 +374,37 @@
     <message>
         <location filename="ComponentFactory.cpp" line="106"/>
         <source>Files generation&apos;s output location</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="124"/>
         <source>Output directory path:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="137"/>
         <source>Choose a directory...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="141"/>
         <source>Output subdirectory name/path:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="148"/>
         <source>Use only subdirectory path?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="150"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="156"/>
         <source>Preview:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -752,7 +752,7 @@ Do you want to download it now?</source>
         <location filename="PresetCreator.cpp" line="404"/>
         <source>Refresh</source>
         <oldsource>aRefresh</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="408"/>
@@ -777,13 +777,13 @@ Do you want to download it now?</source>
     <message>
         <location filename="PresetCreator.cpp" line="799"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="846"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <oldsource>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="875"/>
@@ -824,7 +824,7 @@ Do you want to download it now?</source>
     <message>
         <location filename="PresetCreator.cpp" line="1582"/>
         <source>Open the generated directory</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1427"/>
@@ -1092,7 +1092,7 @@ Do you want to download it now?</source>
     <message>
         <location filename="RetargetingTool.cpp" line="648"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="662"/>
@@ -1107,7 +1107,7 @@ Do you want to download it now?</source>
     <message>
         <location filename="RetargetingTool.cpp" line="748"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="756"/>
@@ -1243,7 +1243,7 @@ Do you want to download it now?</source>
         <location filename="Settings.cpp" line="292"/>
         <location filename="Settings.cpp" line="365"/>
         <source>Default selected feet mod:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="422"/>
@@ -1259,7 +1259,7 @@ Do you want to download it now?</source>
     <message>
         <location filename="Settings.cpp" line="431"/>
         <source>Batch Conv.: output</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="466"/>
