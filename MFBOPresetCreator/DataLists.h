@@ -12,8 +12,8 @@ class DataLists final : public QObject
 public:
   // Lists for bodies names and versions
   static QStringList getBodiesNames();
-  static QStringList getVersionsFromBodyName(BodyName aBody);
-  static BodyNameVersion getBodyNameVersion(BodyName aBody, int aRelativeVersion);
+  static QStringList getVersionsFromBodyName(const BodyName& aBody);
+  static BodyNameVersion getBodyNameVersion(const BodyName& aBody, const int& aRelativeVersion);
   static std::pair<int, int> getSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion);
   static QStringList getFeetModsEntries();
 

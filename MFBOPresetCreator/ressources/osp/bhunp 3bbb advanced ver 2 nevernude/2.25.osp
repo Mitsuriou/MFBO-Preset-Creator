@@ -1,0 +1,1336 @@
+%1<SliderSet name="%2 - BHUNP 3BBB Advanced Ver 2 Nevernude">
+%1%1<DataFolder>BHUNP 3BBB Advanced Nevernude</DataFolder>
+%1%1<SourceFile>BHUNP 3BBB Advanced Ver2 Nevernude.nif</SourceFile>
+%1%1<OutputPath>{%%body_output_path%%}</OutputPath>
+%1%1<OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
+%1%1<Shape target="BaseShape" DataFolder="BHUNP 3BBB Advanced">BaseShape</Shape>
+%1%1<Shape target="BaseShapeAnus" DataFolder="BHUNP 3BBB Advanced">BaseShapeAnus</Shape>
+%1%1<Shape target="BaseShapeCanal" DataFolder="BHUNP 3BBB Advanced">BaseShapeCanal</Shape>
+%1%1<Shape target="BaseShapeVagina" DataFolder="BHUNP 3BBB Advanced">BaseShapeVagina</Shape>
+%1%1<Shape target="bellyring" LockNormals="true">bellyring</Shape>
+%1%1<Shape target="bellyring2" LockNormals="true">bellyring2</Shape>
+%1%1<Shape target="bra" LockNormals="true">bra</Shape>
+%1%1<Shape target="panty" LockNormals="true">panty</Shape>
+%1%1<Slider name="7B Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Low</Data>
+%1%1%1<Data name="BaseShapeCanal7B Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Low</Data>
+%1%1%1<Data name="BaseShapeAnus7B Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Low</Data>
+%1%1%1<Data name="BaseShapeVagina7B Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Low</Data>
+%1%1%1<Data name="bra7B Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Low</Data>
+%1%1%1<Data name="panty7B Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Low</Data>
+%1%1%1<Data name="bellyring7B Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Low</Data>
+%1%1%1<Data name="bellyring27B Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7B High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B High</Data>
+%1%1%1<Data name="BaseShapeCanal7B High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B High</Data>
+%1%1%1<Data name="BaseShapeAnus7B High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B High</Data>
+%1%1%1<Data name="BaseShapeVagina7B High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B High</Data>
+%1%1%1<Data name="bra7B High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B High</Data>
+%1%1%1<Data name="panty7B High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B High</Data>
+%1%1%1<Data name="bellyring7B High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B High</Data>
+%1%1%1<Data name="bellyring27B High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B High</Data>
+%1%1</Slider>
+%1%1<Slider name="7BUNP Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7BUNP Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7BUNP Low</Data>
+%1%1%1<Data name="BaseShapeCanal7BUNP Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7BUNP Low</Data>
+%1%1%1<Data name="BaseShapeAnus7BUNP Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7BUNP Low</Data>
+%1%1%1<Data name="BaseShapeVagina7BUNP Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7BUNP Low</Data>
+%1%1%1<Data name="bra7BUNP Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7BUNP Low</Data>
+%1%1%1<Data name="panty7BUNP Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7BUNP Low</Data>
+%1%1%1<Data name="bellyring7BUNP Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7BUNP Low</Data>
+%1%1%1<Data name="bellyring27BUNP Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27BUNP Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7BUNP High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7BUNP High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7BUNP High</Data>
+%1%1%1<Data name="BaseShapeCanal7BUNP High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7BUNP High</Data>
+%1%1%1<Data name="BaseShapeAnus7BUNP High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7BUNP High</Data>
+%1%1%1<Data name="BaseShapeVagina7BUNP High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7BUNP High</Data>
+%1%1%1<Data name="bra7BUNP High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7BUNP High</Data>
+%1%1%1<Data name="panty7BUNP High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7BUNP High</Data>
+%1%1%1<Data name="bellyring7BUNP High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7BUNP High</Data>
+%1%1%1<Data name="bellyring27BUNP High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27BUNP High</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Bombshell Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Bombshell Low</Data>
+%1%1%1<Data name="BaseShapeCanal7B Bombshell Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Bombshell Low</Data>
+%1%1%1<Data name="BaseShapeAnus7B Bombshell Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Bombshell Low</Data>
+%1%1%1<Data name="BaseShapeVagina7B Bombshell Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Bombshell Low</Data>
+%1%1%1<Data name="bra7B Bombshell Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Bombshell Low</Data>
+%1%1%1<Data name="panty7B Bombshell Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Bombshell Low</Data>
+%1%1%1<Data name="bellyring7B Bombshell Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Bombshell Low</Data>
+%1%1%1<Data name="bellyring27B Bombshell Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Bombshell Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Bombshell High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Bombshell High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Bombshell High</Data>
+%1%1%1<Data name="BaseShapeCanal7B Bombshell High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Bombshell High</Data>
+%1%1%1<Data name="BaseShapeAnus7B Bombshell High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Bombshell High</Data>
+%1%1%1<Data name="BaseShapeVagina7B Bombshell High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Bombshell High</Data>
+%1%1%1<Data name="bra7B Bombshell High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Bombshell High</Data>
+%1%1%1<Data name="panty7B Bombshell High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Bombshell High</Data>
+%1%1%1<Data name="bellyring7B Bombshell High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Bombshell High</Data>
+%1%1%1<Data name="bellyring27B Bombshell High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Bombshell High</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Natural Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Natural Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Natural Low</Data>
+%1%1%1<Data name="BaseShapeCanal7B Natural Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Natural Low</Data>
+%1%1%1<Data name="BaseShapeAnus7B Natural Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Natural Low</Data>
+%1%1%1<Data name="BaseShapeVagina7B Natural Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Natural Low</Data>
+%1%1%1<Data name="bra7B Natural Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Natural Low</Data>
+%1%1%1<Data name="panty7B Natural Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Natural Low</Data>
+%1%1%1<Data name="bellyring7B Natural Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Natural Low</Data>
+%1%1%1<Data name="bellyring27B Natural Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Natural Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Natural High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Natural High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Natural High</Data>
+%1%1%1<Data name="BaseShapeCanal7B Natural High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Natural High</Data>
+%1%1%1<Data name="BaseShapeAnus7B Natural High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Natural High</Data>
+%1%1%1<Data name="BaseShapeVagina7B Natural High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Natural High</Data>
+%1%1%1<Data name="bra7B Natural High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Natural High</Data>
+%1%1%1<Data name="panty7B Natural High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Natural High</Data>
+%1%1%1<Data name="bellyring7B Natural High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Natural High</Data>
+%1%1%1<Data name="bellyring27B Natural High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Natural High</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Cleavage Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Cleavage Low</Data>
+%1%1%1<Data name="BaseShapeCanal7B Cleavage Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Cleavage Low</Data>
+%1%1%1<Data name="BaseShapeAnus7B Cleavage Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Cleavage Low</Data>
+%1%1%1<Data name="BaseShapeVagina7B Cleavage Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Cleavage Low</Data>
+%1%1%1<Data name="bra7B Cleavage Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Cleavage Low</Data>
+%1%1%1<Data name="panty7B Cleavage Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Cleavage Low</Data>
+%1%1%1<Data name="bellyring7B Cleavage Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Cleavage Low</Data>
+%1%1%1<Data name="bellyring27B Cleavage Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Cleavage Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Cleavage High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Cleavage High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Cleavage High</Data>
+%1%1%1<Data name="BaseShapeCanal7B Cleavage High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Cleavage High</Data>
+%1%1%1<Data name="BaseShapeAnus7B Cleavage High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Cleavage High</Data>
+%1%1%1<Data name="BaseShapeVagina7B Cleavage High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Cleavage High</Data>
+%1%1%1<Data name="bra7B Cleavage High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Cleavage High</Data>
+%1%1%1<Data name="panty7B Cleavage High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Cleavage High</Data>
+%1%1%1<Data name="bellyring7B Cleavage High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Cleavage High</Data>
+%1%1%1<Data name="bellyring27B Cleavage High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Cleavage High</Data>
+%1%1</Slider>
+%1%1<Slider name="7B BCup Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B BCup Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B BCup Low</Data>
+%1%1%1<Data name="BaseShapeCanal7B BCup Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B BCup Low</Data>
+%1%1%1<Data name="BaseShapeAnus7B BCup Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B BCup Low</Data>
+%1%1%1<Data name="BaseShapeVagina7B BCup Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B BCup Low</Data>
+%1%1%1<Data name="bra7B BCup Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B BCup Low</Data>
+%1%1%1<Data name="panty7B BCup Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B BCup Low</Data>
+%1%1%1<Data name="bellyring7B BCup Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B BCup Low</Data>
+%1%1%1<Data name="bellyring27B BCup Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B BCup Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7B BCup High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B BCup High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B BCup High</Data>
+%1%1%1<Data name="BaseShapeCanal7B BCup High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B BCup High</Data>
+%1%1%1<Data name="BaseShapeAnus7B BCup High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B BCup High</Data>
+%1%1%1<Data name="BaseShapeVagina7B BCup High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B BCup High</Data>
+%1%1%1<Data name="bra7B BCup High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B BCup High</Data>
+%1%1%1<Data name="panty7B BCup High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B BCup High</Data>
+%1%1%1<Data name="bellyring7B BCup High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B BCup High</Data>
+%1%1%1<Data name="bellyring27B BCup High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B BCup High</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Oppai Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Oppai Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Oppai Low</Data>
+%1%1%1<Data name="BaseShapeCanal7B Oppai Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Oppai Low</Data>
+%1%1%1<Data name="BaseShapeAnus7B Oppai Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Oppai Low</Data>
+%1%1%1<Data name="BaseShapeVagina7B Oppai Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Oppai Low</Data>
+%1%1%1<Data name="bra7B Oppai Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Oppai Low</Data>
+%1%1%1<Data name="panty7B Oppai Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Oppai Low</Data>
+%1%1%1<Data name="bellyring7B Oppai Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Oppai Low</Data>
+%1%1%1<Data name="bellyring27B Oppai Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Oppai Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7B Oppai High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B Oppai High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B Oppai High</Data>
+%1%1%1<Data name="BaseShapeCanal7B Oppai High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B Oppai High</Data>
+%1%1%1<Data name="BaseShapeAnus7B Oppai High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B Oppai High</Data>
+%1%1%1<Data name="BaseShapeVagina7B Oppai High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B Oppai High</Data>
+%1%1%1<Data name="bra7B Oppai High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B Oppai High</Data>
+%1%1%1<Data name="panty7B Oppai High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B Oppai High</Data>
+%1%1%1<Data name="bellyring7B Oppai High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B Oppai High</Data>
+%1%1%1<Data name="bellyring27B Oppai High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B Oppai High</Data>
+%1%1</Slider>
+%1%1<Slider name="7B CH Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B CH Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B CH Low</Data>
+%1%1%1<Data name="BaseShapeCanal7B CH Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B CH Low</Data>
+%1%1%1<Data name="BaseShapeAnus7B CH Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B CH Low</Data>
+%1%1%1<Data name="BaseShapeVagina7B CH Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B CH Low</Data>
+%1%1%1<Data name="bra7B CH Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B CH Low</Data>
+%1%1%1<Data name="panty7B CH Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B CH Low</Data>
+%1%1%1<Data name="bellyring7B CH Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B CH Low</Data>
+%1%1%1<Data name="bellyring27B CH Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B CH Low</Data>
+%1%1</Slider>
+%1%1<Slider name="7B CH High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShape7B CH High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShape7B CH High</Data>
+%1%1%1<Data name="BaseShapeCanal7B CH High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanal7B CH High</Data>
+%1%1%1<Data name="BaseShapeAnus7B CH High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnus7B CH High</Data>
+%1%1%1<Data name="BaseShapeVagina7B CH High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVagina7B CH High</Data>
+%1%1%1<Data name="bra7B CH High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bra7B CH High</Data>
+%1%1%1<Data name="panty7B CH High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\panty7B CH High</Data>
+%1%1%1<Data name="bellyring7B CH High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring7B CH High</Data>
+%1%1%1<Data name="bellyring27B CH High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring27B CH High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNP Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNP Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP Low</Data>
+%1%1%1<Data name="braUNP Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP Low</Data>
+%1%1%1<Data name="pantyUNP Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP Low</Data>
+%1%1%1<Data name="bellyringUNP Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP Low</Data>
+%1%1%1<Data name="bellyring2UNP Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP High</Data>
+%1%1%1<Data name="BaseShapeCanalUNP High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP High</Data>
+%1%1%1<Data name="BaseShapeAnusUNP High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP High</Data>
+%1%1%1<Data name="braUNP High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP High</Data>
+%1%1%1<Data name="pantyUNP High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP High</Data>
+%1%1%1<Data name="bellyringUNP High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP High</Data>
+%1%1%1<Data name="bellyring2UNP High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP Pushup Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP Pushup Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNP Pushup Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP Pushup Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNP Pushup Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP Pushup Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP Pushup Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP Pushup Low</Data>
+%1%1%1<Data name="braUNP Pushup Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP Pushup Low</Data>
+%1%1%1<Data name="pantyUNP Pushup Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP Pushup Low</Data>
+%1%1%1<Data name="bellyringUNP Pushup Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP Pushup Low</Data>
+%1%1%1<Data name="bellyring2UNP Pushup Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP Pushup Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP Pushup High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP Pushup High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP Pushup High</Data>
+%1%1%1<Data name="BaseShapeCanalUNP Pushup High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP Pushup High</Data>
+%1%1%1<Data name="BaseShapeAnusUNP Pushup High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP Pushup High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP Pushup High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP Pushup High</Data>
+%1%1%1<Data name="braUNP Pushup High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP Pushup High</Data>
+%1%1%1<Data name="pantyUNP Pushup High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP Pushup High</Data>
+%1%1%1<Data name="bellyringUNP Pushup High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP Pushup High</Data>
+%1%1%1<Data name="bellyring2UNP Pushup High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP Pushup High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP Skinny Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP Skinny Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNP Skinny Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP Skinny Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNP Skinny Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP Skinny Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP Skinny Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP Skinny Low</Data>
+%1%1%1<Data name="braUNP Skinny Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP Skinny Low</Data>
+%1%1%1<Data name="pantyUNP Skinny Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP Skinny Low</Data>
+%1%1%1<Data name="bellyringUNP Skinny Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP Skinny Low</Data>
+%1%1%1<Data name="bellyring2UNP Skinny Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP Skinny Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP Skinny High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP Skinny High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP Skinny High</Data>
+%1%1%1<Data name="BaseShapeCanalUNP Skinny High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP Skinny High</Data>
+%1%1%1<Data name="BaseShapeAnusUNP Skinny High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP Skinny High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP Skinny High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP Skinny High</Data>
+%1%1%1<Data name="braUNP Skinny High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP Skinny High</Data>
+%1%1%1<Data name="pantyUNP Skinny High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP Skinny High</Data>
+%1%1%1<Data name="bellyringUNP Skinny High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP Skinny High</Data>
+%1%1%1<Data name="bellyring2UNP Skinny High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP Skinny High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP Perky Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP Perky Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP Perky Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNP Perky Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP Perky Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNP Perky Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP Perky Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP Perky Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP Perky Low</Data>
+%1%1%1<Data name="braUNP Perky Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP Perky Low</Data>
+%1%1%1<Data name="pantyUNP Perky Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP Perky Low</Data>
+%1%1%1<Data name="bellyringUNP Perky Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP Perky Low</Data>
+%1%1%1<Data name="bellyring2UNP Perky Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP Perky Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNP Perky High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNP Perky High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNP Perky High</Data>
+%1%1%1<Data name="BaseShapeCanalUNP Perky High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNP Perky High</Data>
+%1%1%1<Data name="BaseShapeAnusUNP Perky High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNP Perky High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNP Perky High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNP Perky High</Data>
+%1%1%1<Data name="braUNP Perky High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNP Perky High</Data>
+%1%1%1<Data name="pantyUNP Perky High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNP Perky High</Data>
+%1%1%1<Data name="bellyringUNP Perky High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNP Perky High</Data>
+%1%1%1<Data name="bellyring2UNP Perky High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNP Perky High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPB Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPB Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPB Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPB Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPB Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPB Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPB Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPB Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPB Low</Data>
+%1%1%1<Data name="braUNPB Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPB Low</Data>
+%1%1%1<Data name="pantyUNPB Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPB Low</Data>
+%1%1%1<Data name="bellyringUNPB Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPB Low</Data>
+%1%1%1<Data name="bellyring2UNPB Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPB Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPB High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPB High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPB High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPB High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPB High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPB High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPB High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPB High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPB High</Data>
+%1%1%1<Data name="braUNPB High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPB High</Data>
+%1%1%1<Data name="pantyUNPB High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPB High</Data>
+%1%1%1<Data name="bellyringUNPB High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPB High</Data>
+%1%1%1<Data name="bellyring2UNPB High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPB High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPB Chapi" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPB Chapi" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPB Chapi</Data>
+%1%1%1<Data name="BaseShapeCanalUNPB Chapi" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPB Chapi</Data>
+%1%1%1<Data name="BaseShapeAnusUNPB Chapi" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPB Chapi</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPB Chapi" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPB Chapi</Data>
+%1%1%1<Data name="braUNPB Chapi" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPB Chapi</Data>
+%1%1%1<Data name="pantyUNPB Chapi" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPB Chapi</Data>
+%1%1%1<Data name="bellyringUNPB Chapi" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPB Chapi</Data>
+%1%1%1<Data name="bellyring2UNPB Chapi" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPB Chapi</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPB Oppai v1" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPB Oppai v1</Data>
+%1%1%1<Data name="BaseShapeCanalUNPB Oppai v1" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPB Oppai v1</Data>
+%1%1%1<Data name="BaseShapeAnusUNPB Oppai v1" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPB Oppai v1</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPB Oppai v1" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPB Oppai v1</Data>
+%1%1%1<Data name="braUNPB Oppai v1" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPB Oppai v1</Data>
+%1%1%1<Data name="pantyUNPB Oppai v1" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPB Oppai v1</Data>
+%1%1%1<Data name="bellyringUNPB Oppai v1" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPB Oppai v1</Data>
+%1%1%1<Data name="bellyring2UNPB Oppai v1" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPB Oppai v1</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPB Oppai v3.2 Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPB Oppai v3.2 Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPB Oppai v3.2 Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPB Oppai v3.2 Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPB Oppai v3.2 Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPB Oppai v3.2 Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPB Oppai v3.2 Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPB Oppai v3.2 Low</Data>
+%1%1%1<Data name="braUNPB Oppai v3.2 Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPB Oppai v3.2 Low</Data>
+%1%1%1<Data name="pantyUNPB Oppai v3.2 Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPB Oppai v3.2 Low</Data>
+%1%1%1<Data name="bellyringUNPB Oppai v3.2 Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPB Oppai v3.2 Low</Data>
+%1%1%1<Data name="bellyring2UNPB Oppai v3.2 Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPB Oppai v3.2 Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPB Oppai v3.2 High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPB Oppai v3.2 High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPB Oppai v3.2 High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPB Oppai v3.2 High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPB Oppai v3.2 High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPB Oppai v3.2 High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPB Oppai v3.2 High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPB Oppai v3.2 High</Data>
+%1%1%1<Data name="braUNPB Oppai v3.2 High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPB Oppai v3.2 High</Data>
+%1%1%1<Data name="pantyUNPB Oppai v3.2 High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPB Oppai v3.2 High</Data>
+%1%1%1<Data name="bellyringUNPB Oppai v3.2 High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPB Oppai v3.2 High</Data>
+%1%1%1<Data name="bellyring2UNPB Oppai v3.2 High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPB Oppai v3.2 High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPetite Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPetite Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPetite Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPetite Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPetite Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPetite Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPetite Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPetite Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPetite Low</Data>
+%1%1%1<Data name="braUNPetite Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPetite Low</Data>
+%1%1%1<Data name="pantyUNPetite Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPetite Low</Data>
+%1%1%1<Data name="bellyringUNPetite Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPetite Low</Data>
+%1%1%1<Data name="bellyring2UNPetite Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPetite Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPetite High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPetite High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPetite High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPetite High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPetite High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPetite High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPetite High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPetite High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPetite High</Data>
+%1%1%1<Data name="braUNPetite High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPetite High</Data>
+%1%1%1<Data name="pantyUNPetite High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPetite High</Data>
+%1%1%1<Data name="bellyringUNPetite High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPetite High</Data>
+%1%1%1<Data name="bellyring2UNPetite High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPetite High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPC Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPC Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPC Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPC Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPC Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPC Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPC Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPC Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPC Low</Data>
+%1%1%1<Data name="braUNPC Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPC Low</Data>
+%1%1%1<Data name="pantyUNPC Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPC Low</Data>
+%1%1%1<Data name="bellyringUNPC Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPC Low</Data>
+%1%1%1<Data name="bellyring2UNPC Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPC Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPC High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPC High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPC High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPC High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPC High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPC High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPC High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPC High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPC High</Data>
+%1%1%1<Data name="braUNPC High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPC High</Data>
+%1%1%1<Data name="pantyUNPC High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPC High</Data>
+%1%1%1<Data name="bellyringUNPC High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPC High</Data>
+%1%1%1<Data name="bellyring2UNPC High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPC High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPCM Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPCM Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPCM Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPCM Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPCM Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPCM Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPCM Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPCM Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPCM Low</Data>
+%1%1%1<Data name="braUNPCM Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPCM Low</Data>
+%1%1%1<Data name="pantyUNPCM Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPCM Low</Data>
+%1%1%1<Data name="bellyringUNPCM Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPCM Low</Data>
+%1%1%1<Data name="bellyring2UNPCM Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPCM Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPCM High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPCM High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPCM High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPCM High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPCM High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPCM High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPCM High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPCM High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPCM High</Data>
+%1%1%1<Data name="braUNPCM High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPCM High</Data>
+%1%1%1<Data name="pantyUNPCM High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPCM High</Data>
+%1%1%1<Data name="bellyringUNPCM High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPCM High</Data>
+%1%1%1<Data name="bellyring2UNPCM High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPCM High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPSH Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPSH Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPSH Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPSH Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPSH Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPSH Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPSH Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPSH Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPSH Low</Data>
+%1%1%1<Data name="braUNPSH Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPSH Low</Data>
+%1%1%1<Data name="pantyUNPSH Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPSH Low</Data>
+%1%1%1<Data name="bellyringUNPSH Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPSH Low</Data>
+%1%1%1<Data name="bellyring2UNPSH Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPSH Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPSH High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPSH High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPSH High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPSH High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPSH High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPSH High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPSH High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPSH High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPSH High</Data>
+%1%1%1<Data name="braUNPSH High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPSH High</Data>
+%1%1%1<Data name="pantyUNPSH High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPSH High</Data>
+%1%1%1<Data name="bellyringUNPSH High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPSH High</Data>
+%1%1%1<Data name="bellyring2UNPSH High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPSH High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPK Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPK Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPK Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPK Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPK Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPK Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPK Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPK Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPK Low</Data>
+%1%1%1<Data name="braUNPK Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPK Low</Data>
+%1%1%1<Data name="pantyUNPK Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPK Low</Data>
+%1%1%1<Data name="bellyringUNPK Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPK Low</Data>
+%1%1%1<Data name="bellyring2UNPK Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPK Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPK High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPK High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPK High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPK High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPK High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPK High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPK High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPK High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPK High</Data>
+%1%1%1<Data name="braUNPK High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPK High</Data>
+%1%1%1<Data name="pantyUNPK High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPK High</Data>
+%1%1%1<Data name="bellyringUNPK High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPK High</Data>
+%1%1%1<Data name="bellyring2UNPK High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPK High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPK Bonus Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPK Bonus Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPK Bonus Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPK Bonus Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPK Bonus Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPK Bonus Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPK Bonus Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPK Bonus Low</Data>
+%1%1%1<Data name="braUNPK Bonus Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPK Bonus Low</Data>
+%1%1%1<Data name="pantyUNPK Bonus Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPK Bonus Low</Data>
+%1%1%1<Data name="bellyringUNPK Bonus Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPK Bonus Low</Data>
+%1%1%1<Data name="bellyring2UNPK Bonus Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPK Bonus Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPK Bonus High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPK Bonus High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPK Bonus High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPK Bonus High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPK Bonus High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPK Bonus High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPK Bonus High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPK Bonus High</Data>
+%1%1%1<Data name="braUNPK Bonus High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPK Bonus High</Data>
+%1%1%1<Data name="pantyUNPK Bonus High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPK Bonus High</Data>
+%1%1%1<Data name="bellyringUNPK Bonus High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPK Bonus High</Data>
+%1%1%1<Data name="bellyring2UNPK Bonus High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPK Bonus High</Data>
+%1%1</Slider>
+%1%1<Slider name="UN7B Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUN7B Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUN7B Low</Data>
+%1%1%1<Data name="BaseShapeCanalUN7B Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUN7B Low</Data>
+%1%1%1<Data name="BaseShapeAnusUN7B Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUN7B Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUN7B Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUN7B Low</Data>
+%1%1%1<Data name="braUN7B Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUN7B Low</Data>
+%1%1%1<Data name="pantyUN7B Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUN7B Low</Data>
+%1%1%1<Data name="bellyringUN7B Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUN7B Low</Data>
+%1%1%1<Data name="bellyring2UN7B Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UN7B Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UN7B High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUN7B High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUN7B High</Data>
+%1%1%1<Data name="BaseShapeCanalUN7B High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUN7B High</Data>
+%1%1%1<Data name="BaseShapeAnusUN7B High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUN7B High</Data>
+%1%1%1<Data name="BaseShapeVaginaUN7B High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUN7B High</Data>
+%1%1%1<Data name="braUN7B High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUN7B High</Data>
+%1%1%1<Data name="pantyUN7B High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUN7B High</Data>
+%1%1%1<Data name="bellyringUN7B High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUN7B High</Data>
+%1%1%1<Data name="bellyring2UN7B High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UN7B High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPBB Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPBB Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPBB Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPBB Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPBB Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPBB Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPBB Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPBB Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPBB Low</Data>
+%1%1%1<Data name="braUNPBB Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPBB Low</Data>
+%1%1%1<Data name="pantyUNPBB Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPBB Low</Data>
+%1%1%1<Data name="bellyringUNPBB Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPBB Low</Data>
+%1%1%1<Data name="bellyring2UNPBB Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPBB Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPBB High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPBB High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPBB High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPBB High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPBB High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPBB High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPBB High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPBB High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPBB High</Data>
+%1%1%1<Data name="braUNPBB High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPBB High</Data>
+%1%1%1<Data name="pantyUNPBB High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPBB High</Data>
+%1%1%1<Data name="bellyringUNPBB High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPBB High</Data>
+%1%1%1<Data name="bellyring2UNPBB High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPBB High</Data>
+%1%1</Slider>
+%1%1<Slider name="Seraphim Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeSeraphim Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeSeraphim Low</Data>
+%1%1%1<Data name="BaseShapeCanalSeraphim Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalSeraphim Low</Data>
+%1%1%1<Data name="BaseShapeAnusSeraphim Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusSeraphim Low</Data>
+%1%1%1<Data name="BaseShapeVaginaSeraphim Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaSeraphim Low</Data>
+%1%1%1<Data name="braSeraphim Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braSeraphim Low</Data>
+%1%1%1<Data name="pantySeraphim Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantySeraphim Low</Data>
+%1%1%1<Data name="bellyringSeraphim Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringSeraphim Low</Data>
+%1%1%1<Data name="bellyring2Seraphim Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Seraphim Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Seraphim High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeSeraphim High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeSeraphim High</Data>
+%1%1%1<Data name="BaseShapeCanalSeraphim High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalSeraphim High</Data>
+%1%1%1<Data name="BaseShapeAnusSeraphim High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusSeraphim High</Data>
+%1%1%1<Data name="BaseShapeVaginaSeraphim High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaSeraphim High</Data>
+%1%1%1<Data name="braSeraphim High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braSeraphim High</Data>
+%1%1%1<Data name="pantySeraphim High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantySeraphim High</Data>
+%1%1%1<Data name="bellyringSeraphim High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringSeraphim High</Data>
+%1%1%1<Data name="bellyring2Seraphim High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Seraphim High</Data>
+%1%1</Slider>
+%1%1<Slider name="Demonfet Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeDemonfet Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeDemonfet Low</Data>
+%1%1%1<Data name="BaseShapeCanalDemonfet Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalDemonfet Low</Data>
+%1%1%1<Data name="BaseShapeAnusDemonfet Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusDemonfet Low</Data>
+%1%1%1<Data name="BaseShapeVaginaDemonfet Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaDemonfet Low</Data>
+%1%1%1<Data name="braDemonfet Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braDemonfet Low</Data>
+%1%1%1<Data name="pantyDemonfet Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyDemonfet Low</Data>
+%1%1%1<Data name="bellyringDemonfet Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringDemonfet Low</Data>
+%1%1%1<Data name="bellyring2Demonfet Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Demonfet Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Demonfet High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeDemonfet High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeDemonfet High</Data>
+%1%1%1<Data name="BaseShapeCanalDemonfet High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalDemonfet High</Data>
+%1%1%1<Data name="BaseShapeAnusDemonfet High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusDemonfet High</Data>
+%1%1%1<Data name="BaseShapeVaginaDemonfet High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaDemonfet High</Data>
+%1%1%1<Data name="braDemonfet High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braDemonfet High</Data>
+%1%1%1<Data name="pantyDemonfet High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyDemonfet High</Data>
+%1%1%1<Data name="bellyringDemonfet High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringDemonfet High</Data>
+%1%1%1<Data name="bellyring2Demonfet High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Demonfet High</Data>
+%1%1</Slider>
+%1%1<Slider name="Dream Girl Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeDream Girl Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeDream Girl Low</Data>
+%1%1%1<Data name="BaseShapeCanalDream Girl Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalDream Girl Low</Data>
+%1%1%1<Data name="BaseShapeAnusDream Girl Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusDream Girl Low</Data>
+%1%1%1<Data name="BaseShapeVaginaDream Girl Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaDream Girl Low</Data>
+%1%1%1<Data name="braDream Girl Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braDream Girl Low</Data>
+%1%1%1<Data name="pantyDream Girl Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyDream Girl Low</Data>
+%1%1%1<Data name="bellyringDream Girl Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringDream Girl Low</Data>
+%1%1%1<Data name="bellyring2Dream Girl Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Dream Girl Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Dream Girl High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeDream Girl High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeDream Girl High</Data>
+%1%1%1<Data name="BaseShapeCanalDream Girl High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalDream Girl High</Data>
+%1%1%1<Data name="BaseShapeAnusDream Girl High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusDream Girl High</Data>
+%1%1%1<Data name="BaseShapeVaginaDream Girl High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaDream Girl High</Data>
+%1%1%1<Data name="braDream Girl High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braDream Girl High</Data>
+%1%1%1<Data name="pantyDream Girl High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyDream Girl High</Data>
+%1%1%1<Data name="bellyringDream Girl High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringDream Girl High</Data>
+%1%1%1<Data name="bellyring2Dream Girl High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Dream Girl High</Data>
+%1%1</Slider>
+%1%1<Slider name="Top Model Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeTop Model Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeTop Model Low</Data>
+%1%1%1<Data name="BaseShapeCanalTop Model Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalTop Model Low</Data>
+%1%1%1<Data name="BaseShapeAnusTop Model Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusTop Model Low</Data>
+%1%1%1<Data name="BaseShapeVaginaTop Model Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaTop Model Low</Data>
+%1%1%1<Data name="braTop Model Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braTop Model Low</Data>
+%1%1%1<Data name="pantyTop Model Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyTop Model Low</Data>
+%1%1%1<Data name="bellyringTop Model Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringTop Model Low</Data>
+%1%1%1<Data name="bellyring2Top Model Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Top Model Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Top Model High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeTop Model High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeTop Model High</Data>
+%1%1%1<Data name="BaseShapeCanalTop Model High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalTop Model High</Data>
+%1%1%1<Data name="BaseShapeAnusTop Model High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusTop Model High</Data>
+%1%1%1<Data name="BaseShapeVaginaTop Model High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaTop Model High</Data>
+%1%1%1<Data name="braTop Model High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braTop Model High</Data>
+%1%1%1<Data name="pantyTop Model High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyTop Model High</Data>
+%1%1%1<Data name="bellyringTop Model High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringTop Model High</Data>
+%1%1%1<Data name="bellyring2Top Model High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Top Model High</Data>
+%1%1</Slider>
+%1%1<Slider name="Leito Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeLeito Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeLeito Low</Data>
+%1%1%1<Data name="BaseShapeCanalLeito Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalLeito Low</Data>
+%1%1%1<Data name="BaseShapeAnusLeito Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusLeito Low</Data>
+%1%1%1<Data name="BaseShapeVaginaLeito Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaLeito Low</Data>
+%1%1%1<Data name="braLeito Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braLeito Low</Data>
+%1%1%1<Data name="pantyLeito Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyLeito Low</Data>
+%1%1%1<Data name="bellyringLeito Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringLeito Low</Data>
+%1%1%1<Data name="bellyring2Leito Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Leito Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Leito High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeLeito High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeLeito High</Data>
+%1%1%1<Data name="BaseShapeCanalLeito High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalLeito High</Data>
+%1%1%1<Data name="BaseShapeAnusLeito High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusLeito High</Data>
+%1%1%1<Data name="BaseShapeVaginaLeito High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaLeito High</Data>
+%1%1%1<Data name="braLeito High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braLeito High</Data>
+%1%1%1<Data name="pantyLeito High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyLeito High</Data>
+%1%1%1<Data name="bellyringLeito High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringLeito High</Data>
+%1%1%1<Data name="bellyring2Leito High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Leito High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPF Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPF Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPF Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPF Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPF Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPF Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPF Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPF Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPF Low</Data>
+%1%1%1<Data name="braUNPF Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPF Low</Data>
+%1%1%1<Data name="pantyUNPF Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPF Low</Data>
+%1%1%1<Data name="bellyringUNPF Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPF Low</Data>
+%1%1%1<Data name="bellyring2UNPF Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPF Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPF High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPF High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPF High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPF High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPF High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPF High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPF High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPF High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPF High</Data>
+%1%1%1<Data name="braUNPF High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPF High</Data>
+%1%1%1<Data name="pantyUNPF High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPF High</Data>
+%1%1%1<Data name="bellyringUNPF High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPF High</Data>
+%1%1%1<Data name="bellyring2UNPF High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPF High</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPFx Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPFx Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPFx Low</Data>
+%1%1%1<Data name="BaseShapeCanalUNPFx Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPFx Low</Data>
+%1%1%1<Data name="BaseShapeAnusUNPFx Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPFx Low</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPFx Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPFx Low</Data>
+%1%1%1<Data name="braUNPFx Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPFx Low</Data>
+%1%1%1<Data name="pantyUNPFx Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPFx Low</Data>
+%1%1%1<Data name="bellyringUNPFx Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPFx Low</Data>
+%1%1%1<Data name="bellyring2UNPFx Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPFx Low</Data>
+%1%1</Slider>
+%1%1<Slider name="UNPFx High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeUNPFx High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeUNPFx High</Data>
+%1%1%1<Data name="BaseShapeCanalUNPFx High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalUNPFx High</Data>
+%1%1%1<Data name="BaseShapeAnusUNPFx High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusUNPFx High</Data>
+%1%1%1<Data name="BaseShapeVaginaUNPFx High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaUNPFx High</Data>
+%1%1%1<Data name="braUNPFx High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braUNPFx High</Data>
+%1%1%1<Data name="pantyUNPFx High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyUNPFx High</Data>
+%1%1%1<Data name="bellyringUNPFx High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringUNPFx High</Data>
+%1%1%1<Data name="bellyring2UNPFx High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2UNPFx High</Data>
+%1%1</Slider>
+%1%1<Slider name="MCBM Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeMCBM Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeMCBM Low</Data>
+%1%1%1<Data name="BaseShapeCanalMCBM Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalMCBM Low</Data>
+%1%1%1<Data name="BaseShapeAnusMCBM Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusMCBM Low</Data>
+%1%1%1<Data name="BaseShapeVaginaMCBM Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaMCBM Low</Data>
+%1%1%1<Data name="braMCBM Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braMCBM Low</Data>
+%1%1%1<Data name="pantyMCBM Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyMCBM Low</Data>
+%1%1%1<Data name="bellyringMCBM Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringMCBM Low</Data>
+%1%1%1<Data name="bellyring2MCBM Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2MCBM Low</Data>
+%1%1</Slider>
+%1%1<Slider name="MCBM High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeMCBM High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeMCBM High</Data>
+%1%1%1<Data name="BaseShapeCanalMCBM High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalMCBM High</Data>
+%1%1%1<Data name="BaseShapeAnusMCBM High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusMCBM High</Data>
+%1%1%1<Data name="BaseShapeVaginaMCBM High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaMCBM High</Data>
+%1%1%1<Data name="braMCBM High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braMCBM High</Data>
+%1%1%1<Data name="pantyMCBM High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyMCBM High</Data>
+%1%1%1<Data name="bellyringMCBM High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringMCBM High</Data>
+%1%1%1<Data name="bellyring2MCBM High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2MCBM High</Data>
+%1%1</Slider>
+%1%1<Slider name="Venus Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeVenus Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVenus Low</Data>
+%1%1%1<Data name="BaseShapeCanalVenus Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalVenus Low</Data>
+%1%1%1<Data name="BaseShapeAnusVenus Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusVenus Low</Data>
+%1%1%1<Data name="BaseShapeVaginaVenus Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaVenus Low</Data>
+%1%1%1<Data name="braVenus Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braVenus Low</Data>
+%1%1%1<Data name="pantyVenus Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyVenus Low</Data>
+%1%1%1<Data name="bellyringVenus Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringVenus Low</Data>
+%1%1%1<Data name="bellyring2Venus Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Venus Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Venus High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeVenus High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVenus High</Data>
+%1%1%1<Data name="BaseShapeCanalVenus High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalVenus High</Data>
+%1%1%1<Data name="BaseShapeAnusVenus High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusVenus High</Data>
+%1%1%1<Data name="BaseShapeVaginaVenus High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaVenus High</Data>
+%1%1%1<Data name="braVenus High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braVenus High</Data>
+%1%1%1<Data name="pantyVenus High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyVenus High</Data>
+%1%1%1<Data name="bellyringVenus High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringVenus High</Data>
+%1%1%1<Data name="bellyring2Venus High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Venus High</Data>
+%1%1</Slider>
+%1%1<Slider name="Manga Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeManga Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeManga Low</Data>
+%1%1%1<Data name="BaseShapeCanalManga Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalManga Low</Data>
+%1%1%1<Data name="BaseShapeAnusManga Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusManga Low</Data>
+%1%1%1<Data name="BaseShapeVaginaManga Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaManga Low</Data>
+%1%1%1<Data name="braManga Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braManga Low</Data>
+%1%1%1<Data name="pantyManga Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyManga Low</Data>
+%1%1%1<Data name="bellyringManga Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringManga Low</Data>
+%1%1%1<Data name="bellyring2Manga Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Manga Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Manga High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeManga High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeManga High</Data>
+%1%1%1<Data name="BaseShapeCanalManga High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalManga High</Data>
+%1%1%1<Data name="BaseShapeAnusManga High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusManga High</Data>
+%1%1%1<Data name="BaseShapeVaginaManga High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaManga High</Data>
+%1%1%1<Data name="braManga High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braManga High</Data>
+%1%1%1<Data name="pantyManga High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyManga High</Data>
+%1%1%1<Data name="bellyringManga High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringManga High</Data>
+%1%1%1<Data name="bellyring2Manga High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Manga High</Data>
+%1%1</Slider>
+%1%1<Slider name="CHSBHC Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCHSBHC Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCHSBHC Low</Data>
+%1%1%1<Data name="BaseShapeCanalCHSBHC Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalCHSBHC Low</Data>
+%1%1%1<Data name="BaseShapeAnusCHSBHC Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusCHSBHC Low</Data>
+%1%1%1<Data name="BaseShapeVaginaCHSBHC Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaCHSBHC Low</Data>
+%1%1%1<Data name="braCHSBHC Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braCHSBHC Low</Data>
+%1%1%1<Data name="pantyCHSBHC Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyCHSBHC Low</Data>
+%1%1%1<Data name="bellyringCHSBHC Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringCHSBHC Low</Data>
+%1%1%1<Data name="bellyring2CHSBHC Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2CHSBHC Low</Data>
+%1%1</Slider>
+%1%1<Slider name="CHSBHC High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCHSBHC High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCHSBHC High</Data>
+%1%1%1<Data name="BaseShapeCanalCHSBHC High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalCHSBHC High</Data>
+%1%1%1<Data name="BaseShapeAnusCHSBHC High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusCHSBHC High</Data>
+%1%1%1<Data name="BaseShapeVaginaCHSBHC High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaCHSBHC High</Data>
+%1%1%1<Data name="braCHSBHC High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braCHSBHC High</Data>
+%1%1%1<Data name="pantyCHSBHC High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyCHSBHC High</Data>
+%1%1%1<Data name="bellyringCHSBHC High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringCHSBHC High</Data>
+%1%1%1<Data name="bellyring2CHSBHC High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2CHSBHC High</Data>
+%1%1</Slider>
+%1%1<Slider name="CNHF Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCNHF Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCNHF Low</Data>
+%1%1%1<Data name="BaseShapeCanalCNHF Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalCNHF Low</Data>
+%1%1%1<Data name="BaseShapeAnusCNHF Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusCNHF Low</Data>
+%1%1%1<Data name="BaseShapeVaginaCNHF Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaCNHF Low</Data>
+%1%1%1<Data name="braCNHF Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braCNHF Low</Data>
+%1%1%1<Data name="pantyCNHF Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyCNHF Low</Data>
+%1%1%1<Data name="bellyringCNHF Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringCNHF Low</Data>
+%1%1%1<Data name="bellyring2CNHF Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2CNHF Low</Data>
+%1%1</Slider>
+%1%1<Slider name="CNHF High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCNHF High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCNHF High</Data>
+%1%1%1<Data name="BaseShapeCanalCNHF High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalCNHF High</Data>
+%1%1%1<Data name="BaseShapeAnusCNHF High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusCNHF High</Data>
+%1%1%1<Data name="BaseShapeVaginaCNHF High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaCNHF High</Data>
+%1%1%1<Data name="braCNHF High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braCNHF High</Data>
+%1%1%1<Data name="pantyCNHF High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyCNHF High</Data>
+%1%1%1<Data name="bellyringCNHF High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringCNHF High</Data>
+%1%1%1<Data name="bellyring2CNHF High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2CNHF High</Data>
+%1%1</Slider>
+%1%1<Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCNHF Bonus Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCNHF Bonus Low</Data>
+%1%1%1<Data name="BaseShapeCanalCNHF Bonus Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalCNHF Bonus Low</Data>
+%1%1%1<Data name="BaseShapeAnusCNHF Bonus Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusCNHF Bonus Low</Data>
+%1%1%1<Data name="BaseShapeVaginaCNHF Bonus Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaCNHF Bonus Low</Data>
+%1%1%1<Data name="braCNHF Bonus Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braCNHF Bonus Low</Data>
+%1%1%1<Data name="pantyCNHF Bonus Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyCNHF Bonus Low</Data>
+%1%1%1<Data name="bellyringCNHF Bonus Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringCNHF Bonus Low</Data>
+%1%1%1<Data name="bellyring2CNHF Bonus Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2CNHF Bonus Low</Data>
+%1%1</Slider>
+%1%1<Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCNHF Bonus High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCNHF Bonus High</Data>
+%1%1%1<Data name="BaseShapeCanalCNHF Bonus High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalCNHF Bonus High</Data>
+%1%1%1<Data name="BaseShapeAnusCNHF Bonus High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusCNHF Bonus High</Data>
+%1%1%1<Data name="BaseShapeVaginaCNHF Bonus High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaCNHF Bonus High</Data>
+%1%1%1<Data name="braCNHF Bonus High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braCNHF Bonus High</Data>
+%1%1%1<Data name="pantyCNHF Bonus High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyCNHF Bonus High</Data>
+%1%1%1<Data name="bellyringCNHF Bonus High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringCNHF Bonus High</Data>
+%1%1%1<Data name="bellyring2CNHF Bonus High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2CNHF Bonus High</Data>
+%1%1</Slider>
+%1%1<Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeZGGB-R2 Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeZGGB-R2 Low</Data>
+%1%1%1<Data name="BaseShapeCanalZGGB-R2 Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalZGGB-R2 Low</Data>
+%1%1%1<Data name="BaseShapeAnusZGGB-R2 Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusZGGB-R2 Low</Data>
+%1%1%1<Data name="BaseShapeVaginaZGGB-R2 Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaZGGB-R2 Low</Data>
+%1%1%1<Data name="braZGGB-R2 Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braZGGB-R2 Low</Data>
+%1%1%1<Data name="pantyZGGB-R2 Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyZGGB-R2 Low</Data>
+%1%1%1<Data name="bellyringZGGB-R2 Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringZGGB-R2 Low</Data>
+%1%1%1<Data name="bellyring2ZGGB-R2 Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2ZGGB-R2 Low</Data>
+%1%1</Slider>
+%1%1<Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeZGGB-R2 High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeZGGB-R2 High</Data>
+%1%1%1<Data name="BaseShapeCanalZGGB-R2 High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalZGGB-R2 High</Data>
+%1%1%1<Data name="BaseShapeAnusZGGB-R2 High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusZGGB-R2 High</Data>
+%1%1%1<Data name="BaseShapeVaginaZGGB-R2 High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaZGGB-R2 High</Data>
+%1%1%1<Data name="braZGGB-R2 High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braZGGB-R2 High</Data>
+%1%1%1<Data name="pantyZGGB-R2 High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyZGGB-R2 High</Data>
+%1%1%1<Data name="bellyringZGGB-R2 High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringZGGB-R2 High</Data>
+%1%1%1<Data name="bellyring2ZGGB-R2 High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2ZGGB-R2 High</Data>
+%1%1</Slider>
+%1%1<Slider name="Aruru6Duck Low" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeAruru6Duck Low" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAruru6Duck Low</Data>
+%1%1%1<Data name="BaseShapeCanalAruru6Duck Low" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalAruru6Duck Low</Data>
+%1%1%1<Data name="BaseShapeAnusAruru6Duck Low" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusAruru6Duck Low</Data>
+%1%1%1<Data name="BaseShapeVaginaAruru6Duck Low" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaAruru6Duck Low</Data>
+%1%1%1<Data name="braAruru6Duck Low" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braAruru6Duck Low</Data>
+%1%1%1<Data name="pantyAruru6Duck Low" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyAruru6Duck Low</Data>
+%1%1%1<Data name="bellyringAruru6Duck Low" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringAruru6Duck Low</Data>
+%1%1%1<Data name="bellyring2Aruru6Duck Low" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Aruru6Duck Low</Data>
+%1%1</Slider>
+%1%1<Slider name="Aruru6Duck High" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeAruru6Duck High" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAruru6Duck High</Data>
+%1%1%1<Data name="BaseShapeCanalAruru6Duck High" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalAruru6Duck High</Data>
+%1%1%1<Data name="BaseShapeAnusAruru6Duck High" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusAruru6Duck High</Data>
+%1%1%1<Data name="BaseShapeVaginaAruru6Duck High" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaAruru6Duck High</Data>
+%1%1%1<Data name="braAruru6Duck High" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braAruru6Duck High</Data>
+%1%1%1<Data name="pantyAruru6Duck High" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyAruru6Duck High</Data>
+%1%1%1<Data name="bellyringAruru6Duck High" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringAruru6Duck High</Data>
+%1%1%1<Data name="bellyring2Aruru6Duck High" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Aruru6Duck High</Data>
+%1%1</Slider>
+%1%1<Slider name="Arms" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeArms" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeArms</Data>
+%1%1%1<Data name="braArms" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braArms</Data>
+%1%1</Slider>
+%1%1<Slider name="AppleCheeks" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeAppleCheeks" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAppleCheeks</Data>
+%1%1%1<Data name="BaseShapeCanalAppleCheeks" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalAppleCheeks</Data>
+%1%1%1<Data name="BaseShapeAnusAppleCheeks" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusAppleCheeks</Data>
+%1%1%1<Data name="BaseShapeVaginaAppleCheeks" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaAppleCheeks</Data>
+%1%1%1<Data name="braAppleCheeks" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braAppleCheeks</Data>
+%1%1%1<Data name="pantyAppleCheeks" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyAppleCheeks</Data>
+%1%1</Slider>
+%1%1<Slider name="AnusSpread" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeAnusSpread" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusSpread</Data>
+%1%1%1<Data name="BaseShapeCanalAnusSpread" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalAnusSpread</Data>
+%1%1%1<Data name="BaseShapeAnusAnusSpread" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusAnusSpread</Data>
+%1%1%1<Data name="pantyAnusSpread" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyAnusSpread</Data>
+%1%1</Slider>
+%1%1<Slider name="Back" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBack" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBack</Data>
+%1%1%1<Data name="BaseShapeAnusBack" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusBack</Data>
+%1%1%1<Data name="braBack" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBack</Data>
+%1%1%1<Data name="pantyBack" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBack</Data>
+%1%1</Slider>
+%1%1<Slider name="BackArch" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBackArch" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBackArch</Data>
+%1%1%1<Data name="braBackArch" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBackArch</Data>
+%1%1%1<Data name="pantyBackArch" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBackArch</Data>
+%1%1</Slider>
+%1%1<Slider name="Belly" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBelly" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBelly</Data>
+%1%1%1<Data name="braBelly" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBelly</Data>
+%1%1%1<Data name="pantyBelly" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBelly</Data>
+%1%1%1<Data name="bellyringBelly" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBelly</Data>
+%1%1%1<Data name="bellyring2Belly" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Belly</Data>
+%1%1</Slider>
+%1%1<Slider name="BigTorso" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBigTorso" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBigTorso</Data>
+%1%1%1<Data name="BaseShapeAnusBigTorso" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusBigTorso</Data>
+%1%1%1<Data name="BaseShapeVaginaBigTorso" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBigTorso</Data>
+%1%1%1<Data name="braBigTorso" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBigTorso</Data>
+%1%1%1<Data name="pantyBigTorso" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBigTorso</Data>
+%1%1%1<Data name="bellyringBigTorso" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBigTorso</Data>
+%1%1%1<Data name="bellyring2BigTorso" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BigTorso</Data>
+%1%1</Slider>
+%1%1<Slider name="Breasts" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeBreasts" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreasts</Data>
+%1%1%1<Data name="BaseShapeVaginaBreasts" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreasts</Data>
+%1%1%1<Data name="braBreasts" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreasts</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastCenter" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastCenter" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastCenter</Data>
+%1%1%1<Data name="braBreastCenter" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastCenter</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastCenterBig" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastCenterBig" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastCenterBig</Data>
+%1%1%1<Data name="braBreastCenterBig" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastCenterBig</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsSmall" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeBreastsSmall" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastsSmall</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastsSmall" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastsSmall</Data>
+%1%1%1<Data name="braBreastsSmall" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastsSmall</Data>
+%1%1%1<Data name="pantyBreastsSmall" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBreastsSmall</Data>
+%1%1%1<Data name="bellyringBreastsSmall" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBreastsSmall</Data>
+%1%1%1<Data name="bellyring2BreastsSmall" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BreastsSmall</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsSH" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastsSH" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastsSH</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastsSH" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastsSH</Data>
+%1%1%1<Data name="braBreastsSH" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastsSH</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsSSH" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastsSSH" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastsSSH</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastsSSH" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastsSSH</Data>
+%1%1%1<Data name="braBreastsSSH" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastsSSH</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsFantasy" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastsFantasy" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastsFantasy</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastsFantasy" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastsFantasy</Data>
+%1%1%1<Data name="braBreastsFantasy" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastsFantasy</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastCleavage" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastCleavage" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastCleavage</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastCleavage" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastCleavage</Data>
+%1%1%1<Data name="braBreastCleavage" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastCleavage</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastFlatness" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastFlatness" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastFlatness</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastFlatness" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastFlatness</Data>
+%1%1%1<Data name="braBreastFlatness" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastFlatness</Data>
+%1%1%1<Data name="bellyringBreastFlatness" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBreastFlatness</Data>
+%1%1%1<Data name="bellyring2BreastFlatness" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BreastFlatness</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastGravity" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastGravity" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastGravity</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastGravity" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastGravity</Data>
+%1%1%1<Data name="braBreastGravity" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastGravity</Data>
+%1%1</Slider>
+%1%1<Slider name="PushUp" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePushUp" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePushUp</Data>
+%1%1%1<Data name="BaseShapeVaginaPushUp" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPushUp</Data>
+%1%1%1<Data name="braPushUp" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braPushUp</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastHeight" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastHeight" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastHeight</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastHeight" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastHeight</Data>
+%1%1%1<Data name="braBreastHeight" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastHeight</Data>
+%1%1%1<Data name="bellyringBreastHeight" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBreastHeight</Data>
+%1%1%1<Data name="bellyring2BreastHeight" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BreastHeight</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastPerkiness" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastPerkiness" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastPerkiness</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastPerkiness" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastPerkiness</Data>
+%1%1%1<Data name="braBreastPerkiness" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastPerkiness</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastWidth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastWidth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastWidth</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastWidth" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastWidth</Data>
+%1%1%1<Data name="braBreastWidth" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastWidth</Data>
+%1%1%1<Data name="bellyringBreastWidth" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBreastWidth</Data>
+%1%1%1<Data name="bellyring2BreastWidth" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BreastWidth</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastConverge" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastConverge" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastConverge</Data>
+%1%1%1<Data name="BaseShapeCanalBreastConverge" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalBreastConverge</Data>
+%1%1%1<Data name="BaseShapeAnusBreastConverge" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusBreastConverge</Data>
+%1%1%1<Data name="BaseShapeVaginaBreastConverge" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBreastConverge</Data>
+%1%1%1<Data name="braBreastConverge" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastConverge</Data>
+%1%1%1<Data name="pantyBreastConverge" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBreastConverge</Data>
+%1%1%1<Data name="bellyringBreastConverge" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBreastConverge</Data>
+%1%1%1<Data name="bellyring2BreastConverge" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BreastConverge</Data>
+%1%1</Slider>
+%1%1<Slider name="ButtCrack" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeButtCrack" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeButtCrack</Data>
+%1%1%1<Data name="BaseShapeCanalButtCrack" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalButtCrack</Data>
+%1%1%1<Data name="BaseShapeAnusButtCrack" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusButtCrack</Data>
+%1%1%1<Data name="pantyButtCrack" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyButtCrack</Data>
+%1%1</Slider>
+%1%1<Slider name="Butt" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeButt" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeButt</Data>
+%1%1%1<Data name="BaseShapeCanalButt" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalButt</Data>
+%1%1%1<Data name="BaseShapeAnusButt" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusButt</Data>
+%1%1%1<Data name="BaseShapeVaginaButt" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaButt</Data>
+%1%1%1<Data name="braButt" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braButt</Data>
+%1%1%1<Data name="pantyButt" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyButt</Data>
+%1%1</Slider>
+%1%1<Slider name="ButtSmall" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeButtSmall" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeButtSmall</Data>
+%1%1%1<Data name="BaseShapeCanalButtSmall" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalButtSmall</Data>
+%1%1%1<Data name="BaseShapeAnusButtSmall" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusButtSmall</Data>
+%1%1%1<Data name="BaseShapeVaginaButtSmall" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaButtSmall</Data>
+%1%1%1<Data name="braButtSmall" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braButtSmall</Data>
+%1%1%1<Data name="pantyButtSmall" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyButtSmall</Data>
+%1%1%1<Data name="bellyringButtSmall" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringButtSmall</Data>
+%1%1%1<Data name="bellyring2ButtSmall" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2ButtSmall</Data>
+%1%1</Slider>
+%1%1<Slider name="ButtShape2" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeButtShape2" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeButtShape2</Data>
+%1%1%1<Data name="BaseShapeCanalButtShape2" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalButtShape2</Data>
+%1%1%1<Data name="BaseShapeAnusButtShape2" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusButtShape2</Data>
+%1%1%1<Data name="BaseShapeVaginaButtShape2" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaButtShape2</Data>
+%1%1%1<Data name="braButtShape2" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braButtShape2</Data>
+%1%1%1<Data name="pantyButtShape2" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyButtShape2</Data>
+%1%1%1<Data name="bellyringButtShape2" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringButtShape2</Data>
+%1%1%1<Data name="bellyring2ButtShape2" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2ButtShape2</Data>
+%1%1</Slider>
+%1%1<Slider name="BigButt" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBigButt" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBigButt</Data>
+%1%1%1<Data name="BaseShapeCanalBigButt" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalBigButt</Data>
+%1%1%1<Data name="BaseShapeAnusBigButt" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusBigButt</Data>
+%1%1%1<Data name="BaseShapeVaginaBigButt" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBigButt</Data>
+%1%1%1<Data name="braBigButt" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBigButt</Data>
+%1%1%1<Data name="pantyBigButt" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBigButt</Data>
+%1%1%1<Data name="bellyringBigButt" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBigButt</Data>
+%1%1%1<Data name="bellyring2BigButt" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BigButt</Data>
+%1%1</Slider>
+%1%1<Slider name="BigBelly" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBigBelly" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBigBelly</Data>
+%1%1%1<Data name="BaseShapeVaginaBigBelly" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBigBelly</Data>
+%1%1%1<Data name="braBigBelly" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBigBelly</Data>
+%1%1%1<Data name="pantyBigBelly" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBigBelly</Data>
+%1%1%1<Data name="bellyringBigBelly" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBigBelly</Data>
+%1%1%1<Data name="bellyring2BigBelly" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BigBelly</Data>
+%1%1</Slider>
+%1%1<Slider name="BotePregnancy" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBotePregnancy" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBotePregnancy</Data>
+%1%1%1<Data name="BaseShapeVaginaBotePregnancy" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaBotePregnancy</Data>
+%1%1%1<Data name="braBotePregnancy" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBotePregnancy</Data>
+%1%1%1<Data name="pantyBotePregnancy" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBotePregnancy</Data>
+%1%1%1<Data name="bellyringBotePregnancy" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBotePregnancy</Data>
+%1%1%1<Data name="bellyring2BotePregnancy" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BotePregnancy</Data>
+%1%1</Slider>
+%1%1<Slider name="ChubbyArms" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeChubbyArms" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeChubbyArms</Data>
+%1%1%1<Data name="braChubbyArms" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braChubbyArms</Data>
+%1%1</Slider>
+%1%1<Slider name="ChubbyWaist" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeChubbyWaist" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeChubbyWaist</Data>
+%1%1%1<Data name="BaseShapeAnusChubbyWaist" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusChubbyWaist</Data>
+%1%1%1<Data name="BaseShapeVaginaChubbyWaist" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaChubbyWaist</Data>
+%1%1%1<Data name="braChubbyWaist" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braChubbyWaist</Data>
+%1%1%1<Data name="pantyChubbyWaist" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyChubbyWaist</Data>
+%1%1%1<Data name="bellyringChubbyWaist" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringChubbyWaist</Data>
+%1%1%1<Data name="bellyring2ChubbyWaist" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2ChubbyWaist</Data>
+%1%1</Slider>
+%1%1<Slider name="ChestDepth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeChestDepth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeChestDepth</Data>
+%1%1%1<Data name="braChestDepth" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braChestDepth</Data>
+%1%1%1<Data name="pantyChestDepth" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyChestDepth</Data>
+%1%1%1<Data name="bellyringChestDepth" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringChestDepth</Data>
+%1%1%1<Data name="bellyring2ChestDepth" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2ChestDepth</Data>
+%1%1</Slider>
+%1%1<Slider name="ChestWidth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeChestWidth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeChestWidth</Data>
+%1%1%1<Data name="braChestWidth" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braChestWidth</Data>
+%1%1%1<Data name="pantyChestWidth" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyChestWidth</Data>
+%1%1</Slider>
+%1%1<Slider name="ChubbyLegs" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeChubbyLegs" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeChubbyLegs</Data>
+%1%1%1<Data name="BaseShapeCanalChubbyLegs" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalChubbyLegs</Data>
+%1%1%1<Data name="BaseShapeAnusChubbyLegs" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusChubbyLegs</Data>
+%1%1%1<Data name="BaseShapeVaginaChubbyLegs" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaChubbyLegs</Data>
+%1%1%1<Data name="pantyChubbyLegs" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyChubbyLegs</Data>
+%1%1</Slider>
+%1%1<Slider name="CrotchBack" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCrotchBack" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCrotchBack</Data>
+%1%1%1<Data name="BaseShapeCanalCrotchBack" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalCrotchBack</Data>
+%1%1%1<Data name="BaseShapeAnusCrotchBack" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusCrotchBack</Data>
+%1%1%1<Data name="BaseShapeVaginaCrotchBack" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaCrotchBack</Data>
+%1%1%1<Data name="pantyCrotchBack" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyCrotchBack</Data>
+%1%1%1<Data name="bellyringCrotchBack" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringCrotchBack</Data>
+%1%1%1<Data name="bellyring2CrotchBack" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2CrotchBack</Data>
+%1%1</Slider>
+%1%1<Slider name="CalfSize" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCalfSize" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCalfSize</Data>
+%1%1</Slider>
+%1%1<Slider name="CalfSmooth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCalfSmooth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCalfSmooth</Data>
+%1%1</Slider>
+%1%1<Slider name="ClitorisErection" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeClitorisErection" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeClitorisErection</Data>
+%1%1%1<Data name="BaseShapeVaginaClitorisErection" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaClitorisErection</Data>
+%1%1%1<Data name="pantyClitorisErection" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyClitorisErection</Data>
+%1%1</Slider>
+%1%1<Slider name="ChubbyButt" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeChubbyButt" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeChubbyButt</Data>
+%1%1%1<Data name="BaseShapeCanalChubbyButt" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalChubbyButt</Data>
+%1%1%1<Data name="BaseShapeAnusChubbyButt" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusChubbyButt</Data>
+%1%1%1<Data name="BaseShapeVaginaChubbyButt" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaChubbyButt</Data>
+%1%1%1<Data name="braChubbyButt" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braChubbyButt</Data>
+%1%1%1<Data name="pantyChubbyButt" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyChubbyButt</Data>
+%1%1%1<Data name="bellyringChubbyButt" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringChubbyButt</Data>
+%1%1%1<Data name="bellyring2ChubbyButt" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2ChubbyButt</Data>
+%1%1</Slider>
+%1%1<Slider name="DoubleMelon" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeDoubleMelon" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeDoubleMelon</Data>
+%1%1%1<Data name="BaseShapeVaginaDoubleMelon" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaDoubleMelon</Data>
+%1%1%1<Data name="braDoubleMelon" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braDoubleMelon</Data>
+%1%1</Slider>
+%1%1<Slider name="ForearmSize" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeForearmSize" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeForearmSize</Data>
+%1%1</Slider>
+%1%1<Slider name="Groin" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeGroin" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeGroin</Data>
+%1%1%1<Data name="BaseShapeCanalGroin" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalGroin</Data>
+%1%1%1<Data name="BaseShapeVaginaGroin" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaGroin</Data>
+%1%1%1<Data name="pantyGroin" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyGroin</Data>
+%1%1</Slider>
+%1%1<Slider name="HipBone" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeHipBone" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeHipBone</Data>
+%1%1%1<Data name="BaseShapeCanalHipBone" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalHipBone</Data>
+%1%1%1<Data name="BaseShapeVaginaHipBone" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaHipBone</Data>
+%1%1%1<Data name="pantyHipBone" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyHipBone</Data>
+%1%1%1<Data name="bellyringHipBone" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringHipBone</Data>
+%1%1%1<Data name="bellyring2HipBone" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2HipBone</Data>
+%1%1</Slider>
+%1%1<Slider name="Hips" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeHips" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeHips</Data>
+%1%1%1<Data name="BaseShapeCanalHips" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalHips</Data>
+%1%1%1<Data name="BaseShapeAnusHips" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusHips</Data>
+%1%1%1<Data name="BaseShapeVaginaHips" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaHips</Data>
+%1%1%1<Data name="braHips" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braHips</Data>
+%1%1%1<Data name="pantyHips" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyHips</Data>
+%1%1%1<Data name="bellyringHips" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringHips</Data>
+%1%1%1<Data name="bellyring2Hips" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Hips</Data>
+%1%1</Slider>
+%1%1<Slider name="HipForward" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeHipForward" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeHipForward</Data>
+%1%1%1<Data name="BaseShapeCanalHipForward" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalHipForward</Data>
+%1%1%1<Data name="BaseShapeAnusHipForward" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusHipForward</Data>
+%1%1%1<Data name="BaseShapeVaginaHipForward" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaHipForward</Data>
+%1%1%1<Data name="braHipForward" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braHipForward</Data>
+%1%1%1<Data name="pantyHipForward" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyHipForward</Data>
+%1%1%1<Data name="bellyringHipForward" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringHipForward</Data>
+%1%1%1<Data name="bellyring2HipForward" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2HipForward</Data>
+%1%1</Slider>
+%1%1<Slider name="HipUpperWidth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeHipUpperWidth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeHipUpperWidth</Data>
+%1%1%1<Data name="braHipUpperWidth" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braHipUpperWidth</Data>
+%1%1%1<Data name="pantyHipUpperWidth" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyHipUpperWidth</Data>
+%1%1</Slider>
+%1%1<Slider name="KneeShape" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeKneeShape" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeKneeShape</Data>
+%1%1</Slider>
+%1%1<Slider name="KneeHeight" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeKneeHeight" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeKneeHeight</Data>
+%1%1%1<Data name="BaseShapeCanalKneeHeight" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalKneeHeight</Data>
+%1%1%1<Data name="pantyKneeHeight" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyKneeHeight</Data>
+%1%1</Slider>
+%1%1<Slider name="Legs" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeLegs" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeLegs</Data>
+%1%1%1<Data name="BaseShapeCanalLegs" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalLegs</Data>
+%1%1%1<Data name="BaseShapeAnusLegs" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusLegs</Data>
+%1%1%1<Data name="BaseShapeVaginaLegs" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaLegs</Data>
+%1%1%1<Data name="pantyLegs" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyLegs</Data>
+%1%1</Slider>
+%1%1<Slider name="LeftBreastFuck" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeLeftBreastFuck" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeLeftBreastFuck</Data>
+%1%1%1<Data name="BaseShapeVaginaLeftBreastFuck" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaLeftBreastFuck</Data>
+%1%1</Slider>
+%1%1<Slider name="LegsThin" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeLegsThin" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeLegsThin</Data>
+%1%1%1<Data name="pantyLegsThin" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyLegsThin</Data>
+%1%1</Slider>
+%1%1<Slider name="MuscleArms" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeMuscleArms" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeMuscleArms</Data>
+%1%1%1<Data name="braMuscleArms" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braMuscleArms</Data>
+%1%1</Slider>
+%1%1<Slider name="MuscleLegs" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeMuscleLegs" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeMuscleLegs</Data>
+%1%1%1<Data name="BaseShapeCanalMuscleLegs" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalMuscleLegs</Data>
+%1%1%1<Data name="BaseShapeVaginaMuscleLegs" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaMuscleLegs</Data>
+%1%1%1<Data name="pantyMuscleLegs" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyMuscleLegs</Data>
+%1%1</Slider>
+%1%1<Slider name="MuscleButt" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeMuscleButt" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeMuscleButt</Data>
+%1%1%1<Data name="BaseShapeAnusMuscleButt" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusMuscleButt</Data>
+%1%1%1<Data name="pantyMuscleButt" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyMuscleButt</Data>
+%1%1</Slider>
+%1%1<Slider name="MusclePecs" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeMusclePecs" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeMusclePecs</Data>
+%1%1%1<Data name="braMusclePecs" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braMusclePecs</Data>
+%1%1</Slider>
+%1%1<Slider name="MuscleAbs" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeMuscleAbs" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeMuscleAbs</Data>
+%1%1%1<Data name="BaseShapeCanalMuscleAbs" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalMuscleAbs</Data>
+%1%1%1<Data name="braMuscleAbs" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braMuscleAbs</Data>
+%1%1%1<Data name="pantyMuscleAbs" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyMuscleAbs</Data>
+%1%1%1<Data name="bellyringMuscleAbs" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringMuscleAbs</Data>
+%1%1%1<Data name="bellyring2MuscleAbs" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2MuscleAbs</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleDistance" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeNippleDistance" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleDistance</Data>
+%1%1%1<Data name="BaseShapeVaginaNippleDistance" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNippleDistance</Data>
+%1%1%1<Data name="braNippleDistance" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleDistance</Data>
+%1%1</Slider>
+%1%1<Slider name="NipplePerkiness" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNipplePerkiness" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNipplePerkiness</Data>
+%1%1%1<Data name="BaseShapeVaginaNipplePerkiness" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNipplePerkiness</Data>
+%1%1%1<Data name="braNipplePerkiness" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNipplePerkiness</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleLength" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleLength" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleLength</Data>
+%1%1%1<Data name="BaseShapeVaginaNippleLength" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNippleLength</Data>
+%1%1%1<Data name="braNippleLength" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleLength</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleSize" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeNippleSize" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleSize</Data>
+%1%1%1<Data name="BaseShapeVaginaNippleSize" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNippleSize</Data>
+%1%1%1<Data name="braNippleSize" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleSize</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleAreola" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleAreola" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleAreola</Data>
+%1%1%1<Data name="BaseShapeVaginaNippleAreola" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNippleAreola</Data>
+%1%1%1<Data name="braNippleAreola" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleAreola</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleUp" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleUp" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleUp</Data>
+%1%1%1<Data name="BaseShapeVaginaNippleUp" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNippleUp</Data>
+%1%1%1<Data name="braNippleUp" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleUp</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleDown" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleDown" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleDown</Data>
+%1%1%1<Data name="BaseShapeVaginaNippleDown" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNippleDown</Data>
+%1%1%1<Data name="braNippleDown" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleDown</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleTip" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleTip" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleTip</Data>
+%1%1%1<Data name="BaseShapeVaginaNippleTip" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaNippleTip</Data>
+%1%1%1<Data name="braNippleTip" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleTip</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleErection" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleErection" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNippleErection</Data>
+%1%1%1<Data name="braNippleErection" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNippleErection</Data>
+%1%1</Slider>
+%1%1<Slider name="NipplePuffyAreola" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNipplePuffyAreola" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNipplePuffyAreola</Data>
+%1%1%1<Data name="braNipplePuffyAreola" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNipplePuffyAreola</Data>
+%1%1</Slider>
+%1%1<Slider name="Neck" invert="false" small="100" big="0" hidden="true">
+%1%1%1<Data name="BaseShapeNeck" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNeck</Data>
+%1%1%1<Data name="braNeck" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNeck</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyCute" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyCute" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyCute</Data>
+%1%1%1<Data name="BaseShapeCanalPussyCute" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyCute</Data>
+%1%1%1<Data name="BaseShapeAnusPussyCute" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusPussyCute</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyCute" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyCute</Data>
+%1%1%1<Data name="pantyPussyCute" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPussyCute</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyMajora" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyMajora" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyMajora</Data>
+%1%1%1<Data name="BaseShapeCanalPussyMajora" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyMajora</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyMajora" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyMajora</Data>
+%1%1%1<Data name="pantyPussyMajora" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPussyMajora</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyMinora" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyMinora" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyMinora</Data>
+%1%1%1<Data name="BaseShapeCanalPussyMinora" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyMinora</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyMinora" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyMinora</Data>
+%1%1%1<Data name="pantyPussyMinora" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPussyMinora</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyMajoraBig" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyMajoraBig" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyMajoraBig</Data>
+%1%1%1<Data name="BaseShapeCanalPussyMajoraBig" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyMajoraBig</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyMajoraBig" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyMajoraBig</Data>
+%1%1%1<Data name="pantyPussyMajoraBig" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPussyMajoraBig</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyHilly" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyHilly" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyHilly</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyHilly" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyHilly</Data>
+%1%1%1<Data name="pantyPussyHilly" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPussyHilly</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyOpen" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyOpen" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyOpen</Data>
+%1%1%1<Data name="BaseShapeCanalPussyOpen" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyOpen</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyOpen" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyOpen</Data>
+%1%1%1<Data name="pantyPussyOpen" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPussyOpen</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyWide" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCanalPussyWide" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyWide</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyWide" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyWide</Data>
+%1%1</Slider>
+%1%1<Slider name="PregnancyBelly" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePregnancyBelly" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePregnancyBelly</Data>
+%1%1%1<Data name="BaseShapeCanalPregnancyBelly" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPregnancyBelly</Data>
+%1%1%1<Data name="BaseShapeVaginaPregnancyBelly" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPregnancyBelly</Data>
+%1%1%1<Data name="braPregnancyBelly" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braPregnancyBelly</Data>
+%1%1%1<Data name="pantyPregnancyBelly" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPregnancyBelly</Data>
+%1%1%1<Data name="bellyringPregnancyBelly" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringPregnancyBelly</Data>
+%1%1%1<Data name="bellyring2PregnancyBelly" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2PregnancyBelly</Data>
+%1%1</Slider>
+%1%1<Slider name="RightBreastFuck" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeRightBreastFuck" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeRightBreastFuck</Data>
+%1%1%1<Data name="BaseShapeVaginaRightBreastFuck" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaRightBreastFuck</Data>
+%1%1</Slider>
+%1%1<Slider name="RibsProminance" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeRibsProminance" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeRibsProminance</Data>
+%1%1%1<Data name="braRibsProminance" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braRibsProminance</Data>
+%1%1</Slider>
+%1%1<Slider name="RoundAss" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeRoundAss" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeRoundAss</Data>
+%1%1%1<Data name="BaseShapeCanalRoundAss" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalRoundAss</Data>
+%1%1%1<Data name="BaseShapeAnusRoundAss" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusRoundAss</Data>
+%1%1%1<Data name="pantyRoundAss" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyRoundAss</Data>
+%1%1</Slider>
+%1%1<Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeShoulderSmooth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeShoulderSmooth</Data>
+%1%1%1<Data name="braShoulderSmooth" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braShoulderSmooth</Data>
+%1%1</Slider>
+%1%1<Slider name="ShoulderWidth" invert="true" small="100" big="100">
+%1%1%1<Data name="BaseShapeShoulderWidth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeShoulderWidth</Data>
+%1%1%1<Data name="braShoulderWidth" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braShoulderWidth</Data>
+%1%1</Slider>
+%1%1<Slider name="ShoulderTweak" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeShoulderTweak" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeShoulderTweak</Data>
+%1%1%1<Data name="braShoulderTweak" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braShoulderTweak</Data>
+%1%1</Slider>
+%1%1<Slider name="SternumDepth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeSternumDepth" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeSternumDepth</Data>
+%1%1%1<Data name="braSternumDepth" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braSternumDepth</Data>
+%1%1</Slider>
+%1%1<Slider name="SternumHeight" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeSternumHeight" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeSternumHeight</Data>
+%1%1%1<Data name="braSternumHeight" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braSternumHeight</Data>
+%1%1</Slider>
+%1%1<Slider name="SlimThighs" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeSlimThighs" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeSlimThighs</Data>
+%1%1%1<Data name="BaseShapeCanalSlimThighs" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalSlimThighs</Data>
+%1%1%1<Data name="BaseShapeAnusSlimThighs" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusSlimThighs</Data>
+%1%1%1<Data name="BaseShapeVaginaSlimThighs" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaSlimThighs</Data>
+%1%1%1<Data name="pantySlimThighs" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantySlimThighs</Data>
+%1%1%1<Data name="bellyringSlimThighs" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringSlimThighs</Data>
+%1%1%1<Data name="bellyring2SlimThighs" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2SlimThighs</Data>
+%1%1</Slider>
+%1%1<Slider name="Top Slope" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeTop Slope" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeTop Slope</Data>
+%1%1%1<Data name="braTop Slope" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braTop Slope</Data>
+%1%1</Slider>
+%1%1<Slider name="Thighs" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeThighs" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeThighs</Data>
+%1%1%1<Data name="BaseShapeCanalThighs" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalThighs</Data>
+%1%1%1<Data name="BaseShapeAnusThighs" target="BaseShapeAnus">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusThighs</Data>
+%1%1%1<Data name="BaseShapeVaginaThighs" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaThighs</Data>
+%1%1%1<Data name="pantyThighs" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyThighs</Data>
+%1%1</Slider>
+%1%1<Slider name="TummyTuck" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeTummyTuck" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeTummyTuck</Data>
+%1%1%1<Data name="BaseShapeVaginaTummyTuck" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaTummyTuck</Data>
+%1%1%1<Data name="braTummyTuck" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braTummyTuck</Data>
+%1%1%1<Data name="pantyTummyTuck" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyTummyTuck</Data>
+%1%1%1<Data name="bellyringTummyTuck" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringTummyTuck</Data>
+%1%1%1<Data name="bellyring2TummyTuck" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2TummyTuck</Data>
+%1%1</Slider>
+%1%1<Slider name="Waist" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeWaist" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeWaist</Data>
+%1%1%1<Data name="braWaist" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braWaist</Data>
+%1%1%1<Data name="pantyWaist" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyWaist</Data>
+%1%1%1<Data name="bellyringWaist" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringWaist</Data>
+%1%1%1<Data name="bellyring2Waist" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2Waist</Data>
+%1%1</Slider>
+%1%1<Slider name="WideWaistLine" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeWideWaistLine" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeWideWaistLine</Data>
+%1%1%1<Data name="braWideWaistLine" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braWideWaistLine</Data>
+%1%1%1<Data name="pantyWideWaistLine" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyWideWaistLine</Data>
+%1%1</Slider>
+%1%1<Slider name="WaistHeight" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeWaistHeight" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeWaistHeight</Data>
+%1%1%1<Data name="BaseShapeVaginaWaistHeight" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaWaistHeight</Data>
+%1%1%1<Data name="braWaistHeight" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braWaistHeight</Data>
+%1%1%1<Data name="pantyWaistHeight" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyWaistHeight</Data>
+%1%1%1<Data name="bellyringWaistHeight" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringWaistHeight</Data>
+%1%1%1<Data name="bellyring2WaistHeight" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2WaistHeight</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsGone" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastsGone" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastsGone</Data>
+%1%1%1<Data name="braBreastsGone" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastsGone</Data>
+%1%1</Slider>
+%1%1<Slider name="NipBGone" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNipBGone" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNipBGone</Data>
+%1%1%1<Data name="braNipBGone" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braNipBGone</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyClipFix" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyClipFix" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyClipFix</Data>
+%1%1%1<Data name="BaseShapeCanalPussyClipFix" target="BaseShapeCanal">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyClipFix</Data>
+%1%1%1<Data name="BaseShapeVaginaPussyClipFix" target="BaseShapeVagina">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyClipFix</Data>
+%1%1%1<Data name="pantyPussyClipFix" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyPussyClipFix</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyPressed" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyPressed" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBellyPressed</Data>
+%1%1%1<Data name="pantyBellyPressed" target="panty" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\pantyBellyPressed</Data>
+%1%1%1<Data name="bellyringBellyPressed" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyringBellyPressed</Data>
+%1%1%1<Data name="bellyring2BellyPressed" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2BellyPressed</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsPressed" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastsPressed" target="BaseShape">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeBreastsPressed</Data>
+%1%1%1<Data name="braBreastsPressed" target="bra" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\braBreastsPressed</Data>
+%1%1</Slider>
+%1%1<Slider name="-ZAP- Belly Ring" invert="false" small="100" big="100" hidden="true" zap="true">
+%1%1%1<Data name="bellyring-ZAP- Belly Ring" target="bellyring" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring-ZAP- Belly Ring</Data>
+%1%1%1<Data name="bellyring2-ZAP- Belly Ring" target="bellyring2" local="true">BHUNP 3BBB Advanced Ver2 Nevernude.osd\bellyring2-ZAP- Belly Ring</Data>
+%1%1</Slider>
+%1</SliderSet>

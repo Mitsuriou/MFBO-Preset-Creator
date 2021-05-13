@@ -409,6 +409,36 @@
 %1%1<Slider name="Belly" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeBelly" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBelly</Data>
 %1%1</Slider>
+%1%1<Slider name="BellyBalls" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyBalls" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyBalls</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyCenterProtrude" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyCenterProtrude" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyCenterProtrude</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyCenterUpperProtrude" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyCenterUpperProtrude" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyCenterUpperProtrude</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyFatLower" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyFatLower" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyFatLower</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyFatUpper" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyFatUpper" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyFatUpper</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyPressed" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyPressed" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyPressed</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyLowerSwell1" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyLowerSwell1" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyLowerSwell1</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyLowerSwell2" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyLowerSwell2" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyLowerSwell2</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyLowerSwell3" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyLowerSwell3" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyLowerSwell3</Data>
+%1%1</Slider>
+%1%1<Slider name="BellyObesity" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBellyObesity" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBellyObesity</Data>
+%1%1</Slider>
 %1%1<Slider name="BigTorso" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeBigTorso" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBigTorso</Data>
 %1%1%1<Data name="BaseShapeAnusBigTorso" target="BaseShapeAnus" local="true">BHUNP 3BBB Advanced.osd\BaseShapeAnusBigTorso</Data>
@@ -445,6 +475,12 @@
 %1%1</Slider>
 %1%1<Slider name="PushUp" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapePushUp" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapePushUp</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsGone" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastsGone" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBreastsGone</Data>
+%1%1</Slider>
+%1%1<Slider name="BreastsPressed" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeBreastsPressed" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBreastsPressed</Data>
 %1%1</Slider>
 %1%1<Slider name="BreastHeight" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeBreastHeight" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBreastHeight</Data>
@@ -491,6 +527,15 @@
 %1%1<Slider name="BotePregnancy" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeBotePregnancy" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBotePregnancy</Data>
 %1%1</Slider>
+%1%1<Slider name="CalfSize" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCalfSize" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCalfSize</Data>
+%1%1</Slider>
+%1%1<Slider name="CalfSmooth" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeCalfSmooth" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCalfSmooth</Data>
+%1%1</Slider>
+%1%1<Slider name="ClitorisErection" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeClitorisErection" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeClitorisErection</Data>
+%1%1</Slider>
 %1%1<Slider name="ChubbyArms" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeChubbyArms" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeChubbyArms</Data>
 %1%1</Slider>
@@ -514,14 +559,8 @@
 %1%1%1<Data name="BaseShapeAnusCrotchBack" target="BaseShapeAnus" local="true">BHUNP 3BBB Advanced.osd\BaseShapeAnusCrotchBack</Data>
 %1%1%1<Data name="BaseShapeCanalCrotchBack" target="BaseShapeCanal" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCanalCrotchBack</Data>
 %1%1</Slider>
-%1%1<Slider name="CalfSize" invert="false" small="0" big="0">
-%1%1%1<Data name="BaseShapeCalfSize" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCalfSize</Data>
-%1%1</Slider>
-%1%1<Slider name="CalfSmooth" invert="false" small="0" big="0">
-%1%1%1<Data name="BaseShapeCalfSmooth" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCalfSmooth</Data>
-%1%1</Slider>
-%1%1<Slider name="ClitorisErection" invert="false" small="0" big="0">
-%1%1%1<Data name="BaseShapeClitorisErection" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeClitorisErection</Data>
+%1%1<Slider name="ClitSpread" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeClitSpread" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeClitSpread</Data>
 %1%1</Slider>
 %1%1<Slider name="ChubbyButt" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeChubbyButt" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeChubbyButt</Data>
@@ -555,12 +594,15 @@
 %1%1<Slider name="HipUpperWidth" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeHipUpperWidth" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeHipUpperWidth</Data>
 %1%1</Slider>
-%1%1<Slider name="KneeShape" invert="false" small="0" big="0">
-%1%1%1<Data name="BaseShapeKneeShape" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeKneeShape</Data>
-%1%1</Slider>
 %1%1<Slider name="KneeHeight" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeKneeHeight" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeKneeHeight</Data>
 %1%1%1<Data name="BaseShapeCanalKneeHeight" target="BaseShapeCanal" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCanalKneeHeight</Data>
+%1%1</Slider>
+%1%1<Slider name="KneeShape" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeKneeShape" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeKneeShape</Data>
+%1%1</Slider>
+%1%1<Slider name="KneeSlim" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeKneeSlim" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeKneeSlim</Data>
 %1%1</Slider>
 %1%1<Slider name="Legs" invert="true" small="100" big="100">
 %1%1%1<Data name="BaseShapeLegs" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeLegs</Data>
@@ -618,11 +660,32 @@
 %1%1<Slider name="NippleErection" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeNippleErection" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNippleErection</Data>
 %1%1</Slider>
+%1%1<Slider name="NipBGone" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNipBGone" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNipBGone</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleInverted" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleInverted" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNippleInverted</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleLeftPinch" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleLeftPinch" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNippleLeftPinch</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleLeftPressed" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleLeftPressed" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNippleLeftPressed</Data>
+%1%1</Slider>
 %1%1<Slider name="NipplePuffyAreola" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeNipplePuffyAreola" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNipplePuffyAreola</Data>
 %1%1</Slider>
+%1%1<Slider name="NippleRightPinch" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleRightPinch" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNippleRightPinch</Data>
+%1%1</Slider>
+%1%1<Slider name="NippleRightPressed" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapeNippleRightPressed" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNippleRightPressed</Data>
+%1%1</Slider>
 %1%1<Slider name="Neck" invert="false" small="100" big="0" hidden="true">
 %1%1%1<Data name="BaseShapeNeck" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNeck</Data>
+%1%1</Slider>
+%1%1<Slider name="PussyClipFix" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyClipFix" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapePussyClipFix</Data>
 %1%1</Slider>
 %1%1<Slider name="PussyCute" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapePussyCute" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapePussyCute</Data>
@@ -649,6 +712,7 @@
 %1%1%1<Data name="BaseShapeCanalPussyOpen" target="BaseShapeCanal" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCanalPussyOpen</Data>
 %1%1</Slider>
 %1%1<Slider name="PussyWide" invert="false" small="0" big="0">
+%1%1%1<Data name="BaseShapePussyWide" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapePussyWide</Data>
 %1%1%1<Data name="BaseShapeCanalPussyWide" target="BaseShapeCanal" local="true">BHUNP 3BBB Advanced.osd\BaseShapeCanalPussyWide</Data>
 %1%1</Slider>
 %1%1<Slider name="PregnancyBelly" invert="false" small="0" big="0">
@@ -705,11 +769,5 @@
 %1%1</Slider>
 %1%1<Slider name="WaistHeight" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeWaistHeight" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeWaistHeight</Data>
-%1%1</Slider>
-%1%1<Slider name="BreastsGone" invert="false" small="0" big="0">
-%1%1%1<Data name="BaseShapeBreastsGone" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeBreastsGone</Data>
-%1%1</Slider>
-%1%1<Slider name="NipBGone" invert="false" small="0" big="0">
-%1%1%1<Data name="BaseShapeNipBGone" target="BaseShape" local="true">BHUNP 3BBB Advanced.osd\BaseShapeNipBGone</Data>
 %1%1</Slider>
 %1</SliderSet>

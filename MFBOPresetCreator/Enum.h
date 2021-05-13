@@ -36,6 +36,15 @@ enum class BodyNameVersion
   BHUNP_TBBP_Advanced_2_25 = 31,
   CBBE_3BBB_3BA_2_00_to_2_04 = 32,
   CBBE_3BBB_3BA_2_05_to_2_06 = 33,
+  BHUNP_3BBB_2_30 = 34,
+  BHUNP_3BBB_Advanced_2_30 = 35,
+  BHUNP_3BBB_Advanced_ver_2_2_30 = 36,
+  BHUNP_BBP_2_30 = 37,
+  BHUNP_BBP_Advanced_2_30 = 38,
+  BHUNP_TBBP_2_30 = 39,
+  BHUNP_TBBP_Advanced_2_30 = 40,
+  BHUNP_3BBB_Advanced_ver_2_nevernude_2_25 = 41,
+  BHUNP_3BBB_Advanced_ver_2_nevernude_2_30 = 42,
 };
 
 enum class BodyName
@@ -48,7 +57,8 @@ enum class BodyName
   BHUNP_BBP = 5,
   BHUNP_BBP_Advanced = 6,
   BHUNP_TBBP = 7,
-  BHUNP_TBBP_Advanced = 8
+  BHUNP_TBBP_Advanced = 8,
+  BHUNP_3BBB_Advanced_ver_2_nevernude = 9,
 };
 
 enum class ApplicationLanguage

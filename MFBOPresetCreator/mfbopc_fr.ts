@@ -570,42 +570,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="139"/>
+        <location filename="DataLists.cpp" line="174"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="140"/>
+        <location filename="DataLists.cpp" line="175"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="141"/>
+        <location filename="DataLists.cpp" line="176"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="170"/>
+        <location filename="DataLists.cpp" line="205"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="171"/>
+        <location filename="DataLists.cpp" line="206"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="172"/>
+        <location filename="DataLists.cpp" line="207"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="173"/>
+        <location filename="DataLists.cpp" line="208"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="174"/>
+        <location filename="DataLists.cpp" line="209"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
@@ -900,12 +900,12 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="800"/>
+        <location filename="PresetCreator.cpp" line="799"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1572"/>
+        <location filename="PresetCreator.cpp" line="1582"/>
         <source>Open the generated directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -982,75 +982,75 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="847"/>
+        <location filename="PresetCreator.cpp" line="846"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <oldsource>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</oldsource>
         <translation type="unfinished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="876"/>
+        <location filename="PresetCreator.cpp" line="875"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1026"/>
-        <location filename="PresetCreator.cpp" line="1050"/>
+        <location filename="PresetCreator.cpp" line="1025"/>
+        <location filename="PresetCreator.cpp" line="1049"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1044"/>
+        <location filename="PresetCreator.cpp" line="1043"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1391"/>
+        <location filename="PresetCreator.cpp" line="1401"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1398"/>
+        <location filename="PresetCreator.cpp" line="1408"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1409"/>
+        <location filename="PresetCreator.cpp" line="1419"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1550"/>
+        <location filename="PresetCreator.cpp" line="1560"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1437"/>
+        <location filename="PresetCreator.cpp" line="1447"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1450"/>
+        <location filename="PresetCreator.cpp" line="1460"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1463"/>
+        <location filename="PresetCreator.cpp" line="1473"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1477"/>
+        <location filename="PresetCreator.cpp" line="1487"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1491"/>
+        <location filename="PresetCreator.cpp" line="1501"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="778"/>
-        <location filename="PresetCreator.cpp" line="818"/>
+        <location filename="PresetCreator.cpp" line="777"/>
+        <location filename="PresetCreator.cpp" line="817"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
@@ -1077,18 +1077,18 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="871"/>
+        <location filename="PresetCreator.cpp" line="870"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1557"/>
-        <location filename="PresetCreator.cpp" line="1573"/>
+        <location filename="PresetCreator.cpp" line="1567"/>
+        <location filename="PresetCreator.cpp" line="1583"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="883"/>
+        <location filename="PresetCreator.cpp" line="882"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
@@ -1137,27 +1137,27 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1417"/>
+        <location filename="PresetCreator.cpp" line="1427"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1418"/>
+        <location filename="PresetCreator.cpp" line="1428"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1421"/>
+        <location filename="PresetCreator.cpp" line="1431"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1422"/>
+        <location filename="PresetCreator.cpp" line="1432"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1549"/>
+        <location filename="PresetCreator.cpp" line="1559"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
