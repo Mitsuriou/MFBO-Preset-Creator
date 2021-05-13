@@ -113,7 +113,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::getFeetModsEntries());
   lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
-  lFeetSelector->setObjectName(QString("feet_selector_version"));
+  lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lGeneralGridLayout->addWidget(lFeetSelector, 0, 3);
 
   // Input path
@@ -398,7 +398,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
 
   // Selected feet
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_selector_version"))->currentIndex()};
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Check if the input path has been given by the user
   if (lRootDir.length() == 0)

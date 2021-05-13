@@ -56,8 +56,6 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool& aSkipFileC
 
 void PresetCreator::saveProject(const bool& aIsSaveAsContext)
 {
-  // TODO: Check if this function needs to take into account some new UI components
-
   auto lFilePath{QString(this->mLastUsedSavePath)};
   // Check the event source
   if (aIsSaveAsContext)
@@ -504,7 +502,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::getFeetModsEntries());
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
-  lFeetSelector->setObjectName(QString("feet_selector_version"));
+  lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lBodyslideGridLayout->addWidget(lFeetSelector, 0, 3);
 
   // Second line
@@ -638,6 +636,7 @@ void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
   // BodySlide
   this->findChild<QComboBox*>(QString("body_selector_name"))->setCurrentIndex(lFile["body_selector_name"].toInt());
   this->findChild<QComboBox*>(QString("body_selector_version"))->setCurrentIndex(lFile["body_selector_version"].toInt());
+  this->findChild<QComboBox*>(QString("feet_mod_selector"))->setCurrentIndex(lFile["feet_mod_selector"].toInt());
   this->findChild<QLineEdit*>("names_osp_xml_input")->setText(lFile["names_osp_xml_input"].toString());
   this->findChild<QLineEdit*>("names_bodyslide_input")->setText(lFile["names_bodyslide_input"].toString());
 
@@ -705,6 +704,10 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
   // Body version
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   lValuesObj["body_selector_version"] = lBodyVersionSelected;
+
+  // Feet mod
+  auto lFeetModSelected{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
+  lValuesObj["feet_mod_selector"] = lFeetModSelected;
 
   // OSP and XML names
   auto lOSPXMLNames{this->findChild<QLineEdit*>("names_osp_xml_input")->text().trimmed()};
@@ -1346,7 +1349,7 @@ void PresetCreator::generateDirectoryStructure()
   auto lBodySelected{static_cast<int>(DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
 
   // Selected feet
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_selector_version"))->currentIndex()};
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Beast hands
   auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
