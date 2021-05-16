@@ -17,7 +17,7 @@ If you want to understand how the software works; if you have any doubt on any f
 
 # Development roadmap (not ordered by priority and not exhaustive)
 ### Ressources
-- [X] (2.5.1) User guide and written tutorials
+- [X] (2.5.1.0) User guide and written tutorials
 - [ ] Video tutorials (I am not sure I will ever do them)
 
 ### Graphical User Interface (GUI) improvements
