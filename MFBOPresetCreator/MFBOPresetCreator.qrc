@@ -414,16 +414,19 @@
         <file alias="bhunp 3bbb/2.20">ressources/osp/bhunp 3bbb/2.20.osp</file>
         <file alias="bhunp 3bbb/2.25">ressources/osp/bhunp 3bbb/2.25.osp</file>
         <file alias="bhunp 3bbb/2.30">ressources/osp/bhunp 3bbb/2.30.osp</file>
+        <file alias="bhunp 3bbb/2.31">ressources/osp/bhunp 3bbb/2.31.osp</file>
         <file alias="bhunp 3bbb advanced/2.13">ressources/osp/bhunp 3bbb advanced/2.13.osp</file>
         <file alias="bhunp 3bbb advanced/2.15">ressources/osp/bhunp 3bbb advanced/2.15.osp</file>
         <file alias="bhunp 3bbb advanced/2.20">ressources/osp/bhunp 3bbb advanced/2.20.osp</file>
         <file alias="bhunp 3bbb advanced/2.25">ressources/osp/bhunp 3bbb advanced/2.25.osp</file>
         <file alias="bhunp 3bbb advanced/2.30">ressources/osp/bhunp 3bbb advanced/2.30.osp</file>
+        <file alias="bhunp 3bbb advanced/2.31">ressources/osp/bhunp 3bbb advanced/2.31.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.13">ressources/osp/bhunp 3bbb advanced ver 2/2.13.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.15">ressources/osp/bhunp 3bbb advanced ver 2/2.15.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.20">ressources/osp/bhunp 3bbb advanced ver 2/2.20.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.25">ressources/osp/bhunp 3bbb advanced ver 2/2.25.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.30">ressources/osp/bhunp 3bbb advanced ver 2/2.30.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2/2.31">ressources/osp/bhunp 3bbb advanced ver 2/2.31.osp</file>
         <file alias="bhunp 3bbb advanced ver 2 nevernude/2.25">ressources/osp/bhunp 3bbb advanced ver 2 nevernude/2.25.osp</file>
         <file alias="bhunp 3bbb advanced ver 2 nevernude/2.30">ressources/osp/bhunp 3bbb advanced ver 2 nevernude/2.30.osp</file>
         <file alias="bhunp bbp/2.13">ressources/osp/bhunp bbp/2.13.osp</file>
@@ -431,20 +434,24 @@
         <file alias="bhunp bbp/2.20">ressources/osp/bhunp bbp/2.20.osp</file>
         <file alias="bhunp bbp/2.25">ressources/osp/bhunp bbp/2.25.osp</file>
         <file alias="bhunp bbp/2.30">ressources/osp/bhunp bbp/2.30.osp</file>
+        <file alias="bhunp bbp/2.31">ressources/osp/bhunp bbp/2.31.osp</file>
         <file alias="bhunp bbp advanced/2.13">ressources/osp/bhunp bbp advanced/2.13.osp</file>
         <file alias="bhunp bbp advanced/2.15">ressources/osp/bhunp bbp advanced/2.15.osp</file>
         <file alias="bhunp bbp advanced/2.20">ressources/osp/bhunp bbp advanced/2.20.osp</file>
         <file alias="bhunp bbp advanced/2.25">ressources/osp/bhunp bbp advanced/2.25.osp</file>
         <file alias="bhunp bbp advanced/2.30">ressources/osp/bhunp bbp advanced/2.30.osp</file>
+        <file alias="bhunp bbp advanced/2.31">ressources/osp/bhunp bbp advanced/2.31.osp</file>
         <file alias="bhunp tbbp/2.13">ressources/osp/bhunp tbbp/2.13.osp</file>
         <file alias="bhunp tbbp/2.15">ressources/osp/bhunp tbbp/2.15.osp</file>
         <file alias="bhunp tbbp/2.20">ressources/osp/bhunp tbbp/2.20.osp</file>
         <file alias="bhunp tbbp/2.25">ressources/osp/bhunp tbbp/2.25.osp</file>
         <file alias="bhunp tbbp/2.30">ressources/osp/bhunp tbbp/2.30.osp</file>
+        <file alias="bhunp tbbp/2.31">ressources/osp/bhunp tbbp/2.31.osp</file>
         <file alias="bhunp tbbp advanced/2.13">ressources/osp/bhunp tbbp advanced/2.13.osp</file>
         <file alias="bhunp tbbp advanced/2.15">ressources/osp/bhunp tbbp advanced/2.15.osp</file>
         <file alias="bhunp tbbp advanced/2.20">ressources/osp/bhunp tbbp advanced/2.20.osp</file>
         <file alias="bhunp tbbp advanced/2.25">ressources/osp/bhunp tbbp advanced/2.25.osp</file>
         <file alias="bhunp tbbp advanced/2.30">ressources/osp/bhunp tbbp advanced/2.30.osp</file>
+        <file alias="bhunp tbbp advanced/2.31">ressources/osp/bhunp tbbp advanced/2.31.osp</file>
     </qresource>
 </RCC>

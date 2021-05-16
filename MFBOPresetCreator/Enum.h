@@ -45,6 +45,13 @@ enum class BodyNameVersion
   BHUNP_TBBP_Advanced_2_30 = 40,
   BHUNP_3BBB_Advanced_ver_2_nevernude_2_25 = 41,
   BHUNP_3BBB_Advanced_ver_2_nevernude_2_30 = 42,
+  BHUNP_3BBB_2_31 = 43,
+  BHUNP_3BBB_Advanced_2_31 = 44,
+  BHUNP_3BBB_Advanced_ver_2_2_31 = 45,
+  BHUNP_BBP_2_31 = 46,
+  BHUNP_BBP_Advanced_2_31 = 47,
+  BHUNP_TBBP_2_31 = 48,
+  BHUNP_TBBP_Advanced_2_31 = 49,
 };
 
 enum class BodyName
