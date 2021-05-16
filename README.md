@@ -1,8 +1,9 @@
 # Mitsuriou's Follower Bodies Overhaul: Preset Creator
-![Latest stable version](https://img.shields.io/github/v/release/Mitsuriou/MFBO-Preset-Creator?label=Latest%20stable%20version&logo=GitHub&logoColor=white&style=flat-square)
-[![CodeFactor](https://img.shields.io/codefactor/grade/github/Mitsuriou/MFBO-Preset-Creator/main?label=Code%20quality(CodeFactor)&style=flat-square&logo=CodeFactor&logoColor=white)](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator)
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/Mitsuriou/MFBO-Preset-Creator/main?label=Code%20quality(CodeFactor)&style=flat-square&logo=CodeFactor&logoColor=white)](https://www.codefactor.io/repository/github/mitsuriou/mfbo-preset-creator)  
+![Latest stable version](https://img.shields.io/github/v/release/Mitsuriou/MFBO-Preset-Creator?label=Latest%20stable%20version&logo=GitHub&logoColor=white&style=flat-square)  
 ![All time downloads count](https://img.shields.io/github/downloads/Mitsuriou/MFBO-Preset-Creator/total?label=All%20time%20downloads%20count&logo=Github&logoColor=white&style=flat-square)
-![Latest release downloads count](https://img.shields.io/github/downloads/Mitsuriou/MFBO-Preset-Creator/latest/total?label=Latest%20release%20downloads%20count&logo=Github&logoColor=white&style=flat-square)
+![Latest stale release downloads count](https://img.shields.io/github/downloads/Mitsuriou/MFBO-Preset-Creator/latest/total?label=Latest%20release%20downloads%20count&logo=Github&logoColor=white&style=flat-square)
+![Latest stable or BETA release downloads count](https://img.shields.io/github/downloads-pre/Mitsuriou/MFBO-Preset-Creator/latest/total?label=Latest%20release%20downloads%20count&logo=Github&logoColor=white&style=flat-square)
 
 MFBOPC is a relatively simple GUI application that should allow anyone to change a body mesh of a follower or an NPC to another body mesh (currently supporting CBBE 3BBB 3BA, CBBE 3BBB SMP and BHUNP SSE).
 In addition, the user will generate files that the BodySlide application is able to read, to easily custom the follower's or NPC's body shape.
@@ -20,29 +21,29 @@ If you want to understand how the software works; if you have any doubt on any f
 - [ ] Video tutorials (I am not sure I will ever do them)
 
 ### Graphical User Interface (GUI) improvements
-- [X] (1.7.3 & 1.7.4) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
-- [X] (1.9.0) Allow the user to type different paths for the body, hands and feet
-- [X] (2.0.0) Add compatibility with CBBE 3BBB SMP
-- [X] (2.0.0+) Add compatibility for all the most popular body types
+- [X] (1.7.4.0) Add a check system to know is the *"meshes/"* path is well filled and seems to be valid
+- [X] (1.9.0.0) Allow the user to type different paths for the body, hands and feet
+- [X] (2.0.0.0) Add compatibility with CBBE 3BBB SMP
+- [X] (2.x.x.x) Add compatibility for all the most popular body types
 
 ### New tools
-- [X] (1.9.0) Automatic conversion (choose a directory to automatically try to find where are located the meshes for the NPC that needs to be converted)
-- [X] (2.6.0) Tool to help users to swap converted follower's textures in a simpler way.
+- [X] (1.9.0.0) Automatic conversion (choose a directory to automatically try to find where are located the meshes for the NPC that needs to be converted)
+- [X] (2.6.0.0) Tool to help users to swap converted follower's textures in a simpler way.
 
 ### Other cool features and improvements
-- [X] (1.7.4) Add an option to disable the automatic opening of the generated folder, after a generation
-- [X] (1.7.4) Be able to set a default export path that would be chosen automatically when the application launches
-- [X] (1.8.2) Be able to import a custom *female_skeleton.nif* file
-- [X] (1.8.4) Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
-- [X] (1.9.1) Be able to generate more then one preset in the output directory.
-- [ ] Batch conversion (multiple conversions at once)
+- [X] (1.7.4.0) Add an option to disable the automatic opening of the generated folder, after a generation
+- [X] (1.7.4.0) Be able to set a default export path that would be chosen automatically when the application launches
+- [X] (1.8.2.0) Be able to import a custom *female_skeleton.nif* file
+- [X] (1.8.4.0) Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
+- [X] (1.9.1.0) Be able to generate more then one preset in the output directory.
+- [X] (ETA 3.1.0.0) Batch conversion (multiple conversions at once)
 
 ### Developer side
-- [X] (1.7.4) Change the source code auto-formatter for more compatibility with Visual Studio 2019
-- [X] (1.7.6) Splashscreen when the application is being launched
-- [X] (1.8.0) In-app update checker
-- [X] (2.3.0) Executable installer
-- [X] (2.5.0) In-app automatic updater
+- [X] (1.7.4.0) Change the source code auto-formatter for more compatibility with Visual Studio 2019
+- [X] (1.7.6.0) Splashscreen when the application is being launched
+- [X] (1.8.0.0) In-app update checker
+- [X] (2.3.0.0) Executable installer
+- [X] (2.5.0.0) In-app automatic updater
 
 # Mirrors
 The source code is available on:
