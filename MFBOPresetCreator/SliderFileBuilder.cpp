@@ -17,7 +17,7 @@ QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const B
 
 QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNameVersion& aBody, const bool& aMustUseBeastHands)
 {
-  auto lSliderSet{QString("")};
+  auto lSliderSet{QString()};
 
   switch (aBody)
   {
@@ -32,6 +32,15 @@ QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNam
       }
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+      if (aMustUseBeastHands)
+      {
+        lSliderSet = QString("%1<SliderSet name=\"%2 - CBBE Beast Hands\">\n%1%1<DataFolder>CBBE</DataFolder>\n%1%1<SourceFile>CBBE Hands Beast.nif</SourceFile>\n%1%1<OutputPath>{%%hands_output_path%%}</OutputPath>\n%1%1<OutputFile GenWeights=\"true\">{%%hands_output_file%%}</OutputFile>\n%1%1<Shape target=\"Hands\" DataFolder=\"CBBE\">Hands</Shape>\n%1%1<Slider name=\"WristSize\" invert=\"false\" small=\"100\" big=\"0\">\n%1%1%1<Data name=\"HandsWristSize\" target=\"Hands\" local=\"true\">CBBE Hands Beast.osd\\HandsWristSize</Data>\n%1%1</Slider>\n%1</SliderSet>");
+      }
+      else
+      {
+        lSliderSet = QString("%1<SliderSet name=\"%2 - CBBE 3BBB Hands\">\n%1%1<DataFolder>CBBE</DataFolder>\n%1%1<SourceFile>CBBE Hands.nif</SourceFile>\n%1%1<OutputPath>{%%hands_output_path%%}</OutputPath>\n%1%1<OutputFile GenWeights=\"true\">{%%hands_output_file%%}</OutputFile>\n%1%1<Shape target=\"Hands\" DataFolder=\"CBBE\">Hands</Shape>\n%1%1<Slider name=\"WristSize\" invert=\"false\" small=\"100\" big=\"0\">\n%1%1%1<Data name=\"HandsWristSize\" target=\"Hands\" local=\"true\">CBBE Hands.osd\\HandsWristSize</Data>\n%1%1</Slider>\n%1</SliderSet>");
+      }
+      break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
     case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
     case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
@@ -110,7 +119,7 @@ QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNam
 
 QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyNameVersion& aBody, const int& aFeetModIndex)
 {
-  auto lSliderSet{QString("")};
+  auto lSliderSet{QString()};
 
   switch (aFeetModIndex)
   {
@@ -704,7 +713,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const Q
     lBuiltContent.append("%1</Group>\n");
   }
 
-  lBuiltContent.append("</SliderGroups>\n");
+  lBuiltContent.append("</SliderGroups>");
 
   // Replace the "%1" string with identation spaces and "%2" with the name given to the line
   return lBuiltContent.arg("    ").arg(aLineName);
@@ -725,7 +734,7 @@ QString SliderFileBuilder::getFeetLineForBHUNP(const int& aFeetModIndex)
       return "%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n";
   }
 
-  return QString("");
+  return QString();
 }
 
 QStringList SliderFileBuilder::getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody)

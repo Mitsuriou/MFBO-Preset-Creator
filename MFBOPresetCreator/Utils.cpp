@@ -168,7 +168,8 @@ int Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootD
     lAbsFilePath = it.fileInfo().absoluteFilePath();
     lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
 
-    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    if (aFileExtension.compare("*.xml", Qt::CaseInsensitive) == 0
+        && (lRelativeDirs.contains("/fomod/info.xml", Qt::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseInsensitive)))
     {
       continue;
     }
@@ -378,15 +379,37 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       Struct::SliderSet lTempSet;
 
       lTempSet.name = lSliderSet.attribute("name", "");
-      if (lTempSet.name.contains("body", Qt::CaseInsensitive))
+      if (lTempSet.name.endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Ver 2 Nevernude", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - BHUNP BBP", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - BHUNP BBP Advanced", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - BHUNP TBBP", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - BHUNP TBBP Advanced", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - 3BBB Body Amazing", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
+          || lTempSet.name.endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive))
       {
         lTempSet.meshPart = "Body";
       }
-      else if (lTempSet.name.contains("hands", Qt::CaseInsensitive))
+      else if (lTempSet.name.endsWith(" - Beast Hands", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - Hands", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - CBBE Beast Hands", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - CBBE Hands", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive))
       {
         lTempSet.meshPart = "Hands";
       }
-      else if (lTempSet.name.contains("feet", Qt::CaseInsensitive))
+      else if (lTempSet.name.endsWith(" - Feet", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - CBBE Feet", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Feet", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - Feet (MSF - normal)", Qt::CaseInsensitive)
+               || lTempSet.name.endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive))
       {
         lTempSet.meshPart = "Feet";
       }
@@ -423,7 +446,6 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
 bool Utils::isPresetUsingBeastHands(const QString& aPath)
 {
   QFile lReadFile(aPath);
-  lReadFile.setPermissions(QFile::WriteUser);
 
   auto lFileContent{QString()};
 
@@ -794,7 +816,7 @@ void Utils::checkLastPathsFileExistence()
     std::map<QString, QString> lMap;
     for (const auto& lKey : DataLists::getLastPathsKeys())
     {
-      lMap.insert({lKey, QString("")});
+      lMap.insert({lKey, QString()});
     }
 
     Utils::saveLastPathsToFile(lMap);

@@ -186,7 +186,7 @@ void MFBOPresetCreator::setupMenuBar()
   lTools->addAction(lOpenRetaTools);
 
   // Menu: Help
-  const auto& lUpdateAvailableText{this->mNewVersionAvailable ? tr(" (update available)") : QString("")};
+  const auto& lUpdateAvailableText{this->mNewVersionAvailable ? tr(" (update available)") : QString()};
 
   auto lHelp{new QMenu(tr("Help") + lUpdateAvailableText, this)};
   lHelp->setCursor(Qt::PointingHandCursor);

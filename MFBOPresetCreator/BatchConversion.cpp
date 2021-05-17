@@ -441,7 +441,7 @@ void BatchConversion::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
 
   // Construct full path
-  auto lFullPath(QString(""));
+  auto lFullPath{QString()};
   if (lUseOnlySubdir)
   {
     lMainDirTextEdit->setDisabled(true);

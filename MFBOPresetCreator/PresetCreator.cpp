@@ -559,8 +559,8 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   lBodyslideGridLayout->addWidget(lEditFilters, 5, 4);
 
   // Pre-bind initialization functions
-  this->updateOSPXMLPreview(QString(""));
-  this->updateBodyslideNamesPreview(QString(""));
+  this->updateOSPXMLPreview(QString());
+  this->updateBodyslideNamesPreview(QString());
 
   // Event binding
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateAvailableBodyVersions);
@@ -931,7 +931,7 @@ void PresetCreator::updateMeshesPreview()
 
   // Get preview label
   auto lPreviewLabel{this->findChild<QLabel*>("meshes_preview")};
-  auto lFullPreview(QString(""));
+  auto lFullPreview{QString()};
   auto lIsValidPath{true};
 
   if (lMeshesPathBody == "")
@@ -1014,7 +1014,7 @@ void PresetCreator::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
 
   // Construct full path
-  auto lFullPath(QString(""));
+  auto lFullPath{QString()};
   if (lUseOnlySubdir)
   {
     lMainDirTextEdit->setDisabled(true);

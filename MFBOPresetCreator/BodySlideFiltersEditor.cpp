@@ -26,7 +26,7 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
     // Remove every empty filter
     for (auto& lPair : this->mFiltersList)
     {
-      lPair.second.removeAll(QString(""));
+      lPair.second.removeAll(QString());
     }
 
     Utils::saveFiltersToFile(this->mFiltersList);

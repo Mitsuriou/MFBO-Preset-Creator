@@ -342,7 +342,7 @@ void RetargetingTool::updateBackupPreview()
   auto lIsValidPath{true};
 
   // Construct full path
-  auto lFullPath(QString(""));
+  auto lFullPath{QString()};
   if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
   {
     lFullPath = lMainDirectory + "/" + lSubDirectory;
@@ -515,7 +515,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     lAbsFilePath = it.fileInfo().absoluteFilePath();
     lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
 
-    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    if (lRelativeDirs.contains("/fomod/info.xml", Qt::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseInsensitive))
     {
       continue;
     }
@@ -556,15 +556,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Navigate to the next file
     it2.next();
 
-    // Ignore FOMOD directory
     lAbsFilePath = it2.fileInfo().absoluteFilePath();
-
-    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
-
-    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
-    {
-      continue;
-    }
 
     auto lMustUseBeastHands{Utils::isPresetUsingBeastHands(lAbsFilePath)};
 
@@ -618,6 +610,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
 
       // Construct the file content
+      // TODO: Add an exception below, when the Body and or the feet and or the hands block must not be generated:
       auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(lPresetName, lBodySelected, lMustUseBeastHands, lFeetModIndex)};
 
       // Fill the custom variables
@@ -687,7 +680,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     lAbsFilePath = it3.fileInfo().absoluteFilePath();
     lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
 
-    if (lRelativeDirs.contains("fomod", Qt::CaseInsensitive))
+    if (lRelativeDirs.contains("/fomod/info.xml", Qt::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseInsensitive))
     {
       continue;
     }

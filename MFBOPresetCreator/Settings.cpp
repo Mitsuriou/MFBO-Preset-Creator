@@ -851,7 +851,7 @@ void Settings::clearPathButtonClicked()
     return;
   }
 
-  Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(""), true, false);
+  Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(), true, false);
 
   this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))->setText(this->mLastPaths.find(lKey)->second);
 
@@ -865,7 +865,7 @@ void Settings::clearAllPaths()
   for (int i = 0; i < lSize; i++)
   {
     auto lKey{lKeys.at(i)};
-    Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(""), true, false);
+    Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(), true, false);
 
     this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(i + 1))->setText(this->mLastPaths.find(lKey)->second);
   }

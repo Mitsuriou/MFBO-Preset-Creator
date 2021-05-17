@@ -1045,22 +1045,22 @@ Do you want to download it now?</source>
     <message>
         <location filename="RetargetingTool.cpp" line="507"/>
         <location filename="RetargetingTool.cpp" line="552"/>
-        <location filename="RetargetingTool.cpp" line="679"/>
+        <location filename="RetargetingTool.cpp" line="671"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="578"/>
+        <location filename="RetargetingTool.cpp" line="570"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="599"/>
+        <location filename="RetargetingTool.cpp" line="591"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="607"/>
+        <location filename="RetargetingTool.cpp" line="599"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation></translation>
     </message>
@@ -1070,12 +1070,12 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="763"/>
+        <location filename="RetargetingTool.cpp" line="755"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="766"/>
+        <location filename="RetargetingTool.cpp" line="758"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1090,27 +1090,27 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="655"/>
+        <location filename="RetargetingTool.cpp" line="647"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="669"/>
+        <location filename="RetargetingTool.cpp" line="661"/>
         <source>Patching XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="707"/>
+        <location filename="RetargetingTool.cpp" line="699"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="755"/>
+        <location filename="RetargetingTool.cpp" line="747"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="763"/>
+        <location filename="RetargetingTool.cpp" line="755"/>
         <source>Retargeting successful</source>
         <translation></translation>
     </message>
@@ -1653,14 +1653,14 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="334"/>
-        <location filename="Utils.cpp" line="367"/>
-        <location filename="Utils.cpp" line="437"/>
+        <location filename="Utils.cpp" line="335"/>
+        <location filename="Utils.cpp" line="368"/>
+        <location filename="Utils.cpp" line="459"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="985"/>
+        <location filename="Utils.cpp" line="1007"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
