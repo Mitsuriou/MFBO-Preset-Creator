@@ -1044,23 +1044,23 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="507"/>
-        <location filename="RetargetingTool.cpp" line="552"/>
-        <location filename="RetargetingTool.cpp" line="671"/>
+        <location filename="RetargetingTool.cpp" line="554"/>
+        <location filename="RetargetingTool.cpp" line="691"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="570"/>
+        <location filename="RetargetingTool.cpp" line="572"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="591"/>
+        <location filename="RetargetingTool.cpp" line="593"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="599"/>
+        <location filename="RetargetingTool.cpp" line="601"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation></translation>
     </message>
@@ -1070,12 +1070,12 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="755"/>
+        <location filename="RetargetingTool.cpp" line="775"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="758"/>
+        <location filename="RetargetingTool.cpp" line="778"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1090,27 +1090,27 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="647"/>
+        <location filename="RetargetingTool.cpp" line="667"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="661"/>
+        <location filename="RetargetingTool.cpp" line="681"/>
         <source>Patching XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="699"/>
+        <location filename="RetargetingTool.cpp" line="719"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="747"/>
+        <location filename="RetargetingTool.cpp" line="767"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="755"/>
+        <location filename="RetargetingTool.cpp" line="775"/>
         <source>Retargeting successful</source>
         <translation></translation>
     </message>

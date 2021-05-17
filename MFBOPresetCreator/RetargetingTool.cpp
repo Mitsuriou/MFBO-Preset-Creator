@@ -543,6 +543,8 @@ void RetargetingTool::launchUpDownGradeProcess()
     lOSPBuffer.push_back(lPair);
   }
 
+  std::map<QString, unsigned char> lOSPUsedSliders;
+
   QDirIterator it2(lRootDir, QStringList() << QString("*.osp"), QDir::Files, QDirIterator::Subdirectories);
   while (it2.hasNext())
   {
@@ -610,8 +612,25 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
 
       // Construct the file content
-      // TODO: Add an exception below, when the Body and or the feet and or the hands block must not be generated:
-      auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(lPresetName, lBodySelected, lMustUseBeastHands, lFeetModIndex)};
+      unsigned char lOptions{0};
+      for (const auto& lSliderSet : lParsedSliderSets)
+      {
+        if (lSliderSet.meshPart == "Body")
+        {
+          lOptions += 100;
+        }
+        else if (lSliderSet.meshPart == "Feet")
+        {
+          lOptions += 10;
+        }
+        else if (lSliderSet.meshPart == "Hands")
+        {
+          lOptions += 1;
+        }
+      }
+      lOSPUsedSliders.insert(std::make_pair(lFileName, lOptions));
+
+      auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(lPresetName, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOptions)};
 
       // Fill the custom variables
       for (const auto& lSliderSet : lParsedSliderSets)
@@ -731,7 +750,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Construct the file content
     auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
-    auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex)};
+    auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOSPUsedSliders.find(lFileName)->second)};
 
     // Create the OSP file on disk
     QFile lXMLFile(lAbsFilePath);
