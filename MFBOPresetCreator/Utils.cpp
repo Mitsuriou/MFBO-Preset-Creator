@@ -4,6 +4,16 @@ bool Utils::RESTART_PENDING = false;
 
 void Utils::cleanPathString(QString& aPath)
 {
+  // Remove spaces before and after slashes
+  auto lParts{aPath.split('/')};
+
+  for (auto& lPart : lParts)
+  {
+    lPart = lPart.trimmed();
+  }
+
+  aPath = lParts.join('/');
+
   // Replace backslashes
   aPath.replace("\\", "/");
 
@@ -13,8 +23,19 @@ void Utils::cleanPathString(QString& aPath)
 
 QString Utils::cleanPathString(const QString& aPath)
 {
-  // Replace backslashes
   QString lPath(aPath);
+
+  // Remove spaces before and after slashes
+  auto lParts{lPath.split('/')};
+
+  for (auto& lPart : lParts)
+  {
+    lPart = lPart.trimmed();
+  }
+
+  lPath = lParts.join('/');
+
+  // Replace backslashes
   lPath.replace("\\", "/");
 
   // Remove any '\n' character

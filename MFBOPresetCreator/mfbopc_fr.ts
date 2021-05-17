@@ -1236,49 +1236,49 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="436"/>
+        <location filename="RetargetingTool.cpp" line="443"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation>Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="452"/>
+        <location filename="RetargetingTool.cpp" line="459"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation>The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="461"/>
+        <location filename="RetargetingTool.cpp" line="468"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation>Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="478"/>
+        <location filename="RetargetingTool.cpp" line="485"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="490"/>
+        <location filename="RetargetingTool.cpp" line="497"/>
         <source>Parsing XML files. Please wait...</source>
         <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="500"/>
-        <location filename="RetargetingTool.cpp" line="545"/>
-        <location filename="RetargetingTool.cpp" line="672"/>
+        <location filename="RetargetingTool.cpp" line="507"/>
+        <location filename="RetargetingTool.cpp" line="552"/>
+        <location filename="RetargetingTool.cpp" line="679"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="571"/>
+        <location filename="RetargetingTool.cpp" line="578"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="592"/>
+        <location filename="RetargetingTool.cpp" line="599"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation>Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="600"/>
+        <location filename="RetargetingTool.cpp" line="607"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation>Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
@@ -1307,17 +1307,17 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation type="vanished">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="756"/>
+        <location filename="RetargetingTool.cpp" line="763"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="521"/>
+        <location filename="RetargetingTool.cpp" line="528"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="759"/>
+        <location filename="RetargetingTool.cpp" line="766"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1327,32 +1327,32 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="529"/>
+        <location filename="RetargetingTool.cpp" line="536"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="648"/>
+        <location filename="RetargetingTool.cpp" line="655"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="662"/>
+        <location filename="RetargetingTool.cpp" line="669"/>
         <source>Patching XML files. Please wait...</source>
         <translation>Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="700"/>
+        <location filename="RetargetingTool.cpp" line="707"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="748"/>
+        <location filename="RetargetingTool.cpp" line="755"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="756"/>
+        <location filename="RetargetingTool.cpp" line="763"/>
         <source>Retargeting successful</source>
         <translation>Re-ciblage réussi</translation>
     </message>
@@ -1377,17 +1377,17 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="406"/>
+        <location filename="RetargetingTool.cpp" line="410"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation>Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="427"/>
+        <location filename="RetargetingTool.cpp" line="431"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="443"/>
+        <location filename="RetargetingTool.cpp" line="450"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
@@ -1904,12 +1904,12 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
 <context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="62"/>
+        <location filename="Utils.cpp" line="83"/>
         <source>Warning</source>
         <translation>Attention</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="65"/>
+        <location filename="Utils.cpp" line="86"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1918,14 +1918,14 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation type="vanished">Erreur en cherchant le corps ciblé. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après avoir redémarré l&apos;application, contactez le développeur.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="313"/>
-        <location filename="Utils.cpp" line="346"/>
-        <location filename="Utils.cpp" line="416"/>
+        <location filename="Utils.cpp" line="334"/>
+        <location filename="Utils.cpp" line="367"/>
+        <location filename="Utils.cpp" line="437"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="964"/>
+        <location filename="Utils.cpp" line="985"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>

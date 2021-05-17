@@ -367,8 +367,12 @@ void RetargetingTool::updateBackupPreview()
 
   if (lIsValidPath)
   {
+    auto lInputPath{Utils::cleanPathString(this->findChild<QLineEdit*>("input_path_directory")->text())};
+    const auto lFullPathConst{lFullPath};
+
     // Check if the user is trying to backup the directory into itself
-    if (lFullPath.startsWith(this->findChild<QLineEdit*>("input_path_directory")->text()))
+    if (Utils::cleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
+        || Utils::cleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::cleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
     {
       lNewTextColor = this->mSettings.dangerColor;
     }
@@ -430,8 +434,11 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Check if the user is trying to backup the directory into itself
     auto lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+    const auto lFullPathConst{lFullBackupDirectory};
 
-    if (lFullBackupDirectory.startsWith(lInputPath))
+    //if (lFullBackupDirectory.startsWith())
+    if (Utils::cleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
+        || Utils::cleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::cleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
     {
       Utils::displayWarningMessage(tr("Error: it is not possible to backup a directory inside itself. Choose another backup location."));
       return;
