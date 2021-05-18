@@ -1243,7 +1243,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="RetargetingTool.cpp" line="459"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
-        <translation>The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
+        <translation>Le backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="468"/>
