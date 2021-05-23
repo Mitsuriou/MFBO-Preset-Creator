@@ -369,13 +369,12 @@ void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
   // Skeleton
   auto lLabelSkeleton{new QLabel(this)};
   auto lText{tr("Use a custom skeleton?")};
-  auto lRichText{
-    QStringLiteral("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
-                   "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
-                   " %2"
-                   "</p>")
-      .arg(lIconFolder)
-      .arg(lText)};
+  auto lRichText{QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                         "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
+                         " %2"
+                         "</p>")
+                   .arg(lIconFolder)
+                   .arg(lText)};
   lLabelSkeleton->setText(lRichText);
   lLabelSkeleton->setTextFormat(Qt::RichText);
   lLabelSkeleton->setToolTip(QString(tr("Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
@@ -565,6 +564,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   // Event binding
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateAvailableBodyVersions);
   this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::updateBodySlideFiltersListPreview));
@@ -1092,7 +1092,7 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
   }
 
   auto lConstructedPreviewText(
-    QStringLiteral(
+    QString(
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderGroups/%1.xml\n"
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
@@ -1126,98 +1126,13 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   auto lConstructedPreviewText{QString()};
-
-  switch (lBodySelected)
-  {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
-      if (lMustUseBeastHands)
-        lConstructedPreviewText = QStringLiteral("%1 - 3BBB Body Amazing\n%1 - Feet\n%1 - Beast Hands").arg(aText);
-      else
-        lConstructedPreviewText = QStringLiteral("%1 - 3BBB Body Amazing\n%1 - Feet\n%1 - Hands ").arg(aText);
-      break;
-    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-      if (lMustUseBeastHands)
-        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE Beast Hands").arg(aText);
-      else
-        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
-      break;
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
-      if (lMustUseBeastHands)
-        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands Beast").arg(aText);
-      else
-        lConstructedPreviewText = QStringLiteral("%1 - CBBE 3BBB Body Amazing\n%1 - CBBE 3BBB Feet\n%1 - CBBE 3BBB Hands").arg(aText);
-      break;
-    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      if (lMustUseBeastHands)
-        lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n%1 - CBBE Feet\n%1 - CBBE Hands Beast").arg(aText);
-      else
-        lConstructedPreviewText = QStringLiteral("%1 - CBBE Body SMP (3BBB)\n%1 - CBBE Feet\n%1 - CBBE Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_13:
-    case BodyNameVersion::BHUNP_3BBB_2_15:
-    case BodyNameVersion::BHUNP_3BBB_2_20:
-    case BodyNameVersion::BHUNP_3BBB_2_25:
-    case BodyNameVersion::BHUNP_3BBB_2_30:
-    case BodyNameVersion::BHUNP_3BBB_2_31:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_30:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_31:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_30:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_31:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced Ver 2\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_13:
-    case BodyNameVersion::BHUNP_BBP_2_15:
-    case BodyNameVersion::BHUNP_BBP_2_20:
-    case BodyNameVersion::BHUNP_BBP_2_25:
-    case BodyNameVersion::BHUNP_BBP_2_30:
-    case BodyNameVersion::BHUNP_BBP_2_31:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_30:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_31:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP BBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_13:
-    case BodyNameVersion::BHUNP_TBBP_2_15:
-    case BodyNameVersion::BHUNP_TBBP_2_20:
-    case BodyNameVersion::BHUNP_TBBP_2_25:
-    case BodyNameVersion::BHUNP_TBBP_2_30:
-    case BodyNameVersion::BHUNP_TBBP_2_31:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_30:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_31:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP TBBP Advanced\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_25:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_30:
-      lConstructedPreviewText = QStringLiteral("%1 - BHUNP 3BBB Advanced Ver 2 Nevernude\n%1 - BHUNP 3BBB Advanced Feet\n%1 - BHUNP 3BBB Advanced Hands").arg(aText);
-      break;
-  }
+  lConstructedPreviewText.append(DataLists::getBodySliderValue(lBodySelected));                      // Body
+  lConstructedPreviewText.append(DataLists::getFeetSliderValue(lBodySelected, lFeetModIndex));       // Feet
+  lConstructedPreviewText.append(DataLists::getHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
+  lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.successColor};
 
@@ -1308,7 +1223,7 @@ void PresetCreator::updateSkeletonPreview()
     lSkeletonName = "skeleton_female";
   }
 
-  auto lConstructedPath(QStringLiteral("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath).arg(lSkeletonName));
+  auto lConstructedPath(QString("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath).arg(lSkeletonName));
   auto lOutputPathPreview{this->findChild<QLabel*>("skeleton_path_preview")};
 
   auto lNewTextColor{QString()};
@@ -1664,7 +1579,7 @@ void PresetCreator::updateBodySlideFiltersListPreview(int aIndex)
   this->mHasUserDoneSomething = true;
 
   auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
+  auto lFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
 
   auto lText{QString()};
   if (aIndex != -1)
@@ -1672,7 +1587,7 @@ void PresetCreator::updateBodySlideFiltersListPreview(int aIndex)
     lText = this->mFiltersList.find(lChooser->itemText(aIndex))->second.join(QString(" ; "));
   }
 
-  LFiltersLabel->setText(lText);
+  lFiltersLabel->setText(lText);
 }
 
 void PresetCreator::scrollbarPressed()

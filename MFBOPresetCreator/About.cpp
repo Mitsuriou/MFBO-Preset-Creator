@@ -43,8 +43,8 @@ void About::initializeGUI()
   }
 
   // Build the description
-  auto lDescription(
-    QStringLiteral(
+  auto lDescription{
+    QString(
       "<h1 style='text-align: center; vertical-align: top; padding: 0px; margin: 0px;'><img src=':/application/icon' alt='~MFBOPC icon~' height='48' width='48'> About this application</h1><br />"
       "<p style='padding: 0px; margin: 0px;'>"
       "Mitsuriou's Follower Bodies Overhaul Preset Creator (MFBOPC) is an application "
@@ -69,7 +69,7 @@ void About::initializeGUI()
       "the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/1988'>XP32 Maximum Skeleton Special Extended - XPMSSE</a> "
       "mod on NexusMod. The files have not been modified.</li>"
       "</ul></p>")
-      .arg(lLinksColorOverride));
+      .arg(lLinksColorOverride)};
 
   auto lTextContainer{new QLabel(this)};
   lTextContainer->setTextFormat(Qt::RichText);
