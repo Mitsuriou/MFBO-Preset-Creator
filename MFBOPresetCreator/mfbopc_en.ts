@@ -410,42 +410,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="178"/>
+        <location filename="DataLists.cpp" line="182"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="179"/>
+        <location filename="DataLists.cpp" line="183"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="180"/>
+        <location filename="DataLists.cpp" line="184"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="209"/>
+        <location filename="DataLists.cpp" line="213"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="210"/>
+        <location filename="DataLists.cpp" line="214"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="211"/>
+        <location filename="DataLists.cpp" line="215"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="212"/>
+        <location filename="DataLists.cpp" line="216"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="213"/>
+        <location filename="DataLists.cpp" line="217"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
