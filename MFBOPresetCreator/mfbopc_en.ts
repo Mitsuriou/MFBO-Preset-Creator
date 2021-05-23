@@ -464,7 +464,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="49"/>
-        <location filename="MFBOPresetCreator.cpp" line="622"/>
+        <location filename="MFBOPresetCreator.cpp" line="626"/>
         <source>Go back to the application</source>
         <translation></translation>
     </message>
@@ -516,42 +516,34 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="192"/>
         <source> (stable update available)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="194"/>
         <source> (beta update available)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="518"/>
+        <location filename="MFBOPresetCreator.cpp" line="521"/>
         <source>Application update available (beta)</source>
         <oldsource>Application update (BETA) available</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="519"/>
-        <source>You are currently running the version &quot;%1&quot;.
-The latest stable version is &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-Do you want to download it now?</source>
-        <oldsource>You are currently running the version &quot;%1&quot;.The latest stable version is &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-Do you want to download it now?</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="524"/>
+        <location filename="MFBOPresetCreator.cpp" line="527"/>
         <source>Application update available (stable)</source>
         <oldsource>Application update (STABLE) available</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="525"/>
-        <source>You are currently running the version &quot;%1&quot;.
+        <location filename="MFBOPresetCreator.cpp" line="528"/>
+        <source>You are currently running the stable version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
-        <translation type="unfinished"></translation>
+        <oldsource>You are currently running the version &quot;%1&quot;.
+The new stable version &quot;%2&quot; is available on GitHub.
+Do you want to download it now?</oldsource>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="154"/>
@@ -615,33 +607,45 @@ Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="536"/>
+        <location filename="MFBOPresetCreator.cpp" line="522"/>
+        <source>You are currently running the beta version &quot;%1&quot;.
+The latest stable version is tagged &quot;%2&quot;.
+The new beta version &quot;%3&quot; is available on GitHub.
+Do you want to download it now?</source>
+        <oldsource>You are currently running the version &quot;%1&quot;.
+The latest stable version is tagged &quot;%2&quot;.
+The new beta version &quot;%3&quot; is available on GitHub.
+Do you want to download it now?</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="540"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="548"/>
+        <location filename="MFBOPresetCreator.cpp" line="552"/>
         <source>Download and install the update now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="549"/>
+        <location filename="MFBOPresetCreator.cpp" line="553"/>
         <source>Download later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="618"/>
+        <location filename="MFBOPresetCreator.cpp" line="622"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="621"/>
+        <location filename="MFBOPresetCreator.cpp" line="625"/>
         <source>Quickly restart the application</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="160"/>
-        <location filename="MFBOPresetCreator.cpp" line="617"/>
+        <location filename="MFBOPresetCreator.cpp" line="621"/>
         <source>Quick restart</source>
         <translation></translation>
     </message>
@@ -1549,95 +1553,144 @@ Make sure your internet connection is operational and try again.</source>
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="42"/>
-        <location filename="Update.cpp" line="56"/>
+        <location filename="Update.cpp" line="41"/>
+        <location filename="Update.cpp" line="55"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="53"/>
-        <source>Current version: v.%1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Update.cpp" line="240"/>
-        <source>Contacting GitHub.com...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Update.cpp" line="108"/>
-        <source>Check for updates once again</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Update.cpp" line="65"/>
-        <source>Initializing...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Update.cpp" line="110"/>
-        <source>An error has occurred while searching for a new version.
-Please make sure your internet connection is working correctly and try again.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Update.cpp" line="129"/>
-        <source>You are running a developer version</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Update.cpp" line="131"/>
-        <source>You are currently running the developer version &quot;v.%1&quot;.
-The last available version on GitHub is tagged &quot;v.%2&quot;.
+        <location filename="Update.cpp" line="182"/>
+        <source>You are currently running the beta version &quot;%1&quot;.
+The latest stable version is tagged &quot;%2&quot;.
+The new beta version &quot;%3&quot; is available on GitHub.
 
-Below are the release notes for the latest stable version:</source>
+Click on the download button above to start downloading the update.
+The download size is about 11MB~.
+The download will be saved under &quot;%4&quot;.
+
+Below are the release notes for the beta version &quot;%3&quot;:</source>
+        <oldsource>You are currently running the beta version &quot;%1&quot;.
+The latest stable version is &quot;%2&quot;.
+The new beta version &quot;%3&quot; is available on GitHub.
+
+Click on the download button above to start downloading the update.
+The download size is about 11MB~.
+The download will be saved under &quot;%4&quot;.
+
+Below are the release notes for the beta version &quot;%3&quot;:</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="139"/>
-        <source>Download the update</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Update.cpp" line="145"/>
-        <source>You are currently running the version &quot;v.%1&quot;.
-The new version &quot;v.%2&quot; is available on GitHub.
+        <location filename="Update.cpp" line="200"/>
+        <source>You are currently running the stable version &quot;%1&quot;.
+The new stable version &quot;%2&quot; is available on GitHub.
 
 Click on the download button above to start downloading the update.
 The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
-Below are the release notes for this update:</source>
+Below are the release notes for the stable version &quot;%2&quot;:</source>
+        <oldsource>You are currently running the stable version &quot;%1&quot;.
+The new stable version &quot;%2&quot; is available on GitHub.
+
+Click on the download button above to start downloading the update.
+The download size is about 11MB~.
+The download will be saved under &quot;%3&quot;.
+
+Below are the release notes for the beta version &quot;%2&quot;:</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="154"/>
-        <source>You are already running the latest version</source>
+        <location filename="Update.cpp" line="211"/>
+        <source>You are already running the latest beta version</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="156"/>
-        <source>Awesome! You are already running the latest version (&quot;v.%1&quot;).
+        <location filename="Update.cpp" line="212"/>
+        <source>Awesome! You are already running the latest beta version &quot;%1&quot;.
 Below are the release notes for this version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="268"/>
+        <location filename="Update.cpp" line="216"/>
+        <source>You are already running the latest stable version</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="217"/>
+        <source>Awesome! You are already running the latest stable version &quot;%1&quot;.
+Below are the release notes for this version:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="302"/>
+        <source>Contacting GitHub.com...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="107"/>
+        <source>Check for updates once again</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="52"/>
+        <source>You are running the version &quot;%1&quot;.</source>
+        <oldsource>You are running the version &quot;%1&quot;</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="64"/>
+        <source>Initializing...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="109"/>
+        <source>An error has occurred while searching for a new version.
+Please make sure your internet connection is working correctly and try again.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="161"/>
+        <source>You are running a developer version</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="163"/>
+        <source>You are currently running the developer version &quot;%1&quot;.
+The latest stable version is tagged &quot;%2&quot;.
+The latest beta version is tagged &quot;%3&quot;.
+
+Below are the release notes for the latest stable version:</source>
+        <oldsource>You are currently running the developer version &quot;%1&quot;.
+The latest stable version on GitHub is tagged &quot;%2&quot;.
+The latest beta version is tagged &quot;%3&quot;.
+
+Below are the release notes for the latest stable version:</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="174"/>
+        <location filename="Update.cpp" line="192"/>
+        <source>Download the update</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="330"/>
         <source>Cancel the download</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="305"/>
+        <location filename="Update.cpp" line="367"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="342"/>
+        <location filename="Update.cpp" line="404"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="186"/>
+        <location filename="Update.cpp" line="248"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -1645,7 +1698,7 @@ Make sure that you saved everything before starting the update as the applicatio
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="187"/>
+        <location filename="Update.cpp" line="249"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -1653,12 +1706,12 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="195"/>
+        <location filename="Update.cpp" line="257"/>
         <source>Close MFBOPC and install the update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="218"/>
+        <location filename="Update.cpp" line="280"/>
         <source>Try to download the update once again</source>
         <translation></translation>
     </message>

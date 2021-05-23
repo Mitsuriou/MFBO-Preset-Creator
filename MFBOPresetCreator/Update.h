@@ -25,7 +25,6 @@ protected:
 
 private:
   const Struct::Settings mSettings;
-  QString mNewVersionTag;
   QString mSaveFilePath;
   QNetworkAccessManager mManager;
 

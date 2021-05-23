@@ -503,27 +503,31 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
       // Check if it is a stable or a BETA version
       if (lTagsArray.at(i)["prerelease"].toBool())
       {
+        // Add this version name to the beta versions list
         lBetaVersions.push_back(lTagName);
       }
       else
       {
+        // Add this version name to the stable versions list
         lStableVersions.push_back(lTagName);
       }
     }
 
+#ifndef DEBUG
     auto lIsUserRunningBeta{lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion)};
     if (lIsUserRunningBeta && lBetaVersions.at(0) != lCurrentVersion && lStableVersions.size() > 0)
     {
       this->mNewBetaVersionAvailable = true;
       lTitle = tr("Application update available (beta)");
-      lMessage = tr("You are currently running the version \"%1\".\nThe latest stable version is \"%2\".\nThe new beta version \"%3\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0));
+      lMessage = tr("You are currently running the beta version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new beta version \"%3\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0));
     }
     else if (!lIsUserRunningBeta && lStableVersions.size() > 0 && lStableVersions.at(0) != lCurrentVersion)
     {
       this->mNewStableVersionAvailable = true;
       lTitle = tr("Application update available (stable)");
-      lMessage = tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0));
+      lMessage = tr("You are currently running the stable version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0));
     }
+#endif
   }
 
   this->initializeGUI();
