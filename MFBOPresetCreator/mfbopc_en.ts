@@ -453,182 +453,205 @@
 <context>
     <name>MFBOPresetCreator</name>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="43"/>
+        <location filename="MFBOPresetCreator.cpp" line="44"/>
         <source>Quitting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="47"/>
+        <location filename="MFBOPresetCreator.cpp" line="48"/>
         <source>Quit the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="48"/>
-        <location filename="MFBOPresetCreator.cpp" line="590"/>
+        <location filename="MFBOPresetCreator.cpp" line="49"/>
+        <location filename="MFBOPresetCreator.cpp" line="622"/>
         <source>Go back to the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="130"/>
+        <location filename="MFBOPresetCreator.cpp" line="131"/>
         <source>File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="135"/>
+        <location filename="MFBOPresetCreator.cpp" line="136"/>
         <source>Open project...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="140"/>
+        <location filename="MFBOPresetCreator.cpp" line="141"/>
         <source>Save</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="146"/>
+        <location filename="MFBOPresetCreator.cpp" line="147"/>
         <source>Save as</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="163"/>
+        <location filename="MFBOPresetCreator.cpp" line="164"/>
         <source>Exit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="167"/>
+        <location filename="MFBOPresetCreator.cpp" line="168"/>
         <source>Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="177"/>
+        <location filename="MFBOPresetCreator.cpp" line="178"/>
         <source>Textures Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="181"/>
+        <location filename="MFBOPresetCreator.cpp" line="182"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="185"/>
+        <location filename="MFBOPresetCreator.cpp" line="186"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="153"/>
+        <location filename="MFBOPresetCreator.cpp" line="192"/>
+        <source> (stable update available)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="194"/>
+        <source> (beta update available)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="518"/>
+        <source>Application update available (beta)</source>
+        <oldsource>Application update (BETA) available</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="519"/>
+        <source>You are currently running the version &quot;%1&quot;.
+The latest stable version is &quot;%2&quot;.
+The new beta version &quot;%3&quot; is available on GitHub.
+Do you want to download it now?</source>
+        <oldsource>You are currently running the version &quot;%1&quot;.The latest stable version is &quot;%2&quot;.
+The new beta version &quot;%3&quot; is available on GitHub.
+Do you want to download it now?</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="524"/>
+        <source>Application update available (stable)</source>
+        <oldsource>Application update (STABLE) available</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="525"/>
+        <source>You are currently running the version &quot;%1&quot;.
+The new stable version &quot;%2&quot; is available on GitHub.
+Do you want to download it now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="154"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="172"/>
+        <location filename="MFBOPresetCreator.cpp" line="173"/>
         <source>Batch Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="189"/>
-        <source> (update available)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="191"/>
+        <location filename="MFBOPresetCreator.cpp" line="196"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="196"/>
+        <location filename="MFBOPresetCreator.cpp" line="201"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="200"/>
+        <location filename="MFBOPresetCreator.cpp" line="205"/>
         <source>Useful links</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="206"/>
+        <location filename="MFBOPresetCreator.cpp" line="211"/>
         <source>Nexus Mods page</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="210"/>
+        <location filename="MFBOPresetCreator.cpp" line="215"/>
         <source>User guide and tutorials (Google Docs)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="214"/>
+        <location filename="MFBOPresetCreator.cpp" line="219"/>
         <source>View the source code (GitHub.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="218"/>
+        <location filename="MFBOPresetCreator.cpp" line="223"/>
         <source>View the source code (GitLab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="222"/>
+        <location filename="MFBOPresetCreator.cpp" line="227"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="475"/>
+        <location filename="MFBOPresetCreator.cpp" line="480"/>
         <source>Error while searching for a new update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="476"/>
+        <location filename="MFBOPresetCreator.cpp" line="481"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="491"/>
-        <source>Application update available</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="492"/>
-        <source>You are currently running the version &quot;%1&quot;.
-The new version &quot;%2&quot; is available on GitHub.
-Do you want to download it now?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="504"/>
+        <location filename="MFBOPresetCreator.cpp" line="536"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="516"/>
+        <location filename="MFBOPresetCreator.cpp" line="548"/>
         <source>Download and install the update now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="517"/>
+        <location filename="MFBOPresetCreator.cpp" line="549"/>
         <source>Download later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="586"/>
+        <location filename="MFBOPresetCreator.cpp" line="618"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="589"/>
+        <location filename="MFBOPresetCreator.cpp" line="621"/>
         <source>Quickly restart the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="159"/>
-        <location filename="MFBOPresetCreator.cpp" line="585"/>
+        <location filename="MFBOPresetCreator.cpp" line="160"/>
+        <location filename="MFBOPresetCreator.cpp" line="617"/>
         <source>Quick restart</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="14"/>
+        <location filename="MFBOPresetCreator.cpp" line="15"/>
         <source>[DEV] </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="44"/>
+        <location filename="MFBOPresetCreator.cpp" line="45"/>
         <source>You will lose all the unsaved data. Do you still want to quit the application?</source>
         <translation></translation>
     </message>

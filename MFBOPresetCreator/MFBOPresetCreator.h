@@ -35,7 +35,8 @@ private:
   Struct::Settings mSettings;
   QString mInjectedFilePath;
   std::map<QString, QString> mLastPaths;
-  bool mNewVersionAvailable;
+  bool mNewStableVersionAvailable;
+  bool mNewBetaVersionAvailable;
   QNetworkAccessManager mManager;
 
   void initializeGUI();

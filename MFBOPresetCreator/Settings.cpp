@@ -831,9 +831,6 @@ void Settings::groupBoxChecked(bool aIsChecked)
     return;
 
   Utils::setGroupBoxState(lGroupBox, !aIsChecked);
-
-  // Resize the window
-  this->adjustSize();
 }
 
 void Settings::clearPathButtonClicked()

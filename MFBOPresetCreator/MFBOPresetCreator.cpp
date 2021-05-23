@@ -5,7 +5,8 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
   , mSettings(aSettings)
   , mInjectedFilePath(aInjectedFilePath)
   , mLastPaths(Utils::loadLastPathsFromFile())
-  , mNewVersionAvailable(false)
+  , mNewStableVersionAvailable(false)
+  , mNewBetaVersionAvailable(false)
 {
   // Construct the GUI
   ui.setupUi(this);
@@ -186,7 +187,11 @@ void MFBOPresetCreator::setupMenuBar()
   lTools->addAction(lOpenRetaTools);
 
   // Menu: Help
-  const auto& lUpdateAvailableText{this->mNewVersionAvailable ? tr(" (update available)") : QString()};
+  auto lUpdateAvailableText{QString()};
+  if (this->mNewStableVersionAvailable)
+    lUpdateAvailableText = tr(" (stable update available)");
+  else if (this->mNewBetaVersionAvailable)
+    lUpdateAvailableText = tr(" (beta update available)");
 
   auto lHelp{new QMenu(tr("Help") + lUpdateAvailableText, this)};
   lHelp->setCursor(Qt::PointingHandCursor);
@@ -455,7 +460,7 @@ void MFBOPresetCreator::enableLineEditPlaceholders(std::vector<QLineEdit*> aLine
 
 void MFBOPresetCreator::checkForUpdate()
 {
-  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases/latest"};
+  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
   connect(lReply, &QNetworkReply::finished, this, &MFBOPresetCreator::updateCheckFinished);
@@ -477,21 +482,48 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
   }
   else
   {
-    // Create a JSON from the fetched string and parse the "tag_name" data
-    QJsonDocument doc{QJsonDocument::fromJson(aResult.toUtf8())};
-    QJsonObject obj{doc.object()};
-    auto lTagName{obj["tag_name"].toString()};
-    Utils::cleanBreaksString(lTagName);
+    // Declare and initialize local variables
+    auto lStableVersions{QStringList()};
+    auto lBetaVersions{QStringList()};
+    auto lUserRunningBetaVersion{false};
+    auto lTagName{QString()};
     auto lCurrentVersion{Utils::getApplicationVersion()};
 
-#ifndef DEBUG
-    if (lCurrentVersion != lTagName)
+    // Create a JSON from the fetched string and parse the "tag_name" data
+    QJsonDocument lJsonDocument{QJsonDocument::fromJson(aResult.toUtf8())};
+    QJsonArray lTagsArray{lJsonDocument.array()};
+
+    // Iterate in the versions array
+    for (int i = 0; i < lTagsArray.size(); i++)
     {
-      this->mNewVersionAvailable = true;
-      lTitle = tr("Application update available");
-      lMessage = tr("You are currently running the version \"%1\".\nThe new version \"%2\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lTagName);
+      // Parse the tag_name
+      lTagName = lTagsArray.at(i)["tag_name"].toString();
+      Utils::cleanBreaksString(lTagName);
+
+      // Check if it is a stable or a BETA version
+      if (lTagsArray.at(i)["prerelease"].toBool())
+      {
+        lBetaVersions.push_back(lTagName);
+      }
+      else
+      {
+        lStableVersions.push_back(lTagName);
+      }
     }
-#endif
+
+    auto lIsUserRunningBeta{lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion)};
+    if (lIsUserRunningBeta && lBetaVersions.at(0) != lCurrentVersion && lStableVersions.size() > 0)
+    {
+      this->mNewBetaVersionAvailable = true;
+      lTitle = tr("Application update available (beta)");
+      lMessage = tr("You are currently running the version \"%1\".\nThe latest stable version is \"%2\".\nThe new beta version \"%3\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0));
+    }
+    else if (!lIsUserRunningBeta && lStableVersions.size() > 0 && lStableVersions.at(0) != lCurrentVersion)
+    {
+      this->mNewStableVersionAvailable = true;
+      lTitle = tr("Application update available (stable)");
+      lMessage = tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0));
+    }
   }
 
   this->initializeGUI();
@@ -506,7 +538,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     lConfirmationBox.setDefaultButton(lOKButton);
     lConfirmationBox.exec();
   }
-  else if (this->mNewVersionAvailable)
+  else if (this->mNewStableVersionAvailable || this->mNewBetaVersionAvailable)
   {
     if (Utils::displayQuestionMessage(this,
                                       lTitle,
