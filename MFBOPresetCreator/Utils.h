@@ -43,6 +43,11 @@ public:
   static std::vector<Struct::SliderSet> getOutputPathsFromOSPFile(const QString& aPath);
   static bool isPresetUsingBeastHands(const QString& aPath);
 
+  // Preset values
+  static QString getHandsSliderValue(const BodyNameVersion& aBody, const bool& aMustUseBeastHands);
+  static QString getFeetSliderValue(const BodyNameVersion& aBody, const int& aFeetModIndex);
+  static QString getBodySliderValue(const BodyNameVersion& aBody);
+
   // Load and save
   static void saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath);
   static QJsonObject loadFromJsonFile(const QString& aFilePath);

@@ -173,10 +173,6 @@
         <translation>Revenir sur la fenêtre de l&apos;outil de conversion multiple</translation>
     </message>
     <message>
-        <source>BodySlide Presets&apos; Retargeting</source>
-        <translation type="obsolete">Re-ciblage de Presets BodySlide</translation>
-    </message>
-    <message>
         <location filename="BatchConversion.cpp" line="69"/>
         <source>Batch Conversion</source>
         <translation>Conversion Multiple</translation>
@@ -202,10 +198,6 @@
         <translation>Corps et version ciblé :</translation>
     </message>
     <message>
-        <source>Skeleton file:</source>
-        <translation type="obsolete">Fichier de squelette :</translation>
-    </message>
-    <message>
         <location filename="BatchConversion.cpp" line="146"/>
         <location filename="BatchConversion.cpp" line="158"/>
         <source>Refresh</source>
@@ -220,38 +212,6 @@
         <location filename="BatchConversion.cpp" line="248"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
-    </message>
-    <message>
-        <source>Backup</source>
-        <translation type="obsolete">Backup</translation>
-    </message>
-    <message>
-        <source>Keep a backup?</source>
-        <translation type="obsolete">Garder un backup ?</translation>
-    </message>
-    <message>
-        <source>You should always check this box to avoid any data loss or corruption.</source>
-        <translation type="obsolete">Vous devriez toujours avoir cette case cochée pour éviter de perdre ou de corrompre des données.</translation>
-    </message>
-    <message>
-        <source>Backup directory path:</source>
-        <translation type="obsolete">Emplacement du répertoire du backup :</translation>
-    </message>
-    <message>
-        <source>Backup subdirectory name/path:</source>
-        <translation type="obsolete">Nom/emplacement du sous-répertoire du backup :</translation>
-    </message>
-    <message>
-        <source>Preview:</source>
-        <translation type="obsolete">Aperçu :</translation>
-    </message>
-    <message>
-        <source>Retarget all the files under the input path</source>
-        <translation type="obsolete">Re-cibler tous les fichiers sous l&apos;emplacement d&apos;entrée</translation>
-    </message>
-    <message>
-        <source>Launch the scan of the mod</source>
-        <translation type="obsolete">Lancer le scan du mod</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="455"/>
@@ -303,126 +263,6 @@
         <location filename="BatchConversion.cpp" line="473"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
-    </message>
-    <message>
-        <source>Files generation&apos;s output location</source>
-        <translation type="obsolete">Emplacement de sortie de la génération de fichiers</translation>
-    </message>
-    <message>
-        <source>Output directory path:</source>
-        <translation type="obsolete">Emplacement du répertoire de sortie :</translation>
-    </message>
-    <message>
-        <source>Output subdirectory name/path:</source>
-        <translation type="obsolete">Nom/Emplacement du sous-répertoire de sortie :</translation>
-    </message>
-    <message>
-        <source>Use only subdirectory path?</source>
-        <translation type="obsolete">Utiliser seulement le sous-répertoire ?</translation>
-    </message>
-    <message>
-        <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
-        <translation type="obsolete">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
-    </message>
-    <message>
-        <source>Error: no path path given for the retargeting.</source>
-        <translation type="obsolete">Erreur : aucun emplacement donné pour le re-ciblage.</translation>
-    </message>
-    <message>
-        <source>Error: no path given to backup the files.</source>
-        <translation type="obsolete">Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
-    </message>
-    <message>
-        <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
-        <translation type="obsolete">Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
-    </message>
-    <message>
-        <source>Error: the path given to backup the files seems to be invalid.</source>
-        <translation type="obsolete">Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
-    </message>
-    <message>
-        <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
-        <translation type="obsolete">The backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
-    </message>
-    <message>
-        <source>Error: the backup could not be created. Please try again.</source>
-        <translation type="obsolete">Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
-    </message>
-    <message>
-        <source>Cancel treatment</source>
-        <translation type="obsolete">Annuler le traitement</translation>
-    </message>
-    <message>
-        <source>Parsing XML files. Please wait...</source>
-        <translation type="obsolete">Analyse des fichiers XML. Veuillez patienter...</translation>
-    </message>
-    <message>
-        <source>Process aborted by the user.</source>
-        <translation type="obsolete">Processus interrompu par l&apos;utilisateur.</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="obsolete">Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Parsing and patching OSP files. Please wait...</source>
-        <translation type="obsolete">Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="obsolete">Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
-        <translation type="obsolete">Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
-    </message>
-    <message>
-        <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
-        <translation type="obsolete">Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
-    </message>
-    <message>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
-        <translation type="obsolete">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="obsolete">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="obsolete">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Patching XML files. Please wait...</source>
-        <translation type="obsolete">Patching des fichiers XML. Veuillez patienter...</translation>
-    </message>
-    <message>
-        <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
-        <translation type="obsolete">Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
-    </message>
-    <message>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
-        <translation type="obsolete">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="obsolete">Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="obsolete">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Retargeting successful</source>
-        <translation type="obsolete">Re-ciblage réussi</translation>
-    </message>
-    <message>
-        <source>All the files have been correctly re-targeted. You can now close this window!</source>
-        <translation type="obsolete">Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">OK</translation>
     </message>
 </context>
 <context>
@@ -570,42 +410,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="390"/>
+        <location filename="DataLists.cpp" line="182"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="391"/>
+        <location filename="DataLists.cpp" line="183"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="392"/>
+        <location filename="DataLists.cpp" line="184"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="421"/>
+        <location filename="DataLists.cpp" line="213"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="422"/>
+        <location filename="DataLists.cpp" line="214"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="423"/>
+        <location filename="DataLists.cpp" line="215"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="424"/>
+        <location filename="DataLists.cpp" line="216"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="425"/>
+        <location filename="DataLists.cpp" line="217"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
@@ -691,7 +531,6 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="521"/>
         <source>Application update available (beta)</source>
-        <oldsource>Application update (BETA) available</oldsource>
         <translation>Mise à jour de l&apos;application disponible (beta)</translation>
     </message>
     <message>
@@ -700,10 +539,6 @@
 The latest stable version is tagged &quot;%2&quot;.
 The new beta version &quot;%3&quot; is available on GitHub.
 Do you want to download it now?</source>
-        <oldsource>You are currently running the version &quot;%1&quot;.
-The latest stable version is tagged &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-Do you want to download it now?</oldsource>
         <translation>Vous utilisez actuellement la version beta &quot;%1&quot;.
 La dernière version stable est étiquetée &quot;%2&quot;.
 La dernière version beta &quot;%3&quot; est disponible sur GitHub.
@@ -712,7 +547,6 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="527"/>
         <source>Application update available (stable)</source>
-        <oldsource>Application update (STABLE) available</oldsource>
         <translation>Mise à jour de l&apos;application disponible (stable)</translation>
     </message>
     <message>
@@ -720,9 +554,6 @@ Voulez-vous la télécharger maintenant ?</translation>
         <source>You are currently running the stable version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
-        <oldsource>You are currently running the version &quot;%1&quot;.
-The new stable version &quot;%2&quot; is available on GitHub.
-Do you want to download it now?</oldsource>
         <translation>Vous utilisez actuellement la version stable &quot;%1&quot;.
 La dernière version stable &quot;%2&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
@@ -736,10 +567,6 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="MFBOPresetCreator.cpp" line="173"/>
         <source>Batch Conversion</source>
         <translation>Conversion Multiple</translation>
-    </message>
-    <message>
-        <source> (update available)</source>
-        <translation type="vanished"> (mise à jour disponible)</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="196"/>
@@ -794,18 +621,6 @@ Make sure your internet connection is operational and try again.</source>
 Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <source>Application update available</source>
-        <translation type="vanished">Mise à jour de l&apos;application disponible</translation>
-    </message>
-    <message>
-        <source>You are currently running the version &quot;%1&quot;.
-The new version &quot;%2&quot; is available on GitHub.
-Do you want to download it now?</source>
-        <translation type="vanished">Vous utilisez actuellement la version &quot;%1&quot;.
-La nouvelle version &quot;%2&quot; est disponible sur GitHub.
-Voulez-vous la télécharger maintenant ?</translation>
-    </message>
-    <message>
         <location filename="MFBOPresetCreator.cpp" line="552"/>
         <source>Download and install the update now</source>
         <translation>Télécharger et installer la mise à jour maintenant</translation>
@@ -818,13 +633,11 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="622"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
-        <oldsource>You will lose all the unsaved data. Do you still want to quickly relaunch the application?</oldsource>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer rapidement l&apos;application ?</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="625"/>
         <source>Quickly restart the application</source>
-        <oldsource>Quickly relaunch the application</oldsource>
         <translation>Relancer rapidement l&apos;application</translation>
     </message>
     <message>
@@ -841,7 +654,6 @@ Voulez-vous la télécharger maintenant ?</translation>
         <location filename="MFBOPresetCreator.cpp" line="160"/>
         <location filename="MFBOPresetCreator.cpp" line="621"/>
         <source>Quick restart</source>
-        <oldsource>Quick relaunch</oldsource>
         <translation>Relancement rapide</translation>
     </message>
 </context>
@@ -946,12 +758,12 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="802"/>
+        <location filename="PresetCreator.cpp" line="803"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1507"/>
+        <location filename="PresetCreator.cpp" line="1508"/>
         <source>Open the generated directory</source>
         <translation>Ouvrir le répertoire généré</translation>
     </message>
@@ -968,7 +780,6 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="PresetCreator.cpp" line="401"/>
         <source>Refresh</source>
-        <oldsource>aRefresh</oldsource>
         <translation>Rafraîchir</translation>
     </message>
     <message>
@@ -987,116 +798,79 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>.nif</translation>
     </message>
     <message>
-        <source>Output directory path:</source>
-        <translation type="vanished">Emplacement du répertoire de sortie :</translation>
-    </message>
-    <message>
-        <source>Choose a directory...</source>
-        <translation type="vanished">Choisir un répertoire...</translation>
-    </message>
-    <message>
-        <source>Output subdirectory name/path:</source>
-        <translation type="vanished">Nom/Emplacement du sous-répertoire de sortie :</translation>
-    </message>
-    <message>
-        <source>Use only subdirectory path?</source>
-        <translation type="vanished">Utiliser seulement le sous-répertoire ?</translation>
-    </message>
-    <message>
-        <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
-        <translation type="vanished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques).</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="607"/>
+        <location filename="PresetCreator.cpp" line="608"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
-        <translation type="vanished">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths. Aborting process.</source>
-        <translation type="vanished">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="849"/>
+        <location filename="PresetCreator.cpp" line="850"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</oldsource>
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="878"/>
+        <location filename="PresetCreator.cpp" line="879"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1028"/>
-        <location filename="PresetCreator.cpp" line="1052"/>
+        <location filename="PresetCreator.cpp" line="1029"/>
+        <location filename="PresetCreator.cpp" line="1053"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1046"/>
+        <location filename="PresetCreator.cpp" line="1047"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1326"/>
+        <location filename="PresetCreator.cpp" line="1327"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1333"/>
+        <location filename="PresetCreator.cpp" line="1334"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1344"/>
+        <location filename="PresetCreator.cpp" line="1345"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1485"/>
+        <location filename="PresetCreator.cpp" line="1486"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1372"/>
+        <location filename="PresetCreator.cpp" line="1373"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1385"/>
+        <location filename="PresetCreator.cpp" line="1386"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1398"/>
+        <location filename="PresetCreator.cpp" line="1399"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1412"/>
+        <location filename="PresetCreator.cpp" line="1413"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1426"/>
+        <location filename="PresetCreator.cpp" line="1427"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="780"/>
-        <location filename="PresetCreator.cpp" line="820"/>
+        <location filename="PresetCreator.cpp" line="781"/>
+        <location filename="PresetCreator.cpp" line="821"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
@@ -1111,30 +885,18 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="873"/>
+        <location filename="PresetCreator.cpp" line="874"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1492"/>
-        <location filename="PresetCreator.cpp" line="1508"/>
+        <location filename="PresetCreator.cpp" line="1493"/>
+        <location filename="PresetCreator.cpp" line="1509"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="885"/>
+        <location filename="PresetCreator.cpp" line="886"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
@@ -1179,31 +941,27 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <source>Files generation&apos;s output location</source>
-        <translation type="vanished">Emplacement de sortie de la génération de fichiers</translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="1352"/>
+        <location filename="PresetCreator.cpp" line="1353"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1353"/>
+        <location filename="PresetCreator.cpp" line="1354"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1356"/>
+        <location filename="PresetCreator.cpp" line="1357"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1357"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1484"/>
+        <location filename="PresetCreator.cpp" line="1485"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1329,30 +1087,6 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Le choix de corps/version ne supporte pas les mains de bêtes. Le re-ciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <source>The OSP file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
-        <translation type="vanished">Le fichier OSP n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to read the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant de lire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant d&apos;écrire le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>The XML file could not be created. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Aborting process.</source>
-        <translation type="vanished">Le fichier XML n&apos;a pas pu être créé. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to read the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant de lire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
-        <source>Error while trying to write in the XML file &quot;%1&quot;. Aborting process.</source>
-        <translation type="vanished">Erreur en essayant d&apos;écrire le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
-    </message>
-    <message>
         <location filename="RetargetingTool.cpp" line="775"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
@@ -1453,7 +1187,6 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="Settings.cpp" line="91"/>
         <source>Note: Modifying a value marked with the &quot;*&quot; character will require a restart of the application to be applied correctly.</source>
-        <oldsource>Modifying a value marked with the &quot;*&quot; character will require a restart of the application to be applied correctly.</oldsource>
         <translation>Note : Modifier une valeur marquée du caractère &quot;*&quot; nécessitera un redémarrage de l&apos;application pour être appliquée correctement.</translation>
     </message>
     <message>
@@ -1542,7 +1275,6 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="Settings.cpp" line="422"/>
         <source>Remove all the history</source>
-        <oldsource>Clear all history</oldsource>
         <translation>Supprimer tout l&apos;historique</translation>
     </message>
     <message>
@@ -1821,21 +1553,12 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <source>Current version: v.%1</source>
-        <translation type="vanished">Version actuelle : v.%1</translation>
-    </message>
-    <message>
         <location filename="Update.cpp" line="163"/>
         <source>You are currently running the developer version &quot;%1&quot;.
 The latest stable version is tagged &quot;%2&quot;.
 The latest beta version is tagged &quot;%3&quot;.
 
 Below are the release notes for the latest stable version:</source>
-        <oldsource>You are currently running the developer version &quot;%1&quot;.
-The latest stable version on GitHub is tagged &quot;%2&quot;.
-The latest beta version is tagged &quot;%3&quot;.
-
-Below are the release notes for the latest stable version:</oldsource>
         <translation>Vous utilisez actuellement la version développeur &quot;%1&quot;.
 La dernière version stable est étiquetée &quot;%2&quot;.
 La dernière version beta est étiquetée &quot;%3&quot;.
@@ -1853,15 +1576,6 @@ The download size is about 11MB~.
 The download will be saved under &quot;%4&quot;.
 
 Below are the release notes for the beta version &quot;%3&quot;:</source>
-        <oldsource>You are currently running the beta version &quot;%1&quot;.
-The latest stable version is &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 11MB~.
-The download will be saved under &quot;%4&quot;.
-
-Below are the release notes for the beta version &quot;%3&quot;:</oldsource>
         <translation>Vous utilisez actuellement la version beta &quot;%1&quot;.
 La dernière version stable est étiquetée &quot;%2&quot;.
 La nouvelle version beta &quot;%3&quot; est disponible sur GitHub.
@@ -1882,14 +1596,6 @@ The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
 Below are the release notes for the stable version &quot;%2&quot;:</source>
-        <oldsource>You are currently running the stable version &quot;%1&quot;.
-The new stable version &quot;%2&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 11MB~.
-The download will be saved under &quot;%3&quot;.
-
-Below are the release notes for the beta version &quot;%2&quot;:</oldsource>
         <translation>Vous utilisez actuellement la version stable &quot;%1&quot;.
 La nouvelle version stable &quot;%2&quot; est disponible sur GitHub.
 
@@ -1936,7 +1642,6 @@ Vous trouverez ci-dessous les notes de mise à jour de cette version :</translat
     <message>
         <location filename="Update.cpp" line="52"/>
         <source>You are running the version &quot;%1&quot;.</source>
-        <oldsource>You are running the version &quot;%1&quot;</oldsource>
         <translation>Vous utilisez la version &quot;%1&quot;.</translation>
     </message>
     <message>
@@ -1957,48 +1662,10 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Vous utilisez une version développeur</translation>
     </message>
     <message>
-        <source>You are currently running the developer version &quot;v.%1&quot;.
-The last available version on GitHub is tagged &quot;v.%2&quot;.
-
-Below are the release notes for the latest stable version:</source>
-        <translation type="vanished">Vous utilisez actuellement la version développeur &quot;v.%1&quot;.
-La dernière version disponible sur GitHub est étiquetée &quot;v.%2&quot;.
-
-Vous trouverez ci-dessous les notes de version pour la dernière version stable :</translation>
-    </message>
-    <message>
         <location filename="Update.cpp" line="174"/>
         <location filename="Update.cpp" line="192"/>
         <source>Download the update</source>
         <translation>Télécharger la mise à jour</translation>
-    </message>
-    <message>
-        <source>You are currently running the version &quot;v.%1&quot;.
-The new version &quot;v.%2&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 11MB~.
-The download will be saved under &quot;%3&quot;.
-
-Below are the release notes for this update:</source>
-        <translation type="vanished">Vous utilisez actuellement la version &quot;v.%1&quot;.
-La nouvelle version &quot;v.%2&quot; est disponible sur GitHub.
-
-Cliquez sur le bouton de téléchargement ci-dessus pour commencer à télécharger la mise à jour.
-La taille du téléchargement est d&apos;environ 11Mo~.
-Le téléchargement sera enregistré sous &quot;%3&quot;.
-
-Vous trouverez ci-dessous les notes de mise à jour pour cette mise à jour :</translation>
-    </message>
-    <message>
-        <source>You are already running the latest version</source>
-        <translation type="vanished">Vous utilisez déjà la dernière version</translation>
-    </message>
-    <message>
-        <source>Awesome! You are already running the latest version (&quot;v.%1&quot;).
-Below are the release notes for this version:</source>
-        <translation type="vanished">Génial ! Vous utilisez déjà la dernière version (&quot;v.%1&quot;).
-Vous trouverez ci-dessous les notes de mise à jour de cette version :</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="330"/>
@@ -2061,10 +1728,6 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>OK</translation>
     </message>
     <message>
-        <source>Error while searching for the targeted body. If it happens, try restarting the application. If the error is still here after restarting the application, contact the developer.</source>
-        <translation type="vanished">Erreur en cherchant le corps ciblé. Si cela arrive, essayez de redémarrer le programme. Si l&apos;erreur est toujours présente après avoir redémarré l&apos;application, contactez le développeur.</translation>
-    </message>
-    <message>
         <location filename="Utils.cpp" line="335"/>
         <location filename="Utils.cpp" line="368"/>
         <location filename="Utils.cpp" line="459"/>
@@ -2072,7 +1735,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1007"/>
+        <location filename="Utils.cpp" line="1215"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>

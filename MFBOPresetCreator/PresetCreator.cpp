@@ -565,9 +565,10 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateAvailableBodyVersions);
   this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
   this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
-  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::updateBodySlideFiltersListPreview));
+  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
   this->connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
 
   // Post-bind initialization functions
@@ -1129,9 +1130,9 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   auto lConstructedPreviewText{QString()};
-  lConstructedPreviewText.append(DataLists::getBodySliderValue(lBodySelected));                      // Body
-  lConstructedPreviewText.append(DataLists::getFeetSliderValue(lBodySelected, lFeetModIndex));       // Feet
-  lConstructedPreviewText.append(DataLists::getHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
+  lConstructedPreviewText.append(Utils::getBodySliderValue(lBodySelected));                      // Body
+  lConstructedPreviewText.append(Utils::getFeetSliderValue(lBodySelected, lFeetModIndex));       // Feet
+  lConstructedPreviewText.append(Utils::getHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.successColor};
@@ -1574,7 +1575,7 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
   Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lChooser, lLabel);
 }
 
-void PresetCreator::updateBodySlideFiltersListPreview(int aIndex)
+void PresetCreator::updateBodySlideFiltersListPreview()
 {
   this->mHasUserDoneSomething = true;
 
@@ -1582,9 +1583,9 @@ void PresetCreator::updateBodySlideFiltersListPreview(int aIndex)
   auto lFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
 
   auto lText{QString()};
-  if (aIndex != -1)
+  if (lChooser->currentIndex() != -1)
   {
-    lText = this->mFiltersList.find(lChooser->itemText(aIndex))->second.join(QString(" ; "));
+    lText = this->mFiltersList.find(lChooser->itemText(lChooser->currentIndex()))->second.join(QString(" ; "));
   }
 
   lFiltersLabel->setText(lText);

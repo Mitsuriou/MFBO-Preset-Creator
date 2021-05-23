@@ -16,9 +16,6 @@ public:
   static BodyNameVersion getBodyNameVersion(const BodyName& aBody, const int& aRelativeVersion);
   static std::pair<int, int> getSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion);
   static QStringList getFeetModsEntries();
-  static QString getHandsSliderValue(const BodyNameVersion& aBody, const bool& aMustUseBeastHands);
-  static QString getFeetSliderValue(const BodyNameVersion& aBody, const int& aFeetModIndex);
-  static QString getBodySliderValue(const BodyNameVersion& aBody);
 
   // Other data lists
   static QStringList getWindowOpeningModes();

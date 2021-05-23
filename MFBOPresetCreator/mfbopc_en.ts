@@ -410,42 +410,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="390"/>
+        <location filename="DataLists.cpp" line="182"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="391"/>
+        <location filename="DataLists.cpp" line="183"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="392"/>
+        <location filename="DataLists.cpp" line="184"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="421"/>
+        <location filename="DataLists.cpp" line="213"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="422"/>
+        <location filename="DataLists.cpp" line="214"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="423"/>
+        <location filename="DataLists.cpp" line="215"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="424"/>
+        <location filename="DataLists.cpp" line="216"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="425"/>
+        <location filename="DataLists.cpp" line="217"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -526,13 +526,11 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="521"/>
         <source>Application update available (beta)</source>
-        <oldsource>Application update (BETA) available</oldsource>
         <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="527"/>
         <source>Application update available (stable)</source>
-        <oldsource>Application update (STABLE) available</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -540,9 +538,6 @@
         <source>You are currently running the stable version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
-        <oldsource>You are currently running the version &quot;%1&quot;.
-The new stable version &quot;%2&quot; is available on GitHub.
-Do you want to download it now?</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -612,10 +607,6 @@ Make sure your internet connection is operational and try again.</source>
 The latest stable version is tagged &quot;%2&quot;.
 The new beta version &quot;%3&quot; is available on GitHub.
 Do you want to download it now?</source>
-        <oldsource>You are currently running the version &quot;%1&quot;.
-The latest stable version is tagged &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-Do you want to download it now?</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -778,7 +769,6 @@ Do you want to download it now?</oldsource>
     <message>
         <location filename="PresetCreator.cpp" line="401"/>
         <source>Refresh</source>
-        <oldsource>aRefresh</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -797,110 +787,109 @@ Do you want to download it now?</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="607"/>
+        <location filename="PresetCreator.cpp" line="608"/>
         <source>Generate the files on my computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="802"/>
+        <location filename="PresetCreator.cpp" line="803"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="849"/>
+        <location filename="PresetCreator.cpp" line="850"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
-        <oldsource>Error while trying to write in the OSP file &quot;%1&quot;. Aborting process.</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="878"/>
+        <location filename="PresetCreator.cpp" line="879"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1028"/>
-        <location filename="PresetCreator.cpp" line="1052"/>
+        <location filename="PresetCreator.cpp" line="1029"/>
+        <location filename="PresetCreator.cpp" line="1053"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1046"/>
+        <location filename="PresetCreator.cpp" line="1047"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1326"/>
+        <location filename="PresetCreator.cpp" line="1327"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1333"/>
+        <location filename="PresetCreator.cpp" line="1334"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1344"/>
+        <location filename="PresetCreator.cpp" line="1345"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1485"/>
+        <location filename="PresetCreator.cpp" line="1486"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1507"/>
+        <location filename="PresetCreator.cpp" line="1508"/>
         <source>Open the generated directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1352"/>
+        <location filename="PresetCreator.cpp" line="1353"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1353"/>
+        <location filename="PresetCreator.cpp" line="1354"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1356"/>
+        <location filename="PresetCreator.cpp" line="1357"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1357"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1372"/>
+        <location filename="PresetCreator.cpp" line="1373"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1385"/>
+        <location filename="PresetCreator.cpp" line="1386"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1398"/>
+        <location filename="PresetCreator.cpp" line="1399"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1412"/>
+        <location filename="PresetCreator.cpp" line="1413"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1426"/>
+        <location filename="PresetCreator.cpp" line="1427"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="780"/>
-        <location filename="PresetCreator.cpp" line="820"/>
+        <location filename="PresetCreator.cpp" line="781"/>
+        <location filename="PresetCreator.cpp" line="821"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation></translation>
     </message>
@@ -950,23 +939,23 @@ Do you want to download it now?</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="873"/>
+        <location filename="PresetCreator.cpp" line="874"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="885"/>
+        <location filename="PresetCreator.cpp" line="886"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1484"/>
+        <location filename="PresetCreator.cpp" line="1485"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1492"/>
-        <location filename="PresetCreator.cpp" line="1508"/>
+        <location filename="PresetCreator.cpp" line="1493"/>
+        <location filename="PresetCreator.cpp" line="1509"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1275,7 +1264,6 @@ Do you want to download it now?</oldsource>
     <message>
         <location filename="Settings.cpp" line="422"/>
         <source>Remove all the history</source>
-        <oldsource>Clear all history</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1569,15 +1557,6 @@ The download size is about 11MB~.
 The download will be saved under &quot;%4&quot;.
 
 Below are the release notes for the beta version &quot;%3&quot;:</source>
-        <oldsource>You are currently running the beta version &quot;%1&quot;.
-The latest stable version is &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 11MB~.
-The download will be saved under &quot;%4&quot;.
-
-Below are the release notes for the beta version &quot;%3&quot;:</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1590,14 +1569,6 @@ The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
 Below are the release notes for the stable version &quot;%2&quot;:</source>
-        <oldsource>You are currently running the stable version &quot;%1&quot;.
-The new stable version &quot;%2&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 11MB~.
-The download will be saved under &quot;%3&quot;.
-
-Below are the release notes for the beta version &quot;%2&quot;:</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1635,7 +1606,6 @@ Below are the release notes for this version:</source>
     <message>
         <location filename="Update.cpp" line="52"/>
         <source>You are running the version &quot;%1&quot;.</source>
-        <oldsource>You are running the version &quot;%1&quot;</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1661,11 +1631,6 @@ The latest stable version is tagged &quot;%2&quot;.
 The latest beta version is tagged &quot;%3&quot;.
 
 Below are the release notes for the latest stable version:</source>
-        <oldsource>You are currently running the developer version &quot;%1&quot;.
-The latest stable version on GitHub is tagged &quot;%2&quot;.
-The latest beta version is tagged &quot;%3&quot;.
-
-Below are the release notes for the latest stable version:</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1736,7 +1701,7 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1007"/>
+        <location filename="Utils.cpp" line="1215"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
