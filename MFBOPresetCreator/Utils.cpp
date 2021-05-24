@@ -1015,6 +1015,52 @@ QJsonObject Utils::filtersMapToJson(const std::map<QString, QStringList>& aList)
   return QJsonObject::fromVariantMap(lVarMap);
 }
 
+QString Utils::getAdditionalFeetFilter(const BodyNameVersion& aBody, const int aFeetModIndex)
+{
+  if (aFeetModIndex == 1 || aFeetModIndex == 2)
+  {
+    switch (aBody)
+    {
+      case BodyNameVersion::CBBE_3BBB_3BA_1_40:
+      case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+      case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
+      case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
+      case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
+      case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+        return QString("MSF CBBE Feet");
+      default:
+        return QString("MSF BHUNP Feet");
+    }
+  }
+
+  return QString("");
+}
+
+std::map<QString, QStringList> Utils::getFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex)
+{
+  for (const auto& lPair : aList)
+  {
+    if (lPair.first.compare(aKey, Qt::CaseSensitive) == 0)
+    {
+      std::map<QString, QStringList> lMap;
+
+      // Body
+      lMap.insert({"body", lPair.second});
+
+      // Feet
+      auto lFeetFilters{lPair.second};
+      lFeetFilters.push_back(Utils::getAdditionalFeetFilter(aBody, aFeetModIndex));
+      lMap.insert({"feet", lPair.second});
+
+      // Hands
+      lMap.insert({"hands", lPair.second});
+      return lMap;
+    }
+  }
+
+  return std::map<QString, QStringList>();
+}
+
 void Utils::checkLastPathsFileExistence()
 {
   auto lLastPathsFilePath{Utils::getAppDataPathFolder() + "paths.json"};

@@ -792,104 +792,104 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="803"/>
+        <location filename="PresetCreator.cpp" line="804"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="850"/>
+        <location filename="PresetCreator.cpp" line="851"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="879"/>
+        <location filename="PresetCreator.cpp" line="880"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1029"/>
-        <location filename="PresetCreator.cpp" line="1053"/>
+        <location filename="PresetCreator.cpp" line="1030"/>
+        <location filename="PresetCreator.cpp" line="1054"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1047"/>
+        <location filename="PresetCreator.cpp" line="1048"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1327"/>
+        <location filename="PresetCreator.cpp" line="1328"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1334"/>
+        <location filename="PresetCreator.cpp" line="1335"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1345"/>
+        <location filename="PresetCreator.cpp" line="1346"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1486"/>
+        <location filename="PresetCreator.cpp" line="1487"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1508"/>
+        <location filename="PresetCreator.cpp" line="1509"/>
         <source>Open the generated directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1353"/>
+        <location filename="PresetCreator.cpp" line="1354"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1354"/>
+        <location filename="PresetCreator.cpp" line="1355"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1357"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1358"/>
+        <location filename="PresetCreator.cpp" line="1359"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1373"/>
+        <location filename="PresetCreator.cpp" line="1374"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1386"/>
+        <location filename="PresetCreator.cpp" line="1387"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1399"/>
+        <location filename="PresetCreator.cpp" line="1400"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1413"/>
+        <location filename="PresetCreator.cpp" line="1414"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1427"/>
+        <location filename="PresetCreator.cpp" line="1428"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="781"/>
-        <location filename="PresetCreator.cpp" line="821"/>
+        <location filename="PresetCreator.cpp" line="822"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation></translation>
     </message>
@@ -939,23 +939,23 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="874"/>
+        <location filename="PresetCreator.cpp" line="875"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="886"/>
+        <location filename="PresetCreator.cpp" line="887"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1485"/>
+        <location filename="PresetCreator.cpp" line="1486"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1493"/>
-        <location filename="PresetCreator.cpp" line="1509"/>
+        <location filename="PresetCreator.cpp" line="1494"/>
+        <location filename="PresetCreator.cpp" line="1510"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1086,12 +1086,12 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="775"/>
+        <location filename="RetargetingTool.cpp" line="776"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="778"/>
+        <location filename="RetargetingTool.cpp" line="779"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1121,12 +1121,12 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="767"/>
+        <location filename="RetargetingTool.cpp" line="768"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="775"/>
+        <location filename="RetargetingTool.cpp" line="776"/>
         <source>Retargeting successful</source>
         <translation></translation>
     </message>
@@ -1701,7 +1701,7 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1215"/>
+        <location filename="Utils.cpp" line="1261"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>

@@ -4,6 +4,7 @@
 #include "LangManager.h"
 #include <QString>
 
+// TODO: Refactor/clean this file
 namespace Struct
 {
   struct SliderSet
@@ -128,8 +129,40 @@ namespace Struct
   struct AssistedConversionResult
   {
   public:
+    explicit AssistedConversionResult(const QString& aPath, const QString& aName, const int aRole)
+    {
+      this->path = aPath;
+      this->name = aName;
+      this->role = aRole;
+    };
+
+    QString getPath() const
+    {
+      return this->path;
+    }
+
+    QString getName() const
+    {
+      return this->name;
+    }
+
+    int getRole() const
+    {
+      return this->role;
+    }
+
+  private:
     QString path{""};
     QString name{""};
     int role{0};
+
+    explicit AssistedConversionResult() {}
+  };
+
+  struct filter
+  {
+    // TODO: COMPLETE THIS
+  public:
+    // TODO: COMPLETE THIS
   };
 }

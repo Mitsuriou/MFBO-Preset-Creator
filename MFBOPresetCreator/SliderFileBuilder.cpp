@@ -503,7 +503,7 @@ QString SliderFileBuilder::getBodyBlock(const QString& aLineName, const BodyName
   return lSliderSet.arg("    ").arg(aLineName);
 }
 
-QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const QStringList& aFiltersList, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex, const unsigned char& aTargetBlocks)
+QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const std::map<QString, QStringList>& aFiltersList, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex, const unsigned char& aTargetBlocks)
 {
   auto lBuiltContent{QString("<SliderGroups>\n")};
 

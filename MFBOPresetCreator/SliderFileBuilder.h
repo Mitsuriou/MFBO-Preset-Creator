@@ -14,7 +14,7 @@ public:
   static QString getBodyBlock(const QString& aLineName, const BodyNameVersion& aBody);
 
   // SliderGroups
-  static QString buildXMLFileContent(const QString& aLineName, const QStringList& aFiltersList, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex, const unsigned char& aTargetBlocks = 111);
+  static QString buildXMLFileContent(const QString& aLineName, const std::map<QString, QStringList>& aFiltersList, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex, const unsigned char& aTargetBlocks = 111);
   static QString getFeetLineForBHUNP(const int& aFeetModIndex);
   static QStringList getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody);
 

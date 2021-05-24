@@ -749,7 +749,8 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Construct the file content
-    auto lUserFilters{Utils::splitString(this->findChild<QLabel*>("bodyslide_filters")->text(), " ; ")};
+    auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+    auto lUserFilters{Utils::getFiltersByKey(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))};
     auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOSPUsedSliders.find(lFileName)->second)};
 
     // Create the OSP file on disk
@@ -792,44 +793,44 @@ void RetargetingTool::initBodySlideFiltersList()
   // Load and save the filters list
   this->mFiltersList = Utils::loadFiltersFromFile();
 
-  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
 
   // Disable the combobox if there is not any available filter
   if (this->mFiltersList.size() == 0)
   {
-    lChooser->setDisabled(true);
+    lFiltersListChooser->setDisabled(true);
     return;
   }
 
   // Fill the combobox
   for (const auto& lPair : this->mFiltersList)
   {
-    lChooser->addItem(lPair.first);
+    lFiltersListChooser->addItem(lPair.first);
   }
 
-  lChooser->setCurrentIndex(0);
+  lFiltersListChooser->setCurrentIndex(0);
 }
 
 void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
 {
   this->mFiltersList = aFilterList;
-  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto lLabel{this->findChild<QLabel*>("bodyslide_filters")};
-  Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lChooser, lLabel);
+  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
+  Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
 void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
 {
-  auto lChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto LFiltersLabel{this->findChild<QLabel*>("bodyslide_filters")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
 
   auto lText{QString()};
   if (aIndex != -1)
   {
-    lText = this->mFiltersList.find(lChooser->itemText(aIndex))->second.join(QString(" ; "));
+    lText = this->mFiltersList.find(lFiltersListChooser->itemText(aIndex))->second.join(QString(" ; "));
   }
 
-  LFiltersLabel->setText(lText);
+  lFiltersList->setText(lText);
 
   this->userHasDoneAnAction();
 }
