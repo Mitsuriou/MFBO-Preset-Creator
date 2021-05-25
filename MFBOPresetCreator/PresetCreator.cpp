@@ -565,11 +565,14 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateAvailableBodyVersions);
   this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
   this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
-  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
   this->connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
+
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
+  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
+  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
+  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
@@ -1581,15 +1584,28 @@ void PresetCreator::updateBodySlideFiltersListPreview()
 {
   this->mHasUserDoneSomething = true;
 
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
+
+  // Take custom MSF filter
+  auto lAdditionalFilter{Utils::getAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
+
   auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
   auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
-
-  // TODO: Refactor this to take custom MSF filter
 
   auto lText{QString()};
   if (lFiltersListChooser->currentIndex() != -1)
   {
     lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));
+
+    if (lAdditionalFilter.length() > 0)
+    {
+      lText.append(" ; ");
+      lText.append(lAdditionalFilter);
+      lText.append(tr(" (feet only)"));
+    }
   }
 
   lFiltersList->setText(lText);

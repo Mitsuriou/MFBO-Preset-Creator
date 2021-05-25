@@ -758,14 +758,19 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="805"/>
+        <location filename="PresetCreator.cpp" line="808"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1510"/>
+        <location filename="PresetCreator.cpp" line="1513"/>
         <source>Open the generated directory</source>
         <translation>Ouvrir le répertoire généré</translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="1607"/>
+        <source> (feet only)</source>
+        <translation> (pieds uniquement)</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="383"/>
@@ -798,79 +803,79 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="608"/>
+        <location filename="PresetCreator.cpp" line="611"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="852"/>
+        <location filename="PresetCreator.cpp" line="855"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="881"/>
+        <location filename="PresetCreator.cpp" line="884"/>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1031"/>
-        <location filename="PresetCreator.cpp" line="1055"/>
+        <location filename="PresetCreator.cpp" line="1034"/>
+        <location filename="PresetCreator.cpp" line="1058"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1049"/>
+        <location filename="PresetCreator.cpp" line="1052"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1329"/>
+        <location filename="PresetCreator.cpp" line="1332"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1336"/>
+        <location filename="PresetCreator.cpp" line="1339"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1347"/>
+        <location filename="PresetCreator.cpp" line="1350"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1488"/>
+        <location filename="PresetCreator.cpp" line="1491"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1375"/>
+        <location filename="PresetCreator.cpp" line="1378"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1388"/>
+        <location filename="PresetCreator.cpp" line="1391"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1401"/>
+        <location filename="PresetCreator.cpp" line="1404"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1415"/>
+        <location filename="PresetCreator.cpp" line="1418"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1429"/>
+        <location filename="PresetCreator.cpp" line="1432"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="781"/>
-        <location filename="PresetCreator.cpp" line="823"/>
+        <location filename="PresetCreator.cpp" line="784"/>
+        <location filename="PresetCreator.cpp" line="826"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
@@ -885,18 +890,18 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="876"/>
+        <location filename="PresetCreator.cpp" line="879"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1495"/>
-        <location filename="PresetCreator.cpp" line="1511"/>
+        <location filename="PresetCreator.cpp" line="1498"/>
+        <location filename="PresetCreator.cpp" line="1514"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="888"/>
+        <location filename="PresetCreator.cpp" line="891"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
@@ -941,27 +946,27 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1355"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1356"/>
+        <location filename="PresetCreator.cpp" line="1359"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation>Le répertoire principal &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même continuer la génération de fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1359"/>
+        <location filename="PresetCreator.cpp" line="1362"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1360"/>
+        <location filename="PresetCreator.cpp" line="1363"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1487"/>
+        <location filename="PresetCreator.cpp" line="1490"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
