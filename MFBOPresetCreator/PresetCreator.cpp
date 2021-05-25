@@ -113,24 +113,24 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 
   for (const auto& lResult : aResultsList)
   {
-    auto lRole{static_cast<AssistedConversionRole>(lResult.role)};
+    auto lRole{static_cast<AssistedConversionRole>(lResult.getRole())};
     switch (lRole)
     {
       case AssistedConversionRole::Body:
-        this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText(lResult.path);
-        this->findChild<QLineEdit*>("body_mesh_name_input")->setText(lResult.name);
+        this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText(lResult.getPath());
+        this->findChild<QLineEdit*>("body_mesh_name_input")->setText(lResult.getName());
 
         lBodiesHaveBeenSet = true;
         break;
       case AssistedConversionRole::Feet:
-        this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText(lResult.path);
-        this->findChild<QLineEdit*>("feet_mesh_name_input")->setText(lResult.name);
+        this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText(lResult.getPath());
+        this->findChild<QLineEdit*>("feet_mesh_name_input")->setText(lResult.getName());
 
         lFeetHaveBeenSet = true;
         break;
       case AssistedConversionRole::Hands:
-        this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText(lResult.path);
-        this->findChild<QLineEdit*>("hands_mesh_name_input")->setText(lResult.name);
+        this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText(lResult.getPath());
+        this->findChild<QLineEdit*>("hands_mesh_name_input")->setText(lResult.getName());
 
         lHandsHaveBeenSet = true;
         break;
@@ -141,8 +141,8 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
           lNeedCustomSkeleton->setChecked(true);
         }
 
-        this->findChild<QLineEdit*>("skeleton_path_directory")->setText(lResult.path);
-        this->findChild<QLineEdit*>("skeleton_name")->setText(lResult.name);
+        this->findChild<QLineEdit*>("skeleton_path_directory")->setText(lResult.getPath());
+        this->findChild<QLineEdit*>("skeleton_name")->setText(lResult.getName());
 
         lSkeletonHasBeenSet = true;
         break;
@@ -783,9 +783,10 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
   }
 
   // Construct the file content
+  auto lBodySelected{static_cast<BodyNameVersion>(aBodySelected)};
   auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto lUserFilters{Utils::getFiltersByKey(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))};
-  auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(aBodyslideSlidersetsNames, lUserFilters, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
+  auto lUserFilters{Utils::getFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, aFeetModIndex)};
+  auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(aBodyslideSlidersetsNames, lUserFilters, lBodySelected, aMustUseBeastHands, aFeetModIndex)};
 
   // Create the OSP file on disk
   auto lXMLPathName(lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml");

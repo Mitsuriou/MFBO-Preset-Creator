@@ -1036,29 +1036,28 @@ QString Utils::getAdditionalFeetFilter(const BodyNameVersion& aBody, const int a
   return QString("");
 }
 
-std::map<QString, QStringList> Utils::getFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex)
+std::vector<Struct::Filter> Utils::getFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex)
 {
+  auto lExportFilters{std::vector<Struct::Filter>()};
+
   for (const auto& lPair : aList)
   {
     if (lPair.first.compare(aKey, Qt::CaseSensitive) == 0)
     {
-      std::map<QString, QStringList> lMap;
+      // Parse user' sliders
+      for (const auto& lFilter : lPair.second)
+      {
+        lExportFilters.push_back(Struct::Filter(lFilter, true, true, true));
+      }
 
-      // Body
-      lMap.insert({"body", lPair.second});
+      // Additionnal feet slider
+      lExportFilters.push_back(Struct::Filter(Utils::getAdditionalFeetFilter(aBody, aFeetModIndex), false, true, false));
 
-      // Feet
-      auto lFeetFilters{lPair.second};
-      lFeetFilters.push_back(Utils::getAdditionalFeetFilter(aBody, aFeetModIndex));
-      lMap.insert({"feet", lPair.second});
-
-      // Hands
-      lMap.insert({"hands", lPair.second});
-      return lMap;
+      break;
     }
   }
 
-  return std::map<QString, QStringList>();
+  return lExportFilters;
 }
 
 void Utils::checkLastPathsFileExistence()

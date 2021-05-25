@@ -750,7 +750,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Construct the file content
     auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-    auto lUserFilters{Utils::getFiltersByKey(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))};
+    auto lUserFilters{Utils::getFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
     auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOSPUsedSliders.find(lFileName)->second)};
 
     // Create the OSP file on disk

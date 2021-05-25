@@ -64,7 +64,7 @@ public:
   static void saveFiltersToFile(const std::map<QString, QStringList>& aList);
   static QJsonObject filtersMapToJson(const std::map<QString, QStringList>& aList);
   static QString getAdditionalFeetFilter(const BodyNameVersion& aBody, const int aFeetModIndex);
-  static std::map<QString, QStringList> getFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex);
+  static std::vector<Struct::Filter> getFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex);
 
   // Paths
   static void checkLastPathsFileExistence();

@@ -276,12 +276,7 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
     }
 
     // Save the gotten values
-    Struct::AssistedConversionResult lResult; // TODO: fix this line
-    lResult.path = lFilePath;
-    lResult.name = lFileName;
-    lResult.role = lComboBox->currentIndex();
-
-    lResults.push_back(lResult);
+    lResults.push_back(Struct::AssistedConversionResult(lFilePath, lFileName, lComboBox->currentIndex()));
   }
 
   return lResults;

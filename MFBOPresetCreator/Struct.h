@@ -159,10 +159,43 @@ namespace Struct
     explicit AssistedConversionResult() {}
   };
 
-  struct filter
+  struct Filter
   {
-    // TODO: COMPLETE THIS
   public:
-    // TODO: COMPLETE THIS
+    explicit Filter(const QString& aFilters, const bool aBody, const bool aFeet, const bool aHands)
+    {
+      this->filter = aFilters;
+      this->body = aBody;
+      this->feet = aFeet;
+      this->hands = aHands;
+    }
+
+    QString getFilter() const
+    {
+      return this->filter;
+    }
+
+    bool isBodyCompatible() const
+    {
+      return this->body;
+    }
+
+    bool isFeetCompatible() const
+    {
+      return this->feet;
+    }
+
+    bool isHandsCompatible() const
+    {
+      return this->hands;
+    }
+
+  private:
+    QString filter;
+    bool body{false};
+    bool feet{false};
+    bool hands{false};
+
+    explicit Filter() {}
   };
 }
