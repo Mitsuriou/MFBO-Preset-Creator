@@ -4,16 +4,46 @@
 #include "LangManager.h"
 #include <QString>
 
-// TODO: Refactor/clean this file
 namespace Struct
 {
   struct SliderSet
   {
   public:
-    QString name{""};
-    QString meshPart{""};
-    QString outputPath{""};
-    QString outputFile{""};
+    explicit SliderSet() {}
+
+    explicit SliderSet(const QString& aName, const QString& aMeshPart, const QString& aOutputPath, const QString& aOutputFile)
+    {
+      this->name = aName;
+      this->meshPart = aMeshPart;
+      this->outputPath = aOutputPath;
+      this->outputFile = aOutputFile;
+    }
+
+    QString getName() const
+    {
+      return this->name;
+    }
+
+    QString getMeshPart() const
+    {
+      return this->meshPart;
+    }
+
+    QString getOutputPath() const
+    {
+      return this->outputPath;
+    }
+
+    QString getOutputFile() const
+    {
+      return this->outputFile;
+    }
+
+  private:
+    QString name{};
+    QString meshPart{};
+    QString outputPath{};
+    QString outputFile{};
   };
 
   struct Font
@@ -191,7 +221,7 @@ namespace Struct
     }
 
   private:
-    QString filter;
+    QString filter{};
     bool body{false};
     bool feet{false};
     bool hands{false};

@@ -32,7 +32,7 @@ private:
   void deleteAlreadyExistingWindowBottom() const;
 
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
-  void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex);
+  void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex);
   std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface() const;
 
   // Utils functions

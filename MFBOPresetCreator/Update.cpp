@@ -236,7 +236,7 @@ void Update::displayUpdateMessage(const QString& aResult)
   lTextContainer->setHtml(lHTMLString);
 }
 
-void Update::displayFileDownloadEndStatus(const bool& aResult)
+void Update::displayFileDownloadEndStatus(const bool aResult)
 {
   auto lDownloadProgressBar{this->findChild<QProgressBar*>("download_progress_bar")};
   lDownloadProgressBar->hide();

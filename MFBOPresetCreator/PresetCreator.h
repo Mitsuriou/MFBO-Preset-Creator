@@ -15,8 +15,8 @@ public:
   explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
   // Function that will to be called from outside this class
-  void loadProject(const QString& lFilePath = "", const bool& aSkipFileChooser = false);
-  void saveProject(const bool& aIsSaveAsContext);
+  void loadProject(const QString& lFilePath = "", const bool aSkipFileChooser = false);
+  void saveProject(const bool aIsSaveAsContext);
   bool hasUserDoneSomething();
   void updateSettings(Struct::Settings aSettings);
   void updateBodySlideSets();
@@ -46,8 +46,8 @@ private:
   void updateAvailableBodyVersions();
 
   // Files generation
-  bool generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const int& aFeetModIndex, const QString& aBodyslideSlidersetsNames);
-  bool generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const int& aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName);
+  bool generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames);
+  bool generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName);
   bool generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath);
 
 private slots:

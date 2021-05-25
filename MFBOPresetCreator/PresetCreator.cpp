@@ -29,7 +29,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->mHasUserDoneSomething = false;
 }
 
-void PresetCreator::loadProject(const QString& lFilePath, const bool& aSkipFileChooser)
+void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileChooser)
 {
   QString lFileToLoad{lFilePath};
   if (!aSkipFileChooser)
@@ -54,7 +54,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool& aSkipFileC
   this->mHasUserDoneSomething = true;
 }
 
-void PresetCreator::saveProject(const bool& aIsSaveAsContext)
+void PresetCreator::saveProject(const bool aIsSaveAsContext)
 {
   auto lFilePath{QString(this->mLastUsedSavePath)};
   // Check the event source
@@ -767,7 +767,7 @@ void PresetCreator::updateAvailableBodyVersions()
   lBodyVersionSelector->setCurrentIndex(0);
 }
 
-bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const int& aFeetModIndex, const QString& aBodyslideSlidersetsNames)
+bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -809,7 +809,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool& 
   return true;
 }
 
-bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool& aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool& aMustUseBeastHands, const int& aBodySelected, const int& aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
+bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
 {
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};

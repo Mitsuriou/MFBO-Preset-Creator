@@ -187,7 +187,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   return lScannedValues;
 }
 
-void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int& aRowIndex)
+void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex)
 {
   // Path
   auto lPathLabel{new QLabel(aPath, this)};

@@ -7,8 +7,8 @@ QPushButton* ComponentFactory::createButton(
   const QString& aIconName,
   const QString& aIconFolder,
   const QString& aObjectName,
-  const bool& aIsDisabled,
-  const bool& aMustDisableAutoDefaultBehavior)
+  const bool aIsDisabled,
+  const bool aMustDisableAutoDefaultBehavior)
 {
   // Declare and instanciate the button
   auto lButton{new QPushButton(aText, aParent)};
@@ -100,7 +100,7 @@ QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
   return lDataContainer;
 }
 
-void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, const int& aLayoutRow, const int& aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int& aMinimumFirstColumnWidth)
+void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth)
 {
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};

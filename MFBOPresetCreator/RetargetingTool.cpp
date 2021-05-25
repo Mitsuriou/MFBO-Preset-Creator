@@ -615,15 +615,15 @@ void RetargetingTool::launchUpDownGradeProcess()
       unsigned char lOptions{0};
       for (const auto& lSliderSet : lParsedSliderSets)
       {
-        if (lSliderSet.meshPart == "Body")
+        if (lSliderSet.getMeshPart() == "Body")
         {
           lOptions += 100;
         }
-        else if (lSliderSet.meshPart == "Feet")
+        else if (lSliderSet.getMeshPart() == "Feet")
         {
           lOptions += 10;
         }
-        else if (lSliderSet.meshPart == "Hands")
+        else if (lSliderSet.getMeshPart() == "Hands")
         {
           lOptions += 1;
         }
@@ -635,20 +635,20 @@ void RetargetingTool::launchUpDownGradeProcess()
       // Fill the custom variables
       for (const auto& lSliderSet : lParsedSliderSets)
       {
-        if (lSliderSet.meshPart == "Body")
+        if (lSliderSet.getMeshPart() == "Body")
         {
-          lOSPFileContent.replace(QString("{%%body_output_path%%}"), lSliderSet.outputPath);
-          lOSPFileContent.replace(QString("{%%body_output_file%%}"), lSliderSet.outputFile);
+          lOSPFileContent.replace(QString("{%%body_output_path%%}"), lSliderSet.getOutputPath());
+          lOSPFileContent.replace(QString("{%%body_output_file%%}"), lSliderSet.getOutputFile());
         }
-        else if (lSliderSet.meshPart == "Feet")
+        else if (lSliderSet.getMeshPart() == "Feet")
         {
-          lOSPFileContent.replace(QString("{%%feet_output_path%%}"), lSliderSet.outputPath);
-          lOSPFileContent.replace(QString("{%%feet_output_file%%}"), lSliderSet.outputFile);
+          lOSPFileContent.replace(QString("{%%feet_output_path%%}"), lSliderSet.getOutputPath());
+          lOSPFileContent.replace(QString("{%%feet_output_file%%}"), lSliderSet.getOutputFile());
         }
-        else if (lSliderSet.meshPart == "Hands")
+        else if (lSliderSet.getMeshPart() == "Hands")
         {
-          lOSPFileContent.replace(QString("{%%hands_output_path%%}"), lSliderSet.outputPath);
-          lOSPFileContent.replace(QString("{%%hands_output_file%%}"), lSliderSet.outputFile);
+          lOSPFileContent.replace(QString("{%%hands_output_path%%}"), lSliderSet.getOutputPath());
+          lOSPFileContent.replace(QString("{%%hands_output_file%%}"), lSliderSet.getOutputFile());
         }
       }
 

@@ -2,7 +2,7 @@
 #include <QFile>
 #include <QTextStream>
 
-QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex, const unsigned char& aTargetBlocks)
+QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const bool aMustUseBeastHands, const int aFeetModIndex, const unsigned char& aTargetBlocks)
 {
   auto lBuiltContent{QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SliderSetInfo version=\"1\">\n")};
 
@@ -30,7 +30,7 @@ QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const B
   return lBuiltContent;
 }
 
-QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNameVersion& aBody, const bool& aMustUseBeastHands)
+QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNameVersion& aBody, const bool aMustUseBeastHands)
 {
   auto lSliderSet{QString()};
 
@@ -132,7 +132,7 @@ QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNam
   return lSliderSet.arg("    ").arg(aLineName);
 }
 
-QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyNameVersion& aBody, const int& aFeetModIndex)
+QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyNameVersion& aBody, const int aFeetModIndex)
 {
   auto lSliderSet{QString()};
 
@@ -503,7 +503,7 @@ QString SliderFileBuilder::getBodyBlock(const QString& aLineName, const BodyName
   return lSliderSet.arg("    ").arg(aLineName);
 }
 
-QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const std::vector<Struct::Filter>& aFiltersList, const BodyNameVersion& aBody, const bool& aMustUseBeastHands, const int& aFeetModIndex, const unsigned char& aTargetBlocks)
+QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const std::vector<Struct::Filter>& aFiltersList, const BodyNameVersion& aBody, const bool aMustUseBeastHands, const int aFeetModIndex, const unsigned char& aTargetBlocks)
 {
   auto lBuiltContent{QString("<SliderGroups>\n")};
 
@@ -876,7 +876,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
   return lBuiltContent.arg("    ").arg(aLineName);
 }
 
-QString SliderFileBuilder::getFeetLineForBHUNP(const int& aFeetModIndex)
+QString SliderFileBuilder::getFeetLineForBHUNP(const int aFeetModIndex)
 {
   switch (aFeetModIndex)
   {

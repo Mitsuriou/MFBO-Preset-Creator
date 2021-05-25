@@ -206,7 +206,7 @@ void BodySlideFiltersEditor::updateFiltersCombobox() const
   this->connect(this->mListWidget, &QListWidget::itemChanged, this, &BodySlideFiltersEditor::handleRowRenaming);
 }
 
-void BodySlideFiltersEditor::displayFilterAt(const int& aIndex) const
+void BodySlideFiltersEditor::displayFilterAt(const int aIndex) const
 {
   this->mFiltersListChooser->setCurrentIndex(-1);
   this->mFiltersListChooser->setCurrentIndex(aIndex);

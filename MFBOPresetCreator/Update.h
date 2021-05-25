@@ -42,7 +42,7 @@ private:
   void displayUpdateMessage(const QString& aResult);
 
   // Download the update file
-  void displayFileDownloadEndStatus(const bool& aResult);
+  void displayFileDownloadEndStatus(const bool aResult);
 
 private slots:
   // Check for updates

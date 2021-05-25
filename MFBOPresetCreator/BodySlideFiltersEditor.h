@@ -33,7 +33,7 @@ private:
   void updateFiltersCombobox() const;
 
   // Utility functions
-  void displayFilterAt(const int& aIndex) const;
+  void displayFilterAt(const int aIndex) const;
   void shouldDisableFiltersControls();
 
 private slots:

@@ -49,7 +49,7 @@ QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
   return lBodies;
 }
 
-BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int& aRelativeVersion)
+BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int aRelativeVersion)
 {
   // Calculate an offset since the bodies versions are not sorted
   auto lOffset{0};

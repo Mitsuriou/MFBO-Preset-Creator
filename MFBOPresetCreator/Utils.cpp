@@ -90,7 +90,7 @@ void Utils::displayWarningMessage(const QString& aMessage)
   lBox.exec();
 }
 
-ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aColorYesBtn, const QString& aColorNoBtn, const bool& aIsYesBtnDefault)
+ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aColorYesBtn, const QString& aColorNoBtn, const bool aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
   lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation));
@@ -378,40 +378,40 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
     {
       Struct::SliderSet lTempSet;
 
-      lTempSet.name = lSliderSet.attribute("name", "");
-      if (lTempSet.name.endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Ver 2 Nevernude", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - BHUNP BBP", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - BHUNP BBP Advanced", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - BHUNP TBBP", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - BHUNP TBBP Advanced", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - 3BBB Body Amazing", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
-          || lTempSet.name.endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive))
+      lTempSet.getName() = lSliderSet.attribute("name", "");
+      if (lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2 Nevernude", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP BBP", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP BBP Advanced", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP TBBP", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP TBBP Advanced", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - 3BBB Body Amazing", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive))
       {
-        lTempSet.meshPart = "Body";
+        lTempSet.getMeshPart() = "Body";
       }
-      else if (lTempSet.name.endsWith(" - Beast Hands", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - Hands", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - CBBE Beast Hands", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - CBBE Hands", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive))
+      else if (lTempSet.getName().endsWith(" - Beast Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE Beast Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive))
       {
-        lTempSet.meshPart = "Hands";
+        lTempSet.getMeshPart() = "Hands";
       }
-      else if (lTempSet.name.endsWith(" - Feet", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - CBBE Feet", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - BHUNP 3BBB Advanced Feet", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - Feet (MSF - normal)", Qt::CaseInsensitive)
-               || lTempSet.name.endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive))
+      else if (lTempSet.getName().endsWith(" - Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - Feet (MSF - normal)", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive))
       {
-        lTempSet.meshPart = "Feet";
+        lTempSet.getMeshPart() = "Feet";
       }
 
       auto lChild{lSliderSet.firstChild().toElement()};
@@ -419,14 +419,14 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       {
         if (lChild.tagName() == "OutputPath")
         {
-          lTempSet.outputPath = lChild.firstChild().toText().data();
+          lTempSet.getOutputPath() = lChild.firstChild().toText().data();
         }
         else if (lChild.tagName() == "OutputFile")
         {
-          lTempSet.outputFile = lChild.firstChild().toText().data();
+          lTempSet.getOutputFile() = lChild.firstChild().toText().data();
         }
 
-        if (lTempSet.outputPath != "" && lTempSet.outputFile != "")
+        if (lTempSet.getOutputPath() != "" && lTempSet.getOutputFile() != "")
         {
           break;
         }
@@ -468,7 +468,7 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   return false;
 }
 
-QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool& aMustUseBeastHands)
+QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMustUseBeastHands)
 {
   auto lHandsValue{QString()};
 
@@ -508,7 +508,7 @@ QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool& aMu
   return (lHandsValue + "\n");
 }
 
-QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int& aFeetModIndex)
+QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)
 {
   auto lFeetValue{QString()};
 
@@ -1122,7 +1122,7 @@ QJsonObject Utils::lastPathsStructToJson(const std::map<QString, QString>& aList
   return QJsonObject::fromVariantMap(lVarMap);
 }
 
-QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool& aUseKeyPath)
+QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool aUseKeyPath)
 {
   QString lPath{""};
   QString lKey{aKey};
@@ -1154,7 +1154,7 @@ QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& a
   return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
-void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool& aAuthorizeEmptyValue, const bool& aMustSaveFile)
+void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool aAuthorizeEmptyValue, const bool aMustSaveFile)
 {
   if (aKey.length() == 0 || (!aAuthorizeEmptyValue && aPath.length() == 0))
   {
@@ -1189,7 +1189,7 @@ void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
   }
 }
 
-QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
+QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
 {
   auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
   switch (lEnumLang)
@@ -1203,7 +1203,7 @@ QString Utils::getShortLanguageNameFromEnum(const int& aEnumValue)
   }
 }
 
-QString Utils::getLongLanguageNameFromEnum(const int& aEnumValue)
+QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
 {
   auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
   switch (lEnumLang)
@@ -1248,7 +1248,7 @@ void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, 
   aGroupBox->setStyleSheet(QString("QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%1/%2)}").arg(aIconFolder).arg(aIconName));
 }
 
-void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
+void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
 {
   aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);
 
@@ -1261,7 +1261,7 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int& a
   aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
 }
 
-void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool& aIsCollapsed)
+void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed)
 {
   auto lTitle{aGroupBox->title()};
 
