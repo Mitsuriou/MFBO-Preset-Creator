@@ -187,5 +187,8 @@
     <QtTranslation Include="mfbopc_fr.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
+    <QtTranslation Include="mfbopc_zh.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
   </ItemGroup>
 </Project>
