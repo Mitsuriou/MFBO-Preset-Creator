@@ -1585,8 +1585,6 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
 
 void PresetCreator::updateBodySlideFiltersListPreview()
 {
-  this->mHasUserDoneSomething = true;
-
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
@@ -1612,6 +1610,8 @@ void PresetCreator::updateBodySlideFiltersListPreview()
   }
 
   lFiltersList->setText(lText);
+
+  this->mHasUserDoneSomething = true;
 }
 
 void PresetCreator::scrollbarPressed()

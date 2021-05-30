@@ -768,7 +768,7 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Ouvrir le répertoire généré</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1610"/>
+        <location filename="PresetCreator.cpp" line="1608"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -1045,22 +1045,22 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="443"/>
+        <location filename="RetargetingTool.cpp" line="442"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation>Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="459"/>
+        <location filename="RetargetingTool.cpp" line="458"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation>Le backup est en train d&apos;être créé. Suivant votre ordinateur, cela peut prendre un certain temps. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="468"/>
+        <location filename="RetargetingTool.cpp" line="467"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation>Erreur: le backup n&apos;a pas pu être créé. Veuillez essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="485"/>
+        <location filename="RetargetingTool.cpp" line="484"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
@@ -1095,6 +1095,11 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <location filename="RetargetingTool.cpp" line="776"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement re-ciblés . Vous pouvez maintenant fermer cette fenêtre!</translation>
+    </message>
+    <message>
+        <location filename="RetargetingTool.cpp" line="844"/>
+        <source> (feet only)</source>
+        <translation> (pieds uniquement)</translation>
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="528"/>
@@ -1162,17 +1167,17 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="410"/>
+        <location filename="RetargetingTool.cpp" line="409"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation>Erreur : aucun emplacement donné pour le re-ciblage.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="431"/>
+        <location filename="RetargetingTool.cpp" line="430"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="450"/>
+        <location filename="RetargetingTool.cpp" line="449"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>

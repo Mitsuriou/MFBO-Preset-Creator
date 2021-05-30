@@ -843,7 +843,7 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1610"/>
+        <location filename="PresetCreator.cpp" line="1608"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
@@ -1039,22 +1039,22 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="443"/>
+        <location filename="RetargetingTool.cpp" line="442"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="459"/>
+        <location filename="RetargetingTool.cpp" line="458"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="468"/>
+        <location filename="RetargetingTool.cpp" line="467"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="485"/>
+        <location filename="RetargetingTool.cpp" line="484"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
@@ -1083,6 +1083,11 @@ Do you want to download it now?</source>
     <message>
         <location filename="RetargetingTool.cpp" line="601"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="RetargetingTool.cpp" line="844"/>
+        <source> (feet only)</source>
         <translation></translation>
     </message>
     <message>
@@ -1156,17 +1161,17 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="410"/>
+        <location filename="RetargetingTool.cpp" line="409"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="431"/>
+        <location filename="RetargetingTool.cpp" line="430"/>
         <source>Error: no path given to backup the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="450"/>
+        <location filename="RetargetingTool.cpp" line="449"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation></translation>
     </message>

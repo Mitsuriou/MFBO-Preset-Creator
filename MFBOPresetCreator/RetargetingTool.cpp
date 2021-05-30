@@ -210,6 +210,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Event binding
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateAvailableBodyVersions);
+  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateBodySlideFiltersListPreview);
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
   this->connect(lKeepBackup, &QCheckBox::stateChanged, this, &RetargetingTool::updateBackupState);
   lKeepBackup->setChecked(true);
@@ -261,7 +262,6 @@ void RetargetingTool::chooseInputDirectory()
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::updatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
-  this->updateBackupPreview();
 
   if (!this->mHasUserDoneSomething && lPath.size() > 0)
   {
@@ -362,7 +362,6 @@ void RetargetingTool::updateBackupPreview()
 
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("backup_path_preview")};
-
   auto lNewTextColor{this->mSettings.successColor};
 
   if (lIsValidPath)
@@ -485,6 +484,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   QProgressDialog lProgressDialog("", tr("Cancel treatment"), 0, 0, this);
   lProgressDialog.setBar(lProgressbar);
   lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
+  lProgressDialog.setModal(true);
   lProgressDialog.show();
 
   // Iterate through all the files
@@ -821,13 +821,28 @@ void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QString
 
 void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
 {
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
+
+  // Take custom MSF filter
+  auto lAdditionalFilter{Utils::getAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
+
   auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
   auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
 
   auto lText{QString()};
-  if (aIndex != -1)
+  if (lFiltersListChooser->currentIndex() != -1)
   {
-    lText = this->mFiltersList.find(lFiltersListChooser->itemText(aIndex))->second.join(QString(" ; "));
+    lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));
+
+    if (lAdditionalFilter.length() > 0)
+    {
+      lText.append(" ; ");
+      lText.append(lAdditionalFilter);
+      lText.append(tr(" (feet only)"));
+    }
   }
 
   lFiltersList->setText(lText);

@@ -511,6 +511,11 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
 
   for (const auto& lFilter : lFilters)
   {
+    if (lFilter.getFilter().length() == 0)
+    {
+      continue;
+    }
+
     lBuiltContent.append(QString("    <Group name=\"%1\">\n").arg(lFilter.getFilter()));
 
     switch (aBody)

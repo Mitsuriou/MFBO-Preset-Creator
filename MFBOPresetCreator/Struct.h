@@ -19,9 +19,18 @@ namespace Struct
       this->outputFile = aOutputFile;
     }
 
+    void setName(const QString& name) {
+      this->name = name;
+    }
+
     QString getName() const
     {
       return this->name;
+    }
+
+    void setMeshPart(const QString& meshPart)
+    {
+      this->meshPart = meshPart;
     }
 
     QString getMeshPart() const
@@ -29,9 +38,19 @@ namespace Struct
       return this->meshPart;
     }
 
+    void setOutputPath(const QString& outputPath)
+    {
+      this->outputPath = outputPath;
+    }
+
     QString getOutputPath() const
     {
       return this->outputPath;
+    }
+
+    void setOutputFile(const QString& outputFile)
+    {
+      this->outputFile = outputFile;
     }
 
     QString getOutputFile() const

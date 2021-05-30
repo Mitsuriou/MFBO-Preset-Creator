@@ -377,8 +377,8 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
     if (lSliderSet.tagName() == "SliderSet")
     {
       Struct::SliderSet lTempSet;
+      lTempSet.setName(lSliderSet.attribute("name", "")); // Name
 
-      lTempSet.getName() = lSliderSet.attribute("name", "");
       if (lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
@@ -391,7 +391,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
           || lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive))
       {
-        lTempSet.getMeshPart() = "Body";
+        lTempSet.setMeshPart("Body"); //Body
       }
       else if (lTempSet.getName().endsWith(" - Beast Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - Hands", Qt::CaseInsensitive)
@@ -402,7 +402,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
                || lTempSet.getName().endsWith(" - CBBE Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive))
       {
-        lTempSet.getMeshPart() = "Hands";
+        lTempSet.setMeshPart("Hands"); // Hands
       }
       else if (lTempSet.getName().endsWith(" - Feet", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
@@ -411,7 +411,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
                || lTempSet.getName().endsWith(" - Feet (MSF - normal)", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive))
       {
-        lTempSet.getMeshPart() = "Feet";
+        lTempSet.setMeshPart("Feet"); // Feet
       }
 
       auto lChild{lSliderSet.firstChild().toElement()};
@@ -419,11 +419,11 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       {
         if (lChild.tagName() == "OutputPath")
         {
-          lTempSet.getOutputPath() = lChild.firstChild().toText().data();
+          lTempSet.setOutputPath(lChild.firstChild().toText().data()); // OutputPath
         }
         else if (lChild.tagName() == "OutputFile")
         {
-          lTempSet.getOutputFile() = lChild.firstChild().toText().data();
+          lTempSet.setOutputFile(lChild.firstChild().toText().data()); // OutputFile
         }
 
         if (lTempSet.getOutputPath() != "" && lTempSet.getOutputFile() != "")
