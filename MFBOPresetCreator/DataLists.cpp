@@ -204,7 +204,10 @@ QStringList DataLists::getLanguages()
 {
   return QStringList{
     QString("English"),
-    QString("Français")};
+    QString("Français"),
+    // TODO: Chinese language support
+    //QString("Chinese (made by Sephirothryan)")
+  };
 }
 
 QStringList DataLists::getAssistedConversionActions()

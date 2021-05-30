@@ -71,7 +71,8 @@ enum class BodyName
 enum class ApplicationLanguage
 {
   English = 0,
-  French = 1
+  French = 1,
+  Chinese_Traditional = 2
 };
 
 enum class GUITheme

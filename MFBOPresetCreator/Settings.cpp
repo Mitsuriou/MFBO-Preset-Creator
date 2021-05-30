@@ -67,7 +67,7 @@ void Settings::reject()
 void Settings::setWindowProperties()
 {
   this->setModal(true);
-  this->setMinimumWidth(900);
+  this->setMinimumWidth(1000);
   this->setMinimumHeight(500);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -569,6 +569,9 @@ Struct::Settings Settings::getSettingsFromGUI() const
       break;
     case ApplicationLanguage::French:
       lSettings.language = ApplicationLanguage::French;
+      break;
+    case ApplicationLanguage::Chinese_Traditional:
+      lSettings.language = ApplicationLanguage::Chinese_Traditional;
       break;
     default:
       lSettings.language = ApplicationLanguage::English;

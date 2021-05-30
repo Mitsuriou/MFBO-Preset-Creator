@@ -941,32 +941,32 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lFontObj["weight"] = aSettings.font.weight;
 
   // Construct the full settings object
-  QJsonObject lObj;
-  lObj["appTheme"] = static_cast<int>(aSettings.appTheme);
-  lObj["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
-  lObj["batchConversionOutputPath"] = aSettings.batchConversionOutputPath;
-  lObj["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
-  lObj["dangerColor"] = aSettings.dangerColor;
-  lObj["defaultBatchConversionBody"] = static_cast<int>(aSettings.defaultBatchConversionBody);
-  lObj["defaultMainFeetMod"] = aSettings.defaultMainFeetMod;
-  lObj["defaultMainWindowBody"] = static_cast<int>(aSettings.defaultMainWindowBody);
-  lObj["defaultRetargetingToolBody"] = static_cast<int>(aSettings.defaultRetargetingToolBody);
-  lObj["defaultRetargetingToolFeetMod"] = aSettings.defaultRetargetingToolFeetMod;
-  lObj["eachButtonSavesItsLastUsedPath"] = aSettings.eachButtonSavesItsLastUsedPath;
-  lObj["font"] = lFontObj;
-  lObj["language"] = static_cast<int>(aSettings.language);
-  lObj["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
-  lObj["mainWindowHeight"] = aSettings.mainWindowHeight;
-  lObj["mainWindowOpeningMode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
-  lObj["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
-  lObj["mainWindowWidth"] = aSettings.mainWindowWidth;
-  lObj["successColor"] = aSettings.successColor;
-  lObj["warningColor"] = aSettings.warningColor;
+  QJsonObject lSettings;
+  lSettings["appTheme"] = static_cast<int>(aSettings.appTheme);
+  lSettings["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
+  lSettings["batchConversionOutputPath"] = aSettings.batchConversionOutputPath;
+  lSettings["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
+  lSettings["dangerColor"] = aSettings.dangerColor;
+  lSettings["defaultBatchConversionBody"] = static_cast<int>(aSettings.defaultBatchConversionBody);
+  lSettings["defaultMainFeetMod"] = aSettings.defaultMainFeetMod;
+  lSettings["defaultMainWindowBody"] = static_cast<int>(aSettings.defaultMainWindowBody);
+  lSettings["defaultRetargetingToolBody"] = static_cast<int>(aSettings.defaultRetargetingToolBody);
+  lSettings["defaultRetargetingToolFeetMod"] = aSettings.defaultRetargetingToolFeetMod;
+  lSettings["eachButtonSavesItsLastUsedPath"] = aSettings.eachButtonSavesItsLastUsedPath;
+  lSettings["font"] = lFontObj;
+  lSettings["language"] = static_cast<int>(aSettings.language);
+  lSettings["mainWindowAutomaticallyOpenGeneratedDirectory"] = aSettings.mainWindowAutomaticallyOpenGeneratedDirectory;
+  lSettings["mainWindowHeight"] = aSettings.mainWindowHeight;
+  lSettings["mainWindowOpeningMode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
+  lSettings["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
+  lSettings["mainWindowWidth"] = aSettings.mainWindowWidth;
+  lSettings["successColor"] = aSettings.successColor;
+  lSettings["warningColor"] = aSettings.warningColor;
 
   // Version number string
-  lObj["applicationVersion"] = Utils::getApplicationVersion();
+  lSettings["applicationVersion"] = Utils::getApplicationVersion();
 
-  return lObj;
+  return lSettings;
 }
 
 void Utils::checkFiltersFileExistence()
@@ -1198,6 +1198,8 @@ QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
       return "en";
     case ApplicationLanguage::French:
       return "fr";
+    case ApplicationLanguage::Chinese_Traditional:
+      return "zh_TW";
     default:
       return "en";
   }
@@ -1227,6 +1229,11 @@ ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
   if (aShortName.compare("French") == 0)
   {
     return ApplicationLanguage::French;
+  }
+
+  if (aShortName.compare("Chinese") == 0)
+  {
+    return ApplicationLanguage::Chinese_Traditional;
   }
 
   // Default language if no supported language has been found
