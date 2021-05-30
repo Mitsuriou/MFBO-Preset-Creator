@@ -36,7 +36,7 @@ If you want to understand how the software works; if you have any doubt on any f
 - [X] (1.8.2.0) Be able to import a custom *female_skeleton.nif* file
 - [X] (1.8.4.0) Be able to add BodySlide presets filters (currently, there are only "CBBE" and "MFBO")
 - [X] (1.9.1.0) Be able to generate more then one preset in the output directory.
-- [] (ETA 3.2.0.0) Batch conversion (multiple conversions at once)
+- [ ] (ETA 3.2.0.0) Batch conversion (multiple conversions at once)
 
 ### Developer side
 - [X] (1.7.4.0) Change the source code auto-formatter for more compatibility with Visual Studio 2019
