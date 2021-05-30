@@ -2,7 +2,7 @@
 %1%1<DataFolder>BHUNP 3BBB Advanced</DataFolder>
 %1%1<SourceFile>BHUNP 3BBB Advanced Ver 2.nif</SourceFile>
 %1%1<OutputPath>{%%body_output_path%%}</OutputPath>
-%1%1<OutputPath>{%%body_output_file%%}</OutputPath>
+%1%1<OutputFile>{%%body_output_file%%}</OutputFile>
 %1%1<Shape target="BaseShape" DataFolder="BHUNP 3BBB Advanced">BaseShape</Shape>
 %1%1<Shape target="BaseShapeAnus">BaseShapeAnus</Shape>
 %1%1<Shape target="BaseShapeCanal">BaseShapeCanal</Shape>
