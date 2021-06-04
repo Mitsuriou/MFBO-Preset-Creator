@@ -8,13 +8,14 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
+  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
 
   // Setup all the different GUI components
-  this->setupBodyMeshesGUI(lMainLayout);
-  this->setupSkeletonGUI(lMainLayout);
-  this->setupBodySlideGUI(lMainLayout);
-  this->setupOutputGUI(lMainLayout);
-  this->setupRemainingGUI(lMainLayout);
+  this->setupBodyMeshesGUI(*lMainLayout);
+  this->setupSkeletonGUI(*lMainLayout);
+  this->setupBodySlideGUI(*lMainLayout);
+  this->setupOutputGUI(*lMainLayout);
+  this->setupRemainingGUI(*lButtonLayout);
 
   // Update the GUI based on the values entered
   this->refreshAllPreviewFields();
@@ -250,7 +251,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
   }
 }
 
-void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
+void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -260,7 +261,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   Utils::addIconToGroupBox(lMeshesGroupBox, lIconFolder, "body");
   this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lMeshesGroupBox, false);
-  aLayout->addWidget(lMeshesGroupBox, 0, 0);
+  aLayout.addWidget(lMeshesGroupBox, 0, 0);
 
   // Grid layout
   auto lMeshesGridLayout{new QGridLayout(lMeshesGroupBox)};
@@ -348,7 +349,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout* aLayout)
   this->connect(lNeedBeastHands, &QCheckBox::stateChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
 }
 
-void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
+void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -358,7 +359,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
   Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lSkeletonGroupBox, false);
-  aLayout->addWidget(lSkeletonGroupBox, 1, 0);
+  aLayout.addWidget(lSkeletonGroupBox, 1, 0);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
   lSkeletonGridLayout->setSpacing(10);
@@ -448,7 +449,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout* aLayout)
   this->connect(lSkeletonName, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
 }
 
-void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
+void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -458,7 +459,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
-  aLayout->addWidget(lBodyslideGroupBox, 2, 0);
+  aLayout.addWidget(lBodyslideGroupBox, 2, 0);
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
@@ -578,7 +579,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout* aLayout)
   this->initBodySlideFiltersList();
 }
 
-void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
+void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -602,15 +603,14 @@ void PresetCreator::setupOutputGUI(QGridLayout* aLayout)
   this->updateOutputPreview();
 }
 
-void PresetCreator::setupRemainingGUI(QGridLayout* aLayout)
+void PresetCreator::setupRemainingGUI(QHBoxLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Generate button
   auto lGenerateButton{ComponentFactory::createButton(this, tr("Generate the files on my computer"), "", "build", lIconFolder)};
-  aLayout->addWidget(lGenerateButton, 4, 0, Qt::AlignBottom);
-  aLayout->setRowStretch(4, 1);
+  aLayout.addWidget(lGenerateButton);
 
   // Event binding
   this->connect(lGenerateButton, &QPushButton::clicked, this, &PresetCreator::generateDirectoryStructure);

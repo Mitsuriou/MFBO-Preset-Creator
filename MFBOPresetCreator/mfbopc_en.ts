@@ -153,98 +153,98 @@
 <context>
     <name>BatchConversion</name>
     <message>
-        <location filename="BatchConversion.cpp" line="47"/>
+        <location filename="BatchConversion.cpp" line="48"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="47"/>
+        <location filename="BatchConversion.cpp" line="48"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="47"/>
+        <location filename="BatchConversion.cpp" line="48"/>
         <source>Close the window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="47"/>
+        <location filename="BatchConversion.cpp" line="48"/>
         <source>Go back to the batch conversion window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="69"/>
+        <location filename="BatchConversion.cpp" line="70"/>
         <source>Batch Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="79"/>
+        <location filename="BatchConversion.cpp" line="80"/>
         <source>General</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="98"/>
+        <location filename="BatchConversion.cpp" line="99"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="109"/>
+        <location filename="BatchConversion.cpp" line="110"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="122"/>
+        <location filename="BatchConversion.cpp" line="123"/>
         <source>Skeleton</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="138"/>
+        <location filename="BatchConversion.cpp" line="139"/>
         <source>Skeleton file (human):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="146"/>
-        <location filename="BatchConversion.cpp" line="158"/>
+        <location filename="BatchConversion.cpp" line="147"/>
+        <location filename="BatchConversion.cpp" line="159"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="150"/>
+        <location filename="BatchConversion.cpp" line="151"/>
         <source>Skeleton file (beast):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="174"/>
+        <location filename="BatchConversion.cpp" line="175"/>
         <source>BodySlide</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="195"/>
+        <location filename="BatchConversion.cpp" line="196"/>
         <source>Targeted body and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="214"/>
+        <location filename="BatchConversion.cpp" line="215"/>
         <source>BodySlide files names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="226"/>
+        <location filename="BatchConversion.cpp" line="227"/>
         <source>Presets names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="227"/>
+        <location filename="BatchConversion.cpp" line="228"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="235"/>
+        <location filename="BatchConversion.cpp" line="236"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="248"/>
+        <location filename="BatchConversion.cpp" line="249"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
@@ -260,7 +260,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="290"/>
+        <location filename="BatchConversion.cpp" line="291"/>
         <source>Batch generate the files on my computer</source>
         <translation></translation>
     </message>
@@ -372,37 +372,37 @@
 <context>
     <name>ComponentFactory</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="106"/>
+        <location filename="ComponentFactory.cpp" line="114"/>
         <source>Files generation&apos;s output location</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="124"/>
+        <location filename="ComponentFactory.cpp" line="132"/>
         <source>Output directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="137"/>
+        <location filename="ComponentFactory.cpp" line="145"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="141"/>
+        <location filename="ComponentFactory.cpp" line="149"/>
         <source>Output subdirectory name/path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="148"/>
+        <location filename="ComponentFactory.cpp" line="156"/>
         <source>Use only subdirectory path?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="150"/>
+        <location filename="ComponentFactory.cpp" line="158"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="156"/>
+        <location filename="ComponentFactory.cpp" line="164"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
@@ -662,132 +662,132 @@ Do you want to download it now?</source>
 <context>
     <name>PresetCreator</name>
     <message>
-        <location filename="PresetCreator.cpp" line="259"/>
+        <location filename="PresetCreator.cpp" line="260"/>
         <source>Original mod&apos;s body meshes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="273"/>
+        <location filename="PresetCreator.cpp" line="274"/>
         <source>Meshes paths and names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="332"/>
+        <location filename="PresetCreator.cpp" line="333"/>
         <source>Use beast hands?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="336"/>
+        <location filename="PresetCreator.cpp" line="337"/>
         <source>Check this box if the follower or NPC uses beast hands.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="289"/>
-        <location filename="PresetCreator.cpp" line="305"/>
-        <location filename="PresetCreator.cpp" line="321"/>
+        <location filename="PresetCreator.cpp" line="290"/>
+        <location filename="PresetCreator.cpp" line="306"/>
+        <location filename="PresetCreator.cpp" line="322"/>
         <source>_0.nif/_1.nif</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="187"/>
+        <location filename="PresetCreator.cpp" line="188"/>
         <source> and the hands</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="201"/>
+        <location filename="PresetCreator.cpp" line="202"/>
         <source>You did not select any file for %1 meshes. Would you like to clear all these unassigned entries or keep their currently set values?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="206"/>
+        <location filename="PresetCreator.cpp" line="207"/>
         <source>You did not select any file for %1 mesh. Would you like to clear this unassigned entry or keep its currently set value?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="210"/>
+        <location filename="PresetCreator.cpp" line="211"/>
         <source>One mesh data was not assigned</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="214"/>
+        <location filename="PresetCreator.cpp" line="215"/>
         <source>Clear all the unassigned entries</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="215"/>
+        <location filename="PresetCreator.cpp" line="216"/>
         <source>Keep the currently set values for the unassigned entries</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="324"/>
-        <location filename="PresetCreator.cpp" line="430"/>
-        <location filename="PresetCreator.cpp" line="515"/>
-        <location filename="PresetCreator.cpp" line="537"/>
+        <location filename="PresetCreator.cpp" line="325"/>
+        <location filename="PresetCreator.cpp" line="431"/>
+        <location filename="PresetCreator.cpp" line="516"/>
+        <location filename="PresetCreator.cpp" line="538"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="457"/>
+        <location filename="PresetCreator.cpp" line="458"/>
         <source>BodySlide output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="508"/>
+        <location filename="PresetCreator.cpp" line="509"/>
         <source>BodySlide files names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="529"/>
+        <location filename="PresetCreator.cpp" line="530"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="544"/>
+        <location filename="PresetCreator.cpp" line="545"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="557"/>
+        <location filename="PresetCreator.cpp" line="558"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="357"/>
+        <location filename="PresetCreator.cpp" line="358"/>
         <source>Skeleton</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="383"/>
+        <location filename="PresetCreator.cpp" line="384"/>
         <source>Check this box if the follower or NPC uses a custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="389"/>
+        <location filename="PresetCreator.cpp" line="390"/>
         <source>Skeleton file:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="401"/>
+        <location filename="PresetCreator.cpp" line="402"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="405"/>
+        <location filename="PresetCreator.cpp" line="406"/>
         <source>Skeleton path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="415"/>
+        <location filename="PresetCreator.cpp" line="416"/>
         <source>Skeleton file name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="425"/>
+        <location filename="PresetCreator.cpp" line="426"/>
         <source>.nif</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="611"/>
+        <location filename="PresetCreator.cpp" line="612"/>
         <source>Generate the files on my computer</source>
         <translation></translation>
     </message>
@@ -899,47 +899,47 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="161"/>
+        <location filename="PresetCreator.cpp" line="162"/>
         <source>the body</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="169"/>
+        <location filename="PresetCreator.cpp" line="170"/>
         <source> and the feet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="173"/>
+        <location filename="PresetCreator.cpp" line="174"/>
         <source>, the feet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="177"/>
+        <location filename="PresetCreator.cpp" line="178"/>
         <source>the feet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="191"/>
+        <location filename="PresetCreator.cpp" line="192"/>
         <source>the hands</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="478"/>
+        <location filename="PresetCreator.cpp" line="479"/>
         <source>Targeted body and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="528"/>
+        <location filename="PresetCreator.cpp" line="529"/>
         <source>Presets names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="371"/>
+        <location filename="PresetCreator.cpp" line="372"/>
         <source>Use a custom skeleton?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="380"/>
+        <location filename="PresetCreator.cpp" line="381"/>
         <source>Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation></translation>
     </message>
@@ -1189,110 +1189,110 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="91"/>
+        <location filename="Settings.cpp" line="92"/>
         <source>Note: Modifying a value marked with the &quot;*&quot; character will require a restart of the application to be applied correctly.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="132"/>
+        <location filename="Settings.cpp" line="133"/>
         <source>Display</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="145"/>
+        <location filename="Settings.cpp" line="146"/>
         <source>Language:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="155"/>
+        <location filename="Settings.cpp" line="156"/>
         <source>Font:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="157"/>
+        <location filename="Settings.cpp" line="158"/>
         <source>Choose a font</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="174"/>
+        <location filename="Settings.cpp" line="175"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="175"/>
+        <location filename="Settings.cpp" line="176"/>
         <source>Français</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="201"/>
+        <location filename="Settings.cpp" line="202"/>
         <source>Texts accent color:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="204"/>
+        <location filename="Settings.cpp" line="205"/>
         <source>Choose a success color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="208"/>
+        <location filename="Settings.cpp" line="209"/>
         <source>Choose a warning color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="212"/>
+        <location filename="Settings.cpp" line="213"/>
         <source>Choose a danger color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="228"/>
-        <location filename="Settings.cpp" line="428"/>
+        <location filename="Settings.cpp" line="229"/>
+        <location filename="Settings.cpp" line="429"/>
         <source>General</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="247"/>
+        <location filename="Settings.cpp" line="248"/>
         <source>Each directory chooser button stores its own last opened path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="259"/>
+        <location filename="Settings.cpp" line="260"/>
         <source>Preset Creator</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="273"/>
-        <location filename="Settings.cpp" line="346"/>
+        <location filename="Settings.cpp" line="274"/>
+        <location filename="Settings.cpp" line="347"/>
         <source>Default selected body:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="292"/>
-        <location filename="Settings.cpp" line="365"/>
+        <location filename="Settings.cpp" line="293"/>
+        <location filename="Settings.cpp" line="366"/>
         <source>Default selected feet mod:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="422"/>
+        <location filename="Settings.cpp" line="423"/>
         <source>Remove all the history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="430"/>
+        <location filename="Settings.cpp" line="431"/>
         <source>Batch Conv.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="431"/>
+        <location filename="Settings.cpp" line="432"/>
         <source>Batch Conv.: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="466"/>
+        <location filename="Settings.cpp" line="461"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="161"/>
+        <location filename="Settings.cpp" line="162"/>
         <source>Application Theme:</source>
         <translation></translation>
     </message>
@@ -1312,127 +1312,127 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="86"/>
+        <location filename="Settings.cpp" line="87"/>
         <source>Warning: A restart of the application is pending. You should not modify any value marked with the &quot;*&quot; character until you restart the application.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="332"/>
+        <location filename="Settings.cpp" line="333"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="385"/>
+        <location filename="Settings.cpp" line="386"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="410"/>
+        <location filename="Settings.cpp" line="411"/>
         <source>Last used folder and files paths</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="241"/>
+        <location filename="Settings.cpp" line="242"/>
         <source>Check for updates at application startup</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="303"/>
+        <location filename="Settings.cpp" line="304"/>
         <source>Output directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="312"/>
+        <location filename="Settings.cpp" line="313"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="316"/>
+        <location filename="Settings.cpp" line="317"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="398"/>
+        <location filename="Settings.cpp" line="399"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="429"/>
+        <location filename="Settings.cpp" line="430"/>
         <source>Main window: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="432"/>
+        <location filename="Settings.cpp" line="433"/>
         <source>Assist. Conv.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="433"/>
+        <location filename="Settings.cpp" line="434"/>
         <source>Presets&apos; Ret.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="434"/>
+        <location filename="Settings.cpp" line="435"/>
         <source>Presets&apos; Ret.: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="435"/>
+        <location filename="Settings.cpp" line="436"/>
         <source>Textures Assist.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="436"/>
+        <location filename="Settings.cpp" line="437"/>
         <source>Loaded project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="437"/>
+        <location filename="Settings.cpp" line="438"/>
         <source>Saved project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="460"/>
+        <location filename="Settings.cpp" line="455"/>
         <source>Restore default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="689"/>
+        <location filename="Settings.cpp" line="684"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="690"/>
+        <location filename="Settings.cpp" line="685"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="693"/>
+        <location filename="Settings.cpp" line="688"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="694"/>
+        <location filename="Settings.cpp" line="689"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="171"/>
+        <location filename="Settings.cpp" line="172"/>
         <source>Window opening mode:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="185"/>
+        <location filename="Settings.cpp" line="186"/>
         <source>Default main window width:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="193"/>
+        <location filename="Settings.cpp" line="194"/>
         <source>Default main window height:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="463"/>
+        <location filename="Settings.cpp" line="458"/>
         <source>Save and close</source>
         <translation></translation>
     </message>

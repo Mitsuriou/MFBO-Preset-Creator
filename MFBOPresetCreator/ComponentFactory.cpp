@@ -73,6 +73,14 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent)
   lScrollArea->setWidget(lMainWidget);
   lBaseLayout->addWidget(lScrollArea);
 
+  // Button layout
+  auto lButtonLayout{new QHBoxLayout(aParent)};
+  lButtonLayout->setObjectName("window_buttons_layout");
+  lButtonLayout->setSpacing(10);
+  lButtonLayout->setContentsMargins(10, 10, 10, 10);
+  lButtonLayout->setAlignment(Qt::AlignTop);
+  lBaseLayout->addLayout(lButtonLayout);
+
   return lMainLayout;
 }
 
@@ -100,14 +108,14 @@ QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
   return lDataContainer;
 }
 
-void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout* aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth)
+void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth)
 {
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
   Utils::addIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree");
   Utils::setGroupBoxState(lOutputGroupBox, false);
   lOutputGroupBox->setObjectName("output_group_box");
-  aLayout->addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol);
+  aLayout.addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol);
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};

@@ -27,11 +27,11 @@ private:
   int mMinimumFirstColumnWidth;
 
   void setWindowProperties();
-  void setupGeneralGUI(QGridLayout* aLayout);
-  void setupSkeletonGUI(QGridLayout* aLayout);
-  void setupBodySlideGUI(QGridLayout* aLayout);
-  void setupOutputGUI(QGridLayout* aLayout);
-  void setupRemainingGUI(QGridLayout* aLayout);
+  void setupGeneralGUI(QGridLayout& aLayout);
+  void setupSkeletonGUI(QGridLayout& aLayout);
+  void setupBodySlideGUI(QGridLayout& aLayout);
+  void setupOutputGUI(QGridLayout& aLayout);
+  void setupRemainingGUI(QHBoxLayout& aLayout);
 
   void userHasDoneAnAction();
 

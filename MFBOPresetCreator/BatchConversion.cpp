@@ -11,13 +11,14 @@ BatchConversion::BatchConversion(QWidget* parent, const Struct::Settings& aSetti
 
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
+  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
 
   // Setup all the different GUI components
-  this->setupGeneralGUI(lMainLayout);
-  this->setupSkeletonGUI(lMainLayout);
-  this->setupBodySlideGUI(lMainLayout);
-  this->setupOutputGUI(lMainLayout);
-  this->setupRemainingGUI(lMainLayout);
+  this->setupGeneralGUI(*lMainLayout);
+  this->setupSkeletonGUI(*lMainLayout);
+  this->setupBodySlideGUI(*lMainLayout);
+  this->setupOutputGUI(*lMainLayout);
+  this->setupRemainingGUI(*lButtonLayout);
 
   // Cursor change for the scroll bar
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
@@ -70,7 +71,7 @@ void BatchConversion::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
 }
 
-void BatchConversion::setupGeneralGUI(QGridLayout* aLayout)
+void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -80,7 +81,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout* aLayout)
   Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::setGroupBoxState(lGeneralGroupBox, false);
-  aLayout->addWidget(lGeneralGroupBox, 0, 0);
+  aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
   auto lGeneralGridLayout{new QGridLayout(lGeneralGroupBox)};
@@ -113,7 +114,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout* aLayout)
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
 }
 
-void BatchConversion::setupSkeletonGUI(QGridLayout* aLayout)
+void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -123,7 +124,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout* aLayout)
   Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::setGroupBoxState(lSkeletonGroupBox, false);
-  aLayout->addWidget(lSkeletonGroupBox, 1, 0);
+  aLayout.addWidget(lSkeletonGroupBox, 1, 0);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
   lSkeletonGridLayout->setColumnStretch(0, 0);
@@ -165,7 +166,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout* aLayout)
   this->connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
 }
 
-void BatchConversion::setupBodySlideGUI(QGridLayout* aLayout)
+void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -175,7 +176,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout* aLayout)
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
-  aLayout->addWidget(lBodyslideGroupBox, 2, 0);
+  aLayout.addWidget(lBodyslideGroupBox, 2, 0);
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
@@ -257,7 +258,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout* aLayout)
   this->initBodySlideFiltersList();
 }
 
-void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
+void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -281,15 +282,14 @@ void BatchConversion::setupOutputGUI(QGridLayout* aLayout)
   this->updateOutputPreview();
 }
 
-void BatchConversion::setupRemainingGUI(QGridLayout* aLayout)
+void BatchConversion::setupRemainingGUI(QHBoxLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Batch generate button
   auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder)};
-  aLayout->addWidget(lGenerateButton, 4, 0, Qt::AlignBottom);
-  aLayout->setRowStretch(4, 1);
+  aLayout.addWidget(lGenerateButton);
 
   // Event binding
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchBatchGenerationProcess);
