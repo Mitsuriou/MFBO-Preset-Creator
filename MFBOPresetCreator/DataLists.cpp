@@ -202,12 +202,15 @@ QStringList DataLists::getAppThemes()
 
 QStringList DataLists::getLanguages()
 {
-  return QStringList{
+  QStringList lLanguages{
     QString("English"),
-    QString("Français"),
-    // TODO: Chinese language support
-    //QString("Chinese (made by Sephirothryan)")
-  };
+    QString("Français")};
+
+#ifdef TRANSLATOR
+  lLanguages.append(QString("Chinese (made by Sephirothryan)")); // TODO: Chinese language support
+#endif
+
+  return lLanguages;
 }
 
 QStringList DataLists::getAssistedConversionActions()
