@@ -37,115 +37,115 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="87"/>
+        <location filename="AssistedConversion.cpp" line="79"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="98"/>
+        <location filename="AssistedConversion.cpp" line="90"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="102"/>
+        <location filename="AssistedConversion.cpp" line="94"/>
         <source>Launch the scan of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="119"/>
+        <location filename="AssistedConversion.cpp" line="111"/>
         <source>Awaiting the launch of a scan...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="333"/>
-        <location filename="AssistedConversion.cpp" line="337"/>
+        <location filename="AssistedConversion.cpp" line="325"/>
+        <location filename="AssistedConversion.cpp" line="329"/>
         <source>Relaunch the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="334"/>
+        <location filename="AssistedConversion.cpp" line="326"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="338"/>
+        <location filename="AssistedConversion.cpp" line="330"/>
         <source>Cancel the relaunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="438"/>
+        <location filename="AssistedConversion.cpp" line="430"/>
         <source>No entry selected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="439"/>
+        <location filename="AssistedConversion.cpp" line="431"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="442"/>
+        <location filename="AssistedConversion.cpp" line="434"/>
         <source>Validate as is</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="443"/>
+        <location filename="AssistedConversion.cpp" line="435"/>
         <source>Cancel, I wanted to select values</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="355"/>
+        <location filename="AssistedConversion.cpp" line="347"/>
         <source>No root file has been found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="356"/>
+        <location filename="AssistedConversion.cpp" line="348"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="359"/>
-        <location filename="AssistedConversion.cpp" line="373"/>
+        <location filename="AssistedConversion.cpp" line="351"/>
+        <location filename="AssistedConversion.cpp" line="365"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="360"/>
-        <location filename="AssistedConversion.cpp" line="373"/>
+        <location filename="AssistedConversion.cpp" line="352"/>
+        <location filename="AssistedConversion.cpp" line="365"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="373"/>
+        <location filename="AssistedConversion.cpp" line="365"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="373"/>
+        <location filename="AssistedConversion.cpp" line="365"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="391"/>
+        <location filename="AssistedConversion.cpp" line="383"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="404"/>
+        <location filename="AssistedConversion.cpp" line="396"/>
         <source>File path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="405"/>
+        <location filename="AssistedConversion.cpp" line="397"/>
         <source>*.nif file name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="406"/>
+        <location filename="AssistedConversion.cpp" line="398"/>
         <source>Action</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="409"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation></translation>
     </message>

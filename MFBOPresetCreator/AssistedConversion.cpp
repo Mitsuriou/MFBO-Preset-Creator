@@ -68,17 +68,9 @@ void AssistedConversion::setWindowProperties()
 void AssistedConversion::initializeGUI()
 {
   // Main window layout
-  auto lMainGrid{new QGridLayout(this)};
-  lMainGrid->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainGrid);
-
-  this->setupInterface();
-}
-
-void AssistedConversion::setupInterface()
-{
-  // Get the window's layout
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lMainLayout{new QGridLayout(this)};
+  lMainLayout->setAlignment(Qt::AlignTop);
+  this->setLayout(lMainLayout);
 
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};

@@ -27,7 +27,6 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
-  void setupInterface();
   void displayHintZone();
   void deleteAlreadyExistingWindowBottom() const;
 
