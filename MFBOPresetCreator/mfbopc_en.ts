@@ -249,17 +249,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="455"/>
-        <location filename="BatchConversion.cpp" line="479"/>
-        <source>No path given or invalid path given.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="473"/>
-        <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="BatchConversion.cpp" line="291"/>
         <source>Batch generate the files on my computer</source>
         <translation></translation>
@@ -464,7 +453,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="49"/>
-        <location filename="MFBOPresetCreator.cpp" line="626"/>
+        <location filename="MFBOPresetCreator.cpp" line="625"/>
         <source>Go back to the application</source>
         <translation></translation>
     </message>
@@ -499,42 +488,42 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="178"/>
+        <location filename="MFBOPresetCreator.cpp" line="177"/>
         <source>Textures Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="182"/>
+        <location filename="MFBOPresetCreator.cpp" line="181"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="186"/>
+        <location filename="MFBOPresetCreator.cpp" line="185"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="192"/>
+        <location filename="MFBOPresetCreator.cpp" line="191"/>
         <source> (stable update available)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="194"/>
+        <location filename="MFBOPresetCreator.cpp" line="193"/>
         <source> (beta update available)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="521"/>
+        <location filename="MFBOPresetCreator.cpp" line="520"/>
         <source>Application update available (beta)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="527"/>
+        <location filename="MFBOPresetCreator.cpp" line="526"/>
         <source>Application update available (stable)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="528"/>
+        <location filename="MFBOPresetCreator.cpp" line="527"/>
         <source>You are currently running the stable version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
@@ -551,58 +540,58 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="196"/>
+        <location filename="MFBOPresetCreator.cpp" line="195"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="201"/>
+        <location filename="MFBOPresetCreator.cpp" line="200"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="205"/>
+        <location filename="MFBOPresetCreator.cpp" line="204"/>
         <source>Useful links</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="211"/>
+        <location filename="MFBOPresetCreator.cpp" line="210"/>
         <source>Nexus Mods page</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="215"/>
+        <location filename="MFBOPresetCreator.cpp" line="214"/>
         <source>User guide and tutorials (Google Docs)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="219"/>
+        <location filename="MFBOPresetCreator.cpp" line="218"/>
         <source>View the source code (GitHub.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="223"/>
+        <location filename="MFBOPresetCreator.cpp" line="222"/>
         <source>View the source code (GitLab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="227"/>
+        <location filename="MFBOPresetCreator.cpp" line="226"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="480"/>
+        <location filename="MFBOPresetCreator.cpp" line="479"/>
         <source>Error while searching for a new update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="481"/>
+        <location filename="MFBOPresetCreator.cpp" line="480"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="522"/>
+        <location filename="MFBOPresetCreator.cpp" line="521"/>
         <source>You are currently running the beta version &quot;%1&quot;.
 The latest stable version is tagged &quot;%2&quot;.
 The new beta version &quot;%3&quot; is available on GitHub.
@@ -610,33 +599,33 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="540"/>
+        <location filename="MFBOPresetCreator.cpp" line="539"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="552"/>
+        <location filename="MFBOPresetCreator.cpp" line="551"/>
         <source>Download and install the update now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="553"/>
+        <location filename="MFBOPresetCreator.cpp" line="552"/>
         <source>Download later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="622"/>
+        <location filename="MFBOPresetCreator.cpp" line="621"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="625"/>
+        <location filename="MFBOPresetCreator.cpp" line="624"/>
         <source>Quickly restart the application</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="160"/>
-        <location filename="MFBOPresetCreator.cpp" line="621"/>
+        <location filename="MFBOPresetCreator.cpp" line="620"/>
         <source>Quick restart</source>
         <translation></translation>
     </message>
@@ -807,88 +796,77 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1037"/>
-        <location filename="PresetCreator.cpp" line="1061"/>
-        <source>No path given or invalid path given.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="1055"/>
-        <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="1335"/>
+        <location filename="PresetCreator.cpp" line="1267"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1342"/>
+        <location filename="PresetCreator.cpp" line="1274"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1353"/>
+        <location filename="PresetCreator.cpp" line="1285"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1494"/>
+        <location filename="PresetCreator.cpp" line="1426"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1516"/>
+        <location filename="PresetCreator.cpp" line="1448"/>
         <source>Open the generated directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1608"/>
+        <location filename="PresetCreator.cpp" line="1540"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1361"/>
+        <location filename="PresetCreator.cpp" line="1293"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1362"/>
+        <location filename="PresetCreator.cpp" line="1294"/>
         <source>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1365"/>
+        <location filename="PresetCreator.cpp" line="1297"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1366"/>
+        <location filename="PresetCreator.cpp" line="1298"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1381"/>
+        <location filename="PresetCreator.cpp" line="1313"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1394"/>
+        <location filename="PresetCreator.cpp" line="1326"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1407"/>
+        <location filename="PresetCreator.cpp" line="1339"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1421"/>
+        <location filename="PresetCreator.cpp" line="1353"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1435"/>
+        <location filename="PresetCreator.cpp" line="1367"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
@@ -954,13 +932,13 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1493"/>
+        <location filename="PresetCreator.cpp" line="1425"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1501"/>
-        <location filename="PresetCreator.cpp" line="1517"/>
+        <location filename="PresetCreator.cpp" line="1433"/>
+        <location filename="PresetCreator.cpp" line="1449"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1714,6 +1692,17 @@ Please make sure your internet connection is working correctly and try again.
         <location filename="Utils.cpp" line="1267"/>
         <source>Remove from history</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="Utils.cpp" line="1357"/>
+        <location filename="Utils.cpp" line="1381"/>
+        <source>No path given or invalid path given.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Utils.cpp" line="1375"/>
+        <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

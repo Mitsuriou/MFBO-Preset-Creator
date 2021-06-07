@@ -1009,80 +1009,12 @@ void PresetCreator::updateOutputPreview()
 {
   this->mHasUserDoneSomething = true;
 
-  // Get main directory
   auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
-  auto lMainDirectory{lMainDirTextEdit->text().trimmed()};
-  Utils::cleanPathString(lMainDirectory);
-
-  // Get subdirectory
   auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
-  Utils::cleanPathString(lSubDirectory);
-  auto lIsValidPath{true};
-
-  // Does the user want to define the path only through the secondary path?
   auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
-
-  // Construct full path
-  auto lFullPath{QString()};
-  if (lUseOnlySubdir)
-  {
-    lMainDirTextEdit->setDisabled(true);
-
-    if (lSubDirectory.length() > 0)
-    {
-      lFullPath = lSubDirectory;
-    }
-    else
-    {
-      lFullPath = tr("No path given or invalid path given.");
-      lIsValidPath = false;
-    }
-  }
-  else
-  {
-    if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
-    {
-      lFullPath = lMainDirectory + "/" + lSubDirectory;
-      lMainDirTextEdit->setDisabled(false);
-    }
-    else if (lMainDirectory.length() > 0 && lSubDirectory.length() == 0)
-    {
-      lFullPath = lMainDirectory;
-      lMainDirTextEdit->setDisabled(false);
-    }
-    else if (lMainDirectory.length() == 0 && lSubDirectory.length() > 0)
-    {
-      lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%1\".").arg(lSubDirectory);
-      lMainDirTextEdit->setDisabled(true);
-      lIsValidPath = false;
-    }
-    else
-    {
-      lFullPath = tr("No path given or invalid path given.");
-      lMainDirTextEdit->setDisabled(true);
-      lIsValidPath = false;
-    }
-  }
-
-  // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>("output_path_preview")};
 
-  auto lNewTextColor{this->mSettings.successColor};
-
-  if (lIsValidPath)
-  {
-    if (QDir(lFullPath).exists() || lUseOnlySubdir)
-    {
-      lNewTextColor = this->mSettings.warningColor;
-    }
-  }
-  else
-  {
-    lNewTextColor = this->mSettings.dangerColor;
-  }
-
-  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
-  lOutputPathsPreview->setText(lFullPath);
+  Utils::updateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.successColor, this->mSettings.warningColor, this->mSettings.dangerColor, lOutputPathsPreview);
 }
 
 void PresetCreator::updateOSPXMLPreview(QString aText)

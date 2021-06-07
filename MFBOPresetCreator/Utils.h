@@ -87,6 +87,7 @@ public:
   // GUI modifiers
   static void setGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed);
   static void updateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel);
+  static void updateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview);
 
   // Windows console
   static void bindConsoleToStdOut();

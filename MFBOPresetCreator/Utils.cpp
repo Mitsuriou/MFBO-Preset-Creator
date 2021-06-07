@@ -1335,6 +1335,74 @@ void Utils::updateComboBoxBodyslideFiltersList(const std::map<QString, QStringLi
   }
 }
 
+void Utils::updateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview)
+{
+  auto lMainDirectory{aMainDirTextEdit->text().trimmed()};
+  Utils::cleanPathString(lMainDirectory);
+  Utils::cleanPathString(aSubDirectory);
+  auto lIsValidPath{true};
+
+  // Construct full path
+  auto lFullPath{QString()};
+  if (aUseOnlySubdir)
+  {
+    aMainDirTextEdit->setDisabled(true);
+
+    if (aSubDirectory.length() > 0)
+    {
+      lFullPath = aSubDirectory;
+    }
+    else
+    {
+      lFullPath = tr("No path given or invalid path given.");
+      lIsValidPath = false;
+    }
+  }
+  else
+  {
+    if (lMainDirectory.length() > 0 && aSubDirectory.length() > 0)
+    {
+      lFullPath = lMainDirectory + "/" + aSubDirectory;
+      aMainDirTextEdit->setDisabled(false);
+    }
+    else if (lMainDirectory.length() > 0 && aSubDirectory.length() == 0)
+    {
+      lFullPath = lMainDirectory;
+      aMainDirTextEdit->setDisabled(false);
+    }
+    else if (lMainDirectory.length() == 0 && aSubDirectory.length() > 0)
+    {
+      lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%1\".").arg(aSubDirectory);
+      aMainDirTextEdit->setDisabled(true);
+      lIsValidPath = false;
+    }
+    else
+    {
+      lFullPath = tr("No path given or invalid path given.");
+      aMainDirTextEdit->setDisabled(true);
+      lIsValidPath = false;
+    }
+  }
+
+  // Set the full path value in the preview label
+  auto lNewTextColor{aSuccessColor};
+
+  if (lIsValidPath)
+  {
+    if (QDir(lFullPath).exists() || aUseOnlySubdir)
+    {
+      lNewTextColor = aWarningColor;
+    }
+  }
+  else
+  {
+    lNewTextColor = aDangerColor;
+  }
+
+  aOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
+  aOutputPathsPreview->setText(lFullPath);
+}
+
 void Utils::bindConsoleToStdOut()
 {
   FreeConsole();
