@@ -50,7 +50,7 @@ private:
   bool generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName);
   bool generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath);
 
-private slots:
+#pragma region PRIVATE_SLOTS
   void populateSkeletonChooser();
 
   // Update the GUI preview
@@ -79,4 +79,5 @@ private slots:
   void scrollbarPressed();
   void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
+#pragma endregion PRIVATE_SLOTS
 };

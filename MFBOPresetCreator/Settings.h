@@ -45,11 +45,7 @@ private:
   void applyWarningColorButton(const QString& aColor) const;
   void applyDangerColorButton(const QString& aColor) const;
 
-signals:
-  void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
-  void refreshLastPaths(const std::map<QString, QString>& aLastPaths);
-
-private slots:
+#pragma region PRIVATE_SLOTS
   void saveSettings();
   void updateAvailableBodyVersions();
   void updateAvailableUpgradeBodyVersions();
@@ -66,4 +62,9 @@ private slots:
   void groupBoxChecked(bool aIsChecked);
   void clearPathButtonClicked();
   void clearAllPaths();
+#pragma endregion PRIVATE_SLOTS
+
+signals:
+  void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
+  void refreshLastPaths(const std::map<QString, QString>& aLastPaths);
 };

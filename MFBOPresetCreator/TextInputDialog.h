@@ -10,18 +10,19 @@ class TextInputDialog : public QDialog
 public:
   explicit TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme& aAppTheme, QWidget* aParent);
 
-signals:
-  void getTextValue(const QString&);
-
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
-private slots:
+#pragma region PRIVATE_SLOTS
   void updateAddButtonStatus(const QString& aText);
+#pragma endregion PRIVATE_SLOTS
 
 private:
   GUITheme mAppTheme;
 
   void setWindowProperties(const QString& aTitle);
   void initializeGUI(const QString& aLabel);
+
+signals:
+  void getTextValue(const QString&);
 };

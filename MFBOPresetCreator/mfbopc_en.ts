@@ -716,31 +716,6 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="458"/>
-        <source>BodySlide output</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="509"/>
-        <source>BodySlide files names:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="530"/>
-        <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="545"/>
-        <source>BodySlide filters:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="558"/>
-        <source>Edit BodySlide filters sets</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="PresetCreator.cpp" line="358"/>
         <source>Skeleton</source>
         <translation></translation>
@@ -774,6 +749,41 @@ Do you want to download it now?</source>
         <location filename="PresetCreator.cpp" line="426"/>
         <source>.nif</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="458"/>
+        <source>BodySlide output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="479"/>
+        <source>Targeted body and version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="509"/>
+        <source>BodySlide files names:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="529"/>
+        <source>Presets names:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="530"/>
+        <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="545"/>
+        <source>BodySlide filters:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="558"/>
+        <source>Edit BodySlide filters sets</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="612"/>
@@ -899,16 +909,6 @@ Do you want to download it now?</source>
     <message>
         <location filename="PresetCreator.cpp" line="192"/>
         <source>the hands</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="479"/>
-        <source>Targeted body and version:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="PresetCreator.cpp" line="529"/>
-        <source>Presets names:</source>
         <translation></translation>
     </message>
     <message>

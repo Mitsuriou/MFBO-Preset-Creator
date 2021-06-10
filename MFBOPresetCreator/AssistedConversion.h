@@ -37,10 +37,7 @@ private:
   // Utils functions
   bool hasUserSelectedAnything() const;
 
-signals:
-  void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
-
-private slots:
+#pragma region PRIVATE_SLOTS
   void chooseInputDirectory();
   void launchSearchProcess();
   void validateSelection();
@@ -49,4 +46,8 @@ private slots:
   // Scrollbar events
   void scrollbarPressed();
   void scrollbarReleased();
+#pragma endregion PRIVATE_SLOTS
+
+signals:
+  void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
 };

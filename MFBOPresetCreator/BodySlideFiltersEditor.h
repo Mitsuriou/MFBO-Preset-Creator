@@ -12,9 +12,6 @@ class BodySlideFiltersEditor : public QDialog
 public:
   explicit BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList);
 
-signals:
-  void listEdited(const std::map<QString, QStringList>&);
-
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
@@ -36,7 +33,7 @@ private:
   void displayFilterAt(const int aIndex) const;
   void shouldDisableFiltersControls();
 
-private slots:
+#pragma region PRIVATE_SLOTS
   void showFiltersList(int aIndex);
 
   // Filter set
@@ -50,4 +47,8 @@ private slots:
   void deleteRow();
   void deleteAllRows();
   void handleRowRenaming();
+#pragma endregion PRIVATE_SLOTS
+
+signals:
+  void listEdited(const std::map<QString, QStringList>&);
 };

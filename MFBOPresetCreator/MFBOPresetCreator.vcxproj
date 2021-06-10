@@ -231,7 +231,14 @@ echo #####################################################</Command>
     <ClCompile Include="LangManager.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
-    <ClCompile Include="PresetCreator.cpp" />
+    <ClCompile Include="PresetCreator.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
     <ClCompile Include="SliderFileBuilder.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
     <ClCompile Include="TexturesAssistant.cpp" />

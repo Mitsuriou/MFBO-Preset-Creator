@@ -403,6 +403,30 @@
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
+    <message>
+        <source>BodySlide output</source>
+        <translation type="obsolete">Sortie BodySlide</translation>
+    </message>
+    <message>
+        <source>Targeted body and version:</source>
+        <translation type="obsolete">Corps et version ciblé :</translation>
+    </message>
+    <message>
+        <source>BodySlide files names:</source>
+        <translation type="obsolete">Noms des fichiers BodySlide :</translation>
+    </message>
+    <message>
+        <source>Presets names:</source>
+        <translation type="obsolete">Noms des presets :</translation>
+    </message>
+    <message>
+        <source>BodySlide filters:</source>
+        <translation type="obsolete">Filtres BodySlide :</translation>
+    </message>
+    <message>
+        <source>Edit BodySlide filters sets</source>
+        <translation type="obsolete">Éditer les sets de filtres BodySlide</translation>
+    </message>
 </context>
 <context>
     <name>DataLists</name>

@@ -50,10 +50,7 @@ private:
   void displayFoundTextures(QGridLayout* aLayout, const TexturesAssistant::ScannedData& aScannedData);
   void createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout);
 
-signals:
-  void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
-
-private slots:
+#pragma region PRIVATE_SLOTS
   void chooseInputDirectory();
   void launchSearchProcess();
 
@@ -61,4 +58,8 @@ private slots:
   void scrollbarPressed();
   void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
+#pragma endregion PRIVATE_SLOTS
+
+signals:
+  void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
 };

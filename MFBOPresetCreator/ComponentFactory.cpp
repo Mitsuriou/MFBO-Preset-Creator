@@ -168,3 +168,7 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
   lOutputPathsPreview->setAutoFillBackground(true);
   lOutputGridLayout->addWidget(lOutputPathsPreview, 3, 1);
 }
+
+void ComponentFactory::createBodySlideBox(QWidget* aParent, QGridLayout& aLayout, const QString& aIconFolder, const BodyNameVersion& aInitialBodyNameVersion, const int aInitialFeetMod, const int aMinimumFirstColumnWidth)
+{
+}

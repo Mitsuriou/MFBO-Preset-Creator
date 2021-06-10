@@ -25,9 +25,6 @@
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="PresetCreator.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="Update.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
@@ -51,6 +48,9 @@
     </ClCompile>
     <ClCompile Include="SliderFileBuilder.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PresetCreator.cpp">
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,50 +114,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="About.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="BodySlideFiltersEditor.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="MFBOPresetCreator.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="RetargetingTool.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="Settings.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="PresetCreator.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="Update.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="DataLists.h">
-      <Filter>Header Files\Utils</Filter>
-    </QtMoc>
-    <QtMoc Include="AssistedConversion.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="TextInputDialog.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="TexturesAssistant.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="Utils.h">
-      <Filter>Header Files\Utils</Filter>
-    </QtMoc>
-    <QtMoc Include="BatchConversion.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="ComponentFactory.h">
-      <Filter>Header Files\Utils</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
     <QtUic Include="MFBOPresetCreator.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -190,5 +146,49 @@
     <QtTranslation Include="mfbopc_zh.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="BatchConversion.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="ComponentFactory.h">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="AssistedConversion.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="About.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="BodySlideFiltersEditor.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="DataLists.h">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="Settings.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="RetargetingTool.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="PresetCreator.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TextInputDialog.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="MFBOPresetCreator.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Utils.h">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="Update.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TexturesAssistant.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

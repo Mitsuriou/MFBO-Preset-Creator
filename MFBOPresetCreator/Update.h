@@ -44,7 +44,7 @@ private:
   // Download the update file
   void displayFileDownloadEndStatus(const bool aResult);
 
-private slots:
+#pragma region PRIVATE_SLOTS
   // Check for updates
   void checkForUpdate();
   void updateCheckFinished();
@@ -58,4 +58,5 @@ private slots:
 
   // Install the update file
   void installLatestUpdate();
+#pragma endregion PRIVATE_SLOTS
 };

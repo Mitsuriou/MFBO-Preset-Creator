@@ -35,7 +35,7 @@ private:
 
   void userHasDoneAnAction();
 
-private slots:
+#pragma region PRIVATE_SLOTS
   void userHasDoneAnAction(int);
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
@@ -58,4 +58,5 @@ private slots:
   void scrollbarPressed();
   void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
+#pragma endregion PRIVATE_SLOTS
 };

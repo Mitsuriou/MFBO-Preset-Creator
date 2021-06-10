@@ -51,10 +51,11 @@ private:
   void checkForUpdate();
   void displayUpdateMessage(const QString& aResult);
 
-public slots:
+#pragma region PUBLIC_SLOTS
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
+#pragma endregion PUBLIC_SLOTS
 
-private slots:
+#pragma region PRIVATE_SLOTS
   // Base functionalities
   void loadProject();
   void saveProject();
@@ -79,4 +80,5 @@ private slots:
 
   // Check for updates
   void updateCheckFinished();
+#pragma endregion PRIVATE_SLOTS
 };

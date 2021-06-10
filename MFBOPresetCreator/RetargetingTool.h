@@ -30,7 +30,7 @@ private:
   void setupInterface(QGridLayout& aLayout);
   void userHasDoneAnAction();
 
-private slots:
+#pragma region PRIVATE_SLOTS
   void userHasDoneAnAction(int);
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
@@ -47,4 +47,5 @@ private slots:
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
+#pragma endregion PRIVATE_SLOTS
 };
