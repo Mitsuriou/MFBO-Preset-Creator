@@ -5,7 +5,6 @@
 #include "Struct.h"
 #include "Utils.h"
 #include "stdafx.h"
-#include <utility>
 
 class AssistedConversion : public QDialog
 {

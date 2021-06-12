@@ -57,95 +57,110 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="325"/>
-        <location filename="AssistedConversion.cpp" line="329"/>
+        <location filename="AssistedConversion.cpp" line="153"/>
+        <source>Cancel treatment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="153"/>
+        <source>Scanning the directory. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="180"/>
+        <source>Process aborted by the user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="349"/>
+        <location filename="AssistedConversion.cpp" line="353"/>
         <source>Relaunch the scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="326"/>
+        <location filename="AssistedConversion.cpp" line="350"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="330"/>
+        <location filename="AssistedConversion.cpp" line="354"/>
         <source>Cancel the relaunch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="347"/>
+        <location filename="AssistedConversion.cpp" line="371"/>
         <source>No root file has been found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="348"/>
+        <location filename="AssistedConversion.cpp" line="372"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="351"/>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="375"/>
+        <location filename="AssistedConversion.cpp" line="389"/>
         <source>Continue the scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="352"/>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="376"/>
+        <location filename="AssistedConversion.cpp" line="389"/>
         <source>Cancel the scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="389"/>
         <source>BSA file found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="389"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="383"/>
+        <location filename="AssistedConversion.cpp" line="407"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="396"/>
+        <location filename="AssistedConversion.cpp" line="420"/>
         <source>File path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="397"/>
+        <location filename="AssistedConversion.cpp" line="421"/>
         <source>*.nif file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="398"/>
+        <location filename="AssistedConversion.cpp" line="422"/>
         <source>Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="409"/>
+        <location filename="AssistedConversion.cpp" line="433"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="430"/>
+        <location filename="AssistedConversion.cpp" line="454"/>
         <source>No entry selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="431"/>
+        <location filename="AssistedConversion.cpp" line="455"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="434"/>
+        <location filename="AssistedConversion.cpp" line="458"/>
         <source>Validate as is</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="435"/>
+        <location filename="AssistedConversion.cpp" line="459"/>
         <source>Cancel, I wanted to select values</source>
         <translation type="unfinished"></translation>
     </message>
@@ -224,33 +239,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="215"/>
-        <source>BodySlide files names:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="227"/>
-        <source>Presets names:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="228"/>
-        <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="236"/>
+        <location filename="BatchConversion.cpp" line="226"/>
         <source>BodySlide filters:</source>
+        <oldsource>BodySlide files names:</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="249"/>
+        <location filename="BatchConversion.cpp" line="239"/>
         <source>Edit BodySlide filters sets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="291"/>
+        <location filename="BatchConversion.cpp" line="283"/>
         <source>Batch generate the files on my computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="357"/>
+        <source>Cancel treatment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="357"/>
+        <source>Scanning the directory. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="388"/>
+        <source>Process aborted by the user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="530"/>
+        <source> (feet only)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -501,6 +522,7 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="164"/>
         <source>Exit</source>
+        <oldsource>&amp;Exit</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1077,79 +1099,79 @@ Do you want to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="497"/>
+        <location filename="RetargetingTool.cpp" line="484"/>
         <source>Parsing XML files. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="507"/>
-        <location filename="RetargetingTool.cpp" line="554"/>
-        <location filename="RetargetingTool.cpp" line="691"/>
+        <location filename="RetargetingTool.cpp" line="506"/>
+        <location filename="RetargetingTool.cpp" line="553"/>
+        <location filename="RetargetingTool.cpp" line="690"/>
         <source>Process aborted by the user.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="528"/>
+        <location filename="RetargetingTool.cpp" line="527"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="536"/>
+        <location filename="RetargetingTool.cpp" line="535"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="572"/>
+        <location filename="RetargetingTool.cpp" line="571"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="593"/>
+        <location filename="RetargetingTool.cpp" line="592"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="601"/>
+        <location filename="RetargetingTool.cpp" line="600"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="667"/>
+        <location filename="RetargetingTool.cpp" line="666"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="681"/>
+        <location filename="RetargetingTool.cpp" line="680"/>
         <source>Patching XML files. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="719"/>
+        <location filename="RetargetingTool.cpp" line="718"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="768"/>
+        <location filename="RetargetingTool.cpp" line="767"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="776"/>
+        <location filename="RetargetingTool.cpp" line="775"/>
         <source>Retargeting successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="776"/>
+        <location filename="RetargetingTool.cpp" line="775"/>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="779"/>
+        <location filename="RetargetingTool.cpp" line="778"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="844"/>
+        <location filename="RetargetingTool.cpp" line="843"/>
         <source> (feet only)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1476,52 +1498,67 @@ Do you want to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="240"/>
-        <source>Head textures</source>
+        <location filename="TexturesAssistant.cpp" line="140"/>
+        <source>Cancel treatment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="252"/>
-        <source>Hands textures</source>
+        <location filename="TexturesAssistant.cpp" line="140"/>
+        <source>Scanning the directory. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="177"/>
+        <source>Process aborted by the user.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="264"/>
-        <source>Body textures</source>
+        <source>Head textures</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="276"/>
+        <source>Hands textures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="288"/>
+        <source>Body textures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="300"/>
         <source>Other .DDS textures</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="341"/>
+        <location filename="TexturesAssistant.cpp" line="365"/>
         <source>BSA file found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="341"/>
+        <location filename="TexturesAssistant.cpp" line="365"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="341"/>
+        <location filename="TexturesAssistant.cpp" line="365"/>
         <source>Continue the scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="341"/>
+        <location filename="TexturesAssistant.cpp" line="365"/>
         <source>Cancel the scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="351"/>
+        <location filename="TexturesAssistant.cpp" line="375"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="365"/>
+        <location filename="TexturesAssistant.cpp" line="389"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation type="unfinished"></translation>
     </message>

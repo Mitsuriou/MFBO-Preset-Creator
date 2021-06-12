@@ -1,7 +1,7 @@
 #include "Settings.h"
 
 Settings::Settings(QWidget* parent, const Struct::Settings& aSettings, const std::map<QString, QString>& aLastPaths)
-  : QDialog(parent)
+  : QDialog(parent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mMustRebootMainApp{false}

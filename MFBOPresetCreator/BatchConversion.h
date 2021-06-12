@@ -33,6 +33,8 @@ private:
   void setupOutputGUI(QGridLayout& aLayout);
   void setupRemainingGUI(QHBoxLayout& aLayout);
 
+  void displayFoundData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData);
+
   void userHasDoneAnAction();
 
 #pragma region PRIVATE_SLOTS

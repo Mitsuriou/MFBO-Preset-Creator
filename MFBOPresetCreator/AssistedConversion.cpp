@@ -1,7 +1,7 @@
 #include "AssistedConversion.h"
 
 AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(aParent)
+  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mHasUserDoneSomething(false)
@@ -141,6 +141,23 @@ void AssistedConversion::deleteAlreadyExistingWindowBottom() const
 
 std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
 {
+  // Progress bar
+  auto lProgressbar{new QProgressBar(this->parentWidget())};
+  lProgressbar->setFormat("");
+  lProgressbar->setMinimum(0);
+  lProgressbar->setMaximum(0);
+  lProgressbar->setValue(0);
+  lProgressbar->setTextVisible(true);
+
+  // Progress dialog
+  QProgressDialog lProgressDialog(tr("Scanning the directory. Please wait..."), tr("Cancel treatment"), 0, 0, this->parentWidget());
+  lProgressDialog.setBar(lProgressbar);
+  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
+  lProgressDialog.setModal(true);
+  lProgressDialog.show();
+
+  qApp->processEvents();
+
   // The map is storing <path+fileName, <path, fileName>>
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
 
@@ -157,6 +174,13 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   QDirIterator it(lRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
+    // Cancel the treatment if the user canceled it
+    if (lProgressDialog.wasCanceled())
+    {
+      Utils::displayWarningMessage(tr("Process aborted by the user."));
+      return {};
+    }
+
     it.next();
 
     // Get the current directory

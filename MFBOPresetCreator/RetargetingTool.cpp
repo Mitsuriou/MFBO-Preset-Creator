@@ -481,7 +481,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   lProgressbar->setTextVisible(true);
 
   // Progress dialog
-  QProgressDialog lProgressDialog("", tr("Cancel treatment"), 0, 0, this);
+  QProgressDialog lProgressDialog(tr("Parsing XML files. Please wait..."), tr("Cancel treatment"), 0, 0, this);
   lProgressDialog.setBar(lProgressbar);
   lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
@@ -494,7 +494,6 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lRelativeDirs{QString()};
   std::vector<Struct::SliderSet> lParsedSliderSets;
 
-  lProgressDialog.setLabelText(tr("Parsing XML files. Please wait..."));
   lProgressbar->setRange(0, lNumberXMLFiles);
   lTreatedFiles = 0;
 
