@@ -1,14 +1,9 @@
 ﻿#pragma once
-
-#include "BodySlideFiltersEditor.h"
-#include "DataLists.h"
-#include "Enum.h"
-#include "SliderFileBuilder.h"
 #include "Struct.h"
-#include "Utils.h"
-#include "stdafx.h"
+#include <QDialog>
+#include <QGridLayout>
 
-class RetargetingTool : public QDialog
+class RetargetingTool final : public QDialog
 {
   Q_OBJECT
 

@@ -1,4 +1,10 @@
 #include "TextInputDialog.h"
+#include "ComponentFactory.h"
+#include "Utils.h"
+#include <QCloseEvent>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
 
 TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme& aAppTheme, QWidget* aParent)
   : QDialog(aParent)

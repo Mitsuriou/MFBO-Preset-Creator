@@ -1,8 +1,6 @@
 #pragma once
-
 #include "Enum.h"
 #include <QObject>
-#include <QString>
 #include <QStringList>
 
 class DataLists final : public QObject

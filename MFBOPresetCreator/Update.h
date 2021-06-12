@@ -1,19 +1,14 @@
 #pragma once
-
-#include "ComponentFactory.h"
 #include "Struct.h"
-#include "Utils.h"
-#include "stdafx.h"
+#include <QDialog>
+#include <QFile>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QNetworkRequest>
-#include <iostream>
-#include <string>
 
 // File downloading made with the great help of
 // https://www.bogotobogo.com/Qt/Qt5_QNetworkRequest_Http_File_Download.php
 
-class Update : public QDialog
+class Update final : public QDialog
 {
   Q_OBJECT
 

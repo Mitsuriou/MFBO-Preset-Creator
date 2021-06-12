@@ -1,4 +1,23 @@
 #include "Settings.h"
+#include "ComponentFactory.h"
+#include "DataLists.h"
+#include "Utils.h"
+#include <QAbstractSlider>
+#include <QApplication>
+#include <QCheckBox>
+#include <QCloseEvent>
+#include <QColorDialog>
+#include <QComboBox>
+#include <QFileDialog>
+#include <QFontDialog>
+#include <QGroupBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QScrollArea>
+#include <QScrollBar>
+#include <QStandardPaths>
+#include <QStyledItemDelegate>
 
 Settings::Settings(QWidget* parent, const Struct::Settings& aSettings, const std::map<QString, QString>& aLastPaths)
   : QDialog(parent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)

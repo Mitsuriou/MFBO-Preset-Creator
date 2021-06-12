@@ -1,24 +1,15 @@
 ﻿#pragma once
-
-#include "About.h"
-#include "AssistedConversion.h"
-#include "BatchConversion.h"
-#include "PresetCreator.h"
-#include "RetargetingTool.h"
-#include "Settings.h"
-#include "TexturesAssistant.h"
-#include "Update.h"
-#include "Utils.h"
-#include "WinUser.h"
-#include "stdafx.h"
-#include "windows.h"
+#include "Struct.h"
+#include <QLineEdit>
+#include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <windows.h>
 
 #include "ui_MFBOPresetCreator.h"
 
-class MFBOPresetCreator : public QMainWindow
+class MFBOPresetCreator final : public QMainWindow
 {
   Q_OBJECT
 

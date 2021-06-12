@@ -1,11 +1,8 @@
 #pragma once
-
-#include "Enum.h"
 #include "Struct.h"
-#include "Utils.h"
-#include "stdafx.h"
+#include <QDialog>
 
-class About : public QDialog
+class About final : public QDialog
 {
   Q_OBJECT
 

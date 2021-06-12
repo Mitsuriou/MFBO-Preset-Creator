@@ -1,13 +1,11 @@
 ﻿#pragma once
-
-#include "ComponentFactory.h"
-#include "DataLists.h"
-#include "Enum.h"
 #include "Struct.h"
-#include "stdafx.h"
-#include <QJsonObject>
-#include <QtXml/QDomDocument>
-#include <iostream>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QObject>
 
 class Utils final : public QObject
 {

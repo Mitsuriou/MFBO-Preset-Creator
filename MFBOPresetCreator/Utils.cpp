@@ -1,4 +1,22 @@
 ﻿#include "Utils.h"
+#include "ComponentFactory.h"
+#include "DataLists.h"
+#include "Enum.h"
+#include <QAction>
+#include <QApplication>
+#include <QComboBox>
+#include <QDirIterator>
+#include <QGroupBox>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QStandardPaths>
+#include <QtXml/QDomDocument>
+#include <iostream>
+#include <windows.h>
 
 bool Utils::RESTART_PENDING = false;
 
@@ -75,7 +93,7 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 
 QString Utils::getApplicationVersion()
 {
-  return QApplication::applicationVersion();
+  return qApp->applicationVersion();
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)

@@ -1,11 +1,9 @@
 #pragma once
-
-#include "DataLists.h"
 #include "Struct.h"
-#include "Utils.h"
-#include "stdafx.h"
+#include <QDialog>
+#include <QGridLayout>
 
-class TexturesAssistant : public QDialog
+class TexturesAssistant final : public QDialog
 {
   Q_OBJECT
 

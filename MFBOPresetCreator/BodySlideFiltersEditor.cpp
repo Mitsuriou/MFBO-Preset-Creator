@@ -1,4 +1,14 @@
 #include "BodySlideFiltersEditor.h"
+#include "ComponentFactory.h"
+#include "TextInputDialog.h"
+#include "Utils.h"
+#include <QAction>
+#include <QCloseEvent>
+#include <QComboBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QStyledItemDelegate>
 
 BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList)
   : QDialog(parent)

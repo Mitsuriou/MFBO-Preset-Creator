@@ -1,4 +1,16 @@
 #include "Update.h"
+#include "ComponentFactory.h"
+#include "Utils.h"
+#include <QApplication>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QLabel>
+#include <QNetworkRequest>
+#include <QProcess>
+#include <QProgressBar>
+#include <QPushButton>
+#include <QStandardPaths>
+#include <QTextBrowser>
 
 Update::Update(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)

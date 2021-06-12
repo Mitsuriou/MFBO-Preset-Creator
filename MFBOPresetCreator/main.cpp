@@ -1,6 +1,14 @@
 ﻿#include "MFBOPresetCreator.h"
 #include "Utils.h"
-#include "stdafx.h"
+#include <QFile>
+#include <QFileInfo>
+#include <QFontDatabase>
+#include <QLibraryInfo>
+#include <QSplashScreen>
+#include <QTextCodec>
+#include <QTranslator>
+#include <iostream>
+#include <windows.h>
 
 #ifdef DEBUG
 bool FORCE_CONSOLE_DISPLAY = true;
@@ -90,8 +98,8 @@ int main(int argc, char* argv[])
     // Reset the value
     Utils::RESTART_PENDING = false;
 
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QApplication::setApplicationVersion("3.1.0.0");
+    qApp->setAttribute(Qt::AA_EnableHighDpiScaling);
+    qApp->setApplicationVersion("3.1.0.0");
     const auto& lAppVersion{Utils::getApplicationVersion()};
 
     Utils::printMessageStdOut("Creating the application instance...");

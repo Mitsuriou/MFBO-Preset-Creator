@@ -1,10 +1,10 @@
 ﻿#pragma once
+#include "Struct.h"
+#include <QDialog>
+#include <QGridLayout>
+#include <QHBoxLayout>
 
-#include "DataLists.h"
-#include "Utils.h"
-#include "stdafx.h"
-
-class Settings : public QDialog
+class Settings final : public QDialog
 {
   Q_OBJECT
 

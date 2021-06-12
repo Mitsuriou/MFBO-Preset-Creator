@@ -1,11 +1,9 @@
 #pragma once
-
 #include "Struct.h"
 #include <QString>
-#include <QStringList>
 #include <vector>
 
-class SliderFileBuilder
+class SliderFileBuilder final
 {
 public:
   // SliderSets

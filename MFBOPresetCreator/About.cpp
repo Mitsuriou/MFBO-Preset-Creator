@@ -1,4 +1,6 @@
 #include "About.h"
+#include "Enum.h"
+#include "Utils.h"
 
 About::About(QWidget* parent, const Struct::Settings& aSettings)
   : QDialog(parent)

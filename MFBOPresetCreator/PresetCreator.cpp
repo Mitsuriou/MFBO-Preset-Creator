@@ -1,4 +1,26 @@
 #include "PresetCreator.h"
+#include "BodySlideFiltersEditor.h"
+#include "ComponentFactory.h"
+#include "DataLists.h"
+#include "Settings.h"
+#include "SliderFileBuilder.h"
+#include "Utils.h"
+#include <QAction>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QDesktopServices>
+#include <QDirIterator>
+#include <QFileDialog>
+#include <QGroupBox>
+#include <QJsonObject>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPushbutton>
+#include <QScrollArea>
+#include <QScrollBar>
+#include <QStandardPaths>
+#include <QStyledItemDelegate>
 
 PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QWidget(aParent)

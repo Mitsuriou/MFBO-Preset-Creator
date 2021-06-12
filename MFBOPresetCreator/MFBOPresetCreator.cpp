@@ -1,4 +1,27 @@
 ﻿#include "MFBOPresetCreator.h"
+#include "About.h"
+#include "AssistedConversion.h"
+#include "BatchConversion.h"
+#include "PresetCreator.h"
+#include "RetargetingTool.h"
+#include "Settings.h"
+#include "TexturesAssistant.h"
+#include "Update.h"
+#include "Utils.h"
+#include <QApplication>
+#include <QCloseEvent>
+#include <QDesktopServices>
+#include <QDropEvent>
+#include <QFileInfo>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QLineEdit>
+#include <QMenu>
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QPushButton>
+#include <QScreen>
 
 MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QString& aInjectedFilePath, QWidget* parent)
   : QMainWindow(parent)
@@ -251,7 +274,7 @@ void MFBOPresetCreator::showWindow()
 
   // Set the size of the window
   auto lDesktopScreen{QGuiApplication::primaryScreen()};
-  QRect lScreenGeom{lDesktopScreen->availableGeometry()};
+  auto lScreenGeom{lDesktopScreen->availableGeometry()};
 
   // If the window size is correct for the user's screen
   if (mSettings.mainWindowWidth < lScreenGeom.width() && mSettings.mainWindowHeight < lScreenGeom.height())

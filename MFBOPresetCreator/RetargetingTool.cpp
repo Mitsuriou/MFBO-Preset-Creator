@@ -1,4 +1,25 @@
 ﻿#include "RetargetingTool.h"
+#include "BodySlideFiltersEditor.h"
+#include "ComponentFactory.h"
+#include "DataLists.h"
+#include "Enum.h"
+#include "SliderFileBuilder.h"
+#include "Utils.h"
+#include <QApplication>
+#include <QCheckBox>
+#include <QCloseEvent>
+#include <QComboBox>
+#include <QDirIterator>
+#include <QFileDialog>
+#include <QGroupBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QProgressBar>
+#include <QProgressDialog>
+#include <QPushButton>
+#include <QStyledItemDelegate>
+#include <QTextStream>
 
 RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(parent)

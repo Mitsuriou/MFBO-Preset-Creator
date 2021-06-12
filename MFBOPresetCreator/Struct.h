@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "Enum.h"
 #include "LangManager.h"
 #include <QString>
@@ -19,7 +18,8 @@ namespace Struct
       this->outputFile = aOutputFile;
     }
 
-    void setName(const QString& name) {
+    void setName(const QString& name)
+    {
       this->name = name;
     }
 

@@ -1,4 +1,20 @@
 #include "AssistedConversion.h"
+#include "ComponentFactory.h"
+#include "DataLists.h"
+#include "Utils.h"
+#include <QAbstractItemView>
+#include <QApplication>
+#include <QCloseEvent>
+#include <QComboBox>
+#include <QDirIterator>
+#include <QFileDialog>
+#include <QListView>
+#include <QProgressBar>
+#include <QProgressDialog>
+#include <QScrollArea>
+#include <QScrollBar>
+#include <QStandardItemModel>
+#include <QStyledItemDelegate>
 
 AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)

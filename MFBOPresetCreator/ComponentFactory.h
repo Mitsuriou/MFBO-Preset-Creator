@@ -1,14 +1,7 @@
 #pragma once
-
-#include "Struct.h"
-#include "Utils.h"
-#include <QFrame>
 #include <QGridLayout>
-#include <QIcon>
-#include <QPixmap>
+#include <QObject>
 #include <QPushButton>
-#include <QScrollArea>
-#include <QString>
 
 class ComponentFactory final : public QObject
 {
@@ -31,7 +24,6 @@ public:
 
   // Full UI blocks
   static void createOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth);
-  static void createBodySlideBox(QWidget* aParent, QGridLayout& aLayout, const QString& aIconFolder, const BodyNameVersion& aInitialBodyNameVersion, const int aInitialFeetMod, const int aMinimumFirstColumnWidth);
 
 private:
   explicit ComponentFactory(){};

@@ -1,11 +1,11 @@
 #pragma once
+#include "Struct.h"
+#include <QComboBox>
+#include <QDialog>
+#include <QGridLayout>
+#include <QListWidget>
 
-#include "ComponentFactory.h"
-#include "TextInputDialog.h"
-#include "Utils.h"
-#include "stdafx.h"
-
-class BodySlideFiltersEditor : public QDialog
+class BodySlideFiltersEditor final : public QDialog
 {
   Q_OBJECT
 

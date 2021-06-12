@@ -1,9 +1,8 @@
 #pragma once
+#include "Enum.h"
+#include <QDialog>
 
-#include "Utils.h"
-#include "stdafx.h"
-
-class TextInputDialog : public QDialog
+class TextInputDialog final : public QDialog
 {
   Q_OBJECT
 

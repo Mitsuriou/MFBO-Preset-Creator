@@ -1,4 +1,20 @@
 #include "BatchConversion.h"
+#include "BodySlideFiltersEditor.h"
+#include "ComponentFactory.h"
+#include "DataLists.h"
+#include "Enum.h"
+#include "Utils.h"
+#include <QApplication>
+#include <QCheckBox>
+#include <QCloseEvent>
+#include <QComboBox>
+#include <QDirIterator>
+#include <QFileDialog>
+#include <QProgressBar>
+#include <QProgressDialog>
+#include <QScrollArea>
+#include <QScrollBar>
+#include <QStyledItemDelegate>
 
 BatchConversion::BatchConversion(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(parent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
@@ -245,7 +261,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
   this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
-  
+
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
 }

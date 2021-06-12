@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Enum.h"
 
 class LangManager final

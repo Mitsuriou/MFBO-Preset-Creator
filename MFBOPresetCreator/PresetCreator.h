@@ -1,13 +1,10 @@
 #pragma once
+#include "Struct.h"
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QWidget>
 
-#include "BodySlideFiltersEditor.h"
-#include "DataLists.h"
-#include "Settings.h"
-#include "SliderFileBuilder.h"
-#include "Utils.h"
-#include "stdafx.h"
-
-class PresetCreator : public QWidget
+class PresetCreator final : public QWidget
 {
   Q_OBJECT
 

@@ -1,14 +1,9 @@
 #pragma once
-
-#include "BodySlideFiltersEditor.h"
-#include "ComponentFactory.h"
-#include "DataLists.h"
-#include "Enum.h"
 #include "Struct.h"
-#include "Utils.h"
-#include "stdafx.h"
+#include <QDialog>
+#include <QGridLayout>
 
-class BatchConversion : public QDialog
+class BatchConversion final : public QDialog
 {
   Q_OBJECT
 
