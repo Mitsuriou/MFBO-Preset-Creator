@@ -2,8 +2,8 @@
 #include "Enum.h"
 #include "Utils.h"
 
-About::About(QWidget* parent, const Struct::Settings& aSettings)
-  : QDialog(parent)
+About::About(QWidget* aParent, const Struct::Settings& aSettings)
+  : QDialog(aParent)
   , mSettings(aSettings)
 {
   // Build the window's interface

@@ -23,8 +23,8 @@
 #include <QPushButton>
 #include <QScreen>
 
-MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QString& aInjectedFilePath, QWidget* parent)
-  : QMainWindow(parent)
+MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QString& aInjectedFilePath, QWidget* aParent)
+  : QMainWindow(aParent)
   , mSettings(aSettings)
   , mInjectedFilePath(aInjectedFilePath)
   , mLastPaths(Utils::loadLastPathsFromFile())

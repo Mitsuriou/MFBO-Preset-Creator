@@ -10,8 +10,8 @@
 #include <QPushButton>
 #include <QStyledItemDelegate>
 
-BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList)
-  : QDialog(parent)
+BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* aParent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList)
+  : QDialog(aParent)
   , mSettings(aSettings)
   , mOriginalFiltersList(aInitialList)
   , mFiltersList(aInitialList)

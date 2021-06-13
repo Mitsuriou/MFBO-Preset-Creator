@@ -21,8 +21,8 @@
 #include <QStyledItemDelegate>
 #include <QTextStream>
 
-RetargetingTool::RetargetingTool(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(parent)
+RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
+  : QDialog(aParent)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
 {

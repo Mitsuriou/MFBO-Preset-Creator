@@ -71,6 +71,9 @@ void TexturesAssistant::setWindowProperties()
 
 void TexturesAssistant::initializeGUI()
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+
   // Main window layout
   auto lMainGrid{new QGridLayout(this)};
   lMainGrid->setSpacing(10);
@@ -78,16 +81,8 @@ void TexturesAssistant::initializeGUI()
   lMainGrid->setAlignment(Qt::AlignTop);
   this->setLayout(lMainGrid);
 
-  this->setupInterface(lMainGrid);
-}
-
-void TexturesAssistant::setupInterface(QGridLayout* aLayout)
-{
-  // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
-
   // First line
-  aLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
+  lMainGrid->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
@@ -95,15 +90,15 @@ void TexturesAssistant::setupInterface(QGridLayout* aLayout)
   lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lInputPathLineEdit->setDisabled(true);
-  aLayout->addWidget(lInputPathLineEdit, 0, 1);
+  lMainGrid->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
   auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
-  aLayout->addWidget(lInputPathChooser, 0, 2);
+  lMainGrid->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
   auto lLaunchSearchButton{ComponentFactory::createButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
-  aLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
+  lMainGrid->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
   this->displayHintZone();

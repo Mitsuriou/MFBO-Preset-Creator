@@ -12,8 +12,8 @@
 #include <QStandardPaths>
 #include <QTextBrowser>
 
-Update::Update(QWidget* parent, const Struct::Settings& aSettings)
-  : QDialog(parent)
+Update::Update(QWidget* aParent, const Struct::Settings& aSettings)
+  : QDialog(aParent)
   , mSettings(aSettings)
   , mHasDownloadBeenCanceled(false)
   , mDownloadedFile(nullptr)

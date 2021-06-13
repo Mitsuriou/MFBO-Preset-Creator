@@ -13,7 +13,7 @@ class Update final : public QDialog
   Q_OBJECT
 
 public:
-  explicit Update(QWidget* parent, const Struct::Settings& aSettings);
+  explicit Update(QWidget* aParent, const Struct::Settings& aSettings);
 
 protected:
   void reject() override;

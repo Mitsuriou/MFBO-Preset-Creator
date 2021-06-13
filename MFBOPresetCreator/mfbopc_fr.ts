@@ -168,83 +168,83 @@
 <context>
     <name>BatchConversion</name>
     <message>
-        <location filename="BatchConversion.cpp" line="64"/>
+        <location filename="BatchConversion.cpp" line="65"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="64"/>
+        <location filename="BatchConversion.cpp" line="65"/>
         <source>Do you want to close the window?</source>
         <translation>Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="64"/>
+        <location filename="BatchConversion.cpp" line="65"/>
         <source>Close the window</source>
         <translation>Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="64"/>
+        <location filename="BatchConversion.cpp" line="65"/>
         <source>Go back to the batch conversion window</source>
         <translation>Revenir sur la fenêtre de l&apos;outil de conversion multiple</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="86"/>
+        <location filename="BatchConversion.cpp" line="87"/>
         <source>Batch Conversion</source>
         <translation>Conversion Multiple</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="96"/>
+        <location filename="BatchConversion.cpp" line="97"/>
         <source>General</source>
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="115"/>
+        <location filename="BatchConversion.cpp" line="116"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="126"/>
+        <location filename="BatchConversion.cpp" line="127"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="212"/>
+        <location filename="BatchConversion.cpp" line="213"/>
         <source>Targeted body and version:</source>
         <translation>Corps et version ciblé :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="373"/>
+        <location filename="BatchConversion.cpp" line="374"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="373"/>
+        <location filename="BatchConversion.cpp" line="374"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="404"/>
+        <location filename="BatchConversion.cpp" line="405"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="546"/>
+        <location filename="BatchConversion.cpp" line="547"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="163"/>
-        <location filename="BatchConversion.cpp" line="175"/>
+        <location filename="BatchConversion.cpp" line="164"/>
+        <location filename="BatchConversion.cpp" line="176"/>
         <source>Refresh</source>
         <translation>Rafraîchir</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="242"/>
+        <location filename="BatchConversion.cpp" line="243"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="255"/>
+        <location filename="BatchConversion.cpp" line="256"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
@@ -253,22 +253,22 @@
         <translation type="vanished">Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="155"/>
+        <location filename="BatchConversion.cpp" line="156"/>
         <source>Skeleton file (human):</source>
         <translation>Fichier de squelette (humaine) :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="139"/>
+        <location filename="BatchConversion.cpp" line="140"/>
         <source>Skeleton</source>
         <translation>Squelette</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="167"/>
+        <location filename="BatchConversion.cpp" line="168"/>
         <source>Skeleton file (beast):</source>
         <translation>Fichier de squelette (bête) :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="191"/>
+        <location filename="BatchConversion.cpp" line="192"/>
         <source>BodySlide</source>
         <translation>BodySlide</translation>
     </message>
@@ -281,13 +281,61 @@
         <translation type="vanished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="299"/>
+        <location filename="BatchConversion.cpp" line="300"/>
         <source>Batch generate the files on my computer</source>
         <translation>Générer les multiples fichiers sur mon ordinateur</translation>
     </message>
     <message>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation type="vanished">Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
+    </message>
+</context>
+<context>
+    <name>BatchConversionPicker</name>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="39"/>
+        <source>Closing</source>
+        <translation type="unfinished">Fermeture</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="39"/>
+        <source>Do you want to close the window?</source>
+        <translation type="unfinished">Voulez-vous fermer la fenêtre ?</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="39"/>
+        <source>Close the window</source>
+        <translation type="unfinished">Fermer la fenêtre</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="39"/>
+        <source>Go back to the batch conversion window</source>
+        <translation type="unfinished">Revenir sur la fenêtre de l&apos;outil de conversion multiple</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="61"/>
+        <source>Textures Assistant</source>
+        <translation type="unfinished">Assistant Textures</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="78"/>
+        <source>Input path:</source>
+        <translation type="unfinished">Emplacement d&apos;entrée :</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="146"/>
+        <source>Head textures</source>
+        <translation type="unfinished">Textures de tête</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="158"/>
+        <source>Hands textures</source>
+        <translation type="unfinished">Textures de mains</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="170"/>
+        <source>Body textures</source>
+        <translation type="unfinished">Textures de corps</translation>
     </message>
 </context>
 <context>
@@ -1531,87 +1579,87 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Assistant Textures</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="90"/>
+        <location filename="TexturesAssistant.cpp" line="85"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="101"/>
+        <location filename="TexturesAssistant.cpp" line="96"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="105"/>
+        <location filename="TexturesAssistant.cpp" line="100"/>
         <source>Launch the scan of the mod</source>
         <translation>Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="122"/>
+        <location filename="TexturesAssistant.cpp" line="117"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="157"/>
+        <location filename="TexturesAssistant.cpp" line="152"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="157"/>
+        <location filename="TexturesAssistant.cpp" line="152"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="194"/>
+        <location filename="TexturesAssistant.cpp" line="189"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="281"/>
+        <location filename="TexturesAssistant.cpp" line="276"/>
         <source>Head textures</source>
         <translation>Textures de tête</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="293"/>
+        <location filename="TexturesAssistant.cpp" line="288"/>
         <source>Hands textures</source>
         <translation>Textures de mains</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="305"/>
+        <location filename="TexturesAssistant.cpp" line="300"/>
         <source>Body textures</source>
         <translation>Textures de corps</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="317"/>
+        <location filename="TexturesAssistant.cpp" line="312"/>
         <source>Other .DDS textures</source>
         <translation>Autres textures .DDS</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="382"/>
+        <location filename="TexturesAssistant.cpp" line="377"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="382"/>
+        <location filename="TexturesAssistant.cpp" line="377"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="382"/>
+        <location filename="TexturesAssistant.cpp" line="377"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="382"/>
+        <location filename="TexturesAssistant.cpp" line="377"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="392"/>
+        <location filename="TexturesAssistant.cpp" line="387"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>Aucun répertoire &quot;textures&quot; n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="406"/>
+        <location filename="TexturesAssistant.cpp" line="401"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>Aucun fichier DDS n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>

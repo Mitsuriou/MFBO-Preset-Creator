@@ -8,7 +8,7 @@ class RetargetingTool final : public QDialog
   Q_OBJECT
 
 public:
-  explicit RetargetingTool(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+  explicit RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

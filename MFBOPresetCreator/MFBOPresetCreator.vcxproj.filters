@@ -52,6 +52,9 @@
     <ClCompile Include="PresetCreator.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="BatchConversionPicker.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -188,6 +191,9 @@
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="TexturesAssistant.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="BatchConversionPicker.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>

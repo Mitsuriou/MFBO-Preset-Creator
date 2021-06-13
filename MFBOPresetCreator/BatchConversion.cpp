@@ -1,4 +1,5 @@
 #include "BatchConversion.h"
+#include "BatchConversionPicker.h"
 #include "BodySlideFiltersEditor.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
@@ -16,8 +17,8 @@
 #include <QScrollBar>
 #include <QStyledItemDelegate>
 
-BatchConversion::BatchConversion(QWidget* parent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(parent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
+BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
+  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mMinimumFirstColumnWidth(300)
@@ -305,7 +306,7 @@ void BatchConversion::setupRemainingGUI(QHBoxLayout& aLayout)
 
 void BatchConversion::displayFoundData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData)
 {
-  auto stop = true;
+  new BatchConversionPicker(this, this->mSettings, aScannedData);
 }
 
 void BatchConversion::userHasDoneAnAction()

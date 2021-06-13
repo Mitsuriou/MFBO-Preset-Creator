@@ -225,6 +225,7 @@ echo #####################################################</Command>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="AssistedConversion.cpp" />
     <ClCompile Include="BatchConversion.cpp" />
+    <ClCompile Include="BatchConversionPicker.cpp" />
     <ClCompile Include="ComponentFactory.cpp" />
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
@@ -253,6 +254,7 @@ echo #####################################################</Command>
     <QtMoc Include="About.h" />
     <QtMoc Include="BatchConversion.h" />
     <QtMoc Include="ComponentFactory.h" />
+    <QtMoc Include="BatchConversionPicker.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="BodySlideFiltersEditor.h" />
     <ClInclude Include="LangManager.h" />

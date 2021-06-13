@@ -10,7 +10,7 @@ class BodySlideFiltersEditor final : public QDialog
   Q_OBJECT
 
 public:
-  explicit BodySlideFiltersEditor(QWidget* parent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList);
+  explicit BodySlideFiltersEditor(QWidget* aParent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

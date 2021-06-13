@@ -9,7 +9,7 @@ class Settings final : public QDialog
   Q_OBJECT
 
 public:
-  explicit Settings(QWidget* parent, const Struct::Settings& aSettings, const std::map<QString, QString>& aLastPaths);
+  explicit Settings(QWidget* aParent, const Struct::Settings& aSettings, const std::map<QString, QString>& aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
