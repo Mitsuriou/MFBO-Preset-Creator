@@ -17,14 +17,6 @@ protected:
 private:
   const Struct::Settings mSettings;
 
-  struct GroupedData
-  {
-  public:
-    std::map<std::string, std::vector<QString>> hands;
-    std::map<std::string, std::vector<QString>> feet;
-    std::map<std::string, std::vector<QString>> body;
-  };
-
   void setWindowProperties();
   void initializeGUI();
   void deleteAlreadyExistingWindowBottom() const;

@@ -106,38 +106,24 @@ void BatchConversionPicker::deleteAlreadyExistingWindowBottom() const
 void BatchConversionPicker::displayFoundFiles(QGridLayout* aLayout, const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData)
 {
   // Parse the grouped textures to split them in multiple storages
-  BatchConversionPicker::GroupedData lGroupedPaths;
+  std::map<std::string, std::vector<QString>> lGroupedData;
 
   for (const auto& lNifFile : aScannedData)
   {
-    const auto& lFilePath{lNifFile.second.first.toStdString()};
+    const auto lFilePath{lNifFile.second.first.toStdString()};
     const auto& lFileName{lNifFile.second.second};
-    std::map<std::string, std::vector<QString>>* lMap = nullptr;
 
-    if (lNifFile.second.second.contains("hands"))
+    auto lPosition{lGroupedData.find(lFilePath)};
+    if (lPosition == lGroupedData.end())
     {
-      lMap = &lGroupedPaths.hands;
-    }
-    else if (lNifFile.second.second.contains("feet"))
-    {
-      lMap = &lGroupedPaths.feet;
-    }
-    else if (lNifFile.second.second.contains("body"))
-    {
-      lMap = &lGroupedPaths.body;
-    }
-
-    auto lPosition{lMap->find(lFilePath)};
-    if (lPosition == lMap->end())
-    {
-      lMap->insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
+      lGroupedData.insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
     }
     else
     {
       lPosition->second.push_back(lFileName);
     }
   }
-
+  /*
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
   auto lRowIndex{0};
@@ -177,6 +163,7 @@ void BatchConversionPicker::displayFoundFiles(QGridLayout* aLayout, const std::m
   lBodyGroup->setLayout(lBodyGroupContainer);
   this->createRessourceBlock(lGroupedPaths.body, lBodyGroupContainer);
   aLayout->addWidget(lBodyGroup, lRowIndex++, 0);
+  */
 }
 
 void BatchConversionPicker::createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout)

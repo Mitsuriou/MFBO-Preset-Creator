@@ -323,19 +323,16 @@
         <translation type="unfinished">Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="146"/>
         <source>Head textures</source>
-        <translation type="unfinished">Textures de tête</translation>
+        <translation type="obsolete">Textures de tête</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="158"/>
         <source>Hands textures</source>
-        <translation type="unfinished">Textures de mains</translation>
+        <translation type="obsolete">Textures de mains</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="170"/>
         <source>Body textures</source>
-        <translation type="unfinished">Textures de corps</translation>
+        <translation type="obsolete">Textures de corps</translation>
     </message>
 </context>
 <context>

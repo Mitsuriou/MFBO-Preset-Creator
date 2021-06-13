@@ -307,21 +307,6 @@
         <source>Input path:</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="146"/>
-        <source>Head textures</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="158"/>
-        <source>Hands textures</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="170"/>
-        <source>Body textures</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>BodySlideFiltersEditor</name>
