@@ -504,42 +504,42 @@
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="182"/>
+        <location filename="DataLists.cpp" line="190"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="183"/>
+        <location filename="DataLists.cpp" line="191"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="184"/>
+        <location filename="DataLists.cpp" line="192"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="219"/>
+        <location filename="DataLists.cpp" line="227"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="220"/>
+        <location filename="DataLists.cpp" line="228"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="221"/>
+        <location filename="DataLists.cpp" line="229"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="222"/>
+        <location filename="DataLists.cpp" line="230"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="223"/>
+        <location filename="DataLists.cpp" line="231"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
@@ -568,7 +568,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="72"/>
-        <location filename="MFBOPresetCreator.cpp" line="648"/>
+        <location filename="MFBOPresetCreator.cpp" line="649"/>
         <source>Go back to the application</source>
         <translation>Revenir sur l&apos;application</translation>
     </message>
@@ -599,37 +599,37 @@
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="200"/>
+        <location filename="MFBOPresetCreator.cpp" line="201"/>
         <source>Textures Assistant</source>
         <translation>Assistant Textures</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="204"/>
+        <location filename="MFBOPresetCreator.cpp" line="205"/>
         <source>Assisted Conversion</source>
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="208"/>
+        <location filename="MFBOPresetCreator.cpp" line="209"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="214"/>
+        <location filename="MFBOPresetCreator.cpp" line="215"/>
         <source> (stable update available)</source>
         <translation> (mise à jour stable disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="216"/>
+        <location filename="MFBOPresetCreator.cpp" line="217"/>
         <source> (beta update available)</source>
         <translation> (mise à jour beta disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="543"/>
+        <location filename="MFBOPresetCreator.cpp" line="544"/>
         <source>Application update available (beta)</source>
         <translation>Mise à jour de l&apos;application disponible (beta)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="544"/>
+        <location filename="MFBOPresetCreator.cpp" line="545"/>
         <source>You are currently running the beta version &quot;%1&quot;.
 The latest stable version is tagged &quot;%2&quot;.
 The new beta version &quot;%3&quot; is available on GitHub.
@@ -640,12 +640,12 @@ La dernière version beta &quot;%3&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="549"/>
+        <location filename="MFBOPresetCreator.cpp" line="550"/>
         <source>Application update available (stable)</source>
         <translation>Mise à jour de l&apos;application disponible (stable)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="550"/>
+        <location filename="MFBOPresetCreator.cpp" line="551"/>
         <source>You are currently running the stable version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
@@ -664,79 +664,79 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Conversion Multiple</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="218"/>
+        <location filename="MFBOPresetCreator.cpp" line="219"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="223"/>
+        <location filename="MFBOPresetCreator.cpp" line="224"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="227"/>
+        <location filename="MFBOPresetCreator.cpp" line="228"/>
         <source>Useful links</source>
         <translation>Liens utiles</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="233"/>
+        <location filename="MFBOPresetCreator.cpp" line="234"/>
         <source>Nexus Mods page</source>
         <translation>Page Nexus Mods</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="237"/>
+        <location filename="MFBOPresetCreator.cpp" line="238"/>
         <source>User guide and tutorials (Google Docs)</source>
         <translation>Guide utilisateur et tutoriels (Google Docs)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="241"/>
+        <location filename="MFBOPresetCreator.cpp" line="242"/>
         <source>View the source code (GitHub.com)</source>
         <translation>Voir le code source (GitHub.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="245"/>
+        <location filename="MFBOPresetCreator.cpp" line="246"/>
         <source>View the source code (GitLab.com)</source>
         <translation>Voir le code source (GitLab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="249"/>
+        <location filename="MFBOPresetCreator.cpp" line="250"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="502"/>
+        <location filename="MFBOPresetCreator.cpp" line="503"/>
         <source>Error while searching for a new update</source>
         <translation>Erreur en cherchant pour une nouvelle mise à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="503"/>
+        <location filename="MFBOPresetCreator.cpp" line="504"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version...
 Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="574"/>
+        <location filename="MFBOPresetCreator.cpp" line="575"/>
         <source>Download and install the update now</source>
         <translation>Télécharger et installer la mise à jour maintenant</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="575"/>
+        <location filename="MFBOPresetCreator.cpp" line="576"/>
         <source>Download later</source>
         <translation>Télécharger plus tard</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="644"/>
+        <location filename="MFBOPresetCreator.cpp" line="645"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer rapidement l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="647"/>
+        <location filename="MFBOPresetCreator.cpp" line="648"/>
         <source>Quickly restart the application</source>
         <translation>Relancer rapidement l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="562"/>
+        <location filename="MFBOPresetCreator.cpp" line="563"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -747,7 +747,7 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="183"/>
-        <location filename="MFBOPresetCreator.cpp" line="643"/>
+        <location filename="MFBOPresetCreator.cpp" line="644"/>
         <source>Quick restart</source>
         <translation>Relancement rapide</translation>
     </message>
@@ -1852,18 +1852,18 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1285"/>
+        <location filename="Utils.cpp" line="1299"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1375"/>
-        <location filename="Utils.cpp" line="1399"/>
+        <location filename="Utils.cpp" line="1389"/>
+        <location filename="Utils.cpp" line="1413"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1393"/>
+        <location filename="Utils.cpp" line="1407"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

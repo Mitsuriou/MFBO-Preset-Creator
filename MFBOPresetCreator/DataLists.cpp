@@ -38,7 +38,7 @@ QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
     case BodyName::BHUNP_BBP_Advanced:
     case BodyName::BHUNP_TBBP:
     case BodyName::BHUNP_TBBP_Advanced:
-      lBodies = QStringList({QString("2.13"), QString("2.15"), QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31")});
+      lBodies = QStringList({QString("2.13"), QString("2.15"), QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35")});
       break;
     case BodyName::BHUNP_3BBB_Advanced_ver_2_nevernude:
       lBodies.append(QString("2.25"));
@@ -163,6 +163,14 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_TBBP_2_31:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_31:
       return std::pair<int, int>(static_cast<int>(aBodyVersion) - 41, 5);
+    case BodyNameVersion::BHUNP_3BBB_2_35:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_35:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_35:
+    case BodyNameVersion::BHUNP_BBP_2_35:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_35:
+    case BodyNameVersion::BHUNP_TBBP_2_35:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_35:
+      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 48, 6);
   }
 
   return std::pair<int, int>(-1, -1);

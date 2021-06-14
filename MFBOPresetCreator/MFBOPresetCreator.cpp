@@ -193,7 +193,8 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lTools);
 
   // Action: Batch conversion
-  auto lOpenBatchConv{Utils::buildQAction(this, tr("Batch Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "reorder", lIconFolder)};
+  auto lOpenBatchConv{Utils::buildQAction(this, tr("Batch Conversion") + "(WIP)", QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "reorder", lIconFolder)};
+  lOpenBatchConv->setDisabled(true);
   lTools->addAction(lOpenBatchConv);
 
   // Action: Textures Assistant

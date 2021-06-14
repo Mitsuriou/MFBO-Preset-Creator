@@ -594,6 +594,13 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
         case BodyNameVersion::BHUNP_BBP_Advanced_2_31:
         case BodyNameVersion::BHUNP_TBBP_2_31:
         case BodyNameVersion::BHUNP_TBBP_Advanced_2_31:
+        case BodyNameVersion::BHUNP_3BBB_2_35:
+        case BodyNameVersion::BHUNP_3BBB_Advanced_2_35:
+        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_35:
+        case BodyNameVersion::BHUNP_BBP_2_35:
+        case BodyNameVersion::BHUNP_BBP_Advanced_2_35:
+        case BodyNameVersion::BHUNP_TBBP_2_35:
+        case BodyNameVersion::BHUNP_TBBP_Advanced_2_35:
           lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
           break;
       }
@@ -635,6 +642,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_3BBB_2_25:
     case BodyNameVersion::BHUNP_3BBB_2_30:
     case BodyNameVersion::BHUNP_3BBB_2_31:
+    case BodyNameVersion::BHUNP_3BBB_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
@@ -643,6 +651,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_30:
     case BodyNameVersion::BHUNP_3BBB_Advanced_2_31:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
@@ -651,6 +660,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_30:
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_31:
+    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2");
       break;
     case BodyNameVersion::BHUNP_BBP_2_13:
@@ -659,6 +669,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_BBP_2_25:
     case BodyNameVersion::BHUNP_BBP_2_30:
     case BodyNameVersion::BHUNP_BBP_2_31:
+    case BodyNameVersion::BHUNP_BBP_2_35:
       lBodyValue = QString("%1 - BHUNP BBP");
       break;
     case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
@@ -667,6 +678,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_30:
     case BodyNameVersion::BHUNP_BBP_Advanced_2_31:
+    case BodyNameVersion::BHUNP_BBP_Advanced_2_35:
       lBodyValue = QString("%1 - BHUNP BBP Advanced");
       break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
@@ -675,6 +687,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_TBBP_2_25:
     case BodyNameVersion::BHUNP_TBBP_2_30:
     case BodyNameVersion::BHUNP_TBBP_2_31:
+    case BodyNameVersion::BHUNP_TBBP_2_35:
       lBodyValue = QString("%1 - BHUNP TBBP");
       break;
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
@@ -683,6 +696,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_30:
     case BodyNameVersion::BHUNP_TBBP_Advanced_2_31:
+    case BodyNameVersion::BHUNP_TBBP_Advanced_2_35:
       lBodyValue = QString("%1 - BHUNP TBBP Advanced");
       break;
     case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_25:
