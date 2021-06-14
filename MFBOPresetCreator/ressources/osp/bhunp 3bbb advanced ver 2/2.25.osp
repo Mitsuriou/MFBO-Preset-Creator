@@ -641,7 +641,6 @@
 %1%1<Slider name="Groin" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeGroin" target="BaseShape" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeGroin</Data>
 %1%1%1<Data name="BaseShapeCanalGroin" target="BaseShapeCanal" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalGroin</Data>
-%1%1%1<Data name="BaseShapeAnusGroin" target="BaseShapeAnus" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeAnusGroin</Data>
 %1%1%1<Data name="BaseShapeVaginaGroin" target="BaseShapeVagina" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaGroin</Data>
 %1%1</Slider>
 %1%1<Slider name="HipBone" invert="false" small="0" big="0">
@@ -844,11 +843,6 @@
 %1%1</Slider>
 %1%1<Slider name="NipBGone" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapeNipBGone" target="BaseShape" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeNipBGone</Data>
-%1%1</Slider>
-%1%1<Slider name="PussyPressed" invert="false" small="0" big="0">
-%1%1%1<Data name="BaseShapePussyPressed" target="BaseShape" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyPressed</Data>
-%1%1%1<Data name="BaseShapeCanalPussyPressed" target="BaseShapeCanal" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeCanalPussyPressed</Data>
-%1%1%1<Data name="BaseShapeVaginaPussyPressed" target="BaseShapeVagina" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapeVaginaPussyPressed</Data>
 %1%1</Slider>
 %1%1<Slider name="PussyClipFix" invert="false" small="0" big="0">
 %1%1%1<Data name="BaseShapePussyClipFix" target="BaseShape" local="true">BHUNP 3BBB Advanced Ver 2.osd\BaseShapePussyClipFix</Data>

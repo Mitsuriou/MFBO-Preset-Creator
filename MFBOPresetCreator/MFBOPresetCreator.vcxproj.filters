@@ -122,11 +122,6 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="MFBOPresetCreator.qrc">
-      <Filter>Qt Ressources</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="MFBOPresetCreator.rc">
       <Filter>C++ App Ressources</Filter>
     </ResourceCompile>
@@ -196,5 +191,10 @@
     <QtMoc Include="BatchConversionPicker.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MFBOPresetCreator.qrc">
+      <Filter>Qt Ressources</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>
