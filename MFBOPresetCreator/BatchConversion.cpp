@@ -297,7 +297,7 @@ void BatchConversion::setupRemainingGUI(QHBoxLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Batch generate button
-  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder)};
+  auto lGenerateButton{ComponentFactory::createButton(this, tr("Launch the scan of the directory"), "", "build", lIconFolder)};
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
@@ -306,7 +306,12 @@ void BatchConversion::setupRemainingGUI(QHBoxLayout& aLayout)
 
 void BatchConversion::displayFoundData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData)
 {
-  new BatchConversionPicker(this, this->mSettings, aScannedData);
+  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
+  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
+
+  // TODO: check that there is at least one result before creating the window
+  new BatchConversionPicker(this, this->mSettings, lBodyNameSelected, lBodyVersionSelected, lFeetModIndex, aScannedData);
 }
 
 void BatchConversion::userHasDoneAnAction()

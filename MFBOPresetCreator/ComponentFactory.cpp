@@ -54,7 +54,7 @@ QPushButton* ComponentFactory::createButton(
   return lButton;
 }
 
-QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent)
+QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment)
 {
   // Very first container in which the scroll area will be added
   auto lBaseLayout{new QVBoxLayout(aParent)};
@@ -77,7 +77,10 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent)
   auto lMainLayout{new QGridLayout(lMainWidget)};
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(10, 10, 10, 10);
-  lMainLayout->setAlignment(Qt::AlignTop);
+  if (aMustForceLayoutTopAlignment)
+  {
+    lMainLayout->setAlignment(Qt::AlignTop);
+  }
 
   lScrollArea->setWidget(lMainWidget);
   lBaseLayout->addWidget(lScrollArea);
@@ -86,7 +89,7 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent)
   auto lButtonLayout{new QHBoxLayout(aParent)};
   lButtonLayout->setObjectName("window_buttons_layout");
   lButtonLayout->setSpacing(10);
-  lButtonLayout->setContentsMargins(10, 10, 10, 10);
+  lButtonLayout->setContentsMargins(10, 0, 10, 10);
   lButtonLayout->setAlignment(Qt::AlignTop);
   lBaseLayout->addLayout(lButtonLayout);
 
