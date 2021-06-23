@@ -66,7 +66,7 @@ BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int a
   {
     lOffset = 2;
   }
-  else if ((lBody >= 2 && lBody <= 8) && (aRelativeVersion == 5))
+  else if ((lBody >= 2 && lBody <= 8) && (aRelativeVersion == 5 || aRelativeVersion == 6))
   {
     lOffset = 4;
   }

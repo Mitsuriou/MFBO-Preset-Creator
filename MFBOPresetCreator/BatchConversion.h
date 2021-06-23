@@ -28,7 +28,7 @@ private:
   void setupOutputGUI(QGridLayout& aLayout);
   void setupRemainingGUI(QHBoxLayout& aLayout);
 
-  void displayFoundData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData);
+  void launchPicker(const std::map<QString, Struct::BatchConversionPresetData>& aScannedData);
 
   void userHasDoneAnAction();
 

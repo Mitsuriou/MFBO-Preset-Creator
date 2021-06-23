@@ -2,6 +2,8 @@
 #include "Enum.h"
 #include "LangManager.h"
 #include <QString>
+#include <map>
+#include <vector>
 
 namespace Struct
 {
@@ -240,11 +242,52 @@ namespace Struct
     }
 
   private:
-    QString filter{};
+    QString filter{""};
     bool body{false};
     bool feet{false};
     bool hands{false};
 
     explicit Filter() {}
+  };
+
+  struct BatchConversionPresetData
+  {
+  public:
+    bool generatePreset{false};
+
+    QString filesNames{""}; // OSP and XML files names
+    QString presetName{""}; // Name that appears in BodySlide
+
+    QString bodyPath{""};
+    QString bodyName{""};
+    bool shouldGenerateBody{false};
+
+    QString feetPath{""};
+    QString feetName{""};
+    bool shouldGenerateFeet{false};
+
+    QString handsPath{""};
+    QString handsName{""};
+    bool shouldGenerateHands{false};
+    bool mustUseBeastHands{false};
+
+    QString skeletonPath{""};
+    QString skeletonName{""};
+    bool mustUseBeastSkeleton{false};
+
+    // TODO: Make this structure cleaner (with a constructor and private attributes)
+  };
+
+  struct BatchConversionData
+  {
+    std::map<QString, BatchConversionPresetData> presets;
+    QString humanSkeletonPath;
+    QString beastSkeletonPath;
+    BodyNameVersion bodyMod;
+    int feetModIndex{-1};
+    std::vector<Struct::Filter> filters;
+    QString fullOutputPath{""};
+
+    // TODO: Make this structure cleaner (with a constructor and private attributes)
   };
 }

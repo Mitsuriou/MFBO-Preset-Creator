@@ -19,19 +19,15 @@
 #include <QStyledItemDelegate>
 #include <QTreeWidget>
 
-BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const int aBodyNameSelected, const int aBodyVersionSelected, const int aFeetModIndex, const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData)
+BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, Struct::BatchConversionData* aData)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mMinimumFirstColumnWidth(200)
-  , mBodyNameSelected(aBodyNameSelected)
-  , mBodyVersionSelected(aBodyVersionSelected)
-  , mFeetModIndex(aFeetModIndex)
+  , mData(aData)
 {
   // Build the window's interface
   this->setWindowProperties();
   this->initializeGUI();
-
-  this->displayFoundFiles(qobject_cast<QGridLayout*>(this->layout()), aScannedData);
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -167,6 +163,8 @@ void BatchConversionPicker::initializeGUI()
 
   // Event binding
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
+
+  // TODO: Force to display the first available preset
 }
 
 void BatchConversionPicker::deleteAlreadyExistingWindowBottom() const
@@ -230,12 +228,10 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
     lIsValidPath = false;
   }
 
-  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(this->mBodyNameSelected), this->mBodyVersionSelected)};
-
   auto lConstructedPreviewText{QString()};
-  lConstructedPreviewText.append(Utils::getBodySliderValue(lBodySelected));                      // Body
-  lConstructedPreviewText.append(Utils::getFeetSliderValue(lBodySelected, this->mFeetModIndex)); // Feet
-  lConstructedPreviewText.append(Utils::getHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
+  lConstructedPreviewText.append(Utils::getBodySliderValue(this->mData->bodyMod));                            // Body
+  lConstructedPreviewText.append(Utils::getFeetSliderValue(this->mData->bodyMod, this->mData->feetModIndex)); // Feet
+  lConstructedPreviewText.append(Utils::getHandsSliderValue(this->mData->bodyMod, lMustUseBeastHands));       // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.successColor};
@@ -248,51 +244,6 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   auto lOutputPathsPreview{this->findChild<QLabel*>("names_bodyslide_preview")};
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
-}
-
-void BatchConversionPicker::displayFoundFiles(QGridLayout* aLayout, const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData)
-{
-  std::map<std::string, std::vector<QString>>::iterator lPosition;
-  auto lFilePath{std::string()};
-  auto lFileName{QString()};
-
-  for (const auto& lNifFile : aScannedData)
-  {
-    lFilePath = lNifFile.second.first.toStdString();
-    lFileName = lNifFile.second.second;
-
-    lPosition = this->mGroupedData.find(lFilePath);
-    if (lPosition == this->mGroupedData.end())
-    {
-      this->mGroupedData.insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
-    }
-    else
-    {
-      lPosition->second.push_back(lFileName);
-    }
-  }
-
-  auto lFoundRessourcesList{this->findChild<QTreeWidget*>("list")};
-  for (const auto& lEntry : this->mGroupedData)
-  {
-    auto lItem{new QTreeWidgetItem(lFoundRessourcesList)};
-    auto lParsedKey{QString::fromStdString(lEntry.first)};
-    auto lFirstSlashPosition{lParsedKey.indexOf("/")};
-    auto lLeftPart{lParsedKey.left(lFirstSlashPosition)};
-    auto lRightPart{lParsedKey.mid(lFirstSlashPosition + 1)};
-    lItem->setText(1, lLeftPart);
-    lItem->setText(2, lRightPart);
-    lItem->setCheckState(0, Qt::CheckState::Checked);
-
-    lFoundRessourcesList->addTopLevelItem(lItem);
-  }
-
-  lFoundRessourcesList->resizeColumnToContents(0);
-  lFoundRessourcesList->resizeColumnToContents(1);
-
-  // Post-bind initialization functions
-  this->connect(lFoundRessourcesList, &QTreeWidget::itemChanged, this, &BatchConversionPicker::listRowSelectStateChanged);
-  this->connect(lFoundRessourcesList, &QTreeWidget::itemSelectionChanged, this, &BatchConversionPicker::listRowChanged);
 }
 
 void BatchConversionPicker::validateSelection()
@@ -311,19 +262,19 @@ void BatchConversionPicker::listRowSelectStateChanged(QTreeWidgetItem* aListItem
 
 void BatchConversionPicker::listRowChanged()
 {
-  auto lFoundRessourcesList{this->findChild<QTreeWidget*>("list")};
+  //auto lFoundRessourcesList{this->findChild<QTreeWidget*>("list")};
 
-  auto lCurrentItem{lFoundRessourcesList->currentItem()};
-  auto lLeftPart{lCurrentItem->text(1)};
-  auto lRightPart{lCurrentItem->text(2)};
-  auto lKey{QString(lLeftPart + "/" + lRightPart).toStdString()};
-  auto lPosition{this->mGroupedData.find(lKey)};
+  //auto lCurrentItem{lFoundRessourcesList->currentItem()};
+  //auto lLeftPart{lCurrentItem->text(1)};
+  //auto lRightPart{lCurrentItem->text(2)};
+  //auto lKey{QString(lLeftPart + "/" + lRightPart)};
+  //auto lPosition{this->mData..presets.find(lKey)};
 
-  if (lPosition != this->mGroupedData.end())
-  {
-    findChild<QLineEdit*>("names_osp_xml_input")->setText(lLeftPart);   // TODO: Change lLeftPart by the dynamic value
-    findChild<QLineEdit*>("names_bodyslide_input")->setText(lLeftPart); // TODO: Change lLeftPart by the dynamic value
-  }
+  //if (lPosition != this->mData.presets.end())
+  //{
+  //  findChild<QLineEdit*>("names_osp_xml_input")->setText(lLeftPart);   // TODO: Change lLeftPart by the dynamic value
+  //  findChild<QLineEdit*>("names_bodyslide_input")->setText(lLeftPart); // TODO: Change lLeftPart by the dynamic value
+  //}
 }
 
 void BatchConversionPicker::scrollbarPressed()

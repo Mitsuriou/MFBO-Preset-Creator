@@ -255,22 +255,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="379"/>
+        <location filename="BatchConversion.cpp" line="416"/>
         <source>Cancel treatment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="379"/>
+        <location filename="BatchConversion.cpp" line="416"/>
         <source>Scanning the directory. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="410"/>
+        <location filename="BatchConversion.cpp" line="440"/>
         <source>Process aborted by the user.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="552"/>
+        <location filename="BatchConversion.cpp" line="626"/>
         <source> (feet only)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -278,63 +278,64 @@
 <context>
     <name>BatchConversionPicker</name>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="46"/>
+        <location filename="BatchConversionPicker.cpp" line="42"/>
         <source>Closing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="46"/>
+        <location filename="BatchConversionPicker.cpp" line="42"/>
         <source>Do you want to close the window?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="46"/>
+        <location filename="BatchConversionPicker.cpp" line="42"/>
         <source>Close the window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="46"/>
+        <location filename="BatchConversionPicker.cpp" line="42"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="68"/>
-        <source>Batch Conversion: results picker</source>
+        <location filename="BatchConversionPicker.cpp" line="64"/>
+        <source>Batch Conversion: Results picker</source>
+        <oldsource>Batch Conversion: results picker</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="97"/>
+        <location filename="BatchConversionPicker.cpp" line="93"/>
         <source>Sliders choices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="105"/>
+        <location filename="BatchConversionPicker.cpp" line="101"/>
         <source>BodySlide output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="121"/>
+        <location filename="BatchConversionPicker.cpp" line="117"/>
         <source>BodySlide files names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="128"/>
-        <location filename="BatchConversionPicker.cpp" line="150"/>
+        <location filename="BatchConversionPicker.cpp" line="124"/>
+        <location filename="BatchConversionPicker.cpp" line="146"/>
         <source>Preview:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="141"/>
+        <location filename="BatchConversionPicker.cpp" line="137"/>
         <source>Presets names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="142"/>
+        <location filename="BatchConversionPicker.cpp" line="138"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="165"/>
+        <location filename="BatchConversionPicker.cpp" line="161"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished"></translation>
     </message>

@@ -304,14 +304,51 @@ void BatchConversion::setupRemainingGUI(QHBoxLayout& aLayout)
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchBatchGenerationProcess);
 }
 
-void BatchConversion::displayFoundData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData)
+void BatchConversion::launchPicker(const std::map<QString, Struct::BatchConversionPresetData>& aScannedData)
 {
+  // TODO: double check from PresetCreator class, if the calls are totally identical
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
+  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
+  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lUserFilters{Utils::getFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
+
+  auto lSkeletonChooserHuman{this->findChild<QComboBox*>("skeleton_chooser_human")};
+  auto lSkeletonPathHuman{QString("%1assets/skeletons/%2").arg(Utils::getAppDataPathFolder()).arg(lSkeletonChooserHuman->currentText())};
+
+  auto lSkeletonChooserBeast{this->findChild<QComboBox*>("skeleton_chooser_beast")};
+  auto lSkeletonPathBeast{QString("%1assets/skeletons/%2").arg(Utils::getAppDataPathFolder()).arg(lSkeletonChooserBeast->currentText())};
+
+  // Output paths
+  auto lMainDirectory{this->findChild<QLineEdit*>("output_path_directory")->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
+  Utils::cleanPathString(lSubDirectory);
+
+  // Does the user want to define the path only through the secondary path?
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
+
+  // Full extract path
+  auto lEntryDirectory{lSubDirectory};
+  if (!lUseOnlySubdir)
+  {
+    lEntryDirectory = (lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
+  }
+
   // TODO: check that there is at least one result before creating the window
-  new BatchConversionPicker(this, this->mSettings, lBodyNameSelected, lBodyVersionSelected, lFeetModIndex, aScannedData);
+  auto lData{Struct::BatchConversionData()};
+  lData.presets = aScannedData;
+  lData.humanSkeletonPath = lSkeletonPathHuman;
+  lData.beastSkeletonPath = lSkeletonPathBeast;
+  lData.bodyMod = lBodySelected;
+  lData.feetModIndex = lFeetModIndex;
+  lData.filters = lUserFilters;
+  lData.fullOutputPath = lEntryDirectory;
+
+  new BatchConversionPicker(this, this->mSettings, &lData);
+
+  // TODO: pass the lData to a class member pointer
 }
 
 void BatchConversion::userHasDoneAnAction()
@@ -384,23 +421,16 @@ void BatchConversion::launchBatchGenerationProcess()
 
   qApp->processEvents();
 
-  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
-
-  // The map is storing <path+fileName, <path, fileName>>
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
-
+  std::map<QString, Struct::BatchConversionPresetData> lScannedData;
   auto lRelativeDirPath{QString()};
   auto lFileName{QString()};
-  auto lKey{std::string()};
+  auto lKey{QString()};
 
-  auto lMeshesFilesToFind{
-    QStringList({"femalebody_0.nif",
-                 "femalebody_1.nif",
-                 "femalehands_0.nif",
-                 "femalehands_1.nif",
-                 "femalefeet_0.nif",
-                 "femalefeet_1.nif"})};
+  auto lBodyMeshes{QStringList({"femalebody_0.nif", "femalebody_1.nif"})};
+  auto lHandsMeshes{QStringList({"femalehands_0.nif", "femalehands_1.nif"})};
+  auto lFeetMeshes{QStringList({"femalefeet_0.nif", "femalefeet_1.nif"})};
 
+  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
   QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
@@ -423,20 +453,64 @@ void BatchConversion::launchBatchGenerationProcess()
     lFileName.remove("_1.nif", Qt::CaseInsensitive);
     lFileName.remove(".nif", Qt::CaseInsensitive);
 
-    // Construct the key of the map
-    lKey = QString("%1/%2").arg(lRelativeDirPath).arg(lFileName).toStdString();
-
-    // Check if the file is relative to a body, hands or head textures
-    if (lMeshesFilesToFind.contains(it.fileInfo().fileName()))
+    // TODO: Clean the function below
+    auto lFirstSlashPosition{lRelativeDirPath.indexOf("/")};
+    auto lKey{lRelativeDirPath.left(lFirstSlashPosition)};
+    auto lPosition{lScannedData.find(lKey)};
+    if (lPosition != lScannedData.end())
     {
-      // Insert the key-value into the map
-      lScannedValues.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));
+      // Check if the file is relative to a body, hands or feet mesh
+      if (lBodyMeshes.contains(it.fileInfo().fileName()))
+      {
+        lPosition->second.bodyName = lFileName;
+        lPosition->second.bodyPath = lRelativeDirPath;
+      }
+      else if (lHandsMeshes.contains(it.fileInfo().fileName()))
+      {
+        lPosition->second.handsName = lFileName;
+        lPosition->second.handsPath = lRelativeDirPath;
+      }
+      else if (lFeetMeshes.contains(it.fileInfo().fileName()))
+      {
+        lPosition->second.feetName = lFileName;
+        lPosition->second.feetPath = lRelativeDirPath;
+      }
+    }
+    else
+    {
+      auto lAdded = false;
+      auto lPreset{Struct::BatchConversionPresetData()};
+
+      // Check if the file is relative to a body, hands or feet mesh
+      if (lBodyMeshes.contains(it.fileInfo().fileName()))
+      {
+        lPreset.bodyName = lFileName;
+        lPreset.bodyPath = lRelativeDirPath;
+        lAdded = true;
+      }
+      else if (lHandsMeshes.contains(it.fileInfo().fileName()))
+      {
+        lPreset.handsName = lFileName;
+        lPreset.handsPath = lRelativeDirPath;
+        lAdded = true;
+      }
+      else if (lFeetMeshes.contains(it.fileInfo().fileName()))
+      {
+        lPreset.feetName = lFileName;
+        lPreset.feetPath = lRelativeDirPath;
+        lAdded = true;
+      }
+
+      if (lAdded)
+      {
+        lScannedData.insert({lKey, lPreset});
+      }
     }
 
     qApp->processEvents();
   }
 
-  this->displayFoundData(lScannedValues);
+  this->launchPicker(lScannedData);
 }
 
 void BatchConversion::populateSkeletonChoosers()

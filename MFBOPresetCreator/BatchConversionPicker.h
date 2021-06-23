@@ -9,7 +9,7 @@ class BatchConversionPicker final : public QDialog
   Q_OBJECT
 
 public:
-  explicit BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const int aBodyNameSelected, const int aBodyVersionSelected, const int aFeetModIndex, const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData);
+  explicit BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, Struct::BatchConversionData* aData);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -18,14 +18,7 @@ protected:
 private:
   const Struct::Settings mSettings;
   int mMinimumFirstColumnWidth;
-
-  // Data defined in the previous step
-  int mBodyNameSelected;
-  int mBodyVersionSelected;
-  int mFeetModIndex;
-
-  // Data defined in the current step
-  std::map<std::string, std::vector<QString>> mGroupedData;
+  Struct::BatchConversionData* mData;
 
   void setWindowProperties();
   void initializeGUI();
@@ -34,8 +27,6 @@ private:
   // Update the GUI preview
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
-
-  void displayFoundFiles(QGridLayout* aLayout, const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aScannedData);
 
   void validateSelection();
   void listRowSelectStateChanged(QTreeWidgetItem* aListItem);
