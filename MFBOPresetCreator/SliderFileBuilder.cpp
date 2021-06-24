@@ -841,7 +841,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
-          lBuiltContent.append("%1<Member name=\"%2 - BHUNP TBBP Advanced\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP TBBP Advanced\"/>\n");
         }
 
         // Feet
@@ -853,7 +853,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
         // Hands
         if (aTargetBlocks % 10 == 1 && lFilter.isHandsCompatible())
         {
-          lBuiltContent.append("%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
+          lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
       case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_25:
