@@ -71,6 +71,11 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
+void BodySlideFiltersEditor::reject()
+{
+  this->close();
+}
+
 void BodySlideFiltersEditor::setWindowProperties()
 {
   this->setModal(true);

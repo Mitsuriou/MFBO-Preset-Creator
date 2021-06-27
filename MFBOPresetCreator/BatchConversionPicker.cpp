@@ -11,13 +11,13 @@
 #include <QIcon>
 #include <QLabel>
 #include <QLineEdit>
+#include <QListWidget>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QStyledItemDelegate>
-#include <QTreeWidget>
 
 BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, Struct::BatchConversionData* aData)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
@@ -28,6 +28,8 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
   // Build the window's interface
   this->setWindowProperties();
   this->initializeGUI();
+
+  this->displayLeftList(*mData);
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -84,9 +86,8 @@ void BatchConversionPicker::initializeGUI()
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversionPicker::scrollbarReleased);
 
   // Left list
-  auto lFoundRessourcesList{new QTreeWidget(this)};
+  auto lFoundRessourcesList{new QListWidget(this)};
   lFoundRessourcesList->setObjectName("list");
-  lFoundRessourcesList->setHeaderLabels({"Generate?", "Directory", "Meshes files location"});
   lMainLayout->addWidget(lFoundRessourcesList, 0, 0, 3, 1);
 
   // chooser groupbox
@@ -167,21 +168,18 @@ void BatchConversionPicker::initializeGUI()
   // TODO: Force to display the first available preset
 }
 
-void BatchConversionPicker::deleteAlreadyExistingWindowBottom() const
+void BatchConversionPicker::displayLeftList(const Struct::BatchConversionData& aData)
 {
-  auto lHintZone{this->findChild<QLabel*>("hint_zone")};
-  if (lHintZone)
+  auto lFoundRessourcesList{this->findChild<QListWidget*>("list")};
+  for (const auto& lEntry : aData.presets)
   {
-    delete lHintZone;
-    lHintZone = nullptr;
+    lFoundRessourcesList->addItem(lEntry.first);
   }
 
-  auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  if (lOldScrollArea)
-  {
-    delete lOldScrollArea;
-    lOldScrollArea = nullptr;
-  }
+  // Focus the first line of the list
+  lFoundRessourcesList->setAlternatingRowColors(true);
+  lFoundRessourcesList->setCurrentRow(0);
+  lFoundRessourcesList->setFocus();
 }
 
 void BatchConversionPicker::updateOSPXMLPreview(QString aText)
@@ -250,31 +248,6 @@ void BatchConversionPicker::validateSelection()
 {
   // TODO:
   auto debug_stop = true;
-}
-
-void BatchConversionPicker::listRowSelectStateChanged(QTreeWidgetItem* aListItem)
-{
-  // TODO:
-  //auto lNewCheckState{aListItem->checkState()};
-  //auto lEntryName{aListItem->text()};
-  auto debug_stop = true;
-}
-
-void BatchConversionPicker::listRowChanged()
-{
-  //auto lFoundRessourcesList{this->findChild<QTreeWidget*>("list")};
-
-  //auto lCurrentItem{lFoundRessourcesList->currentItem()};
-  //auto lLeftPart{lCurrentItem->text(1)};
-  //auto lRightPart{lCurrentItem->text(2)};
-  //auto lKey{QString(lLeftPart + "/" + lRightPart)};
-  //auto lPosition{this->mData..presets.find(lKey)};
-
-  //if (lPosition != this->mData.presets.end())
-  //{
-  //  findChild<QLineEdit*>("names_osp_xml_input")->setText(lLeftPart);   // TODO: Change lLeftPart by the dynamic value
-  //  findChild<QLineEdit*>("names_bodyslide_input")->setText(lLeftPart); // TODO: Change lLeftPart by the dynamic value
-  //}
 }
 
 void BatchConversionPicker::scrollbarPressed()

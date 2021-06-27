@@ -233,7 +233,7 @@
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="626"/>
+        <location filename="BatchConversion.cpp" line="658"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -297,64 +297,64 @@
 <context>
     <name>BatchConversionPicker</name>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="42"/>
+        <location filename="BatchConversionPicker.cpp" line="44"/>
         <source>Closing</source>
         <translation type="unfinished">Fermeture</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="42"/>
+        <location filename="BatchConversionPicker.cpp" line="44"/>
         <source>Do you want to close the window?</source>
         <translation type="unfinished">Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="42"/>
+        <location filename="BatchConversionPicker.cpp" line="44"/>
         <source>Close the window</source>
         <translation type="unfinished">Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="42"/>
+        <location filename="BatchConversionPicker.cpp" line="44"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="64"/>
+        <location filename="BatchConversionPicker.cpp" line="66"/>
         <source>Batch Conversion: Results picker</source>
         <oldsource>Batch Conversion: results picker</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="93"/>
+        <location filename="BatchConversionPicker.cpp" line="94"/>
         <source>Sliders choices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="101"/>
+        <location filename="BatchConversionPicker.cpp" line="102"/>
         <source>BodySlide output</source>
         <translation type="unfinished">Sortie BodySlide</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="117"/>
+        <location filename="BatchConversionPicker.cpp" line="118"/>
         <source>BodySlide files names:</source>
         <translation type="unfinished">Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="124"/>
-        <location filename="BatchConversionPicker.cpp" line="146"/>
+        <location filename="BatchConversionPicker.cpp" line="125"/>
+        <location filename="BatchConversionPicker.cpp" line="147"/>
         <source>Preview:</source>
         <translation type="unfinished">Aperçu :</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="137"/>
+        <location filename="BatchConversionPicker.cpp" line="138"/>
         <source>Presets names:</source>
         <translation type="unfinished">Noms des presets :</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="138"/>
+        <location filename="BatchConversionPicker.cpp" line="139"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="161"/>
+        <location filename="BatchConversionPicker.cpp" line="162"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished">Générer les multiples fichiers sur mon ordinateur</translation>
     </message>
@@ -406,83 +406,83 @@
         <translation>Revenir sur la fenêtre de l&apos;éditeur</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="79"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="84"/>
         <source>BodySlide filters editor</source>
         <translation>Éditeur de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="106"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="111"/>
         <source>Edit set:</source>
         <translation>Éditer le set :</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="118"/>
-        <location filename="BodySlideFiltersEditor.cpp" line="278"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="123"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="283"/>
         <source>Add a new BodySlide filters set</source>
         <translation>Ajouter un nouveau set de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="118"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="123"/>
         <source>New set</source>
         <translation>Nouveau set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="122"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="127"/>
         <source>Remove the selected BodySlide filters set</source>
         <translation>Supprimer le set de filtres BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="122"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="127"/>
         <source>Remove set</source>
         <translation>Supprimer le set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="133"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="138"/>
         <source>Add a new BodySlide filter</source>
         <translation>Ajouter un nouveau filtre BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="133"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="138"/>
         <source>New filter</source>
         <translation>Nouveau filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="138"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="143"/>
         <source>Remove the selected BodySlide filter</source>
         <translation>Supprimer le filtre BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="138"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="143"/>
         <source>Remove filter</source>
         <translation>Supprimer le filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="143"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="148"/>
         <source>Remove all the BodySlide filters</source>
         <translation>Supprimer tous les filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="143"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="148"/>
         <source>Remove all</source>
         <translation>Supprimer tous</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="179"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="184"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="182"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="187"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="278"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="283"/>
         <source>Filters set name:</source>
         <translation>Nom du set de filtres :</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="296"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="301"/>
         <source>Error: there is already one set with the name &quot;%1&quot;.</source>
         <translation>Erreur : il y a déjà un set portant le nom &quot;%1&quot;.</translation>
     </message>

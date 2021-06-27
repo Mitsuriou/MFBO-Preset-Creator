@@ -250,30 +250,60 @@ namespace Struct
     explicit Filter() {}
   };
 
+  struct BatchConversionEntry
+  {
+  public:
+    inline explicit BatchConversionEntry(const QString& aPath, const QString& aName, const bool aUseAlternativeModel)
+    {
+      this->path = aPath;
+      this->name = aName;
+      this->useAlternativeModel = aUseAlternativeModel;
+    };
+
+    inline void setPath(const QString& aPath)
+    {
+      this->path = aPath;
+    };
+
+    inline QString getPath() const
+    {
+      return this->path;
+    };
+
+    inline void setName(const QString& aName)
+    {
+      this->name = aName;
+    };
+
+    inline QString getName() const
+    {
+      return this->name;
+    };
+
+    inline void setUseAlternativeModel(const bool aUseAlternativeModel)
+    {
+      this->useAlternativeModel = aUseAlternativeModel;
+    }
+
+    inline bool mustUseAlternativeModel() const
+    {
+      return this->useAlternativeModel;
+    };
+
+  private:
+    QString path{""};
+    QString name{""};
+    bool useAlternativeModel{false}; // Use beasts variants model
+  };
+
   struct BatchConversionPresetData
   {
   public:
-    bool generatePreset{false};
-
-    QString filesNames{""}; // OSP and XML files names
-    QString presetName{""}; // Name that appears in BodySlide
-
-    QString bodyPath{""};
-    QString bodyName{""};
-    bool shouldGenerateBody{false};
-
-    QString feetPath{""};
-    QString feetName{""};
-    bool shouldGenerateFeet{false};
-
-    QString handsPath{""};
-    QString handsName{""};
-    bool shouldGenerateHands{false};
-    bool mustUseBeastHands{false};
-
-    QString skeletonPath{""};
-    QString skeletonName{""};
-    bool mustUseBeastSkeleton{false};
+    std::map<int, std::pair<QString, QString>> names;       // <OSP and XML files names, Name in BS>
+    std::multimap<int, std::pair<QString, QString>> bodies; // <sub preset index, <path, name>>
+    std::multimap<int, std::pair<QString, QString>> feet;   // <sub preset index, <path, name>>
+    std::multimap<int, BatchConversionEntry> hands;
+    std::multimap<int, BatchConversionEntry> skeletons;
 
     // TODO: Make this structure cleaner (with a constructor and private attributes)
   };

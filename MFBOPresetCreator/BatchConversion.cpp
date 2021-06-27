@@ -454,26 +454,61 @@ void BatchConversion::launchBatchGenerationProcess()
     lFileName.remove(".nif", Qt::CaseInsensitive);
 
     // TODO: Clean the function below
-    auto lFirstSlashPosition{lRelativeDirPath.indexOf("/")};
-    auto lKey{lRelativeDirPath.left(lFirstSlashPosition)};
+    auto lKey{lRelativeDirPath.left(lRelativeDirPath.indexOf("/"))};
     auto lPosition{lScannedData.find(lKey)};
     if (lPosition != lScannedData.end())
     {
       // Check if the file is relative to a body, hands or feet mesh
       if (lBodyMeshes.contains(it.fileInfo().fileName()))
       {
-        lPosition->second.bodyName = lFileName;
-        lPosition->second.bodyPath = lRelativeDirPath;
+        // Avoid duplicated entries
+        auto lShouldAdd = true;
+        for (const auto& lA : lPosition->second.bodies)
+        {
+          if (lA.second.first == lRelativeDirPath && lA.second.second == lFileName)
+          {
+            lShouldAdd = false;
+          }
+        }
+
+        if (lShouldAdd)
+        {
+          lPosition->second.bodies.insert({-1, {lRelativeDirPath, lFileName}});
+        }
       }
       else if (lHandsMeshes.contains(it.fileInfo().fileName()))
       {
-        lPosition->second.handsName = lFileName;
-        lPosition->second.handsPath = lRelativeDirPath;
+        // Avoid duplicated entries
+        auto lShouldAdd = true;
+        for (const auto& lA : lPosition->second.hands)
+        {
+          if (lA.second.getPath() == lRelativeDirPath && lA.second.getName() == lFileName)
+          {
+            lShouldAdd = false;
+          }
+        }
+
+        if (lShouldAdd)
+        {
+          lPosition->second.hands.insert({-1, Struct::BatchConversionEntry(lRelativeDirPath, lFileName, false)});
+        }
       }
       else if (lFeetMeshes.contains(it.fileInfo().fileName()))
       {
-        lPosition->second.feetName = lFileName;
-        lPosition->second.feetPath = lRelativeDirPath;
+        // Avoid duplicated entries
+        auto lShouldAdd = true;
+        for (const auto& lA : lPosition->second.feet)
+        {
+          if (lA.second.first == lRelativeDirPath && lA.second.second == lFileName)
+          {
+            lShouldAdd = false;
+          }
+        }
+
+        if (lShouldAdd)
+        {
+          lPosition->second.feet.insert({-1, {lRelativeDirPath, lFileName}});
+        }
       }
     }
     else
@@ -484,20 +519,17 @@ void BatchConversion::launchBatchGenerationProcess()
       // Check if the file is relative to a body, hands or feet mesh
       if (lBodyMeshes.contains(it.fileInfo().fileName()))
       {
-        lPreset.bodyName = lFileName;
-        lPreset.bodyPath = lRelativeDirPath;
+        lPreset.bodies.insert({-1, {lRelativeDirPath, lFileName}});
         lAdded = true;
       }
       else if (lHandsMeshes.contains(it.fileInfo().fileName()))
       {
-        lPreset.handsName = lFileName;
-        lPreset.handsPath = lRelativeDirPath;
+        lPreset.hands.insert({-1, Struct::BatchConversionEntry(lRelativeDirPath, lFileName, false)});
         lAdded = true;
       }
       else if (lFeetMeshes.contains(it.fileInfo().fileName()))
       {
-        lPreset.feetName = lFileName;
-        lPreset.feetPath = lRelativeDirPath;
+        lPreset.feet.insert({-1, {lRelativeDirPath, lFileName}});
         lAdded = true;
       }
 
