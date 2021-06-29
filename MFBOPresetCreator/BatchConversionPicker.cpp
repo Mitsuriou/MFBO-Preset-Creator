@@ -17,9 +17,10 @@
 #include <QPushButton>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QSplitter>
 #include <QStyledItemDelegate>
 
-BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, Struct::BatchConversionData* aData)
+BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const Struct::BatchConversionData& aData)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mMinimumFirstColumnWidth(200)
@@ -29,7 +30,7 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
   this->setWindowProperties();
   this->initializeGUI();
 
-  this->displayLeftList(*mData);
+  this->displayLeftList();
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -74,9 +75,6 @@ void BatchConversionPicker::initializeGUI()
 
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this, false)};
-  lMainLayout->setColumnStretch(0, 1);
-  lMainLayout->setColumnStretch(1, 1);
-  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
 
   // Cursor change for the scroll bar
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
@@ -85,101 +83,86 @@ void BatchConversionPicker::initializeGUI()
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &BatchConversionPicker::scrollbarPressed);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversionPicker::scrollbarReleased);
 
-  // Left list
-  auto lFoundRessourcesList{new QListWidget(this)};
-  lFoundRessourcesList->setObjectName("list");
-  lMainLayout->addWidget(lFoundRessourcesList, 0, 0, 3, 1);
+  // 3 columns splitter
+  auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
+  lMainLayout->addWidget(lSplitter, 0, 0);
 
-  // chooser groupbox
-  auto lChoicesGroupBox{new QGroupBox(tr("Sliders choices").append("  "), this)};
-  //Utils::addIconToGroupBox(lNamesGroupBox, lIconFolder, "bodyslide-logo");
-  //this->connect(lNamesGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
-  //Utils::setGroupBoxState(lNamesGroupBox, false);
-  // TODO:
-  lMainLayout->addWidget(lChoicesGroupBox, 0, 1);
+  // Paths list
+  auto lPathsList{new QListWidget(this)};
+  lPathsList->setObjectName("paths_list");
+  lPathsList->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+  lPathsList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+  lSplitter->addWidget(lPathsList);
 
-  // BodySlide output settings group box
-  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
-  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
-  Utils::setGroupBoxState(lBodyslideGroupBox, false);
-  lMainLayout->addWidget(lBodyslideGroupBox, 1, 1);
+  // Available options list
+  auto lOptionsList{new QVBoxLayout(this)};
+  lOptionsList->setObjectName("options_list");
 
-  // Grid layout
-  auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setColumnStretch(0, 0);
-  lBodyslideGridLayout->setColumnStretch(1, 1);
-  lBodyslideGridLayout->setSpacing(10);
-  lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
-  lBodyslideGridLayout->setAlignment(Qt::AlignTop);
-  lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+  // Middle wrapper
+  auto lMiddleWrapper{new QWidget(this)};
+  lMiddleWrapper->setObjectName("middle_wrapper");
+  lMiddleWrapper->setLayout(lOptionsList);
+  lSplitter->addWidget(lMiddleWrapper);
 
-  // First line
-  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
+  // Preset maker
+  auto lDataMaker{new QGridLayout(this)};
+  lDataMaker->setObjectName("data_maker");
 
-  auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
-  lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
-  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
-
-  // Second line
-  lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 2, 0);
-
-  auto lPathsNamesOspXmlNames{new QLabel("", this)};
-  lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
-  lPathsNamesOspXmlNames->setAutoFillBackground(true);
-  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 4);
-
-  // Third line
-  auto lNamesInApp{new QLabel(this)};
-  lNamesInApp->setTextFormat(Qt::RichText);
-  lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
-                               "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
-                         .arg(lIconFolder)
-                         .arg(tr("Presets names:")));
-  lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
-  lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
-
-  auto lNamesInAppLineEdit{new QLineEdit(this)};
-  lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
-  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
-
-  // Fourth line
-  lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
-
-  auto lResultNamesInApp{new QLabel("", this)};
-  lResultNamesInApp->setObjectName("names_bodyslide_preview");
-  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
-
-  // Pre-bind initialization functions
-  this->updateOSPXMLPreview(QString());
-  this->updateBodyslideNamesPreview(QString());
-
-  // Event binding
-  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateOSPXMLPreview);
-  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
+  // Right wrapper
+  auto lRightWrapper{new QWidget(this)};
+  lRightWrapper->setLayout(lDataMaker);
+  lSplitter->addWidget(lRightWrapper);
 
   // Validate selection and generate button
+  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
+
   auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder)};
   lButtonLayout->addWidget(lGenerateButton);
 
   // Event binding
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
+  this->connect(lPathsList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::leftListIndexChanged);
 
-  // TODO: Force to display the first available preset
+  // Post-bind initialization functions
+  lPathsList->setCurrentRow(0);
 }
 
-void BatchConversionPicker::displayLeftList(const Struct::BatchConversionData& aData)
+void BatchConversionPicker::displayLeftList()
 {
-  auto lFoundRessourcesList{this->findChild<QListWidget*>("list")};
-  for (const auto& lEntry : aData.presets)
+  auto lPathsList{this->findChild<QListWidget*>("paths_list")};
+  for (const auto& lEntry : this->mData.scannedData)
   {
-    lFoundRessourcesList->addItem(lEntry.first);
+    lPathsList->addItem(lEntry.first);
   }
 
   // Focus the first line of the list
-  lFoundRessourcesList->setAlternatingRowColors(true);
-  lFoundRessourcesList->setCurrentRow(0);
-  lFoundRessourcesList->setFocus();
+  lPathsList->setAlternatingRowColors(true);
+  lPathsList->setCurrentRow(0);
+  lPathsList->setFocus();
+}
+
+void BatchConversionPicker::leftListIndexChanged()
+{
+  // Delete all children of the middlel list
+  auto lOptionsList{this->findChild<QVBoxLayout*>("options_list")};
+  // TODO: Delete the children
+
+  // Add the entries in the options list, based on the paths list' selected item
+  auto lPathsList{this->findChild<QListWidget*>("paths_list")};
+  auto lSelectedEntry{lPathsList->currentItem()};
+  if (lSelectedEntry != nullptr)
+  {
+    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
+
+    if (lPosition != this->mData.scannedData.end())
+    {
+      for (const auto& lValue : lPosition->second)
+      {
+        auto lButton{new QPushButton(lValue, this)};
+        lOptionsList->addWidget(lButton);
+      }
+    }
+  }
 }
 
 void BatchConversionPicker::updateOSPXMLPreview(QString aText)
@@ -227,9 +210,9 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   }
 
   auto lConstructedPreviewText{QString()};
-  lConstructedPreviewText.append(Utils::getBodySliderValue(this->mData->bodyMod));                            // Body
-  lConstructedPreviewText.append(Utils::getFeetSliderValue(this->mData->bodyMod, this->mData->feetModIndex)); // Feet
-  lConstructedPreviewText.append(Utils::getHandsSliderValue(this->mData->bodyMod, lMustUseBeastHands));       // Hands
+  lConstructedPreviewText.append(Utils::getBodySliderValue(this->mData.bodyMod));                           // Body
+  lConstructedPreviewText.append(Utils::getFeetSliderValue(this->mData.bodyMod, this->mData.feetModIndex)); // Feet
+  lConstructedPreviewText.append(Utils::getHandsSliderValue(this->mData.bodyMod, lMustUseBeastHands));      // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.successColor};

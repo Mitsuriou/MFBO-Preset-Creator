@@ -1023,7 +1023,7 @@ std::map<QString, QStringList> Utils::loadFiltersFromFile()
 
   for (const auto& lKey : lVariantMap.keys())
   {
-    lFiltersList.insert({lKey, lVariantMap.value(lKey, "").toStringList()});
+    lFiltersList.insert(std::make_pair(lKey, lVariantMap.value(lKey, "").toStringList()));
   }
 
   return lFiltersList;
@@ -1101,7 +1101,7 @@ void Utils::checkLastPathsFileExistence()
     std::map<QString, QString> lMap;
     for (const auto& lKey : DataLists::getLastPathsKeys())
     {
-      lMap.insert({lKey, QString()});
+      lMap.insert(std::make_pair(lKey, QString()));
     }
 
     Utils::saveLastPathsToFile(lMap);

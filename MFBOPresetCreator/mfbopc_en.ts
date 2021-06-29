@@ -255,22 +255,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="416"/>
+        <location filename="BatchConversion.cpp" line="414"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="416"/>
+        <location filename="BatchConversion.cpp" line="414"/>
         <source>Scanning the directory. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="440"/>
+        <location filename="BatchConversion.cpp" line="446"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="658"/>
+        <location filename="BatchConversion.cpp" line="598"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
@@ -278,64 +278,33 @@
 <context>
     <name>BatchConversionPicker</name>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Closing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Do you want to close the window?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Close the window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="66"/>
+        <location filename="BatchConversionPicker.cpp" line="67"/>
         <source>Batch Conversion: Results picker</source>
         <oldsource>Batch Conversion: results picker</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="94"/>
-        <source>Sliders choices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="102"/>
-        <source>BodySlide output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="118"/>
-        <source>BodySlide files names:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="125"/>
-        <location filename="BatchConversionPicker.cpp" line="147"/>
-        <source>Preview:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="138"/>
-        <source>Presets names:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="139"/>
-        <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversionPicker.cpp" line="162"/>
+        <location filename="BatchConversionPicker.cpp" line="119"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished"></translation>
     </message>

@@ -8,7 +8,7 @@ class BatchConversionPicker final : public QDialog
   Q_OBJECT
 
 public:
-  explicit BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, Struct::BatchConversionData* aData);
+  explicit BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const Struct::BatchConversionData& aData);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -17,13 +17,14 @@ protected:
 private:
   const Struct::Settings mSettings;
   int mMinimumFirstColumnWidth;
-  Struct::BatchConversionData* mData;
+  Struct::BatchConversionData mData;
 
   void setWindowProperties();
   void initializeGUI();
-  void displayLeftList(const Struct::BatchConversionData& aData);
+  void displayLeftList();
 
-  // Update the GUI preview
+  // Update the GUI
+  void leftListIndexChanged();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
 

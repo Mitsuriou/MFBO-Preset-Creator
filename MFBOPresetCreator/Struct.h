@@ -3,6 +3,7 @@
 #include "LangManager.h"
 #include <QString>
 #include <map>
+#include <set>
 #include <vector>
 
 namespace Struct
@@ -310,13 +311,14 @@ namespace Struct
 
   struct BatchConversionData
   {
-    std::map<QString, BatchConversionPresetData> presets;
     QString humanSkeletonPath;
     QString beastSkeletonPath;
     BodyNameVersion bodyMod;
     int feetModIndex{-1};
     std::vector<Struct::Filter> filters;
     QString fullOutputPath{""};
+    std::map<QString, std::set<QString>> scannedData;
+    std::map<QString, BatchConversionPresetData> presets;
 
     // TODO: Make this structure cleaner (with a constructor and private attributes)
   };

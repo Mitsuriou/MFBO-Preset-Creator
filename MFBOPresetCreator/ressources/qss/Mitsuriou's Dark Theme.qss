@@ -388,3 +388,18 @@ QFrame[frameShape="5"]
   border: 1px solid #FF558D;
   background-color: #FF558D;
 }
+
+/************/
+/*QSPLITTER*/
+/************/
+QSplitter::handle{
+  background: #FF558D;
+}
+
+QSplitter::handle:horizontal {
+  width: 4px;
+}
+
+QSplitter::handle:vertical {
+  height: 4px;
+}

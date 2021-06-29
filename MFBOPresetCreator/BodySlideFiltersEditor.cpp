@@ -302,7 +302,7 @@ void BodySlideFiltersEditor::addNewSetEntry(const QString& aSetName)
     return;
   }
 
-  this->mFiltersList.insert({aSetName, QStringList()});
+  this->mFiltersList.insert(std::make_pair(aSetName, QStringList()));
   this->updateFiltersCombobox();
 
   // Iterate the map to find the created key

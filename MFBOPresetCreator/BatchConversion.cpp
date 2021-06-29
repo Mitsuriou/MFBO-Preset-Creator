@@ -304,7 +304,7 @@ void BatchConversion::setupRemainingGUI(QHBoxLayout& aLayout)
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchBatchGenerationProcess);
 }
 
-void BatchConversion::launchPicker(const std::map<QString, Struct::BatchConversionPresetData>& aScannedData)
+void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData)
 {
   // TODO: double check from PresetCreator class, if the calls are totally identical
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
@@ -338,7 +338,7 @@ void BatchConversion::launchPicker(const std::map<QString, Struct::BatchConversi
 
   // TODO: check that there is at least one result before creating the window
   auto lData{Struct::BatchConversionData()};
-  lData.presets = aScannedData;
+  lData.scannedData = aScannedData;
   lData.humanSkeletonPath = lSkeletonPathHuman;
   lData.beastSkeletonPath = lSkeletonPathBeast;
   lData.bodyMod = lBodySelected;
@@ -346,9 +346,7 @@ void BatchConversion::launchPicker(const std::map<QString, Struct::BatchConversi
   lData.filters = lUserFilters;
   lData.fullOutputPath = lEntryDirectory;
 
-  new BatchConversionPicker(this, this->mSettings, &lData);
-
-  // TODO: pass the lData to a class member pointer
+  new BatchConversionPicker(this, this->mSettings, lData);
 }
 
 void BatchConversion::userHasDoneAnAction()
@@ -421,14 +419,22 @@ void BatchConversion::launchBatchGenerationProcess()
 
   qApp->processEvents();
 
-  std::map<QString, Struct::BatchConversionPresetData> lScannedData;
+  // The map is storing map<original folder path, set<meshes/.../.../fileName>>
+  std::map<QString, std::set<QString>> lScannedData;
+  std::map<QString, std::set<QString>>::iterator lMapPosition;
+
   auto lRelativeDirPath{QString()};
   auto lFileName{QString()};
   auto lKey{QString()};
+  auto lSecondArgument{QString()};
+  int lFirstSlashPosition{-1};
 
-  auto lBodyMeshes{QStringList({"femalebody_0.nif", "femalebody_1.nif"})};
-  auto lHandsMeshes{QStringList({"femalehands_0.nif", "femalehands_1.nif"})};
-  auto lFeetMeshes{QStringList({"femalefeet_0.nif", "femalefeet_1.nif"})};
+  auto lMeshesFilesToFind{QStringList({"femalebody_0.nif",
+                                       "femalebody_1.nif",
+                                       "femalehands_0.nif",
+                                       "femalehands_1.nif",
+                                       "femalefeet_0.nif",
+                                       "femalefeet_1.nif"})};
 
   const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
   QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
@@ -453,89 +459,23 @@ void BatchConversion::launchBatchGenerationProcess()
     lFileName.remove("_1.nif", Qt::CaseInsensitive);
     lFileName.remove(".nif", Qt::CaseInsensitive);
 
-    // TODO: Clean the function below
-    auto lKey{lRelativeDirPath.left(lRelativeDirPath.indexOf("/"))};
-    auto lPosition{lScannedData.find(lKey)};
-    if (lPosition != lScannedData.end())
+    // Construct the key of the map
+    lKey = lRelativeDirPath.left(lRelativeDirPath.indexOf("/"));
+    lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lRelativeDirPath.indexOf("/") + 1)).arg(lFileName);
+
+    // Check if the file is relative to a body, hands or head textures
+    if (lMeshesFilesToFind.contains(it.fileInfo().fileName()))
     {
-      // Check if the file is relative to a body, hands or feet mesh
-      if (lBodyMeshes.contains(it.fileInfo().fileName()))
+      lMapPosition = lScannedData.find(lKey);
+      if (lMapPosition != lScannedData.end())
       {
-        // Avoid duplicated entries
-        auto lShouldAdd = true;
-        for (const auto& lA : lPosition->second.bodies)
-        {
-          if (lA.second.first == lRelativeDirPath && lA.second.second == lFileName)
-          {
-            lShouldAdd = false;
-          }
-        }
-
-        if (lShouldAdd)
-        {
-          lPosition->second.bodies.insert({-1, {lRelativeDirPath, lFileName}});
-        }
+        // Insert the data in the already existing map entry
+        lMapPosition->second.insert(lSecondArgument);
       }
-      else if (lHandsMeshes.contains(it.fileInfo().fileName()))
+      else
       {
-        // Avoid duplicated entries
-        auto lShouldAdd = true;
-        for (const auto& lA : lPosition->second.hands)
-        {
-          if (lA.second.getPath() == lRelativeDirPath && lA.second.getName() == lFileName)
-          {
-            lShouldAdd = false;
-          }
-        }
-
-        if (lShouldAdd)
-        {
-          lPosition->second.hands.insert({-1, Struct::BatchConversionEntry(lRelativeDirPath, lFileName, false)});
-        }
-      }
-      else if (lFeetMeshes.contains(it.fileInfo().fileName()))
-      {
-        // Avoid duplicated entries
-        auto lShouldAdd = true;
-        for (const auto& lA : lPosition->second.feet)
-        {
-          if (lA.second.first == lRelativeDirPath && lA.second.second == lFileName)
-          {
-            lShouldAdd = false;
-          }
-        }
-
-        if (lShouldAdd)
-        {
-          lPosition->second.feet.insert({-1, {lRelativeDirPath, lFileName}});
-        }
-      }
-    }
-    else
-    {
-      auto lAdded = false;
-      auto lPreset{Struct::BatchConversionPresetData()};
-
-      // Check if the file is relative to a body, hands or feet mesh
-      if (lBodyMeshes.contains(it.fileInfo().fileName()))
-      {
-        lPreset.bodies.insert({-1, {lRelativeDirPath, lFileName}});
-        lAdded = true;
-      }
-      else if (lHandsMeshes.contains(it.fileInfo().fileName()))
-      {
-        lPreset.hands.insert({-1, Struct::BatchConversionEntry(lRelativeDirPath, lFileName, false)});
-        lAdded = true;
-      }
-      else if (lFeetMeshes.contains(it.fileInfo().fileName()))
-      {
-        lPreset.feet.insert({-1, {lRelativeDirPath, lFileName}});
-        lAdded = true;
-      }
-
-      if (lAdded)
-      {
-        lScannedData.insert({lKey, lPreset});
+        // Create a new map entry
+        lScannedData.insert(std::make_pair(lKey, std::set<QString>({lSecondArgument})));
       }
     }
 
