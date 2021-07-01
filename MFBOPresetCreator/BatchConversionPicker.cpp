@@ -143,9 +143,15 @@ void BatchConversionPicker::displayLeftList()
 
 void BatchConversionPicker::leftListIndexChanged()
 {
-  // Delete all children of the middlel list
+  // Delete all children of the middle list
   auto lOptionsList{this->findChild<QVBoxLayout*>("options_list")};
-  // TODO: Delete the children
+
+  const auto lButtonsListSize{static_cast<int>(this->mMiddleListButtons.size())};
+  for (int i = 0; i < lButtonsListSize; i++)
+  {
+    delete this->mMiddleListButtons.at(0);
+    this->mMiddleListButtons.erase(this->mMiddleListButtons.begin() + 0);
+  }
 
   // Add the entries in the options list, based on the paths list' selected item
   auto lPathsList{this->findChild<QListWidget*>("paths_list")};
@@ -159,6 +165,7 @@ void BatchConversionPicker::leftListIndexChanged()
       for (const auto& lValue : lPosition->second)
       {
         auto lButton{new QPushButton(lValue, this)};
+        this->mMiddleListButtons.push_back(lButton);
         lOptionsList->addWidget(lButton);
       }
     }

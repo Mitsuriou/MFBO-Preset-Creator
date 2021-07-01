@@ -18,6 +18,7 @@ private:
   const Struct::Settings mSettings;
   int mMinimumFirstColumnWidth;
   Struct::BatchConversionData mData;
+  std::vector<QPushButton*> mMiddleListButtons;
 
   void setWindowProperties();
   void initializeGUI();
