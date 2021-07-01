@@ -14,7 +14,6 @@
 #include <QListWidget>
 #include <QProgressBar>
 #include <QProgressDialog>
-#include <QPushButton>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QSplitter>
@@ -66,6 +65,7 @@ void BatchConversionPicker::setWindowProperties()
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Batch Conversion: Results picker"));
   this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
+  this->setAcceptDrops(true); // Authorize drag&drop
 }
 
 void BatchConversionPicker::initializeGUI()
@@ -164,7 +164,7 @@ void BatchConversionPicker::leftListIndexChanged()
     {
       for (const auto& lValue : lPosition->second)
       {
-        auto lButton{new QPushButton(lValue, this)};
+        auto lButton{new BCDragWidget(this, lValue)};
         this->mMiddleListButtons.push_back(lButton);
         lOptionsList->addWidget(lButton);
       }

@@ -226,6 +226,8 @@ echo #####################################################</Command>
     <ClCompile Include="AssistedConversion.cpp" />
     <ClCompile Include="BatchConversion.cpp" />
     <ClCompile Include="BatchConversionPicker.cpp" />
+    <ClCompile Include="BCDragWidget.cpp" />
+    <ClCompile Include="BCDropWidget.cpp" />
     <ClCompile Include="ComponentFactory.cpp" />
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
@@ -255,6 +257,8 @@ echo #####################################################</Command>
     <QtMoc Include="BatchConversion.h" />
     <QtMoc Include="ComponentFactory.h" />
     <QtMoc Include="BatchConversionPicker.h" />
+    <QtMoc Include="BCDragWidget.h" />
+    <QtMoc Include="BCDropWidget.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="BodySlideFiltersEditor.h" />
     <ClInclude Include="LangManager.h" />
@@ -266,6 +270,8 @@ echo #####################################################</Command>
     <QtMoc Include="RetargetingTool.h" />
     <QtMoc Include="Utils.h" />
     <QtRcc Include="MFBOPresetCreator.qrc" />
+    <QtUic Include="BCDragWidget.ui" />
+    <QtUic Include="BCDropWidget.ui" />
     <QtUic Include="MFBOPresetCreator.ui" />
     <QtMoc Include="MFBOPresetCreator.h" />
     <ClCompile Include="MFBOPresetCreator.cpp" />

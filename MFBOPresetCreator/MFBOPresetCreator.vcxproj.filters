@@ -55,6 +55,12 @@
     <ClCompile Include="BatchConversionPicker.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="BCDragWidget.cpp">
+      <Filter>Source Files\Drag and Drop</Filter>
+    </ClCompile>
+    <ClCompile Include="BCDropWidget.cpp">
+      <Filter>Source Files\Drag and Drop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -115,9 +121,21 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{2348a2dc-c069-4280-8862-91451fd9ce91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Drag and Drop">
+      <UniqueIdentifier>{5c04f660-fd61-455c-9d6b-b7c30d0dc38a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Drag and Drop">
+      <UniqueIdentifier>{6bc77066-e119-492f-8b42-fb09bba1e18e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MFBOPresetCreator.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="BCDragWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="BCDropWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -190,6 +208,12 @@
     </QtMoc>
     <QtMoc Include="BatchConversionPicker.h">
       <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="BCDragWidget.h">
+      <Filter>Header Files\Drag and Drop</Filter>
+    </QtMoc>
+    <QtMoc Include="BCDropWidget.h">
+      <Filter>Header Files\Drag and Drop</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

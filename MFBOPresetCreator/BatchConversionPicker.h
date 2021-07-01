@@ -1,4 +1,5 @@
 #pragma once
+#include "BCDragWidget.h"
 #include "Struct.h"
 #include <QDialog>
 #include <QGridLayout>
@@ -18,7 +19,7 @@ private:
   const Struct::Settings mSettings;
   int mMinimumFirstColumnWidth;
   Struct::BatchConversionData mData;
-  std::vector<QPushButton*> mMiddleListButtons;
+  std::vector<BCDragWidget*> mMiddleListButtons;
 
   void setWindowProperties();
   void initializeGUI();
