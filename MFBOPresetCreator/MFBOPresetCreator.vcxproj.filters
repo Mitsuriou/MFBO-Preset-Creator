@@ -61,6 +61,9 @@
     <ClCompile Include="BCDropWidget.cpp">
       <Filter>Source Files\Drag and Drop</Filter>
     </ClCompile>
+    <ClCompile Include="BCGroupWidget.cpp">
+      <Filter>Source Files\Drag and Drop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -130,12 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MFBOPresetCreator.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="BCDragWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="BCDropWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -213,6 +210,9 @@
       <Filter>Header Files\Drag and Drop</Filter>
     </QtMoc>
     <QtMoc Include="BCDropWidget.h">
+      <Filter>Header Files\Drag and Drop</Filter>
+    </QtMoc>
+    <QtMoc Include="BCGroupWidget.h">
       <Filter>Header Files\Drag and Drop</Filter>
     </QtMoc>
   </ItemGroup>

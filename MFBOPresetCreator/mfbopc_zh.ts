@@ -166,22 +166,6 @@
     </message>
 </context>
 <context>
-    <name>BCDragWidget</name>
-    <message>
-        <location filename="BCDragWidget.ui" line="16"/>
-        <source>BCDragWidget</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>BCDropWidget</name>
-    <message>
-        <location filename="BCDropWidget.ui" line="16"/>
-        <source>BCDropWidget</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>BatchConversion</name>
     <message>
         <location filename="BatchConversion.cpp" line="65"/>
@@ -294,33 +278,48 @@
 <context>
     <name>BatchConversionPicker</name>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Closing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Do you want to close the window?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Close the window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="45"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="66"/>
+        <location filename="BatchConversionPicker.cpp" line="67"/>
         <source>Batch Conversion: Results picker</source>
         <oldsource>Batch Conversion: results picker</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="119"/>
+        <location filename="BatchConversionPicker.cpp" line="117"/>
+        <source>Body</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="120"/>
+        <source>Hands</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="123"/>
+        <source>Feet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="129"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished"></translation>
     </message>

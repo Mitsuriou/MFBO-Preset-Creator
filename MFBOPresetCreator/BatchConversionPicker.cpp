@@ -1,4 +1,5 @@
 #include "BatchConversionPicker.h"
+#include "BCGroupWidget.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Utils.h"
@@ -105,13 +106,22 @@ void BatchConversionPicker::initializeGUI()
   lSplitter->addWidget(lMiddleWrapper);
 
   // Preset maker
-  auto lDataMaker{new QGridLayout(this)};
+  auto lDataMaker{new QVBoxLayout(this)};
   lDataMaker->setObjectName("data_maker");
 
   // Right wrapper
   auto lRightWrapper{new QWidget(this)};
   lRightWrapper->setLayout(lDataMaker);
   lSplitter->addWidget(lRightWrapper);
+
+  auto lDropSectionBody{new BCGroupWidget(this, tr("Body"))};
+  lDataMaker->addWidget(lDropSectionBody, 0);
+
+  auto lDropSectionHands{new BCGroupWidget(this, tr("Hands"))};
+  lDataMaker->addWidget(lDropSectionHands, 1);
+
+  auto lDropSectionFeet{new BCGroupWidget(this, tr("Feet"))};
+  lDataMaker->addWidget(lDropSectionFeet, 2);
 
   // Validate selection and generate button
   auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};

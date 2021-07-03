@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ui_BCDropWidget.h"
 #include <QWidget>
 
 class BCDropWidget : public QWidget
@@ -8,8 +7,10 @@ class BCDropWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit BCDropWidget(QWidget* parent = Q_NULLPTR);
+  explicit BCDropWidget(QWidget* aParent);
 
-private:
-  Ui::BCDropWidget ui;
+protected:
+  void dragEnterEvent(QDragEnterEvent* aEvent) override;
+  void dragMoveEvent(QDragMoveEvent* aEvent) override;
+  void dropEvent(QDropEvent* aEvent) override;
 };
