@@ -8,11 +8,15 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const QString& aSectionTitle)
 {
   // Create the layout
   auto lMainLayout{new QVBoxLayout(this)};
+  lMainLayout->setMargin(0);
   this->setLayout(lMainLayout);
 
   auto lSection{new QGroupBox(aSectionTitle, this)};
 
   auto lSectionLayout{new QGridLayout(this)};
+  lSectionLayout->setSpacing(10);
+  lSectionLayout->setContentsMargins(15, 20, 15, 15);
+  lSectionLayout->setAlignment(Qt::AlignTop);
   lSection->setLayout(lSectionLayout);
 
   lMainLayout->addWidget(lSection);

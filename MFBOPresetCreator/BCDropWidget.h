@@ -13,4 +13,7 @@ protected:
   void dragEnterEvent(QDragEnterEvent* aEvent) override;
   void dragMoveEvent(QDragMoveEvent* aEvent) override;
   void dropEvent(QDropEvent* aEvent) override;
+
+private:
+  bool mHasReceivedData{false};
 };

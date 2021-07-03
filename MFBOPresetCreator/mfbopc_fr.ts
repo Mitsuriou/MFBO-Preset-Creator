@@ -166,6 +166,24 @@
     </message>
 </context>
 <context>
+    <name>BCDragWidget</name>
+    <message>
+        <location filename="BCDragWidget.cpp" line="19"/>
+        <source>Preset data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BCDragWidget.cpp" line="30"/>
+        <source>Mesh path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BCDragWidget.cpp" line="38"/>
+        <source>Origin directory:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BatchConversion</name>
     <message>
         <location filename="BatchConversion.cpp" line="65"/>
@@ -323,42 +341,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="117"/>
+        <location filename="BatchConversionPicker.cpp" line="119"/>
         <source>Body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="120"/>
+        <location filename="BatchConversionPicker.cpp" line="125"/>
         <source>Hands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="123"/>
+        <location filename="BatchConversionPicker.cpp" line="122"/>
         <source>Feet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>BodySlide output</source>
-        <translation type="obsolete">Sortie BodySlide</translation>
-    </message>
-    <message>
-        <source>BodySlide files names:</source>
-        <translation type="obsolete">Noms des fichiers BodySlide :</translation>
-    </message>
-    <message>
-        <source>Preview:</source>
-        <translation type="obsolete">Aperçu :</translation>
-    </message>
-    <message>
-        <source>Presets names:</source>
-        <translation type="obsolete">Noms des presets :</translation>
-    </message>
-    <message>
-        <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
-        <translation type="obsolete">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
-    </message>
-    <message>
         <location filename="BatchConversionPicker.cpp" line="129"/>
+        <source>BodySlide output</source>
+        <translation type="unfinished">Sortie BodySlide</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="145"/>
+        <source>BodySlide files names:</source>
+        <translation type="unfinished">Noms des fichiers BodySlide :</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="152"/>
+        <location filename="BatchConversionPicker.cpp" line="174"/>
+        <source>Preview:</source>
+        <translation type="unfinished">Aperçu :</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="165"/>
+        <source>Presets names:</source>
+        <translation type="unfinished">Noms des presets :</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="166"/>
+        <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
+        <translation type="unfinished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="183"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished">Générer les multiples fichiers sur mon ordinateur</translation>
     </message>

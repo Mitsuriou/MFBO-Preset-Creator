@@ -19,20 +19,18 @@ BCDropWidget::BCDropWidget(QWidget* aParent)
 
 void BCDropWidget::dragEnterEvent(QDragEnterEvent* aEvent)
 {
-  Utils::printMessageStdOut("ENTER");
+  // Only accept drag events from a BCDragWidget widget
   if (static_cast<BCDragWidget*>(aEvent->source()))
   {
-    Utils::printMessageStdOut("ENTER ACCEPTED");
     aEvent->acceptProposedAction();
   }
 }
 
 void BCDropWidget::dragMoveEvent(QDragMoveEvent* aEvent)
 {
-  Utils::printMessageStdOut("MOVE");
+  // Only accept drag events from a BCDragWidget widget
   if (static_cast<BCDragWidget*>(aEvent->source()))
   {
-    Utils::printMessageStdOut("MOVE ACCEPTED");
     aEvent->acceptProposedAction();
   }
 }
@@ -44,6 +42,7 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
     return;
   }
 
+  // BCDropWidget is only compatibl with the Qt::MoveAction
   if (aEvent->proposedAction() == Qt::MoveAction)
   {
     auto lDebug{this->findChild<QLabel*>("data")};
@@ -52,10 +51,5 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
       lDebug->setText("Dropped data:" + aEvent->mimeData()->text());
       aEvent->acceptProposedAction();
     }
-    return;
-  }
-  else
-  {
-    return;
   }
 }

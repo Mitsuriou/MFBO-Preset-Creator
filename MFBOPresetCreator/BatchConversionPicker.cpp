@@ -97,6 +97,7 @@ void BatchConversionPicker::initializeGUI()
 
   // Available options list
   auto lOptionsList{new QVBoxLayout(this)};
+  lOptionsList->setAlignment(Qt::AlignTop);
   lOptionsList->setObjectName("options_list");
 
   // Middle wrapper
@@ -107,6 +108,7 @@ void BatchConversionPicker::initializeGUI()
 
   // Preset maker
   auto lDataMaker{new QVBoxLayout(this)};
+  lDataMaker->setAlignment(Qt::AlignTop);
   lDataMaker->setObjectName("data_maker");
 
   // Right wrapper
@@ -115,13 +117,65 @@ void BatchConversionPicker::initializeGUI()
   lSplitter->addWidget(lRightWrapper);
 
   auto lDropSectionBody{new BCGroupWidget(this, tr("Body"))};
-  lDataMaker->addWidget(lDropSectionBody, 0);
-
-  auto lDropSectionHands{new BCGroupWidget(this, tr("Hands"))};
-  lDataMaker->addWidget(lDropSectionHands, 1);
+  lDataMaker->addWidget(lDropSectionBody);
 
   auto lDropSectionFeet{new BCGroupWidget(this, tr("Feet"))};
-  lDataMaker->addWidget(lDropSectionFeet, 2);
+  lDataMaker->addWidget(lDropSectionFeet);
+
+  auto lDropSectionHands{new BCGroupWidget(this, tr("Hands"))};
+  lDataMaker->addWidget(lDropSectionHands);
+
+  // BodySlide output settings group box
+  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
+  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
+  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
+  Utils::setGroupBoxState(lBodyslideGroupBox, false);
+  lDataMaker->addWidget(lBodyslideGroupBox);
+
+  // Grid layout
+  auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
+  lBodyslideGridLayout->setColumnStretch(0, 0);
+  lBodyslideGridLayout->setColumnStretch(1, 1);
+  lBodyslideGridLayout->setSpacing(10);
+  lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
+  lBodyslideGridLayout->setAlignment(Qt::AlignTop);
+  lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+
+  // First line
+  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
+
+  auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
+  lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
+  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
+
+  // Second line
+  lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 2, 0);
+
+  auto lPathsNamesOspXmlNames{new QLabel("", this)};
+  lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
+  lPathsNamesOspXmlNames->setAutoFillBackground(true);
+  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 4);
+
+  // Third line
+  auto lNamesInApp{new QLabel(this)};
+  lNamesInApp->setTextFormat(Qt::RichText);
+  lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
+                               "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
+                         .arg(lIconFolder)
+                         .arg(tr("Presets names:")));
+  lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
+  lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
+
+  auto lNamesInAppLineEdit{new QLineEdit(this)};
+  lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
+  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
+
+  // Fourth line
+  lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
+
+  auto lResultNamesInApp{new QLabel("", this)};
+  lResultNamesInApp->setObjectName("names_bodyslide_preview");
+  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
 
   // Validate selection and generate button
   auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
@@ -129,7 +183,13 @@ void BatchConversionPicker::initializeGUI()
   auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder)};
   lButtonLayout->addWidget(lGenerateButton);
 
+  // Pre-bind initialization functions
+  this->updateOSPXMLPreview(QString());
+  this->updateBodyslideNamesPreview(QString());
+
   // Event binding
+  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateOSPXMLPreview);
+  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
   this->connect(lPathsList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::leftListIndexChanged);
 
@@ -174,7 +234,7 @@ void BatchConversionPicker::leftListIndexChanged()
     {
       for (const auto& lValue : lPosition->second)
       {
-        auto lButton{new BCDragWidget(this, lValue)};
+        auto lButton{new BCDragWidget(this, lPosition->first, lValue)};
         this->mMiddleListButtons.push_back(lButton);
         lOptionsList->addWidget(lButton);
       }
