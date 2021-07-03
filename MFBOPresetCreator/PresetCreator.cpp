@@ -49,7 +49,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
 
-  this->mHasUserDoneSomething = false;
+  this->setHasUserDoneSomething(false);
 }
 
 void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileChooser)
@@ -59,7 +59,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
   {
     // Open a file chooser dialog
     const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
-    lFileToLoad = QFileDialog::getOpenFileName(this, "", lContextPath, "*.pcp *.json");
+    lFileToLoad = QFileDialog::getOpenFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
   }
 
   if (lFileToLoad.compare("") == 0)
@@ -69,12 +69,30 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
 
   Utils::updatePathAtKey(this->mLastPaths, "lastLoadedProject", lFileToLoad);
 
+  if (this->hasUserDoneSomething())
+  {
+    if (Utils::displayQuestionMessage(this,
+                                      tr("Unsaved data"),
+                                      tr("It seems that you have some unsaved data. Do you still want to open the project file \"%0\"?").arg(lFileToLoad),
+                                      Utils::getIconRessourceFolder(this->mSettings.appTheme),
+                                      "help-circle",
+                                      tr("Open the project without saving"),
+                                      tr("Cancel the file opening"),
+                                      this->mSettings.dangerColor,
+                                      this->mSettings.successColor,
+                                      false)
+        != ButtonClicked::Yes)
+    {
+      return;
+    }
+  }
+
   // Load the project only if a path is defined
   this->loadValuesFromJsonObject(Utils::loadFromJsonFile(lFileToLoad));
   this->mLastUsedSavePath = lFileToLoad;
   this->parentWidget()->findChild<QAction*>("action_save_project")->setDisabled(false);
 
-  this->mHasUserDoneSomething = true;
+  this->setHasUserDoneSomething(false);
 }
 
 void PresetCreator::saveProject(const bool aIsSaveAsContext)
@@ -85,7 +103,7 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
   {
     // Open a file saver dialog
     const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
-    lFilePath = QFileDialog::getSaveFileName(this, "", lContextPath, "*.pcp *.json");
+    lFilePath = QFileDialog::getSaveFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
     Utils::updatePathAtKey(this->mLastPaths, "lastSavedProject", lFilePath);
 
     if (lFilePath.length() > 0)
@@ -100,11 +118,21 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
     return;
   }
 
-  Utils::saveAsJsonFile(this->saveValuesToJsonObject(), lFilePath);
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (!this->mHasUserDoneSomething)
+  Utils::saveAsJsonFile(this->saveValuesToJsonObject(), lFilePath, this, lIconFolder);
+  this->setHasUserDoneSomething(false);
+}
+
+void PresetCreator::setHasUserDoneSomething(const bool aHasUserDoneSomething)
+{
+  this->mHasUserDoneSomething = aHasUserDoneSomething;
+
+  // Update the state of the "save project" action menu
+  if (this->mLastUsedSavePath.length() > 0)
   {
-    this->mHasUserDoneSomething = true;
+    this->parentWidget()->findChild<QAction*>("action_save_project")->setDisabled(!this->mHasUserDoneSomething);
   }
 }
 
@@ -906,7 +934,7 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
       // Fallback option if the custom skeleton could not be copied
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
       {
-        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths."));
+        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths."));
         return false;
       }
     }
@@ -1029,7 +1057,7 @@ void PresetCreator::useOnlySubdirStateChanged(int)
 
 void PresetCreator::updateOutputPreview()
 {
-  this->mHasUserDoneSomething = true;
+  this->setHasUserDoneSomething(true);
 
   auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
   auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
@@ -1041,7 +1069,7 @@ void PresetCreator::updateOutputPreview()
 
 void PresetCreator::updateOSPXMLPreview(QString aText)
 {
-  this->mHasUserDoneSomething = true;
+  this->setHasUserDoneSomething(true);
 
   auto lOutputPathsPreview{this->findChild<QLabel*>("names_osp_xml_preview")};
   auto lIsValidPath{true};
@@ -1073,7 +1101,7 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
 
 void PresetCreator::updateBodyslideNamesPreview(QString aText)
 {
-  this->mHasUserDoneSomething = true;
+  this->setHasUserDoneSomething(true);
 
   auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
   auto lIsValidPath{true};
@@ -1167,7 +1195,7 @@ void PresetCreator::updateSkeletonPathState(int aState)
 
 void PresetCreator::updateSkeletonPreview()
 {
-  this->mHasUserDoneSomething = true;
+  this->setHasUserDoneSomething(true);
 
   auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text()};
   Utils::cleanPathString(lSkeletonPath);
@@ -1304,7 +1332,7 @@ void PresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkpath(lEntryDirectory))
     {
-      Utils::displayWarningMessage(tr("Error while creating the main directory: \"%1\" could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.").arg(lEntryDirectory));
+      Utils::displayWarningMessage(tr("Error while creating the main directory: \"%1\" could not be created on your computer.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lEntryDirectory));
       return;
     }
   }
@@ -1487,7 +1515,7 @@ void PresetCreator::refreshAllPreviewFields(int)
 
 void PresetCreator::refreshAllPreviewFields()
 {
-  this->mHasUserDoneSomething = true;
+  this->setHasUserDoneSomething(true);
 
   // Update the GUI based on the available
   this->updateGUIOnBodyChange();
@@ -1565,7 +1593,7 @@ void PresetCreator::updateBodySlideFiltersListPreview()
 
   lFiltersList->setText(lText);
 
-  this->mHasUserDoneSomething = true;
+  this->setHasUserDoneSomething(true);
 }
 
 void PresetCreator::scrollbarPressed()

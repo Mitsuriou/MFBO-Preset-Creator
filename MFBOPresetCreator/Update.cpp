@@ -503,7 +503,7 @@ void Update::installLatestUpdate()
   }
   else
   {
-    Utils::displayWarningMessage("The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.");
+    Utils::displayWarningMessage(tr("The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again."));
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
     lSearchButton->setDisabled(false);
   }

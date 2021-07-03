@@ -405,6 +405,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
           || lTempSet.getName().endsWith(" - BHUNP BBP Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP TBBP", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP TBBP Advanced", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - SE 3BBB Body Amazing", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - 3BBB Body Amazing", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive))
@@ -542,8 +543,6 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
         case BodyNameVersion::CBBE_3BBB_3BA_1_50:
         case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
         case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-          lFeetValue = QString("%1 - CBBE 3BBB Feet");
-          break;
         case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
           lFeetValue = QString("%1 - CBBE 3BBB Feet");
           break;
@@ -625,7 +624,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
   switch (aBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_40:
-      lBodyValue = QString("%1 - 3BBB Body Amazing");
+      lBodyValue = QString("%1 - SE 3BBB Body Amazing");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
@@ -708,12 +707,36 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
   return (lBodyValue + "\n");
 }
 
-void Utils::saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath)
+void Utils::saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent, const QString& aIconFolder)
 {
   // Open (or create and open) the file
   QFile lFile(aFilePath);
-  lFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
-  lFile.write(QJsonDocument(aJsonToSave).toJson());
+  if (lFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+  {
+    lFile.write(QJsonDocument(aJsonToSave).toJson());
+
+    // Project file save: success window
+    if (aParent && aIconFolder.length() > 0)
+    {
+      QMessageBox lConfirmationBox(QMessageBox::Icon::Information,
+                                   tr("Project successfully saved"),
+                                   tr("The project file has successfully been saved to \"%1\".").arg(aFilePath),
+                                   QMessageBox::StandardButton::NoButton,
+                                   aParent);
+      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(aIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+
+      auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+      lOKButton->setCursor(Qt::PointingHandCursor);
+      lConfirmationBox.setDefaultButton(lOKButton);
+      lConfirmationBox.exec();
+    }
+  }
+  else if (aParent && aIconFolder.length() > 0)
+  {
+    // Project file save: fail window
+    Utils::displayWarningMessage(tr("Could not save the project file to \"%1\".\nBe sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(aFilePath));
+  }
+
   lFile.close();
 }
 

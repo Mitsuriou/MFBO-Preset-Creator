@@ -402,7 +402,16 @@ void AssistedConversion::launchSearchProcess()
   // Warn the user if the scan found a BSA file
   if (Utils::getNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
   {
-    if (Utils::displayQuestionMessage(this, tr("BSA file found"), tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"), lIconFolder, "help-circle", tr("Continue the scan"), tr("Cancel the scan"), this->mSettings.successColor, this->mSettings.dangerColor, true)
+    if (Utils::displayQuestionMessage(this,
+                                      tr("BSA file found"),
+                                      tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the scan"),
+                                      tr("Cancel the scan"),
+                                      this->mSettings.successColor,
+                                      this->mSettings.dangerColor,
+                                      true)
         != ButtonClicked::Yes)
     {
       return;

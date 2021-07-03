@@ -57,7 +57,7 @@ BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int a
   auto lBody{static_cast<int>(aBody)};
 
   // "CBBE 3BBB 3BA 2.00 -> 2.04" == 32, "CBBE 3BBB 3BA 2.05 -> 2.06" == 33
-  if (lBody == 0 && (aRelativeVersion == 4 || aRelativeVersion == 5))
+  if (lBody == 0 && (aRelativeVersion == 3 || aRelativeVersion == 4))
   {
     lOffset = 29;
   }

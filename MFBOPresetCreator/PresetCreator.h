@@ -14,6 +14,7 @@ public:
   // Function that will to be called from outside this class
   void loadProject(const QString& lFilePath = "", const bool aSkipFileChooser = false);
   void saveProject(const bool aIsSaveAsContext);
+  void setHasUserDoneSomething(const bool aHasUserDoneSomething);
   bool hasUserDoneSomething();
   void updateSettings(Struct::Settings aSettings);
   void updateBodySlideSets();

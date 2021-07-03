@@ -47,7 +47,7 @@ public:
   static QString getBodySliderValue(const BodyNameVersion& aBody);
 
   // Load and save
-  static void saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath);
+  static void saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent = nullptr, const QString& aIconFolder = "");
   static QJsonObject loadFromJsonFile(const QString& aFilePath);
 
   // Settings
