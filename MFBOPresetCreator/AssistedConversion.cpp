@@ -53,8 +53,10 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
                                     "help-circle",
                                     tr("Close the window"),
                                     tr("Go back to the assisted conversion tool window"),
+                                    "",
                                     this->mSettings.dangerColor,
                                     this->mSettings.successColor,
+                                    "",
                                     false)
       == ButtonClicked::Yes)
   {
@@ -368,8 +370,10 @@ void AssistedConversion::launchSearchProcess()
                                       "help-circle",
                                       tr("Relaunch the scan"),
                                       tr("Cancel the relaunch"),
+                                      "",
                                       this->mSettings.dangerColor,
                                       this->mSettings.successColor,
+                                      "",
                                       false)
         != ButtonClicked::Yes)
     {
@@ -390,8 +394,10 @@ void AssistedConversion::launchSearchProcess()
                                       "help-circle",
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
+                                      "",
                                       this->mSettings.successColor,
                                       this->mSettings.dangerColor,
+                                      "",
                                       true)
         != ButtonClicked::Yes)
     {
@@ -409,8 +415,10 @@ void AssistedConversion::launchSearchProcess()
                                       "help-circle",
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
+                                      "",
                                       this->mSettings.successColor,
                                       this->mSettings.dangerColor,
+                                      "",
                                       true)
         != ButtonClicked::Yes)
     {
@@ -482,8 +490,10 @@ void AssistedConversion::validateSelection()
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),
+                                      "",
                                       this->mSettings.successColor,
                                       this->mSettings.dangerColor,
+                                      "",
                                       true)
         != ButtonClicked::Yes)
     {

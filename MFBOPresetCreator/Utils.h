@@ -23,7 +23,7 @@ public:
   static QStringList splitString(QString aString, const QString& aSeparator);
   static QString getApplicationVersion();
   static void displayWarningMessage(const QString& aMessage);
-  static ButtonClicked displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aColorYesBtn, const QString& aColorNoBtn, const bool aIsYesBtnDefault);
+  static ButtonClicked displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension);

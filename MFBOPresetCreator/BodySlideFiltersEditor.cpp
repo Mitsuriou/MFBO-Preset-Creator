@@ -58,8 +58,10 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
                                       "help-circle",
                                       tr("Close the editor window without saving"),
                                       tr("Go back to the editor window"),
+                                      "",
                                       this->mSettings.dangerColor,
                                       this->mSettings.successColor,
+                                      "",
                                       false)
         != ButtonClicked::Yes)
     {

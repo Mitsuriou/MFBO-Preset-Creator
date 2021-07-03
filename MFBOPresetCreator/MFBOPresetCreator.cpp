@@ -63,23 +63,31 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  if (Utils::displayQuestionMessage(this,
-                                    tr("Quitting"),
-                                    tr("You will lose all the unsaved data. Do you still want to quit the application?"),
-                                    lIconFolder,
-                                    "help-circle",
-                                    tr("Quit the application"),
-                                    tr("Go back to the application"),
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
-                                    false)
-      != ButtonClicked::Yes)
+  auto lUserAnswer{Utils::displayQuestionMessage(this,
+                                                 tr("Quitting"),
+                                                 tr("You will lose all the unsaved data. Do you still want to quit the application?"),
+                                                 lIconFolder,
+                                                 "help-circle",
+                                                 tr("Quit the application"),
+                                                 tr("Go back to the application"),
+                                                 tr("Save the project and quit the application"),
+                                                 this->mSettings.dangerColor,
+                                                 this->mSettings.successColor,
+                                                 this->mSettings.successColor,
+                                                 false)};
+
+  if (lUserAnswer == ButtonClicked::Yes)
   {
-    aEvent->ignore();
+    aEvent->accept();
+  }
+  else if (lUserAnswer == ButtonClicked::Other)
+  {
+    this->saveProject(true);
+    aEvent->accept();
   }
   else
   {
-    aEvent->accept();
+    aEvent->ignore();
   }
 }
 
@@ -573,8 +581,10 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
                                       "info-circle",
                                       tr("Download and install the update now"),
                                       tr("Download later"),
+                                      "",
                                       this->mSettings.successColor,
                                       this->mSettings.dangerColor,
+                                      "",
                                       true)
         == ButtonClicked::Yes)
     {
@@ -614,10 +624,10 @@ void MFBOPresetCreator::loadProject()
   qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))->loadProject();
 }
 
-void MFBOPresetCreator::saveProject()
+void MFBOPresetCreator::saveProject(const bool aIsQuittingContext)
 {
   auto lEventSource{qobject_cast<QAction*>(sender())};
-  if (lEventSource->objectName().compare("action_save_project") == 0)
+  if (aIsQuittingContext || lEventSource->objectName().compare("action_save_project") == 0)
   {
     qobject_cast<PresetCreator*>(this->findChild<QWidget*>("main_container"))->saveProject(false);
   }
@@ -639,18 +649,26 @@ void MFBOPresetCreator::quickRelaunch()
     return;
   }
 
-  if (Utils::displayQuestionMessage(this,
-                                    tr("Quick restart"),
-                                    tr("You will lose all the unsaved data. Do you still want to quickly restart the application?"),
-                                    lIconFolder,
-                                    "help-circle",
-                                    tr("Quickly restart the application"),
-                                    tr("Go back to the application"),
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
-                                    false)
-      == ButtonClicked::Yes)
+  auto lUserAnswer{Utils::displayQuestionMessage(this,
+                                                 tr("Quick restart"),
+                                                 tr("You will lose all the unsaved data. Do you still want to quickly restart the application?"),
+                                                 lIconFolder,
+                                                 "help-circle",
+                                                 tr("Quickly restart the application"),
+                                                 tr("Go back to the application"),
+                                                 tr("Save the project and quit the application"),
+                                                 this->mSettings.dangerColor,
+                                                 this->mSettings.successColor,
+                                                 this->mSettings.successColor,
+                                                 false)};
+
+  if (lUserAnswer == ButtonClicked::Yes)
   {
+    qApp->exit(Utils::EXIT_CODE_REBOOT);
+  }
+  else if (lUserAnswer == ButtonClicked::Other)
+  {
+    this->saveProject(true);
     qApp->exit(Utils::EXIT_CODE_REBOOT);
   }
 }

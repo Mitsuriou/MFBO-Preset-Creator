@@ -49,7 +49,7 @@ private:
 #pragma region PRIVATE_SLOTS
   // Base functionalities
   void loadProject();
-  void saveProject();
+  void saveProject(const bool aIsQuittingContext = false);
   void quickRelaunch();
   // Assisted Conversion
   void launchAssistedConversion();

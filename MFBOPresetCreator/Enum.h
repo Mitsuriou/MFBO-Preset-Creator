@@ -116,5 +116,6 @@ enum class ButtonClicked
 {
   Yes = 0,
   No = 1,
-  CloseWindow = 2
+  CloseWindow = 2,
+  Other = 3
 };

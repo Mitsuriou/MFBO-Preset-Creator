@@ -78,8 +78,10 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
                                       "help-circle",
                                       tr("Open the project without saving"),
                                       tr("Cancel the file opening"),
+                                      "",
                                       this->mSettings.dangerColor,
                                       this->mSettings.successColor,
+                                      "",
                                       false)
         != ButtonClicked::Yes)
     {
@@ -99,7 +101,7 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
 {
   auto lFilePath{QString(this->mLastUsedSavePath)};
   // Check the event source
-  if (aIsSaveAsContext)
+  if (aIsSaveAsContext || (!aIsSaveAsContext && this->mLastUsedSavePath.length() == 0))
   {
     // Open a file saver dialog
     const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
@@ -264,8 +266,10 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
                                       "help-circle",
                                       tr("Clear all the unassigned entries"),
                                       tr("Keep the currently set values for the unassigned entries"),
+                                      "",
                                       this->mSettings.warningColor,
                                       this->mSettings.warningColor,
+                                      "",
                                       false)
         == ButtonClicked::Yes)
     {
@@ -1346,8 +1350,10 @@ void PresetCreator::generateDirectoryStructure()
                                       "help-circle",
                                       tr("Continue the files generation"),
                                       tr("Cancel the files generation"),
+                                      "",
                                       this->mSettings.warningColor,
                                       this->mSettings.dangerColor,
+                                      "",
                                       true)
         != ButtonClicked::Yes)
     {
@@ -1497,6 +1503,8 @@ void PresetCreator::generateDirectoryStructure()
                                       "green-info-circle",
                                       tr("Open the generated directory"),
                                       tr("OK"),
+                                      "",
+                                      "",
                                       "",
                                       "",
                                       false)

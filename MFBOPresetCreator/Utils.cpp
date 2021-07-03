@@ -108,23 +108,34 @@ void Utils::displayWarningMessage(const QString& aMessage)
   lBox.exec();
 }
 
-ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aColorYesBtn, const QString& aColorNoBtn, const bool aIsYesBtnDefault)
+ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
   lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation));
 
   auto lYesButton{lConfirmationBox.addButton(aTextBtnYes, QMessageBox::ButtonRole::YesRole)};
   lYesButton->setCursor(Qt::PointingHandCursor);
-  if (aColorYesBtn != "")
+  if (aColorYesBtn.length() > 0)
   {
     lYesButton->setStyleSheet(QString("color: %1;").arg(aColorYesBtn));
   }
 
   auto lNoButton{lConfirmationBox.addButton(aTextBtnNo, QMessageBox::ButtonRole::NoRole)};
   lNoButton->setCursor(Qt::PointingHandCursor);
-  if (aColorNoBtn != "")
+  if (aColorNoBtn.length() > 0)
   {
     lNoButton->setStyleSheet(QString("color: %1;").arg(aColorNoBtn));
+  }
+
+  QPushButton* lOtherButton{nullptr};
+  if (aTextBtnOther.length() > 0)
+  {
+    lOtherButton = lConfirmationBox.addButton(aTextBtnOther, QMessageBox::ButtonRole::HelpRole);
+    lOtherButton->setCursor(Qt::PointingHandCursor);
+    if (aColorOtherBtn.length() > 0)
+    {
+      lOtherButton->setStyleSheet(QString("color: %1;").arg(aColorOtherBtn));
+    }
   }
 
   lConfirmationBox.setDefaultButton(aIsYesBtnDefault ? lYesButton : lNoButton);
@@ -139,6 +150,10 @@ ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTi
   if (lClickedButton == lNoButton)
   {
     return ButtonClicked::No;
+  }
+  if (lOtherButton != nullptr && lClickedButton == lOtherButton)
+  {
+    return ButtonClicked::Other;
   }
   return ButtonClicked::CloseWindow;
 }

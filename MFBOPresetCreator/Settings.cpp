@@ -65,8 +65,10 @@ void Settings::closeEvent(QCloseEvent* aEvent)
                                       "help-circle",
                                       tr("Close the settings window without saving"),
                                       tr("Go back to the settings window"),
+                                      "",
                                       this->mSettings.dangerColor,
                                       this->mSettings.successColor,
+                                      "",
                                       false)
         != ButtonClicked::Yes)
     {
@@ -706,8 +708,10 @@ void Settings::saveSettings()
                                       "help-circle",
                                       tr("Restart now"),
                                       tr("Go back to the application and restart later"),
+                                      "",
                                       this->mSettings.dangerColor,
                                       this->mSettings.warningColor,
+                                      "",
                                       false)
         == ButtonClicked::Yes)
     {
