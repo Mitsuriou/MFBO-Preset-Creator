@@ -652,7 +652,7 @@
         <location filename="MFBOPresetCreator.cpp" line="73"/>
         <location filename="MFBOPresetCreator.cpp" line="659"/>
         <source>Save the project and quit the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer le projet et quitter l&apos;application</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="162"/>
@@ -874,22 +874,23 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
     <message>
         <location filename="PresetCreator.cpp" line="75"/>
         <source>Unsaved data</source>
-        <translation type="unfinished"></translation>
+        <translation>Données non sauvegardées</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="76"/>
-        <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%0&quot;?</source>
-        <translation type="unfinished"></translation>
+        <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%1&quot;?</source>
+        <oldsource>It seems that you have some unsaved data. Do you still want to open the project file &quot;%0&quot;?</oldsource>
+        <translation>Il semblerait que certains données n&apos;aient pas été sauvegardées. Voulez-vous toujours ouvrir le fichier de projet &quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="79"/>
         <source>Open the project without saving</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le projet sans sauvegarder</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="80"/>
         <source>Cancel the file opening</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler l&apos;ouverture de fichier</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="240"/>
@@ -964,14 +965,18 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut.
+Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.
+Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1339"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur.
+Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.
+Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1504"/>
@@ -1630,8 +1635,13 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="Settings.cpp" line="706"/>
-        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
-        <translation>Tous les paramètres ont été sauvegardé. Vous avez changé un paramètre qui nécessite un redémarrage de l&apos;application pour être appliqué. Voulez-vous redémarrer l&apos;application maintenant ?</translation>
+        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
+
+Would you like to restart the application now (you will lose all unsaved data)?</source>
+        <oldsource>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</oldsource>
+        <translation>Tous les paramètres ont été sauvegardé. Vous avez changé un paramètre qui nécessite un redémarrage de l&apos;application pour être appliqué.
+
+Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donnée non sauvegardée) ?</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="193"/>
@@ -1868,7 +1878,7 @@ Vous trouverez ci-dessous les notes de mise à jour de cette version :</translat
     <message>
         <location filename="Update.cpp" line="506"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le processus de mise à jour n&apos;a pas pu être démarré. Veuillez vérifier que votre pare-feu et votre anti-virus ne bloquent pas le fichier de mise à jour, avant d&apos;essayer à nouveau.</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="119"/>
@@ -1974,19 +1984,21 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     <message>
         <location filename="Utils.cpp" line="737"/>
         <source>Project successfully saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Projet sauvegardé avec succès</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="738"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier de projet a été sauvegardé vers &quot;%1&quot;.</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="752"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier de projet n&apos;a pas pu être sauvegardé vers &quot;%1&quot;.
+Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.
+Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1337"/>

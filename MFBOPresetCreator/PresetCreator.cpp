@@ -73,7 +73,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
   {
     if (Utils::displayQuestionMessage(this,
                                       tr("Unsaved data"),
-                                      tr("It seems that you have some unsaved data. Do you still want to open the project file \"%0\"?").arg(lFileToLoad),
+                                      tr("It seems that you have some unsaved data. Do you still want to open the project file \"%1\"?").arg(lFileToLoad),
                                       Utils::getIconRessourceFolder(this->mSettings.appTheme),
                                       "help-circle",
                                       tr("Open the project without saving"),

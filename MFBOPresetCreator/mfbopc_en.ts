@@ -653,7 +653,7 @@ Do you want to download it now?</source>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
         <location filename="MFBOPresetCreator.cpp" line="659"/>
         <source>Save the project and quit the application</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="204"/>
@@ -801,22 +801,23 @@ Do you want to download it now?</source>
     <message>
         <location filename="PresetCreator.cpp" line="75"/>
         <source>Unsaved data</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="76"/>
-        <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%0&quot;?</source>
-        <translation type="unfinished"></translation>
+        <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%1&quot;?</source>
+        <oldsource>It seems that you have some unsaved data. Do you still want to open the project file &quot;%0&quot;?</oldsource>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="79"/>
         <source>Open the project without saving</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="80"/>
         <source>Cancel the file opening</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="240"/>
@@ -1062,7 +1063,7 @@ Do you want to download it now?</source>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="948"/>
@@ -1074,7 +1075,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1481"/>
@@ -1526,7 +1527,10 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="Settings.cpp" line="706"/>
-        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
+        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
+
+Would you like to restart the application now (you will lose all unsaved data)?</source>
+        <oldsource>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -1805,7 +1809,7 @@ Below are the release notes for the latest stable version:</source>
     <message>
         <location filename="Update.cpp" line="506"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Update.cpp" line="260"/>
@@ -1857,19 +1861,19 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Utils.cpp" line="737"/>
         <source>Project successfully saved</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="738"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="752"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1337"/>

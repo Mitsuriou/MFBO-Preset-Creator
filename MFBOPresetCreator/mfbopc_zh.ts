@@ -778,7 +778,8 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="76"/>
-        <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%0&quot;?</source>
+        <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%1&quot;?</source>
+        <oldsource>It seems that you have some unsaved data. Do you still want to open the project file &quot;%0&quot;?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1546,7 +1547,10 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="Settings.cpp" line="706"/>
-        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
+        <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
+
+Would you like to restart the application now (you will lose all unsaved data)?</source>
+        <oldsource>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -703,7 +703,7 @@ void Settings::saveSettings()
 
     if (Utils::displayQuestionMessage(this,
                                       tr("Application settings changed"),
-                                      tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?"),
+                                      tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied.\n\nWould you like to restart the application now (you will lose all unsaved data)?"),
                                       lIconFolder,
                                       "help-circle",
                                       tr("Restart now"),
