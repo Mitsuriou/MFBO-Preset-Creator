@@ -107,6 +107,7 @@
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>
         <file>mfbopc_fr.qm</file>
+        <file>mfbopc_zh_TW.qm</file>
     </qresource>
     <qresource prefix="/qss">
         <file alias="Paper Black Mono.qss">ressources/qss/Paper Black Mono.qss</file>

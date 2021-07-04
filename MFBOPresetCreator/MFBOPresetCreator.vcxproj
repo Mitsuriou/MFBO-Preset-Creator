@@ -288,7 +288,7 @@ echo #####################################################</Command>
     <QtTranslation Include="mfbopc_fr.ts">
       <FileType>Document</FileType>
     </QtTranslation>
-    <QtTranslation Include="mfbopc_zh.ts" />
+    <QtTranslation Include="mfbopc_zh_TW.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -212,11 +212,8 @@ QStringList DataLists::getLanguages()
 {
   QStringList lLanguages{
     QString("English"),
-    QString("Français")};
-
-#ifdef TRANSLATOR
-  lLanguages.append(QString("Chinese (made by Sephirothryan)")); // TODO: Chinese language support
-#endif
+    QString("Français"),
+    QString("Traditional Chinese (Taiwan) - translation by Sephirothryan")};
 
   return lLanguages;
 }

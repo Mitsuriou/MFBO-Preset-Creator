@@ -171,17 +171,6 @@ int main(int argc, char* argv[])
     // Apply custom language and translation
     auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(lSettings.language))};
 
-#ifdef TRANSLATOR
-    if (lSettings.language == ApplicationLanguage::Chinese_Traditional)
-    {
-      auto lTranslator{new QTranslator()};
-      if (lTranslator->load(QString("mfbopc_%1.qm").arg(lLanguageToSet)))
-      {
-        lMainApplication.installTranslator(lTranslator);
-      }
-    }
-#endif
-
     auto lTranslator{new QTranslator()};
     if (lTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))
     {

@@ -156,7 +156,7 @@
     <QtTranslation Include="mfbopc_fr.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
-    <QtTranslation Include="mfbopc_zh.ts">
+    <QtTranslation Include="mfbopc_zh_TW.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
   </ItemGroup>

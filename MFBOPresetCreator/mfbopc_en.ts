@@ -528,27 +528,27 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="227"/>
+        <location filename="DataLists.cpp" line="224"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="228"/>
+        <location filename="DataLists.cpp" line="225"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="229"/>
+        <location filename="DataLists.cpp" line="226"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="230"/>
+        <location filename="DataLists.cpp" line="227"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="231"/>
+        <location filename="DataLists.cpp" line="228"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -650,6 +650,11 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="MFBOPresetCreator.cpp" line="38"/>
+        <source>[DEV] </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
         <location filename="MFBOPresetCreator.cpp" line="659"/>
         <source>Save the project and quit the application</source>
@@ -748,11 +753,6 @@ Do you want to download it now?</source>
         <location filename="MFBOPresetCreator.cpp" line="191"/>
         <location filename="MFBOPresetCreator.cpp" line="653"/>
         <source>Quick restart</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="MFBOPresetCreator.cpp" line="38"/>
-        <source>[DEV] </source>
         <translation></translation>
     </message>
     <message>

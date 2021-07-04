@@ -595,27 +595,27 @@
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="227"/>
+        <location filename="DataLists.cpp" line="224"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="228"/>
+        <location filename="DataLists.cpp" line="225"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="229"/>
+        <location filename="DataLists.cpp" line="226"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="230"/>
+        <location filename="DataLists.cpp" line="227"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="231"/>
+        <location filename="DataLists.cpp" line="228"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
