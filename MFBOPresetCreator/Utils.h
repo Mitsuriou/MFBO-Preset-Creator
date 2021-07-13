@@ -33,8 +33,10 @@ public:
   static bool removeDirectoryAndSubDirs(const QString& aPath);
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconRessourceFolder(const GUITheme& aTheme);
+  static bool isCBBEBasedBody(const BodyNameVersion& aBody);
   static bool isBodySupportingBeastHands(const BodyNameVersion& aBody);
   static QString getAppDataPathFolder();
+  static QString readQRCFileContent(const QString& aFilePath);
 
   // XML and OSP file parse
   static QString getPresetNameFromXMLFile(const QString& aPath);

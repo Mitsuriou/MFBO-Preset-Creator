@@ -58,7 +58,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
                                     this->mSettings.successColor,
                                     "",
                                     false)
-      == ButtonClicked::Yes)
+      == ButtonClicked::YES)
   {
     aEvent->accept();
   }
@@ -375,7 +375,7 @@ void AssistedConversion::launchSearchProcess()
                                       this->mSettings.successColor,
                                       "",
                                       false)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       return;
     }
@@ -399,7 +399,7 @@ void AssistedConversion::launchSearchProcess()
                                       this->mSettings.dangerColor,
                                       "",
                                       true)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       return;
     }
@@ -420,7 +420,7 @@ void AssistedConversion::launchSearchProcess()
                                       this->mSettings.dangerColor,
                                       "",
                                       true)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       return;
     }
@@ -495,7 +495,7 @@ void AssistedConversion::validateSelection()
                                       this->mSettings.dangerColor,
                                       "",
                                       true)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       return;
     }

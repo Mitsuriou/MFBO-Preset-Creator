@@ -80,6 +80,10 @@ echo #####################################################</Command>
       <AdditionalOptions>/NODEFAULTLIB:library</AdditionalOptions>
     </Link>
     <QtTranslation />
+    <QtTranslation>
+      <QmOutputDir>$(ProjectDir)</QmOutputDir>
+      <BuildAction>lrelease</BuildAction>
+    </QtTranslation>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link />

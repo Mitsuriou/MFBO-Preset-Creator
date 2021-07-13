@@ -145,17 +145,17 @@ ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTi
   const auto lClickedButton{lConfirmationBox.clickedButton()};
   if (lClickedButton == lYesButton)
   {
-    return ButtonClicked::Yes;
+    return ButtonClicked::YES;
   }
   if (lClickedButton == lNoButton)
   {
-    return ButtonClicked::No;
+    return ButtonClicked::NO;
   }
   if (lOtherButton != nullptr && lClickedButton == lOtherButton)
   {
-    return ButtonClicked::Other;
+    return ButtonClicked::OTHER;
   }
-  return ButtonClicked::CloseWindow;
+  return ButtonClicked::CLOSE_WINDOW;
 }
 
 int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
@@ -307,12 +307,12 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
   {
-    case GUITheme::PaperDark:
-    case GUITheme::PaperBlackMono:
-    case GUITheme::AlexhuszaghBreezeDark:
-    case GUITheme::QuasarAppDarkStyle:
-    case GUITheme::QuasarAppVisualStudioDark:
-    case GUITheme::MitsuriouDarkTheme:
+    case GUITheme::PAPER_DARK:
+    case GUITheme::PAPER_BLACK_MONO:
+    case GUITheme::ALEXHUSZAGH_BREEZE_DARK:
+    case GUITheme::QUASAR_APP_DARK_STYLE:
+    case GUITheme::QUASAR_APP_VISUAL_STUDIO_DARK:
+    case GUITheme::MITSURIOU_DARK_THEME:
       return true;
     default:
       return false;
@@ -324,20 +324,25 @@ QString Utils::getIconRessourceFolder(const GUITheme& aTheme)
   return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
+bool Utils::isCBBEBasedBody(const BodyNameVersion& aBody)
 {
   switch (aBody)
   {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       return true;
     default:
       return false;
   }
+}
+
+bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
+{
+  return Utils::isCBBEBasedBody(aBody);
 }
 
 QString Utils::getAppDataPathFolder()
@@ -349,6 +354,20 @@ QString Utils::getAppDataPathFolder()
   lDir.mkpath(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
   return QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator();
 #endif
+}
+
+QString Utils::readQRCFileContent(const QString& aFilePath)
+{
+  QString lContent;
+
+  QFile lQRCFile(aFilePath);
+  if (lQRCFile.open(QFile::ReadOnly | QFile::Text))
+  {
+    QTextStream lFileBuffer(&lQRCFile);
+    lContent = lFileBuffer.readAll();
+  }
+
+  return lContent;
 }
 
 QString Utils::getPresetNameFromXMLFile(const QString& aPath)
@@ -508,21 +527,16 @@ QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMus
 
   switch (aBody)
   {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
-      if (aMustUseBeastHands)
-        lHandsValue = QString("%1 - Beast Hands");
-      else
-        lHandsValue = QString("%1 - Hands");
-      break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
       if (aMustUseBeastHands)
         lHandsValue = QString("%1 - CBBE Beast Hands");
       else
         lHandsValue = QString("%1 - CBBE 3BBB Hands");
       break;
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       if (aMustUseBeastHands)
         lHandsValue = QString("%1 - CBBE 3BBB Hands Beast");
       else
@@ -539,7 +553,7 @@ QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMus
       break;
   }
 
-  return (lHandsValue + "\n");
+  return (lHandsValue);
 }
 
 QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)
@@ -552,69 +566,67 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
       // Default
       switch (aBody)
       {
-        case BodyNameVersion::CBBE_3BBB_3BA_1_40:
-          lFeetValue = QString("%1 - Feet");
-          break;
         case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-        case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
-        case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-        case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
+        case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
+        case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
+        case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+        case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
           lFeetValue = QString("%1 - CBBE 3BBB Feet");
           break;
         case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
           lFeetValue = QString("%1 - CBBE Feet");
           break;
         case BodyNameVersion::BHUNP_3BBB_2_13:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
         case BodyNameVersion::BHUNP_BBP_2_13:
-        case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
+        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
         case BodyNameVersion::BHUNP_TBBP_2_13:
-        case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
+        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
         case BodyNameVersion::BHUNP_3BBB_2_15:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
         case BodyNameVersion::BHUNP_BBP_2_15:
-        case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
+        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
         case BodyNameVersion::BHUNP_TBBP_2_15:
-        case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
+        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
         case BodyNameVersion::BHUNP_3BBB_2_20:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
         case BodyNameVersion::BHUNP_BBP_2_20:
-        case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
+        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
         case BodyNameVersion::BHUNP_TBBP_2_20:
-        case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
+        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
         case BodyNameVersion::BHUNP_3BBB_2_25:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
         case BodyNameVersion::BHUNP_BBP_2_25:
-        case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
+        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
         case BodyNameVersion::BHUNP_TBBP_2_25:
-        case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
+        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
         case BodyNameVersion::BHUNP_3BBB_2_30:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_2_30:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_30:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
         case BodyNameVersion::BHUNP_BBP_2_30:
-        case BodyNameVersion::BHUNP_BBP_Advanced_2_30:
+        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
         case BodyNameVersion::BHUNP_TBBP_2_30:
-        case BodyNameVersion::BHUNP_TBBP_Advanced_2_30:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_25:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_30:
+        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
         case BodyNameVersion::BHUNP_3BBB_2_31:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_2_31:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_31:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
         case BodyNameVersion::BHUNP_BBP_2_31:
-        case BodyNameVersion::BHUNP_BBP_Advanced_2_31:
+        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
         case BodyNameVersion::BHUNP_TBBP_2_31:
-        case BodyNameVersion::BHUNP_TBBP_Advanced_2_31:
+        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
         case BodyNameVersion::BHUNP_3BBB_2_35:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_2_35:
-        case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_35:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
+        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
         case BodyNameVersion::BHUNP_BBP_2_35:
-        case BodyNameVersion::BHUNP_BBP_Advanced_2_35:
+        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
         case BodyNameVersion::BHUNP_TBBP_2_35:
-        case BodyNameVersion::BHUNP_TBBP_Advanced_2_35:
+        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
           lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
           break;
       }
@@ -638,13 +650,11 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
 
   switch (aBody)
   {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_40:
-      lBodyValue = QString("%1 - SE 3BBB Body Amazing");
-      break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       lBodyValue = QString("%1 - CBBE 3BBB Body Amazing");
       break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
@@ -659,22 +669,22 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_3BBB_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB");
       break;
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_13:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_15:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_20:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_25:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_30:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_31:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_2_35:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced");
       break;
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_13:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_15:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_20:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_25:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_30:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_31:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_2_35:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2");
       break;
     case BodyNameVersion::BHUNP_BBP_2_13:
@@ -686,13 +696,13 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_BBP_2_35:
       lBodyValue = QString("%1 - BHUNP BBP");
       break;
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_13:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_15:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_20:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_25:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_30:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_31:
-    case BodyNameVersion::BHUNP_BBP_Advanced_2_35:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
       lBodyValue = QString("%1 - BHUNP BBP Advanced");
       break;
     case BodyNameVersion::BHUNP_TBBP_2_13:
@@ -704,17 +714,17 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_TBBP_2_35:
       lBodyValue = QString("%1 - BHUNP TBBP");
       break;
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_13:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_15:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_20:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_25:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_30:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_31:
-    case BodyNameVersion::BHUNP_TBBP_Advanced_2_35:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
       lBodyValue = QString("%1 - BHUNP TBBP Advanced");
       break;
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_25:
-    case BodyNameVersion::BHUNP_3BBB_Advanced_ver_2_nevernude_2_30:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2 Nevernude");
       break;
   }
@@ -1089,18 +1099,12 @@ QString Utils::getAdditionalFeetFilter(const BodyNameVersion& aBody, const int a
 {
   if (aFeetModIndex == 1 || aFeetModIndex == 2)
   {
-    switch (aBody)
+    if (isCBBEBasedBody(aBody))
     {
-      case BodyNameVersion::CBBE_3BBB_3BA_1_40:
-      case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-      case BodyNameVersion::CBBE_3BBB_3BA_1_51_to_1_55:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_00_to_2_04:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_05_to_2_06:
-      case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-        return QString("MSF CBBE Feet");
-      default:
-        return QString("MSF BHUNP Feet");
+      return QString("MSF CBBE Feet");
     }
+
+    return QString("MSF BHUNP Feet");
   }
 
   return QString("");
@@ -1264,11 +1268,11 @@ QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
   auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
   switch (lEnumLang)
   {
-    case ApplicationLanguage::English:
+    case ApplicationLanguage::ENGLISH:
       return "en";
-    case ApplicationLanguage::French:
+    case ApplicationLanguage::FRENCH:
       return "fr";
-    case ApplicationLanguage::Chinese_Traditional:
+    case ApplicationLanguage::CHINESE_TRADITIONAL:
       return "zh_TW";
     default:
       return "en";
@@ -1280,9 +1284,9 @@ QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
   auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
   switch (lEnumLang)
   {
-    case ApplicationLanguage::English:
+    case ApplicationLanguage::ENGLISH:
       return "English";
-    case ApplicationLanguage::French:
+    case ApplicationLanguage::FRENCH:
       return "Français";
     default:
       return "English";
@@ -1293,21 +1297,21 @@ ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
 {
   if (aShortName.compare("English") == 0)
   {
-    return ApplicationLanguage::English;
+    return ApplicationLanguage::ENGLISH;
   }
 
   if (aShortName.compare("French") == 0)
   {
-    return ApplicationLanguage::French;
+    return ApplicationLanguage::FRENCH;
   }
 
   if (aShortName.compare("Chinese") == 0)
   {
-    return ApplicationLanguage::Chinese_Traditional;
+    return ApplicationLanguage::CHINESE_TRADITIONAL;
   }
 
   // Default language if no supported language has been found
-  return ApplicationLanguage::English;
+  return ApplicationLanguage::ENGLISH;
 }
 
 QAction* Utils::buildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder)

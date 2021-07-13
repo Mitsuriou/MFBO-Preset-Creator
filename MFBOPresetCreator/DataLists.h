@@ -13,6 +13,7 @@ public:
   static QStringList getVersionsFromBodyName(const BodyName& aBody);
   static BodyNameVersion getBodyNameVersion(const BodyName& aBody, const int aRelativeVersion);
   static std::pair<int, int> getSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion);
+  static QString getQRCPathFromBodyName(const BodyNameVersion& aBody, const QString& aRessourceType);
   static QStringList getFeetModsEntries();
 
   // Other data lists

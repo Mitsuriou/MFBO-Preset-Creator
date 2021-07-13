@@ -70,7 +70,7 @@ void Settings::closeEvent(QCloseEvent* aEvent)
                                       this->mSettings.successColor,
                                       "",
                                       false)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       aEvent->ignore();
       return;
@@ -580,17 +580,17 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lEnumLang{static_cast<ApplicationLanguage>(lLang)};
   switch (lEnumLang)
   {
-    case ApplicationLanguage::English:
-      lSettings.language = ApplicationLanguage::English;
+    case ApplicationLanguage::ENGLISH:
+      lSettings.language = ApplicationLanguage::ENGLISH;
       break;
-    case ApplicationLanguage::French:
-      lSettings.language = ApplicationLanguage::French;
+    case ApplicationLanguage::FRENCH:
+      lSettings.language = ApplicationLanguage::FRENCH;
       break;
-    case ApplicationLanguage::Chinese_Traditional:
-      lSettings.language = ApplicationLanguage::Chinese_Traditional;
+    case ApplicationLanguage::CHINESE_TRADITIONAL:
+      lSettings.language = ApplicationLanguage::CHINESE_TRADITIONAL;
       break;
     default:
-      lSettings.language = ApplicationLanguage::English;
+      lSettings.language = ApplicationLanguage::ENGLISH;
       break;
   }
 
@@ -713,7 +713,7 @@ void Settings::saveSettings()
                                       this->mSettings.warningColor,
                                       "",
                                       false)
-        == ButtonClicked::Yes)
+        == ButtonClicked::YES)
     {
       // Reboot the application in case the language is changed
       qApp->exit(Utils::EXIT_CODE_REBOOT);

@@ -74,7 +74,7 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
                                     this->mSettings.successColor,
                                     "",
                                     false)
-      == ButtonClicked::Yes)
+      == ButtonClicked::YES)
   {
     aEvent->accept();
   }

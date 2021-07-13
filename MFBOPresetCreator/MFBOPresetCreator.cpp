@@ -76,11 +76,11 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
                                                  this->mSettings.successColor,
                                                  false)};
 
-  if (lUserAnswer == ButtonClicked::Yes)
+  if (lUserAnswer == ButtonClicked::YES)
   {
     aEvent->accept();
   }
-  else if (lUserAnswer == ButtonClicked::Other)
+  else if (lUserAnswer == ButtonClicked::OTHER)
   {
     this->saveProject(true);
     aEvent->accept();
@@ -306,7 +306,7 @@ void MFBOPresetCreator::showWindow()
   }
 
   // Select the main window opening mode
-  if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Minimized)
+  if (mSettings.mainWindowOpeningMode == WindowOpeningMode::MINIMIZED)
   {
     this->showMinimized();
 
@@ -322,7 +322,7 @@ void MFBOPresetCreator::showWindow()
     delete finfo;
     finfo = nullptr;
   }
-  else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Windowed)
+  else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::WINDOWED)
   {
     this->show();
   }
@@ -331,7 +331,7 @@ void MFBOPresetCreator::showWindow()
   auto lPosY{(lScreenGeom.height() - this->frameGeometry().height()) / 2 + 31};
   this->setGeometry(QRect(lPosX, lPosY, this->geometry().width(), this->geometry().height()));
 
-  if (mSettings.mainWindowOpeningMode == WindowOpeningMode::Maximized)
+  if (mSettings.mainWindowOpeningMode == WindowOpeningMode::MAXIMIZED)
   {
     this->showMaximized();
   }
@@ -343,36 +343,36 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
 
   switch (this->mSettings.appTheme)
   {
-    case GUITheme::WindowsVista:
+    case GUITheme::WINDOWS_VISTA:
       break;
-    case GUITheme::PaperLight:
+    case GUITheme::PAPER_LIGHT:
       lQSSFileName = "Paper Light by 6788";
       break;
-    case GUITheme::PaperDark:
+    case GUITheme::PAPER_DARK:
       lQSSFileName = "Paper Dark by 6788";
       break;
-    case GUITheme::PaperWhiteMono:
+    case GUITheme::PAPER_WHITE_MONO:
       lQSSFileName = "Paper White Mono";
       break;
-    case GUITheme::PaperBlackMono:
+    case GUITheme::PAPER_BLACK_MONO:
       lQSSFileName = "Paper Black Mono";
       break;
-    case GUITheme::AlexhuszaghBreezeLight:
+    case GUITheme::ALEXHUSZAGH_BREEZE_LIGHT:
       lQSSFileName = "Alexhuszagh's Breeze Light";
       break;
-    case GUITheme::AlexhuszaghBreezeDark:
+    case GUITheme::ALEXHUSZAGH_BREEZE_DARK:
       lQSSFileName = "Alexhuszagh's Breeze Dark";
       break;
-    case GUITheme::QuasarAppDarkStyle:
+    case GUITheme::QUASAR_APP_DARK_STYLE:
       lQSSFileName = "QuasarApp's Dark Style";
       break;
-    case GUITheme::QuasarAppVisualStudioDark:
+    case GUITheme::QUASAR_APP_VISUAL_STUDIO_DARK:
       lQSSFileName = "QuasarApp's Visual Studio Dark";
       break;
-    case GUITheme::MitsuriouLightTheme:
+    case GUITheme::MITSURIOU_LIGHT_THEME:
       lQSSFileName = "Mitsuriou's Light Theme";
       break;
-    case GUITheme::MitsuriouDarkTheme:
+    case GUITheme::MITSURIOU_DARK_THEME:
       lQSSFileName = "Mitsuriou's Dark Theme";
       break;
   }
@@ -586,7 +586,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
                                       this->mSettings.dangerColor,
                                       "",
                                       true)
-        == ButtonClicked::Yes)
+        == ButtonClicked::YES)
     {
       this->launchUpdateDialog();
     }
@@ -662,11 +662,11 @@ void MFBOPresetCreator::quickRelaunch()
                                                  this->mSettings.successColor,
                                                  false)};
 
-  if (lUserAnswer == ButtonClicked::Yes)
+  if (lUserAnswer == ButtonClicked::YES)
   {
     qApp->exit(Utils::EXIT_CODE_REBOOT);
   }
-  else if (lUserAnswer == ButtonClicked::Other)
+  else if (lUserAnswer == ButtonClicked::OTHER)
   {
     this->saveProject(true);
     qApp->exit(Utils::EXIT_CODE_REBOOT);

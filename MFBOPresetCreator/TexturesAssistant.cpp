@@ -55,7 +55,7 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
                                     this->mSettings.successColor,
                                     "",
                                     false)
-      == ButtonClicked::Yes)
+      == ButtonClicked::YES)
   {
     aEvent->accept();
   }
@@ -397,7 +397,7 @@ void TexturesAssistant::launchSearchProcess()
                                       this->mSettings.dangerColor,
                                       "",
                                       true)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       return;
     }

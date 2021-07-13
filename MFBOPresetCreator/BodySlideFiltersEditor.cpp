@@ -63,7 +63,7 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
                                       this->mSettings.successColor,
                                       "",
                                       false)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       aEvent->ignore();
       return;

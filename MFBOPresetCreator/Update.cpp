@@ -90,7 +90,7 @@ void Update::setupInterface()
 void Update::overrideHTMLLinksColor(QString& aHTMLString)
 {
   // If no color change is needed
-  if (this->mSettings.appTheme != GUITheme::MitsuriouLightTheme && this->mSettings.appTheme != GUITheme::MitsuriouDarkTheme)
+  if (this->mSettings.appTheme != GUITheme::MITSURIOU_LIGHT_THEME && this->mSettings.appTheme != GUITheme::MITSURIOU_DARK_THEME)
   {
     return;
   }

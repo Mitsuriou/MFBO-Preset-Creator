@@ -26,7 +26,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   : QWidget(aParent)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
-  , mMinimumFirstColumnWidth(300)
+  , mMinimumFirstColumnWidth(275)
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
@@ -83,7 +83,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
                                       this->mSettings.successColor,
                                       "",
                                       false)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       return;
     }
@@ -169,25 +169,25 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
     auto lRole{static_cast<AssistedConversionRole>(lResult.getRole())};
     switch (lRole)
     {
-      case AssistedConversionRole::Body:
+      case AssistedConversionRole::BODY:
         this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText(lResult.getPath());
         this->findChild<QLineEdit*>("body_mesh_name_input")->setText(lResult.getName());
 
         lBodiesHaveBeenSet = true;
         break;
-      case AssistedConversionRole::Feet:
+      case AssistedConversionRole::FEET:
         this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText(lResult.getPath());
         this->findChild<QLineEdit*>("feet_mesh_name_input")->setText(lResult.getName());
 
         lFeetHaveBeenSet = true;
         break;
-      case AssistedConversionRole::Hands:
+      case AssistedConversionRole::HANDS:
         this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText(lResult.getPath());
         this->findChild<QLineEdit*>("hands_mesh_name_input")->setText(lResult.getName());
 
         lHandsHaveBeenSet = true;
         break;
-      case AssistedConversionRole::Skeleton:
+      case AssistedConversionRole::SKELETON:
         auto lNeedCustomSkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")};
         if (!lNeedCustomSkeleton->isChecked())
         {
@@ -271,7 +271,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
                                       this->mSettings.warningColor,
                                       "",
                                       false)
-        == ButtonClicked::Yes)
+        == ButtonClicked::YES)
     {
       // Clear the body path
       if (!lBodiesHaveBeenSet)
@@ -517,11 +517,6 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setColumnStretch(0, 0);
-  lBodyslideGridLayout->setColumnStretch(1, 1);
-  lBodyslideGridLayout->setColumnStretch(2, 1);
-  lBodyslideGridLayout->setColumnStretch(3, 2);
-  lBodyslideGridLayout->setColumnStretch(4, 0);
   lBodyslideGridLayout->setSpacing(10);
   lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
   lBodyslideGridLayout->setAlignment(Qt::AlignTop);
@@ -532,6 +527,10 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 
   lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
+  auto lBodyNameVersionWrapper{new QHBoxLayout(lBodyslideGroupBox)};
+  lBodyNameVersionWrapper->setMargin(0);
+  lBodyslideGridLayout->addLayout(lBodyNameVersionWrapper, 0, 1);
+
   // Body Name
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -539,7 +538,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyNameSelector->addItems(DataLists::getBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  lBodyslideGridLayout->addWidget(lBodyNameSelector, 0, 1);
+  lBodyNameVersionWrapper->addWidget(lBodyNameSelector);
 
   // Body Version
   auto lBodyVersionSelector{new QComboBox(this)};
@@ -548,7 +547,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  lBodyslideGridLayout->addWidget(lBodyVersionSelector, 0, 2);
+  lBodyNameVersionWrapper->addWidget(lBodyVersionSelector);
 
   // Feet mod chooser
   auto lFeetSelector{new QComboBox(this)};
@@ -557,14 +556,16 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lFeetSelector->addItems(DataLists::getFeetModsEntries());
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
-  lBodyslideGridLayout->addWidget(lFeetSelector, 0, 3);
+  lBodyNameVersionWrapper->addWidget(lFeetSelector);
+
+  lBodyNameVersionWrapper->addStretch();
 
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
-  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
+  lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1);
 
   // Third line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 2, 0);
@@ -572,7 +573,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
   lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
   lPathsNamesOspXmlNames->setAutoFillBackground(true);
-  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 4);
+  lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1);
 
   // Fourth line
   auto lNamesInApp{new QLabel(this)};
@@ -586,31 +587,36 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
   lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
-  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
+  lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1);
 
   // Fifth line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
 
   auto lResultNamesInApp{new QLabel("", this)};
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
-  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
+  lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1);
 
-  // Sixth line
+  // Filters
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 5, 0);
+
+  auto lFiltersWrapper{new QHBoxLayout(lBodyslideGroupBox)};
+  lFiltersWrapper->setMargin(0);
+  lBodyslideGridLayout->addLayout(lFiltersWrapper, 5, 1);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   lFiltersListChooser->setCursor(Qt::PointingHandCursor);
   lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
-  lBodyslideGridLayout->addWidget(lFiltersListChooser, 5, 1);
+  lFiltersWrapper->addWidget(lFiltersListChooser);
 
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName("bodyslide_filters");
+  lFiltersList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   lFiltersList->setWordWrap(true);
-  lBodyslideGridLayout->addWidget(lFiltersList, 5, 2, 1, 2);
+  lFiltersWrapper->addWidget(lFiltersList);
 
   auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "", lIconFolder, "edit_filters")};
-  lBodyslideGridLayout->addWidget(lEditFilters, 5, 4);
+  lFiltersWrapper->addWidget(lEditFilters);
 
   // Pre-bind initialization functions
   this->updateOSPXMLPreview(QString());
@@ -1355,7 +1361,7 @@ void PresetCreator::generateDirectoryStructure()
                                       this->mSettings.dangerColor,
                                       "",
                                       true)
-        != ButtonClicked::Yes)
+        != ButtonClicked::YES)
     {
       return;
     }
@@ -1508,7 +1514,7 @@ void PresetCreator::generateDirectoryStructure()
                                       "",
                                       "",
                                       false)
-        == ButtonClicked::Yes)
+        == ButtonClicked::YES)
     {
       // Open the directory where the file structure has been created
       QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));

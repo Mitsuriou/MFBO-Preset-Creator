@@ -5,7 +5,14 @@
         "UUNP 3BBB",
         "Unified UNP"
     ],
-    "CBBE Default": [
+    "CBBE 3BBB 3BA Default": [
+        "MFBO",
+        "CBBE",
+        "3BBB",
+        "3BA",
+        "CBBE Bodies"
+    ],
+    "CBBE 3BBB SMP Default": [
         "MFBO",
         "CBBE",
         "CBBE Bodies"

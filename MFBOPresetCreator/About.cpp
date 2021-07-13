@@ -24,7 +24,7 @@ void About::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/info-circle")));
 
   // Hacky window's background color change for Windows Vista theme
-  if (this->mSettings.appTheme == GUITheme::WindowsVista)
+  if (this->mSettings.appTheme == GUITheme::WINDOWS_VISTA)
   {
     this->setStyleSheet("background-color: white;");
   }
@@ -39,7 +39,7 @@ void About::initializeGUI()
 
   // Hacky links' colors override for some themes
   auto lLinksColorOverride{QString()};
-  if (this->mSettings.appTheme == GUITheme::MitsuriouLightTheme || this->mSettings.appTheme == GUITheme::MitsuriouDarkTheme)
+  if (this->mSettings.appTheme == GUITheme::MITSURIOU_LIGHT_THEME || this->mSettings.appTheme == GUITheme::MITSURIOU_DARK_THEME)
   {
     lLinksColorOverride = " style='color: #e95985;'";
   }

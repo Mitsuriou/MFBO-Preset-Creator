@@ -106,22 +106,22 @@ namespace Struct
   struct Settings
   {
   public:
-    GUITheme appTheme{GUITheme::MitsuriouDarkTheme};
+    GUITheme appTheme{GUITheme::MITSURIOU_DARK_THEME};
     bool assistedConversionScanOnlyMeshesSubdir{false};
     QString batchConversionOutputPath{""};
     bool checkForUpdatesAtStartup{true};
     QString dangerColor{"#f44034"};
-    BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
+    BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
     int defaultMainFeetMod{0};
-    BodyNameVersion defaultMainWindowBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
-    BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_40};
+    BodyNameVersion defaultMainWindowBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
+    BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
     int defaultRetargetingToolFeetMod{0};
     bool eachButtonSavesItsLastUsedPath{true};
     Struct::Font font;
     ApplicationLanguage language{LangManager::getSystemLanguage()};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
     int mainWindowHeight{620};
-    WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::Windowed};
+    WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
     QString mainWindowOutputPath{""};
     int mainWindowWidth{1000};
     QString successColor{"#48c774"};
