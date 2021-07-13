@@ -116,8 +116,7 @@
         <file alias="Paper White Mono.qss">ressources/qss/Paper White Mono.qss</file>
         <file alias="Alexhuszagh's Breeze Dark.qss">ressources/qss/Alexhuszagh's Breeze Dark.qss</file>
         <file alias="Alexhuszagh's Breeze Light.qss">ressources/qss/Alexhuszagh's Breeze Light.qss</file>
-        <file alias="QuasarApp's Dark Style.qss">ressources/qss/QuasarApp's Dark Style.qss</file>
-        <file alias="QuasarApp's Visual Studio Dark.qss">ressources/qss/QuasarApp's Visual Studio Dark.qss</file>
+        <file alias="Mitsuriou's Black Theme.qss">ressources/qss/Mitsuriou's Black Theme.qss</file>
         <file alias="Mitsuriou's Dark Theme.qss">ressources/qss/Mitsuriou's Dark Theme.qss</file>
         <file alias="Mitsuriou's Light Theme.qss">ressources/qss/Mitsuriou's Light Theme.qss</file>
     </qresource>
@@ -349,46 +348,9 @@
         <file>ressources/qss/Alexhuszagh Breeze Light/up_arrow-hover.svg</file>
         <file>ressources/qss/Alexhuszagh Breeze Light/vmovetoolbar.svg</file>
         <file>ressources/qss/Alexhuszagh Breeze Light/vsepartoolbars.svg</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/branch_closed.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/branch_closed-on.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/branch_open.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/branch_open-on.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_checked.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_checked_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_checked_focus.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_indeterminate.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_indeterminate_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_indeterminate_focus.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_unchecked.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_unchecked_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/checkbox_unchecked_focus.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/close.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/close-hover.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/close-pressed.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/down_arrow.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/down_arrow_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/Hmovetoolbar.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/Hsepartoolbar.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/left_arrow.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/left_arrow_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/radio_checked.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/radio_checked_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/radio_checked_focus.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/radio_unchecked.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/radio_unchecked_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/radio_unchecked_focus.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/right_arrow.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/right_arrow_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/sizegrip.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/stylesheet-branch-end.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/stylesheet-branch-more.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/stylesheet-vline.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/transparent.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/undock.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/up_arrow.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/up_arrow_disabled.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/Vmovetoolbar.png</file>
-        <file>ressources/qss/QuasarApp QStyleSheet/Vsepartoolbar.png</file>
+    </qresource>
+    <qresource prefix="/mitsuriou_black">
+        <file alias="menu-down">ressources/qss/Mitsuriou's Black Theme/menu-down.png</file>
     </qresource>
     <qresource prefix="/mitsuriou_dark">
         <file alias="menu-down">ressources/qss/Mitsuriou's Dark Theme/menu-down.png</file>
@@ -406,53 +368,39 @@
     <qresource prefix="/presets/body">
         <file alias="cbbe 3bbb 3ba/1.50">ressources/body/cbbe 3bbb 3ba/1.50.osp</file>
         <file alias="cbbe 3bbb 3ba/1.51_to_1.55">ressources/body/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.00_to_2.04">ressources/body/cbbe 3bbb 3ba/2.00_to_2.04.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.05_to_2.06">ressources/body/cbbe 3bbb 3ba/2.05_to_2.06.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.02_to_2.04">ressources/body/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.06">ressources/body/cbbe 3bbb 3ba/2.06.osp</file>
         <file alias="cbbe smp 3bbb/1.2.0">ressources/body/cbbe smp 3bbb/1.2.0.osp</file>
-        <file alias="bhunp 3bbb/2.13">ressources/body/bhunp 3bbb/2.13.osp</file>
-        <file alias="bhunp 3bbb/2.15">ressources/body/bhunp 3bbb/2.15.osp</file>
         <file alias="bhunp 3bbb/2.20">ressources/body/bhunp 3bbb/2.20.osp</file>
         <file alias="bhunp 3bbb/2.25">ressources/body/bhunp 3bbb/2.25.osp</file>
         <file alias="bhunp 3bbb/2.30">ressources/body/bhunp 3bbb/2.30.osp</file>
         <file alias="bhunp 3bbb/2.31">ressources/body/bhunp 3bbb/2.31.osp</file>
         <file alias="bhunp 3bbb/2.35">ressources/body/bhunp 3bbb/2.35.osp</file>
-        <file alias="bhunp 3bbb advanced/2.13">ressources/body/bhunp 3bbb advanced/2.13.osp</file>
-        <file alias="bhunp 3bbb advanced/2.15">ressources/body/bhunp 3bbb advanced/2.15.osp</file>
         <file alias="bhunp 3bbb advanced/2.20">ressources/body/bhunp 3bbb advanced/2.20.osp</file>
         <file alias="bhunp 3bbb advanced/2.25">ressources/body/bhunp 3bbb advanced/2.25.osp</file>
         <file alias="bhunp 3bbb advanced/2.30">ressources/body/bhunp 3bbb advanced/2.30.osp</file>
         <file alias="bhunp 3bbb advanced/2.31">ressources/body/bhunp 3bbb advanced/2.31.osp</file>
         <file alias="bhunp 3bbb advanced/2.35">ressources/body/bhunp 3bbb advanced/2.35.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.13">ressources/body/bhunp 3bbb advanced ver 2/2.13.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.15">ressources/body/bhunp 3bbb advanced ver 2/2.15.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.20">ressources/body/bhunp 3bbb advanced ver 2/2.20.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.25">ressources/body/bhunp 3bbb advanced ver 2/2.25.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.30">ressources/body/bhunp 3bbb advanced ver 2/2.30.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.31">ressources/body/bhunp 3bbb advanced ver 2/2.31.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.35">ressources/body/bhunp 3bbb advanced ver 2/2.35.osp</file>
-        <file alias="bhunp bbp/2.13">ressources/body/bhunp bbp/2.13.osp</file>
-        <file alias="bhunp bbp/2.15">ressources/body/bhunp bbp/2.15.osp</file>
         <file alias="bhunp bbp/2.20">ressources/body/bhunp bbp/2.20.osp</file>
         <file alias="bhunp bbp/2.25">ressources/body/bhunp bbp/2.25.osp</file>
         <file alias="bhunp bbp/2.30">ressources/body/bhunp bbp/2.30.osp</file>
         <file alias="bhunp bbp/2.31">ressources/body/bhunp bbp/2.31.osp</file>
         <file alias="bhunp bbp/2.35">ressources/body/bhunp bbp/2.35.osp</file>
-        <file alias="bhunp bbp advanced/2.13">ressources/body/bhunp bbp advanced/2.13.osp</file>
-        <file alias="bhunp bbp advanced/2.15">ressources/body/bhunp bbp advanced/2.15.osp</file>
         <file alias="bhunp bbp advanced/2.20">ressources/body/bhunp bbp advanced/2.20.osp</file>
         <file alias="bhunp bbp advanced/2.25">ressources/body/bhunp bbp advanced/2.25.osp</file>
         <file alias="bhunp bbp advanced/2.30">ressources/body/bhunp bbp advanced/2.30.osp</file>
         <file alias="bhunp bbp advanced/2.31">ressources/body/bhunp bbp advanced/2.31.osp</file>
         <file alias="bhunp bbp advanced/2.35">ressources/body/bhunp bbp advanced/2.35.osp</file>
-        <file alias="bhunp tbbp/2.13">ressources/body/bhunp tbbp/2.13.osp</file>
-        <file alias="bhunp tbbp/2.15">ressources/body/bhunp tbbp/2.15.osp</file>
         <file alias="bhunp tbbp/2.20">ressources/body/bhunp tbbp/2.20.osp</file>
         <file alias="bhunp tbbp/2.25">ressources/body/bhunp tbbp/2.25.osp</file>
         <file alias="bhunp tbbp/2.30">ressources/body/bhunp tbbp/2.30.osp</file>
         <file alias="bhunp tbbp/2.31">ressources/body/bhunp tbbp/2.31.osp</file>
         <file alias="bhunp tbbp/2.35">ressources/body/bhunp tbbp/2.35.osp</file>
-        <file alias="bhunp tbbp advanced/2.13">ressources/body/bhunp tbbp advanced/2.13.osp</file>
-        <file alias="bhunp tbbp advanced/2.15">ressources/body/bhunp tbbp advanced/2.15.osp</file>
         <file alias="bhunp tbbp advanced/2.20">ressources/body/bhunp tbbp advanced/2.20.osp</file>
         <file alias="bhunp tbbp advanced/2.25">ressources/body/bhunp tbbp advanced/2.25.osp</file>
         <file alias="bhunp tbbp advanced/2.30">ressources/body/bhunp tbbp advanced/2.30.osp</file>
@@ -465,53 +413,39 @@
     <qresource prefix="/presets/feet">
         <file alias="cbbe 3bbb 3ba/1.50">ressources/feet/cbbe 3bbb 3ba/1.50.osp</file>
         <file alias="cbbe 3bbb 3ba/1.51_to_1.55">ressources/feet/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.00_to_2.04">ressources/feet/cbbe 3bbb 3ba/2.00_to_2.04.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.05_to_2.06">ressources/feet/cbbe 3bbb 3ba/2.05_to_2.06.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.02_to_2.04">ressources/feet/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.06">ressources/feet/cbbe 3bbb 3ba/2.06.osp</file>
         <file alias="cbbe smp 3bbb/1.2.0">ressources/feet/cbbe smp 3bbb/1.2.0.osp</file>
-        <file alias="bhunp 3bbb/2.13">ressources/feet/bhunp 3bbb/2.13.osp</file>
-        <file alias="bhunp 3bbb/2.15">ressources/feet/bhunp 3bbb/2.15.osp</file>
         <file alias="bhunp 3bbb/2.20">ressources/feet/bhunp 3bbb/2.20.osp</file>
         <file alias="bhunp 3bbb/2.25">ressources/feet/bhunp 3bbb/2.25.osp</file>
         <file alias="bhunp 3bbb/2.30">ressources/feet/bhunp 3bbb/2.30.osp</file>
         <file alias="bhunp 3bbb/2.31">ressources/feet/bhunp 3bbb/2.31.osp</file>
         <file alias="bhunp 3bbb/2.35">ressources/feet/bhunp 3bbb/2.35.osp</file>
-        <file alias="bhunp 3bbb advanced/2.13">ressources/feet/bhunp 3bbb advanced/2.13.osp</file>
-        <file alias="bhunp 3bbb advanced/2.15">ressources/feet/bhunp 3bbb advanced/2.15.osp</file>
         <file alias="bhunp 3bbb advanced/2.20">ressources/feet/bhunp 3bbb advanced/2.20.osp</file>
         <file alias="bhunp 3bbb advanced/2.25">ressources/feet/bhunp 3bbb advanced/2.25.osp</file>
         <file alias="bhunp 3bbb advanced/2.30">ressources/feet/bhunp 3bbb advanced/2.30.osp</file>
         <file alias="bhunp 3bbb advanced/2.31">ressources/feet/bhunp 3bbb advanced/2.31.osp</file>
         <file alias="bhunp 3bbb advanced/2.35">ressources/feet/bhunp 3bbb advanced/2.35.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.13">ressources/feet/bhunp 3bbb advanced ver 2/2.13.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.15">ressources/feet/bhunp 3bbb advanced ver 2/2.15.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.20">ressources/feet/bhunp 3bbb advanced ver 2/2.20.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.25">ressources/feet/bhunp 3bbb advanced ver 2/2.25.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.30">ressources/feet/bhunp 3bbb advanced ver 2/2.30.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.31">ressources/feet/bhunp 3bbb advanced ver 2/2.31.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.35">ressources/feet/bhunp 3bbb advanced ver 2/2.35.osp</file>
-        <file alias="bhunp bbp/2.13">ressources/feet/bhunp bbp/2.13.osp</file>
-        <file alias="bhunp bbp/2.15">ressources/feet/bhunp bbp/2.15.osp</file>
         <file alias="bhunp bbp/2.20">ressources/feet/bhunp bbp/2.20.osp</file>
         <file alias="bhunp bbp/2.25">ressources/feet/bhunp bbp/2.25.osp</file>
         <file alias="bhunp bbp/2.30">ressources/feet/bhunp bbp/2.30.osp</file>
         <file alias="bhunp bbp/2.31">ressources/feet/bhunp bbp/2.31.osp</file>
         <file alias="bhunp bbp/2.35">ressources/feet/bhunp bbp/2.35.osp</file>
-        <file alias="bhunp bbp advanced/2.13">ressources/feet/bhunp bbp advanced/2.13.osp</file>
-        <file alias="bhunp bbp advanced/2.15">ressources/feet/bhunp bbp advanced/2.15.osp</file>
         <file alias="bhunp bbp advanced/2.20">ressources/feet/bhunp bbp advanced/2.20.osp</file>
         <file alias="bhunp bbp advanced/2.25">ressources/feet/bhunp bbp advanced/2.25.osp</file>
         <file alias="bhunp bbp advanced/2.30">ressources/feet/bhunp bbp advanced/2.30.osp</file>
         <file alias="bhunp bbp advanced/2.31">ressources/feet/bhunp bbp advanced/2.31.osp</file>
         <file alias="bhunp bbp advanced/2.35">ressources/feet/bhunp bbp advanced/2.35.osp</file>
-        <file alias="bhunp tbbp/2.13">ressources/feet/bhunp tbbp/2.13.osp</file>
-        <file alias="bhunp tbbp/2.15">ressources/feet/bhunp tbbp/2.15.osp</file>
         <file alias="bhunp tbbp/2.20">ressources/feet/bhunp tbbp/2.20.osp</file>
         <file alias="bhunp tbbp/2.25">ressources/feet/bhunp tbbp/2.25.osp</file>
         <file alias="bhunp tbbp/2.30">ressources/feet/bhunp tbbp/2.30.osp</file>
         <file alias="bhunp tbbp/2.31">ressources/feet/bhunp tbbp/2.31.osp</file>
         <file alias="bhunp tbbp/2.35">ressources/feet/bhunp tbbp/2.35.osp</file>
-        <file alias="bhunp tbbp advanced/2.13">ressources/feet/bhunp tbbp advanced/2.13.osp</file>
-        <file alias="bhunp tbbp advanced/2.15">ressources/feet/bhunp tbbp advanced/2.15.osp</file>
         <file alias="bhunp tbbp advanced/2.20">ressources/feet/bhunp tbbp advanced/2.20.osp</file>
         <file alias="bhunp tbbp advanced/2.25">ressources/feet/bhunp tbbp advanced/2.25.osp</file>
         <file alias="bhunp tbbp advanced/2.30">ressources/feet/bhunp tbbp advanced/2.30.osp</file>
@@ -524,53 +458,39 @@
     <qresource prefix="/presets/hands">
         <file alias="cbbe 3bbb 3ba/1.50">ressources/hands/cbbe 3bbb 3ba/1.50.osp</file>
         <file alias="cbbe 3bbb 3ba/1.51_to_1.55">ressources/hands/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.00_to_2.04">ressources/hands/cbbe 3bbb 3ba/2.00_to_2.04.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.05_to_2.06">ressources/hands/cbbe 3bbb 3ba/2.05_to_2.06.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.02_to_2.04">ressources/hands/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.06">ressources/hands/cbbe 3bbb 3ba/2.06.osp</file>
         <file alias="cbbe smp 3bbb/1.2.0">ressources/hands/cbbe smp 3bbb/1.2.0.osp</file>
-        <file alias="bhunp 3bbb/2.13">ressources/hands/bhunp 3bbb/2.13.osp</file>
-        <file alias="bhunp 3bbb/2.15">ressources/hands/bhunp 3bbb/2.15.osp</file>
         <file alias="bhunp 3bbb/2.20">ressources/hands/bhunp 3bbb/2.20.osp</file>
         <file alias="bhunp 3bbb/2.25">ressources/hands/bhunp 3bbb/2.25.osp</file>
         <file alias="bhunp 3bbb/2.30">ressources/hands/bhunp 3bbb/2.30.osp</file>
         <file alias="bhunp 3bbb/2.31">ressources/hands/bhunp 3bbb/2.31.osp</file>
         <file alias="bhunp 3bbb/2.35">ressources/hands/bhunp 3bbb/2.35.osp</file>
-        <file alias="bhunp 3bbb advanced/2.13">ressources/hands/bhunp 3bbb advanced/2.13.osp</file>
-        <file alias="bhunp 3bbb advanced/2.15">ressources/hands/bhunp 3bbb advanced/2.15.osp</file>
         <file alias="bhunp 3bbb advanced/2.20">ressources/hands/bhunp 3bbb advanced/2.20.osp</file>
         <file alias="bhunp 3bbb advanced/2.25">ressources/hands/bhunp 3bbb advanced/2.25.osp</file>
         <file alias="bhunp 3bbb advanced/2.30">ressources/hands/bhunp 3bbb advanced/2.30.osp</file>
         <file alias="bhunp 3bbb advanced/2.31">ressources/hands/bhunp 3bbb advanced/2.31.osp</file>
         <file alias="bhunp 3bbb advanced/2.35">ressources/hands/bhunp 3bbb advanced/2.35.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.13">ressources/hands/bhunp 3bbb advanced ver 2/2.13.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.15">ressources/hands/bhunp 3bbb advanced ver 2/2.15.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.20">ressources/hands/bhunp 3bbb advanced ver 2/2.20.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.25">ressources/hands/bhunp 3bbb advanced ver 2/2.25.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.30">ressources/hands/bhunp 3bbb advanced ver 2/2.30.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.31">ressources/hands/bhunp 3bbb advanced ver 2/2.31.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.35">ressources/hands/bhunp 3bbb advanced ver 2/2.35.osp</file>
-        <file alias="bhunp bbp/2.13">ressources/hands/bhunp bbp/2.13.osp</file>
-        <file alias="bhunp bbp/2.15">ressources/hands/bhunp bbp/2.15.osp</file>
         <file alias="bhunp bbp/2.20">ressources/hands/bhunp bbp/2.20.osp</file>
         <file alias="bhunp bbp/2.25">ressources/hands/bhunp bbp/2.25.osp</file>
         <file alias="bhunp bbp/2.30">ressources/hands/bhunp bbp/2.30.osp</file>
         <file alias="bhunp bbp/2.31">ressources/hands/bhunp bbp/2.31.osp</file>
         <file alias="bhunp bbp/2.35">ressources/hands/bhunp bbp/2.35.osp</file>
-        <file alias="bhunp bbp advanced/2.13">ressources/hands/bhunp bbp advanced/2.13.osp</file>
-        <file alias="bhunp bbp advanced/2.15">ressources/hands/bhunp bbp advanced/2.15.osp</file>
         <file alias="bhunp bbp advanced/2.20">ressources/hands/bhunp bbp advanced/2.20.osp</file>
         <file alias="bhunp bbp advanced/2.25">ressources/hands/bhunp bbp advanced/2.25.osp</file>
         <file alias="bhunp bbp advanced/2.30">ressources/hands/bhunp bbp advanced/2.30.osp</file>
         <file alias="bhunp bbp advanced/2.31">ressources/hands/bhunp bbp advanced/2.31.osp</file>
         <file alias="bhunp bbp advanced/2.35">ressources/hands/bhunp bbp advanced/2.35.osp</file>
-        <file alias="bhunp tbbp/2.13">ressources/hands/bhunp tbbp/2.13.osp</file>
-        <file alias="bhunp tbbp/2.15">ressources/hands/bhunp tbbp/2.15.osp</file>
         <file alias="bhunp tbbp/2.20">ressources/hands/bhunp tbbp/2.20.osp</file>
         <file alias="bhunp tbbp/2.25">ressources/hands/bhunp tbbp/2.25.osp</file>
         <file alias="bhunp tbbp/2.30">ressources/hands/bhunp tbbp/2.30.osp</file>
         <file alias="bhunp tbbp/2.31">ressources/hands/bhunp tbbp/2.31.osp</file>
         <file alias="bhunp tbbp/2.35">ressources/hands/bhunp tbbp/2.35.osp</file>
-        <file alias="bhunp tbbp advanced/2.13">ressources/hands/bhunp tbbp advanced/2.13.osp</file>
-        <file alias="bhunp tbbp advanced/2.15">ressources/hands/bhunp tbbp advanced/2.15.osp</file>
         <file alias="bhunp tbbp advanced/2.20">ressources/hands/bhunp tbbp advanced/2.20.osp</file>
         <file alias="bhunp tbbp advanced/2.25">ressources/hands/bhunp tbbp advanced/2.25.osp</file>
         <file alias="bhunp tbbp advanced/2.30">ressources/hands/bhunp tbbp advanced/2.30.osp</file>
@@ -583,8 +503,8 @@
     <qresource prefix="/presets/beast_hands">
         <file alias="cbbe 3bbb 3ba/1.50">ressources/beast hands/cbbe 3bbb 3ba/1.50.osp</file>
         <file alias="cbbe 3bbb 3ba/1.51_to_1.55">ressources/beast hands/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.00_to_2.04">ressources/beast hands/cbbe 3bbb 3ba/2.00_to_2.04.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.05_to_2.06">ressources/beast hands/cbbe 3bbb 3ba/2.05_to_2.06.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.02_to_2.04">ressources/beast hands/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.06">ressources/beast hands/cbbe 3bbb 3ba/2.06.osp</file>
         <file alias="cbbe smp 3bbb/1.2.0">ressources/beast hands/cbbe smp 3bbb/1.2.0.osp</file>
     </qresource>
 </RCC>

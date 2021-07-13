@@ -22,6 +22,8 @@ public:
   static QString cleanBreaksString(const QString& aPath);
   static QStringList splitString(QString aString, const QString& aSeparator);
   static QString getApplicationVersion();
+  static ApplicationVersionRelative compareVersionNumbers(const QString& aVersionNumber);
+  static ApplicationVersionRelative compareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2);
   static void displayWarningMessage(const QString& aMessage);
   static ButtonClicked displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);

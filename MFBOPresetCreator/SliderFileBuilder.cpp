@@ -49,8 +49,8 @@ QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNam
       }
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
       if (aMustUseBeastHands)
       {
         lSliderSet = QString("%1<SliderSet name=\"%2 - CBBE 3BBB Hands Beast\">\n%1%1<DataFolder>CBBE</DataFolder>\n%1%1<SourceFile>CBBE Hands Beast.nif</SourceFile>\n%1%1<OutputPath>{%%hands_output_path%%}</OutputPath>\n%1%1<OutputFile GenWeights=\"true\">{%%hands_output_file%%}</OutputFile>\n%1%1<Shape target=\"Hands\" DataFolder=\"CBBE\">Hands</Shape>\n%1%1<Slider name=\"WristSize\" invert=\"false\" small=\"100\" big=\"0\">\n%1%1%1<Data name=\"HandsWristSize\" target=\"Hands\" local=\"true\">CBBE Hands Beast.osd\\HandsWristSize</Data>\n%1%1</Slider>\n%1</SliderSet>");
@@ -60,20 +60,6 @@ QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNam
         lSliderSet = QString("%1<SliderSet name=\"%2 - CBBE 3BBB Hands\">\n%1%1<DataFolder>CBBE</DataFolder>\n%1%1<SourceFile>CBBE Hands.nif</SourceFile>\n%1%1<OutputPath>{%%hands_output_path%%}</OutputPath>\n%1%1<OutputFile GenWeights=\"true\">{%%hands_output_file%%}</OutputFile>\n%1%1<Shape target=\"Hands\" DataFolder=\"CBBE\">Hands</Shape>\n%1%1<Slider name=\"WristSize\" invert=\"false\" small=\"100\" big=\"0\">\n%1%1%1<Data name=\"HandsWristSize\" target=\"Hands\" local=\"true\">CBBE Hands.osd\\HandsWristSize</Data>\n%1%1</Slider>\n%1</SliderSet>");
       }
       break;
-    case BodyNameVersion::BHUNP_3BBB_2_13:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
-    case BodyNameVersion::BHUNP_BBP_2_13:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_TBBP_2_13:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_3BBB_2_15:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
-    case BodyNameVersion::BHUNP_BBP_2_15:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
-    case BodyNameVersion::BHUNP_TBBP_2_15:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
     case BodyNameVersion::BHUNP_3BBB_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
@@ -225,8 +211,8 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
         }
         break;
       case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+      case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+      case BodyNameVersion::CBBE_3BBB_3BA_2_06:
       case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
@@ -307,8 +293,6 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
           }
         }
         break;
-      case BodyNameVersion::BHUNP_3BBB_2_13:
-      case BodyNameVersion::BHUNP_3BBB_2_15:
       case BodyNameVersion::BHUNP_3BBB_2_20:
       case BodyNameVersion::BHUNP_3BBB_2_25:
       case BodyNameVersion::BHUNP_3BBB_2_30:
@@ -332,8 +316,6 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
           lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
-      case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
-      case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
@@ -357,8 +339,6 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
           lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
-      case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
-      case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
@@ -382,8 +362,6 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
           lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
-      case BodyNameVersion::BHUNP_BBP_2_13:
-      case BodyNameVersion::BHUNP_BBP_2_15:
       case BodyNameVersion::BHUNP_BBP_2_20:
       case BodyNameVersion::BHUNP_BBP_2_25:
       case BodyNameVersion::BHUNP_BBP_2_30:
@@ -407,8 +385,6 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
           lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
-      case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
-      case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
       case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
       case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
       case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
@@ -432,8 +408,6 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
           lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
-      case BodyNameVersion::BHUNP_TBBP_2_13:
-      case BodyNameVersion::BHUNP_TBBP_2_15:
       case BodyNameVersion::BHUNP_TBBP_2_20:
       case BodyNameVersion::BHUNP_TBBP_2_25:
       case BodyNameVersion::BHUNP_TBBP_2_30:
@@ -457,8 +431,6 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const s
           lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
-      case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
-      case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
       case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
       case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
       case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
@@ -549,8 +521,8 @@ std::vector<Struct::Filter> SliderFileBuilder::getXMLDefaultFiltersFromBody(cons
         [[fallthrough]];
       case BodyNameVersion::CBBE_3BBB_3BA_1_50:
       case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+      case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+      case BodyNameVersion::CBBE_3BBB_3BA_2_06:
         lDefaultFilters.push_back(Struct::Filter("3BBB", true, true, true));
         break;
     }

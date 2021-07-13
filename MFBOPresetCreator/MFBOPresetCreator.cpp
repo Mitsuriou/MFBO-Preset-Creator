@@ -345,35 +345,32 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   {
     case GUITheme::WINDOWS_VISTA:
       break;
-    case GUITheme::PAPER_LIGHT:
-      lQSSFileName = "Paper Light by 6788";
+    case GUITheme::MITSURIOU_BLACK_THEME:
+      lQSSFileName = "Mitsuriou's Black Theme";
       break;
-    case GUITheme::PAPER_DARK:
-      lQSSFileName = "Paper Dark by 6788";
-      break;
-    case GUITheme::PAPER_WHITE_MONO:
-      lQSSFileName = "Paper White Mono";
-      break;
-    case GUITheme::PAPER_BLACK_MONO:
-      lQSSFileName = "Paper Black Mono";
-      break;
-    case GUITheme::ALEXHUSZAGH_BREEZE_LIGHT:
-      lQSSFileName = "Alexhuszagh's Breeze Light";
-      break;
-    case GUITheme::ALEXHUSZAGH_BREEZE_DARK:
-      lQSSFileName = "Alexhuszagh's Breeze Dark";
-      break;
-    case GUITheme::QUASAR_APP_DARK_STYLE:
-      lQSSFileName = "QuasarApp's Dark Style";
-      break;
-    case GUITheme::QUASAR_APP_VISUAL_STUDIO_DARK:
-      lQSSFileName = "QuasarApp's Visual Studio Dark";
+    case GUITheme::MITSURIOU_DARK_THEME:
+      lQSSFileName = "Mitsuriou's Dark Theme";
       break;
     case GUITheme::MITSURIOU_LIGHT_THEME:
       lQSSFileName = "Mitsuriou's Light Theme";
       break;
-    case GUITheme::MITSURIOU_DARK_THEME:
-      lQSSFileName = "Mitsuriou's Dark Theme";
+    case GUITheme::ALEXHUSZAGH_BREEZE_DARK:
+      lQSSFileName = "Alexhuszagh's Breeze Dark";
+      break;
+    case GUITheme::ALEXHUSZAGH_BREEZE_LIGHT:
+      lQSSFileName = "Alexhuszagh's Breeze Light";
+      break;
+    case GUITheme::PAPER_DARK:
+      lQSSFileName = "Paper Dark by 6788";
+      break;
+    case GUITheme::PAPER_LIGHT:
+      lQSSFileName = "Paper Light by 6788";
+      break;
+    case GUITheme::PAPER_BLACK_MONO:
+      lQSSFileName = "Paper Black Mono";
+      break;
+    case GUITheme::PAPER_WHITE_MONO:
+      lQSSFileName = "Paper White Mono";
       break;
   }
 

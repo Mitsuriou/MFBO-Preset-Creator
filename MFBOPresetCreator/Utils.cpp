@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QStandardPaths>
+#include <QVersionNumber>
 #include <QtXml/QDomDocument>
 #include <iostream>
 #include <windows.h>
@@ -94,6 +95,49 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
 QString Utils::getApplicationVersion()
 {
   return qApp->applicationVersion();
+}
+
+ApplicationVersionRelative Utils::compareVersionNumbers(const QString& aVersionNumber)
+{
+  return Utils::compareVersionNumbers(aVersionNumber, Utils::getApplicationVersion());
+}
+
+ApplicationVersionRelative Utils::compareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2)
+{
+  auto lVersion1{QVersionNumber::fromString(aVersionNumber1).normalized()};
+  auto lVersion2{QVersionNumber::fromString(aVersionNumber2).normalized()};
+
+  // MAJOR
+  if (lVersion1.majorVersion() < lVersion2.majorVersion())
+  {
+    return ApplicationVersionRelative::OLDER;
+  }
+  if (lVersion1.majorVersion() > lVersion2.majorVersion())
+  {
+    return ApplicationVersionRelative::NEWER;
+  }
+
+  // MINOR
+  if (lVersion1.minorVersion() < lVersion2.minorVersion())
+  {
+    return ApplicationVersionRelative::OLDER;
+  }
+  if (lVersion1.minorVersion() > lVersion2.minorVersion())
+  {
+    return ApplicationVersionRelative::NEWER;
+  }
+
+  // MICRO
+  if (lVersion1.microVersion() < lVersion2.microVersion())
+  {
+    return ApplicationVersionRelative::OLDER;
+  }
+  if (lVersion1.microVersion() > lVersion2.microVersion())
+  {
+    return ApplicationVersionRelative::NEWER;
+  }
+
+  return ApplicationVersionRelative::EQUIVALENT;
 }
 
 void Utils::displayWarningMessage(const QString& aMessage)
@@ -307,12 +351,11 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
   {
+    case GUITheme::MITSURIOU_BLACK_THEME:
+    case GUITheme::MITSURIOU_DARK_THEME:
+    case GUITheme::ALEXHUSZAGH_BREEZE_DARK:
     case GUITheme::PAPER_DARK:
     case GUITheme::PAPER_BLACK_MONO:
-    case GUITheme::ALEXHUSZAGH_BREEZE_DARK:
-    case GUITheme::QUASAR_APP_DARK_STYLE:
-    case GUITheme::QUASAR_APP_VISUAL_STUDIO_DARK:
-    case GUITheme::MITSURIOU_DARK_THEME:
       return true;
     default:
       return false;
@@ -330,8 +373,8 @@ bool Utils::isCBBEBasedBody(const BodyNameVersion& aBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       return true;
@@ -534,8 +577,8 @@ QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMus
         lHandsValue = QString("%1 - CBBE 3BBB Hands");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       if (aMustUseBeastHands)
         lHandsValue = QString("%1 - CBBE 3BBB Hands Beast");
@@ -568,28 +611,14 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
       {
         case BodyNameVersion::CBBE_3BBB_3BA_1_50:
         case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-        case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-        case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+        case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+        case BodyNameVersion::CBBE_3BBB_3BA_2_06:
         case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
           lFeetValue = QString("%1 - CBBE 3BBB Feet");
           break;
         case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
           lFeetValue = QString("%1 - CBBE Feet");
           break;
-        case BodyNameVersion::BHUNP_3BBB_2_13:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
-        case BodyNameVersion::BHUNP_BBP_2_13:
-        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
-        case BodyNameVersion::BHUNP_TBBP_2_13:
-        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
-        case BodyNameVersion::BHUNP_3BBB_2_15:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
-        case BodyNameVersion::BHUNP_BBP_2_15:
-        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
-        case BodyNameVersion::BHUNP_TBBP_2_15:
-        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
         case BodyNameVersion::BHUNP_3BBB_2_20:
         case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
         case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
@@ -652,16 +681,14 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       lBodyValue = QString("%1 - CBBE 3BBB Body Amazing");
       break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       lBodyValue = QString("%1 - CBBE Body SMP (3BBB)");
       break;
-    case BodyNameVersion::BHUNP_3BBB_2_13:
-    case BodyNameVersion::BHUNP_3BBB_2_15:
     case BodyNameVersion::BHUNP_3BBB_2_20:
     case BodyNameVersion::BHUNP_3BBB_2_25:
     case BodyNameVersion::BHUNP_3BBB_2_30:
@@ -669,8 +696,6 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_3BBB_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB");
       break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
@@ -678,8 +703,6 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced");
       break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
@@ -687,8 +710,6 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2");
       break;
-    case BodyNameVersion::BHUNP_BBP_2_13:
-    case BodyNameVersion::BHUNP_BBP_2_15:
     case BodyNameVersion::BHUNP_BBP_2_20:
     case BodyNameVersion::BHUNP_BBP_2_25:
     case BodyNameVersion::BHUNP_BBP_2_30:
@@ -696,8 +717,6 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_BBP_2_35:
       lBodyValue = QString("%1 - BHUNP BBP");
       break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
@@ -705,8 +724,6 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
       lBodyValue = QString("%1 - BHUNP BBP Advanced");
       break;
-    case BodyNameVersion::BHUNP_TBBP_2_13:
-    case BodyNameVersion::BHUNP_TBBP_2_15:
     case BodyNameVersion::BHUNP_TBBP_2_20:
     case BodyNameVersion::BHUNP_TBBP_2_25:
     case BodyNameVersion::BHUNP_TBBP_2_30:
@@ -714,8 +731,6 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
     case BodyNameVersion::BHUNP_TBBP_2_35:
       lBodyValue = QString("%1 - BHUNP TBBP");
       break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
@@ -963,26 +978,26 @@ Struct::Settings Utils::loadSettingsFromFile()
   // JSON format upgrade from v2.10.2.0 to 3.0.0.0
   if (!lSettingsJSON.contains("applicationVersion"))
   {
-    //windowWidth -> mainWindowWidth
+    // "windowWidth" -> "mainWindowWidth"
     if (lSettingsJSON.contains("windowWidth") && lSettingsJSON["windowWidth"].isDouble())
     {
       lSettings.mainWindowWidth = lSettingsJSON["windowWidth"].toInt();
     }
 
-    //windowHeight -> mainWindowHeight
+    // "windowHeight" -> "mainWindowHeight"
     if (lSettingsJSON.contains("windowHeight") && lSettingsJSON["windowHeight"].isDouble())
     {
       lSettings.mainWindowHeight = lSettingsJSON["windowHeight"].toInt();
     }
 
-    //retargetingToolDefaultBody -> defaultRetargetingToolBody
+    // "retargetingToolDefaultBody" -> "defaultRetargetingToolBody"
     if (lSettingsJSON.contains("retargetingToolDefaultBody") && lSettingsJSON["retargetingToolDefaultBody"].isDouble())
     {
       auto lFoundBody{lSettingsJSON["retargetingToolDefaultBody"].toInt()};
       lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
     }
 
-    //defaultBody -> defaultMainWindowBody
+    // "defaultBody" -> "defaultMainWindowBody"
     if (lSettingsJSON.contains("defaultBody") && lSettingsJSON["defaultBody"].isDouble())
     {
       auto lFoundBody{lSettingsJSON["defaultBody"].toInt()};
@@ -992,12 +1007,25 @@ Struct::Settings Utils::loadSettingsFromFile()
     Utils::saveSettingsToFile(lSettings);
     Utils::printMessageStdOut("User settings upgraded!");
   }
-  // Put the line below for each new version of the JSON format
-  //else if (lSettingsJSON.contains("version") && lSettingsJSON["version"].isString() && lSettingsJSON["version"].toString() == "x.x.x.x")
-  //{}
+  // For any JSON format upgrade / settings values changed
+  else
+  {
+    auto lSettingsVersion{lSettingsJSON["applicationVersion"].toString()};
+
+    if (Utils::compareVersionNumbers(lSettingsVersion, "3.2.0.0") == ApplicationVersionRelative::OLDER)
+    {
+      lSettings.defaultMainWindowBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
+      lSettings.defaultRetargetingToolBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
+      lSettings.defaultBatchConversionBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
+      lSettings.appTheme = GUITheme::MITSURIOU_DARK_THEME;
+
+      Utils::saveSettingsToFile(lSettings);
+      Utils::printMessageStdOut("User settings upgraded!");
+    }
+  }
 
   Utils::printMessageStdOut("User settings:");
-  Utils::printMessageStdOut(QJsonDocument(lSettingsJSON).toJson(QJsonDocument::JsonFormat::Indented));
+  Utils::printMessageStdOut(QJsonDocument(Utils::settingsStructToJson(lSettings)).toJson(QJsonDocument::JsonFormat::Indented));
 
   return lSettings;
 }
@@ -1492,7 +1520,7 @@ void Utils::printMessageStdOut(const QString& aMessage)
   {
     std::cout << std::endl;
   }
-  else if (aMessage.endsWith("...") || aMessage.endsWith(":") || aMessage.endsWith("\n"))
+  else if (aMessage.endsWith(".") || aMessage.endsWith(":") || aMessage.endsWith("!") || aMessage.endsWith("?") || aMessage.endsWith("\n"))
   {
     std::cout << aMessage.toStdString() << std::endl;
   }

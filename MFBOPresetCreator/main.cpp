@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
     Utils::RESTART_PENDING = false;
 
     qApp->setAttribute(Qt::AA_EnableHighDpiScaling);
-    qApp->setApplicationVersion("3.1.2.0");
+    qApp->setApplicationVersion("3.2.0.0");
     const auto& lAppVersion{Utils::getApplicationVersion()};
 
     Utils::printMessageStdOut("Creating the application instance...");

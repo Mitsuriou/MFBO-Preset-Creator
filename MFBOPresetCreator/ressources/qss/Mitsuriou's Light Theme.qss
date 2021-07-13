@@ -62,7 +62,7 @@ QCheckBox::indicator {
 }
 
 QCheckBox::indicator::checked {
-  background-color: qlineargradient(x1:0 y1:0, x2:1 y2:1, stop:0 #FF558D, stop:1 rgb(106,130,251));;
+  background-color: qlineargradient(x1:0 y1:0, x2:1 y2:1, stop:0 #FF558D, stop:1 rgb(106,130,251));
 }
 
 QCheckBox::indicator::checked::hover {

@@ -23,7 +23,7 @@ QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
   switch (aBody)
   {
     case BodyName::CBBE_3BBB_3BA:
-      lBodies = QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.00 to 2.04"), QString("2.05 to 2.06")});
+      lBodies = QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06")});
       break;
     case BodyName::CBBE_SMP_3BBB:
       lBodies.append(QString("1.2.0"));
@@ -35,7 +35,7 @@ QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
     case BodyName::BHUNP_BBP_ADVANCED:
     case BodyName::BHUNP_TBBP:
     case BodyName::BHUNP_TBBP_ADVANCED:
-      lBodies = QStringList({QString("2.13"), QString("2.15"), QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 & 2.36")});
+      lBodies = QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.36")});
       break;
     case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
       lBodies = QStringList({QString("2.25"), QString("2.30")});
@@ -50,22 +50,28 @@ QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
 
 BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int aRelativeVersion)
 {
+  // Ignore the cases where the checkboxes have no index selected
+  if (aRelativeVersion == -1)
+  {
+    return BodyNameVersion::INVALID_VALUE;
+  }
+
   // Calculate an offset since the bodies versions are not sorted
   auto lOffset{0};
 
   auto lBody{static_cast<int>(aBody)};
 
-  // "CBBE 3BBB 3BA 2.00 -> 2.04" == 32, "CBBE 3BBB 3BA 2.05 -> 2.06" == 33
-  if (lBody == 0 && (aRelativeVersion == 3 || aRelativeVersion == 4))
+  // "2.02 to 2.04" & "2.06"
+  if (lBody == 0 && aRelativeVersion > 1)
   {
-    lOffset = 29;
+    lOffset = 15;
   }
   // BHUNP v2.30
-  else if ((lBody >= 2 && lBody <= 8) && (aRelativeVersion == 4))
+  else if ((lBody >= 2 && lBody <= 8) && aRelativeVersion == 2)
   {
     lOffset = 2;
   }
-  else if ((lBody >= 2 && lBody <= 8) && (aRelativeVersion == 5 || aRelativeVersion == 6))
+  else if ((lBody >= 2 && lBody <= 8) && aRelativeVersion > 2)
   {
     lOffset = 4;
   }
@@ -75,28 +81,28 @@ BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int a
     case BodyName::CBBE_3BBB_3BA:
       return static_cast<BodyNameVersion>(aRelativeVersion + lOffset);
     case BodyName::CBBE_SMP_3BBB:
-      return static_cast<BodyNameVersion>(3);
+      return static_cast<BodyNameVersion>(2);
     case BodyName::BHUNP_3BBB:
-      return static_cast<BodyNameVersion>(4 + 7 * aRelativeVersion + lOffset);
+      return static_cast<BodyNameVersion>(3 + 7 * aRelativeVersion + lOffset);
     case BodyName::BHUNP_3BBB_ADVANCED:
-      return static_cast<BodyNameVersion>(5 + 7 * aRelativeVersion + lOffset);
+      return static_cast<BodyNameVersion>(4 + 7 * aRelativeVersion + lOffset);
     case BodyName::BHUNP_3BBB_ADVANCED_VER_2:
-      return static_cast<BodyNameVersion>(6 + 7 * aRelativeVersion + lOffset);
+      return static_cast<BodyNameVersion>(5 + 7 * aRelativeVersion + lOffset);
     case BodyName::BHUNP_BBP:
-      return static_cast<BodyNameVersion>(7 + 7 * aRelativeVersion + lOffset);
+      return static_cast<BodyNameVersion>(6 + 7 * aRelativeVersion + lOffset);
     case BodyName::BHUNP_BBP_ADVANCED:
-      return static_cast<BodyNameVersion>(8 + 7 * aRelativeVersion + lOffset);
+      return static_cast<BodyNameVersion>(7 + 7 * aRelativeVersion + lOffset);
     case BodyName::BHUNP_TBBP:
-      return static_cast<BodyNameVersion>(9 + 7 * aRelativeVersion + lOffset);
+      return static_cast<BodyNameVersion>(8 + 7 * aRelativeVersion + lOffset);
     case BodyName::BHUNP_TBBP_ADVANCED:
-      return static_cast<BodyNameVersion>(10 + 7 * aRelativeVersion + lOffset);
+      return static_cast<BodyNameVersion>(9 + 7 * aRelativeVersion + lOffset);
     case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-      return static_cast<BodyNameVersion>(41 + aRelativeVersion);
+      return static_cast<BodyNameVersion>(26 + aRelativeVersion);
     case BodyName::MIMIR_EBONIC_BODY:
-      return static_cast<BodyNameVersion>(57 + aRelativeVersion);
+      return static_cast<BodyNameVersion>(42 + aRelativeVersion);
   }
 
-  return BodyNameVersion::CBBE_3BBB_3BA_1_50;
+  return BodyNameVersion::INVALID_VALUE;
 }
 
 std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion)
@@ -105,29 +111,13 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-      return std::pair<int, int>(0, static_cast<int>(aBodyVersion));
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
-      return std::pair<int, int>(0, 3);
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
-      return std::pair<int, int>(0, 4);
+      return std::pair<int, int>(static_cast<int>(BodyName::CBBE_3BBB_3BA), static_cast<int>(aBodyVersion));
+    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+      return std::pair<int, int>(static_cast<int>(BodyName::CBBE_3BBB_3BA), 2);
+    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
+      return std::pair<int, int>(static_cast<int>(BodyName::CBBE_3BBB_3BA), 3);
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      return std::pair<int, int>(1, 0);
-    case BodyNameVersion::BHUNP_3BBB_2_13:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
-    case BodyNameVersion::BHUNP_BBP_2_13:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
-    case BodyNameVersion::BHUNP_TBBP_2_13:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
-      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 2, 0);
-    case BodyNameVersion::BHUNP_3BBB_2_15:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
-    case BodyNameVersion::BHUNP_BBP_2_15:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
-    case BodyNameVersion::BHUNP_TBBP_2_15:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
-      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 9, 1);
+      return std::pair<int, int>(static_cast<int>(BodyName::CBBE_SMP_3BBB), 0);
     case BodyNameVersion::BHUNP_3BBB_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
@@ -135,7 +125,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_TBBP_2_20:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
-      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 16, 2);
+      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 1, 0);
     case BodyNameVersion::BHUNP_3BBB_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
@@ -143,7 +133,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_TBBP_2_25:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
-      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 23, 3);
+      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 8, 1);
     case BodyNameVersion::BHUNP_3BBB_2_30:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
@@ -151,10 +141,10 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_TBBP_2_30:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
-      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 32, 4);
+      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 17, 2);
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
-      return std::pair<int, int>(9, static_cast<int>(aBodyVersion) - 41);
+      return std::pair<int, int>(static_cast<int>(BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE), static_cast<int>(aBodyVersion) - 26);
     case BodyNameVersion::BHUNP_3BBB_2_31:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
@@ -162,7 +152,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
     case BodyNameVersion::BHUNP_TBBP_2_31:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
-      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 41, 5);
+      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 26, 3);
     case BodyNameVersion::BHUNP_3BBB_2_35:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
@@ -170,9 +160,9 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
     case BodyNameVersion::BHUNP_TBBP_2_35:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
-      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 48, 6);
+      return std::pair<int, int>(static_cast<int>(aBodyVersion) - 33, 4);
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-      return std::pair<int, int>(10, static_cast<int>(aBodyVersion));
+      return std::pair<int, int>(static_cast<int>(BodyName::MIMIR_EBONIC_BODY), static_cast<int>(aBodyVersion));
   }
 
   return std::pair<int, int>(-1, -1);
@@ -191,48 +181,6 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const QS
       break;
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       lPath.append("cbbe smp 3bbb/1.2.0");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_13:
-      lPath.append("bhunp 3bbb/2.13");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_13:
-      lPath.append("bhunp 3bbb advanced/2.13");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_13:
-      lPath.append("bhunp 3bbb advanced ver 2/2.13");
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_13:
-      lPath.append("bhunp bbp/2.13");
-      break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_13:
-      lPath.append("bhunp bbp advanced/2.13");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_13:
-      lPath.append("bhunp tbbp/2.13");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_13:
-      lPath.append("bhunp tbbp advanced/2.13");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_15:
-      lPath.append("bhunp 3bbb/2.15");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_15:
-      lPath.append("bhunp 3bbb advanced/2.15");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_15:
-      lPath.append("bhunp 3bbb advanced ver 2/2.15");
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_15:
-      lPath.append("bhunp bbp/2.15");
-      break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_15:
-      lPath.append("bhunp bbp advanced/2.15");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_15:
-      lPath.append("bhunp tbbp/2.15");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_15:
-      lPath.append("bhunp tbbp advanced/2.15");
       break;
     case BodyNameVersion::BHUNP_3BBB_2_20:
       lPath.append("bhunp 3bbb/2.20");
@@ -276,10 +224,10 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const QS
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
       lPath.append("bhunp tbbp advanced/2.25");
       break;
-    case BodyNameVersion::CBBE_3BBB_3BA_2_00_TO_2_04:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
       lPath.append("cbbe 3bbb 3ba/2.00_to_2.04");
       break;
-    case BodyNameVersion::CBBE_3BBB_3BA_2_05_TO_2_06:
+    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
       lPath.append("cbbe 3bbb 3ba/2.05_to_2.06");
       break;
     case BodyNameVersion::BHUNP_3BBB_2_30:
@@ -382,16 +330,15 @@ QStringList DataLists::getAppThemes()
 {
   return QStringList{
     QString("Windows Vista"),
-    QString("Paper Light by 6788"),
-    QString("Paper Dark by 6788"),
-    QString("Paper White Mono"),
-    QString("Paper Black Mono"),
-    QString("Alexhuszagh's Breeze Light"),
-    QString("Alexhuszagh's Breeze Dark"),
-    QString("QuasarApp's Dark Style"),
-    QString("QuasarApp's Visual Studio Dark"),
+    QString("Mitsuriou's Black Theme"),
+    QString("Mitsuriou's Dark Theme"),
     QString("Mitsuriou's Light Theme"),
-    QString("Mitsuriou's Dark Theme")};
+    QString("Alexhuszagh's Breeze Dark"),
+    QString("Alexhuszagh's Breeze Light"),
+    QString("Paper Dark by 6788"),
+    QString("Paper Light by 6788"),
+    QString("Paper Black Mono by 6788"),
+    QString("Paper White Mono by 6788")};
 }
 
 QStringList DataLists::getLanguages()

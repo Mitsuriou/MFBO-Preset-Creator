@@ -39,7 +39,9 @@ void About::initializeGUI()
 
   // Hacky links' colors override for some themes
   auto lLinksColorOverride{QString()};
-  if (this->mSettings.appTheme == GUITheme::MITSURIOU_LIGHT_THEME || this->mSettings.appTheme == GUITheme::MITSURIOU_DARK_THEME)
+  if (this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME
+      || this->mSettings.appTheme == GUITheme::MITSURIOU_DARK_THEME
+      || this->mSettings.appTheme == GUITheme::MITSURIOU_LIGHT_THEME)
   {
     lLinksColorOverride = " style='color: #e95985;'";
   }
@@ -62,7 +64,6 @@ void About::initializeGUI()
       "<li>Some icons were taken from <a%1 href='https://materialdesignicons.com'>MaterialDesignIcons</a> website.</li>"
       "<li>Some GUI themes were taken from <a%1 href='https://github.com/6788-00'>6788-00's GitHub repository</a>.</li>"
       "<li>Some GUI themes were taken from <a%1 href='https://github.com/Alexhuszagh/BreezeStyleSheets'>Alexhuszagh/BreezeStyleSheets GitHub page</a>.</li>"
-      "<li>Some GUI themes were taken from <a%1 href='https://github.com/QuasarApp/QStyleSheet'>QuasarApp/QStyleSheet GitHub page</a>.</li>"
       "</ul><br />"
       "Ressources bundled in this application:<ul style='margin: 0;'>"
       "<li>Some parts of the BodySlide (OSP and XML) files that are generated with MFBOPC were taken from:<ul style='margin: 0;'>"
