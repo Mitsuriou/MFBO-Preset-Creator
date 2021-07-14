@@ -1,0 +1,301 @@
+    <SliderSet name="CBBE Body Physics">
+        <DataFolder>CBBE</DataFolder>
+        <SourceFile>CBBE Body Physics.nif</SourceFile>
+        <OutputPath>meshes\actors\character\character assets</OutputPath>
+        <OutputFile GenWeights="true">femalebody</OutputFile>
+        <Shape target="BaseShapeHR">CBBE</Shape>
+        <Slider name="AnkleSize" invert="false" small="100" big="0">
+            <Data name="BaseShapeHRAnkleSize" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRAnkleSize</Data>
+        </Slider>
+        <Slider name="AppleCheeks" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRAppleCheeks" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRAppleCheeks</Data>
+        </Slider>
+        <Slider name="AreolaSize" invert="false" small="0" big="0" uv="true">
+            <Data name="BaseShapeHRAreolaSize" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRAreolaSize</Data>
+        </Slider>
+        <Slider name="Arms" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRarms" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRarms</Data>
+        </Slider>
+        <Slider name="Back" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBack" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBack</Data>
+        </Slider>
+        <Slider name="BackArch" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBackArch" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBackArch</Data>
+        </Slider>
+        <Slider name="Belly" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBelly" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBelly</Data>
+        </Slider>
+        <Slider name="BigBelly" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBigBelly" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBigBelly</Data>
+        </Slider>
+        <Slider name="BigButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBigButt" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBigButt</Data>
+        </Slider>
+        <Slider name="BigTorso" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBigTorso" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBigTorso</Data>
+        </Slider>
+        <Slider name="BreastCenter" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastCenter" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastCenter</Data>
+        </Slider>
+        <Slider name="BreastCenterBig" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastCenterBig" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastCenterBig</Data>
+        </Slider>
+        <Slider name="BreastCleavage" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastCleavage" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastCleavage</Data>
+        </Slider>
+        <Slider name="BreastFlatness2" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastFlatness2" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastFlatness2</Data>
+        </Slider>
+        <Slider name="BreastFlatness" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastFlattness" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastFlattness</Data>
+        </Slider>
+        <Slider name="BreastGravity2" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastGravity2" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastGravity2</Data>
+        </Slider>
+        <Slider name="BreastHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastHeight" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastHeight</Data>
+        </Slider>
+        <Slider name="BreastPerkiness" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastPerkiness" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastPerkiness</Data>
+        </Slider>
+        <Slider name="Breasts" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreasts" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreasts</Data>
+        </Slider>
+        <Slider name="BreastsFantasy" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastsFantasy" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastsFantasy</Data>
+        </Slider>
+        <Slider name="BreastsGone" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastsGone" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastsGone</Data>
+        </Slider>
+        <Slider name="BreastsNewSH" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastsNewSH" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastsNewSH</Data>
+        </Slider>
+        <Slider name="BreastsNewSHSymmetry" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastsNewSHSymmetry" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastsNewSHSymmetry</Data>
+        </Slider>
+        <Slider name="BreastsSmall" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastsSmall" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastsSmall</Data>
+        </Slider>
+        <Slider name="BreastsSmall2" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastsSmall2" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastsSmall2</Data>
+        </Slider>
+        <Slider name="BreastsTogether" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastsTogether" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastsTogether</Data>
+        </Slider>
+        <Slider name="BreastTopSlope" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastTopSlope" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastTopSlope</Data>
+        </Slider>
+        <Slider name="BreastWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastWidth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastWidth</Data>
+        </Slider>
+        <Slider name="BreastSideShape" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastSideShape" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastSideShape</Data>
+        </Slider>
+        <Slider name="BreastUnderDepth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRBreastUnderDepth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRBreastUnderDepth</Data>
+        </Slider>
+        <Slider name="Butt" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRButt" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRButt</Data>
+        </Slider>
+        <Slider name="ButtClassic" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRButtClassic" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRButtClassic</Data>
+        </Slider>
+        <Slider name="ButtCrack" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRButtCrack" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRButtCrack</Data>
+        </Slider>
+        <Slider name="ButtShape2" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRButtShape2" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRButtShape2</Data>
+        </Slider>
+        <Slider name="ButtSmall" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRButtSmall" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRButtSmall</Data>
+        </Slider>
+        <Slider name="ButtDimples" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRButtDimples" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRButtDimples</Data>
+        </Slider>
+        <Slider name="ButtUnderFold" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRButtUnderFold" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRButtUnderFold</Data>
+        </Slider>
+        <Slider name="CalfSize" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRCalfSize" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRCalfSize</Data>
+        </Slider>
+        <Slider name="CalfSmooth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRCalfSmooth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRCalfSmooth</Data>
+        </Slider>
+        <Slider name="ChestDepth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRChestDepth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRChestDepth</Data>
+        </Slider>
+        <Slider name="ChestWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRChestWidth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRChestWidth</Data>
+        </Slider>
+        <Slider name="ChubbyArms" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRChubbyArms" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRChubbyArms</Data>
+        </Slider>
+        <Slider name="ChubbyButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRChubbyButt" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRChubbyButt</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRChubbyLegs" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRChubbyLegs</Data>
+        </Slider>
+        <Slider name="ChubbyWaist" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRChubbyWaist" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRChubbyWaist</Data>
+        </Slider>
+        <Slider name="CrotchBack" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRCrotchBack" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRCrotchBack</Data>
+        </Slider>
+        <Slider name="DoubleMelon" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRDoubleMelon" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRDoubleMelon</Data>
+        </Slider>
+        <Slider name="ForearmSize" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRForearmSize" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRForearmSize</Data>
+        </Slider>
+        <Slider name="Groin" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRGroin" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRGroin</Data>
+        </Slider>
+        <Slider name="HipBone" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRHipbone" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRHipbone</Data>
+        </Slider>
+        <Slider name="HipForward" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRHipForward" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRHipForward</Data>
+        </Slider>
+        <Slider name="Hips" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRHips" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRHips</Data>
+        </Slider>
+        <Slider name="HipUpperWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRHipUpperWidth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRHipUpperWidth</Data>
+        </Slider>
+        <Slider name="HipCarved" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRHipCarved" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRHipCarved</Data>
+        </Slider>
+        <Slider name="KneeHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRKneeHeight" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRKneeHeight</Data>
+        </Slider>
+        <Slider name="KneeShape" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRKneeShape" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRKneeShape</Data>
+        </Slider>
+        <Slider name="LegShapeClassic" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRLegShapeClassic" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRLegShapeClassic</Data>
+        </Slider>
+        <Slider name="LegsThin" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRLegsThin" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRLegsThin</Data>
+        </Slider>
+        <Slider name="MuscleAbs" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRMuscleAbs" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRMuscleAbs</Data>
+        </Slider>
+        <Slider name="MuscleArms" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRMuscleArms" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRMuscleArms</Data>
+        </Slider>
+        <Slider name="MuscleButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRMuscleButt" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRMuscleButt</Data>
+        </Slider>
+        <Slider name="MuscleLegs" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRMuscleLegs" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRMuscleLegs</Data>
+        </Slider>
+        <Slider name="MusclePecs" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRMusclePecs" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRMusclePecs</Data>
+        </Slider>
+        <Slider name="NavelEven" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNavelEven" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNavelEven</Data>
+        </Slider>
+        <Slider name="NeckSeam" invert="false" small="100" big="0" hidden="true">
+            <Data name="BaseShapeHRNeckSeam" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNeckSeam</Data>
+        </Slider>
+        <Slider name="NipBGone" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNipBGone" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNipBGone</Data>
+        </Slider>
+        <Slider name="NippleDistance" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleDistance" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleDistance</Data>
+        </Slider>
+        <Slider name="NippleDown" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleDown" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleDown</Data>
+        </Slider>
+        <Slider name="NippleLength" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleLength" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleLength</Data>
+        </Slider>
+        <Slider name="NippleManga" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleManga" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleManga</Data>
+        </Slider>
+        <Slider name="NipplePerkiness" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNipplePerkiness" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNipplePerkiness</Data>
+        </Slider>
+        <Slider name="NipplePerkManga" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNipplePerkManga" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNipplePerkManga</Data>
+        </Slider>
+        <Slider name="NippleSize" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleSize" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleSize</Data>
+        </Slider>
+        <Slider name="NippleTip" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleTip" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleTip</Data>
+        </Slider>
+        <Slider name="NippleTipManga" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleTipManga" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleTipManga</Data>
+        </Slider>
+        <Slider name="NippleUp" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleUp" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleUp</Data>
+        </Slider>
+        <Slider name="NippleDip" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRNippleDip" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRNippleDip</Data>
+        </Slider>
+        <Slider name="PregnancyBelly" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRPregnancyBelly" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRPregnancyBelly</Data>
+        </Slider>
+        <Slider name="PushUp" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRPushUp" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRPushUp</Data>
+        </Slider>
+        <Slider name="RibsProminance" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRRibsProminance" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRRibsProminance</Data>
+        </Slider>
+        <Slider name="RoundAss" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRRoundAss" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRRoundAss</Data>
+        </Slider>
+        <Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRShoulderSmooth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRShoulderSmooth</Data>
+        </Slider>
+        <Slider name="ShoulderTweak" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRshouldertweak" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRshouldertweak</Data>
+        </Slider>
+        <Slider name="ShoulderWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRshoulderWidth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRshoulderWidth</Data>
+        </Slider>
+        <Slider name="SlimThighs" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRSlimThighs" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRSlimThighs</Data>
+        </Slider>
+        <Slider name="SternumDepth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRSternumDepth" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRSternumDepth</Data>
+        </Slider>
+        <Slider name="SternumHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRSternumHeight" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRSternumHeight</Data>
+        </Slider>
+        <Slider name="Thighs" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRThighs" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRThighs</Data>
+        </Slider>
+        <Slider name="TummyTuck" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRTummyTuck" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRTummyTuck</Data>
+        </Slider>
+        <Slider name="Waist" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRwaist" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRwaist</Data>
+        </Slider>
+        <Slider name="WaistHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRWaistHeight" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRWaistHeight</Data>
+        </Slider>
+        <Slider name="WideWaistLine" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRWideWaistLine" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRWideWaistLine</Data>
+        </Slider>
+        <Slider name="WristSize" invert="false" small="100" big="0">
+            <Data name="BaseShapeHRWristSize" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRWristSize</Data>
+        </Slider>
+        <Slider name="7B Lower" invert="false" small="0" big="0">
+            <Data name="BaseShapeHR7B Lower" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHR7B Lower</Data>
+        </Slider>
+        <Slider name="7B Upper" invert="false" small="0" big="0">
+            <Data name="BaseShapeHR7B Upper" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHR7B Upper</Data>
+        </Slider>
+        <Slider name="VanillaSSEHi" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRVanillaSSEHi" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRVanillaSSEHi</Data>
+        </Slider>
+        <Slider name="VanillaSSELo" invert="false" small="0" big="0">
+            <Data name="BaseShapeHRVanillaSSELo" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHRVanillaSSELo</Data>
+        </Slider>
+        <Slider name="OldBaseShape" invert="false" small="0" big="0">
+            <Data name="BaseShapeHROldBaseShape" target="BaseShapeHR" local="true">CBBE Body.osd\BaseShapeHROldBaseShape</Data>
+        </Slider>
+    </SliderSet>

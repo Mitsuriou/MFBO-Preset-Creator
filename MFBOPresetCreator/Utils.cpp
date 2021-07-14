@@ -378,7 +378,7 @@ bool Utils::isCBBEBasedBody(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       return true;
-    default:
+    default: // UNP-based bodies
       return false;
   }
 }
@@ -409,6 +409,11 @@ QString Utils::readQRCFileContent(const QString& aFilePath)
     QTextStream lFileBuffer(&lQRCFile);
     lContent = lFileBuffer.readAll();
   }
+  else
+  {
+    // Display a message in case the file cannot be found
+    Utils::displayWarningMessage(tr("The internal file \"%1\" could not be found. Please report this issue to the developer with the steps to reproduce this bug.").arg(aFilePath));
+  }
 
   return lContent;
 }
@@ -428,7 +433,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   else
   {
     Utils::displayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
-    return "";
+    return QString();
   }
 
   auto lXMLGroup{lXMLDocument.documentElement().firstChild().toElement()};
@@ -492,6 +497,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       else if (lTempSet.getName().endsWith(" - Beast Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE Beast Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
@@ -566,37 +572,26 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
 
 QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMustUseBeastHands)
 {
-  auto lHandsValue{QString()};
+  if (Utils::isCBBEBasedBody(aBody) && aMustUseBeastHands)
+  {
+    return QString("%1 - CBBE Hands Beast");
+  }
 
   switch (aBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-      if (aMustUseBeastHands)
-        lHandsValue = QString("%1 - CBBE Beast Hands");
-      else
-        lHandsValue = QString("%1 - CBBE 3BBB Hands");
-      break;
     case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
     case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
     case BodyNameVersion::CBBE_3BBB_3BA_2_06:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-      if (aMustUseBeastHands)
-        lHandsValue = QString("%1 - CBBE 3BBB Hands Beast");
-      else
-        lHandsValue = QString("%1 - CBBE 3BBB Hands");
-      break;
+      return QString("%1 - CBBE 3BBB Hands");
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      if (aMustUseBeastHands)
-        lHandsValue = QString("%1 - CBBE Hands Beast");
-      else
-        lHandsValue = QString("%1 - CBBE Hands");
-      break;
+      return QString("%1 - CBBE Hands");
     default: // UNP-based bodies
-      lHandsValue = QString("%1 - BHUNP 3BBB Advanced Hands");
-      break;
+      return QString("%1 - BHUNP 3BBB Advanced Hands");
   }
 
-  return (lHandsValue);
+  return QString();
 }
 
 QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)

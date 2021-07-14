@@ -170,7 +170,8 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
 
 QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const QString& aRessourceType)
 {
-  auto lPath{QString(":/presets/")};
+  auto lPath{QString(":/presets/%1/").arg(aRessourceType)};
+
   switch (aBody)
   {
     case BodyNameVersion::CBBE_3BBB_3BA_1_50:
@@ -303,9 +304,6 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const QS
       lPath.append("mimir ebonic body/1.2");
       break;
   }
-
-  lPath.append("/");
-  lPath.append(aRessourceType);
 
   return lPath;
 }

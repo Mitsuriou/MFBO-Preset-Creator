@@ -1,4 +1,4 @@
-﻿    <SliderSet name="CBBE Hands">
+    <SliderSet name="CBBE Hands">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Hands.nif</SourceFile>
         <OutputPath>meshes\actors\character\character assets</OutputPath>
