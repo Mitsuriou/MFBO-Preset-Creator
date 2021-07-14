@@ -19,7 +19,7 @@ QLabel {
 }
 
 QLabel::disabled {
-  color: #212121;
+  color: #363636;
 }
 
 /***********/
@@ -52,7 +52,7 @@ QCheckBox::hover {
 }
 
 QCheckBox::disabled {
-  color: #212121;
+  color: #363636;
 }
 
 QCheckBox::indicator {
@@ -79,7 +79,7 @@ QCheckBox::indicator::checked::hover::pressed {
 }
 
 QCheckBox::indicator::disabled {
-  border-color: #212121;
+  border-color: #363636;
 }
 
 /*************/
@@ -106,8 +106,8 @@ QPushButton::pressed {
 }
 
 QPushButton::disabled {
-  border-color: #212121;
-  background-color: #212121;
+  border-color: #363636;
+  background-color: #363636;
 }
 
 /*************/
@@ -133,8 +133,15 @@ QLineEdit::focus {
 }
 
 QLineEdit::disabled {
-  color: #212121;
-  border-bottom-color: #212121;
+  color: #363636;
+  border-bottom-color: #363636;
+}
+
+QLineEdit[readOnly="true"]::focus,
+QLineEdit[readOnly="true"]::hover,
+QLineEdit[readOnly="true"]::focus::hover {
+  border: 1px solid #101010;
+  border-bottom: 1px solid #3991ff;
 }
 
 /***********/
@@ -157,8 +164,8 @@ QComboBox::focus {
 }
 
 QComboBox::disabled {
-  border-color: #212121;
-  color: #212121;
+  border-color: #363636;
+  color: #363636;
 }
 
 QComboBox QAbstractItemView {
@@ -242,8 +249,8 @@ QMenu::item::selected {
 }
 
 QMenu::item::disabled {
-  color: #212121;
-  border-color: #212121;
+  color: #363636;
+  border-color: #363636;
   background-color: #101010;
 }
 

@@ -1362,7 +1362,8 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aR
   aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);
 
   auto lGeneralValue{new QLineEdit(aValue, aParent)};
-  lGeneralValue->setDisabled(true);
+  lGeneralValue->setReadOnly(true);
+  lGeneralValue->setCursor(Qt::CursorShape::IBeamCursor);
   lGeneralValue->setObjectName(QString("line_edit_path_%1").arg(aRow));
   aLayout->addWidget(lGeneralValue, aRow, 1);
 

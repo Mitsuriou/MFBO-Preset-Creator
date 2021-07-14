@@ -139,6 +139,13 @@ QLineEdit::disabled {
   border-bottom-color: #9c9cb4;
 }
 
+QLineEdit[readOnly="true"]::focus,
+QLineEdit[readOnly="true"]::hover,
+QLineEdit[readOnly="true"]::focus::hover {
+  border: 1px solid #edf0f5;
+  border-bottom: 1px solid qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
+}
+
 /***********/
 /*COMBO BOX*/
 /***********/
