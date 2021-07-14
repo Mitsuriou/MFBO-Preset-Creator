@@ -226,10 +226,10 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const QS
       lPath.append("bhunp tbbp advanced/2.25");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-      lPath.append("cbbe 3bbb 3ba/2.00_to_2.04");
+      lPath.append("cbbe 3bbb 3ba/2.02_to_2.04");
       break;
     case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-      lPath.append("cbbe 3bbb 3ba/2.05_to_2.06");
+      lPath.append("cbbe 3bbb 3ba/2.06");
       break;
     case BodyNameVersion::BHUNP_3BBB_2_30:
       lPath.append("bhunp 3bbb/2.30");
