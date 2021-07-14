@@ -1,4 +1,4 @@
-    <SliderSet name="BHUNP 3BBB Advanced Hands">
+    <SliderSet name="%1 - BHUNP 3BBB Advanced Hands">
         <DataFolder>BHUNP 3BBB Advanced</DataFolder>
         <SourceFile>BHUNP 3BBB Advanced Hands.nif</SourceFile>
         <OutputPath>{%%hands_output_path%%}</OutputPath>
