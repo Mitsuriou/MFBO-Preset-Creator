@@ -1,4 +1,5 @@
 #include "DataLists.h"
+#include "Utils.h"
 
 QStringList DataLists::getBodiesNames()
 {
@@ -168,144 +169,93 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
   return std::pair<int, int>(-1, -1);
 }
 
-QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const QString& aRessourceType)
+QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const BodyPartType& aRessourceType)
 {
-  auto lPath{QString(":/presets/%1/").arg(aRessourceType)};
-
-  switch (aBody)
+  // Ressource type
+  auto lRessource{QString()};
+  switch (aRessourceType)
   {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-      lPath.append("cbbe 3bbb 3ba/1.50");
+    case BodyPartType::BODY:
+      lRessource = "body";
       break;
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-      lPath.append("cbbe 3bbb 3ba/1.51_to_1.55");
+    case BodyPartType::FEET:
+      lRessource = "feet";
       break;
-    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-      lPath.append("cbbe smp 3bbb/1.2.0");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_20:
-      lPath.append("bhunp 3bbb/2.20");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
-      lPath.append("bhunp 3bbb advanced/2.20");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
-      lPath.append("bhunp 3bbb advanced ver 2/2.20");
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_20:
-      lPath.append("bhunp bbp/2.20");
-      break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
-      lPath.append("bhunp bbp advanced/2.20");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_20:
-      lPath.append("bhunp tbbp/2.20");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
-      lPath.append("bhunp tbbp advanced/2.20");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_25:
-      lPath.append("bhunp 3bbb/2.25");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
-      lPath.append("bhunp 3bbb advanced/2.25");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
-      lPath.append("bhunp 3bbb advanced ver 2/2.25");
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_25:
-      lPath.append("bhunp bbp/2.25");
-      break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
-      lPath.append("bhunp bbp advanced/2.25");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_25:
-      lPath.append("bhunp tbbp/2.25");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
-      lPath.append("bhunp tbbp advanced/2.25");
-      break;
-    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-      lPath.append("cbbe 3bbb 3ba/2.02_to_2.04");
-      break;
-    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-      lPath.append("cbbe 3bbb 3ba/2.06");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_30:
-      lPath.append("bhunp 3bbb/2.30");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
-      lPath.append("bhunp 3bbb advanced/2.30");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
-      lPath.append("bhunp 3bbb advanced ver 2/2.30");
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_30:
-      lPath.append("bhunp bbp/2.30");
-      break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
-      lPath.append("bhunp bbp advanced/2.30");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_30:
-      lPath.append("bhunp tbbp/2.30");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
-      lPath.append("bhunp tbbp advanced/2.30");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
-      lPath.append("bhunp 3bbb advanced ver 2 nevernude/2.25");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
-      lPath.append("bhunp 3bbb advanced ver 2 nevernude/2.30");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_31:
-      lPath.append("bhunp 3bbb/2.31");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
-      lPath.append("bhunp 3bbb advanced/2.31");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
-      lPath.append("bhunp 3bbb advanced ver 2/2.31");
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_31:
-      lPath.append("bhunp bbp/2.31");
-      break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
-      lPath.append("bhunp bbp advanced/2.31");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_31:
-      lPath.append("bhunp tbbp/2.31");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
-      lPath.append("bhunp tbbp advanced/2.31");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_2_35:
-      lPath.append("bhunp 3bbb/2.35");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
-      lPath.append("bhunp 3bbb advanced/2.35");
-      break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
-      lPath.append("bhunp 3bbb advanced ver 2/2.35");
-      break;
-    case BodyNameVersion::BHUNP_BBP_2_35:
-      lPath.append("bhunp bbp/2.35");
-      break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
-      lPath.append("bhunp bbp advanced/2.35");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_2_35:
-      lPath.append("bhunp tbbp/2.35");
-      break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
-      lPath.append("bhunp tbbp advanced/2.35");
-      break;
-    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-      lPath.append("mimir ebonic body/1.2");
+    case BodyPartType::HANDS:
+      lRessource = "hands";
       break;
   }
 
-  return lPath;
+  // Body mod name
+  auto lBodyVersion{DataLists::getSplittedNameVersionFromBodyVersion(aBody)};
+  auto lCastedBodyName{static_cast<BodyName>(lBodyVersion.first)};
+  auto lResolvedModName{QString()};
+
+  // CBBE-based bodies
+  if (Utils::isCBBEBasedBody(aBody))
+  {
+    // For the beast hands, use the default CBBE v.1.6.1 beast hands
+    if (aRessourceType == BodyPartType::BEAST_HANDS)
+    {
+      return Utils::readQRCFileContent(":/presets/beast_hands/cbbe 1.6.1");
+    }
+
+    switch (lCastedBodyName)
+    {
+      case BodyName::CBBE_3BBB_3BA:
+        lResolvedModName = "cbbe 3bbb 3ba";
+        break;
+      case BodyName::CBBE_SMP_3BBB:
+        lResolvedModName = "cbbe smp 3bbb";
+        break;
+      case BodyName::MIMIR_EBONIC_BODY:
+        lResolvedModName = "mimir ebonic body";
+        break;
+    }
+  }
+  // UNP-based bodies
+  else
+  {
+    switch (aRessourceType)
+    {
+      case BodyPartType::BODY:
+        switch (lCastedBodyName)
+        {
+          case BodyName::BHUNP_3BBB:
+            lResolvedModName = "bhunp 3bbb";
+            break;
+          case BodyName::BHUNP_3BBB_ADVANCED:
+            lResolvedModName = "bhunp 3bbb advanced";
+            break;
+          case BodyName::BHUNP_3BBB_ADVANCED_VER_2:
+            lResolvedModName = "bhunp 3bbb advanced ver 2";
+            break;
+          case BodyName::BHUNP_BBP:
+            lResolvedModName = "bhunp bbp";
+            break;
+          case BodyName::BHUNP_BBP_ADVANCED:
+            lResolvedModName = "bhunp bbp advanced";
+            break;
+          case BodyName::BHUNP_TBBP:
+            lResolvedModName = "bhunp tbbp";
+            break;
+          case BodyName::BHUNP_TBBP_ADVANCED:
+            lResolvedModName = "bhunp tbbp advanced";
+            break;
+          case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
+            lResolvedModName = "bhunp 3bbb advanced ver 2 nevernude";
+            break;
+        }
+        break;
+      case BodyPartType::FEET:
+      case BodyPartType::HANDS:
+        // For the hands and feet, use the default BHUNP hands and feet
+        lResolvedModName = "bhunp";
+        break;
+    }
+  }
+
+  return QString(":/presets/%1/%2/%3").arg(lRessource).arg(lResolvedModName).arg(getVersionsFromBodyName(lCastedBodyName).at(lBodyVersion.second));
 }
 
 QStringList DataLists::getFeetModsEntries()

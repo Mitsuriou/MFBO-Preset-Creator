@@ -479,7 +479,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       Struct::SliderSet lTempSet;
       lTempSet.setName(lSliderSet.attribute("name", "")); // Name
 
-      // TODO: Improve this check:
+      // TODO: Improve these checks:
       if (lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
@@ -495,21 +495,20 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       {
         lTempSet.setMeshPart("Body"); //Body
       }
-      else if (lTempSet.getName().endsWith(" - Beast Hands", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - Hands", Qt::CaseInsensitive)
+      else if (lTempSet.getName().endsWith(" - Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - Beast Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE Beast Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive))
       {
         lTempSet.setMeshPart("Hands"); // Hands
       }
       else if (lTempSet.getName().endsWith(" - Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Feet", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - Feet (MSF - normal)", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive))
@@ -615,43 +614,7 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
         case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
           lFeetValue = QString("%1 - CBBE Feet");
           break;
-        case BodyNameVersion::BHUNP_3BBB_2_20:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
-        case BodyNameVersion::BHUNP_BBP_2_20:
-        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
-        case BodyNameVersion::BHUNP_TBBP_2_20:
-        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
-        case BodyNameVersion::BHUNP_3BBB_2_25:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
-        case BodyNameVersion::BHUNP_BBP_2_25:
-        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
-        case BodyNameVersion::BHUNP_TBBP_2_25:
-        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
-        case BodyNameVersion::BHUNP_3BBB_2_30:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
-        case BodyNameVersion::BHUNP_BBP_2_30:
-        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
-        case BodyNameVersion::BHUNP_TBBP_2_30:
-        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
-        case BodyNameVersion::BHUNP_3BBB_2_31:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
-        case BodyNameVersion::BHUNP_BBP_2_31:
-        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
-        case BodyNameVersion::BHUNP_TBBP_2_31:
-        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
-        case BodyNameVersion::BHUNP_3BBB_2_35:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
-        case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
-        case BodyNameVersion::BHUNP_BBP_2_35:
-        case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
-        case BodyNameVersion::BHUNP_TBBP_2_35:
-        case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
+        default: // UNP-based bodies
           lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
           break;
       }
@@ -671,71 +634,42 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
 
 QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
 {
+  auto lBodyVersion{DataLists::getSplittedNameVersionFromBodyVersion(aBody)};
+  auto lCastedBodyName{static_cast<BodyName>(lBodyVersion.first)};
+
   auto lBodyValue{QString()};
 
-  switch (aBody)
+  switch (lCastedBodyName)
   {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+    case BodyName::CBBE_3BBB_3BA:
+    case BodyName::MIMIR_EBONIC_BODY:
       lBodyValue = QString("%1 - CBBE 3BBB Body Amazing");
       break;
-    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+    case BodyName::CBBE_SMP_3BBB:
       lBodyValue = QString("%1 - CBBE Body SMP (3BBB)");
       break;
-    case BodyNameVersion::BHUNP_3BBB_2_20:
-    case BodyNameVersion::BHUNP_3BBB_2_25:
-    case BodyNameVersion::BHUNP_3BBB_2_30:
-    case BodyNameVersion::BHUNP_3BBB_2_31:
-    case BodyNameVersion::BHUNP_3BBB_2_35:
+    case BodyName::BHUNP_3BBB:
       lBodyValue = QString("%1 - BHUNP 3BBB");
       break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
+    case BodyName::BHUNP_3BBB_ADVANCED:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced");
       break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
+    case BodyName::BHUNP_3BBB_ADVANCED_VER_2:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2");
       break;
-    case BodyNameVersion::BHUNP_BBP_2_20:
-    case BodyNameVersion::BHUNP_BBP_2_25:
-    case BodyNameVersion::BHUNP_BBP_2_30:
-    case BodyNameVersion::BHUNP_BBP_2_31:
-    case BodyNameVersion::BHUNP_BBP_2_35:
+    case BodyName::BHUNP_BBP:
       lBodyValue = QString("%1 - BHUNP BBP");
       break;
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
+    case BodyName::BHUNP_BBP_ADVANCED:
       lBodyValue = QString("%1 - BHUNP BBP Advanced");
       break;
-    case BodyNameVersion::BHUNP_TBBP_2_20:
-    case BodyNameVersion::BHUNP_TBBP_2_25:
-    case BodyNameVersion::BHUNP_TBBP_2_30:
-    case BodyNameVersion::BHUNP_TBBP_2_31:
-    case BodyNameVersion::BHUNP_TBBP_2_35:
+    case BodyName::BHUNP_TBBP:
       lBodyValue = QString("%1 - BHUNP TBBP");
       break;
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
+    case BodyName::BHUNP_TBBP_ADVANCED:
       lBodyValue = QString("%1 - BHUNP TBBP Advanced");
       break;
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
+    case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
       lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2 Nevernude");
       break;
   }

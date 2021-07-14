@@ -10,7 +10,7 @@ QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const B
 
   // Body
   if (aTargetBlocks / 100 == 1)
-    lBuiltContent.append("\n").append(SliderFileBuilder::getBodyBlock(aLineName, aBody));
+    lBuiltContent.append("\n").append(Utils::readQRCFileContent(DataLists::getQRCPathFromBodyName(aBody, BodyPartType::BODY)).arg(aLineName));
 
   // Feet
   if (aTargetBlocks % 100 / 10 == 1)
@@ -18,23 +18,15 @@ QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const B
 
   // Hands
   if (aTargetBlocks % 10 == 1)
-    lBuiltContent.append("\n").append(SliderFileBuilder::getHandsBlock(aLineName, aBody, aMustUseBeastHands));
+  {
+    lBuiltContent.append("\n").append(
+      Utils::readQRCFileContent(
+        DataLists::getQRCPathFromBodyName(aBody, aMustUseBeastHands ? BodyPartType::BEAST_HANDS : BodyPartType::HANDS))
+        .arg(aLineName));
+  }
 
   lBuiltContent.append("\n</SliderSetInfo>\n");
   return lBuiltContent;
-}
-
-QString SliderFileBuilder::getHandsBlock(const QString& aLineName, const BodyNameVersion& aBody, const bool aMustUseBeastHands)
-{
-  if (Utils::isCBBEBasedBody(aBody) && aMustUseBeastHands)
-  {
-    // TODO: Add an option to choose the installed CBBE version to match the beast hands
-    // Take the default CBBE v.1.6.1 beast hands
-    return Utils::readQRCFileContent(":/presets/beast_hands/cbbe 1.6.1").arg(aLineName);
-  }
-
-  // Take the normal hands
-  return Utils::readQRCFileContent(DataLists::getQRCPathFromBodyName(aBody, "hands")).arg(aLineName);
 }
 
 QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyNameVersion& aBody, const int aFeetModIndex)
@@ -45,7 +37,7 @@ QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyName
   {
     case 0:
       // Default mod's feet sliders
-      return Utils::readQRCFileContent(DataLists::getQRCPathFromBodyName(aBody, "feet")).arg(aLineName);
+      return Utils::readQRCFileContent(DataLists::getQRCPathFromBodyName(aBody, BodyPartType::FEET)).arg(aLineName);
     case 1:
       // More Sliders for Feet - Normal
       if (Utils::isCBBEBasedBody(aBody))
@@ -76,11 +68,6 @@ QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyName
 
   // Replace the "%1" string with identation spaces and "%2" with the name given to the line
   return lSliderSet.arg("    ").arg(aLineName);
-}
-
-QString SliderFileBuilder::getBodyBlock(const QString& aLineName, const BodyNameVersion& aBody)
-{
-  return Utils::readQRCFileContent(DataLists::getQRCPathFromBodyName(aBody, "body")).arg(aLineName);
 }
 
 QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName, const std::vector<Struct::Filter>& aFiltersList, const BodyNameVersion& aBody, const bool aMustUseBeastHands, const int aFeetModIndex, const unsigned char& aTargetBlocks)
