@@ -1,0 +1,226 @@
+    <SliderSet name="BHUNP 3BBB Advanced Feet">
+        <DataFolder>BHUNP 3BBB Advanced</DataFolder>
+        <SourceFile>BHUNP 3BBB Advanced Feet.nif</SourceFile>
+        <OutputPath>meshes\actors\character\character assets</OutputPath>
+        <OutputFile GenWeights="true">femalefeet</OutputFile>
+        <Shape target="Feet" DataFolder="BHUNP 3BBB Advanced">Feet</Shape>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="Feet7B High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Bombshell Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="Feet7B Bombshell High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Natural Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="Feet7B Natural High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Cleavage Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="Feet7B Cleavage High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="Feet7B BCup Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="Feet7B BCup High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B BCup High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Oppai Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="Feet7B Oppai High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="Feet7B CH Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="Feet7B CH High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="FeetUNP High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Pushup Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Pushup High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Skinny Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Skinny High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Perky Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Perky High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="FeetUNPB High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Chapi" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v1" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v3.2 Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v3.2 High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPetite Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="FeetUNPetite High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPC Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="FeetUNPC High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPCM Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="FeetUNPCM High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPSH Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="FeetUNPSH High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="FeetUNPK High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Bonus Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Bonus High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="FeetUN7B Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="FeetUN7B High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPBB Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="FeetUNPBB High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="FeetSeraphim Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="FeetSeraphim High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="FeetDemonfet Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="FeetDemonfet High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="FeetDream Girl Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="FeetDream Girl High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="FeetTop Model Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="FeetTop Model High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="FeetLeito Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="FeetLeito High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPF Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="FeetUNPF High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPFx Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="FeetUNPFx High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetUNPFx High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="FeetMCBM Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="FeetMCBM High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="FeetVenus Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="FeetVenus High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetVenus High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="FeetManga Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="FeetManga High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="FeetCHSBHC Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="FeetCHSBHC High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCHSBHC High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="Feet7BUNP Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7BUNP Low</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="FeetCNHF High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Bonus Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Bonus High" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="FeetZGGB-R2 Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="HighHeel" invert="false" small="0" big="0">
+            <Data name="FeetHighHeel" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\FeetHighHeel</Data>
+        </Slider>
+    </SliderSet>

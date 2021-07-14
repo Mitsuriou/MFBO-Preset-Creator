@@ -479,6 +479,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
       Struct::SliderSet lTempSet;
       lTempSet.setName(lSliderSet.attribute("name", "")); // Name
 
+      // TODO: Improve this check:
       if (lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
