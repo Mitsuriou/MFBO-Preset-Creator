@@ -272,12 +272,12 @@
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="457"/>
+        <location filename="BatchConversion.cpp" line="456"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="609"/>
+        <location filename="BatchConversion.cpp" line="608"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
@@ -599,13 +599,13 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="72"/>
-        <location filename="MFBOPresetCreator.cpp" line="676"/>
+        <location filename="MFBOPresetCreator.cpp" line="675"/>
         <source>Go back to the application</source>
         <translation>回到應用程式</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="677"/>
+        <location filename="MFBOPresetCreator.cpp" line="676"/>
         <source>Save the project and quit the application</source>
         <translation type="unfinished"></translation>
     </message>
@@ -636,7 +636,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="191"/>
-        <location filename="MFBOPresetCreator.cpp" line="671"/>
+        <location filename="MFBOPresetCreator.cpp" line="670"/>
         <source>Quick restart</source>
         <translation>快速重啟</translation>
     </message>
@@ -766,12 +766,12 @@ Make sure your internet connection is operational and try again.</source>
 請確認網路連線狀況。</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="569"/>
+        <location filename="MFBOPresetCreator.cpp" line="568"/>
         <source>Application update available (beta)</source>
         <translation>應用程式有可用的更新(beta)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="570"/>
+        <location filename="MFBOPresetCreator.cpp" line="569"/>
         <source>You are currently running the beta version &quot;%1&quot;.
 The latest stable version is tagged &quot;%2&quot;.
 The new beta version &quot;%3&quot; is available on GitHub.
@@ -782,12 +782,12 @@ Do you want to download it now?</source>
 請問是否下載該版本?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="575"/>
+        <location filename="MFBOPresetCreator.cpp" line="574"/>
         <source>Application update available (stable)</source>
         <translation>應用程式有可用的更新(正式版)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="576"/>
+        <location filename="MFBOPresetCreator.cpp" line="575"/>
         <source>You are currently running the stable version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 Do you want to download it now?</source>
@@ -796,27 +796,27 @@ Do you want to download it now?</source>
 請問是否下載該版本?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="588"/>
+        <location filename="MFBOPresetCreator.cpp" line="587"/>
         <source>OK</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="600"/>
+        <location filename="MFBOPresetCreator.cpp" line="599"/>
         <source>Download and install the update now</source>
         <translation>立即下載並更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="601"/>
+        <location filename="MFBOPresetCreator.cpp" line="600"/>
         <source>Download later</source>
         <translation>稍後再下載</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="672"/>
+        <location filename="MFBOPresetCreator.cpp" line="671"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>你將失去所有未儲存進度?確定要快速重啟程式?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="675"/>
+        <location filename="MFBOPresetCreator.cpp" line="674"/>
         <source>Quickly restart the application</source>
         <translation>快速重新開啟應用程式</translation>
     </message>
@@ -1415,141 +1415,141 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>提示: 更改帶有 &quot;*&quot; 符號的數值需要重啟程式才能生效。</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="162"/>
+        <location filename="Settings.cpp" line="159"/>
         <source>Display</source>
         <translation>顯示</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="165"/>
+        <location filename="Settings.cpp" line="162"/>
         <source>Language:</source>
         <translation>語言:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="175"/>
+        <location filename="Settings.cpp" line="172"/>
         <source>Font:</source>
         <translation>字體:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="177"/>
+        <location filename="Settings.cpp" line="174"/>
         <source>Choose a font</source>
         <translation>選擇字體</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="181"/>
+        <location filename="Settings.cpp" line="178"/>
         <source>Application Theme:</source>
         <translation>應用程式主題:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="191"/>
+        <location filename="Settings.cpp" line="188"/>
         <source>Window opening mode:</source>
         <translation>視窗開啟模式:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="194"/>
+        <location filename="Settings.cpp" line="191"/>
         <source>English</source>
         <translation>英文</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="195"/>
+        <location filename="Settings.cpp" line="192"/>
         <source>Français</source>
         <translation>法文</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="205"/>
+        <location filename="Settings.cpp" line="202"/>
         <source>Default main window width:</source>
         <translation>預設主視窗寬度:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="213"/>
+        <location filename="Settings.cpp" line="210"/>
         <source>Default main window height:</source>
         <translation>預設主視窗高度:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="221"/>
+        <location filename="Settings.cpp" line="218"/>
         <source>Texts accent color:</source>
         <translatorcomment>accent?</translatorcomment>
         <translation>輔助文字色調:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="224"/>
+        <location filename="Settings.cpp" line="221"/>
         <source>Choose a success color</source>
         <translation>選擇成功顏色</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="228"/>
+        <location filename="Settings.cpp" line="225"/>
         <source>Choose a warning color</source>
         <translation>選擇警告顏色</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="232"/>
+        <location filename="Settings.cpp" line="229"/>
         <source>Choose a danger color</source>
         <translation>選擇危險顏色</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="257"/>
-        <location filename="Settings.cpp" line="446"/>
+        <location filename="Settings.cpp" line="254"/>
+        <location filename="Settings.cpp" line="443"/>
         <source>General</source>
         <translation>一般</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="260"/>
+        <location filename="Settings.cpp" line="257"/>
         <source>Check for updates at application startup</source>
         <translation>開啟程式時檢查更新</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="266"/>
+        <location filename="Settings.cpp" line="263"/>
         <source>Each directory chooser button stores its own last opened path</source>
         <translation>記憶已選資料夾路徑</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="287"/>
+        <location filename="Settings.cpp" line="284"/>
         <source>Preset Creator</source>
         <translation>預設(Preset)產生器</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="292"/>
-        <location filename="Settings.cpp" line="365"/>
+        <location filename="Settings.cpp" line="289"/>
+        <location filename="Settings.cpp" line="362"/>
         <source>Default selected body:</source>
         <translation>預設選擇身形:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="311"/>
-        <location filename="Settings.cpp" line="384"/>
+        <location filename="Settings.cpp" line="308"/>
+        <location filename="Settings.cpp" line="381"/>
         <source>Default selected feet mod:</source>
         <translation>預設選取腳部模組(Mod):</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="322"/>
+        <location filename="Settings.cpp" line="319"/>
         <source>Output directory path:</source>
         <translation>輸出資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="331"/>
+        <location filename="Settings.cpp" line="328"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="335"/>
+        <location filename="Settings.cpp" line="332"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation>完成後自動打開輸出資料夾</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="360"/>
+        <location filename="Settings.cpp" line="357"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>重定向BodySlide檔案</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="413"/>
+        <location filename="Settings.cpp" line="410"/>
         <source>Assisted Conversion</source>
         <translation>輔助轉換</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="416"/>
+        <location filename="Settings.cpp" line="413"/>
         <source>Only scan the &quot;meshes&quot; subdirectory</source>
         <translation>只偵測&quot;meshes&quot;資料夾之內</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="437"/>
+        <location filename="Settings.cpp" line="434"/>
         <source>Last used paths</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1558,77 +1558,77 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">最近使用之資料夾路徑</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="440"/>
+        <location filename="Settings.cpp" line="437"/>
         <source>Remove all the history</source>
         <translation>刪除所有歷史紀錄</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="447"/>
+        <location filename="Settings.cpp" line="444"/>
         <source>Main window: output</source>
         <translation>主視窗: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="448"/>
+        <location filename="Settings.cpp" line="445"/>
         <source>Batch Conv.: input</source>
         <translation>批次轉換: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="449"/>
+        <location filename="Settings.cpp" line="446"/>
         <source>Batch Conv.: output</source>
         <translation>批次轉換: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="450"/>
+        <location filename="Settings.cpp" line="447"/>
         <source>Assist. Conv.: input</source>
         <translation>輔助轉換: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="451"/>
+        <location filename="Settings.cpp" line="448"/>
         <source>Presets&apos; Ret.: input</source>
         <translation>預設(Preset)重定向: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="452"/>
+        <location filename="Settings.cpp" line="449"/>
         <source>Presets&apos; Ret.: output</source>
         <translation>預設(Preset)重定向: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="453"/>
+        <location filename="Settings.cpp" line="450"/>
         <source>Textures Assist.: input</source>
         <translation>材質(Textures)助手: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="454"/>
+        <location filename="Settings.cpp" line="451"/>
         <source>Loaded project</source>
         <translation>當前運行檔案(Project)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="455"/>
+        <location filename="Settings.cpp" line="452"/>
         <source>Saved project</source>
         <translation>已儲存檔案(Project)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="472"/>
+        <location filename="Settings.cpp" line="469"/>
         <source>Restore default</source>
         <translation>回覆預設</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="475"/>
+        <location filename="Settings.cpp" line="472"/>
         <source>Save and close</source>
         <translation>儲存後關閉</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="478"/>
+        <location filename="Settings.cpp" line="475"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="701"/>
+        <location filename="Settings.cpp" line="698"/>
         <source>Application settings changed</source>
         <translation>已更改程式設定</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="702"/>
+        <location filename="Settings.cpp" line="699"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
@@ -1639,12 +1639,12 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="vanished">已儲存所有設定。有需要重啟才能生效的設定。 是否立即重啟程式?</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="705"/>
+        <location filename="Settings.cpp" line="702"/>
         <source>Restart now</source>
         <translation>立即重啟</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="706"/>
+        <location filename="Settings.cpp" line="703"/>
         <source>Go back to the application and restart later</source>
         <translation>回到應用程式稍後再重啟</translation>
     </message>
@@ -1960,7 +1960,7 @@ Please make sure your internet connection is working correctly and try again.
     </message>
     <message>
         <location filename="Utils.cpp" line="148"/>
-        <location filename="Utils.cpp" line="763"/>
+        <location filename="Utils.cpp" line="696"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1977,35 +1977,35 @@ Please make sure your internet connection is working correctly and try again.
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="757"/>
+        <location filename="Utils.cpp" line="690"/>
         <source>Project successfully saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="758"/>
+        <location filename="Utils.cpp" line="691"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="772"/>
+        <location filename="Utils.cpp" line="705"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1363"/>
+        <location filename="Utils.cpp" line="1296"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1465"/>
-        <location filename="Utils.cpp" line="1489"/>
+        <location filename="Utils.cpp" line="1398"/>
+        <location filename="Utils.cpp" line="1422"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1483"/>
+        <location filename="Utils.cpp" line="1416"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

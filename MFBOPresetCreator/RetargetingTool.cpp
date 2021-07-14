@@ -850,7 +850,7 @@ void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QString
   Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
-void RetargetingTool::updateBodySlideFiltersListPreview(int aIndex)
+void RetargetingTool::updateBodySlideFiltersListPreview(int)
 {
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};

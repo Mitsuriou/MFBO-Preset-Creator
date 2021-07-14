@@ -318,7 +318,6 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
 void BatchConversionPicker::validateSelection()
 {
   // TODO:
-  auto debug_stop = true;
 }
 
 void BatchConversionPicker::scrollbarPressed()

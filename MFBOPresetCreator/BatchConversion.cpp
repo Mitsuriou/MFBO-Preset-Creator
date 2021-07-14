@@ -438,7 +438,6 @@ void BatchConversion::launchBatchGenerationProcess()
   auto lFileName{QString()};
   auto lKey{QString()};
   auto lSecondArgument{QString()};
-  int lFirstSlashPosition{-1};
 
   auto lMeshesFilesToFind{QStringList({"femalebody_0.nif",
                                        "femalebody_1.nif",
@@ -584,7 +583,7 @@ void BatchConversion::updateBodySlideFiltersList(const std::map<QString, QString
   Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
-void BatchConversion::updateBodySlideFiltersListPreview(int aIndex)
+void BatchConversion::updateBodySlideFiltersListPreview(int)
 {
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};

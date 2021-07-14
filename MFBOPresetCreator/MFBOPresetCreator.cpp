@@ -533,7 +533,6 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     // Declare and initialize local variables
     auto lStableVersions{QStringList()};
     auto lBetaVersions{QStringList()};
-    auto lUserRunningBetaVersion{false};
     auto lTagName{QString()};
     auto lCurrentVersion{Utils::getApplicationVersion()};
 

@@ -21,9 +21,9 @@ namespace Struct
       this->outputFile = aOutputFile;
     }
 
-    void setName(const QString& name)
+    void setName(const QString& aName)
     {
-      this->name = name;
+      this->name = aName;
     }
 
     QString getName() const
@@ -31,9 +31,9 @@ namespace Struct
       return this->name;
     }
 
-    void setMeshPart(const QString& meshPart)
+    void setMeshPart(const QString& aMeshPart)
     {
-      this->meshPart = meshPart;
+      this->meshPart = aMeshPart;
     }
 
     QString getMeshPart() const
@@ -41,9 +41,9 @@ namespace Struct
       return this->meshPart;
     }
 
-    void setOutputPath(const QString& outputPath)
+    void setOutputPath(const QString& aOutputPath)
     {
-      this->outputPath = outputPath;
+      this->outputPath = aOutputPath;
     }
 
     QString getOutputPath() const
@@ -51,9 +51,9 @@ namespace Struct
       return this->outputPath;
     }
 
-    void setOutputFile(const QString& outputFile)
+    void setOutputFile(const QString& aOutputFile)
     {
-      this->outputFile = outputFile;
+      this->outputFile = aOutputFile;
     }
 
     QString getOutputFile() const

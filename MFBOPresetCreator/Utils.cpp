@@ -590,8 +590,6 @@ QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMus
     default: // UNP-based bodies
       return QString("%1 - BHUNP 3BBB Advanced Hands");
   }
-
-  return QString();
 }
 
 QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)

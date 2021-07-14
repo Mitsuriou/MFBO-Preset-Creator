@@ -115,9 +115,6 @@ void Settings::initializeGUI()
   }
   lMainLayout->addWidget(lStarLabel, 0, 0);
 
-  // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
-
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
   lTabWidget->setAutoFillBackground(true);
