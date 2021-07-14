@@ -1010,9 +1010,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   // For any JSON format upgrade / settings values changed
   else
   {
-    auto lSettingsVersion{lSettingsJSON["applicationVersion"].toString()};
-
-    if (Utils::compareVersionNumbers(lSettingsVersion, "3.2.0.0") == ApplicationVersionRelative::OLDER)
+    if (Utils::compareVersionNumbers(lSettingsJSON["applicationVersion"].toString(), "3.2.0.0") == ApplicationVersionRelative::OLDER)
     {
       lSettings.defaultMainWindowBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
       lSettings.defaultRetargetingToolBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
@@ -1369,6 +1367,18 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aR
 
   auto lGeneralEmptyButton{ComponentFactory::createButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), false, true)};
   aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
+}
+
+void Utils::selectComboBoxAt(QComboBox* aComboBox, const int aIndex)
+{
+  if (aIndex < 0 || aIndex >= aComboBox->count())
+  {
+    aComboBox->setCurrentIndex(0);
+  }
+  else
+  {
+    aComboBox->setCurrentIndex(aIndex);
+  }
 }
 
 void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed)

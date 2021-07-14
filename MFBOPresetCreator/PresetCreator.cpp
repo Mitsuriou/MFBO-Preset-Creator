@@ -698,9 +698,9 @@ void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
   this->findChild<QCheckBox*>("use_custom_skeleton")->setChecked(lFile["use_custom_skeleton"].toBool()); // Finish by checking or unchecking the box
 
   // BodySlide
-  this->findChild<QComboBox*>(QString("body_selector_name"))->setCurrentIndex(lFile["body_selector_name"].toInt());
-  this->findChild<QComboBox*>(QString("body_selector_version"))->setCurrentIndex(lFile["body_selector_version"].toInt());
-  this->findChild<QComboBox*>(QString("feet_mod_selector"))->setCurrentIndex(lFile["feet_mod_selector"].toInt());
+  Utils::selectComboBoxAt(this->findChild<QComboBox*>("body_selector_name"), lFile["body_selector_name"].toInt());
+  Utils::selectComboBoxAt(this->findChild<QComboBox*>("body_selector_version"), lFile["body_selector_version"].toInt());
+  Utils::selectComboBoxAt(this->findChild<QComboBox*>("feet_mod_selector"), lFile["feet_mod_selector"].toInt());
   this->findChild<QLineEdit*>("names_osp_xml_input")->setText(lFile["names_osp_xml_input"].toString());
   this->findChild<QLineEdit*>("names_bodyslide_input")->setText(lFile["names_bodyslide_input"].toString());
 

@@ -87,6 +87,7 @@ public:
   static void addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName);
 
   // GUI modifiers
+  static void selectComboBoxAt(QComboBox* aComboBox, const int aIndex);
   static void setGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed);
   static void updateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel);
   static void updateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview);
