@@ -1,0 +1,13 @@
+    <SliderSet name="CBBE 3BBB Feet">
+        <DataFolder>CBBE</DataFolder>
+        <SourceFile>CBBE Feet.nif</SourceFile>
+        <OutputPath>meshes\actors\character\character assets</OutputPath>
+        <OutputFile GenWeights="true">femalefeet</OutputFile>
+        <Shape target="Feet" DataFolder="CBBE">Feet</Shape>
+        <Slider name="AnkleSize" invert="false" small="100" big="0">
+            <Data name="FeetAnkleSize" target="Feet" local="true">CBBE Feet.osd\FeetAnkleSize</Data>
+        </Slider>
+        <Slider name="FeetFeminine" invert="false" small="0" big="0">
+            <Data name="FeetFeetFeminine" target="Feet" local="true">CBBE Feet.osd\FeetFeetFeminine</Data>
+        </Slider>
+    </SliderSet>

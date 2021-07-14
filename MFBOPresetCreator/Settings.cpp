@@ -121,6 +121,7 @@ void Settings::initializeGUI()
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
   lTabWidget->setAutoFillBackground(true);
+  lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   lMainLayout->addWidget(lTabWidget, 1, 0);
 
   this->setupDisplayTab(*lTabWidget);

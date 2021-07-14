@@ -1,1 +1,520 @@
-﻿
+﻿    <SliderSet name="CBBE Body SMP (3BBB)">
+        <DataFolder>CBBE</DataFolder>
+        <SourceFile>CBBE Body SMP (3BBB).nif</SourceFile>
+        <OutputPath>meshes\actors\character\character assets</OutputPath>
+        <OutputFile GenWeights="true">femalebody</OutputFile>
+        <Shape target="CBBE">CBBE</Shape>
+        <Shape target="Labia">Labia</Shape>
+        <Shape target="VirtualArms">VirtualArms</Shape>
+        <Shape target="VirtualBreasts">VirtualBreasts</Shape>
+        <Shape target="VirtualButt">VirtualButt</Shape>
+        <Shape target="VirtualGround">VirtualGround</Shape>
+        <Shape target="VirtualHands">VirtualHands</Shape>
+        <Shape target="VirtualHead">VirtualHead</Shape>
+        <Shape target="VirtualLegs">VirtualLegs</Shape>
+        <Shape target="VirtualVagina">VirtualVagina</Shape>
+        <Slider name="AnkleSize" invert="false" small="100" big="0">
+            <Data name="CBBEAnkleSize" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEAnkleSize</Data>
+            <Data name="VirtualLegsAnkleSize" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsAnkleSize</Data>
+        </Slider>
+        <Slider name="AppleCheeks" invert="false" small="0" big="0">
+            <Data name="CBBEAppleCheeks" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEAppleCheeks</Data>
+            <Data name="LabiaAppleCheeks" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaAppleCheeks</Data>
+            <Data name="VirtualBreastsAppleCheeks" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsAppleCheeks</Data>
+            <Data name="VirtualLegsAppleCheeks" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsAppleCheeks</Data>
+            <Data name="VirtualButtAppleCheeks" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtAppleCheeks</Data>
+            <Data name="VirtualVaginaAppleCheeks" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaAppleCheeks</Data>
+        </Slider>
+        <Slider name="AreolaSize" invert="false" small="0" big="0" uv="true">
+            <Data name="CBBEAreolaSize" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEAreolaSize</Data>
+        </Slider>
+        <Slider name="Arms" invert="false" small="0" big="0">
+            <Data name="CBBEarms" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEarms</Data>
+            <Data name="VirtualBreastsArms" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsArms</Data>
+            <Data name="VirtualArmsArms" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsArms</Data>
+        </Slider>
+        <Slider name="Back" invert="false" small="0" big="0">
+            <Data name="CBBEBack" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBack</Data>
+            <Data name="VirtualBreastsBack" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBack</Data>
+            <Data name="VirtualButtBack" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtBack</Data>
+        </Slider>
+        <Slider name="BackArch" invert="false" small="0" big="0">
+            <Data name="CBBEBackArch" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBackArch</Data>
+            <Data name="VirtualButtBackArch" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtBackArch</Data>
+        </Slider>
+        <Slider name="Belly" invert="false" small="0" big="0">
+            <Data name="CBBEBelly" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBelly</Data>
+            <Data name="VirtualBreastsBelly" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBelly</Data>
+        </Slider>
+        <Slider name="BigBelly" invert="false" small="0" big="0">
+            <Data name="CBBEBigBelly" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBigBelly</Data>
+            <Data name="LabiaBigBelly" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaBigBelly</Data>
+            <Data name="VirtualBreastsBigBelly" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBigBelly</Data>
+            <Data name="VirtualLegsBigBelly" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsBigBelly</Data>
+            <Data name="VirtualButtBigBelly" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtBigBelly</Data>
+            <Data name="VirtualVaginaBigBelly" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaBigBelly</Data>
+        </Slider>
+        <Slider name="BigButt" invert="false" small="0" big="0">
+            <Data name="CBBEBigButt" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBigButt</Data>
+            <Data name="LabiaBigButt" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaBigButt</Data>
+            <Data name="VirtualBreastsBigButt" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBigButt</Data>
+            <Data name="VirtualLegsBigButt" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsBigButt</Data>
+            <Data name="VirtualButtBigButt" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtBigButt</Data>
+            <Data name="VirtualVaginaBigButt" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaBigButt</Data>
+        </Slider>
+        <Slider name="BigTorso" invert="false" small="0" big="0">
+            <Data name="CBBEBigTorso" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBigTorso</Data>
+            <Data name="VirtualBreastsBigTorso" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBigTorso</Data>
+            <Data name="VirtualArmsBigTorso" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsBigTorso</Data>
+            <Data name="VirtualLegsBigTorso" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsBigTorso</Data>
+            <Data name="VirtualButtBigTorso" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtBigTorso</Data>
+        </Slider>
+        <Slider name="BreastCenter" invert="false" small="0" big="0">
+            <Data name="CBBEBreastCenter" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastCenter</Data>
+            <Data name="VirtualBreastsBreastCenter" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastCenter</Data>
+        </Slider>
+        <Slider name="BreastCenterBig" invert="false" small="0" big="0">
+            <Data name="CBBEBreastCenterBig" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastCenterBig</Data>
+            <Data name="VirtualBreastsBreastCenterBig" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastCenterBig</Data>
+        </Slider>
+        <Slider name="BreastCleavage" invert="false" small="0" big="0">
+            <Data name="CBBEBreastCleavage" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastCleavage</Data>
+            <Data name="VirtualBreastsBreastCleavage" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastCleavage</Data>
+        </Slider>
+        <Slider name="BreastFlatness2" invert="false" small="0" big="0">
+            <Data name="CBBEBreastFlatness2" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastFlatness2</Data>
+            <Data name="VirtualBreastsBreastFlatness2" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastFlatness2</Data>
+        </Slider>
+        <Slider name="BreastFlatness" invert="false" small="0" big="0">
+            <Data name="CBBEBreastFlattness" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastFlattness</Data>
+            <Data name="VirtualBreastsBreastFlatness" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastFlatness</Data>
+        </Slider>
+        <Slider name="BreastGravity2" invert="false" small="0" big="0">
+            <Data name="CBBEBreastGravity2" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastGravity2</Data>
+            <Data name="VirtualBreastsBreastGravity2" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastGravity2</Data>
+        </Slider>
+        <Slider name="BreastHeight" invert="false" small="0" big="0">
+            <Data name="CBBEBreastHeight" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastHeight</Data>
+            <Data name="VirtualBreastsBreastHeight" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastHeight</Data>
+        </Slider>
+        <Slider name="BreastPerkiness" invert="false" small="0" big="0">
+            <Data name="CBBEBreastPerkiness" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastPerkiness</Data>
+            <Data name="VirtualBreastsBreastPerkiness" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastPerkiness</Data>
+        </Slider>
+        <Slider name="Breasts" invert="false" small="0" big="0">
+            <Data name="CBBEBreasts" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreasts</Data>
+            <Data name="VirtualBreastsBreasts" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreasts</Data>
+        </Slider>
+        <Slider name="BreastsFantasy" invert="false" small="0" big="0">
+            <Data name="CBBEBreastsFantasy" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastsFantasy</Data>
+            <Data name="VirtualBreastsBreastsFantasy" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastsFantasy</Data>
+        </Slider>
+        <Slider name="BreastsGone" invert="false" small="0" big="0">
+            <Data name="CBBEBreastsGone" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastsGone</Data>
+            <Data name="VirtualBreastsBreastsGone" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastsGone</Data>
+        </Slider>
+        <Slider name="BreastsNewSH" invert="false" small="0" big="0">
+            <Data name="CBBEBreastsNewSH" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastsNewSH</Data>
+            <Data name="VirtualBreastsBreastsNewSH" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastsNewSH</Data>
+        </Slider>
+        <Slider name="BreastsNewSHSymmetry" invert="false" small="0" big="0">
+            <Data name="CBBEBreastsNewSHSymmetry" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastsNewSHSymmetry</Data>
+            <Data name="VirtualBreastsBreastsNewSHSymmetry" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastsNewSHSymmetry</Data>
+        </Slider>
+        <Slider name="BreastsSmall" invert="false" small="0" big="0">
+            <Data name="CBBEBreastsSmall" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastsSmall</Data>
+            <Data name="VirtualBreastsBreastsSmall" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastsSmall</Data>
+        </Slider>
+        <Slider name="BreastsSmall2" invert="false" small="0" big="0">
+            <Data name="CBBEBreastsSmall2" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastsSmall2</Data>
+            <Data name="VirtualBreastsBreastsSmall2" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastsSmall2</Data>
+        </Slider>
+        <Slider name="BreastsTogether" invert="false" small="0" big="0">
+            <Data name="CBBEBreastsTogether" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastsTogether</Data>
+            <Data name="VirtualBreastsBreastsTogether" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastsTogether</Data>
+        </Slider>
+        <Slider name="BreastTopSlope" invert="false" small="0" big="0">
+            <Data name="CBBEBreastTopSlope" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastTopSlope</Data>
+            <Data name="VirtualBreastsBreastTopSlope" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastTopSlope</Data>
+        </Slider>
+        <Slider name="BreastWidth" invert="false" small="0" big="0">
+            <Data name="CBBEBreastWidth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastWidth</Data>
+            <Data name="VirtualBreastsBreastWidth" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastWidth</Data>
+        </Slider>
+        <Slider name="BreastSideShape" invert="false" small="0" big="0">
+            <Data name="CBBEBreastSideShape" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastSideShape</Data>
+            <Data name="VirtualBreastsBreastSideShape" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastSideShape</Data>
+        </Slider>
+        <Slider name="BreastUnderDepth" invert="false" small="0" big="0">
+            <Data name="CBBEBreastUnderDepth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEBreastUnderDepth</Data>
+            <Data name="VirtualBreastsBreastUnderDepth" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsBreastUnderDepth</Data>
+        </Slider>
+        <Slider name="Butt" invert="false" small="0" big="0">
+            <Data name="CBBEButt" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEButt</Data>
+            <Data name="LabiaButt" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaButt</Data>
+            <Data name="VirtualLegsButt" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsButt</Data>
+            <Data name="VirtualButtButt" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtButt</Data>
+            <Data name="VirtualVaginaButt" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaButt</Data>
+        </Slider>
+        <Slider name="ButtClassic" invert="false" small="0" big="0">
+            <Data name="CBBEButtClassic" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEButtClassic</Data>
+            <Data name="LabiaButtClassic" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaButtClassic</Data>
+            <Data name="VirtualLegsButtClassic" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsButtClassic</Data>
+            <Data name="VirtualButtButtClassic" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtButtClassic</Data>
+            <Data name="VirtualVaginaButtClassic" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaButtClassic</Data>
+        </Slider>
+        <Slider name="ButtCrack" invert="false" small="0" big="0">
+            <Data name="CBBEButtCrack" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEButtCrack</Data>
+            <Data name="LabiaButtCrack" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaButtCrack</Data>
+            <Data name="VirtualLegsButtCrack" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsButtCrack</Data>
+            <Data name="VirtualButtButtCrack" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtButtCrack</Data>
+            <Data name="VirtualVaginaButtCrack" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaButtCrack</Data>
+        </Slider>
+        <Slider name="ButtShape2" invert="false" small="0" big="0">
+            <Data name="CBBEButtShape2" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEButtShape2</Data>
+            <Data name="LabiaButtShape2" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaButtShape2</Data>
+            <Data name="VirtualBreastsButtShape2" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsButtShape2</Data>
+            <Data name="VirtualLegsButtShape2" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsButtShape2</Data>
+            <Data name="VirtualButtButtShape2" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtButtShape2</Data>
+            <Data name="VirtualVaginaButtShape2" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaButtShape2</Data>
+        </Slider>
+        <Slider name="ButtSmall" invert="false" small="0" big="0">
+            <Data name="CBBEButtSmall" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEButtSmall</Data>
+            <Data name="LabiaButtSmall" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaButtSmall</Data>
+            <Data name="VirtualBreastsButtSmall" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsButtSmall</Data>
+            <Data name="VirtualLegsButtSmall" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsButtSmall</Data>
+            <Data name="VirtualButtButtSmall" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtButtSmall</Data>
+            <Data name="VirtualVaginaButtSmall" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaButtSmall</Data>
+        </Slider>
+        <Slider name="ButtDimples" invert="false" small="0" big="0">
+            <Data name="CBBEButtDimples" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEButtDimples</Data>
+        </Slider>
+        <Slider name="ButtUnderFold" invert="false" small="0" big="0">
+            <Data name="CBBEButtUnderFold" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEButtUnderFold</Data>
+        </Slider>
+        <Slider name="CalfSize" invert="false" small="0" big="0">
+            <Data name="CBBECalfSize" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBECalfSize</Data>
+            <Data name="VirtualLegsCalfSize" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsCalfSize</Data>
+        </Slider>
+        <Slider name="CalfSmooth" invert="false" small="0" big="0">
+            <Data name="CBBECalfSmooth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBECalfSmooth</Data>
+            <Data name="VirtualLegsCalfSmooth" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsCalfSmooth</Data>
+        </Slider>
+        <Slider name="ChestDepth" invert="false" small="0" big="0">
+            <Data name="CBBEChestDepth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEChestDepth</Data>
+            <Data name="VirtualBreastsChestDepth" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsChestDepth</Data>
+        </Slider>
+        <Slider name="ChestWidth" invert="false" small="0" big="0">
+            <Data name="CBBEChestWidth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEChestWidth</Data>
+            <Data name="VirtualBreastsChestWidth" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsChestWidth</Data>
+            <Data name="VirtualArmsChestWidth" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsChestWidth</Data>
+            <Data name="VirtualButtChestWidth" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtChestWidth</Data>
+        </Slider>
+        <Slider name="ChubbyArms" invert="false" small="0" big="0">
+            <Data name="CBBEChubbyArms" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEChubbyArms</Data>
+            <Data name="VirtualBreastsChubbyArms" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsChubbyArms</Data>
+            <Data name="VirtualArmsChubbyArms" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsChubbyArms</Data>
+        </Slider>
+        <Slider name="ChubbyButt" invert="false" small="0" big="0">
+            <Data name="CBBEChubbyButt" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEChubbyButt</Data>
+            <Data name="LabiaChubbyButt" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaChubbyButt</Data>
+            <Data name="VirtualBreastsChubbyButt" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsChubbyButt</Data>
+            <Data name="VirtualLegsChubbyButt" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsChubbyButt</Data>
+            <Data name="VirtualButtChubbyButt" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtChubbyButt</Data>
+            <Data name="VirtualVaginaChubbyButt" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaChubbyButt</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="CBBEChubbyLegs" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEChubbyLegs</Data>
+            <Data name="LabiaChubbyLegs" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaChubbyLegs</Data>
+            <Data name="VirtualLegsChubbyLegs" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsChubbyLegs</Data>
+            <Data name="VirtualButtChubbyLegs" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtChubbyLegs</Data>
+            <Data name="VirtualVaginaChubbyLegs" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaChubbyLegs</Data>
+        </Slider>
+        <Slider name="ChubbyWaist" invert="false" small="0" big="0">
+            <Data name="CBBEChubbyWaist" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEChubbyWaist</Data>
+            <Data name="LabiaChubbyWaist" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaChubbyWaist</Data>
+            <Data name="VirtualBreastsChubbyWaist" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsChubbyWaist</Data>
+            <Data name="VirtualLegsChubbyWaist" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsChubbyWaist</Data>
+            <Data name="VirtualButtChubbyWaist" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtChubbyWaist</Data>
+            <Data name="VirtualVaginaChubbyWaist" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaChubbyWaist</Data>
+        </Slider>
+        <Slider name="CrotchBack" invert="false" small="0" big="0">
+            <Data name="CBBECrotchBack" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBECrotchBack</Data>
+            <Data name="LabiaCrotchBack" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaCrotchBack</Data>
+            <Data name="VirtualLegsCrotchBack" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsCrotchBack</Data>
+            <Data name="VirtualButtCrotchBack" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtCrotchBack</Data>
+            <Data name="VirtualVaginaCrotchBack" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaCrotchBack</Data>
+        </Slider>
+        <Slider name="DoubleMelon" invert="false" small="0" big="0">
+            <Data name="CBBEDoubleMelon" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEDoubleMelon</Data>
+            <Data name="VirtualBreastsDoubleMelon" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsDoubleMelon</Data>
+        </Slider>
+        <Slider name="ForearmSize" invert="false" small="0" big="0">
+            <Data name="CBBEForearmSize" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEForearmSize</Data>
+            <Data name="VirtualArmsForearmSize" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsForearmSize</Data>
+        </Slider>
+        <Slider name="Groin" invert="false" small="0" big="0">
+            <Data name="CBBEGroin" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEGroin</Data>
+            <Data name="LabiaGroin" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaGroin</Data>
+            <Data name="VirtualLegsGroin" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsGroin</Data>
+            <Data name="VirtualVaginaGroin" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaGroin</Data>
+        </Slider>
+        <Slider name="HipBone" invert="false" small="0" big="0">
+            <Data name="CBBEHipbone" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEHipbone</Data>
+            <Data name="LabiaHipBone" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaHipBone</Data>
+            <Data name="VirtualLegsHipBone" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsHipBone</Data>
+            <Data name="VirtualButtHipBone" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtHipBone</Data>
+            <Data name="VirtualVaginaHipBone" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaHipBone</Data>
+        </Slider>
+        <Slider name="HipForward" invert="false" small="0" big="0">
+            <Data name="CBBEHipForward" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEHipForward</Data>
+            <Data name="LabiaHipForward" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaHipForward</Data>
+            <Data name="VirtualBreastsHipForward" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsHipForward</Data>
+            <Data name="VirtualLegsHipForward" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsHipForward</Data>
+            <Data name="VirtualButtHipForward" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtHipForward</Data>
+            <Data name="VirtualVaginaHipForward" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaHipForward</Data>
+        </Slider>
+        <Slider name="Hips" invert="false" small="0" big="0">
+            <Data name="CBBEHips" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEHips</Data>
+            <Data name="LabiaHips" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaHips</Data>
+            <Data name="VirtualBreastsHips" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsHips</Data>
+            <Data name="VirtualLegsHips" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsHips</Data>
+            <Data name="VirtualButtHips" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtHips</Data>
+            <Data name="VirtualVaginaHips" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaHips</Data>
+        </Slider>
+        <Slider name="HipUpperWidth" invert="false" small="0" big="0">
+            <Data name="CBBEHipUpperWidth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEHipUpperWidth</Data>
+            <Data name="VirtualBreastsHipUpperWidth" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsHipUpperWidth</Data>
+            <Data name="VirtualButtHipUpperWidth" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtHipUpperWidth</Data>
+        </Slider>
+        <Slider name="HipCarved" invert="false" small="0" big="0">
+            <Data name="CBBEHipCarved" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEHipCarved</Data>
+        </Slider>
+        <Slider name="KneeHeight" invert="false" small="0" big="0">
+            <Data name="CBBEKneeHeight" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEKneeHeight</Data>
+            <Data name="VirtualLegsKneeHeight" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsKneeHeight</Data>
+        </Slider>
+        <Slider name="KneeShape" invert="false" small="0" big="0">
+            <Data name="CBBEKneeShape" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEKneeShape</Data>
+            <Data name="VirtualLegsKneeShape" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsKneeShape</Data>
+        </Slider>
+        <Slider name="LegShapeClassic" invert="false" small="0" big="0">
+            <Data name="CBBELegShapeClassic" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBELegShapeClassic</Data>
+            <Data name="VirtualLegsLegShapeClassic" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsLegShapeClassic</Data>
+        </Slider>
+        <Slider name="LegsThin" invert="false" small="0" big="0">
+            <Data name="CBBELegsThin" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBELegsThin</Data>
+            <Data name="VirtualLegsLegsThin" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsLegsThin</Data>
+            <Data name="VirtualButtLegsThin" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtLegsThin</Data>
+        </Slider>
+        <Slider name="MuscleAbs" invert="false" small="0" big="0">
+            <Data name="CBBEMuscleAbs" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEMuscleAbs</Data>
+            <Data name="VirtualBreastsMuscleAbs" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsMuscleAbs</Data>
+            <Data name="VirtualVaginaMuscleAbs" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaMuscleAbs</Data>
+        </Slider>
+        <Slider name="MuscleArms" invert="false" small="0" big="0">
+            <Data name="CBBEMuscleArms" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEMuscleArms</Data>
+            <Data name="VirtualBreastsMuscleArms" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsMuscleArms</Data>
+            <Data name="VirtualArmsMuscleArms" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsMuscleArms</Data>
+        </Slider>
+        <Slider name="MuscleButt" invert="false" small="0" big="0">
+            <Data name="CBBEMuscleButt" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEMuscleButt</Data>
+            <Data name="VirtualLegsMuscleButt" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsMuscleButt</Data>
+            <Data name="VirtualButtMuscleButt" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtMuscleButt</Data>
+        </Slider>
+        <Slider name="MuscleLegs" invert="false" small="0" big="0">
+            <Data name="CBBEMuscleLegs" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEMuscleLegs</Data>
+            <Data name="LabiaMuscleLegs" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaMuscleLegs</Data>
+            <Data name="VirtualLegsMuscleLegs" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsMuscleLegs</Data>
+            <Data name="VirtualButtMuscleLegs" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtMuscleLegs</Data>
+            <Data name="VirtualVaginaMuscleLegs" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaMuscleLegs</Data>
+        </Slider>
+        <Slider name="MusclePecs" invert="false" small="0" big="0">
+            <Data name="CBBEMusclePecs" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEMusclePecs</Data>
+            <Data name="VirtualBreastsMusclePecs" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsMusclePecs</Data>
+        </Slider>
+        <Slider name="NavelEven" invert="false" small="0" big="0">
+            <Data name="CBBENavelEven" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENavelEven</Data>
+        </Slider>
+        <Slider name="NeckSeam" invert="false" small="100" big="0" hidden="true">
+            <Data name="CBBENeckSeam" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENeckSeam</Data>
+        </Slider>
+        <Slider name="NipBGone" invert="false" small="0" big="0">
+            <Data name="CBBENipBGone" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENipBGone</Data>
+            <Data name="VirtualBreastsNipBGone" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNipBGone</Data>
+        </Slider>
+        <Slider name="NippleDistance" invert="false" small="0" big="0">
+            <Data name="CBBENippleDistance" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleDistance</Data>
+            <Data name="VirtualBreastsNippleDistance" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleDistance</Data>
+        </Slider>
+        <Slider name="NippleDown" invert="false" small="0" big="0">
+            <Data name="CBBENippleDown" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleDown</Data>
+            <Data name="VirtualBreastsNippleDown" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleDown</Data>
+        </Slider>
+        <Slider name="NippleLength" invert="false" small="0" big="0">
+            <Data name="CBBENippleLength" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleLength</Data>
+            <Data name="VirtualBreastsNippleLength" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleLength</Data>
+        </Slider>
+        <Slider name="NippleManga" invert="false" small="0" big="0">
+            <Data name="CBBENippleManga" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleManga</Data>
+            <Data name="VirtualBreastsNippleManga" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleManga</Data>
+        </Slider>
+        <Slider name="NipplePerkiness" invert="false" small="0" big="0">
+            <Data name="CBBENipplePerkiness" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENipplePerkiness</Data>
+            <Data name="VirtualBreastsNipplePerkiness" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNipplePerkiness</Data>
+        </Slider>
+        <Slider name="NipplePerkManga" invert="false" small="0" big="0">
+            <Data name="CBBENipplePerkManga" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENipplePerkManga</Data>
+            <Data name="VirtualBreastsNipplePerkManga" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNipplePerkManga</Data>
+        </Slider>
+        <Slider name="NippleSize" invert="false" small="0" big="0">
+            <Data name="CBBENippleSize" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleSize</Data>
+            <Data name="VirtualBreastsNippleSize" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleSize</Data>
+        </Slider>
+        <Slider name="NippleTip" invert="false" small="0" big="0">
+            <Data name="CBBENippleTip" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleTip</Data>
+            <Data name="VirtualBreastsNippleTip" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleTip</Data>
+        </Slider>
+        <Slider name="NippleTipManga" invert="false" small="0" big="0">
+            <Data name="CBBENippleTipManga" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleTipManga</Data>
+            <Data name="VirtualBreastsNippleTipManga" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleTipManga</Data>
+        </Slider>
+        <Slider name="NippleUp" invert="false" small="0" big="0">
+            <Data name="CBBENippleUp" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleUp</Data>
+            <Data name="VirtualBreastsNippleUp" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsNippleUp</Data>
+        </Slider>
+        <Slider name="NippleDip" invert="false" small="0" big="0">
+            <Data name="CBBENippleDip" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBENippleDip</Data>
+        </Slider>
+        <Slider name="PregnancyBelly" invert="false" small="0" big="0">
+            <Data name="CBBEPregnancyBelly" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEPregnancyBelly</Data>
+            <Data name="LabiaPregnancyBelly" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaPregnancyBelly</Data>
+            <Data name="VirtualBreastsPregnancyBelly" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsPregnancyBelly</Data>
+            <Data name="VirtualLegsPregnancyBelly" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsPregnancyBelly</Data>
+            <Data name="VirtualVaginaPregnancyBelly" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaPregnancyBelly</Data>
+        </Slider>
+        <Slider name="PushUp" invert="false" small="0" big="0">
+            <Data name="CBBEPushUp" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEPushUp</Data>
+            <Data name="VirtualBreastsPushUp" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsPushUp</Data>
+        </Slider>
+        <Slider name="RibsProminance" invert="false" small="0" big="0">
+            <Data name="CBBERibsProminance" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBERibsProminance</Data>
+            <Data name="VirtualBreastsRibsProminance" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsRibsProminance</Data>
+        </Slider>
+        <Slider name="RoundAss" invert="false" small="0" big="0">
+            <Data name="CBBERoundAss" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBERoundAss</Data>
+            <Data name="LabiaRoundAss" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaRoundAss</Data>
+            <Data name="VirtualLegsRoundAss" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsRoundAss</Data>
+            <Data name="VirtualButtRoundAss" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtRoundAss</Data>
+            <Data name="VirtualVaginaRoundAss" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaRoundAss</Data>
+        </Slider>
+        <Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+            <Data name="CBBEShoulderSmooth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEShoulderSmooth</Data>
+        </Slider>
+        <Slider name="ShoulderTweak" invert="false" small="0" big="0">
+            <Data name="CBBEshouldertweak" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEshouldertweak</Data>
+        </Slider>
+        <Slider name="ShoulderWidth" invert="false" small="0" big="0">
+            <Data name="CBBEshoulderWidth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEshoulderWidth</Data>
+            <Data name="VirtualBreastsShoulderWidth" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsShoulderWidth</Data>
+            <Data name="VirtualArmsShoulderWidth" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsShoulderWidth</Data>
+        </Slider>
+        <Slider name="SlimThighs" invert="false" small="0" big="0">
+            <Data name="CBBESlimThighs" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBESlimThighs</Data>
+            <Data name="LabiaSlimThighs" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaSlimThighs</Data>
+            <Data name="VirtualLegsSlimThighs" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsSlimThighs</Data>
+            <Data name="VirtualButtSlimThighs" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtSlimThighs</Data>
+            <Data name="VirtualVaginaSlimThighs" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaSlimThighs</Data>
+        </Slider>
+        <Slider name="SternumDepth" invert="false" small="0" big="0">
+            <Data name="CBBESternumDepth" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBESternumDepth</Data>
+            <Data name="VirtualBreastsSternumDepth" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsSternumDepth</Data>
+        </Slider>
+        <Slider name="SternumHeight" invert="false" small="0" big="0">
+            <Data name="CBBESternumHeight" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBESternumHeight</Data>
+            <Data name="VirtualBreastsSternumHeight" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsSternumHeight</Data>
+        </Slider>
+        <Slider name="Thighs" invert="false" small="0" big="0">
+            <Data name="CBBEThighs" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEThighs</Data>
+            <Data name="LabiaThighs" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaThighs</Data>
+            <Data name="VirtualLegsThighs" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsThighs</Data>
+            <Data name="VirtualButtThighs" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtThighs</Data>
+            <Data name="VirtualVaginaThighs" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaThighs</Data>
+        </Slider>
+        <Slider name="TummyTuck" invert="false" small="0" big="0">
+            <Data name="CBBETummyTuck" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBETummyTuck</Data>
+            <Data name="LabiaTummyTuck" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaTummyTuck</Data>
+            <Data name="VirtualBreastsTummyTuck" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsTummyTuck</Data>
+            <Data name="VirtualLegsTummyTuck" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsTummyTuck</Data>
+            <Data name="VirtualVaginaTummyTuck" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaTummyTuck</Data>
+        </Slider>
+        <Slider name="Waist" invert="false" small="0" big="0">
+            <Data name="CBBEwaist" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEwaist</Data>
+            <Data name="VirtualBreastsWaist" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsWaist</Data>
+            <Data name="VirtualButtWaist" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtWaist</Data>
+        </Slider>
+        <Slider name="WaistHeight" invert="false" small="0" big="0">
+            <Data name="CBBEWaistHeight" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEWaistHeight</Data>
+            <Data name="LabiaWaistHeight" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaWaistHeight</Data>
+            <Data name="VirtualBreastsWaistHeight" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsWaistHeight</Data>
+            <Data name="VirtualButtWaistHeight" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtWaistHeight</Data>
+        </Slider>
+        <Slider name="WideWaistLine" invert="false" small="0" big="0">
+            <Data name="CBBEWideWaistLine" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEWideWaistLine</Data>
+            <Data name="VirtualBreastsWideWaistLine" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsWideWaistLine</Data>
+            <Data name="VirtualLegsWideWaistLine" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsWideWaistLine</Data>
+            <Data name="VirtualButtWideWaistLine" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtWideWaistLine</Data>
+        </Slider>
+        <Slider name="WristSize" invert="false" small="100" big="0">
+            <Data name="CBBEWristSize" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEWristSize</Data>
+            <Data name="VirtualArmsWristSize" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsWristSize</Data>
+        </Slider>
+        <Slider name="7B Lower" invert="false" small="0" big="0">
+            <Data name="CBBE7B Lower" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBE7B Lower</Data>
+            <Data name="Labia7B Lower" target="Labia" local="true">CBBE Body SMP (3BBB).osd\Labia7B Lower</Data>
+            <Data name="VirtualBreasts7B Lower" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreasts7B Lower</Data>
+            <Data name="VirtualLegs7B Lower" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegs7B Lower</Data>
+            <Data name="VirtualButt7B Lower" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButt7B Lower</Data>
+            <Data name="VirtualVagina7B Lower" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVagina7B Lower</Data>
+        </Slider>
+        <Slider name="7B Upper" invert="false" small="0" big="0">
+            <Data name="CBBE7B Upper" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBE7B Upper</Data>
+            <Data name="VirtualBreasts7B Upper" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreasts7B Upper</Data>
+            <Data name="VirtualArms7B Upper" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArms7B Upper</Data>
+            <Data name="VirtualLegs7B Upper" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegs7B Upper</Data>
+        </Slider>
+        <Slider name="VanillaSSEHi" invert="false" small="0" big="0">
+            <Data name="CBBEVanillaSSEHi" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEVanillaSSEHi</Data>
+            <Data name="LabiaVanillaSSEHi" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaVanillaSSEHi</Data>
+            <Data name="VirtualBreastsVanillaSSEHi" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsVanillaSSEHi</Data>
+            <Data name="VirtualArmsVanillaSSEHi" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsVanillaSSEHi</Data>
+            <Data name="VirtualLegsVanillaSSEHi" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsVanillaSSEHi</Data>
+            <Data name="VirtualButtVanillaSSEHi" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtVanillaSSEHi</Data>
+            <Data name="VirtualVaginaVanillaSSEHi" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaVanillaSSEHi</Data>
+        </Slider>
+        <Slider name="VanillaSSELo" invert="false" small="0" big="0">
+            <Data name="CBBEVanillaSSELo" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEVanillaSSELo</Data>
+            <Data name="LabiaVanillaSSELo" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaVanillaSSELo</Data>
+            <Data name="VirtualBreastsVanillaSSELo" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsVanillaSSELo</Data>
+            <Data name="VirtualArmsVanillaSSELo" target="VirtualArms" local="true">CBBE Body SMP (3BBB).osd\VirtualArmsVanillaSSELo</Data>
+            <Data name="VirtualLegsVanillaSSELo" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsVanillaSSELo</Data>
+            <Data name="VirtualButtVanillaSSELo" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtVanillaSSELo</Data>
+            <Data name="VirtualVaginaVanillaSSELo" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaVanillaSSELo</Data>
+        </Slider>
+        <Slider name="OldBaseShape" invert="false" small="0" big="0">
+            <Data name="CBBEOldBaseShape" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBEOldBaseShape</Data>
+            <Data name="LabiaOldBaseShape" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaOldBaseShape</Data>
+            <Data name="VirtualBreastsOldBaseShape" target="VirtualBreasts" local="true">CBBE Body SMP (3BBB).osd\VirtualBreastsOldBaseShape</Data>
+            <Data name="VirtualLegsOldBaseShape" target="VirtualLegs" local="true">CBBE Body SMP (3BBB).osd\VirtualLegsOldBaseShape</Data>
+            <Data name="VirtualButtOldBaseShape" target="VirtualButt" local="true">CBBE Body SMP (3BBB).osd\VirtualButtOldBaseShape</Data>
+            <Data name="VirtualVaginaOldBaseShape" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaOldBaseShape</Data>
+        </Slider>
+        <Slider name="Labia Slit" invert="false" small="100" big="100" hidden="true">
+            <Data name="CBBELabia Slit" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBELabia Slit</Data>
+            <Data name="VirtualVaginaLabia Slit" target="VirtualVagina" local="true">CBBE Body SMP (3BBB).osd\VirtualVaginaLabia Slit</Data>
+        </Slider>
+        <Slider name="Labia Small" invert="false" small="100" big="100" hidden="true">
+            <Data name="CBBELabia Small" target="CBBE" local="true">CBBE Body SMP (3BBB).osd\CBBELabia Small</Data>
+            <Data name="LabiaLabia Small" target="Labia" local="true">CBBE Body SMP (3BBB).osd\LabiaLabia Small</Data>
+        </Slider>
+    </SliderSet>
