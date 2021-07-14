@@ -262,8 +262,8 @@ QStringList DataLists::getFeetModsEntries()
 {
   return QStringList{
     QString("Default feet sliders"),
-    QString("More Sliders for Feet - Normal"),
-    QString("More Sliders for Feet - High Heels")};
+    QString("More Sliders for Feet - Normal - by Balveric"),
+    QString("More Sliders for Feet - High Heels - by Balveric")};
 }
 
 QStringList DataLists::getWindowOpeningModes()
