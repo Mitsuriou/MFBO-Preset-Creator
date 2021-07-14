@@ -93,6 +93,7 @@ enum class WindowOpeningMode
 
 enum class AssistedConversionRole
 {
+  IGNORED,
   BODY,
   FEET,
   HANDS,
