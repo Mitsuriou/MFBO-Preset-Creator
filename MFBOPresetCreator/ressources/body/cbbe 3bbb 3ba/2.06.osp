@@ -1,4 +1,4 @@
-    <SliderSet name="CBBE 3BBB Body Amazing">
+    <SliderSet name="%1 - CBBE 3BBB Body Amazing">
         <DataFolder>SE 3BBB Amazing</DataFolder>
         <SourceFile>SE 3BBB Body Amazing v2.nif</SourceFile>
         <OutputPath>{%%body_output_path%%}</OutputPath>
@@ -20,7 +20,7 @@
         <Slider name="AreolaSize" invert="false" small="0" big="0" uv="true">
             <Data name="3BAAreolaSize" target="3BA" local="true">SE 3BBB Body Amazing v2.osd\3BAAreolaSize</Data>
         </Slider>
-		<Slider name="AreolaPull_v2" invert="false" small="0" big="0">
+        <Slider name="AreolaPull_v2" invert="false" small="0" big="0">
             <Data name="3BAAreolaPull_v2" target="3BA" local="true">SE 3BBB Body Amazing v2.osd\3BAAreolaPull_v2</Data>
         </Slider>
         <Slider name="Arms" invert="false" small="0" big="0">

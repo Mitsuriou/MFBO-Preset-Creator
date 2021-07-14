@@ -1,4 +1,4 @@
-    <SliderSet name="CBBE Body Special">
+    <SliderSet name="%1 - CBBE Body Special">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Body Special.nif</SourceFile>
         <OutputPath>{%%body_output_path%%}</OutputPath>

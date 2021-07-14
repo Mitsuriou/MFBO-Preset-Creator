@@ -1,4 +1,4 @@
-    <SliderSet name="CBBE NeverNude Physics">
+    <SliderSet name="%1 - CBBE NeverNude Physics">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE NeverNude Physics.nif</SourceFile>
         <OutputPath>{%%body_output_path%%}</OutputPath>

@@ -1,4 +1,4 @@
-    <SliderSet name="CBBE Underwear">
+    <SliderSet name="%1 - CBBE Underwear">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Underwear.nif</SourceFile>
         <OutputPath>{%%body_output_path%%}</OutputPath>
