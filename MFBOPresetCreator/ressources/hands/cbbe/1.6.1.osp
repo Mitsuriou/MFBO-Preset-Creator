@@ -1,8 +1,8 @@
     <SliderSet name="CBBE Hands">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Hands.nif</SourceFile>
-        <OutputPath>meshes\actors\character\character assets</OutputPath>
-        <OutputFile GenWeights="true">femalehands</OutputFile>
+        <OutputPath>{%%hands_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%hands_output_file%%}</OutputFile>
         <Shape target="Hands">Hands</Shape>
         <Slider name="WristSize" invert="false" small="100" big="0">
             <Data name="HandsWristSize" target="Hands" local="true">CBBE Hands.osd\HandsWristSize</Data>

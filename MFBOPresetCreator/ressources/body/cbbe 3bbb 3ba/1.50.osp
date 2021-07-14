@@ -1,8 +1,8 @@
     <SliderSet name="CBBE 3BBB Body Amazing">
         <DataFolder>SE 3BBB Amazing</DataFolder>
         <SourceFile>SE 3BBB Body Amazing.nif</SourceFile>
-        <OutputPath>meshes\actors\character\character assets</OutputPath>
-        <OutputFile GenWeights="true">femalebody</OutputFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
         <Shape target="3BBB">3BBB</Shape>
         <Shape target="3BBB_Anus">3BBB_Anus</Shape>
         <Shape target="3BBB_Vagina">3BBB_Vagina</Shape>

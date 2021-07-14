@@ -1,8 +1,8 @@
     <SliderSet name="CBBE Body Special">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE Body Special.nif</SourceFile>
-        <OutputPath>meshes\actors\character\character assets</OutputPath>
-        <OutputFile GenWeights="true">femalebody</OutputFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
         <Shape target="BaseShapeHR">CBBE</Shape>
         <Shape target="Labia">Labia</Shape>
         <Slider name="AnkleSize" invert="false" small="100" big="0">

@@ -1,8 +1,8 @@
     <SliderSet name="CBBE NeverNude">
         <DataFolder>CBBE</DataFolder>
         <SourceFile>CBBE NeverNude.nif</SourceFile>
-        <OutputPath>meshes\actors\character\character assets</OutputPath>
-        <OutputFile GenWeights="true">femalebody</OutputFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
         <Shape target="Bra">Bra</Shape>
         <Shape target="BaseShapeHR" DataFolder="CBBE">CBBE</Shape>
         <Shape target="Panty">Panty</Shape>
