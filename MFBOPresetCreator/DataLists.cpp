@@ -163,7 +163,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
       return std::pair<int, int>(static_cast<int>(aBodyVersion) - 33, 4);
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-      return std::pair<int, int>(static_cast<int>(BodyName::MIMIR_EBONIC_BODY), static_cast<int>(aBodyVersion));
+      return std::pair<int, int>(static_cast<int>(BodyName::MIMIR_EBONIC_BODY), static_cast<int>(aBodyVersion) - 42);
   }
 
   return std::pair<int, int>(-1, -1);
