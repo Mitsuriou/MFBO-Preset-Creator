@@ -1,8 +1,8 @@
     <SliderSet name="BHUNP 3BBB Advanced Feet">
         <DataFolder>BHUNP 3BBB Advanced</DataFolder>
         <SourceFile>BHUNP 3BBB Advanced Feet.nif</SourceFile>
-        <OutputPath>meshes\actors\character\character assets</OutputPath>
-        <OutputFile GenWeights="true">femalefeet</OutputFile>
+        <OutputPath>{%%feet_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
         <Shape target="Feet">Feet</Shape>
         <Slider name="7B Low" invert="false" small="0" big="0">
             <Data name="Feet7B Low" target="Feet" local="true">BHUNP 3BBB Advanced Feet.osd\Feet7B Low</Data>
