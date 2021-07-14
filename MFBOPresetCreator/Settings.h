@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QGridLayout>
 #include <QHBoxLayout>
+#include <QTabWidget>
 
 class Settings final : public QDialog
 {
@@ -28,12 +29,12 @@ private:
   void setWindowProperties();
   void initializeGUI();
 
-  void setupDisplayGroup(QGridLayout& aLayout);
-  void setupGeneralGroup(QGridLayout& aLayout);
-  void setupPresetCreatorGroup(QGridLayout& aLayout);
-  void setupRetargetingToolGroup(QGridLayout& aLayout);
-  void setupAssistedConversionGroup(QGridLayout& aLayout);
-  void setupLastPaths(QGridLayout& aLayout);
+  void setupDisplayTab(QTabWidget& aTabWidget);
+  void setupGeneralTab(QTabWidget& aTabWidget);
+  void setupPresetCreatorTab(QTabWidget& aTabWidget);
+  void setupRetargetingToolTab(QTabWidget& aTabWidget);
+  void setupAssistedConversionTab(QTabWidget& aTabWidget);
+  void setupLastPathsTab(QTabWidget& aTabWidget);
   void setupButtons(QHBoxLayout& aLayout);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);
@@ -59,7 +60,6 @@ private:
   // GUI widgets events
   void scrollbarPressed();
   void scrollbarReleased();
-  void groupBoxChecked(bool aIsChecked);
   void clearPathButtonClicked();
   void clearAllPaths();
 #pragma endregion PRIVATE_SLOTS

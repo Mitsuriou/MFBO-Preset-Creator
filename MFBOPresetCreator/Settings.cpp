@@ -88,7 +88,7 @@ void Settings::reject()
 void Settings::setWindowProperties()
 {
   this->setModal(true);
-  this->setMinimumWidth(1000);
+  this->setMinimumWidth(950);
   this->setMinimumHeight(670);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -113,25 +113,23 @@ void Settings::initializeGUI()
     lStarLabel->setText(tr("Note: Modifying a value marked with the \"*\" character will require a restart of the application to be applied correctly."));
     lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.warningColor));
   }
-  lMainLayout->addWidget(lStarLabel, 0, 0, 1, 2);
+  lMainLayout->addWidget(lStarLabel, 0, 0);
 
-  // Left pane
-  this->setupDisplayGroup(*lMainLayout);
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // Right pane
-  auto lLeftPaneLayout{new QGridLayout(this)};
-  lLeftPaneLayout->setSpacing(0);
-  lLeftPaneLayout->setContentsMargins(10, 10, 10, 10);
-  lLeftPaneLayout->setAlignment(Qt::AlignTop);
-  lMainLayout->addLayout(lLeftPaneLayout, 1, 1, Qt::AlignTop);
+  // Tab widget
+  auto lTabWidget{new QTabWidget(this)};
+  lTabWidget->setAutoFillBackground(true);
+  lMainLayout->addWidget(lTabWidget, 1, 0);
 
-  this->setupGeneralGroup(*lLeftPaneLayout);
-  this->setupPresetCreatorGroup(*lLeftPaneLayout);
-  this->setupRetargetingToolGroup(*lLeftPaneLayout);
-  this->setupAssistedConversionGroup(*lLeftPaneLayout);
+  this->setupDisplayTab(*lTabWidget);
+  this->setupGeneralTab(*lTabWidget);
+  this->setupPresetCreatorTab(*lTabWidget);
+  this->setupRetargetingToolTab(*lTabWidget);
+  this->setupAssistedConversionTab(*lTabWidget);
+  this->setupLastPathsTab(*lTabWidget);
 
-  // Other parts
-  this->setupLastPaths(*lMainLayout);
   this->setupButtons(*lButtonLayout);
 
   // Load the settings into the interface
@@ -145,52 +143,51 @@ void Settings::initializeGUI()
   this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &Settings::scrollbarReleased);
 }
 
-void Settings::setupDisplayGroup(QGridLayout& aLayout)
+void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // Display group box
-  auto lDisplayGroupBox{new QGroupBox(tr("Display").append("  "), this)};
-  Utils::addIconToGroupBox(lDisplayGroupBox, lIconFolder, "monitor");
-  this->connect(lDisplayGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  Utils::setGroupBoxState(lDisplayGroupBox, false);
-  aLayout.addWidget(lDisplayGroupBox, 1, 0, Qt::AlignTop);
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
 
-  // Container layout
-  auto lDisplayLayout{new QVBoxLayout(lDisplayGroupBox)};
-  lDisplayLayout->setSpacing(10);
-  lDisplayLayout->setContentsMargins(15, 20, 15, 15);
-  lDisplayLayout->setAlignment(Qt::AlignTop);
+  // Layout
+  auto lTabLayout{new QVBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setContentsMargins(15, 20, 15, 15);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Display"));
 
   // LANGUAGE
-  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Language:")), this));
+  lTabLayout->addWidget(new QLabel(QString("* " + tr("Language:")), this));
 
   auto lLanguageSelector{new QComboBox(this)};
   lLanguageSelector->setItemDelegate(new QStyledItemDelegate());
   lLanguageSelector->setCursor(Qt::PointingHandCursor);
   lLanguageSelector->addItems(DataLists::getLanguages());
   lLanguageSelector->setObjectName(QString("language"));
-  lDisplayLayout->addWidget(lLanguageSelector);
+  lTabLayout->addWidget(lLanguageSelector);
 
   // FONT FAMILY
-  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Font:")), this));
+  lTabLayout->addWidget(new QLabel(QString("* " + tr("Font:")), this));
 
   auto lFontChooser{ComponentFactory::createButton(this, tr("Choose a font"), "", "text", lIconFolder, "font_chooser", false, true)};
-  lDisplayLayout->addWidget(lFontChooser);
+  lTabLayout->addWidget(lFontChooser);
 
   // GUI THEME
-  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Application Theme:")), this));
+  lTabLayout->addWidget(new QLabel(QString("* " + tr("Application Theme:")), this));
 
   auto lGUIThemeSelector{new QComboBox(this)};
   lGUIThemeSelector->setItemDelegate(new QStyledItemDelegate());
   lGUIThemeSelector->setCursor(Qt::PointingHandCursor);
   lGUIThemeSelector->addItems(DataLists::getAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
-  lDisplayLayout->addWidget(lGUIThemeSelector);
+  lTabLayout->addWidget(lGUIThemeSelector);
 
   // MAIN WINDOW OPENING MODE
-  lDisplayLayout->addWidget(new QLabel(tr("Window opening mode:"), this));
+  lTabLayout->addWidget(new QLabel(tr("Window opening mode:"), this));
 
   QStringList lSupportedWindowOpeningMode;
   lSupportedWindowOpeningMode.append(tr("English"));
@@ -201,38 +198,38 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   lWindowOpeningModeSelector->setCursor(Qt::PointingHandCursor);
   lWindowOpeningModeSelector->addItems(DataLists::getWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("window_opening_mode"));
-  lDisplayLayout->addWidget(lWindowOpeningModeSelector);
+  lTabLayout->addWidget(lWindowOpeningModeSelector);
 
   // WINDOW WIDTH
-  lDisplayLayout->addWidget(new QLabel(tr("Default main window width:"), this));
+  lTabLayout->addWidget(new QLabel(tr("Default main window width:"), this));
 
   auto lWinWidthInput{new QLineEdit("", this)};
   lWinWidthInput->setObjectName(QString("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 9999, this));
-  lDisplayLayout->addWidget(lWinWidthInput);
+  lTabLayout->addWidget(lWinWidthInput);
 
   // WINDOW HEIGHT
-  lDisplayLayout->addWidget(new QLabel(tr("Default main window height:"), this));
+  lTabLayout->addWidget(new QLabel(tr("Default main window height:"), this));
 
   auto lWinHeightInput{new QLineEdit("", this)};
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
-  lDisplayLayout->addWidget(lWinHeightInput);
+  lTabLayout->addWidget(lWinHeightInput);
 
   // COLORS
-  lDisplayLayout->addWidget(new QLabel(QString("* " + tr("Texts accent color:")), this));
+  lTabLayout->addWidget(new QLabel(QString("* " + tr("Texts accent color:")), this));
 
   // Success
   auto lSuccessColorChooser{ComponentFactory::createButton(this, tr("Choose a success color"), "", "color", lIconFolder, "success_color_chooser", false, true)};
-  lDisplayLayout->addWidget(lSuccessColorChooser);
+  lTabLayout->addWidget(lSuccessColorChooser);
 
   // Warning
   auto lWarningColorChooser{ComponentFactory::createButton(this, tr("Choose a warning color"), "", "color", lIconFolder, "warning_color_chooser", false, true)};
-  lDisplayLayout->addWidget(lWarningColorChooser);
+  lTabLayout->addWidget(lWarningColorChooser);
 
   // Danger
   auto lDangerColorChooser{ComponentFactory::createButton(this, tr("Choose a danger color"), "", "color", lIconFolder, "danger_color_chooser", false, true)};
-  lDisplayLayout->addWidget(lDangerColorChooser);
+  lTabLayout->addWidget(lDangerColorChooser);
 
   // Event binding
   this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
@@ -241,58 +238,57 @@ void Settings::setupDisplayGroup(QGridLayout& aLayout)
   this->connect(lDangerColorChooser, &QPushButton::clicked, this, &Settings::chooseDangerColor);
 }
 
-void Settings::setupGeneralGroup(QGridLayout& aLayout)
+void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // Display group box
-  auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
-  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  Utils::setGroupBoxState(lGeneralGroupBox, false);
-  aLayout.addWidget(lGeneralGroupBox, 0, 0, Qt::AlignTop);
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
 
-  // Container layout
-  auto lDisplayLayout{new QVBoxLayout(lGeneralGroupBox)};
-  lDisplayLayout->setSpacing(10);
-  lDisplayLayout->setContentsMargins(15, 20, 15, 15);
-  lDisplayLayout->setAlignment(Qt::AlignTop);
+  // Layout
+  auto lTabLayout{new QVBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setContentsMargins(15, 20, 15, 15);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("General"));
 
   // CHECK UPDATE AT APPLICATION STARTUP
   auto lAutoOpenDirCheckbox{new QCheckBox(tr("Check for updates at application startup"), this)};
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("check_update_startup"));
-  lDisplayLayout->addWidget(lAutoOpenDirCheckbox);
+  lTabLayout->addWidget(lAutoOpenDirCheckbox);
 
   // Each button stores the last opened path
   auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path"), this)};
   lEachButtonSavesItsLastUsedPath->setCursor(Qt::PointingHandCursor);
   lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
-  lDisplayLayout->addWidget(lEachButtonSavesItsLastUsedPath);
+  lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath);
 }
 
-void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
+void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // Preset Creator group box
-  auto lPresetCreatorGroupBox{new QGroupBox(tr("Preset Creator").append("  "), this)};
-  Utils::addIconToGroupBox(lPresetCreatorGroupBox, lIconFolder, "home");
-  this->connect(lPresetCreatorGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  Utils::setGroupBoxState(lPresetCreatorGroupBox, false);
-  aLayout.addWidget(lPresetCreatorGroupBox, 1, 0, Qt::AlignTop);
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
 
-  auto lPresetCreatorLayout{new QGridLayout(lPresetCreatorGroupBox)};
-  lPresetCreatorLayout->setSpacing(10);
-  lPresetCreatorLayout->setContentsMargins(15, 20, 15, 15);
-  lPresetCreatorLayout->setAlignment(Qt::AlignTop);
+  // Layout
+  auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setContentsMargins(15, 20, 15, 15);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Preset Creator"));
 
   // DEFAULT SELECTED BODY AND VERSION
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
-  lPresetCreatorLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -300,7 +296,7 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   lBodyNameSelector->addItems(DataLists::getBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("default_body_selector_name"));
-  lPresetCreatorLayout->addWidget(lBodyNameSelector, 1, 0);
+  lTabLayout->addWidget(lBodyNameSelector, 1, 0);
 
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
@@ -308,10 +304,10 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("default_body_selector_version"));
-  lPresetCreatorLayout->addWidget(lBodyVersionSelector, 1, 1);
+  lTabLayout->addWidget(lBodyVersionSelector, 1, 1);
 
   // Feet mod
-  lPresetCreatorLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
 
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
@@ -319,53 +315,53 @@ void Settings::setupPresetCreatorGroup(QGridLayout& aLayout)
   lFeetSelector->addItems(DataLists::getFeetModsEntries());
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_main"));
-  lPresetCreatorLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
+  lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
 
   // OUTPUT PATH PREVIEW
-  lPresetCreatorLayout->addWidget(new QLabel(tr("Output directory path:"), this), 4, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Output directory path:"), this), 4, 0, 1, 2);
 
   auto lOutputPathLineEdit{new QLineEdit("", this)};
   lOutputPathLineEdit->setReadOnly(true);
   lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lOutputPathLineEdit->setObjectName("output_path_directory");
-  lPresetCreatorLayout->addWidget(lOutputPathLineEdit, 5, 0);
+  lTabLayout->addWidget(lOutputPathLineEdit, 5, 0);
 
   // OUTPUT PATH CHOOSER
   auto lOutputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
-  lPresetCreatorLayout->addWidget(lOutputPathChooser, 5, 1);
+  lTabLayout->addWidget(lOutputPathChooser, 5, 1);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation"), this)};
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("auto_open_generated_dir"));
-  lPresetCreatorLayout->addWidget(lAutoOpenDirCheckbox, 6, 0, 1, 2);
+  lTabLayout->addWidget(lAutoOpenDirCheckbox, 6, 0, 1, 2);
 
   // Event binding
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBodyVersions);
 }
 
-void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
+void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // BodySlide Presets' Retargeting group box
-  auto lRetToolGroupBox{new QGroupBox(tr("BodySlide Presets' Retargeting").append("  "), this)};
-  Utils::addIconToGroupBox(lRetToolGroupBox, lIconFolder, "arrow-up");
-  this->connect(lRetToolGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  Utils::setGroupBoxState(lRetToolGroupBox, false);
-  aLayout.addWidget(lRetToolGroupBox, 2, 0, Qt::AlignTop);
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
 
-  auto lRetargetingToolLayout{new QGridLayout(lRetToolGroupBox)};
-  lRetargetingToolLayout->setSpacing(10);
-  lRetargetingToolLayout->setContentsMargins(15, 20, 15, 15);
-  lRetargetingToolLayout->setAlignment(Qt::AlignTop);
+  // Layout
+  auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setContentsMargins(15, 20, 15, 15);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("BodySlide Presets' Retargeting"));
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
   auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
-  lRetargetingToolLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
   auto lUpgradeBodyNameSelector{new QComboBox(this)};
   lUpgradeBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -373,7 +369,7 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
   lUpgradeBodyNameSelector->addItems(DataLists::getBodiesNames());
   lUpgradeBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lUpgradeBodyNameSelector->setObjectName(QString("upgrade_body_selector_name"));
-  lRetargetingToolLayout->addWidget(lUpgradeBodyNameSelector, 1, 0);
+  lTabLayout->addWidget(lUpgradeBodyNameSelector, 1, 0);
 
   auto lUpgradeBodyVersionSelector{new QComboBox(this)};
   lUpgradeBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
@@ -381,10 +377,10 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
   lUpgradeBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lUpgradeBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lUpgradeBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
-  lRetargetingToolLayout->addWidget(lUpgradeBodyVersionSelector, 1, 1);
+  lTabLayout->addWidget(lUpgradeBodyVersionSelector, 1, 1);
 
   // Feet mod
-  lRetargetingToolLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
 
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
@@ -392,71 +388,70 @@ void Settings::setupRetargetingToolGroup(QGridLayout& aLayout)
   lFeetSelector->addItems(DataLists::getFeetModsEntries());
   lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_retargeting_tool"));
-  lRetargetingToolLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
+  lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
 
   // Event binding
   this->connect(lUpgradeBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
 }
 
-void Settings::setupAssistedConversionGroup(QGridLayout& aLayout)
+void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // Assisted Conversion group box
-  auto lAssistedConversionGroupBox{new QGroupBox(tr("Assisted Conversion").append("  "), this)};
-  Utils::addIconToGroupBox(lAssistedConversionGroupBox, lIconFolder, "pencil");
-  this->connect(lAssistedConversionGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  Utils::setGroupBoxState(lAssistedConversionGroupBox, false);
-  aLayout.addWidget(lAssistedConversionGroupBox, 3, 0, Qt::AlignTop);
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
 
-  // Container layout
-  auto lAssistedConversionLayout{new QVBoxLayout(lAssistedConversionGroupBox)};
-  lAssistedConversionLayout->setSpacing(10);
-  lAssistedConversionLayout->setContentsMargins(15, 20, 15, 15);
-  lAssistedConversionLayout->setAlignment(Qt::AlignTop);
+  // Layout
+  auto lTabLayout{new QVBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setContentsMargins(15, 20, 15, 15);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Assisted Conversion"));
 
   // ONLY SCAN THE MESHES SUBDIRECTORY
   auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory"), this)};
   lScanOnlyMeshesFolder->setCursor(Qt::PointingHandCursor);
   lScanOnlyMeshesFolder->setObjectName(QString("assis_conv_only_scan_meshes_dir"));
-  lAssistedConversionLayout->addWidget(lScanOnlyMeshesFolder);
+  lTabLayout->addWidget(lScanOnlyMeshesFolder);
 }
 
-void Settings::setupLastPaths(QGridLayout& aLayout)
+void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  // BodySlide Presets' Retargeting group box
-  auto lPathsGroupBox{new QGroupBox(tr("Last used folder and files paths").append("  "), this)};
-  Utils::addIconToGroupBox(lPathsGroupBox, lIconFolder, "folder");
-  this->connect(lPathsGroupBox, &QGroupBox::toggled, this, &Settings::groupBoxChecked);
-  Utils::setGroupBoxState(lPathsGroupBox, true);
-  aLayout.addWidget(lPathsGroupBox, 2, 0, 1, 2);
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
 
-  auto lPathsLayout{new QGridLayout(lPathsGroupBox)};
-  lPathsLayout->setSpacing(10);
-  lPathsLayout->setContentsMargins(15, 20, 15, 15);
-  lPathsLayout->setAlignment(Qt::AlignTop);
+  // Layout
+  auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setContentsMargins(15, 20, 15, 15);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Last used paths"));
 
   // "Clear all" button
   auto lClearAllButton{ComponentFactory::createButton(this, tr("Remove all the history"), "", "trash-lines", lIconFolder, "remove_all_filters", false, true)};
   lClearAllButton->setStyleSheet("text-align:left;");
-  lPathsLayout->addWidget(lClearAllButton, 0, 2);
+  lTabLayout->addWidget(lClearAllButton, 0, 2);
 
   // Create a line for each path
   auto lRowIndex{1};
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Batch Conv.: input"), this->mLastPaths.find("batchConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Batch Conv.: output"), this->mLastPaths.find("batchConversionOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lPathsLayout, lRowIndex, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: input"), this->mLastPaths.find("batchConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: output"), this->mLastPaths.find("batchConversionOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::addLastPathLine(this, lTabLayout, lRowIndex, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind all the clear buttons
   this->connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);
@@ -843,15 +838,6 @@ void Settings::scrollbarReleased()
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
-}
-
-void Settings::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
 }
 
 void Settings::clearPathButtonClicked()

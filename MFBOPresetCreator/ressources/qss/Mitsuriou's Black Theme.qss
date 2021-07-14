@@ -396,3 +396,41 @@ QSplitter::handle:horizontal {
 QSplitter::handle:vertical {
   height: 4px;
 }
+
+/************/
+/*QTABWIDGET*/
+/************/
+QTabWidget QWidget {
+  background-color: #080808;
+}
+
+QTabWidget::pane {
+  border: none;
+  border-top: 2px solid #3991ff;
+}
+
+QTabBar::tab {
+  border: 1px solid #3991ff;
+  padding-left: 4px;
+  padding-right: 4px;
+  min-height: 26px;
+  border-bottom: 0;
+  margin: 0 1px;
+}
+
+QTabBar::tab:first {
+  margin-left: 0;
+}
+
+QTabBar::tab::last {
+  margin-right: 0;
+}
+
+QTabBar::tab::selected {
+  border-color: #3991ff;
+  background-color: #3991ff;
+}
+
+QTabBar::tab::hover {
+  border-color: white;
+}
