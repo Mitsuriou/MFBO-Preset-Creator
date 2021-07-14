@@ -231,26 +231,44 @@ void MFBOPresetCreator::setupMenuBar()
   auto lOpenUpdate{Utils::buildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL + Qt::Key_U), "cloud-search", lIconFolder)};
   lHelp->addAction(lOpenUpdate);
 
+  // Submenu: Report a bug
+  auto lReportBugSubmenu{new QMenu(tr("Report a bug..."), this)};
+  lReportBugSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/bug").arg(lIconFolder))));
+  lReportBugSubmenu->setCursor(Qt::PointingHandCursor);
+  lHelp->addMenu(lReportBugSubmenu);
+
+  // Action: Report a bug from Nexus Mods
+  auto lReportBugNexusMods{Utils::buildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(), "nexus-logo", lIconFolder)};
+  lReportBugSubmenu->addAction(lReportBugNexusMods);
+
+  // Action: Report a bug from GitHub
+  auto lReportBugGitHub{Utils::buildQAction(this, tr("GitHub (github.com)"), QKeySequence(), "github", lIconFolder)};
+  lReportBugSubmenu->addAction(lReportBugGitHub);
+
+  // Action: Report a bug from GitLab
+  auto lReportBugGitLab{Utils::buildQAction(this, tr("GitLab (gitlab.com)"), QKeySequence(), "gitlab", lIconFolder)};
+  lReportBugSubmenu->addAction(lReportBugGitLab);
+
   // Submenu: Links
-  auto lLinksSubmenu{new QMenu(tr("Useful links"), this)};
+  auto lLinksSubmenu{new QMenu(tr("Useful links..."), this)};
   lLinksSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/link").arg(lIconFolder))));
   lLinksSubmenu->setCursor(Qt::PointingHandCursor);
   lHelp->addMenu(lLinksSubmenu);
 
   // Action: Nexus page link
-  auto lOpenNexus{Utils::buildQAction(this, tr("Nexus Mods page"), QKeySequence(Qt::CTRL + Qt::Key_N), "nexus-logo", lIconFolder)};
+  auto lOpenNexus{Utils::buildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(Qt::CTRL + Qt::Key_N), "nexus-logo", lIconFolder)};
   lLinksSubmenu->addAction(lOpenNexus);
 
   // Action: open URL to Doogle Docs: Guide and tutorials
-  auto lOpenGuide{Utils::buildQAction(this, tr("User guide and tutorials (Google Docs)"), QKeySequence(Qt::CTRL + Qt::Key_G), "text-file", lIconFolder)};
+  auto lOpenGuide{Utils::buildQAction(this, tr("User guide and tutorials (docs.google.com)"), QKeySequence(Qt::CTRL + Qt::Key_G), "text-file", lIconFolder)};
   lLinksSubmenu->addAction(lOpenGuide);
 
   // Action: Source code on GitHub
-  auto lOpenSourceCodeGitHub{Utils::buildQAction(this, tr("View the source code (GitHub.com)"), NULL, "code", lIconFolder)};
+  auto lOpenSourceCodeGitHub{Utils::buildQAction(this, tr("View the source code (github.com)"), QKeySequence(), "github", lIconFolder)};
   lLinksSubmenu->addAction(lOpenSourceCodeGitHub);
 
   // Action: Source code on GitLab
-  auto lOpenSourceCodeGitLab{Utils::buildQAction(this, tr("View the source code (GitLab.com)"), NULL, "code", lIconFolder)};
+  auto lOpenSourceCodeGitLab{Utils::buildQAction(this, tr("View the source code (gitlab.com)"), QKeySequence(), "gitlab", lIconFolder)};
   lLinksSubmenu->addAction(lOpenSourceCodeGitLab);
 
   // Action: About
@@ -269,10 +287,13 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
   this->connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
-  this->connect(lOpenNexus, &QAction::triggered, this, &MFBOPresetCreator::openNexusPageInDefaultBrowser);
-  this->connect(lOpenSourceCodeGitHub, &QAction::triggered, this, &MFBOPresetCreator::openGitHubSourceCodePageInDefaultBrowser);
-  this->connect(lOpenSourceCodeGitLab, &QAction::triggered, this, &MFBOPresetCreator::openGitLabSourceCodePageInDefaultBrowser);
-  this->connect(lOpenGuide, &QAction::triggered, this, &MFBOPresetCreator::openGuideInDefaultBrowser);
+  this->connect(lReportBugNexusMods, &QAction::triggered, this, &MFBOPresetCreator::reportBugNexusMods);
+  this->connect(lReportBugGitHub, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitHub);
+  this->connect(lReportBugGitLab, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitLab);
+  this->connect(lOpenNexus, &QAction::triggered, this, &MFBOPresetCreator::openNexusModsPage);
+  this->connect(lOpenSourceCodeGitHub, &QAction::triggered, this, &MFBOPresetCreator::openGitHubSourceCodePage);
+  this->connect(lOpenSourceCodeGitLab, &QAction::triggered, this, &MFBOPresetCreator::openGitLabSourceCodePage);
+  this->connect(lOpenGuide, &QAction::triggered, this, &MFBOPresetCreator::openGoogleDriveGuide);
   this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
 }
 
@@ -723,22 +744,37 @@ void MFBOPresetCreator::launchUpdateDialog()
   new Update(this, this->mSettings);
 }
 
-void MFBOPresetCreator::openNexusPageInDefaultBrowser()
+void MFBOPresetCreator::reportBugNexusMods()
+{
+  QDesktopServices::openUrl(QUrl("https://www.nexusmods.com/skyrimspecialedition/mods/44706?tab=bugs"));
+}
+
+void MFBOPresetCreator::reportBugGitHub()
+{
+  QDesktopServices::openUrl(QUrl("https://github.com/Mitsuriou/MFBO-Preset-Creator/issues"));
+}
+
+void MFBOPresetCreator::reportBugGitLab()
+{
+  QDesktopServices::openUrl(QUrl("https://gitlab.com/Mitsuriou/MFBO-Preset-Creator/-/issues"));
+}
+
+void MFBOPresetCreator::openNexusModsPage()
 {
   QDesktopServices::openUrl(QUrl("https://www.nexusmods.com/skyrimspecialedition/mods/44706"));
 }
 
-void MFBOPresetCreator::openGitHubSourceCodePageInDefaultBrowser()
+void MFBOPresetCreator::openGitHubSourceCodePage()
 {
   QDesktopServices::openUrl(QUrl("https://github.com/Mitsuriou/MFBO-Preset-Creator"));
 }
 
-void MFBOPresetCreator::openGitLabSourceCodePageInDefaultBrowser()
+void MFBOPresetCreator::openGitLabSourceCodePage()
 {
   QDesktopServices::openUrl(QUrl("https://gitlab.com/Mitsuriou/MFBO-Preset-Creator"));
 }
 
-void MFBOPresetCreator::openGuideInDefaultBrowser()
+void MFBOPresetCreator::openGoogleDriveGuide()
 {
   QDesktopServices::openUrl(QUrl("https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing"));
 }

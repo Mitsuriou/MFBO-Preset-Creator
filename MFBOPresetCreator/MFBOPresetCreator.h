@@ -62,10 +62,13 @@ private:
   void launchSettingsDialog();
   void launchUpdateDialog();
   // URL links
-  void openNexusPageInDefaultBrowser();
-  void openGitHubSourceCodePageInDefaultBrowser();
-  void openGitLabSourceCodePageInDefaultBrowser();
-  void openGuideInDefaultBrowser();
+  void reportBugNexusMods();
+  void reportBugGitHub();
+  void reportBugGitLab();
+  void openNexusModsPage();
+  void openGitHubSourceCodePage();
+  void openGitLabSourceCodePage();
+  void openGoogleDriveGuide();
   // Dialog
   void launchAboutDialog();
 

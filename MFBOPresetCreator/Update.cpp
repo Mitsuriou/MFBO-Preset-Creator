@@ -98,7 +98,7 @@ void Update::overrideHTMLLinksColor(QString& aHTMLString)
   }
 
   // Hacky links' colors override for some themes
-  auto lLinksColorOverride{QString("color:#e95985")};
+  auto lLinksColorOverride{this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985")};
 
   // Go through the string to find the link colors
   auto i{0};

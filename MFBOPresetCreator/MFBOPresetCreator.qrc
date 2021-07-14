@@ -54,6 +54,9 @@
         <file alias="vector-polyline">ressources/software/icons/black/vector-polyline.png</file>
         <file alias="file">ressources/software/icons/black/file.png</file>
         <file alias="reorder">ressources/software/icons/black/reorder.png</file>
+        <file alias="bug">ressources/software/icons/black/bug.png</file>
+        <file alias="github">ressources/software/icons/black/github.png</file>
+        <file alias="gitlab">ressources/software/icons/black/gitlab.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -103,6 +106,9 @@
         <file alias="vector-polyline">ressources/software/icons/white/vector-polyline.png</file>
         <file alias="file">ressources/software/icons/white/file.png</file>
         <file alias="reorder">ressources/software/icons/white/reorder.png</file>
+        <file alias="bug">ressources/software/icons/white/bug.png</file>
+        <file alias="github">ressources/software/icons/white/github.png</file>
+        <file alias="gitlab">ressources/software/icons/white/gitlab.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>
