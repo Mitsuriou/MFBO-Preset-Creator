@@ -483,6 +483,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Display a message to the user that the backup is being created
     QDialog lDialog(this);
+    lDialog.setWindowFlags(lDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
     QVBoxLayout lLayout;
     lDialog.setLayout(&lLayout);
     QLabel lLabel(tr("The backup is currently being created. Depending on your computer, it can take a certain time. Please wait..."), this);
@@ -513,6 +514,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Parsing XML files. Please wait..."), tr("Cancel treatment"), 0, 0, this);
   lProgressDialog.setBar(lProgressbar);
+  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 

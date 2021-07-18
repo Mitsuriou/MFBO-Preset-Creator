@@ -161,6 +161,7 @@ TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const 
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Scanning the directory. Please wait..."), tr("Cancel treatment"), 0, 0, this->parentWidget());
   lProgressDialog.setBar(lProgressbar);
+  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 

@@ -50,6 +50,7 @@ void TextInputDialog::updateAddButtonStatus(const QString& aText)
 void TextInputDialog::setWindowProperties(const QString& aTitle)
 {
   this->setModal(true);
+  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(aTitle);
 }
 
