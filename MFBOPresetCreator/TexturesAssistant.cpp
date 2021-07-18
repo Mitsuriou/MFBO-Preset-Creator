@@ -75,7 +75,6 @@ void TexturesAssistant::setWindowProperties()
   this->setModal(true);
   this->setMinimumWidth(700);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Textures Assistant"));
   this->setWindowIcon(QIcon(QPixmap(":/black/textures")));
 }
@@ -162,7 +161,6 @@ TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const 
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Scanning the directory. Please wait..."), tr("Cancel treatment"), 0, 0, this->parentWidget());
   lProgressDialog.setBar(lProgressbar);
-  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 
@@ -285,7 +283,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Head ressources blocks
   auto lHeadGroup{new QGroupBox(tr("Head textures").append("  "), this)};
-  Utils::addIconToGroupBox(lHeadGroup, lIconFolder, "woman-head");
+  Utils::addIconToGroupBox(lHeadGroup, lIconFolder, "woman-head", this->mSettings.font.size);
   this->connect(lHeadGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::setGroupBoxState(lHeadGroup, false);
 
@@ -297,7 +295,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Hands ressources blocks
   auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
-  Utils::addIconToGroupBox(lHandsGroup, lIconFolder, "hand");
+  Utils::addIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.font.size);
   this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::setGroupBoxState(lHandsGroup, false);
 
@@ -309,7 +307,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Body ressources blocks
   auto lBodyGroup{new QGroupBox(tr("Body textures").append("  "), this)};
-  Utils::addIconToGroupBox(lBodyGroup, lIconFolder, "body");
+  Utils::addIconToGroupBox(lBodyGroup, lIconFolder, "body", this->mSettings.font.size);
   this->connect(lBodyGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::setGroupBoxState(lBodyGroup, false);
 
@@ -321,7 +319,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Other textures files
   auto lOtherGroup{new QGroupBox(tr("Other .DDS textures").append("  "), this)};
-  Utils::addIconToGroupBox(lOtherGroup, lIconFolder, "textures");
+  Utils::addIconToGroupBox(lOtherGroup, lIconFolder, "textures", this->mSettings.font.size);
   this->connect(lOtherGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::setGroupBoxState(lOtherGroup, false);
 

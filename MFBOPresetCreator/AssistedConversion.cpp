@@ -78,7 +78,6 @@ void AssistedConversion::setWindowProperties()
   this->setModal(true);
   this->setMinimumWidth(700);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Assisted Conversion"));
   this->setWindowIcon(QIcon(QPixmap(":/black/pencil")));
 }
@@ -170,7 +169,6 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Scanning the directory. Please wait..."), tr("Cancel treatment"), 0, 0, this->parentWidget());
   lProgressDialog.setBar(lProgressbar);
-  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 

@@ -312,7 +312,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 
   // Body meshes group box
   auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes").append("  "), this)};
-  Utils::addIconToGroupBox(lMeshesGroupBox, lIconFolder, "body");
+  Utils::addIconToGroupBox(lMeshesGroupBox, lIconFolder, "body", this->mSettings.font.size);
   this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lMeshesGroupBox, false);
   aLayout.addWidget(lMeshesGroupBox, 0, 0);
@@ -410,7 +410,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
+  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline", this->mSettings.font.size);
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lSkeletonGroupBox, false);
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
@@ -510,7 +510,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
+  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
   aLayout.addWidget(lBodyslideGroupBox, 2, 0);
@@ -645,7 +645,7 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Create the group box
-  ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth);
+  ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
   auto lOutputGroupBox{this->findChild<QGroupBox*>("output_group_box")};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
 

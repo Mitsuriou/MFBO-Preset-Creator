@@ -7,5 +7,5 @@ class BCGroupWidget : public QWidget
   Q_OBJECT
 
 public:
-  BCGroupWidget(QWidget* aParent, const QString& aSectionTitle);
+  explicit BCGroupWidget(QWidget* aParent, const QString& aSectionTitle);
 };

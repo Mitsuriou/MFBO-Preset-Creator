@@ -74,7 +74,6 @@ void BatchConversionPicker::setWindowProperties()
   this->setModal(true);
   this->setMinimumWidth(700);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Batch Conversion: Results picker"));
   this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
   this->setAcceptDrops(true); // Authorize drag&drop
@@ -138,7 +137,7 @@ void BatchConversionPicker::initializeGUI()
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
+  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
   lDataMaker->addWidget(lBodyslideGroupBox);

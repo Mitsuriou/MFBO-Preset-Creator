@@ -8,6 +8,7 @@
 #include "TexturesAssistant.h"
 #include "Update.h"
 #include "Utils.h"
+#include "WelcomeDialog.h"
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDesktopServices>
@@ -146,6 +147,8 @@ void MFBOPresetCreator::initializeGUI()
 
   Utils::cleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
+
+  this->launchWelcomeDialog();
 }
 
 void MFBOPresetCreator::setupMenuBar()
@@ -356,6 +359,11 @@ void MFBOPresetCreator::showWindow()
   {
     this->showMaximized();
   }
+}
+
+void MFBOPresetCreator::launchWelcomeDialog()
+{
+  new WelcomeDialog(this, this->mSettings);
 }
 
 void MFBOPresetCreator::applyGlobalStyleSheet()

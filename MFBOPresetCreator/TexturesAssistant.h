@@ -8,7 +8,7 @@ class TexturesAssistant final : public QDialog
   Q_OBJECT
 
 public:
-  TexturesAssistant(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+  explicit TexturesAssistant(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

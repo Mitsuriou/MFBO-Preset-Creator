@@ -1277,10 +1277,14 @@ QAction* Utils::buildQAction(QWidget* aParent, const QString& aText, const QKeyS
   return lAction;
 }
 
-void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName)
+void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName, const int aFontSize)
 {
   aGroupBox->setCheckable(true);
-  aGroupBox->setStyleSheet(QString("QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%1/%2)}").arg(aIconFolder).arg(aIconName));
+  aGroupBox->setStyleSheet(QString("QGroupBox{font-size: %1pt;}"
+                                   "QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%2/%3);}")
+                             .arg(static_cast<int>(std::floor(aFontSize * 1.25)))
+                             .arg(aIconFolder)
+                             .arg(aIconName));
 }
 
 void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)

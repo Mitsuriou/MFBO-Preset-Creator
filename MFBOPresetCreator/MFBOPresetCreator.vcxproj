@@ -249,6 +249,8 @@ echo #####################################################</Command>
     <ClCompile Include="TexturesAssistant.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="WelcomeDialog.cpp" />
+    <QtMoc Include="WelcomeDialog.h" />
     <QtMoc Include="TexturesAssistant.h" />
     <QtMoc Include="TextInputDialog.h" />
     <QtMoc Include="Update.h" />

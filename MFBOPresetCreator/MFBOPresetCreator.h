@@ -33,6 +33,7 @@ private:
   void initializeGUI();
   void setupMenuBar();
   void showWindow();
+  void launchWelcomeDialog();
   void applyGlobalStyleSheet();
   void applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut);
   std::vector<QLineEdit*> disableLineEditPlaceholders();

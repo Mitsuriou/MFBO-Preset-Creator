@@ -82,7 +82,6 @@ void BodySlideFiltersEditor::setWindowProperties()
 {
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("BodySlide filters editor"));
   this->setWindowIcon(QIcon(QPixmap(":/black/filter")));
 }

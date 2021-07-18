@@ -64,6 +64,9 @@
     <ClCompile Include="BCGroupWidget.cpp">
       <Filter>Source Files\Drag and Drop</Filter>
     </ClCompile>
+    <ClCompile Include="WelcomeDialog.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -214,6 +217,9 @@
     </QtMoc>
     <QtMoc Include="BCGroupWidget.h">
       <Filter>Header Files\Drag and Drop</Filter>
+    </QtMoc>
+    <QtMoc Include="WelcomeDialog.h">
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

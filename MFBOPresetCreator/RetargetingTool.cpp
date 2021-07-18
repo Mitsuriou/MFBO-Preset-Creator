@@ -80,7 +80,6 @@ void RetargetingTool::setWindowProperties()
   this->setModal(true);
   this->setMinimumWidth(700);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("BodySlide Presets' Retargeting"));
   this->setWindowIcon(QIcon(QPixmap(":/black/arrow-up")));
 }
@@ -102,7 +101,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // General group box
   auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
+  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.font.size);
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
   Utils::setGroupBoxState(lGeneralGroupBox, false);
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
@@ -179,7 +178,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Backup group box
   auto lBackupGroupBox{new QGroupBox(tr("Backup").append("  "), this)};
-  Utils::addIconToGroupBox(lBackupGroupBox, lIconFolder, "restore");
+  Utils::addIconToGroupBox(lBackupGroupBox, lIconFolder, "restore", this->mSettings.font.size);
   this->connect(lBackupGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
   Utils::setGroupBoxState(lBackupGroupBox, false);
   aLayout.addWidget(lBackupGroupBox, 1, 0);
@@ -484,7 +483,6 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Display a message to the user that the backup is being created
     QDialog lDialog(this);
-    lDialog.setWindowFlags(lDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
     QVBoxLayout lLayout;
     lDialog.setLayout(&lLayout);
     QLabel lLabel(tr("The backup is currently being created. Depending on your computer, it can take a certain time. Please wait..."), this);
@@ -515,7 +513,6 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Parsing XML files. Please wait..."), tr("Cancel treatment"), 0, 0, this);
   lProgressDialog.setBar(lProgressbar);
-  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 

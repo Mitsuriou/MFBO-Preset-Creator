@@ -254,14 +254,14 @@ namespace Struct
   struct BatchConversionEntry
   {
   public:
-    inline explicit BatchConversionEntry(const QString& aPath, const QString& aName, const bool aUseAlternativeModel)
+    explicit BatchConversionEntry(const QString& aPath, const QString& aName, const bool aUseAlternativeModel)
     {
       this->path = aPath;
       this->name = aName;
       this->useAlternativeModel = aUseAlternativeModel;
     };
 
-    inline void setPath(const QString& aPath)
+    void setPath(const QString& aPath)
     {
       this->path = aPath;
     };
@@ -271,22 +271,22 @@ namespace Struct
       return this->path;
     };
 
-    inline void setName(const QString& aName)
+    void setName(const QString& aName)
     {
       this->name = aName;
     };
 
-    inline QString getName() const
+    QString getName() const
     {
       return this->name;
     };
 
-    inline void setUseAlternativeModel(const bool aUseAlternativeModel)
+    void setUseAlternativeModel(const bool aUseAlternativeModel)
     {
       this->useAlternativeModel = aUseAlternativeModel;
     }
 
-    inline bool mustUseAlternativeModel() const
+    bool mustUseAlternativeModel() const
     {
       return this->useAlternativeModel;
     };

@@ -94,7 +94,6 @@ void BatchConversion::setWindowProperties()
   this->setModal(true);
   this->setMinimumWidth(1000);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Batch Conversion"));
   this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
 }
@@ -106,7 +105,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 
   // General group box
   auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune");
+  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.font.size);
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::setGroupBoxState(lGeneralGroupBox, false);
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
@@ -149,7 +148,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline");
+  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline", this->mSettings.font.size);
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::setGroupBoxState(lSkeletonGroupBox, false);
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
@@ -201,7 +200,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide").append("  "), this)};
-  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo");
+  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
   aLayout.addWidget(lBodyslideGroupBox, 2, 0);
@@ -284,7 +283,7 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Create the group box
-  ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.batchConversionOutputPath, this->mMinimumFirstColumnWidth);
+  ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.batchConversionOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
   auto lOutputGroupBox{this->findChild<QGroupBox*>("output_group_box")};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
 
@@ -424,7 +423,6 @@ void BatchConversion::launchBatchGenerationProcess()
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Scanning the directory. Please wait..."), tr("Cancel treatment"), 0, 0, this);
   lProgressDialog.setBar(lProgressbar);
-  lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 

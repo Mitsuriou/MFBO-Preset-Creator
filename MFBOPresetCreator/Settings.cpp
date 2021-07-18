@@ -91,7 +91,6 @@ void Settings::setWindowProperties()
   this->setMinimumWidth(950);
   this->setMinimumHeight(670);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Settings"));
   this->setWindowIcon(QIcon(QPixmap(":/black/cog")));
 }
