@@ -75,6 +75,7 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
 
   // Main container
   auto lMainLayout{new QGridLayout(lMainWidget)};
+  lMainLayout->setObjectName("main_layout");
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(10, 10, 10, 10);
   if (aMustForceLayoutTopAlignment)
