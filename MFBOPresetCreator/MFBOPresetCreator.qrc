@@ -2,6 +2,7 @@
     <qresource prefix="/application">
         <file alias="icon">ressources/software/icon.png</file>
         <file alias="splashscreen">ressources/software/splashscreen.png</file>
+        <file alias="debug_request">ressources/debug_request.json</file>
     </qresource>
     <qresource prefix="/ressources">
         <file alias="skeleton_female">ressources/skeleton/skeleton_female.nif</file>
