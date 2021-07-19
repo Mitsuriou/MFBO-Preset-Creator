@@ -447,3 +447,10 @@ QTabBar::tab::selected {
 QTabBar::tab::hover {
   border-color: black;
 }
+
+/**************/
+/*QTEXTBROWSER*/
+/**************/
+QTextBrowser {
+  border: 1px solid #ff558d;
+}
