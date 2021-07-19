@@ -177,7 +177,7 @@ void Update::displayUpdateMessage(const QString& aResult)
   lFetchStatus->setText(tr("You are currently running the developer version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe latest beta version is tagged \"%3\".\n\nBelow are the release notes for the latest stable version:").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0)));
   lUserRunningBetaVersion = false; // Force to diplay the latest stable version's release notes
 #else
-  if (lUserRunningBetaVersion && lBetaVersions.at(0) != lCurrentVersion && lStableVersions.size() > 0)
+  if (lUserRunningBetaVersion && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER && lStableVersions.size() > 0)
   {
     this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lBetaVersions.at(0));
 
@@ -195,7 +195,7 @@ void Update::displayUpdateMessage(const QString& aResult)
     Utils::cleanPathString(this->mSaveFilePath);
     lFetchStatus->setText(tr("You are currently running the beta version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new beta version \"%3\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%4\".\n\nBelow are the release notes for the beta version \"%3\":").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0)).arg(this->mSaveFilePath));
   }
-  else if (!lUserRunningBetaVersion && lStableVersions.size() > 0 && lStableVersions.at(0) != lCurrentVersion)
+  else if (!lUserRunningBetaVersion && lStableVersions.size() > 0 && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
   {
     this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lStableVersions.at(0));
 

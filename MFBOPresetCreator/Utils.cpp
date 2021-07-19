@@ -802,12 +802,6 @@ Struct::Settings Utils::loadSettingsFromFile()
     lSettings.batchConversionOutputPath = lSettingsJSON["batchConversionOutputPath"].toString();
   }
 
-  // Check for updates at startup
-  if (lSettingsJSON.contains("checkForUpdatesAtStartup") && lSettingsJSON["checkForUpdatesAtStartup"].isBool())
-  {
-    lSettings.checkForUpdatesAtStartup = lSettingsJSON["checkForUpdatesAtStartup"].toBool();
-  }
-
   // Danger color
   if (lSettingsJSON.contains("dangerColor") && lSettingsJSON["dangerColor"].isString())
   {
@@ -889,6 +883,12 @@ Struct::Settings Utils::loadSettingsFromFile()
   if (lSettingsJSON.contains("mainWindowWidth") && lSettingsJSON["mainWindowWidth"].isDouble())
   {
     lSettings.mainWindowWidth = lSettingsJSON["mainWindowWidth"].toInt();
+  }
+
+  // Show welcome screen at application startup
+  if (lSettingsJSON.contains("showWelcomeDialog") && lSettingsJSON["showWelcomeDialog"].isBool())
+  {
+    lSettings.showWelcomeDialog = lSettingsJSON["showWelcomeDialog"].toBool();
   }
 
   // Success color
@@ -979,7 +979,6 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lSettings["appTheme"] = static_cast<int>(aSettings.appTheme);
   lSettings["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
   lSettings["batchConversionOutputPath"] = aSettings.batchConversionOutputPath;
-  lSettings["checkForUpdatesAtStartup"] = aSettings.checkForUpdatesAtStartup;
   lSettings["dangerColor"] = aSettings.dangerColor;
   lSettings["defaultBatchConversionBody"] = static_cast<int>(aSettings.defaultBatchConversionBody);
   lSettings["defaultMainFeetMod"] = aSettings.defaultMainFeetMod;
@@ -994,6 +993,7 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lSettings["mainWindowOpeningMode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
   lSettings["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
   lSettings["mainWindowWidth"] = aSettings.mainWindowWidth;
+  lSettings["showWelcomeDialog"] = aSettings.showWelcomeDialog;
   lSettings["successColor"] = aSettings.successColor;
   lSettings["warningColor"] = aSettings.warningColor;
 

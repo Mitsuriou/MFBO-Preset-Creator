@@ -43,10 +43,6 @@ private:
   void checkForUpdate();
   void displayUpdateMessage(const QString& aResult);
 
-#pragma region PUBLIC_SLOTS
-  void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
-#pragma endregion PUBLIC_SLOTS
-
 #pragma region PRIVATE_SLOTS
   // Base functionalities
   void loadProject();
@@ -62,6 +58,8 @@ private:
   // Dialog
   void launchSettingsDialog();
   void launchUpdateDialog();
+  // Settings callback
+  void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
   // URL links
   void reportBugNexusMods();
   void reportBugGitHub();

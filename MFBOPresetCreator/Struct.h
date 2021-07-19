@@ -109,7 +109,6 @@ namespace Struct
     GUITheme appTheme{GUITheme::MITSURIOU_DARK_THEME};
     bool assistedConversionScanOnlyMeshesSubdir{false};
     QString batchConversionOutputPath{""};
-    bool checkForUpdatesAtStartup{true};
     QString dangerColor{"#f44034"};
     BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
     int defaultMainFeetMod{0};
@@ -124,6 +123,7 @@ namespace Struct
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
     QString mainWindowOutputPath{""};
     int mainWindowWidth{1000};
+    bool showWelcomeDialog{true};
     QString successColor{"#48c774"};
     QString warningColor{"#ffbc6b"};
 
@@ -144,9 +144,9 @@ namespace Struct
         && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
         && this->batchConversionOutputPath == aSettings.batchConversionOutputPath
         && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
-        && this->checkForUpdatesAtStartup == aSettings.checkForUpdatesAtStartup
         && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
         && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath
+        && this->showWelcomeDialog == aSettings.showWelcomeDialog
         && this->successColor == aSettings.successColor
         && this->warningColor == aSettings.warningColor
         && this->dangerColor == aSettings.dangerColor);
@@ -169,9 +169,9 @@ namespace Struct
         || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
         || this->batchConversionOutputPath != aSettings.batchConversionOutputPath
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
-        || this->checkForUpdatesAtStartup != aSettings.checkForUpdatesAtStartup
         || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
         || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath
+        || this->showWelcomeDialog != aSettings.showWelcomeDialog
         || this->successColor != aSettings.successColor
         || this->warningColor != aSettings.warningColor
         || this->dangerColor != aSettings.dangerColor);

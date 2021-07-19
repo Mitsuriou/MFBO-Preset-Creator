@@ -39,17 +39,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
   qApp->setApplicationDisplayName(tr("[DEV] ") + qApp->applicationDisplayName());
 #endif
 
-  // Check for new versions
-  if (mSettings.checkForUpdatesAtStartup)
-  {
-    Utils::printMessageStdOut("Checking for updates...");
-    this->checkForUpdate();
-  }
-  else
-  {
-    Utils::printMessageStdOut("Skipped update checking");
-    this->initializeGUI();
-  }
+  this->checkForUpdate();
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -148,7 +138,10 @@ void MFBOPresetCreator::initializeGUI()
   Utils::cleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
 
-  this->launchWelcomeDialog();
+  if (this->mSettings.showWelcomeDialog)
+  {
+    this->launchWelcomeDialog();
+  }
 }
 
 void MFBOPresetCreator::setupMenuBar()
@@ -165,6 +158,12 @@ void MFBOPresetCreator::setupMenuBar()
   auto lFile{new QMenu(tr("File"), this)};
   lFile->setCursor(Qt::PointingHandCursor);
   lMenuBar->addMenu(lFile);
+
+  // Action: Launch the welcome screen
+  auto lLaunchWelcomeDialog{Utils::buildQAction(this, tr("Welcome screen"), QKeySequence(Qt::SHIFT + Qt::Key::Key_Escape), "home", lIconFolder)};
+  lFile->addAction(lLaunchWelcomeDialog);
+
+  lFile->addSeparator();
 
   // Action: Open project file
   auto lOpenProjectFile{Utils::buildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL + Qt::Key_O), "file", lIconFolder)};
@@ -279,6 +278,7 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addAction(lOpenAbout);
 
   // Event binding
+  this->connect(lLaunchWelcomeDialog, &QAction::triggered, this, &MFBOPresetCreator::launchWelcomeDialog);
   this->connect(lOpenProjectFile, &QAction::triggered, this, &MFBOPresetCreator::loadProject);
   this->connect(lSaveProject, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
   this->connect(lSaveProjectAs, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
@@ -516,6 +516,8 @@ void MFBOPresetCreator::enableLineEditPlaceholders(std::vector<QLineEdit*> aLine
 
 void MFBOPresetCreator::checkForUpdate()
 {
+  Utils::printMessageStdOut("Checking for updates...");
+
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
@@ -568,52 +570,53 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
       }
     }
 
-#ifndef DEBUG
     auto lIsUserRunningBeta{lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion)};
-    if (lIsUserRunningBeta && lBetaVersions.at(0) != lCurrentVersion && lStableVersions.size() > 0)
+    if (lIsUserRunningBeta && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER && lStableVersions.size() > 0)
     {
       this->mNewBetaVersionAvailable = true;
       lTitle = tr("Application update available (beta)");
       lMessage = tr("You are currently running the beta version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new beta version \"%3\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0));
     }
-    else if (!lIsUserRunningBeta && lStableVersions.size() > 0 && lStableVersions.at(0) != lCurrentVersion)
+    else if (!lIsUserRunningBeta && lStableVersions.size() > 0 && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
     {
       this->mNewStableVersionAvailable = true;
       lTitle = tr("Application update available (stable)");
       lMessage = tr("You are currently running the stable version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0));
     }
-#endif
   }
 
   this->initializeGUI();
 
-  if (aResult == "fetch_error")
+  if (!this->mSettings.showWelcomeDialog && lTitle.length() > 0 && lMessage.length() > 0)
   {
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
-
-    auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
-    lOKButton->setCursor(Qt::PointingHandCursor);
-    lConfirmationBox.setDefaultButton(lOKButton);
-    lConfirmationBox.exec();
-  }
-  else if (this->mNewStableVersionAvailable || this->mNewBetaVersionAvailable)
-  {
-    if (Utils::displayQuestionMessage(this,
-                                      lTitle,
-                                      lMessage,
-                                      lIconFolder,
-                                      "info-circle",
-                                      tr("Download and install the update now"),
-                                      tr("Download later"),
-                                      "",
-                                      this->mSettings.successColor,
-                                      this->mSettings.dangerColor,
-                                      "",
-                                      true)
-        == ButtonClicked::YES)
+    if (aResult == "fetch_error")
     {
-      this->launchUpdateDialog();
+      QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
+      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+
+      auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+      lOKButton->setCursor(Qt::PointingHandCursor);
+      lConfirmationBox.setDefaultButton(lOKButton);
+      lConfirmationBox.exec();
+    }
+    else if (this->mNewStableVersionAvailable || this->mNewBetaVersionAvailable)
+    {
+      if (Utils::displayQuestionMessage(this,
+                                        lTitle,
+                                        lMessage,
+                                        lIconFolder,
+                                        "info-circle",
+                                        tr("Download and install the update now"),
+                                        tr("Download later"),
+                                        "",
+                                        this->mSettings.successColor,
+                                        this->mSettings.dangerColor,
+                                        "",
+                                        true)
+          == ButtonClicked::YES)
+      {
+        this->launchUpdateDialog();
+      }
     }
   }
 }

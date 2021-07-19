@@ -252,11 +252,11 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("General"));
 
-  // CHECK UPDATE AT APPLICATION STARTUP
-  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Check for updates at application startup"), this)};
-  lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
-  lAutoOpenDirCheckbox->setObjectName(QString("check_update_startup"));
-  lTabLayout->addWidget(lAutoOpenDirCheckbox);
+  // Show welcome screen at application startup
+  auto lShowWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup"), this)};
+  lShowWelcomeScreen->setCursor(Qt::PointingHandCursor);
+  lShowWelcomeScreen->setObjectName(QString("show_welcome_screen"));
+  lTabLayout->addWidget(lShowWelcomeScreen);
 
   // Each button stores the last opened path
   auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path"), this)};
@@ -526,14 +526,14 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")};
   lAutoOpenGeneratedDir->setChecked(aSettingsToLoad.mainWindowAutomaticallyOpenGeneratedDirectory);
 
-  auto lCheckUpdateStartup{this->findChild<QCheckBox*>("check_update_startup")};
-  lCheckUpdateStartup->setChecked(aSettingsToLoad.checkForUpdatesAtStartup);
-
   auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")};
   lAssisConvScanOnlyMeshesDir->setChecked(aSettingsToLoad.assistedConversionScanOnlyMeshesSubdir);
 
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")};
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
+
+  auto lShowWelcomeScreen{this->findChild<QCheckBox*>("show_welcome_screen")};
+  lShowWelcomeScreen->setChecked(aSettingsToLoad.showWelcomeDialog);
 
   this->mNewSuccessColor = aSettingsToLoad.successColor;
   this->applySuccessColorButton(this->mNewSuccessColor);
@@ -561,8 +561,8 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))->currentIndex()};
   auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
+  auto lShowWelcomeScreen{this->findChild<QCheckBox*>("show_welcome_screen")->isChecked()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};
-  auto lCheckUpdateStartup{this->findChild<QCheckBox*>("check_update_startup")->isChecked()};
   auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")->isChecked()};
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")->isChecked()};
 
@@ -631,11 +631,11 @@ Struct::Settings Settings::getSettingsFromGUI() const
     lSettings.mainWindowOutputPath = lMainWindowOutputPath;
   }
 
+  // Show welcome screen at application startup
+  lSettings.showWelcomeDialog = lShowWelcomeScreen;
+
   // Automatically open generated directory
   lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lAutoOpenGeneratedDir;
-
-  // Check for updates at startup
-  lSettings.checkForUpdatesAtStartup = lCheckUpdateStartup;
 
   // Assisted Conversion: only scan the meshes subdir
   lSettings.assistedConversionScanOnlyMeshesSubdir = lAssisConvScanOnlyMeshesDir;
