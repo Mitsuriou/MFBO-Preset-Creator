@@ -533,7 +533,7 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
 
   auto lShowWelcomeScreen{this->findChild<QCheckBox*>("show_welcome_screen")};
-  lShowWelcomeScreen->setChecked(aSettingsToLoad.showWelcomeDialog);
+  lShowWelcomeScreen->setChecked(aSettingsToLoad.showWelcomeScreen);
 
   this->mNewSuccessColor = aSettingsToLoad.successColor;
   this->applySuccessColorButton(this->mNewSuccessColor);
@@ -632,7 +632,7 @@ Struct::Settings Settings::getSettingsFromGUI() const
   }
 
   // Show welcome screen at application startup
-  lSettings.showWelcomeDialog = lShowWelcomeScreen;
+  lSettings.showWelcomeScreen = lShowWelcomeScreen;
 
   // Automatically open generated directory
   lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lAutoOpenGeneratedDir;

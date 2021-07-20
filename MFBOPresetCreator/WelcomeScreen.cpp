@@ -1,4 +1,4 @@
-#include "WelcomeDialog.h"
+#include "WelcomeScreen.h"
 #include "ComponentFactory.h"
 #include "Update.h"
 #include "Utils.h"
@@ -12,7 +12,7 @@
 #include <QScrollBar>
 #include <QTextBrowser>
 
-WelcomeDialog::WelcomeDialog(QWidget* aParent, const Struct::Settings& aSettings)
+WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
 {
@@ -27,14 +27,14 @@ WelcomeDialog::WelcomeDialog(QWidget* aParent, const Struct::Settings& aSettings
   this->show();
 }
 
-void WelcomeDialog::closeEvent(QCloseEvent* aEvent)
+void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
 {
   // Before closing the welcome screen window, save the show/hide setting' state
   auto lShowHideWelcomeScreen{this->findChild<QCheckBox*>("always_show_welcome_screen")};
 
   // Update the setting's value
   auto lSettingsCopy{this->mSettings};
-  lSettingsCopy.showWelcomeDialog = lShowHideWelcomeScreen->isChecked();
+  lSettingsCopy.showWelcomeScreen = lShowHideWelcomeScreen->isChecked();
   Utils::saveSettingsToFile(lSettingsCopy);
 
   // Update the settings everywhere else in the app
@@ -43,12 +43,12 @@ void WelcomeDialog::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void WelcomeDialog::reject()
+void WelcomeScreen::reject()
 {
   this->close();
 }
 
-void WelcomeDialog::setWindowProperties()
+void WelcomeScreen::setWindowProperties()
 {
   this->setModal(true);
   this->setMinimumWidth(700);
@@ -58,7 +58,7 @@ void WelcomeDialog::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/home")));
 }
 
-void WelcomeDialog::initializeGUI()
+void WelcomeScreen::initializeGUI()
 {
   // Keep a reference to the user theme
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -69,7 +69,7 @@ void WelcomeDialog::initializeGUI()
   // Show/Hide the welcome screen
   auto lShowHideWelcomeScreen{new QCheckBox(tr("Always show the welcome screen at application startup"), this)};
   lShowHideWelcomeScreen->setObjectName("always_show_welcome_screen");
-  lShowHideWelcomeScreen->setChecked(this->mSettings.showWelcomeDialog);
+  lShowHideWelcomeScreen->setChecked(this->mSettings.showWelcomeScreen);
   lMainLayout->addWidget(lShowHideWelcomeScreen);
 
   // Main title
@@ -138,19 +138,19 @@ void WelcomeDialog::initializeGUI()
   lMainLayout->addWidget(lOpenGuideTutorials);
 
   // Event binding
-  this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeDialog::launchUpdateDialog);
-  this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeDialog::launchUpdateDialog);
-  this->connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeDialog::openGoogleDriveGuide);
+  this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
+  this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
+  this->connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeScreen::openGoogleDriveGuide);
 
   // Cursor change for the scroll bar
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &WelcomeDialog::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &WelcomeDialog::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &WelcomeDialog::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &WelcomeDialog::scrollbarReleased);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &WelcomeScreen::scrollbarPressed);
+  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &WelcomeScreen::scrollbarReleased);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &WelcomeScreen::scrollbarPressed);
+  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &WelcomeScreen::scrollbarReleased);
 }
 
-QLabel* WelcomeDialog::createTitleLabel(QWidget* aParent, const QString& aText, const int aAppFontSize)
+QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, const int aAppFontSize)
 {
   auto lLabel{new QLabel(aText, aParent)};
 
@@ -169,7 +169,7 @@ QLabel* WelcomeDialog::createTitleLabel(QWidget* aParent, const QString& aText, 
   return lLabel;
 }
 
-void WelcomeDialog::overrideHTMLLinksColor(QString& aHTMLString)
+void WelcomeScreen::overrideHTMLLinksColor(QString& aHTMLString)
 {
   // If no color change is needed
   if (this->mSettings.appTheme != GUITheme::MITSURIOU_BLACK_THEME
@@ -190,7 +190,7 @@ void WelcomeDialog::overrideHTMLLinksColor(QString& aHTMLString)
   }
 }
 
-void WelcomeDialog::launchUpdateDialog()
+void WelcomeScreen::launchUpdateDialog()
 {
   auto lEventSource{qobject_cast<QPushButton*>(sender())};
   if (lEventSource == this->findChild<QPushButton*>("download_stable_update"))
@@ -203,20 +203,20 @@ void WelcomeDialog::launchUpdateDialog()
   }
 }
 
-void WelcomeDialog::openGoogleDriveGuide()
+void WelcomeScreen::openGoogleDriveGuide()
 {
   QDesktopServices::openUrl(QUrl("https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing"));
 }
 
-void WelcomeDialog::checkForUpdate()
+void WelcomeScreen::checkForUpdate()
 {
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &WelcomeDialog::updateCheckFinished);
+  connect(lReply, &QNetworkReply::finished, this, &WelcomeScreen::updateCheckFinished);
 }
 
-void WelcomeDialog::displayUpdateMessage(const QString& aResult)
+void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 {
   auto lStableReleaseNotes{this->findChild<QLabel*>("stable_release_notes")};
   auto lBetaReleaseNotes{this->findChild<QLabel*>("beta_release_notes")};
@@ -328,7 +328,7 @@ void WelcomeDialog::displayUpdateMessage(const QString& aResult)
   lBrowserBetaReleaseNotes->setHtml(lHTMLString);
 }
 
-void WelcomeDialog::updateCheckFinished()
+void WelcomeScreen::updateCheckFinished()
 {
   auto lReply{qobject_cast<QNetworkReply*>(sender())};
 
@@ -344,21 +344,21 @@ void WelcomeDialog::updateCheckFinished()
   lReply->deleteLater();
 }
 
-void WelcomeDialog::scrollbarPressed()
+void WelcomeScreen::scrollbarPressed()
 {
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
   lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
 }
 
-void WelcomeDialog::scrollbarReleased()
+void WelcomeScreen::scrollbarReleased()
 {
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
-void WelcomeDialog::groupBoxChecked(bool aIsChecked)
+void WelcomeScreen::groupBoxChecked(bool aIsChecked)
 {
   auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
   if (lGroupBox == nullptr)

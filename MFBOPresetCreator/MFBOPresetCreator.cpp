@@ -8,7 +8,7 @@
 #include "TexturesAssistant.h"
 #include "Update.h"
 #include "Utils.h"
-#include "WelcomeDialog.h"
+#include "WelcomeScreen.h"
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDesktopServices>
@@ -138,9 +138,9 @@ void MFBOPresetCreator::initializeGUI()
   Utils::cleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
 
-  if (this->mSettings.showWelcomeDialog)
+  if (this->mSettings.showWelcomeScreen)
   {
-    this->launchWelcomeDialog();
+    this->launchWelcomeScreen();
   }
 }
 
@@ -160,8 +160,8 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lFile);
 
   // Action: Launch the welcome screen
-  auto lLaunchWelcomeDialog{Utils::buildQAction(this, tr("Welcome screen"), QKeySequence(Qt::SHIFT + Qt::Key::Key_Escape), "home", lIconFolder)};
-  lFile->addAction(lLaunchWelcomeDialog);
+  auto lLaunchWelcomeScreen{Utils::buildQAction(this, tr("Welcome screen"), QKeySequence(Qt::SHIFT + Qt::Key::Key_Escape), "home", lIconFolder)};
+  lFile->addAction(lLaunchWelcomeScreen);
 
   lFile->addSeparator();
 
@@ -278,7 +278,7 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addAction(lOpenAbout);
 
   // Event binding
-  this->connect(lLaunchWelcomeDialog, &QAction::triggered, this, &MFBOPresetCreator::launchWelcomeDialog);
+  this->connect(lLaunchWelcomeScreen, &QAction::triggered, this, &MFBOPresetCreator::launchWelcomeScreen);
   this->connect(lOpenProjectFile, &QAction::triggered, this, &MFBOPresetCreator::loadProject);
   this->connect(lSaveProject, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
   this->connect(lSaveProjectAs, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
@@ -361,10 +361,10 @@ void MFBOPresetCreator::showWindow()
   }
 }
 
-void MFBOPresetCreator::launchWelcomeDialog()
+void MFBOPresetCreator::launchWelcomeScreen()
 {
-  auto lWelcomeScreen{new WelcomeDialog(this, this->mSettings)};
-  this->connect(lWelcomeScreen, &WelcomeDialog::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
+  auto lWelcomeScreen{new WelcomeScreen(this, this->mSettings)};
+  this->connect(lWelcomeScreen, &WelcomeScreen::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 
 void MFBOPresetCreator::applyGlobalStyleSheet()
@@ -588,7 +588,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   this->initializeGUI();
 
-  if (!this->mSettings.showWelcomeDialog && lTitle.length() > 0 && lMessage.length() > 0)
+  if (!this->mSettings.showWelcomeScreen && lTitle.length() > 0 && lMessage.length() > 0)
   {
     if (aResult == "fetch_error")
     {

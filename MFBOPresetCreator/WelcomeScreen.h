@@ -4,12 +4,12 @@
 #include <QLabel>
 #include <QNetworkAccessManager>
 
-class WelcomeDialog final : public QDialog
+class WelcomeScreen final : public QDialog
 {
   Q_OBJECT
 
 public:
-  explicit WelcomeDialog(QWidget* aParent, const Struct::Settings& aSettings);
+  explicit WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
