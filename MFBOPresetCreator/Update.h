@@ -13,7 +13,7 @@ class Update final : public QDialog
   Q_OBJECT
 
 public:
-  explicit Update(QWidget* aParent, const Struct::Settings& aSettings);
+  explicit Update(QWidget* aParent, const Struct::Settings& aSettings, const bool aIsBetaContext);
 
 protected:
   void reject() override;
@@ -30,7 +30,7 @@ private:
   QNetworkReply* mReply;
 
   void setWindowProperties();
-  void setupInterface();
+  void setupInterface(const bool aIsBetaContext);
   void overrideHTMLLinksColor(QString& aHTMLString);
 
   // Check for updates

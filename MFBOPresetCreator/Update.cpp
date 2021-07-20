@@ -12,7 +12,7 @@
 #include <QStandardPaths>
 #include <QTextBrowser>
 
-Update::Update(QWidget* aParent, const Struct::Settings& aSettings)
+Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool aIsBetaContext)
   : QDialog(aParent)
   , mSettings(aSettings)
   , mHasDownloadBeenCanceled(false)
@@ -21,7 +21,7 @@ Update::Update(QWidget* aParent, const Struct::Settings& aSettings)
 {
   // Build the window's interface
   this->setWindowProperties();
-  this->setupInterface();
+  this->setupInterface(aIsBetaContext);
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -54,8 +54,10 @@ void Update::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/cloud-search")));
 }
 
-void Update::setupInterface()
+void Update::setupInterface(const bool aIsBetaContext)
 {
+  // TODO: Update this class to have a smarter treatment for the beta versions
+
   // Set a layout for this dialog box
   this->setLayout(new QVBoxLayout(this));
   this->layout()->setAlignment(Qt::AlignTop);

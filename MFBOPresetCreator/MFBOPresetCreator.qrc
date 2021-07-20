@@ -2,7 +2,6 @@
     <qresource prefix="/application">
         <file alias="icon">ressources/software/icon.png</file>
         <file alias="splashscreen">ressources/software/splashscreen.png</file>
-        <file alias="debug_request">ressources/debug_request.json</file>
     </qresource>
     <qresource prefix="/ressources">
         <file alias="skeleton_female">ressources/skeleton/skeleton_female.nif</file>
@@ -58,6 +57,7 @@
         <file alias="bug">ressources/software/icons/black/bug.png</file>
         <file alias="github">ressources/software/icons/black/github.png</file>
         <file alias="gitlab">ressources/software/icons/black/gitlab.png</file>
+        <file alias="external">ressources/software/icons/black/external.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -110,6 +110,7 @@
         <file alias="bug">ressources/software/icons/white/bug.png</file>
         <file alias="github">ressources/software/icons/white/github.png</file>
         <file alias="gitlab">ressources/software/icons/white/gitlab.png</file>
+        <file alias="external">ressources/software/icons/white/external.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

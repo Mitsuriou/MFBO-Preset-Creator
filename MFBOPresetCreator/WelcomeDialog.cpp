@@ -2,15 +2,15 @@
 #include "ComponentFactory.h"
 #include "Update.h"
 #include "Utils.h"
+#include <QCheckBox>
 #include <QCloseEvent>
+#include <QDesktopServices>
 #include <QIcon>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QTextBrowser>
-#include <QTimer>
-#include <QVBoxLayout>
 
 WelcomeDialog::WelcomeDialog(QWidget* aParent, const Struct::Settings& aSettings)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
@@ -20,7 +20,6 @@ WelcomeDialog::WelcomeDialog(QWidget* aParent, const Struct::Settings& aSettings
   this->setWindowProperties();
 
   this->initializeGUI();
-  //QTimer::singleShot(10000, this, [this]() { this->checkForUpdate(); }); // TODO: Remove this debug line
   this->checkForUpdate();
 
   // Show the window when it's completely built
@@ -30,6 +29,17 @@ WelcomeDialog::WelcomeDialog(QWidget* aParent, const Struct::Settings& aSettings
 
 void WelcomeDialog::closeEvent(QCloseEvent* aEvent)
 {
+  // Before closing the welcome screen window, save the show/hide setting' state
+  auto lShowHideWelcomeScreen{this->findChild<QCheckBox*>("always_show_welcome_screen")};
+
+  // Update the setting's value
+  auto lSettingsCopy{this->mSettings};
+  lSettingsCopy.showWelcomeDialog = lShowHideWelcomeScreen->isChecked();
+  Utils::saveSettingsToFile(lSettingsCopy);
+
+  // Update the settings everywhere else in the app
+  emit refreshMainUI(lSettingsCopy, true);
+
   aEvent->accept();
 }
 
@@ -42,7 +52,7 @@ void WelcomeDialog::setWindowProperties()
 {
   this->setModal(true);
   this->setMinimumWidth(700);
-  this->setMinimumHeight(500);
+  this->setMinimumHeight(670);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(tr("Welcome screen"));
   this->setWindowIcon(QIcon(QPixmap(":/black/home")));
@@ -55,6 +65,12 @@ void WelcomeDialog::initializeGUI()
 
   // Main layout
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
+
+  // Show/Hide the welcome screen
+  auto lShowHideWelcomeScreen{new QCheckBox(tr("Always show the welcome screen at application startup"), this)};
+  lShowHideWelcomeScreen->setObjectName("always_show_welcome_screen");
+  lShowHideWelcomeScreen->setChecked(this->mSettings.showWelcomeDialog);
+  lMainLayout->addWidget(lShowHideWelcomeScreen);
 
   // Main title
   auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::getApplicationVersion()), this)};
@@ -69,6 +85,11 @@ void WelcomeDialog::initializeGUI()
   lStableReleaseNotes->setObjectName("stable_release_notes");
   lMainLayout->addWidget(lStableReleaseNotes);
 
+  // Download stable update button
+  auto lDownloadStableUpdate{ComponentFactory::createButton(this, tr("Download the latest stable update"), "", "cloud-download", lIconFolder, "download_stable_update", false, true)};
+  lMainLayout->addWidget(lDownloadStableUpdate);
+  lDownloadStableUpdate->hide();
+
   // Beta version release notes
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest beta release notes"), this->mSettings.font.size));
 
@@ -76,40 +97,50 @@ void WelcomeDialog::initializeGUI()
   lBetaReleaseNotes->setObjectName("beta_release_notes");
   lMainLayout->addWidget(lBetaReleaseNotes);
 
+  // Download BETA update button
+  auto lDownloadBetaUpdate{ComponentFactory::createButton(this, tr("Download the latest BETA update"), "", "cloud-download", lIconFolder, "download_beta_update", false, true)};
+  lMainLayout->addWidget(lDownloadBetaUpdate);
+  lDownloadBetaUpdate->hide();
+
   // Incoming features
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.font.size));
 
-  auto lIncomingFeaturesText{QString("TODO")};
+  auto lIncomingFeaturesText{QString("<p style='padding: 0px; margin: 0px;'>"
+                                     "<span>Batch Conversion tool.</span><br />"
+                                     "<span>Portable installer archive.</span>"
+                                     "</p>")};
 
   auto lIncomingFeatures{new QLabel(this)};
-  //lIncomingFeatures->setTextFormat(Qt::RichText);
-  //lIncomingFeatures->setTextInteractionFlags(Qt::TextBrowserInteraction);
-  //lIncomingFeatures->setOpenExternalLinks(true);
-  //lIncomingFeatures->setText(lIncomingFeaturesText);
-  //lIncomingFeatures->adjustSize();
-  //lIncomingFeatures->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+  lIncomingFeatures->setTextFormat(Qt::RichText);
+  lIncomingFeatures->setText(lIncomingFeaturesText);
   lMainLayout->addWidget(lIncomingFeatures);
 
   // Known issues
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.font.size));
 
-  auto lKnownIssuesText{QString("TODO")};
+  auto lKnownIssuesText{QString("<p style='padding: 0px; margin: 0px;'>"
+                                "<span>Collapsing a groupbox on a small resolution window makes the GUI blink.</span>"
+                                "</p>")};
 
   auto lKnownIssues{new QLabel(this)};
-  //lKnownIssues->setTextFormat(Qt::RichText);
-  //lKnownIssues->setTextInteractionFlags(Qt::TextBrowserInteraction);
-  //lKnownIssues->setOpenExternalLinks(true);
-  //lKnownIssues->setText(lKnownIssuesText);
-  //lKnownIssues->adjustSize();
-  //lKnownIssues->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+  lKnownIssues->setTextFormat(Qt::RichText);
+  lKnownIssues->setText(lKnownIssuesText);
   lMainLayout->addWidget(lKnownIssues);
 
   // Guide and tutorials
   lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.font.size));
 
-  // TODO: Make a better link to the guide
-  //auto lOpenGuideTutorials{ComponentFactory::createButton(this, "User guide and tutorials (docs.google.com)", "", "text-file", lIconFolder, "", false, true)};
-  //lMainLayout->addWidget(lOpenGuideTutorials);
+  auto lGuideLabel{new QLabel(tr("Whether it is your first time using the application or you're wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:"), this)};
+  lGuideLabel->setWordWrap(true);
+  lMainLayout->addWidget(lGuideLabel);
+
+  auto lOpenGuideTutorials{ComponentFactory::createButton(this, "User guide and tutorials (docs.google.com)", "", "external", lIconFolder, "", false, true)};
+  lMainLayout->addWidget(lOpenGuideTutorials);
+
+  // Event binding
+  this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeDialog::launchUpdateDialog);
+  this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeDialog::launchUpdateDialog);
+  this->connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeDialog::openGoogleDriveGuide);
 
   // Cursor change for the scroll bar
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
@@ -161,19 +192,28 @@ void WelcomeDialog::overrideHTMLLinksColor(QString& aHTMLString)
 
 void WelcomeDialog::launchUpdateDialog()
 {
-  new Update(this, this->mSettings);
+  auto lEventSource{qobject_cast<QPushButton*>(sender())};
+  if (lEventSource == this->findChild<QPushButton*>("download_stable_update"))
+  {
+    new Update(this, this->mSettings, false);
+  }
+  else if (lEventSource == this->findChild<QPushButton*>("download_beta_update"))
+  {
+    new Update(this, this->mSettings, true);
+  }
+}
+
+void WelcomeDialog::openGoogleDriveGuide()
+{
+  QDesktopServices::openUrl(QUrl("https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing"));
 }
 
 void WelcomeDialog::checkForUpdate()
 {
-  //QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
+  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
-  //QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  //connect(lReply, &QNetworkReply::finished, this, &WelcomeDialog::updateCheckFinished);
-
-  // DEBUG
-  // TODO: Remove
-  this->displayUpdateMessage(Utils::readQRCFileContent(":/application/debug_request"));
+  QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
+  connect(lReply, &QNetworkReply::finished, this, &WelcomeDialog::updateCheckFinished);
 }
 
 void WelcomeDialog::displayUpdateMessage(const QString& aResult)
@@ -239,16 +279,27 @@ void WelcomeDialog::displayUpdateMessage(const QString& aResult)
   lBrowserStableReleaseNotes->setOpenExternalLinks(true);
   Utils::cleanBreaksString(lLatestStableReleaseNote);
   lBrowserStableReleaseNotes->setMarkdown(lLatestStableReleaseNote);
-  lMainLayout->addWidget(lBrowserStableReleaseNotes, 2, 0);
+  lMainLayout->addWidget(lBrowserStableReleaseNotes, 3, 0);
 
   // Links color override
   auto lHTMLString{lBrowserStableReleaseNotes->toHtml()};
   this->overrideHTMLLinksColor(lHTMLString);
   lBrowserStableReleaseNotes->setHtml(lHTMLString);
 
-  // BETA
-  if (lBetaVersions.size() == 0
-      || (lBetaVersions.size() > 0 && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) != ApplicationVersionRelative::NEWER))
+  // Show the download button if the version is newer than the current one
+  if (lStableVersions.size() > 0 && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  {
+    this->findChild<QPushButton*>("download_stable_update")->show();
+  }
+
+  // BETA versions messages
+  if (lBetaVersions.size() > 0 && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
+  {
+    lBetaReleaseNotes->setText(tr("You are already running the latest BETA version."));
+    return;
+  }
+
+  if (lBetaVersions.size() == 0 || (lBetaVersions.size() > 0 && Utils::compareVersionNumbers(lBetaVersions.at(0), lStableVersions.at(0)) == ApplicationVersionRelative::OLDER))
   {
     lBetaReleaseNotes->setText(tr("No newer BETA version available."));
     return;
@@ -258,12 +309,15 @@ void WelcomeDialog::displayUpdateMessage(const QString& aResult)
   delete lBetaReleaseNotes;
   lBetaReleaseNotes = nullptr;
 
+  // Show the download button
+  this->findChild<QPushButton*>("download_beta_update")->show();
+
   // Create a QTextBrowser instead
   auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
   lBrowserBetaReleaseNotes->setOpenExternalLinks(true);
   Utils::cleanBreaksString(lLatestBetaReleaseNote);
   lBrowserBetaReleaseNotes->setMarkdown(lLatestBetaReleaseNote);
-  lMainLayout->addWidget(lBrowserBetaReleaseNotes, 4, 0);
+  lMainLayout->addWidget(lBrowserBetaReleaseNotes, 6, 0);
 
   Utils::cleanBreaksString(lLatestBetaReleaseNote);
   lBrowserBetaReleaseNotes->setMarkdown(lLatestBetaReleaseNote);

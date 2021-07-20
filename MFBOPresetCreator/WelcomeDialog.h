@@ -27,6 +27,7 @@ private:
   void overrideHTMLLinksColor(QString& aHTMLString);
   // Dialog
   void launchUpdateDialog();
+  void openGoogleDriveGuide();
   // Check for updates
   void checkForUpdate();
   void displayUpdateMessage(const QString& aResult);
@@ -36,4 +37,7 @@ private:
   void scrollbarPressed();
   void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
+
+signals:
+  void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
 };

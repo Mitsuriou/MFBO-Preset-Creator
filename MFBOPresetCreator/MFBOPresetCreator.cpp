@@ -363,7 +363,8 @@ void MFBOPresetCreator::showWindow()
 
 void MFBOPresetCreator::launchWelcomeDialog()
 {
-  new WelcomeDialog(this, this->mSettings);
+  auto lWelcomeScreen{new WelcomeDialog(this, this->mSettings)};
+  this->connect(lWelcomeScreen, &WelcomeDialog::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 
 void MFBOPresetCreator::applyGlobalStyleSheet()
@@ -751,7 +752,7 @@ void MFBOPresetCreator::launchSettingsDialog()
 
 void MFBOPresetCreator::launchUpdateDialog()
 {
-  new Update(this, this->mSettings);
+  new Update(this, this->mSettings, false);
 }
 
 void MFBOPresetCreator::reportBugNexusMods()
