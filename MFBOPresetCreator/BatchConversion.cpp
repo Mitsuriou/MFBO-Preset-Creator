@@ -48,7 +48,7 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
 
   // Show the window when it's completely built
   this->adjustSize();
-  this->exec();
+  this->show();
 }
 
 void BatchConversion::closeEvent(QCloseEvent* aEvent)

@@ -195,11 +195,13 @@ void WelcomeScreen::launchUpdateDialog()
   auto lEventSource{qobject_cast<QPushButton*>(sender())};
   if (lEventSource == this->findChild<QPushButton*>("download_stable_update"))
   {
-    new Update(this, this->mSettings, false);
+    new Update(this->parentWidget(), this->mSettings, false);
+    this->close();
   }
   else if (lEventSource == this->findChild<QPushButton*>("download_beta_update"))
   {
-    new Update(this, this->mSettings, true);
+    new Update(this->parentWidget(), this->mSettings, true);
+    this->close();
   }
 }
 

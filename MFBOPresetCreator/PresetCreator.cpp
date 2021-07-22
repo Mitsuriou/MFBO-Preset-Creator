@@ -1573,6 +1573,12 @@ void PresetCreator::initBodySlideFiltersList()
 
 void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
 {
+  // Do not update anything if the list is the same as the one already set
+  if (this->mFiltersList == aFilterList)
+  {
+    return;
+  }
+
   this->mFiltersList = aFilterList;
   auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
   auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
