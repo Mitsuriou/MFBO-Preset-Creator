@@ -3,9 +3,9 @@ MinLineCount: 20
 
 # files/patterns to exclude
 IgnorePatterns:
-  - 3rd party/**
-  - MFBOPresetCreator/ressources/**
-  - Wizard ressources/**
-  - MFBOPresetCreator/**.ui
-  - MFBOPresetCreator/**.ts
-  - MFBOPresetCreator/**.qm
+  - 3rd party\**
+  - MFBOPresetCreator\ressources\**
+  - Wizard ressources\**
+  - MFBOPresetCreator\**.ui
+  - MFBOPresetCreator\**.ts
+  - MFBOPresetCreator\**.qm
