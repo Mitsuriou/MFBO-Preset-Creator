@@ -56,6 +56,7 @@ private:
   void chooseSuccessColor();
   void chooseWarningColor();
   void chooseDangerColor();
+  void goToLastPathsTab();
 
   // GUI widgets events
   void scrollbarPressed();

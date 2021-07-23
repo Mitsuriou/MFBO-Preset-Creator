@@ -116,6 +116,7 @@ void Settings::initializeGUI()
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
+  lTabWidget->setObjectName("tab_widget");
   lTabWidget->setAutoFillBackground(true);
   lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   lMainLayout->addWidget(lTabWidget, 1, 0);
@@ -253,16 +254,26 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("General"));
 
   // Show welcome screen at application startup
-  auto lShowWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup"), this)};
+  lTabLayout->addWidget(new QLabel(tr("Startup actions:"), this));
+
+  auto lShowWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup."), this)};
   lShowWelcomeScreen->setCursor(Qt::PointingHandCursor);
   lShowWelcomeScreen->setObjectName(QString("show_welcome_screen"));
   lTabLayout->addWidget(lShowWelcomeScreen);
 
   // Each button stores the last opened path
-  auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path"), this)};
+  lTabLayout->addWidget(new QLabel(tr("Smarter buttons:"), this));
+
+  auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path."), this)};
   lEachButtonSavesItsLastUsedPath->setCursor(Qt::PointingHandCursor);
   lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
   lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath);
+
+  auto lCheckPathsHistory{ComponentFactory::createButton(this, tr("Check/clear my browsing history"), "", "tab", lIconFolder, "", false, true)};
+  lTabLayout->addWidget(lCheckPathsHistory);
+
+  // Event binding
+  this->connect(lCheckPathsHistory, &QPushButton::clicked, this, &Settings::goToLastPathsTab);
 }
 
 void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
@@ -328,10 +339,12 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lOutputPathChooser, 5, 1);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
-  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation"), this)};
+  lTabLayout->addWidget(new QLabel(tr("End of preset generation:"), this), 6, 0, 1, 2);
+
+  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation."), this)};
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
   lAutoOpenDirCheckbox->setObjectName(QString("auto_open_generated_dir"));
-  lTabLayout->addWidget(lAutoOpenDirCheckbox, 6, 0, 1, 2);
+  lTabLayout->addWidget(lAutoOpenDirCheckbox, 7, 0, 1, 2);
 
   // Event binding
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
@@ -409,7 +422,9 @@ void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Assisted Conversion"));
 
   // ONLY SCAN THE MESHES SUBDIRECTORY
-  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory"), this)};
+  lTabLayout->addWidget(new QLabel(tr("Software' scan behavior:"), this));
+
+  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory."), this)};
   lScanOnlyMeshesFolder->setCursor(Qt::PointingHandCursor);
   lScanOnlyMeshesFolder->setObjectName(QString("assis_conv_only_scan_meshes_dir"));
   lTabLayout->addWidget(lScanOnlyMeshesFolder);
@@ -821,6 +836,11 @@ void Settings::chooseDangerColor()
     // Display a preview on the color chooser's button directly
     this->applyDangerColorButton(this->mNewDangerColor);
   }
+}
+
+void Settings::goToLastPathsTab()
+{
+  this->findChild<QTabWidget*>("tab_widget")->setCurrentIndex(5);
 }
 
 void Settings::scrollbarPressed()

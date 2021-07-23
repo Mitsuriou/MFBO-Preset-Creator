@@ -58,6 +58,7 @@
         <file alias="github">ressources/software/icons/black/github.png</file>
         <file alias="gitlab">ressources/software/icons/black/gitlab.png</file>
         <file alias="external">ressources/software/icons/black/external.png</file>
+        <file alias="tab">ressources/software/icons/black/tab.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -111,6 +112,7 @@
         <file alias="github">ressources/software/icons/white/github.png</file>
         <file alias="gitlab">ressources/software/icons/white/gitlab.png</file>
         <file alias="external">ressources/software/icons/white/external.png</file>
+        <file alias="tab">ressources/software/icons/white/tab.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

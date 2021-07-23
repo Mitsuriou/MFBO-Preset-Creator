@@ -223,7 +223,7 @@ void MFBOPresetCreator::setupMenuBar()
   if (this->mNewStableVersionAvailable)
     lUpdateAvailableText = tr(" (stable update available)");
   else if (this->mNewBetaVersionAvailable)
-    lUpdateAvailableText = tr(" (beta update available)");
+    lUpdateAvailableText = tr(" (BETA update available)");
 
   auto lHelp{new QMenu(tr("Help") + lUpdateAvailableText, this)};
   lHelp->setCursor(Qt::PointingHandCursor);
@@ -575,8 +575,8 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     if (lIsUserRunningBeta && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER && lStableVersions.size() > 0)
     {
       this->mNewBetaVersionAvailable = true;
-      lTitle = tr("Application update available (beta)");
-      lMessage = tr("You are currently running the beta version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new beta version \"%3\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0));
+      lTitle = tr("Application update available (BETA)");
+      lMessage = tr("You are currently running the BETA version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new BETA version \"%3\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0));
     }
     else if (!lIsUserRunningBeta && lStableVersions.size() > 0 && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
     {

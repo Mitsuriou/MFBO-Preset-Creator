@@ -27,7 +27,7 @@ Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool a
   this->adjustSize();
   this->show();
 
-  // Search for an update instantly
+  // Search for updates instantly
   auto lSearchButton{this->findChild<QPushButton*>("search_button")};
   lSearchButton->click();
 }
@@ -176,7 +176,7 @@ void Update::displayUpdateMessage(const QString& aResult)
   lSearchButton->setDisabled(true);
   lSearchButton->setText(tr("You are running a developer version"));
 
-  lFetchStatus->setText(tr("You are currently running the developer version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe latest beta version is tagged \"%3\".\n\nBelow are the release notes for the latest stable version:").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0)));
+  lFetchStatus->setText(tr("You are currently running the developer version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe latest BETA version is tagged \"%3\".\n\nBelow are the release notes for the latest stable version:").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0)));
   lUserRunningBetaVersion = false; // Force to diplay the latest stable version's release notes
 #else
   if (lUserRunningBetaVersion && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER && lStableVersions.size() > 0)
@@ -195,7 +195,7 @@ void Update::displayUpdateMessage(const QString& aResult)
     lVersionFileName.replace(".", "-");
     this->mSaveFilePath = QString("%1/mfbopc-wizard-beta-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
     Utils::cleanPathString(this->mSaveFilePath);
-    lFetchStatus->setText(tr("You are currently running the beta version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new beta version \"%3\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%4\".\n\nBelow are the release notes for the beta version \"%3\":").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0)).arg(this->mSaveFilePath));
+    lFetchStatus->setText(tr("You are currently running the BETA version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new BETA version \"%3\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%4\".\n\nBelow are the release notes for the BETA version \"%3\":").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0)).arg(this->mSaveFilePath));
   }
   else if (!lUserRunningBetaVersion && lStableVersions.size() > 0 && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
   {
@@ -224,8 +224,8 @@ void Update::displayUpdateMessage(const QString& aResult)
     lSearchButton->setDisabled(true);
     if (lUserRunningBetaVersion)
     {
-      lSearchButton->setText(tr("You are already running the latest beta version"));
-      lFetchStatus->setText(tr("Awesome! You are already running the latest beta version \"%1\".\nBelow are the release notes for this version:").arg(lCurrentVersion));
+      lSearchButton->setText(tr("You are already running the latest BETA version"));
+      lFetchStatus->setText(tr("Awesome! You are already running the latest BETA version \"%1\".\nBelow are the release notes for this version:").arg(lCurrentVersion));
     }
     else
     {

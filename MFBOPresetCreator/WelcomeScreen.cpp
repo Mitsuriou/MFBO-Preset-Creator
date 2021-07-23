@@ -18,13 +18,14 @@ WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings
 {
   // Build the window's interface
   this->setWindowProperties();
-
   this->initializeGUI();
-  this->checkForUpdate();
 
   // Show the window when it's completely built
   this->adjustSize();
   this->show();
+
+  // Search for updates
+  this->checkForUpdate();
 }
 
 void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
@@ -52,7 +53,7 @@ void WelcomeScreen::setWindowProperties()
 {
   this->setModal(true);
   this->setMinimumWidth(700);
-  this->setMinimumHeight(670);
+  this->setMinimumHeight(600);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(tr("Welcome screen"));
   this->setWindowIcon(QIcon(QPixmap(":/black/home")));
@@ -66,43 +67,72 @@ void WelcomeScreen::initializeGUI()
   // Main layout
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
 
-  // Show/Hide the welcome screen
+  /*================================*/
+  /* Show / Hide the welcome screen */
+  /*================================*/
   auto lShowHideWelcomeScreen{new QCheckBox(tr("Always show the welcome screen at application startup"), this)};
+  lShowHideWelcomeScreen->setCursor(Qt::PointingHandCursor);
   lShowHideWelcomeScreen->setObjectName("always_show_welcome_screen");
   lShowHideWelcomeScreen->setChecked(this->mSettings.showWelcomeScreen);
   lMainLayout->addWidget(lShowHideWelcomeScreen);
 
-  // Main title
+  /*============*/
+  /* Main title */
+  /*============*/
   auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::getApplicationVersion()), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.font.size * 2));
   lMainLayout->addWidget(lMainTitle);
 
+  /*========*/
+  /* STABLE */
+  /*========*/
   // Stable version release notes
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest stable release notes"), this->mSettings.font.size));
 
-  auto lStableReleaseNotes{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lStableReleaseNotes->setObjectName("stable_release_notes");
-  lMainLayout->addWidget(lStableReleaseNotes);
+  // Latest stable release notes
+  auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
+  lBrowserStableReleaseNotes->setObjectName("browser_stable");
+  lBrowserStableReleaseNotes->setOpenExternalLinks(true);
+  lBrowserStableReleaseNotes->hide();
+  lMainLayout->addWidget(lBrowserStableReleaseNotes);
+
+  // Stable status label
+  auto lStableStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
+  lStableStatusLabel->setObjectName("stable_status_label");
+  lMainLayout->addWidget(lStableStatusLabel);
 
   // Download stable update button
   auto lDownloadStableUpdate{ComponentFactory::createButton(this, tr("Download the latest stable update"), "", "cloud-download", lIconFolder, "download_stable_update", false, true)};
   lMainLayout->addWidget(lDownloadStableUpdate);
   lDownloadStableUpdate->hide();
 
-  // Beta version release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest beta release notes"), this->mSettings.font.size));
+  /*======*/
+  /* BETA */
+  /*======*/
+  // BETA version release notes
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest BETA release notes"), this->mSettings.font.size));
 
-  auto lBetaReleaseNotes{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lBetaReleaseNotes->setObjectName("beta_release_notes");
-  lMainLayout->addWidget(lBetaReleaseNotes);
+  // Latest BETA release notes
+  auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
+  lBrowserBetaReleaseNotes->setObjectName("browser_beta");
+  lBrowserBetaReleaseNotes->setOpenExternalLinks(true);
+  lBrowserBetaReleaseNotes->hide();
+  lMainLayout->addWidget(lBrowserBetaReleaseNotes);
+
+  // BETA status label
+  auto lBetaStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
+  lBetaStatusLabel->setObjectName("beta_status_label");
+  lMainLayout->addWidget(lBetaStatusLabel);
 
   // Download BETA update button
   auto lDownloadBetaUpdate{ComponentFactory::createButton(this, tr("Download the latest BETA update"), "", "cloud-download", lIconFolder, "download_beta_update", false, true)};
   lMainLayout->addWidget(lDownloadBetaUpdate);
   lDownloadBetaUpdate->hide();
 
-  // Incoming features
+  /*===================*/
+  /* Incoming features */
+  /*===================*/
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.font.size));
 
   auto lIncomingFeaturesText{QString("<p style='padding: 0px; margin: 0px;'>"
@@ -115,7 +145,9 @@ void WelcomeScreen::initializeGUI()
   lIncomingFeatures->setText(lIncomingFeaturesText);
   lMainLayout->addWidget(lIncomingFeatures);
 
-  // Known issues
+  /*==============*/
+  /* Known issues */
+  /*==============*/
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.font.size));
 
   auto lKnownIssuesText{QString("<p style='padding: 0px; margin: 0px;'>"
@@ -127,7 +159,9 @@ void WelcomeScreen::initializeGUI()
   lKnownIssues->setText(lKnownIssuesText);
   lMainLayout->addWidget(lKnownIssues);
 
-  // Guide and tutorials
+  /*=====================*/
+  /* Guide and tutorials */
+  /*=====================*/
   lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.font.size));
 
   auto lGuideLabel{new QLabel(tr("Whether it is your first time using the application or you're wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:"), this)};
@@ -137,12 +171,16 @@ void WelcomeScreen::initializeGUI()
   auto lOpenGuideTutorials{ComponentFactory::createButton(this, "User guide and tutorials (docs.google.com)", "", "external", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lOpenGuideTutorials);
 
-  // Event binding
+  /*===============*/
+  /* Event binding */
+  /*===============*/
   this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
   this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
   this->connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeScreen::openGoogleDriveGuide);
 
-  // Cursor change for the scroll bar
+  /*==================================*/
+  /* Cursor change for the scroll bar */
+  /*==================================*/
   auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &WelcomeScreen::scrollbarPressed);
   this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &WelcomeScreen::scrollbarReleased);
@@ -220,20 +258,22 @@ void WelcomeScreen::checkForUpdate()
 
 void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 {
-  auto lStableReleaseNotes{this->findChild<QLabel*>("stable_release_notes")};
-  auto lBetaReleaseNotes{this->findChild<QLabel*>("beta_release_notes")};
-  auto lMainLayout{this->findChild<QGridLayout*>("main_layout")};
+  auto lBrowserStableReleaseNotes{this->findChild<QTextBrowser*>("browser_stable")};
+  auto lStableStatusLabel{this->findChild<QLabel*>("stable_status_label")};
+  auto lBrowserBetaReleaseNotes{this->findChild<QTextBrowser*>("browser_beta")};
+  auto lBetaStatusLabel{this->findChild<QLabel*>("beta_status_label")};
 
   auto lStableVersions{QStringList()};
   auto lLatestStableReleaseNote{QString()};
   auto lBetaVersions{QStringList()};
   auto lLatestBetaReleaseNote{QString()};
+  auto lUserRunningBetaVersion{false};
   const auto lCurrentVersion{Utils::getApplicationVersion()};
 
   if (aResult == "fetch_error")
   {
-    lStableReleaseNotes->setText(tr("An error has occurred... Make sure your internet connection is operational and try again."));
-    lBetaReleaseNotes->setText(tr("An error has occurred... Make sure your internet connection is operational and try again."));
+    lStableStatusLabel->setText(tr("An error has occurred... Make sure your internet connection is operational and try again."));
+    lBetaStatusLabel->setText(tr("An error has occurred... Make sure your internet connection is operational and try again."));
     return;
   }
 
@@ -256,7 +296,10 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     {
       // Save the latest beta's body tag value
       if (lLatestBetaReleaseNote.length() == 0)
+      {
         lLatestBetaReleaseNote = lTagsArray.at(i)["body"].toString();
+        Utils::cleanBreaksString(lLatestBetaReleaseNote);
+      }
 
       // Add this version name to the beta versions list
       lBetaVersions.push_back(lTagName);
@@ -265,69 +308,99 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     {
       // Save the latest stable's body tag value
       if (lLatestStableReleaseNote.length() == 0)
+      {
         lLatestStableReleaseNote = lTagsArray.at(i)["body"].toString();
+        Utils::cleanBreaksString(lLatestStableReleaseNote);
+      }
 
       // Add this version name to the stable versions list
       lStableVersions.push_back(lTagName);
     }
   }
 
-  // Delete the stable label
-  delete lStableReleaseNotes;
-  lStableReleaseNotes = nullptr;
+  lUserRunningBetaVersion = lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion);
 
-  // Create a QTextBrowser instead
-  auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
-  lBrowserStableReleaseNotes->setOpenExternalLinks(true);
-  Utils::cleanBreaksString(lLatestStableReleaseNote);
+  ///*========*/
+  ///* STABLE */
+  ///*========*/
+  // Set the release note in the text browser
   lBrowserStableReleaseNotes->setMarkdown(lLatestStableReleaseNote);
-  lMainLayout->addWidget(lBrowserStableReleaseNotes, 3, 0);
 
   // Links color override
   auto lHTMLString{lBrowserStableReleaseNotes->toHtml()};
   this->overrideHTMLLinksColor(lHTMLString);
   lBrowserStableReleaseNotes->setHtml(lHTMLString);
 
-  // Show the download button if the version is newer than the current one
-  if (lStableVersions.size() > 0 && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  // Parsing error
+  if (lStableVersions.size() == 0)
   {
+    lStableStatusLabel->setText(tr("An error has occured while analyzing GitHub's API data. Please retry in a few seconds."));
+  }
+  // A new version is available
+  else if (!lUserRunningBetaVersion && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  {
+    lBrowserStableReleaseNotes->show();
+    lStableStatusLabel->setText(tr("The new stable version \"%1\" is available on GitHub. Press the button below to open the updater window:").arg(lStableVersions.at(0)));
     this->findChild<QPushButton*>("download_stable_update")->show();
   }
-
-  // BETA versions messages
-  if (lBetaVersions.size() > 0 && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
+  // Already running the latest version
+  else if (Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
   {
-    lBetaReleaseNotes->setText(tr("You are already running the latest BETA version."));
-    return;
+    lBrowserStableReleaseNotes->show();
+    lStableStatusLabel->setText(tr("You are already running the latest stable version \"%1\".").arg(lStableVersions.at(0)));
+  }
+  else if (lUserRunningBetaVersion)
+  {
+    lBrowserStableReleaseNotes->show();
+    lStableStatusLabel->setText(tr("You are running a BETA version. Above are displayed the latest stable version release notes. Press the button below to open the updater window:"));
+    this->findChild<QPushButton*>("download_stable_update")->show();
+  }
+  // Running a developper version (since the current version number is higher than the latest one available on GitHub)
+  else if (Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::OLDER)
+  {
+    lBrowserStableReleaseNotes->show();
+    lStableStatusLabel->setText(tr("You are running a developer version."));
   }
 
-  if (lBetaVersions.size() == 0 || (lBetaVersions.size() > 0 && Utils::compareVersionNumbers(lBetaVersions.at(0), lStableVersions.at(0)) == ApplicationVersionRelative::OLDER))
-  {
-    lBetaReleaseNotes->setText(tr("No newer BETA version available."));
-    return;
-  }
-
-  // Delete the beta label
-  delete lBetaReleaseNotes;
-  lBetaReleaseNotes = nullptr;
-
-  // Show the download button
-  this->findChild<QPushButton*>("download_beta_update")->show();
-
-  // Create a QTextBrowser instead
-  auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
-  lBrowserBetaReleaseNotes->setOpenExternalLinks(true);
-  Utils::cleanBreaksString(lLatestBetaReleaseNote);
-  lBrowserBetaReleaseNotes->setMarkdown(lLatestBetaReleaseNote);
-  lMainLayout->addWidget(lBrowserBetaReleaseNotes, 6, 0);
-
-  Utils::cleanBreaksString(lLatestBetaReleaseNote);
+  /*======*/
+  /* BETA */
+  /*======*/
+  // Set the release note in the text browser
   lBrowserBetaReleaseNotes->setMarkdown(lLatestBetaReleaseNote);
 
   // Links color override
   lHTMLString = lBrowserBetaReleaseNotes->toHtml();
   this->overrideHTMLLinksColor(lHTMLString);
   lBrowserBetaReleaseNotes->setHtml(lHTMLString);
+
+  // Parsing error
+  if (lStableVersions.size() == 0 && lBetaVersions.size() == 0)
+  {
+    lBetaStatusLabel->setText(tr("An error has occured while analyzing GitHub's API data. Please retry in a few seconds."));
+  }
+  // There is not any BETA version available on GitHub
+  else if (lBetaVersions.size() == 0)
+  {
+    lBetaStatusLabel->setText(tr("No BETA version found on GitHub."));
+  }
+  // The BETA version is older than the current stable
+  else if (Utils::compareVersionNumbers(lBetaVersions.at(0), lStableVersions.at(0)) == ApplicationVersionRelative::OLDER)
+  {
+    lBetaStatusLabel->setText(tr("No newer BETA version is currently available."));
+  }
+  // Already running the latest version
+  else if (Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
+  {
+    lBrowserBetaReleaseNotes->show();
+    lBetaStatusLabel->setText(tr("You are already running the latest BETA version \"%1\".").arg(lBetaVersions.at(0)));
+  }
+  // Running a developper version (since the current version number is higher than the latest one available on GitHub)
+  else if (Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  {
+    lBrowserBetaReleaseNotes->show();
+    lBetaStatusLabel->setText(tr("The new BETA version \"%1\" is available on GitHub. Press the button below to open the updater window:").arg(lBetaVersions.at(0)));
+    this->findChild<QPushButton*>("download_beta_update")->show();
+  }
 }
 
 void WelcomeScreen::updateCheckFinished()
