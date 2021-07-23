@@ -1,0 +1,11 @@
+# duplication threshold [10 - 100]
+MinLineCount: 20
+
+# files/patterns to exclude
+IgnorePatterns:
+  - 3rd party\**
+  - MFBOPresetCreator\ressources\**
+  - Wizard ressources\**
+  - *\*.ui
+  - *\*.ts
+  - *\*.qm
