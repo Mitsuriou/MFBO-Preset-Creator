@@ -37,13 +37,6 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
   this->setupOutputGUI(*lMainLayout);
   this->setupRemainingGUI(*lButtonLayout);
 
-  // Cursor change for the scroll bar
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &BatchConversion::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversion::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &BatchConversion::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversion::scrollbarReleased);
-
   this->mHasUserDoneSomething = false;
 
   // Show the window when it's completely built
@@ -128,7 +121,6 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lInputPathLineEdit->setDisabled(true);
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
@@ -611,20 +603,6 @@ void BatchConversion::updateBodySlideFiltersListPreview(int)
   lFiltersList->setText(lText);
 
   this->userHasDoneAnAction();
-}
-
-void BatchConversion::scrollbarPressed()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
-}
-
-void BatchConversion::scrollbarReleased()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
 void BatchConversion::groupBoxChecked(bool aIsChecked)

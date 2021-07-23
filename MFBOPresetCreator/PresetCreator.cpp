@@ -42,13 +42,6 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   // Update the GUI based on the values entered
   this->refreshAllPreviewFields();
 
-  // Cursor change for the scroll bar
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &PresetCreator::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &PresetCreator::scrollbarReleased);
-
   this->setHasUserDoneSomething(false);
 }
 
@@ -1614,20 +1607,6 @@ void PresetCreator::updateBodySlideFiltersListPreview()
   lFiltersList->setText(lText);
 
   this->setHasUserDoneSomething(true);
-}
-
-void PresetCreator::scrollbarPressed()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
-}
-
-void PresetCreator::scrollbarReleased()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
 void PresetCreator::groupBoxChecked(bool aIsChecked)

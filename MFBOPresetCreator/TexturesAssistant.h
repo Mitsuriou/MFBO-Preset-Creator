@@ -51,8 +51,6 @@ private:
   void launchSearchProcess();
 
   // GUI widgets events
-  void scrollbarPressed();
-  void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
 #pragma endregion PRIVATE_SLOTS
 

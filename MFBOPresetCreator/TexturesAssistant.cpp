@@ -97,7 +97,6 @@ void TexturesAssistant::initializeGUI()
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lInputPathLineEdit->setDisabled(true);
   lMainGrid->addWidget(lInputPathLineEdit, 0, 1);
@@ -431,27 +430,6 @@ void TexturesAssistant::launchSearchProcess()
   auto lDataContainer{ComponentFactory::createScrollAreaComponentLayout(this)};
 
   this->displayFoundTextures(lDataContainer, lFoundDdsFiles);
-
-  // Cursor change for the scroll bar
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &TexturesAssistant::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &TexturesAssistant::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &TexturesAssistant::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &TexturesAssistant::scrollbarReleased);
-}
-
-void TexturesAssistant::scrollbarPressed()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
-}
-
-void TexturesAssistant::scrollbarReleased()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
 void TexturesAssistant::groupBoxChecked(bool aIsChecked)

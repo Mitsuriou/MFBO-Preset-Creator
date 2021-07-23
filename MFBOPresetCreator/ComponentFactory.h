@@ -19,7 +19,7 @@ public:
                                    const bool aMustDisableAutoDefaultBehavior = false);
 
   // Constructed components
-  static QGridLayout* createScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment = true);
+  static QGridLayout* createScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment = true, const bool aGenerateButtonsBottomLayout = true);
   static QGridLayout* createScrollAreaComponentLayout(QWidget* aParent);
 
   // Full UI blocks

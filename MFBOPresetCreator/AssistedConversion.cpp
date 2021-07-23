@@ -98,7 +98,6 @@ void AssistedConversion::initializeGUI()
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lInputPathLineEdit->setDisabled(true);
   lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
@@ -466,13 +465,6 @@ void AssistedConversion::launchSearchProcess()
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
 
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
-
-  // Cursor change for the scroll bar
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &AssistedConversion::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &AssistedConversion::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &AssistedConversion::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &AssistedConversion::scrollbarReleased);
 }
 
 void AssistedConversion::validateSelection()
@@ -591,18 +583,4 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
     lView->setRowHidden(lOldIndex, false);
     lItem->setFlags(lItem->flags() | Qt::ItemIsEnabled);
   }
-}
-
-void AssistedConversion::scrollbarPressed()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
-}
-
-void AssistedConversion::scrollbarReleased()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }

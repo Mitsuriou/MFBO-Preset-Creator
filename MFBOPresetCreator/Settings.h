@@ -59,8 +59,6 @@ private:
   void goToLastPathsTab();
 
   // GUI widgets events
-  void scrollbarPressed();
-  void scrollbarReleased();
   void clearPathButtonClicked();
   void clearAllPaths();
 #pragma endregion PRIVATE_SLOTS

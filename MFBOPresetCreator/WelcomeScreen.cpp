@@ -65,7 +65,7 @@ void WelcomeScreen::initializeGUI()
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
   // Main layout
-  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
+  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this, true, false)};
 
   /*================================*/
   /* Show / Hide the welcome screen */
@@ -94,7 +94,6 @@ void WelcomeScreen::initializeGUI()
   auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
   lBrowserStableReleaseNotes->setObjectName("browser_stable");
   lBrowserStableReleaseNotes->setOpenExternalLinks(true);
-  lBrowserStableReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserStableReleaseNotes);
 
   // Stable status label
@@ -177,15 +176,6 @@ void WelcomeScreen::initializeGUI()
   this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
   this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
   this->connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeScreen::openGoogleDriveGuide);
-
-  /*==================================*/
-  /* Cursor change for the scroll bar */
-  /*==================================*/
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &WelcomeScreen::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &WelcomeScreen::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &WelcomeScreen::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &WelcomeScreen::scrollbarReleased);
 }
 
 QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, const int aAppFontSize)
@@ -417,20 +407,6 @@ void WelcomeScreen::updateCheckFinished()
   }
 
   lReply->deleteLater();
-}
-
-void WelcomeScreen::scrollbarPressed()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
-}
-
-void WelcomeScreen::scrollbarReleased()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
 void WelcomeScreen::groupBoxChecked(bool aIsChecked)

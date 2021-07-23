@@ -34,8 +34,6 @@ private:
   void updateCheckFinished();
 
   // GUI widgets events
-  void scrollbarPressed();
-  void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
 
 signals:

@@ -87,13 +87,6 @@ void BatchConversionPicker::initializeGUI()
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this, false)};
 
-  // Cursor change for the scroll bar
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &BatchConversionPicker::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversionPicker::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &BatchConversionPicker::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &BatchConversionPicker::scrollbarReleased);
-
   // 3 columns splitter
   auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
   lMainLayout->addWidget(lSplitter, 0, 0);
@@ -317,20 +310,6 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
 void BatchConversionPicker::validateSelection()
 {
   // TODO:
-}
-
-void BatchConversionPicker::scrollbarPressed()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
-}
-
-void BatchConversionPicker::scrollbarReleased()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
 void BatchConversionPicker::groupBoxChecked(bool aIsChecked)

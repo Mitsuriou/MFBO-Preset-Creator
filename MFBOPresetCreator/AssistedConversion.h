@@ -38,10 +38,6 @@ private:
   void launchSearchProcess();
   void validateSelection();
   void modifyComboBoxLockState(int aIndex);
-
-  // Scrollbar events
-  void scrollbarPressed();
-  void scrollbarReleased();
 #pragma endregion PRIVATE_SLOTS
 
 signals:

@@ -132,13 +132,6 @@ void Settings::initializeGUI()
 
   // Load the settings into the interface
   this->loadSettings(this->mSettings);
-
-  // Cursor change for the scroll bar
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
-  this->connect(lScrollArea->verticalScrollBar(), &QAbstractSlider::sliderReleased, this, &Settings::scrollbarReleased);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderPressed, this, &Settings::scrollbarPressed);
-  this->connect(lScrollArea->horizontalScrollBar(), &QAbstractSlider::sliderReleased, this, &Settings::scrollbarReleased);
 }
 
 void Settings::setupDisplayTab(QTabWidget& aTabWidget)
@@ -152,7 +145,6 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   // Layout
   auto lTabLayout{new QVBoxLayout(lTabContent)};
   lTabLayout->setSpacing(10);
-  lTabLayout->setContentsMargins(15, 20, 15, 15);
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
@@ -245,32 +237,33 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   auto lTabContent{new QWidget(this)};
 
   // Layout
-  auto lTabLayout{new QVBoxLayout(lTabContent)};
+  auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
-  lTabLayout->setContentsMargins(15, 20, 15, 15);
   lTabLayout->setAlignment(Qt::AlignTop);
+  lTabLayout->setColumnStretch(0, 1);
+  lTabLayout->setColumnStretch(1, 0);
   lTabContent->setLayout(lTabLayout);
 
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("General"));
 
   // Show welcome screen at application startup
-  lTabLayout->addWidget(new QLabel(tr("Startup actions:"), this));
+  lTabLayout->addWidget(new QLabel(tr("Startup actions:"), this), 0, 0, 1, 2);
 
   auto lShowWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup."), this)};
   lShowWelcomeScreen->setCursor(Qt::PointingHandCursor);
   lShowWelcomeScreen->setObjectName(QString("show_welcome_screen"));
-  lTabLayout->addWidget(lShowWelcomeScreen);
+  lTabLayout->addWidget(lShowWelcomeScreen, 1, 0, 1, 2);
 
   // Each button stores the last opened path
-  lTabLayout->addWidget(new QLabel(tr("Smarter buttons:"), this));
+  lTabLayout->addWidget(new QLabel(tr("Smarter buttons:"), this), 2, 0, 1, 2);
 
   auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path."), this)};
   lEachButtonSavesItsLastUsedPath->setCursor(Qt::PointingHandCursor);
   lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
-  lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath);
+  lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath, 3, 0);
 
   auto lCheckPathsHistory{ComponentFactory::createButton(this, tr("Check/clear my browsing history"), "", "tab", lIconFolder, "", false, true)};
-  lTabLayout->addWidget(lCheckPathsHistory);
+  lTabLayout->addWidget(lCheckPathsHistory, 3, 1);
 
   // Event binding
   this->connect(lCheckPathsHistory, &QPushButton::clicked, this, &Settings::goToLastPathsTab);
@@ -287,7 +280,6 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
-  lTabLayout->setContentsMargins(15, 20, 15, 15);
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
@@ -330,7 +322,6 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 
   auto lOutputPathLineEdit{new QLineEdit("", this)};
   lOutputPathLineEdit->setReadOnly(true);
-  lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lOutputPathLineEdit->setObjectName("output_path_directory");
   lTabLayout->addWidget(lOutputPathLineEdit, 5, 0);
 
@@ -339,7 +330,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lOutputPathChooser, 5, 1);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
-  lTabLayout->addWidget(new QLabel(tr("End of preset generation:"), this), 6, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Post-generation tasks:"), this), 6, 0, 1, 2);
 
   auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation."), this)};
   lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
@@ -362,7 +353,6 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
-  lTabLayout->setContentsMargins(15, 20, 15, 15);
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
@@ -415,7 +405,6 @@ void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
   // Layout
   auto lTabLayout{new QVBoxLayout(lTabContent)};
   lTabLayout->setSpacing(10);
-  lTabLayout->setContentsMargins(15, 20, 15, 15);
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
@@ -441,7 +430,6 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
-  lTabLayout->setContentsMargins(15, 20, 15, 15);
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
@@ -841,20 +829,6 @@ void Settings::chooseDangerColor()
 void Settings::goToLastPathsTab()
 {
   this->findChild<QTabWidget*>("tab_widget")->setCurrentIndex(5);
-}
-
-void Settings::scrollbarPressed()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::ClosedHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::ClosedHandCursor);
-}
-
-void Settings::scrollbarReleased()
-{
-  auto lScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
 }
 
 void Settings::clearPathButtonClicked()

@@ -152,7 +152,6 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lInputPathLineEdit->setObjectName("input_path_directory");
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 3);
 
@@ -204,7 +203,6 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   auto lBackupPathLineEdit{new QLineEdit("", this)};
   lBackupPathLineEdit->setReadOnly(true);
-  lBackupPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lBackupPathLineEdit->setObjectName("backup_path_directory");
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
 

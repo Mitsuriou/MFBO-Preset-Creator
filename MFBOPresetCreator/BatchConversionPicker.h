@@ -33,7 +33,5 @@ private:
   void validateSelection();
 
   // GUI widgets events
-  void scrollbarPressed();
-  void scrollbarReleased();
   void groupBoxChecked(bool aIsChecked);
 };

@@ -54,7 +54,7 @@ QPushButton* ComponentFactory::createButton(
   return lButton;
 }
 
-QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment)
+QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment, const bool aGenerateButtonsBottomLayout)
 {
   // Very first container in which the scroll area will be added
   auto lBaseLayout{new QVBoxLayout(aParent)};
@@ -62,8 +62,6 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
 
   // Create a scroll area
   auto lScrollArea{new QScrollArea(aParent)};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->setObjectName("scrollable_zone");
   lScrollArea->setContentsMargins(0, 0, 0, 0);
   lScrollArea->setWidgetResizable(true);
@@ -87,12 +85,15 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
   lBaseLayout->addWidget(lScrollArea);
 
   // Button layout
-  auto lButtonLayout{new QHBoxLayout(aParent)};
-  lButtonLayout->setObjectName("window_buttons_layout");
-  lButtonLayout->setSpacing(10);
-  lButtonLayout->setContentsMargins(10, 0, 10, 10);
-  lButtonLayout->setAlignment(Qt::AlignTop);
-  lBaseLayout->addLayout(lButtonLayout);
+  if (aGenerateButtonsBottomLayout)
+  {
+    auto lButtonLayout{new QHBoxLayout(aParent)};
+    lButtonLayout->setObjectName("window_buttons_layout");
+    lButtonLayout->setSpacing(10);
+    lButtonLayout->setContentsMargins(10, 0, 10, 10);
+    lButtonLayout->setAlignment(Qt::AlignTop);
+    lBaseLayout->addLayout(lButtonLayout);
+  }
 
   return lMainLayout;
 }
@@ -100,8 +101,6 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
 QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
 {
   auto lScrollArea{new QScrollArea(aParent)};
-  lScrollArea->verticalScrollBar()->setCursor(Qt::OpenHandCursor);
-  lScrollArea->horizontalScrollBar()->setCursor(Qt::OpenHandCursor);
   lScrollArea->setObjectName("scrollable_zone");
   lScrollArea->setWidgetResizable(true);
 
@@ -146,7 +145,6 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
 
   auto lOutputPathLineEdit{new QLineEdit(aParent)};
   lOutputPathLineEdit->setReadOnly(true);
-  lOutputPathLineEdit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   lOutputPathLineEdit->setObjectName("output_path_directory");
   if (aInitialOutputPath.length() > 0)
   {
