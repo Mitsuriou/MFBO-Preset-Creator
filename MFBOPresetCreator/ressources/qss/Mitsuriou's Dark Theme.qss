@@ -260,6 +260,11 @@ QMenu::item::disabled {
   background-color: #282a3b;
 }
 
+QMenu::separator {
+  background-color: #ff558d;
+  height: 1px;
+}
+
 /*************/
 /*LIST WIDGET*/
 /*************/
