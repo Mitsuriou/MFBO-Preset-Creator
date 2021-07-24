@@ -123,7 +123,7 @@ namespace Struct
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
     QString mainWindowOutputPath{""};
     int mainWindowWidth{1000};
-    bool showWelcomeScreen{true};
+    StartupAction startupAction{StartupAction::OPEN_WELCOME_SCREEN};
     QString successColor{"#48c774"};
     QString warningColor{"#ffbc6b"};
 
@@ -146,7 +146,7 @@ namespace Struct
         && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
         && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath
-        && this->showWelcomeScreen == aSettings.showWelcomeScreen
+        && this->startupAction == aSettings.startupAction
         && this->successColor == aSettings.successColor
         && this->warningColor == aSettings.warningColor
         && this->dangerColor == aSettings.dangerColor);
@@ -171,7 +171,7 @@ namespace Struct
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
         || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
         || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath
-        || this->showWelcomeScreen != aSettings.showWelcomeScreen
+        || this->startupAction != aSettings.startupAction
         || this->successColor != aSettings.successColor
         || this->warningColor != aSettings.warningColor
         || this->dangerColor != aSettings.dangerColor);

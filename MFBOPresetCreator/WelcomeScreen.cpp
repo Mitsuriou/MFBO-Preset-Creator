@@ -15,6 +15,7 @@
 WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
+  , mInitializationStartupAction(aSettings.startupAction)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -35,7 +36,19 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
 
   // Update the setting's value
   auto lSettingsCopy{this->mSettings};
-  lSettingsCopy.showWelcomeScreen = lShowHideWelcomeScreen->isChecked();
+  if (this->mInitializationStartupAction == StartupAction::OPEN_WELCOME_SCREEN && !lShowHideWelcomeScreen->isChecked())
+  {
+    lSettingsCopy.startupAction = StartupAction::CHECK_FOR_UPDATES;
+  }
+  else if (lShowHideWelcomeScreen->isChecked())
+  {
+    lSettingsCopy.startupAction = StartupAction::OPEN_WELCOME_SCREEN;
+  }
+  else
+  {
+    lSettingsCopy.startupAction = this->mInitializationStartupAction;
+  }
+
   Utils::saveSettingsToFile(lSettingsCopy);
 
   // Update the settings everywhere else in the app
@@ -70,10 +83,10 @@ void WelcomeScreen::initializeGUI()
   /*================================*/
   /* Show / Hide the welcome screen */
   /*================================*/
-  auto lShowHideWelcomeScreen{new QCheckBox(tr("Always show the welcome screen at application startup"), this)};
+  auto lShowHideWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup"), this)};
   lShowHideWelcomeScreen->setCursor(Qt::PointingHandCursor);
   lShowHideWelcomeScreen->setObjectName("always_show_welcome_screen");
-  lShowHideWelcomeScreen->setChecked(this->mSettings.showWelcomeScreen);
+  lShowHideWelcomeScreen->setChecked(this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN);
   lMainLayout->addWidget(lShowHideWelcomeScreen);
 
   /*============*/
@@ -257,7 +270,6 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
   auto lLatestStableReleaseNote{QString()};
   auto lBetaVersions{QStringList()};
   auto lLatestBetaReleaseNote{QString()};
-  auto lUserRunningBetaVersion{false};
   const auto lCurrentVersion{Utils::getApplicationVersion()};
 
   if (aResult == "fetch_error")
@@ -308,7 +320,7 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     }
   }
 
-  lUserRunningBetaVersion = lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion);
+  auto lUserRunningBetaVersion = lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion);
 
   ///*========*/
   ///* STABLE */

@@ -17,6 +17,7 @@ protected:
 
 private:
   const Struct::Settings mSettings;
+  const StartupAction mInitializationStartupAction;
   // Check for updates
   QNetworkAccessManager mManager;
 

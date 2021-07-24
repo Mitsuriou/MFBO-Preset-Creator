@@ -2,6 +2,7 @@
 #include "About.h"
 #include "AssistedConversion.h"
 #include "BatchConversion.h"
+#include "Enum.h"
 #include "PresetCreator.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
@@ -39,7 +40,18 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
   qApp->setApplicationDisplayName(tr("[DEV] ") + qApp->applicationDisplayName());
 #endif
 
-  this->checkForUpdate();
+  // Check for new versions
+  if (this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN
+      || this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES)
+  {
+    Utils::printMessageStdOut("Checking for updates...");
+    this->checkForUpdate();
+  }
+  else
+  {
+    Utils::printMessageStdOut("Skipped update checking");
+    this->initializeGUI();
+  }
 }
 
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
@@ -138,7 +150,7 @@ void MFBOPresetCreator::initializeGUI()
   Utils::cleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
 
-  if (this->mSettings.showWelcomeScreen)
+  if (this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN)
   {
     this->launchWelcomeScreen();
   }
@@ -588,7 +600,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   this->initializeGUI();
 
-  if (!this->mSettings.showWelcomeScreen && lTitle.length() > 0 && lMessage.length() > 0)
+  if (this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES && lTitle.length() > 0 && lMessage.length() > 0)
   {
     if (aResult == "fetch_error")
     {

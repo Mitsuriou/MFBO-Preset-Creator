@@ -14,6 +14,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QRadioButton>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QStandardPaths>
@@ -249,21 +250,31 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   // Show welcome screen at application startup
   lTabLayout->addWidget(new QLabel(tr("Startup actions:"), this), 0, 0, 1, 2);
 
-  auto lShowWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup."), this)};
-  lShowWelcomeScreen->setCursor(Qt::PointingHandCursor);
-  lShowWelcomeScreen->setObjectName(QString("show_welcome_screen"));
-  lTabLayout->addWidget(lShowWelcomeScreen, 1, 0, 1, 2);
+  auto lWelcomeActionWelcomeScreen{new QRadioButton(tr("Open the welcome screen (pop-up window)"), this)};
+  lWelcomeActionWelcomeScreen->setCursor(Qt::PointingHandCursor);
+  lWelcomeActionWelcomeScreen->setObjectName(QString("welcome_action_welcome_screen"));
+  lTabLayout->addWidget(lWelcomeActionWelcomeScreen, 1, 0, 1, 2);
+
+  auto lWelcomeActionUpdater{new QRadioButton(tr("Check for updates only (pop-up window only if there is an update available)"), this)};
+  lWelcomeActionUpdater->setCursor(Qt::PointingHandCursor);
+  lWelcomeActionUpdater->setObjectName(QString("welcome_action_updater"));
+  lTabLayout->addWidget(lWelcomeActionUpdater, 2, 0, 1, 2);
+
+  auto lWelcomeActionNone{new QRadioButton(tr("Skip any check for updates and go directly to the main window"), this)};
+  lWelcomeActionNone->setCursor(Qt::PointingHandCursor);
+  lWelcomeActionNone->setObjectName(QString("welcome_action_none"));
+  lTabLayout->addWidget(lWelcomeActionNone, 3, 0, 1, 2);
 
   // Each button stores the last opened path
-  lTabLayout->addWidget(new QLabel(tr("Smarter buttons:"), this), 2, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Smarter buttons:"), this), 4, 0, 1, 2);
 
   auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path."), this)};
   lEachButtonSavesItsLastUsedPath->setCursor(Qt::PointingHandCursor);
   lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
-  lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath, 3, 0);
+  lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath, 5, 0);
 
   auto lCheckPathsHistory{ComponentFactory::createButton(this, tr("Check/clear my browsing history"), "", "tab", lIconFolder, "", false, true)};
-  lTabLayout->addWidget(lCheckPathsHistory, 3, 1);
+  lTabLayout->addWidget(lCheckPathsHistory, 5, 1);
 
   // Event binding
   this->connect(lCheckPathsHistory, &QPushButton::clicked, this, &Settings::goToLastPathsTab);
@@ -535,8 +546,21 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")};
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
 
-  auto lShowWelcomeScreen{this->findChild<QCheckBox*>("show_welcome_screen")};
-  lShowWelcomeScreen->setChecked(aSettingsToLoad.showWelcomeScreen);
+  switch (aSettingsToLoad.startupAction)
+  {
+    case StartupAction::OPEN_WELCOME_SCREEN:
+      this->findChild<QRadioButton*>("welcome_action_welcome_screen")->setChecked(true);
+      break;
+    case StartupAction::CHECK_FOR_UPDATES:
+      this->findChild<QRadioButton*>("welcome_action_updater")->setChecked(true);
+      break;
+    case StartupAction::SKIP_UPDATE_CHECKS:
+      this->findChild<QRadioButton*>("welcome_action_none")->setChecked(true);
+      break;
+    default:
+      this->findChild<QRadioButton*>("welcome_action_welcome_screen")->setChecked(true);
+      break;
+  }
 
   this->mNewSuccessColor = aSettingsToLoad.successColor;
   this->applySuccessColorButton(this->mNewSuccessColor);
@@ -562,10 +586,12 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lDefaultRetargetBodyVersion{DataLists::getBodyNameVersion(static_cast<BodyName>(lUpBodyNameSelected), lUpBodyVersionSelected)};
   auto lDefaultMainFeetMod{this->findChild<QComboBox*>(QString("feet_mod_main"))->currentIndex()};
   auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))->currentIndex()};
-  auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")->currentIndex()};
-  auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")->text()};
-  auto lShowWelcomeScreen{this->findChild<QCheckBox*>("show_welcome_screen")->isChecked()};
-  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")->isChecked()};
+  auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("window_opening_mode"))->currentIndex()};
+  auto lMainWindowOutputPath{this->findChild<QLineEdit*>(QString("output_path_directory"))->text()};
+  auto lWelcomeActionWelcomeScreen{this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->isChecked()};
+  auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
+  auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
+  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))->isChecked()};
   auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")->isChecked()};
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")->isChecked()};
 
@@ -635,7 +661,18 @@ Struct::Settings Settings::getSettingsFromGUI() const
   }
 
   // Show welcome screen at application startup
-  lSettings.showWelcomeScreen = lShowWelcomeScreen;
+  if (lWelcomeActionWelcomeScreen)
+  {
+    lSettings.startupAction = StartupAction::OPEN_WELCOME_SCREEN;
+  }
+  else if (lWelcomeActionUpdater)
+  {
+    lSettings.startupAction = StartupAction::CHECK_FOR_UPDATES;
+  }
+  else if (lWelcomeActionNone)
+  {
+    lSettings.startupAction = StartupAction::SKIP_UPDATE_CHECKS;
+  }
 
   // Automatically open generated directory
   lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lAutoOpenGeneratedDir;

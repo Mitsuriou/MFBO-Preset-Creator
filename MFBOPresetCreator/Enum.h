@@ -91,6 +91,13 @@ enum class WindowOpeningMode
   MAXIMIZED
 };
 
+enum class StartupAction
+{
+  OPEN_WELCOME_SCREEN,
+  CHECK_FOR_UPDATES,
+  SKIP_UPDATE_CHECKS
+};
+
 enum class AssistedConversionRole
 {
   IGNORED,

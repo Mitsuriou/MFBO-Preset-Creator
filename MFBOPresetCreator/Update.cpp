@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <QProgressBar>
 #include <QPushButton>
+#include <QRadioButton>
 #include <QStandardPaths>
 #include <QTextBrowser>
 
@@ -56,14 +57,21 @@ void Update::setWindowProperties()
 
 void Update::setupInterface(const bool aIsBetaContext)
 {
-  // TODO: Update this class to have a smarter treatment for the beta versions
-
   // Set a layout for this dialog box
   this->setLayout(new QVBoxLayout(this));
   this->layout()->setAlignment(Qt::AlignTop);
 
-  // Current version
-  this->layout()->addWidget(new QLabel(tr("You are running the version \"%1\".").arg(Utils::getApplicationVersion()), this));
+  // WIP
+  this->layout()->addWidget(new QLabel(tr("Check for updates:"), this));
+
+  auto lStableVersionButton{new QRadioButton(tr("Stable"), this)};
+  lStableVersionButton->setChecked(!aIsBetaContext);
+  this->layout()->addWidget(lStableVersionButton);
+
+  auto lBetaVersionButton{new QRadioButton(tr("BETA"), this)};
+  lBetaVersionButton->setChecked(aIsBetaContext);
+  this->layout()->addWidget(lBetaVersionButton);
+  // WIP
 
   // Check for updates
   auto lUpdateButton{ComponentFactory::createButton(this, tr("Check for updates"), "", "cloud-search", Utils::getIconRessourceFolder(this->mSettings.appTheme), "search_button")};

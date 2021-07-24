@@ -886,9 +886,9 @@ Struct::Settings Utils::loadSettingsFromFile()
   }
 
   // Show welcome screen at application startup
-  if (lSettingsJSON.contains("showWelcomeScreen") && lSettingsJSON["showWelcomeScreen"].isBool())
+  if (lSettingsJSON.contains("startupAction") && lSettingsJSON["startupAction"].isDouble())
   {
-    lSettings.showWelcomeScreen = lSettingsJSON["showWelcomeScreen"].toBool();
+    lSettings.startupAction = static_cast<StartupAction>(lSettingsJSON["startupAction"].toInt());
   }
 
   // Success color
@@ -993,7 +993,7 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lSettings["mainWindowOpeningMode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
   lSettings["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
   lSettings["mainWindowWidth"] = aSettings.mainWindowWidth;
-  lSettings["showWelcomeScreen"] = aSettings.showWelcomeScreen;
+  lSettings["startupAction"] = static_cast<int>(aSettings.startupAction);
   lSettings["successColor"] = aSettings.successColor;
   lSettings["warningColor"] = aSettings.warningColor;
 
