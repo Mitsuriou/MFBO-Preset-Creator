@@ -6,6 +6,6 @@ IgnorePatterns:
   - 3rd party\**
   - MFBOPresetCreator\ressources\**
   - Wizard ressources\**
-  - MFBOPresetCreator\**.ui
-  - MFBOPresetCreator\**.ts
-  - MFBOPresetCreator\**.qm
+  - MFBOPresetCreator\*.ui
+  - MFBOPresetCreator\*.ts
+  - MFBOPresetCreator\*.qm
