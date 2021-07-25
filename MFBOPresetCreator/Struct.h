@@ -322,4 +322,61 @@ namespace Struct
 
     // TODO: Make this structure cleaner (with a constructor and private attributes)
   };
+
+  struct VersionsInformation
+  {
+  public:
+    VersionsInformation(){};
+
+    void setLatestStableReleaseNotes(const QString& aLatestStableReleaseNotes)
+    {
+      this->latestStableReleaseNotes = aLatestStableReleaseNotes;
+    }
+
+    QString getLatestStableReleaseNotes() const
+    {
+      return this->latestStableReleaseNotes;
+    };
+
+    void setStableVersions(const QStringList& aStableVersions)
+    {
+      this->stableVersions = aStableVersions;
+    }
+
+    QStringList getStableVersions() const
+    {
+      return this->stableVersions;
+    };
+
+    void setLatestBetaReleaseNotes(const QString& aLatestBetaReleaseNotes)
+    {
+      this->latestBetaReleaseNotes = aLatestBetaReleaseNotes;
+    }
+
+    QString getLatestBetaReleaseNotes() const
+    {
+      return this->latestBetaReleaseNotes;
+    };
+
+    void setBetaVersions(const QStringList& aBetaVersions)
+    {
+      this->betaVersions = aBetaVersions;
+    }
+
+    QStringList getBetaVersions() const
+    {
+      return this->betaVersions;
+    };
+
+    bool isRunningBetaVersion(const QString& aCurrentApplicationVersion) const
+    {
+      return (this->betaVersions.size() > 0 && this->betaVersions.at(0).compare(aCurrentApplicationVersion) == 0);
+    };
+
+  private:
+    QString latestStableReleaseNotes{""};
+    QStringList stableVersions{};
+    QString latestBetaReleaseNotes{""};
+    QStringList betaVersions{};
+  };
 }
