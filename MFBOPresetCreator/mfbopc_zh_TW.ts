@@ -59,7 +59,7 @@
     <message>
         <location filename="AssistedConversion.cpp" line="171"/>
         <source>Scanning the directory. Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="171"/>
@@ -264,7 +264,7 @@
     <message>
         <location filename="BatchConversion.cpp" line="425"/>
         <source>Scanning the directory. Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">掃描資料夾中 請稍等...</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="425"/>
@@ -607,7 +607,7 @@
         <location filename="MFBOPresetCreator.cpp" line="73"/>
         <location filename="MFBOPresetCreator.cpp" line="676"/>
         <source>Save the project and quit the application</source>
-        <translation type="unfinished"></translation>
+        <translation>儲存專案並關閉應用程式</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="162"/>
@@ -693,7 +693,7 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="235"/>
         <source>Report a bug...</source>
-        <translation type="unfinished"></translation>
+        <translation>回報Bug...</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="245"/>
@@ -834,22 +834,22 @@ Do you want to download it now?</source>
     <message>
         <location filename="PresetCreator.cpp" line="75"/>
         <source>Unsaved data</source>
-        <translation type="unfinished"></translation>
+        <translation>未儲存資料</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="76"/>
         <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
+        <translation>您似乎有未儲存資料。確定要開啟新專案&quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="79"/>
         <source>Open the project without saving</source>
-        <translation type="unfinished"></translation>
+        <translation>不儲存並開啟新專案</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="80"/>
         <source>Cancel the file opening</source>
-        <translation type="unfinished"></translation>
+        <translation>取消開啟檔案</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="214"/>
@@ -1053,14 +1053,14 @@ Do you want to download it now?</source>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation>錯誤:無法產生預設骨架檔案。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1345"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation>錯誤:無法產生資料夾:&quot;%1&quot;。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
         <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1551,7 +1551,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     <message>
         <location filename="Settings.cpp" line="434"/>
         <source>Last used paths</source>
-        <translation type="unfinished"></translation>
+        <translation>上次使用路徑</translation>
     </message>
     <message>
         <source>Last used folder and files paths</source>
@@ -1632,7 +1632,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
-        <translation type="unfinished"></translation>
+        <translation>已儲存所有設定。有需要重啟才能生效的設定。 是否立即重啟程式 (將失去所有未儲存檔案)?</translation>
     </message>
     <message>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied. Would you like to restart the application now?</source>
@@ -1712,7 +1712,7 @@ Would you like to restart the application now (you will lose all unsaved data)?<
     <message>
         <location filename="TexturesAssistant.cpp" line="163"/>
         <source>Scanning the directory. Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="163"/>
@@ -1948,7 +1948,7 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Update.cpp" line="508"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
-        <translation type="unfinished"></translation>
+        <translation>無法開始更新，重試前請確認防火牆與防毒軟體未封鎖本程式。</translation>
     </message>
 </context>
 <context>
@@ -1967,7 +1967,7 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Utils.cpp" line="415"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>無法找到內部檔案e &quot;%1&quot; 。請回報給開發者並提供bug產生步驟。</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="435"/>
@@ -1979,19 +1979,21 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Utils.cpp" line="690"/>
         <source>Project successfully saved</source>
-        <translation type="unfinished"></translation>
+        <translation>成功儲存專案</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="691"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="705"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <translation>錯誤:無法儲存檔案於:&quot;%1&quot;。
+請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。
+或建議使用英文路徑名稱。</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1296"/>
