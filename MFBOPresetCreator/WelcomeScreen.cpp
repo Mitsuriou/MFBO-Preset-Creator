@@ -107,6 +107,7 @@ void WelcomeScreen::initializeGUI()
   auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
   lBrowserStableReleaseNotes->setObjectName("browser_stable");
   lBrowserStableReleaseNotes->setOpenExternalLinks(true);
+  lBrowserStableReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserStableReleaseNotes);
 
   // Stable status label

@@ -1538,7 +1538,7 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <location filename="Settings.cpp" line="263"/>
         <source>Skip any check for updates and go directly to the main window</source>
         <oldsource>Each directory chooser button stores its own last opened path</oldsource>
-        <translation type="unfinished">Chaque bouton sélecteur de répertoire stocke son propre dernier chemin ouvert</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="269"/>
