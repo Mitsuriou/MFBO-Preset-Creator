@@ -181,7 +181,7 @@ void BatchConversionPicker::initializeGUI()
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
 
   // Validate selection and generate button
-  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
+  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder)};
   lButtonLayout->addWidget(lGenerateButton);
@@ -202,7 +202,7 @@ void BatchConversionPicker::initializeGUI()
 
 void BatchConversionPicker::displayLeftList()
 {
-  auto lPathsList{this->findChild<QListWidget*>("paths_list")};
+  auto lPathsList{this->findChild<QListWidget*>(QString("paths_list"))};
   for (const auto& lEntry : this->mData.scannedData)
   {
     lPathsList->addItem(lEntry.first);
@@ -217,7 +217,7 @@ void BatchConversionPicker::displayLeftList()
 void BatchConversionPicker::leftListIndexChanged()
 {
   // Delete all children of the middle list
-  auto lOptionsList{this->findChild<QVBoxLayout*>("options_list")};
+  auto lOptionsList{this->findChild<QVBoxLayout*>(QString("options_list"))};
 
   const auto lButtonsListSize{static_cast<int>(this->mMiddleListButtons.size())};
   for (int i = 0; i < lButtonsListSize; i++)
@@ -227,7 +227,7 @@ void BatchConversionPicker::leftListIndexChanged()
   }
 
   // Add the entries in the options list, based on the paths list' selected item
-  auto lPathsList{this->findChild<QListWidget*>("paths_list")};
+  auto lPathsList{this->findChild<QListWidget*>(QString("paths_list"))};
   auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
@@ -247,7 +247,7 @@ void BatchConversionPicker::leftListIndexChanged()
 
 void BatchConversionPicker::updateOSPXMLPreview(QString aText)
 {
-  auto lOutputPathsPreview{this->findChild<QLabel*>("names_osp_xml_preview")};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_osp_xml_preview"))};
   auto lIsValidPath{true};
 
   Utils::cleanPathString(aText);
@@ -277,7 +277,7 @@ void BatchConversionPicker::updateOSPXMLPreview(QString aText)
 
 void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
 {
-  //auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
+  //auto lMustUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))->isChecked()};
   auto lMustUseBeastHands{false}; // TODO: Check if it is necessary to get this parameter from a dynamic analyze
   auto lIsValidPath{true};
 
@@ -302,7 +302,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
     lNewTextColor = this->mSettings.dangerColor;
   }
 
-  auto lOutputPathsPreview{this->findChild<QLabel*>("names_bodyslide_preview")};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_bodyslide_preview"))};
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }

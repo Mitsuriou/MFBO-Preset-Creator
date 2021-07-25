@@ -28,7 +28,7 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
 
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
-  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
+  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   // Setup all the different GUI components
   this->setupGeneralGUI(*lMainLayout);
@@ -276,17 +276,17 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 
   // Create the group box
   ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.batchConversionOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
-  auto lOutputGroupBox{this->findChild<QGroupBox*>("output_group_box")};
+  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
 
   // Event binding
-  auto lOutputPathChooser{this->findChild<QPushButton*>("output_path_chooser")};
+  auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseExportDirectory);
 
-  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>("output_path_subdirectory")};
+  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
   this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview);
 
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
   this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
 
   // Pre-filled data
@@ -314,22 +314,22 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lUserFilters{Utils::getFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
 
-  auto lSkeletonChooserHuman{this->findChild<QComboBox*>("skeleton_chooser_human")};
+  auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
   auto lSkeletonPathHuman{QString("%1assets/skeletons/%2").arg(Utils::getAppDataPathFolder()).arg(lSkeletonChooserHuman->currentText())};
 
-  auto lSkeletonChooserBeast{this->findChild<QComboBox*>("skeleton_chooser_beast")};
+  auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
   auto lSkeletonPathBeast{QString("%1assets/skeletons/%2").arg(Utils::getAppDataPathFolder()).arg(lSkeletonChooserBeast->currentText())};
 
   // Output paths
-  auto lMainDirectory{this->findChild<QLineEdit*>("output_path_directory")->text().trimmed()};
-  auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
+  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
   Utils::cleanPathString(lSubDirectory);
 
   // Does the user want to define the path only through the secondary path?
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
 
   // Full extract path
   auto lEntryDirectory{lSubDirectory};
@@ -384,7 +384,7 @@ void BatchConversion::updateAvailableBodyVersions()
 void BatchConversion::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
   const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "batchConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
@@ -437,7 +437,7 @@ void BatchConversion::launchBatchGenerationProcess()
                                        "femalefeet_0.nif",
                                        "femalefeet_1.nif"})};
 
-  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
   QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
@@ -501,11 +501,11 @@ void BatchConversion::populateSkeletonChoosers()
   }
 
   // Clear the combo box and add the found files to it
-  auto lSkeletonChooserHuman{this->findChild<QComboBox*>("skeleton_chooser_human")};
+  auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
   lSkeletonChooserHuman->clear();
   lSkeletonChooserHuman->addItems(lAvailableSkeletons);
 
-  auto lSkeletonChooserBeast{this->findChild<QComboBox*>("skeleton_chooser_beast")};
+  auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
   lSkeletonChooserBeast->clear();
   lSkeletonChooserBeast->addItems(lAvailableSkeletons);
 }
@@ -519,17 +519,17 @@ void BatchConversion::updateOutputPreview()
 {
   this->mHasUserDoneSomething = true;
 
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
-  auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
-  auto lOutputPathsPreview{this->findChild<QLabel*>("output_path_preview")};
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
   Utils::updateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.successColor, this->mSettings.warningColor, this->mSettings.dangerColor, lOutputPathsPreview);
 }
 
 void BatchConversion::chooseExportDirectory()
 {
-  auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "batchConversionOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
@@ -548,7 +548,7 @@ void BatchConversion::initBodySlideFiltersList()
   // Load and save the filters list
   this->mFiltersList = Utils::loadFiltersFromFile();
 
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
 
   // Disable the combobox if there is not any available filter
   if (this->mFiltersList.size() == 0)
@@ -569,8 +569,8 @@ void BatchConversion::initBodySlideFiltersList()
 void BatchConversion::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
 {
   this->mFiltersList = aFilterList;
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
   Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
@@ -584,8 +584,8 @@ void BatchConversion::updateBodySlideFiltersListPreview(int)
   // Take custom MSF filter
   auto lAdditionalFilter{Utils::getAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
 
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
 
   auto lText{QString()};
   if (lFiltersListChooser->currentIndex() != -1)

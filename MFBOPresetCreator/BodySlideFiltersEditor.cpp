@@ -29,7 +29,7 @@ BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* aParent, Struct::Setting
 void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
 {
   auto lEventButton{qobject_cast<QPushButton*>(sender())};
-  auto lSaveButton{this->findChild<QPushButton*>("save_close")};
+  auto lSaveButton{this->findChild<QPushButton*>(QString("save_close"))};
 
   if (lEventButton == lSaveButton)
   {
@@ -232,10 +232,10 @@ void BodySlideFiltersEditor::displayFilterAt(const int aIndex) const
 void BodySlideFiltersEditor::shouldDisableFiltersControls()
 {
   // Fetch the button in the GUI
-  auto lDelSetBtn{this->findChild<QPushButton*>("remove_set")};
-  auto lAddNewRow{this->findChild<QPushButton*>("add_filter")};
-  auto lDeleteRow{this->findChild<QPushButton*>("remove_filter")};
-  auto lDeleteAllRows{this->findChild<QPushButton*>("remove_all_filters")};
+  auto lDelSetBtn{this->findChild<QPushButton*>(QString("remove_set"))};
+  auto lAddNewRow{this->findChild<QPushButton*>(QString("add_filter"))};
+  auto lDeleteRow{this->findChild<QPushButton*>(QString("remove_filter"))};
+  auto lDeleteAllRows{this->findChild<QPushButton*>(QString("remove_all_filters"))};
 
   if (this->mFiltersList.size() > 0)
   {

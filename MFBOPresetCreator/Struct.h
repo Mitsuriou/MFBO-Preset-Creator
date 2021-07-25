@@ -2,6 +2,7 @@
 #include "Enum.h"
 #include "LangManager.h"
 #include <QString>
+#include <QStringList>
 #include <map>
 #include <set>
 #include <vector>
@@ -89,7 +90,7 @@ namespace Struct
         && this->styleName == aSettings.styleName
         && this->underline == aSettings.underline
         && this->weight == aSettings.weight);
-    };
+    }
 
     bool operator!=(const Struct::Font& aSettings)
     {
@@ -100,7 +101,7 @@ namespace Struct
               || this->styleName != aSettings.styleName
               || this->underline != aSettings.underline
               || this->weight != aSettings.weight);
-    };
+    }
   };
 
   struct Settings
@@ -150,7 +151,7 @@ namespace Struct
         && this->successColor == aSettings.successColor
         && this->warningColor == aSettings.warningColor
         && this->dangerColor == aSettings.dangerColor);
-    };
+    }
 
     bool operator!=(const Struct::Settings& aSettings)
     {
@@ -175,7 +176,7 @@ namespace Struct
         || this->successColor != aSettings.successColor
         || this->warningColor != aSettings.warningColor
         || this->dangerColor != aSettings.dangerColor);
-    };
+    }
   };
 
   struct AssistedConversionResult
@@ -186,7 +187,7 @@ namespace Struct
       this->path = aPath;
       this->name = aName;
       this->role = aRole;
-    };
+    }
 
     QString getPath() const
     {
@@ -259,27 +260,27 @@ namespace Struct
       this->path = aPath;
       this->name = aName;
       this->useAlternativeModel = aUseAlternativeModel;
-    };
+    }
 
     void setPath(const QString& aPath)
     {
       this->path = aPath;
-    };
+    }
 
     inline QString getPath() const
     {
       return this->path;
-    };
+    }
 
     void setName(const QString& aName)
     {
       this->name = aName;
-    };
+    }
 
     QString getName() const
     {
       return this->name;
-    };
+    }
 
     void setUseAlternativeModel(const bool aUseAlternativeModel)
     {
@@ -289,7 +290,7 @@ namespace Struct
     bool mustUseAlternativeModel() const
     {
       return this->useAlternativeModel;
-    };
+    }
 
   private:
     QString path{""};
@@ -326,8 +327,9 @@ namespace Struct
   struct VersionsInformation
   {
   public:
-    VersionsInformation(){};
+    explicit VersionsInformation() {}
 
+    // Latest stable release notes
     void setLatestStableReleaseNotes(const QString& aLatestStableReleaseNotes)
     {
       this->latestStableReleaseNotes = aLatestStableReleaseNotes;
@@ -336,28 +338,61 @@ namespace Struct
     QString getLatestStableReleaseNotes() const
     {
       return this->latestStableReleaseNotes;
-    };
+    }
 
-    void setStableVersions(const QStringList& aStableVersions)
+    int sizeLatestStableReleaseNotes() const
     {
-      this->stableVersions = aStableVersions;
+      return this->latestStableReleaseNotes.size();
+    }
+
+    // Stable versions list
+    void setStableVersions(const QStringList& aVersion)
+    {
+      this->stableVersions = aVersion;
     }
 
     QStringList getStableVersions() const
     {
       return this->stableVersions;
-    };
+    }
 
-    void setLatestBetaReleaseNotes(const QString& aLatestBetaReleaseNotes)
+    QString getStableVersionAt(const int aIndex) const
     {
-      this->latestBetaReleaseNotes = aLatestBetaReleaseNotes;
+      return this->stableVersions.at(aIndex);
+    }
+
+    int sizeStableVersionsList() const
+    {
+      return this->stableVersions.size();
+    }
+
+    bool stableVersionsListContains(const QString& aVersion) const
+    {
+      return this->stableVersions.contains(aVersion);
+    }
+
+    void addStableVersionToList(const QString& aVersion)
+    {
+      this->stableVersions.append(aVersion);
+    }
+
+    // Latest BETA release notes
+    void setLatestBetaReleaseNotes(const QString& aVersion)
+    {
+      this->latestBetaReleaseNotes = aVersion;
     }
 
     QString getLatestBetaReleaseNotes() const
     {
       return this->latestBetaReleaseNotes;
-    };
+    }
 
+    int sizeLatestBetaReleaseNotes() const
+    {
+      return this->latestBetaReleaseNotes.size();
+    }
+
+    // BETA versions list
     void setBetaVersions(const QStringList& aBetaVersions)
     {
       this->betaVersions = aBetaVersions;
@@ -366,16 +401,40 @@ namespace Struct
     QStringList getBetaVersions() const
     {
       return this->betaVersions;
-    };
+    }
 
+    QString getBetaVersionAt(const int aIndex) const
+    {
+      return this->betaVersions.at(aIndex);
+    }
+
+    int sizeBetaVersionsList() const
+    {
+      return this->betaVersions.size();
+    }
+
+    bool betaVersionsListContains(const QString& aVersion) const
+    {
+      return this->betaVersions.contains(aVersion);
+    }
+
+    void addBetaVersionToList(const QString& aVersion)
+    {
+      this->betaVersions.append(aVersion);
+    }
+
+    // Is running BETA version
     bool isRunningBetaVersion(const QString& aCurrentApplicationVersion) const
     {
       return (this->betaVersions.size() > 0 && this->betaVersions.at(0).compare(aCurrentApplicationVersion) == 0);
-    };
+    }
 
   private:
+    // Stable
     QString latestStableReleaseNotes{""};
     QStringList stableVersions{};
+
+    // BETA
     QString latestBetaReleaseNotes{""};
     QStringList betaVersions{};
   };

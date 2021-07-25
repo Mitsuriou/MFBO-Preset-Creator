@@ -1061,7 +1061,7 @@ QString Utils::getAdditionalFeetFilter(const BodyNameVersion& aBody, const int a
     return QString("MSF BHUNP Feet");
   }
 
-  return QString("");
+  return QString();
 }
 
 std::vector<Struct::Filter> Utils::getFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex)

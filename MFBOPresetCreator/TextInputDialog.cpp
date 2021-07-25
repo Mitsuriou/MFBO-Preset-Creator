@@ -19,11 +19,11 @@ TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, c
 void TextInputDialog::closeEvent(QCloseEvent* aEvent)
 {
   auto lEventButton{qobject_cast<QPushButton*>(sender())};
-  auto lAddBtn{this->findChild<QPushButton*>("add_button")};
+  auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
 
   if (lEventButton == lAddBtn)
   {
-    emit getTextValue(this->findChild<QLineEdit*>("text")->text());
+    emit getTextValue(this->findChild<QLineEdit*>(QString("text"))->text());
   }
   else
   {
@@ -35,7 +35,7 @@ void TextInputDialog::closeEvent(QCloseEvent* aEvent)
 
 void TextInputDialog::updateAddButtonStatus(const QString& aText)
 {
-  auto lAddBtn{this->findChild<QPushButton*>("add_button")};
+  auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
 
   if (aText.trimmed().length() == 0)
   {

@@ -40,7 +40,7 @@ Settings::Settings(QWidget* aParent, const Struct::Settings& aSettings, const st
 void Settings::closeEvent(QCloseEvent* aEvent)
 {
   auto lEventButton{qobject_cast<QPushButton*>(sender())};
-  auto lSaveButton{this->findChild<QPushButton*>("save_close")};
+  auto lSaveButton{this->findChild<QPushButton*>(QString("save_close"))};
 
   if (lEventButton == lSaveButton)
   {
@@ -100,7 +100,7 @@ void Settings::initializeGUI()
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
-  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
+  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   auto lStarLabel{new QLabel(this)};
   if (Utils::RESTART_PENDING)
@@ -496,7 +496,7 @@ void Settings::setupButtons(QHBoxLayout& aLayout)
 
 void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 {
-  auto lLang{this->findChild<QComboBox*>("language")};
+  auto lLang{this->findChild<QComboBox*>(QString("language"))};
   lLang->setCurrentIndex(static_cast<int>(aSettingsToLoad.language));
 
   // Reset the font
@@ -508,16 +508,16 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   this->mNewFont = lFont;
   this->applyFontButtonStyle(this->mNewFont);
 
-  auto lAppTheme{this->findChild<QComboBox*>("app_theme")};
+  auto lAppTheme{this->findChild<QComboBox*>(QString("app_theme"))};
   lAppTheme->setCurrentIndex(static_cast<int>(aSettingsToLoad.appTheme));
 
-  auto lWindowWidth{this->findChild<QLineEdit*>("window_width")};
+  auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))};
   lWindowWidth->setText(QString::number(aSettingsToLoad.mainWindowWidth));
 
-  auto lWindowHeight{this->findChild<QLineEdit*>("window_height")};
+  auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))};
   lWindowHeight->setText(QString::number(aSettingsToLoad.mainWindowHeight));
 
-  auto lWindowOpeningMode{this->findChild<QComboBox*>("window_opening_mode")};
+  auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("window_opening_mode"))};
   lWindowOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.mainWindowOpeningMode));
 
   auto lDefaultBody{DataLists::getSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultMainWindowBody)};
@@ -528,37 +528,37 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->setCurrentIndex(lDefaultUpgradeBody.first);
   this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->setCurrentIndex(lDefaultUpgradeBody.second);
 
-  auto lDefaultMainFeetMod{this->findChild<QComboBox*>("feet_mod_main")};
+  auto lDefaultMainFeetMod{this->findChild<QComboBox*>(QString("feet_mod_main"))};
   lDefaultMainFeetMod->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainFeetMod));
 
-  auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>("feet_mod_retargeting_tool")};
+  auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))};
   lDefaultRetargetingToolFeetMod->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolFeetMod));
 
-  auto lMainWindowOutputPath{this->findChild<QLineEdit*>("output_path_directory")};
+  auto lMainWindowOutputPath{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   lMainWindowOutputPath->setText(aSettingsToLoad.mainWindowOutputPath);
 
-  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>("auto_open_generated_dir")};
+  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))};
   lAutoOpenGeneratedDir->setChecked(aSettingsToLoad.mainWindowAutomaticallyOpenGeneratedDirectory);
 
-  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")};
+  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>(QString("assis_conv_only_scan_meshes_dir"))};
   lAssisConvScanOnlyMeshesDir->setChecked(aSettingsToLoad.assistedConversionScanOnlyMeshesSubdir);
 
-  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")};
+  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))};
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
 
   switch (aSettingsToLoad.startupAction)
   {
     case StartupAction::OPEN_WELCOME_SCREEN:
-      this->findChild<QRadioButton*>("welcome_action_welcome_screen")->setChecked(true);
+      this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->setChecked(true);
       break;
     case StartupAction::CHECK_FOR_UPDATES:
-      this->findChild<QRadioButton*>("welcome_action_updater")->setChecked(true);
+      this->findChild<QRadioButton*>(QString("welcome_action_updater"))->setChecked(true);
       break;
     case StartupAction::SKIP_UPDATE_CHECKS:
-      this->findChild<QRadioButton*>("welcome_action_none")->setChecked(true);
+      this->findChild<QRadioButton*>(QString("welcome_action_none"))->setChecked(true);
       break;
     default:
-      this->findChild<QRadioButton*>("welcome_action_welcome_screen")->setChecked(true);
+      this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->setChecked(true);
       break;
   }
 
@@ -574,10 +574,10 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 
 Struct::Settings Settings::getSettingsFromGUI() const
 {
-  auto lLang{this->findChild<QComboBox*>("language")->currentIndex()};
-  auto lAppTheme{this->findChild<QComboBox*>("app_theme")->currentIndex()};
-  auto lWindowWidth{this->findChild<QLineEdit*>("window_width")->text().trimmed()};
-  auto lWindowHeight{this->findChild<QLineEdit*>("window_height")->text().trimmed()};
+  auto lLang{this->findChild<QComboBox*>(QString("language"))->currentIndex()};
+  auto lAppTheme{this->findChild<QComboBox*>(QString("app_theme"))->currentIndex()};
+  auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))->text().trimmed()};
+  auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))->text().trimmed()};
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("default_body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("default_body_selector_version"))->currentIndex()};
   auto lDefaultBodyVersion{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
@@ -592,8 +592,8 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
   auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))->isChecked()};
-  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>("assis_conv_only_scan_meshes_dir")->isChecked()};
-  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>("each_button_saves_last_path")->isChecked()};
+  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>(QString("assis_conv_only_scan_meshes_dir"))->isChecked()};
+  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))->isChecked()};
 
   Struct::Settings lSettings;
 
@@ -695,25 +695,25 @@ Struct::Settings Settings::getSettingsFromGUI() const
 
 void Settings::applyFontButtonStyle(const QFont& aFont) const
 {
-  auto lFontChooserButton{this->findChild<QPushButton*>("font_chooser")};
+  auto lFontChooserButton{this->findChild<QPushButton*>(QString("font_chooser"))};
   lFontChooserButton->setFont(aFont);
 }
 
 void Settings::applySuccessColorButton(const QString& aColor) const
 {
-  auto lColorChooser{this->findChild<QPushButton*>("success_color_chooser")};
+  auto lColorChooser{this->findChild<QPushButton*>(QString("success_color_chooser"))};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
 void Settings::applyWarningColorButton(const QString& aColor) const
 {
-  auto lColorChooser{this->findChild<QPushButton*>("warning_color_chooser")};
+  auto lColorChooser{this->findChild<QPushButton*>(QString("warning_color_chooser"))};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
 void Settings::applyDangerColorButton(const QString& aColor) const
 {
-  auto lColorChooser{this->findChild<QPushButton*>("danger_color_chooser")};
+  auto lColorChooser{this->findChild<QPushButton*>(QString("danger_color_chooser"))};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
@@ -791,7 +791,7 @@ void Settings::restoreDefaultSettings()
 
 void Settings::chooseExportDirectory()
 {
-  auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
   lLineEdit->setText(lPath);
 }
@@ -865,7 +865,7 @@ void Settings::chooseDangerColor()
 
 void Settings::goToLastPathsTab()
 {
-  this->findChild<QTabWidget*>("tab_widget")->setCurrentIndex(5);
+  this->findChild<QTabWidget*>(QString("tab_widget"))->setCurrentIndex(5);
 }
 
 void Settings::clearPathButtonClicked()

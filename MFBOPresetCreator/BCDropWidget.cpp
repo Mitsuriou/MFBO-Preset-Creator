@@ -45,7 +45,7 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
   // BCDropWidget is only compatibl with the Qt::MoveAction
   if (aEvent->proposedAction() == Qt::MoveAction)
   {
-    auto lDebug{this->findChild<QLabel*>("data")};
+    auto lDebug{this->findChild<QLabel*>(QString("data"))};
     if (lDebug)
     {
       lDebug->setText("Dropped data:" + aEvent->mimeData()->text());

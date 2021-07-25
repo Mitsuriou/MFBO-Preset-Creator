@@ -29,7 +29,7 @@ Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool a
   this->show();
 
   // Search for updates instantly
-  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   lSearchButton->click();
 }
 
@@ -120,8 +120,8 @@ void Update::overrideHTMLLinksColor(QString& aHTMLString)
 
 void Update::displayUpdateMessage(const QString& aResult)
 {
-  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
-  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
 
   if (aResult == "fetch_error")
   {
@@ -262,11 +262,11 @@ void Update::displayUpdateMessage(const QString& aResult)
 
 void Update::displayFileDownloadEndStatus(const bool aResult)
 {
-  auto lDownloadProgressBar{this->findChild<QProgressBar*>("download_progress_bar")};
+  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
   lDownloadProgressBar->hide();
 
-  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
-  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
   auto lSuccessText{tr("Download successful. Click the button above to start updating MFBOPC.\nMake sure that you saved everything before starting the update as the application will be closed!\n\n")};
@@ -322,7 +322,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
 
 void Update::checkForUpdate()
 {
-  auto lFetchStatus{this->findChild<QLabel*>("fetch_status")};
+  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
   lFetchStatus->setText(tr("Contacting GitHub.com..."));
   lFetchStatus->show();
 
@@ -350,7 +350,7 @@ void Update::updateCheckFinished()
 
 void Update::downloadLatestUpdate()
 {
-  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   lSearchButton->setText(tr("Cancel the download"));
 
   // Update the icon in case the user had an error before
@@ -387,7 +387,7 @@ void Update::downloadLatestUpdate()
 void Update::cancelCurrentDownload()
 {
   // Update the GUI
-  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   lSearchButton->setText(tr("Download canceled: click to try to download the update once again"));
 
   // Rebind the correct events
@@ -414,7 +414,7 @@ void Update::chunkSizeUpdated(qint64 aBytesRead, qint64 aTotal)
     return;
   }
 
-  auto lDownloadProgressBar{this->findChild<QProgressBar*>("download_progress_bar")};
+  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
 
   // Show the bar only if a relevant download has started
   if (aTotal > 200000) // 0.20MB
@@ -442,7 +442,7 @@ void Update::fileDownloadEnded()
       this->mDownloadedFile = nullptr;
     }
 
-    auto lDownloadProgressBar{this->findChild<QProgressBar*>("download_progress_bar")};
+    auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
     lDownloadProgressBar->hide();
 
     this->mReply->deleteLater();
@@ -493,7 +493,7 @@ void Update::fileDownloadEnded()
 
 void Update::installLatestUpdate()
 {
-  auto lSearchButton{this->findChild<QPushButton*>("search_button")};
+  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   lSearchButton->setDisabled(true);
 
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);

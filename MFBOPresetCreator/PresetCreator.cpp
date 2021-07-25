@@ -30,7 +30,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
-  auto lButtonLayout{this->findChild<QHBoxLayout*>("window_buttons_layout")};
+  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(*lMainLayout);
@@ -85,7 +85,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
   // Load the project only if a path is defined
   this->loadValuesFromJsonObject(Utils::loadFromJsonFile(lFileToLoad));
   this->mLastUsedSavePath = lFileToLoad;
-  this->parentWidget()->findChild<QAction*>("action_save_project")->setDisabled(false);
+  this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(false);
 
   this->setHasUserDoneSomething(false);
 }
@@ -104,7 +104,7 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
     if (lFilePath.length() > 0)
     {
       this->mLastUsedSavePath = lFilePath;
-      this->parentWidget()->findChild<QAction*>("action_save_project")->setDisabled(false);
+      this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(false);
     }
   }
 
@@ -127,7 +127,7 @@ void PresetCreator::setHasUserDoneSomething(const bool aHasUserDoneSomething)
   // Update the state of the "save project" action menu
   if (this->mLastUsedSavePath.length() > 0)
   {
-    this->parentWidget()->findChild<QAction*>("action_save_project")->setDisabled(!this->mHasUserDoneSomething);
+    this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(!this->mHasUserDoneSomething);
   }
 }
 
@@ -154,8 +154,8 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
   auto lSkeletonHasBeenSet{false};
 
   // Set the preset name
-  this->findChild<QLineEdit*>("names_osp_xml_input")->setText(aPresetName);
-  this->findChild<QLineEdit*>("names_bodyslide_input")->setText(aPresetName);
+  this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->setText(aPresetName);
+  this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->setText(aPresetName);
 
   for (const auto& lResult : aResultsList)
   {
@@ -163,32 +163,32 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
     switch (lRole)
     {
       case AssistedConversionRole::BODY:
-        this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText(lResult.getPath());
-        this->findChild<QLineEdit*>("body_mesh_name_input")->setText(lResult.getName());
+        this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->setText(lResult.getPath());
+        this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->setText(lResult.getName());
 
         lBodiesHaveBeenSet = true;
         break;
       case AssistedConversionRole::FEET:
-        this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText(lResult.getPath());
-        this->findChild<QLineEdit*>("feet_mesh_name_input")->setText(lResult.getName());
+        this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))->setText(lResult.getPath());
+        this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->setText(lResult.getName());
 
         lFeetHaveBeenSet = true;
         break;
       case AssistedConversionRole::HANDS:
-        this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText(lResult.getPath());
-        this->findChild<QLineEdit*>("hands_mesh_name_input")->setText(lResult.getName());
+        this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->setText(lResult.getPath());
+        this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->setText(lResult.getName());
 
         lHandsHaveBeenSet = true;
         break;
       case AssistedConversionRole::SKELETON:
-        auto lNeedCustomSkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")};
+        auto lNeedCustomSkeleton{this->findChild<QCheckBox*>(QString("use_custom_skeleton"))};
         if (!lNeedCustomSkeleton->isChecked())
         {
           lNeedCustomSkeleton->setChecked(true);
         }
 
-        this->findChild<QLineEdit*>("skeleton_path_directory")->setText(lResult.getPath());
-        this->findChild<QLineEdit*>("skeleton_name")->setText(lResult.getName());
+        this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->setText(lResult.getPath());
+        this->findChild<QLineEdit*>(QString("skeleton_name"))->setText(lResult.getName());
 
         lSkeletonHasBeenSet = true;
         break;
@@ -269,32 +269,32 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
       // Clear the body path
       if (!lBodiesHaveBeenSet)
       {
-        this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText("");
-        this->findChild<QLineEdit*>("body_mesh_name_input")->setText("");
+        this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->setText("");
+        this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->setText("");
       }
 
       // Clear the feet path
       if (!lFeetHaveBeenSet)
       {
-        this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText("");
-        this->findChild<QLineEdit*>("feet_mesh_name_input")->setText("");
+        this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))->setText("");
+        this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->setText("");
       }
 
       // Clear the hands path
       if (!lHandsHaveBeenSet)
       {
-        this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText("");
-        this->findChild<QLineEdit*>("hands_mesh_name_input")->setText("");
+        this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->setText("");
+        this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->setText("");
       }
     }
   }
 
   if (!lSkeletonHasBeenSet)
   {
-    this->findChild<QCheckBox*>("use_custom_skeleton")->setChecked(true);
-    this->findChild<QLineEdit*>("skeleton_path_directory")->setText("");
-    this->findChild<QLineEdit*>("skeleton_name")->setText("skeleton_female");
-    this->findChild<QCheckBox*>("use_custom_skeleton")->setChecked(false);
+    this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->setChecked(true);
+    this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->setText("");
+    this->findChild<QLineEdit*>(QString("skeleton_name"))->setText("skeleton_female");
+    this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->setChecked(false);
   }
 }
 
@@ -639,17 +639,17 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 
   // Create the group box
   ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
-  auto lOutputGroupBox{this->findChild<QGroupBox*>("output_group_box")};
+  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
 
   // Event binding
-  auto lOutputPathChooser{this->findChild<QPushButton*>("output_path_chooser")};
+  auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
   this->connect(lOutputPathChooser, &QPushButton::clicked, this, &PresetCreator::chooseExportDirectory);
 
-  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>("output_path_subdirectory")};
+  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
   this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOutputPreview);
 
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
   this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &PresetCreator::useOnlySubdirStateChanged);
 
   // Pre-filled data
@@ -672,38 +672,38 @@ void PresetCreator::setupRemainingGUI(QHBoxLayout& aLayout)
 void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
 {
   // Body Meshes
-  this->findChild<QLineEdit*>("meshes_path_input_femalebody")->setText(lFile["meshes_path_input_femalebody"].toString());
-  this->findChild<QLineEdit*>("body_mesh_name_input")->setText(lFile["body_mesh_name_input"].toString());
+  this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->setText(lFile["meshes_path_input_femalebody"].toString());
+  this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->setText(lFile["body_mesh_name_input"].toString());
 
-  this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->setText(lFile["meshes_path_input_femalefeet"].toString());
-  this->findChild<QLineEdit*>("feet_mesh_name_input")->setText(lFile["feet_mesh_name_input"].toString());
+  this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))->setText(lFile["meshes_path_input_femalefeet"].toString());
+  this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->setText(lFile["feet_mesh_name_input"].toString());
 
-  this->findChild<QLineEdit*>("meshes_path_input_femalehands")->setText(lFile["meshes_path_input_femalehands"].toString());
-  this->findChild<QLineEdit*>("hands_mesh_name_input")->setText(lFile["hands_mesh_name_input"].toString());
+  this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->setText(lFile["meshes_path_input_femalehands"].toString());
+  this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->setText(lFile["hands_mesh_name_input"].toString());
 
-  this->findChild<QCheckBox*>("use_beast_hands")->setChecked(true); // Force to be true before putting the wanted value
-  this->findChild<QCheckBox*>("use_beast_hands")->setChecked(lFile["use_beast_hands"].toBool());
+  this->findChild<QCheckBox*>(QString("use_beast_hands"))->setChecked(true); // Force to be true before putting the wanted value
+  this->findChild<QCheckBox*>(QString("use_beast_hands"))->setChecked(lFile["use_beast_hands"].toBool());
 
   // Skeleton
-  this->findChild<QCheckBox*>("use_custom_skeleton")->setChecked(true); // Force to be true before putting the wanted value
-  this->findChild<QLineEdit*>("skeleton_path_directory")->setText(lFile["skeleton_path_directory"].toString());
-  this->findChild<QLineEdit*>("skeleton_name")->setText(lFile["skeleton_name"].toString());
-  this->findChild<QCheckBox*>("use_custom_skeleton")->setChecked(lFile["use_custom_skeleton"].toBool()); // Finish by checking or unchecking the box
+  this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->setChecked(true); // Force to be true before putting the wanted value
+  this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->setText(lFile["skeleton_path_directory"].toString());
+  this->findChild<QLineEdit*>(QString("skeleton_name"))->setText(lFile["skeleton_name"].toString());
+  this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->setChecked(lFile["use_custom_skeleton"].toBool()); // Finish by checking or unchecking the box
 
   // BodySlide
-  Utils::selectComboBoxAt(this->findChild<QComboBox*>("body_selector_name"), lFile["body_selector_name"].toInt());
-  Utils::selectComboBoxAt(this->findChild<QComboBox*>("body_selector_version"), lFile["body_selector_version"].toInt());
-  Utils::selectComboBoxAt(this->findChild<QComboBox*>("feet_mod_selector"), lFile["feet_mod_selector"].toInt());
-  this->findChild<QLineEdit*>("names_osp_xml_input")->setText(lFile["names_osp_xml_input"].toString());
-  this->findChild<QLineEdit*>("names_bodyslide_input")->setText(lFile["names_bodyslide_input"].toString());
+  Utils::selectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_name")), lFile["body_selector_name"].toInt());
+  Utils::selectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_version")), lFile["body_selector_version"].toInt());
+  Utils::selectComboBoxAt(this->findChild<QComboBox*>(QString("feet_mod_selector")), lFile["feet_mod_selector"].toInt());
+  this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->setText(lFile["names_osp_xml_input"].toString());
+  this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->setText(lFile["names_bodyslide_input"].toString());
 
   // Output
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   auto lMainDirectory{lFile["output_path_directory"].toString()};
   lMainDirTextEdit->setText(lMainDirectory);
   lMainDirTextEdit->setDisabled(lMainDirectory.compare("") == 0);
 
-  this->findChild<QLineEdit*>("output_path_subdirectory")->setText(lFile["output_path_subdirectory"].toString());
+  this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->setText(lFile["output_path_subdirectory"].toString());
 }
 
 QJsonObject PresetCreator::saveValuesToJsonObject()
@@ -711,47 +711,47 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
   QJsonObject lProject;
 
   // Body
-  auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
+  auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->text().trimmed()};
   Utils::cleanPathString(lMeshesPathBody);
   lProject["meshes_path_input_femalebody"] = lMeshesPathBody;
 
-  auto lBodyName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
+  auto lBodyName{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->text().trimmed()};
   Utils::cleanBreaksString(lBodyName);
   lProject["body_mesh_name_input"] = lBodyName;
 
   // Feet
-  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->text().trimmed()};
+  auto lMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))->text().trimmed()};
   Utils::cleanPathString(lMeshesPathFeet);
   lProject["meshes_path_input_femalefeet"] = lMeshesPathFeet;
 
-  auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
+  auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
   Utils::cleanBreaksString(lFeetName);
   lProject["feet_mesh_name_input"] = lFeetName;
 
   // Hands
-  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")->text().trimmed()};
+  auto lMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->text().trimmed()};
   Utils::cleanPathString(lMeshesPathHands);
   lProject["meshes_path_input_femalehands"] = lMeshesPathHands;
 
-  auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
+  auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
   Utils::cleanBreaksString(lHandsName);
   lProject["hands_mesh_name_input"] = lHandsName;
 
   // Use beast hands
-  auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
+  auto lMustUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))->isChecked()};
   lProject["use_beast_hands"] = lMustUseBeastHands;
 
   // Use skeleton
-  auto lMustCopySkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked()};
+  auto lMustCopySkeleton{this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->isChecked()};
   lProject["use_custom_skeleton"] = lMustCopySkeleton;
 
   // Skeleton path
-  auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed()};
+  auto lSkeletonPath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};
   Utils::cleanPathString(lSkeletonPath);
   lProject["skeleton_path_directory"] = lSkeletonPath;
 
   // Skeleton name
-  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
+  auto lSkeletonName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
   lProject["skeleton_name"] = lSkeletonName;
 
   // Body name
@@ -767,19 +767,19 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
   lProject["feet_mod_selector"] = lFeetModSelected;
 
   // OSP and XML names
-  auto lOSPXMLNames{this->findChild<QLineEdit*>("names_osp_xml_input")->text().trimmed()};
+  auto lOSPXMLNames{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text().trimmed()};
   lProject["names_osp_xml_input"] = lOSPXMLNames;
 
   // SliderSets names
-  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
+  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
   lProject["names_bodyslide_input"] = lBodyslideSlidersetsNames;
 
   // Output
-  auto lMainDirectory{this->findChild<QLineEdit*>("output_path_directory")->text().trimmed()};
+  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
   Utils::cleanPathString(lMainDirectory);
   lProject["output_path_directory"] = lMainDirectory;
 
-  auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
   Utils::cleanPathString(lSubDirectory);
   lProject["output_path_subdirectory"] = lSubDirectory;
 
@@ -793,8 +793,8 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
 void PresetCreator::updateGUIOnBodyChange()
 {
   // Get the GUI components
-  auto lLabelBeastHands{this->findChild<QLabel*>("label_use_beast_hands")};
-  auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
+  auto lLabelBeastHands{this->findChild<QLabel*>(QString("label_use_beast_hands"))};
+  auto lMustUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))};
 
   // The new "disabled" state to apply
   auto lDisableBeastHands{false};
@@ -843,7 +843,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool a
 
   // Construct the file content
   auto lBodySelected{static_cast<BodyNameVersion>(aBodySelected)};
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lUserFilters{Utils::getFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, aFeetModIndex)};
   auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(aBodyslideSlidersetsNames, lUserFilters, lBodySelected, aMustUseBeastHands, aFeetModIndex)};
 
@@ -922,10 +922,10 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
     auto lSkeletonDirectory{aEntryDirectory + QDir::separator() + aSkeletonPath};
     QDir().mkpath(lSkeletonDirectory);
 
-    auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
+    auto lSkeletonName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
 
     // Custom skeleton chooser
-    auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+    auto lSkeletonChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
     auto lPath{QString("%1assets/skeletons/%2").arg(Utils::getAppDataPathFolder()).arg(lSkeletonChooser->currentText())};
 
     auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
@@ -966,7 +966,7 @@ void PresetCreator::populateSkeletonChooser()
   }
 
   // Clear the combo box and add the found files to it
-  auto lSkeletonChooser{this->findChild<QComboBox*>("skeleton_chooser")};
+  auto lSkeletonChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
   lSkeletonChooser->clear();
   lSkeletonChooser->addItems(lAvailableSkeletons);
 }
@@ -974,25 +974,25 @@ void PresetCreator::populateSkeletonChooser()
 void PresetCreator::updateMeshesPreview()
 {
   // Body meshes path and name
-  auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
+  auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->text().trimmed()};
   Utils::cleanPathString(lMeshesPathBody);
-  auto lBodyName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
+  auto lBodyName{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->text().trimmed()};
   Utils::cleanBreaksString(lBodyName);
 
   // Feet meshes path and name
-  auto lMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")->text().trimmed()};
+  auto lMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))->text().trimmed()};
   Utils::cleanPathString(lMeshesPathFeet);
-  auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
+  auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
   Utils::cleanBreaksString(lFeetName);
 
   // Hands meshes path and name
-  auto lMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")->text().trimmed()};
+  auto lMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->text().trimmed()};
   Utils::cleanPathString(lMeshesPathHands);
-  auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
+  auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
   Utils::cleanBreaksString(lHandsName);
 
   // Get preview label
-  auto lPreviewLabel{this->findChild<QLabel*>("meshes_preview")};
+  auto lPreviewLabel{this->findChild<QLabel*>(QString("meshes_preview"))};
   auto lFullPreview{QString()};
   auto lIsValidPath{true};
 
@@ -1062,10 +1062,10 @@ void PresetCreator::updateOutputPreview()
 {
   this->setHasUserDoneSomething(true);
 
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>("output_path_directory")};
-  auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
-  auto lOutputPathsPreview{this->findChild<QLabel*>("output_path_preview")};
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
   Utils::updateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.successColor, this->mSettings.warningColor, this->mSettings.dangerColor, lOutputPathsPreview);
 }
@@ -1074,7 +1074,7 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
 {
   this->setHasUserDoneSomething(true);
 
-  auto lOutputPathsPreview{this->findChild<QLabel*>("names_osp_xml_preview")};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_osp_xml_preview"))};
   auto lIsValidPath{true};
 
   Utils::cleanPathString(aText);
@@ -1106,7 +1106,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
 {
   this->setHasUserDoneSomething(true);
 
-  auto lMustUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")->isChecked()};
+  auto lMustUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))->isChecked()};
   auto lIsValidPath{true};
 
   Utils::cleanPathString(aText);
@@ -1135,7 +1135,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
     lNewTextColor = this->mSettings.dangerColor;
   }
 
-  auto lOutputPathsPreview{this->findChild<QLabel*>("names_bodyslide_preview")};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_bodyslide_preview"))};
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
@@ -1143,22 +1143,22 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
 void PresetCreator::updateSkeletonPathState(int aState)
 {
   // Chooser
-  auto lLabelChooser{this->findChild<QLabel*>("label_skeleton_chooser")};
-  auto lChooser{this->findChild<QComboBox*>("skeleton_chooser")};
-  auto lChooserRefresher{this->findChild<QPushButton*>("skeleton_chooser_refresher")};
+  auto lLabelChooser{this->findChild<QLabel*>(QString("label_skeleton_chooser"))};
+  auto lChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
+  auto lChooserRefresher{this->findChild<QPushButton*>(QString("skeleton_chooser_refresher"))};
 
   // Directory
-  auto lLabelPathDir{this->findChild<QLabel*>("label_skeleton_path_directory")};
-  auto lPathDir{this->findChild<QLineEdit*>("skeleton_path_directory")};
+  auto lLabelPathDir{this->findChild<QLabel*>(QString("label_skeleton_path_directory"))};
+  auto lPathDir{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))};
 
   // Name
-  auto lLabelSkeleton{this->findChild<QLabel*>("label_skeleton_female")};
-  auto lSkeleton{this->findChild<QLineEdit*>("skeleton_name")};
-  auto lSkeletonExtension{this->findChild<QLabel*>("skeleton_name_extension")};
+  auto lLabelSkeleton{this->findChild<QLabel*>(QString("label_skeleton_female"))};
+  auto lSkeleton{this->findChild<QLineEdit*>(QString("skeleton_name"))};
+  auto lSkeletonExtension{this->findChild<QLabel*>(QString("skeleton_name_extension"))};
 
   // Preview
-  auto lLabelPreview{this->findChild<QLabel*>("label_skeleton_path_preview")};
-  auto lPreview{this->findChild<QLabel*>("skeleton_path_preview")};
+  auto lLabelPreview{this->findChild<QLabel*>(QString("label_skeleton_path_preview"))};
+  auto lPreview{this->findChild<QLabel*>(QString("skeleton_path_preview"))};
 
   switch (aState)
   {
@@ -1200,9 +1200,9 @@ void PresetCreator::updateSkeletonPreview()
 {
   this->setHasUserDoneSomething(true);
 
-  auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text()};
+  auto lSkeletonPath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text()};
   Utils::cleanPathString(lSkeletonPath);
-  auto lSkeletonName{this->findChild<QLineEdit*>("skeleton_name")->text()};
+  auto lSkeletonName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
   Utils::cleanBreaksString(lSkeletonName);
   auto lIsValidPath{true};
 
@@ -1218,7 +1218,7 @@ void PresetCreator::updateSkeletonPreview()
   }
 
   auto lConstructedPath(QString("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath).arg(lSkeletonName));
-  auto lOutputPathPreview{this->findChild<QLabel*>("skeleton_path_preview")};
+  auto lOutputPathPreview{this->findChild<QLabel*>(QString("skeleton_path_preview"))};
 
   auto lNewTextColor{QString()};
 
@@ -1235,7 +1235,7 @@ void PresetCreator::updateSkeletonPreview()
       lNewTextColor = this->mSettings.successColor;
     }
   }
-  else if (this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked())
+  else if (this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->isChecked())
   {
     lNewTextColor = this->mSettings.dangerColor;
   }
@@ -1246,7 +1246,7 @@ void PresetCreator::updateSkeletonPreview()
 
 void PresetCreator::chooseExportDirectory()
 {
-  auto lLineEdit{this->findChild<QLineEdit*>("output_path_directory")};
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
@@ -1268,44 +1268,44 @@ void PresetCreator::generateDirectoryStructure()
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Beast hands
-  auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>("use_beast_hands")};
+  auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))};
   auto lMustUseBeastHands{lCheckboxUseBeastHands->isEnabled() && lCheckboxUseBeastHands->isChecked()};
 
   // Body meshes path and name
-  auto lMeshesPathBody{this->findChild<QLineEdit*>("meshes_path_input_femalebody")->text().trimmed()};
+  auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->text().trimmed()};
   Utils::cleanPathString(lMeshesPathBody);
-  auto lBodyName{this->findChild<QLineEdit*>("body_mesh_name_input")->text().trimmed()};
+  auto lBodyName{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->text().trimmed()};
   Utils::cleanPathString(lBodyName);
 
   // Feet meshes path and name
-  const auto lInputMeshesPathFeet{this->findChild<QLineEdit*>("meshes_path_input_femalefeet")};
+  const auto lInputMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))};
   const auto lSkipFeetCheck{!lInputMeshesPathFeet->isEnabled()};
   auto lMeshesPathFeet{lInputMeshesPathFeet->text().trimmed()};
   Utils::cleanPathString(lMeshesPathFeet);
-  auto lFeetName{this->findChild<QLineEdit*>("feet_mesh_name_input")->text().trimmed()};
+  auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
   Utils::cleanPathString(lFeetName);
 
   // Hands meshes path and name
-  auto lInputMeshesPathHands{this->findChild<QLineEdit*>("meshes_path_input_femalehands")};
+  auto lInputMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))};
   auto lSkipHandsCheck{!lInputMeshesPathHands->isEnabled()};
   auto lMeshesPathHands{lInputMeshesPathHands->text().trimmed()};
   Utils::cleanPathString(lMeshesPathHands);
-  auto lHandsName{this->findChild<QLineEdit*>("hands_mesh_name_input")->text().trimmed()};
+  auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
   Utils::cleanPathString(lHandsName);
 
   // BodySlide names
-  auto lOSPXMLNames{this->findChild<QLineEdit*>("names_osp_xml_input")->text().trimmed()};
+  auto lOSPXMLNames{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text().trimmed()};
   Utils::cleanBreaksString(lOSPXMLNames);
-  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
+  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
   Utils::cleanBreaksString(lBodyslideSlidersetsNames);
 
   // Output paths
-  auto lMainDirectory{this->findChild<QLineEdit*>("output_path_directory")->text().trimmed()};
-  auto lSubDirectory{this->findChild<QLineEdit*>("output_path_subdirectory")->text().trimmed()};
+  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
   Utils::cleanPathString(lSubDirectory);
 
   // Does the user want to define the path only through the secondary path?
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>("only_use_subdirectory")->isChecked()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
 
   // Full extract path
   auto lEntryDirectory{lSubDirectory};
@@ -1455,11 +1455,11 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // Skeleton
-  auto lMustCopySkeleton{this->findChild<QCheckBox*>("use_custom_skeleton")->isChecked()};
+  auto lMustCopySkeleton{this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->isChecked()};
 
   if (lMustCopySkeleton)
   {
-    auto lSkeletonPath{this->findChild<QLineEdit*>("skeleton_path_directory")->text().trimmed()};
+    auto lSkeletonPath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};
     Utils::cleanPathString(lSkeletonPath);
 
     if (!this->generateSkeletonFile(lEntryDirectory, lSkeletonPath))
@@ -1531,7 +1531,7 @@ void PresetCreator::refreshAllPreviewFields()
   this->updateMeshesPreview();
 
   // Refresh the names in the bodyslide application
-  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>("names_bodyslide_input")->text().trimmed()};
+  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
 }
 
@@ -1546,7 +1546,7 @@ void PresetCreator::initBodySlideFiltersList()
   // Load and save the filters list
   this->mFiltersList = Utils::loadFiltersFromFile();
 
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
 
   // Disable the combobox if there is not any available filter
   if (this->mFiltersList.size() == 0)
@@ -1573,8 +1573,8 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
   }
 
   this->mFiltersList = aFilterList;
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
   Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
@@ -1588,8 +1588,8 @@ void PresetCreator::updateBodySlideFiltersListPreview()
   // Take custom MSF filter
   auto lAdditionalFilter{Utils::getAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
 
-  auto lFiltersListChooser{this->findChild<QComboBox*>("bodyslide_filters_chooser")};
-  auto lFiltersList{this->findChild<QLabel*>("bodyslide_filters")};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
 
   auto lText{QString()};
   if (lFiltersListChooser->currentIndex() != -1)

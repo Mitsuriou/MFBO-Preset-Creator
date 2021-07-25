@@ -31,8 +31,8 @@ private:
   void openGoogleDriveGuide();
   // Check for updates
   void checkForUpdate();
-  void displayUpdateMessage(const QString& aResult);
   void updateCheckFinished();
+  void displayUpdateMessage(const QString& aResult);
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);

@@ -35,7 +35,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
 {
   // Catch the sender of the event
   auto lEventSource{qobject_cast<QPushButton*>(sender())};
-  auto lValidationBtn{this->findChild<QPushButton*>("validate_selection")};
+  auto lValidationBtn{this->findChild<QPushButton*>(QString("validate_selection"))};
 
   if ((lEventSource == lValidationBtn) || !this->mHasUserDoneSomething)
   {
@@ -133,21 +133,21 @@ void AssistedConversion::displayHintZone()
 
 void AssistedConversion::deleteAlreadyExistingWindowBottom() const
 {
-  auto lHintZone{this->findChild<QLabel*>("hint_zone")};
+  auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
   if (lHintZone)
   {
     delete lHintZone;
     lHintZone = nullptr;
   }
 
-  auto lOldValidationButton{this->findChild<QPushButton*>("validate_selection")};
+  auto lOldValidationButton{this->findChild<QPushButton*>(QString("validate_selection"))};
   if (lOldValidationButton)
   {
     delete lOldValidationButton;
     lOldValidationButton = nullptr;
   }
 
-  auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  auto lOldScrollArea{this->findChild<QScrollArea*>(QString("scrollable_zone"))};
   if (lOldScrollArea)
   {
     delete lOldScrollArea;
@@ -265,7 +265,7 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
 std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValuesFromInterface() const
 {
   // Fetch the grid layout
-  auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
+  auto lDataContainer{this->findChild<QGridLayout*>(QString("data_container"))};
 
   // Iterate in the layout
   auto lLinesToTreat{lDataContainer->rowCount()};
@@ -332,8 +332,8 @@ bool AssistedConversion::hasUserSelectedAnything() const
 void AssistedConversion::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLaunchSearchButton{this->findChild<QPushButton*>("launch_search_button")};
-  auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
+  auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
   const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
@@ -379,7 +379,7 @@ void AssistedConversion::launchSearchProcess()
     }
   }
 
-  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
   if (Utils::getNumberFilesByExtensions(lInputPath, QStringList({"*.esl", "*.esm", "*.esp"})) == 0)
@@ -432,7 +432,7 @@ void AssistedConversion::launchSearchProcess()
   if (lFoundNifFiles.size() == 0)
   {
     this->displayHintZone();
-    auto lHintZone{this->findChild<QLabel*>("hint_zone")};
+    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
     if (lHintZone)
     {
       lHintZone->setText(tr("No NIF file was found in the scanned directory."));
@@ -502,7 +502,7 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
   auto lEventSource{qobject_cast<QComboBox*>(sender())};
 
   // Fetch the grid layout
-  auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
+  auto lDataContainer{this->findChild<QGridLayout*>(QString("data_container"))};
   auto lLinesToTreat{lDataContainer->rowCount()};
   QComboBox* lComboBox{nullptr};
   auto lComboBoxIndex{0};

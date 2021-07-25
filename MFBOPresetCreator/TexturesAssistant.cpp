@@ -132,14 +132,14 @@ void TexturesAssistant::displayHintZone()
 
 void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
 {
-  auto lHintZone{this->findChild<QLabel*>("hint_zone")};
+  auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
   if (lHintZone)
   {
     delete lHintZone;
     lHintZone = nullptr;
   }
 
-  auto lOldScrollArea{this->findChild<QScrollArea*>("scrollable_zone")};
+  auto lOldScrollArea{this->findChild<QScrollArea*>(QString("scrollable_zone"))};
   if (lOldScrollArea)
   {
     delete lOldScrollArea;
@@ -351,8 +351,8 @@ void TexturesAssistant::createRessourceBlock(const std::map<std::string, std::ve
 void TexturesAssistant::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLaunchSearchButton{this->findChild<QPushButton*>("launch_search_button")};
-  auto lLineEdit{this->findChild<QLineEdit*>("input_path_directory")};
+  auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
   const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
@@ -378,7 +378,7 @@ void TexturesAssistant::launchSearchProcess()
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
 
-  const auto& lInputPath{this->findChild<QLineEdit*>("input_path_directory")->text()};
+  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
   // Warn the user if the scan found a BSA file
   if (Utils::getNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
@@ -415,7 +415,7 @@ void TexturesAssistant::launchSearchProcess()
   if (lFoundDdsFiles.groupedTextures.size() == 0 && lFoundDdsFiles.otherTextures.size() == 0)
   {
     this->displayHintZone();
-    auto lHintZone{this->findChild<QLabel*>("hint_zone")};
+    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
     if (lHintZone)
     {
       lHintZone->setText(tr("No DDS file was found in the scanned directory."));

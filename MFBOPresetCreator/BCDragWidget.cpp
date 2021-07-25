@@ -63,7 +63,7 @@ void BCDragWidget::mouseMoveEvent(QMouseEvent* aEvent)
     return;
   }
 
-  auto lPathLabel{this->findChild<QLabel*>("path")};
+  auto lPathLabel{this->findChild<QLabel*>(QString("path"))};
 
   QMimeData* lMimeData = new QMimeData;
   lMimeData->setData("text/plain", lPathLabel->text().toLocal8Bit());
