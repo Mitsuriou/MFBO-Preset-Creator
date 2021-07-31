@@ -13,13 +13,15 @@ class Update final : public QDialog
   Q_OBJECT
 
 public:
-  explicit Update(QWidget* aParent, const Struct::Settings& aSettings, const bool aIsBetaContext);
+  explicit Update(QWidget* aParent, const Struct::Settings& aSettings, const bool aForceStableContext, const bool aForceBetaContext);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
   void reject() override;
 
 private:
+  const bool mForceStableContext;
+  const bool mForceBetaContext;
   const Struct::Settings mSettings;
   QString mSaveFilePath;
   QNetworkAccessManager mManager;
@@ -32,7 +34,7 @@ private:
 
   // GUI functions
   void setWindowProperties();
-  void initializeGUI(const bool aIsBetaContext);
+  void initializeGUI();
   void overrideHTMLLinksColor(QString& aHTMLString);
 
   // Check for updates

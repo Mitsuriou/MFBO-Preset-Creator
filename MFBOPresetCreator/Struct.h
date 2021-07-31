@@ -436,6 +436,6 @@ namespace Struct
 
     // BETA
     QString latestBetaReleaseNotes;
-    QStringList betaVersions;
+    QStringList betaVersions{};
   };
 }

@@ -245,6 +245,11 @@ void MFBOPresetCreator::setupMenuBar()
   auto lOpenUpdate{Utils::buildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL + Qt::Key_U), "cloud-search", lIconFolder)};
   lHelp->addAction(lOpenUpdate);
 
+  // Action: Open current version's release notes
+  auto lOpenCurrentVersionReleaseNotes{Utils::buildQAction(this, tr("Current version's release notes") + ("TODO"), QKeySequence(), "text-snippet", lIconFolder)};
+  lOpenCurrentVersionReleaseNotes->setDisabled(true);
+  lHelp->addAction(lOpenCurrentVersionReleaseNotes);
+
   // Submenu: Report a bug
   auto lReportBugSubmenu{new QMenu(tr("Report a bug..."), this)};
   lReportBugSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/bug").arg(lIconFolder))));
@@ -302,6 +307,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
   this->connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
+  this->connect(lOpenCurrentVersionReleaseNotes, &QAction::triggered, this, &MFBOPresetCreator::launchCurrentVersionReleaseNotes);
   this->connect(lReportBugNexusMods, &QAction::triggered, this, &MFBOPresetCreator::reportBugNexusMods);
   this->connect(lReportBugGitHub, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitHub);
   this->connect(lReportBugGitLab, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitLab);
@@ -746,7 +752,12 @@ void MFBOPresetCreator::launchSettingsDialog()
 
 void MFBOPresetCreator::launchUpdateDialog()
 {
-  new Update(this, this->mSettings, this->mNewBetaVersionAvailable);
+  new Update(this, this->mSettings, false, false);
+}
+
+void MFBOPresetCreator::launchCurrentVersionReleaseNotes()
+{
+  // TODO
 }
 
 void MFBOPresetCreator::reportBugNexusMods()

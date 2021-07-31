@@ -58,6 +58,7 @@ private:
   // Dialog
   void launchSettingsDialog();
   void launchUpdateDialog();
+  void launchCurrentVersionReleaseNotes();
   // Settings callback
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
   // URL links
