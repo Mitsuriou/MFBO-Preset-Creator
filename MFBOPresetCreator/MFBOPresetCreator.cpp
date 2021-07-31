@@ -246,7 +246,7 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addAction(lOpenUpdate);
 
   // Action: Open current version's release notes
-  auto lOpenCurrentVersionReleaseNotes{Utils::buildQAction(this, tr("Current version's release notes") + ("TODO"), QKeySequence(), "text-snippet", lIconFolder)};
+  auto lOpenCurrentVersionReleaseNotes{Utils::buildQAction(this, tr("Current version's release notes") + (" (TODO)"), QKeySequence(), "text-snippet", lIconFolder)};
   lOpenCurrentVersionReleaseNotes->setDisabled(true);
   lHelp->addAction(lOpenCurrentVersionReleaseNotes);
 
