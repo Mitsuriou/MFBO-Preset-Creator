@@ -14,7 +14,6 @@
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QScrollArea>
-#include <QScrollBar>
 #include <QStyledItemDelegate>
 
 BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)

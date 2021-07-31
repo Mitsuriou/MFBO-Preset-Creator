@@ -16,7 +16,6 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QScrollArea>
-#include <QScrollBar>
 #include <QStandardPaths>
 #include <QStyledItemDelegate>
 

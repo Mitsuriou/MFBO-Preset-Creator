@@ -12,7 +12,6 @@
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QScrollArea>
-#include <QScrollBar>
 #include <QStandardItemModel>
 #include <QStyledItemDelegate>
 

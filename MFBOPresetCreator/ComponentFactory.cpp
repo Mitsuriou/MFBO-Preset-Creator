@@ -7,7 +7,6 @@
 #include <QPixmap>
 #include <QPushButton>
 #include <QScrollArea>
-#include <QScrollBar>
 
 QPushButton* ComponentFactory::createButton(
   QWidget* aParent,

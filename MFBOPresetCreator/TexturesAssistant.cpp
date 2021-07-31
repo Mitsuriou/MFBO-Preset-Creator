@@ -15,7 +15,6 @@
 #include <QProgressDialog>
 #include <QPushButton>
 #include <QScrollArea>
-#include <QScrollBar>
 
 TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)

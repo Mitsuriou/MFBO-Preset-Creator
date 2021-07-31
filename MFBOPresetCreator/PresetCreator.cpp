@@ -18,7 +18,6 @@
 #include <QMessageBox>
 #include <QPushbutton>
 #include <QScrollArea>
-#include <QScrollBar>
 #include <QStandardPaths>
 #include <QStyledItemDelegate>
 
