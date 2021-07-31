@@ -150,9 +150,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
-  </ItemGroup>
-  <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>

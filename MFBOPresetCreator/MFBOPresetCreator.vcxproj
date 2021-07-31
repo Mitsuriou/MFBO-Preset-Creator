@@ -287,7 +287,6 @@ echo #####################################################</Command>
     <Image Include="ressources/software/icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
     <QtTranslation Include="mfbopc_en.ts">
       <FileType>Document</FileType>
     </QtTranslation>
