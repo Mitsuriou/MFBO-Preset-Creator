@@ -64,6 +64,7 @@ QString SliderFileBuilder::getFeetBlock(const QString& aLineName, const BodyName
       }
 
       break;
+      // TODO: Fill this switch with HG Feet mods
   }
 
   // Replace the "%1" string with identation spaces and "%2" with the name given to the line
@@ -376,6 +377,17 @@ QString SliderFileBuilder::getFeetLineForBHUNP(const int aFeetModIndex)
     case 2:
       // More Sliders for Feet - High Heels
       return "%1%1<Member name=\"%2 - Feet (MSF - HH)\"/>\n";
+    case 3:
+      // HG Feet and Toes BHUNP SE - HGFeet UUNP
+      return "%1%1<Member name=\"%2 - HGFeet UUNP\"/>\n";
+    case 4:
+      // Khrysamere HG Feet (BHUNP)
+      return "%1%1<Member name=\"%2 - [Khrysamere] HG Feet (BHUNP)\"/>\n";
+      break;
+    case 5:
+      // Khrysamere HG Feet (Claws) (BHUNP)
+      return "%1%1<Member name=\"%2 - [Khrysamere] HG Feet (Claws) (BHUNP)\"/>\n";
+      break;
   }
 
   return QString();

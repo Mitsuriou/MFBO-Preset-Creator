@@ -142,7 +142,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lGeneralGridLayout->addWidget(lFeetSelector, 0, 3);
@@ -278,10 +278,18 @@ void RetargetingTool::userHasDoneAnAction(int)
 void RetargetingTool::updateAvailableBodyVersions()
 {
   auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
+
+  // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
   lBodyVersionSelector->clear();
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
+
+  // Feet mod
+  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_selector"))};
+  lFeetSelector->clear();
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->setCurrentIndex(0);
 }
 
 void RetargetingTool::chooseInputDirectory()

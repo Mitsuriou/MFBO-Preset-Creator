@@ -545,7 +545,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lBodyNameVersionWrapper->addWidget(lFeetSelector);
@@ -819,10 +819,18 @@ void PresetCreator::updateGUIOnBodyChange()
 void PresetCreator::updateAvailableBodyVersions()
 {
   auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
+
+  // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
   lBodyVersionSelector->clear();
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
+
+  // Feet mod
+  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_selector"))};
+  lFeetSelector->clear();
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->setCurrentIndex(0);
 }
 
 bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames)

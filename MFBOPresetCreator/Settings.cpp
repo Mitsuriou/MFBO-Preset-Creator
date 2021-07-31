@@ -322,7 +322,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_main"));
   lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
@@ -395,7 +395,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsEntries());
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_retargeting_tool"));
   lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
@@ -766,19 +766,35 @@ void Settings::saveSettings()
 void Settings::updateAvailableBodyVersions()
 {
   auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("default_body_selector_name"))->currentIndex())};
+
+  // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("default_body_selector_version"))};
   lBodyVersionSelector->clear();
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
+
+  // Feet mod
+  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_main"))};
+  lFeetSelector->clear();
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->setCurrentIndex(0);
 }
 
 void Settings::updateAvailableUpgradeBodyVersions()
 {
   auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex())};
+
+  // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))};
   lBodyVersionSelector->clear();
   lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
+
+  // Feet mod
+  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))};
+  lFeetSelector->clear();
+  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->setCurrentIndex(0);
 }
 
 void Settings::restoreDefaultSettings()

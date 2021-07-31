@@ -37,6 +37,7 @@ public:
   static bool isThemeDark(const GUITheme& aTheme);
   static QString getIconRessourceFolder(const GUITheme& aTheme);
   static bool isCBBEBasedBody(const BodyNameVersion& aBody);
+  static bool isCBBEBasedBody(const BodyName& aBody);
   static bool isBodySupportingBeastHands(const BodyNameVersion& aBody);
   static QString getAppDataPathFolder();
   static QString readQRCFileContent(const QString& aFilePath);

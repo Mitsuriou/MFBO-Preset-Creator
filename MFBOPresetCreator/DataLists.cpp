@@ -258,12 +258,25 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const Bo
   return QString(":/presets/%1/%2/%3").arg(lRessource).arg(lResolvedModName).arg(getVersionsFromBodyName(lCastedBodyName).at(lBodyVersion.second));
 }
 
-QStringList DataLists::getFeetModsEntries()
+QStringList DataLists::getFeetModsFromBodyName(const BodyName& aBody)
 {
-  return QStringList{
+  auto lEntries{QStringList{
     QString("Default feet sliders"),
     QString("More Sliders for Feet - Normal - by Balveric"),
-    QString("More Sliders for Feet - High Heels - by Balveric")};
+    QString("More Sliders for Feet - High Heels - by Balveric")}};
+
+  if (Utils::isCBBEBasedBody(aBody))
+  {
+    // Fill this block if any feet mod has to be here
+  }
+  else
+  {
+    lEntries.append("[WIP] HG Feet and Toes - by SunJeong");
+    lEntries.append("[WIP] HG Feet - by Khrysamere");
+    lEntries.append("[WIP] HG Feet (Claws) - by Khrysamere");
+  }
+
+  return lEntries;
 }
 
 QStringList DataLists::getWindowOpeningModes()

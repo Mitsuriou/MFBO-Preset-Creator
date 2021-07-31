@@ -423,6 +423,19 @@ bool Utils::isCBBEBasedBody(const BodyNameVersion& aBody)
   }
 }
 
+bool Utils::isCBBEBasedBody(const BodyName& aBody)
+{
+  switch (aBody)
+  {
+    case BodyName::CBBE_3BBB_3BA:
+    case BodyName::CBBE_SMP_3BBB:
+    case BodyName::MIMIR_EBONIC_BODY:
+      return true;
+    default: // UNP-based bodies
+      return false;
+  }
+}
+
 bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
 {
   return Utils::isCBBEBasedBody(aBody);
@@ -640,35 +653,65 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
 {
   auto lFeetValue{QString()};
 
-  switch (aFeetModIndex)
+  if (Utils::isCBBEBasedBody(aBody))
   {
-    case 0:
-      // Default
-      switch (aBody)
-      {
-        case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-        case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-        case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-        case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-        case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-          lFeetValue = QString("%1 - CBBE 3BBB Feet");
-          break;
-        case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-          lFeetValue = QString("%1 - CBBE Feet");
-          break;
-        default: // UNP-based bodies
-          lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
-          break;
-      }
-      break;
-    case 1:
-      // More Sliders for Feet - Normal
-      lFeetValue = QString("%1 - Feet (MSF - normal)");
-      break;
-    case 2:
-      // More Sliders for Feet - High Heels
-      lFeetValue = QString("%1 - Feet (MSF - HH)");
-      break;
+    switch (aFeetModIndex)
+    {
+      case 0:
+        // Default
+        switch (aBody)
+        {
+          case BodyNameVersion::CBBE_3BBB_3BA_1_50:
+          case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
+          case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
+          case BodyNameVersion::CBBE_3BBB_3BA_2_06:
+          case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+            lFeetValue = QString("%1 - CBBE 3BBB Feet");
+            break;
+          case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+            lFeetValue = QString("%1 - CBBE Feet");
+            break;
+        }
+        break;
+      case 1:
+        // More Sliders for Feet - Normal
+        lFeetValue = QString("%1 - Feet (MSF - normal)");
+        break;
+      case 2:
+        // More Sliders for Feet - High Heels
+        lFeetValue = QString("%1 - Feet (MSF - HH)");
+        break;
+    }
+  }
+  else
+  {
+    switch (aFeetModIndex)
+    {
+      case 0:
+        // Default
+        lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
+        break;
+      case 1:
+        // More Sliders for Feet - Normal
+        lFeetValue = QString("%1 - Feet (MSF - normal)");
+        break;
+      case 2:
+        // More Sliders for Feet - High Heels
+        lFeetValue = QString("%1 - Feet (MSF - HH)");
+        break;
+      case 3:
+        // HG Feet and Toes BHUNP SE - HGFeet UUNP
+        lFeetValue = QString("%1 - HGFeet UUNP");
+        break;
+      case 4:
+        // Khrysamere HG Feet (BHUNP)
+        lFeetValue = QString("%1 - [Khrysamere] HG Feet (BHUNP)");
+        break;
+      case 5:
+        // Khrysamere HG Feet (Claws) (BHUNP)
+        lFeetValue = QString("%1 - [Khrysamere] HG Feet (Claws) (BHUNP)");
+        break;
+    }
   }
 
   return (lFeetValue + "\n");
@@ -1103,6 +1146,10 @@ QString Utils::getAdditionalFeetFilter(const BodyNameVersion& aBody, const int a
     }
 
     return QString("MSF BHUNP Feet");
+  }
+  else if (!isCBBEBasedBody(aBody) && (aFeetModIndex == 3 || aFeetModIndex == 4 || aFeetModIndex == 5))
+  {
+    return QString("HGFeet UUNP");
   }
 
   return QString();
