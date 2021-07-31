@@ -9,7 +9,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QScrollArea>
-#include <QScrollBar>
 #include <QTextBrowser>
 
 WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings)
@@ -222,7 +221,7 @@ void WelcomeScreen::overrideHTMLLinksColor(QString& aHTMLString)
   }
 
   // Hacky links' colors override for some themes
-  auto lLinksColorOverride{this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985")};
+  const auto lLinksColorOverride{this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985")};
 
   // Go through the string to find the link colors
   auto i{0};
@@ -234,7 +233,7 @@ void WelcomeScreen::overrideHTMLLinksColor(QString& aHTMLString)
 
 void WelcomeScreen::launchUpdateDialog()
 {
-  auto lEventSource{qobject_cast<QPushButton*>(sender())};
+  const auto lEventSource{qobject_cast<QPushButton*>(sender())};
   if (lEventSource == this->findChild<QPushButton*>(QString("download_stable_update")))
   {
     new Update(this->parentWidget(), this->mSettings, false);
@@ -278,13 +277,8 @@ void WelcomeScreen::updateCheckFinished()
 
 void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 {
-  auto lBrowserStableReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_stable"))};
   auto lStableStatusLabel{this->findChild<QLabel*>(QString("stable_status_label"))};
-  auto lBrowserBetaReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_beta"))};
   auto lBetaStatusLabel{this->findChild<QLabel*>(QString("beta_status_label"))};
-
-  Struct::VersionsInformation lVersionsInformation;
-  const auto lCurrentVersion{Utils::getApplicationVersion()};
 
   // Display error messages to the user
   if (aResult == "fetch_error")
@@ -294,39 +288,11 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     return;
   }
 
-  // Declare and initialize local variables
-  auto lTagName{QString()};
+  auto lBrowserStableReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_stable"))};
+  auto lBrowserBetaReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_beta"))};
 
-  // Create a JSON from the fetched string and parse the "tag_name" data
-  QJsonDocument lJsonDocument{QJsonDocument::fromJson(aResult.toUtf8())};
-  QJsonArray lTagsArray{lJsonDocument.array()};
-
-  // Iterate in the versions array
-  for (int i = 0; i < lTagsArray.size(); i++)
-  {
-    // Parse the tag_name
-    lTagName = Utils::cleanBreaksString(lTagsArray.at(i)["tag_name"].toString());
-
-    // Check if it is a stable or a BETA version
-    if (lTagsArray.at(i)["prerelease"].toBool())
-    {
-      // Save the latest beta's body tag value
-      if (lVersionsInformation.sizeLatestBetaReleaseNotes() == 0)
-        lVersionsInformation.setLatestBetaReleaseNotes(Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
-
-      // Add this version name to the beta versions list
-      lVersionsInformation.addBetaVersionToList(lTagName);
-    }
-    else
-    {
-      // Save the latest stable's body tag value
-      if (lVersionsInformation.sizeLatestStableReleaseNotes() == 0)
-        lVersionsInformation.setLatestStableReleaseNotes(Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
-
-      // Add this version name to the stable versions list
-      lVersionsInformation.addStableVersionToList(lTagName);
-    }
-  }
+  const auto lCurrentVersion{Utils::getApplicationVersion()};
+  const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
 
   ///*========*/
   ///* STABLE */
@@ -409,13 +375,4 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     lBetaStatusLabel->setText(tr("The new BETA version \"%1\" is available on GitHub. Press the button below to open the updater window:").arg(lVersionsInformation.getBetaVersionAt(0)));
     this->findChild<QPushButton*>(QString("download_beta_update"))->show();
   }
-}
-
-void WelcomeScreen::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
 }

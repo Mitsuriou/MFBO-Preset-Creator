@@ -340,7 +340,7 @@ namespace Struct
       return this->latestStableReleaseNotes;
     }
 
-    int sizeLatestStableReleaseNotes() const
+    const int sizeLatestStableReleaseNotes() const
     {
       return this->latestStableReleaseNotes.size();
     }
@@ -361,7 +361,7 @@ namespace Struct
       return this->stableVersions.at(aIndex);
     }
 
-    int sizeStableVersionsList() const
+    const int sizeStableVersionsList() const
     {
       return this->stableVersions.size();
     }
@@ -387,7 +387,7 @@ namespace Struct
       return this->latestBetaReleaseNotes;
     }
 
-    int sizeLatestBetaReleaseNotes() const
+    const int sizeLatestBetaReleaseNotes() const
     {
       return this->latestBetaReleaseNotes.size();
     }
@@ -408,7 +408,7 @@ namespace Struct
       return this->betaVersions.at(aIndex);
     }
 
-    int sizeBetaVersionsList() const
+    const int sizeBetaVersionsList() const
     {
       return this->betaVersions.size();
     }
@@ -426,16 +426,16 @@ namespace Struct
     // Is running BETA version
     bool isRunningBetaVersion(const QString& aCurrentApplicationVersion) const
     {
-      return (this->betaVersions.size() > 0 && this->betaVersions.at(0).compare(aCurrentApplicationVersion) == 0);
+      return (this->betaVersions.size() > 0 && this->betaVersions.contains(aCurrentApplicationVersion));
     }
 
   private:
     // Stable
-    QString latestStableReleaseNotes{""};
-    QStringList stableVersions{};
+    QString latestStableReleaseNotes;
+    QStringList stableVersions;
 
     // BETA
-    QString latestBetaReleaseNotes{""};
-    QStringList betaVersions{};
+    QString latestBetaReleaseNotes;
+    QStringList betaVersions;
   };
 }

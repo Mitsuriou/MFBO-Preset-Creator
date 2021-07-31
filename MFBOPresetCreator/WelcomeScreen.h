@@ -18,9 +18,9 @@ protected:
 private:
   const Struct::Settings mSettings;
   const StartupAction mInitializationStartupAction;
-  // Check for updates
   QNetworkAccessManager mManager;
 
+  // GUI functions
   void setWindowProperties();
   void initializeGUI();
   // Utils functions
@@ -33,9 +33,6 @@ private:
   void checkForUpdate();
   void updateCheckFinished();
   void displayUpdateMessage(const QString& aResult);
-
-  // GUI widgets events
-  void groupBoxChecked(bool aIsChecked);
 
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);

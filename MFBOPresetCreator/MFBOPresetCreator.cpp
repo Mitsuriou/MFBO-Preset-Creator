@@ -539,9 +539,6 @@ void MFBOPresetCreator::checkForUpdate()
 
 void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
-
   // Display a message based on new available versions
   auto lTitle{QString()};
   auto lMessage{QString()};
@@ -553,48 +550,30 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
   }
   else
   {
-    // Declare and initialize local variables
-    auto lStableVersions{QStringList()};
-    auto lBetaVersions{QStringList()};
-    auto lTagName{QString()};
-    auto lCurrentVersion{Utils::getApplicationVersion()};
+    const auto lCurrentVersion{Utils::getApplicationVersion()};
+    const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
 
-    // Create a JSON from the fetched string and parse the "tag_name" data
-    QJsonDocument lJsonDocument{QJsonDocument::fromJson(aResult.toUtf8())};
-    QJsonArray lTagsArray{lJsonDocument.array()};
-
-    // Iterate in the versions array
-    for (int i = 0; i < lTagsArray.size(); i++)
+    if (lVersionsInformation.sizeStableVersionsList() > 0 && lVersionsInformation.sizeBetaVersionsList() > 0)
     {
-      // Parse the tag_name
-      lTagName = lTagsArray.at(i)["tag_name"].toString();
-      Utils::cleanBreaksString(lTagName);
-
-      // Check if it is a stable or a BETA version
-      if (lTagsArray.at(i)["prerelease"].toBool())
+      // A new BETA version is available and no newer stable available
+      if (Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER
+          && Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lVersionsInformation.getStableVersionAt(0)) == ApplicationVersionRelative::NEWER)
       {
-        // Add this version name to the beta versions list
-        lBetaVersions.push_back(lTagName);
+        this->mNewBetaVersionAvailable = true;
+        lTitle = tr("BETA update available");
+        lMessage = tr("You are currently running the version \"%1\".\nThe new BETA version \"%2\" is available on GitHub.\n\nDo you want to download it now?")
+                     .arg(lCurrentVersion)
+                     .arg(lVersionsInformation.getBetaVersionAt(0));
       }
-      else
+      // A new stable version is available
+      else if (Utils::compareVersionNumbers(lVersionsInformation.getStableVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
       {
-        // Add this version name to the stable versions list
-        lStableVersions.push_back(lTagName);
+        this->mNewStableVersionAvailable = true;
+        lTitle = tr("Stable update available");
+        lMessage = tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\n\nDo you want to download it now?")
+                     .arg(lCurrentVersion)
+                     .arg(lVersionsInformation.getStableVersionAt(0));
       }
-    }
-
-    auto lIsUserRunningBeta{lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion)};
-    if (lIsUserRunningBeta && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER && lStableVersions.size() > 0)
-    {
-      this->mNewBetaVersionAvailable = true;
-      lTitle = tr("Application update available (BETA)");
-      lMessage = tr("You are currently running the BETA version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe new BETA version \"%3\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0));
-    }
-    else if (!lIsUserRunningBeta && lStableVersions.size() > 0 && Utils::compareVersionNumbers(lStableVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
-    {
-      this->mNewStableVersionAvailable = true;
-      lTitle = tr("Application update available (stable)");
-      lMessage = tr("You are currently running the stable version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\nDo you want to download it now?").arg(lCurrentVersion).arg(lStableVersions.at(0));
     }
   }
 
@@ -602,6 +581,9 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   if (this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES && lTitle.length() > 0 && lMessage.length() > 0)
   {
+    // User theme accent
+    const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+
     if (aResult == "fetch_error")
     {
       QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
@@ -764,7 +746,7 @@ void MFBOPresetCreator::launchSettingsDialog()
 
 void MFBOPresetCreator::launchUpdateDialog()
 {
-  new Update(this, this->mSettings, false);
+  new Update(this, this->mSettings, this->mNewBetaVersionAvailable);
 }
 
 void MFBOPresetCreator::reportBugNexusMods()

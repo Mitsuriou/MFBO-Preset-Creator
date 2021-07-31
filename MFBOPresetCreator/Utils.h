@@ -26,6 +26,7 @@ public:
   static ApplicationVersionRelative compareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2);
   static void displayWarningMessage(const QString& aMessage);
   static ButtonClicked displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
+  static Struct::VersionsInformation parseGitHubReleasesRequestResult(const QString& aResult);
   static int getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension);
   static int getNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension);

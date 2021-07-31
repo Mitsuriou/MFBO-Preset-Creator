@@ -16,6 +16,7 @@ public:
   explicit Update(QWidget* aParent, const Struct::Settings& aSettings, const bool aIsBetaContext);
 
 protected:
+  void closeEvent(QCloseEvent* aEvent) override;
   void reject() override;
 
 private:
@@ -29,20 +30,15 @@ private:
   QFile* mDownloadedFile;
   QNetworkReply* mReply;
 
+  // GUI functions
   void setWindowProperties();
-  void setupInterface(const bool aIsBetaContext);
+  void initializeGUI(const bool aIsBetaContext);
   void overrideHTMLLinksColor(QString& aHTMLString);
 
   // Check for updates
-  void displayUpdateMessage(const QString& aResult);
-
-  // Download the update file
-  void displayFileDownloadEndStatus(const bool aResult);
-
-#pragma region PRIVATE_SLOTS
-  // Check for updates
   void checkForUpdate();
   void updateCheckFinished();
+  void displayUpdateMessage(const QString& aResult);
 
   // Download the update file
   void downloadLatestUpdate();
@@ -50,8 +46,8 @@ private:
   void fileChunkReceived();
   void chunkSizeUpdated(qint64 aBytesRead, qint64 aTotal);
   void fileDownloadEnded();
+  void displayFileDownloadEndStatus(const bool aResult);
 
   // Install the update file
   void installLatestUpdate();
-#pragma endregion PRIVATE_SLOTS
 };

@@ -7,6 +7,7 @@
 #include <QComboBox>
 #include <QDirIterator>
 #include <QGroupBox>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
@@ -200,6 +201,45 @@ ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTi
     return ButtonClicked::OTHER;
   }
   return ButtonClicked::CLOSE_WINDOW;
+}
+
+Struct::VersionsInformation Utils::parseGitHubReleasesRequestResult(const QString& aResult)
+{
+  Struct::VersionsInformation lVersionsInformation;
+  auto lTagName{QString()};
+
+  // Create a JSON from the fetched string and parse the "tag_name" data
+  QJsonDocument lJsonDocument{QJsonDocument::fromJson(aResult.toUtf8())};
+  QJsonArray lTagsArray{lJsonDocument.array()};
+
+  // Iterate in the versions array
+  for (int i = 0; i < lTagsArray.size(); i++)
+  {
+    // Parse the tag_name
+    lTagName = Utils::cleanBreaksString(lTagsArray.at(i)["tag_name"].toString());
+
+    // Check if it is a stable or a BETA version
+    if (lTagsArray.at(i)["prerelease"].toBool())
+    {
+      // Save the latest beta's body tag value
+      if (lVersionsInformation.sizeLatestBetaReleaseNotes() == 0)
+        lVersionsInformation.setLatestBetaReleaseNotes(Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
+
+      // Add this version name to the beta versions list
+      lVersionsInformation.addBetaVersionToList(lTagName);
+    }
+    else
+    {
+      // Save the latest stable's body tag value
+      if (lVersionsInformation.sizeLatestStableReleaseNotes() == 0)
+        lVersionsInformation.setLatestStableReleaseNotes(Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
+
+      // Add this version name to the stable versions list
+      lVersionsInformation.addStableVersionToList(lTagName);
+    }
+  }
+
+  return lVersionsInformation;
 }
 
 int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)

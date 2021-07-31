@@ -22,7 +22,7 @@ Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool a
 {
   // Build the window's interface
   this->setWindowProperties();
-  this->setupInterface(aIsBetaContext);
+  this->initializeGUI(aIsBetaContext);
 
   // Show the window when it's completely built
   this->adjustSize();
@@ -33,7 +33,7 @@ Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool a
   lSearchButton->click();
 }
 
-void Update::reject()
+void Update::closeEvent(QCloseEvent*)
 {
   // Cancel the download before closing the window
   if (this->mDownloadedFile && this->mReply)
@@ -42,6 +42,11 @@ void Update::reject()
   }
 
   this->accept();
+}
+
+void Update::reject()
+{
+  this->close();
 }
 
 void Update::setWindowProperties()
@@ -55,13 +60,12 @@ void Update::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/cloud-search")));
 }
 
-void Update::setupInterface(const bool aIsBetaContext)
+void Update::initializeGUI(const bool aIsBetaContext)
 {
   // Set a layout for this dialog box
   this->setLayout(new QVBoxLayout(this));
   this->layout()->setAlignment(Qt::AlignTop);
 
-  // WIP
   this->layout()->addWidget(new QLabel(tr("Check for updates:"), this));
 
   auto lStableVersionButton{new QRadioButton(tr("Stable"), this)};
@@ -71,7 +75,6 @@ void Update::setupInterface(const bool aIsBetaContext)
   auto lBetaVersionButton{new QRadioButton(tr("BETA"), this)};
   lBetaVersionButton->setChecked(aIsBetaContext);
   this->layout()->addWidget(lBetaVersionButton);
-  // WIP
 
   // Check for updates
   auto lUpdateButton{ComponentFactory::createButton(this, tr("Check for updates"), "", "cloud-search", Utils::getIconRessourceFolder(this->mSettings.appTheme), "search_button")};
@@ -118,6 +121,34 @@ void Update::overrideHTMLLinksColor(QString& aHTMLString)
   }
 }
 
+void Update::checkForUpdate()
+{
+  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
+  lFetchStatus->setText(tr("Contacting GitHub.com..."));
+  lFetchStatus->show();
+
+  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
+
+  QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
+  connect(lReply, &QNetworkReply::finished, this, &Update::updateCheckFinished);
+}
+
+void Update::updateCheckFinished()
+{
+  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+
+  if (lReply->error() == QNetworkReply::NoError)
+  {
+    this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
+  }
+  else
+  {
+    this->displayUpdateMessage("fetch_error");
+  }
+
+  lReply->deleteLater();
+}
+
 void Update::displayUpdateMessage(const QString& aResult)
 {
   auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
@@ -134,48 +165,8 @@ void Update::displayUpdateMessage(const QString& aResult)
     return;
   }
 
-  // Declare and initialize local variables
-  auto lStableVersions{QStringList()};
-  auto lLatestStableReleaseNote{QString()};
-  auto lBetaVersions{QStringList()};
-  auto lLatestBetaReleaseNote{QString()};
-  auto lUserRunningBetaVersion{false};
-  auto lTagName{QString()};
-  auto lCurrentVersion{Utils::getApplicationVersion()};
-
-  // Create a JSON from the fetched string and parse the "tag_name" data
-  QJsonDocument lJsonDocument{QJsonDocument::fromJson(aResult.toUtf8())};
-  QJsonArray lTagsArray{lJsonDocument.array()};
-
-  // Iterate in the versions array
-  for (int i = 0; i < lTagsArray.size(); i++)
-  {
-    // Parse the tag_name
-    lTagName = lTagsArray.at(i)["tag_name"].toString();
-    Utils::cleanBreaksString(lTagName);
-
-    // Check if it is a stable or a BETA version
-    if (lTagsArray.at(i)["prerelease"].toBool())
-    {
-      // Save the latest beta's body tag value
-      if (lLatestBetaReleaseNote.length() == 0)
-        lLatestBetaReleaseNote = lTagsArray.at(i)["body"].toString();
-
-      // Add this version name to the beta versions list
-      lBetaVersions.push_back(lTagName);
-    }
-    else
-    {
-      // Save the latest stable's body tag value
-      if (lLatestStableReleaseNote.length() == 0)
-        lLatestStableReleaseNote = lTagsArray.at(i)["body"].toString();
-
-      // Add this version name to the stable versions list
-      lStableVersions.push_back(lTagName);
-    }
-  }
-
-  lUserRunningBetaVersion = lBetaVersions.size() > 0 && lBetaVersions.contains(lCurrentVersion);
+  const auto lCurrentVersion{Utils::getApplicationVersion()};
+  const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
 
 #ifdef DEBUG
   QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/developer" : ":/black/developer"};
@@ -184,8 +175,10 @@ void Update::displayUpdateMessage(const QString& aResult)
   lSearchButton->setDisabled(true);
   lSearchButton->setText(tr("You are running a developer version"));
 
-  lFetchStatus->setText(tr("You are currently running the developer version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe latest BETA version is tagged \"%3\".\n\nBelow are the release notes for the latest stable version:").arg(lCurrentVersion).arg(lStableVersions.at(0)).arg(lBetaVersions.at(0)));
-  lUserRunningBetaVersion = false; // Force to diplay the latest stable version's release notes
+  lFetchStatus->setText(tr("You are currently running the developer version \"%1\".\nThe latest stable version is tagged \"%2\".\nThe latest BETA version is tagged \"%3\".\n\nBelow are the release notes for the latest stable version:")
+                          .arg(lCurrentVersion)
+                          .arg(lVersionsInformation.getStableVersionAt(0))
+                          .arg(lVersionsInformation.getBetaVersionAt(0)));
 #else
   if (lUserRunningBetaVersion && Utils::compareVersionNumbers(lBetaVersions.at(0), lCurrentVersion) == ApplicationVersionRelative::NEWER && lStableVersions.size() > 0)
   {
@@ -244,8 +237,7 @@ void Update::displayUpdateMessage(const QString& aResult)
 #endif
 
   // Display the latest release's full release notes as markdown format
-  const auto& lDescription = lUserRunningBetaVersion ? lLatestBetaReleaseNote : lLatestStableReleaseNote;
-  Utils::cleanBreaksString(lDescription);
+  const auto& lDescription = lVersionsInformation.isRunningBetaVersion(lCurrentVersion) ? lVersionsInformation.getLatestBetaReleaseNotes() : lVersionsInformation.getLatestStableReleaseNotes();
   auto lTextContainer{new QTextBrowser(this)};
   lTextContainer->setOpenExternalLinks(true);
   lTextContainer->setMarkdown(lDescription);
@@ -258,94 +250,6 @@ void Update::displayUpdateMessage(const QString& aResult)
   auto lHTMLString{lTextContainer->toHtml()};
   this->overrideHTMLLinksColor(lHTMLString);
   lTextContainer->setHtml(lHTMLString);
-}
-
-void Update::displayFileDownloadEndStatus(const bool aResult)
-{
-  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
-  lDownloadProgressBar->hide();
-
-  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
-  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
-  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
-
-  auto lSuccessText{tr("Download successful. Click the button above to start updating MFBOPC.\nMake sure that you saved everything before starting the update as the application will be closed!\n\n")};
-  auto lErrorText{tr("An error has occurred while downloading the update.\nPlease make sure your internet connection is working correctly and try again.\n\n")};
-
-  if (aResult)
-  {
-    // The app has been downloaded
-    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
-    lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
-    lSearchButton->setIconSize(QSize(48, 48));
-    lSearchButton->setText(tr("Close MFBOPC and install the update"));
-
-    // Display an success message in the status label
-    auto lStatusText{lFetchStatus->text()};
-    if (lStatusText.startsWith(lErrorText))
-    {
-      lStatusText.replace(lErrorText, lSuccessText);
-      lFetchStatus->setText(lStatusText);
-    }
-    else if (!lStatusText.startsWith(lSuccessText))
-    {
-      lStatusText.prepend(lSuccessText);
-      lFetchStatus->setText(lStatusText);
-    }
-
-    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
-  }
-  else
-  {
-    // Error while downloading
-    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
-    lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
-    lSearchButton->setIconSize(QSize(48, 48));
-    lSearchButton->setText(tr("Try to download the update once again"));
-
-    // Display an error message in the status label
-    auto lStatusText{lFetchStatus->text()};
-    if (lStatusText.startsWith(lSuccessText))
-    {
-      lStatusText.replace(lSuccessText, lErrorText);
-      lFetchStatus->setText(lStatusText);
-    }
-    else if (!lStatusText.startsWith(lErrorText))
-    {
-      lStatusText.prepend(lErrorText);
-      lFetchStatus->setText(lStatusText);
-    }
-
-    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-  }
-}
-
-void Update::checkForUpdate()
-{
-  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
-  lFetchStatus->setText(tr("Contacting GitHub.com..."));
-  lFetchStatus->show();
-
-  QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
-
-  QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &Update::updateCheckFinished);
-}
-
-void Update::updateCheckFinished()
-{
-  auto lReply{qobject_cast<QNetworkReply*>(sender())};
-
-  if (lReply->error() == QNetworkReply::NoError)
-  {
-    this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
-  }
-  else
-  {
-    this->displayUpdateMessage("fetch_error");
-  }
-
-  lReply->deleteLater();
 }
 
 void Update::downloadLatestUpdate()
@@ -489,6 +393,66 @@ void Update::fileDownloadEnded()
 
   delete this->mDownloadedFile;
   this->mDownloadedFile = nullptr;
+}
+
+void Update::displayFileDownloadEndStatus(const bool aResult)
+{
+  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
+  lDownloadProgressBar->hide();
+
+  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
+  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
+
+  auto lSuccessText{tr("Download successful. Click the button above to start updating MFBOPC.\nMake sure that you saved everything before starting the update as the application will be closed!\n\n")};
+  auto lErrorText{tr("An error has occurred while downloading the update.\nPlease make sure your internet connection is working correctly and try again.\n\n")};
+
+  if (aResult)
+  {
+    // The app has been downloaded
+    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
+    lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
+    lSearchButton->setIconSize(QSize(48, 48));
+    lSearchButton->setText(tr("Close MFBOPC and install the update"));
+
+    // Display an success message in the status label
+    auto lStatusText{lFetchStatus->text()};
+    if (lStatusText.startsWith(lErrorText))
+    {
+      lStatusText.replace(lErrorText, lSuccessText);
+      lFetchStatus->setText(lStatusText);
+    }
+    else if (!lStatusText.startsWith(lSuccessText))
+    {
+      lStatusText.prepend(lSuccessText);
+      lFetchStatus->setText(lStatusText);
+    }
+
+    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+  }
+  else
+  {
+    // Error while downloading
+    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(48, Qt::SmoothTransformation)));
+    lSearchButton->setIconSize(QSize(48, 48));
+    lSearchButton->setText(tr("Try to download the update once again"));
+
+    // Display an error message in the status label
+    auto lStatusText{lFetchStatus->text()};
+    if (lStatusText.startsWith(lSuccessText))
+    {
+      lStatusText.replace(lSuccessText, lErrorText);
+      lFetchStatus->setText(lStatusText);
+    }
+    else if (!lStatusText.startsWith(lErrorText))
+    {
+      lStatusText.prepend(lErrorText);
+      lFetchStatus->setText(lStatusText);
+    }
+
+    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+  }
 }
 
 void Update::installLatestUpdate()
