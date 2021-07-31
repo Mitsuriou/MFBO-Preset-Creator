@@ -433,9 +433,13 @@ QString Utils::getAppDataPathFolder()
 #ifdef DEBUG
   return QCoreApplication::applicationDirPath() + QDir::separator();
 #else
-  QDir lDir;
-  lDir.mkpath(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
-  return QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator();
+  QDir lDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+  if (lDir.exists())
+  {
+    return QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator();
+  }
+
+  return QCoreApplication::applicationDirPath() + QDir::separator();
 #endif
 }
 

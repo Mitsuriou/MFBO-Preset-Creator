@@ -1,10 +1,12 @@
 ﻿#include "MFBOPresetCreator.h"
 #include "Utils.h"
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QFontDatabase>
 #include <QLibraryInfo>
 #include <QSplashScreen>
+#include <QStandardPaths>
 #include <QTextCodec>
 #include <QTranslator>
 #include <iostream>
@@ -106,7 +108,15 @@ int main(int argc, char* argv[])
 
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
-    lMainApplication.setApplicationDisplayName(QString("MFBOPC (v.%1)").arg(lAppVersion));
+
+    auto lAppNamePreffix{QString()};
+    QDir lDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+    if (!lDir.exists())
+    {
+      lAppNamePreffix = "[standalone] ";
+    }
+
+    lMainApplication.setApplicationDisplayName(lAppNamePreffix + QString("MFBOPC (v.%1)").arg(lAppVersion));
     lMainApplication.setApplicationName("MFBOPresetCreator");
     lMainApplication.setApplicationVersion(lAppVersion);
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
