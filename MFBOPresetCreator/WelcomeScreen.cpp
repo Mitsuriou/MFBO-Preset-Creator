@@ -6,8 +6,6 @@
 #include <QCloseEvent>
 #include <QDesktopServices>
 #include <QIcon>
-#include <QJsonArray>
-#include <QJsonDocument>
 #include <QScrollArea>
 #include <QTextBrowser>
 

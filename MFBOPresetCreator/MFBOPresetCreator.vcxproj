@@ -234,6 +234,7 @@ echo #####################################################</Command>
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
     <ClCompile Include="LangManager.cpp" />
+    <ClCompile Include="ReleaseNotesViewer.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="PresetCreator.cpp">
@@ -267,6 +268,7 @@ echo #####################################################</Command>
     <ClInclude Include="Enum.h" />
     <QtMoc Include="BodySlideFiltersEditor.h" />
     <ClInclude Include="LangManager.h" />
+    <QtMoc Include="ReleaseNotesViewer.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Settings.h" />
     <ClInclude Include="SliderFileBuilder.h" />

@@ -8,7 +8,6 @@ class SliderFileBuilder final
 public:
   // SliderSets
   static QString buildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const bool aMustUseBeastHands, const int aFeetModIndex, const unsigned char& aTargetBlocks = 111);
-  static QString getFeetBlock(const QString& aLineName, const BodyNameVersion& aBody, const int aFeetModIndex);
 
   // SliderGroups
   static QString buildXMLFileContent(const QString& aLineName, const std::vector<Struct::Filter>& aFiltersList, const BodyNameVersion& aBody, const bool aMustUseBeastHands, const int aFeetModIndex, const unsigned char& aTargetBlocks = 111);

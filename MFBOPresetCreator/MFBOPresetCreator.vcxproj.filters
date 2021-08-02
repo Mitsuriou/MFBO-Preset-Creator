@@ -67,6 +67,9 @@
     <ClCompile Include="WelcomeScreen.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="ReleaseNotesViewer.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -216,6 +219,9 @@
       <Filter>Header Files\Drag and Drop</Filter>
     </QtMoc>
     <QtMoc Include="WelcomeScreen.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="ReleaseNotesViewer.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>

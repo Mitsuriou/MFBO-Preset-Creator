@@ -169,7 +169,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
   return std::pair<int, int>(-1, -1);
 }
 
-QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const BodyPartType& aRessourceType)
+QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const int aFeetModIndex, const BodyPartType& aRessourceType)
 {
   // Ressource type
   auto lRessource{QString()};
@@ -197,7 +197,21 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const Bo
     // For the beast hands, use the default CBBE v.1.6.1 beast hands
     if (aRessourceType == BodyPartType::BEAST_HANDS)
     {
-      return Utils::readQRCFileContent(":/presets/beast_hands/cbbe 1.6.1");
+      return ":/presets/beast_hands/cbbe 1.6.1";
+    }
+
+    if (aRessourceType == BodyPartType::FEET)
+    {
+      // Do not handle case 0 below (default feet, it is following the normal workflow)
+      switch (aFeetModIndex)
+      {
+        case 1:
+          // More Sliders for Feet - Normal
+          return ":/presets/feet/msf/normal/cbbe/1.0"; // TODO: Handle the feet mods version numbers
+        case 2:
+          // More Sliders for Feet - High Heels
+          return ":/presets/feet/msf/high heels/cbbe/1.0"; // TODO: Handle the feet mods version numbers
+      }
     }
 
     switch (lCastedBodyName)
@@ -248,10 +262,38 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const Bo
         }
         break;
       case BodyPartType::FEET:
+        if (aRessourceType == BodyPartType::FEET)
+        {
+          switch (aFeetModIndex)
+          {
+            case 0:
+              // Default: follow the normal workflow to use the default BHUNP feet
+              lResolvedModName = "bhunp";
+              break;
+            case 1:
+              // More Sliders for Feet - Normal
+              return ":/presets/feet/msf/normal/bhunp/1.1"; // TODO: Handle the feet mods version numbers
+            case 2:
+              // More Sliders for Feet - High Heels
+              return ":/presets/feet/msf/high heels/bhunp/1.1"; // TODO: Handle the feet mods version numbers
+            case 3:
+              // HG Feet and Toes BHUNP SE - HGFeet UUNP
+              return ":/presets/feet/hg feet/bhunp"; // TODO: Handle the feet mods version numbers
+            case 4:
+              // Khrysamere HG Feet (BHUNP)
+              return ":/presets/feet/khrysamere hg feet/normal/1.6.1"; // TODO: Handle the feet mods version numbers
+            case 5:
+              // Khrysamere HG Feet (Claws) (BHUNP)
+              return ":/presets/feet/khrysamere hg feet/claws/1.6.1"; // TODO: Handle the feet mods version numbers
+          }
+        }
+        [[fallthrough]];
       case BodyPartType::HANDS:
-        // For the hands and feet, use the default BHUNP hands and feet
+        // Use the default BHUNP hands
         lResolvedModName = "bhunp";
         break;
+      default:
+        return "";
     }
   }
 
@@ -260,20 +302,23 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const Bo
 
 QStringList DataLists::getFeetModsFromBodyName(const BodyName& aBody)
 {
+  // Common entries
   auto lEntries{QStringList{
     QString("Default feet sliders"),
     QString("More Sliders for Feet - Normal - by Balveric"),
     QString("More Sliders for Feet - High Heels - by Balveric")}};
 
+  // CBBE-based bodies
   if (Utils::isCBBEBasedBody(aBody))
   {
     // Fill this block if any feet mod has to be here
   }
+  // UNP-based bodies
   else
   {
-    lEntries.append("[WIP] HG Feet and Toes - by SunJeong");
-    lEntries.append("[WIP] HG Feet - by Khrysamere");
-    lEntries.append("[WIP] HG Feet (Claws) - by Khrysamere");
+    lEntries.append("HG Feet and Toes - by SunJeong");
+    lEntries.append("HG Feet - by Khrysamere");
+    lEntries.append("HG Feet (Claws) - by Khrysamere");
   }
 
   return lEntries;

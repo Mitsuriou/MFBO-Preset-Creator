@@ -447,6 +447,13 @@
         <file alias="cbbe 3bbb 3ba/2.06">ressources/feet/cbbe 3bbb 3ba/2.06.osp</file>
         <file alias="cbbe smp 3bbb/1.2.0">ressources/feet/cbbe smp 3bbb/1.2.0.osp</file>
         <file alias="mimir ebonic body/1.2">ressources/feet/mimir ebonic body/1.2.osp</file>
+        <file alias="msf/normal/cbbe/1.0">ressources/feet/msf/normal/cbbe/1.0.osp</file>
+        <file alias="msf/normal/bhunp/1.1">ressources/feet/msf/normal/bhunp/1.1.osp</file>
+        <file alias="msf/high heels/cbbe/1.0">ressources/feet/msf/high heels/cbbe/1.0.osp</file>
+        <file alias="msf/high heels/bhunp/1.1">ressources/feet/msf/high heels/bhunp/1.1.osp</file>
+        <file alias="hg feet/bhunp">ressources/feet/hg feet/bhunp.osp</file>
+        <file alias="khrysamere hg feet/normal/1.6.1">ressources/feet/khrysamere hg feet/normal/1.6.1.osp</file>
+        <file alias="khrysamere hg feet/claws/1.6.1">ressources/feet/khrysamere hg feet/claws/1.6.1.osp</file>
     </qresource>
     <qresource prefix="/presets/hands">
         <file alias="bhunp/2.20">ressources/hands/bhunp/2.20.osp</file>

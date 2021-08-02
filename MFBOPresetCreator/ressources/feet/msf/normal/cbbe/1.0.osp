@@ -1,0 +1,94 @@
+    <SliderSet name="%1 - CBBE MSF Feet">
+        <DataFolder>More Sliders for Feet CBBE</DataFolder>
+        <SourceFile>CBBE MSF Feet.nif</SourceFile>
+        <OutputPath>{%%feet_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
+        <Shape target="Feet" DataFolder="CBBE">Feet</Shape>
+        <Slider name="AnkleSize" invert="false" small="100" big="0">
+            <Data name="FeetAnkleSize" target="Feet" local="true">CBBE MSF Feet.osd\FeetAnkleSize</Data>
+        </Slider>
+        <Slider name="FeetFeminine" invert="false" small="0" big="0">
+            <Data name="FeetFeetFeminine" target="Feet" local="true">CBBE MSF Feet.osd\FeetFeetFeminine</Data>
+        </Slider>
+        <Slider name="Fix" invert="false" small="0" big="0">
+            <Data name="FeetFix" target="Feet" local="true">CBBE MSF Feet.osd\FeetFix</Data>
+        </Slider>
+        <Slider name="Soles" invert="false" small="0" big="0">
+            <Data name="FeetSoles" target="Feet" local="true">CBBE MSF Feet.osd\FeetSoles</Data>
+        </Slider>
+        <Slider name="Padding" invert="false" small="0" big="0">
+            <Data name="FeetPadding" target="Feet" local="true">CBBE MSF Feet.osd\FeetPadding</Data>
+        </Slider>
+        <Slider name="Achilles Tendon" invert="false" small="0" big="0">
+            <Data name="FeetAchilles Tendon" target="Feet" local="true">CBBE MSF Feet.osd\FeetAchilles Tendon</Data>
+        </Slider>
+        <Slider name="Ankles Bones" invert="false" small="0" big="0">
+            <Data name="FeetAnkles Bones" target="Feet" local="true">CBBE MSF Feet.osd\FeetAnkles Bones</Data>
+        </Slider>
+        <Slider name="Arch" invert="false" small="0" big="0">
+            <Data name="FeetArch" target="Feet" local="true">CBBE MSF Feet.osd\FeetArch</Data>
+        </Slider>
+        <Slider name="Heel" invert="false" small="0" big="0">
+            <Data name="FeetHeel" target="Feet" local="true">CBBE MSF Feet.osd\FeetHeel</Data>
+        </Slider>
+        <Slider name="Dome" invert="false" small="0" big="0">
+            <Data name="FeetDome" target="Feet" local="true">CBBE MSF Feet.osd\FeetDome</Data>
+        </Slider>
+        <Slider name="Intrinsic" invert="false" small="0" big="0">
+            <Data name="FeetIntrinsic" target="Feet" local="true">CBBE MSF Feet.osd\FeetIntrinsic</Data>
+        </Slider>
+        <Slider name="Ball" invert="false" small="0" big="0">
+            <Data name="FeetBall" target="Feet" local="true">CBBE MSF Feet.osd\FeetBall</Data>
+        </Slider>
+        <Slider name="Wakfu" invert="false" small="0" big="0">
+            <Data name="FeetWakfu" target="Feet" local="true">CBBE MSF Feet.osd\FeetWakfu</Data>
+        </Slider>
+        <Slider name="Toes Longer" invert="false" small="0" big="0">
+            <Data name="FeetToes Longer" target="Feet" local="true">CBBE MSF Feet.osd\FeetToes Longer</Data>
+        </Slider>
+        <Slider name="Longer" invert="false" small="0" big="0">
+            <Data name="FeetLonger" target="Feet" local="true">CBBE MSF Feet.osd\FeetLonger</Data>
+        </Slider>
+        <Slider name="Alt BigToe Nail" invert="false" small="0" big="0">
+            <Data name="FeetAlt BigToe Nail" target="Feet" local="true">CBBE MSF Feet.osd\FeetAlt BigToe Nail</Data>
+        </Slider>
+        <Slider name="BigToe Longer" invert="false" small="0" big="0">
+            <Data name="FeetBigToe Longer" target="Feet" local="true">CBBE MSF Feet.osd\FeetBigToe Longer</Data>
+        </Slider>
+        <Slider name="Alt 2ndToe" invert="false" small="0" big="0">
+            <Data name="FeetAlt 2ndToe" target="Feet" local="true">CBBE MSF Feet.osd\FeetAlt 2ndToe</Data>
+        </Slider>
+        <Slider name="Toes Alignement" invert="false" small="0" big="0">
+            <Data name="FeetToes Alignement" target="Feet" local="true">CBBE MSF Feet.osd\FeetToes Alignement</Data>
+        </Slider>
+        <Slider name="Slim Toes" invert="false" small="0" big="0">
+            <Data name="FeetSlim Toes" target="Feet" local="true">CBBE MSF Feet.osd\FeetSlim Toes</Data>
+        </Slider>
+        <Slider name="Chubby Toes" invert="false" small="0" big="0">
+            <Data name="FeetChubby Toes" target="Feet" local="true">CBBE MSF Feet.osd\FeetChubby Toes</Data>
+        </Slider>
+        <Slider name="Alt Nails" invert="false" small="0" big="0">
+            <Data name="FeetAlt Nails" target="Feet" local="true">CBBE MSF Feet.osd\FeetAlt Nails</Data>
+        </Slider>
+        <Slider name="Nails Longer" invert="false" small="0" big="0">
+            <Data name="FeetNails Longer" target="Feet" local="true">CBBE MSF Feet.osd\FeetNails Longer</Data>
+        </Slider>
+        <Slider name="Alt BigToe" invert="false" small="0" big="0">
+            <Data name="FeetAlt BigToe" target="Feet" local="true">CBBE MSF Feet.osd\FeetAlt BigToe</Data>
+        </Slider>
+        <Slider name="BigToe Spreading" invert="false" small="0" big="0">
+            <Data name="FeetBigToe Spreading" target="Feet" local="true">CBBE MSF Feet.osd\FeetBigToe Spreading</Data>
+        </Slider>
+        <Slider name="Plated BigToe" invert="false" small="0" big="0">
+            <Data name="FeetPlated BigToe" target="Feet" local="true">CBBE MSF Feet.osd\FeetPlated BigToe</Data>
+        </Slider>
+        <Slider name="Before Toes" invert="false" small="0" big="0">
+            <Data name="FeetBefore Toes" target="Feet" local="true">CBBE MSF Feet.osd\FeetBefore Toes</Data>
+        </Slider>
+        <Slider name="Tight Toes" invert="false" small="0" big="0">
+            <Data name="FeetTight Toes" target="Feet" local="true">CBBE MSF Feet.osd\FeetTight Toes</Data>
+        </Slider>
+        <Slider name="High Heel" invert="false" small="0" big="0">
+            <Data name="FeetHigh Heel" target="Feet" local="true">CBBE MSF Feet.osd\FeetHigh Heel</Data>
+        </Slider>
+    </SliderSet>

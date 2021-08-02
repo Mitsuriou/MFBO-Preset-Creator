@@ -4,6 +4,7 @@
 #include "BatchConversion.h"
 #include "Enum.h"
 #include "PresetCreator.h"
+#include "ReleaseNotesViewer.h"
 #include "RetargetingTool.h"
 #include "Settings.h"
 #include "TexturesAssistant.h"
@@ -15,8 +16,6 @@
 #include <QDesktopServices>
 #include <QDropEvent>
 #include <QFileInfo>
-#include <QJsonArray>
-#include <QJsonDocument>
 #include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
@@ -246,8 +245,7 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addAction(lOpenUpdate);
 
   // Action: Open current version's release notes
-  auto lOpenCurrentVersionReleaseNotes{Utils::buildQAction(this, tr("Current version's release notes") + (" (TODO)"), QKeySequence(), "text-snippet", lIconFolder)};
-  lOpenCurrentVersionReleaseNotes->setDisabled(true);
+  auto lOpenCurrentVersionReleaseNotes{Utils::buildQAction(this, tr("Current version's release notes"), QKeySequence(), "text-snippet", lIconFolder)};
   lHelp->addAction(lOpenCurrentVersionReleaseNotes);
 
   // Submenu: Report a bug
@@ -757,7 +755,7 @@ void MFBOPresetCreator::launchUpdateDialog()
 
 void MFBOPresetCreator::launchCurrentVersionReleaseNotes()
 {
-  // TODO
+  new ReleaseNotesViewer(this, this->mSettings);
 }
 
 void MFBOPresetCreator::reportBugNexusMods()

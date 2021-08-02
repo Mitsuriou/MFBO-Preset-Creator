@@ -32,10 +32,10 @@ void About::setWindowProperties()
 
 void About::initializeGUI()
 {
-  // Main window container
-  auto lMainVertical{new QVBoxLayout(this)};
-  lMainVertical->setAlignment(Qt::AlignCenter);
-  lMainVertical->setContentsMargins(20, 20, 20, 20);
+  // Set a layout for this dialog box
+  this->setLayout(new QVBoxLayout(this));
+  this->layout()->setAlignment(Qt::AlignCenter);
+  this->layout()->setContentsMargins(10, 10, 10, 10);
 
   // Hacky links' colors override for some themes
   auto lLinksColorOverride{QString()};
@@ -89,5 +89,5 @@ void About::initializeGUI()
   lTextContainer->setText(lDescription);
   lTextContainer->adjustSize();
   lTextContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-  lMainVertical->addWidget(lTextContainer);
+  this->layout()->addWidget(lTextContainer);
 }
