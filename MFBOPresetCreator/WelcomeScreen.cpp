@@ -309,17 +309,17 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     lStableStatusLabel->setText(tr("An error has occured while analyzing GitHub's API data. Please retry in a few seconds."));
   }
   // A new version is available
-  else if (!lVersionsInformation.isRunningBetaVersion(lCurrentVersion) && Utils::compareVersionNumbers(lVersionsInformation.getStableVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  else if (!lVersionsInformation.isRunningBetaVersion(lCurrentVersion) && Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
   {
     lBrowserStableReleaseNotes->show();
-    lStableStatusLabel->setText(tr("The new stable version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getStableVersionAt(0)));
+    lStableStatusLabel->setText(tr("The new stable version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getLatestStableVersionNumber()));
     this->findChild<QPushButton*>(QString("download_stable_update"))->show();
   }
   // Already running the latest version
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getStableVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
+  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
   {
     lBrowserStableReleaseNotes->show();
-    lStableStatusLabel->setText(tr("You are already running the latest stable version \"%1\".").arg(lVersionsInformation.getStableVersionAt(0)));
+    lStableStatusLabel->setText(tr("You are already running the latest stable version \"%1\".").arg(lVersionsInformation.getLatestStableVersionNumber()));
   }
   else if (lVersionsInformation.isRunningBetaVersion(lCurrentVersion))
   {
@@ -328,7 +328,7 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     this->findChild<QPushButton*>(QString("download_stable_update"))->show();
   }
   // Running a developper version (since the current version number is higher than the latest one available on GitHub)
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getStableVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::OLDER)
+  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::OLDER)
   {
     lBrowserStableReleaseNotes->show();
     lStableStatusLabel->setText(tr("You are running a developer version."));
@@ -356,21 +356,21 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     lBetaStatusLabel->setText(tr("No BETA version found on GitHub."));
   }
   // The BETA version is older than the current stable
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lVersionsInformation.getStableVersionAt(0)) == ApplicationVersionRelative::OLDER)
+  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::OLDER)
   {
     lBetaStatusLabel->setText(tr("No newer BETA version is currently available."));
   }
   // Already running the latest version
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
+  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
   {
     lBrowserBetaReleaseNotes->show();
-    lBetaStatusLabel->setText(tr("You are already running the latest BETA version \"%1\".").arg(lVersionsInformation.getBetaVersionAt(0)));
+    lBetaStatusLabel->setText(tr("You are already running the latest BETA version \"%1\".").arg(lVersionsInformation.getLatestBetaVersionNumber()));
   }
   // Running a developper version (since the current version number is higher than the latest one available on GitHub)
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
   {
     lBrowserBetaReleaseNotes->show();
-    lBetaStatusLabel->setText(tr("The new BETA version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getBetaVersionAt(0)));
+    lBetaStatusLabel->setText(tr("The new BETA version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getLatestBetaVersionNumber()));
     this->findChild<QPushButton*>(QString("download_beta_update"))->show();
   }
 }

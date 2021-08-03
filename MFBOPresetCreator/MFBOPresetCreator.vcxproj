@@ -250,7 +250,9 @@ echo #####################################################</Command>
     <ClCompile Include="TexturesAssistant.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="VersionsInformation.cpp" />
     <ClCompile Include="WelcomeScreen.cpp" />
+    <ClInclude Include="VersionsInformation.h" />
     <QtMoc Include="WelcomeScreen.h" />
     <QtMoc Include="TexturesAssistant.h" />
     <QtMoc Include="TextInputDialog.h" />

@@ -560,23 +560,23 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     if (lVersionsInformation.sizeStableVersionsList() > 0 && lVersionsInformation.sizeBetaVersionsList() > 0)
     {
       // A new BETA version is available and no newer stable available
-      if (Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER
-          && Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lVersionsInformation.getStableVersionAt(0)) == ApplicationVersionRelative::NEWER)
+      if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER
+          && Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::NEWER)
       {
         this->mNewBetaVersionAvailable = true;
         lTitle = tr("BETA update available");
         lMessage = tr("You are currently running the version \"%1\".\nThe new BETA version \"%2\" is available on GitHub.\n\nDo you want to download it now?")
                      .arg(lCurrentVersion)
-                     .arg(lVersionsInformation.getBetaVersionAt(0));
+                     .arg(lVersionsInformation.getLatestBetaVersionNumber());
       }
       // A new stable version is available
-      else if (Utils::compareVersionNumbers(lVersionsInformation.getStableVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+      else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
       {
         this->mNewStableVersionAvailable = true;
         lTitle = tr("Stable update available");
         lMessage = tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\n\nDo you want to download it now?")
                      .arg(lCurrentVersion)
-                     .arg(lVersionsInformation.getStableVersionAt(0));
+                     .arg(lVersionsInformation.getLatestStableVersionNumber());
       }
     }
   }

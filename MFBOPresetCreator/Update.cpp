@@ -179,12 +179,12 @@ void Update::displayUpdateMessage(const QString& aResult)
   if (lVersionsInformation.sizeStableVersionsList() > 0 && lVersionsInformation.sizeBetaVersionsList() > 0)
   {
     // A new BETA version is available and no newer stable available
-    if (!this->mForceStableContext && Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER
-        && Utils::compareVersionNumbers(lVersionsInformation.getBetaVersionAt(0), lVersionsInformation.getStableVersionAt(0)) == ApplicationVersionRelative::NEWER)
+    if (!this->mForceStableContext && Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER
+        && Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::NEWER)
     {
       lUseStableVersionNotes = false;
 
-      this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getBetaVersionAt(0));
+      this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestBetaVersionNumber());
 
       // A new beta version is available
       QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
@@ -195,21 +195,21 @@ void Update::displayUpdateMessage(const QString& aResult)
 
       this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-      auto lVersionFileName = lVersionsInformation.getBetaVersionAt(0);
+      auto lVersionFileName = lVersionsInformation.getLatestBetaVersionNumber();
       lVersionFileName.replace(".", "-");
       this->mSaveFilePath = QString("%1/mfbopc-wizard-beta-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
       Utils::cleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new BETA version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the BETA version \"%2\":")
                               .arg(lCurrentVersion)
-                              .arg(lVersionsInformation.getBetaVersionAt(0))
+                              .arg(lVersionsInformation.getLatestBetaVersionNumber())
                               .arg(this->mSaveFilePath));
     }
     // A new stable version is available
-    else if (!this->mForceBetaContext && Utils::compareVersionNumbers(lVersionsInformation.getStableVersionAt(0), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+    else if (!this->mForceBetaContext && Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
     {
       lUseStableVersionNotes = true;
 
-      this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getStableVersionAt(0));
+      this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestStableVersionNumber());
 
       // A new stable version is available
       QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
@@ -220,13 +220,13 @@ void Update::displayUpdateMessage(const QString& aResult)
 
       this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-      auto lVersionFileName = lVersionsInformation.getStableVersionAt(0);
+      auto lVersionFileName = lVersionsInformation.getLatestStableVersionNumber();
       lVersionFileName.replace(".", "-");
       this->mSaveFilePath = QString("%1/mfbopc-wizard-stable-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
       Utils::cleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the stable version \"%2\":")
                               .arg(lCurrentVersion)
-                              .arg(lVersionsInformation.getStableVersionAt(0))
+                              .arg(lVersionsInformation.getLatestStableVersionNumber())
                               .arg(this->mSaveFilePath));
     }
     else

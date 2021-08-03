@@ -267,7 +267,7 @@ namespace Struct
       this->path = aPath;
     }
 
-    inline QString getPath() const
+    QString getPath() const
     {
       return this->path;
     }
@@ -322,120 +322,5 @@ namespace Struct
     std::map<QString, BatchConversionPresetData> presets;
 
     // TODO: Make this structure cleaner (with a constructor and private attributes)
-  };
-
-  struct VersionsInformation
-  {
-  public:
-    explicit VersionsInformation() {}
-
-    // Latest stable release notes
-    void setLatestStableReleaseNotes(const QString& aLatestStableReleaseNotes)
-    {
-      this->latestStableReleaseNotes = aLatestStableReleaseNotes;
-    }
-
-    QString getLatestStableReleaseNotes() const
-    {
-      return this->latestStableReleaseNotes;
-    }
-
-    const int sizeLatestStableReleaseNotes() const
-    {
-      return this->latestStableReleaseNotes.size();
-    }
-
-    // Stable versions list
-    void setStableVersions(const QStringList& aVersion)
-    {
-      this->stableVersions = aVersion;
-    }
-
-    QStringList getStableVersions() const
-    {
-      return this->stableVersions;
-    }
-
-    QString getStableVersionAt(const int aIndex) const
-    {
-      return this->stableVersions.at(aIndex);
-    }
-
-    const int sizeStableVersionsList() const
-    {
-      return this->stableVersions.size();
-    }
-
-    bool stableVersionsListContains(const QString& aVersion) const
-    {
-      return this->stableVersions.contains(aVersion);
-    }
-
-    void addStableVersionToList(const QString& aVersion)
-    {
-      this->stableVersions.append(aVersion);
-    }
-
-    // Latest BETA release notes
-    void setLatestBetaReleaseNotes(const QString& aVersion)
-    {
-      this->latestBetaReleaseNotes = aVersion;
-    }
-
-    QString getLatestBetaReleaseNotes() const
-    {
-      return this->latestBetaReleaseNotes;
-    }
-
-    const int sizeLatestBetaReleaseNotes() const
-    {
-      return this->latestBetaReleaseNotes.size();
-    }
-
-    // BETA versions list
-    void setBetaVersions(const QStringList& aBetaVersions)
-    {
-      this->betaVersions = aBetaVersions;
-    }
-
-    QStringList getBetaVersions() const
-    {
-      return this->betaVersions;
-    }
-
-    QString getBetaVersionAt(const int aIndex) const
-    {
-      return this->betaVersions.at(aIndex);
-    }
-
-    const int sizeBetaVersionsList() const
-    {
-      return this->betaVersions.size();
-    }
-
-    bool betaVersionsListContains(const QString& aVersion) const
-    {
-      return this->betaVersions.contains(aVersion);
-    }
-
-    void addBetaVersionToList(const QString& aVersion)
-    {
-      this->betaVersions.append(aVersion);
-    }
-
-    // Is running BETA version
-    bool isRunningBetaVersion(const QString& aCurrentApplicationVersion) const
-    {
-      return (this->betaVersions.size() > 0 && this->betaVersions.contains(aCurrentApplicationVersion));
-    }
-
-  private:
-    // Stable
-    QString latestStableReleaseNotes;
-    QStringList stableVersions;
-
-    // BETA
-    QString latestBetaReleaseNotes;
-    QStringList betaVersions{};
   };
 }

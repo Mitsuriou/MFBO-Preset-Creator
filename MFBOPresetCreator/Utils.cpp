@@ -203,9 +203,9 @@ ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTi
   return ButtonClicked::CLOSE_WINDOW;
 }
 
-Struct::VersionsInformation Utils::parseGitHubReleasesRequestResult(const QString& aResult)
+VersionsInformation Utils::parseGitHubReleasesRequestResult(const QString& aResult)
 {
-  Struct::VersionsInformation lVersionsInformation;
+  VersionsInformation lVersionsInformation;
   auto lTagName{QString()};
 
   // Create a JSON from the fetched string and parse the "tag_name" data
@@ -221,21 +221,11 @@ Struct::VersionsInformation Utils::parseGitHubReleasesRequestResult(const QStrin
     // Check if it is a stable or a BETA version
     if (lTagsArray.at(i)["prerelease"].toBool())
     {
-      // Save the latest beta's body tag value
-      if (lVersionsInformation.sizeLatestBetaReleaseNotes() == 0)
-        lVersionsInformation.setLatestBetaReleaseNotes(Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
-
-      // Add this version name to the beta versions list
-      lVersionsInformation.addBetaVersionToList(lTagName);
+      lVersionsInformation.appendBetaVersion(lTagName, Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
     }
     else
     {
-      // Save the latest stable's body tag value
-      if (lVersionsInformation.sizeLatestStableReleaseNotes() == 0)
-        lVersionsInformation.setLatestStableReleaseNotes(Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
-
-      // Add this version name to the stable versions list
-      lVersionsInformation.addStableVersionToList(lTagName);
+      lVersionsInformation.appendStableVersion(lTagName, Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
     }
   }
 

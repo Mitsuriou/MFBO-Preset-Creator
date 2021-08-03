@@ -36,14 +36,19 @@ void ReleaseNotesViewer::initializeGUI()
   this->setLayout(new QVBoxLayout(this));
   this->layout()->setAlignment(Qt::AlignTop);
 
-  /*============*/
-  /* Main title */
-  /*============*/
+  // Main title
   auto lMainTitle{new QLabel(tr("Current version's release notes"), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.font.size * 2));
   this->layout()->addWidget(lMainTitle);
 
+  // Fetch status
+  auto lFetchStatus{new QLabel(this)};
+  lFetchStatus->setObjectName("fetch_status");
+  lFetchStatus->hide();
+  this->layout()->addWidget(lFetchStatus);
+
+  // Viewer
   auto lViewer{new QTextBrowser(this)};
   lViewer->setObjectName("viewer");
   lViewer->setOpenExternalLinks(true);
@@ -73,6 +78,10 @@ void ReleaseNotesViewer::overrideHTMLLinksColor(QString& aHTMLString)
 
 void ReleaseNotesViewer::checkForUpdate()
 {
+  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
+  lFetchStatus->setText(tr("Contacting GitHub.com..."));
+  lFetchStatus->show();
+
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
@@ -97,23 +106,41 @@ void ReleaseNotesViewer::updateCheckFinished()
 
 void ReleaseNotesViewer::displayUpdateMessage(const QString& aResult)
 {
+  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
   auto lViewer{this->findChild<QTextBrowser*>(QString("viewer"))};
 
   // Display error messages to the user
   if (aResult == "fetch_error")
   {
-    // TODO
+    lFetchStatus->setText(tr("An error has occurred while searching for a new version.\nPlease make sure your internet connection is working correctly and try again."));
     return;
   }
 
   const auto lCurrentVersion{Utils::getApplicationVersion()};
   const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
 
-  // Set the release note in the text browser
-  lViewer->setMarkdown(lVersionsInformation.getLatestStableReleaseNotes());
+  if (lVersionsInformation.sizeStableVersionsList() > 0 && lVersionsInformation.sizeBetaVersionsList() > 0)
+  {
+    // Set the release note in the text browser
+    if (lVersionsInformation.isRunningBetaVersion(lCurrentVersion))
+    {
+      lFetchStatus->setText(tr("Below are the release notes for the BETA version \"%1\":").arg(lCurrentVersion));
+      lViewer->setMarkdown(lVersionsInformation.getBetaReleaseNotes(lCurrentVersion));
+    }
+    else if (lVersionsInformation.stableVersionsListContains(lCurrentVersion))
+    {
+      lFetchStatus->setText(tr("Below are the release notes for the stable version \"%1\":").arg(lCurrentVersion));
+      lViewer->setMarkdown(lVersionsInformation.getStableReleaseNotes(lCurrentVersion));
+    }
+    else
+    {
+      lFetchStatus->setText(tr("The release notes for the version \"%1\" has not been found.").arg(lCurrentVersion));
+      return;
+    }
 
-  // Links color override
-  auto lHTMLString{lViewer->toHtml()};
-  this->overrideHTMLLinksColor(lHTMLString);
-  lViewer->setHtml(lHTMLString);
+    // Links color override
+    auto lHTMLString{lViewer->toHtml()};
+    this->overrideHTMLLinksColor(lHTMLString);
+    lViewer->setHtml(lHTMLString);
+  }
 }
