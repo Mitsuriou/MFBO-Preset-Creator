@@ -272,10 +272,6 @@
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <source>No path given or invalid path given.</source>
-        <translation type="vanished">Aucun emplacement donné ou emplacement invalide donné.</translation>
-    </message>
-    <message>
         <location filename="BatchConversion.cpp" line="157"/>
         <source>Skeleton file (human):</source>
         <translation>Fichier de squelette (humaine) :</translation>
@@ -294,22 +290,6 @@
         <location filename="BatchConversion.cpp" line="193"/>
         <source>BodySlide</source>
         <translation>BodySlide</translation>
-    </message>
-    <message>
-        <source>Presets names:</source>
-        <translation type="vanished">Noms des presets :</translation>
-    </message>
-    <message>
-        <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
-        <translation type="vanished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
-    </message>
-    <message>
-        <source>Batch generate the files on my computer</source>
-        <translation type="vanished">Générer les multiples fichiers sur mon ordinateur</translation>
-    </message>
-    <message>
-        <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <translation type="vanished">Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
 </context>
 <context>
@@ -662,7 +642,7 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="174"/>
         <source>Welcome screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Écran d&apos;accueil</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="180"/>
@@ -708,12 +688,12 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="248"/>
         <source>Current version&apos;s release notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Notes de publication de la version actuelle</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="567"/>
         <source>BETA update available</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour BETA disponible</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="568"/>
@@ -721,12 +701,15 @@
 The new BETA version &quot;%2&quot; is available on GitHub.
 
 Do you want to download it now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez actuellement la version &quot;%1&quot;.
+La nouvelle version BETA &quot;%2&quot; est disponible sur GitHub.
+
+Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="576"/>
         <source>Stable update available</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour stable disponible</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="577"/>
@@ -734,11 +717,10 @@ Do you want to download it now?</source>
 The new stable version &quot;%2&quot; is available on GitHub.
 
 Do you want to download it now?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> (beta update available)</source>
-        <translation type="vanished"> (mise à jour beta disponible)</translation>
+        <translation>Vous utilisez actuellement la version &quot;%1&quot;.
+La nouvelle version stable &quot;%2&quot; est disponible sur GitHub.
+
+Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="252"/>
@@ -776,32 +758,6 @@ Do you want to download it now?</source>
         <translation>Voir le code source (gitlab.com)</translation>
     </message>
     <message>
-        <source>Application update available (beta)</source>
-        <translation type="vanished">Mise à jour de l&apos;application disponible (beta)</translation>
-    </message>
-    <message>
-        <source>You are currently running the beta version &quot;%1&quot;.
-The latest stable version is tagged &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-Do you want to download it now?</source>
-        <translation type="vanished">Vous utilisez actuellement la version beta &quot;%1&quot;.
-La dernière version stable est étiquetée &quot;%2&quot;.
-La dernière version beta &quot;%3&quot; est disponible sur GitHub.
-Voulez-vous la télécharger maintenant ?</translation>
-    </message>
-    <message>
-        <source>Application update available (stable)</source>
-        <translation type="vanished">Mise à jour de l&apos;application disponible (stable)</translation>
-    </message>
-    <message>
-        <source>You are currently running the stable version &quot;%1&quot;.
-The new stable version &quot;%2&quot; is available on GitHub.
-Do you want to download it now?</source>
-        <translation type="vanished">Vous utilisez actuellement la version stable &quot;%1&quot;.
-La dernière version stable &quot;%2&quot; est disponible sur GitHub.
-Voulez-vous la télécharger maintenant ?</translation>
-    </message>
-    <message>
         <location filename="MFBOPresetCreator.cpp" line="198"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
@@ -814,7 +770,7 @@ Voulez-vous la télécharger maintenant ?</translation>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="237"/>
         <source> (BETA update available)</source>
-        <translation type="unfinished"></translation>
+        <translation> (mise à jour BETA disponible)</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="239"/>
@@ -827,27 +783,11 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <source>Useful links</source>
-        <translation type="vanished">Liens utiles</translation>
-    </message>
-    <message>
         <location filename="MFBOPresetCreator.cpp" line="258"/>
         <location filename="MFBOPresetCreator.cpp" line="276"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <oldsource>Nexus Mods page</oldsource>
         <translation>Page Nexus Mods (nexusmods.com)</translation>
-    </message>
-    <message>
-        <source>User guide and tutorials (Google Docs)</source>
-        <translation type="vanished">Guide utilisateur et tutoriels (Google Docs)</translation>
-    </message>
-    <message>
-        <source>View the source code (GitHub.com)</source>
-        <translation type="vanished">Voir le code source (GitHub.com)</translation>
-    </message>
-    <message>
-        <source>View the source code (GitLab.com)</source>
-        <translation type="vanished">Voir le code source (GitLab.com)</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="292"/>
@@ -1098,18 +1038,6 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <source>The skeleton file could not be created even using the default skeleton. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="vanished">Le fichier de squelette n&apos;a pas pu être créé même en utilisant le squelette par défaut. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
-    </message>
-    <message>
-        <source>No path given or invalid path given.</source>
-        <translation type="vanished">Aucun emplacement donné ou emplacement invalide donné.</translation>
-    </message>
-    <message>
-        <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
-        <translation type="vanished">Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
-    </message>
-    <message>
         <location filename="PresetCreator.cpp" line="1327"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
@@ -1118,10 +1046,6 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <location filename="PresetCreator.cpp" line="1334"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
-    </message>
-    <message>
-        <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer. Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions. Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="vanished">Erreur pendant la création du répertoire principal : &quot;%1&quot; n&apos;a pas pû être créé sur votre ordinateur. Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes. Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1488"/>
@@ -1255,9 +1179,41 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <name>ReleaseNotesViewer</name>
     <message>
         <location filename="ReleaseNotesViewer.cpp" line="28"/>
-        <location filename="ReleaseNotesViewer.cpp" line="42"/>
+        <location filename="ReleaseNotesViewer.cpp" line="40"/>
         <source>Current version&apos;s release notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Notes de publication de la version actuelle</translation>
+    </message>
+    <message>
+        <location filename="ReleaseNotesViewer.cpp" line="82"/>
+        <source>Contacting GitHub.com...</source>
+        <translation>Contact de GitHub.com...</translation>
+    </message>
+    <message>
+        <location filename="ReleaseNotesViewer.cpp" line="115"/>
+        <source>An error has occurred while searching for a new version.
+Please make sure your internet connection is working correctly and try again.</source>
+        <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version.
+Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
+    </message>
+    <message>
+        <location filename="ReleaseNotesViewer.cpp" line="125"/>
+        <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
+        <translation>Une erreur s&apos;est produite lors de l&apos;analyse des données de l&apos;API GitHub. Veuillez réessayer dans quelques secondes.</translation>
+    </message>
+    <message>
+        <location filename="ReleaseNotesViewer.cpp" line="129"/>
+        <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
+        <translation>Ci-dessous sont les notes de publication pour la version BETA &quot;%1&quot; :</translation>
+    </message>
+    <message>
+        <location filename="ReleaseNotesViewer.cpp" line="134"/>
+        <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
+        <translation>Ci-dessous sont les notes de publication pour la version stable &quot;%1&quot; :</translation>
+    </message>
+    <message>
+        <location filename="ReleaseNotesViewer.cpp" line="139"/>
+        <source>The release notes for the version &quot;%1&quot; has not been found.</source>
+        <translation>Les notes de publication pour la version &quot;%1&quot; n&apos;ont pas été trouvées.</translation>
     </message>
 </context>
 <context>
@@ -1547,38 +1503,38 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <message>
         <location filename="Settings.cpp" line="250"/>
         <source>Startup actions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Actions de démarrage :</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="252"/>
         <source>Open the welcome screen (pop-up window)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir l&apos;écran d&apos;accueil (fenêtre pop-up)</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="257"/>
         <source>Check for updates only (pop-up window only if there is an update available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier les mises à jour uniquement (fenêtre pop-up uniquement s&apos;il y a une mise à jour disponible)</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="262"/>
         <source>Skip any check for updates and go directly to the main window</source>
         <oldsource>Each directory chooser button stores its own last opened path</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Ignorer toute vérification des mises à jour et aller directement à la fenêtre principale</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="268"/>
         <source>Smarter buttons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Boutons plus intelligents :</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="270"/>
         <source>Each directory chooser button stores its own last opened path.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chaque bouton de sélection de répertoire stocke son propre dernier chemin ouvert.</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="275"/>
         <source>Check/clear my browsing history</source>
-        <translation type="unfinished"></translation>
+        <translation>Consulter/effacer mon historique de navigation</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="296"/>
@@ -1600,12 +1556,12 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <message>
         <location filename="Settings.cpp" line="343"/>
         <source>Post-generation tasks:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tâches de post-génération :</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="345"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir automatiquement le répertoire de sortie du preset généré après une génération.</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="369"/>
@@ -1615,12 +1571,12 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <message>
         <location filename="Settings.cpp" line="424"/>
         <source>Software&apos; scan behavior:</source>
-        <translation type="unfinished"></translation>
+        <translation>Comportement de scan du logiciel :</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="426"/>
         <source>Only scan the &quot;meshes&quot; subdirectory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scanner seulement le sous-répertoire &quot;meshes&quot;.</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="446"/>
@@ -1678,14 +1634,6 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <source>Last used folder and files paths</source>
-        <translation type="vanished">Derniers chemins de dossiers et fichiers utilisés</translation>
-    </message>
-    <message>
-        <source>Check for updates at application startup</source>
-        <translation type="vanished">Vérifier les mises à jour au démarrage de l&apos;application</translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="331"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
@@ -1694,14 +1642,6 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <location filename="Settings.cpp" line="339"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
-    </message>
-    <message>
-        <source>Automatically open the generated preset&apos;s output directory after a generation</source>
-        <translation type="vanished">Ouvrir automatiquement le dossier d&apos;export du preset après une génération</translation>
-    </message>
-    <message>
-        <source>Only scan the &quot;meshes&quot; subdirectory</source>
-        <translation type="vanished">Scanner seulement le sous-répertoire &quot;meshes&quot;</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="456"/>
@@ -1925,76 +1865,6 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <source>You are currently running the developer version &quot;%1&quot;.
-The latest stable version is tagged &quot;%2&quot;.
-The latest beta version is tagged &quot;%3&quot;.
-
-Below are the release notes for the latest stable version:</source>
-        <translation type="vanished">Vous utilisez actuellement la version développeur &quot;%1&quot;.
-La dernière version stable est étiquetée &quot;%2&quot;.
-La dernière version beta est étiquetée &quot;%3&quot;.
-
-Vous trouverez ci-dessous les notes de version pour la dernière version stable :</translation>
-    </message>
-    <message>
-        <source>You are currently running the beta version &quot;%1&quot;.
-The latest stable version is tagged &quot;%2&quot;.
-The new beta version &quot;%3&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 11MB~.
-The download will be saved under &quot;%4&quot;.
-
-Below are the release notes for the beta version &quot;%3&quot;:</source>
-        <translation type="vanished">Vous utilisez actuellement la version beta &quot;%1&quot;.
-La dernière version stable est étiquetée &quot;%2&quot;.
-La nouvelle version beta &quot;%3&quot; est disponible sur GitHub.
-
-Cliquez sur le bouton de téléchargement ci-dessus pour commencer à télécharger la mise à jour.
-La taille du téléchargement est d&apos;environ 11Mo~.
-Le téléchargement sera enregistré sous &quot;%4&quot;.
-
-Vous trouverez ci-dessous les notes de mise à jour pour la version beta &quot;%3&quot; :</translation>
-    </message>
-    <message>
-        <source>You are currently running the stable version &quot;%1&quot;.
-The new stable version &quot;%2&quot; is available on GitHub.
-
-Click on the download button above to start downloading the update.
-The download size is about 11MB~.
-The download will be saved under &quot;%3&quot;.
-
-Below are the release notes for the stable version &quot;%2&quot;:</source>
-        <translation type="vanished">Vous utilisez actuellement la version stable &quot;%1&quot;.
-La nouvelle version stable &quot;%2&quot; est disponible sur GitHub.
-
-Cliquez sur le bouton de téléchargement ci-dessus pour commencer à télécharger la mise à jour.
-La taille du téléchargement est d&apos;environ 11Mo~.
-Le téléchargement sera enregistré sous &quot;%3&quot;.
-
-Vous trouverez ci-dessous les notes de mise à jour pour la version stable &quot;%2&quot; :</translation>
-    </message>
-    <message>
-        <source>You are already running the latest beta version</source>
-        <translation type="vanished">Vous utilisez déjà la dernière version beta</translation>
-    </message>
-    <message>
-        <source>Awesome! You are already running the latest beta version &quot;%1&quot;.
-Below are the release notes for this version:</source>
-        <translation type="vanished">Génial ! Vous utilisez déjà la dernière version beta &quot;%1&quot;.
-Vous trouverez ci-dessous les notes de mise à jour de cette version :</translation>
-    </message>
-    <message>
-        <source>You are already running the latest stable version</source>
-        <translation type="vanished">Vous utilisez déjà la dernière version stable</translation>
-    </message>
-    <message>
-        <source>Awesome! You are already running the latest stable version &quot;%1&quot;.
-Below are the release notes for this version:</source>
-        <translation type="vanished">Génial ! Vous utilisez déjà la dernière version stable &quot;%1&quot;.
-Vous trouverez ci-dessous les notes de mise à jour de cette version :</translation>
-    </message>
-    <message>
         <location filename="Update.cpp" line="133"/>
         <source>Contacting GitHub.com...</source>
         <translation>Contact de GitHub.com...</translation>
@@ -2011,10 +1881,6 @@ Vous trouverez ci-dessous les notes de mise à jour de cette version :</translat
         <translation>Vérifier une nouvelle fois les mises à jour</translation>
     </message>
     <message>
-        <source>You are running the version &quot;%1&quot;.</source>
-        <translation type="vanished">Vous utilisez la version &quot;%1&quot;.</translation>
-    </message>
-    <message>
         <location filename="Update.cpp" line="95"/>
         <source>Initializing...</source>
         <translation>Initialisation...</translation>
@@ -2027,10 +1893,6 @@ Please make sure your internet connection is working correctly and try again.</s
 Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
     </message>
     <message>
-        <source>You are running a developer version</source>
-        <translation type="vanished">Vous utilisez une version développeur</translation>
-    </message>
-    <message>
         <location filename="Update.cpp" line="193"/>
         <location filename="Update.cpp" line="194"/>
         <location filename="Update.cpp" line="218"/>
@@ -2041,12 +1903,12 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     <message>
         <location filename="Update.cpp" line="75"/>
         <source> (stable only)</source>
-        <translation type="unfinished"></translation>
+        <translation> (stable uniquement)</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="75"/>
         <source> (BETA only)</source>
-        <translation type="unfinished"></translation>
+        <translation> (BETA uniquement)</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="202"/>
@@ -2058,7 +1920,14 @@ The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
 Below are the release notes for the BETA version &quot;%2&quot;:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez actuellement la version &quot;%1&quot;.
+La nouvelle version BETA &quot;%2&quot; est disponible sur GitHub.
+
+Cliquez sur le bouton de téléchargement ci-dessus pour commencer à télécharger la mise à jour.
+La taille du téléchargement est d&apos;environ 11Mo~.
+Le téléchargement sera enregistré sous &quot;%3&quot;.
+
+Vous trouverez ci-dessous les notes de publication pour la version BETA &quot;%2&quot; :</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="227"/>
@@ -2070,18 +1939,25 @@ The download size is about 11MB~.
 The download will be saved under &quot;%3&quot;.
 
 Below are the release notes for the stable version &quot;%2&quot;:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez actuellement la version &quot;%1&quot;.
+La nouvelle version stable &quot;%2&quot; est disponible sur GitHub.
+
+Cliquez sur le bouton de téléchargement ci-dessus pour commencer à télécharger la mise à jour.
+La taille du téléchargement est d&apos;environ 11Mo~.
+Le téléchargement sera enregistré sous &quot;%3&quot;.
+
+Vous trouverez ci-dessous les notes de publication pour la version stable &quot;%2&quot; :</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="239"/>
         <location filename="Update.cpp" line="240"/>
         <source>Already running the latest version</source>
-        <translation type="unfinished"></translation>
+        <translation>Dernière version déjà en cours d&apos;utilisation</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="241"/>
         <source>Awesome! You are already running the latest available version.</source>
-        <translation type="unfinished"></translation>
+        <translation>Génial ! Vous utilisez déjà la dernière version disponible.</translation>
     </message>
     <message>
         <location filename="Update.cpp" line="266"/>
@@ -2144,34 +2020,34 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     </message>
     <message>
         <location filename="Utils.cpp" line="149"/>
-        <location filename="Utils.cpp" line="783"/>
+        <location filename="Utils.cpp" line="773"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="472"/>
+        <location filename="Utils.cpp" line="462"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>Le fichier interne &quot;%1&quot; n&apos;a pas pu être trouvé. Veuillez sigaler ce problème au développeur avec les étapes pour reproduire ce bug.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="492"/>
-        <location filename="Utils.cpp" line="525"/>
-        <location filename="Utils.cpp" line="618"/>
+        <location filename="Utils.cpp" line="482"/>
+        <location filename="Utils.cpp" line="515"/>
+        <location filename="Utils.cpp" line="608"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="777"/>
+        <location filename="Utils.cpp" line="767"/>
         <source>Project successfully saved</source>
         <translation>Projet sauvegardé avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="778"/>
+        <location filename="Utils.cpp" line="768"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>Le fichier de projet a été sauvegardé vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="792"/>
+        <location filename="Utils.cpp" line="782"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2180,18 +2056,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1391"/>
+        <location filename="Utils.cpp" line="1381"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1493"/>
-        <location filename="Utils.cpp" line="1517"/>
+        <location filename="Utils.cpp" line="1483"/>
+        <location filename="Utils.cpp" line="1507"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1511"/>
+        <location filename="Utils.cpp" line="1501"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
@@ -2201,118 +2077,143 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <message>
         <location filename="WelcomeScreen.cpp" line="68"/>
         <source>Welcome screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Écran d&apos;accueil</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="83"/>
         <source>Show the welcome screen at application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer l&apos;écran d&apos;accueil au démarrage de l&apos;application</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="92"/>
         <source>MFBO: Preset Creator v.%1</source>
-        <translation type="unfinished"></translation>
+        <translation>MFBO: Preset Creator v.%1</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="119"/>
+        <source>Latest stable release notes</source>
+        <translation>Notes de publication de la dernière version stable</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="104"/>
+        <location filename="WelcomeScreen.cpp" line="129"/>
+        <location filename="WelcomeScreen.cpp" line="152"/>
+        <source>Contacting GitHub.com...</source>
+        <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="101"/>
-        <source>Latest stable release notes</source>
-        <translation type="unfinished"></translation>
+        <source>Current version&apos;s release notes</source>
+        <translation>Notes de publication de la version actuelle</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="111"/>
         <location filename="WelcomeScreen.cpp" line="134"/>
-        <source>Contacting GitHub.com...</source>
-        <translation type="unfinished">Contact de GitHub.com...</translation>
-    </message>
-    <message>
-        <location filename="WelcomeScreen.cpp" line="116"/>
         <source>Download the latest stable update</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécharger la dernière mis à jour stable</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="124"/>
+        <location filename="WelcomeScreen.cpp" line="142"/>
         <source>Latest BETA release notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Notes de publication de la dernière version BETA</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="139"/>
+        <location filename="WelcomeScreen.cpp" line="157"/>
         <source>Download the latest BETA update</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécharger la dernière mis à jour BETA</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="146"/>
+        <location filename="WelcomeScreen.cpp" line="164"/>
         <source>Incoming features</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonctionnalités à venir</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="161"/>
+        <location filename="WelcomeScreen.cpp" line="179"/>
         <source>Known issues</source>
-        <translation type="unfinished"></translation>
+        <translation>Problèmes connus</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="175"/>
+        <location filename="WelcomeScreen.cpp" line="193"/>
         <source>User guide and tutorials</source>
-        <translation type="unfinished"></translation>
+        <translation>Guide utilisateur et tutoriels</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="177"/>
+        <location filename="WelcomeScreen.cpp" line="195"/>
         <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:</source>
-        <translation type="unfinished"></translation>
+        <translation>Que ce soit votre première utilisation de l&apos;application ou que vous vous demandiez comment fonctionne une fonction particulière, vous devriez consulter le guide utilisateur et les tutoriels détaillés en cliquant sur le lien ci-dessous :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="284"/>
-        <location filename="WelcomeScreen.cpp" line="285"/>
+        <location filename="WelcomeScreen.cpp" line="303"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une erreur s&apos;est produite...
+Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="309"/>
-        <location filename="WelcomeScreen.cpp" line="351"/>
+        <location filename="WelcomeScreen.cpp" line="323"/>
+        <location filename="WelcomeScreen.cpp" line="366"/>
+        <location filename="WelcomeScreen.cpp" line="407"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une erreur s&apos;est produite lors de l&apos;analyse des données de l&apos;API GitHub. Veuillez réessayer dans quelques secondes.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="315"/>
+        <location filename="WelcomeScreen.cpp" line="328"/>
+        <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
+        <translation>Ci-dessous sont les notes de publication pour la version BETA &quot;%1&quot; :</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="339"/>
+        <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
+        <translation>Ci-dessous sont les notes de publication pour la version stable &quot;%1&quot; :</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="349"/>
+        <source>The release notes for the version &quot;%1&quot; has not been found.</source>
+        <translation>Les notes de publication pour la version &quot;%1&quot; n&apos;ont pas été trouvées.</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="372"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
-        <translation type="unfinished"></translation>
+        <translation>La nouvelle version stable &quot;%1&quot; est disponible sur GitHub.
+Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="327"/>
+        <location filename="WelcomeScreen.cpp" line="383"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez une version BETA. Ci-dessus sont affichées les notes de publication pour la dernière version stable disponible.
+Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="373"/>
+        <location filename="WelcomeScreen.cpp" line="428"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
-        <translation type="unfinished"></translation>
+        <translation>La nouvelle version BETA &quot;%1&quot; est disponible sur GitHub.
+Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="322"/>
+        <location filename="WelcomeScreen.cpp" line="378"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez déjà la dernière version stable &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="334"/>
+        <location filename="WelcomeScreen.cpp" line="390"/>
         <source>You are running a developer version.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez une version développeur.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="356"/>
+        <location filename="WelcomeScreen.cpp" line="412"/>
         <source>No BETA version found on GitHub.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune version BETA trouvée sur GitHub.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="361"/>
+        <location filename="WelcomeScreen.cpp" line="417"/>
         <source>No newer BETA version is currently available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune nouvelle version BETA n&apos;est disponible actuellement.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="367"/>
+        <location filename="WelcomeScreen.cpp" line="422"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez déjà la dernière version BETA &quot;%1&quot;.</translation>
     </message>
 </context>
 </TS>

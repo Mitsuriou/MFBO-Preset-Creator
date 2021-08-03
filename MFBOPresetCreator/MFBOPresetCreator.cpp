@@ -40,10 +40,8 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
 #endif
 
   // Check for new versions
-  if (this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN
-      || this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES)
+  if (this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN || this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES)
   {
-    Utils::printMessageStdOut("Checking for updates...");
     this->checkForUpdate();
   }
   else
