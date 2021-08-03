@@ -94,6 +94,24 @@ void WelcomeScreen::initializeGUI()
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.font.size * 2));
   lMainLayout->addWidget(lMainTitle);
 
+  /*=================*/
+  /* CURRENT VERSION */
+  /*=================*/
+  // Current version's release notes
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Current version's release notes"), this->mSettings.font.size));
+
+  // Current version's status label
+  auto lCurrentVersionStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
+  lCurrentVersionStatusLabel->setObjectName("current_version_status_label");
+  lMainLayout->addWidget(lCurrentVersionStatusLabel);
+
+  // Current version's release notes
+  auto lBrowserCurrentVersionReleaseNotes{new QTextBrowser(this)};
+  lBrowserCurrentVersionReleaseNotes->setObjectName("browser_current_version");
+  lBrowserCurrentVersionReleaseNotes->setOpenExternalLinks(true);
+  lBrowserCurrentVersionReleaseNotes->hide();
+  lMainLayout->addWidget(lBrowserCurrentVersionReleaseNotes);
+
   /*========*/
   /* STABLE */
   /*========*/
@@ -275,22 +293,61 @@ void WelcomeScreen::updateCheckFinished()
 
 void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 {
+  auto lCurrentVersionStatusLabel{this->findChild<QLabel*>(QString("current_version_status_label"))};
   auto lStableStatusLabel{this->findChild<QLabel*>(QString("stable_status_label"))};
   auto lBetaStatusLabel{this->findChild<QLabel*>(QString("beta_status_label"))};
 
   // Display error messages to the user
   if (aResult == "fetch_error")
   {
-    lStableStatusLabel->setText(tr("An error has occurred... Make sure your internet connection is operational and try again."));
-    lBetaStatusLabel->setText(tr("An error has occurred... Make sure your internet connection is operational and try again."));
+    auto lErrorText{tr("An error has occurred... Make sure your internet connection is operational and try again.")};
+    lCurrentVersionStatusLabel->setText(lErrorText);
+    lStableStatusLabel->setText(lErrorText);
+    lBetaStatusLabel->setText(lErrorText);
     return;
   }
 
+  auto lBrowserCurrentVersionReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_current_version"))};
   auto lBrowserStableReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_stable"))};
   auto lBrowserBetaReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_beta"))};
 
   const auto lCurrentVersion{Utils::getApplicationVersion()};
   const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
+
+  /*=================*/
+  /* CURRENT VERSION */
+  /*=================*/
+  // Set the release note in the text browser
+  if (lVersionsInformation.sizeStableVersionsList() == 0 && lVersionsInformation.sizeBetaVersionsList() == 0)
+  {
+    lCurrentVersionStatusLabel->setText(tr("An error has occured while analyzing GitHub's API data. Please retry in a few seconds."));
+  }
+  else if (lVersionsInformation.isRunningBetaVersion(lCurrentVersion))
+  {
+    lBrowserCurrentVersionReleaseNotes->show();
+    lCurrentVersionStatusLabel->setText(tr("Below are the release notes for the BETA version \"%1\":").arg(lCurrentVersion));
+    lBrowserCurrentVersionReleaseNotes->setMarkdown(lVersionsInformation.getBetaReleaseNotes(lCurrentVersion));
+
+    // Links color override
+    auto lHTMLString{lBrowserCurrentVersionReleaseNotes->toHtml()};
+    this->overrideHTMLLinksColor(lHTMLString);
+    lBrowserCurrentVersionReleaseNotes->setHtml(lHTMLString);
+  }
+  else if (lVersionsInformation.stableVersionsListContains(lCurrentVersion))
+  {
+    lBrowserCurrentVersionReleaseNotes->show();
+    lCurrentVersionStatusLabel->setText(tr("Below are the release notes for the stable version \"%1\":").arg(lCurrentVersion));
+    lBrowserCurrentVersionReleaseNotes->setMarkdown(lVersionsInformation.getStableReleaseNotes(lCurrentVersion));
+
+    // Links color override
+    auto lHTMLString{lBrowserCurrentVersionReleaseNotes->toHtml()};
+    this->overrideHTMLLinksColor(lHTMLString);
+    lBrowserCurrentVersionReleaseNotes->setHtml(lHTMLString);
+  }
+  else
+  {
+    lCurrentVersionStatusLabel->setText(tr("The release notes for the version \"%1\" has not been found.").arg(lCurrentVersion));
+  }
 
   /*========*/
   /* STABLE */
@@ -318,7 +375,6 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
   // Already running the latest version
   else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
   {
-    lBrowserStableReleaseNotes->show();
     lStableStatusLabel->setText(tr("You are already running the latest stable version \"%1\".").arg(lVersionsInformation.getLatestStableVersionNumber()));
   }
   else if (lVersionsInformation.isRunningBetaVersion(lCurrentVersion))
@@ -363,7 +419,6 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
   // Already running the latest version
   else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
   {
-    lBrowserBetaReleaseNotes->show();
     lBetaStatusLabel->setText(tr("You are already running the latest BETA version \"%1\".").arg(lVersionsInformation.getLatestBetaVersionNumber()));
   }
   // Running a developper version (since the current version number is higher than the latest one available on GitHub)

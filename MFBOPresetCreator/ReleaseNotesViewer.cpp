@@ -119,28 +119,29 @@ void ReleaseNotesViewer::displayUpdateMessage(const QString& aResult)
   const auto lCurrentVersion{Utils::getApplicationVersion()};
   const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
 
-  if (lVersionsInformation.sizeStableVersionsList() > 0 && lVersionsInformation.sizeBetaVersionsList() > 0)
+  // Set the release note in the text browser
+  if (lVersionsInformation.sizeStableVersionsList() == 0 && lVersionsInformation.sizeBetaVersionsList() == 0)
   {
-    // Set the release note in the text browser
-    if (lVersionsInformation.isRunningBetaVersion(lCurrentVersion))
-    {
-      lFetchStatus->setText(tr("Below are the release notes for the BETA version \"%1\":").arg(lCurrentVersion));
-      lViewer->setMarkdown(lVersionsInformation.getBetaReleaseNotes(lCurrentVersion));
-    }
-    else if (lVersionsInformation.stableVersionsListContains(lCurrentVersion))
-    {
-      lFetchStatus->setText(tr("Below are the release notes for the stable version \"%1\":").arg(lCurrentVersion));
-      lViewer->setMarkdown(lVersionsInformation.getStableReleaseNotes(lCurrentVersion));
-    }
-    else
-    {
-      lFetchStatus->setText(tr("The release notes for the version \"%1\" has not been found.").arg(lCurrentVersion));
-      return;
-    }
-
-    // Links color override
-    auto lHTMLString{lViewer->toHtml()};
-    this->overrideHTMLLinksColor(lHTMLString);
-    lViewer->setHtml(lHTMLString);
+    lFetchStatus->setText(tr("An error has occured while analyzing GitHub's API data. Please retry in a few seconds."));
   }
+  else if (lVersionsInformation.isRunningBetaVersion(lCurrentVersion))
+  {
+    lFetchStatus->setText(tr("Below are the release notes for the BETA version \"%1\":").arg(lCurrentVersion));
+    lViewer->setMarkdown(lVersionsInformation.getBetaReleaseNotes(lCurrentVersion));
+  }
+  else if (lVersionsInformation.stableVersionsListContains(lCurrentVersion))
+  {
+    lFetchStatus->setText(tr("Below are the release notes for the stable version \"%1\":").arg(lCurrentVersion));
+    lViewer->setMarkdown(lVersionsInformation.getStableReleaseNotes(lCurrentVersion));
+  }
+  else
+  {
+    lFetchStatus->setText(tr("The release notes for the version \"%1\" has not been found.").arg(lCurrentVersion));
+    return;
+  }
+
+  // Links color override
+  auto lHTMLString{lViewer->toHtml()};
+  this->overrideHTMLLinksColor(lHTMLString);
+  lViewer->setHtml(lHTMLString);
 }
