@@ -1,4 +1,5 @@
 #include "BCDragWidget.h"
+#include "Utils.h"
 #include <QApplication>
 #include <QDrag>
 #include <QGridLayout>
@@ -8,20 +9,27 @@
 #include <QMouseEvent>
 #include <QVBoxLayout>
 
-BCDragWidget::BCDragWidget(QWidget* aParent, const QString& aOriginFolder, const QString& aPath)
+BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aPath)
   : QWidget(aParent)
 {
-  // Create the layout
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(aSettings.appTheme)};
+
+  // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
   lMainLayout->setMargin(0);
   this->setLayout(lMainLayout);
 
   auto lSection{new QGroupBox(tr("Preset data"), this)};
+  // TODO: Add an icon
+  // TODO: Add the collapse button
 
   auto lSectionLayout{new QGridLayout(this)};
   lSectionLayout->setSpacing(10);
   lSectionLayout->setContentsMargins(15, 20, 15, 15);
   lSectionLayout->setAlignment(Qt::AlignTop);
+  lSectionLayout->setColumnStretch(0, 0);
+  lSectionLayout->setColumnStretch(1,1);
   lSection->setLayout(lSectionLayout);
 
   lMainLayout->addWidget(lSection);

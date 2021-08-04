@@ -203,7 +203,7 @@ int main(int argc, char* argv[])
     MFBOPresetCreator lMainWindow(lSettings, lInjectedFilePath);
 
     // Avoid re-injecting the file a second time if quick reloading the application
-    lInjectedFilePath = "";
+    lInjectedFilePath.clear();
 
     // Make the splash screen disappear when the main window is displayed
     lSplashScreen.finish(&lMainWindow);

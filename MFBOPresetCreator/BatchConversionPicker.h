@@ -26,10 +26,15 @@ private:
   void displayLeftList();
 
   // Update the GUI
-  void leftListIndexChanged();
+  void refreshMiddleList();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
 
+  // Presets construction related fuctions
+  void removeDataFromActiveMiddleList(const QString& aPathToRemove);
+  void addDataToActiveMiddleList(const QString& aPathToRemove);
+
+  //
   void validateSelection();
 
   // GUI widgets events

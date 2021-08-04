@@ -40,7 +40,8 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
 
   // Show the window when it's completely built
   this->adjustSize();
-  this->show();
+  //this->show(); // TODO: Add a user option to open directly maximized or not
+  this->showMaximized();
 }
 
 void BatchConversion::closeEvent(QCloseEvent* aEvent)

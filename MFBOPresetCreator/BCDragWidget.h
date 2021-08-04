@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Struct.h"
 #include <QWidget>
 
 class BCDragWidget : public QWidget
@@ -7,7 +8,7 @@ class BCDragWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit BCDragWidget(QWidget* aParent, const QString& aOriginFolder, const QString& aPath);
+  explicit BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aPath);
 
 protected:
   void mousePressEvent(QMouseEvent* aEvent) override;

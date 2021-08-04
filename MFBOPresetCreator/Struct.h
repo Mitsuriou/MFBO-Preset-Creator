@@ -63,10 +63,10 @@ namespace Struct
     }
 
   private:
-    QString name{};
-    QString meshPart{};
-    QString outputPath{};
-    QString outputFile{};
+    QString name{""};
+    QString meshPart{""};
+    QString outputPath{""};
+    QString outputFile{""};
   };
 
   struct Font

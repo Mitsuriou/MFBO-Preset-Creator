@@ -8,6 +8,11 @@ class BCDropWidget : public QWidget
 
 public:
   explicit BCDropWidget(QWidget* aParent);
+  QString getRessourcePath();
+  void resetData();
+
+signals:
+  void dropEventTriggered(const QString& aPathToRemove);
 
 protected:
   void dragEnterEvent(QDragEnterEvent* aEvent) override;
@@ -16,4 +21,5 @@ protected:
 
 private:
   bool mHasReceivedData{false};
+  QString mPath;
 };

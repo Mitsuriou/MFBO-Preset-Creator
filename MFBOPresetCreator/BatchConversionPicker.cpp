@@ -90,49 +90,84 @@ void BatchConversionPicker::initializeGUI()
   auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
   lMainLayout->addWidget(lSplitter, 0, 0);
 
+  /*===========*/
+  /* Left list */
+  /*===========*/
+  // Layout
+  auto lLeftLayout{new QVBoxLayout(this)};
+  lLeftLayout->setMargin(0);
+  lLeftLayout->setAlignment(Qt::AlignTop);
+
+  // Wrapper widget
+  auto lLeftWrapper{new QWidget(this)};
+  lLeftWrapper->setLayout(lLeftLayout);
+  lSplitter->addWidget(lLeftWrapper);
+
+  // Title
+  auto lLeftTitle{new QLabel(tr("Found mods (click to display the data)"))};
+  lLeftTitle->setAlignment(Qt::AlignCenter);
+  lLeftLayout->addWidget(lLeftTitle);
+
   // Paths list
-  auto lPathsList{new QListWidget(this)};
-  lPathsList->setObjectName("paths_list");
-  lPathsList->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-  lPathsList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-  lSplitter->addWidget(lPathsList);
+  auto lLeftList{new QListWidget(this)};
+  lLeftList->setObjectName("left_list");
+  lLeftList->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+  lLeftList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+  lLeftLayout->addWidget(lLeftList);
 
-  // Available options list
-  auto lOptionsList{new QVBoxLayout(this)};
-  lOptionsList->setAlignment(Qt::AlignTop);
-  lOptionsList->setObjectName("options_list");
+  /*=============*/
+  /* Middle list */
+  /*=============*/
+  // Layout (the BCDragWidget components will be directly in this layout)
+  auto lMiddleList{new QVBoxLayout(this)};
+  lMiddleList->setAlignment(Qt::AlignTop);
+  lMiddleList->setObjectName("middle_list");
 
-  // Middle wrapper
+  // Wrapper widget
   auto lMiddleWrapper{new QWidget(this)};
-  lMiddleWrapper->setObjectName("middle_wrapper");
-  lMiddleWrapper->setLayout(lOptionsList);
+  lMiddleWrapper->setLayout(lMiddleList);
   lSplitter->addWidget(lMiddleWrapper);
 
-  // Preset maker
-  auto lDataMaker{new QVBoxLayout(this)};
-  lDataMaker->setAlignment(Qt::AlignTop);
-  lDataMaker->setObjectName("data_maker");
+  // Title
+  auto lMiddleTitle{new QLabel(tr("Available data (drag these entries)"))};
+  lMiddleTitle->setAlignment(Qt::AlignCenter);
+  lMiddleList->addWidget(lMiddleTitle);
 
-  // Right wrapper
+  /*============*/
+  /* Right list */
+  /*============*/
+  // Layout
+  auto lRightLayout{new QVBoxLayout(this)};
+  lRightLayout->setAlignment(Qt::AlignTop);
+
+  // Wrapper widget
   auto lRightWrapper{new QWidget(this)};
-  lRightWrapper->setLayout(lDataMaker);
+  lRightWrapper->setLayout(lRightLayout);
   lSplitter->addWidget(lRightWrapper);
 
-  auto lDropSectionBody{new BCGroupWidget(this, tr("Body"))};
-  lDataMaker->addWidget(lDropSectionBody);
+  // Title
+  auto lRightTitle{new QLabel(tr("Preset maker (drop the entries here)"))};
+  lRightTitle->setAlignment(Qt::AlignCenter);
+  lRightLayout->addWidget(lRightTitle);
 
-  auto lDropSectionFeet{new BCGroupWidget(this, tr("Feet"))};
-  lDataMaker->addWidget(lDropSectionFeet);
+  // Body drop widget
+  auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"))};
+  lRightLayout->addWidget(lDropSectionBody);
 
-  auto lDropSectionHands{new BCGroupWidget(this, tr("Hands"))};
-  lDataMaker->addWidget(lDropSectionHands);
+  // Feet drop widget
+  auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"))};
+  lRightLayout->addWidget(lDropSectionFeet);
+
+  // Hands drop widget
+  auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"))};
+  lRightLayout->addWidget(lDropSectionHands);
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
-  lDataMaker->addWidget(lBodyslideGroupBox);
+  lRightLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
@@ -190,18 +225,25 @@ void BatchConversionPicker::initializeGUI()
   this->updateBodyslideNamesPreview(QString());
 
   // Event binding
+  this->connect(lDropSectionBody, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  this->connect(lDropSectionBody, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+  this->connect(lDropSectionFeet, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  this->connect(lDropSectionFeet, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+  this->connect(lDropSectionHands, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  this->connect(lDropSectionHands, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
-  this->connect(lPathsList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::leftListIndexChanged);
+  this->connect(lLeftList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::refreshMiddleList);
 
   // Post-bind initialization functions
-  lPathsList->setCurrentRow(0);
+  lLeftList->setCurrentRow(0);
 }
 
 void BatchConversionPicker::displayLeftList()
 {
-  auto lPathsList{this->findChild<QListWidget*>(QString("paths_list"))};
+  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
   for (const auto& lEntry : this->mData.scannedData)
   {
     lPathsList->addItem(lEntry.first);
@@ -213,10 +255,10 @@ void BatchConversionPicker::displayLeftList()
   lPathsList->setFocus();
 }
 
-void BatchConversionPicker::leftListIndexChanged()
+void BatchConversionPicker::refreshMiddleList()
 {
   // Delete all children of the middle list
-  auto lOptionsList{this->findChild<QVBoxLayout*>(QString("options_list"))};
+  auto lOptionsList{this->findChild<QVBoxLayout*>(QString("middle_list"))};
 
   const auto lButtonsListSize{static_cast<int>(this->mMiddleListButtons.size())};
   for (int i = 0; i < lButtonsListSize; i++)
@@ -226,7 +268,7 @@ void BatchConversionPicker::leftListIndexChanged()
   }
 
   // Add the entries in the options list, based on the paths list' selected item
-  auto lPathsList{this->findChild<QListWidget*>(QString("paths_list"))};
+  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
   auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
@@ -236,7 +278,7 @@ void BatchConversionPicker::leftListIndexChanged()
     {
       for (const auto& lValue : lPosition->second)
       {
-        auto lButton{new BCDragWidget(this, lPosition->first, lValue)};
+        auto lButton{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
         this->mMiddleListButtons.push_back(lButton);
         lOptionsList->addWidget(lButton);
       }
@@ -304,6 +346,61 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_bodyslide_preview"))};
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
+}
+
+void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aPathToRemove)
+{
+  // Search to remove the used entry from the available data to make presets
+  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  auto lSelectedEntry{lPathsList->currentItem()};
+  if (lSelectedEntry != nullptr)
+  {
+    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
+
+    if (lPosition != this->mData.scannedData.end())
+    {
+      // Search the entry
+      auto lIterator{lPosition->second.begin()};
+      for (const auto& lValue : lPosition->second)
+      {
+        // Delete the entry
+        if (lValue == aPathToRemove)
+        {
+          lPosition->second.erase(lIterator);
+          break;
+        }
+
+        ++lIterator;
+      }
+    }
+  }
+
+  // Finally, refresh the middle list with the entry removed
+  refreshMiddleList();
+
+  // TODO: Track the changes in the output data
+}
+
+void BatchConversionPicker::addDataToActiveMiddleList(const QString& aPathToRemove)
+{
+  // Search to remove the used entry from the available data to make presets
+  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  auto lSelectedEntry{lPathsList->currentItem()};
+  if (lSelectedEntry != nullptr)
+  {
+    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
+
+    if (lPosition != this->mData.scannedData.end())
+    {
+      // Re-insert the wanted entry
+      lPosition->second.insert(aPathToRemove);
+    }
+  }
+
+  // Finally, refresh the middle list with the entry added
+  refreshMiddleList();
+
+  // TODO: Track the changes in the output data
 }
 
 void BatchConversionPicker::validateSelection()

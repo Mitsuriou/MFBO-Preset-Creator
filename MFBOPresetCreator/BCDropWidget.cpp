@@ -17,6 +17,21 @@ BCDropWidget::BCDropWidget(QWidget* aParent)
   lMainLayout->addWidget(lDebug);
 }
 
+QString BCDropWidget::getRessourcePath()
+{
+  return this->mPath;
+}
+
+void BCDropWidget::resetData()
+{
+  this->setAcceptDrops(true);
+  this->mHasReceivedData = false;
+  this->mPath.clear();
+
+  auto lDebug{this->findChild<QLabel*>(QString("data"))};
+  lDebug->setText("Drop something here...");
+}
+
 void BCDropWidget::dragEnterEvent(QDragEnterEvent* aEvent)
 {
   // Only accept drag events from a BCDragWidget widget
@@ -45,11 +60,19 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
   // BCDropWidget is only compatibl with the Qt::MoveAction
   if (aEvent->proposedAction() == Qt::MoveAction)
   {
+    // Block the next drops
+    this->setAcceptDrops(false);
+
+    // Save the new path
+    this->mPath = aEvent->mimeData()->text();
+
+    // Update the displayed information
     auto lDebug{this->findChild<QLabel*>(QString("data"))};
-    if (lDebug)
-    {
-      lDebug->setText("Dropped data:" + aEvent->mimeData()->text());
-      aEvent->acceptProposedAction();
-    }
+    lDebug->setText("[DEBUG] Dropped data: " + this->mPath);
+    aEvent->acceptProposedAction();
+    this->mHasReceivedData = true;
+
+    // Upper treatment
+    emit dropEventTriggered(this->mPath);
   }
 }
