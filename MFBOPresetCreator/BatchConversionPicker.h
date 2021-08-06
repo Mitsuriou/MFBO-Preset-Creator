@@ -31,8 +31,8 @@ private:
   void updateBodyslideNamesPreview(QString aText);
 
   // Presets construction related fuctions
-  void removeDataFromActiveMiddleList(const QString& aPathToRemove);
-  void addDataToActiveMiddleList(const QString& aPathToRemove);
+  void removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
+  void addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
 
   //
   void validateSelection();

@@ -4,13 +4,17 @@
 #include <QDrag>
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QJsonDocument >
+#include <QJsonObject>
 #include <QLabel>
 #include <QMimeData>
 #include <QMouseEvent>
 #include <QVBoxLayout>
 
-BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aPath)
+BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aRessourcePath)
   : QWidget(aParent)
+  , mOriginFolder(aOriginFolder)
+  , mRessourcePath(aRessourcePath)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(aSettings.appTheme)};
@@ -20,63 +24,90 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
   lMainLayout->setMargin(0);
   this->setLayout(lMainLayout);
 
-  auto lSection{new QGroupBox(tr("Preset data"), this)};
-  // TODO: Add an icon
-  // TODO: Add the collapse button
+  // Tweak the group box text a little bit
+  auto lGrouBoxTitle{tr("Mesh file")};
+  if (aRessourcePath.endsWith("femalebody"))
+  {
+    lGrouBoxTitle = tr("Body mesh");
+  }
+  else if (aRessourcePath.endsWith("femalefeet"))
+  {
+    lGrouBoxTitle = tr("Feet mesh");
+  }
+  else if (aRessourcePath.endsWith("femalehands"))
+  {
+    lGrouBoxTitle = tr("Hands mesh");
+  }
 
-  auto lSectionLayout{new QGridLayout(this)};
+  auto lSection{new QGroupBox(lGrouBoxTitle.append("  "), this)};
+  Utils::addIconToGroupBox(lSection, lIconFolder, "body", aSettings.font.size);
+  this->connect(lSection, &QGroupBox::toggled, this, &BCDragWidget::groupBoxChecked);
+  Utils::setGroupBoxState(lSection, false);
+
+  auto lSectionLayout{new QVBoxLayout(this)};
   lSectionLayout->setSpacing(10);
   lSectionLayout->setContentsMargins(15, 20, 15, 15);
-  lSectionLayout->setAlignment(Qt::AlignTop);
-  lSectionLayout->setColumnStretch(0, 0);
-  lSectionLayout->setColumnStretch(1,1);
   lSection->setLayout(lSectionLayout);
 
   lMainLayout->addWidget(lSection);
 
-  // Path
-  auto lPath{new QLabel(tr("Mesh path:"))};
-  lSectionLayout->addWidget(lPath, 0, 0);
+  auto lPathLabel{new QLabel(this->mRessourcePath, this)};
+  lSectionLayout->addWidget(lPathLabel);
 
-  auto lPathLabel{new QLabel(aPath, this)};
-  lPathLabel->setObjectName("path");
-  lSectionLayout->addWidget(lPathLabel, 0, 1);
-
-  // Origin folder
-  auto lOrigin{new QLabel(tr("Origin directory:"))};
-  lSectionLayout->addWidget(lOrigin, 1, 0);
-
-  auto lOriginFolderLabel{new QLabel(aOriginFolder, this)};
-  lOriginFolderLabel->setObjectName("origin");
-  lSectionLayout->addWidget(lOriginFolderLabel, 1, 1);
+  // Change the cursor
+  this->setCursor(Qt::OpenHandCursor);
 }
 
 void BCDragWidget::mousePressEvent(QMouseEvent* aEvent)
 {
   if (aEvent->button() == Qt::LeftButton)
   {
+    // Change the cursor
+    this->setCursor(Qt::ClosedHandCursor);
+
+    // Start the drag
     this->mDragStartPosition = aEvent->pos();
   }
 }
 
+void BCDragWidget::mouseReleaseEvent(QMouseEvent* aEvent)
+{
+  // Change the cursor
+  this->setCursor(Qt::OpenHandCursor);
+}
+
 void BCDragWidget::mouseMoveEvent(QMouseEvent* aEvent)
 {
+  // Check if the left mouse button is pressed
   if (!(aEvent->buttons() & Qt::LeftButton))
   {
     return;
   }
 
+  // Check if the drag distance is long enough to be a drag
   if ((aEvent->pos() - this->mDragStartPosition).manhattanLength() < QApplication::startDragDistance())
   {
     return;
   }
 
-  auto lPathLabel{this->findChild<QLabel*>(QString("path"))};
+  // Accept the drag, set the mime data to be transfered
+  QJsonObject lDataObject;
+  lDataObject["originFolder"] = this->mOriginFolder;
+  lDataObject["ressourcePath"] = this->mRessourcePath;
 
   QMimeData* lMimeData = new QMimeData;
-  lMimeData->setData("text/plain", lPathLabel->text().toLocal8Bit());
+  lMimeData->setData("application/json", QJsonDocument(lDataObject).toJson());
 
   QDrag* lDragObject{new QDrag(this)};
   lDragObject->setMimeData(lMimeData);
   lDragObject->exec(Qt::MoveAction);
+}
+
+void BCDragWidget::groupBoxChecked(bool aIsChecked)
+{
+  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
+  if (lGroupBox == nullptr)
+    return;
+
+  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
 }

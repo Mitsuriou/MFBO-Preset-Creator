@@ -1,6 +1,9 @@
 #include "BCDropWidget.h"
 #include "BCDragWidget.h"
 #include "Utils.h"
+#include <QGridLayout>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QMimeData>
 #include <QMouseEvent>
 
@@ -9,27 +12,64 @@ BCDropWidget::BCDropWidget(QWidget* aParent)
 {
   this->setAcceptDrops(true);
 
-  auto lMainLayout{new QVBoxLayout(this)};
+  auto lMainLayout{new QGridLayout(this)};
+  lMainLayout->setMargin(0);
+  lMainLayout->setSpacing(10);
+  lMainLayout->setColumnStretch(0, 0);
+  lMainLayout->setColumnStretch(1, 1);
   this->setLayout(lMainLayout);
 
-  auto lDebug{new QLabel("Drop something here...", this)};
-  lDebug->setObjectName("data");
-  lMainLayout->addWidget(lDebug);
+  // Drop indicator
+  auto lDropIndicator{new QLabel("Drop some data here...", this)};
+  lDropIndicator->setObjectName("drop_indicator");
+  lMainLayout->addWidget(lDropIndicator, 0, 0, 1, 2);
+
+  // Placeholder to avoid having a resizing widget
+  auto lPlaceHolder{new QLabel(this)};
+  lPlaceHolder->setObjectName("drop_indicator_place_holder");
+  lMainLayout->addWidget(lPlaceHolder, 1, 0, 1, 2);
+
+  // Path
+  auto lPathLabel{new QLabel(tr("Mesh path:"))};
+  lPathLabel->setObjectName("path_label");
+  lPathLabel->hide();
+  lMainLayout->addWidget(lPathLabel, 2, 0);
+
+  auto lPathContent{new QLabel(this)};
+  lPathContent->setObjectName("path_content");
+  lPathContent->hide();
+  lMainLayout->addWidget(lPathContent, 2, 1);
+
+  // Origin folder
+  auto lOriginLabel{new QLabel(tr("Origin mod:"))};
+  lOriginLabel->setObjectName("origin_label");
+  lOriginLabel->hide();
+  lMainLayout->addWidget(lOriginLabel, 3, 0);
+
+  auto lOriginContent{new QLabel(this)};
+  lOriginContent->setObjectName("origin_content");
+  lOriginContent->hide();
+  lMainLayout->addWidget(lOriginContent, 3, 1);
 }
 
-QString BCDropWidget::getRessourcePath()
+QString BCDropWidget::getOriginFolder() const
 {
-  return this->mPath;
+  return this->mOriginFolder;
+}
+
+QString BCDropWidget::getRessourcePath() const
+{
+  return this->mRessourcePath;
 }
 
 void BCDropWidget::resetData()
 {
   this->setAcceptDrops(true);
-  this->mHasReceivedData = false;
-  this->mPath.clear();
 
-  auto lDebug{this->findChild<QLabel*>(QString("data"))};
-  lDebug->setText("Drop something here...");
+  this->mOriginFolder.clear();
+  this->mRessourcePath.clear();
+
+  this->tweakWidgetsVisibility(true);
 }
 
 void BCDropWidget::dragEnterEvent(QDragEnterEvent* aEvent)
@@ -60,19 +100,46 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
   // BCDropWidget is only compatibl with the Qt::MoveAction
   if (aEvent->proposedAction() == Qt::MoveAction)
   {
-    // Block the next drops
+    // Accept the drop event
+    aEvent->acceptProposedAction();
+
+    // Prevent any other drop event
     this->setAcceptDrops(false);
 
-    // Save the new path
-    this->mPath = aEvent->mimeData()->text();
+    // Parse the JSON string
+    auto lDataObject{QJsonDocument::fromJson(aEvent->mimeData()->data("application/json")).object()};
+
+    // Save the new data
+    this->mOriginFolder = lDataObject["originFolder"].toString();
+    this->mRessourcePath = lDataObject["ressourcePath"].toString();
 
     // Update the displayed information
-    auto lDebug{this->findChild<QLabel*>(QString("data"))};
-    lDebug->setText("[DEBUG] Dropped data: " + this->mPath);
-    aEvent->acceptProposedAction();
-    this->mHasReceivedData = true;
+    this->tweakWidgetsVisibility(false, this->mOriginFolder, this->mRessourcePath);
 
     // Upper treatment
-    emit dropEventTriggered(this->mPath);
+    emit dropEventTriggered(this->mOriginFolder, this->mRessourcePath);
   }
+}
+
+void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText, const QString& aNewRessourceText)
+{
+  auto lDropIndicator{this->findChild<QLabel*>(QString("drop_indicator"))};
+  lDropIndicator->setHidden(!aShouldViewDropZoneOnly);
+
+  auto lPlaceHolder{this->findChild<QLabel*>(QString("drop_indicator_place_holder"))};
+  lPlaceHolder->setHidden(!aShouldViewDropZoneOnly);
+
+  auto lPathLabel{this->findChild<QLabel*>(QString("path_label"))};
+  lPathLabel->setHidden(aShouldViewDropZoneOnly);
+
+  auto lPathContent{this->findChild<QLabel*>(QString("path_content"))};
+  lPathContent->setText(aNewRessourceText);
+  lPathContent->setHidden(aShouldViewDropZoneOnly);
+
+  auto lOriginLabel{this->findChild<QLabel*>(QString("origin_label"))};
+  lOriginLabel->setHidden(aShouldViewDropZoneOnly);
+
+  auto lOriginContent{this->findChild<QLabel*>(QString("origin_content"))};
+  lOriginContent->setText(aNewOriginText);
+  lOriginContent->setHidden(aShouldViewDropZoneOnly);
 }

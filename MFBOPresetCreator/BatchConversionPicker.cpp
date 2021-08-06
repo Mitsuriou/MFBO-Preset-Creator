@@ -146,7 +146,7 @@ void BatchConversionPicker::initializeGUI()
   lSplitter->addWidget(lRightWrapper);
 
   // Title
-  auto lRightTitle{new QLabel(tr("Preset maker (drop the entries here)"))};
+  auto lRightTitle{new QLabel(tr("Presets to generate (drop the entries here)"))};
   lRightTitle->setAlignment(Qt::AlignCenter);
   lRightLayout->addWidget(lRightTitle);
 
@@ -348,30 +348,24 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 
-void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aPathToRemove)
+void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath)
 {
   // Search to remove the used entry from the available data to make presets
-  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
-  auto lSelectedEntry{lPathsList->currentItem()};
-  if (lSelectedEntry != nullptr)
+  auto lPosition{this->mData.scannedData.find(aOriginFolder)};
+  if (lPosition != this->mData.scannedData.end())
   {
-    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
-
-    if (lPosition != this->mData.scannedData.end())
+    // Search the entry
+    auto lIterator{lPosition->second.begin()};
+    for (const auto& lValue : lPosition->second)
     {
-      // Search the entry
-      auto lIterator{lPosition->second.begin()};
-      for (const auto& lValue : lPosition->second)
+      // Delete the entry
+      if (lValue == aRessourcePath)
       {
-        // Delete the entry
-        if (lValue == aPathToRemove)
-        {
-          lPosition->second.erase(lIterator);
-          break;
-        }
-
-        ++lIterator;
+        lPosition->second.erase(lIterator);
+        break;
       }
+
+      ++lIterator;
     }
   }
 
@@ -381,20 +375,14 @@ void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aPathT
   // TODO: Track the changes in the output data
 }
 
-void BatchConversionPicker::addDataToActiveMiddleList(const QString& aPathToRemove)
+void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath)
 {
   // Search to remove the used entry from the available data to make presets
-  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
-  auto lSelectedEntry{lPathsList->currentItem()};
-  if (lSelectedEntry != nullptr)
+  auto lPosition{this->mData.scannedData.find(aOriginFolder)};
+  if (lPosition != this->mData.scannedData.end())
   {
-    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
-
-    if (lPosition != this->mData.scannedData.end())
-    {
-      // Re-insert the wanted entry
-      lPosition->second.insert(aPathToRemove);
-    }
+    // Re-insert the wanted entry
+    lPosition->second.insert(aRessourcePath);
   }
 
   // Finally, refresh the middle list with the entry added

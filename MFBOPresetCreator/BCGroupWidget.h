@@ -11,10 +11,10 @@ public:
   explicit BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aSectionTitle);
 
 signals:
-  void removePressed(const QString& aPathToRemove);
-  void dropEventTriggered(const QString& aPathToRemove);
+  void removePressed(const QString& aOriginFolder, const QString& aRessourcePath);
+  void dropEventTriggered(const QString& aOriginFolder, const QString& aRessourcePath);
 
 private:
   void removeButtonClicked();
-  void dropEventTrigerredReceiver(const QString& aPathToRemove);
+  void dropEventTrigerredReceiver(const QString& aOriginFolder, const QString& aRessourcePath);
 };

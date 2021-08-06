@@ -54,19 +54,20 @@ void BCGroupWidget::removeButtonClicked()
 
   // Lower treatment
   auto lDropWidget{this->findChild<BCDropWidget*>("drop_widget")};
-  auto lPathToReaddToList{lDropWidget->getRessourcePath()};
+  auto lOriginFolder{lDropWidget->getOriginFolder()};
+  auto lRessourcePath{lDropWidget->getRessourcePath()};
   lDropWidget->resetData();
 
   // Upper treatment
-  emit removePressed(lPathToReaddToList);
+  emit removePressed(lOriginFolder, lRessourcePath);
 }
 
-void BCGroupWidget::dropEventTrigerredReceiver(const QString& aPathToRemove)
+void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOriginFolder, const QString& aRessourcePath)
 {
   // Current object treatment
   auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};
   lRemoveButton->show();
 
   // Upper treatment
-  emit dropEventTriggered(aPathToRemove);
+  emit dropEventTriggered(aOriginFolder, aRessourcePath);
 }

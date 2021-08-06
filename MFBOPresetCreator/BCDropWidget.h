@@ -8,11 +8,12 @@ class BCDropWidget : public QWidget
 
 public:
   explicit BCDropWidget(QWidget* aParent);
-  QString getRessourcePath();
+  QString getOriginFolder() const;
+  QString getRessourcePath() const;
   void resetData();
 
 signals:
-  void dropEventTriggered(const QString& aPathToRemove);
+  void dropEventTriggered(const QString& aOriginFolder, const QString& aRessourcePath);
 
 protected:
   void dragEnterEvent(QDragEnterEvent* aEvent) override;
@@ -20,6 +21,8 @@ protected:
   void dropEvent(QDropEvent* aEvent) override;
 
 private:
-  bool mHasReceivedData{false};
-  QString mPath;
+  QString mOriginFolder;
+  QString mRessourcePath;
+
+  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = "", const QString& aNewRessourceText = "");
 };

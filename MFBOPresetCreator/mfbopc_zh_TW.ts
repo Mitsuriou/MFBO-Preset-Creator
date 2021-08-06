@@ -168,116 +168,142 @@
 <context>
     <name>BCDragWidget</name>
     <message>
-        <location filename="BCDragWidget.cpp" line="19"/>
-        <source>Preset data</source>
+        <location filename="BCDragWidget.cpp" line="28"/>
+        <source>Mesh file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BCDragWidget.cpp" line="30"/>
+        <location filename="BCDragWidget.cpp" line="31"/>
+        <source>Body mesh</source>
+        <translation type="unfinished">身體模型</translation>
+    </message>
+    <message>
+        <location filename="BCDragWidget.cpp" line="35"/>
+        <source>Feet mesh</source>
+        <translation type="unfinished">腳部模型</translation>
+    </message>
+    <message>
+        <location filename="BCDragWidget.cpp" line="39"/>
+        <source>Hands mesh</source>
+        <translation type="unfinished">手部模型</translation>
+    </message>
+</context>
+<context>
+    <name>BCDropWidget</name>
+    <message>
+        <location filename="BCDropWidget.cpp" line="33"/>
         <source>Mesh path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BCDragWidget.cpp" line="38"/>
-        <source>Origin directory:</source>
+        <location filename="BCDropWidget.cpp" line="44"/>
+        <source>Origin mod:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BCGroupWidget</name>
+    <message>
+        <location filename="BCGroupWidget.cpp" line="40"/>
+        <source>Remove this data entry</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>BatchConversion</name>
     <message>
-        <location filename="BatchConversion.cpp" line="58"/>
+        <location filename="BatchConversion.cpp" line="59"/>
         <source>Closing</source>
         <translation>關閉中</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="59"/>
+        <location filename="BatchConversion.cpp" line="60"/>
         <source>Do you want to close the window?</source>
         <translation>確定關閉視窗?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="62"/>
+        <location filename="BatchConversion.cpp" line="63"/>
         <source>Close the window</source>
         <translation>關閉視窗</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="63"/>
+        <location filename="BatchConversion.cpp" line="64"/>
         <source>Go back to the batch conversion window</source>
         <translation>回到批次轉換視窗</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="89"/>
+        <location filename="BatchConversion.cpp" line="90"/>
         <source>Batch Conversion</source>
         <translation>批次轉換</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="99"/>
+        <location filename="BatchConversion.cpp" line="100"/>
         <source>General</source>
         <translation>一般</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="118"/>
+        <location filename="BatchConversion.cpp" line="119"/>
         <source>Input path:</source>
         <translation>匯入檔案路徑:</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="128"/>
+        <location filename="BatchConversion.cpp" line="129"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="141"/>
+        <location filename="BatchConversion.cpp" line="142"/>
         <source>Skeleton</source>
         <translation>骨架</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="157"/>
+        <location filename="BatchConversion.cpp" line="158"/>
         <source>Skeleton file (human):</source>
         <translation>骨架檔案(人類):</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="165"/>
-        <location filename="BatchConversion.cpp" line="177"/>
+        <location filename="BatchConversion.cpp" line="166"/>
+        <location filename="BatchConversion.cpp" line="178"/>
         <source>Refresh</source>
         <translation>重新整理</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="169"/>
+        <location filename="BatchConversion.cpp" line="170"/>
         <source>Skeleton file (beast):</source>
         <translation>骨架檔案(生物):</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="193"/>
+        <location filename="BatchConversion.cpp" line="194"/>
         <source>BodySlide</source>
         <translation>BodySlide</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="214"/>
+        <location filename="BatchConversion.cpp" line="215"/>
         <source>Targeted body and version:</source>
         <translation>目標身形與版本:</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="301"/>
+        <location filename="BatchConversion.cpp" line="302"/>
         <source>Launch the scan of the directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="424"/>
+        <location filename="BatchConversion.cpp" line="425"/>
         <source>Scanning the directory. Please wait...</source>
         <translation type="unfinished">掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="424"/>
+        <location filename="BatchConversion.cpp" line="425"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="455"/>
+        <location filename="BatchConversion.cpp" line="456"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="607"/>
+        <location filename="BatchConversion.cpp" line="608"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
@@ -294,12 +320,12 @@
         <translation type="vanished">Bodyslide程式中使用的Preset名稱。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="244"/>
+        <location filename="BatchConversion.cpp" line="245"/>
         <source>BodySlide filters:</source>
         <translation>BodySlide分類標籤:</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="257"/>
+        <location filename="BatchConversion.cpp" line="258"/>
         <source>Edit BodySlide filters sets</source>
         <translation>管理BodySlide分類群組</translation>
     </message>
@@ -344,48 +370,63 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="121"/>
+        <location filename="BatchConversionPicker.cpp" line="107"/>
+        <source>Found mods (click to display the data)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="132"/>
+        <source>Available data (drag these entries)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="149"/>
+        <source>Presets to generate (drop the entries here)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="154"/>
         <source>Body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="124"/>
+        <location filename="BatchConversionPicker.cpp" line="158"/>
         <source>Feet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="127"/>
+        <location filename="BatchConversionPicker.cpp" line="162"/>
         <source>Hands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="131"/>
+        <location filename="BatchConversionPicker.cpp" line="166"/>
         <source>BodySlide output</source>
         <translation>BodySlide 輸出</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="147"/>
+        <location filename="BatchConversionPicker.cpp" line="182"/>
         <source>BodySlide files names:</source>
         <translation>BodySlide檔案名稱:</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="154"/>
-        <location filename="BatchConversionPicker.cpp" line="176"/>
+        <location filename="BatchConversionPicker.cpp" line="189"/>
+        <location filename="BatchConversionPicker.cpp" line="211"/>
         <source>Preview:</source>
         <translation>預覽:</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="167"/>
+        <location filename="BatchConversionPicker.cpp" line="202"/>
         <source>Presets names:</source>
         <translation>預設(Preset)名稱:</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="168"/>
+        <location filename="BatchConversionPicker.cpp" line="203"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="185"/>
+        <location filename="BatchConversionPicker.cpp" line="220"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished">批次產生檔案</translation>
     </message>
@@ -583,115 +624,115 @@
         <translation>[DEV] </translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="69"/>
+        <location filename="MFBOPresetCreator.cpp" line="67"/>
         <source>Quitting</source>
         <translation>關閉中</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="70"/>
+        <location filename="MFBOPresetCreator.cpp" line="68"/>
         <source>You will lose all the unsaved data. Do you still want to quit the application?</source>
         <translation>你將失去所有未儲存進度?確定要關閉程式?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="73"/>
+        <location filename="MFBOPresetCreator.cpp" line="71"/>
         <source>Quit the application</source>
         <translation>關閉應用程式</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="74"/>
-        <location filename="MFBOPresetCreator.cpp" line="685"/>
+        <location filename="MFBOPresetCreator.cpp" line="72"/>
+        <location filename="MFBOPresetCreator.cpp" line="683"/>
         <source>Go back to the application</source>
         <translation>回到應用程式</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="75"/>
-        <location filename="MFBOPresetCreator.cpp" line="686"/>
+        <location filename="MFBOPresetCreator.cpp" line="73"/>
+        <location filename="MFBOPresetCreator.cpp" line="684"/>
         <source>Save the project and quit the application</source>
         <translation>儲存專案並關閉應用程式</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="169"/>
+        <location filename="MFBOPresetCreator.cpp" line="167"/>
         <source>File</source>
         <translation>檔案</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="174"/>
+        <location filename="MFBOPresetCreator.cpp" line="172"/>
         <source>Welcome screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="180"/>
+        <location filename="MFBOPresetCreator.cpp" line="178"/>
         <source>Open project...</source>
         <translation>開啟檔案(Project)...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="185"/>
+        <location filename="MFBOPresetCreator.cpp" line="183"/>
         <source>Save</source>
         <translation>儲存檔案</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="191"/>
+        <location filename="MFBOPresetCreator.cpp" line="189"/>
         <source>Save as</source>
         <translation>另存新檔</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="198"/>
+        <location filename="MFBOPresetCreator.cpp" line="196"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="204"/>
-        <location filename="MFBOPresetCreator.cpp" line="680"/>
+        <location filename="MFBOPresetCreator.cpp" line="202"/>
+        <location filename="MFBOPresetCreator.cpp" line="678"/>
         <source>Quick restart</source>
         <translation>快速重啟</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="208"/>
+        <location filename="MFBOPresetCreator.cpp" line="206"/>
         <source>Exit</source>
         <translation>離開</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="212"/>
+        <location filename="MFBOPresetCreator.cpp" line="210"/>
         <source>Tools</source>
         <translation>工具</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="217"/>
+        <location filename="MFBOPresetCreator.cpp" line="215"/>
         <source>Batch Conversion</source>
         <translation>批次轉換</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="221"/>
+        <location filename="MFBOPresetCreator.cpp" line="219"/>
         <source>Textures Assistant</source>
         <translation>貼圖(Textures)助手</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="225"/>
+        <location filename="MFBOPresetCreator.cpp" line="223"/>
         <source>Assisted Conversion</source>
         <translation>輔助轉換</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="229"/>
+        <location filename="MFBOPresetCreator.cpp" line="227"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>重定向BodySlide檔案</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="235"/>
+        <location filename="MFBOPresetCreator.cpp" line="233"/>
         <source> (stable update available)</source>
         <translation> (有可用的正式版更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="237"/>
+        <location filename="MFBOPresetCreator.cpp" line="235"/>
         <source> (BETA update available)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="567"/>
+        <location filename="MFBOPresetCreator.cpp" line="565"/>
         <source>BETA update available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="568"/>
+        <location filename="MFBOPresetCreator.cpp" line="566"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -699,12 +740,12 @@ Do you want to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="576"/>
+        <location filename="MFBOPresetCreator.cpp" line="574"/>
         <source>Stable update available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="577"/>
+        <location filename="MFBOPresetCreator.cpp" line="575"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -716,52 +757,52 @@ Do you want to download it now?</source>
         <translation type="vanished"> (有可用的Beta更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="239"/>
+        <location filename="MFBOPresetCreator.cpp" line="237"/>
         <source>Help</source>
         <translation>幫助</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="244"/>
+        <location filename="MFBOPresetCreator.cpp" line="242"/>
         <source>Check for updates</source>
         <translation>檢查更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="248"/>
+        <location filename="MFBOPresetCreator.cpp" line="246"/>
         <source>Current version&apos;s release notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="252"/>
+        <location filename="MFBOPresetCreator.cpp" line="250"/>
         <source>Report a bug...</source>
         <translation>回報Bug...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="262"/>
+        <location filename="MFBOPresetCreator.cpp" line="260"/>
         <source>GitHub (github.com)</source>
         <translation>GitHub (github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="266"/>
+        <location filename="MFBOPresetCreator.cpp" line="264"/>
         <source>GitLab (gitlab.com)</source>
         <translation>GitLab (gitlab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="270"/>
+        <location filename="MFBOPresetCreator.cpp" line="268"/>
         <source>Useful links...</source>
         <translation>建議參閱連結...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="280"/>
+        <location filename="MFBOPresetCreator.cpp" line="278"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>使用教學(docs.google.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="284"/>
+        <location filename="MFBOPresetCreator.cpp" line="282"/>
         <source>View the source code (github.com)</source>
         <translation>參考原始碼(github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="288"/>
+        <location filename="MFBOPresetCreator.cpp" line="286"/>
         <source>View the source code (gitlab.com)</source>
         <translation>參考原始碼(gitlab.com)</translation>
     </message>
@@ -770,8 +811,8 @@ Do you want to download it now?</source>
         <translation type="vanished">建議參閱連結</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="258"/>
-        <location filename="MFBOPresetCreator.cpp" line="276"/>
+        <location filename="MFBOPresetCreator.cpp" line="256"/>
+        <location filename="MFBOPresetCreator.cpp" line="274"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <oldsource>Nexus Mods page</oldsource>
         <translation>Nexus Mods 頁面 (nexusmods.com)</translation>
@@ -789,17 +830,17 @@ Do you want to download it now?</source>
         <translation type="vanished">參考原始碼(GitLab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="292"/>
+        <location filename="MFBOPresetCreator.cpp" line="290"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="552"/>
+        <location filename="MFBOPresetCreator.cpp" line="550"/>
         <source>Error while searching for a new update</source>
         <translation>無法搜尋更新檔</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="553"/>
+        <location filename="MFBOPresetCreator.cpp" line="551"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>找不到更新檔...
@@ -832,27 +873,27 @@ Do you want to download it now?</source>
 請問是否下載該版本?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="596"/>
+        <location filename="MFBOPresetCreator.cpp" line="594"/>
         <source>OK</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="608"/>
+        <location filename="MFBOPresetCreator.cpp" line="606"/>
         <source>Download and install the update now</source>
         <translation>立即下載並更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="609"/>
+        <location filename="MFBOPresetCreator.cpp" line="607"/>
         <source>Download later</source>
         <translation>稍後再下載</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="681"/>
+        <location filename="MFBOPresetCreator.cpp" line="679"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>你將失去所有未儲存進度?確定要快速重啟程式?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="684"/>
+        <location filename="MFBOPresetCreator.cpp" line="682"/>
         <source>Quickly restart the application</source>
         <translation>快速重新開啟應用程式</translation>
     </message>

@@ -168,126 +168,152 @@
 <context>
     <name>BCDragWidget</name>
     <message>
-        <location filename="BCDragWidget.cpp" line="19"/>
-        <source>Preset data</source>
+        <location filename="BCDragWidget.cpp" line="28"/>
+        <source>Mesh file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BCDragWidget.cpp" line="30"/>
+        <location filename="BCDragWidget.cpp" line="31"/>
+        <source>Body mesh</source>
+        <translation type="unfinished">Mesh de corps</translation>
+    </message>
+    <message>
+        <location filename="BCDragWidget.cpp" line="35"/>
+        <source>Feet mesh</source>
+        <translation type="unfinished">Mesh de pieds</translation>
+    </message>
+    <message>
+        <location filename="BCDragWidget.cpp" line="39"/>
+        <source>Hands mesh</source>
+        <translation type="unfinished">Mesh de mains</translation>
+    </message>
+</context>
+<context>
+    <name>BCDropWidget</name>
+    <message>
+        <location filename="BCDropWidget.cpp" line="33"/>
         <source>Mesh path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BCDragWidget.cpp" line="38"/>
-        <source>Origin directory:</source>
+        <location filename="BCDropWidget.cpp" line="44"/>
+        <source>Origin mod:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BCGroupWidget</name>
+    <message>
+        <location filename="BCGroupWidget.cpp" line="40"/>
+        <source>Remove this data entry</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>BatchConversion</name>
     <message>
-        <location filename="BatchConversion.cpp" line="58"/>
+        <location filename="BatchConversion.cpp" line="59"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="59"/>
+        <location filename="BatchConversion.cpp" line="60"/>
         <source>Do you want to close the window?</source>
         <translation>Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="62"/>
+        <location filename="BatchConversion.cpp" line="63"/>
         <source>Close the window</source>
         <translation>Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="63"/>
+        <location filename="BatchConversion.cpp" line="64"/>
         <source>Go back to the batch conversion window</source>
         <translation>Revenir sur la fenêtre de l&apos;outil de conversion multiple</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="89"/>
+        <location filename="BatchConversion.cpp" line="90"/>
         <source>Batch Conversion</source>
         <translation>Conversion Multiple</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="99"/>
+        <location filename="BatchConversion.cpp" line="100"/>
         <source>General</source>
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="118"/>
+        <location filename="BatchConversion.cpp" line="119"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="128"/>
+        <location filename="BatchConversion.cpp" line="129"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="214"/>
+        <location filename="BatchConversion.cpp" line="215"/>
         <source>Targeted body and version:</source>
         <translation>Corps et version ciblé :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="301"/>
+        <location filename="BatchConversion.cpp" line="302"/>
         <source>Launch the scan of the directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="424"/>
+        <location filename="BatchConversion.cpp" line="425"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="424"/>
+        <location filename="BatchConversion.cpp" line="425"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="455"/>
+        <location filename="BatchConversion.cpp" line="456"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="607"/>
+        <location filename="BatchConversion.cpp" line="608"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="165"/>
-        <location filename="BatchConversion.cpp" line="177"/>
+        <location filename="BatchConversion.cpp" line="166"/>
+        <location filename="BatchConversion.cpp" line="178"/>
         <source>Refresh</source>
         <translation>Rafraîchir</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="244"/>
+        <location filename="BatchConversion.cpp" line="245"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="257"/>
+        <location filename="BatchConversion.cpp" line="258"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="157"/>
+        <location filename="BatchConversion.cpp" line="158"/>
         <source>Skeleton file (human):</source>
         <translation>Fichier de squelette (humaine) :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="141"/>
+        <location filename="BatchConversion.cpp" line="142"/>
         <source>Skeleton</source>
         <translation>Squelette</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="169"/>
+        <location filename="BatchConversion.cpp" line="170"/>
         <source>Skeleton file (beast):</source>
         <translation>Fichier de squelette (bête) :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="193"/>
+        <location filename="BatchConversion.cpp" line="194"/>
         <source>BodySlide</source>
         <translation>BodySlide</translation>
     </message>
@@ -321,48 +347,63 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="121"/>
+        <location filename="BatchConversionPicker.cpp" line="107"/>
+        <source>Found mods (click to display the data)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="132"/>
+        <source>Available data (drag these entries)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="149"/>
+        <source>Presets to generate (drop the entries here)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="154"/>
         <source>Body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="127"/>
+        <location filename="BatchConversionPicker.cpp" line="162"/>
         <source>Hands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="124"/>
+        <location filename="BatchConversionPicker.cpp" line="158"/>
         <source>Feet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="131"/>
+        <location filename="BatchConversionPicker.cpp" line="166"/>
         <source>BodySlide output</source>
         <translation type="unfinished">Sortie BodySlide</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="147"/>
+        <location filename="BatchConversionPicker.cpp" line="182"/>
         <source>BodySlide files names:</source>
         <translation type="unfinished">Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="154"/>
-        <location filename="BatchConversionPicker.cpp" line="176"/>
+        <location filename="BatchConversionPicker.cpp" line="189"/>
+        <location filename="BatchConversionPicker.cpp" line="211"/>
         <source>Preview:</source>
         <translation type="unfinished">Aperçu :</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="167"/>
+        <location filename="BatchConversionPicker.cpp" line="202"/>
         <source>Presets names:</source>
         <translation type="unfinished">Noms des presets :</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="168"/>
+        <location filename="BatchConversionPicker.cpp" line="203"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished">Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="185"/>
+        <location filename="BatchConversionPicker.cpp" line="220"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished">Générer les multiples fichiers sur mon ordinateur</translation>
     </message>
@@ -608,95 +649,95 @@
         <translation>[DEV] </translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="69"/>
+        <location filename="MFBOPresetCreator.cpp" line="67"/>
         <source>Quitting</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="70"/>
+        <location filename="MFBOPresetCreator.cpp" line="68"/>
         <source>You will lose all the unsaved data. Do you still want to quit the application?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même quitter l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="73"/>
+        <location filename="MFBOPresetCreator.cpp" line="71"/>
         <source>Quit the application</source>
         <translation>Quitter l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="74"/>
-        <location filename="MFBOPresetCreator.cpp" line="685"/>
+        <location filename="MFBOPresetCreator.cpp" line="72"/>
+        <location filename="MFBOPresetCreator.cpp" line="683"/>
         <source>Go back to the application</source>
         <translation>Revenir sur l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="75"/>
-        <location filename="MFBOPresetCreator.cpp" line="686"/>
+        <location filename="MFBOPresetCreator.cpp" line="73"/>
+        <location filename="MFBOPresetCreator.cpp" line="684"/>
         <source>Save the project and quit the application</source>
         <translation>Enregistrer le projet et quitter l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="169"/>
+        <location filename="MFBOPresetCreator.cpp" line="167"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="174"/>
+        <location filename="MFBOPresetCreator.cpp" line="172"/>
         <source>Welcome screen</source>
         <translation>Écran d&apos;accueil</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="180"/>
+        <location filename="MFBOPresetCreator.cpp" line="178"/>
         <source>Open project...</source>
         <translation>Ouvrir projet...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="191"/>
+        <location filename="MFBOPresetCreator.cpp" line="189"/>
         <source>Save as</source>
         <translation>Enregistrer sous</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="208"/>
+        <location filename="MFBOPresetCreator.cpp" line="206"/>
         <source>Exit</source>
         <oldsource>&amp;Exit</oldsource>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="212"/>
+        <location filename="MFBOPresetCreator.cpp" line="210"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="221"/>
+        <location filename="MFBOPresetCreator.cpp" line="219"/>
         <source>Textures Assistant</source>
         <translation>Assistant Textures</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="225"/>
+        <location filename="MFBOPresetCreator.cpp" line="223"/>
         <source>Assisted Conversion</source>
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="229"/>
+        <location filename="MFBOPresetCreator.cpp" line="227"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Re-ciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="235"/>
+        <location filename="MFBOPresetCreator.cpp" line="233"/>
         <source> (stable update available)</source>
         <translation> (mise à jour stable disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="248"/>
+        <location filename="MFBOPresetCreator.cpp" line="246"/>
         <source>Current version&apos;s release notes</source>
         <translation>Notes de publication de la version actuelle</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="567"/>
+        <location filename="MFBOPresetCreator.cpp" line="565"/>
         <source>BETA update available</source>
         <translation>Mise à jour BETA disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="568"/>
+        <location filename="MFBOPresetCreator.cpp" line="566"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -707,12 +748,12 @@ La nouvelle version BETA &quot;%2&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="576"/>
+        <location filename="MFBOPresetCreator.cpp" line="574"/>
         <source>Stable update available</source>
         <translation>Mise à jour stable disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="577"/>
+        <location filename="MFBOPresetCreator.cpp" line="575"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -723,122 +764,122 @@ La nouvelle version stable &quot;%2&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="252"/>
+        <location filename="MFBOPresetCreator.cpp" line="250"/>
         <source>Report a bug...</source>
         <translation>Signaler un bug...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="262"/>
+        <location filename="MFBOPresetCreator.cpp" line="260"/>
         <source>GitHub (github.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="266"/>
+        <location filename="MFBOPresetCreator.cpp" line="264"/>
         <source>GitLab (gitlab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="270"/>
+        <location filename="MFBOPresetCreator.cpp" line="268"/>
         <source>Useful links...</source>
         <translation>Liens utiles...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="280"/>
+        <location filename="MFBOPresetCreator.cpp" line="278"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>Guide utilisateur et tutoriels (docs.google.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="284"/>
+        <location filename="MFBOPresetCreator.cpp" line="282"/>
         <source>View the source code (github.com)</source>
         <translation>Voir le code source (github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="288"/>
+        <location filename="MFBOPresetCreator.cpp" line="286"/>
         <source>View the source code (gitlab.com)</source>
         <translation>Voir le code source (gitlab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="198"/>
+        <location filename="MFBOPresetCreator.cpp" line="196"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="217"/>
+        <location filename="MFBOPresetCreator.cpp" line="215"/>
         <source>Batch Conversion</source>
         <translation>Conversion Multiple</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="237"/>
+        <location filename="MFBOPresetCreator.cpp" line="235"/>
         <source> (BETA update available)</source>
         <translation> (mise à jour BETA disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="239"/>
+        <location filename="MFBOPresetCreator.cpp" line="237"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="244"/>
+        <location filename="MFBOPresetCreator.cpp" line="242"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="258"/>
-        <location filename="MFBOPresetCreator.cpp" line="276"/>
+        <location filename="MFBOPresetCreator.cpp" line="256"/>
+        <location filename="MFBOPresetCreator.cpp" line="274"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <oldsource>Nexus Mods page</oldsource>
         <translation>Page Nexus Mods (nexusmods.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="292"/>
+        <location filename="MFBOPresetCreator.cpp" line="290"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="552"/>
+        <location filename="MFBOPresetCreator.cpp" line="550"/>
         <source>Error while searching for a new update</source>
         <translation>Erreur en cherchant pour une nouvelle mise à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="553"/>
+        <location filename="MFBOPresetCreator.cpp" line="551"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version...
 Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="608"/>
+        <location filename="MFBOPresetCreator.cpp" line="606"/>
         <source>Download and install the update now</source>
         <translation>Télécharger et installer la mise à jour maintenant</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="609"/>
+        <location filename="MFBOPresetCreator.cpp" line="607"/>
         <source>Download later</source>
         <translation>Télécharger plus tard</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="681"/>
+        <location filename="MFBOPresetCreator.cpp" line="679"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer rapidement l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="684"/>
+        <location filename="MFBOPresetCreator.cpp" line="682"/>
         <source>Quickly restart the application</source>
         <translation>Relancer rapidement l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="596"/>
+        <location filename="MFBOPresetCreator.cpp" line="594"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="185"/>
+        <location filename="MFBOPresetCreator.cpp" line="183"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="204"/>
-        <location filename="MFBOPresetCreator.cpp" line="680"/>
+        <location filename="MFBOPresetCreator.cpp" line="202"/>
+        <location filename="MFBOPresetCreator.cpp" line="678"/>
         <source>Quick restart</source>
         <translation>Relancement rapide</translation>
     </message>
