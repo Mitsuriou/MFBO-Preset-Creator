@@ -10,8 +10,9 @@
 BCDropWidget::BCDropWidget(QWidget* aParent)
   : QWidget(aParent)
 {
-  this->setAcceptDrops(true);
+  this->setAcceptDrops(true); // Accept the drops since this is the purprose of this widget
 
+  // Main layout
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setMargin(0);
   lMainLayout->setSpacing(10);
@@ -64,8 +65,7 @@ QString BCDropWidget::getRessourcePath() const
 
 void BCDropWidget::resetData()
 {
-  this->setAcceptDrops(true);
-
+  // Clear the two strings
   this->mOriginFolder.clear();
   this->mRessourcePath.clear();
 
@@ -103,11 +103,11 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
     // Accept the drop event
     aEvent->acceptProposedAction();
 
-    // Prevent any other drop event
-    this->setAcceptDrops(false);
-
     // Parse the JSON string
     auto lDataObject{QJsonDocument::fromJson(aEvent->mimeData()->data("application/json")).object()};
+
+    // Upper treatment (before updating the data)
+    emit BCDropWidget::dropEventTriggered(this->mOriginFolder, this->mRessourcePath, lDataObject["originFolder"].toString(), lDataObject["ressourcePath"].toString());
 
     // Save the new data
     this->mOriginFolder = lDataObject["originFolder"].toString();
@@ -115,9 +115,6 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
 
     // Update the displayed information
     this->tweakWidgetsVisibility(false, this->mOriginFolder, this->mRessourcePath);
-
-    // Upper treatment
-    emit dropEventTriggered(this->mOriginFolder, this->mRessourcePath);
   }
 }
 

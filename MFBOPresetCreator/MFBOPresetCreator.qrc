@@ -44,6 +44,7 @@
         <file alias="textures">ressources/software/icons/black/textures.png</file>
         <file alias="body">ressources/software/icons/black/body.png</file>
         <file alias="hand">ressources/software/icons/black/hand.png</file>
+        <file alias="foot">ressources/software/icons/black/foot.png</file>
         <file alias="woman-head">ressources/software/icons/black/woman-head.png</file>
         <file alias="home">ressources/software/icons/black/home.png</file>
         <file alias="monitor">ressources/software/icons/black/monitor.png</file>
@@ -99,6 +100,7 @@
         <file alias="textures">ressources/software/icons/white/textures.png</file>
         <file alias="body">ressources/software/icons/white/body.png</file>
         <file alias="hand">ressources/software/icons/white/hand.png</file>
+        <file alias="foot">ressources/software/icons/white/foot.png</file>
         <file alias="woman-head">ressources/software/icons/white/woman-head.png</file>
         <file alias="home">ressources/software/icons/white/home.png</file>
         <file alias="monitor">ressources/software/icons/white/monitor.png</file>

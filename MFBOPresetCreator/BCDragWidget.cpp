@@ -25,22 +25,26 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
   this->setLayout(lMainLayout);
 
   // Tweak the group box text a little bit
-  auto lGrouBoxTitle{tr("Mesh file")};
+  auto lGroupBoxTitle{tr("Mesh file")};
+  auto lGroupBoxIcon{QString("vector-polyline")};
   if (aRessourcePath.endsWith("femalebody"))
   {
-    lGrouBoxTitle = tr("Body mesh");
+    lGroupBoxTitle = tr("Body mesh");
+    lGroupBoxIcon = "body";
   }
   else if (aRessourcePath.endsWith("femalefeet"))
   {
-    lGrouBoxTitle = tr("Feet mesh");
+    lGroupBoxTitle = tr("Feet mesh");
+    lGroupBoxIcon = "foot";
   }
   else if (aRessourcePath.endsWith("femalehands"))
   {
-    lGrouBoxTitle = tr("Hands mesh");
+    lGroupBoxTitle = tr("Hands mesh");
+    lGroupBoxIcon = "hand";
   }
 
-  auto lSection{new QGroupBox(lGrouBoxTitle.append("  "), this)};
-  Utils::addIconToGroupBox(lSection, lIconFolder, "body", aSettings.font.size);
+  auto lSection{new QGroupBox(lGroupBoxTitle.append("  "), this)};
+  Utils::addIconToGroupBox(lSection, lIconFolder, lGroupBoxIcon, aSettings.font.size);
   this->connect(lSection, &QGroupBox::toggled, this, &BCDragWidget::groupBoxChecked);
   Utils::setGroupBoxState(lSection, false);
 
@@ -70,7 +74,7 @@ void BCDragWidget::mousePressEvent(QMouseEvent* aEvent)
   }
 }
 
-void BCDragWidget::mouseReleaseEvent(QMouseEvent* aEvent)
+void BCDragWidget::mouseReleaseEvent(QMouseEvent*)
 {
   // Change the cursor
   this->setCursor(Qt::OpenHandCursor);

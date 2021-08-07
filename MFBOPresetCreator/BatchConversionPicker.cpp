@@ -151,15 +151,15 @@ void BatchConversionPicker::initializeGUI()
   lRightLayout->addWidget(lRightTitle);
 
   // Body drop widget
-  auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"))};
+  auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"), "body")};
   lRightLayout->addWidget(lDropSectionBody);
 
   // Feet drop widget
-  auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"))};
+  auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"), "foot")};
   lRightLayout->addWidget(lDropSectionFeet);
 
   // Hands drop widget
-  auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"))};
+  auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"), "hand")};
   lRightLayout->addWidget(lDropSectionHands);
 
   // BodySlide output settings group box

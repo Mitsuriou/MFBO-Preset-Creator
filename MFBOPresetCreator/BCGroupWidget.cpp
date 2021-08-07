@@ -7,7 +7,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aSectionTitle)
+BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aSectionTitle, const QString& aSectionIconName)
   : QWidget(aParent)
 {
   // User theme accent
@@ -18,9 +18,10 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lMainLayout->setMargin(0);
   this->setLayout(lMainLayout);
 
-  auto lSection{new QGroupBox(aSectionTitle, this)};
-  // TODO: Add an icon
-  // TODO: Add the collapse button
+  auto lSection{new QGroupBox(aSectionTitle + QString("  "), this)};
+  Utils::addIconToGroupBox(lSection, lIconFolder, aSectionIconName, aSettings.font.size);
+  this->connect(lSection, &QGroupBox::toggled, this, &BCGroupWidget::groupBoxChecked);
+  Utils::setGroupBoxState(lSection, false);
 
   auto lSectionLayout{new QGridLayout(this)};
   lSectionLayout->setSpacing(10);
@@ -59,15 +60,33 @@ void BCGroupWidget::removeButtonClicked()
   lDropWidget->resetData();
 
   // Upper treatment
-  emit removePressed(lOriginFolder, lRessourcePath);
+  emit BCGroupWidget::removePressed(lOriginFolder, lRessourcePath);
 }
 
-void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOriginFolder, const QString& aRessourcePath)
+void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath)
 {
-  // Current object treatment
-  auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};
-  lRemoveButton->show();
+  // Check if any data was already set in the drop widget
+  if (aOldOriginFolder.length() > 0 && aNewOriginFolder.length() > 0)
+  {
+    emit BCGroupWidget::removePressed(aOldOriginFolder, aOldRessourcePath); // Simulate a click on the "remove" button to make the data go in list again
+    this->findChild<BCDropWidget*>("drop_widget")->resetData();             // Finally, reset the drop widget data
+  }
+  else
+  {
+    // Current object treatment
+    auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};
+    lRemoveButton->show();
+  }
 
   // Upper treatment
-  emit dropEventTriggered(aOriginFolder, aRessourcePath);
+  emit BCGroupWidget::dropEventTriggered(aNewOriginFolder, aNewRessourcePath);
+}
+
+void BCGroupWidget::groupBoxChecked(bool aIsChecked)
+{
+  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
+  if (lGroupBox == nullptr)
+    return;
+
+  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
 }

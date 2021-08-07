@@ -13,7 +13,7 @@ public:
   void resetData();
 
 signals:
-  void dropEventTriggered(const QString& aOriginFolder, const QString& aRessourcePath);
+  void dropEventTriggered(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath);
 
 protected:
   void dragEnterEvent(QDragEnterEvent* aEvent) override;
