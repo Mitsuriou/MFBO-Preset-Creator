@@ -65,14 +65,14 @@ QString Utils::cleanPathString(const QString& aPath)
   return lPath;
 }
 
-void Utils::cleanBreaksString(QString& aPath)
+void Utils::cleanBreaksString(QString& aString)
 {
-  aPath.replace("\n", "");
+  aString.replace("\n", "");
 }
 
-QString Utils::cleanBreaksString(const QString& aPath)
+QString Utils::cleanBreaksString(const QString& aString)
 {
-  QString lPath(aPath);
+  QString lPath(aString);
   lPath.replace("\n", "");
   return lPath;
 }

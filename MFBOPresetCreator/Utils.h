@@ -19,8 +19,8 @@ public:
   // General functions
   static void cleanPathString(QString& aPath);
   static QString cleanPathString(const QString& aPath);
-  static void cleanBreaksString(QString& aPath);
-  static QString cleanBreaksString(const QString& aPath);
+  static void cleanBreaksString(QString& aString);
+  static QString cleanBreaksString(const QString& aString);
   static QStringList splitString(QString aString, const QString& aSeparator);
   static QString getApplicationVersion();
   static ApplicationVersionRelative compareVersionNumbers(const QString& aVersionNumber);

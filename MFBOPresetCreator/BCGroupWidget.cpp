@@ -45,7 +45,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 
   // Event binding
   this->connect(lDropWidget, &BCDropWidget::dropEventTriggered, this, &BCGroupWidget::dropEventTrigerredReceiver);
-  this->connect(lRemoveButton, &QPushButton::clicked, this, &BCGroupWidget::removeButtonClicked);
+  this->connect(lRemoveButton, &QPushButton::clicked, this, &BCGroupWidget::removeData);
 }
 
 void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
@@ -97,7 +97,7 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
   }
 }
 
-void BCGroupWidget::removeButtonClicked()
+void BCGroupWidget::removeData()
 {
   // Current object treatment
   auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};

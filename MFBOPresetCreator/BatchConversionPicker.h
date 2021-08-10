@@ -20,6 +20,7 @@ private:
   int mMinimumFirstColumnWidth;
   Struct::BatchConversionData mData;
   std::vector<BCDragWidget*> mMiddleListButtons;
+  bool mPreventPresetSave{true};
 
   void setWindowProperties();
   void initializeGUI();
@@ -34,10 +35,12 @@ private:
   void removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
   void addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
 
+  // Data update
+  void saveBodySlideDataToPreset();
+
   // Presets controls
   void goToPreviousPreset() const;
   void goToNextPreset() const;
-  void goToPreset(const int aIndex);
   void removeActivePreset();
   void addNewEmptyPreset();
   void updatePresetInterfaceState(const int aNextIndex);

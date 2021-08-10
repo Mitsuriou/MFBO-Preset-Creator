@@ -11,6 +11,7 @@ class BCGroupWidget : public QWidget
 public:
   explicit BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aSectionTitle, const QString& aSectionIconName, const BCGroupWidgetCallContext& aCallContext);
   void setData(const Struct::BatchConversionPresetData& aData);
+  void removeData();
 
 signals:
   void removePressed(const QString& aOriginFolder, const QString& aRessourcePath);
@@ -19,7 +20,6 @@ signals:
 private:
   BCGroupWidgetCallContext mCallContext{BCGroupWidgetCallContext::UNDEFINED};
 
-  void removeButtonClicked();
   void dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath);
 
   // GUI widgets events
