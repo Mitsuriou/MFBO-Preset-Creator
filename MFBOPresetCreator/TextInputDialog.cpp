@@ -18,7 +18,7 @@ TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, c
 
 void TextInputDialog::closeEvent(QCloseEvent* aEvent)
 {
-  auto lEventButton{qobject_cast<QPushButton*>(sender())};
+  auto lEventButton{qobject_cast<QPushButton*>(this->sender())};
   auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
 
   if (lEventButton == lAddBtn)

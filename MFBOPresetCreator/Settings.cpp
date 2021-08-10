@@ -38,7 +38,7 @@ Settings::Settings(QWidget* aParent, const Struct::Settings& aSettings, const st
 
 void Settings::closeEvent(QCloseEvent* aEvent)
 {
-  auto lEventButton{qobject_cast<QPushButton*>(sender())};
+  auto lEventButton{qobject_cast<QPushButton*>(this->sender())};
   auto lSaveButton{this->findChild<QPushButton*>(QString("save_close"))};
 
   if (lEventButton == lSaveButton)
@@ -688,6 +688,8 @@ Struct::Settings Settings::getSettingsFromGUI() const
   lSettings.dangerColor = this->mNewDangerColor;
 
   // TODO: Add the settings GUI for Batch Conversion
+  // TODO: Add more settings for the windows' opening modes
+  // TODO: Add more settings for default selected values in many windows
 
   return lSettings;
 }

@@ -28,7 +28,7 @@ BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* aParent, Struct::Setting
 
 void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
 {
-  auto lEventButton{qobject_cast<QPushButton*>(sender())};
+  auto lEventButton{qobject_cast<QPushButton*>(this->sender())};
   auto lSaveButton{this->findChild<QPushButton*>(QString("save_close"))};
 
   if (lEventButton == lSaveButton)

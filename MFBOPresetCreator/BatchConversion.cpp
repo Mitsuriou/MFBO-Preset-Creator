@@ -388,6 +388,7 @@ void BatchConversion::updateAvailableBodyVersions()
   lFeetSelector->clear();
   lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
   lFeetSelector->setCurrentIndex(0);
+  // TODO: Make the modifications to take into account the new way the selector updates
 }
 
 void BatchConversion::chooseInputDirectory()

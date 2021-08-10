@@ -178,26 +178,26 @@ void BatchConversionPicker::initializeGUI()
   lRightDataLayout->addWidget(lNoPresetLabel);
 
   // Body drop widget
-  auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"), "body")};
-  lDropSectionBody->hide();
+  auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"), "body", BCGroupWidgetCallContext::BODY)};
+  lDropSectionBody->setObjectName("drop_section_body");
   lRightDataLayout->addWidget(lDropSectionBody);
 
   // Feet drop widget
-  auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"), "foot")};
-  lDropSectionFeet->hide();
+  auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"), "foot", BCGroupWidgetCallContext::FEET)};
+  lDropSectionFeet->setObjectName("drop_section_feet");
   lRightDataLayout->addWidget(lDropSectionFeet);
 
   // Hands drop widget
-  auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"), "hand")};
-  lDropSectionHands->hide();
+  auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"), "hand", BCGroupWidgetCallContext::HANDS)};
+  lDropSectionHands->setObjectName("drop_section_hands");
   lRightDataLayout->addWidget(lDropSectionHands);
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
+  lBodyslideGroupBox->setObjectName("bodyslide_groupbox");
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
-  lBodyslideGroupBox->hide();
   lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -454,7 +454,26 @@ void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOrigi
   // Finally, refresh the middle list with the entry removed
   refreshMiddleList();
 
-  // TODO: Track the changes in the output data
+  // Track the changes in the output data
+  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
+  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
+  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
+
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto& lPreset{this->mData.presets.at(lActivePresetNumber->value() - 1)};
+
+  if (this->sender() == lDropSectionBody)
+  {
+    lPreset.setBodyData(aOriginFolder, aRessourcePath);
+  }
+  else if (this->sender() == lDropSectionFeet)
+  {
+    lPreset.setFeetData(aOriginFolder, aRessourcePath);
+  }
+  else if (this->sender() == lDropSectionHands)
+  {
+    lPreset.setHandsData(aOriginFolder, aRessourcePath, false); // TODO: Pass the data for the alternative model
+  }
 }
 
 void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath)
@@ -470,7 +489,26 @@ void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFold
   // Finally, refresh the middle list with the entry added
   refreshMiddleList();
 
-  // TODO: Track the changes in the output data
+  // Track the changes in the output data
+  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
+  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
+  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
+
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto& lPreset{this->mData.presets.at(lActivePresetNumber->value() - 1)};
+
+  if (this->sender() == lDropSectionBody)
+  {
+    lPreset.setBodyData("", "");
+  }
+  else if (this->sender() == lDropSectionFeet)
+  {
+    lPreset.setFeetData("", "");
+  }
+  else if (this->sender() == lDropSectionHands)
+  {
+    lPreset.setHandsData("", "", false);
+  }
 }
 
 void BatchConversionPicker::goToPreviousPreset() const
@@ -550,7 +588,7 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   // Remove current preset
   this->findChild<QPushButton*>(QString("remove_current_preset"))->setDisabled(lNumberOfPresets == 0);
 
-  // Swap the focus
+  // Swap the focus between the previous and next buttons
   if (lWasPreviousPresetFocused && !lPreviousPreset->isEnabled())
   {
     lNextPreset->setFocus();
@@ -559,11 +597,46 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   {
     lPreviousPreset->setFocus();
   }
+
+  // Show or hide the data blocks
+  auto lNoPresetLabel{this->findChild<QLabel*>(QString("no_preset_label"))};
+  lNoPresetLabel->setHidden(lNumberOfPresets > 0);
+  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
+  lDropSectionBody->setHidden(lNumberOfPresets == 0);
+  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
+  lDropSectionFeet->setHidden(lNumberOfPresets == 0);
+  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
+  lDropSectionHands->setHidden(lNumberOfPresets == 0);
+  auto lBodyslideGroupBox{this->findChild<QGroupBox*>(QString("bodyslide_groupbox"))};
+  lBodyslideGroupBox->setHidden(lNumberOfPresets == 0);
+
+  if (lNumberOfPresets > 0)
+  {
+    lDropSectionBody->setData(this->mData.presets.at(aNextIndex - 1));
+    lDropSectionFeet->setData(this->mData.presets.at(aNextIndex - 1));
+    lDropSectionHands->setData(this->mData.presets.at(aNextIndex - 1));
+  }
 }
 
 void BatchConversionPicker::validateSelection()
 {
-  // TODO:
+  this->mData.scannedData.clear(); // Clear the data to send a skinier object
+
+  auto lRemovedPresetsCount{0};
+  for (int i = 0; i < this->mData.presets.size(); i++)
+  {
+    if (!this->mData.presets.at(i).isValid())
+    {
+      this->mData.presets.erase(this->mData.presets.begin() + i);
+      // TODO: Avoid removing the preset directly. Ask the user if they want to continue this way (removed) or they want to fix the issues
+      lRemovedPresetsCount++;
+      i--;
+    }
+  }
+
+  // TODO: Tell the user that some presets were not valid
+
+  // TODO: Emit the signal with the mData object as unique parameter
 }
 
 void BatchConversionPicker::groupBoxChecked(bool aIsChecked)

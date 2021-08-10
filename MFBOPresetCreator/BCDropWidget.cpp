@@ -7,10 +7,12 @@
 #include <QMimeData>
 #include <QMouseEvent>
 
-BCDropWidget::BCDropWidget(QWidget* aParent)
+BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCallContext)
   : QWidget(aParent)
+  , mCallContext(aCallContext)
 {
-  this->setAcceptDrops(true); // Accept the drops since this is the purprose of this widget
+  // Accept the drops since this is the purprose of this widget
+  this->setAcceptDrops(true);
 
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
@@ -20,37 +22,27 @@ BCDropWidget::BCDropWidget(QWidget* aParent)
   lMainLayout->setColumnStretch(1, 1);
   this->setLayout(lMainLayout);
 
-  // Drop indicator
-  auto lDropIndicator{new QLabel("Drop some data here...", this)};
-  lDropIndicator->setObjectName("drop_indicator");
-  lMainLayout->addWidget(lDropIndicator, 0, 0, 1, 2);
-
-  // Placeholder to avoid having a resizing widget
-  auto lPlaceHolder{new QLabel(this)};
-  lPlaceHolder->setObjectName("drop_indicator_place_holder");
-  lMainLayout->addWidget(lPlaceHolder, 1, 0, 1, 2);
-
   // Path
-  auto lPathLabel{new QLabel(tr("Mesh path:"))};
+  auto lPathLabel{new QLabel(this)};
   lPathLabel->setObjectName("path_label");
-  lPathLabel->hide();
-  lMainLayout->addWidget(lPathLabel, 2, 0);
+  lMainLayout->addWidget(lPathLabel, 0, 0);
 
   auto lPathContent{new QLabel(this)};
   lPathContent->setObjectName("path_content");
-  lPathContent->hide();
-  lMainLayout->addWidget(lPathContent, 2, 1);
+  lMainLayout->addWidget(lPathContent, 0, 1);
 
   // Origin folder
-  auto lOriginLabel{new QLabel(tr("Origin mod:"))};
+  auto lOriginLabel{new QLabel(this)};
   lOriginLabel->setObjectName("origin_label");
-  lOriginLabel->hide();
-  lMainLayout->addWidget(lOriginLabel, 3, 0);
+  lMainLayout->addWidget(lOriginLabel, 1, 0);
 
   auto lOriginContent{new QLabel(this)};
   lOriginContent->setObjectName("origin_content");
-  lOriginContent->hide();
-  lMainLayout->addWidget(lOriginContent, 3, 1);
+  lMainLayout->addWidget(lOriginContent, 1, 1);
+
+  // TODO: Add a checkbox for the alternative models
+
+  this->resetData();
 }
 
 QString BCDropWidget::getOriginFolder() const
@@ -70,6 +62,13 @@ void BCDropWidget::resetData()
   this->mRessourcePath.clear();
 
   this->tweakWidgetsVisibility(true);
+}
+
+void BCDropWidget::setData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
+{
+  this->mOriginFolder = aOriginFolder;
+  this->mRessourcePath = aRessourcePath;
+  this->tweakWidgetsVisibility(aRessourcePath.length() == 0, aOriginFolder, aRessourcePath);
 }
 
 void BCDropWidget::dragEnterEvent(QDragEnterEvent* aEvent)
@@ -120,23 +119,23 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
 
 void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText, const QString& aNewRessourceText)
 {
-  auto lDropIndicator{this->findChild<QLabel*>(QString("drop_indicator"))};
-  lDropIndicator->setHidden(!aShouldViewDropZoneOnly);
-
-  auto lPlaceHolder{this->findChild<QLabel*>(QString("drop_indicator_place_holder"))};
-  lPlaceHolder->setHidden(!aShouldViewDropZoneOnly);
-
   auto lPathLabel{this->findChild<QLabel*>(QString("path_label"))};
-  lPathLabel->setHidden(aShouldViewDropZoneOnly);
-
   auto lPathContent{this->findChild<QLabel*>(QString("path_content"))};
-  lPathContent->setText(aNewRessourceText);
-  lPathContent->setHidden(aShouldViewDropZoneOnly);
-
   auto lOriginLabel{this->findChild<QLabel*>(QString("origin_label"))};
-  lOriginLabel->setHidden(aShouldViewDropZoneOnly);
-
   auto lOriginContent{this->findChild<QLabel*>(QString("origin_content"))};
-  lOriginContent->setText(aNewOriginText);
-  lOriginContent->setHidden(aShouldViewDropZoneOnly);
+
+  if (aShouldViewDropZoneOnly)
+  {
+    lPathLabel->setText(tr("Drop some data here..."));
+    lPathContent->setText("");
+    lOriginLabel->setText("");
+    lOriginContent->setText("");
+  }
+  else
+  {
+    lPathLabel->setText(tr("Mesh path:"));
+    lPathContent->setText(aNewRessourceText);
+    lOriginLabel->setText(tr("Origin mod:"));
+    lOriginContent->setText(aNewOriginText);
+  }
 }

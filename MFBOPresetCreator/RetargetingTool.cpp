@@ -360,7 +360,7 @@ void RetargetingTool::updateBackupState(int aState)
 void RetargetingTool::updateBackupPreview()
 {
   // Check if the user has typed in the output subdir qlineedit
-  auto lEventSource{qobject_cast<QLineEdit*>(sender())};
+  auto lEventSource{qobject_cast<QLineEdit*>(this->sender())};
   auto lSubdirLineEdit{this->findChild<QLineEdit*>(QString("backup_path_subdirectory"))};
 
   if (lEventSource == lSubdirLineEdit)

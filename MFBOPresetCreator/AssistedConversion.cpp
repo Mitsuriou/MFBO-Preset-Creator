@@ -33,7 +33,7 @@ AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings&
 void AssistedConversion::closeEvent(QCloseEvent* aEvent)
 {
   // Catch the sender of the event
-  auto lEventSource{qobject_cast<QPushButton*>(sender())};
+  auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
   auto lValidationBtn{this->findChild<QPushButton*>(QString("validate_selection"))};
 
   if ((lEventSource == lValidationBtn) || !this->mHasUserDoneSomething)
@@ -498,7 +498,7 @@ void AssistedConversion::validateSelection()
 void AssistedConversion::modifyComboBoxLockState(int aIndex)
 {
   // Catch the sender of the event
-  auto lEventSource{qobject_cast<QComboBox*>(sender())};
+  auto lEventSource{qobject_cast<QComboBox*>(this->sender())};
 
   // Fetch the grid layout
   auto lDataContainer{this->findChild<QGridLayout*>(QString("data_container"))};

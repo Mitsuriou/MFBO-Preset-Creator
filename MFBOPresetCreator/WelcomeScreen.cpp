@@ -249,7 +249,7 @@ void WelcomeScreen::overrideHTMLLinksColor(QString& aHTMLString)
 
 void WelcomeScreen::launchUpdateDialog()
 {
-  const auto lEventSource{qobject_cast<QPushButton*>(sender())};
+  const auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
   if (lEventSource == this->findChild<QPushButton*>(QString("download_stable_update")))
   {
     new Update(this->parentWidget(), this->mSettings, true, false);
@@ -277,7 +277,7 @@ void WelcomeScreen::checkForUpdate()
 
 void WelcomeScreen::updateCheckFinished()
 {
-  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
 
   if (lReply->error() == QNetworkReply::NoError)
   {

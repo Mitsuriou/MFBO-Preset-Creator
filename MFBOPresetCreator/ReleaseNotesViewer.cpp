@@ -90,7 +90,7 @@ void ReleaseNotesViewer::checkForUpdate()
 
 void ReleaseNotesViewer::updateCheckFinished()
 {
-  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
 
   if (lReply->error() == QNetworkReply::NoError)
   {

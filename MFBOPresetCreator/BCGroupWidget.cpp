@@ -7,8 +7,9 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aSectionTitle, const QString& aSectionIconName)
+BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aSectionTitle, const QString& aSectionIconName, const BCGroupWidgetCallContext& aCallContext)
   : QWidget(aParent)
+  , mCallContext(aCallContext)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(aSettings.appTheme)};
@@ -33,7 +34,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lMainLayout->addWidget(lSection);
 
   // Drop zone
-  auto lDropWidget{new BCDropWidget(lSection)};
+  auto lDropWidget{new BCDropWidget(lSection, aCallContext)};
   lDropWidget->setObjectName("drop_widget");
   lSectionLayout->addWidget(lDropWidget);
 
@@ -45,6 +46,55 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   // Event binding
   this->connect(lDropWidget, &BCDropWidget::dropEventTriggered, this, &BCGroupWidget::dropEventTrigerredReceiver);
   this->connect(lRemoveButton, &QPushButton::clicked, this, &BCGroupWidget::removeButtonClicked);
+}
+
+void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
+{
+  auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};
+  auto lDropWidget{this->findChild<BCDropWidget*>("drop_widget")};
+
+  if (this->mCallContext == BCGroupWidgetCallContext::BODY)
+  {
+    auto lData{aData.getBodyData()};
+    if (lData.second.length() == 0)
+    {
+      lRemoveButton->hide();
+      lDropWidget->resetData();
+    }
+    else
+    {
+      lRemoveButton->show();
+      lDropWidget->setData(lData.first, lData.second, false);
+    }
+  }
+  else if (this->mCallContext == BCGroupWidgetCallContext::FEET)
+  {
+    auto lData{aData.getFeetData()};
+    if (lData.second.length() == 0)
+    {
+      lRemoveButton->hide();
+      lDropWidget->resetData();
+    }
+    else
+    {
+      lRemoveButton->show();
+      lDropWidget->setData(lData.first, lData.second, false);
+    }
+  }
+  else if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
+  {
+    auto lData{aData.getHandsData()};
+    if (lData.getRessourcePath().length() == 0)
+    {
+      lRemoveButton->hide();
+      lDropWidget->resetData();
+    }
+    else
+    {
+      lRemoveButton->show();
+      lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), false);
+    }
+  }
 }
 
 void BCGroupWidget::removeButtonClicked()

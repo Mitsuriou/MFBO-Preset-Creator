@@ -651,7 +651,7 @@ void MFBOPresetCreator::loadProject()
 
 void MFBOPresetCreator::saveProject(const bool aIsQuittingContext)
 {
-  auto lEventSource{qobject_cast<QAction*>(sender())};
+  auto lEventSource{qobject_cast<QAction*>(this->sender())};
   if (aIsQuittingContext || lEventSource->objectName().compare("action_save_project") == 0)
   {
     qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))->saveProject(false);
@@ -798,7 +798,7 @@ void MFBOPresetCreator::launchAboutDialog()
 
 void MFBOPresetCreator::updateCheckFinished()
 {
-  auto lReply{qobject_cast<QNetworkReply*>(sender())};
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
 
   if (lReply->error() == QNetworkReply::NoError)
   {

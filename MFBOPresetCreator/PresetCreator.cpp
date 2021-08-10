@@ -322,7 +322,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   // femalebody
   auto lMeshesPathFemaleBodyLineEdit{new QLineEdit(this)};
   lMeshesPathFemaleBodyLineEdit->setObjectName("meshes_path_input_femalebody");
-  lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/");
+  lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 1, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 1, 2);
@@ -338,7 +338,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   // femalefeet
   auto lMeshesPathFemaleFeetLineEdit{new QLineEdit(this)};
   lMeshesPathFemaleFeetLineEdit->setObjectName("meshes_path_input_femalefeet");
-  lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/");
+  lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 2, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 2, 2);
@@ -354,7 +354,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   // femalehands
   auto lMeshesPathFemaleHandsLineEdit{new QLineEdit(this)};
   lMeshesPathFemaleHandsLineEdit->setObjectName("meshes_path_input_femalehands");
-  lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/");
+  lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 3, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 3, 2);
@@ -455,7 +455,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   auto lSkeletonPathLineEdit{new QLineEdit(this)};
   lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
-  lSkeletonPathLineEdit->setPlaceholderText("meshes/");
+  lSkeletonPathLineEdit->setPlaceholderText("meshes/...");
   lSkeletonGridLayout->addWidget(lSkeletonPathLineEdit, 2, 1);
 
   // Skeleton name

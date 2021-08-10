@@ -255,33 +255,38 @@ namespace Struct
   struct BatchConversionEntry
   {
   public:
-    explicit BatchConversionEntry(const QString& aPath, const QString& aName, const bool aUseAlternativeModel)
+    explicit BatchConversionEntry(){};
+
+    explicit BatchConversionEntry(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
     {
-      this->path = aPath;
-      this->name = aName;
-      this->useAlternativeModel = aUseAlternativeModel;
+      setOriginFolder(aOriginFolder);
+      setRessourcePath(aRessourcePath);
+      setUseAlternativeModel(aUseAlternativeModel);
     }
 
-    void setPath(const QString& aPath)
+    // Origin folder
+    void setOriginFolder(const QString& aOriginFolder)
     {
-      this->path = aPath;
+      this->originFolder = aOriginFolder;
     }
 
-    QString getPath() const
+    QString getOriginFolder() const
     {
-      return this->path;
+      return this->originFolder;
     }
 
-    void setName(const QString& aName)
+    // Ressource path
+    void setRessourcePath(const QString& aRessourcePath)
     {
-      this->name = aName;
+      this->ressourcePath = aRessourcePath;
     }
 
-    QString getName() const
+    QString getRessourcePath() const
     {
-      return this->name;
+      return this->ressourcePath;
     }
 
+    // Alternative model
     void setUseAlternativeModel(const bool aUseAlternativeModel)
     {
       this->useAlternativeModel = aUseAlternativeModel;
@@ -293,21 +298,132 @@ namespace Struct
     }
 
   private:
-    QString path{""};
-    QString name{""};
+    QString originFolder;
+    QString ressourcePath;
     bool useAlternativeModel{false}; // Use beasts variants model
   };
 
   struct BatchConversionPresetData
   {
   public:
-    std::map<int, std::pair<QString, QString>> names;       // <OSP and XML files names, Name in BS>
-    std::multimap<int, std::pair<QString, QString>> bodies; // <sub preset index, <path, name>>
-    std::multimap<int, std::pair<QString, QString>> feet;   // <sub preset index, <path, name>>
-    std::multimap<int, BatchConversionEntry> hands;
-    std::multimap<int, BatchConversionEntry> skeletons;
+    explicit BatchConversionPresetData(){};
 
-    // TODO: Make this structure cleaner (with a constructor and private attributes)
+    explicit BatchConversionPresetData(const QString& aFilesNames,
+                                       const QString& aPresetsNames,
+                                       const QString& aBodyPath,
+                                       const QString& aBodyName,
+                                       const QString& aFeetPath,
+                                       const QString& aFeetName,
+                                       const QString& aHandsPath,
+                                       const QString& aHandsName,
+                                       const bool aHandsUseAlternativeModel,
+                                       const QString& aSkeletonPath,
+                                       const QString& aSkeletonName,
+                                       const bool aSkeletonUseAlternativeModel)
+    {
+      this->names = std::make_pair(aFilesNames, aPresetsNames);
+      this->body = std::make_pair(aBodyPath, aBodyName);
+      this->feet = std::make_pair(aFeetPath, aFeetName);
+      this->hands = Struct::BatchConversionEntry(aHandsPath, aHandsName, aHandsUseAlternativeModel);
+      this->skeleton = Struct::BatchConversionEntry(aSkeletonPath, aSkeletonName, aSkeletonUseAlternativeModel);
+    };
+
+    bool isValid() const
+    {
+      // Conditions to ba considered as valid:
+      // The files names and presets names must be defined.
+      // A body, a feet or a hands mesh must be defined, at least
+      // The skeleton is facultative
+      return (this->names.first.length() > 0
+              && this->names.second.length() > 0
+              && (this->body.second.length() > 0 || this->feet.second.length() > 0 || this->hands.getRessourcePath().length() > 0));
+    };
+
+    // Names
+    void setNames(const QString& aFilesNames, const QString& aPresetsNames)
+    {
+      this->names = std::make_pair(aFilesNames, aPresetsNames);
+    }
+
+    std::pair<QString, QString> getNames() const
+    {
+      return this->names;
+    }
+
+    // Body
+    void setBodyData(const QString& aOriginFolder, const QString& aRessourcePath)
+    {
+      this->body = std::make_pair(aOriginFolder, aRessourcePath);
+    }
+
+    std::pair<QString, QString> getBodyData() const
+    {
+      return this->body;
+    }
+
+    // Feet
+    void setFeetData(const QString& aOriginFolder, const QString& aRessourcePath)
+    {
+      this->feet = std::make_pair(aOriginFolder, aRessourcePath);
+    }
+
+    std::pair<QString, QString> getFeetData() const
+    {
+      return this->feet;
+    }
+
+    // Hands
+    void setHandsData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
+    {
+      this->hands.setOriginFolder(aOriginFolder);
+      this->hands.setRessourcePath(aRessourcePath);
+      this->hands.setUseAlternativeModel(aUseAlternativeModel);
+    };
+
+    BatchConversionEntry getHandsData() const
+    {
+      return this->hands;
+    };
+
+    void setHandsUseAlternativeModel(const bool aUseAlternativeModel)
+    {
+      this->hands.setUseAlternativeModel(aUseAlternativeModel);
+    }
+
+    bool mustHandsUseAlternativeModel() const
+    {
+      return this->hands.mustUseAlternativeModel();
+    }
+
+    // Skeleton
+    void setSkeletonData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
+    {
+      this->skeleton.setOriginFolder(aOriginFolder);
+      this->skeleton.setRessourcePath(aRessourcePath);
+      this->skeleton.setUseAlternativeModel(aUseAlternativeModel);
+    };
+
+    BatchConversionEntry getSkeletonData() const
+    {
+      return this->skeleton;
+    };
+
+    void setSkeletonUseAlternativeModel(const bool aUseAlternativeModel)
+    {
+      this->skeleton.setUseAlternativeModel(aUseAlternativeModel);
+    }
+
+    bool mustSkeletonUseAlternativeModel() const
+    {
+      return this->skeleton.mustUseAlternativeModel();
+    }
+
+  private:
+    std::pair<QString, QString> names; // <OSP and XML files names, Presets names in BodySlide>
+    std::pair<QString, QString> body;  // <origin mod name, mesh path/name (aka full ressource path)>
+    std::pair<QString, QString> feet;  // <origin mod name, mesh path/name (aka full ressource path)>
+    BatchConversionEntry hands;        // <origin mod name, mesh path/name (aka full ressource path), use alternate model>
+    BatchConversionEntry skeleton;     // <origin mod name, mesh path/name (aka full ressource path), mash name, use alternate model>
   };
 
   struct BatchConversionData
@@ -317,7 +433,7 @@ namespace Struct
     BodyNameVersion bodyMod;
     int feetModIndex{-1};
     std::vector<Struct::Filter> filters;
-    QString fullOutputPath{""};
+    QString fullOutputPath;
     std::map<QString, std::set<QString>> scannedData;
     std::vector<BatchConversionPresetData> presets;
 

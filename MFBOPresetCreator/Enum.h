@@ -129,3 +129,11 @@ enum class ApplicationVersionRelative
   EQUIVALENT,
   NEWER
 };
+
+enum class BCGroupWidgetCallContext
+{
+  UNDEFINED,
+  BODY,
+  FEET,
+  HANDS
+};
