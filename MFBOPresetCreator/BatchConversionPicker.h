@@ -30,9 +30,17 @@ private:
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);
 
-  // Presets construction related fuctions
+  // Through-layer communications
   void removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
   void addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
+
+  // Presets controls
+  void goToPreviousPreset() const;
+  void goToNextPreset() const;
+  void goToPreset(const int aIndex);
+  void removeActivePreset();
+  void addNewEmptyPreset();
+  void updatePresetInterfaceState(const int aNextIndex);
 
   //
   void validateSelection();

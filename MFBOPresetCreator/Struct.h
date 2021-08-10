@@ -319,7 +319,7 @@ namespace Struct
     std::vector<Struct::Filter> filters;
     QString fullOutputPath{""};
     std::map<QString, std::set<QString>> scannedData;
-    std::map<QString, BatchConversionPresetData> presets;
+    std::vector<BatchConversionPresetData> presets;
 
     // TODO: Make this structure cleaner (with a constructor and private attributes)
   };

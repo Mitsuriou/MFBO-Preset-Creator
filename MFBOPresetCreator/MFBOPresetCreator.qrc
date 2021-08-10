@@ -61,6 +61,8 @@
         <file alias="external">ressources/software/icons/black/external.png</file>
         <file alias="tab">ressources/software/icons/black/tab.png</file>
         <file alias="text-snippet">ressources/software/icons/black/text-snippet.png</file>
+        <file alias="arrow-left">ressources/software/icons/black/arrow-left.png</file>
+        <file alias="arrow-right">ressources/software/icons/black/arrow-right.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -117,6 +119,8 @@
         <file alias="external">ressources/software/icons/white/external.png</file>
         <file alias="tab">ressources/software/icons/white/tab.png</file>
         <file alias="text-snippet">ressources/software/icons/white/text-snippet.png</file>
+        <file alias="arrow-left">ressources/software/icons/white/arrow-left.png</file>
+        <file alias="arrow-right">ressources/software/icons/white/arrow-right.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

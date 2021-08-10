@@ -16,6 +16,7 @@
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QScrollArea>
+#include <QSpinBox>
 #include <QSplitter>
 #include <QStyledItemDelegate>
 
@@ -88,6 +89,7 @@ void BatchConversionPicker::initializeGUI()
 
   // 3 columns splitter
   auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
+  lMainLayout->setMargin(0);
   lMainLayout->addWidget(lSplitter, 0, 0);
 
   /*===========*/
@@ -95,7 +97,6 @@ void BatchConversionPicker::initializeGUI()
   /*===========*/
   // Layout
   auto lLeftLayout{new QVBoxLayout(this)};
-  lLeftLayout->setMargin(0);
   lLeftLayout->setAlignment(Qt::AlignTop);
 
   // Wrapper widget
@@ -133,41 +134,71 @@ void BatchConversionPicker::initializeGUI()
   lMiddleTitle->setAlignment(Qt::AlignCenter);
   lMiddleList->addWidget(lMiddleTitle);
 
+  // Label for the "no data available" case
+  auto lNoDataLabel{new QLabel(tr("No data available for the selected mod"), this)};
+  lNoDataLabel->setObjectName("no_data_label");
+  lNoDataLabel->hide();
+  lMiddleList->addWidget(lNoDataLabel);
+
   /*============*/
   /* Right list */
   /*============*/
-  // Layout
-  auto lRightLayout{new QVBoxLayout(this)};
-  lRightLayout->setAlignment(Qt::AlignTop);
+  // Nested layouts
+  auto lRightDataLayout{new QVBoxLayout(this)};
+  lRightDataLayout->setAlignment(Qt::AlignTop);
+
+  auto lRightNavigationLayout{new QGridLayout(this)};
+  lRightNavigationLayout->setColumnStretch(0, 1);
+  lRightNavigationLayout->setColumnStretch(1, 0);
+  lRightNavigationLayout->setColumnStretch(2, 0);
+  lRightNavigationLayout->setColumnStretch(3, 1);
+  lRightNavigationLayout->setColumnStretch(4, 1);
+  lRightNavigationLayout->setColumnStretch(5, 1);
+
+  // Common layout
+  auto lCommonRightLayout{new QVBoxLayout(this)};
+  lCommonRightLayout->setStretch(0, 1);
+  lCommonRightLayout->setStretch(1, 0);
+  lCommonRightLayout->addLayout(lRightDataLayout);
+  lCommonRightLayout->addLayout(lRightNavigationLayout);
 
   // Wrapper widget
   auto lRightWrapper{new QWidget(this)};
-  lRightWrapper->setLayout(lRightLayout);
+  lRightWrapper->setLayout(lCommonRightLayout);
   lSplitter->addWidget(lRightWrapper);
 
   // Title
   auto lRightTitle{new QLabel(tr("Presets to generate (drop the entries here)"))};
   lRightTitle->setAlignment(Qt::AlignCenter);
-  lRightLayout->addWidget(lRightTitle);
+  lRightDataLayout->addWidget(lRightTitle);
+
+  // Label for the "no preset" case
+  auto lNoPresetLabel{new QLabel(tr("No preset created at the moment."), this)};
+  lNoPresetLabel->setObjectName("no_preset_label");
+  lRightDataLayout->addWidget(lNoPresetLabel);
 
   // Body drop widget
   auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"), "body")};
-  lRightLayout->addWidget(lDropSectionBody);
+  lDropSectionBody->hide();
+  lRightDataLayout->addWidget(lDropSectionBody);
 
   // Feet drop widget
   auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"), "foot")};
-  lRightLayout->addWidget(lDropSectionFeet);
+  lDropSectionFeet->hide();
+  lRightDataLayout->addWidget(lDropSectionFeet);
 
   // Hands drop widget
   auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"), "hand")};
-  lRightLayout->addWidget(lDropSectionHands);
+  lDropSectionHands->hide();
+  lRightDataLayout->addWidget(lDropSectionHands);
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
-  lRightLayout->addWidget(lBodyslideGroupBox);
+  lBodyslideGroupBox->hide();
+  lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
@@ -214,15 +245,49 @@ void BatchConversionPicker::initializeGUI()
   lResultNamesInApp->setObjectName("names_bodyslide_preview");
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
 
-  // Validate selection and generate button
+  /*==============================*/
+  /* Right list: Presets controls */
+  /*==============================*/
+  // Previous preset
+  auto lPreviousPreset{ComponentFactory::createButton(this, tr("Previous preset"), "", "arrow-left", lIconFolder, "previous_preset", false, true)};
+  lRightNavigationLayout->addWidget(lPreviousPreset, 0, 0);
+
+  // Active preset number
+  auto lActivePresetNumber{new QSpinBox(this)}; // TODO: Add styles for QSpinBox in Mitsuriou's stylesheets
+  lActivePresetNumber->setObjectName("active_preset_number");
+  lRightNavigationLayout->addWidget(lActivePresetNumber, 0, 1);
+
+  // Active preset out of number of presets
+  auto lNumberOfPresets{new QLabel("/ 0", this)};
+  lNumberOfPresets->setObjectName("number_of_presets");
+  lRightNavigationLayout->addWidget(lNumberOfPresets, 0, 2);
+
+  // Next preset
+  auto lNextPreset{ComponentFactory::createButton(this, tr("Next preset"), "", "arrow-right", lIconFolder, "next_preset", false, true)};
+  lRightNavigationLayout->addWidget(lNextPreset, 0, 3);
+
+  // Remove current preset
+  auto lRemoveActivePreset{ComponentFactory::createButton(this, tr("Remove current preset"), "", "minus", lIconFolder, "remove_current_preset", false, true)};
+  lRightNavigationLayout->addWidget(lRemoveActivePreset, 0, 4);
+
+  // Add new empty preset
+  auto lAddEmptyPreset{ComponentFactory::createButton(this, tr("Add new preset"), "", "plus", lIconFolder, "add_empty_preset", false, true)};
+  lRightNavigationLayout->addWidget(lAddEmptyPreset, 0, 5);
+
+  /*========================================*/
+  /* Validate selection and generate button */
+  /*========================================*/
   auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
-  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder)};
+  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "generate")};
+  lGenerateButton->setAutoDefault(true);
+  lGenerateButton->setDefault(true);
   lButtonLayout->addWidget(lGenerateButton);
 
   // Pre-bind initialization functions
   this->updateOSPXMLPreview(QString());
   this->updateBodyslideNamesPreview(QString());
+  this->updatePresetInterfaceState(0);
 
   // Event binding
   this->connect(lDropSectionBody, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
@@ -236,6 +301,12 @@ void BatchConversionPicker::initializeGUI()
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
   this->connect(lLeftList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::refreshMiddleList);
+
+  this->connect(lPreviousPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToPreviousPreset);
+  this->connect(lNextPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToNextPreset);
+  this->connect(lActivePresetNumber, QOverload<int>::of(&QSpinBox::valueChanged), this, &BatchConversionPicker::goToPreset);
+  this->connect(lRemoveActivePreset, &QPushButton::clicked, this, &BatchConversionPicker::removeActivePreset);
+  this->connect(lAddEmptyPreset, &QPushButton::clicked, this, &BatchConversionPicker::addNewEmptyPreset);
 
   // Post-bind initialization functions
   lLeftList->setCurrentRow(0);
@@ -272,15 +343,26 @@ void BatchConversionPicker::refreshMiddleList()
   auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
+    auto lNoDataLabel{this->findChild<QLabel*>(QString("no_data_label"))};
     auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
 
     if (lPosition != this->mData.scannedData.end())
     {
-      for (const auto& lValue : lPosition->second)
+      // Check how many entries are still available for the selected mod
+      if (lPosition->second.size() == 0)
       {
-        auto lButton{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
-        this->mMiddleListButtons.push_back(lButton);
-        lOptionsList->addWidget(lButton);
+        lNoDataLabel->show();
+      }
+      else
+      {
+        for (const auto& lValue : lPosition->second)
+        {
+          auto lButton{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
+          this->mMiddleListButtons.push_back(lButton);
+          lOptionsList->addWidget(lButton);
+        }
+
+        lNoDataLabel->hide();
       }
     }
   }
@@ -389,6 +471,94 @@ void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFold
   refreshMiddleList();
 
   // TODO: Track the changes in the output data
+}
+
+void BatchConversionPicker::goToPreviousPreset() const
+{
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  lActivePresetNumber->setValue(lActivePresetNumber->value() - 1);
+}
+
+void BatchConversionPicker::goToNextPreset() const
+{
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  lActivePresetNumber->setValue(lActivePresetNumber->value() + 1);
+}
+
+void BatchConversionPicker::goToPreset(const int aIndex)
+{
+  this->updatePresetInterfaceState(aIndex);
+
+  // TODO: Display the data in the upper data blocks
+}
+
+void BatchConversionPicker::removeActivePreset()
+{
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lCurrentIndex{lActivePresetNumber->value()};
+
+  // Remove the preset entry
+  this->mData.presets.erase(this->mData.presets.begin() + lCurrentIndex - 1);
+
+  // Update the preset interface block
+  auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
+  this->updatePresetInterfaceState(lNumberOfPresets);
+
+  // Display the new focused preset
+  auto lNextIndex{lCurrentIndex > lNumberOfPresets ? lNumberOfPresets : lCurrentIndex};
+  lActivePresetNumber->setValue(lNextIndex);
+}
+
+void BatchConversionPicker::addNewEmptyPreset()
+{
+  // Push a default object
+  this->mData.presets.push_back(Struct::BatchConversionPresetData());
+
+  auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
+
+  // Update the preset interface block
+  this->updatePresetInterfaceState(lNumberOfPresets);
+
+  // Display the last preset
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  lActivePresetNumber->setValue(lNumberOfPresets);
+}
+
+void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
+{
+  auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
+
+  // Previous preset
+  auto lPreviousPreset{this->findChild<QPushButton*>(QString("previous_preset"))};
+  auto lWasPreviousPresetFocused{lPreviousPreset->hasFocus()};
+  lPreviousPreset->setDisabled(lNumberOfPresets == 0 || aNextIndex <= 1);
+
+  // Active preset number
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  lActivePresetNumber->setDisabled(lNumberOfPresets == 0);
+  lActivePresetNumber->setMinimum(lNumberOfPresets == 0 ? 0 : 1);
+  lActivePresetNumber->setMaximum(lNumberOfPresets);
+
+  // Active preset out of number of presets
+  this->findChild<QLabel*>(QString("number_of_presets"))->setText(QString("/ %1").arg(lNumberOfPresets));
+
+  // Next preset
+  auto lNextPreset{this->findChild<QPushButton*>(QString("next_preset"))};
+  auto lWasNextPresetFocused{lNextPreset->hasFocus()};
+  lNextPreset->setDisabled(lNumberOfPresets == 0 || aNextIndex >= lNumberOfPresets);
+
+  // Remove current preset
+  this->findChild<QPushButton*>(QString("remove_current_preset"))->setDisabled(lNumberOfPresets == 0);
+
+  // Swap the focus
+  if (lWasPreviousPresetFocused && !lPreviousPreset->isEnabled())
+  {
+    lNextPreset->setFocus();
+  }
+  else if (lWasNextPresetFocused && !lNextPreset->isEnabled())
+  {
+    lPreviousPreset->setFocus();
+  }
 }
 
 void BatchConversionPicker::validateSelection()
