@@ -76,6 +76,8 @@ void About::initializeGUI()
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/31126'>BHUNP (UUNP Next Generation) SSE</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/51173'>Mimir Ebonic Body (Custom CBBE sliders and CBBE preset) V.2</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/30072'>MSF - More Sliders for Feet CBBE - BHUNP (High Heel)</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
+      "<li>the <a%1 href='https://www.sunkeumjeong.com/post/hg-feet-and-toes-bhunp-se'>HG Feet and Toes BHUNP SE</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
+      "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/50679'>Khrysamere HG Feet Replacer (BHUNP)</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "</ul></li><li>The \"skeleton_female.nif\" and \"skeletonbeast_female.nif\" files have been taken from<br />"
       "the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/1988'>XP32 Maximum Skeleton Special Extended - XPMSSE</a> "
       "mod on NexusMod. The files have not been modified.</li>"
