@@ -42,7 +42,7 @@ QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
       lBodies = QStringList({QString("2.25"), QString("2.30")});
       break;
     case BodyName::MIMIR_EBONIC_BODY:
-      lBodies.append(QString("1.2"));
+      lBodies = QStringList({QString("1.2"), QString("1.2 foot fix")});
       break;
   }
 
@@ -163,6 +163,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
       return std::pair<int, int>(static_cast<int>(aBodyVersion) - 33, 4);
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return std::pair<int, int>(static_cast<int>(BodyName::MIMIR_EBONIC_BODY), static_cast<int>(aBodyVersion) - 42);
   }
 

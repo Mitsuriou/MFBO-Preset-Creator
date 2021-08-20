@@ -407,6 +407,7 @@ bool Utils::isCBBEBasedBody(const BodyNameVersion& aBody)
     case BodyNameVersion::CBBE_3BBB_3BA_2_06:
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return true;
     default: // UNP-based bodies
       return false;
@@ -631,6 +632,7 @@ QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMus
     case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
     case BodyNameVersion::CBBE_3BBB_3BA_2_06:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return QString("%1 - CBBE 3BBB Hands");
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
       return QString("%1 - CBBE Hands");
@@ -656,6 +658,7 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
           case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
           case BodyNameVersion::CBBE_3BBB_3BA_2_06:
           case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+          case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
             lFeetValue = QString("%1 - CBBE 3BBB Feet");
             break;
           case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
