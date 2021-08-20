@@ -477,3 +477,64 @@ QTabBar::tab::focus {
 QTextBrowser {
   border: 1px solid #ff558d;
 }
+
+/**************/
+/*RADIO BUTTON*/
+/**************/
+QRadioButton {
+  border: 1px solid transparent;
+  min-height: 26px;
+  background-color: transparent;
+}
+
+QRadioButton::focus {
+  outline: 1px solid white;
+}
+
+QRadioButton::focus::hover {
+  outline-color: #ff558d;
+}
+
+QRadioButton::unchecked {
+  color: white;
+}
+
+QRadioButton::checked {
+  color: qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
+}
+
+QRadioButton::hover {
+  color: #ff558d;
+}
+
+QRadioButton::disabled {
+  color: #535370;
+}
+
+QRadioButton::indicator {
+  height: 10px;
+  width: 10px;
+  border: 2px solid white;
+  border-radius: 7px;
+}
+
+QRadioButton::indicator::checked {
+  background-color: qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
+}
+
+QRadioButton::indicator::checked::hover {
+  background-color: #ff558d;
+}
+
+QRadioButton::indicator::unchecked::hover {
+  border-color: #ff558d;
+}
+
+QRadioButton::indicator::pressed,
+QRadioButton::indicator::checked::hover::pressed {
+  background-color: #282a3b;
+}
+
+QRadioButton::indicator::disabled {
+  border-color: #535370;
+}
