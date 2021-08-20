@@ -59,6 +59,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
       case BodyNameVersion::CBBE_3BBB_3BA_2_06:
       case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+      case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
@@ -371,6 +372,7 @@ std::vector<Struct::Filter> SliderFileBuilder::getXMLDefaultFiltersFromBody(cons
     switch (aBody)
     {
       case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+      case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
         lDefaultFilters.push_back(Struct::Filter("3BA", true, true, true));
         [[fallthrough]];
       case BodyNameVersion::CBBE_3BBB_3BA_1_50:

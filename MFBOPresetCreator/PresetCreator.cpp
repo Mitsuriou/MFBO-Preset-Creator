@@ -36,7 +36,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->setupSkeletonGUI(*lMainLayout);
   this->setupBodySlideGUI(*lMainLayout);
   this->setupOutputGUI(*lMainLayout);
-  this->setupRemainingGUI(*lButtonLayout);
+  this->setupButtons(*lButtonLayout);
 
   // Update the GUI based on the values entered
   this->refreshAllPreviewFields();
@@ -321,14 +321,14 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 
   // femalebody
   auto lMeshesPathFemaleBodyLineEdit{new QLineEdit(this)};
-  lMeshesPathFemaleBodyLineEdit->setObjectName("meshes_path_input_femalebody");
+  lMeshesPathFemaleBodyLineEdit->setObjectName(QString("meshes_path_input_femalebody"));
   lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 1, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 1, 2);
 
   auto lBodyMeshNameInput{new QLineEdit(this)};
-  lBodyMeshNameInput->setObjectName("body_mesh_name_input");
+  lBodyMeshNameInput->setObjectName(QString("body_mesh_name_input"));
   lMeshesGridLayout->addWidget(lBodyMeshNameInput, 1, 3);
   lBodyMeshNameInput->setText("femalebody");
   lBodyMeshNameInput->setPlaceholderText("femalebody");
@@ -337,14 +337,14 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 
   // femalefeet
   auto lMeshesPathFemaleFeetLineEdit{new QLineEdit(this)};
-  lMeshesPathFemaleFeetLineEdit->setObjectName("meshes_path_input_femalefeet");
+  lMeshesPathFemaleFeetLineEdit->setObjectName(QString("meshes_path_input_femalefeet"));
   lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 2, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 2, 2);
 
   auto lFeetMeshNameInput{new QLineEdit(this)};
-  lFeetMeshNameInput->setObjectName("feet_mesh_name_input");
+  lFeetMeshNameInput->setObjectName(QString("feet_mesh_name_input"));
   lMeshesGridLayout->addWidget(lFeetMeshNameInput, 2, 3);
   lFeetMeshNameInput->setText("femalefeet");
   lFeetMeshNameInput->setPlaceholderText("femalefeet");
@@ -353,14 +353,14 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 
   // femalehands
   auto lMeshesPathFemaleHandsLineEdit{new QLineEdit(this)};
-  lMeshesPathFemaleHandsLineEdit->setObjectName("meshes_path_input_femalehands");
+  lMeshesPathFemaleHandsLineEdit->setObjectName(QString("meshes_path_input_femalehands"));
   lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 3, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 3, 2);
 
   auto lHandsMeshNameInput{new QLineEdit(this)};
-  lHandsMeshNameInput->setObjectName("hands_mesh_name_input");
+  lHandsMeshNameInput->setObjectName(QString("hands_mesh_name_input"));
   lMeshesGridLayout->addWidget(lHandsMeshNameInput, 3, 3);
   lHandsMeshNameInput->setText("femalehands");
   lHandsMeshNameInput->setPlaceholderText("femalehands");
@@ -371,18 +371,18 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   lMeshesGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
 
   auto lMeshesPreview{new QLabel(this)};
-  lMeshesPreview->setObjectName("meshes_preview");
+  lMeshesPreview->setObjectName(QString("meshes_preview"));
   lMeshesPreview->setAutoFillBackground(true);
   lMeshesGridLayout->addWidget(lMeshesPreview, 4, 1, 1, 4);
 
   // Beast hands
   auto lLabelBeastHands{new QLabel(tr("Use beast hands?"), this)};
-  lLabelBeastHands->setObjectName("label_use_beast_hands");
+  lLabelBeastHands->setObjectName(QString("label_use_beast_hands"));
   lMeshesGridLayout->addWidget(lLabelBeastHands, 5, 0);
 
   auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
   lNeedBeastHands->setCursor(Qt::PointingHandCursor);
-  lNeedBeastHands->setObjectName("use_beast_hands");
+  lNeedBeastHands->setObjectName(QString("use_beast_hands"));
   lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 4);
 
   // Event binding
@@ -402,7 +402,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline", this->mSettings.font.size);
+  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.font.size);
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::setGroupBoxState(lSkeletonGroupBox, false);
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
@@ -429,18 +429,18 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
   lNeedCustomSkeleton->setCursor(Qt::PointingHandCursor);
-  lNeedCustomSkeleton->setObjectName("use_custom_skeleton");
+  lNeedCustomSkeleton->setObjectName(QString("use_custom_skeleton"));
   lSkeletonGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
 
   // Choose the skeleton file
   auto lLabelSkeletonChooser{new QLabel(tr("Skeleton file:"), this)};
-  lLabelSkeletonChooser->setObjectName("label_skeleton_chooser");
+  lLabelSkeletonChooser->setObjectName(QString("label_skeleton_chooser"));
   lSkeletonGridLayout->addWidget(lLabelSkeletonChooser, 1, 0);
 
   auto lSkeletonChooser{new QComboBox(this)};
   lSkeletonChooser->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooser->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooser->setObjectName("skeleton_chooser");
+  lSkeletonChooser->setObjectName(QString("skeleton_chooser"));
   lSkeletonGridLayout->addWidget(lSkeletonChooser, 1, 1);
 
   this->populateSkeletonChooser();
@@ -450,36 +450,36 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   // Skeleton path
   auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
-  lLabelSkeletonPath->setObjectName("label_skeleton_path_directory");
+  lLabelSkeletonPath->setObjectName(QString("label_skeleton_path_directory"));
   lSkeletonGridLayout->addWidget(lLabelSkeletonPath, 2, 0);
 
   auto lSkeletonPathLineEdit{new QLineEdit(this)};
-  lSkeletonPathLineEdit->setObjectName("skeleton_path_directory");
+  lSkeletonPathLineEdit->setObjectName(QString("skeleton_path_directory"));
   lSkeletonPathLineEdit->setPlaceholderText("meshes/...");
   lSkeletonGridLayout->addWidget(lSkeletonPathLineEdit, 2, 1);
 
   // Skeleton name
   auto lSkeletonNameLabel{new QLabel(tr("Skeleton file name:"), this)};
-  lSkeletonNameLabel->setObjectName("label_skeleton_female");
+  lSkeletonNameLabel->setObjectName(QString("label_skeleton_female"));
   lSkeletonGridLayout->addWidget(lSkeletonNameLabel, 3, 0);
 
   auto lSkeletonName{new QLineEdit(this)};
-  lSkeletonName->setObjectName("skeleton_name");
+  lSkeletonName->setObjectName(QString("skeleton_name"));
   lSkeletonName->setPlaceholderText("skeleton_female");
   lSkeletonName->setText("skeleton_female");
   lSkeletonGridLayout->addWidget(lSkeletonName, 3, 1);
 
   auto lSkeletonNameExtension{new QLabel(tr(".nif"), this)};
-  lSkeletonNameExtension->setObjectName("skeleton_name_extension");
+  lSkeletonNameExtension->setObjectName(QString("skeleton_name_extension"));
   lSkeletonGridLayout->addWidget(lSkeletonNameExtension, 3, 2);
 
   // Skeleton path preview
   auto lSkeletontitlePreview{new QLabel(tr("Preview:"), this)};
-  lSkeletontitlePreview->setObjectName("label_skeleton_path_preview");
+  lSkeletontitlePreview->setObjectName(QString("label_skeleton_path_preview"));
   lSkeletonGridLayout->addWidget(lSkeletontitlePreview, 4, 0);
 
   auto lSkeletonPathsPreview{new QLabel(this)};
-  lSkeletonPathsPreview->setObjectName("skeleton_path_preview");
+  lSkeletonPathsPreview->setObjectName(QString("skeleton_path_preview"));
   lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 4, 1);
 
   // Initialization functions
@@ -556,14 +556,14 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
-  lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
+  lOSPXMLNamesLineEdit->setObjectName(QString("names_osp_xml_input"));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1);
 
   // Third line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 2, 0);
 
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
-  lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
+  lPathsNamesOspXmlNames->setObjectName(QString("names_osp_xml_preview"));
   lPathsNamesOspXmlNames->setAutoFillBackground(true);
   lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1);
 
@@ -578,14 +578,14 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
-  lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
+  lNamesInAppLineEdit->setObjectName(QString("names_bodyslide_input"));
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1);
 
   // Fifth line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
 
   auto lResultNamesInApp{new QLabel("", this)};
-  lResultNamesInApp->setObjectName("names_bodyslide_preview");
+  lResultNamesInApp->setObjectName(QString("names_bodyslide_preview"));
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1);
 
   // Filters
@@ -602,7 +602,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lFiltersWrapper->addWidget(lFiltersListChooser);
 
   auto lFiltersList{new QLabel("", this)};
-  lFiltersList->setObjectName("bodyslide_filters");
+  lFiltersList->setObjectName(QString("bodyslide_filters"));
   lFiltersList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   lFiltersList->setWordWrap(true);
   lFiltersWrapper->addWidget(lFiltersList);
@@ -655,7 +655,7 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
   this->updateOutputPreview();
 }
 
-void PresetCreator::setupRemainingGUI(QHBoxLayout& aLayout)
+void PresetCreator::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};

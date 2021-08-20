@@ -34,7 +34,8 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
 
   // Show the window when it's completely built
   this->adjustSize();
-  this->show();
+  //this->show(); // TODO: Add a user option to open directly maximized or not
+  this->showMaximized();
 }
 
 void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
@@ -105,13 +106,13 @@ void BatchConversionPicker::initializeGUI()
   lSplitter->addWidget(lLeftWrapper);
 
   // Title
-  auto lLeftTitle{new QLabel(tr("Found mods (click to display the data)"))};
+  auto lLeftTitle{new QLabel(tr("Origin mod(s)' folder(s) (click to display the data)"))};
   lLeftTitle->setAlignment(Qt::AlignCenter);
   lLeftLayout->addWidget(lLeftTitle);
 
   // Paths list
   auto lLeftList{new QListWidget(this)};
-  lLeftList->setObjectName("left_list");
+  lLeftList->setObjectName(QString("left_list"));
   lLeftList->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
   lLeftList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
   lLeftLayout->addWidget(lLeftList);
@@ -122,7 +123,7 @@ void BatchConversionPicker::initializeGUI()
   // Layout (the BCDragWidget components will be directly in this layout)
   auto lMiddleList{new QVBoxLayout(this)};
   lMiddleList->setAlignment(Qt::AlignTop);
-  lMiddleList->setObjectName("middle_list");
+  lMiddleList->setObjectName(QString("middle_list"));
 
   // Wrapper widget
   auto lMiddleWrapper{new QWidget(this)};
@@ -135,8 +136,8 @@ void BatchConversionPicker::initializeGUI()
   lMiddleList->addWidget(lMiddleTitle);
 
   // Label for the "no data available" case
-  auto lNoDataLabel{new QLabel(tr("No data available for the selected mod"), this)};
-  lNoDataLabel->setObjectName("no_data_label");
+  auto lNoDataLabel{new QLabel(tr("No data available for the selected origin folder"), this)};
+  lNoDataLabel->setObjectName(QString("no_data_label"));
   lNoDataLabel->hide();
   lMiddleList->addWidget(lNoDataLabel);
 
@@ -174,27 +175,27 @@ void BatchConversionPicker::initializeGUI()
 
   // Label for the "no preset" case
   auto lNoPresetLabel{new QLabel(tr("No preset created at the moment."), this)};
-  lNoPresetLabel->setObjectName("no_preset_label");
+  lNoPresetLabel->setObjectName(QString("no_preset_label"));
   lRightDataLayout->addWidget(lNoPresetLabel);
 
   // Body drop widget
   auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"), "body", BCGroupWidgetCallContext::BODY)};
-  lDropSectionBody->setObjectName("drop_section_body");
+  lDropSectionBody->setObjectName(QString("drop_section_body"));
   lRightDataLayout->addWidget(lDropSectionBody);
 
   // Feet drop widget
   auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"), "foot", BCGroupWidgetCallContext::FEET)};
-  lDropSectionFeet->setObjectName("drop_section_feet");
+  lDropSectionFeet->setObjectName(QString("drop_section_feet"));
   lRightDataLayout->addWidget(lDropSectionFeet);
 
   // Hands drop widget
   auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"), "hand", BCGroupWidgetCallContext::HANDS)};
-  lDropSectionHands->setObjectName("drop_section_hands");
+  lDropSectionHands->setObjectName(QString("drop_section_hands"));
   lRightDataLayout->addWidget(lDropSectionHands);
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  lBodyslideGroupBox->setObjectName("bodyslide_groupbox");
+  lBodyslideGroupBox->setObjectName(QString("bodyslide_groupbox"));
   Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
   Utils::setGroupBoxState(lBodyslideGroupBox, false);
@@ -213,14 +214,14 @@ void BatchConversionPicker::initializeGUI()
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
   auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
-  lOSPXMLNamesLineEdit->setObjectName("names_osp_xml_input");
+  lOSPXMLNamesLineEdit->setObjectName(QString("names_osp_xml_input"));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
 
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 2, 0);
 
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
-  lPathsNamesOspXmlNames->setObjectName("names_osp_xml_preview");
+  lPathsNamesOspXmlNames->setObjectName(QString("names_osp_xml_preview"));
   lPathsNamesOspXmlNames->setAutoFillBackground(true);
   lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 4);
 
@@ -235,14 +236,14 @@ void BatchConversionPicker::initializeGUI()
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
   auto lNamesInAppLineEdit{new QLineEdit(this)};
-  lNamesInAppLineEdit->setObjectName("names_bodyslide_input");
+  lNamesInAppLineEdit->setObjectName(QString("names_bodyslide_input"));
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
 
   // Fourth line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
 
   auto lResultNamesInApp{new QLabel("", this)};
-  lResultNamesInApp->setObjectName("names_bodyslide_preview");
+  lResultNamesInApp->setObjectName(QString("names_bodyslide_preview"));
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
 
   /*==============================*/
@@ -254,12 +255,12 @@ void BatchConversionPicker::initializeGUI()
 
   // Active preset number
   auto lActivePresetNumber{new QSpinBox(this)}; // TODO: Add styles for QSpinBox in Mitsuriou's stylesheets
-  lActivePresetNumber->setObjectName("active_preset_number");
+  lActivePresetNumber->setObjectName(QString("active_preset_number"));
   lRightNavigationLayout->addWidget(lActivePresetNumber, 0, 1);
 
   // Active preset out of number of presets
   auto lNumberOfPresets{new QLabel("/ 0", this)};
-  lNumberOfPresets->setObjectName("number_of_presets");
+  lNumberOfPresets->setObjectName(QString("number_of_presets"));
   lRightNavigationLayout->addWidget(lNumberOfPresets, 0, 2);
 
   // Next preset
@@ -349,7 +350,7 @@ void BatchConversionPicker::refreshMiddleList()
 
     if (lPosition != this->mData.scannedData.end())
     {
-      // Check how many entries are still available for the selected mod
+      // Check how many entries are still available for the selected origin folder
       if (lPosition->second.size() == 0)
       {
         lNoDataLabel->show();

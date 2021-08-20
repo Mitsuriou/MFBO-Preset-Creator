@@ -96,7 +96,7 @@ void TexturesAssistant::initializeGUI()
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName("input_path_directory");
+  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
   lMainGrid->addWidget(lInputPathLineEdit, 0, 1);
 
@@ -124,7 +124,7 @@ void TexturesAssistant::displayHintZone()
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setMinimumHeight(300);
-  lHintZone->setObjectName("hint_zone");
+  lHintZone->setObjectName(QString("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
   lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
 }

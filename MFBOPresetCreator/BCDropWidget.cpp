@@ -24,20 +24,20 @@ BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCa
 
   // Path
   auto lPathLabel{new QLabel(this)};
-  lPathLabel->setObjectName("path_label");
+  lPathLabel->setObjectName(QString("path_label"));
   lMainLayout->addWidget(lPathLabel, 0, 0);
 
   auto lPathContent{new QLabel(this)};
-  lPathContent->setObjectName("path_content");
+  lPathContent->setObjectName(QString("path_content"));
   lMainLayout->addWidget(lPathContent, 0, 1);
 
   // Origin folder
   auto lOriginLabel{new QLabel(this)};
-  lOriginLabel->setObjectName("origin_label");
+  lOriginLabel->setObjectName(QString("origin_label"));
   lMainLayout->addWidget(lOriginLabel, 1, 0);
 
   auto lOriginContent{new QLabel(this)};
-  lOriginContent->setObjectName("origin_content");
+  lOriginContent->setObjectName(QString("origin_content"));
   lMainLayout->addWidget(lOriginContent, 1, 1);
 
   // TODO: Add a checkbox for the alternative models

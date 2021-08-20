@@ -116,7 +116,7 @@ void Settings::initializeGUI()
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
-  lTabWidget->setObjectName("tab_widget");
+  lTabWidget->setObjectName(QString("tab_widget"));
   lTabWidget->setAutoFillBackground(true);
   lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   lMainLayout->addWidget(lTabWidget, 1, 0);
@@ -332,7 +332,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 
   auto lOutputPathLineEdit{new QLineEdit("", this)};
   lOutputPathLineEdit->setReadOnly(true);
-  lOutputPathLineEdit->setObjectName("output_path_directory");
+  lOutputPathLineEdit->setObjectName(QString("output_path_directory"));
   lTabLayout->addWidget(lOutputPathLineEdit, 5, 0);
 
   // OUTPUT PATH CHOOSER

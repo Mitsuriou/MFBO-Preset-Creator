@@ -26,7 +26,7 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
 
   // Tweak the group box text a little bit
   auto lGroupBoxTitle{tr("Mesh file")};
-  auto lGroupBoxIcon{QString("vector-polyline")};
+  auto lGroupBoxIcon{QString("skeleton")};
   if (aRessourcePath.endsWith("femalebody"))
   {
     lGroupBoxTitle = tr("Body mesh");

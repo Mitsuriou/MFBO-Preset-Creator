@@ -90,7 +90,7 @@ void Update::initializeGUI()
 
   // Download progress bar
   auto lDownloadProgressBar{new QProgressBar(this)};
-  lDownloadProgressBar->setObjectName("download_progress_bar");
+  lDownloadProgressBar->setObjectName(QString("download_progress_bar"));
   lDownloadProgressBar->setTextVisible(true);
   lDownloadProgressBar->setFormat(tr("Initializing..."));
   this->layout()->addWidget(lDownloadProgressBar);
@@ -98,7 +98,7 @@ void Update::initializeGUI()
 
   // Fetch status
   auto lFetchStatus{new QLabel(this)};
-  lFetchStatus->setObjectName("fetch_status");
+  lFetchStatus->setObjectName(QString("fetch_status"));
   lFetchStatus->hide();
   this->layout()->addWidget(lFetchStatus);
 

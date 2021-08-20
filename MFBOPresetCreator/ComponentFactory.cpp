@@ -61,7 +61,7 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
 
   // Create a scroll area
   auto lScrollArea{new QScrollArea(aParent)};
-  lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->setObjectName(QString("scrollable_zone"));
   lScrollArea->setContentsMargins(0, 0, 0, 0);
   lScrollArea->setWidgetResizable(true);
   // Remove the borders of the scroll area
@@ -72,7 +72,7 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
 
   // Main container
   auto lMainLayout{new QGridLayout(lMainWidget)};
-  lMainLayout->setObjectName("main_layout");
+  lMainLayout->setObjectName(QString("main_layout"));
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(10, 10, 10, 10);
   if (aMustForceLayoutTopAlignment)
@@ -87,7 +87,7 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
   if (aGenerateButtonsBottomLayout)
   {
     auto lButtonLayout{new QHBoxLayout(aParent)};
-    lButtonLayout->setObjectName("window_buttons_layout");
+    lButtonLayout->setObjectName(QString("window_buttons_layout"));
     lButtonLayout->setSpacing(10);
     lButtonLayout->setContentsMargins(10, 0, 10, 10);
     lButtonLayout->setAlignment(Qt::AlignTop);
@@ -100,14 +100,14 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
 QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
 {
   auto lScrollArea{new QScrollArea(aParent)};
-  lScrollArea->setObjectName("scrollable_zone");
+  lScrollArea->setObjectName(QString("scrollable_zone"));
   lScrollArea->setWidgetResizable(true);
 
   auto lMainWidget{new QFrame(aParent)};
   lScrollArea->setWidget(lMainWidget);
 
   auto lDataContainer{new QGridLayout(aParent)};
-  lDataContainer->setObjectName("data_container");
+  lDataContainer->setObjectName(QString("data_container"));
   lDataContainer->setAlignment(Qt::AlignTop);
   lDataContainer->setContentsMargins(0, 0, 0, 0);
 
@@ -125,7 +125,7 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
   Utils::addIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree", aFontSize);
   Utils::setGroupBoxState(lOutputGroupBox, false);
-  lOutputGroupBox->setObjectName("output_group_box");
+  lOutputGroupBox->setObjectName(QString("output_group_box"));
   aLayout.addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol);
 
   // Grid layout
@@ -144,7 +144,7 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
 
   auto lOutputPathLineEdit{new QLineEdit(aParent)};
   lOutputPathLineEdit->setReadOnly(true);
-  lOutputPathLineEdit->setObjectName("output_path_directory");
+  lOutputPathLineEdit->setObjectName(QString("output_path_directory"));
   if (aInitialOutputPath.length() > 0)
   {
     lOutputPathLineEdit->setText(aInitialOutputPath);
@@ -159,7 +159,7 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
   lOutputGridLayout->addWidget(new QLabel(tr("Output subdirectory name/path:"), aParent), 1, 0);
 
   auto lOutputSubpathLineEdit{new QLineEdit(aParent)};
-  lOutputSubpathLineEdit->setObjectName("output_path_subdirectory");
+  lOutputSubpathLineEdit->setObjectName(QString("output_path_subdirectory"));
   lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
   // Use only subdirectory path
@@ -167,14 +167,14 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
 
   auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
   lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
-  lUseOnlySubdir->setObjectName("only_use_subdirectory");
+  lUseOnlySubdir->setObjectName(QString("only_use_subdirectory"));
   lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
 
   // Preview
   lOutputGridLayout->addWidget(new QLabel(tr("Preview:"), aParent), 3, 0);
 
   auto lOutputPathsPreview{new QLabel("", aParent)};
-  lOutputPathsPreview->setObjectName("output_path_preview");
+  lOutputPathsPreview->setObjectName(QString("output_path_preview"));
   lOutputPathsPreview->setAutoFillBackground(true);
   lOutputGridLayout->addWidget(lOutputPathsPreview, 3, 1);
 }

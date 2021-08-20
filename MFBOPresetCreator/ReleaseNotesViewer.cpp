@@ -44,13 +44,13 @@ void ReleaseNotesViewer::initializeGUI()
 
   // Fetch status
   auto lFetchStatus{new QLabel(this)};
-  lFetchStatus->setObjectName("fetch_status");
+  lFetchStatus->setObjectName(QString("fetch_status"));
   lFetchStatus->hide();
   this->layout()->addWidget(lFetchStatus);
 
   // Viewer
   auto lViewer{new QTextBrowser(this)};
-  lViewer->setObjectName("viewer");
+  lViewer->setObjectName(QString("viewer"));
   lViewer->setOpenExternalLinks(true);
   this->layout()->addWidget(lViewer);
 }

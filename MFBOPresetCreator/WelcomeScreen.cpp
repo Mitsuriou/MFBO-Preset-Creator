@@ -82,7 +82,7 @@ void WelcomeScreen::initializeGUI()
   /*================================*/
   auto lShowHideWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup"), this)};
   lShowHideWelcomeScreen->setCursor(Qt::PointingHandCursor);
-  lShowHideWelcomeScreen->setObjectName("always_show_welcome_screen");
+  lShowHideWelcomeScreen->setObjectName(QString("always_show_welcome_screen"));
   lShowHideWelcomeScreen->setChecked(this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN);
   lMainLayout->addWidget(lShowHideWelcomeScreen);
 
@@ -102,12 +102,12 @@ void WelcomeScreen::initializeGUI()
 
   // Current version's status label
   auto lCurrentVersionStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lCurrentVersionStatusLabel->setObjectName("current_version_status_label");
+  lCurrentVersionStatusLabel->setObjectName(QString("current_version_status_label"));
   lMainLayout->addWidget(lCurrentVersionStatusLabel);
 
   // Current version's release notes
   auto lBrowserCurrentVersionReleaseNotes{new QTextBrowser(this)};
-  lBrowserCurrentVersionReleaseNotes->setObjectName("browser_current_version");
+  lBrowserCurrentVersionReleaseNotes->setObjectName(QString("browser_current_version"));
   lBrowserCurrentVersionReleaseNotes->setOpenExternalLinks(true);
   lBrowserCurrentVersionReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserCurrentVersionReleaseNotes);
@@ -120,14 +120,14 @@ void WelcomeScreen::initializeGUI()
 
   // Latest stable release notes
   auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
-  lBrowserStableReleaseNotes->setObjectName("browser_stable");
+  lBrowserStableReleaseNotes->setObjectName(QString("browser_stable"));
   lBrowserStableReleaseNotes->setOpenExternalLinks(true);
   lBrowserStableReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserStableReleaseNotes);
 
   // Stable status label
   auto lStableStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lStableStatusLabel->setObjectName("stable_status_label");
+  lStableStatusLabel->setObjectName(QString("stable_status_label"));
   lMainLayout->addWidget(lStableStatusLabel);
 
   // Download stable update button
@@ -143,14 +143,14 @@ void WelcomeScreen::initializeGUI()
 
   // Latest BETA release notes
   auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
-  lBrowserBetaReleaseNotes->setObjectName("browser_beta");
+  lBrowserBetaReleaseNotes->setObjectName(QString("browser_beta"));
   lBrowserBetaReleaseNotes->setOpenExternalLinks(true);
   lBrowserBetaReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserBetaReleaseNotes);
 
   // BETA status label
   auto lBetaStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lBetaStatusLabel->setObjectName("beta_status_label");
+  lBetaStatusLabel->setObjectName(QString("beta_status_label"));
   lMainLayout->addWidget(lBetaStatusLabel);
 
   // Download BETA update button

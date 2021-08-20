@@ -35,7 +35,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 
   // Drop zone
   auto lDropWidget{new BCDropWidget(lSection, aCallContext)};
-  lDropWidget->setObjectName("drop_widget");
+  lDropWidget->setObjectName(QString("drop_widget"));
   lSectionLayout->addWidget(lDropWidget);
 
   // Remove data entry button

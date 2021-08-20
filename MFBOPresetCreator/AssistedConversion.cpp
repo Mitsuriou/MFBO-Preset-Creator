@@ -97,7 +97,7 @@ void AssistedConversion::initializeGUI()
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName("input_path_directory");
+  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
   lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
 
@@ -125,7 +125,7 @@ void AssistedConversion::displayHintZone()
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setMinimumHeight(300);
-  lHintZone->setObjectName("hint_zone");
+  lHintZone->setObjectName(QString("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
   lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
 }
@@ -220,12 +220,15 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
 
 void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex)
 {
+  auto lMustUseBoldFont{aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
+                        || aFileName.compare("skeletonbeast_female", Qt::CaseInsensitive) == 0
+                        || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
+                        || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
+                        || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0};
+
   // Path
   auto lPathLabel{new QLabel(aPath, this)};
-  if (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
-      || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
-      || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
-      || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0)
+  if (lMustUseBoldFont)
   {
     lPathLabel->setTextFormat(Qt::TextFormat::RichText);
     lPathLabel->setText(QString("<span style=\"font-weight: 900;\">%1</span>").arg(aPath));
@@ -234,10 +237,7 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
 
   // File name
   auto lFileNameLabel{new QLabel(aFileName, this)};
-  if (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
-      || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
-      || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
-      || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0)
+  if (lMustUseBoldFont)
   {
     lFileNameLabel->setTextFormat(Qt::TextFormat::RichText);
     lFileNameLabel->setText(QString("<span style=\"font-weight: 900;\">%1</span>").arg(aFileName));

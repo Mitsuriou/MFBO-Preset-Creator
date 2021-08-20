@@ -13,6 +13,7 @@
 #include <QFileDialog>
 #include <QProgressBar>
 #include <QProgressDialog>
+#include <QRadioButton>
 #include <QScrollArea>
 #include <QStyledItemDelegate>
 
@@ -34,7 +35,8 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
   this->setupSkeletonGUI(*lMainLayout);
   this->setupBodySlideGUI(*lMainLayout);
   this->setupOutputGUI(*lMainLayout);
-  this->setupRemainingGUI(*lButtonLayout);
+  this->setupRemainingGUI(*lMainLayout);
+  this->setupButtons(*lButtonLayout);
 
   this->mHasUserDoneSomething = false;
 
@@ -121,7 +123,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName("input_path_directory");
+  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
 
@@ -140,7 +142,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "vector-polyline", this->mSettings.font.size);
+  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.font.size);
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::setGroupBoxState(lSkeletonGroupBox, false);
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
@@ -160,7 +162,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   auto lSkeletonChooserHuman{new QComboBox(this)};
   lSkeletonChooserHuman->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserHuman->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooserHuman->setObjectName("skeleton_chooser_human");
+  lSkeletonChooserHuman->setObjectName(QString("skeleton_chooser_human"));
   lSkeletonGridLayout->addWidget(lSkeletonChooserHuman, 1, 1);
 
   auto lSkeletonRefresherHuman{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
@@ -172,7 +174,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   auto lSkeletonChooserBeast{new QComboBox(this)};
   lSkeletonChooserBeast->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserBeast->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooserBeast->setObjectName("skeleton_chooser_beast");
+  lSkeletonChooserBeast->setObjectName(QString("skeleton_chooser_beast"));
   lSkeletonGridLayout->addWidget(lSkeletonChooserBeast, 2, 1);
 
   auto lSkeletonRefresherBeast{ComponentFactory::createButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
@@ -251,7 +253,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->addWidget(lFiltersListChooser, 3, 1);
 
   auto lFiltersList{new QLabel("", this)};
-  lFiltersList->setObjectName("bodyslide_filters");
+  lFiltersList->setObjectName(QString("bodyslide_filters"));
   lFiltersList->setWordWrap(true);
   lBodyslideGridLayout->addWidget(lFiltersList, 3, 2, 1, 2);
 
@@ -293,7 +295,39 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
   this->updateOutputPreview();
 }
 
-void BatchConversion::setupRemainingGUI(QHBoxLayout& aLayout)
+void BatchConversion::setupRemainingGUI(QGridLayout& aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+
+  // Group box
+  auto lScanTweaksGroupBox{new QGroupBox(tr("Scan tweaks").append("  "), this)};
+  Utils::addIconToGroupBox(lScanTweaksGroupBox, lIconFolder, "cog", this->mSettings.font.size);
+  this->connect(lScanTweaksGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::setGroupBoxState(lScanTweaksGroupBox, false);
+  aLayout.addWidget(lScanTweaksGroupBox, 4, 0);
+
+  // Grid layout
+  auto lScanTweaksGridLayout{new QVBoxLayout(lScanTweaksGroupBox)};
+  lScanTweaksGridLayout->setSpacing(10);
+  lScanTweaksGridLayout->setContentsMargins(15, 20, 15, 15);
+  lScanTweaksGridLayout->setAlignment(Qt::AlignTop);
+
+  // Soft search selector
+  auto lSoftSearch{new QRadioButton(tr("Lite search (smartly detect the most common files - can be imperfect)"), this)};
+  lSoftSearch->setCursor(Qt::PointingHandCursor);
+  lSoftSearch->setObjectName(QString("scan_soft_search"));
+  lScanTweaksGridLayout->addWidget(lSoftSearch);
+
+  auto lHeavierSearch{new QRadioButton(tr("Advanced search (detect every single .nif file)"), this)};
+  lHeavierSearch->setCursor(Qt::PointingHandCursor);
+  lHeavierSearch->setObjectName(QString("scan_advanced_search"));
+  lScanTweaksGridLayout->addWidget(lHeavierSearch);
+
+  lSoftSearch->setChecked(true);
+}
+
+void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
@@ -440,12 +474,15 @@ void BatchConversion::launchBatchGenerationProcess()
   auto lKey{QString()};
   auto lSecondArgument{QString()};
 
+  auto lHeavierSearchEnabled{this->findChild<QCheckBox*>(QString("scan_soft_search"))};
   auto lMeshesFilesToFind{QStringList({"femalebody_0.nif",
                                        "femalebody_1.nif",
                                        "femalehands_0.nif",
                                        "femalehands_1.nif",
                                        "femalefeet_0.nif",
-                                       "femalefeet_1.nif"})};
+                                       "femalefeet_1.nif",
+                                       "skeleton_female.nif",
+                                       "skeletonbeast_female.nif"})};
 
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
   QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
@@ -460,23 +497,23 @@ void BatchConversion::launchBatchGenerationProcess()
 
     it.next();
 
-    // Get the current directory
-    lRelativeDirPath = it.fileInfo().absolutePath().remove(lInputPath + "/", Qt::CaseInsensitive);
-
-    lFileName = it.fileInfo().fileName();
-
-    // Clean the file name from any artifact
-    lFileName.remove("_0.nif", Qt::CaseInsensitive);
-    lFileName.remove("_1.nif", Qt::CaseInsensitive);
-    lFileName.remove(".nif", Qt::CaseInsensitive);
-
-    // Construct the key of the map
-    lKey = lRelativeDirPath.left(lRelativeDirPath.indexOf("/"));
-    lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lRelativeDirPath.indexOf("/") + 1)).arg(lFileName);
-
     // Check if the file is relative to a body, hands or head textures
-    if (lMeshesFilesToFind.contains(it.fileInfo().fileName()))
+    if (lHeavierSearchEnabled || (lMeshesFilesToFind.contains(it.fileInfo().fileName()) || it.fileInfo().fileName().toLower().contains("skeleton")))
     {
+      // Get the current directory
+      lRelativeDirPath = it.fileInfo().absolutePath().remove(lInputPath + "/", Qt::CaseInsensitive);
+
+      lFileName = it.fileInfo().fileName();
+
+      // Clean the file name from any artifact
+      lFileName.remove("_0.nif", Qt::CaseInsensitive);
+      lFileName.remove("_1.nif", Qt::CaseInsensitive);
+      lFileName.remove(".nif", Qt::CaseInsensitive);
+
+      // Construct the key of the map
+      lKey = lRelativeDirPath.left(lRelativeDirPath.indexOf("/"));
+      lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lRelativeDirPath.indexOf("/") + 1)).arg(lFileName);
+
       lMapPosition = lScannedData.find(lKey);
       if (lMapPosition != lScannedData.end())
       {

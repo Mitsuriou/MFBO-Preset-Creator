@@ -33,7 +33,7 @@ private:
   void setupSkeletonGUI(QGridLayout& aLayout);
   void setupBodySlideGUI(QGridLayout& aLayout);
   void setupOutputGUI(QGridLayout& aLayout);
-  void setupRemainingGUI(QHBoxLayout& aLayout);
+  void setupButtons(QHBoxLayout& aLayout);
 
   // Load and save project
   void loadValuesFromJsonObject(const QJsonObject& lFile);

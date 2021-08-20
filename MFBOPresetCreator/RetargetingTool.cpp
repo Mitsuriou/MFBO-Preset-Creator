@@ -152,7 +152,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName("input_path_directory");
+  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 3);
 
   auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
@@ -168,7 +168,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->addWidget(lFiltersListChooser, 2, 1);
 
   auto lFiltersList{new QLabel("", this)};
-  lFiltersList->setObjectName("bodyslide_filters");
+  lFiltersList->setObjectName(QString("bodyslide_filters"));
   lFiltersList->setWordWrap(true);
   lGeneralGridLayout->addWidget(lFiltersList, 2, 2, 1, 2);
 
@@ -193,17 +193,17 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."), this)};
   lKeepBackup->setCursor(Qt::PointingHandCursor);
-  lKeepBackup->setObjectName("keep_backup");
+  lKeepBackup->setObjectName(QString("keep_backup"));
   lBackupGridLayout->addWidget(lKeepBackup, 0, 1, 1, 2);
 
   // Backup directory path
   auto lBackupPathLabel{new QLabel(tr("Backup directory path:"), this)};
-  lBackupPathLabel->setObjectName("backup_path_label");
+  lBackupPathLabel->setObjectName(QString("backup_path_label"));
   lBackupGridLayout->addWidget(lBackupPathLabel, 1, 0);
 
   auto lBackupPathLineEdit{new QLineEdit("", this)};
   lBackupPathLineEdit->setReadOnly(true);
-  lBackupPathLineEdit->setObjectName("backup_path_directory");
+  lBackupPathLineEdit->setObjectName(QString("backup_path_directory"));
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
 
   auto lBackupPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "backup_dir_chooser", false, true)};
@@ -211,21 +211,21 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Backup subdirectory name/path
   auto lLabelSubDirectoryBackupPath{new QLabel(tr("Backup subdirectory name/path:"), this)};
-  lLabelSubDirectoryBackupPath->setObjectName("backup_subdir_label");
+  lLabelSubDirectoryBackupPath->setObjectName(QString("backup_subdir_label"));
   lBackupGridLayout->addWidget(lLabelSubDirectoryBackupPath, 2, 0);
 
   auto lBackupSubpathLineEdit{new QLineEdit("", this)};
-  lBackupSubpathLineEdit->setObjectName("backup_path_subdirectory");
+  lBackupSubpathLineEdit->setObjectName(QString("backup_path_subdirectory"));
   lBackupGridLayout->addWidget(lBackupSubpathLineEdit, 2, 1);
 
   // Backup preview
   auto lBackupPathPreviewLabel{new QLabel(tr("Preview:"), this)};
-  lBackupPathPreviewLabel->setObjectName("backup_path_preview_label");
+  lBackupPathPreviewLabel->setObjectName(QString("backup_path_preview_label"));
   lBackupPathPreviewLabel->setAlignment(Qt::AlignTop);
   lBackupGridLayout->addWidget(lBackupPathPreviewLabel, 3, 0);
 
   auto lBackupPathsPreview{new QLabel("", this)};
-  lBackupPathsPreview->setObjectName("backup_path_preview");
+  lBackupPathsPreview->setObjectName(QString("backup_path_preview"));
   lBackupPathsPreview->setAlignment(Qt::AlignTop);
   lBackupGridLayout->addWidget(lBackupPathsPreview, 3, 1, 1, 2);
 

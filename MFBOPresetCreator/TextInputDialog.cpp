@@ -72,7 +72,7 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
 
   // LineEdit
   auto lLineEdit{new QLineEdit(this)};
-  lLineEdit->setObjectName("text");
+  lLineEdit->setObjectName(QString("text"));
   lTopContainer->addWidget(lLineEdit);
 
   // Bottom layout (buttons)

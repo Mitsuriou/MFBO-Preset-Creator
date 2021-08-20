@@ -135,7 +135,7 @@ void MFBOPresetCreator::initializeGUI()
   this->setupMenuBar();
 
   auto lMainContainer{new PresetCreator(this, this->mSettings, &this->mLastPaths)};
-  lMainContainer->setObjectName("main_container");
+  lMainContainer->setObjectName(QString("main_container"));
   this->setCentralWidget(lMainContainer);
 
   this->refreshUI(mSettings, false);
@@ -176,18 +176,18 @@ void MFBOPresetCreator::setupMenuBar()
 
   // Action: Open project file
   auto lOpenProjectFile{Utils::buildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL + Qt::Key_O), "file", lIconFolder)};
-  lOpenProjectFile->setObjectName("action_open_project");
+  lOpenProjectFile->setObjectName(QString("action_open_project"));
   lFile->addAction(lOpenProjectFile);
 
   // Action: Save current project
   auto lSaveProject{Utils::buildQAction(this, tr("Save"), QKeySequence(Qt::CTRL + Qt::Key_S), "save", lIconFolder)};
-  lSaveProject->setObjectName("action_save_project");
+  lSaveProject->setObjectName(QString("action_save_project"));
   lSaveProject->setDisabled(true);
   lFile->addAction(lSaveProject);
 
   // Action: Save current project as
   auto lSaveProjectAs{Utils::buildQAction(this, tr("Save as"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), "save", lIconFolder)};
-  lSaveProjectAs->setObjectName("action_save_project_as");
+  lSaveProjectAs->setObjectName(QString("action_save_project_as"));
   lFile->addAction(lSaveProjectAs);
 
   lFile->addSeparator();

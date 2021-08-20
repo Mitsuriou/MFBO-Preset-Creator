@@ -26,7 +26,8 @@ private:
   void setupSkeletonGUI(QGridLayout& aLayout);
   void setupBodySlideGUI(QGridLayout& aLayout);
   void setupOutputGUI(QGridLayout& aLayout);
-  void setupRemainingGUI(QHBoxLayout& aLayout);
+  void setupRemainingGUI(QGridLayout& aLayout);
+  void setupButtons(QHBoxLayout& aLayout);
 
   void launchPicker(const std::map<QString, std::set<QString>>& aScannedData);
 
