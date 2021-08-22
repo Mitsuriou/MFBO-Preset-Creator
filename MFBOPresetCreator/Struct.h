@@ -108,8 +108,12 @@ namespace Struct
   {
   public:
     GUITheme appTheme{GUITheme::MITSURIOU_DARK_THEME};
+    DialogOpeningMode assistedConversionDialogOpeningMode{DialogOpeningMode::WINDOWED};
     bool assistedConversionScanOnlyMeshesSubdir{false};
+    DialogOpeningMode batchConversionDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString batchConversionOutputPath{""};
+    DialogOpeningMode batchConversionPickerDialogOpeningMode{DialogOpeningMode::WINDOWED};
+    DialogOpeningMode bodySlidePresetsRetargetingDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString dangerColor{"#f44034"};
     BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
     int defaultMainFeetMod{0};
@@ -126,56 +130,67 @@ namespace Struct
     int mainWindowWidth{1000};
     StartupAction startupAction{StartupAction::OPEN_WELCOME_SCREEN};
     QString successColor{"#48c774"};
+    DialogOpeningMode texturesAssistantDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString warningColor{"#ffbc6b"};
 
     bool operator==(const Struct::Settings& aSettings)
     {
       return (
         this->appTheme == aSettings.appTheme
-        && this->defaultMainWindowBody == aSettings.defaultMainWindowBody
-        && this->defaultRetargetingToolBody == aSettings.defaultRetargetingToolBody
+        && this->assistedConversionDialogOpeningMode == aSettings.assistedConversionDialogOpeningMode
+        && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
+        && this->batchConversionDialogOpeningMode == aSettings.batchConversionDialogOpeningMode
+        && this->batchConversionOutputPath == aSettings.batchConversionOutputPath
+        && this->batchConversionPickerDialogOpeningMode == aSettings.batchConversionPickerDialogOpeningMode
+        && this->bodySlidePresetsRetargetingDialogOpeningMode == aSettings.bodySlidePresetsRetargetingDialogOpeningMode
+        && this->dangerColor == aSettings.dangerColor
         && this->defaultBatchConversionBody == aSettings.defaultBatchConversionBody
         && this->defaultMainFeetMod == aSettings.defaultMainFeetMod
+        && this->defaultMainWindowBody == aSettings.defaultMainWindowBody
+        && this->defaultRetargetingToolBody == aSettings.defaultRetargetingToolBody
         && this->defaultRetargetingToolFeetMod == aSettings.defaultRetargetingToolFeetMod
+        && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath
         && this->font == aSettings.font
         && this->language == aSettings.language
-        && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
-        && this->mainWindowHeight == aSettings.mainWindowHeight
-        && this->mainWindowWidth == aSettings.mainWindowWidth
-        && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
-        && this->batchConversionOutputPath == aSettings.batchConversionOutputPath
         && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
-        && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
-        && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath
+        && this->mainWindowHeight == aSettings.mainWindowHeight
+        && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
+        && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
+        && this->mainWindowWidth == aSettings.mainWindowWidth
         && this->startupAction == aSettings.startupAction
         && this->successColor == aSettings.successColor
-        && this->warningColor == aSettings.warningColor
-        && this->dangerColor == aSettings.dangerColor);
+        && this->texturesAssistantDialogOpeningMode == aSettings.texturesAssistantDialogOpeningMode
+        && this->warningColor == aSettings.warningColor);
     }
 
     bool operator!=(const Struct::Settings& aSettings)
     {
       return (
         this->appTheme != aSettings.appTheme
-        || this->defaultMainWindowBody != aSettings.defaultMainWindowBody
-        || this->defaultRetargetingToolBody != aSettings.defaultRetargetingToolBody
+        || this->assistedConversionDialogOpeningMode != aSettings.assistedConversionDialogOpeningMode
+        || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
+        || this->batchConversionDialogOpeningMode != aSettings.batchConversionDialogOpeningMode
+        || this->batchConversionOutputPath != aSettings.batchConversionOutputPath
+        || this->batchConversionPickerDialogOpeningMode != aSettings.batchConversionPickerDialogOpeningMode
+        || this->bodySlidePresetsRetargetingDialogOpeningMode != aSettings.bodySlidePresetsRetargetingDialogOpeningMode
+        || this->dangerColor != aSettings.dangerColor
         || this->defaultBatchConversionBody != aSettings.defaultBatchConversionBody
         || this->defaultMainFeetMod != aSettings.defaultMainFeetMod
+        || this->defaultMainWindowBody != aSettings.defaultMainWindowBody
+        || this->defaultRetargetingToolBody != aSettings.defaultRetargetingToolBody
         || this->defaultRetargetingToolFeetMod != aSettings.defaultRetargetingToolFeetMod
+        || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath
         || this->font != aSettings.font
         || this->language != aSettings.language
-        || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode
-        || this->mainWindowHeight != aSettings.mainWindowHeight
-        || this->mainWindowWidth != aSettings.mainWindowWidth
-        || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
-        || this->batchConversionOutputPath != aSettings.batchConversionOutputPath
         || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
-        || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
-        || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath
+        || this->mainWindowHeight != aSettings.mainWindowHeight
+        || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode
+        || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
+        || this->mainWindowWidth != aSettings.mainWindowWidth
         || this->startupAction != aSettings.startupAction
         || this->successColor != aSettings.successColor
-        || this->warningColor != aSettings.warningColor
-        || this->dangerColor != aSettings.dangerColor);
+        || this->texturesAssistantDialogOpeningMode != aSettings.texturesAssistantDialogOpeningMode
+        || this->warningColor != aSettings.warningColor);
     }
   };
 

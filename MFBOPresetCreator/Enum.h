@@ -92,6 +92,12 @@ enum class WindowOpeningMode
   MAXIMIZED
 };
 
+enum class DialogOpeningMode
+{
+  WINDOWED,
+  MAXIMIZED
+};
+
 enum class StartupAction
 {
   OPEN_WELCOME_SCREEN,

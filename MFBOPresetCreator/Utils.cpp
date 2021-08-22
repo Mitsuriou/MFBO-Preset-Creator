@@ -828,189 +828,141 @@ Struct::Settings Utils::loadSettingsFromFile()
     auto lFontJSON{lSettingsJSON["font"].toObject()};
 
     if (lFontJSON.contains("family") && lFontJSON["family"].isString())
-    {
       lSettings.font.family = lFontJSON["family"].toString();
-    }
 
     if (lFontJSON.contains("italic") && lFontJSON["italic"].isBool())
-    {
       lSettings.font.italic = lFontJSON["italic"].toBool();
-    }
 
     if (lFontJSON.contains("size") && lFontJSON["size"].isDouble())
-    {
       lSettings.font.size = lFontJSON["size"].toInt();
-    }
 
     if (lFontJSON.contains("strikeOut") && lFontJSON["strikeOut"].isBool())
-    {
       lSettings.font.strikeOut = lFontJSON["strikeOut"].toBool();
-    }
 
     if (lFontJSON.contains("styleName") && lFontJSON["styleName"].isString())
-    {
       lSettings.font.styleName = lFontJSON["styleName"].toString();
-    }
 
     if (lFontJSON.contains("underline") && lFontJSON["underline"].isBool())
-    {
       lSettings.font.underline = lFontJSON["underline"].toBool();
-    }
 
     if (lFontJSON.contains("weight") && lFontJSON["weight"].isDouble())
-    {
       lSettings.font.weight = lFontJSON["weight"].toInt();
-    }
   }
 
   // Dark theme
   if (lSettingsJSON.contains("appTheme") && lSettingsJSON["appTheme"].isDouble())
-  {
-    auto lFoundAppTheme{lSettingsJSON["appTheme"].toInt()};
-    lSettings.appTheme = static_cast<GUITheme>(lFoundAppTheme);
-  }
+    lSettings.appTheme = static_cast<GUITheme>(lSettingsJSON["appTheme"].toInt());
+
+  // Opening mode: assisted conversion
+  if (lSettingsJSON.contains("assistedConversionDialogOpeningMode") && lSettingsJSON["assistedConversionDialogOpeningMode"].isDouble())
+    lSettings.assistedConversionDialogOpeningMode = static_cast<DialogOpeningMode>(lSettingsJSON["assistedConversionDialogOpeningMode"].toInt());
 
   // Assisted Conversion: only scan the meshes subdir
   if (lSettingsJSON.contains("assistedConversionScanOnlyMeshesSubdir") && lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].isBool())
-  {
     lSettings.assistedConversionScanOnlyMeshesSubdir = lSettingsJSON["assistedConversionScanOnlyMeshesSubdir"].toBool();
-  }
+
+  // Opening mode: batch conversion
+  if (lSettingsJSON.contains("batchConversionDialogOpeningMode") && lSettingsJSON["batchConversionDialogOpeningMode"].isDouble())
+    lSettings.batchConversionDialogOpeningMode = static_cast<DialogOpeningMode>(lSettingsJSON["batchConversionDialogOpeningMode"].toInt());
 
   // Batch Conversion: output path
   if (lSettingsJSON.contains("batchConversionOutputPath") && lSettingsJSON["batchConversionOutputPath"].isString())
-  {
     lSettings.batchConversionOutputPath = lSettingsJSON["batchConversionOutputPath"].toString();
-  }
+
+  // Opening mode: batch conversion picker
+  if (lSettingsJSON.contains("batchConversionPickerDialogOpeningMode") && lSettingsJSON["batchConversionPickerDialogOpeningMode"].isDouble())
+    lSettings.batchConversionPickerDialogOpeningMode = static_cast<DialogOpeningMode>(lSettingsJSON["batchConversionPickerDialogOpeningMode"].toInt());
+
+  // Opening mode: bodySlide presets' retargeting
+  if (lSettingsJSON.contains("bodySlidePresetsRetargetingDialogOpeningMode") && lSettingsJSON["bodySlidePresetsRetargetingDialogOpeningMode"].isDouble())
+    lSettings.bodySlidePresetsRetargetingDialogOpeningMode = static_cast<DialogOpeningMode>(lSettingsJSON["bodySlidePresetsRetargetingDialogOpeningMode"].toInt());
 
   // Danger color
   if (lSettingsJSON.contains("dangerColor") && lSettingsJSON["dangerColor"].isString())
-  {
     lSettings.dangerColor = lSettingsJSON["dangerColor"].toString();
-  }
 
   // Batch Conversion: Default body name and version
   if (lSettingsJSON.contains("defaultBatchConversionBody") && lSettingsJSON["defaultBatchConversionBody"].isDouble())
-  {
-    auto lFoundBody{lSettingsJSON["defaultMainWindowBody"].toInt()};
-    lSettings.defaultBatchConversionBody = static_cast<BodyNameVersion>(lFoundBody);
-  }
+    lSettings.defaultBatchConversionBody = static_cast<BodyNameVersion>(lSettingsJSON["defaultMainWindowBody"].toInt());
 
   // Preset Creator: Default feet mod
   if (lSettingsJSON.contains("defaultMainFeetMod") && lSettingsJSON["defaultMainFeetMod"].isDouble())
-  {
     lSettings.defaultMainFeetMod = lSettingsJSON["defaultMainFeetMod"].toInt();
-  }
 
   // Preset Creator: Default body name and version
   if (lSettingsJSON.contains("defaultMainWindowBody") && lSettingsJSON["defaultMainWindowBody"].isDouble())
-  {
-    auto lFoundBody{lSettingsJSON["defaultMainWindowBody"].toInt()};
-    lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
-  }
+    lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lSettingsJSON["defaultMainWindowBody"].toInt());
 
   // Default BodySlide Presets' Retargeting body name and version
   if (lSettingsJSON.contains("defaultRetargetingToolBody") && lSettingsJSON["defaultRetargetingToolBody"].isDouble())
-  {
-    auto lFoundBody{lSettingsJSON["defaultRetargetingToolBody"].toInt()};
-    lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
-  }
+    lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lSettingsJSON["defaultRetargetingToolBody"].toInt());
 
   // Retargeting Tool: Default feet mod
   if (lSettingsJSON.contains("defaultRetargetingToolFeetMod") && lSettingsJSON["defaultRetargetingToolFeetMod"].isDouble())
-  {
     lSettings.defaultRetargetingToolFeetMod = lSettingsJSON["defaultRetargetingToolFeetMod"].toInt();
-  }
 
   // Each button stores the last opened path
   if (lSettingsJSON.contains("eachButtonSavesItsLastUsedPath") && lSettingsJSON["eachButtonSavesItsLastUsedPath"].isBool())
-  {
     lSettings.eachButtonSavesItsLastUsedPath = lSettingsJSON["eachButtonSavesItsLastUsedPath"].toBool();
-  }
 
   // Language
   if (lSettingsJSON.contains("language") && lSettingsJSON["language"].isDouble())
-  {
-    auto lFoundLanguage{lSettingsJSON["language"].toInt()};
-    lSettings.language = static_cast<ApplicationLanguage>(lFoundLanguage);
-  }
+    lSettings.language = static_cast<ApplicationLanguage>(lSettingsJSON["language"].toInt());
 
   // Main window auto open generated dir
   if (lSettingsJSON.contains("mainWindowAutomaticallyOpenGeneratedDirectory") && lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].isBool())
-  {
     lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
-  }
 
   // Default window height
   if (lSettingsJSON.contains("mainWindowHeight") && lSettingsJSON["mainWindowHeight"].isDouble())
-  {
     lSettings.mainWindowHeight = lSettingsJSON["mainWindowHeight"].toInt();
-  }
 
-  // Main window opening mode
+  // Opening mode: main window
   if (lSettingsJSON.contains("mainWindowOpeningMode") && lSettingsJSON["mainWindowOpeningMode"].isDouble())
-  {
-    auto lFoundWindowOpeningMode{lSettingsJSON["mainWindowOpeningMode"].toInt()};
-    lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lFoundWindowOpeningMode);
-  }
+    lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lSettingsJSON["mainWindowOpeningMode"].toInt());
 
   // Main window output path
   if (lSettingsJSON.contains("mainWindowOutputPath") && lSettingsJSON["mainWindowOutputPath"].isString())
-  {
     lSettings.mainWindowOutputPath = lSettingsJSON["mainWindowOutputPath"].toString();
-  }
 
   // Default window width
   if (lSettingsJSON.contains("mainWindowWidth") && lSettingsJSON["mainWindowWidth"].isDouble())
-  {
     lSettings.mainWindowWidth = lSettingsJSON["mainWindowWidth"].toInt();
-  }
 
   // Show welcome screen at application startup
   if (lSettingsJSON.contains("startupAction") && lSettingsJSON["startupAction"].isDouble())
-  {
     lSettings.startupAction = static_cast<StartupAction>(lSettingsJSON["startupAction"].toInt());
-  }
 
   // Success color
   if (lSettingsJSON.contains("successColor") && lSettingsJSON["successColor"].isString())
-  {
     lSettings.successColor = lSettingsJSON["successColor"].toString();
-  }
+
+  // Opening mode: textures assistant
+  if (lSettingsJSON.contains("texturesAssistantDialogOpeningMode") && lSettingsJSON["texturesAssistantDialogOpeningMode"].isDouble())
+    lSettings.texturesAssistantDialogOpeningMode = static_cast<DialogOpeningMode>(lSettingsJSON["texturesAssistantDialogOpeningMode"].toInt());
 
   // Warning color
   if (lSettingsJSON.contains("warningColor") && lSettingsJSON["warningColor"].isString())
-  {
     lSettings.warningColor = lSettingsJSON["warningColor"].toString();
-  }
 
   // JSON format upgrade from v2.10.2.0 to 3.0.0.0
   if (!lSettingsJSON.contains("applicationVersion"))
   {
     // "windowWidth" -> "mainWindowWidth"
     if (lSettingsJSON.contains("windowWidth") && lSettingsJSON["windowWidth"].isDouble())
-    {
       lSettings.mainWindowWidth = lSettingsJSON["windowWidth"].toInt();
-    }
 
     // "windowHeight" -> "mainWindowHeight"
     if (lSettingsJSON.contains("windowHeight") && lSettingsJSON["windowHeight"].isDouble())
-    {
       lSettings.mainWindowHeight = lSettingsJSON["windowHeight"].toInt();
-    }
 
     // "retargetingToolDefaultBody" -> "defaultRetargetingToolBody"
     if (lSettingsJSON.contains("retargetingToolDefaultBody") && lSettingsJSON["retargetingToolDefaultBody"].isDouble())
-    {
-      auto lFoundBody{lSettingsJSON["retargetingToolDefaultBody"].toInt()};
-      lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lFoundBody);
-    }
+      lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lSettingsJSON["retargetingToolDefaultBody"].toInt());
 
     // "defaultBody" -> "defaultMainWindowBody"
     if (lSettingsJSON.contains("defaultBody") && lSettingsJSON["defaultBody"].isDouble())
-    {
-      auto lFoundBody{lSettingsJSON["defaultBody"].toInt()};
-      lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lFoundBody);
-    }
+      lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lSettingsJSON["defaultBody"].toInt());
 
     Utils::saveSettingsToFile(lSettings);
     Utils::printMessageStdOut("User settings upgraded!");
@@ -1057,8 +1009,12 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   // Construct the full settings object
   QJsonObject lSettings;
   lSettings["appTheme"] = static_cast<int>(aSettings.appTheme);
+  lSettings["assistedConversionDialogOpeningMode"] = static_cast<int>(aSettings.assistedConversionDialogOpeningMode);
   lSettings["assistedConversionScanOnlyMeshesSubdir"] = aSettings.assistedConversionScanOnlyMeshesSubdir;
+  lSettings["batchConversionDialogOpeningMode"] = static_cast<int>(aSettings.batchConversionDialogOpeningMode);
   lSettings["batchConversionOutputPath"] = aSettings.batchConversionOutputPath;
+  lSettings["batchConversionPickerDialogOpeningMode"] = static_cast<int>(aSettings.batchConversionPickerDialogOpeningMode);
+  lSettings["bodySlidePresetsRetargetingDialogOpeningMode"] = static_cast<int>(aSettings.bodySlidePresetsRetargetingDialogOpeningMode);
   lSettings["dangerColor"] = aSettings.dangerColor;
   lSettings["defaultBatchConversionBody"] = static_cast<int>(aSettings.defaultBatchConversionBody);
   lSettings["defaultMainFeetMod"] = aSettings.defaultMainFeetMod;
@@ -1075,6 +1031,7 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lSettings["mainWindowWidth"] = aSettings.mainWindowWidth;
   lSettings["startupAction"] = static_cast<int>(aSettings.startupAction);
   lSettings["successColor"] = aSettings.successColor;
+  lSettings["texturesAssistantDialogOpeningMode"] = static_cast<int>(aSettings.texturesAssistantDialogOpeningMode);
   lSettings["warningColor"] = aSettings.warningColor;
 
   // Version number string

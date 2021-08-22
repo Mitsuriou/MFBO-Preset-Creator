@@ -333,6 +333,13 @@ QStringList DataLists::getWindowOpeningModes()
     tr("Maximized")};
 }
 
+QStringList DataLists::getDialogOpeningModes()
+{
+  return QStringList{
+    tr("Windowed"),
+    tr("Maximized")};
+}
+
 QStringList DataLists::getAppThemes()
 {
   return QStringList{

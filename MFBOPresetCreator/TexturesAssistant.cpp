@@ -28,7 +28,7 @@ TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& a
 
   // Show the window when it's completely built
   this->adjustSize();
-  this->show();
+  aSettings.texturesAssistantDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void TexturesAssistant::closeEvent(QCloseEvent* aEvent)

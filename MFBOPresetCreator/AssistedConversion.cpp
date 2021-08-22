@@ -27,7 +27,7 @@ AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings&
 
   // Show the window when it's completely built
   this->adjustSize();
-  this->show();
+  aSettings.assistedConversionDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void AssistedConversion::closeEvent(QCloseEvent* aEvent)

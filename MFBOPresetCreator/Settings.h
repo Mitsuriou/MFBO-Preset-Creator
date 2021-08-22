@@ -37,6 +37,8 @@ private:
   void setupLastPathsTab(QTabWidget& aTabWidget);
   void setupButtons(QHBoxLayout& aLayout);
 
+  void createDialogOpeningModeBlock(QGridLayout& aLayout, const QString& aLabelTitle, const QString& aObjectName, const int aRow, const int aCol);
+
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   Struct::Settings getSettingsFromGUI() const;
 

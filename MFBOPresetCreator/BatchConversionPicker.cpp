@@ -34,8 +34,7 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
 
   // Show the window when it's completely built
   this->adjustSize();
-  //this->show(); // TODO: Add a user option to open directly maximized or not
-  this->showMaximized();
+  aSettings.batchConversionPickerDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)

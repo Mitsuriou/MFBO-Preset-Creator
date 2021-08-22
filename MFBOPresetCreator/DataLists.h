@@ -18,6 +18,7 @@ public:
 
   // Other data lists
   static QStringList getWindowOpeningModes();
+  static QStringList getDialogOpeningModes();
   static QStringList getAppThemes();
   static QStringList getLanguages();
   static QStringList getAssistedConversionActions();

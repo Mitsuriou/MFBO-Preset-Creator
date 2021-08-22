@@ -34,7 +34,7 @@ RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSett
 
   // Show the window when it's completely built
   this->adjustSize();
-  this->show();
+  aSettings.bodySlidePresetsRetargetingDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void RetargetingTool::closeEvent(QCloseEvent* aEvent)
