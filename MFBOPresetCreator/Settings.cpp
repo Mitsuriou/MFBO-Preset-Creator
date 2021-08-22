@@ -754,7 +754,6 @@ Struct::Settings Settings::getSettingsFromGUI() const
   lSettings.dangerColor = this->mNewDangerColor;
 
   // TODO: Add the settings GUI for Batch Conversion
-  // TODO: Add more settings for the windows' opening modes
   // TODO: Add more settings for default selected values in many windows
 
   return lSettings;
