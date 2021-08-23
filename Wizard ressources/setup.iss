@@ -28,7 +28,7 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
 [CustomMessages]
 english.DeleteAppDataDir=Do you want to remove configuration files too?%nClicking "YES" will delete the whole "MFBOPresetCreator" folder located in "%1".%nClicking "NO" will let the files untouched.
-french.DeleteAppDataDir=Voulez-vous supprimer les fichiers de configuration également ?%nCliquer sur "OUI" supprimera complètement le dossier "MFBOPresetCreator" situé dans "%1".%nCliquer sur "NON" laissera les fichiers tels quels.
+french.DeleteAppDataDir=Voulez-vous supprimer les fichiers de configuration ï¿½galement ?%nCliquer sur "OUI" supprimera complï¿½tement le dossier "MFBOPresetCreator" situï¿½ dans "%1".%nCliquer sur "NON" laissera les fichiers tels quels.
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -48,8 +48,8 @@ Filename: "{app}\MFBOPresetCreator.exe"; Description: "{cm:LaunchProgram,{#AppNa
 [Registry]
 Root: HKCR; Subkey: ".pcp"; ValueData: "{#AppName}"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""
 Root: HKCR; Subkey: "{#AppName}"; ValueData: "Program {#AppName}";  Flags: uninsdeletekey; ValueType: string;  ValueName: ""
-Root: HKCR; Subkey: "{#AppName}\DefaultIcon"; ValueData: "{app}\MFBOPresetCreator.exe,0"; ValueType: string;  ValueName: ""
-Root: HKCR; Subkey: "{#AppName}\shell\open\command";  ValueData: """{app}\MFBOPresetCreator.exe"" ""%1"""; ValueType: string;  ValueName: ""
+Root: HKCR; Subkey: "{#AppName}\DefaultIcon"; ValueData: "{app}\MFBOPresetCreator.exe,0"; Flags: uninsdeletevalue; ValueType: string;  ValueName: ""
+Root: HKCR; Subkey: "{#AppName}\shell\open\command";  ValueData: """{app}\MFBOPresetCreator.exe"" ""%1"""; Flags: uninsdeletevalue; ValueType: string;  ValueName: ""
 
 [Code]
 var Concat: String;
