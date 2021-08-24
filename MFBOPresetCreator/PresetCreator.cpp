@@ -1492,7 +1492,7 @@ void PresetCreator::generateDirectoryStructure()
     QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
     lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
 
-    auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+    auto lOKButton{lConfirmationBox.addButton(tr("Open the generated directory"), QMessageBox::ButtonRole::AcceptRole)};
     lOKButton->setCursor(Qt::PointingHandCursor);
     lConfirmationBox.setDefaultButton(lOKButton);
     lConfirmationBox.exec();

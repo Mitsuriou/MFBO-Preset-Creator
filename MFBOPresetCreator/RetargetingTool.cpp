@@ -9,6 +9,7 @@
 #include <QCheckBox>
 #include <QCloseEvent>
 #include <QComboBox>
+#include <QDesktopServices>
 #include <QDirIterator>
 #include <QFileDialog>
 #include <QGroupBox>
@@ -809,13 +810,42 @@ void RetargetingTool::launchUpDownGradeProcess()
     qApp->processEvents();
   }
 
-  QMessageBox lConfirmationBox(QMessageBox::Icon::Information, tr("Retargeting successful"), tr("All the files have been correctly re-targeted. You can now close this window!"), QMessageBox::StandardButton::NoButton, this);
-  lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
+  auto lTitle{tr("Retargeting successful")};
+  auto lMessage{tr("All the files have been correctly retargeted. You can now close this window!")};
 
-  auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
-  lOKButton->setCursor(Qt::PointingHandCursor);
-  lConfirmationBox.setDefaultButton(lOKButton);
-  lConfirmationBox.exec();
+  if (mSettings.retargetingToolAutomaticallyOpenGeneratedDirectory)
+  {
+    QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
+    lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
+
+    auto lOKButton{lConfirmationBox.addButton(tr("Open the retargeted directory"), QMessageBox::ButtonRole::AcceptRole)};
+    lOKButton->setCursor(Qt::PointingHandCursor);
+    lConfirmationBox.setDefaultButton(lOKButton);
+    lConfirmationBox.exec();
+
+    // Open the directory where the file structure has been created
+    QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
+  }
+  else
+  {
+    if (Utils::displayQuestionMessage(this,
+                                      lTitle,
+                                      lMessage,
+                                      "icons",
+                                      "green-info-circle",
+                                      tr("Open the retargeted directory"),
+                                      tr("OK"),
+                                      "",
+                                      "",
+                                      "",
+                                      "",
+                                      false)
+        == ButtonClicked::YES)
+    {
+      // Open the directory where the file structure has been created
+      QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
+    }
+  }
 }
 
 void RetargetingTool::openBodySlideFiltersEditor()

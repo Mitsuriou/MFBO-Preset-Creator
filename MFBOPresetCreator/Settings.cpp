@@ -419,6 +419,14 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   lFeetSelector->setObjectName(QString("feet_mod_retargeting_tool"));
   lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
 
+  // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
+  lTabLayout->addWidget(new QLabel(tr("Post-processing tasks:"), this), 4, 0, 1, 2);
+
+  auto lAutoOpenRetargetedDirCheckbox{new QCheckBox(tr("Automatically open the retargeted directory after the retargeting process succeeded."), this)};
+  lAutoOpenRetargetedDirCheckbox->setCursor(Qt::PointingHandCursor);
+  lAutoOpenRetargetedDirCheckbox->setObjectName(QString("auto_open_retargeted_dir"));
+  lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 5, 0, 1, 2);
+
   // Event binding
   this->connect(lUpgradeBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
 }
@@ -579,6 +587,9 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))};
   lDefaultRetargetingToolFeetMod->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolFeetMod));
 
+  auto lAutoOpenRetargetedDirCheckbox{this->findChild<QCheckBox*>(QString("auto_open_retargeted_dir"))};
+  lAutoOpenRetargetedDirCheckbox->setChecked(aSettingsToLoad.retargetingToolAutomaticallyOpenGeneratedDirectory);
+
   auto lMainWindowOutputPath{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   lMainWindowOutputPath->setText(aSettingsToLoad.mainWindowOutputPath);
 
@@ -642,6 +653,7 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
   auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))->isChecked()};
+  auto lAutoOpenRetargetedDir{this->findChild<QCheckBox*>(QString("auto_open_retargeted_dir"))->isChecked()};
   auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>(QString("assis_conv_only_scan_meshes_dir"))->isChecked()};
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))->isChecked()};
 
@@ -741,6 +753,9 @@ Struct::Settings Settings::getSettingsFromGUI() const
 
   // Automatically open generated directory
   lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lAutoOpenGeneratedDir;
+
+  // Automatically open retargeted directory
+  lSettings.retargetingToolAutomaticallyOpenGeneratedDirectory = lAutoOpenRetargetedDir;
 
   // Assisted Conversion: only scan the meshes subdir
   lSettings.assistedConversionScanOnlyMeshesSubdir = lAssisConvScanOnlyMeshesDir;

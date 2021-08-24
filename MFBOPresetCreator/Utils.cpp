@@ -909,7 +909,7 @@ Struct::Settings Utils::loadSettingsFromFile()
   if (lSettingsJSON.contains("language") && lSettingsJSON["language"].isDouble())
     lSettings.language = static_cast<ApplicationLanguage>(lSettingsJSON["language"].toInt());
 
-  // Main window auto open generated dir
+  // Main window: automatically open generated dir
   if (lSettingsJSON.contains("mainWindowAutomaticallyOpenGeneratedDirectory") && lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].isBool())
     lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lSettingsJSON["mainWindowAutomaticallyOpenGeneratedDirectory"].toBool();
 
@@ -928,6 +928,10 @@ Struct::Settings Utils::loadSettingsFromFile()
   // Default window width
   if (lSettingsJSON.contains("mainWindowWidth") && lSettingsJSON["mainWindowWidth"].isDouble())
     lSettings.mainWindowWidth = lSettingsJSON["mainWindowWidth"].toInt();
+
+  // Retargeting tool: automatically open retargeted dir
+  if (lSettingsJSON.contains("retargetingToolAutomaticallyOpenGeneratedDirectory") && lSettingsJSON["retargetingToolAutomaticallyOpenGeneratedDirectory"].isBool())
+    lSettings.retargetingToolAutomaticallyOpenGeneratedDirectory = lSettingsJSON["retargetingToolAutomaticallyOpenGeneratedDirectory"].toBool();
 
   // Show welcome screen at application startup
   if (lSettingsJSON.contains("startupAction") && lSettingsJSON["startupAction"].isDouble())
@@ -968,18 +972,15 @@ Struct::Settings Utils::loadSettingsFromFile()
     Utils::printMessageStdOut("User settings upgraded!");
   }
   // For any JSON format upgrade / settings values changed
-  else
+  else if (Utils::compareVersionNumbers(lSettingsJSON["applicationVersion"].toString(), "3.2.0.0") == ApplicationVersionRelative::OLDER)
   {
-    if (Utils::compareVersionNumbers(lSettingsJSON["applicationVersion"].toString(), "3.2.0.0") == ApplicationVersionRelative::OLDER)
-    {
-      lSettings.defaultMainWindowBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
-      lSettings.defaultRetargetingToolBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
-      lSettings.defaultBatchConversionBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
-      lSettings.appTheme = GUITheme::MITSURIOU_DARK_THEME;
+    lSettings.defaultMainWindowBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
+    lSettings.defaultRetargetingToolBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
+    lSettings.defaultBatchConversionBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
+    lSettings.appTheme = GUITheme::MITSURIOU_DARK_THEME;
 
-      Utils::saveSettingsToFile(lSettings);
-      Utils::printMessageStdOut("User settings upgraded!");
-    }
+    Utils::saveSettingsToFile(lSettings);
+    Utils::printMessageStdOut("User settings upgraded!");
   }
 
   Utils::printMessageStdOut("User settings:");
@@ -1029,6 +1030,7 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lSettings["mainWindowOpeningMode"] = static_cast<int>(aSettings.mainWindowOpeningMode);
   lSettings["mainWindowOutputPath"] = aSettings.mainWindowOutputPath;
   lSettings["mainWindowWidth"] = aSettings.mainWindowWidth;
+  lSettings["retargetingToolAutomaticallyOpenGeneratedDirectory"] = aSettings.retargetingToolAutomaticallyOpenGeneratedDirectory;
   lSettings["startupAction"] = static_cast<int>(aSettings.startupAction);
   lSettings["successColor"] = aSettings.successColor;
   lSettings["texturesAssistantDialogOpeningMode"] = static_cast<int>(aSettings.texturesAssistantDialogOpeningMode);

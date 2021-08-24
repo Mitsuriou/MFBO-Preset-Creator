@@ -128,6 +128,7 @@ namespace Struct
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
     QString mainWindowOutputPath{""};
     int mainWindowWidth{1000};
+    bool retargetingToolAutomaticallyOpenGeneratedDirectory{true};
     StartupAction startupAction{StartupAction::OPEN_WELCOME_SCREEN};
     QString successColor{"#48c774"};
     DialogOpeningMode texturesAssistantDialogOpeningMode{DialogOpeningMode::WINDOWED};
@@ -157,6 +158,7 @@ namespace Struct
         && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
         && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
         && this->mainWindowWidth == aSettings.mainWindowWidth
+        && this->retargetingToolAutomaticallyOpenGeneratedDirectory == aSettings.retargetingToolAutomaticallyOpenGeneratedDirectory
         && this->startupAction == aSettings.startupAction
         && this->successColor == aSettings.successColor
         && this->texturesAssistantDialogOpeningMode == aSettings.texturesAssistantDialogOpeningMode
@@ -187,6 +189,7 @@ namespace Struct
         || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode
         || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
         || this->mainWindowWidth != aSettings.mainWindowWidth
+        || this->retargetingToolAutomaticallyOpenGeneratedDirectory != aSettings.retargetingToolAutomaticallyOpenGeneratedDirectory
         || this->startupAction != aSettings.startupAction
         || this->successColor != aSettings.successColor
         || this->texturesAssistantDialogOpeningMode != aSettings.texturesAssistantDialogOpeningMode
