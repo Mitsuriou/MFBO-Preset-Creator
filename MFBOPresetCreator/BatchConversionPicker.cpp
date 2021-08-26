@@ -376,7 +376,7 @@ void BatchConversionPicker::updateOSPXMLPreview(QString aText)
 
   Utils::cleanPathString(aText);
 
-  if (aText.trimmed().length() == 0)
+  if (aText.trimmed().isEmpty())
   {
     aText = QString::fromStdString("*");
     lIsValidPath = false;
@@ -413,7 +413,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
 
   Utils::cleanPathString(aText);
 
-  if (aText.trimmed().length() == 0)
+  if (aText.trimmed().isEmpty())
   {
     aText = QString("*");
     lIsValidPath = false;
@@ -534,8 +534,8 @@ void BatchConversionPicker::saveBodySlideDataToPreset()
     return;
 
   // Read the data in the GUI
-  auto lOSPXMLNamesValue{this->findChild<QLineEdit*>("names_osp_xml_input")->text()};
-  auto lNamesInAppValue{this->findChild<QLineEdit*>("names_bodyslide_input")->text()};
+  auto lOSPXMLNamesValue{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text()};
+  auto lNamesInAppValue{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text()};
 
   // Update the current preset
   this->mData.presets.at(lActivePresetNumber->value() - 1).setNames(lOSPXMLNamesValue, lNamesInAppValue);
@@ -656,8 +656,8 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
 
   if (lNumberOfPresets > 0)
   {
-    auto lOSPXMLNamesLineEdit{this->findChild<QLineEdit*>("names_osp_xml_input")};
-    auto lNamesInAppLineEdit{this->findChild<QLineEdit*>("names_bodyslide_input")};
+    auto lOSPXMLNamesLineEdit{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))};
+    auto lNamesInAppLineEdit{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))};
 
     mPreventPresetSave = true;
     lOSPXMLNamesLineEdit->setText(this->mData.presets.at(aNextIndex - 1).getNames().first);

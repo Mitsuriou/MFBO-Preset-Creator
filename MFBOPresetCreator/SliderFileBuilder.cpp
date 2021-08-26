@@ -45,7 +45,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
 
   for (const auto& lFilter : lFilters)
   {
-    if (lFilter.getFilter().length() == 0)
+    if (lFilter.getFilter().isEmpty())
     {
       continue;
     }

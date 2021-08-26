@@ -59,11 +59,12 @@ private:
   void chooseWarningColor();
   void chooseDangerColor();
   void goToLastPathsTab();
+#pragma endregion PRIVATE_SLOTS
 
-  // GUI widgets events
+  // Clear paths
   void clearPathButtonClicked();
   void clearAllPaths();
-#pragma endregion PRIVATE_SLOTS
+  void toggleClearAllButtonState();
 
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);

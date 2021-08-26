@@ -381,12 +381,12 @@ void RetargetingTool::updateBackupPreview()
 
   // Construct full path
   auto lFullPath{QString()};
-  if (lMainDirectory.length() > 0 && lSubDirectory.length() > 0)
+  if (!lMainDirectory.isEmpty() && !lSubDirectory.isEmpty())
   {
     lFullPath = lMainDirectory + "/" + lSubDirectory;
     lMainDirTextEdit->setDisabled(false);
   }
-  else if (lMainDirectory.length() > 0 && lSubDirectory.length() == 0)
+  else if (!lMainDirectory.isEmpty() && lSubDirectory.isEmpty())
   {
     lFullPath = lMainDirectory;
     lMainDirTextEdit->setDisabled(false);
@@ -442,7 +442,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Check if the input path has been given by the user
-  if (lRootDir.length() == 0)
+  if (lRootDir.isEmpty())
   {
     Utils::displayWarningMessage(tr("Error: no path path given for the retargeting."));
     return;
@@ -459,11 +459,11 @@ void RetargetingTool::launchUpDownGradeProcess()
     Utils::cleanPathString(lSubDirectory);
 
     // Full extract path
-    const auto& lDirtyFullBackupDirectory{(lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
+    const auto& lDirtyFullBackupDirectory{(lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
     auto lFullBackupDirectory{Utils::cleanPathString(lDirtyFullBackupDirectory)};
 
     // Check if the full extract path has been given by the user
-    if (lFullBackupDirectory.length() == 0)
+    if (lFullBackupDirectory.isEmpty())
     {
       Utils::displayWarningMessage(tr("Error: no path given to backup the files."));
       return;
@@ -903,7 +903,7 @@ void RetargetingTool::updateBodySlideFiltersListPreview(int)
   {
     lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));
 
-    if (lAdditionalFilter.length() > 0)
+    if (!lAdditionalFilter.isEmpty())
     {
       lText.append(" ; ");
       lText.append(lAdditionalFilter);

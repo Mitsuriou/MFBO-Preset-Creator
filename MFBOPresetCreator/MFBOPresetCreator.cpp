@@ -582,7 +582,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   this->initializeGUI();
 
-  if (this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES && lTitle.length() > 0 && lMessage.length() > 0)
+  if (this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES && !lTitle.isEmpty() && !lMessage.isEmpty())
   {
     // User theme accent
     const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};

@@ -93,21 +93,21 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
 {
   auto lFilePath{QString(this->mLastUsedSavePath)};
   // Check the event source
-  if (aIsSaveAsContext || (!aIsSaveAsContext && this->mLastUsedSavePath.length() == 0))
+  if (aIsSaveAsContext || (!aIsSaveAsContext && this->mLastUsedSavePath.isEmpty()))
   {
     // Open a file saver dialog
     const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
     lFilePath = QFileDialog::getSaveFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
     Utils::updatePathAtKey(this->mLastPaths, "lastSavedProject", lFilePath);
 
-    if (lFilePath.length() > 0)
+    if (!lFilePath.isEmpty())
     {
       this->mLastUsedSavePath = lFilePath;
       this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(false);
     }
   }
 
-  if (this->mLastUsedSavePath.length() == 0)
+  if (this->mLastUsedSavePath.isEmpty())
   {
     return;
   }
@@ -124,7 +124,7 @@ void PresetCreator::setHasUserDoneSomething(const bool aHasUserDoneSomething)
   this->mHasUserDoneSomething = aHasUserDoneSomething;
 
   // Update the state of the "save project" action menu
-  if (this->mLastUsedSavePath.length() > 0)
+  if (!this->mLastUsedSavePath.isEmpty())
   {
     this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(!this->mHasUserDoneSomething);
   }
@@ -897,9 +897,9 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool a
   lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
   lOSPFileContent.replace(QString("{%%feet_output_path%%}"), aMeshesPathFeet.replace("/", "\\"));
   lOSPFileContent.replace(QString("{%%hands_output_path%%}"), aMeshesPathHands.replace("/", "\\"));
-  lOSPFileContent.replace(QString("{%%body_output_file%%}"), aBodyName.length() > 0 ? aBodyName : "femalebody");
-  lOSPFileContent.replace(QString("{%%feet_output_file%%}"), aFeetName.length() > 0 ? aFeetName : "femalefeet");
-  lOSPFileContent.replace(QString("{%%hands_output_file%%}"), aHandsName.length() > 0 ? aHandsName : "femalehands");
+  lOSPFileContent.replace(QString("{%%body_output_file%%}"), !aBodyName.isEmpty() ? aBodyName : "femalebody");
+  lOSPFileContent.replace(QString("{%%feet_output_file%%}"), !aFeetName.isEmpty() ? aFeetName : "femalefeet");
+  lOSPFileContent.replace(QString("{%%hands_output_file%%}"), !aHandsName.isEmpty() ? aHandsName : "femalehands");
 
   // Create the OSP file on disk
   auto lOSPPathName(lSliderSetsDirectory + QDir::separator() + aOSPXMLNames + ".osp");
@@ -924,7 +924,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool a
 
 bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath)
 {
-  if (aSkeletonPath.length() > 0)
+  if (!aSkeletonPath.isEmpty())
   {
     auto lSkeletonDirectory{aEntryDirectory + QDir::separator() + aSkeletonPath};
     QDir().mkpath(lSkeletonDirectory);
@@ -1086,7 +1086,7 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
 
   Utils::cleanPathString(aText);
 
-  if (aText.trimmed().length() == 0)
+  if (aText.trimmed().isEmpty())
   {
     aText = QString::fromStdString("*");
     lIsValidPath = false;
@@ -1118,7 +1118,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
 
   Utils::cleanPathString(aText);
 
-  if (aText.trimmed().length() == 0)
+  if (aText.trimmed().isEmpty())
   {
     aText = QString("*");
     lIsValidPath = false;
@@ -1213,13 +1213,13 @@ void PresetCreator::updateSkeletonPreview()
   Utils::cleanBreaksString(lSkeletonName);
   auto lIsValidPath{true};
 
-  if (lSkeletonPath.trimmed().length() == 0)
+  if (lSkeletonPath.trimmed().isEmpty())
   {
     lSkeletonPath = QString::fromStdString("*");
     lIsValidPath = false;
   }
 
-  if (lSkeletonName.trimmed().length() == 0)
+  if (lSkeletonName.trimmed().isEmpty())
   {
     lSkeletonName = "skeleton_female";
   }
@@ -1318,11 +1318,11 @@ void PresetCreator::generateDirectoryStructure()
   auto lEntryDirectory{lSubDirectory};
   if (!lUseOnlySubdir)
   {
-    lEntryDirectory = (lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
+    lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
   }
 
   // Check if the full extract path has been given by the user
-  if (lEntryDirectory.length() == 0)
+  if (lEntryDirectory.isEmpty())
   {
     Utils::displayWarningMessage(tr("Error: no path given to export the files."));
     return;
@@ -1370,7 +1370,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // Export the meshes
-  if (lMeshesPathBody.length() == 0)
+  if (lMeshesPathBody.isEmpty())
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the body meshes."));
 
@@ -1383,7 +1383,7 @@ void PresetCreator::generateDirectoryStructure()
     return;
   }
 
-  if (lMeshesPathFeet.length() == 0 && !lSkipFeetCheck)
+  if (lMeshesPathFeet.isEmpty() && !lSkipFeetCheck)
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the feet meshes."));
 
@@ -1396,7 +1396,7 @@ void PresetCreator::generateDirectoryStructure()
     return;
   }
 
-  if (lMeshesPathHands.length() == 0 && !lSkipHandsCheck)
+  if (lMeshesPathHands.isEmpty() && !lSkipHandsCheck)
   {
     Utils::displayWarningMessage(tr("Error: no path has been given for the hands meshes."));
 
@@ -1410,7 +1410,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // Check if a name has been given for the OSP and XML files
-  if (lOSPXMLNames.length() == 0)
+  if (lOSPXMLNames.isEmpty())
   {
     Utils::displayWarningMessage(tr("Error: no name given for the BodySlide files."));
 
@@ -1424,7 +1424,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // Check if a name has been given for the presets
-  if (lBodyslideSlidersetsNames.length() == 0)
+  if (lBodyslideSlidersetsNames.isEmpty())
   {
     Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."));
 
@@ -1603,7 +1603,7 @@ void PresetCreator::updateBodySlideFiltersListPreview()
   {
     lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));
 
-    if (lAdditionalFilter.length() > 0)
+    if (!lAdditionalFilter.isEmpty())
     {
       lText.append(" ; ");
       lText.append(lAdditionalFilter);

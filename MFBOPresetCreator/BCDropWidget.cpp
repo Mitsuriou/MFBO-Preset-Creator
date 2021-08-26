@@ -68,7 +68,7 @@ void BCDropWidget::setData(const QString& aOriginFolder, const QString& aRessour
 {
   this->mOriginFolder = aOriginFolder;
   this->mRessourcePath = aRessourcePath;
-  this->tweakWidgetsVisibility(aRessourcePath.length() == 0, aOriginFolder, aRessourcePath);
+  this->tweakWidgetsVisibility(aRessourcePath.isEmpty(), aOriginFolder, aRessourcePath);
 }
 
 void BCDropWidget::dragEnterEvent(QDragEnterEvent* aEvent)

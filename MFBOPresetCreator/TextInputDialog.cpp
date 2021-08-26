@@ -37,7 +37,7 @@ void TextInputDialog::updateAddButtonStatus(const QString& aText)
 {
   auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
 
-  if (aText.trimmed().length() == 0)
+  if (aText.trimmed().isEmpty())
   {
     lAddBtn->setDisabled(true);
   }

@@ -352,9 +352,9 @@ namespace Struct
       // The files names and presets names must be defined.
       // A body, a feet or a hands mesh must be defined, at least
       // The skeleton is facultative
-      return (this->names.first.length() > 0
-              && this->names.second.length() > 0
-              && (this->body.second.length() > 0 || this->feet.second.length() > 0 || this->hands.getRessourcePath().length() > 0));
+      return (!this->names.first.isEmpty()
+              && !this->names.second.isEmpty()
+              && (!this->body.second.isEmpty() || !this->feet.second.isEmpty() || !this->hands.getRessourcePath().isEmpty()));
     };
 
     // Names

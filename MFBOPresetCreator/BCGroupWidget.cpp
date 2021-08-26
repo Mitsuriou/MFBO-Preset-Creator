@@ -50,13 +50,13 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 
 void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
 {
-  auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};
-  auto lDropWidget{this->findChild<BCDropWidget*>("drop_widget")};
+  auto lRemoveButton{this->findChild<QPushButton*>(QString("remove_button"))};
+  auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
 
   if (this->mCallContext == BCGroupWidgetCallContext::BODY)
   {
     auto lData{aData.getBodyData()};
-    if (lData.second.length() == 0)
+    if (lData.second.isEmpty())
     {
       lRemoveButton->hide();
       lDropWidget->resetData();
@@ -70,7 +70,7 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
   else if (this->mCallContext == BCGroupWidgetCallContext::FEET)
   {
     auto lData{aData.getFeetData()};
-    if (lData.second.length() == 0)
+    if (lData.second.isEmpty())
     {
       lRemoveButton->hide();
       lDropWidget->resetData();
@@ -84,7 +84,7 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
   else if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
   {
     auto lData{aData.getHandsData()};
-    if (lData.getRessourcePath().length() == 0)
+    if (lData.getRessourcePath().isEmpty())
     {
       lRemoveButton->hide();
       lDropWidget->resetData();
@@ -100,11 +100,11 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
 void BCGroupWidget::removeData()
 {
   // Current object treatment
-  auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};
+  auto lRemoveButton{this->findChild<QPushButton*>(QString("remove_button"))};
   lRemoveButton->hide();
 
   // Lower treatment
-  auto lDropWidget{this->findChild<BCDropWidget*>("drop_widget")};
+  auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
   auto lOriginFolder{lDropWidget->getOriginFolder()};
   auto lRessourcePath{lDropWidget->getRessourcePath()};
   lDropWidget->resetData();
@@ -116,15 +116,15 @@ void BCGroupWidget::removeData()
 void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath)
 {
   // Check if any data was already set in the drop widget
-  if (aOldOriginFolder.length() > 0 && aNewOriginFolder.length() > 0)
+  if (!aOldOriginFolder.isEmpty() && !aNewOriginFolder.isEmpty())
   {
     emit BCGroupWidget::removePressed(aOldOriginFolder, aOldRessourcePath); // Simulate a click on the "remove" button to make the data go in list again
-    this->findChild<BCDropWidget*>("drop_widget")->resetData();             // Finally, reset the drop widget data
+    this->findChild<BCDropWidget*>(QString("drop_widget"))->resetData();    // Finally, reset the drop widget data
   }
   else
   {
     // Current object treatment
-    auto lRemoveButton{this->findChild<QPushButton*>("remove_button")};
+    auto lRemoveButton{this->findChild<QPushButton*>(QString("remove_button"))};
     lRemoveButton->show();
   }
 

@@ -368,7 +368,7 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   auto lEntryDirectory{lSubDirectory};
   if (!lUseOnlySubdir)
   {
-    lEntryDirectory = (lSubDirectory.length() == 0 ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
+    lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
   }
 
   // TODO: check that there is at least one result before creating the window
@@ -638,7 +638,7 @@ void BatchConversion::updateBodySlideFiltersListPreview(int)
   {
     lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));
 
-    if (lAdditionalFilter.length() > 0)
+    if (!lAdditionalFilter.isEmpty())
     {
       lText.append(" ; ");
       lText.append(lAdditionalFilter);

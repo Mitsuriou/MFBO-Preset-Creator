@@ -477,6 +477,10 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   lClearAllButton->setStyleSheet("text-align:left;");
   lTabLayout->addWidget(lClearAllButton, 0, 2);
 
+  // Bind the "remove all" button
+  this->connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);
+  this->toggleClearAllButtonState();
+
   // Create a line for each path
   auto lRowIndex{1};
   Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
@@ -490,9 +494,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
   Utils::addLastPathLine(this, lTabLayout, lRowIndex, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
-  // Bind all the clear buttons
-  this->connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);
-
+  // Bind every single "clear path" button
   const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};
   for (const auto lButton : lButtons)
   {
@@ -971,8 +973,8 @@ void Settings::clearPathButtonClicked()
   if (lButton == nullptr)
     return;
 
-  auto lRowIndex{lButton->objectName().remove(QString("clear_path_"), Qt::CaseSensitivity::CaseSensitive).toInt()};
-  auto lKey{DataLists::getLastPathsKeys().at(lRowIndex - 1)};
+  const auto lRowIndex{lButton->objectName().remove(QString("clear_path_"), Qt::CaseSensitivity::CaseSensitive).toInt()};
+  const auto lKey{DataLists::getLastPathsKeys().at(lRowIndex - 1)};
 
   // If the path is already empty, return instantly
   if (this->mLastPaths.find(lKey)->second.compare("", Qt::CaseInsensitive) == 0)
@@ -980,24 +982,62 @@ void Settings::clearPathButtonClicked()
     return;
   }
 
-  Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(), true, false);
+  if (Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(), false, true, false))
+  {
+    this->mPathEntryCleared = true;
 
-  this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))->setText(this->mLastPaths.find(lKey)->second);
+    // Update the path display in the corresponding QLineEdit
+    auto lPathLineEdit{this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))};
+    lPathLineEdit->setText(this->mLastPaths.find(lKey)->second);
+    lPathLineEdit->setFocus();
 
-  this->mPathEntryCleared = true;
+    // Disable the corresponding button
+    lButton->setDisabled(true);
+
+    this->toggleClearAllButtonState();
+  }
 }
 
 void Settings::clearAllPaths()
 {
-  auto lKeys{DataLists::getLastPathsKeys()};
-  auto lSize{lKeys.length()};
-  for (int i = 0; i < lSize; i++)
-  {
-    auto lKey{lKeys.at(i)};
-    Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(), true, false);
+  auto lButton{qobject_cast<QPushButton*>(this->sender())};
+  if (lButton == nullptr)
+    return;
 
-    this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(i + 1))->setText(this->mLastPaths.find(lKey)->second);
+  const auto lKeys{DataLists::getLastPathsKeys()};
+  for (int i = 0; i < lKeys.size(); i++)
+  {
+    if (Utils::updatePathAtKey(&this->mLastPaths, lKeys.at(i), QString(), false, true, false))
+    {
+      this->mPathEntryCleared = true;
+
+      // Update the path display in the corresponding QLineEdit
+      this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(i + 1))->setText(this->mLastPaths.find(lKeys.at(i))->second);
+
+      // Disable the corresponding button
+      this->findChild<QPushButton*>(QString("clear_path_%1").arg(i + 1))->setDisabled(true);
+    }
   }
 
-  this->mPathEntryCleared = true;
+  // Disable the "remove all" button
+  lButton->setDisabled(true);
+
+  // Change the focus
+  this->findChild<QTabWidget*>(QString("tab_widget"))->setFocus();
+}
+
+void Settings::toggleClearAllButtonState()
+{
+  // If there is as least one path to clear, keep the "remove all" button active
+  auto lKeepEnabledRemoveAllButton{false};
+  for (const auto& lPair : this->mLastPaths)
+  {
+    if (!lPair.second.isEmpty())
+    {
+      lKeepEnabledRemoveAllButton = true;
+      break;
+    }
+  }
+
+  this->findChild<QPushButton*>(QString("remove_all_filters"))->setDisabled(!lKeepEnabledRemoveAllButton);
 }

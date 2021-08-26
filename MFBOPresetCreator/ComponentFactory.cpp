@@ -21,14 +21,14 @@ QPushButton* ComponentFactory::createButton(
   // Declare and instanciate the button
   auto lButton{new QPushButton(aText, aParent)};
   // Icon
-  if (aIconFolder.length() > 0 && aIconName.length() > 0)
+  if (!aIconFolder.isEmpty() && !aIconName.isEmpty())
   {
     lButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation)));
   }
   // Mouse cursor
   lButton->setCursor(Qt::PointingHandCursor);
   // Tooltip
-  if (aTooltipText.length() > 0)
+  if (!aTooltipText.isEmpty())
   {
     lButton->setToolTip(aTooltipText);
   }
@@ -37,7 +37,7 @@ QPushButton* ComponentFactory::createButton(
     lButton->setToolTip(aText);
   }
   // Object name
-  if (aObjectName.length() > 0)
+  if (!aObjectName.isEmpty())
   {
     lButton->setObjectName(aObjectName);
   }
@@ -145,7 +145,7 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
   auto lOutputPathLineEdit{new QLineEdit(aParent)};
   lOutputPathLineEdit->setReadOnly(true);
   lOutputPathLineEdit->setObjectName(QString("output_path_directory"));
-  if (aInitialOutputPath.length() > 0)
+  if (!aInitialOutputPath.isEmpty())
   {
     lOutputPathLineEdit->setText(aInitialOutputPath);
   }

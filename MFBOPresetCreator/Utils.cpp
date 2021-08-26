@@ -160,24 +160,24 @@ ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTi
 
   auto lYesButton{lConfirmationBox.addButton(aTextBtnYes, QMessageBox::ButtonRole::YesRole)};
   lYesButton->setCursor(Qt::PointingHandCursor);
-  if (aColorYesBtn.length() > 0)
+  if (!aColorYesBtn.isEmpty())
   {
     lYesButton->setStyleSheet(QString("color: %1;").arg(aColorYesBtn));
   }
 
   auto lNoButton{lConfirmationBox.addButton(aTextBtnNo, QMessageBox::ButtonRole::NoRole)};
   lNoButton->setCursor(Qt::PointingHandCursor);
-  if (aColorNoBtn.length() > 0)
+  if (!aColorNoBtn.isEmpty())
   {
     lNoButton->setStyleSheet(QString("color: %1;").arg(aColorNoBtn));
   }
 
   QPushButton* lOtherButton{nullptr};
-  if (aTextBtnOther.length() > 0)
+  if (!aTextBtnOther.isEmpty())
   {
     lOtherButton = lConfirmationBox.addButton(aTextBtnOther, QMessageBox::ButtonRole::HelpRole);
     lOtherButton->setCursor(Qt::PointingHandCursor);
-    if (aColorOtherBtn.length() > 0)
+    if (!aColorOtherBtn.isEmpty())
     {
       lOtherButton->setStyleSheet(QString("color: %1;").arg(aColorOtherBtn));
     }
@@ -764,7 +764,7 @@ void Utils::saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFileP
     lFile.write(QJsonDocument(aJsonToSave).toJson());
 
     // Project file save: success window
-    if (aParent && aIconFolder.length() > 0)
+    if (aParent && !aIconFolder.isEmpty())
     {
       QMessageBox lConfirmationBox(QMessageBox::Icon::Information,
                                    tr("Project successfully saved"),
@@ -779,7 +779,7 @@ void Utils::saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFileP
       lConfirmationBox.exec();
     }
   }
-  else if (aParent && aIconFolder.length() > 0)
+  else if (aParent && !aIconFolder.isEmpty())
   {
     // Project file save: fail window
     Utils::displayWarningMessage(tr("Could not save the project file to \"%1\".\nBe sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(aFilePath));
@@ -1212,12 +1212,12 @@ QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& a
     }
   }
 
-  if (lPath.length() > 0 && QFile::exists(lPath))
+  if (!lPath.isEmpty() && QFile::exists(lPath))
   {
     return lPath;
   }
 
-  if (aFallbackPath.length() > 0 && QFile::exists(aFallbackPath))
+  if (!aFallbackPath.isEmpty() && QFile::exists(aFallbackPath))
   {
     return aFallbackPath;
   }
@@ -1225,17 +1225,19 @@ QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& a
   return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
-void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool aAuthorizeEmptyValue, const bool aMustSaveFile)
+bool Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool aMustUpdateGeneralKey, const bool aAuthorizeEmptyValue, const bool aMustSaveFile)
 {
-  if (aKey.length() == 0 || (!aAuthorizeEmptyValue && aPath.length() == 0))
+  if (aKey.isEmpty() || (!aAuthorizeEmptyValue && aPath.isEmpty()))
   {
-    return;
+    // Return that not any modification has been made to the list
+    return false;
   }
 
+  const auto lMapCopy{*aMap};
   auto lModifiedPaths{0};
   for (auto lIt = aMap->begin(); lIt != aMap->end(); lIt++)
   {
-    if (lIt->first == "general" || lIt->first == aKey)
+    if (lIt->first == aKey || (aMustUpdateGeneralKey && lIt->first == "general"))
     {
       lIt->second = aPath;
 
@@ -1246,18 +1248,22 @@ void Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
     }
   }
 
-  // The key did not exist, this happens when updating MFBOPC
-  if (lModifiedPaths == 1)
+  // Check if the key does not exist (this happens after updating MFBOPC)
+  if (lModifiedPaths < 2 && aMap->find(aKey) == aMap->end())
   {
     // Create the new entry
     aMap->insert(std::pair<QString, QString>(aKey, aPath));
   }
 
-  if (aMustSaveFile)
+  // Save only if the map are different
+  if (aMustSaveFile && lMapCopy != *aMap)
   {
     // Save the new list
     Utils::saveLastPathsToFile(*aMap);
   }
+
+  // Return if any modification has been made
+  return lMapCopy != *aMap;
 }
 
 QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
@@ -1340,7 +1346,7 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aR
   lGeneralValue->setObjectName(QString("line_edit_path_%1").arg(aRow));
   aLayout->addWidget(lGeneralValue, aRow, 1);
 
-  auto lGeneralEmptyButton{ComponentFactory::createButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), false, true)};
+  auto lGeneralEmptyButton{ComponentFactory::createButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), aValue.isEmpty(), true)};
   aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
 }
 
@@ -1436,7 +1442,7 @@ void Utils::updateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
   {
     aMainDirTextEdit->setDisabled(true);
 
-    if (aSubDirectory.length() > 0)
+    if (!aSubDirectory.isEmpty())
     {
       lFullPath = aSubDirectory;
     }
@@ -1448,17 +1454,17 @@ void Utils::updateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
   }
   else
   {
-    if (lMainDirectory.length() > 0 && aSubDirectory.length() > 0)
+    if (!lMainDirectory.isEmpty() && !aSubDirectory.isEmpty())
     {
       lFullPath = lMainDirectory + "/" + aSubDirectory;
       aMainDirTextEdit->setDisabled(false);
     }
-    else if (lMainDirectory.length() > 0 && aSubDirectory.length() == 0)
+    else if (!lMainDirectory.isEmpty() && aSubDirectory.isEmpty())
     {
       lFullPath = lMainDirectory;
       aMainDirTextEdit->setDisabled(false);
     }
-    else if (lMainDirectory.length() == 0 && aSubDirectory.length() > 0)
+    else if (lMainDirectory.isEmpty() && !aSubDirectory.isEmpty())
     {
       lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%1\".").arg(aSubDirectory);
       aMainDirTextEdit->setDisabled(true);
@@ -1502,7 +1508,7 @@ void Utils::bindConsoleToStdOut()
 
 void Utils::printMessageStdOut(const QString& aMessage)
 {
-  if (aMessage.length() == 0)
+  if (aMessage.isEmpty())
   {
     std::cout << std::endl;
   }
