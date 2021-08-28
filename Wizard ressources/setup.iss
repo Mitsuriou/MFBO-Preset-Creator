@@ -28,7 +28,7 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
 [CustomMessages]
 english.DeleteAppDataDir=Do you want to remove configuration files too?%nClicking "YES" will delete the whole "MFBOPresetCreator" folder located in "%1".%nClicking "NO" will let the files untouched.
-french.DeleteAppDataDir=Voulez-vous supprimer les fichiers de configuration ï¿½galement ?%nCliquer sur "OUI" supprimera complï¿½tement le dossier "MFBOPresetCreator" situï¿½ dans "%1".%nCliquer sur "NON" laissera les fichiers tels quels.
+french.DeleteAppDataDir=Voulez-vous supprimer les fichiers de configuration également ?%nCliquer sur "OUI" supprimera complètement le dossier "MFBOPresetCreator" situé dans "%1".%nCliquer sur "NON" laissera les fichiers tels quels.
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
