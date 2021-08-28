@@ -31,7 +31,7 @@ BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCa
   lPathContent->setObjectName(QString("path_content"));
   lMainLayout->addWidget(lPathContent, 0, 1);
 
-  // Origin folder
+  // Origin directory
   auto lOriginLabel{new QLabel(this)};
   lOriginLabel->setObjectName(QString("origin_label"));
   lMainLayout->addWidget(lOriginLabel, 1, 0);

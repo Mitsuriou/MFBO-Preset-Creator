@@ -229,7 +229,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   this->createDialogOpeningModeBlock(*lTabLayout, tr("Batch conversion - opening mode:"), "batch_conversion_opening_mode", 2, 1);
 
   // Opening mode: batch conversion picker
-  this->createDialogOpeningModeBlock(*lTabLayout, tr("Batch conversion picker - opening mode:"), "batch_conversion_picker_opening_mode", 4, 1);
+  this->createDialogOpeningModeBlock(*lTabLayout, tr("Batch conversion: Results picker - opening mode:"), "batch_conversion_picker_opening_mode", 4, 1);
 
   // Opening mode: textures assistant
   this->createDialogOpeningModeBlock(*lTabLayout, tr("Textures assistant - opening mode:"), "textures_assistant_opening_mode", 6, 1);

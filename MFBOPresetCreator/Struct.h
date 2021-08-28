@@ -282,7 +282,7 @@ namespace Struct
       setUseAlternativeModel(aUseAlternativeModel);
     }
 
-    // Origin folder
+    // Origin directory
     void setOriginFolder(const QString& aOriginFolder)
     {
       this->originFolder = aOriginFolder;

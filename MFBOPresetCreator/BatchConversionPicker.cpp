@@ -105,7 +105,7 @@ void BatchConversionPicker::initializeGUI()
   lSplitter->addWidget(lLeftWrapper);
 
   // Title
-  auto lLeftTitle{new QLabel(tr("Origin mod(s)' folder(s) (click to display the data)"))};
+  auto lLeftTitle{new QLabel(tr("Origin mod(s)' directory(ies) (click to display the data)"))};
   lLeftTitle->setAlignment(Qt::AlignCenter);
   lLeftLayout->addWidget(lLeftTitle);
 
@@ -135,7 +135,7 @@ void BatchConversionPicker::initializeGUI()
   lMiddleList->addWidget(lMiddleTitle);
 
   // Label for the "no data available" case
-  auto lNoDataLabel{new QLabel(tr("No data available for the selected origin folder"), this)};
+  auto lNoDataLabel{new QLabel(tr("No data available for the selected origin directory"), this)};
   lNoDataLabel->setObjectName(QString("no_data_label"));
   lNoDataLabel->hide();
   lMiddleList->addWidget(lNoDataLabel);
