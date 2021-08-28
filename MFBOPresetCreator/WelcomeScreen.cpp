@@ -165,7 +165,6 @@ void WelcomeScreen::initializeGUI()
 
   auto lIncomingFeaturesText{QString("<p style='padding: 0px; margin: 0px;'>"
                                      "<span>Batch Conversion tool.</span><br />"
-                                     "<span>Portable installer archive.</span>"
                                      "</p>")};
 
   auto lIncomingFeatures{new QLabel(this)};

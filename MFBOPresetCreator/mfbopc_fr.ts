@@ -2271,91 +2271,91 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Fonctionnalités à venir</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="179"/>
+        <location filename="WelcomeScreen.cpp" line="178"/>
         <source>Known issues</source>
         <translation>Problèmes connus</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="193"/>
+        <location filename="WelcomeScreen.cpp" line="192"/>
         <source>User guide and tutorials</source>
         <translation>Guide utilisateur et tutoriels</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="195"/>
+        <location filename="WelcomeScreen.cpp" line="194"/>
         <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:</source>
         <translation>Que ce soit votre première utilisation de l&apos;application ou que vous vous demandiez comment fonctionne une fonction particulière, vous devriez consulter le guide utilisateur et les tutoriels détaillés en cliquant sur le lien ci-dessous :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="303"/>
+        <location filename="WelcomeScreen.cpp" line="302"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite...
 Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="323"/>
-        <location filename="WelcomeScreen.cpp" line="366"/>
-        <location filename="WelcomeScreen.cpp" line="407"/>
+        <location filename="WelcomeScreen.cpp" line="322"/>
+        <location filename="WelcomeScreen.cpp" line="365"/>
+        <location filename="WelcomeScreen.cpp" line="406"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>Une erreur s&apos;est produite lors de l&apos;analyse des données de l&apos;API GitHub. Veuillez réessayer dans quelques secondes.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="328"/>
+        <location filename="WelcomeScreen.cpp" line="327"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version BETA &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="339"/>
+        <location filename="WelcomeScreen.cpp" line="338"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version stable &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="349"/>
+        <location filename="WelcomeScreen.cpp" line="348"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>Les notes de publication pour la version &quot;%1&quot; n&apos;ont pas été trouvées.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="372"/>
+        <location filename="WelcomeScreen.cpp" line="371"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>La nouvelle version stable &quot;%1&quot; est disponible sur GitHub.
 Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="383"/>
+        <location filename="WelcomeScreen.cpp" line="382"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation>Vous utilisez une version BETA. Ci-dessus sont affichées les notes de publication pour la dernière version stable disponible.
 Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="428"/>
+        <location filename="WelcomeScreen.cpp" line="427"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>La nouvelle version BETA &quot;%1&quot; est disponible sur GitHub.
 Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="378"/>
+        <location filename="WelcomeScreen.cpp" line="377"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation>Vous utilisez déjà la dernière version stable &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="390"/>
+        <location filename="WelcomeScreen.cpp" line="389"/>
         <source>You are running a developer version.</source>
         <translation>Vous utilisez une version développeur.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="412"/>
+        <location filename="WelcomeScreen.cpp" line="411"/>
         <source>No BETA version found on GitHub.</source>
         <translation>Aucune version BETA trouvée sur GitHub.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="417"/>
+        <location filename="WelcomeScreen.cpp" line="416"/>
         <source>No newer BETA version is currently available.</source>
         <translation>Aucune nouvelle version BETA n&apos;est disponible actuellement.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="422"/>
+        <location filename="WelcomeScreen.cpp" line="421"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation>Vous utilisez déjà la dernière version BETA &quot;%1&quot;.</translation>
     </message>
