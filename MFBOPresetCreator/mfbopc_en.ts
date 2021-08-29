@@ -2100,18 +2100,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1349"/>
+        <location filename="Utils.cpp" line="1335"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1451"/>
-        <location filename="Utils.cpp" line="1475"/>
+        <location filename="Utils.cpp" line="1437"/>
+        <location filename="Utils.cpp" line="1461"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1469"/>
+        <location filename="Utils.cpp" line="1455"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>
@@ -2171,87 +2171,87 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="178"/>
+        <location filename="WelcomeScreen.cpp" line="180"/>
         <source>Known issues</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="192"/>
+        <location filename="WelcomeScreen.cpp" line="194"/>
         <source>User guide and tutorials</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="194"/>
+        <location filename="WelcomeScreen.cpp" line="196"/>
         <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="302"/>
+        <location filename="WelcomeScreen.cpp" line="304"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="322"/>
-        <location filename="WelcomeScreen.cpp" line="365"/>
-        <location filename="WelcomeScreen.cpp" line="406"/>
+        <location filename="WelcomeScreen.cpp" line="324"/>
+        <location filename="WelcomeScreen.cpp" line="367"/>
+        <location filename="WelcomeScreen.cpp" line="408"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="327"/>
+        <location filename="WelcomeScreen.cpp" line="329"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="338"/>
+        <location filename="WelcomeScreen.cpp" line="340"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="348"/>
+        <location filename="WelcomeScreen.cpp" line="350"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="371"/>
+        <location filename="WelcomeScreen.cpp" line="373"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="382"/>
+        <location filename="WelcomeScreen.cpp" line="384"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="427"/>
+        <location filename="WelcomeScreen.cpp" line="429"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="377"/>
+        <location filename="WelcomeScreen.cpp" line="379"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="389"/>
+        <location filename="WelcomeScreen.cpp" line="391"/>
         <source>You are running a developer version.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="411"/>
+        <location filename="WelcomeScreen.cpp" line="413"/>
         <source>No BETA version found on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="416"/>
+        <location filename="WelcomeScreen.cpp" line="418"/>
         <source>No newer BETA version is currently available.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="421"/>
+        <location filename="WelcomeScreen.cpp" line="423"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation></translation>
     </message>

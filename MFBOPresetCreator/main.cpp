@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     if (FORCE_CONSOLE_DISPLAY)
     {
       // Show the debug console
-      Utils::bindConsoleToStdOut();
+      Utils::BindConsoleToStdOut();
     }
 
     if (argc == 2)
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
       if (strcmp(argv[1], "--debug") == 0)
       {
         // Show the debug console
-        Utils::bindConsoleToStdOut();
+        Utils::BindConsoleToStdOut();
       }
       else
       {
@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
       if (strcmp(argv[1], "--debug") == 0 || strcmp(argv[2], "--debug") == 0)
       {
         // Show the debug console
-        Utils::bindConsoleToStdOut();
+        Utils::BindConsoleToStdOut();
       }
 
       // Test if the first argument is a file
@@ -90,21 +90,21 @@ int main(int argc, char* argv[])
 
   do
   {
-    Utils::printMessageStdOut("");
-    Utils::printMessageStdOut("Running MFBOPC in debug mode");
-    Utils::printMessageStdOut("Checking support for SSL...");
-    Utils::printMessageStdOut(QString("Supports SSL? %1").arg(QSslSocket::supportsSsl() ? "yes" : "no"));
-    Utils::printMessageStdOut(QString("SSL version information: %1").arg(QSslSocket::sslLibraryBuildVersionString()));
-    Utils::printMessageStdOut("");
+    Utils::PrintMessageStdOut("");
+    Utils::PrintMessageStdOut("Running MFBOPC in debug mode");
+    Utils::PrintMessageStdOut("Checking support for SSL...");
+    Utils::PrintMessageStdOut(QString("Supports SSL? %1").arg(QSslSocket::supportsSsl() ? "yes" : "no"));
+    Utils::PrintMessageStdOut(QString("SSL version information: %1").arg(QSslSocket::sslLibraryBuildVersionString()));
+    Utils::PrintMessageStdOut("");
 
     // Reset the value
     Utils::RESTART_PENDING = false;
 
     qApp->setAttribute(Qt::AA_EnableHighDpiScaling);
     qApp->setApplicationVersion("3.3.0.0");
-    const auto& lAppVersion{Utils::getApplicationVersion()};
+    const auto& lAppVersion{Utils::GetApplicationVersion()};
 
-    Utils::printMessageStdOut("Creating the application instance...");
+    Utils::PrintMessageStdOut("Creating the application instance...");
 
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
@@ -128,18 +128,18 @@ int main(int argc, char* argv[])
     const QPixmap lSplashScreenBackground(":/application/splashscreen");
 
     QSplashScreen lSplashScreen(lSplashScreenBackground.scaled(800, 450));
-    Utils::printMessageStdOut("Starting the application...");
+    Utils::PrintMessageStdOut("Starting the application...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Starting the application...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lSplashScreen.show();
     lMainApplication.processEvents();
 
     // Update the message
-    Utils::printMessageStdOut("Cleaning temporary installer files...");
+    Utils::PrintMessageStdOut("Cleaning temporary installer files...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Cleaning temporary installer files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
     // Check if an installer file needs to be removed at launch
-    QFile lInstallerLogFile(Utils::getAppDataPathFolder() + "installer.log");
+    QFile lInstallerLogFile(Utils::GetAppDataPathFolder() + "installer.log");
     if (lInstallerLogFile.exists())
     {
       if (lInstallerLogFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -150,15 +150,15 @@ int main(int argc, char* argv[])
 
         QFile lInstallerFile(lPathToDelete);
         lInstallerFile.remove();
-        Utils::printMessageStdOut(QString("Cleaned %1").arg(lPathToDelete));
+        Utils::PrintMessageStdOut(QString("Cleaned %1").arg(lPathToDelete));
 
         lInstallerLogFile.remove();
-        Utils::printMessageStdOut(QString("Cleaned %1installer.log").arg(Utils::getAppDataPathFolder()));
+        Utils::PrintMessageStdOut(QString("Cleaned %1installer.log").arg(Utils::GetAppDataPathFolder()));
       }
     }
 
     // Update the message
-    Utils::printMessageStdOut("Reading and applying custom fonts...");
+    Utils::PrintMessageStdOut("Reading and applying custom fonts...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Reading and applying custom fonts...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
@@ -166,20 +166,20 @@ int main(int argc, char* argv[])
     QFontDatabase::addApplicationFont(":/fonts/Roboto");
 
     // Update the message
-    Utils::printMessageStdOut("Loading user settings...");
+    Utils::PrintMessageStdOut("Loading user settings...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Loading user settings...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
     // Read settings file
-    auto lSettings{Utils::loadSettingsFromFile()};
+    auto lSettings{Utils::LoadSettingsFromFile()};
 
     // Update the message
-    Utils::printMessageStdOut("Applying translation files...");
+    Utils::PrintMessageStdOut("Applying translation files...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Applying translation files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 
     // Apply custom language and translation
-    auto lLanguageToSet{Utils::getShortLanguageNameFromEnum(static_cast<int>(lSettings.language))};
+    auto lLanguageToSet{Utils::GetShortLanguageNameFromEnum(static_cast<int>(lSettings.language))};
 
     auto lTranslator{new QTranslator()};
     if (lTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))
@@ -195,7 +195,7 @@ int main(int argc, char* argv[])
     }
 
     // Update the message
-    Utils::printMessageStdOut("Creating the main window...");
+    Utils::PrintMessageStdOut("Creating the main window...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Creating the main window...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lMainApplication.processEvents();
 

@@ -1,7 +1,7 @@
 #include "DataLists.h"
 #include "Utils.h"
 
-QStringList DataLists::getBodiesNames()
+QStringList DataLists::GetBodiesNames()
 {
   return QStringList{
     QString("CBBE 3BBB 3BA - by Acro"),
@@ -17,7 +17,7 @@ QStringList DataLists::getBodiesNames()
     QString("Mimir Ebonic Body - by Medley")};
 }
 
-QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
+QStringList DataLists::GetVersionsFromBodyName(const BodyName& aBody)
 {
   QStringList lBodies;
 
@@ -49,7 +49,7 @@ QStringList DataLists::getVersionsFromBodyName(const BodyName& aBody)
   return lBodies;
 }
 
-BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int aRelativeVersion)
+BodyNameVersion DataLists::GetBodyNameVersion(const BodyName& aBody, const int aRelativeVersion)
 {
   // Ignore the cases where the checkboxes have no index selected
   if (aRelativeVersion == -1)
@@ -106,7 +106,7 @@ BodyNameVersion DataLists::getBodyNameVersion(const BodyName& aBody, const int a
   return BodyNameVersion::INVALID_VALUE;
 }
 
-std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion)
+std::pair<int, int> DataLists::GetSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion)
 {
   switch (aBodyVersion)
   {
@@ -170,7 +170,7 @@ std::pair<int, int> DataLists::getSplittedNameVersionFromBodyVersion(BodyNameVer
   return std::pair<int, int>(-1, -1);
 }
 
-QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const int aFeetModIndex, const BodyPartType& aRessourceType)
+QString DataLists::GetQRCPathFromBodyName(const BodyNameVersion& aBody, const int aFeetModIndex, const BodyPartType& aRessourceType)
 {
   // Ressource type
   auto lRessource{QString()};
@@ -188,12 +188,12 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const in
   }
 
   // Body mod name
-  auto lBodyVersion{DataLists::getSplittedNameVersionFromBodyVersion(aBody)};
+  auto lBodyVersion{DataLists::GetSplittedNameVersionFromBodyVersion(aBody)};
   auto lCastedBodyName{static_cast<BodyName>(lBodyVersion.first)};
   auto lResolvedModName{QString()};
 
   // CBBE-based bodies
-  if (Utils::isCBBEBasedBody(aBody))
+  if (Utils::IsCBBEBasedBody(aBody))
   {
     // For the beast hands, use the default CBBE v.1.6.1 beast hands
     if (aRessourceType == BodyPartType::BEAST_HANDS)
@@ -298,10 +298,10 @@ QString DataLists::getQRCPathFromBodyName(const BodyNameVersion& aBody, const in
     }
   }
 
-  return QString(":/presets/%1/%2/%3").arg(lRessource).arg(lResolvedModName).arg(getVersionsFromBodyName(lCastedBodyName).at(lBodyVersion.second));
+  return QString(":/presets/%1/%2/%3").arg(lRessource).arg(lResolvedModName).arg(DataLists::GetVersionsFromBodyName(lCastedBodyName).at(lBodyVersion.second));
 }
 
-QStringList DataLists::getFeetModsFromBodyName(const BodyName& aBody)
+QStringList DataLists::GetFeetModsFromBodyName(const BodyName& aBody)
 {
   // Common entries
   auto lEntries{QStringList{
@@ -310,7 +310,7 @@ QStringList DataLists::getFeetModsFromBodyName(const BodyName& aBody)
     QString("More Sliders for Feet - High Heels - by Balveric")}};
 
   // CBBE-based bodies
-  if (Utils::isCBBEBasedBody(aBody))
+  if (Utils::IsCBBEBasedBody(aBody))
   {
     // Fill this block if any feet mod has to be here
   }
@@ -325,7 +325,7 @@ QStringList DataLists::getFeetModsFromBodyName(const BodyName& aBody)
   return lEntries;
 }
 
-QStringList DataLists::getWindowOpeningModes()
+QStringList DataLists::GetWindowOpeningModes()
 {
   return QStringList{
     tr("Minimized"),
@@ -333,14 +333,14 @@ QStringList DataLists::getWindowOpeningModes()
     tr("Maximized")};
 }
 
-QStringList DataLists::getDialogOpeningModes()
+QStringList DataLists::GetDialogOpeningModes()
 {
   return QStringList{
     tr("Windowed"),
     tr("Maximized")};
 }
 
-QStringList DataLists::getAppThemes()
+QStringList DataLists::GetAppThemes()
 {
   return QStringList{
     QString("Windows Vista"),
@@ -355,17 +355,17 @@ QStringList DataLists::getAppThemes()
     QString("Paper White Mono by 6788")};
 }
 
-QStringList DataLists::getLanguages()
+QStringList DataLists::GetLanguages()
 {
   QStringList lLanguages{
     QString("English"),
     QString("Français"),
-    QString("Traditional Chinese (Taiwan) - translation by Sephirothryan")};
+    QString("繁体中文(台湾) - translation by Sephirothryan")};
 
   return lLanguages;
 }
 
-QStringList DataLists::getAssistedConversionActions()
+QStringList DataLists::GetAssistedConversionActions()
 {
   return QStringList{
     tr("[ignore]"),
@@ -375,7 +375,7 @@ QStringList DataLists::getAssistedConversionActions()
     tr("Skeleton mesh")};
 }
 
-QStringList DataLists::getLastPathsKeys()
+QStringList DataLists::GetLastPathsKeys()
 {
   return QStringList{
     "general",

@@ -40,9 +40,9 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (Utils::displayQuestionMessage(this,
+  if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
                                     lIconFolder,
@@ -81,7 +81,7 @@ void TexturesAssistant::setWindowProperties()
 void TexturesAssistant::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Main window layout
   auto lMainGrid{new QGridLayout(this)};
@@ -101,11 +101,11 @@ void TexturesAssistant::initializeGUI()
   lMainGrid->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
-  auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lMainGrid->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
-  auto lLaunchSearchButton{ComponentFactory::createButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
+  auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
   lMainGrid->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
@@ -194,7 +194,7 @@ TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const 
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by the user."));
+      Utils::DisplayWarningMessage(tr("Process aborted by the user."));
       return {};
     }
 
@@ -277,14 +277,14 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
   auto lRowIndex{0};
 
   // Head ressources blocks
   auto lHeadGroup{new QGroupBox(tr("Head textures").append("  "), this)};
-  Utils::addIconToGroupBox(lHeadGroup, lIconFolder, "woman-head", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lHeadGroup, lIconFolder, "woman-head", this->mSettings.font.size);
   this->connect(lHeadGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::setGroupBoxState(lHeadGroup, false);
+  Utils::SetGroupBoxState(lHeadGroup, false);
 
   auto lHeadGroupContainer{new QGridLayout(this)};
   lHeadGroupContainer->setSpacing(16);
@@ -294,9 +294,9 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Hands ressources blocks
   auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
-  Utils::addIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.font.size);
   this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::setGroupBoxState(lHandsGroup, false);
+  Utils::SetGroupBoxState(lHandsGroup, false);
 
   auto lHandsGroupContainer{new QGridLayout(this)};
   lHandsGroupContainer->setSpacing(16);
@@ -306,9 +306,9 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Body ressources blocks
   auto lBodyGroup{new QGroupBox(tr("Body textures").append("  "), this)};
-  Utils::addIconToGroupBox(lBodyGroup, lIconFolder, "body", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBodyGroup, lIconFolder, "body", this->mSettings.font.size);
   this->connect(lBodyGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::setGroupBoxState(lBodyGroup, false);
+  Utils::SetGroupBoxState(lBodyGroup, false);
 
   auto lBodyGroupContainer{new QGridLayout(this)};
   lBodyGroupContainer->setSpacing(16);
@@ -318,9 +318,9 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Other textures files
   auto lOtherGroup{new QGroupBox(tr("Other .DDS textures").append("  "), this)};
-  Utils::addIconToGroupBox(lOtherGroup, lIconFolder, "textures", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lOtherGroup, lIconFolder, "textures", this->mSettings.font.size);
   this->connect(lOtherGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::setGroupBoxState(lOtherGroup, false);
+  Utils::SetGroupBoxState(lOtherGroup, false);
 
   auto lOtherGroupContainer{new QGridLayout(this)};
   lOtherGroupContainer->setSpacing(16);
@@ -354,10 +354,10 @@ void TexturesAssistant::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "texturesAssistantInput", lPath);
+  Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
@@ -375,14 +375,14 @@ void TexturesAssistant::chooseInputDirectory()
 void TexturesAssistant::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
   // Warn the user if the scan found a BSA file
-  if (Utils::getNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
   {
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("BSA file found"),
                                       tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
                                       lIconFolder,
@@ -403,7 +403,7 @@ void TexturesAssistant::launchSearchProcess()
   // The root directory should at least contain a DDS file to be scanned.
   if (!QDir(QString("%1/textures").arg(lInputPath)).exists())
   {
-    Utils::displayWarningMessage(tr("No \"textures\" directory has been found in the scanned directory."));
+    Utils::DisplayWarningMessage(tr("No \"textures\" directory has been found in the scanned directory."));
   }
 
   // Fetch all the "*dds" files
@@ -426,7 +426,7 @@ void TexturesAssistant::launchSearchProcess()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lDataContainer{ComponentFactory::createScrollAreaComponentLayout(this)};
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this)};
 
   this->displayFoundTextures(lDataContainer, lFoundDdsFiles);
 }
@@ -437,5 +437,5 @@ void TexturesAssistant::groupBoxChecked(bool aIsChecked)
   if (lGroupBox == nullptr)
     return;
 
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

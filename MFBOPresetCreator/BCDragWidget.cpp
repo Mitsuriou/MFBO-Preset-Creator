@@ -17,7 +17,7 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
   , mRessourcePath(aRessourcePath)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(aSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(aSettings.appTheme)};
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
@@ -44,9 +44,9 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
   }
 
   auto lSection{new QGroupBox(lGroupBoxTitle.append("  "), this)};
-  Utils::addIconToGroupBox(lSection, lIconFolder, lGroupBoxIcon, aSettings.font.size);
+  Utils::AddIconToGroupBox(lSection, lIconFolder, lGroupBoxIcon, aSettings.font.size);
   this->connect(lSection, &QGroupBox::toggled, this, &BCDragWidget::groupBoxChecked);
-  Utils::setGroupBoxState(lSection, false);
+  Utils::SetGroupBoxState(lSection, false);
 
   auto lSectionLayout{new QVBoxLayout(this)};
   lSectionLayout->setSpacing(10);
@@ -113,5 +113,5 @@ void BCDragWidget::groupBoxChecked(bool aIsChecked)
   if (lGroupBox == nullptr)
     return;
 
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

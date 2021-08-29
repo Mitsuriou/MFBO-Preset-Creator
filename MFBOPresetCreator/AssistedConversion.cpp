@@ -43,9 +43,9 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (Utils::displayQuestionMessage(this,
+  if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
                                     lIconFolder,
@@ -89,7 +89,7 @@ void AssistedConversion::initializeGUI()
   this->setLayout(lMainLayout);
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // First line
   lMainLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
@@ -102,11 +102,11 @@ void AssistedConversion::initializeGUI()
   lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
-  auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
-  auto lLaunchSearchButton{ComponentFactory::createButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
+  auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
   lMainLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
@@ -192,7 +192,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by the user."));
+      Utils::DisplayWarningMessage(tr("Process aborted by the user."));
       return {};
     }
 
@@ -247,7 +247,7 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
 
   // Choice combobox
   auto lChoiceCombo{new QComboBox(this)};
-  lChoiceCombo->addItems(DataLists::getAssistedConversionActions());
+  lChoiceCombo->addItems(DataLists::GetAssistedConversionActions());
   lChoiceCombo->setCursor(Qt::PointingHandCursor);
   lChoiceCombo->setMouseTracking(true);
   lChoiceCombo->view()->setMouseTracking(true);
@@ -335,10 +335,10 @@ void AssistedConversion::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "assistedConversionInput", lPath);
+  Utils::UpdatePathAtKey(this->mLastPaths, "assistedConversionInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
@@ -356,11 +356,11 @@ void AssistedConversion::chooseInputDirectory()
 void AssistedConversion::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   if (this->hasUserSelectedAnything())
   {
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("Relaunch the scan"),
                                       tr("You will lose all the unsaved data. Do you still want to relaunch the scan?"),
                                       lIconFolder,
@@ -381,10 +381,10 @@ void AssistedConversion::launchSearchProcess()
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
-  if (Utils::getNumberFilesByExtensions(lInputPath, QStringList({"*.esl", "*.esm", "*.esp"})) == 0)
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList({"*.esl", "*.esm", "*.esp"})) == 0)
   {
     // If it does not contain one of the wanted files, ask the user to start or cancel the scan
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("No root file has been found"),
                                       tr("No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?"),
                                       lIconFolder,
@@ -403,9 +403,9 @@ void AssistedConversion::launchSearchProcess()
   }
 
   // Warn the user if the scan found a BSA file
-  if (Utils::getNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
   {
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("BSA file found"),
                                       tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
                                       lIconFolder,
@@ -443,7 +443,7 @@ void AssistedConversion::launchSearchProcess()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lDataContainer{ComponentFactory::createScrollAreaComponentLayout(this)};
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this)};
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
 
   // Columns header
@@ -460,7 +460,7 @@ void AssistedConversion::launchSearchProcess()
   }
 
   // Create the validation button
-  auto lValidateSelection{ComponentFactory::createButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
+  auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
 
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
@@ -473,10 +473,10 @@ void AssistedConversion::validateSelection()
   if (lValues.size() == 0)
   {
     // If not any file as been tagged, ask the user to continue or reselect values
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
-                                      Utils::getIconRessourceFolder(this->mSettings.appTheme),
+                                      Utils::GetIconRessourceFolder(this->mSettings.appTheme),
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),

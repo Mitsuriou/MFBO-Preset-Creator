@@ -9,7 +9,7 @@ class ComponentFactory final : public QObject
 
 public:
   // Single component
-  static QPushButton* createButton(QWidget* aParent,
+  static QPushButton* CreateButton(QWidget* aParent,
                                    const QString& aText,
                                    const QString& aTooltipText,
                                    const QString& aIconName,
@@ -19,11 +19,11 @@ public:
                                    const bool aMustDisableAutoDefaultBehavior = false);
 
   // Constructed components
-  static QGridLayout* createScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment = true, const bool aGenerateButtonsBottomLayout = true);
-  static QGridLayout* createScrollAreaComponentLayout(QWidget* aParent);
+  static QGridLayout* CreateScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment = true, const bool aGenerateButtonsBottomLayout = true);
+  static QGridLayout* CreateScrollAreaComponentLayout(QWidget* aParent);
 
   // Full UI blocks
-  static void createOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth, const int aFontSize);
+  static void CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth, const int aFontSize);
 
 private:
   explicit ComponentFactory(){};

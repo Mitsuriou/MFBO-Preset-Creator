@@ -8,7 +8,7 @@
 #include <QPushButton>
 #include <QScrollArea>
 
-QPushButton* ComponentFactory::createButton(
+QPushButton* ComponentFactory::CreateButton(
   QWidget* aParent,
   const QString& aText,
   const QString& aTooltipText,
@@ -53,7 +53,7 @@ QPushButton* ComponentFactory::createButton(
   return lButton;
 }
 
-QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment, const bool aGenerateButtonsBottomLayout)
+QGridLayout* ComponentFactory::CreateScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment, const bool aGenerateButtonsBottomLayout)
 {
   // Very first container in which the scroll area will be added
   auto lBaseLayout{new QVBoxLayout(aParent)};
@@ -97,7 +97,7 @@ QGridLayout* ComponentFactory::createScrollAreaWindowLayout(QWidget* aParent, co
   return lMainLayout;
 }
 
-QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
+QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)
 {
   auto lScrollArea{new QScrollArea(aParent)};
   lScrollArea->setObjectName(QString("scrollable_zone"));
@@ -119,12 +119,12 @@ QGridLayout* ComponentFactory::createScrollAreaComponentLayout(QWidget* aParent)
   return lDataContainer;
 }
 
-void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth, const int aFontSize)
+void ComponentFactory::CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth, const int aFontSize)
 {
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
-  Utils::addIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree", aFontSize);
-  Utils::setGroupBoxState(lOutputGroupBox, false);
+  Utils::AddIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree", aFontSize);
+  Utils::SetGroupBoxState(lOutputGroupBox, false);
   lOutputGroupBox->setObjectName(QString("output_group_box"));
   aLayout.addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol);
 
@@ -152,7 +152,7 @@ void ComponentFactory::createOutputBox(QWidget* aParent, QGridLayout& aLayout, c
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
   // Main directory's file chooser button
-  auto lOutputPathChooser{ComponentFactory::createButton(aParent, tr("Choose a directory..."), "", "folder", aIconFolder, "output_path_chooser")};
+  auto lOutputPathChooser{ComponentFactory::CreateButton(aParent, tr("Choose a directory..."), "", "folder", aIconFolder, "output_path_chooser")};
   lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
   // Subdirectory

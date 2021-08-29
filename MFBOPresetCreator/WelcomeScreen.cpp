@@ -46,7 +46,7 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
     lSettingsCopy.startupAction = this->mInitializationStartupAction;
   }
 
-  Utils::saveSettingsToFile(lSettingsCopy);
+  Utils::SaveSettingsToFile(lSettingsCopy);
 
   // Update the settings everywhere else in the app
   emit refreshMainUI(lSettingsCopy, true);
@@ -72,10 +72,10 @@ void WelcomeScreen::setWindowProperties()
 void WelcomeScreen::initializeGUI()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Main layout
-  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this, true, false)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, true, false)};
 
   /*================================*/
   /* Show / Hide the welcome screen */
@@ -89,7 +89,7 @@ void WelcomeScreen::initializeGUI()
   /*============*/
   /* Main title */
   /*============*/
-  auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::getApplicationVersion()), this)};
+  auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::GetApplicationVersion()), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.font.size * 2));
   lMainLayout->addWidget(lMainTitle);
@@ -131,7 +131,7 @@ void WelcomeScreen::initializeGUI()
   lMainLayout->addWidget(lStableStatusLabel);
 
   // Download stable update button
-  auto lDownloadStableUpdate{ComponentFactory::createButton(this, tr("Download the latest stable update"), "", "cloud-download", lIconFolder, "download_stable_update", false, true)};
+  auto lDownloadStableUpdate{ComponentFactory::CreateButton(this, tr("Download the latest stable update"), "", "cloud-download", lIconFolder, "download_stable_update", false, true)};
   lMainLayout->addWidget(lDownloadStableUpdate);
   lDownloadStableUpdate->hide();
 
@@ -154,7 +154,7 @@ void WelcomeScreen::initializeGUI()
   lMainLayout->addWidget(lBetaStatusLabel);
 
   // Download BETA update button
-  auto lDownloadBetaUpdate{ComponentFactory::createButton(this, tr("Download the latest BETA update"), "", "cloud-download", lIconFolder, "download_beta_update", false, true)};
+  auto lDownloadBetaUpdate{ComponentFactory::CreateButton(this, tr("Download the latest BETA update"), "", "cloud-download", lIconFolder, "download_beta_update", false, true)};
   lMainLayout->addWidget(lDownloadBetaUpdate);
   lDownloadBetaUpdate->hide();
 
@@ -165,6 +165,8 @@ void WelcomeScreen::initializeGUI()
 
   auto lIncomingFeaturesText{QString("<p style='padding: 0px; margin: 0px;'>"
                                      "<span>Batch Conversion tool.</span><br />"
+                                     "<span>Better textures assistant.</span>"
+                                     "<span>CBBE-based hands and feet: version number selector.</span>"
                                      "</p>")};
 
   auto lIncomingFeatures{new QLabel(this)};
@@ -195,7 +197,7 @@ void WelcomeScreen::initializeGUI()
   lGuideLabel->setWordWrap(true);
   lMainLayout->addWidget(lGuideLabel);
 
-  auto lOpenGuideTutorials{ComponentFactory::createButton(this, "User guide and tutorials (docs.google.com)", "", "external", lIconFolder, "", false, true)};
+  auto lOpenGuideTutorials{ComponentFactory::CreateButton(this, "User guide and tutorials (docs.google.com)", "", "external", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lOpenGuideTutorials);
 
   /*===============*/
@@ -310,8 +312,8 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
   auto lBrowserStableReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_stable"))};
   auto lBrowserBetaReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_beta"))};
 
-  const auto lCurrentVersion{Utils::getApplicationVersion()};
-  const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
+  const auto lCurrentVersion{Utils::GetApplicationVersion()};
+  const auto lVersionsInformation{Utils::ParseGitHubReleasesRequestResult(aResult)};
 
   /*=================*/
   /* CURRENT VERSION */
@@ -365,14 +367,14 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     lStableStatusLabel->setText(tr("An error has occured while analyzing GitHub's API data. Please retry in a few seconds."));
   }
   // A new version is available
-  else if (!lVersionsInformation.isRunningBetaVersion(lCurrentVersion) && Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  else if (!lVersionsInformation.isRunningBetaVersion(lCurrentVersion) && Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
   {
     lBrowserStableReleaseNotes->show();
     lStableStatusLabel->setText(tr("The new stable version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getLatestStableVersionNumber()));
     this->findChild<QPushButton*>(QString("download_stable_update"))->show();
   }
   // Already running the latest version
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
+  else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
   {
     lStableStatusLabel->setText(tr("You are already running the latest stable version \"%1\".").arg(lVersionsInformation.getLatestStableVersionNumber()));
   }
@@ -383,7 +385,7 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     this->findChild<QPushButton*>(QString("download_stable_update"))->show();
   }
   // Running a developper version (since the current version number is higher than the latest one available on GitHub)
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::OLDER)
+  else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::OLDER)
   {
     lBrowserStableReleaseNotes->show();
     lStableStatusLabel->setText(tr("You are running a developer version."));
@@ -411,17 +413,17 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
     lBetaStatusLabel->setText(tr("No BETA version found on GitHub."));
   }
   // The BETA version is older than the current stable
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::OLDER)
+  else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::OLDER)
   {
     lBetaStatusLabel->setText(tr("No newer BETA version is currently available."));
   }
   // Already running the latest version
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
+  else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
   {
     lBetaStatusLabel->setText(tr("You are already running the latest BETA version \"%1\".").arg(lVersionsInformation.getLatestBetaVersionNumber()));
   }
   // Running a developper version (since the current version number is higher than the latest one available on GitHub)
-  else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+  else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
   {
     lBrowserBetaReleaseNotes->show();
     lBetaStatusLabel->setText(tr("The new BETA version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getLatestBetaVersionNumber()));

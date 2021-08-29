@@ -4,27 +4,27 @@
 #include <QFile>
 #include <QTextStream>
 
-QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const bool aMustUseBeastHands, const int aFeetModIndex, const unsigned char& aTargetBlocks)
+QString SliderFileBuilder::BuildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const bool aMustUseBeastHands, const int aFeetModIndex, const unsigned char& aTargetBlocks)
 {
   auto lBuiltContent{QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SliderSetInfo version=\"1\">")};
 
   // Body
   if (aTargetBlocks / 100 == 1)
-    lBuiltContent.append("\n").append(Utils::readQRCFileContent(DataLists::getQRCPathFromBodyName(aBody, aFeetModIndex, BodyPartType::BODY)).arg(aLineName));
+    lBuiltContent.append("\n").append(Utils::ReadQRCFileContent(DataLists::GetQRCPathFromBodyName(aBody, aFeetModIndex, BodyPartType::BODY)).arg(aLineName));
 
   // Feet
   if (aTargetBlocks % 100 / 10 == 1)
     lBuiltContent.append("\n").append(
-      Utils::readQRCFileContent(
-        DataLists::getQRCPathFromBodyName(aBody, aFeetModIndex, BodyPartType::FEET))
+      Utils::ReadQRCFileContent(
+        DataLists::GetQRCPathFromBodyName(aBody, aFeetModIndex, BodyPartType::FEET))
         .arg(aLineName));
 
   // Hands
   if (aTargetBlocks % 10 == 1)
   {
     lBuiltContent.append("\n").append(
-      Utils::readQRCFileContent(
-        DataLists::getQRCPathFromBodyName(aBody, aFeetModIndex, aMustUseBeastHands ? BodyPartType::BEAST_HANDS : BodyPartType::HANDS))
+      Utils::ReadQRCFileContent(
+        DataLists::GetQRCPathFromBodyName(aBody, aFeetModIndex, aMustUseBeastHands ? BodyPartType::BEAST_HANDS : BodyPartType::HANDS))
         .arg(aLineName));
   }
 
@@ -32,7 +32,7 @@ QString SliderFileBuilder::buildOSPFileContent(const QString& aLineName, const B
   return lBuiltContent;
 }
 
-QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
+QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
                                                const std::vector<Struct::Filter>& aFiltersList,
                                                const BodyNameVersion& aBody,
                                                const bool aMustUseBeastHands,
@@ -41,7 +41,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
 {
   auto lBuiltContent{QString("<SliderGroups>\n")};
 
-  const auto& lFilters{aFiltersList.size() > 0 ? aFiltersList : SliderFileBuilder::getXMLDefaultFiltersFromBody(aBody)};
+  const auto& lFilters{aFiltersList.size() > 0 ? aFiltersList : SliderFileBuilder::GetXMLDefaultFiltersFromBody(aBody)};
 
   for (const auto& lFilter : lFilters)
   {
@@ -153,7 +153,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -176,7 +176,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -199,7 +199,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -222,7 +222,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -245,7 +245,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -268,7 +268,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -291,7 +291,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -311,7 +311,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
         // Feet
         if (aTargetBlocks % 100 / 10 == 1 && lFilter.isFeetCompatible())
         {
-          lBuiltContent.append(SliderFileBuilder::getFeetLineForBHUNP(aFeetModIndex));
+          lBuiltContent.append(SliderFileBuilder::GetFeetLineForBHUNP(aFeetModIndex));
         }
 
         // Hands
@@ -331,7 +331,7 @@ QString SliderFileBuilder::buildXMLFileContent(const QString& aLineName,
   return lBuiltContent.arg("    ").arg(aLineName);
 }
 
-QString SliderFileBuilder::getFeetLineForBHUNP(const int aFeetModIndex)
+QString SliderFileBuilder::GetFeetLineForBHUNP(const int aFeetModIndex)
 {
   switch (aFeetModIndex)
   {
@@ -358,12 +358,12 @@ QString SliderFileBuilder::getFeetLineForBHUNP(const int aFeetModIndex)
   return QString();
 }
 
-std::vector<Struct::Filter> SliderFileBuilder::getXMLDefaultFiltersFromBody(const BodyNameVersion& aBody)
+std::vector<Struct::Filter> SliderFileBuilder::GetXMLDefaultFiltersFromBody(const BodyNameVersion& aBody)
 {
   auto lDefaultFilters{std::vector<Struct::Filter>()};
   lDefaultFilters.push_back(Struct::Filter("MFBO", true, true, true));
 
-  if (Utils::isCBBEBasedBody(aBody))
+  if (Utils::IsCBBEBasedBody(aBody))
   {
     lDefaultFilters.push_back(Struct::Filter("CBBE", true, true, true));
     lDefaultFilters.push_back(Struct::Filter("CBBE Bodies", true, true, true));

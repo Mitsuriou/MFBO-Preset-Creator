@@ -116,8 +116,8 @@ void ReleaseNotesViewer::displayUpdateMessage(const QString& aResult)
     return;
   }
 
-  const auto lCurrentVersion{Utils::getApplicationVersion()};
-  const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
+  const auto lCurrentVersion{Utils::GetApplicationVersion()};
+  const auto lVersionsInformation{Utils::ParseGitHubReleasesRequestResult(aResult)};
 
   // Set the release note in the text browser
   if (lVersionsInformation.sizeStableVersionsList() == 0 && lVersionsInformation.sizeBetaVersionsList() == 0)

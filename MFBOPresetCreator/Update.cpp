@@ -83,7 +83,7 @@ void Update::initializeGUI()
   this->layout()->addWidget(lMainTitle);
 
   // Check for updates
-  auto lUpdateButton{ComponentFactory::createButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::getIconRessourceFolder(this->mSettings.appTheme), "search_button")};
+  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconRessourceFolder(this->mSettings.appTheme), "search_button")};
   lUpdateButton->setIconSize(QSize(32, 32));
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
   this->layout()->addWidget(lUpdateButton);
@@ -162,7 +162,7 @@ void Update::displayUpdateMessage(const QString& aResult)
 
   if (aResult == "fetch_error")
   {
-    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(32, 32));
     lSearchButton->setText(tr("Check for updates once again"));
@@ -172,22 +172,22 @@ void Update::displayUpdateMessage(const QString& aResult)
     return;
   }
 
-  const auto lCurrentVersion{Utils::getApplicationVersion()};
+  const auto lCurrentVersion{Utils::GetApplicationVersion()};
   auto lUseStableVersionNotes{false};
-  const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
+  const auto lVersionsInformation{Utils::ParseGitHubReleasesRequestResult(aResult)};
 
   if (lVersionsInformation.sizeStableVersionsList() > 0 && lVersionsInformation.sizeBetaVersionsList() > 0)
   {
     // A new BETA version is available and no newer stable available
-    if (!this->mForceStableContext && Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER
-        && Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::NEWER)
+    if (!this->mForceStableContext && Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER
+        && Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::NEWER)
     {
       lUseStableVersionNotes = false;
 
       this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestBetaVersionNumber());
 
       // A new beta version is available
-      QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
       lSearchButton->setIconSize(QSize(32, 32));
       lSearchButton->setText(tr("Download the update"));
@@ -198,21 +198,21 @@ void Update::displayUpdateMessage(const QString& aResult)
       auto lVersionFileName = lVersionsInformation.getLatestBetaVersionNumber();
       lVersionFileName.replace(".", "-");
       this->mSaveFilePath = QString("%1/mfbopc-wizard-beta-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
-      Utils::cleanPathString(this->mSaveFilePath);
+      Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new BETA version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the BETA version \"%2\":")
                               .arg(lCurrentVersion)
                               .arg(lVersionsInformation.getLatestBetaVersionNumber())
                               .arg(this->mSaveFilePath));
     }
     // A new stable version is available
-    else if (!this->mForceBetaContext && Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+    else if (!this->mForceBetaContext && Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
     {
       lUseStableVersionNotes = true;
 
       this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestStableVersionNumber());
 
       // A new stable version is available
-      QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
       lSearchButton->setIconSize(QSize(32, 32));
       lSearchButton->setText(tr("Download the update"));
@@ -223,7 +223,7 @@ void Update::displayUpdateMessage(const QString& aResult)
       auto lVersionFileName = lVersionsInformation.getLatestStableVersionNumber();
       lVersionFileName.replace(".", "-");
       this->mSaveFilePath = QString("%1/mfbopc-wizard-stable-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
-      Utils::cleanPathString(this->mSaveFilePath);
+      Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the stable version \"%2\":")
                               .arg(lCurrentVersion)
                               .arg(lVersionsInformation.getLatestStableVersionNumber())
@@ -232,7 +232,7 @@ void Update::displayUpdateMessage(const QString& aResult)
     else
     {
       // The user runs the latest version
-      QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
+      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
       lSearchButton->setIconSize(QSize(32, 32));
       lSearchButton->setDisabled(true);
@@ -267,7 +267,7 @@ void Update::downloadLatestUpdate()
   lSearchButton->setToolTip(tr("Cancel the download"));
 
   // Update the icon in case the user had an error before
-  QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+  QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
   lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
   lSearchButton->setIconSize(QSize(32, 32));
 
@@ -420,7 +420,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
   if (aResult)
   {
     // The app has been downloaded
-    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
+    QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(32, 32));
     lSearchButton->setText(tr("Close MFBOPC and install the update"));
@@ -444,7 +444,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
   else
   {
     // Error while downloading
-    QString lPath{Utils::isThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
     lSearchButton->setIconSize(QSize(32, 32));
     lSearchButton->setText(tr("Try to download the update once again"));
@@ -475,7 +475,7 @@ void Update::installLatestUpdate()
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
 
   // Create a file to be able to know that the installer file needs to be removed at next launch
-  QFile lLogFile(Utils::getAppDataPathFolder() + "installer.log");
+  QFile lLogFile(Utils::GetAppDataPathFolder() + "installer.log");
   lLogFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
 
   QTextStream lTextStream(&lLogFile);
@@ -491,7 +491,7 @@ void Update::installLatestUpdate()
   }
   else
   {
-    Utils::displayWarningMessage(tr("The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again."));
+    Utils::DisplayWarningMessage(tr("The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again."));
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
     lSearchButton->setDisabled(false);
   }

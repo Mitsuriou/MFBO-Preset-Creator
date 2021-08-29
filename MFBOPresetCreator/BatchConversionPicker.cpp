@@ -40,9 +40,9 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
 void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (Utils::displayQuestionMessage(this,
+  if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
                                     lIconFolder,
@@ -82,10 +82,10 @@ void BatchConversionPicker::setWindowProperties()
 void BatchConversionPicker::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this, false)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, false)};
 
   // 3 columns splitter
   auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
@@ -195,9 +195,9 @@ void BatchConversionPicker::initializeGUI()
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
   lBodyslideGroupBox->setObjectName(QString("bodyslide_groupbox"));
-  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
-  Utils::setGroupBoxState(lBodyslideGroupBox, false);
+  Utils::SetGroupBoxState(lBodyslideGroupBox, false);
   lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -249,7 +249,7 @@ void BatchConversionPicker::initializeGUI()
   /* Right list: Presets controls */
   /*==============================*/
   // Previous preset
-  auto lPreviousPreset{ComponentFactory::createButton(this, tr("Previous preset"), "", "arrow-left", lIconFolder, "previous_preset", false, true)};
+  auto lPreviousPreset{ComponentFactory::CreateButton(this, tr("Previous preset"), "", "arrow-left", lIconFolder, "previous_preset", false, true)};
   lRightNavigationLayout->addWidget(lPreviousPreset, 0, 0);
 
   // Active preset number
@@ -263,15 +263,15 @@ void BatchConversionPicker::initializeGUI()
   lRightNavigationLayout->addWidget(lNumberOfPresets, 0, 2);
 
   // Next preset
-  auto lNextPreset{ComponentFactory::createButton(this, tr("Next preset"), "", "arrow-right", lIconFolder, "next_preset", false, true)};
+  auto lNextPreset{ComponentFactory::CreateButton(this, tr("Next preset"), "", "arrow-right", lIconFolder, "next_preset", false, true)};
   lRightNavigationLayout->addWidget(lNextPreset, 0, 3);
 
   // Remove current preset
-  auto lRemoveActivePreset{ComponentFactory::createButton(this, tr("Remove current preset"), "", "minus", lIconFolder, "remove_current_preset", false, true)};
+  auto lRemoveActivePreset{ComponentFactory::CreateButton(this, tr("Remove current preset"), "", "minus", lIconFolder, "remove_current_preset", false, true)};
   lRightNavigationLayout->addWidget(lRemoveActivePreset, 0, 4);
 
   // Add new empty preset
-  auto lAddEmptyPreset{ComponentFactory::createButton(this, tr("Add new preset"), "", "plus", lIconFolder, "add_empty_preset", false, true)};
+  auto lAddEmptyPreset{ComponentFactory::CreateButton(this, tr("Add new preset"), "", "plus", lIconFolder, "add_empty_preset", false, true)};
   lRightNavigationLayout->addWidget(lAddEmptyPreset, 0, 5);
 
   /*========================================*/
@@ -279,7 +279,7 @@ void BatchConversionPicker::initializeGUI()
   /*========================================*/
   auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
-  auto lGenerateButton{ComponentFactory::createButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "generate")};
+  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "generate")};
   lGenerateButton->setAutoDefault(true);
   lGenerateButton->setDefault(true);
   lButtonLayout->addWidget(lGenerateButton);
@@ -374,7 +374,7 @@ void BatchConversionPicker::updateOSPXMLPreview(QString aText)
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_osp_xml_preview"))};
   auto lIsValidPath{true};
 
-  Utils::cleanPathString(aText);
+  Utils::CleanPathString(aText);
 
   if (aText.trimmed().isEmpty())
   {
@@ -411,7 +411,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   auto lMustUseBeastHands{false}; // TODO: Check if it is necessary to get this parameter from a dynamic analyze
   auto lIsValidPath{true};
 
-  Utils::cleanPathString(aText);
+  Utils::CleanPathString(aText);
 
   if (aText.trimmed().isEmpty())
   {
@@ -420,9 +420,9 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   }
 
   auto lConstructedPreviewText{QString()};
-  lConstructedPreviewText.append(Utils::getBodySliderValue(this->mData.bodyMod));                           // Body
-  lConstructedPreviewText.append(Utils::getFeetSliderValue(this->mData.bodyMod, this->mData.feetModIndex)); // Feet
-  lConstructedPreviewText.append(Utils::getHandsSliderValue(this->mData.bodyMod, lMustUseBeastHands));      // Hands
+  lConstructedPreviewText.append(Utils::GetBodySliderValue(this->mData.bodyMod));                           // Body
+  lConstructedPreviewText.append(Utils::GetFeetSliderValue(this->mData.bodyMod, this->mData.feetModIndex)); // Feet
+  lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mData.bodyMod, lMustUseBeastHands));      // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.successColor};
@@ -693,5 +693,5 @@ void BatchConversionPicker::groupBoxChecked(bool aIsChecked)
   if (lGroupBox == nullptr)
     return;
 
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

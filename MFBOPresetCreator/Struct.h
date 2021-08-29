@@ -122,7 +122,7 @@ namespace Struct
     int defaultRetargetingToolFeetMod{0};
     bool eachButtonSavesItsLastUsedPath{true};
     Struct::Font font;
-    ApplicationLanguage language{LangManager::getSystemLanguage()};
+    ApplicationLanguage language{LangManager::GetSystemLanguage()};
     bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
     int mainWindowHeight{620};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};

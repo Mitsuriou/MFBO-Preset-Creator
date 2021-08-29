@@ -28,7 +28,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
   : QMainWindow(aParent)
   , mSettings(aSettings)
   , mInjectedFilePath(aInjectedFilePath)
-  , mLastPaths(Utils::loadLastPathsFromFile())
+  , mLastPaths(Utils::LoadLastPathsFromFile())
   , mNewStableVersionAvailable(false)
   , mNewBetaVersionAvailable(false)
 {
@@ -46,7 +46,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
   }
   else
   {
-    Utils::printMessageStdOut("Skipped update checking");
+    Utils::PrintMessageStdOut("Skipped update checking");
     this->initializeGUI();
   }
 }
@@ -54,7 +54,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())
@@ -63,7 +63,7 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  auto lUserAnswer{Utils::displayQuestionMessage(this,
+  auto lUserAnswer{Utils::DisplayQuestionMessage(this,
                                                  tr("Quitting"),
                                                  tr("You will lose all the unsaved data. Do you still want to quit the application?"),
                                                  lIconFolder,
@@ -144,7 +144,7 @@ void MFBOPresetCreator::initializeGUI()
 
   this->setAcceptDrops(true);
 
-  Utils::cleanPathString(this->mInjectedFilePath);
+  Utils::CleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
 
   if (this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN)
@@ -156,7 +156,7 @@ void MFBOPresetCreator::initializeGUI()
 void MFBOPresetCreator::setupMenuBar()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Menu bar
   auto lMenuBar{new QMenuBar(this)};
@@ -169,41 +169,41 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lFile);
 
   // Action: Launch the welcome screen
-  auto lLaunchWelcomeScreen{Utils::buildQAction(this, tr("Welcome screen"), QKeySequence(Qt::SHIFT + Qt::Key::Key_Escape), "home", lIconFolder)};
+  auto lLaunchWelcomeScreen{Utils::BuildQAction(this, tr("Welcome screen"), QKeySequence(Qt::SHIFT + Qt::Key::Key_Escape), "home", lIconFolder)};
   lFile->addAction(lLaunchWelcomeScreen);
 
   lFile->addSeparator();
 
   // Action: Open project file
-  auto lOpenProjectFile{Utils::buildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL + Qt::Key_O), "file", lIconFolder)};
+  auto lOpenProjectFile{Utils::BuildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL + Qt::Key_O), "file", lIconFolder)};
   lOpenProjectFile->setObjectName(QString("action_open_project"));
   lFile->addAction(lOpenProjectFile);
 
   // Action: Save current project
-  auto lSaveProject{Utils::buildQAction(this, tr("Save"), QKeySequence(Qt::CTRL + Qt::Key_S), "save", lIconFolder)};
+  auto lSaveProject{Utils::BuildQAction(this, tr("Save"), QKeySequence(Qt::CTRL + Qt::Key_S), "save", lIconFolder)};
   lSaveProject->setObjectName(QString("action_save_project"));
   lSaveProject->setDisabled(true);
   lFile->addAction(lSaveProject);
 
   // Action: Save current project as
-  auto lSaveProjectAs{Utils::buildQAction(this, tr("Save as"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), "save", lIconFolder)};
+  auto lSaveProjectAs{Utils::BuildQAction(this, tr("Save as"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), "save", lIconFolder)};
   lSaveProjectAs->setObjectName(QString("action_save_project_as"));
   lFile->addAction(lSaveProjectAs);
 
   lFile->addSeparator();
 
   // Action: Settings
-  auto lOpenSettings{Utils::buildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O), "cog", lIconFolder)};
+  auto lOpenSettings{Utils::BuildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O), "cog", lIconFolder)};
   lFile->addAction(lOpenSettings);
 
   lFile->addSeparator();
 
   // Action: Relaunch the app
-  auto lRelaunchApp{Utils::buildQAction(this, tr("Quick restart"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
+  auto lRelaunchApp{Utils::BuildQAction(this, tr("Quick restart"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
   lFile->addAction(lRelaunchApp);
 
   // Action: Exit
-  auto lExitApp{Utils::buildQAction(this, tr("Exit"), QKeySequence(Qt::ALT + Qt::Key_F4), "cross", lIconFolder)};
+  auto lExitApp{Utils::BuildQAction(this, tr("Exit"), QKeySequence(Qt::ALT + Qt::Key_F4), "cross", lIconFolder)};
   lFile->addAction(lExitApp);
 
   // Menu: Tools
@@ -212,20 +212,20 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lTools);
 
   // Action: Batch conversion
-  auto lOpenBatchConv{Utils::buildQAction(this, tr("Batch Conversion") + " (WIP)", QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "reorder", lIconFolder)};
+  auto lOpenBatchConv{Utils::BuildQAction(this, tr("Batch Conversion") + " (WIP)", QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "reorder", lIconFolder)};
   lOpenBatchConv->setDisabled(true);
   lTools->addAction(lOpenBatchConv);
 
   // Action: Textures Assistant
-  auto lOpenTextAssist{Utils::buildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T), "textures", lIconFolder)};
+  auto lOpenTextAssist{Utils::BuildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T), "textures", lIconFolder)};
   lTools->addAction(lOpenTextAssist);
 
   // Action: Assisted Conversion
-  auto lOpenAssiConv{Utils::buildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Y), "pencil", lIconFolder)};
+  auto lOpenAssiConv{Utils::BuildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Y), "pencil", lIconFolder)};
   lTools->addAction(lOpenAssiConv);
 
   // Action: BodySlide Presets' Retargeting
-  auto lOpenRetaTools{Utils::buildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_H), "arrow-up", lIconFolder)};
+  auto lOpenRetaTools{Utils::BuildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_H), "arrow-up", lIconFolder)};
   lTools->addAction(lOpenRetaTools);
 
   // Menu: Help
@@ -240,11 +240,11 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lHelp);
 
   // Action: Check for updates
-  auto lOpenUpdate{Utils::buildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL + Qt::Key_U), "cloud-search", lIconFolder)};
+  auto lOpenUpdate{Utils::BuildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL + Qt::Key_U), "cloud-search", lIconFolder)};
   lHelp->addAction(lOpenUpdate);
 
   // Action: Open current version's release notes
-  auto lOpenCurrentVersionReleaseNotes{Utils::buildQAction(this, tr("Current version's release notes"), QKeySequence(), "text-snippet", lIconFolder)};
+  auto lOpenCurrentVersionReleaseNotes{Utils::BuildQAction(this, tr("Current version's release notes"), QKeySequence(), "text-snippet", lIconFolder)};
   lHelp->addAction(lOpenCurrentVersionReleaseNotes);
 
   // Submenu: Report a bug
@@ -254,15 +254,15 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addMenu(lReportBugSubmenu);
 
   // Action: Report a bug from Nexus Mods
-  auto lReportBugNexusMods{Utils::buildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(), "nexus-logo", lIconFolder)};
+  auto lReportBugNexusMods{Utils::BuildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(), "nexus-logo", lIconFolder)};
   lReportBugSubmenu->addAction(lReportBugNexusMods);
 
   // Action: Report a bug from GitHub
-  auto lReportBugGitHub{Utils::buildQAction(this, tr("GitHub (github.com)"), QKeySequence(), "github", lIconFolder)};
+  auto lReportBugGitHub{Utils::BuildQAction(this, tr("GitHub (github.com)"), QKeySequence(), "github", lIconFolder)};
   lReportBugSubmenu->addAction(lReportBugGitHub);
 
   // Action: Report a bug from GitLab
-  auto lReportBugGitLab{Utils::buildQAction(this, tr("GitLab (gitlab.com)"), QKeySequence(), "gitlab", lIconFolder)};
+  auto lReportBugGitLab{Utils::BuildQAction(this, tr("GitLab (gitlab.com)"), QKeySequence(), "gitlab", lIconFolder)};
   lReportBugSubmenu->addAction(lReportBugGitLab);
 
   // Submenu: Links
@@ -272,23 +272,23 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addMenu(lLinksSubmenu);
 
   // Action: Nexus page link
-  auto lOpenNexus{Utils::buildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(Qt::CTRL + Qt::Key_N), "nexus-logo", lIconFolder)};
+  auto lOpenNexus{Utils::BuildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(Qt::CTRL + Qt::Key_N), "nexus-logo", lIconFolder)};
   lLinksSubmenu->addAction(lOpenNexus);
 
   // Action: open URL to Doogle Docs: Guide and tutorials
-  auto lOpenGuide{Utils::buildQAction(this, tr("User guide and tutorials (docs.google.com)"), QKeySequence(Qt::CTRL + Qt::Key_G), "text-file", lIconFolder)};
+  auto lOpenGuide{Utils::BuildQAction(this, tr("User guide and tutorials (docs.google.com)"), QKeySequence(Qt::CTRL + Qt::Key_G), "text-file", lIconFolder)};
   lLinksSubmenu->addAction(lOpenGuide);
 
   // Action: Source code on GitHub
-  auto lOpenSourceCodeGitHub{Utils::buildQAction(this, tr("View the source code (github.com)"), QKeySequence(), "github", lIconFolder)};
+  auto lOpenSourceCodeGitHub{Utils::BuildQAction(this, tr("View the source code (github.com)"), QKeySequence(), "github", lIconFolder)};
   lLinksSubmenu->addAction(lOpenSourceCodeGitHub);
 
   // Action: Source code on GitLab
-  auto lOpenSourceCodeGitLab{Utils::buildQAction(this, tr("View the source code (gitlab.com)"), QKeySequence(), "gitlab", lIconFolder)};
+  auto lOpenSourceCodeGitLab{Utils::BuildQAction(this, tr("View the source code (gitlab.com)"), QKeySequence(), "gitlab", lIconFolder)};
   lLinksSubmenu->addAction(lOpenSourceCodeGitLab);
 
   // Action: About
-  auto lOpenAbout{Utils::buildQAction(this, tr("About"), QKeySequence(Qt::CTRL + Qt::Key_I), "info-circle", lIconFolder)};
+  auto lOpenAbout{Utils::BuildQAction(this, tr("About"), QKeySequence(Qt::CTRL + Qt::Key_I), "info-circle", lIconFolder)};
   lHelp->addAction(lOpenAbout);
 
   // Event binding
@@ -437,7 +437,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   this->enableLineEditPlaceholders(lLineEditsToReactivate);
 
   // Reset icons color
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>(QString("edit_filters"))};
   lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
@@ -532,7 +532,7 @@ void MFBOPresetCreator::enableLineEditPlaceholders(std::vector<QLineEdit*> aLine
 
 void MFBOPresetCreator::checkForUpdate()
 {
-  Utils::printMessageStdOut("Checking for updates...");
+  Utils::PrintMessageStdOut("Checking for updates...");
 
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
@@ -553,14 +553,14 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
   }
   else
   {
-    const auto lCurrentVersion{Utils::getApplicationVersion()};
-    const auto lVersionsInformation{Utils::parseGitHubReleasesRequestResult(aResult)};
+    const auto lCurrentVersion{Utils::GetApplicationVersion()};
+    const auto lVersionsInformation{Utils::ParseGitHubReleasesRequestResult(aResult)};
 
     if (lVersionsInformation.sizeStableVersionsList() > 0 && lVersionsInformation.sizeBetaVersionsList() > 0)
     {
       // A new BETA version is available and no newer stable available
-      if (Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER
-          && Utils::compareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::NEWER)
+      if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER
+          && Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lVersionsInformation.getLatestStableVersionNumber()) == ApplicationVersionRelative::NEWER)
       {
         this->mNewBetaVersionAvailable = true;
         lTitle = tr("BETA update available");
@@ -569,7 +569,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
                      .arg(lVersionsInformation.getLatestBetaVersionNumber());
       }
       // A new stable version is available
-      else if (Utils::compareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
+      else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
       {
         this->mNewStableVersionAvailable = true;
         lTitle = tr("Stable update available");
@@ -585,7 +585,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
   if (this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES && !lTitle.isEmpty() && !lMessage.isEmpty())
   {
     // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
     if (aResult == "fetch_error")
     {
@@ -599,7 +599,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     }
     else if (this->mNewStableVersionAvailable || this->mNewBetaVersionAvailable)
     {
-      if (Utils::displayQuestionMessage(this,
+      if (Utils::DisplayQuestionMessage(this,
                                         lTitle,
                                         lMessage,
                                         lIconFolder,
@@ -666,7 +666,7 @@ void MFBOPresetCreator::saveProject(const bool aIsQuittingContext)
 void MFBOPresetCreator::quickRelaunch()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())
@@ -675,7 +675,7 @@ void MFBOPresetCreator::quickRelaunch()
     return;
   }
 
-  auto lUserAnswer{Utils::displayQuestionMessage(this,
+  auto lUserAnswer{Utils::DisplayQuestionMessage(this,
                                                  tr("Quick restart"),
                                                  tr("You will lose all the unsaved data. Do you still want to quickly restart the application?"),
                                                  lIconFolder,

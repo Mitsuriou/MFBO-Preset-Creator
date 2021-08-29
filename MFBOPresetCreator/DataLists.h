@@ -9,20 +9,20 @@ class DataLists final : public QObject
 
 public:
   // Lists for bodies names and versions
-  static QStringList getBodiesNames();
-  static QStringList getVersionsFromBodyName(const BodyName& aBody);
-  static BodyNameVersion getBodyNameVersion(const BodyName& aBody, const int aRelativeVersion);
-  static std::pair<int, int> getSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion);
-  static QString getQRCPathFromBodyName(const BodyNameVersion& aBody, const int aFeetModIndex, const BodyPartType& aRessourceType);
-  static QStringList getFeetModsFromBodyName(const BodyName& aBody);
+  static QStringList GetBodiesNames();
+  static QStringList GetVersionsFromBodyName(const BodyName& aBody);
+  static BodyNameVersion GetBodyNameVersion(const BodyName& aBody, const int aRelativeVersion);
+  static std::pair<int, int> GetSplittedNameVersionFromBodyVersion(BodyNameVersion aBodyVersion);
+  static QString GetQRCPathFromBodyName(const BodyNameVersion& aBody, const int aFeetModIndex, const BodyPartType& aRessourceType);
+  static QStringList GetFeetModsFromBodyName(const BodyName& aBody);
 
   // Other data lists
-  static QStringList getWindowOpeningModes();
-  static QStringList getDialogOpeningModes();
-  static QStringList getAppThemes();
-  static QStringList getLanguages();
-  static QStringList getAssistedConversionActions();
-  static QStringList getLastPathsKeys();
+  static QStringList GetWindowOpeningModes();
+  static QStringList GetDialogOpeningModes();
+  static QStringList GetAppThemes();
+  static QStringList GetLanguages();
+  static QStringList GetAssistedConversionActions();
+  static QStringList GetLastPathsKeys();
 
 private:
   explicit DataLists(){};

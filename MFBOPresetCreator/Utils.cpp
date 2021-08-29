@@ -22,7 +22,7 @@
 
 bool Utils::RESTART_PENDING = false;
 
-void Utils::cleanPathString(QString& aPath)
+void Utils::CleanPathString(QString& aPath)
 {
   // Remove spaces before and after slashes
   auto lParts{aPath.split('/')};
@@ -38,10 +38,10 @@ void Utils::cleanPathString(QString& aPath)
   aPath.replace("\\", "/");
 
   // Remove any '\n' character
-  Utils::cleanBreaksString(aPath);
+  Utils::CleanBreaksString(aPath);
 }
 
-QString Utils::cleanPathString(const QString& aPath)
+QString Utils::CleanPathString(const QString& aPath)
 {
   QString lPath(aPath);
 
@@ -60,24 +60,24 @@ QString Utils::cleanPathString(const QString& aPath)
 
   // Remove any '\n' character
   const QString lCleanedPath(lPath);
-  lPath = Utils::cleanBreaksString(lCleanedPath);
+  lPath = Utils::CleanBreaksString(lCleanedPath);
 
   return lPath;
 }
 
-void Utils::cleanBreaksString(QString& aString)
+void Utils::CleanBreaksString(QString& aString)
 {
   aString.replace("\n", "");
 }
 
-QString Utils::cleanBreaksString(const QString& aString)
+QString Utils::CleanBreaksString(const QString& aString)
 {
   QString lPath(aString);
   lPath.replace("\n", "");
   return lPath;
 }
 
-QStringList Utils::splitString(QString aString, const QString& aSeparator)
+QStringList Utils::SplitString(QString aString, const QString& aSeparator)
 {
   auto lList{aString.split(QString(aSeparator))};
 
@@ -93,17 +93,17 @@ QStringList Utils::splitString(QString aString, const QString& aSeparator)
   return lList;
 }
 
-QString Utils::getApplicationVersion()
+QString Utils::GetApplicationVersion()
 {
   return qApp->applicationVersion();
 }
 
-ApplicationVersionRelative Utils::compareVersionNumbers(const QString& aVersionNumber)
+ApplicationVersionRelative Utils::CompareVersionNumbers(const QString& aVersionNumber)
 {
-  return Utils::compareVersionNumbers(aVersionNumber, Utils::getApplicationVersion());
+  return Utils::CompareVersionNumbers(aVersionNumber, Utils::GetApplicationVersion());
 }
 
-ApplicationVersionRelative Utils::compareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2)
+ApplicationVersionRelative Utils::CompareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2)
 {
   auto lVersion1{QVersionNumber::fromString(aVersionNumber1).normalized()};
   auto lVersion2{QVersionNumber::fromString(aVersionNumber2).normalized()};
@@ -141,7 +141,7 @@ ApplicationVersionRelative Utils::compareVersionNumbers(const QString& aVersionN
   return ApplicationVersionRelative::EQUIVALENT;
 }
 
-void Utils::displayWarningMessage(const QString& aMessage)
+void Utils::DisplayWarningMessage(const QString& aMessage)
 {
   QMessageBox lBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
   lBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(48, Qt::SmoothTransformation));
@@ -153,7 +153,7 @@ void Utils::displayWarningMessage(const QString& aMessage)
   lBox.exec();
 }
 
-ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault)
+ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
   lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation));
@@ -203,7 +203,7 @@ ButtonClicked Utils::displayQuestionMessage(QWidget* aParent, const QString& aTi
   return ButtonClicked::CLOSE_WINDOW;
 }
 
-VersionsInformation Utils::parseGitHubReleasesRequestResult(const QString& aResult)
+VersionsInformation Utils::ParseGitHubReleasesRequestResult(const QString& aResult)
 {
   VersionsInformation lVersionsInformation;
   auto lTagName{QString()};
@@ -216,23 +216,23 @@ VersionsInformation Utils::parseGitHubReleasesRequestResult(const QString& aResu
   for (int i = 0; i < lTagsArray.size(); i++)
   {
     // Parse the tag_name
-    lTagName = Utils::cleanBreaksString(lTagsArray.at(i)["tag_name"].toString());
+    lTagName = Utils::CleanBreaksString(lTagsArray.at(i)["tag_name"].toString());
 
     // Check if it is a stable or a BETA version
     if (lTagsArray.at(i)["prerelease"].toBool())
     {
-      lVersionsInformation.appendBetaVersion(lTagName, Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
+      lVersionsInformation.appendBetaVersion(lTagName, Utils::CleanBreaksString(lTagsArray.at(i)["body"].toString()));
     }
     else
     {
-      lVersionsInformation.appendStableVersion(lTagName, Utils::cleanBreaksString(lTagsArray.at(i)["body"].toString()));
+      lVersionsInformation.appendStableVersion(lTagName, Utils::CleanBreaksString(lTagsArray.at(i)["body"].toString()));
     }
   }
 
   return lVersionsInformation;
 }
 
-int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
+int Utils::GetNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
 
@@ -246,7 +246,7 @@ int Utils::getNumberFilesByExtension(const QString& aRootDir, const QString& aFi
   return lNumber;
 }
 
-int Utils::getNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension)
+int Utils::GetNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
 
@@ -260,7 +260,7 @@ int Utils::getNumberFilesByExtensionRecursive(const QString& aRootDir, const QSt
   return lNumber;
 }
 
-int Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension)
+int Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
   auto lAbsFilePath{QString()};
@@ -287,7 +287,7 @@ int Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootD
   return lNumber;
 }
 
-int Utils::getNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions)
+int Utils::GetNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions)
 {
   auto lNumber{0};
 
@@ -301,7 +301,7 @@ int Utils::getNumberFilesByExtensions(const QString& aRootDir, const QStringList
   return lNumber;
 }
 
-int Utils::getNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions)
+int Utils::GetNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions)
 {
   auto lNumber{0};
 
@@ -315,7 +315,7 @@ int Utils::getNumberFilesByExtensionsRecursive(const QString& aRootDir, const QS
   return lNumber;
 }
 
-bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
+bool Utils::CopyRecursively(const QString& aSourcePath, const QString& aDestinationPath)
 {
   QDir lSourceDirectory(aSourcePath);
   if (!lSourceDirectory.exists())
@@ -357,7 +357,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
     auto lSourceName{aSourcePath + QDir::separator() + lFilesList[i]};
     auto lDestinationName{aDestinationPath + QDir::separator() + lFilesList[i]};
 
-    if (!copyRecursively(lSourceName, lDestinationName))
+    if (!Utils::CopyRecursively(lSourceName, lDestinationName))
     {
       return false;
     }
@@ -366,7 +366,7 @@ bool Utils::copyRecursively(const QString& aSourcePath, const QString& aDestinat
   return true;
 }
 
-bool Utils::removeDirectoryAndSubDirs(const QString& aPath)
+bool Utils::RemoveDirectoryAndSubDirs(const QString& aPath)
 {
   QFileInfo lFileInfo(aPath);
   if (!lFileInfo.isDir())
@@ -377,7 +377,7 @@ bool Utils::removeDirectoryAndSubDirs(const QString& aPath)
   return QDir(aPath).removeRecursively();
 }
 
-bool Utils::isThemeDark(const GUITheme& aTheme)
+bool Utils::IsThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
   {
@@ -392,12 +392,12 @@ bool Utils::isThemeDark(const GUITheme& aTheme)
   }
 }
 
-QString Utils::getIconRessourceFolder(const GUITheme& aTheme)
+QString Utils::GetIconRessourceFolder(const GUITheme& aTheme)
 {
-  return (Utils::isThemeDark(aTheme) ? QString("white") : QString("black"));
+  return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-bool Utils::isCBBEBasedBody(const BodyNameVersion& aBody)
+bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBody)
 {
   switch (aBody)
   {
@@ -414,7 +414,7 @@ bool Utils::isCBBEBasedBody(const BodyNameVersion& aBody)
   }
 }
 
-bool Utils::isCBBEBasedBody(const BodyName& aBody)
+bool Utils::IsCBBEBasedBody(const BodyName& aBody)
 {
   switch (aBody)
   {
@@ -427,12 +427,12 @@ bool Utils::isCBBEBasedBody(const BodyName& aBody)
   }
 }
 
-bool Utils::isBodySupportingBeastHands(const BodyNameVersion& aBody)
+bool Utils::IsBodySupportingBeastHands(const BodyNameVersion& aBody)
 {
-  return Utils::isCBBEBasedBody(aBody);
+  return Utils::IsCBBEBasedBody(aBody);
 }
 
-QString Utils::getAppDataPathFolder()
+QString Utils::GetAppDataPathFolder()
 {
 #ifdef DEBUG
   return QCoreApplication::applicationDirPath() + QDir::separator();
@@ -447,7 +447,7 @@ QString Utils::getAppDataPathFolder()
 #endif
 }
 
-QString Utils::readQRCFileContent(const QString& aFilePath)
+QString Utils::ReadQRCFileContent(const QString& aFilePath)
 {
   QString lContent;
 
@@ -460,13 +460,13 @@ QString Utils::readQRCFileContent(const QString& aFilePath)
   else
   {
     // Display a message in case the file cannot be found
-    Utils::displayWarningMessage(tr("The internal file \"%1\" could not be found. Please report this issue to the developer with the steps to reproduce this bug.").arg(aFilePath));
+    Utils::DisplayWarningMessage(tr("The internal file \"%1\" could not be found. Please report this issue to the developer with the steps to reproduce this bug.").arg(aFilePath));
   }
 
   return lContent;
 }
 
-QString Utils::getPresetNameFromXMLFile(const QString& aPath)
+QString Utils::GetPresetNameFromXMLFile(const QString& aPath)
 {
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -480,7 +480,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
+    Utils::DisplayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
     return QString();
   }
 
@@ -497,7 +497,7 @@ QString Utils::getPresetNameFromXMLFile(const QString& aPath)
   return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
 }
 
-std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& aPath)
+std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& aPath)
 {
   std::vector<Struct::SliderSet> lPaths;
 
@@ -513,7 +513,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
+    Utils::DisplayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
     return std::vector<Struct::SliderSet>();
   }
 
@@ -593,7 +593,7 @@ std::vector<Struct::SliderSet> Utils::getOutputPathsFromOSPFile(const QString& a
   return lPaths;
 }
 
-bool Utils::isPresetUsingBeastHands(const QString& aPath)
+bool Utils::IsPresetUsingBeastHands(const QString& aPath)
 {
   QFile lReadFile(aPath);
 
@@ -606,7 +606,7 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
+    Utils::DisplayWarningMessage(tr("Error while trying to read the file \"%1\".").arg(aPath));
     return false;
   }
 
@@ -618,9 +618,9 @@ bool Utils::isPresetUsingBeastHands(const QString& aPath)
   return false;
 }
 
-QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMustUseBeastHands)
+QString Utils::GetHandsSliderValue(const BodyNameVersion& aBody, const bool aMustUseBeastHands)
 {
-  if (Utils::isCBBEBasedBody(aBody) && aMustUseBeastHands)
+  if (Utils::IsCBBEBasedBody(aBody) && aMustUseBeastHands)
   {
     return QString("%1 - CBBE Hands Beast");
   }
@@ -641,11 +641,11 @@ QString Utils::getHandsSliderValue(const BodyNameVersion& aBody, const bool aMus
   }
 }
 
-QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)
+QString Utils::GetFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)
 {
   auto lFeetValue{QString()};
 
-  if (Utils::isCBBEBasedBody(aBody))
+  if (Utils::IsCBBEBasedBody(aBody))
   {
     switch (aFeetModIndex)
     {
@@ -710,9 +710,9 @@ QString Utils::getFeetSliderValue(const BodyNameVersion& aBody, const int aFeetM
   return (lFeetValue + "\n");
 }
 
-QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
+QString Utils::GetBodySliderValue(const BodyNameVersion& aBody)
 {
-  auto lBodyVersion{DataLists::getSplittedNameVersionFromBodyVersion(aBody)};
+  auto lBodyVersion{DataLists::GetSplittedNameVersionFromBodyVersion(aBody)};
   auto lCastedBodyName{static_cast<BodyName>(lBodyVersion.first)};
 
   auto lBodyValue{QString()};
@@ -755,7 +755,7 @@ QString Utils::getBodySliderValue(const BodyNameVersion& aBody)
   return (lBodyValue + "\n");
 }
 
-void Utils::saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent, const QString& aIconFolder)
+void Utils::SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent, const QString& aIconFolder)
 {
   // Open (or create and open) the file
   QFile lFile(aFilePath);
@@ -782,13 +782,13 @@ void Utils::saveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFileP
   else if (aParent && !aIconFolder.isEmpty())
   {
     // Project file save: fail window
-    Utils::displayWarningMessage(tr("Could not save the project file to \"%1\".\nBe sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(aFilePath));
+    Utils::DisplayWarningMessage(tr("Could not save the project file to \"%1\".\nBe sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(aFilePath));
   }
 
   lFile.close();
 }
 
-QJsonObject Utils::loadFromJsonFile(const QString& aFilePath)
+QJsonObject Utils::LoadFromJsonFile(const QString& aFilePath)
 {
   // Open and read the file
   QFile lFile(aFilePath);
@@ -803,22 +803,22 @@ QJsonObject Utils::loadFromJsonFile(const QString& aFilePath)
   return lJsonDocument.object();
 }
 
-void Utils::checkSettingsFileExistence()
+void Utils::CheckSettingsFileExistence()
 {
-  auto lSettingsFilePath{Utils::getAppDataPathFolder() + "config.json"};
+  auto lSettingsFilePath{Utils::GetAppDataPathFolder() + "config.json"};
   if (!QFile(lSettingsFilePath).exists())
   {
     // Create a default setting file if it does not exist
-    Utils::saveSettingsToFile(Struct::Settings());
+    Utils::SaveSettingsToFile(Struct::Settings());
   }
 }
 
-Struct::Settings Utils::loadSettingsFromFile()
+Struct::Settings Utils::LoadSettingsFromFile()
 {
-  Utils::checkSettingsFileExistence();
+  Utils::CheckSettingsFileExistence();
 
-  auto lSettingsFilePath{Utils::getAppDataPathFolder() + "config.json"};
-  QJsonObject lSettingsJSON{Utils::loadFromJsonFile(lSettingsFilePath)};
+  auto lSettingsFilePath{Utils::GetAppDataPathFolder() + "config.json"};
+  QJsonObject lSettingsJSON{Utils::LoadFromJsonFile(lSettingsFilePath)};
 
   Struct::Settings lSettings;
 
@@ -968,34 +968,34 @@ Struct::Settings Utils::loadSettingsFromFile()
     if (lSettingsJSON.contains("defaultBody") && lSettingsJSON["defaultBody"].isDouble())
       lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lSettingsJSON["defaultBody"].toInt());
 
-    Utils::saveSettingsToFile(lSettings);
-    Utils::printMessageStdOut("User settings upgraded!");
+    Utils::SaveSettingsToFile(lSettings);
+    Utils::PrintMessageStdOut("User settings upgraded!");
   }
   // For any JSON format upgrade / settings values changed
-  else if (Utils::compareVersionNumbers(lSettingsJSON["applicationVersion"].toString(), "3.2.0.0") == ApplicationVersionRelative::OLDER)
+  else if (Utils::CompareVersionNumbers(lSettingsJSON["applicationVersion"].toString(), "3.2.0.0") == ApplicationVersionRelative::OLDER)
   {
     lSettings.defaultMainWindowBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
     lSettings.defaultRetargetingToolBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
     lSettings.defaultBatchConversionBody = BodyNameVersion::CBBE_3BBB_3BA_1_50;
     lSettings.appTheme = GUITheme::MITSURIOU_DARK_THEME;
 
-    Utils::saveSettingsToFile(lSettings);
-    Utils::printMessageStdOut("User settings upgraded!");
+    Utils::SaveSettingsToFile(lSettings);
+    Utils::PrintMessageStdOut("User settings upgraded!");
   }
 
-  Utils::printMessageStdOut("User settings:");
-  Utils::printMessageStdOut(QJsonDocument(Utils::settingsStructToJson(lSettings)).toJson(QJsonDocument::JsonFormat::Indented));
+  Utils::PrintMessageStdOut("User settings:");
+  Utils::PrintMessageStdOut(QJsonDocument(Utils::SettingsStructToJson(lSettings)).toJson(QJsonDocument::JsonFormat::Indented));
 
   return lSettings;
 }
 
-void Utils::saveSettingsToFile(const Struct::Settings& aSettings)
+void Utils::SaveSettingsToFile(const Struct::Settings& aSettings)
 {
-  auto lSettingsFilePath{Utils::getAppDataPathFolder() + "config.json"};
-  Utils::saveAsJsonFile(Utils::settingsStructToJson(aSettings), lSettingsFilePath);
+  auto lSettingsFilePath{Utils::GetAppDataPathFolder() + "config.json"};
+  Utils::SaveAsJsonFile(Utils::SettingsStructToJson(aSettings), lSettingsFilePath);
 }
 
-QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
+QJsonObject Utils::SettingsStructToJson(const Struct::Settings& aSettings)
 {
   // Construct a font subobject
   QJsonObject lFontObj;
@@ -1037,27 +1037,27 @@ QJsonObject Utils::settingsStructToJson(const Struct::Settings& aSettings)
   lSettings["warningColor"] = aSettings.warningColor;
 
   // Version number string
-  lSettings["applicationVersion"] = Utils::getApplicationVersion();
+  lSettings["applicationVersion"] = Utils::GetApplicationVersion();
 
   return lSettings;
 }
 
-void Utils::checkFiltersFileExistence()
+void Utils::CheckFiltersFileExistence()
 {
-  auto lFiltersFilePath{Utils::getAppDataPathFolder() + "filters.json"};
+  auto lFiltersFilePath{Utils::GetAppDataPathFolder() + "filters.json"};
   if (!QFile(lFiltersFilePath).exists())
   {
     // Create a default filters file if it does not exist
-    Utils::saveFiltersToFile(std::map<QString, QStringList>());
+    Utils::SaveFiltersToFile(std::map<QString, QStringList>());
   }
 }
 
-std::map<QString, QStringList> Utils::loadFiltersFromFile()
+std::map<QString, QStringList> Utils::LoadFiltersFromFile()
 {
-  Utils::checkFiltersFileExistence();
+  Utils::CheckFiltersFileExistence();
 
-  auto lFiltersFilePath(Utils::getAppDataPathFolder() + "filters.json");
-  QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lFiltersFilePath)};
+  auto lFiltersFilePath(Utils::GetAppDataPathFolder() + "filters.json");
+  QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(lFiltersFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
   std::map<QString, QStringList> lFiltersList;
@@ -1070,13 +1070,13 @@ std::map<QString, QStringList> Utils::loadFiltersFromFile()
   return lFiltersList;
 }
 
-void Utils::saveFiltersToFile(const std::map<QString, QStringList>& aList)
+void Utils::SaveFiltersToFile(const std::map<QString, QStringList>& aList)
 {
-  auto lFiltersFilePath{Utils::getAppDataPathFolder() + "filters.json"};
-  Utils::saveAsJsonFile(Utils::filtersMapToJson(aList), lFiltersFilePath);
+  auto lFiltersFilePath{Utils::GetAppDataPathFolder() + "filters.json"};
+  Utils::SaveAsJsonFile(Utils::FiltersMapToJson(aList), lFiltersFilePath);
 }
 
-QJsonObject Utils::filtersMapToJson(const std::map<QString, QStringList>& aList)
+QJsonObject Utils::FiltersMapToJson(const std::map<QString, QStringList>& aList)
 {
   QVariantMap lVarMap;
 
@@ -1088,18 +1088,18 @@ QJsonObject Utils::filtersMapToJson(const std::map<QString, QStringList>& aList)
   return QJsonObject::fromVariantMap(lVarMap);
 }
 
-QString Utils::getAdditionalFeetFilter(const BodyNameVersion& aBody, const int aFeetModIndex)
+QString Utils::GetAdditionalFeetFilter(const BodyNameVersion& aBody, const int aFeetModIndex)
 {
   if (aFeetModIndex == 1 || aFeetModIndex == 2)
   {
-    if (isCBBEBasedBody(aBody))
+    if (Utils::IsCBBEBasedBody(aBody))
     {
       return QString("MSF CBBE Feet");
     }
 
     return QString("MSF BHUNP Feet");
   }
-  else if (!isCBBEBasedBody(aBody) && (aFeetModIndex == 3 || aFeetModIndex == 4 || aFeetModIndex == 5))
+  else if (!Utils::IsCBBEBasedBody(aBody) && (aFeetModIndex == 3 || aFeetModIndex == 4 || aFeetModIndex == 5))
   {
     return QString("HGFeet UUNP");
   }
@@ -1107,7 +1107,7 @@ QString Utils::getAdditionalFeetFilter(const BodyNameVersion& aBody, const int a
   return QString();
 }
 
-std::vector<Struct::Filter> Utils::getFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex)
+std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex)
 {
   auto lExportFilters{std::vector<Struct::Filter>()};
 
@@ -1122,7 +1122,7 @@ std::vector<Struct::Filter> Utils::getFiltersForExport(const std::map<QString, Q
       }
 
       // Additional feet slider
-      lExportFilters.push_back(Struct::Filter(Utils::getAdditionalFeetFilter(aBody, aFeetModIndex), false, true, false));
+      lExportFilters.push_back(Struct::Filter(Utils::GetAdditionalFeetFilter(aBody, aFeetModIndex), false, true, false));
 
       break;
     }
@@ -1131,28 +1131,28 @@ std::vector<Struct::Filter> Utils::getFiltersForExport(const std::map<QString, Q
   return lExportFilters;
 }
 
-void Utils::checkLastPathsFileExistence()
+void Utils::CheckLastPathsFileExistence()
 {
-  auto lLastPathsFilePath{Utils::getAppDataPathFolder() + "paths.json"};
+  auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
   if (!QFile(lLastPathsFilePath).exists())
   {
     // Create a default "last paths" file if it does not exist
     std::map<QString, QString> lMap;
-    for (const auto& lKey : DataLists::getLastPathsKeys())
+    for (const auto& lKey : DataLists::GetLastPathsKeys())
     {
       lMap.insert(std::make_pair(lKey, QString()));
     }
 
-    Utils::saveLastPathsToFile(lMap);
+    Utils::SaveLastPathsToFile(lMap);
   }
 }
 
-std::map<QString, QString> Utils::loadLastPathsFromFile()
+std::map<QString, QString> Utils::LoadLastPathsFromFile()
 {
-  Utils::checkLastPathsFileExistence();
+  Utils::CheckLastPathsFileExistence();
 
-  auto lLastPathsFilePath(Utils::getAppDataPathFolder() + "paths.json");
-  QJsonObject lObtainedJSON{Utils::loadFromJsonFile(lLastPathsFilePath)};
+  auto lLastPathsFilePath(Utils::GetAppDataPathFolder() + "paths.json");
+  QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(lLastPathsFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
   std::map<QString, QString> lLastPathsList{
@@ -1175,13 +1175,13 @@ std::map<QString, QString> Utils::loadLastPathsFromFile()
   return lLastPathsList;
 }
 
-void Utils::saveLastPathsToFile(const std::map<QString, QString>& aList)
+void Utils::SaveLastPathsToFile(const std::map<QString, QString>& aList)
 {
-  auto lLastPathsFilePath{Utils::getAppDataPathFolder() + "paths.json"};
-  Utils::saveAsJsonFile(Utils::lastPathsStructToJson(aList), lLastPathsFilePath);
+  auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
+  Utils::SaveAsJsonFile(Utils::LastPathsStructToJson(aList), lLastPathsFilePath);
 }
 
-QJsonObject Utils::lastPathsStructToJson(const std::map<QString, QString>& aList)
+QJsonObject Utils::LastPathsStructToJson(const std::map<QString, QString>& aList)
 {
   QVariantMap lVarMap;
 
@@ -1193,7 +1193,7 @@ QJsonObject Utils::lastPathsStructToJson(const std::map<QString, QString>& aList
   return QJsonObject::fromVariantMap(lVarMap);
 }
 
-QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool aUseKeyPath)
+QString Utils::GetPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool aUseKeyPath)
 {
   QString lPath{""};
   QString lKey{aKey};
@@ -1225,7 +1225,7 @@ QString Utils::getPathFromKey(std::map<QString, QString>* aMap, const QString& a
   return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
-bool Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool aMustUpdateGeneralKey, const bool aAuthorizeEmptyValue, const bool aMustSaveFile)
+bool Utils::UpdatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool aMustUpdateGeneralKey, const bool aAuthorizeEmptyValue, const bool aMustSaveFile)
 {
   if (aKey.isEmpty() || (!aAuthorizeEmptyValue && aPath.isEmpty()))
   {
@@ -1259,14 +1259,14 @@ bool Utils::updatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
   if (aMustSaveFile && lMapCopy != *aMap)
   {
     // Save the new list
-    Utils::saveLastPathsToFile(*aMap);
+    Utils::SaveLastPathsToFile(*aMap);
   }
 
   // Return if any modification has been made
   return lMapCopy != *aMap;
 }
 
-QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
+QString Utils::GetShortLanguageNameFromEnum(const int aEnumValue)
 {
   auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
   switch (lEnumLang)
@@ -1282,21 +1282,7 @@ QString Utils::getShortLanguageNameFromEnum(const int aEnumValue)
   }
 }
 
-QString Utils::getLongLanguageNameFromEnum(const int aEnumValue)
-{
-  auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
-  switch (lEnumLang)
-  {
-    case ApplicationLanguage::ENGLISH:
-      return "English";
-    case ApplicationLanguage::FRENCH:
-      return "Français";
-    default:
-      return "English";
-  }
-}
-
-ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
+ApplicationLanguage Utils::GetStructLanguageFromName(const QString& aShortName)
 {
   if (aShortName.compare("English") == 0)
   {
@@ -1317,7 +1303,7 @@ ApplicationLanguage Utils::getStructLanguageFromName(const QString& aShortName)
   return ApplicationLanguage::ENGLISH;
 }
 
-QAction* Utils::buildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder)
+QAction* Utils::BuildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder)
 {
   auto lAction{new QAction(aParent)};
   lAction->setText(aText);
@@ -1326,7 +1312,7 @@ QAction* Utils::buildQAction(QWidget* aParent, const QString& aText, const QKeyS
   return lAction;
 }
 
-void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName, const int aFontSize)
+void Utils::AddIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName, const int aFontSize)
 {
   aGroupBox->setCheckable(true);
   aGroupBox->setStyleSheet(QString("QGroupBox{font-size: %1pt;}"
@@ -1336,7 +1322,7 @@ void Utils::addIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, 
                              .arg(aIconName));
 }
 
-void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
+void Utils::AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
 {
   aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);
 
@@ -1346,11 +1332,11 @@ void Utils::addLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aR
   lGeneralValue->setObjectName(QString("line_edit_path_%1").arg(aRow));
   aLayout->addWidget(lGeneralValue, aRow, 1);
 
-  auto lGeneralEmptyButton{ComponentFactory::createButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), aValue.isEmpty(), true)};
+  auto lGeneralEmptyButton{ComponentFactory::CreateButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), aValue.isEmpty(), true)};
   aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
 }
 
-void Utils::selectComboBoxAt(QComboBox* aComboBox, const int aIndex)
+void Utils::SelectComboBoxAt(QComboBox* aComboBox, const int aIndex)
 {
   if (aIndex < 0 || aIndex >= aComboBox->count())
   {
@@ -1362,7 +1348,7 @@ void Utils::selectComboBoxAt(QComboBox* aComboBox, const int aIndex)
   }
 }
 
-void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed)
+void Utils::SetGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed)
 {
   auto lTitle{aGroupBox->title()};
 
@@ -1382,7 +1368,7 @@ void Utils::setGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed)
   aGroupBox->setTitle(lTitle);
 }
 
-void Utils::updateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel)
+void Utils::UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel)
 {
   // Disable the combobox if there is not any available filter
   if (aFilterList.size() == 0)
@@ -1429,11 +1415,11 @@ void Utils::updateComboBoxBodyslideFiltersList(const std::map<QString, QStringLi
   }
 }
 
-void Utils::updateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview)
+void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview)
 {
   auto lMainDirectory{aMainDirTextEdit->text().trimmed()};
-  Utils::cleanPathString(lMainDirectory);
-  Utils::cleanPathString(aSubDirectory);
+  Utils::CleanPathString(lMainDirectory);
+  Utils::CleanPathString(aSubDirectory);
   auto lIsValidPath{true};
 
   // Construct full path
@@ -1497,7 +1483,7 @@ void Utils::updateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
   aOutputPathsPreview->setText(lFullPath);
 }
 
-void Utils::bindConsoleToStdOut()
+void Utils::BindConsoleToStdOut()
 {
   FreeConsole();
   AllocConsole();
@@ -1506,7 +1492,7 @@ void Utils::bindConsoleToStdOut()
   SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
 }
 
-void Utils::printMessageStdOut(const QString& aMessage)
+void Utils::PrintMessageStdOut(const QString& aMessage)
 {
   if (aMessage.isEmpty())
   {

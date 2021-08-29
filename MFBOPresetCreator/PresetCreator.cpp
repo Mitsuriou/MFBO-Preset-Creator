@@ -28,7 +28,7 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   , mMinimumFirstColumnWidth(275)
 {
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this)};
   auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   // Setup all the different GUI components
@@ -50,7 +50,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
   if (!aSkipFileChooser)
   {
     // Open a file chooser dialog
-    const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
+    const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
     lFileToLoad = QFileDialog::getOpenFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
   }
 
@@ -59,14 +59,14 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
     return;
   }
 
-  Utils::updatePathAtKey(this->mLastPaths, "lastLoadedProject", lFileToLoad);
+  Utils::UpdatePathAtKey(this->mLastPaths, "lastLoadedProject", lFileToLoad);
 
   if (this->hasUserDoneSomething())
   {
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("Unsaved data"),
                                       tr("It seems that you have some unsaved data. Do you still want to open the project file \"%1\"?").arg(lFileToLoad),
-                                      Utils::getIconRessourceFolder(this->mSettings.appTheme),
+                                      Utils::GetIconRessourceFolder(this->mSettings.appTheme),
                                       "help-circle",
                                       tr("Open the project without saving"),
                                       tr("Cancel the file opening"),
@@ -82,7 +82,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
   }
 
   // Load the project only if a path is defined
-  this->loadValuesFromJsonObject(Utils::loadFromJsonFile(lFileToLoad));
+  this->loadValuesFromJsonObject(Utils::LoadFromJsonFile(lFileToLoad));
   this->mLastUsedSavePath = lFileToLoad;
   this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(false);
 
@@ -96,9 +96,9 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
   if (aIsSaveAsContext || (!aIsSaveAsContext && this->mLastUsedSavePath.isEmpty()))
   {
     // Open a file saver dialog
-    const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
+    const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
     lFilePath = QFileDialog::getSaveFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
-    Utils::updatePathAtKey(this->mLastPaths, "lastSavedProject", lFilePath);
+    Utils::UpdatePathAtKey(this->mLastPaths, "lastSavedProject", lFilePath);
 
     if (!lFilePath.isEmpty())
     {
@@ -113,9 +113,9 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-  Utils::saveAsJsonFile(this->saveValuesToJsonObject(), lFilePath, this, lIconFolder);
+  Utils::SaveAsJsonFile(this->saveValuesToJsonObject(), lFilePath, this, lIconFolder);
   this->setHasUserDoneSomething(false);
 }
 
@@ -142,7 +142,7 @@ void PresetCreator::updateSettings(Struct::Settings aSettings)
 
 void PresetCreator::updateBodySlideSets()
 {
-  this->updateBodySlideFiltersList(Utils::loadFiltersFromFile());
+  this->updateBodySlideFiltersList(Utils::LoadFiltersFromFile());
 }
 
 void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
@@ -251,10 +251,10 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
       lMessage = tr("You did not select any file for %1 mesh. Would you like to clear this unassigned entry or keep its currently set value?").arg(lUnassignedEntries);
     }
 
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("One mesh data was not assigned"),
                                       lMessage,
-                                      Utils::getIconRessourceFolder(this->mSettings.appTheme),
+                                      Utils::GetIconRessourceFolder(this->mSettings.appTheme),
                                       "help-circle",
                                       tr("Clear all the unassigned entries"),
                                       tr("Keep the currently set values for the unassigned entries"),
@@ -300,13 +300,13 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Body meshes group box
   auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes").append("  "), this)};
-  Utils::addIconToGroupBox(lMeshesGroupBox, lIconFolder, "body", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lMeshesGroupBox, lIconFolder, "body", this->mSettings.font.size);
   this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
-  Utils::setGroupBoxState(lMeshesGroupBox, false);
+  Utils::SetGroupBoxState(lMeshesGroupBox, false);
   aLayout.addWidget(lMeshesGroupBox, 0, 0);
 
   // Grid layout
@@ -398,13 +398,13 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::addIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.font.size);
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
-  Utils::setGroupBoxState(lSkeletonGroupBox, false);
+  Utils::SetGroupBoxState(lSkeletonGroupBox, false);
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
@@ -445,7 +445,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   this->populateSkeletonChooser();
 
-  auto lSkeletonRefresher{ComponentFactory::createButton(this, tr("Refresh"), "", "", lIconFolder, "skeleton_chooser_refresher")};
+  auto lSkeletonRefresher{ComponentFactory::CreateButton(this, tr("Refresh"), "", "", lIconFolder, "skeleton_chooser_refresher")};
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Skeleton path
@@ -498,13 +498,13 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  Utils::addIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
-  Utils::setGroupBoxState(lBodyslideGroupBox, false);
+  Utils::SetGroupBoxState(lBodyslideGroupBox, false);
   aLayout.addWidget(lBodyslideGroupBox, 2, 0);
 
   // Grid layout
@@ -515,7 +515,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultMainWindowBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultMainWindowBody)};
 
   lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
@@ -527,7 +527,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
   lBodyNameVersionWrapper->addWidget(lBodyNameSelector);
@@ -536,7 +536,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
   lBodyNameVersionWrapper->addWidget(lBodyVersionSelector);
@@ -545,7 +545,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lBodyNameVersionWrapper->addWidget(lFeetSelector);
@@ -607,7 +607,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lFiltersList->setWordWrap(true);
   lFiltersWrapper->addWidget(lFiltersList);
 
-  auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "", lIconFolder, "edit_filters")};
+  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "", lIconFolder, "edit_filters")};
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Pre-bind initialization functions
@@ -634,10 +634,10 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Create the group box
-  ComponentFactory::createOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
+  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
   auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
 
@@ -658,10 +658,10 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 void PresetCreator::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Generate button
-  auto lGenerateButton{ComponentFactory::createButton(this, tr("Generate the files on my computer"), "", "build", lIconFolder)};
+  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Generate the files on my computer"), "", "build", lIconFolder)};
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
@@ -690,9 +690,9 @@ void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
   this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->setChecked(lFile["use_custom_skeleton"].toBool()); // Finish by checking or unchecking the box
 
   // BodySlide
-  Utils::selectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_name")), lFile["body_selector_name"].toInt());
-  Utils::selectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_version")), lFile["body_selector_version"].toInt());
-  Utils::selectComboBoxAt(this->findChild<QComboBox*>(QString("feet_mod_selector")), lFile["feet_mod_selector"].toInt());
+  Utils::SelectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_name")), lFile["body_selector_name"].toInt());
+  Utils::SelectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_version")), lFile["body_selector_version"].toInt());
+  Utils::SelectComboBoxAt(this->findChild<QComboBox*>(QString("feet_mod_selector")), lFile["feet_mod_selector"].toInt());
   this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->setText(lFile["names_osp_xml_input"].toString());
   this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->setText(lFile["names_bodyslide_input"].toString());
 
@@ -711,29 +711,29 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
 
   // Body
   auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathBody);
+  Utils::CleanPathString(lMeshesPathBody);
   lProject["meshes_path_input_femalebody"] = lMeshesPathBody;
 
   auto lBodyName{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lBodyName);
+  Utils::CleanBreaksString(lBodyName);
   lProject["body_mesh_name_input"] = lBodyName;
 
   // Feet
   auto lMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathFeet);
+  Utils::CleanPathString(lMeshesPathFeet);
   lProject["meshes_path_input_femalefeet"] = lMeshesPathFeet;
 
   auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lFeetName);
+  Utils::CleanBreaksString(lFeetName);
   lProject["feet_mesh_name_input"] = lFeetName;
 
   // Hands
   auto lMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathHands);
+  Utils::CleanPathString(lMeshesPathHands);
   lProject["meshes_path_input_femalehands"] = lMeshesPathHands;
 
   auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lHandsName);
+  Utils::CleanBreaksString(lHandsName);
   lProject["hands_mesh_name_input"] = lHandsName;
 
   // Use beast hands
@@ -746,7 +746,7 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
 
   // Skeleton path
   auto lSkeletonPath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};
-  Utils::cleanPathString(lSkeletonPath);
+  Utils::CleanPathString(lSkeletonPath);
   lProject["skeleton_path_directory"] = lSkeletonPath;
 
   // Skeleton name
@@ -775,15 +775,15 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
 
   // Output
   auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
-  Utils::cleanPathString(lMainDirectory);
+  Utils::CleanPathString(lMainDirectory);
   lProject["output_path_directory"] = lMainDirectory;
 
   auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
-  Utils::cleanPathString(lSubDirectory);
+  Utils::CleanPathString(lSubDirectory);
   lProject["output_path_subdirectory"] = lSubDirectory;
 
   // Version number string
-  lProject["applicationVersion"] = Utils::getApplicationVersion();
+  lProject["applicationVersion"] = Utils::GetApplicationVersion();
 
   // Return the generated object
   return lProject;
@@ -804,9 +804,9 @@ void PresetCreator::updateGUIOnBodyChange()
   {
     return;
   }
-  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
 
-  if (!Utils::isBodySupportingBeastHands(lBodySelected))
+  if (!Utils::IsBodySupportingBeastHands(lBodySelected))
   {
     lDisableBeastHands = true;
     lMustUseBeastHands->setChecked(false);
@@ -823,13 +823,13 @@ void PresetCreator::updateAvailableBodyVersions()
   // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
   lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
 
   // Feet mod
   auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_selector"))};
   lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
   lFeetSelector->setCurrentIndex(0);
 }
 
@@ -844,15 +844,15 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool a
   }
   else if (!aGenerateFilesInExistingMainDirectory)
   {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderGroupsDirectory));
+    Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderGroupsDirectory));
     return false;
   }
 
   // Construct the file content
   auto lBodySelected{static_cast<BodyNameVersion>(aBodySelected)};
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lUserFilters{Utils::getFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, aFeetModIndex)};
-  auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(aBodyslideSlidersetsNames, lUserFilters, lBodySelected, aMustUseBeastHands, aFeetModIndex)};
+  auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, aFeetModIndex)};
+  auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(aBodyslideSlidersetsNames, lUserFilters, lBodySelected, aMustUseBeastHands, aFeetModIndex)};
 
   // Create the OSP file on disk
   auto lXMLPathName(lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml");
@@ -868,7 +868,7 @@ bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool a
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lXMLPathName));
+    Utils::DisplayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lXMLPathName));
     return false;
   }
 
@@ -886,12 +886,12 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool a
   }
   else if (!aGenerateFilesInExistingMainDirectory)
   {
-    Utils::displayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderSetsDirectory));
+    Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderSetsDirectory));
     return false;
   }
 
   // Construct the file content
-  auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(aBodyslideSlidersetsNames, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
+  auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(aBodyslideSlidersetsNames, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
 
   // Fill the custom variables
   lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
@@ -915,7 +915,7 @@ bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool a
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
+    Utils::DisplayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
     return false;
   }
 
@@ -933,25 +933,25 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
     // Custom skeleton chooser
     auto lSkeletonChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
-    auto lPath{QString("%1assets/skeletons/%2").arg(Utils::getAppDataPathFolder()).arg(lSkeletonChooser->currentText())};
+    auto lPath{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder()).arg(lSkeletonChooser->currentText())};
 
     auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
 
     if (!QFile::copy(lPath, lSkeletonWriteLocation))
     {
-      Utils::displayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
+      Utils::DisplayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
 
       // Fallback option if the custom skeleton could not be copied
       if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
       {
-        Utils::displayWarningMessage(tr("The skeleton file could not be created even using the default skeleton.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths."));
+        Utils::DisplayWarningMessage(tr("The skeleton file could not be created even using the default skeleton.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths."));
         return false;
       }
     }
   }
   else
   {
-    Utils::displayWarningMessage(tr("Error: no path given for the custom skeleton."));
+    Utils::DisplayWarningMessage(tr("Error: no path given for the custom skeleton."));
     return false;
   }
 
@@ -960,8 +960,8 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
 void PresetCreator::populateSkeletonChooser()
 {
-  auto lRootDir{Utils::getAppDataPathFolder() + "assets/skeletons/"};
-  Utils::cleanPathString(lRootDir);
+  auto lRootDir{Utils::GetAppDataPathFolder() + "assets/skeletons/"};
+  Utils::CleanPathString(lRootDir);
   auto lAvailableSkeletons{QStringList()};
 
   // Search for all "*.nif" files
@@ -982,21 +982,21 @@ void PresetCreator::updateMeshesPreview()
 {
   // Body meshes path and name
   auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathBody);
+  Utils::CleanPathString(lMeshesPathBody);
   auto lBodyName{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lBodyName);
+  Utils::CleanBreaksString(lBodyName);
 
   // Feet meshes path and name
   auto lMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathFeet);
+  Utils::CleanPathString(lMeshesPathFeet);
   auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lFeetName);
+  Utils::CleanBreaksString(lFeetName);
 
   // Hands meshes path and name
   auto lMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathHands);
+  Utils::CleanPathString(lMeshesPathHands);
   auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lHandsName);
+  Utils::CleanBreaksString(lHandsName);
 
   // Get preview label
   auto lPreviewLabel{this->findChild<QLabel*>(QString("meshes_preview"))};
@@ -1074,7 +1074,7 @@ void PresetCreator::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  Utils::updateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.successColor, this->mSettings.warningColor, this->mSettings.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.successColor, this->mSettings.warningColor, this->mSettings.dangerColor, lOutputPathsPreview);
 }
 
 void PresetCreator::updateOSPXMLPreview(QString aText)
@@ -1084,7 +1084,7 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_osp_xml_preview"))};
   auto lIsValidPath{true};
 
-  Utils::cleanPathString(aText);
+  Utils::CleanPathString(aText);
 
   if (aText.trimmed().isEmpty())
   {
@@ -1116,7 +1116,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
   auto lMustUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))->isChecked()};
   auto lIsValidPath{true};
 
-  Utils::cleanPathString(aText);
+  Utils::CleanPathString(aText);
 
   if (aText.trimmed().isEmpty())
   {
@@ -1126,13 +1126,13 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
 
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   auto lConstructedPreviewText{QString()};
-  lConstructedPreviewText.append(Utils::getBodySliderValue(lBodySelected));                      // Body
-  lConstructedPreviewText.append(Utils::getFeetSliderValue(lBodySelected, lFeetModIndex));       // Feet
-  lConstructedPreviewText.append(Utils::getHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
+  lConstructedPreviewText.append(Utils::GetBodySliderValue(lBodySelected));                      // Body
+  lConstructedPreviewText.append(Utils::GetFeetSliderValue(lBodySelected, lFeetModIndex));       // Feet
+  lConstructedPreviewText.append(Utils::GetHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.successColor};
@@ -1208,9 +1208,9 @@ void PresetCreator::updateSkeletonPreview()
   this->setHasUserDoneSomething(true);
 
   auto lSkeletonPath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text()};
-  Utils::cleanPathString(lSkeletonPath);
+  Utils::CleanPathString(lSkeletonPath);
   auto lSkeletonName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
-  Utils::cleanBreaksString(lSkeletonName);
+  Utils::CleanBreaksString(lSkeletonName);
   auto lIsValidPath{true};
 
   if (lSkeletonPath.trimmed().isEmpty())
@@ -1254,22 +1254,22 @@ void PresetCreator::updateSkeletonPreview()
 void PresetCreator::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "mainWindowOutput", lPath);
+  Utils::UpdatePathAtKey(this->mLastPaths, "mainWindowOutput", lPath);
   this->updateOutputPreview();
 }
 
 void PresetCreator::generateDirectoryStructure()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Selected body
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{static_cast<int>(DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
+  auto lBodySelected{static_cast<int>(DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
 
   // Selected feet
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
@@ -1280,36 +1280,36 @@ void PresetCreator::generateDirectoryStructure()
 
   // Body meshes path and name
   auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathBody);
+  Utils::CleanPathString(lMeshesPathBody);
   auto lBodyName{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->text().trimmed()};
-  Utils::cleanPathString(lBodyName);
+  Utils::CleanPathString(lBodyName);
 
   // Feet meshes path and name
   const auto lInputMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))};
   const auto lSkipFeetCheck{!lInputMeshesPathFeet->isEnabled()};
   auto lMeshesPathFeet{lInputMeshesPathFeet->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathFeet);
+  Utils::CleanPathString(lMeshesPathFeet);
   auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
-  Utils::cleanPathString(lFeetName);
+  Utils::CleanPathString(lFeetName);
 
   // Hands meshes path and name
   auto lInputMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))};
   auto lSkipHandsCheck{!lInputMeshesPathHands->isEnabled()};
   auto lMeshesPathHands{lInputMeshesPathHands->text().trimmed()};
-  Utils::cleanPathString(lMeshesPathHands);
+  Utils::CleanPathString(lMeshesPathHands);
   auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
-  Utils::cleanPathString(lHandsName);
+  Utils::CleanPathString(lHandsName);
 
   // BodySlide names
   auto lOSPXMLNames{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lOSPXMLNames);
+  Utils::CleanBreaksString(lOSPXMLNames);
   auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
-  Utils::cleanBreaksString(lBodyslideSlidersetsNames);
+  Utils::CleanBreaksString(lBodyslideSlidersetsNames);
 
   // Output paths
   auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
   auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
-  Utils::cleanPathString(lSubDirectory);
+  Utils::CleanPathString(lSubDirectory);
 
   // Does the user want to define the path only through the secondary path?
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
@@ -1324,14 +1324,14 @@ void PresetCreator::generateDirectoryStructure()
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.isEmpty())
   {
-    Utils::displayWarningMessage(tr("Error: no path given to export the files."));
+    Utils::DisplayWarningMessage(tr("Error: no path given to export the files."));
     return;
   }
 
   // Check if the path could be valid
   if (lEntryDirectory.startsWith(QDir::separator()))
   {
-    Utils::displayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
+    Utils::DisplayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
     return;
   }
 
@@ -1342,14 +1342,14 @@ void PresetCreator::generateDirectoryStructure()
     // Wait to know the result of the mkdir()
     if (!QDir().mkpath(lEntryDirectory))
     {
-      Utils::displayWarningMessage(tr("Error while creating the main directory: \"%1\" could not be created on your computer.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lEntryDirectory));
+      Utils::DisplayWarningMessage(tr("Error while creating the main directory: \"%1\" could not be created on your computer.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lEntryDirectory));
       return;
     }
   }
   else
   {
     // Since the directory already exist, ask the user to generate another preset in it
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("Already existing directory"),
                                       tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this directory?").arg(lEntryDirectory),
                                       lIconFolder,
@@ -1372,12 +1372,12 @@ void PresetCreator::generateDirectoryStructure()
   // Export the meshes
   if (lMeshesPathBody.isEmpty())
   {
-    Utils::displayWarningMessage(tr("Error: no path has been given for the body meshes."));
+    Utils::DisplayWarningMessage(tr("Error: no path has been given for the body meshes."));
 
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
     {
-      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
     }
 
     return;
@@ -1385,12 +1385,12 @@ void PresetCreator::generateDirectoryStructure()
 
   if (lMeshesPathFeet.isEmpty() && !lSkipFeetCheck)
   {
-    Utils::displayWarningMessage(tr("Error: no path has been given for the feet meshes."));
+    Utils::DisplayWarningMessage(tr("Error: no path has been given for the feet meshes."));
 
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
     {
-      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
     }
 
     return;
@@ -1398,12 +1398,12 @@ void PresetCreator::generateDirectoryStructure()
 
   if (lMeshesPathHands.isEmpty() && !lSkipHandsCheck)
   {
-    Utils::displayWarningMessage(tr("Error: no path has been given for the hands meshes."));
+    Utils::DisplayWarningMessage(tr("Error: no path has been given for the hands meshes."));
 
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
     {
-      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
     }
 
     return;
@@ -1412,12 +1412,12 @@ void PresetCreator::generateDirectoryStructure()
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.isEmpty())
   {
-    Utils::displayWarningMessage(tr("Error: no name given for the BodySlide files."));
+    Utils::DisplayWarningMessage(tr("Error: no name given for the BodySlide files."));
 
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
     {
-      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
     }
 
     return;
@@ -1426,12 +1426,12 @@ void PresetCreator::generateDirectoryStructure()
   // Check if a name has been given for the presets
   if (lBodyslideSlidersetsNames.isEmpty())
   {
-    Utils::displayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."));
+    Utils::DisplayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."));
 
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
     {
-      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
     }
 
     return;
@@ -1443,7 +1443,7 @@ void PresetCreator::generateDirectoryStructure()
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
     {
-      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
     }
 
     return;
@@ -1455,7 +1455,7 @@ void PresetCreator::generateDirectoryStructure()
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
     {
-      Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
     }
 
     return;
@@ -1467,14 +1467,14 @@ void PresetCreator::generateDirectoryStructure()
   if (lMustCopySkeleton)
   {
     auto lSkeletonPath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};
-    Utils::cleanPathString(lSkeletonPath);
+    Utils::CleanPathString(lSkeletonPath);
 
     if (!this->generateSkeletonFile(lEntryDirectory, lSkeletonPath))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
       {
-        Utils::removeDirectoryAndSubDirs(lEntryDirectory);
+        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
       }
 
       return;
@@ -1502,7 +1502,7 @@ void PresetCreator::generateDirectoryStructure()
   }
   else
   {
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       lTitle,
                                       lMessage,
                                       "icons",
@@ -1551,7 +1551,7 @@ void PresetCreator::openBodySlideFiltersEditor()
 void PresetCreator::initBodySlideFiltersList()
 {
   // Load and save the filters list
-  this->mFiltersList = Utils::loadFiltersFromFile();
+  this->mFiltersList = Utils::LoadFiltersFromFile();
 
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
 
@@ -1582,18 +1582,18 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
   this->mFiltersList = aFilterList;
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
-  Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
+  Utils::UpdateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
 void PresetCreator::updateBodySlideFiltersListPreview()
 {
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Take custom MSF filter
-  auto lAdditionalFilter{Utils::getAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
+  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
 
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
@@ -1622,5 +1622,5 @@ void PresetCreator::groupBoxChecked(bool aIsChecked)
   if (lGroupBox == nullptr)
     return;
 
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

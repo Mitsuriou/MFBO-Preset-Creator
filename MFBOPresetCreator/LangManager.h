@@ -4,7 +4,7 @@
 class LangManager final
 {
 public:
-  static ApplicationLanguage getSystemLanguage();
+  static ApplicationLanguage GetSystemLanguage();
 
 private:
   ~LangManager() = delete;

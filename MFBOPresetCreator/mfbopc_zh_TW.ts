@@ -310,7 +310,7 @@
     <message>
         <location filename="BatchConversion.cpp" line="459"/>
         <source>Scanning the directory. Please wait...</source>
-        <translation type="unfinished">掃描資料夾中 請稍等...</translation>
+        <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="459"/>
@@ -480,7 +480,7 @@
     <message>
         <location filename="BatchConversionPicker.cpp" line="282"/>
         <source>Batch generate the files on my computer</source>
-        <translation type="unfinished">批次產生檔案</translation>
+        <translation>批次產生檔案</translation>
     </message>
 </context>
 <context>
@@ -778,12 +778,12 @@
     <message>
         <location filename="MFBOPresetCreator.cpp" line="236"/>
         <source> (BETA update available)</source>
-        <translation type="unfinished"></translation>
+        <translation> (有可用的BETA更新)</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="566"/>
         <source>BETA update available</source>
-        <translation type="unfinished"></translation>
+        <translation>有可用的BETA更新</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="567"/>
@@ -1307,13 +1307,13 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     <message>
         <location filename="ReleaseNotesViewer.cpp" line="82"/>
         <source>Contacting GitHub.com...</source>
-        <translation type="unfinished">正在連接Github.com...</translation>
+        <translation>正在連接Github.com...</translation>
     </message>
     <message>
         <location filename="ReleaseNotesViewer.cpp" line="115"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
-        <translation type="unfinished">找不到更新檔...
+        <translation>找不到更新檔...
 請確認網路連線狀況。</translation>
     </message>
     <message>
@@ -2309,18 +2309,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1349"/>
+        <location filename="Utils.cpp" line="1335"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1451"/>
-        <location filename="Utils.cpp" line="1475"/>
+        <location filename="Utils.cpp" line="1437"/>
+        <location filename="Utils.cpp" line="1461"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1469"/>
+        <location filename="Utils.cpp" line="1455"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
@@ -2352,7 +2352,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <location filename="WelcomeScreen.cpp" line="129"/>
         <location filename="WelcomeScreen.cpp" line="152"/>
         <source>Contacting GitHub.com...</source>
-        <translation type="unfinished">正在連接Github.com...</translation>
+        <translation>正在連接Github.com...</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="101"/>
@@ -2380,87 +2380,87 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="178"/>
+        <location filename="WelcomeScreen.cpp" line="180"/>
         <source>Known issues</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="192"/>
+        <location filename="WelcomeScreen.cpp" line="194"/>
         <source>User guide and tutorials</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="194"/>
+        <location filename="WelcomeScreen.cpp" line="196"/>
         <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="302"/>
+        <location filename="WelcomeScreen.cpp" line="304"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="322"/>
-        <location filename="WelcomeScreen.cpp" line="365"/>
-        <location filename="WelcomeScreen.cpp" line="406"/>
+        <location filename="WelcomeScreen.cpp" line="324"/>
+        <location filename="WelcomeScreen.cpp" line="367"/>
+        <location filename="WelcomeScreen.cpp" line="408"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="327"/>
+        <location filename="WelcomeScreen.cpp" line="329"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="338"/>
+        <location filename="WelcomeScreen.cpp" line="340"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="348"/>
+        <location filename="WelcomeScreen.cpp" line="350"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="371"/>
+        <location filename="WelcomeScreen.cpp" line="373"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="382"/>
+        <location filename="WelcomeScreen.cpp" line="384"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="427"/>
+        <location filename="WelcomeScreen.cpp" line="429"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="377"/>
+        <location filename="WelcomeScreen.cpp" line="379"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="389"/>
+        <location filename="WelcomeScreen.cpp" line="391"/>
         <source>You are running a developer version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="411"/>
+        <location filename="WelcomeScreen.cpp" line="413"/>
         <source>No BETA version found on GitHub.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="416"/>
+        <location filename="WelcomeScreen.cpp" line="418"/>
         <source>No newer BETA version is currently available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="421"/>
+        <location filename="WelcomeScreen.cpp" line="423"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>

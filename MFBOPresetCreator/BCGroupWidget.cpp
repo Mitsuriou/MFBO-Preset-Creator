@@ -12,7 +12,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   , mCallContext(aCallContext)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(aSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(aSettings.appTheme)};
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
@@ -20,9 +20,9 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   this->setLayout(lMainLayout);
 
   auto lSection{new QGroupBox(aSectionTitle + QString("  "), this)};
-  Utils::addIconToGroupBox(lSection, lIconFolder, aSectionIconName, aSettings.font.size);
+  Utils::AddIconToGroupBox(lSection, lIconFolder, aSectionIconName, aSettings.font.size);
   this->connect(lSection, &QGroupBox::toggled, this, &BCGroupWidget::groupBoxChecked);
-  Utils::setGroupBoxState(lSection, false);
+  Utils::SetGroupBoxState(lSection, false);
 
   auto lSectionLayout{new QGridLayout(this)};
   lSectionLayout->setSpacing(10);
@@ -39,7 +39,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lSectionLayout->addWidget(lDropWidget);
 
   // Remove data entry button
-  auto lRemoveButton{ComponentFactory::createButton(this, tr("Remove this data entry"), "", "cross", lIconFolder, "remove_button", false, true)};
+  auto lRemoveButton{ComponentFactory::CreateButton(this, tr("Remove this data entry"), "", "cross", lIconFolder, "remove_button", false, true)};
   lRemoveButton->hide();
   lSectionLayout->addWidget(lRemoveButton);
 
@@ -138,5 +138,5 @@ void BCGroupWidget::groupBoxChecked(bool aIsChecked)
   if (lGroupBox == nullptr)
     return;
 
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

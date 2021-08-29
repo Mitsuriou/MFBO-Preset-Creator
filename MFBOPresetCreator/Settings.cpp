@@ -47,7 +47,7 @@ void Settings::closeEvent(QCloseEvent* aEvent)
 
     if (this->mPathEntryCleared)
     {
-      Utils::saveLastPathsToFile(this->mLastPaths);
+      Utils::SaveLastPathsToFile(this->mLastPaths);
       emit refreshLastPaths(this->mLastPaths);
     }
     return;
@@ -56,9 +56,9 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   if (this->getSettingsFromGUI() != this->mSettings || this->mPathEntryCleared)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
                                       tr("Do you want to close the window?"),
                                       lIconFolder,
@@ -98,7 +98,7 @@ void Settings::setWindowProperties()
 void Settings::initializeGUI()
 {
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::createScrollAreaWindowLayout(this)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this)};
   auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   auto lStarLabel{new QLabel(this)};
@@ -137,7 +137,7 @@ void Settings::initializeGUI()
 void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -161,7 +161,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   auto lLanguageSelector{new QComboBox(this)};
   lLanguageSelector->setItemDelegate(new QStyledItemDelegate());
   lLanguageSelector->setCursor(Qt::PointingHandCursor);
-  lLanguageSelector->addItems(DataLists::getLanguages());
+  lLanguageSelector->addItems(DataLists::GetLanguages());
   lLanguageSelector->setObjectName(QString("language"));
   lTabLayout->addWidget(lLanguageSelector, 1, 0);
 
@@ -171,14 +171,14 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   auto lGUIThemeSelector{new QComboBox(this)};
   lGUIThemeSelector->setItemDelegate(new QStyledItemDelegate());
   lGUIThemeSelector->setCursor(Qt::PointingHandCursor);
-  lGUIThemeSelector->addItems(DataLists::getAppThemes());
+  lGUIThemeSelector->addItems(DataLists::GetAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   lTabLayout->addWidget(lGUIThemeSelector, 3, 0);
 
   // FONT FAMILY
   lTabLayout->addWidget(new QLabel(QString("* " + tr("Font:")), this), 4, 0);
 
-  auto lFontChooser{ComponentFactory::createButton(this, tr("Choose a font"), "", "text", lIconFolder, "font_chooser", false, true)};
+  auto lFontChooser{ComponentFactory::CreateButton(this, tr("Choose a font"), "", "text", lIconFolder, "font_chooser", false, true)};
   lTabLayout->addWidget(lFontChooser, 5, 0);
 
   // WINDOW WIDTH
@@ -201,15 +201,15 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(new QLabel(QString("* " + tr("Texts accent color:")), this), 10, 0);
 
   // Success
-  auto lSuccessColorChooser{ComponentFactory::createButton(this, tr("Choose a success color"), "", "color", lIconFolder, "success_color_chooser", false, true)};
+  auto lSuccessColorChooser{ComponentFactory::CreateButton(this, tr("Choose a success color"), "", "color", lIconFolder, "success_color_chooser", false, true)};
   lTabLayout->addWidget(lSuccessColorChooser, 11, 0);
 
   // Warning
-  auto lWarningColorChooser{ComponentFactory::createButton(this, tr("Choose a warning color"), "", "color", lIconFolder, "warning_color_chooser", false, true)};
+  auto lWarningColorChooser{ComponentFactory::CreateButton(this, tr("Choose a warning color"), "", "color", lIconFolder, "warning_color_chooser", false, true)};
   lTabLayout->addWidget(lWarningColorChooser, 12, 0);
 
   // Danger
-  auto lDangerColorChooser{ComponentFactory::createButton(this, tr("Choose a danger color"), "", "color", lIconFolder, "danger_color_chooser", false, true)};
+  auto lDangerColorChooser{ComponentFactory::CreateButton(this, tr("Choose a danger color"), "", "color", lIconFolder, "danger_color_chooser", false, true)};
   lTabLayout->addWidget(lDangerColorChooser, 13, 0);
 
   //
@@ -221,7 +221,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   auto lWindowOpeningModeSelector{new QComboBox(this)};
   lWindowOpeningModeSelector->setItemDelegate(new QStyledItemDelegate());
   lWindowOpeningModeSelector->setCursor(Qt::PointingHandCursor);
-  lWindowOpeningModeSelector->addItems(DataLists::getWindowOpeningModes());
+  lWindowOpeningModeSelector->addItems(DataLists::GetWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("main_window_opening_mode"));
   lTabLayout->addWidget(lWindowOpeningModeSelector, 1, 1);
 
@@ -250,7 +250,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -291,7 +291,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
   lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath, 5, 0);
 
-  auto lCheckPathsHistory{ComponentFactory::createButton(this, tr("Check/clear my browsing history"), "", "tab", lIconFolder, "", false, true)};
+  auto lCheckPathsHistory{ComponentFactory::CreateButton(this, tr("Check/clear my browsing history"), "", "tab", lIconFolder, "", false, true)};
   lTabLayout->addWidget(lCheckPathsHistory, 5, 1);
 
   // Event binding
@@ -301,7 +301,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -315,14 +315,14 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Preset Creator"));
 
   // DEFAULT SELECTED BODY AND VERSION
-  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
   lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("default_body_selector_name"));
   lTabLayout->addWidget(lBodyNameSelector, 1, 0);
@@ -330,7 +330,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("default_body_selector_version"));
   lTabLayout->addWidget(lBodyVersionSelector, 1, 1);
@@ -341,7 +341,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_main"));
   lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
@@ -355,7 +355,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lOutputPathLineEdit, 5, 0);
 
   // OUTPUT PATH CHOOSER
-  auto lOutputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lOutputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lTabLayout->addWidget(lOutputPathChooser, 5, 1);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
@@ -374,7 +374,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -388,14 +388,14 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("BodySlide Presets' Retargeting"));
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
-  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
   lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
   auto lUpgradeBodyNameSelector{new QComboBox(this)};
   lUpgradeBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
   lUpgradeBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lUpgradeBodyNameSelector->addItems(DataLists::GetBodiesNames());
   lUpgradeBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lUpgradeBodyNameSelector->setObjectName(QString("upgrade_body_selector_name"));
   lTabLayout->addWidget(lUpgradeBodyNameSelector, 1, 0);
@@ -403,7 +403,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   auto lUpgradeBodyVersionSelector{new QComboBox(this)};
   lUpgradeBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lUpgradeBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lUpgradeBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lUpgradeBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lUpgradeBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
   lTabLayout->addWidget(lUpgradeBodyVersionSelector, 1, 1);
@@ -414,7 +414,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_retargeting_tool"));
   lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
@@ -434,7 +434,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -459,7 +459,7 @@ void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
 void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -473,7 +473,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Last used paths"));
 
   // "Clear all" button
-  auto lClearAllButton{ComponentFactory::createButton(this, tr("Remove all the history"), "", "trash-lines", lIconFolder, "remove_all_filters", false, true)};
+  auto lClearAllButton{ComponentFactory::CreateButton(this, tr("Remove all the history"), "", "trash-lines", lIconFolder, "remove_all_filters", false, true)};
   lClearAllButton->setStyleSheet("text-align:left;");
   lTabLayout->addWidget(lClearAllButton, 0, 2);
 
@@ -483,16 +483,16 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 
   // Create a line for each path
   auto lRowIndex{1};
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: input"), this->mLastPaths.find("batchConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: output"), this->mLastPaths.find("batchConversionOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::addLastPathLine(this, lTabLayout, lRowIndex, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->mLastPaths.find("general")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Main window: output"), this->mLastPaths.find("mainWindowOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: input"), this->mLastPaths.find("batchConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: output"), this->mLastPaths.find("batchConversionOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Assist. Conv.: input"), this->mLastPaths.find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind every single "clear path" button
   const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};
@@ -504,16 +504,16 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 
 void Settings::setupButtons(QHBoxLayout& aLayout)
 {
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // Create the buttons
-  auto lRestoreDefaultButton{ComponentFactory::createButton(this, tr("Restore default"), "", "restore", lIconFolder, "", false, true)};
+  auto lRestoreDefaultButton{ComponentFactory::CreateButton(this, tr("Restore default"), "", "restore", lIconFolder, "", false, true)};
   aLayout.addWidget(lRestoreDefaultButton);
 
-  auto lSaveButton{ComponentFactory::createButton(this, tr("Save and close"), "", "save", lIconFolder, "save_close", false, true)};
+  auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", lIconFolder, "save_close", false, true)};
   aLayout.addWidget(lSaveButton);
 
-  auto lCloseButton{ComponentFactory::createButton(this, tr("Cancel"), "", "undo", lIconFolder, "", false, true)};
+  auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", lIconFolder, "", false, true)};
   aLayout.addWidget(lCloseButton);
 
   // Event binding
@@ -529,7 +529,7 @@ void Settings::createDialogOpeningModeBlock(QGridLayout& aLayout, const QString&
   auto lSelector{new QComboBox(this)};
   lSelector->setItemDelegate(new QStyledItemDelegate());
   lSelector->setCursor(Qt::PointingHandCursor);
-  lSelector->addItems(DataLists::getDialogOpeningModes());
+  lSelector->addItems(DataLists::GetDialogOpeningModes());
   lSelector->setObjectName(QString(aObjectName));
   aLayout.addWidget(lSelector, aRow + 1, aCol);
 }
@@ -575,11 +575,11 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))};
   lBodySlidePresetsRetargetingDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.bodySlidePresetsRetargetingDialogOpeningMode));
 
-  auto lDefaultBody{DataLists::getSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultMainWindowBody)};
+  auto lDefaultBody{DataLists::GetSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultMainWindowBody)};
   this->findChild<QComboBox*>(QString("default_body_selector_name"))->setCurrentIndex(lDefaultBody.first);
   this->findChild<QComboBox*>(QString("default_body_selector_version"))->setCurrentIndex(lDefaultBody.second);
 
-  auto lDefaultUpgradeBody{DataLists::getSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultRetargetingToolBody)};
+  auto lDefaultUpgradeBody{DataLists::GetSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultRetargetingToolBody)};
   this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->setCurrentIndex(lDefaultUpgradeBody.first);
   this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->setCurrentIndex(lDefaultUpgradeBody.second);
 
@@ -638,10 +638,10 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))->text().trimmed()};
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("default_body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("default_body_selector_version"))->currentIndex()};
-  auto lDefaultBodyVersion{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lDefaultBodyVersion{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
   auto lUpBodyNameSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex()};
   auto lUpBodyVersionSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->currentIndex()};
-  auto lDefaultRetargetBodyVersion{DataLists::getBodyNameVersion(static_cast<BodyName>(lUpBodyNameSelected), lUpBodyVersionSelected)};
+  auto lDefaultRetargetBodyVersion{DataLists::GetBodyNameVersion(static_cast<BodyName>(lUpBodyNameSelected), lUpBodyVersionSelected)};
   auto lDefaultMainFeetMod{this->findChild<QComboBox*>(QString("feet_mod_main"))->currentIndex()};
   auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))->currentIndex()};
   auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("main_window_opening_mode"))->currentIndex()};
@@ -814,9 +814,9 @@ void Settings::saveSettings()
   if (mMustRebootMainApp)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       tr("Application settings changed"),
                                       tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied.\n\nWould you like to restart the application now (you will lose all unsaved data)?"),
                                       lIconFolder,
@@ -839,7 +839,7 @@ void Settings::saveSettings()
     }
   }
 
-  Utils::saveSettingsToFile(lSettings);
+  Utils::SaveSettingsToFile(lSettings);
   this->mSettings = lSettings;
 
   emit refreshMainUI(this->mSettings, true);
@@ -854,13 +854,13 @@ void Settings::updateAvailableBodyVersions()
   // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("default_body_selector_version"))};
   lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
 
   // Feet mod
   auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_main"))};
   lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
   lFeetSelector->setCurrentIndex(0);
 }
 
@@ -871,13 +871,13 @@ void Settings::updateAvailableUpgradeBodyVersions()
   // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))};
   lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
 
   // Feet mod
   auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))};
   lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
   lFeetSelector->setCurrentIndex(0);
 }
 
@@ -974,7 +974,7 @@ void Settings::clearPathButtonClicked()
     return;
 
   const auto lRowIndex{lButton->objectName().remove(QString("clear_path_"), Qt::CaseSensitivity::CaseSensitive).toInt()};
-  const auto lKey{DataLists::getLastPathsKeys().at(lRowIndex - 1)};
+  const auto lKey{DataLists::GetLastPathsKeys().at(lRowIndex - 1)};
 
   // If the path is already empty, return instantly
   if (this->mLastPaths.find(lKey)->second.compare("", Qt::CaseInsensitive) == 0)
@@ -982,7 +982,7 @@ void Settings::clearPathButtonClicked()
     return;
   }
 
-  if (Utils::updatePathAtKey(&this->mLastPaths, lKey, QString(), false, true, false))
+  if (Utils::UpdatePathAtKey(&this->mLastPaths, lKey, QString(), false, true, false))
   {
     this->mPathEntryCleared = true;
 
@@ -1004,10 +1004,10 @@ void Settings::clearAllPaths()
   if (lButton == nullptr)
     return;
 
-  const auto lKeys{DataLists::getLastPathsKeys()};
+  const auto lKeys{DataLists::GetLastPathsKeys()};
   for (int i = 0; i < lKeys.size(); i++)
   {
-    if (Utils::updatePathAtKey(&this->mLastPaths, lKeys.at(i), QString(), false, true, false))
+    if (Utils::UpdatePathAtKey(&this->mLastPaths, lKeys.at(i), QString(), false, true, false))
     {
       this->mPathEntryCleared = true;
 

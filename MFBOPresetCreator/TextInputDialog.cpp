@@ -57,7 +57,7 @@ void TextInputDialog::setWindowProperties(const QString& aTitle)
 void TextInputDialog::initializeGUI(const QString& aLabel)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mAppTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mAppTheme)};
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
@@ -81,11 +81,11 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
   lMainLayout->addLayout(lBtnsContainer);
 
   // Add
-  auto lAddBtn{ComponentFactory::createButton(this, tr("Add"), "", "plus", lIconFolder, "add_button")};
+  auto lAddBtn{ComponentFactory::CreateButton(this, tr("Add"), "", "plus", lIconFolder, "add_button")};
   lBtnsContainer->addWidget(lAddBtn);
 
   // Cancel
-  auto lCancelBtn{ComponentFactory::createButton(this, tr("Cancel"), "", "cross", lIconFolder)};
+  auto lCancelBtn{ComponentFactory::CreateButton(this, tr("Cancel"), "", "cross", lIconFolder)};
   lBtnsContainer->addWidget(lCancelBtn);
 
   // Events binding

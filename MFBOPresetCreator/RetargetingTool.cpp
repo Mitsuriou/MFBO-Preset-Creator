@@ -47,9 +47,9 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (Utils::displayQuestionMessage(this,
+  if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
                                     lIconFolder,
@@ -98,13 +98,13 @@ void RetargetingTool::initializeGUI()
 void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::getIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
   // General group box
   auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::addIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.font.size);
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
-  Utils::setGroupBoxState(lGeneralGroupBox, false);
+  Utils::SetGroupBoxState(lGeneralGroupBox, false);
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -119,14 +119,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->setAlignment(Qt::AlignTop);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::getSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
 
   lGeneralGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::getBodiesNames());
+  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
   lGeneralGridLayout->addWidget(lBodyNameSelector, 0, 1);
@@ -134,7 +134,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
   lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 2);
@@ -143,7 +143,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lGeneralGridLayout->addWidget(lFeetSelector, 0, 3);
@@ -156,7 +156,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 3);
 
-  auto lInputPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lGeneralGridLayout->addWidget(lInputPathChooser, 1, 4);
 
   // BodySlide filters
@@ -173,14 +173,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFiltersList->setWordWrap(true);
   lGeneralGridLayout->addWidget(lFiltersList, 2, 2, 1, 2);
 
-  auto lEditFilters{ComponentFactory::createButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters", false, true)};
+  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters", false, true)};
   lGeneralGridLayout->addWidget(lEditFilters, 2, 4);
 
   // Backup group box
   auto lBackupGroupBox{new QGroupBox(tr("Backup").append("  "), this)};
-  Utils::addIconToGroupBox(lBackupGroupBox, lIconFolder, "restore", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBackupGroupBox, lIconFolder, "restore", this->mSettings.font.size);
   this->connect(lBackupGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
-  Utils::setGroupBoxState(lBackupGroupBox, false);
+  Utils::SetGroupBoxState(lBackupGroupBox, false);
   aLayout.addWidget(lBackupGroupBox, 1, 0);
 
   // Grid layout
@@ -207,7 +207,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupPathLineEdit->setObjectName(QString("backup_path_directory"));
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
 
-  auto lBackupPathChooser{ComponentFactory::createButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "backup_dir_chooser", false, true)};
+  auto lBackupPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "backup_dir_chooser", false, true)};
   lBackupGridLayout->addWidget(lBackupPathChooser, 1, 2);
 
   // Backup subdirectory name/path
@@ -231,7 +231,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupGridLayout->addWidget(lBackupPathsPreview, 3, 1, 1, 2);
 
   // Generate button
-  auto lGenerateButton{ComponentFactory::createButton(this, tr("Retarget all the files under the input path"), "", "arrow-up", lIconFolder, "objectname", false, true)};
+  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Retarget all the files under the input path"), "", "arrow-up", lIconFolder, "objectname", false, true)};
   aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
 
   // Event bindings for user actions (disconnected the first time the user does an action in the GUI)
@@ -283,23 +283,23 @@ void RetargetingTool::updateAvailableBodyVersions()
   // Version
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
   lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::getVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
   lBodyVersionSelector->setCurrentIndex(0);
 
   // Feet mod
   auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_selector"))};
   lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::getFeetModsFromBodyName(lBodyName));
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
   lFeetSelector->setCurrentIndex(0);
 }
 
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
+  Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.size() > 0)
   {
@@ -310,10 +310,10 @@ void RetargetingTool::chooseInputDirectory()
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
-  const auto& lContextPath{Utils::getPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::updatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
+  Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
   this->updateBackupPreview();
 
   if (!this->mHasUserDoneSomething && lPath.size() > 0)
@@ -372,11 +372,11 @@ void RetargetingTool::updateBackupPreview()
   // Get main directory
   auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
   auto lMainDirectory{lMainDirTextEdit->text().trimmed()};
-  Utils::cleanPathString(lMainDirectory);
+  Utils::CleanPathString(lMainDirectory);
 
   // Get subdirectory
   auto lSubDirectory{this->findChild<QLineEdit*>(QString("backup_path_subdirectory"))->text().trimmed()};
-  Utils::cleanPathString(lSubDirectory);
+  Utils::CleanPathString(lSubDirectory);
   auto lIsValidPath{true};
 
   // Construct full path
@@ -404,12 +404,12 @@ void RetargetingTool::updateBackupPreview()
 
   if (lIsValidPath)
   {
-    auto lInputPath{Utils::cleanPathString(this->findChild<QLineEdit*>(QString("input_path_directory"))->text())};
+    auto lInputPath{Utils::CleanPathString(this->findChild<QLineEdit*>(QString("input_path_directory"))->text())};
     const auto lFullPathConst{lFullPath};
 
     // Check if the user is trying to backup the directory into itself
-    if (Utils::cleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
-        || Utils::cleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::cleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
+    if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
+        || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
     {
       lNewTextColor = this->mSettings.dangerColor;
     }
@@ -436,7 +436,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Selected body
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
 
   // Selected feet
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
@@ -444,7 +444,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Check if the input path has been given by the user
   if (lRootDir.isEmpty())
   {
-    Utils::displayWarningMessage(tr("Error: no path path given for the retargeting."));
+    Utils::DisplayWarningMessage(tr("Error: no path path given for the retargeting."));
     return;
   }
 
@@ -456,16 +456,16 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Backup paths
     auto lMainDirectory{this->findChild<QLineEdit*>(QString("backup_path_directory"))->text().trimmed()};
     auto lSubDirectory{this->findChild<QLineEdit*>(QString("backup_path_subdirectory"))->text().trimmed()};
-    Utils::cleanPathString(lSubDirectory);
+    Utils::CleanPathString(lSubDirectory);
 
     // Full extract path
     const auto& lDirtyFullBackupDirectory{(lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + QDir::separator() + lSubDirectory))};
-    auto lFullBackupDirectory{Utils::cleanPathString(lDirtyFullBackupDirectory)};
+    auto lFullBackupDirectory{Utils::CleanPathString(lDirtyFullBackupDirectory)};
 
     // Check if the full extract path has been given by the user
     if (lFullBackupDirectory.isEmpty())
     {
-      Utils::displayWarningMessage(tr("Error: no path given to backup the files."));
+      Utils::DisplayWarningMessage(tr("Error: no path given to backup the files."));
       return;
     }
 
@@ -474,17 +474,17 @@ void RetargetingTool::launchUpDownGradeProcess()
     const auto lFullPathConst{lFullBackupDirectory};
 
     //if (lFullBackupDirectory.startsWith())
-    if (Utils::cleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
-        || Utils::cleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::cleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
+    if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
+        || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
     {
-      Utils::displayWarningMessage(tr("Error: it is not possible to backup a directory inside itself. Choose another backup location."));
+      Utils::DisplayWarningMessage(tr("Error: it is not possible to backup a directory inside itself. Choose another backup location."));
       return;
     }
 
     // Check if the path could be valid
     if (lFullBackupDirectory.startsWith("/"))
     {
-      Utils::displayWarningMessage(tr("Error: the path given to backup the files seems to be invalid."));
+      Utils::DisplayWarningMessage(tr("Error: the path given to backup the files seems to be invalid."));
       return;
     }
 
@@ -500,16 +500,16 @@ void RetargetingTool::launchUpDownGradeProcess()
     qApp->processEvents();
 
     // Copy the directory and its content
-    if (!Utils::copyRecursively(lRootDir, lFullBackupDirectory))
+    if (!Utils::CopyRecursively(lRootDir, lFullBackupDirectory))
     {
-      Utils::displayWarningMessage(tr("Error: the backup could not be created. Please try again."));
+      Utils::DisplayWarningMessage(tr("Error: the backup could not be created. Please try again."));
       return;
     }
   }
 
   // Scan the number of files to treat
-  auto lNumberOSPFiles{Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.osp")};
-  auto lNumberXMLFiles{Utils::getNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.xml")};
+  auto lNumberOSPFiles{Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.osp")};
+  auto lNumberXMLFiles{Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.xml")};
   auto lTreatedFiles{0};
 
   // Progress bar
@@ -541,7 +541,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by the user."));
+      Utils::DisplayWarningMessage(tr("Process aborted by the user."));
       return;
     }
 
@@ -558,11 +558,11 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Build the names buffer
-    lNamesBuffer.push_back(QPair<QString, QString>(it.fileInfo().completeBaseName(), Utils::getPresetNameFromXMLFile(lAbsFilePath)));
+    lNamesBuffer.push_back(QPair<QString, QString>(it.fileInfo().completeBaseName(), Utils::GetPresetNameFromXMLFile(lAbsFilePath)));
 
     if (lNamesBuffer.at(lNamesBuffer.size() - 1).second == "")
     {
-      Utils::displayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
+      Utils::DisplayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 
@@ -588,7 +588,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by the user."));
+      Utils::DisplayWarningMessage(tr("Process aborted by the user."));
       return;
     }
 
@@ -597,16 +597,16 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     lAbsFilePath = it2.fileInfo().absoluteFilePath();
 
-    auto lMustUseBeastHands{Utils::isPresetUsingBeastHands(lAbsFilePath)};
+    auto lMustUseBeastHands{Utils::IsPresetUsingBeastHands(lAbsFilePath)};
 
     // Check the file extension
     auto lFileName{it2.fileInfo().completeBaseName()};
 
-    lParsedSliderSets = Utils::getOutputPathsFromOSPFile(lAbsFilePath);
+    lParsedSliderSets = Utils::GetOutputPathsFromOSPFile(lAbsFilePath);
 
     if (lParsedSliderSets.size() == 0)
     {
-      Utils::displayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
+      Utils::DisplayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 
@@ -627,15 +627,15 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     if (lPresetName == "")
     {
-      Utils::displayWarningMessage(tr("No data found from the associated XML file. The file \"%1\" was not modified.").arg(it2.fileInfo().absoluteFilePath()));
+      Utils::DisplayWarningMessage(tr("No data found from the associated XML file. The file \"%1\" was not modified.").arg(it2.fileInfo().absoluteFilePath()));
       continue;
     }
 
     // Check, if the preset is using beast hands, if the chosen body does not support beast hands
     auto lSkipBeastHands{false};
-    if (lMustUseBeastHands && !Utils::isBodySupportingBeastHands(lBodySelected))
+    if (lMustUseBeastHands && !Utils::IsBodySupportingBeastHands(lBodySelected))
     {
-      Utils::displayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
+      Utils::DisplayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
       lSkipBeastHands = true;
     }
 
@@ -667,7 +667,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
       lOSPUsedSliders.insert(std::make_pair(lFileName, lOptions));
 
-      auto lOSPFileContent{SliderFileBuilder::buildOSPFileContent(lPresetName, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOptions)};
+      auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(lPresetName, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOptions)};
 
       // Fill the custom variables
       for (const auto& lSliderSet : lParsedSliderSets)
@@ -701,7 +701,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
       else
       {
-        Utils::displayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
+        Utils::DisplayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
         return;
       }
 
@@ -725,7 +725,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Cancel the treatment if the user canceled it
     if (lProgressDialog.wasCanceled())
     {
-      Utils::displayWarningMessage(tr("Process aborted by the user."));
+      Utils::DisplayWarningMessage(tr("Process aborted by the user."));
       return;
     }
 
@@ -741,7 +741,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       continue;
     }
 
-    auto lMustUseBeastHands{Utils::isPresetUsingBeastHands(lAbsFilePath)};
+    auto lMustUseBeastHands{Utils::IsPresetUsingBeastHands(lAbsFilePath)};
 
     // Check the file extension
     auto lFileName{it3.fileInfo().completeBaseName()};
@@ -753,7 +753,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     {
       if (lFileName == lOSPBuffer.at(i).first)
       {
-        Utils::displayWarningMessage(tr("Since the associated OSP file has not been modified, the file \"%1\" has not been modified.").arg(it3.fileInfo().absoluteFilePath()));
+        Utils::DisplayWarningMessage(tr("Since the associated OSP file has not been modified, the file \"%1\" has not been modified.").arg(it3.fileInfo().absoluteFilePath()));
         lSkipXMLLastTreatment = true;
         break;
       }
@@ -787,8 +787,8 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Construct the file content
     auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-    auto lUserFilters{Utils::getFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
-    auto lXMLFileContent{SliderFileBuilder::buildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOSPUsedSliders.find(lFileName)->second)};
+    auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
+    auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOSPUsedSliders.find(lFileName)->second)};
 
     // Create the OSP file on disk
     QFile lXMLFile(lAbsFilePath);
@@ -802,7 +802,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
     else
     {
-      Utils::displayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
+      Utils::DisplayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
     }
 
@@ -828,7 +828,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   }
   else
   {
-    if (Utils::displayQuestionMessage(this,
+    if (Utils::DisplayQuestionMessage(this,
                                       lTitle,
                                       lMessage,
                                       "icons",
@@ -857,7 +857,7 @@ void RetargetingTool::openBodySlideFiltersEditor()
 void RetargetingTool::initBodySlideFiltersList()
 {
   // Load and save the filters list
-  this->mFiltersList = Utils::loadFiltersFromFile();
+  this->mFiltersList = Utils::LoadFiltersFromFile();
 
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
 
@@ -882,18 +882,18 @@ void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QString
   this->mFiltersList = aFilterList;
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
-  Utils::updateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
+  Utils::UpdateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
 void RetargetingTool::updateBodySlideFiltersListPreview(int)
 {
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::getBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Take custom MSF filter
-  auto lAdditionalFilter{Utils::getAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
+  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
 
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
@@ -922,7 +922,7 @@ void RetargetingTool::groupBoxChecked(bool aIsChecked)
   if (lGroupBox == nullptr)
     return;
 
-  Utils::setGroupBoxState(lGroupBox, !aIsChecked);
+  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 
   // Resize the window
   this->adjustSize();
