@@ -2002,60 +2002,60 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="65"/>
-        <location filename="Update.cpp" line="80"/>
-        <location filename="Update.cpp" line="86"/>
+        <location filename="Update.cpp" line="67"/>
+        <location filename="Update.cpp" line="82"/>
+        <location filename="Update.cpp" line="88"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="133"/>
+        <location filename="Update.cpp" line="136"/>
         <source>Contacting GitHub.com...</source>
         <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="494"/>
+        <location filename="Update.cpp" line="553"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
         <translation>Le processus de mise à jour n&apos;a pas pu être démarré. Veuillez vérifier que votre pare-feu et votre anti-virus ne bloquent pas le fichier de mise à jour, avant d&apos;essayer à nouveau.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="168"/>
-        <location filename="Update.cpp" line="169"/>
+        <location filename="Update.cpp" line="171"/>
+        <location filename="Update.cpp" line="172"/>
         <source>Check for updates once again</source>
         <translation>Vérifier une nouvelle fois les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="95"/>
+        <location filename="Update.cpp" line="97"/>
         <source>Initializing...</source>
         <translation>Initialisation...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="171"/>
+        <location filename="Update.cpp" line="174"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version.
 Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="193"/>
-        <location filename="Update.cpp" line="194"/>
-        <location filename="Update.cpp" line="218"/>
-        <location filename="Update.cpp" line="219"/>
+        <location filename="Update.cpp" line="203"/>
+        <location filename="Update.cpp" line="204"/>
+        <location filename="Update.cpp" line="242"/>
+        <location filename="Update.cpp" line="243"/>
         <source>Download the update</source>
         <translation>Télécharger la mise à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="75"/>
+        <location filename="Update.cpp" line="77"/>
         <source> (stable only)</source>
         <translation> (stable uniquement)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="75"/>
+        <location filename="Update.cpp" line="77"/>
         <source> (BETA only)</source>
         <translation> (BETA uniquement)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="202"/>
+        <location filename="Update.cpp" line="219"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -2074,7 +2074,7 @@ Le téléchargement sera enregistré sous &quot;%3&quot;.
 Vous trouverez ci-dessous les notes de publication pour la version BETA &quot;%2&quot; :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="227"/>
+        <location filename="Update.cpp" line="258"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -2093,35 +2093,44 @@ Le téléchargement sera enregistré sous &quot;%3&quot;.
 Vous trouverez ci-dessous les notes de publication pour la version stable &quot;%2&quot; :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="239"/>
-        <location filename="Update.cpp" line="240"/>
+        <location filename="Update.cpp" line="270"/>
+        <location filename="Update.cpp" line="271"/>
         <source>Already running the latest version</source>
         <translation>Dernière version déjà en cours d&apos;utilisation</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="241"/>
+        <location filename="Update.cpp" line="272"/>
         <source>Awesome! You are already running the latest available version.</source>
         <translation>Génial ! Vous utilisez déjà la dernière version disponible.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="266"/>
-        <location filename="Update.cpp" line="267"/>
+        <location filename="Update.cpp" line="297"/>
+        <location filename="Update.cpp" line="298"/>
         <source>Cancel the download</source>
         <translation>Annuler le téléchargement</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="304"/>
-        <location filename="Update.cpp" line="305"/>
+        <location filename="Update.cpp" line="335"/>
+        <location filename="Update.cpp" line="336"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation>Téléchargement annulé : cliquez pour essayer de télécharger la mise à jour une nouvelle fois</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="342"/>
+        <location filename="Update.cpp" line="373"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation>%1 octets sur %2 octets (%p%)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="417"/>
+        <location filename="Update.cpp" line="448"/>
+        <source>Download successful. Click the button above to open the directory where the file has been downloaded.
+
+</source>
+        <translation>Téléchargement réussi. Cliquez sur le bouton ci-dessus pour ouvrir le répertoire où le fichier a été téléchargé.
+
+</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="449"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -2132,7 +2141,7 @@ Assurez-vous que vous avez tout enregistré avant de commencer la mise à jour c
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="418"/>
+        <location filename="Update.cpp" line="450"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -2143,14 +2152,20 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="426"/>
-        <location filename="Update.cpp" line="427"/>
+        <location filename="Update.cpp" line="460"/>
+        <location filename="Update.cpp" line="461"/>
+        <source>Show the ZIP file in Windows Explorer</source>
+        <translation>Montrer le fichier ZIP dans l&apos;Explorateur Windows</translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="484"/>
+        <location filename="Update.cpp" line="485"/>
         <source>Close MFBOPC and install the update</source>
         <translation>Fermer MFBOPC et installer la mise à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="450"/>
-        <location filename="Update.cpp" line="451"/>
+        <location filename="Update.cpp" line="509"/>
+        <location filename="Update.cpp" line="510"/>
         <source>Try to download the update once again</source>
         <translation>Essayer de télécharger la mise à jour une nouvelle fois</translation>
     </message>
@@ -2164,34 +2179,34 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     </message>
     <message>
         <location filename="Utils.cpp" line="149"/>
-        <location filename="Utils.cpp" line="776"/>
+        <location filename="Utils.cpp" line="782"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="463"/>
+        <location filename="Utils.cpp" line="469"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>Le fichier interne &quot;%1&quot; n&apos;a pas pu être trouvé. Veuillez sigaler ce problème au développeur avec les étapes pour reproduire ce bug.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="483"/>
-        <location filename="Utils.cpp" line="516"/>
-        <location filename="Utils.cpp" line="609"/>
+        <location filename="Utils.cpp" line="489"/>
+        <location filename="Utils.cpp" line="522"/>
+        <location filename="Utils.cpp" line="615"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="770"/>
+        <location filename="Utils.cpp" line="776"/>
         <source>Project successfully saved</source>
         <translation>Projet sauvegardé avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="771"/>
+        <location filename="Utils.cpp" line="777"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>Le fichier de projet a été sauvegardé vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="785"/>
+        <location filename="Utils.cpp" line="791"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2200,18 +2215,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1335"/>
+        <location filename="Utils.cpp" line="1341"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1437"/>
-        <location filename="Utils.cpp" line="1461"/>
+        <location filename="Utils.cpp" line="1443"/>
+        <location filename="Utils.cpp" line="1467"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1455"/>
+        <location filename="Utils.cpp" line="1461"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
@@ -2271,91 +2286,107 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Fonctionnalités à venir</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="180"/>
+        <location filename="WelcomeScreen.cpp" line="166"/>
+        <source>You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:</source>
+        <oldsource>You can consult the list of incoming features and enhancements and ask for new features requests by clicking the button below:</oldsource>
+        <translation>Vous pouvez consulter la liste des fonctionnalités et améliorations à venir ou demander de nouvelles fonctionnalités en cliquant sur le bouton ci-dessous :</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="176"/>
         <source>Known issues</source>
         <translation>Problèmes connus</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="194"/>
+        <location filename="WelcomeScreen.cpp" line="178"/>
+        <source>You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:</source>
+        <translation>Vous pouvez consulter la liste des bugs déjà rapportés attendant pour une réparation ou rapporter un nouveau problème en cliquant sur le bouton ci-dessous :</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="188"/>
         <source>User guide and tutorials</source>
         <translation>Guide utilisateur et tutoriels</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="196"/>
-        <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:</source>
-        <translation>Que ce soit votre première utilisation de l&apos;application ou que vous vous demandiez comment fonctionne une fonction particulière, vous devriez consulter le guide utilisateur et les tutoriels détaillés en cliquant sur le lien ci-dessous :</translation>
+        <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the link below:</source>
+        <oldsource>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:</oldsource>
+        <translation type="obsolete">Que ce soit votre première utilisation de l&apos;application ou que vous vous demandiez comment fonctionne une fonction particulière, vous devriez consulter le guide utilisateur et les tutoriels détaillés en cliquant sur le lien ci-dessous :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="304"/>
+        <location filename="WelcomeScreen.cpp" line="310"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite...
 Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="324"/>
-        <location filename="WelcomeScreen.cpp" line="367"/>
-        <location filename="WelcomeScreen.cpp" line="408"/>
+        <location filename="WelcomeScreen.cpp" line="330"/>
+        <location filename="WelcomeScreen.cpp" line="373"/>
+        <location filename="WelcomeScreen.cpp" line="414"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>Une erreur s&apos;est produite lors de l&apos;analyse des données de l&apos;API GitHub. Veuillez réessayer dans quelques secondes.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="329"/>
+        <location filename="WelcomeScreen.cpp" line="335"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version BETA &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="340"/>
+        <location filename="WelcomeScreen.cpp" line="346"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version stable &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="350"/>
+        <location filename="WelcomeScreen.cpp" line="356"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>Les notes de publication pour la version &quot;%1&quot; n&apos;ont pas été trouvées.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="373"/>
+        <location filename="WelcomeScreen.cpp" line="379"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>La nouvelle version stable &quot;%1&quot; est disponible sur GitHub.
 Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="384"/>
+        <location filename="WelcomeScreen.cpp" line="390"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation>Vous utilisez une version BETA. Ci-dessus sont affichées les notes de publication pour la dernière version stable disponible.
 Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="429"/>
+        <location filename="WelcomeScreen.cpp" line="435"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>La nouvelle version BETA &quot;%1&quot; est disponible sur GitHub.
 Appuyez sur le bouton ci-dessous pour ouvrir la fenêtre de l&apos;utilitaire de mise à jour :</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="379"/>
+        <location filename="WelcomeScreen.cpp" line="385"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation>Vous utilisez déjà la dernière version stable &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="391"/>
+        <location filename="WelcomeScreen.cpp" line="190"/>
+        <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:</source>
+        <translation>Que ce soit votre première utilisation de l&apos;application ou que vous vous demandiez comment fonctionne une fonction particulière, vous devriez consulter le guide utilisateur et les tutoriels détaillés en cliquant sur le bouton ci-dessous :</translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="397"/>
         <source>You are running a developer version.</source>
         <translation>Vous utilisez une version développeur.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="413"/>
+        <location filename="WelcomeScreen.cpp" line="419"/>
         <source>No BETA version found on GitHub.</source>
         <translation>Aucune version BETA trouvée sur GitHub.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="418"/>
+        <location filename="WelcomeScreen.cpp" line="424"/>
         <source>No newer BETA version is currently available.</source>
         <translation>Aucune nouvelle version BETA n&apos;est disponible actuellement.</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="423"/>
+        <location filename="WelcomeScreen.cpp" line="429"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation>Vous utilisez déjà la dernière version BETA &quot;%1&quot;.</translation>
     </message>

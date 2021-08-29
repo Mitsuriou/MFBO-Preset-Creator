@@ -52,4 +52,5 @@ private:
 
   // Install the update file
   void installLatestUpdate();
+  void openStandaloneOutputDirectory();
 };

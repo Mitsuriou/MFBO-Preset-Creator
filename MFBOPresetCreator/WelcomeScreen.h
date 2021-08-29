@@ -28,6 +28,8 @@ private:
   void overrideHTMLLinksColor(QString& aHTMLString);
   // Dialog
   void launchUpdateDialog();
+  void openIncomingFeatures();
+  void openKnownIssues();
   void openGoogleDriveGuide();
   // Check for updates
   void checkForUpdate();

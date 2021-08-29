@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
     Utils::RESTART_PENDING = false;
 
     qApp->setAttribute(Qt::AA_EnableHighDpiScaling);
-    qApp->setApplicationVersion("3.3.0.0");
+    qApp->setApplicationVersion("3.3.1.0");
     const auto& lAppVersion{Utils::GetApplicationVersion()};
 
     Utils::PrintMessageStdOut("Creating the application instance...");
@@ -110,8 +110,7 @@ int main(int argc, char* argv[])
     QApplication lMainApplication(argc, argv);
 
     auto lAppNamePreffix{QString()};
-    QDir lDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
-    if (!lDir.exists())
+    if (Utils::IsRunningStandaloneVersion())
     {
       lAppNamePreffix = "[standalone] ";
     }

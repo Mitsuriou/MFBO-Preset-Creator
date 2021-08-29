@@ -432,6 +432,12 @@ bool Utils::IsBodySupportingBeastHands(const BodyNameVersion& aBody)
   return Utils::IsCBBEBasedBody(aBody);
 }
 
+bool Utils::IsRunningStandaloneVersion()
+{
+  QDir lDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+  return !lDir.exists();
+}
+
 QString Utils::GetAppDataPathFolder()
 {
 #ifdef DEBUG

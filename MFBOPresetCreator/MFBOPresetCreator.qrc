@@ -17,7 +17,6 @@
         <file alias="developer">ressources/software/icons/black/developer.png</file>
         <file alias="filter">ressources/software/icons/black/filter.png</file>
         <file alias="folder">ressources/software/icons/black/folder.png</file>
-        <file alias="folder-open">ressources/software/icons/black/folder-open.png</file>
         <file alias="info-circle">ressources/software/icons/black/info-circle.png</file>
         <file alias="minus">ressources/software/icons/black/minus.png</file>
         <file alias="open-in-browser">ressources/software/icons/black/open-in-browser.png</file>
@@ -75,7 +74,6 @@
         <file alias="developer">ressources/software/icons/white/developer.png</file>
         <file alias="filter">ressources/software/icons/white/filter.png</file>
         <file alias="folder">ressources/software/icons/white/folder.png</file>
-        <file alias="folder-open">ressources/software/icons/white/folder-open.png</file>
         <file alias="info-circle">ressources/software/icons/white/info-circle.png</file>
         <file alias="minus">ressources/software/icons/white/minus.png</file>
         <file alias="open-in-browser">ressources/software/icons/white/open-in-browser.png</file>

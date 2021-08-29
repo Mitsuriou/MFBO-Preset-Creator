@@ -40,6 +40,7 @@ public:
   static bool IsCBBEBasedBody(const BodyNameVersion& aBody);
   static bool IsCBBEBasedBody(const BodyName& aBody);
   static bool IsBodySupportingBeastHands(const BodyNameVersion& aBody);
+  static bool IsRunningStandaloneVersion();
   static QString GetAppDataPathFolder();
   static QString ReadQRCFileContent(const QString& aFilePath);
 

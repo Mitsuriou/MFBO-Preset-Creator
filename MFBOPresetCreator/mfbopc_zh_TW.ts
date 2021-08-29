@@ -2047,9 +2047,9 @@ Would you like to restart the application now (you will lose all unsaved data)?<
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="65"/>
-        <location filename="Update.cpp" line="80"/>
-        <location filename="Update.cpp" line="86"/>
+        <location filename="Update.cpp" line="67"/>
+        <location filename="Update.cpp" line="82"/>
+        <location filename="Update.cpp" line="88"/>
         <source>Check for updates</source>
         <translation>檢查更新</translation>
     </message>
@@ -2058,18 +2058,18 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="vanished">當前運行版本 &quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="95"/>
+        <location filename="Update.cpp" line="97"/>
         <source>Initializing...</source>
         <translation>初始化中...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="168"/>
-        <location filename="Update.cpp" line="169"/>
+        <location filename="Update.cpp" line="171"/>
+        <location filename="Update.cpp" line="172"/>
         <source>Check for updates once again</source>
         <translation>再次檢查更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="171"/>
+        <location filename="Update.cpp" line="174"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>找不到更新檔...
@@ -2092,10 +2092,10 @@ Below are the release notes for the latest stable version:</source>
 以下為正式版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="193"/>
-        <location filename="Update.cpp" line="194"/>
-        <location filename="Update.cpp" line="218"/>
-        <location filename="Update.cpp" line="219"/>
+        <location filename="Update.cpp" line="203"/>
+        <location filename="Update.cpp" line="204"/>
+        <location filename="Update.cpp" line="242"/>
+        <location filename="Update.cpp" line="243"/>
         <source>Download the update</source>
         <translation>下載更新</translation>
     </message>
@@ -2158,7 +2158,7 @@ Below are the release notes for this version:</source>
 以下為此版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="417"/>
+        <location filename="Update.cpp" line="449"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -2169,7 +2169,7 @@ Make sure that you saved everything before starting the update as the applicatio
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="418"/>
+        <location filename="Update.cpp" line="450"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -2180,34 +2180,34 @@ Please make sure your internet connection is working correctly and try again.
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="426"/>
-        <location filename="Update.cpp" line="427"/>
+        <location filename="Update.cpp" line="484"/>
+        <location filename="Update.cpp" line="485"/>
         <source>Close MFBOPC and install the update</source>
         <translation>關閉MFBOPC程式並開始更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="450"/>
-        <location filename="Update.cpp" line="451"/>
+        <location filename="Update.cpp" line="509"/>
+        <location filename="Update.cpp" line="510"/>
         <source>Try to download the update once again</source>
         <translation>重新嘗試下載更新檔</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="133"/>
+        <location filename="Update.cpp" line="136"/>
         <source>Contacting GitHub.com...</source>
         <translation>正在連接Github.com...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="75"/>
+        <location filename="Update.cpp" line="77"/>
         <source> (stable only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="75"/>
+        <location filename="Update.cpp" line="77"/>
         <source> (BETA only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="202"/>
+        <location filename="Update.cpp" line="219"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -2219,7 +2219,7 @@ Below are the release notes for the BETA version &quot;%2&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="227"/>
+        <location filename="Update.cpp" line="258"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -2231,35 +2231,48 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="239"/>
-        <location filename="Update.cpp" line="240"/>
+        <location filename="Update.cpp" line="270"/>
+        <location filename="Update.cpp" line="271"/>
         <source>Already running the latest version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="241"/>
+        <location filename="Update.cpp" line="272"/>
         <source>Awesome! You are already running the latest available version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="266"/>
-        <location filename="Update.cpp" line="267"/>
+        <location filename="Update.cpp" line="297"/>
+        <location filename="Update.cpp" line="298"/>
         <source>Cancel the download</source>
         <translation>取消下載</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="304"/>
-        <location filename="Update.cpp" line="305"/>
+        <location filename="Update.cpp" line="335"/>
+        <location filename="Update.cpp" line="336"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation>已取消下載: 點選以重新嘗試下載更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="342"/>
+        <location filename="Update.cpp" line="373"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation>%2 bytes之中已下載 %1 bytes (%p%)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="494"/>
+        <location filename="Update.cpp" line="448"/>
+        <source>Download successful. Click the button above to open the directory where the file has been downloaded.
+
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="460"/>
+        <location filename="Update.cpp" line="461"/>
+        <source>Show the ZIP file in Windows Explorer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Update.cpp" line="553"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
         <translation>無法開始更新，重試前請確認防火牆與防毒軟體未封鎖本程式。</translation>
     </message>
@@ -2273,34 +2286,34 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
     </message>
     <message>
         <location filename="Utils.cpp" line="149"/>
-        <location filename="Utils.cpp" line="776"/>
+        <location filename="Utils.cpp" line="782"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="463"/>
+        <location filename="Utils.cpp" line="469"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>無法找到內部檔案e &quot;%1&quot; 。請回報給開發者並提供bug產生步驟。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="483"/>
-        <location filename="Utils.cpp" line="516"/>
-        <location filename="Utils.cpp" line="609"/>
+        <location filename="Utils.cpp" line="489"/>
+        <location filename="Utils.cpp" line="522"/>
+        <location filename="Utils.cpp" line="615"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="770"/>
+        <location filename="Utils.cpp" line="776"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="771"/>
+        <location filename="Utils.cpp" line="777"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="785"/>
+        <location filename="Utils.cpp" line="791"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2309,18 +2322,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1335"/>
+        <location filename="Utils.cpp" line="1341"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1437"/>
-        <location filename="Utils.cpp" line="1461"/>
+        <location filename="Utils.cpp" line="1443"/>
+        <location filename="Utils.cpp" line="1467"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1455"/>
+        <location filename="Utils.cpp" line="1461"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
@@ -2380,87 +2393,98 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="180"/>
+        <location filename="WelcomeScreen.cpp" line="166"/>
+        <source>You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:</source>
+        <oldsource>You can consult the list of incoming features and enhancements and ask for new features requests by clicking the button below:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="176"/>
         <source>Known issues</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="194"/>
+        <location filename="WelcomeScreen.cpp" line="178"/>
+        <source>You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="188"/>
         <source>User guide and tutorials</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="196"/>
-        <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="WelcomeScreen.cpp" line="304"/>
+        <location filename="WelcomeScreen.cpp" line="310"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="324"/>
-        <location filename="WelcomeScreen.cpp" line="367"/>
-        <location filename="WelcomeScreen.cpp" line="408"/>
+        <location filename="WelcomeScreen.cpp" line="330"/>
+        <location filename="WelcomeScreen.cpp" line="373"/>
+        <location filename="WelcomeScreen.cpp" line="414"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="329"/>
+        <location filename="WelcomeScreen.cpp" line="335"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="340"/>
+        <location filename="WelcomeScreen.cpp" line="346"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="350"/>
+        <location filename="WelcomeScreen.cpp" line="356"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="373"/>
+        <location filename="WelcomeScreen.cpp" line="379"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="384"/>
+        <location filename="WelcomeScreen.cpp" line="390"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="429"/>
+        <location filename="WelcomeScreen.cpp" line="435"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="379"/>
+        <location filename="WelcomeScreen.cpp" line="385"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="391"/>
+        <location filename="WelcomeScreen.cpp" line="190"/>
+        <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="397"/>
         <source>You are running a developer version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="413"/>
+        <location filename="WelcomeScreen.cpp" line="419"/>
         <source>No BETA version found on GitHub.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="418"/>
+        <location filename="WelcomeScreen.cpp" line="424"/>
         <source>No newer BETA version is currently available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="423"/>
+        <location filename="WelcomeScreen.cpp" line="429"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>

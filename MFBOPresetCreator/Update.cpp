@@ -2,6 +2,8 @@
 #include "ComponentFactory.h"
 #include "Utils.h"
 #include <QApplication>
+#include <QDesktopServices>
+#include <QFileInfo>
 #include <QLabel>
 #include <QNetworkRequest>
 #include <QProcess>
@@ -41,8 +43,8 @@ void Update::closeEvent(QCloseEvent*)
     this->cancelCurrentDownload();
   }
 
-  // Clear the downloaded file since the user did not ask to install the update
-  if (QFile::exists(this->mSaveFilePath))
+  // Clear the downloaded file since the user did not ask to install the update (but ignore the standalone case)
+  if (QFile::exists(this->mSaveFilePath) && !Utils::IsRunningStandaloneVersion())
   {
     QFile::remove(this->mSaveFilePath);
   }
@@ -99,6 +101,7 @@ void Update::initializeGUI()
   // Fetch status
   auto lFetchStatus{new QLabel(this)};
   lFetchStatus->setObjectName(QString("fetch_status"));
+  lFetchStatus->setWordWrap(true);
   lFetchStatus->hide();
   this->layout()->addWidget(lFetchStatus);
 
@@ -117,7 +120,7 @@ void Update::overrideHTMLLinksColor(QString& aHTMLString)
   }
 
   // Hacky links' colors override for some themes
-  auto lLinksColorOverride{this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985")};
+  const auto lLinksColorOverride{this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985")};
 
   // Go through the string to find the link colors
   auto i{0};
@@ -184,7 +187,14 @@ void Update::displayUpdateMessage(const QString& aResult)
     {
       lUseStableVersionNotes = false;
 
-      this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestBetaVersionNumber());
+      if (Utils::IsRunningStandaloneVersion())
+      {
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.zip").arg(lVersionsInformation.getLatestBetaVersionNumber());
+      }
+      else
+      {
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestBetaVersionNumber());
+      }
 
       // A new beta version is available
       QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
@@ -196,8 +206,15 @@ void Update::displayUpdateMessage(const QString& aResult)
       this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
       auto lVersionFileName = lVersionsInformation.getLatestBetaVersionNumber();
-      lVersionFileName.replace(".", "-");
-      this->mSaveFilePath = QString("%1/mfbopc-wizard-beta-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+      if (Utils::IsRunningStandaloneVersion())
+      {
+        this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+      }
+      else
+      {
+        lVersionFileName.replace(".", "-");
+        this->mSaveFilePath = QString("%1/mfbopc-wizard-beta-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+      }
       Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new BETA version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the BETA version \"%2\":")
                               .arg(lCurrentVersion)
@@ -209,7 +226,14 @@ void Update::displayUpdateMessage(const QString& aResult)
     {
       lUseStableVersionNotes = true;
 
-      this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestStableVersionNumber());
+      if (Utils::IsRunningStandaloneVersion())
+      {
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.zip").arg(lVersionsInformation.getLatestStableVersionNumber());
+      }
+      else
+      {
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/mfbopc-install-wizard.exe").arg(lVersionsInformation.getLatestStableVersionNumber());
+      }
 
       // A new stable version is available
       QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
@@ -221,8 +245,15 @@ void Update::displayUpdateMessage(const QString& aResult)
       this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
       auto lVersionFileName = lVersionsInformation.getLatestStableVersionNumber();
-      lVersionFileName.replace(".", "-");
-      this->mSaveFilePath = QString("%1/mfbopc-wizard-stable-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+      if (Utils::IsRunningStandaloneVersion())
+      {
+        this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+      }
+      else
+      {
+        lVersionFileName.replace(".", "-");
+        this->mSaveFilePath = QString("%1/mfbopc-wizard-stable-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+      }
       Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the stable version \"%2\":")
                               .arg(lCurrentVersion)
@@ -414,32 +445,60 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
   auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
+  auto lStandaloneSuccessText{tr("Download successful. Click the button above to open the directory where the file has been downloaded.\n\n")};
   auto lSuccessText{tr("Download successful. Click the button above to start updating MFBOPC.\nMake sure that you saved everything before starting the update as the application will be closed!\n\n")};
   auto lErrorText{tr("An error has occurred while downloading the update.\nPlease make sure your internet connection is working correctly and try again.\n\n")};
 
   if (aResult)
   {
-    // The app has been downloaded
-    QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
-    lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
-    lSearchButton->setIconSize(QSize(32, 32));
-    lSearchButton->setText(tr("Close MFBOPC and install the update"));
-    lSearchButton->setToolTip(tr("Close MFBOPC and install the update"));
-
-    // Display an success message in the status label
-    auto lStatusText{lFetchStatus->text()};
-    if (lStatusText.startsWith(lErrorText))
+    if (Utils::IsRunningStandaloneVersion())
     {
-      lStatusText.replace(lErrorText, lSuccessText);
-      lFetchStatus->setText(lStatusText);
-    }
-    else if (!lStatusText.startsWith(lSuccessText))
-    {
-      lStatusText.prepend(lSuccessText);
-      lFetchStatus->setText(lStatusText);
-    }
+      // The app has been downloaded
+      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/folder" : ":/black/folder"};
+      lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
+      lSearchButton->setIconSize(QSize(32, 32));
+      lSearchButton->setText(tr("Show the ZIP file in Windows Explorer"));
+      lSearchButton->setToolTip(tr("Show the ZIP file in Windows Explorer"));
 
-    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+      // Display an success message in the status label
+      auto lStatusText{lFetchStatus->text()};
+      if (lStatusText.startsWith(lErrorText))
+      {
+        lStatusText.replace(lErrorText, lStandaloneSuccessText);
+        lFetchStatus->setText(lStatusText);
+      }
+      else if (!lStatusText.startsWith(lStandaloneSuccessText))
+      {
+        lStatusText.prepend(lStandaloneSuccessText);
+        lFetchStatus->setText(lStatusText);
+      }
+
+      this->connect(lSearchButton, &QPushButton::clicked, this, &Update::openStandaloneOutputDirectory);
+    }
+    else
+    {
+      // The app has been downloaded
+      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
+      lSearchButton->setIcon(QIcon(QPixmap(lPath).scaledToHeight(32, Qt::SmoothTransformation)));
+      lSearchButton->setIconSize(QSize(32, 32));
+      lSearchButton->setText(tr("Close MFBOPC and install the update"));
+      lSearchButton->setToolTip(tr("Close MFBOPC and install the update"));
+
+      // Display an success message in the status label
+      auto lStatusText{lFetchStatus->text()};
+      if (lStatusText.startsWith(lErrorText))
+      {
+        lStatusText.replace(lErrorText, lSuccessText);
+        lFetchStatus->setText(lStatusText);
+      }
+      else if (!lStatusText.startsWith(lSuccessText))
+      {
+        lStatusText.prepend(lSuccessText);
+        lFetchStatus->setText(lStatusText);
+      }
+
+      this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+    }
   }
   else
   {
@@ -495,4 +554,9 @@ void Update::installLatestUpdate()
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
     lSearchButton->setDisabled(false);
   }
+}
+
+void Update::openStandaloneOutputDirectory()
+{
+  QDesktopServices::openUrl(QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)));
 }

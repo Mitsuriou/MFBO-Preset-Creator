@@ -163,37 +163,31 @@ void WelcomeScreen::initializeGUI()
   /*===================*/
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.font.size));
 
-  auto lIncomingFeaturesText{QString("<p style='padding: 0px; margin: 0px;'>"
-                                     "<span>Batch Conversion tool.</span><br />"
-                                     "<span>Better textures assistant.</span>"
-                                     "<span>CBBE-based hands and feet: version number selector.</span>"
-                                     "</p>")};
+  auto lIncomingFeaturesLabel{new QLabel(tr("You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:"), this)};
+  lIncomingFeaturesLabel->setWordWrap(true);
+  lMainLayout->addWidget(lIncomingFeaturesLabel);
 
-  auto lIncomingFeatures{new QLabel(this)};
-  lIncomingFeatures->setTextFormat(Qt::RichText);
-  lIncomingFeatures->setText(lIncomingFeaturesText);
-  lMainLayout->addWidget(lIncomingFeatures);
+  auto lOpenIncomingFeatures{ComponentFactory::CreateButton(this, "Incoming features list (github.com)", "", "external", lIconFolder, "", false, true)};
+  lMainLayout->addWidget(lOpenIncomingFeatures);
 
   /*==============*/
   /* Known issues */
   /*==============*/
   lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.font.size));
 
-  auto lKnownIssuesText{QString("<p style='padding: 0px; margin: 0px;'>"
-                                "<span>Collapsing a groupbox on a small resolution window makes the GUI blink.</span>"
-                                "</p>")};
+  auto lKnownIssuesLabel{new QLabel(tr("You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:"), this)};
+  lKnownIssuesLabel->setWordWrap(true);
+  lMainLayout->addWidget(lKnownIssuesLabel);
 
-  auto lKnownIssues{new QLabel(this)};
-  lKnownIssues->setTextFormat(Qt::RichText);
-  lKnownIssues->setText(lKnownIssuesText);
-  lMainLayout->addWidget(lKnownIssues);
+  auto lOpenKnownIssues{ComponentFactory::CreateButton(this, "Known issues list (github.com)", "", "external", lIconFolder, "", false, true)};
+  lMainLayout->addWidget(lOpenKnownIssues);
 
   /*=====================*/
   /* Guide and tutorials */
   /*=====================*/
   lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.font.size));
 
-  auto lGuideLabel{new QLabel(tr("Whether it is your first time using the application or you're wondering how a particular feature works, you should check the user guide and detailed tutorials by cliking the link below:"), this)};
+  auto lGuideLabel{new QLabel(tr("Whether it is your first time using the application or you're wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:"), this)};
   lGuideLabel->setWordWrap(true);
   lMainLayout->addWidget(lGuideLabel);
 
@@ -205,6 +199,8 @@ void WelcomeScreen::initializeGUI()
   /*===============*/
   this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
   this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
+  this->connect(lOpenIncomingFeatures, &QPushButton::clicked, this, &WelcomeScreen::openIncomingFeatures);
+  this->connect(lOpenKnownIssues, &QPushButton::clicked, this, &WelcomeScreen::openKnownIssues);
   this->connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeScreen::openGoogleDriveGuide);
 }
 
@@ -261,6 +257,16 @@ void WelcomeScreen::launchUpdateDialog()
     new Update(this->parentWidget(), this->mSettings, false, true);
     this->close();
   }
+}
+
+void WelcomeScreen::openIncomingFeatures()
+{
+  QDesktopServices::openUrl(QUrl("https://github.com/Mitsuriou/MFBO-Preset-Creator/issues?q=is%3Aissue+is%3Aopen+-label%3Abug"));
+}
+
+void WelcomeScreen::openKnownIssues()
+{
+  QDesktopServices::openUrl(QUrl("https://github.com/Mitsuriou/MFBO-Preset-Creator/issues?q=is%3Aissue+is%3Aopen+label%3Abug"));
 }
 
 void WelcomeScreen::openGoogleDriveGuide()
