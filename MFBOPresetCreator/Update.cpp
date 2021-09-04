@@ -26,6 +26,11 @@ Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool a
   this->setWindowProperties();
   this->initializeGUI();
 
+  // Prepare the taskbar download status
+  this->mTaskbarAppButton = new QWinTaskbarButton(aParent);
+  this->mTaskbarAppButton->setWindow(aParent->windowHandle());
+  this->mTaskbarProgressBar = mTaskbarAppButton->progress();
+
   // Show the window when it's completely built
   this->adjustSize();
   this->show();
@@ -33,6 +38,12 @@ Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool a
   // Search for updates instantly
   auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   lSearchButton->click();
+}
+
+Update::~Update()
+{
+  delete this->mTaskbarProgressBar; // Delete the progress bar first
+  delete this->mTaskbarAppButton;
 }
 
 void Update::closeEvent(QCloseEvent*)
@@ -293,6 +304,11 @@ void Update::displayUpdateMessage(const QString& aResult)
 
 void Update::downloadLatestUpdate()
 {
+  // Show and make the application button in statusbar become green+indeterminate
+  this->mTaskbarProgressBar->show();
+  this->mTaskbarProgressBar->resume();
+  this->mTaskbarProgressBar->setRange(0, 0);
+
   auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   lSearchButton->setText(tr("Cancel the download"));
   lSearchButton->setToolTip(tr("Cancel the download"));
@@ -323,9 +339,14 @@ void Update::downloadLatestUpdate()
   this->mHasDownloadBeenCanceled = false;
 
   this->mReply = this->mManager.get(QNetworkRequest(QUrl(this->mDownloadURL)));
+
+  // Show and make the application button in statusbar become green empty
+  this->mTaskbarProgressBar->setRange(0, 100);
+  this->mTaskbarProgressBar->setValue(1);
+
   this->connect(this->mReply, &QNetworkReply::readyRead, this, &Update::fileChunkReceived);
-  this->connect(mReply, &QNetworkReply::downloadProgress, this, &Update::chunkSizeUpdated);
-  this->connect(mReply, &QNetworkReply::finished, this, &Update::fileDownloadEnded);
+  this->connect(this->mReply, &QNetworkReply::downloadProgress, this, &Update::chunkSizeUpdated);
+  this->connect(this->mReply, &QNetworkReply::finished, this, &Update::fileDownloadEnded);
 }
 
 void Update::cancelCurrentDownload()
@@ -342,6 +363,9 @@ void Update::cancelCurrentDownload()
   // Cancel the currently running download process
   this->mHasDownloadBeenCanceled = true;
   this->mReply->abort();
+
+  // Make the application button in statusbar become red
+  this->mTaskbarProgressBar->stop();
 }
 
 void Update::fileChunkReceived()
@@ -361,16 +385,20 @@ void Update::chunkSizeUpdated(qint64 aBytesRead, qint64 aTotal)
 
   auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
 
-  // Show the bar only if a relevant download has started
+  // Show and update the bar only if a relevant download has started
   if (aTotal > 200000) // 0.20MB
   {
     lDownloadProgressBar->show();
-  }
 
-  // Change the value displayed on the progress bar
-  lDownloadProgressBar->setValue(aBytesRead);
-  lDownloadProgressBar->setMaximum(aTotal);
-  lDownloadProgressBar->setFormat(tr("%1 bytes out of %2 bytes (%p%)").arg(QString::number(aBytesRead)).arg(QString::number(aTotal)));
+    // Change the value displayed on the progress bar
+    lDownloadProgressBar->setValue(aBytesRead);
+    lDownloadProgressBar->setMaximum(aTotal);
+    lDownloadProgressBar->setFormat(tr("%1 bytes out of %2 bytes (%p%)").arg(QString::number(aBytesRead)).arg(QString::number(aTotal)));
+
+    // Show and make the application button in statusbar become green empty
+    this->mTaskbarProgressBar->setRange(0, aTotal);
+    this->mTaskbarProgressBar->setValue(aBytesRead);
+  }
 }
 
 void Update::fileDownloadEnded()
@@ -498,6 +526,9 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
       }
 
       this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+
+      // Hide the application button in statusbar
+      this->mTaskbarProgressBar->hide();
     }
   }
   else
@@ -521,6 +552,9 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
       lStatusText.prepend(lErrorText);
       lFetchStatus->setText(lStatusText);
     }
+
+    // Make the application button in statusbar become red
+    this->mTaskbarProgressBar->stop();
 
     this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
   }

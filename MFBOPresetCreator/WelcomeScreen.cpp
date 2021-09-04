@@ -167,7 +167,7 @@ void WelcomeScreen::initializeGUI()
   lIncomingFeaturesLabel->setWordWrap(true);
   lMainLayout->addWidget(lIncomingFeaturesLabel);
 
-  auto lOpenIncomingFeatures{ComponentFactory::CreateButton(this, "Incoming features list (github.com)", "", "external", lIconFolder, "", false, true)};
+  auto lOpenIncomingFeatures{ComponentFactory::CreateButton(this, tr("Incoming features list (github.com)"), "", "external", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lOpenIncomingFeatures);
 
   /*==============*/
@@ -179,7 +179,7 @@ void WelcomeScreen::initializeGUI()
   lKnownIssuesLabel->setWordWrap(true);
   lMainLayout->addWidget(lKnownIssuesLabel);
 
-  auto lOpenKnownIssues{ComponentFactory::CreateButton(this, "Known issues list (github.com)", "", "external", lIconFolder, "", false, true)};
+  auto lOpenKnownIssues{ComponentFactory::CreateButton(this, tr("Known issues list (github.com)"), "", "external", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lOpenKnownIssues);
 
   /*=====================*/
@@ -191,7 +191,7 @@ void WelcomeScreen::initializeGUI()
   lGuideLabel->setWordWrap(true);
   lMainLayout->addWidget(lGuideLabel);
 
-  auto lOpenGuideTutorials{ComponentFactory::CreateButton(this, "User guide and tutorials (docs.google.com)", "", "external", lIconFolder, "", false, true)};
+  auto lOpenGuideTutorials{ComponentFactory::CreateButton(this, tr("User guide and tutorials (docs.google.com)"), "", "external", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lOpenGuideTutorials);
 
   /*===============*/
