@@ -313,12 +313,12 @@ void BatchConversion::setupRemainingGUI(QGridLayout& aLayout)
   lScanTweaksGridLayout->setAlignment(Qt::AlignTop);
 
   // Soft search selector
-  auto lSoftSearch{new QRadioButton(tr("Lite search (smartly detect the most common files - can be imperfect)"), this)};
+  auto lSoftSearch{new QRadioButton(tr("Smart search (only files with a name matching a certain pattern are listed)"), this)};
   lSoftSearch->setCursor(Qt::PointingHandCursor);
   lSoftSearch->setObjectName(QString("scan_soft_search"));
   lScanTweaksGridLayout->addWidget(lSoftSearch);
 
-  auto lHeavierSearch{new QRadioButton(tr("Advanced search (detect every single .nif file)"), this)};
+  auto lHeavierSearch{new QRadioButton(tr("Advanced search (every single .nif file is listed)"), this)};
   lHeavierSearch->setCursor(Qt::PointingHandCursor);
   lHeavierSearch->setObjectName(QString("scan_advanced_search"));
   lScanTweaksGridLayout->addWidget(lHeavierSearch);
@@ -473,7 +473,7 @@ void BatchConversion::launchBatchGenerationProcess()
   auto lKey{QString()};
   auto lSecondArgument{QString()};
 
-  auto lHeavierSearchEnabled{this->findChild<QCheckBox*>(QString("scan_soft_search"))};
+  auto lHeavierSearchEnabled{this->findChild<QRadioButton*>(QString("scan_advanced_search"))->isChecked()};
   auto lMeshesFilesToFind{QStringList({"femalebody_0.nif",
                                        "femalebody_1.nif",
                                        "femalehands_0.nif",

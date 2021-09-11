@@ -27,5 +27,5 @@ private:
   QString mOriginFolder;
   QString mRessourcePath;
 
-  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = "", const QString& aNewRessourceText = "");
+  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = QString(""), const QString& aNewRessourceText = QString(""));
 };

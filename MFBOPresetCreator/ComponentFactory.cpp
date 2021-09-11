@@ -53,37 +53,46 @@ QPushButton* ComponentFactory::CreateButton(
   return lButton;
 }
 
-QGridLayout* ComponentFactory::CreateScrollAreaWindowLayout(QWidget* aParent, const bool aMustForceLayoutTopAlignment, const bool aGenerateButtonsBottomLayout)
+QGridLayout* ComponentFactory::CreateScrollAreaWindowLayout(QWidget* aParent,
+                                                            const bool aMustForceLayoutTopAlignment,
+                                                            const bool aGenerateButtonsBottomLayout,
+                                                            QVBoxLayout* aParentLayout,
+                                                            const QString& aScrollAreaObjectName,
+                                                            const QMargins& aNestedLayoutMargins,
+                                                            const QString& aNestedLayoutObjectName)
 {
-  // Very first container in which the scroll area will be added
-  auto lBaseLayout{new QVBoxLayout(aParent)};
-  lBaseLayout->setContentsMargins(0, 0, 0, 0);
+  if (aParentLayout == nullptr)
+  {
+    // Very first container in which the scroll area will be added
+    aParentLayout = new QVBoxLayout(aParent);
+    aParentLayout->setContentsMargins(0, 0, 0, 0);
+  }
 
   // Create a scroll area
   auto lScrollArea{new QScrollArea(aParent)};
-  lScrollArea->setObjectName(QString("scrollable_zone"));
+  lScrollArea->setObjectName(aScrollAreaObjectName);
   lScrollArea->setContentsMargins(0, 0, 0, 0);
   lScrollArea->setWidgetResizable(true);
-  // Remove the borders of the scroll area
   lScrollArea->setStyleSheet("QScrollArea{border: none;}");
 
   // Add a QFrame to permit automatic expanding of the content inside the scroll area
-  auto lMainWidget{new QFrame(aParent)};
+  auto lScrollAreaWidgetContent{new QFrame(lScrollArea)};
 
   // Main container
-  auto lMainLayout{new QGridLayout(lMainWidget)};
-  lMainLayout->setObjectName(QString("main_layout"));
-  lMainLayout->setSpacing(10);
-  lMainLayout->setContentsMargins(10, 10, 10, 10);
+  auto lNestedLayout{new QGridLayout(lScrollAreaWidgetContent)};
+  lNestedLayout->setObjectName(aNestedLayoutObjectName);
+  lNestedLayout->setSpacing(10);
+  lNestedLayout->setContentsMargins(aNestedLayoutMargins);
   if (aMustForceLayoutTopAlignment)
   {
-    lMainLayout->setAlignment(Qt::AlignTop);
+    lNestedLayout->setAlignment(Qt::AlignTop);
   }
 
-  lScrollArea->setWidget(lMainWidget);
-  lBaseLayout->addWidget(lScrollArea);
+  lScrollAreaWidgetContent->setLayout(lNestedLayout);
+  lScrollArea->setWidget(lScrollAreaWidgetContent);
+  aParentLayout->addWidget(lScrollArea);
 
-  // Button layout
+  // Bottom layout for buttons
   if (aGenerateButtonsBottomLayout)
   {
     auto lButtonLayout{new QHBoxLayout(aParent)};
@@ -91,10 +100,10 @@ QGridLayout* ComponentFactory::CreateScrollAreaWindowLayout(QWidget* aParent, co
     lButtonLayout->setSpacing(10);
     lButtonLayout->setContentsMargins(10, 0, 10, 10);
     lButtonLayout->setAlignment(Qt::AlignTop);
-    lBaseLayout->addLayout(lButtonLayout);
+    aParentLayout->addLayout(lButtonLayout);
   }
 
-  return lMainLayout;
+  return lNestedLayout;
 }
 
 QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)

@@ -178,7 +178,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   // FONT FAMILY
   lTabLayout->addWidget(new QLabel(QString("* " + tr("Font:")), this), 4, 0);
 
-  auto lFontChooser{ComponentFactory::CreateButton(this, tr("Choose a font"), "", "text", lIconFolder, "font_chooser", false, true)};
+  auto lFontChooser{ComponentFactory::CreateButton(this, tr("Change font properties"), "", "text", lIconFolder, "font_chooser", false, true)};
   lTabLayout->addWidget(lFontChooser, 5, 0);
 
   // WINDOW WIDTH

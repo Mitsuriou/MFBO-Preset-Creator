@@ -112,33 +112,33 @@ void BatchConversionPicker::initializeGUI()
   // Paths list
   auto lLeftList{new QListWidget(this)};
   lLeftList->setObjectName(QString("left_list"));
-  lLeftList->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-  lLeftList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
   lLeftLayout->addWidget(lLeftList);
 
   /*=============*/
   /* Middle list */
   /*=============*/
-  // Layout (the BCDragWidget components will be directly in this layout)
-  auto lMiddleList{new QVBoxLayout(this)};
-  lMiddleList->setAlignment(Qt::AlignTop);
-  lMiddleList->setObjectName(QString("middle_list"));
+  // Layout
+  auto lMiddleLayout{new QVBoxLayout(this)};
+  lMiddleLayout->setAlignment(Qt::AlignTop);
 
   // Wrapper widget
   auto lMiddleWrapper{new QWidget(this)};
-  lMiddleWrapper->setLayout(lMiddleList);
+  lMiddleWrapper->setLayout(lMiddleLayout);
   lSplitter->addWidget(lMiddleWrapper);
 
   // Title
   auto lMiddleTitle{new QLabel(tr("Available data (drag these entries)"))};
   lMiddleTitle->setAlignment(Qt::AlignCenter);
-  lMiddleList->addWidget(lMiddleTitle);
+  lMiddleLayout->addWidget(lMiddleTitle);
 
   // Label for the "no data available" case
   auto lNoDataLabel{new QLabel(tr("No data available for the selected origin directory"), this)};
   lNoDataLabel->setObjectName(QString("no_data_label"));
   lNoDataLabel->hide();
-  lMiddleList->addWidget(lNoDataLabel);
+  lMiddleLayout->addWidget(lNoDataLabel);
+
+  // Create the middle list scroll area + list which will contain all the available data entries
+  ComponentFactory::CreateScrollAreaWindowLayout(this, true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
 
   /*============*/
   /* Right list */
@@ -330,7 +330,7 @@ void BatchConversionPicker::displayLeftList()
 void BatchConversionPicker::refreshMiddleList()
 {
   // Delete all children of the middle list
-  auto lOptionsList{this->findChild<QVBoxLayout*>(QString("middle_list"))};
+  auto lOptionsList{this->findChild<QGridLayout*>(QString("middle_list"))};
 
   const auto lButtonsListSize{static_cast<int>(this->mMiddleListButtons.size())};
   for (int i = 0; i < lButtonsListSize; i++)
