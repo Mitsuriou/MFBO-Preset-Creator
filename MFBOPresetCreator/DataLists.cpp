@@ -36,7 +36,7 @@ QStringList DataLists::GetVersionsFromBodyName(const BodyName& aBody)
     case BodyName::BHUNP_BBP_ADVANCED:
     case BodyName::BHUNP_TBBP:
     case BodyName::BHUNP_TBBP_ADVANCED:
-      lBodies = QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.37")});
+      lBodies = QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.38")});
       break;
     case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
       lBodies = QStringList({QString("2.25"), QString("2.30")});
