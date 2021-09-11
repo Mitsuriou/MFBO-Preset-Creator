@@ -294,12 +294,14 @@
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="316"/>
-        <source>Lite search (smartly detect the most common files - can be imperfect)</source>
+        <source>Smart search (only files with a name matching a certain pattern are listed)</source>
+        <oldsource>Smart search (only files with a name matching a certain pattern are listed) - recommended</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="321"/>
-        <source>Advanced search (detect every single .nif file)</source>
+        <source>Advanced search (every single .nif file is listed)</source>
+        <oldsource>Advanced search (detect every single .nif file)</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -396,12 +398,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="133"/>
+        <location filename="BatchConversionPicker.cpp" line="130"/>
         <source>Available data (drag these entries)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="138"/>
+        <location filename="BatchConversionPicker.cpp" line="135"/>
         <source>No data available for the selected origin directory</source>
         <oldsource>No data available for the selected origin folder</oldsource>
         <translation type="unfinished"></translation>
@@ -590,37 +592,37 @@
 <context>
     <name>ComponentFactory</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="125"/>
+        <location filename="ComponentFactory.cpp" line="134"/>
         <source>Files generation&apos;s output location</source>
         <translation>輸出檔案設定</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="143"/>
+        <location filename="ComponentFactory.cpp" line="152"/>
         <source>Output directory path:</source>
         <translation>輸出資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="155"/>
+        <location filename="ComponentFactory.cpp" line="164"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="159"/>
+        <location filename="ComponentFactory.cpp" line="168"/>
         <source>Output subdirectory name/path:</source>
         <translation>輸出子資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="166"/>
+        <location filename="ComponentFactory.cpp" line="175"/>
         <source>Use only subdirectory path?</source>
         <translation>使用子資料夾路徑?</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="168"/>
+        <location filename="ComponentFactory.cpp" line="177"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk).</source>
         <translation>勾選此欄以輸出檔案於子資料夾路徑(風險自負)。</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="174"/>
+        <location filename="ComponentFactory.cpp" line="183"/>
         <source>Preview:</source>
         <translation>預覽:</translation>
     </message>
@@ -694,13 +696,13 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="72"/>
-        <location filename="MFBOPresetCreator.cpp" line="684"/>
+        <location filename="MFBOPresetCreator.cpp" line="683"/>
         <source>Go back to the application</source>
         <translation>回到應用程式</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="685"/>
+        <location filename="MFBOPresetCreator.cpp" line="684"/>
         <source>Save the project and quit the application</source>
         <translation>儲存專案並關閉應用程式</translation>
     </message>
@@ -736,7 +738,7 @@
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="202"/>
-        <location filename="MFBOPresetCreator.cpp" line="679"/>
+        <location filename="MFBOPresetCreator.cpp" line="678"/>
         <source>Quick restart</source>
         <translation>快速重啟</translation>
     </message>
@@ -756,37 +758,37 @@
         <translation>批次轉換</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="220"/>
+        <location filename="MFBOPresetCreator.cpp" line="219"/>
         <source>Textures Assistant</source>
         <translation>貼圖(Textures)助手</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="224"/>
+        <location filename="MFBOPresetCreator.cpp" line="223"/>
         <source>Assisted Conversion</source>
         <translation>輔助轉換</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="228"/>
+        <location filename="MFBOPresetCreator.cpp" line="227"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>重定向BodySlide檔案</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="234"/>
+        <location filename="MFBOPresetCreator.cpp" line="233"/>
         <source> (stable update available)</source>
         <translation> (有可用的正式版更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="236"/>
+        <location filename="MFBOPresetCreator.cpp" line="235"/>
         <source> (BETA update available)</source>
         <translation> (有可用的BETA更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="566"/>
+        <location filename="MFBOPresetCreator.cpp" line="565"/>
         <source>BETA update available</source>
         <translation>有可用的BETA更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="567"/>
+        <location filename="MFBOPresetCreator.cpp" line="566"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -794,12 +796,12 @@ Do you want to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="575"/>
+        <location filename="MFBOPresetCreator.cpp" line="574"/>
         <source>Stable update available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="576"/>
+        <location filename="MFBOPresetCreator.cpp" line="575"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -811,52 +813,52 @@ Do you want to download it now?</source>
         <translation type="vanished"> (有可用的Beta更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="238"/>
+        <location filename="MFBOPresetCreator.cpp" line="237"/>
         <source>Help</source>
         <translation>幫助</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="243"/>
+        <location filename="MFBOPresetCreator.cpp" line="242"/>
         <source>Check for updates</source>
         <translation>檢查更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="247"/>
+        <location filename="MFBOPresetCreator.cpp" line="246"/>
         <source>Current version&apos;s release notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="251"/>
+        <location filename="MFBOPresetCreator.cpp" line="250"/>
         <source>Report a bug...</source>
         <translation>回報Bug...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="261"/>
+        <location filename="MFBOPresetCreator.cpp" line="260"/>
         <source>GitHub (github.com)</source>
         <translation>GitHub (github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="265"/>
+        <location filename="MFBOPresetCreator.cpp" line="264"/>
         <source>GitLab (gitlab.com)</source>
         <translation>GitLab (gitlab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="269"/>
+        <location filename="MFBOPresetCreator.cpp" line="268"/>
         <source>Useful links...</source>
         <translation>建議參閱連結...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="279"/>
+        <location filename="MFBOPresetCreator.cpp" line="278"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>使用教學(docs.google.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="283"/>
+        <location filename="MFBOPresetCreator.cpp" line="282"/>
         <source>View the source code (github.com)</source>
         <translation>參考原始碼(github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="287"/>
+        <location filename="MFBOPresetCreator.cpp" line="286"/>
         <source>View the source code (gitlab.com)</source>
         <translation>參考原始碼(gitlab.com)</translation>
     </message>
@@ -865,8 +867,8 @@ Do you want to download it now?</source>
         <translation type="vanished">建議參閱連結</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="257"/>
-        <location filename="MFBOPresetCreator.cpp" line="275"/>
+        <location filename="MFBOPresetCreator.cpp" line="256"/>
+        <location filename="MFBOPresetCreator.cpp" line="274"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <oldsource>Nexus Mods page</oldsource>
         <translation>Nexus Mods 頁面 (nexusmods.com)</translation>
@@ -884,17 +886,17 @@ Do you want to download it now?</source>
         <translation type="vanished">參考原始碼(GitLab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="291"/>
+        <location filename="MFBOPresetCreator.cpp" line="290"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="551"/>
+        <location filename="MFBOPresetCreator.cpp" line="550"/>
         <source>Error while searching for a new update</source>
         <translation>無法搜尋更新檔</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="552"/>
+        <location filename="MFBOPresetCreator.cpp" line="551"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>找不到更新檔...
@@ -927,27 +929,27 @@ Do you want to download it now?</source>
 請問是否下載該版本?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="595"/>
+        <location filename="MFBOPresetCreator.cpp" line="594"/>
         <source>OK</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="607"/>
+        <location filename="MFBOPresetCreator.cpp" line="606"/>
         <source>Download and install the update now</source>
         <translation>立即下載並更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="608"/>
+        <location filename="MFBOPresetCreator.cpp" line="607"/>
         <source>Download later</source>
         <translation>稍後再下載</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="680"/>
+        <location filename="MFBOPresetCreator.cpp" line="679"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>你將失去所有未儲存進度?確定要快速重啟程式?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="683"/>
+        <location filename="MFBOPresetCreator.cpp" line="682"/>
         <source>Quickly restart the application</source>
         <translation>快速重新開啟應用程式</translation>
     </message>
@@ -1612,9 +1614,8 @@ Please make sure your internet connection is working correctly and try again.</s
         <translation>字體:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="181"/>
         <source>Choose a font</source>
-        <translation>選擇字體</translation>
+        <translation type="vanished">選擇字體</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="169"/>
@@ -1632,6 +1633,11 @@ Please make sure your internet connection is working correctly and try again.</s
     <message>
         <source>Français</source>
         <translation type="vanished">法文</translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="181"/>
+        <source>Change font properties</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="185"/>
@@ -2047,9 +2053,9 @@ Would you like to restart the application now (you will lose all unsaved data)?<
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="67"/>
-        <location filename="Update.cpp" line="82"/>
-        <location filename="Update.cpp" line="88"/>
+        <location filename="Update.cpp" line="78"/>
+        <location filename="Update.cpp" line="93"/>
+        <location filename="Update.cpp" line="99"/>
         <source>Check for updates</source>
         <translation>檢查更新</translation>
     </message>
@@ -2058,18 +2064,18 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="vanished">當前運行版本 &quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="97"/>
+        <location filename="Update.cpp" line="108"/>
         <source>Initializing...</source>
         <translation>初始化中...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="171"/>
-        <location filename="Update.cpp" line="172"/>
+        <location filename="Update.cpp" line="182"/>
+        <location filename="Update.cpp" line="183"/>
         <source>Check for updates once again</source>
         <translation>再次檢查更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="174"/>
+        <location filename="Update.cpp" line="185"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>找不到更新檔...
@@ -2092,10 +2098,10 @@ Below are the release notes for the latest stable version:</source>
 以下為正式版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="203"/>
-        <location filename="Update.cpp" line="204"/>
-        <location filename="Update.cpp" line="242"/>
-        <location filename="Update.cpp" line="243"/>
+        <location filename="Update.cpp" line="214"/>
+        <location filename="Update.cpp" line="215"/>
+        <location filename="Update.cpp" line="253"/>
+        <location filename="Update.cpp" line="254"/>
         <source>Download the update</source>
         <translation>下載更新</translation>
     </message>
@@ -2158,7 +2164,7 @@ Below are the release notes for this version:</source>
 以下為此版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="449"/>
+        <location filename="Update.cpp" line="477"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -2169,7 +2175,7 @@ Make sure that you saved everything before starting the update as the applicatio
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="450"/>
+        <location filename="Update.cpp" line="478"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -2180,34 +2186,34 @@ Please make sure your internet connection is working correctly and try again.
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="484"/>
-        <location filename="Update.cpp" line="485"/>
+        <location filename="Update.cpp" line="512"/>
+        <location filename="Update.cpp" line="513"/>
         <source>Close MFBOPC and install the update</source>
         <translation>關閉MFBOPC程式並開始更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="509"/>
-        <location filename="Update.cpp" line="510"/>
+        <location filename="Update.cpp" line="540"/>
+        <location filename="Update.cpp" line="541"/>
         <source>Try to download the update once again</source>
         <translation>重新嘗試下載更新檔</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="136"/>
+        <location filename="Update.cpp" line="147"/>
         <source>Contacting GitHub.com...</source>
         <translation>正在連接Github.com...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="77"/>
+        <location filename="Update.cpp" line="88"/>
         <source> (stable only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="77"/>
+        <location filename="Update.cpp" line="88"/>
         <source> (BETA only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="219"/>
+        <location filename="Update.cpp" line="230"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -2219,7 +2225,7 @@ Below are the release notes for the BETA version &quot;%2&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="258"/>
+        <location filename="Update.cpp" line="269"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -2231,48 +2237,48 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="270"/>
-        <location filename="Update.cpp" line="271"/>
+        <location filename="Update.cpp" line="281"/>
+        <location filename="Update.cpp" line="282"/>
         <source>Already running the latest version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="272"/>
+        <location filename="Update.cpp" line="283"/>
         <source>Awesome! You are already running the latest available version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="297"/>
-        <location filename="Update.cpp" line="298"/>
+        <location filename="Update.cpp" line="313"/>
+        <location filename="Update.cpp" line="314"/>
         <source>Cancel the download</source>
         <translation>取消下載</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="335"/>
-        <location filename="Update.cpp" line="336"/>
+        <location filename="Update.cpp" line="356"/>
+        <location filename="Update.cpp" line="357"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation>已取消下載: 點選以重新嘗試下載更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="373"/>
+        <location filename="Update.cpp" line="396"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation>%2 bytes之中已下載 %1 bytes (%p%)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="448"/>
+        <location filename="Update.cpp" line="476"/>
         <source>Download successful. Click the button above to open the directory where the file has been downloaded.
 
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="460"/>
-        <location filename="Update.cpp" line="461"/>
+        <location filename="Update.cpp" line="488"/>
+        <location filename="Update.cpp" line="489"/>
         <source>Show the ZIP file in Windows Explorer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="553"/>
+        <location filename="Update.cpp" line="587"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
         <translation>無法開始更新，重試前請確認防火牆與防毒軟體未封鎖本程式。</translation>
     </message>
@@ -2399,6 +2405,11 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="WelcomeScreen.cpp" line="170"/>
+        <source>Incoming features list (github.com)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="WelcomeScreen.cpp" line="176"/>
         <source>Known issues</source>
         <translation type="unfinished"></translation>
@@ -2409,9 +2420,19 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="WelcomeScreen.cpp" line="182"/>
+        <source>Known issues list (github.com)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="WelcomeScreen.cpp" line="188"/>
         <source>User guide and tutorials</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="WelcomeScreen.cpp" line="194"/>
+        <source>User guide and tutorials (docs.google.com)</source>
+        <translation type="unfinished">使用教學(docs.google.com)</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="310"/>
