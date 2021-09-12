@@ -354,18 +354,7 @@ void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::
   auto lIt = aScannedData.begin();
   for (lIt; lIt != aScannedData.end(); ++lIt)
   {
-    // Iterate through the list of meshes paths
-    for (const auto& lValue : lIt->second)
-    {
-      auto lRessourceType{Utils::GetMeshTypeFromFileName(lValue)};
-
-      // Check if the ressource if of any useful type
-      if (lRessourceType == BCGroupWidgetCallContext::BODY || lRessourceType == BCGroupWidgetCallContext::FEET || lRessourceType == BCGroupWidgetCallContext::HANDS)
-      {
-        lUsefulDataFound = true;
-        break;
-      }
-    }
+    lUsefulDataFound = Utils::ContainsBodyOrHandsOrFeetMesh(lIt->second);
 
     // If no useful data has been found, delete the current entry from the map
     if (!lUsefulDataFound)

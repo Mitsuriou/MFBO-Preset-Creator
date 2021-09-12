@@ -28,7 +28,7 @@ public:
 
   static void DisplayWarningMessage(const QString& aMessage);
   static ButtonClicked DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
- 
+
   static VersionsInformation ParseGitHubReleasesRequestResult(const QString& aResult);
 
   static int GetNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
@@ -45,6 +45,8 @@ public:
   static QString GetIconRessourceFolder(const GUITheme& aTheme);
 
   static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
+  static bool ContainsBodyOrHandsOrFeetMesh(const std::set<QString>& aList);
+  static bool analyze(const std::set<QString>& aList);
 
   static bool IsCBBEBasedBody(const BodyNameVersion& aBody);
   static bool IsCBBEBasedBody(const BodyName& aBody);

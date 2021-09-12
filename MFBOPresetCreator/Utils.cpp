@@ -426,6 +426,25 @@ BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName
   return BCGroupWidgetCallContext::UNDEFINED;
 }
 
+bool Utils::ContainsBodyOrHandsOrFeetMesh(const std::set<QString>& aList)
+{
+  auto lRessourceType{BCGroupWidgetCallContext::UNDEFINED};
+
+  // Iterate through the list of meshes paths
+  for (const auto& lValue : aList)
+  {
+    lRessourceType = Utils::GetMeshTypeFromFileName(lValue);
+
+    // Check if the ressource if of any useful type
+    if (lRessourceType == BCGroupWidgetCallContext::BODY || lRessourceType == BCGroupWidgetCallContext::FEET || lRessourceType == BCGroupWidgetCallContext::HANDS)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBody)
 {
   switch (aBody)

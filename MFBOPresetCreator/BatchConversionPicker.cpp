@@ -141,7 +141,7 @@ void BatchConversionPicker::initializeGUI()
   ComponentFactory::CreateScrollAreaWindowLayout(this, true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
 
   // Quick preset creation button
-  auto lQuickPresetCreationButton{ComponentFactory::CreateButton(this, QString("Quick preset creation"), "", "bolt", lIconFolder, "quick_preset_creation", false, true)};
+  auto lQuickPresetCreationButton{ComponentFactory::CreateButton(this, QString("Quick preset creation"), "", "bolt", lIconFolder, "quick_preset_creation", true, true)};
   lMiddleLayout->addWidget(lQuickPresetCreationButton);
 
   /*============*/
@@ -305,6 +305,7 @@ void BatchConversionPicker::initializeGUI()
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
   this->connect(lLeftList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::refreshMiddleList);
+  this->connect(lQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::quickCreatePreset);
 
   this->connect(lPreviousPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToPreviousPreset);
   this->connect(lNextPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToNextPreset);
@@ -348,6 +349,7 @@ void BatchConversionPicker::refreshMiddleList()
   auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
+    auto lQuickPresetCreationButton{this->findChild<QPushButton*>(QString("quick_preset_creation"))};
     auto lNoDataLabel{this->findChild<QLabel*>(QString("no_data_label"))};
     auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
 
@@ -357,17 +359,21 @@ void BatchConversionPicker::refreshMiddleList()
       if (lPosition->second.size() == 0)
       {
         lNoDataLabel->show();
+        lQuickPresetCreationButton->setDisabled(true);
       }
       else
       {
+        lNoDataLabel->hide();
+
+        // Create the BCDragWidget
         for (const auto& lValue : lPosition->second)
         {
-          auto lButton{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
-          this->mMiddleListButtons.push_back(lButton);
-          lOptionsList->addWidget(lButton);
+          auto lDraggableWidget{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
+          this->mMiddleListButtons.push_back(lDraggableWidget);
+          lOptionsList->addWidget(lDraggableWidget);
         }
 
-        lNoDataLabel->hide();
+        lQuickPresetCreationButton->setDisabled(!Utils::analyze(lPosition->second));
       }
     }
   }
