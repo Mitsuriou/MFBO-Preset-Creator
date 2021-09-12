@@ -142,5 +142,8 @@ enum class BCGroupWidgetCallContext
   UNDEFINED,
   BODY,
   FEET,
-  HANDS
+  HANDS,
+  HEAD,
+  EYES,
+  SKELETON
 };

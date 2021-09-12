@@ -192,9 +192,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // Keep backup checkbox
   lBackupGridLayout->addWidget(new QLabel(tr("Keep a backup?"), this), 0, 0);
 
-  auto lKeepBackup{new QCheckBox(tr("You should always check this box to avoid any data loss or corruption."), this)};
-  lKeepBackup->setCursor(Qt::PointingHandCursor);
-  lKeepBackup->setObjectName(QString("keep_backup"));
+  auto lKeepBackup{ComponentFactory::CreateCheckBox(this, tr("You should always check this box to avoid any data loss or corruption"), "", "keep_backup")};
   lBackupGridLayout->addWidget(lKeepBackup, 0, 1, 1, 2);
 
   // Backup directory path

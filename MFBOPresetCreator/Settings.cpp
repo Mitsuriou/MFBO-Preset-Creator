@@ -286,9 +286,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   // Each button stores the last opened path
   lTabLayout->addWidget(new QLabel(tr("Smarter buttons:"), this), 4, 0, 1, 2);
 
-  auto lEachButtonSavesItsLastUsedPath{new QCheckBox(tr("Each directory chooser button stores its own last opened path."), this)};
-  lEachButtonSavesItsLastUsedPath->setCursor(Qt::PointingHandCursor);
-  lEachButtonSavesItsLastUsedPath->setObjectName(QString("each_button_saves_last_path"));
+  auto lEachButtonSavesItsLastUsedPath{ComponentFactory::CreateCheckBox(this, tr("Each directory chooser button stores its own last opened path"), "", "each_button_saves_last_path")};
   lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath, 5, 0);
 
   auto lCheckPathsHistory{ComponentFactory::CreateButton(this, tr("Check/clear my browsing history"), "", "tab", lIconFolder, "", false, true)};
@@ -361,9 +359,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-generation tasks:"), this), 6, 0, 1, 2);
 
-  auto lAutoOpenDirCheckbox{new QCheckBox(tr("Automatically open the generated preset's output directory after a generation."), this)};
-  lAutoOpenDirCheckbox->setCursor(Qt::PointingHandCursor);
-  lAutoOpenDirCheckbox->setObjectName(QString("auto_open_generated_dir"));
+  auto lAutoOpenDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the generated preset's output directory after a generation"), "", "auto_open_generated_dir")};
   lTabLayout->addWidget(lAutoOpenDirCheckbox, 7, 0, 1, 2);
 
   // Event binding
@@ -422,9 +418,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-processing tasks:"), this), 4, 0, 1, 2);
 
-  auto lAutoOpenRetargetedDirCheckbox{new QCheckBox(tr("Automatically open the retargeted directory after the retargeting process succeeded."), this)};
-  lAutoOpenRetargetedDirCheckbox->setCursor(Qt::PointingHandCursor);
-  lAutoOpenRetargetedDirCheckbox->setObjectName(QString("auto_open_retargeted_dir"));
+  auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the retargeted directory after the retargeting process succeeded"), "", "auto_open_retargeted_dir")};
   lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 5, 0, 1, 2);
 
   // Event binding
@@ -450,9 +444,7 @@ void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
   // ONLY SCAN THE MESHES SUBDIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Software' scan behavior:"), this));
 
-  auto lScanOnlyMeshesFolder{new QCheckBox(tr("Only scan the \"meshes\" subdirectory."), this)};
-  lScanOnlyMeshesFolder->setCursor(Qt::PointingHandCursor);
-  lScanOnlyMeshesFolder->setObjectName(QString("assis_conv_only_scan_meshes_dir"));
+  auto lScanOnlyMeshesFolder{ComponentFactory::CreateCheckBox(this, tr("Only scan the \"meshes\" subdirectory"), "", "assis_conv_only_scan_meshes_dir")};
   lTabLayout->addWidget(lScanOnlyMeshesFolder);
 }
 

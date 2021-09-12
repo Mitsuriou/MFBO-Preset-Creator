@@ -53,6 +53,29 @@ QPushButton* ComponentFactory::CreateButton(
   return lButton;
 }
 
+QCheckBox* ComponentFactory::CreateCheckBox(QWidget* aParent, const QString& aText, const QString& aTooltipText, const QString& aObjectName, const bool lIsChecked)
+{
+  // Declare and instanciate the check box
+  auto lCheckBox{new QCheckBox(aText, aParent)};
+  // Mouse cursor
+  lCheckBox->setCursor(Qt::PointingHandCursor);
+  // Tooltip
+  if (!aTooltipText.isEmpty())
+  {
+    lCheckBox->setToolTip(aTooltipText);
+  }
+  else
+  {
+    lCheckBox->setToolTip(aText);
+  }
+  // Object name
+  lCheckBox->setObjectName(aObjectName);
+  // Default check state
+  lCheckBox->setChecked(lIsChecked);
+
+  return lCheckBox;
+}
+
 QGridLayout* ComponentFactory::CreateScrollAreaWindowLayout(QWidget* aParent,
                                                             const bool aMustForceLayoutTopAlignment,
                                                             const bool aGenerateButtonsBottomLayout,
@@ -174,9 +197,7 @@ void ComponentFactory::CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, c
   // Use only subdirectory path
   lOutputGridLayout->addWidget(new QLabel(tr("Use only subdirectory path?"), aParent), 2, 0);
 
-  auto lUseOnlySubdir{new QCheckBox(tr("Check this box to define the export as only the subdirectory field (use at your own risk)."))};
-  lUseOnlySubdir->setCursor(Qt::PointingHandCursor);
-  lUseOnlySubdir->setObjectName(QString("only_use_subdirectory"));
+  auto lUseOnlySubdir{ComponentFactory::CreateCheckBox(aParent, tr("Check this box to define the export as only the subdirectory field (use at your own risk)"), "", "only_use_subdirectory")};
   lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
 
   // Preview

@@ -380,9 +380,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   lLabelBeastHands->setObjectName(QString("label_use_beast_hands"));
   lMeshesGridLayout->addWidget(lLabelBeastHands, 5, 0);
 
-  auto lNeedBeastHands{new QCheckBox(tr("Check this box if the follower or NPC uses beast hands."), this)};
-  lNeedBeastHands->setCursor(Qt::PointingHandCursor);
-  lNeedBeastHands->setObjectName(QString("use_beast_hands"));
+  auto lNeedBeastHands{ComponentFactory::CreateCheckBox(this, tr("Check this box if the follower or NPC uses beast hands"), "", "use_beast_hands")};
   lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 4);
 
   // Event binding
@@ -427,9 +425,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   lLabelSkeleton->setToolTip(QString(tr("Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
   lSkeletonGridLayout->addWidget(lLabelSkeleton, 0, 0);
 
-  auto lNeedCustomSkeleton{new QCheckBox(tr("Check this box if the follower or NPC uses a custom skeleton."), this)};
-  lNeedCustomSkeleton->setCursor(Qt::PointingHandCursor);
-  lNeedCustomSkeleton->setObjectName(QString("use_custom_skeleton"));
+  auto lNeedCustomSkeleton{ComponentFactory::CreateCheckBox(this, tr("Check this box if the follower or NPC uses a custom skeleton"), "", "use_custom_skeleton")};
   lSkeletonGridLayout->addWidget(lNeedCustomSkeleton, 0, 1);
 
   // Choose the skeleton file

@@ -29,6 +29,7 @@ private:
   void setupRemainingGUI(QGridLayout& aLayout);
   void setupButtons(QHBoxLayout& aLayout);
 
+  void clearScannedDataFromUselessEntries(std::map<QString, std::set<QString>>& aScannedData);
   void launchPicker(const std::map<QString, std::set<QString>>& aScannedData);
 
   void userHasDoneAnAction();

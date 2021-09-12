@@ -62,6 +62,9 @@
         <file alias="text-snippet">ressources/software/icons/black/text-snippet.png</file>
         <file alias="arrow-left">ressources/software/icons/black/arrow-left.png</file>
         <file alias="arrow-right">ressources/software/icons/black/arrow-right.png</file>
+        <file alias="bolt">ressources/software/icons/black/bolt.png</file>
+        <file alias="mesh">ressources/software/icons/black/mesh.png</file>
+        <file alias="eye">ressources/software/icons/black/eye.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -119,6 +122,9 @@
         <file alias="text-snippet">ressources/software/icons/white/text-snippet.png</file>
         <file alias="arrow-left">ressources/software/icons/white/arrow-left.png</file>
         <file alias="arrow-right">ressources/software/icons/white/arrow-right.png</file>
+        <file alias="bolt">ressources/software/icons/white/bolt.png</file>
+        <file alias="mesh">ressources/software/icons/white/mesh.png</file>
+        <file alias="eye">ressources/software/icons/white/eye.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

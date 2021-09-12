@@ -323,6 +323,14 @@ void BatchConversion::setupRemainingGUI(QGridLayout& aLayout)
   lHeavierSearch->setObjectName(QString("scan_advanced_search"));
   lScanTweaksGridLayout->addWidget(lHeavierSearch);
 
+  // Scan only "meshes" directory
+  auto lScanMeshesSubdirsOnly{ComponentFactory::CreateCheckBox(this, tr("Only scan the \"meshes\" subdirectories of each mod"), "", "only_scan_meshes_dir", true)};
+  lScanTweaksGridLayout->addWidget(lScanMeshesSubdirsOnly);
+
+  // Clear the irrelevant entries
+  auto lMustClearIrreleventEntries{ComponentFactory::CreateCheckBox(this, tr("Clear the irrelevent entries (mods which do not contain a boby, hands or feet mesh)"), "", "clear_irrelevent_entries", true)};
+  lScanTweaksGridLayout->addWidget(lMustClearIrreleventEntries);
+
   lSoftSearch->setChecked(true);
 }
 
@@ -339,8 +347,46 @@ void BatchConversion::setupButtons(QHBoxLayout& aLayout)
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchBatchGenerationProcess);
 }
 
+void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::set<QString>>& aScannedData)
+{
+  auto lUsefulDataFound{false};
+
+  auto lIt = aScannedData.begin();
+  for (lIt; lIt != aScannedData.end(); ++lIt)
+  {
+    // Iterate through the list of meshes paths
+    for (const auto& lValue : lIt->second)
+    {
+      auto lRessourceType{Utils::GetMeshTypeFromFileName(lValue)};
+
+      // Check if the ressource if of any useful type
+      if (lRessourceType == BCGroupWidgetCallContext::BODY || lRessourceType == BCGroupWidgetCallContext::FEET || lRessourceType == BCGroupWidgetCallContext::HANDS)
+      {
+        lUsefulDataFound = true;
+        break;
+      }
+    }
+
+    // If no useful data has been found, delete the current entry from the map
+    if (!lUsefulDataFound)
+    {
+      lIt = aScannedData.erase(lIt);
+      lIt--;
+    }
+
+    // Reset the state
+    lUsefulDataFound = false;
+  }
+}
+
 void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData)
 {
+  if (aScannedData.size() == 0)
+  {
+    Utils::DisplayWarningMessage(tr("No data found for the given input directory. Please try to change it before retrying again.\n\nNote: If you want to convert a single mod only, please use the \"Assisted Conversion Tool\" instead.\n\nNote of ModOrganizer2 users: select your \"mods\" directory as the input path."));
+    return;
+  }
+
   // TODO: double check from PresetCreator class, if the calls are totally identical
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
@@ -371,7 +417,6 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
     lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
   }
 
-  // TODO: check that there is at least one result before creating the window
   auto lData{Struct::BatchConversionData()};
   lData.scannedData = aScannedData;
   lData.humanSkeletonPath = lSkeletonPathHuman;
@@ -469,10 +514,15 @@ void BatchConversion::launchBatchGenerationProcess()
   std::map<QString, std::set<QString>>::iterator lMapPosition;
 
   auto lRelativeDirPath{QString()};
+  auto lFirstSlashPosition{-1};
+  auto lSecondSlashPosition{-1};
+  auto lCurrentModSubDirName{QString()};
   auto lFileName{QString()};
   auto lKey{QString()};
   auto lSecondArgument{QString()};
 
+  auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
+  auto lMustClearIrreleventEntries{this->findChild<QCheckBox*>(QString("clear_irrelevent_entries"))->isChecked()};
   auto lHeavierSearchEnabled{this->findChild<QRadioButton*>(QString("scan_advanced_search"))->isChecked()};
   auto lMeshesFilesToFind{QStringList({"femalebody_0.nif",
                                        "femalebody_1.nif",
@@ -501,6 +551,18 @@ void BatchConversion::launchBatchGenerationProcess()
     {
       // Get the current directory
       lRelativeDirPath = it.fileInfo().absolutePath().remove(lInputPath + "/", Qt::CaseInsensitive);
+      lFirstSlashPosition = lRelativeDirPath.indexOf("/");
+      lSecondSlashPosition = lRelativeDirPath.indexOf("/", lFirstSlashPosition + 1);
+
+      // Only scan the subdirs of "meshes" dir
+      if (lScanMeshesSubdirsOnly)
+      {
+        lCurrentModSubDirName = lRelativeDirPath.mid(lFirstSlashPosition + 1, lSecondSlashPosition - (lFirstSlashPosition + 1));
+        if (lCurrentModSubDirName.compare("meshes", Qt::CaseInsensitive) != 0)
+        {
+          continue;
+        }
+      }
 
       lFileName = it.fileInfo().fileName();
 
@@ -510,8 +572,8 @@ void BatchConversion::launchBatchGenerationProcess()
       lFileName.remove(".nif", Qt::CaseInsensitive);
 
       // Construct the key of the map
-      lKey = lRelativeDirPath.left(lRelativeDirPath.indexOf("/"));
-      lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lRelativeDirPath.indexOf("/") + 1)).arg(lFileName);
+      lKey = lRelativeDirPath.left(lFirstSlashPosition);
+      lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lFirstSlashPosition + 1)).arg(lFileName);
 
       lMapPosition = lScannedData.find(lKey);
       if (lMapPosition != lScannedData.end())
@@ -529,6 +591,11 @@ void BatchConversion::launchBatchGenerationProcess()
     qApp->processEvents();
   }
 
+  // Clear the mods entries that do not have any useful entries
+  if (lMustClearIrreleventEntries)
+    this->clearScannedDataFromUselessEntries(lScannedData);
+
+  // Launch the BatchConversionPicker dialog
   this->launchPicker(lScannedData);
 }
 

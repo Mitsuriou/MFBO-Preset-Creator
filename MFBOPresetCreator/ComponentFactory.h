@@ -1,4 +1,5 @@
 #pragma once
+#include <QCheckBox>
 #include <QGridLayout>
 #include <QObject>
 #include <QPushButton>
@@ -17,6 +18,12 @@ public:
                                    const QString& aObjectName = QString(""),
                                    const bool aIsDisabled = false,
                                    const bool aMustDisableAutoDefaultBehavior = false);
+
+  static QCheckBox* CreateCheckBox(QWidget* aParent,
+                                   const QString& aText,
+                                   const QString& aTooltipText,
+                                   const QString& aObjectName = QString(""),
+                                   const bool lIsChecked = false);
 
   // Constructed components
   static QGridLayout* CreateScrollAreaWindowLayout(QWidget* aParent,

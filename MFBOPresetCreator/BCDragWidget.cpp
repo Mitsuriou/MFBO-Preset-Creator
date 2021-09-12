@@ -24,23 +24,37 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
   lMainLayout->setMargin(0);
   this->setLayout(lMainLayout);
 
-  // Tweak the group box text a little bit
-  auto lGroupBoxTitle{tr("Mesh file")};
-  auto lGroupBoxIcon{QString("skeleton")};
-  if (aRessourcePath.endsWith("femalebody"))
+  // Tweak the group box text and icon
+  auto lGroupBoxTitle{tr("Unknown mesh type")};
+  auto lGroupBoxIcon{QString("mesh")};
+
+  auto lRessourceType{Utils::GetMeshTypeFromFileName(aRessourcePath)};
+  switch (lRessourceType)
   {
-    lGroupBoxTitle = tr("Body mesh");
-    lGroupBoxIcon = "body";
-  }
-  else if (aRessourcePath.endsWith("femalefeet"))
-  {
-    lGroupBoxTitle = tr("Feet mesh");
-    lGroupBoxIcon = "foot";
-  }
-  else if (aRessourcePath.endsWith("femalehands"))
-  {
-    lGroupBoxTitle = tr("Hands mesh");
-    lGroupBoxIcon = "hand";
+    case BCGroupWidgetCallContext::BODY:
+      lGroupBoxTitle = tr("Body mesh");
+      lGroupBoxIcon = "body";
+      break;
+    case BCGroupWidgetCallContext::FEET:
+      lGroupBoxTitle = tr("Feet mesh");
+      lGroupBoxIcon = "foot";
+      break;
+    case BCGroupWidgetCallContext::HANDS:
+      lGroupBoxTitle = tr("Hands mesh");
+      lGroupBoxIcon = "hand";
+      break;
+    case BCGroupWidgetCallContext::HEAD:
+      lGroupBoxTitle = tr("Head mesh");
+      lGroupBoxIcon = "woman-head";
+      break;
+    case BCGroupWidgetCallContext::EYES:
+      lGroupBoxTitle = tr("Eyes mesh");
+      lGroupBoxIcon = "eye";
+      break;
+    case BCGroupWidgetCallContext::SKELETON:
+      lGroupBoxTitle = tr("Skeleton mesh");
+      lGroupBoxIcon = "skeleton";
+      break;
   }
 
   auto lSection{new QGroupBox(lGroupBoxTitle.append("  "), this)};

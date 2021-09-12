@@ -140,6 +140,10 @@ void BatchConversionPicker::initializeGUI()
   // Create the middle list scroll area + list which will contain all the available data entries
   ComponentFactory::CreateScrollAreaWindowLayout(this, true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
 
+  // Quick preset creation button
+  auto lQuickPresetCreationButton{ComponentFactory::CreateButton(this, QString("Quick preset creation"), "", "bolt", lIconFolder, "quick_preset_creation", false, true)};
+  lMiddleLayout->addWidget(lQuickPresetCreationButton);
+
   /*============*/
   /* Right list */
   /*============*/

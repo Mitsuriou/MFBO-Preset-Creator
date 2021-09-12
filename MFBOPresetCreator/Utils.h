@@ -25,23 +25,34 @@ public:
   static QString GetApplicationVersion();
   static ApplicationVersionRelative CompareVersionNumbers(const QString& aVersionNumber);
   static ApplicationVersionRelative CompareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2);
+
   static void DisplayWarningMessage(const QString& aMessage);
   static ButtonClicked DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
+ 
   static VersionsInformation ParseGitHubReleasesRequestResult(const QString& aResult);
+
   static int GetNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static int GetNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension);
   static int GetNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension);
   static int GetNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions);
   static int GetNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions);
+
   static bool CopyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
+
   static bool RemoveDirectoryAndSubDirs(const QString& aPath);
+
   static bool IsThemeDark(const GUITheme& aTheme);
   static QString GetIconRessourceFolder(const GUITheme& aTheme);
+
+  static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
+
   static bool IsCBBEBasedBody(const BodyNameVersion& aBody);
   static bool IsCBBEBasedBody(const BodyName& aBody);
   static bool IsBodySupportingBeastHands(const BodyNameVersion& aBody);
+
   static bool IsRunningStandaloneVersion();
   static QString GetAppDataPathFolder();
+
   static QString ReadQRCFileContent(const QString& aFilePath);
 
   // XML and OSP file parse

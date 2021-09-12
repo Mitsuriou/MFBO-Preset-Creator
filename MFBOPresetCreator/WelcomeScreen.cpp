@@ -80,10 +80,7 @@ void WelcomeScreen::initializeGUI()
   /*================================*/
   /* Show / Hide the welcome screen */
   /*================================*/
-  auto lShowHideWelcomeScreen{new QCheckBox(tr("Show the welcome screen at application startup"), this)};
-  lShowHideWelcomeScreen->setCursor(Qt::PointingHandCursor);
-  lShowHideWelcomeScreen->setObjectName(QString("always_show_welcome_screen"));
-  lShowHideWelcomeScreen->setChecked(this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN);
+  auto lShowHideWelcomeScreen{ComponentFactory::CreateCheckBox(this, tr("Show the welcome screen at application startup"), "", "always_show_welcome_screen", this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
   lMainLayout->addWidget(lShowHideWelcomeScreen);
 
   /*============*/

@@ -397,6 +397,35 @@ QString Utils::GetIconRessourceFolder(const GUITheme& aTheme)
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
+BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName)
+{
+  // Body
+  if (aFileName.endsWith("femalebody"))
+    return BCGroupWidgetCallContext::BODY;
+
+  // Feet
+  if (aFileName.endsWith("femalefeet"))
+    return BCGroupWidgetCallContext::FEET;
+
+  // Hands
+  if (aFileName.endsWith("femalehands"))
+    return BCGroupWidgetCallContext::HANDS;
+
+  // Head
+  if (aFileName.endsWith("femalehead"))
+    return BCGroupWidgetCallContext::HEAD;
+
+  // Eyes
+  if (aFileName.endsWith("eyesfemale"))
+    return BCGroupWidgetCallContext::EYES;
+
+  // Skeleton
+  if (aFileName.mid(aFileName.lastIndexOf("/") + 1).contains("skeleton", Qt::CaseInsensitive))
+    return BCGroupWidgetCallContext::SKELETON;
+
+  return BCGroupWidgetCallContext::UNDEFINED;
+}
+
 bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBody)
 {
   switch (aBody)
