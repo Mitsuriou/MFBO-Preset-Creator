@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Enum.h"
+#include <QCheckBox>
+#include <QGridLayout>
 #include <QWidget>
 
 class BCDropWidget : public QWidget
@@ -16,6 +18,7 @@ public:
 
 signals:
   void dropEventTriggered(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath);
+  void checkBoxStateChangedTriggered(const bool aIsActive);
 
 protected:
   void dragEnterEvent(QDragEnterEvent* aEvent) override;
@@ -27,5 +30,10 @@ private:
   QString mOriginFolder;
   QString mRessourcePath;
 
-  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = QString(""), const QString& aNewRessourceText = QString(""));
+  // Event handlers
+  void checkBoxStateChanged(int aNewState);
+
+  // GUI
+  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = QString(""), const QString& aNewRessourceText = QString(""), const bool aUseAlternativeModel = false);
+  QCheckBox* createCheckBox(const QString& lText, QGridLayout& aLayout);
 };

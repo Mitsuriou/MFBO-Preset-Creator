@@ -16,11 +16,13 @@ public:
 signals:
   void removePressed(const QString& aOriginFolder, const QString& aRessourcePath);
   void dropEventTriggered(const QString& aOriginFolder, const QString& aRessourcePath);
+  void checkBoxStateChangedTriggered(const bool aIsActive);
 
 private:
   BCGroupWidgetCallContext mCallContext{BCGroupWidgetCallContext::UNDEFINED};
 
   void dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath);
+  void checkBoxStateChangedReceiver(const bool aIsActive);
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);

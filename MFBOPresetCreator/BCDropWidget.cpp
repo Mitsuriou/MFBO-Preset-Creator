@@ -1,7 +1,7 @@
 #include "BCDropWidget.h"
 #include "BCDragWidget.h"
+#include "ComponentFactory.h"
 #include "Utils.h"
-#include <QGridLayout>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMimeData>
@@ -40,7 +40,17 @@ BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCa
   lOriginContent->setObjectName(QString("origin_content"));
   lMainLayout->addWidget(lOriginContent, 1, 1);
 
-  // TODO: Add a checkbox for the alternative models
+  // Alternative model
+  if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
+  {
+    auto lUseAlternativeModel{this->createCheckBox(tr("Check this box if the follower or NPC uses beast hands"), *lMainLayout)};
+    this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+  }
+  else if (this->mCallContext == BCGroupWidgetCallContext::SKELETON)
+  {
+    auto lUseAlternativeModel{this->createCheckBox(tr("Check this box if the follower or NPC uses beast skeleton"), *lMainLayout)};
+    this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+  }
 
   this->resetData();
 }
@@ -68,7 +78,7 @@ void BCDropWidget::setData(const QString& aOriginFolder, const QString& aRessour
 {
   this->mOriginFolder = aOriginFolder;
   this->mRessourcePath = aRessourcePath;
-  this->tweakWidgetsVisibility(aRessourcePath.isEmpty(), aOriginFolder, aRessourcePath);
+  this->tweakWidgetsVisibility(aRessourcePath.isEmpty(), aOriginFolder, aRessourcePath, aUseAlternativeModel);
 }
 
 void BCDropWidget::dragEnterEvent(QDragEnterEvent* aEvent)
@@ -117,19 +127,43 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
   }
 }
 
-void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText, const QString& aNewRessourceText)
+void BCDropWidget::checkBoxStateChanged(int aNewState)
+{
+  emit BCDropWidget::checkBoxStateChangedTriggered(aNewState == Qt::CheckState::Checked);
+}
+
+void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText, const QString& aNewRessourceText, const bool aUseAlternativeModel)
 {
   auto lPathLabel{this->findChild<QLabel*>(QString("path_label"))};
   auto lPathContent{this->findChild<QLabel*>(QString("path_content"))};
   auto lOriginLabel{this->findChild<QLabel*>(QString("origin_label"))};
   auto lOriginContent{this->findChild<QLabel*>(QString("origin_content"))};
+  auto lUseAlternativeModel{this->findChild<QCheckBox*>(QString("use_alternative_model"))};
 
   if (aShouldViewDropZoneOnly)
   {
-    lPathLabel->setText(tr("Drop some data here..."));
     lPathContent->setText("");
-    lOriginLabel->setText("");
     lOriginContent->setText("");
+
+    // If there is the checkbox
+    if (lUseAlternativeModel != nullptr)
+    {
+      // Uncheck the box
+      this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      lUseAlternativeModel->setChecked(false);
+      lUseAlternativeModel->hide();
+      this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+
+      // Update the texts to have the placeholder centered
+      lPathLabel->setText("");
+      lOriginLabel->setText(tr("Drop some data here..."));
+    }
+    // If there is not the checkbox
+    else
+    {
+      lPathLabel->setText(tr("Drop some data here..."));
+      lOriginLabel->setText("");
+    }
   }
   else
   {
@@ -137,5 +171,28 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
     lPathContent->setText(aNewRessourceText);
     lOriginLabel->setText(tr("Origin mod:"));
     lOriginContent->setText(aNewOriginText);
+
+    // If there is the checkbox
+    if (lUseAlternativeModel != nullptr)
+    {
+      // Check the box if needed
+      this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      lUseAlternativeModel->setChecked(aUseAlternativeModel);
+      lUseAlternativeModel->show();
+      this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+    }
   }
+}
+
+QCheckBox* BCDropWidget::createCheckBox(const QString& lText, QGridLayout& aLayout)
+{
+  QCheckBox* lUseAlternativeModel{ComponentFactory::CreateCheckBox(this, lText, "", "use_alternative_model", false)};
+
+  QSizePolicy lKeepHeightWhenHidden = lUseAlternativeModel->sizePolicy();
+  lKeepHeightWhenHidden.setRetainSizeWhenHidden(true);
+  lUseAlternativeModel->setSizePolicy(lKeepHeightWhenHidden);
+
+  aLayout.addWidget(lUseAlternativeModel, 2, 0, 1, 2);
+
+  return lUseAlternativeModel;
 }

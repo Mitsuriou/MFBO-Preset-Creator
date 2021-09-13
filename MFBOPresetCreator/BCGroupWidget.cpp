@@ -34,7 +34,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lMainLayout->addWidget(lSection);
 
   // Drop zone
-  auto lDropWidget{new BCDropWidget(lSection, aCallContext)};
+  auto lDropWidget{new BCDropWidget(lSection, this->mCallContext)};
   lDropWidget->setObjectName(QString("drop_widget"));
   lSectionLayout->addWidget(lDropWidget);
 
@@ -45,6 +45,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 
   // Event binding
   this->connect(lDropWidget, &BCDropWidget::dropEventTriggered, this, &BCGroupWidget::dropEventTrigerredReceiver);
+  this->connect(lDropWidget, &BCDropWidget::checkBoxStateChangedTriggered, this, &BCGroupWidget::checkBoxStateChangedReceiver);
   this->connect(lRemoveButton, &QPushButton::clicked, this, &BCGroupWidget::removeData);
 }
 
@@ -64,7 +65,7 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     else
     {
       lRemoveButton->show();
-      lDropWidget->setData(lData.first, lData.second, false);
+      lDropWidget->setData(lData.first, lData.second);
     }
   }
   else if (this->mCallContext == BCGroupWidgetCallContext::FEET)
@@ -78,7 +79,7 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     else
     {
       lRemoveButton->show();
-      lDropWidget->setData(lData.first, lData.second, false);
+      lDropWidget->setData(lData.first, lData.second);
     }
   }
   else if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
@@ -92,7 +93,21 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     else
     {
       lRemoveButton->show();
-      lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), false);
+      lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), lData.mustUseAlternativeModel());
+    }
+  }
+  else if (this->mCallContext == BCGroupWidgetCallContext::SKELETON)
+  {
+    auto lData{aData.getSkeletonData()};
+    if (lData.getRessourcePath().isEmpty())
+    {
+      lRemoveButton->hide();
+      lDropWidget->resetData();
+    }
+    else
+    {
+      lRemoveButton->show();
+      lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), lData.mustUseAlternativeModel());
     }
   }
 }
@@ -130,6 +145,11 @@ void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, 
 
   // Upper treatment
   emit BCGroupWidget::dropEventTriggered(aNewOriginFolder, aNewRessourcePath);
+}
+
+void BCGroupWidget::checkBoxStateChangedReceiver(const bool aIsActive)
+{
+  emit BCGroupWidget::checkBoxStateChangedTriggered(aIsActive);
 }
 
 void BCGroupWidget::groupBoxChecked(bool aIsChecked)

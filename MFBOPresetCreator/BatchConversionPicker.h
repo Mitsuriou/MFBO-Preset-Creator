@@ -34,6 +34,8 @@ private:
   // Through-layer communications
   void removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
   void addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
+  void handsCheckBoxStateChanged(const bool aIsActive);
+  void skeletonCheckBoxStateChanged(const bool aIsActive);
 
   // Data update
   void saveBodySlideDataToPreset();
@@ -46,6 +48,7 @@ private:
   void updatePresetInterfaceState(const int aNextIndex);
 
   //
+  void quickCreatePreset();
   void validateSelection();
 
   // GUI widgets events

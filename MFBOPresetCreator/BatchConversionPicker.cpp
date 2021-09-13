@@ -196,6 +196,11 @@ void BatchConversionPicker::initializeGUI()
   lDropSectionHands->setObjectName(QString("drop_section_hands"));
   lRightDataLayout->addWidget(lDropSectionHands);
 
+  // Hands drop widget
+  auto lDropSectionSkeleton{new BCGroupWidget(this, this->mSettings, tr("Skeleton"), "skeleton", BCGroupWidgetCallContext::SKELETON)};
+  lDropSectionSkeleton->setObjectName(QString("drop_section_skeleton"));
+  lRightDataLayout->addWidget(lDropSectionSkeleton);
+
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
   lBodyslideGroupBox->setObjectName(QString("bodyslide_groupbox"));
@@ -300,6 +305,10 @@ void BatchConversionPicker::initializeGUI()
   this->connect(lDropSectionFeet, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
   this->connect(lDropSectionHands, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
   this->connect(lDropSectionHands, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+  this->connect(lDropSectionHands, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::handsCheckBoxStateChanged);
+  this->connect(lDropSectionSkeleton, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  this->connect(lDropSectionSkeleton, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+  this->connect(lDropSectionSkeleton, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::skeletonCheckBoxStateChanged);
 
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
@@ -373,7 +382,7 @@ void BatchConversionPicker::refreshMiddleList()
           lOptionsList->addWidget(lDraggableWidget);
         }
 
-        lQuickPresetCreationButton->setDisabled(!Utils::analyze(lPosition->second));
+        lQuickPresetCreationButton->setDisabled(!Utils::ContainsBodyOrHandsOrFeetMesh(lPosition->second));
       }
     }
   }
@@ -481,6 +490,7 @@ void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOrigi
   auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
   auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
   auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
+  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
 
   auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
   auto& lPreset{this->mData.presets.at(lActivePresetNumber->value() - 1)};
@@ -496,6 +506,10 @@ void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOrigi
   else if (this->sender() == lDropSectionHands)
   {
     lPreset.setHandsData(aOriginFolder, aRessourcePath, false); // TODO: Pass the data for the alternative model
+  }
+  else if (this->sender() == lDropSectionSkeleton)
+  {
+    lPreset.setSkeletonData(aOriginFolder, aRessourcePath, false); // TODO: Pass the data for the alternative model
   }
 }
 
@@ -518,6 +532,7 @@ void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFold
     auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
     auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
     auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
+    auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
 
     auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
     auto& lPreset{this->mData.presets.at(lActivePresetNumber->value() - 1)};
@@ -534,7 +549,29 @@ void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFold
     {
       lPreset.setHandsData("", "", false);
     }
+    else if (this->sender() == lDropSectionSkeleton)
+    {
+      lPreset.setSkeletonData("", "", false);
+    }
   }
+}
+
+void BatchConversionPicker::handsCheckBoxStateChanged(const bool aIsActive)
+{
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  if (lActivePresetNumber->value() == 0)
+    return;
+
+  this->mData.presets.at(lActivePresetNumber->value() - 1).setHandsUseAlternativeModel(aIsActive);
+}
+
+void BatchConversionPicker::skeletonCheckBoxStateChanged(const bool aIsActive)
+{
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  if (lActivePresetNumber->value() == 0)
+    return;
+
+  this->mData.presets.at(lActivePresetNumber->value() - 1).setSkeletonUseAlternativeModel(aIsActive);
 }
 
 void BatchConversionPicker::saveBodySlideDataToPreset()
@@ -577,6 +614,8 @@ void BatchConversionPicker::removeActivePreset()
   lDropSectionFeet->removeData();
   auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
   lDropSectionHands->removeData();
+  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
+  lDropSectionSkeleton->removeData();
 
   this->mPreventPresetSave = false;
 
@@ -652,12 +691,16 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   lDropSectionFeet->setHidden(lNumberOfPresets == 0);
   auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
   lDropSectionHands->setHidden(lNumberOfPresets == 0);
+  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
+  lDropSectionSkeleton->setHidden(lNumberOfPresets == 0);
 
   if (lNumberOfPresets > 0)
   {
-    lDropSectionBody->setData(this->mData.presets.at(aNextIndex - 1));
-    lDropSectionFeet->setData(this->mData.presets.at(aNextIndex - 1));
-    lDropSectionHands->setData(this->mData.presets.at(aNextIndex - 1));
+    const auto& lDataToSet = this->mData.presets.at(aNextIndex - 1);
+    lDropSectionBody->setData(lDataToSet);
+    lDropSectionFeet->setData(lDataToSet);
+    lDropSectionHands->setData(lDataToSet);
+    lDropSectionSkeleton->setData(lDataToSet);
   }
 
   // BodySlide data
@@ -670,10 +713,16 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
     auto lNamesInAppLineEdit{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))};
 
     mPreventPresetSave = true;
-    lOSPXMLNamesLineEdit->setText(this->mData.presets.at(aNextIndex - 1).getNames().first);
-    lNamesInAppLineEdit->setText(this->mData.presets.at(aNextIndex - 1).getNames().second);
+    const auto& lPathsPair = this->mData.presets.at(aNextIndex - 1).getNames();
+    lOSPXMLNamesLineEdit->setText(lPathsPair.first);
+    lNamesInAppLineEdit->setText(lPathsPair.second);
     mPreventPresetSave = false;
   }
+}
+
+void BatchConversionPicker::quickCreatePreset()
+{
+  // TODO:
 }
 
 void BatchConversionPicker::validateSelection()
