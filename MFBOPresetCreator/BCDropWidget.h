@@ -17,7 +17,7 @@ public:
   void setData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel = false);
 
 signals:
-  void dropEventTriggered(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath);
+  void dropEventTriggered(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked = false);
   void checkBoxStateChangedTriggered(const bool aIsActive);
 
 protected:

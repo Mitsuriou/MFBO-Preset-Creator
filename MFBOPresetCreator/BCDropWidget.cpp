@@ -2,6 +2,7 @@
 #include "BCDragWidget.h"
 #include "ComponentFactory.h"
 #include "Utils.h"
+#include <QApplication>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMimeData>
@@ -115,15 +116,26 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
     // Parse the JSON string
     auto lDataObject{QJsonDocument::fromJson(aEvent->mimeData()->data("application/json")).object()};
 
+    // Check (smartly) the alternative model checkbox
+    auto lUseAlternativeModel{this->findChild<QCheckBox*>(QString("use_alternative_model"))};
+
+    if ((this->mCallContext == BCGroupWidgetCallContext::HANDS && lDataObject["ressourcePath"].toString() == "femalehandsargonian")
+        || (this->mCallContext == BCGroupWidgetCallContext::SKELETON && lDataObject["ressourcePath"].toString().endsWith("skeletonbeast_female")))
+    {
+      this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      lUseAlternativeModel->setChecked(true);
+      this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+    }
+
     // Upper treatment (before updating the data)
-    emit BCDropWidget::dropEventTriggered(this->mOriginFolder, this->mRessourcePath, lDataObject["originFolder"].toString(), lDataObject["ressourcePath"].toString());
+    emit BCDropWidget::dropEventTriggered(this->mOriginFolder, this->mRessourcePath, lDataObject["originFolder"].toString(), lDataObject["ressourcePath"].toString(), lUseAlternativeModel != nullptr && lUseAlternativeModel->isChecked());
 
     // Save the new data
     this->mOriginFolder = lDataObject["originFolder"].toString();
     this->mRessourcePath = lDataObject["ressourcePath"].toString();
 
     // Update the displayed information
-    this->tweakWidgetsVisibility(false, this->mOriginFolder, this->mRessourcePath);
+    this->tweakWidgetsVisibility(false, this->mOriginFolder, this->mRessourcePath, lUseAlternativeModel != nullptr && lUseAlternativeModel->isChecked());
   }
 }
 

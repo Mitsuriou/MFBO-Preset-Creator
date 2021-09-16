@@ -128,7 +128,7 @@ void BCGroupWidget::removeData()
   emit BCGroupWidget::removePressed(lOriginFolder, lRessourcePath);
 }
 
-void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath)
+void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked)
 {
   // Check if any data was already set in the drop widget
   if (!aOldOriginFolder.isEmpty() && !aNewOriginFolder.isEmpty())
@@ -144,7 +144,7 @@ void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, 
   }
 
   // Upper treatment
-  emit BCGroupWidget::dropEventTriggered(aNewOriginFolder, aNewRessourcePath);
+  emit BCGroupWidget::dropEventTriggered(aNewOriginFolder, aNewRessourcePath, isCheckBoxChecked);
 }
 
 void BCGroupWidget::checkBoxStateChangedReceiver(const bool aIsActive)

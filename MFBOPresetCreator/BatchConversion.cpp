@@ -517,6 +517,8 @@ void BatchConversion::launchBatchGenerationProcess()
                                        "femalebody_1.nif",
                                        "femalehands_0.nif",
                                        "femalehands_1.nif",
+                                       "femalehandsargonian_0.nif",
+                                       "femalehandsargonian_1.nif",
                                        "femalefeet_0.nif",
                                        "femalefeet_1.nif",
                                        "skeleton_female.nif",

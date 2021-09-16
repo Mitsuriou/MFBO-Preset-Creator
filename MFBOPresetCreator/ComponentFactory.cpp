@@ -55,7 +55,7 @@ QPushButton* ComponentFactory::CreateButton(
 
 QCheckBox* ComponentFactory::CreateCheckBox(QWidget* aParent, const QString& aText, const QString& aTooltipText, const QString& aObjectName, const bool lIsChecked)
 {
-  // Declare and instanciate the check box
+  // Declare and instanciate the checkbox
   auto lCheckBox{new QCheckBox(aText, aParent)};
   // Mouse cursor
   lCheckBox->setCursor(Qt::PointingHandCursor);

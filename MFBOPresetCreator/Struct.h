@@ -374,6 +374,11 @@ namespace Struct
       this->body = std::make_pair(aOriginFolder, aRessourcePath);
     }
 
+    void resetBodyData()
+    {
+      this->setBodyData("", "");
+    }
+
     std::pair<QString, QString> getBodyData() const
     {
       return this->body;
@@ -383,6 +388,11 @@ namespace Struct
     void setFeetData(const QString& aOriginFolder, const QString& aRessourcePath)
     {
       this->feet = std::make_pair(aOriginFolder, aRessourcePath);
+    }
+
+    void resetFeetData()
+    {
+      this->setFeetData("", "");
     }
 
     std::pair<QString, QString> getFeetData() const
@@ -397,6 +407,11 @@ namespace Struct
       this->hands.setRessourcePath(aRessourcePath);
       this->hands.setUseAlternativeModel(aUseAlternativeModel);
     };
+
+    void resetHandsData()
+    {
+      this->setHandsData("", "", false);
+    }
 
     BatchConversionEntry getHandsData() const
     {
@@ -420,6 +435,11 @@ namespace Struct
       this->skeleton.setRessourcePath(aRessourcePath);
       this->skeleton.setUseAlternativeModel(aUseAlternativeModel);
     };
+
+    void resetSkeletonData()
+    {
+      this->setSkeletonData("", "", false);
+    }
 
     BatchConversionEntry getSkeletonData() const
     {
