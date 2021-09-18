@@ -119,13 +119,17 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
     // Check (smartly) the alternative model checkbox
     auto lUseAlternativeModel{this->findChild<QCheckBox*>(QString("use_alternative_model"))};
 
-    if ((this->mCallContext == BCGroupWidgetCallContext::HANDS && lDataObject["ressourcePath"].toString() == "femalehandsargonian")
+    if ((this->mCallContext == BCGroupWidgetCallContext::HANDS && lDataObject["ressourcePath"].toString().endsWith ("femalehandsargonian"))
         || (this->mCallContext == BCGroupWidgetCallContext::SKELETON && lDataObject["ressourcePath"].toString().endsWith("skeletonbeast_female")))
     {
       this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
       lUseAlternativeModel->setChecked(true);
       this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
     }
+
+    // TODO: 18/09/2021: When replacing a normal skeleton, with unchecked alternative model, replacing it with a beast skeleton, the checkbox is checked
+    // thanks to the code above, but the data of this current BCDropWidget is reset with the call below:
+    // -> Test if the call above can be placed a little bit below, while still transmitting the data correctly
 
     // Upper treatment (before updating the data)
     emit BCDropWidget::dropEventTriggered(this->mOriginFolder, this->mRessourcePath, lDataObject["originFolder"].toString(), lDataObject["ressourcePath"].toString(), lUseAlternativeModel != nullptr && lUseAlternativeModel->isChecked());

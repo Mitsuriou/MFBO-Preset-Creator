@@ -408,7 +408,7 @@ BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName
     return BCGroupWidgetCallContext::FEET;
 
   // Hands
-  if (aFileName.endsWith("femalehands"))
+  if (aFileName.endsWith("femalehands") || aFileName.endsWith("femalehandsargonian"))
     return BCGroupWidgetCallContext::HANDS;
 
   // Head
