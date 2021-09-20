@@ -407,7 +407,7 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   }
 
   auto lData{Struct::BatchConversionData()};
-  lData.scannedData = std::multimap(aScannedData.begin(), aScannedData.end());
+  lData.scannedData = std::multimap<QString, std::set<QString>>(aScannedData.begin(), aScannedData.end());
   lData.humanSkeletonPath = lSkeletonPathHuman;
   lData.beastSkeletonPath = lSkeletonPathBeast;
   lData.bodyMod = lBodySelected;

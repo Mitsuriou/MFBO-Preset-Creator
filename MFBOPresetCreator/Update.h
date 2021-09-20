@@ -4,8 +4,11 @@
 #include <QFile>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+
+#ifdef Q_OS_WIN
 #include <QWinTaskbarButton>
 #include <QWinTaskbarProgress>
+#endif
 
 // File downloading made with the great help of
 // https://www.bogotobogo.com/Qt/Qt5_QNetworkRequest_Http_File_Download.php
@@ -28,8 +31,11 @@ private:
   const Struct::Settings mSettings;
   QString mSaveFilePath;
   QNetworkAccessManager mManager;
+
+#ifdef Q_OS_WIN
   QWinTaskbarButton* mTaskbarAppButton;
   QWinTaskbarProgress* mTaskbarProgressBar;
+#endif
 
   // File download attributes
   QUrl mDownloadURL;

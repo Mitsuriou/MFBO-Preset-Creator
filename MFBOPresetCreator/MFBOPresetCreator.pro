@@ -13,7 +13,8 @@ TRANSLATIONS += mfbopc_en.ts \
     mfbopc_fr.ts \
     mfbopc_zh_TW.ts
 win32:RC_FILE = MFBOPresetCreator.rc
-QT += core gui network widgets winextras xml
+QT += core gui network widgets xml
+win32:QT += winextras
 HEADERS += ./resource.h \
     ./stdafx.h \
     ./WelcomeScreen.h \
