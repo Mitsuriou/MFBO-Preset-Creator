@@ -14,4 +14,7 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
+
+  explicit About(const About&) = delete;
+  About& operator=(const About&) = delete;
 };

@@ -66,6 +66,9 @@ private:
   void clearAllPaths();
   void toggleClearAllButtonState();
 
+  explicit Settings(const Settings&) = delete;
+  Settings& operator=(const Settings&) = delete;
+
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
   void refreshLastPaths(const std::map<QString, QString>& aLastPaths);

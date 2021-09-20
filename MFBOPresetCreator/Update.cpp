@@ -85,7 +85,7 @@ void Update::initializeGUI()
   this->setLayout(new QVBoxLayout(this));
   this->layout()->setAlignment(Qt::AlignTop);
 
-  auto lForcedVersionSuffix{this->mForceStableContext ? tr(" (stable only)") : (this->mForceBetaContext ? tr(" (BETA only)") : QString(""))};
+  const auto lForcedVersionSuffix(this->mForceStableContext ? tr(" (stable only)") : (this->mForceBetaContext ? tr(" (BETA only)") : QString("")));
 
   /*============*/
   /* Main title */
@@ -131,7 +131,7 @@ void Update::overrideHTMLLinksColor(QString& aHTMLString)
   }
 
   // Hacky links' colors override for some themes
-  const auto lLinksColorOverride{this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985")};
+  const auto lLinksColorOverride(this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
 
   // Go through the string to find the link colors
   auto i{0};

@@ -54,6 +54,9 @@ private:
   void groupBoxChecked(bool aIsChecked);
 #pragma endregion PRIVATE_SLOTS
 
+  explicit TexturesAssistant(const TexturesAssistant&) = delete;
+  TexturesAssistant& operator=(const TexturesAssistant&) = delete;
+
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
 };

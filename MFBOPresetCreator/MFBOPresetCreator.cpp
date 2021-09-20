@@ -348,6 +348,7 @@ void MFBOPresetCreator::showWindow()
   {
     this->showMinimized();
 
+#ifdef _WIN32 // Windows OS only
     // Make the icon in the taskbar blink
     FLASHWINFO* finfo{new FLASHWINFO()};
     finfo->cbSize = sizeof(FLASHWINFO);
@@ -359,6 +360,7 @@ void MFBOPresetCreator::showWindow()
 
     delete finfo;
     finfo = nullptr;
+#endif
   }
   else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::WINDOWED)
   {

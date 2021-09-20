@@ -58,4 +58,7 @@ private:
   // Install the update file
   void installLatestUpdate();
   void openStandaloneOutputDirectory();
+
+  explicit Update(const Update&) = delete;
+  Update& operator=(const Update&) = delete;
 };

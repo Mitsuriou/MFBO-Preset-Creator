@@ -215,7 +215,7 @@ QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, 
     lColorOverride = this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff;") : QString("color:#e95985;");
   }
 
-  lLabel->setStyleSheet(QString("font-size: %1pt; %2").arg(static_cast<int>(std::floor(aAppFontSize * 1.75))).arg(lColorOverride));
+  lLabel->setStyleSheet(QString("font-size: %1pt; %2").arg(static_cast<int>(floor(aAppFontSize * 1.75))).arg(lColorOverride));
 
   return lLabel;
 }
@@ -231,7 +231,7 @@ void WelcomeScreen::overrideHTMLLinksColor(QString& aHTMLString)
   }
 
   // Hacky links' colors override for some themes
-  const auto lLinksColorOverride{this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985")};
+  const auto lLinksColorOverride(this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
 
   // Go through the string to find the link colors
   auto i{0};

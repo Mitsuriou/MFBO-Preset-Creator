@@ -114,4 +114,6 @@ public:
 
 private:
   explicit Utils(){};
+  explicit Utils(const Utils&) = delete;
+  Utils& operator=(const Utils&) = delete;
 };

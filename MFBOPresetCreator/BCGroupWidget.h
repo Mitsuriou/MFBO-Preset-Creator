@@ -26,4 +26,7 @@ private:
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
+
+  explicit BCGroupWidget(const BCGroupWidget&) = delete;
+  BCGroupWidget& operator=(const BCGroupWidget&) = delete;
 };

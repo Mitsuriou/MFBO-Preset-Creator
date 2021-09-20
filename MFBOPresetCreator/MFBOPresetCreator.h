@@ -75,4 +75,7 @@ private:
   // Check for updates
   void updateCheckFinished();
 #pragma endregion PRIVATE_SLOTS
+
+  explicit MFBOPresetCreator(const MFBOPresetCreator&) = delete;
+  MFBOPresetCreator& operator=(const MFBOPresetCreator&) = delete;
 };

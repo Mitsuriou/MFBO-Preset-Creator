@@ -43,4 +43,7 @@ private:
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
 #pragma endregion PRIVATE_SLOTS
+
+  explicit RetargetingTool(const RetargetingTool&) = delete;
+  RetargetingTool operator=(const RetargetingTool&) = delete;
 };

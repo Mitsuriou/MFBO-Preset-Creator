@@ -374,7 +374,9 @@ std::vector<Struct::Filter> SliderFileBuilder::GetXMLDefaultFiltersFromBody(cons
       case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
       case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
         lDefaultFilters.push_back(Struct::Filter("3BA", true, true, true));
+#if __cplusplus >= 201703L // C++17 and newer
         [[fallthrough]];
+#endif
       case BodyNameVersion::CBBE_3BBB_3BA_1_50:
       case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
       case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:

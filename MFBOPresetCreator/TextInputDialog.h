@@ -21,6 +21,9 @@ private:
   void setWindowProperties(const QString& aTitle);
   void initializeGUI(const QString& aLabel);
 
+  explicit TextInputDialog(const TextInputDialog&) = delete;
+  TextInputDialog& operator=(const TextInputDialog&) = delete;
+
 signals:
   void getTextValue(const QString&);
 };

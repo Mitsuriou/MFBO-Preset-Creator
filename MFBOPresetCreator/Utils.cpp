@@ -1371,7 +1371,7 @@ void Utils::AddIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, 
   aGroupBox->setCheckable(true);
   aGroupBox->setStyleSheet(QString("QGroupBox{font-size: %1pt;}"
                                    "QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%2/%3);}")
-                             .arg(static_cast<int>(std::floor(aFontSize * 1.25)))
+                             .arg(static_cast<int>(floor(aFontSize * 1.25)))
                              .arg(aIconFolder)
                              .arg(aIconName));
 }

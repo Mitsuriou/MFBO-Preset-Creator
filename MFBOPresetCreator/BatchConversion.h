@@ -56,4 +56,7 @@ private:
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
 #pragma endregion PRIVATE_SLOTS
+
+  explicit BatchConversion(const BatchConversion&) = delete;
+  BatchConversion& operator=(const BatchConversion&) = delete;
 };

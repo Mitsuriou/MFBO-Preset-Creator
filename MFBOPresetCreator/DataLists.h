@@ -26,4 +26,6 @@ public:
 
 private:
   explicit DataLists(){};
+  explicit DataLists(const DataLists&) = delete;
+  DataLists& operator=(const DataLists&) = delete;
 };

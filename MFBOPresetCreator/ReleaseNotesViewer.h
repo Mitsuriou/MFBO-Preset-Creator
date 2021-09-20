@@ -22,4 +22,7 @@ private:
   void checkForUpdate();
   void updateCheckFinished();
   void displayUpdateMessage(const QString& aResult);
+
+  explicit ReleaseNotesViewer(const ReleaseNotesViewer&) = delete;
+  ReleaseNotesViewer& operator=(const ReleaseNotesViewer&) = delete;
 };

@@ -36,6 +36,9 @@ private:
   void updateCheckFinished();
   void displayUpdateMessage(const QString& aResult);
 
+  explicit WelcomeScreen(const WelcomeScreen&) = delete;
+  WelcomeScreen& operator=(const WelcomeScreen&) = delete;
+
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);
 };

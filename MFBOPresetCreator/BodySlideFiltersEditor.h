@@ -50,6 +50,9 @@ private:
   void handleRowRenaming();
 #pragma endregion PRIVATE_SLOTS
 
+  explicit BodySlideFiltersEditor(const BodySlideFiltersEditor&) = delete;
+  BodySlideFiltersEditor& operator=(const BodySlideFiltersEditor&) = delete;
+
 signals:
   void listEdited(const std::map<QString, QStringList>&);
 };

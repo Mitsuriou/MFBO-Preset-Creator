@@ -288,7 +288,9 @@ QString DataLists::GetQRCPathFromBodyName(const BodyNameVersion& aBody, const in
               return ":/presets/feet/khrysamere hg feet/claws/1.6.1"; // TODO: Handle the feet mods version numbers
           }
         }
+#if __cplusplus >= 201703L // C++17 and newer
         [[fallthrough]];
+#endif
       case BodyPartType::HANDS:
         // Use the default BHUNP hands
         lResolvedModName = "bhunp";

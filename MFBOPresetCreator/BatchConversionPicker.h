@@ -53,4 +53,7 @@ private:
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
+
+  explicit BatchConversionPicker(const BatchConversionPicker&) = delete;
+  BatchConversionPicker& operator=(const BatchConversionPicker&) = delete;
 };

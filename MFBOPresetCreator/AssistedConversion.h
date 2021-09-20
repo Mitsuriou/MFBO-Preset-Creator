@@ -40,6 +40,9 @@ private:
   void modifyComboBoxLockState(int aIndex);
 #pragma endregion PRIVATE_SLOTS
 
+  explicit AssistedConversion(const AssistedConversion&) = delete;
+  AssistedConversion& operator=(const AssistedConversion&) = delete;
+
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);
 };

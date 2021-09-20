@@ -76,4 +76,7 @@ private:
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
 #pragma endregion PRIVATE_SLOTS
+
+  explicit PresetCreator(const PresetCreator&) = delete;
+  PresetCreator& operator=(const PresetCreator&) = delete;
 };
