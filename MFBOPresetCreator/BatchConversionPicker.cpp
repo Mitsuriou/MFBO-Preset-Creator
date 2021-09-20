@@ -730,7 +730,8 @@ void BatchConversionPicker::quickCreatePreset()
 
 void BatchConversionPicker::validateSelection()
 {
-  this->mData.scannedData.clear(); // Clear the data to send a skinier object
+  // TODO: Check to restore this line, after the TODO below
+  //this->mData.scannedData.clear(); // Clear the data to send a skinier object
 
   auto lRemovedPresetsCount{0};
   for (int i = 0; i < this->mData.presets.size(); i++)
@@ -747,6 +748,7 @@ void BatchConversionPicker::validateSelection()
   // TODO: Tell the user that some presets were not valid
 
   // TODO: Emit the signal with the mData object as unique parameter
+  emit presetsCreationValidated(this->mData);
 }
 
 void BatchConversionPicker::groupBoxChecked(bool aIsChecked)

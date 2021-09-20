@@ -11,6 +11,9 @@ class BatchConversionPicker final : public QDialog
 public:
   explicit BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const Struct::BatchConversionData& aData);
 
+signals:
+  void presetsCreationValidated(const Struct::BatchConversionData& aPresetsData);
+
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
   void reject() override;

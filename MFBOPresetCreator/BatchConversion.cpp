@@ -344,7 +344,7 @@ void BatchConversion::setupButtons(QHBoxLayout& aLayout)
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchBatchGenerationProcess);
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
 }
 
 void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::set<QString>>& aScannedData)
@@ -407,7 +407,7 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   }
 
   auto lData{Struct::BatchConversionData()};
-  lData.scannedData = aScannedData;
+  lData.scannedData = std::multimap(aScannedData.begin(), aScannedData.end());
   lData.humanSkeletonPath = lSkeletonPathHuman;
   lData.beastSkeletonPath = lSkeletonPathBeast;
   lData.bodyMod = lBodySelected;
@@ -415,7 +415,8 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   lData.filters = lUserFilters;
   lData.fullOutputPath = lEntryDirectory;
 
-  new BatchConversionPicker(this, this->mSettings, lData);
+  auto lBCPicker{new BatchConversionPicker(this, this->mSettings, lData)};
+  this->connect(lBCPicker, &BatchConversionPicker::presetsCreationValidated, this, &BatchConversion::batchCreatePresets);
 }
 
 void BatchConversion::userHasDoneAnAction()
@@ -479,7 +480,7 @@ void BatchConversion::chooseInputDirectory()
   lLineEdit->setDisabled(lMustDisableButton);
 }
 
-void BatchConversion::launchBatchGenerationProcess()
+void BatchConversion::launchSearchProcess()
 {
   // Progress bar
   auto lProgressbar{new QProgressBar(this)};
@@ -588,6 +589,11 @@ void BatchConversion::launchBatchGenerationProcess()
 
   // Launch the BatchConversionPicker dialog
   this->launchPicker(lScannedData);
+}
+
+void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPresetsData)
+{
+  // TODO:
 }
 
 void BatchConversion::populateSkeletonChoosers()

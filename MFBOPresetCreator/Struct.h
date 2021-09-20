@@ -468,11 +468,11 @@ namespace Struct
   {
     QString humanSkeletonPath;
     QString beastSkeletonPath;
-    BodyNameVersion bodyMod;
+    BodyNameVersion bodyMod{BodyNameVersion::INVALID_VALUE};
     int feetModIndex{-1};
     std::vector<Struct::Filter> filters;
     QString fullOutputPath;
-    std::map<QString, std::set<QString>> scannedData;
+    std::multimap<QString, std::set<QString>> scannedData;
     std::vector<BatchConversionPresetData> presets;
 
     // TODO: Make this structure cleaner (with a constructor and private attributes)

@@ -140,8 +140,6 @@ void MFBOPresetCreator::initializeGUI()
 
   this->refreshUI(mSettings, false);
 
-  this->showWindow();
-
   this->setAcceptDrops(true);
 
   Utils::CleanPathString(this->mInjectedFilePath);
@@ -151,6 +149,8 @@ void MFBOPresetCreator::initializeGUI()
   {
     this->launchWelcomeScreen();
   }
+
+  this->showWindow();
 }
 
 void MFBOPresetCreator::setupMenuBar()
@@ -348,19 +348,8 @@ void MFBOPresetCreator::showWindow()
   {
     this->showMinimized();
 
-#ifdef _WIN32 // Windows OS only
-    // Make the icon in the taskbar blink
-    FLASHWINFO* finfo{new FLASHWINFO()};
-    finfo->cbSize = sizeof(FLASHWINFO);
-    finfo->hwnd = (HWND)this->winId();
-    finfo->uCount = 5;
-    finfo->dwTimeout = 500;
-    finfo->dwFlags = FLASHW_ALL;
-    FlashWindowEx(finfo);
-
-    delete finfo;
-    finfo = nullptr;
-#endif
+    // Make the taskbar icon blink (Windows only)
+    QApplication::alert(this, 4000);
   }
   else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::WINDOWED)
   {
@@ -583,6 +572,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   this->initializeGUI();
 
+  // TODO: Correct the behavior of the popup, when the main window launches as minimized
   if (this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES && !lTitle.isEmpty() && !lMessage.isEmpty())
   {
     // User theme accent

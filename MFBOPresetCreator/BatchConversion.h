@@ -33,12 +33,12 @@ private:
   void launchPicker(const std::map<QString, std::set<QString>>& aScannedData);
 
   void userHasDoneAnAction();
-
-#pragma region PRIVATE_SLOTS
   void userHasDoneAnAction(int);
+
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
-  void launchBatchGenerationProcess();
+  void launchSearchProcess();
+  void batchCreatePresets(const Struct::BatchConversionData& aPresetsData);
   void populateSkeletonChoosers();
 
   // Update the GUI preview
@@ -55,7 +55,6 @@ private:
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
-#pragma endregion PRIVATE_SLOTS
 
   explicit BatchConversion(const BatchConversion&) = delete;
   BatchConversion& operator=(const BatchConversion&) = delete;

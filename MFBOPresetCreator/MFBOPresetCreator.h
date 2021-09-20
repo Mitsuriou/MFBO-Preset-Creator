@@ -5,7 +5,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
-#include <windows.h>
 
 #include "ui_MFBOPresetCreator.h"
 
