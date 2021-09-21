@@ -352,7 +352,7 @@ void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::
   auto lUsefulDataFound{false};
 
   auto lIt = aScannedData.begin();
-  for (lIt; lIt != aScannedData.end(); ++lIt)
+  for (; lIt != aScannedData.end(); ++lIt)
   {
     lUsefulDataFound = Utils::ContainsBodyOrHandsOrFeetMesh(lIt->second);
 
