@@ -48,7 +48,7 @@ private:
   void applyWarningColorButton(const QString& aColor) const;
   void applyDangerColorButton(const QString& aColor) const;
 
-#pragma region PRIVATE_SLOTS
+  //#pragma region PRIVATE_SLOTS
   void saveSettings();
   void updateAvailableBodyVersions();
   void updateAvailableUpgradeBodyVersions();
@@ -59,7 +59,7 @@ private:
   void chooseWarningColor();
   void chooseDangerColor();
   void goToLastPathsTab();
-#pragma endregion PRIVATE_SLOTS
+  //#pragma endregion PRIVATE_SLOTS
 
   // Clear paths
   void clearPathButtonClicked();

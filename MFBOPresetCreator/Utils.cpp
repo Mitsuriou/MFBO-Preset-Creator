@@ -18,7 +18,10 @@
 #include <QVersionNumber>
 #include <QtXml/QDomDocument>
 #include <iostream>
+
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 bool Utils::RESTART_PENDING = false;
 
@@ -1539,11 +1542,13 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
 
 void Utils::BindConsoleToStdOut()
 {
+#ifdef _WIN32
   FreeConsole();
   AllocConsole();
   FILE* lOutFile{NULL};
   freopen_s(&lOutFile, "CONOUT$", "w", stdout);
   SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
+#endif
 }
 
 void Utils::PrintMessageStdOut(const QString& aMessage)

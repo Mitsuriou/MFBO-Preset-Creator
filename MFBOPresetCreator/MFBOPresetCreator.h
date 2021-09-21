@@ -42,7 +42,7 @@ private:
   void checkForUpdate();
   void displayUpdateMessage(const QString& aResult);
 
-#pragma region PRIVATE_SLOTS
+  //#pragma region PRIVATE_SLOTS
   // Base functionalities
   void loadProject();
   void saveProject(const bool aIsQuittingContext = false);
@@ -73,7 +73,7 @@ private:
 
   // Check for updates
   void updateCheckFinished();
-#pragma endregion PRIVATE_SLOTS
+  //#pragma endregion PRIVATE_SLOTS
 
   explicit MFBOPresetCreator(const MFBOPresetCreator&) = delete;
   MFBOPresetCreator& operator=(const MFBOPresetCreator&) = delete;

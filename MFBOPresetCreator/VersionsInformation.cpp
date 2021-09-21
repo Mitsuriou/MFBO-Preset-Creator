@@ -5,7 +5,7 @@ QString VersionsInformation::getLatestStableVersionNumber() const
   return this->stableVersionsList.at(0).first;
 }
 
-const int VersionsInformation::sizeStableVersionsList() const
+int VersionsInformation::sizeStableVersionsList() const
 {
   return static_cast<int>(this->stableVersionsList.size());
 }
@@ -33,7 +33,7 @@ QString VersionsInformation::getLatestBetaVersionNumber() const
   return this->betaVersionsList.at(0).first;
 }
 
-const int VersionsInformation::sizeBetaVersionsList() const
+int VersionsInformation::sizeBetaVersionsList() const
 {
   return static_cast<int>(this->betaVersionsList.size());
 }

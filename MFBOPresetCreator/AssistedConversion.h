@@ -33,12 +33,12 @@ private:
   // Utils functions
   bool hasUserSelectedAnything() const;
 
-#pragma region PRIVATE_SLOTS
+  //#pragma region PRIVATE_SLOTS
   void chooseInputDirectory();
   void launchSearchProcess();
   void validateSelection();
   void modifyComboBoxLockState(int aIndex);
-#pragma endregion PRIVATE_SLOTS
+  //#pragma endregion PRIVATE_SLOTS
 
   explicit AssistedConversion(const AssistedConversion&) = delete;
   AssistedConversion& operator=(const AssistedConversion&) = delete;

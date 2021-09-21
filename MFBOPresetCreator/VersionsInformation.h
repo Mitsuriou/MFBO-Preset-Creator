@@ -8,7 +8,7 @@ struct VersionsInformation
 public:
   // Stable versions list
   QString getLatestStableVersionNumber() const;
-  const int sizeStableVersionsList() const;
+  int sizeStableVersionsList() const;
 
   // Latest stable release notes
   QString getStableReleaseNotes(const QString& aVersion) const;
@@ -16,7 +16,7 @@ public:
 
   // BETA versions list
   QString getLatestBetaVersionNumber() const;
-  const int sizeBetaVersionsList() const;
+  int sizeBetaVersionsList() const;
 
   // Latest BETA release notes
   QString getBetaReleaseNotes(const QString& aVersion) const;

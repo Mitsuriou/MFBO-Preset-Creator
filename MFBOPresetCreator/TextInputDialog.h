@@ -11,9 +11,9 @@ public:
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
-#pragma region PRIVATE_SLOTS
+  //#pragma region PRIVATE_SLOTS
   void updateAddButtonStatus(const QString& aText);
-#pragma endregion PRIVATE_SLOTS
+  //#pragma endregion PRIVATE_SLOTS
 
 private:
   GUITheme mAppTheme;

@@ -25,7 +25,7 @@ private:
   void setupInterface(QGridLayout& aLayout);
   void userHasDoneAnAction();
 
-#pragma region PRIVATE_SLOTS
+  //#pragma region PRIVATE_SLOTS
   void userHasDoneAnAction(int);
   void updateAvailableBodyVersions();
   void chooseInputDirectory();
@@ -42,7 +42,7 @@ private:
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
-#pragma endregion PRIVATE_SLOTS
+  //#pragma endregion PRIVATE_SLOTS
 
   explicit RetargetingTool(const RetargetingTool&) = delete;
   RetargetingTool operator=(const RetargetingTool&) = delete;

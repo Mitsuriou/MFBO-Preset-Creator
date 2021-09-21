@@ -10,7 +10,10 @@
 #include <QTextCodec>
 #include <QTranslator>
 #include <iostream>
+
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 #if defined(DEBUG) || !defined(QT_NO_DEBUG)
 bool FORCE_CONSOLE_DISPLAY = true;
@@ -211,7 +214,9 @@ int main(int argc, char* argv[])
     currentExitCode = lMainApplication.exec();
   } while (currentExitCode == Utils::EXIT_CODE_REBOOT);
 
+#ifdef _WIN32
   FreeConsole();
+#endif
 
   return currentExitCode;
 }

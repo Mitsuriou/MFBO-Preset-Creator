@@ -46,13 +46,13 @@ private:
   void displayFoundTextures(QGridLayout* aLayout, const TexturesAssistant::ScannedData& aScannedData);
   void createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout);
 
-#pragma region PRIVATE_SLOTS
+  //#pragma region PRIVATE_SLOTS
   void chooseInputDirectory();
   void launchSearchProcess();
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);
-#pragma endregion PRIVATE_SLOTS
+  //#pragma endregion PRIVATE_SLOTS
 
   explicit TexturesAssistant(const TexturesAssistant&) = delete;
   TexturesAssistant& operator=(const TexturesAssistant&) = delete;

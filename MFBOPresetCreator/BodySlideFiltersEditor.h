@@ -34,7 +34,7 @@ private:
   void displayFilterAt(const int aIndex) const;
   void shouldDisableFiltersControls();
 
-#pragma region PRIVATE_SLOTS
+  //#pragma region PRIVATE_SLOTS
   void showFiltersList(int aIndex);
 
   // Filter set
@@ -48,7 +48,7 @@ private:
   void deleteRow();
   void deleteAllRows();
   void handleRowRenaming();
-#pragma endregion PRIVATE_SLOTS
+  //#pragma endregion PRIVATE_SLOTS
 
   explicit BodySlideFiltersEditor(const BodySlideFiltersEditor&) = delete;
   BodySlideFiltersEditor& operator=(const BodySlideFiltersEditor&) = delete;
