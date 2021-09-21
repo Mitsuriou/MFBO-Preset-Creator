@@ -488,7 +488,7 @@ bool Utils::IsRunningStandaloneVersion()
 
 QString Utils::GetAppDataPathFolder()
 {
-#ifdef DEBUG
+#if defined(DEBUG) || !defined(QT_NO_DEBUG)
   return QCoreApplication::applicationDirPath() + QDir::separator();
 #else
   QDir lDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));

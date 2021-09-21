@@ -12,7 +12,7 @@
 #include <iostream>
 #include <windows.h>
 
-#ifdef DEBUG
+#if defined(DEBUG) || !defined(QT_NO_DEBUG)
 bool FORCE_CONSOLE_DISPLAY = true;
 #else
 bool FORCE_CONSOLE_DISPLAY = false;

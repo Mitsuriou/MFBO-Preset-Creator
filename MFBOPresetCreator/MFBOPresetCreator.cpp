@@ -35,7 +35,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
   // Construct the GUI
   ui.setupUi(this);
 
-#ifdef DEBUG
+#if defined(DEBUG) || !defined(QT_NO_DEBUG)
   qApp->setApplicationDisplayName(tr("[DEV] ") + qApp->applicationDisplayName());
 #endif
 
