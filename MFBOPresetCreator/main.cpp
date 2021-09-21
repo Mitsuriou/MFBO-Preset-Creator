@@ -146,8 +146,7 @@ int main(int argc, char* argv[])
     {
       if (lInstallerLogFile.open(QIODevice::ReadOnly | QIODevice::Text))
       {
-        QTextStream lStream(&lInstallerLogFile);
-        auto lPathToDelete{lStream.readAll()};
+        auto lPathToDelete{QString::fromLocal8Bit(lInstallerLogFile.readAll())};
         lInstallerLogFile.close();
 
         QFile lInstallerFile(lPathToDelete);

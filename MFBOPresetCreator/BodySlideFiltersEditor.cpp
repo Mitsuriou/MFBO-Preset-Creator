@@ -398,7 +398,7 @@ void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
     lNewIndex++;
   }
 
-  if (lNewIndex == this->mFiltersList.size())
+  if (lNewIndex == static_cast<int>(this->mFiltersList.size()))
   {
     lNewIndex = 0;
   }

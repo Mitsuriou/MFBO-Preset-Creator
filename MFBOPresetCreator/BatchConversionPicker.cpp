@@ -734,7 +734,8 @@ void BatchConversionPicker::validateSelection()
   //this->mData.scannedData.clear(); // Clear the data to send a skinier object
 
   auto lRemovedPresetsCount{0};
-  for (int i = 0; i < this->mData.presets.size(); i++)
+  auto lPresetsCount{static_cast<int>(this->mData.presets.size())};
+  for (int i = 0; i < lPresetsCount; i++)
   {
     if (!this->mData.presets.at(i).isValid())
     {

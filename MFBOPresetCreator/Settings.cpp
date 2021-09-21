@@ -23,9 +23,9 @@ Settings::Settings(QWidget* aParent, const Struct::Settings& aSettings, const st
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
-  , mMustRebootMainApp{false}
-  , mNewFont{qApp->font()}
+  , mMustRebootMainApp(false)
   , mPathEntryCleared(false)
+  , mNewFont(qApp->font())
 {
   // Build the window's interface
   this->setWindowProperties();

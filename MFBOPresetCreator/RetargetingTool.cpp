@@ -612,7 +612,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lPresetName{QString()};
     auto lBufferLocationToRemove{-1};
 
-    auto lOSPBufSize{lOSPBuffer.size()};
+    auto lOSPBufSize{static_cast<int>(lOSPBuffer.size())};
     for (int i = 0; i < lOSPBufSize; i++)
     {
       if (lFileName == lOSPBuffer.at(i).first)
@@ -746,7 +746,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Check if the OSP file has skiped the parsing
     auto lSkipXMLLastTreatment{false};
-    auto lOSPBufSize{lOSPBuffer.size()};
+    auto lOSPBufSize{static_cast<int>(lOSPBuffer.size())};
     for (int i = 0; i < lOSPBufSize; i++)
     {
       if (lFileName == lOSPBuffer.at(i).first)
@@ -766,7 +766,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Searching for the preset name in the buffer
     auto lPresetName{QString()};
-    auto lNamesBufSize{lNamesBuffer.size()};
+    auto lNamesBufSize{static_cast<int>(lNamesBuffer.size())};
 
     for (int i = 0; i < lNamesBufSize; i++)
     {

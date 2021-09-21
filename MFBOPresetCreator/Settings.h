@@ -19,12 +19,12 @@ protected:
 private:
   Struct::Settings mSettings;
   std::map<QString, QString> mLastPaths;
+  bool mMustRebootMainApp;
+  bool mPathEntryCleared;
   QFont mNewFont;
   QString mNewSuccessColor;
   QString mNewWarningColor;
   QString mNewDangerColor;
-  bool mMustRebootMainApp;
-  bool mPathEntryCleared;
 
   void setWindowProperties();
   void initializeGUI();
