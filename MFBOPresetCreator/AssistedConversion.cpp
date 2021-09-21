@@ -209,7 +209,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
     lFileName.remove(".nif", Qt::CaseInsensitive);
 
     // Construct the key of the map
-    lKey = QString("%1/%2").arg(lRelativeDirPath).arg(lFileName).toStdString();
+    lKey = QString("%1/%2").arg(lRelativeDirPath, lFileName).toStdString();
 
     // Insert the key-value into the map
     lScannedValues.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));

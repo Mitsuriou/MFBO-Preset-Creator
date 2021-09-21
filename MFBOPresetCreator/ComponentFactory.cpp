@@ -23,7 +23,7 @@ QPushButton* ComponentFactory::CreateButton(
   // Icon
   if (!aIconFolder.isEmpty() && !aIconName.isEmpty())
   {
-    lButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation)));
+    lButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(48, Qt::SmoothTransformation)));
   }
   // Mouse cursor
   lButton->setCursor(Qt::PointingHandCursor);

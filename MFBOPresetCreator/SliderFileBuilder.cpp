@@ -328,7 +328,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
   lBuiltContent.append("</SliderGroups>");
 
   // Replace the "%1" string with identation spaces and "%2" with the name given to the line
-  return lBuiltContent.arg("    ").arg(aLineName);
+  return lBuiltContent.arg("    ", aLineName);
 }
 
 QString SliderFileBuilder::GetFeetLineForBHUNP(const int aFeetModIndex)

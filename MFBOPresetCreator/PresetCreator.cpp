@@ -929,9 +929,9 @@ bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const Q
 
     // Custom skeleton chooser
     auto lSkeletonChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
-    auto lPath{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder()).arg(lSkeletonChooser->currentText())};
+    auto lPath{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooser->currentText())};
 
-    auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory).arg(QDir::separator()).arg(lSkeletonName)};
+    auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory, QDir::separator(), lSkeletonName)};
 
     if (!QFile::copy(lPath, lSkeletonWriteLocation))
     {
@@ -1032,9 +1032,9 @@ void PresetCreator::updateMeshesPreview()
     lHandsName = "femalehands";
   }
 
-  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody).arg(lBodyName));
-  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet).arg(lFeetName));
-  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands).arg(lHandsName));
+  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody, lBodyName));
+  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet, lFeetName));
+  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands, lHandsName));
 
   auto lNewTextColor{this->mSettings.successColor};
 
@@ -1220,7 +1220,7 @@ void PresetCreator::updateSkeletonPreview()
     lSkeletonName = "skeleton_female";
   }
 
-  auto lConstructedPath(QString("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath).arg(lSkeletonName));
+  auto lConstructedPath(QString("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath, lSkeletonName));
   auto lOutputPathPreview{this->findChild<QLabel*>(QString("skeleton_path_preview"))};
 
   auto lNewTextColor{QString()};

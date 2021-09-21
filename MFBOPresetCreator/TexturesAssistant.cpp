@@ -206,7 +206,7 @@ TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const 
     lFileName = it.fileInfo().fileName();
 
     // Construct the key of the map
-    lKey = QString("%1/textures/%2").arg(lRelativeDirPath).arg(lFileName).toStdString();
+    lKey = QString("%1/textures/%2").arg(lRelativeDirPath, lFileName).toStdString();
 
     // check if the file is relative to a body, hands or head textures
     if (lTexturesFilesToFind.contains(lFileName))

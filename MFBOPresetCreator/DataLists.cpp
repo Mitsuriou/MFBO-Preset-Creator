@@ -300,7 +300,7 @@ QString DataLists::GetQRCPathFromBodyName(const BodyNameVersion& aBody, const in
     }
   }
 
-  return QString(":/presets/%1/%2/%3").arg(lRessource).arg(lResolvedModName).arg(DataLists::GetVersionsFromBodyName(lCastedBodyName).at(lBodyVersion.second));
+  return QString(":/presets/%1/%2/%3").arg(lRessource, lResolvedModName, DataLists::GetVersionsFromBodyName(lCastedBodyName).at(lBodyVersion.second));
 }
 
 QStringList DataLists::GetFeetModsFromBodyName(const BodyName& aBody)

@@ -362,9 +362,6 @@ void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::
       lIt = aScannedData.erase(lIt);
       lIt--;
     }
-
-    // Reset the state
-    lUsefulDataFound = false;
   }
 }
 
@@ -386,10 +383,10 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
 
   auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
-  auto lSkeletonPathHuman{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder()).arg(lSkeletonChooserHuman->currentText())};
+  auto lSkeletonPathHuman{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooserHuman->currentText())};
 
   auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
-  auto lSkeletonPathBeast{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder()).arg(lSkeletonChooserBeast->currentText())};
+  auto lSkeletonPathBeast{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooserBeast->currentText())};
 
   // Output paths
   auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
@@ -565,7 +562,7 @@ void BatchConversion::launchSearchProcess()
 
       // Construct the key of the map
       lKey = lRelativeDirPath.left(lFirstSlashPosition);
-      lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lFirstSlashPosition + 1)).arg(lFileName);
+      lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lFirstSlashPosition + 1), lFileName);
 
       lMapPosition = lScannedData.find(lKey);
       if (lMapPosition != lScannedData.end())

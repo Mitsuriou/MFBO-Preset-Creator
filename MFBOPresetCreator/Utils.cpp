@@ -156,7 +156,7 @@ void Utils::DisplayWarningMessage(const QString& aMessage)
 ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
-  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName)).scaledToHeight(48, Qt::SmoothTransformation));
+  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(48, Qt::SmoothTransformation));
 
   auto lYesButton{lConfirmationBox.addButton(aTextBtnYes, QMessageBox::ButtonRole::YesRole)};
   lYesButton->setCursor(Qt::PointingHandCursor);
@@ -1362,7 +1362,7 @@ QAction* Utils::BuildQAction(QWidget* aParent, const QString& aText, const QKeyS
   auto lAction{new QAction(aParent)};
   lAction->setText(aText);
   lAction->setShortcut(aKeysCombination);
-  lAction->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder).arg(aIconName))));
+  lAction->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName))));
   return lAction;
 }
 

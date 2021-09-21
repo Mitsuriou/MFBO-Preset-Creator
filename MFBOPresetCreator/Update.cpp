@@ -223,12 +223,12 @@ void Update::displayUpdateMessage(const QString& aResult)
       auto lVersionFileName = lVersionsInformation.getLatestBetaVersionNumber();
       if (Utils::IsRunningStandaloneVersion())
       {
-        this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+        this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), lVersionFileName);
       }
       else
       {
         lVersionFileName.replace(".", "-");
-        this->mSaveFilePath = QString("%1/mfbopc-wizard-beta-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+        this->mSaveFilePath = QString("%1/mfbopc-wizard-beta-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), lVersionFileName);
       }
       Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new BETA version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the BETA version \"%2\":")
@@ -262,12 +262,12 @@ void Update::displayUpdateMessage(const QString& aResult)
       auto lVersionFileName = lVersionsInformation.getLatestStableVersionNumber();
       if (Utils::IsRunningStandaloneVersion())
       {
-        this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+        this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), lVersionFileName);
       }
       else
       {
         lVersionFileName.replace(".", "-");
-        this->mSaveFilePath = QString("%1/mfbopc-wizard-stable-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(lVersionFileName);
+        this->mSaveFilePath = QString("%1/mfbopc-wizard-stable-%2.exe").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), lVersionFileName);
       }
       Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the stable version \"%2\":")
@@ -403,7 +403,7 @@ void Update::chunkSizeUpdated(qint64 aBytesRead, qint64 aTotal)
     // Change the value displayed on the progress bar
     lDownloadProgressBar->setValue(aBytesRead);
     lDownloadProgressBar->setMaximum(aTotal);
-    lDownloadProgressBar->setFormat(tr("%1 bytes out of %2 bytes (%p%)").arg(QString::number(aBytesRead)).arg(QString::number(aTotal)));
+    lDownloadProgressBar->setFormat(tr("%1 bytes out of %2 bytes (%p%)").arg(QString::number(aBytesRead), QString::number(aTotal)));
 
 #ifdef Q_OS_WIN
     // Show and make the application button in statusbar become green empty
