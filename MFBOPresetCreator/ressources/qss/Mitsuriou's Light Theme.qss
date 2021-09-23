@@ -293,6 +293,93 @@ QListWidget::item QWidget {
   margin: 0px;
 }
 
+QListWidget QScrollBar::horizontal {
+  margin: 1px 14px;
+  padding: 0px;
+  border: 0px;
+  background-color: #edf0f5;
+  height: 14px;
+}
+
+QListWidget QScrollBar::vertical {
+  margin: 14px 1px;
+  padding: 0px;
+  border: 0px;
+  background-color: #edf0f5;
+  width: 14px;
+}
+
+QListWidget QScrollBar::sub-line::horizontal,
+QListWidget QScrollBar::add-line::horizontal,
+QListWidget QScrollBar::sub-line::vertical,
+QListWidget QScrollBar::add-line::vertical {
+  border: 0px;
+  padding: 0px;
+  margin: 1px;
+  height: 10px;
+  width: 10px;
+  border: 1px solid #ff558d;
+  subcontrol-origin: margin;
+}
+
+QListWidget QScrollBar::sub-line::horizontal {
+  subcontrol-position: left;
+  image: url(":/mitsuriou_light/chevron-left");
+}
+
+QListWidget QScrollBar::add-line::horizontal {
+  subcontrol-position: right;
+  image: url(":/mitsuriou_light/chevron-right");
+}
+
+QListWidget QScrollBar::sub-line::vertical {
+  subcontrol-position: top;
+  image: url(":/mitsuriou_light/chevron-top");
+}
+
+QListWidget QScrollBar::add-line::vertical {
+  subcontrol-position: bottom;
+  image: url(":/mitsuriou_light/chevron-bottom");
+}
+
+QListWidget QScrollBar::sub-page::horizontal,
+QListWidget QScrollBar::add-page::horizontal,
+QListWidget QScrollBar::sub-page::vertical,
+QListWidget QScrollBar::add-page::vertical {
+  background-color: #edf0f5;
+}
+
+QListWidget QScrollBar::handle::vertical {
+  border: 1px solid #ff558d;
+  background-color: #edf0f5;
+  min-height: 20px;
+}
+
+QListWidget QScrollBar::handle::horizontal {
+  border: 1px solid #ff558d;
+  background-color: #edf0f5;
+  min-width: 20px;
+}
+
+QListWidget QScrollBar::sub-line::horizontal::pressed,
+QListWidget QScrollBar::add-line::horizontal::pressed,
+QListWidget QScrollBar::sub-line::vertical::pressed,
+QListWidget QScrollBar::add-line::vertical::pressed,
+QListWidget QScrollBar::handle::horizontal::pressed,
+QListWidget QScrollBar::handle::vertical::pressed {
+  background-color: black;
+  border-color: #ff558d;
+}
+
+QListWidget QScrollBar::sub-line::horizontal::focus,
+QListWidget QScrollBar::add-line::horizontal::focus,
+QListWidget QScrollBar::sub-line::vertical::focus,
+QListWidget QScrollBar::add-line::vertical::focus,
+QListWidget QScrollBar::handle::horizontal::focus,
+QListWidget QScrollBar::handle::vertical::focus {
+  border-color: black;
+}
+
 /************/
 /*SCROLL BAR*/
 /************/
