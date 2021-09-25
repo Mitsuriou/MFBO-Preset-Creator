@@ -10,6 +10,9 @@ class RetargetingTool final : public QDialog
 public:
   explicit RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
+signals:
+  void modalClosed();
+
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
   void reject() override;

@@ -23,7 +23,8 @@ QPushButton* ComponentFactory::CreateButton(
   // Icon
   if (!aIconFolder.isEmpty() && !aIconName.isEmpty())
   {
-    lButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(48, Qt::SmoothTransformation)));
+    lButton->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName))));
+    lButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
   }
   // Mouse cursor
   lButton->setCursor(Qt::PointingHandCursor);

@@ -19,7 +19,7 @@
 #include <QtXml/QDomDocument>
 #include <iostream>
 
-#ifdef _WIN32
+#ifdef Q_OS_WIN
 #include <windows.h>
 #endif
 
@@ -147,7 +147,7 @@ ApplicationVersionRelative Utils::CompareVersionNumbers(const QString& aVersionN
 void Utils::DisplayWarningMessage(const QString& aMessage)
 {
   QMessageBox lBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
-  lBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(48, Qt::SmoothTransformation));
+  lBox.setIconPixmap(QPixmap(":/icons/red-alert-circle"));
 
   QPushButton lButton(tr("OK"));
   lButton.setCursor(Qt::PointingHandCursor);
@@ -159,7 +159,7 @@ void Utils::DisplayWarningMessage(const QString& aMessage)
 ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
-  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(48, Qt::SmoothTransformation));
+  lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
   auto lYesButton{lConfirmationBox.addButton(aTextBtnYes, QMessageBox::ButtonRole::YesRole)};
   lYesButton->setCursor(Qt::PointingHandCursor);
@@ -828,7 +828,7 @@ void Utils::SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFileP
                                    tr("The project file has successfully been saved to \"%1\".").arg(aFilePath),
                                    QMessageBox::StandardButton::NoButton,
                                    aParent);
-      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(aIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(aIconFolder)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
       auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
       lOKButton->setCursor(Qt::PointingHandCursor);
@@ -1366,6 +1366,7 @@ QAction* Utils::BuildQAction(QWidget* aParent, const QString& aText, const QKeyS
   lAction->setText(aText);
   lAction->setShortcut(aKeysCombination);
   lAction->setIcon(QIcon(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName))));
+  // TODO: Find a way to set the size of the icons + multiply the size by the DPI scale
   return lAction;
 }
 
@@ -1542,11 +1543,13 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
 
 void Utils::BindConsoleToStdOut()
 {
-#ifdef _WIN32
+#ifdef Q_OS_WIN
   FreeConsole();
   AllocConsole();
   FILE* lOutFile{NULL};
+  //freopen_s(&lOutFile, "CONIN$", "r", stdin);
   freopen_s(&lOutFile, "CONOUT$", "w", stdout);
+  //freopen_s(&lOutFile, "CONOUT$", "w", stderr);
   SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
 #endif
 }

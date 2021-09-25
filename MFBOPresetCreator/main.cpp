@@ -11,7 +11,7 @@
 #include <QTranslator>
 #include <iostream>
 
-#ifdef _WIN32
+#ifdef Q_OS_WIN
 #include <windows.h>
 #endif
 
@@ -213,7 +213,7 @@ int main(int argc, char* argv[])
     currentExitCode = lMainApplication.exec();
   } while (currentExitCode == Utils::EXIT_CODE_REBOOT);
 
-#ifdef _WIN32
+#ifdef Q_OS_WIN
   FreeConsole();
 #endif
 

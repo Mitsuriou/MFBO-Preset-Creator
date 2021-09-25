@@ -50,6 +50,7 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   if (!this->mHasUserDoneSomething)
   {
     aEvent->accept();
+    emit modalClosed();
     return;
   }
 
@@ -76,6 +77,8 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   {
     aEvent->ignore();
   }
+
+  emit modalClosed();
 }
 
 void BatchConversion::reject()
@@ -200,11 +203,6 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 
   // Grid layout
   auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setColumnStretch(0, 0);
-  lBodyslideGridLayout->setColumnStretch(1, 1);
-  lBodyslideGridLayout->setColumnStretch(2, 1);
-  lBodyslideGridLayout->setColumnStretch(3, 2);
-  lBodyslideGridLayout->setColumnStretch(4, 0);
   lBodyslideGridLayout->setSpacing(10);
   lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
   lBodyslideGridLayout->setAlignment(Qt::AlignTop);
@@ -215,6 +213,10 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 
   lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
+  auto lBodyNameVersionWrapper{new QHBoxLayout(lBodyslideGroupBox)};
+  lBodyNameVersionWrapper->setMargin(0);
+  lBodyslideGridLayout->addLayout(lBodyNameVersionWrapper, 0, 1);
+
   // Body Name
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
@@ -222,7 +224,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyNameSelector->addItems(DataLists::GetBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  lBodyslideGridLayout->addWidget(lBodyNameSelector, 0, 1);
+  lBodyNameVersionWrapper->addWidget(lBodyNameSelector);
 
   // Body Version
   auto lBodyVersionSelector{new QComboBox(this)};
@@ -231,7 +233,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  lBodyslideGridLayout->addWidget(lBodyVersionSelector, 0, 2);
+  lBodyNameVersionWrapper->addWidget(lBodyVersionSelector);
 
   // Feet mod chooser
   auto lFeetSelector{new QComboBox(this)};
@@ -240,27 +242,36 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
-  lBodyslideGridLayout->addWidget(lFeetSelector, 0, 3);
+  lBodyNameVersionWrapper->addWidget(lFeetSelector);
 
-  // BodySlide filters
-  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 3, 0);
+  lBodyNameVersionWrapper->addStretch();
+
+  // Filters
+  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 1, 0);
+
+  auto lFiltersWrapper{new QHBoxLayout(lBodyslideGroupBox)};
+  lFiltersWrapper->setMargin(0);
+  lBodyslideGridLayout->addLayout(lFiltersWrapper, 1, 1);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   lFiltersListChooser->setCursor(Qt::PointingHandCursor);
   lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
-  lBodyslideGridLayout->addWidget(lFiltersListChooser, 3, 1);
+  lFiltersWrapper->addWidget(lFiltersListChooser);
 
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName(QString("bodyslide_filters"));
+  lFiltersList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   lFiltersList->setWordWrap(true);
-  lBodyslideGridLayout->addWidget(lFiltersList, 3, 2, 1, 2);
+  lFiltersWrapper->addWidget(lFiltersList);
 
   auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
-  lBodyslideGridLayout->addWidget(lEditFilters, 3, 4);
+  lFiltersWrapper->addWidget(lEditFilters);
 
   // Event binding
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateAvailableBodyVersions);
   this->connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
+
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
   this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
   this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
@@ -437,7 +448,6 @@ void BatchConversion::userHasDoneAnAction(int)
   this->disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
 }
 
-// TODO: Reconnect the function below:
 void BatchConversion::updateAvailableBodyVersions()
 {
   auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
@@ -453,7 +463,6 @@ void BatchConversion::updateAvailableBodyVersions()
   lFeetSelector->clear();
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
   lFeetSelector->setCurrentIndex(0);
-  // TODO: Make the modifications to take into account the new way the selector updates
 }
 
 void BatchConversion::chooseInputDirectory()
@@ -469,7 +478,7 @@ void BatchConversion::chooseInputDirectory()
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
-    this->mHasUserDoneSomething = true;
+    this->userHasDoneAnAction();
   }
 
   // Enable or disable path viewer label and launch button
@@ -624,7 +633,7 @@ void BatchConversion::useOnlySubdirStateChanged(int)
 
 void BatchConversion::updateOutputPreview()
 {
-  this->mHasUserDoneSomething = true;
+  this->userHasDoneAnAction();
 
   auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
@@ -675,6 +684,12 @@ void BatchConversion::initBodySlideFiltersList()
 
 void BatchConversion::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
 {
+  // Do not update anything if the list is the same as the one already set
+  if (this->mFiltersList == aFilterList)
+  {
+    return;
+  }
+
   this->mFiltersList = aFilterList;
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};

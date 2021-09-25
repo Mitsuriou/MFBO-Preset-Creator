@@ -431,9 +431,11 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
 
   auto lEditFiltersButton{this->findChild<QPushButton*>(QString("edit_filters"))};
   lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
+  lEditFiltersButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
 
   auto lSkeletonRefresherButton{this->findChild<QPushButton*>(QString("skeleton_chooser_refresher"))};
   lSkeletonRefresherButton->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
+  lSkeletonRefresherButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
 }
 
 void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut)
@@ -581,7 +583,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     if (aResult == "fetch_error")
     {
       QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
-      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation));
+      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
       auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
       lOKButton->setCursor(Qt::PointingHandCursor);
@@ -710,20 +712,24 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
 
 void MFBOPresetCreator::launchBatchConversion()
 {
-  new BatchConversion(this, this->mSettings, &this->mLastPaths);
+  auto lDialog{new BatchConversion(this, this->mSettings, &this->mLastPaths)};
 
-  // Update the BodySlide sets in case they were modified through the RetargetingTool's window
-  auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
-  lMainHandler->updateBodySlideSets();
+  this->connect(lDialog, &BatchConversion::modalClosed, [=]() {
+    // Update the BodySlide sets in case they were modified through the BatchConversion's window
+    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+    lMainHandler->updateBodySlideSets();
+  });
 }
 
 void MFBOPresetCreator::launchPresetsRetargeting()
 {
-  new RetargetingTool(this, this->mSettings, &this->mLastPaths);
+  auto lDialog{new RetargetingTool(this, this->mSettings, &this->mLastPaths)};
 
-  // Update the BodySlide sets in case they were modified through the RetargetingTool's window
-  auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
-  lMainHandler->updateBodySlideSets();
+  this->connect(lDialog, &RetargetingTool::modalClosed, [=]() {
+    // Update the BodySlide sets in case they were modified through the RetargetingTool's window
+    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+    lMainHandler->updateBodySlideSets();
+  });
 }
 
 void MFBOPresetCreator::launchTexturesAssistant()

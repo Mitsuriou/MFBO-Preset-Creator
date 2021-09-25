@@ -603,7 +603,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lFiltersList->setWordWrap(true);
   lFiltersWrapper->addWidget(lFiltersList);
 
-  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "", lIconFolder, "edit_filters")};
+  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Pre-bind initialization functions
@@ -1486,7 +1486,7 @@ void PresetCreator::generateDirectoryStructure()
   if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
   {
     QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
+    lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
     auto lOKButton{lConfirmationBox.addButton(tr("Open the generated directory"), QMessageBox::ButtonRole::AcceptRole)};
     lOKButton->setCursor(Qt::PointingHandCursor);

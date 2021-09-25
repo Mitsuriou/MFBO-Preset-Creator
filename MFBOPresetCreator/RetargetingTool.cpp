@@ -43,6 +43,7 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   if (!this->mHasUserDoneSomething)
   {
     aEvent->accept();
+    emit modalClosed();
     return;
   }
 
@@ -69,6 +70,8 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   {
     aEvent->ignore();
   }
+
+  emit modalClosed();
 }
 
 void RetargetingTool::reject()
@@ -109,11 +112,6 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Grid layout
   auto lGeneralGridLayout{new QGridLayout(lGeneralGroupBox)};
-  lGeneralGridLayout->setColumnStretch(0, 0);
-  lGeneralGridLayout->setColumnStretch(1, 1);
-  lGeneralGridLayout->setColumnStretch(2, 1);
-  lGeneralGridLayout->setColumnStretch(3, 2);
-  lGeneralGridLayout->setColumnStretch(4, 0);
   lGeneralGridLayout->setSpacing(10);
   lGeneralGridLayout->setContentsMargins(15, 20, 15, 15);
   lGeneralGridLayout->setAlignment(Qt::AlignTop);
@@ -123,30 +121,38 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   lGeneralGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
+  auto lBodyNameVersionWrapper{new QHBoxLayout(lGeneralGroupBox)};
+  lBodyNameVersionWrapper->setMargin(0);
+  lGeneralGridLayout->addLayout(lBodyNameVersionWrapper, 0, 1, 1, 2);
+
+  // Body Name
   auto lBodyNameSelector{new QComboBox(this)};
   lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyNameSelector->setCursor(Qt::PointingHandCursor);
   lBodyNameSelector->addItems(DataLists::GetBodiesNames());
   lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
   lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  lGeneralGridLayout->addWidget(lBodyNameSelector, 0, 1);
+  lBodyNameVersionWrapper->addWidget(lBodyNameSelector);
 
+  // Body Version
   auto lBodyVersionSelector{new QComboBox(this)};
   lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
   lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
   lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
   lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
   lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  lGeneralGridLayout->addWidget(lBodyVersionSelector, 0, 2);
+  lBodyNameVersionWrapper->addWidget(lBodyVersionSelector);
 
   // Feet mod chooser
   auto lFeetSelector{new QComboBox(this)};
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
+  lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
-  lGeneralGridLayout->addWidget(lFeetSelector, 0, 3);
+  lBodyNameVersionWrapper->addWidget(lFeetSelector);
+
+  lBodyNameVersionWrapper->addStretch();
 
   // Input path
   lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 1, 0);
@@ -154,27 +160,32 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
-  lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1, 1, 3);
+  lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1);
 
   auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
-  lGeneralGridLayout->addWidget(lInputPathChooser, 1, 4);
+  lGeneralGridLayout->addWidget(lInputPathChooser, 1, 2);
 
-  // BodySlide filters
+  // Filters
   lGeneralGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 2, 0);
+
+  auto lFiltersWrapper{new QHBoxLayout(lGeneralGroupBox)};
+  lFiltersWrapper->setMargin(0);
+  lGeneralGridLayout->addLayout(lFiltersWrapper, 2, 1, 1, 2);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   lFiltersListChooser->setCursor(Qt::PointingHandCursor);
   lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
-  lGeneralGridLayout->addWidget(lFiltersListChooser, 2, 1);
+  lFiltersWrapper->addWidget(lFiltersListChooser);
 
   auto lFiltersList{new QLabel("", this)};
   lFiltersList->setObjectName(QString("bodyslide_filters"));
+  lFiltersList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   lFiltersList->setWordWrap(true);
-  lGeneralGridLayout->addWidget(lFiltersList, 2, 2, 1, 2);
+  lFiltersWrapper->addWidget(lFiltersList);
 
-  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters", false, true)};
-  lGeneralGridLayout->addWidget(lEditFilters, 2, 4);
+  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
+  lFiltersWrapper->addWidget(lEditFilters);
 
   // Backup group box
   auto lBackupGroupBox{new QGroupBox(tr("Backup").append("  "), this)};
@@ -246,7 +257,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   this->connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
   this->connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
-  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::updateBodySlideFiltersListPreview));
+  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateBodySlideFiltersListPreview);
   this->connect(lEditFilters, &QPushButton::clicked, this, &RetargetingTool::openBodySlideFiltersEditor);
 
   // Post-bind initialization functions
@@ -814,7 +825,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   if (mSettings.retargetingToolAutomaticallyOpenGeneratedDirectory)
   {
     QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(48, Qt::SmoothTransformation));
+    lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
     auto lOKButton{lConfirmationBox.addButton(tr("Open the retargeted directory"), QMessageBox::ButtonRole::AcceptRole)};
     lOKButton->setCursor(Qt::PointingHandCursor);
@@ -877,6 +888,12 @@ void RetargetingTool::initBodySlideFiltersList()
 
 void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList)
 {
+  // Do not update anything if the list is the same as the one already set
+  if (this->mFiltersList == aFilterList)
+  {
+    return;
+  }
+
   this->mFiltersList = aFilterList;
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
@@ -921,7 +938,4 @@ void RetargetingTool::groupBoxChecked(bool aIsChecked)
     return;
 
   Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
-
-  // Resize the window
-  this->adjustSize();
 }

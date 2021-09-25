@@ -49,6 +49,7 @@ private:
   void removeActivePreset();
   void addNewEmptyPreset();
   void updatePresetInterfaceState(const int aNextIndex);
+  void updateActivePresetNumberSpinBox();
 
   //
   void quickCreatePreset();

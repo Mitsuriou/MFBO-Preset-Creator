@@ -372,25 +372,34 @@
         <file>ressources/qss/Alexhuszagh Breeze Light/vsepartoolbars.svg</file>
     </qresource>
     <qresource prefix="/mitsuriou_black">
-        <file alias="menu-down">ressources/qss/Mitsuriou's Black Theme/menu-down.png</file>
         <file alias="chevron-bottom">ressources/qss/Mitsuriou's Black Theme/chevron-bottom.png</file>
         <file alias="chevron-left">ressources/qss/Mitsuriou's Black Theme/chevron-left.png</file>
         <file alias="chevron-right">ressources/qss/Mitsuriou's Black Theme/chevron-right.png</file>
         <file alias="chevron-top">ressources/qss/Mitsuriou's Black Theme/chevron-top.png</file>
+        <file alias="chevron-bottom-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-bottom-disabled.png</file>
+        <file alias="chevron-left-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-left-disabled.png</file>
+        <file alias="chevron-right-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-right-disabled.png</file>
+        <file alias="chevron-top-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-top-disabled.png</file>
     </qresource>
     <qresource prefix="/mitsuriou_dark">
-        <file alias="menu-down">ressources/qss/Mitsuriou's Dark Theme/menu-down.png</file>
         <file alias="chevron-bottom">ressources/qss/Mitsuriou's Dark Theme/chevron-bottom.png</file>
         <file alias="chevron-left">ressources/qss/Mitsuriou's Dark Theme/chevron-left.png</file>
         <file alias="chevron-right">ressources/qss/Mitsuriou's Dark Theme/chevron-right.png</file>
         <file alias="chevron-top">ressources/qss/Mitsuriou's Dark Theme/chevron-top.png</file>
+        <file alias="chevron-bottom-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-bottom-disabled.png</file>
+        <file alias="chevron-left-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-left-disabled.png</file>
+        <file alias="chevron-right-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-right-disabled.png</file>
+        <file alias="chevron-top-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-top-disabled.png</file>
     </qresource>
     <qresource prefix="/mitsuriou_light">
-        <file alias="menu-down">ressources/qss/Mitsuriou's Light Theme/menu-down.png</file>
         <file alias="chevron-bottom">ressources/qss/Mitsuriou's Light Theme/chevron-bottom.png</file>
         <file alias="chevron-left">ressources/qss/Mitsuriou's Light Theme/chevron-left.png</file>
         <file alias="chevron-right">ressources/qss/Mitsuriou's Light Theme/chevron-right.png</file>
         <file alias="chevron-top">ressources/qss/Mitsuriou's Light Theme/chevron-top.png</file>
+        <file alias="chevron-bottom-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-bottom-disabled.png</file>
+        <file alias="chevron-left-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-left-disabled.png</file>
+        <file alias="chevron-right-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-right-disabled.png</file>
+        <file alias="chevron-top-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-top-disabled.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file alias="Roboto">ressources/fonts/Roboto-Regular.ttf</file>

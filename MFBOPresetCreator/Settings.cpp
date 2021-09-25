@@ -150,7 +150,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Display"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(lIconFolder))), tr("Display"));
 
   //
   // First column
@@ -263,7 +263,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("General"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(lIconFolder))), tr("General"));
 
   // Show welcome screen at application startup
   lTabLayout->addWidget(new QLabel(tr("Startup actions:"), this), 0, 0, 1, 2);
@@ -310,7 +310,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Preset Creator"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(lIconFolder))), tr("Preset Creator"));
 
   // DEFAULT SELECTED BODY AND VERSION
   auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
@@ -381,7 +381,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("BodySlide Presets' Retargeting"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))), tr("BodySlide Presets' Retargeting"));
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
   auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
@@ -439,7 +439,7 @@ void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Assisted Conversion"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder))), tr("Assisted Conversion"));
 
   // ONLY SCAN THE MESHES SUBDIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Software' scan behavior:"), this));
@@ -462,7 +462,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder)).scaledToHeight(48, Qt::SmoothTransformation)), tr("Last used paths"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))), tr("Last used paths"));
 
   // "Clear all" button
   auto lClearAllButton{ComponentFactory::CreateButton(this, tr("Remove all the history"), "", "trash-lines", lIconFolder, "remove_all_filters", false, true)};

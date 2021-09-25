@@ -154,10 +154,9 @@ void BatchConversionPicker::initializeGUI()
   auto lRightNavigationLayout{new QGridLayout(this)};
   lRightNavigationLayout->setColumnStretch(0, 1);
   lRightNavigationLayout->setColumnStretch(1, 0);
-  lRightNavigationLayout->setColumnStretch(2, 0);
+  lRightNavigationLayout->setColumnStretch(2, 1);
   lRightNavigationLayout->setColumnStretch(3, 1);
   lRightNavigationLayout->setColumnStretch(4, 1);
-  lRightNavigationLayout->setColumnStretch(5, 1);
 
   // Common layout
   auto lCommonRightLayout{new QVBoxLayout(this)};
@@ -262,26 +261,21 @@ void BatchConversionPicker::initializeGUI()
   lRightNavigationLayout->addWidget(lPreviousPreset, 0, 0);
 
   // Active preset number
-  auto lActivePresetNumber{new QSpinBox(this)}; // TODO: Add styles for QSpinBox in Mitsuriou's stylesheets
+  auto lActivePresetNumber{new QSpinBox(this)};
   lActivePresetNumber->setObjectName(QString("active_preset_number"));
   lRightNavigationLayout->addWidget(lActivePresetNumber, 0, 1);
 
-  // Active preset out of number of presets
-  auto lNumberOfPresets{new QLabel("/ 0", this)};
-  lNumberOfPresets->setObjectName(QString("number_of_presets"));
-  lRightNavigationLayout->addWidget(lNumberOfPresets, 0, 2);
-
   // Next preset
   auto lNextPreset{ComponentFactory::CreateButton(this, tr("Next preset"), "", "arrow-right", lIconFolder, "next_preset", false, true)};
-  lRightNavigationLayout->addWidget(lNextPreset, 0, 3);
+  lRightNavigationLayout->addWidget(lNextPreset, 0, 2);
 
   // Remove current preset
   auto lRemoveActivePreset{ComponentFactory::CreateButton(this, tr("Remove current preset"), "", "minus", lIconFolder, "remove_current_preset", false, true)};
-  lRightNavigationLayout->addWidget(lRemoveActivePreset, 0, 4);
+  lRightNavigationLayout->addWidget(lRemoveActivePreset, 0, 3);
 
   // Add new empty preset
   auto lAddEmptyPreset{ComponentFactory::CreateButton(this, tr("Add new preset"), "", "plus", lIconFolder, "add_empty_preset", false, true)};
-  lRightNavigationLayout->addWidget(lAddEmptyPreset, 0, 5);
+  lRightNavigationLayout->addWidget(lAddEmptyPreset, 0, 4);
 
   /*========================================*/
   /* Validate selection and generate button */
@@ -639,18 +633,20 @@ void BatchConversionPicker::addNewEmptyPreset()
   // Push a default object
   this->mData.presets.push_back(Struct::BatchConversionPresetData());
 
-  auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
-
-  // Update the preset interface block
-  this->updatePresetInterfaceState(lNumberOfPresets);
+  // Update the spin box data
+  this->updateActivePresetNumberSpinBox();
 
   // Display the last preset
+  auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
+
   auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
   lActivePresetNumber->setValue(lNumberOfPresets);
 }
 
 void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
 {
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+
   auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
 
   // Previous preset
@@ -659,13 +655,10 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   lPreviousPreset->setDisabled(lNumberOfPresets == 0 || aNextIndex <= 1);
 
   // Active preset number
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
-  lActivePresetNumber->setDisabled(lNumberOfPresets == 0);
-  lActivePresetNumber->setMinimum(lNumberOfPresets == 0 ? 0 : 1);
-  lActivePresetNumber->setMaximum(lNumberOfPresets);
-
-  // Active preset out of number of presets
-  this->findChild<QLabel*>(QString("number_of_presets"))->setText(QString("/ %1").arg(lNumberOfPresets));
+  if (qobject_cast<QSpinBox*>(this->sender()) != lActivePresetNumber)
+  {
+    this->updateActivePresetNumberSpinBox();
+  }
 
   // Next preset
   auto lNextPreset{this->findChild<QPushButton*>(QString("next_preset"))};
@@ -723,6 +716,17 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   }
 }
 
+void BatchConversionPicker::updateActivePresetNumberSpinBox()
+{
+  auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
+
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  lActivePresetNumber->setDisabled(lNumberOfPresets == 0);
+  lActivePresetNumber->setMinimum(lNumberOfPresets == 0 ? 0 : 1);
+  lActivePresetNumber->setMaximum(lNumberOfPresets);
+  lActivePresetNumber->setSuffix(QString(" / %1").arg(lNumberOfPresets));
+}
+
 void BatchConversionPicker::quickCreatePreset()
 {
   // TODO:
@@ -734,8 +738,7 @@ void BatchConversionPicker::validateSelection()
   //this->mData.scannedData.clear(); // Clear the data to send a skinier object
 
   auto lRemovedPresetsCount{0};
-  auto lPresetsCount{static_cast<int>(this->mData.presets.size())};
-  for (int i = 0; i < lPresetsCount; i++)
+  for (int i = 0; i < this->mData.presets.size(); i++)
   {
     if (!this->mData.presets.at(i).isValid())
     {
@@ -750,6 +753,8 @@ void BatchConversionPicker::validateSelection()
 
   // TODO: Emit the signal with the mData object as unique parameter
   emit presetsCreationValidated(this->mData);
+
+  this->accept();
 }
 
 void BatchConversionPicker::groupBoxChecked(bool aIsChecked)

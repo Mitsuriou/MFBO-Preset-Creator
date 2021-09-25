@@ -26,8 +26,8 @@ QLabel::disabled {
 /*CHECK BOX*/
 /***********/
 QCheckBox {
+  padding: 3px;
   border: 1px solid transparent;
-  min-height: 26px;
   background-color: transparent;
 }
 
@@ -86,7 +86,7 @@ QCheckBox::indicator::disabled {
 /*PUSH BUTTON*/
 /*************/
 QPushButton {
-  padding: 4px;
+  padding: 3px;
   background-color: #222433;
   border: 1px solid qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
   border-left-color: #d960a9;
@@ -116,7 +116,7 @@ QPushButton::disabled {
 /*LINE EDIT*/
 /*************/
 QLineEdit {
-  padding: 2px;
+  padding: 3px;
   border: 1px solid #282a3b;
   border-bottom: 1px solid qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
   background-color: #282a3b;
@@ -143,8 +143,7 @@ QLineEdit::disabled {
 /*COMBO BOX*/
 /***********/
 QComboBox {
-  padding: 4px;
-  /* border: 1px solid #FF558D; */
+  padding: 3px;
   background-color: #282a3b;
   border: 1px solid qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
   border-left-color: #d960a9;
@@ -156,6 +155,7 @@ QComboBox::hover::focus {
   border-color: #ff558d;
 }
 
+QComboBox::on,
 QComboBox::focus {
   border-color: white;
 }
@@ -170,8 +170,12 @@ QComboBox QAbstractItemView {
   color: white;
 }
 
-QComboBox QAbstractItemView::item {
-  min-height: 26px;
+/***********/
+/*LIST VIEW*/
+/***********/
+QListView::item {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 QListView::item::selected {
@@ -182,10 +186,14 @@ QListView::item::selected {
 QComboBox::drop-down {
   border: 0px;
   padding: 0px;
-  image: url(":/mitsuriou_dark/menu-down");
-  padding-top: 3px;
-  width: 20px;
-  height: 20px;
+  subcontrol-position: right;
+  image: url(":/mitsuriou_dark/chevron-bottom");
+  width: 22px;
+  height: 22px;
+}
+
+QComboBox::drop-down::disabled {
+  image: url(":/mitsuriou_dark/chevron-bottom-disabled");
 }
 
 /***********/
@@ -193,7 +201,6 @@ QComboBox::drop-down {
 /***********/
 QGroupBox {
   margin-top: 8px;
-  /* border: 1px solid #282A3B; */
   font-size: 16px;
   background-color: #222433;
 }
@@ -216,8 +223,9 @@ QMenuBar {
 
 QMenuBar::item,
 QMenu::item {
-  min-height: 26px;
-  padding: 4px;
+  padding: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 QMenuBar::item::selected {
@@ -226,7 +234,6 @@ QMenuBar::item::selected {
 }
 
 QMenu {
-  /* border: 1px solid #FF558D; */
   border: 1px solid qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
   border-left-color: #d960a9;
   border-right-color: #9077df;
@@ -294,19 +301,19 @@ QListWidget::item QWidget {
 }
 
 QListWidget QScrollBar::horizontal {
-  margin: 1px 14px;
+  margin: 1px 19px;
   padding: 0px;
   border: 0px;
   background-color: #282a3b;
-  height: 14px;
+  height: 19px;
 }
 
 QListWidget QScrollBar::vertical {
-  margin: 14px 1px;
+  margin: 19px 1px;
   padding: 0px;
   border: 0px;
   background-color: #282a3b;
-  width: 14px;
+  width: 19px;
 }
 
 QListWidget QScrollBar::sub-line::horizontal,
@@ -316,8 +323,8 @@ QListWidget QScrollBar::add-line::vertical {
   border: 0px;
   padding: 0px;
   margin: 1px;
-  height: 10px;
-  width: 10px;
+  height: 15px;
+  width: 15px;
   border: 1px solid #ff558d;
   subcontrol-origin: margin;
 }
@@ -361,42 +368,42 @@ QListWidget QScrollBar::handle::horizontal {
   min-width: 20px;
 }
 
+QListWidget QScrollBar::sub-line::horizontal::hover,
+QListWidget QScrollBar::add-line::horizontal::hover,
+QListWidget QScrollBar::sub-line::vertical::hover,
+QListWidget QScrollBar::add-line::vertical::hover,
+QListWidget QScrollBar::handle::horizontal::hover,
+QListWidget QScrollBar::handle::vertical::hover {
+  border-color: #ff558d;
+}
+
 QListWidget QScrollBar::sub-line::horizontal::pressed,
 QListWidget QScrollBar::add-line::horizontal::pressed,
 QListWidget QScrollBar::sub-line::vertical::pressed,
 QListWidget QScrollBar::add-line::vertical::pressed,
 QListWidget QScrollBar::handle::horizontal::pressed,
 QListWidget QScrollBar::handle::vertical::pressed {
-  background-color: white;
+  background-color: #ff558d;
   border-color: #ff558d;
-}
-
-QListWidget QScrollBar::sub-line::horizontal::focus,
-QListWidget QScrollBar::add-line::horizontal::focus,
-QListWidget QScrollBar::sub-line::vertical::focus,
-QListWidget QScrollBar::add-line::vertical::focus,
-QListWidget QScrollBar::handle::horizontal::focus,
-QListWidget QScrollBar::handle::vertical::focus {
-  border-color: white;
 }
 
 /************/
 /*SCROLL BAR*/
 /************/
 QScrollBar::horizontal {
-  margin: 1px 14px;
+  margin: 1px 19px;
   padding: 0px;
   border: 0px;
   background-color: #282a3b;
-  height: 14px;
+  height: 19px;
 }
 
 QScrollBar::vertical {
-  margin: 14px 1px;
+  margin: 19px 1px;
   padding: 0px;
   border: 0px;
   background-color: #282a3b;
-  width: 14px;
+  width: 19px;
 }
 
 QScrollBar::sub-line::horizontal,
@@ -406,8 +413,8 @@ QScrollBar::add-line::vertical {
   border: 0px;
   padding: 0px;
   margin: 1px;
-  height: 10px;
-  width: 10px;
+  height: 15px;
+  width: 15px;
   border: 1px solid #ff558d;
   subcontrol-origin: margin;
 }
@@ -451,23 +458,23 @@ QScrollBar::handle::horizontal {
   min-width: 20px;
 }
 
+QScrollBar::sub-line::horizontal::hover,
+QScrollBar::add-line::horizontal::hover,
+QScrollBar::sub-line::vertical::hover,
+QScrollBar::add-line::vertical::hover,
+QScrollBar::handle::horizontal::hover,
+QScrollBar::handle::vertical::hover {
+  border-color: #ff558d;
+}
+
 QScrollBar::sub-line::horizontal::pressed,
 QScrollBar::add-line::horizontal::pressed,
 QScrollBar::sub-line::vertical::pressed,
 QScrollBar::add-line::vertical::pressed,
 QScrollBar::handle::horizontal::pressed,
 QScrollBar::handle::vertical::pressed {
-  background-color: white;
+  background-color: #ff558d;
   border-color: #ff558d;
-}
-
-QScrollBar::sub-line::horizontal::focus,
-QScrollBar::add-line::horizontal::focus,
-QScrollBar::sub-line::vertical::focus,
-QScrollBar::add-line::vertical::focus,
-QScrollBar::handle::horizontal::focus,
-QScrollBar::handle::vertical::focus {
-  border-color: white;
 }
 
 /**************/
@@ -486,8 +493,8 @@ QProgressBar::chunk {
 /*TOOLTIP*/
 /*********/
 QToolTip {
+  padding: 3px;
   border: none;
-  padding: 4px;
   color: white;
   background-color: #282a3b;
 }
@@ -532,10 +539,8 @@ QTabWidget::pane {
 }
 
 QTabBar::tab {
+  padding: 3px;
   border: 1px solid #ff558d;
-  padding-left: 4px;
-  padding-right: 4px;
-  min-height: 26px;
   border-bottom: 0;
   margin: 0 1px;
 }
@@ -569,8 +574,8 @@ QTextBrowser {
 /*RADIO BUTTON*/
 /**************/
 QRadioButton {
+  padding: 3px;
   border: 1px solid transparent;
-  min-height: 26px;
   background-color: transparent;
 }
 
@@ -624,4 +629,90 @@ QRadioButton::indicator::checked::hover::pressed {
 
 QRadioButton::indicator::disabled {
   border-color: #535370;
+}
+
+/**********/
+/*SPIN BOX*/
+/**********/
+QSpinBox,
+QDoubleSpinBox {
+  padding: 3px;
+  border: 1px solid #282a3b;
+  border-bottom: 1px solid qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
+  background-color: #282a3b;
+}
+
+QSpinBox::hover,
+QDoubleSpinBox::hover {
+  border-bottom: 1px solid #ff558d;
+}
+
+QSpinBox::focus::hover,
+QDoubleSpinBox::focus::hover {
+  border: 1px solid #ff558d;
+}
+
+QSpinBox::focus,
+QDoubleSpinBox::focus {
+  border: 1px solid white;
+}
+
+QSpinBox::disabled,
+QDoubleSpinBox::disabled {
+  color: #535370;
+  border-bottom-color: #535370;
+}
+
+QSpinBox::up-button,
+QDoubleSpinBox::up-button {
+  subcontrol-origin: padding;
+  subcontrol-position: top right;
+  border: 1px solid transparent;
+}
+
+QSpinBox::down-button,
+QDoubleSpinBox::down-button {
+  subcontrol-origin: padding;
+  subcontrol-position: bottom right;
+  border: 1px solid transparent;
+}
+
+QSpinBox::up-button::hover,
+QSpinBox::down-button::hover,
+QDoubleSpinBox::up-button::hover,
+QDoubleSpinBox::down-button::hover {
+  border-color: #ff558d;
+}
+
+QSpinBox::up-button::pressed,
+QSpinBox::down-button::pressed,
+QDoubleSpinBox::up-button::pressed,
+QDoubleSpinBox::down-button::pressed {
+  background-color: #ff558d;
+}
+
+QSpinBox::up-arrow,
+QDoubleSpinBox::up-arrow {
+  image: url(:/mitsuriou_dark/chevron-top);
+  height: 10px;
+}
+
+QSpinBox::down-arrow,
+QDoubleSpinBox::down-arrow {
+  image: url(:/mitsuriou_dark/chevron-bottom);
+  height: 10px;
+}
+
+QSpinBox::up-arrow:disabled,
+QSpinBox::up-arrow:off,
+QDoubleSpinBox::up-arrow:disabled,
+QDoubleSpinBox::up-arrow:off {
+  image: url(":/mitsuriou_dark/chevron-top-disabled");
+}
+
+QSpinBox::down-arrow:disabled,
+QSpinBox::down-arrow:off,
+QDoubleSpinBox::down-arrow:disabled,
+QDoubleSpinBox::down-arrow:off {
+  image: url(":/mitsuriou_dark/chevron-bottom-disabled");
 }
