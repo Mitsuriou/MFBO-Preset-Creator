@@ -147,7 +147,7 @@ ApplicationVersionRelative Utils::CompareVersionNumbers(const QString& aVersionN
 void Utils::DisplayWarningMessage(const QString& aMessage)
 {
   QMessageBox lBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
-  lBox.setIconPixmap(QPixmap(":/icons/red-alert-circle"));
+  lBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
   QPushButton lButton(tr("OK"));
   lButton.setCursor(Qt::PointingHandCursor);

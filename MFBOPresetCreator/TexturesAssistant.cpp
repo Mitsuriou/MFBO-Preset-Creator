@@ -149,16 +149,16 @@ void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
 TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
 {
   // Progress bar
-  auto lProgressbar{new QProgressBar(this->parentWidget())};
-  lProgressbar->setFormat("");
-  lProgressbar->setMinimum(0);
-  lProgressbar->setMaximum(0);
-  lProgressbar->setValue(0);
-  lProgressbar->setTextVisible(true);
+  auto lProgressBar{new QProgressBar(this->parentWidget())};
+  lProgressBar->setFormat("");
+  lProgressBar->setMinimum(0);
+  lProgressBar->setMaximum(0);
+  lProgressBar->setValue(0);
+  lProgressBar->setTextVisible(true);
 
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Scanning the directory. Please wait..."), tr("Cancel treatment"), 0, 0, this->parentWidget());
-  lProgressDialog.setBar(lProgressbar);
+  lProgressDialog.setBar(lProgressBar);
   lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();

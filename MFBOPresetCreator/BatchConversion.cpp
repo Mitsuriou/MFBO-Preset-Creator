@@ -339,8 +339,8 @@ void BatchConversion::setupRemainingGUI(QGridLayout& aLayout)
   lScanTweaksGridLayout->addWidget(lScanMeshesSubdirsOnly);
 
   // Clear the irrelevant entries
-  auto lMustClearIrreleventEntries{ComponentFactory::CreateCheckBox(this, tr("Clear the irrelevent entries (mods which do not contain a boby, hands or feet mesh)"), "", "clear_irrelevent_entries", true)};
-  lScanTweaksGridLayout->addWidget(lMustClearIrreleventEntries);
+  auto lMustClearIrrelevantEntries{ComponentFactory::CreateCheckBox(this, tr("Clear the irrelevant entries (mods which do not contain any body, hands and feet mesh)"), "", "clear_irrelevant_entries", true)};
+  lScanTweaksGridLayout->addWidget(lMustClearIrrelevantEntries);
 
   lSoftSearch->setChecked(true);
 }
@@ -376,26 +376,25 @@ void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::
   }
 }
 
-void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData)
+void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData, const bool aMustGenerateFilesInExistingDirectory)
 {
-  if (aScannedData.size() == 0)
-  {
-    Utils::DisplayWarningMessage(tr("No data found for the given input directory. Please try to change it before retrying again.\n\nNote: If you want to convert a single mod only, please use the \"Assisted Conversion Tool\" instead.\n\nNote of ModOrganizer2 users: select your \"mods\" directory as the input path."));
-    return;
-  }
-
-  // TODO: double check from PresetCreator class, if the calls are totally identical
+  // Selected body
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+
+  // Selected feet
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
+  // Filters list
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
 
+  // Human skeleton
   auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
   auto lSkeletonPathHuman{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooserHuman->currentText())};
 
+  // Beast skeleton
   auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
   auto lSkeletonPathBeast{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooserBeast->currentText())};
 
@@ -415,13 +414,14 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   }
 
   auto lData{Struct::BatchConversionData()};
-  lData.scannedData = std::multimap<QString, std::set<QString>>(aScannedData.begin(), aScannedData.end());
   lData.humanSkeletonPath = lSkeletonPathHuman;
   lData.beastSkeletonPath = lSkeletonPathBeast;
   lData.bodyMod = lBodySelected;
   lData.feetModIndex = lFeetModIndex;
   lData.filters = lUserFilters;
   lData.fullOutputPath = lEntryDirectory;
+  lData.mustGenerateFilesInExistingDirectory = aMustGenerateFilesInExistingDirectory;
+  lData.scannedData = std::multimap<QString, std::set<QString>>(aScannedData.begin(), aScannedData.end());
 
   auto lBCPicker{new BatchConversionPicker(this, this->mSettings, lData)};
   this->connect(lBCPicker, &BatchConversionPicker::presetsCreationValidated, this, &BatchConversion::batchCreatePresets);
@@ -488,17 +488,84 @@ void BatchConversion::chooseInputDirectory()
 
 void BatchConversion::launchSearchProcess()
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+
+  // Input path
+  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+
+  // Check if the input path has been given by the user
+  if (lInputPath.isEmpty())
+  {
+    Utils::DisplayWarningMessage(tr("Error: no path given to search for files."));
+    return;
+  }
+
+  // Output paths
+  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  Utils::CleanPathString(lSubDirectory);
+
+  // Does the user want to define the path only through the secondary path?
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+
+  // Full extract path
+  auto lEntryDirectory{lSubDirectory};
+  if (!lUseOnlySubdir)
+  {
+    lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
+  }
+
+  // Check if the full extract path has been given by the user
+  if (lEntryDirectory.isEmpty())
+  {
+    Utils::DisplayWarningMessage(tr("Error: no path given to export the files."));
+    return;
+  }
+
+  // Check if the path could be valid
+  if (lEntryDirectory.startsWith(QDir::separator()))
+  {
+    Utils::DisplayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
+    return;
+  }
+
+  // Create main directory
+  auto lMustGenerateFilesInExistingDirectory{false};
+  if (QDir(lEntryDirectory).exists())
+  {
+    // Since the directory already exist, ask the user to generate another preset in it
+    if (Utils::DisplayQuestionMessage(this,
+                                      tr("Already existing directory"),
+                                      tr("The directory \"%1\" already exists on your computer. Do you still want to generate the files in this directory?").arg(lEntryDirectory),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the search"),
+                                      tr("Cancel the search"),
+                                      "",
+                                      this->mSettings.warningColor,
+                                      this->mSettings.successColor,
+                                      "",
+                                      true)
+        != ButtonClicked::YES)
+    {
+      return;
+    }
+
+    lMustGenerateFilesInExistingDirectory = true;
+  }
+
   // Progress bar
-  auto lProgressbar{new QProgressBar(this)};
-  lProgressbar->setFormat("");
-  lProgressbar->setMinimum(0);
-  lProgressbar->setMaximum(0);
-  lProgressbar->setValue(0);
-  lProgressbar->setTextVisible(true);
+  auto lProgressBar{new QProgressBar(this)};
+  lProgressBar->setFormat("");
+  lProgressBar->setMinimum(0);
+  lProgressBar->setMaximum(0);
+  lProgressBar->setValue(0);
+  lProgressBar->setTextVisible(true);
 
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Scanning the directory. Please wait..."), tr("Cancel treatment"), 0, 0, this);
-  lProgressDialog.setBar(lProgressbar);
+  lProgressDialog.setBar(lProgressBar);
   lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
@@ -518,7 +585,7 @@ void BatchConversion::launchSearchProcess()
   auto lSecondArgument{QString()};
 
   auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
-  auto lMustClearIrreleventEntries{this->findChild<QCheckBox*>(QString("clear_irrelevent_entries"))->isChecked()};
+  auto lMustClearIrrelevantEntries{this->findChild<QCheckBox*>(QString("clear_irrelevant_entries"))->isChecked()};
   auto lHeavierSearchEnabled{this->findChild<QRadioButton*>(QString("scan_advanced_search"))->isChecked()};
   auto lMeshesFilesToFind{QStringList({"femalebody_0.nif",
                                        "femalebody_1.nif",
@@ -531,7 +598,6 @@ void BatchConversion::launchSearchProcess()
                                        "skeleton_female.nif",
                                        "skeletonbeast_female.nif"})};
 
-  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
   QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
@@ -589,12 +655,22 @@ void BatchConversion::launchSearchProcess()
     qApp->processEvents();
   }
 
-  // Clear the mods entries that do not have any useful entries
-  if (lMustClearIrreleventEntries)
+  // Hide the progress dialog
+  lProgressDialog.hide();
+
+  // Check if some some data has been found
+  if (lScannedData.size() == 0)
+  {
+    Utils::DisplayWarningMessage(tr("No data found for the given input directory. Please try to change it before retrying again.\n\nNote: If you want to convert a single mod only, please use the \"Assisted Conversion\" tool instead.\n\nNote of ModOrganizer2 users: select your \"mods\" directory as the input path."));
+    return;
+  }
+
+  // Clear the mods entries that do not have any useful entries, if the user wanted to
+  if (lMustClearIrrelevantEntries)
     this->clearScannedDataFromUselessEntries(lScannedData);
 
   // Launch the BatchConversionPicker dialog
-  this->launchPicker(lScannedData);
+  this->launchPicker(lScannedData, lMustGenerateFilesInExistingDirectory);
 }
 
 void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPresetsData)
@@ -698,9 +774,12 @@ void BatchConversion::updateBodySlideFiltersList(const std::map<QString, QString
 
 void BatchConversion::updateBodySlideFiltersListPreview(int)
 {
+  // Selected body
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
   auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
   auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
+
+  // Selected feet
   auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Take custom MSF filter

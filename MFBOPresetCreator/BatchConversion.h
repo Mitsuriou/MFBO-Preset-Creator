@@ -33,7 +33,7 @@ private:
   void setupButtons(QHBoxLayout& aLayout);
 
   void clearScannedDataFromUselessEntries(std::map<QString, std::set<QString>>& aScannedData);
-  void launchPicker(const std::map<QString, std::set<QString>>& aScannedData);
+  void launchPicker(const std::map<QString, std::set<QString>>& aScannedData, const bool aMustGenerateFilesInExistingDirectory);
 
   void userHasDoneAnAction();
   void userHasDoneAnAction(int);

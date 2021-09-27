@@ -1347,14 +1347,14 @@ void PresetCreator::generateDirectoryStructure()
     // Since the directory already exist, ask the user to generate another preset in it
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Already existing directory"),
-                                      tr("The main directory \"%1\" already exists on your computer. Do you still want to continue the files generation in this directory?").arg(lEntryDirectory),
+                                      tr("The directory \"%1\" already exists on your computer. Do you still want to generate the files in this directory?").arg(lEntryDirectory),
                                       lIconFolder,
                                       "help-circle",
                                       tr("Continue the files generation"),
                                       tr("Cancel the files generation"),
                                       "",
                                       this->mSettings.warningColor,
-                                      this->mSettings.dangerColor,
+                                      this->mSettings.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)

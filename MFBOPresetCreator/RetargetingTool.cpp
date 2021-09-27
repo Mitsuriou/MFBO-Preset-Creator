@@ -522,14 +522,14 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lTreatedFiles{0};
 
   // Progress bar
-  auto lProgressbar{new QProgressBar(this)};
-  lProgressbar->setFormat("%v / %m");
-  lProgressbar->setValue(0);
-  lProgressbar->setTextVisible(true);
+  auto lProgressBar{new QProgressBar(this)};
+  lProgressBar->setFormat("%v / %m");
+  lProgressBar->setValue(0);
+  lProgressBar->setTextVisible(true);
 
   // Progress dialog
   QProgressDialog lProgressDialog(tr("Parsing XML files. Please wait..."), tr("Cancel treatment"), 0, 0, this);
-  lProgressDialog.setBar(lProgressbar);
+  lProgressDialog.setBar(lProgressBar);
   lProgressDialog.setWindowFlags(lProgressDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
   lProgressDialog.setModal(true);
   lProgressDialog.show();
@@ -541,7 +541,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lRelativeDirs{QString()};
   std::vector<Struct::SliderSet> lParsedSliderSets;
 
-  lProgressbar->setRange(0, lNumberXMLFiles);
+  lProgressBar->setRange(0, lNumberXMLFiles);
   lTreatedFiles = 0;
 
   QDirIterator it(lRootDir, QStringList() << QString("*.xml"), QDir::Files, QDirIterator::Subdirectories);
@@ -580,7 +580,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   }
 
   lProgressDialog.setLabelText(tr("Parsing and patching OSP files. Please wait..."));
-  lProgressbar->setRange(0, lNumberOSPFiles);
+  lProgressBar->setRange(0, lNumberOSPFiles);
   lTreatedFiles = 0;
 
   std::vector<QPair<QString, QString>> lOSPBuffer;
@@ -725,7 +725,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   }
 
   lProgressDialog.setLabelText(tr("Patching XML files. Please wait..."));
-  lProgressbar->setRange(0, lNumberOSPFiles);
+  lProgressBar->setRange(0, lNumberOSPFiles);
   lTreatedFiles = 0;
 
   QDirIterator it3(lRootDir, QStringList() << QString("*.xml"), QDir::Files, QDirIterator::Subdirectories);

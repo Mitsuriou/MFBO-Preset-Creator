@@ -472,6 +472,7 @@ namespace Struct
     int feetModIndex{-1};
     std::vector<Struct::Filter> filters;
     QString fullOutputPath;
+    bool mustGenerateFilesInExistingDirectory{false};
     std::multimap<QString, std::set<QString>> scannedData;
     std::vector<BatchConversionPresetData> presets;
 
