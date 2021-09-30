@@ -1,5 +1,4 @@
 #include "BatchConversionPicker.h"
-#include "BCGroupWidget.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Utils.h"
@@ -141,7 +140,7 @@ void BatchConversionPicker::initializeGUI()
   ComponentFactory::CreateScrollAreaWindowLayout(this, true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
 
   // Quick preset creation button
-  auto lQuickPresetCreationButton{ComponentFactory::CreateButton(this, QString("Quick preset creation"), "", "bolt", lIconFolder, "quick_preset_creation", true, true)};
+  auto lQuickPresetCreationButton{ComponentFactory::CreateButton(this, tr("Quick preset(s) creation"), "", "bolt", lIconFolder, "quick_preset_creation", true, true)};
   lMiddleLayout->addWidget(lQuickPresetCreationButton);
 
   /*============*/
@@ -293,15 +292,11 @@ void BatchConversionPicker::initializeGUI()
   this->updatePresetInterfaceState(0);
 
   // Event binding
-  this->connect(lDropSectionBody, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
-  this->connect(lDropSectionBody, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
-  this->connect(lDropSectionFeet, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
-  this->connect(lDropSectionFeet, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
-  this->connect(lDropSectionHands, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
-  this->connect(lDropSectionHands, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+  this->connectGroupWidgetEvents(lDropSectionBody);
+  this->connectGroupWidgetEvents(lDropSectionFeet);
+  this->connectGroupWidgetEvents(lDropSectionHands);
   this->connect(lDropSectionHands, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::handsCheckBoxStateChanged);
-  this->connect(lDropSectionSkeleton, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
-  this->connect(lDropSectionSkeleton, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+  this->connectGroupWidgetEvents(lDropSectionSkeleton);
   this->connect(lDropSectionSkeleton, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::skeletonCheckBoxStateChanged);
 
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateOSPXMLPreview);
@@ -319,6 +314,13 @@ void BatchConversionPicker::initializeGUI()
   // Post-bind initialization functions
   lLeftList->setCurrentRow(0);
   mPreventPresetSave = false;
+}
+
+void BatchConversionPicker::connectGroupWidgetEvents(BCGroupWidget* lGroupWidget)
+{
+  this->connect(lGroupWidget, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  this->connect(lGroupWidget, &BCGroupWidget::duplicatePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  this->connect(lGroupWidget, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
 }
 
 void BatchConversionPicker::displayLeftList()
@@ -376,7 +378,7 @@ void BatchConversionPicker::refreshMiddleList()
           lOptionsList->addWidget(lDraggableWidget);
         }
 
-        lQuickPresetCreationButton->setDisabled(!Utils::ContainsBodyOrHandsOrFeetMesh(lPosition->second));
+        lQuickPresetCreationButton->setDisabled(!Utils::ContainsBodyOrHandsOrFeetMesh<std::vector<QString>>(lPosition->second));
       }
     }
   }
@@ -517,7 +519,7 @@ void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFold
   if (lPosition != this->mData.scannedData.end())
   {
     // Re-insert the wanted entry
-    lPosition->second.insert(aRessourcePath);
+    lPosition->second.push_back(aRessourcePath);
   }
 
   // Finally, refresh the middle list with the entry added
@@ -729,6 +731,10 @@ void BatchConversionPicker::updateActivePresetNumberSpinBox()
 
 void BatchConversionPicker::quickCreatePreset()
 {
+  // Check if any alread existing preset can be completed with left data
+
+  // Analyze the left data to split between everything
+
   // TODO:
 }
 

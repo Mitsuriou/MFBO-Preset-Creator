@@ -12,9 +12,11 @@ public:
   explicit BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aSectionTitle, const QString& aSectionIconName, const BCGroupWidgetCallContext& aCallContext);
   void setData(const Struct::BatchConversionPresetData& aData);
   void removeData();
+  void duplicateData();
 
 signals:
   void removePressed(const QString& aOriginFolder, const QString& aRessourcePath);
+  void duplicatePressed(const QString& aOriginFolder, const QString& aRessourcePath);
   void dropEventTriggered(const QString& aOriginFolder, const QString& aRessourcePath, const bool isCheckBoxChecked);
   void checkBoxStateChangedTriggered(const bool aIsActive);
 

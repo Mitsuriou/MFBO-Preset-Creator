@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QObject>
+#include <set>
 
 class Utils final : public QObject
 {
@@ -16,45 +17,57 @@ public:
   static int const EXIT_CODE_REBOOT{-123456789};
   static bool RESTART_PENDING;
 
-  // General functions
+  // String
   static void CleanPathString(QString& aPath);
   static QString CleanPathString(const QString& aPath);
   static void CleanBreaksString(QString& aString);
   static QString CleanBreaksString(const QString& aString);
   static QStringList SplitString(QString aString, const QString& aSeparator);
+
+  // Convert types
+  static std::map<QString, std::vector<QString>> ToMapQsVecQs(const std::map<QString, std::set<QString>>& aMap);
+
+  // Version
   static QString GetApplicationVersion();
   static ApplicationVersionRelative CompareVersionNumbers(const QString& aVersionNumber);
   static ApplicationVersionRelative CompareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2);
 
+  // Message boxes
   static void DisplayWarningMessage(const QString& aMessage);
   static ButtonClicked DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
 
+  // GitHub API
   static VersionsInformation ParseGitHubReleasesRequestResult(const QString& aResult);
 
+  // Get disk files by extension
   static int GetNumberFilesByExtension(const QString& aRootDir, const QString& aFileExtension);
   static int GetNumberFilesByExtensionRecursive(const QString& aRootDir, const QString& aFileExtension);
   static int GetNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension);
   static int GetNumberFilesByExtensions(const QString& aRootDir, const QStringList& aFileExtensions);
   static int GetNumberFilesByExtensionsRecursive(const QString& aRootDir, const QStringList& aFileExtensions);
 
+  // Manipulates files and directories
   static bool CopyRecursively(const QString& aSourcePath, const QString& aDestinationPath);
-
   static bool RemoveDirectoryAndSubDirs(const QString& aPath);
 
+  // Theming
   static bool IsThemeDark(const GUITheme& aTheme);
   static QString GetIconRessourceFolder(const GUITheme& aTheme);
 
+  // Skyrim related stuff
   static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
-  static bool ContainsBodyOrHandsOrFeetMesh(const std::set<QString>& aList);
-  static bool analyze(const std::set<QString>& aList);
+  template<typename T>
+  static bool ContainsBodyOrHandsOrFeetMesh(const T& aList);
 
   static bool IsCBBEBasedBody(const BodyNameVersion& aBody);
   static bool IsCBBEBasedBody(const BodyName& aBody);
   static bool IsBodySupportingBeastHands(const BodyNameVersion& aBody);
 
+  // App data behavior settings
   static bool IsRunningStandaloneVersion();
   static QString GetAppDataPathFolder();
 
+  // Read virtual file from QRC
   static QString ReadQRCFileContent(const QString& aFilePath);
 
   // XML and OSP file parse
@@ -117,3 +130,25 @@ private:
   explicit Utils(const Utils&) = delete;
   Utils& operator=(const Utils&) = delete;
 };
+
+template<typename T>
+inline bool Utils::ContainsBodyOrHandsOrFeetMesh(const T& aList)
+{
+  static_assert(std::is_same<typename T::value_type, QString>::value, "T must be a standard container of QString");
+
+  auto lRessourceType{BCGroupWidgetCallContext::UNDEFINED};
+
+  // Iterate through the list of meshes paths
+  for (const auto& lValue : aList)
+  {
+    lRessourceType = Utils::GetMeshTypeFromFileName(lValue);
+
+    // Check if the ressource if of any useful type
+    if (lRessourceType == BCGroupWidgetCallContext::BODY || lRessourceType == BCGroupWidgetCallContext::FEET || lRessourceType == BCGroupWidgetCallContext::HANDS)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}

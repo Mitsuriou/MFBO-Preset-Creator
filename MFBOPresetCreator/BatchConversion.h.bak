@@ -2,7 +2,6 @@
 #include "Struct.h"
 #include <QDialog>
 #include <QGridLayout>
-#include <set>
 
 class BatchConversion final : public QDialog
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include "BCDragWidget.h"
+#include "BCGroupWidget.h"
 #include "Struct.h"
 #include <QDialog>
 #include <QGridLayout>
@@ -27,6 +28,7 @@ private:
 
   void setWindowProperties();
   void initializeGUI();
+  void connectGroupWidgetEvents(BCGroupWidget* lGroupWidget);
   void displayLeftList();
 
   // Update the GUI

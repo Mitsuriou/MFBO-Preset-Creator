@@ -96,6 +96,18 @@ QStringList Utils::SplitString(QString aString, const QString& aSeparator)
   return lList;
 }
 
+std::map<QString, std::vector<QString>> Utils::ToMapQsVecQs(const std::map<QString, std::set<QString>>& aMap)
+{
+  std::map<QString, std::vector<QString>> lNewMap;
+
+  for (const auto& lMapEntry : aMap)
+  {
+    lNewMap.insert({lMapEntry.first, std::vector<QString>(lMapEntry.second.begin(), lMapEntry.second.end())});
+  }
+
+  return lNewMap;
+}
+
 QString Utils::GetApplicationVersion()
 {
   return qApp->applicationVersion();
@@ -427,25 +439,6 @@ BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName
     return BCGroupWidgetCallContext::SKELETON;
 
   return BCGroupWidgetCallContext::UNDEFINED;
-}
-
-bool Utils::ContainsBodyOrHandsOrFeetMesh(const std::set<QString>& aList)
-{
-  auto lRessourceType{BCGroupWidgetCallContext::UNDEFINED};
-
-  // Iterate through the list of meshes paths
-  for (const auto& lValue : aList)
-  {
-    lRessourceType = Utils::GetMeshTypeFromFileName(lValue);
-
-    // Check if the ressource if of any useful type
-    if (lRessourceType == BCGroupWidgetCallContext::BODY || lRessourceType == BCGroupWidgetCallContext::FEET || lRessourceType == BCGroupWidgetCallContext::HANDS)
-    {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBody)

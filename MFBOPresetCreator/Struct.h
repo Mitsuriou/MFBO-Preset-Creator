@@ -4,7 +4,6 @@
 #include <QString>
 #include <QStringList>
 #include <map>
-#include <set>
 #include <vector>
 
 namespace Struct
@@ -473,7 +472,7 @@ namespace Struct
     std::vector<Struct::Filter> filters;
     QString fullOutputPath;
     bool mustGenerateFilesInExistingDirectory{false};
-    std::multimap<QString, std::set<QString>> scannedData;
+    std::map<QString, std::vector<QString>> scannedData;
     std::vector<BatchConversionPresetData> presets;
 
     // TODO: Make this structure cleaner (with a constructor and private attributes)

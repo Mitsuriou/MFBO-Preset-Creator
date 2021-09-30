@@ -360,15 +360,10 @@ void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 
 void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::set<QString>>& aScannedData)
 {
-  auto lUsefulDataFound{false};
-
-  auto lIt = aScannedData.begin();
-  for (; lIt != aScannedData.end(); ++lIt)
+  for (auto lIt = aScannedData.begin(); lIt != aScannedData.end(); ++lIt)
   {
-    lUsefulDataFound = Utils::ContainsBodyOrHandsOrFeetMesh(lIt->second);
-
     // If no useful data has been found, delete the current entry from the map
-    if (!lUsefulDataFound)
+    if (!Utils::ContainsBodyOrHandsOrFeetMesh<std::set<QString>>(lIt->second))
     {
       lIt = aScannedData.erase(lIt);
       lIt--;
@@ -421,7 +416,7 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   lData.filters = lUserFilters;
   lData.fullOutputPath = lEntryDirectory;
   lData.mustGenerateFilesInExistingDirectory = aMustGenerateFilesInExistingDirectory;
-  lData.scannedData = std::multimap<QString, std::set<QString>>(aScannedData.begin(), aScannedData.end());
+  lData.scannedData = Utils::ToMapQsVecQs(aScannedData);
 
   auto lBCPicker{new BatchConversionPicker(this, this->mSettings, lData)};
   this->connect(lBCPicker, &BatchConversionPicker::presetsCreationValidated, this, &BatchConversion::batchCreatePresets);

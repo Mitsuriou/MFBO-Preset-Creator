@@ -36,17 +36,22 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   // Drop zone
   auto lDropWidget{new BCDropWidget(lSection, this->mCallContext)};
   lDropWidget->setObjectName(QString("drop_widget"));
-  lSectionLayout->addWidget(lDropWidget);
+  lSectionLayout->addWidget(lDropWidget, 0, 0, 2, 1);
 
   // Remove data entry button
   auto lRemoveButton{ComponentFactory::CreateButton(this, tr("Remove this data entry"), "", "cross", lIconFolder, "remove_button", false, true)};
   lRemoveButton->hide();
-  lSectionLayout->addWidget(lRemoveButton);
+  lSectionLayout->addWidget(lRemoveButton, 0, 1);
+
+  auto lDuplicateButton{ComponentFactory::CreateButton(this, tr("Duplicate this data entry"), "", "duplicate", lIconFolder, "duplicate_button", false, true)};
+  lDuplicateButton->hide();
+  lSectionLayout->addWidget(lDuplicateButton, 1, 1);
 
   // Event binding
   this->connect(lDropWidget, &BCDropWidget::dropEventTriggered, this, &BCGroupWidget::dropEventTrigerredReceiver);
   this->connect(lDropWidget, &BCDropWidget::checkBoxStateChangedTriggered, this, &BCGroupWidget::checkBoxStateChangedReceiver);
   this->connect(lRemoveButton, &QPushButton::clicked, this, &BCGroupWidget::removeData);
+  this->connect(lDuplicateButton, &QPushButton::clicked, this, &BCGroupWidget::duplicateData);
 }
 
 void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
@@ -115,8 +120,8 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
 void BCGroupWidget::removeData()
 {
   // Current object treatment
-  auto lRemoveButton{this->findChild<QPushButton*>(QString("remove_button"))};
-  lRemoveButton->hide();
+  this->findChild<QPushButton*>(QString("remove_button"))->hide();
+  this->findChild<QPushButton*>(QString("duplicate_button"))->hide();
 
   // Lower treatment
   auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
@@ -126,6 +131,15 @@ void BCGroupWidget::removeData()
 
   // Upper treatment
   emit BCGroupWidget::removePressed(lOriginFolder, lRessourcePath);
+}
+
+void BCGroupWidget::duplicateData()
+{
+  auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
+  auto lOriginFolder{lDropWidget->getOriginFolder()};
+  auto lRessourcePath{lDropWidget->getRessourcePath()};
+
+  emit BCGroupWidget::duplicatePressed(lOriginFolder, lRessourcePath);
 }
 
 void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked)
@@ -139,8 +153,8 @@ void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, 
   else
   {
     // Current object treatment
-    auto lRemoveButton{this->findChild<QPushButton*>(QString("remove_button"))};
-    lRemoveButton->show();
+    this->findChild<QPushButton*>(QString("remove_button"))->show();
+    this->findChild<QPushButton*>(QString("duplicate_button"))->show();
   }
 
   // Upper treatment
