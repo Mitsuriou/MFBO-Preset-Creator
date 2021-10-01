@@ -360,14 +360,16 @@ void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 
 void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::set<QString>>& aScannedData)
 {
-  for (auto lIt = aScannedData.begin(); lIt != aScannedData.end(); ++lIt)
+  for (auto lIt = aScannedData.begin(); lIt != aScannedData.end();)
   {
     // If no useful data has been found, delete the current entry from the map
     if (!Utils::ContainsBodyOrHandsOrFeetMesh<std::set<QString>>(lIt->second))
     {
       lIt = aScannedData.erase(lIt);
-      lIt--;
+      continue;
     }
+
+    ++lIt;
   }
 }
 
