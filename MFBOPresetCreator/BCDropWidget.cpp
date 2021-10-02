@@ -82,6 +82,20 @@ void BCDropWidget::setData(const QString& aOriginFolder, const QString& aRessour
   this->tweakWidgetsVisibility(aRessourcePath.isEmpty(), aOriginFolder, aRessourcePath, aUseAlternativeModel);
 }
 
+void BCDropWidget::simulateDropEvent(const QString& aOriginFolder, const QString& aRessourcePath)
+{
+  // Accept the drag, set the mime data to be transfered
+  QJsonObject lDataObject;
+  lDataObject["originFolder"] = aOriginFolder;
+  lDataObject["ressourcePath"] = aRessourcePath;
+
+  QMimeData* lMimeData = new QMimeData;
+  lMimeData->setData("application/json", QJsonDocument(lDataObject).toJson());
+
+  QDropEvent* lDropEvent = new QDropEvent(this->geometry().bottomLeft(), Qt::MoveAction, lMimeData, Qt::LeftButton, Qt::KeyboardModifier::NoModifier, QEvent::Type::DragMove);
+  this->dropEvent(lDropEvent);
+}
+
 void BCDropWidget::dragEnterEvent(QDragEnterEvent* aEvent)
 {
   // Only accept drag events from a BCDragWidget widget
@@ -102,7 +116,7 @@ void BCDropWidget::dragMoveEvent(QDragMoveEvent* aEvent)
 
 void BCDropWidget::dropEvent(QDropEvent* aEvent)
 {
-  if (aEvent->source() == this && aEvent->possibleActions() & Qt::MoveAction)
+  if (aEvent->source() == this && (aEvent->possibleActions() & Qt::MoveAction))
   {
     return;
   }

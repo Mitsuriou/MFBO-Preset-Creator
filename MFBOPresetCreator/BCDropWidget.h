@@ -15,6 +15,7 @@ public:
   QString getRessourcePath() const;
   void resetData();
   void setData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel = false);
+  void simulateDropEvent(const QString& aOriginFolder, const QString& aRessourcePath);
 
 signals:
   void dropEventTriggered(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked = false);

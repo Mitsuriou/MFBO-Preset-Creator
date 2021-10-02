@@ -58,6 +58,7 @@ public:
   static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
   template<typename T>
   static bool ContainsBodyOrHandsOrFeetMesh(const T& aList);
+  static void ClearUselessEntries(std::map<QString, std::set<QString>>& aScannedData);
 
   static bool IsCBBEBasedBody(const BodyNameVersion& aBody);
   static bool IsCBBEBasedBody(const BodyName& aBody);

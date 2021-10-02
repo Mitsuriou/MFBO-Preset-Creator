@@ -359,8 +359,8 @@ void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
   while (this->mFiltersList.count(lNewSetName) > 0)
   {
     // Find last opening and closing parenthesis
-    lOpenIndex = lNewSetName.lastIndexOf("(");
-    lCloseIndex = lNewSetName.lastIndexOf(")");
+    lOpenIndex = lNewSetName.lastIndexOf('(');
+    lCloseIndex = lNewSetName.lastIndexOf(')');
 
     // Calculate the number of characters between the two parenthesis
     lLength = lCloseIndex - lOpenIndex - 1;

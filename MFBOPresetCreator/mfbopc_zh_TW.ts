@@ -216,18 +216,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BCDropWidget.cpp" line="180"/>
-        <location filename="BCDropWidget.cpp" line="185"/>
+        <location filename="BCDropWidget.cpp" line="194"/>
+        <location filename="BCDropWidget.cpp" line="199"/>
         <source>Drop some data here...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BCDropWidget.cpp" line="191"/>
+        <location filename="BCDropWidget.cpp" line="205"/>
         <source>Mesh path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BCDropWidget.cpp" line="193"/>
+        <location filename="BCDropWidget.cpp" line="207"/>
         <source>Origin mod:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -237,6 +237,11 @@
     <message>
         <location filename="BCGroupWidget.cpp" line="42"/>
         <source>Remove this data entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BCGroupWidget.cpp" line="46"/>
+        <source>Duplicate this data entry</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -347,22 +352,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="540"/>
+        <location filename="BatchConversion.cpp" line="522"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation type="unfinished">資料夾:&quot;%1&quot;已存在。請問是否繼續執行產生案在此資料夾?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="543"/>
+        <location filename="BatchConversion.cpp" line="525"/>
         <source>Continue the search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="544"/>
+        <location filename="BatchConversion.cpp" line="526"/>
         <source>Cancel the search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="664"/>
+        <location filename="BatchConversion.cpp" line="647"/>
         <source>No data found for the given input directory. Please try to change it before retrying again.
 
 Note: If you want to convert a single mod only, please use the &quot;Assisted Conversion&quot; tool instead.
@@ -376,17 +381,17 @@ Note of ModOrganizer2 users: select your &quot;mods&quot; directory as the input
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="500"/>
+        <location filename="BatchConversion.cpp" line="482"/>
         <source>Error: no path given to search for files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="522"/>
+        <location filename="BatchConversion.cpp" line="504"/>
         <source>Error: no path given to export the files.</source>
         <translation type="unfinished">錯誤:未指定輸出路徑。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="529"/>
+        <location filename="BatchConversion.cpp" line="511"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation type="unfinished">錯誤:無效的輸出路徑。</translation>
     </message>
@@ -397,7 +402,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="obsolete">錯誤:無法產生資料夾:&quot;%1&quot;。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="539"/>
+        <location filename="BatchConversion.cpp" line="521"/>
         <source>Already existing directory</source>
         <translation type="unfinished">已存在資料夾</translation>
     </message>
@@ -414,22 +419,22 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="obsolete">取消產生檔案</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="567"/>
+        <location filename="BatchConversion.cpp" line="549"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="567"/>
+        <location filename="BatchConversion.cpp" line="549"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="607"/>
+        <location filename="BatchConversion.cpp" line="589"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="800"/>
+        <location filename="BatchConversion.cpp" line="785"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
@@ -471,127 +476,157 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 <context>
     <name>BatchConversionPicker</name>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="46"/>
+        <location filename="BatchConversionPicker.cpp" line="38"/>
         <source>Closing</source>
         <translation>關閉中</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="47"/>
+        <location filename="BatchConversionPicker.cpp" line="39"/>
         <source>Do you want to close the window?</source>
         <translation>確定關閉視窗?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="50"/>
+        <location filename="BatchConversionPicker.cpp" line="42"/>
         <source>Close the window</source>
         <translation>關閉視窗</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="51"/>
+        <location filename="BatchConversionPicker.cpp" line="43"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="77"/>
+        <location filename="BatchConversionPicker.cpp" line="69"/>
         <source>Batch Conversion: Results picker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="108"/>
+        <location filename="BatchConversionPicker.cpp" line="100"/>
         <source>Origin mod(s)&apos; directory(ies) (click to display the data)</source>
         <oldsource>Origin mod(s)&apos; folder(s) (click to display the data)</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="130"/>
+        <location filename="BatchConversionPicker.cpp" line="122"/>
         <source>Available data (drag these entries)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="135"/>
+        <location filename="BatchConversionPicker.cpp" line="127"/>
         <source>No data available for the selected origin directory</source>
         <oldsource>No data available for the selected origin folder</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="174"/>
+        <location filename="BatchConversionPicker.cpp" line="136"/>
+        <source>Quick preset(s) creation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="166"/>
         <source>Presets to generate (drop the entries here)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="179"/>
+        <location filename="BatchConversionPicker.cpp" line="171"/>
         <source>No preset created at the moment.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="184"/>
+        <location filename="BatchConversionPicker.cpp" line="176"/>
         <source>Body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="189"/>
+        <location filename="BatchConversionPicker.cpp" line="181"/>
         <source>Feet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="194"/>
+        <location filename="BatchConversionPicker.cpp" line="186"/>
         <source>Hands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="199"/>
+        <location filename="BatchConversionPicker.cpp" line="191"/>
         <source>Skeleton</source>
         <translation type="unfinished">骨架</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="204"/>
+        <location filename="BatchConversionPicker.cpp" line="196"/>
         <source>BodySlide output</source>
         <translation>BodySlide 輸出</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="221"/>
+        <location filename="BatchConversionPicker.cpp" line="213"/>
         <source>BodySlide files names:</source>
         <translation>BodySlide檔案名稱:</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="228"/>
-        <location filename="BatchConversionPicker.cpp" line="250"/>
+        <location filename="BatchConversionPicker.cpp" line="220"/>
+        <location filename="BatchConversionPicker.cpp" line="242"/>
         <source>Preview:</source>
         <translation>預覽:</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="241"/>
+        <location filename="BatchConversionPicker.cpp" line="233"/>
         <source>Presets names:</source>
         <translation>預設(Preset)名稱:</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="242"/>
+        <location filename="BatchConversionPicker.cpp" line="234"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="260"/>
+        <location filename="BatchConversionPicker.cpp" line="252"/>
         <source>Previous preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="269"/>
+        <location filename="BatchConversionPicker.cpp" line="261"/>
         <source>Next preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="273"/>
+        <location filename="BatchConversionPicker.cpp" line="265"/>
         <source>Remove current preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="277"/>
+        <location filename="BatchConversionPicker.cpp" line="269"/>
         <source>Add new preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="285"/>
+        <location filename="BatchConversionPicker.cpp" line="277"/>
         <source>Batch generate the files on my computer</source>
         <translation>批次產生檔案</translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="758"/>
+        <source>Error: No preset could be made from available data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="767"/>
+        <source>Create %1 presets?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="768"/>
+        <source>Do you want to create %1 new preset(s)?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="771"/>
+        <source>Create the presets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="772"/>
+        <source>Cancel the creation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2399,40 +2434,40 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
 <context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="149"/>
+        <location filename="Utils.cpp" line="161"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="152"/>
-        <location filename="Utils.cpp" line="833"/>
+        <location filename="Utils.cpp" line="164"/>
+        <location filename="Utils.cpp" line="841"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="520"/>
+        <location filename="Utils.cpp" line="528"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>無法找到內部檔案e &quot;%1&quot; 。請回報給開發者並提供bug產生步驟。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="540"/>
-        <location filename="Utils.cpp" line="573"/>
-        <location filename="Utils.cpp" line="666"/>
+        <location filename="Utils.cpp" line="548"/>
+        <location filename="Utils.cpp" line="581"/>
+        <location filename="Utils.cpp" line="674"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="827"/>
+        <location filename="Utils.cpp" line="835"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="828"/>
+        <location filename="Utils.cpp" line="836"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="842"/>
+        <location filename="Utils.cpp" line="850"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2441,18 +2476,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1393"/>
+        <location filename="Utils.cpp" line="1401"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1495"/>
-        <location filename="Utils.cpp" line="1519"/>
+        <location filename="Utils.cpp" line="1503"/>
+        <location filename="Utils.cpp" line="1527"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1513"/>
+        <location filename="Utils.cpp" line="1521"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

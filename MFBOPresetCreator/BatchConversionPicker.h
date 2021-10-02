@@ -3,7 +3,6 @@
 #include "BCGroupWidget.h"
 #include "Struct.h"
 #include <QDialog>
-#include <QGridLayout>
 
 class BatchConversionPicker final : public QDialog
 {

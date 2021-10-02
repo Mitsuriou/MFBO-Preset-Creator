@@ -358,21 +358,6 @@ void BatchConversion::setupButtons(QHBoxLayout& aLayout)
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
 }
 
-void BatchConversion::clearScannedDataFromUselessEntries(std::map<QString, std::set<QString>>& aScannedData)
-{
-  for (auto lIt = aScannedData.begin(); lIt != aScannedData.end();)
-  {
-    // If no useful data has been found, delete the current entry from the map
-    if (!Utils::ContainsBodyOrHandsOrFeetMesh<std::set<QString>>(lIt->second))
-    {
-      lIt = aScannedData.erase(lIt);
-      continue;
-    }
-
-    ++lIt;
-  }
-}
-
 void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData, const bool aMustGenerateFilesInExistingDirectory)
 {
   // Selected body
@@ -634,6 +619,7 @@ void BatchConversion::launchSearchProcess()
 
       // Construct the key of the map
       lKey = lRelativeDirPath.left(lFirstSlashPosition);
+      Utils::CleanPathString(lKey);
       lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lFirstSlashPosition + 1), lFileName);
 
       lMapPosition = lScannedData.find(lKey);
@@ -664,7 +650,9 @@ void BatchConversion::launchSearchProcess()
 
   // Clear the mods entries that do not have any useful entries, if the user wanted to
   if (lMustClearIrrelevantEntries)
-    this->clearScannedDataFromUselessEntries(lScannedData);
+  {
+    Utils::ClearUselessEntries(lScannedData);
+  }
 
   // Launch the BatchConversionPicker dialog
   this->launchPicker(lScannedData, lMustGenerateFilesInExistingDirectory);

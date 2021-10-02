@@ -1,23 +1,16 @@
 #include "BatchConversionPicker.h"
+#include "BCDropWidget.h"
 #include "ComponentFactory.h"
-#include "DataLists.h"
 #include "Utils.h"
-#include <QAbstractSlider>
-#include <QApplication>
 #include <QCloseEvent>
-#include <QDirIterator>
-#include <QFileDialog>
+#include <QGridLayout>
 #include <QGroupBox>
 #include <QIcon>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
-#include <QProgressBar>
-#include <QProgressDialog>
-#include <QScrollArea>
 #include <QSpinBox>
 #include <QSplitter>
-#include <QStyledItemDelegate>
 
 BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const Struct::BatchConversionData& aData)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
@@ -601,22 +594,16 @@ void BatchConversionPicker::goToNextPreset() const
 
 void BatchConversionPicker::removeActivePreset()
 {
+  // Re-put the data in the scannedData list
+  this->mPreventPresetSave = true;
+  this->findChild<BCGroupWidget*>(QString("drop_section_body"))->removeData();
+  this->findChild<BCGroupWidget*>(QString("drop_section_feet"))->removeData();
+  this->findChild<BCGroupWidget*>(QString("drop_section_hands"))->removeData();
+  this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))->removeData();
+  this->mPreventPresetSave = false;
+
   auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
   auto lCurrentIndex{lActivePresetNumber->value()};
-
-  this->mPreventPresetSave = true;
-
-  // Re-put the data in the scannedData list
-  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
-  lDropSectionBody->removeData();
-  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
-  lDropSectionFeet->removeData();
-  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
-  lDropSectionHands->removeData();
-  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
-  lDropSectionSkeleton->removeData();
-
-  this->mPreventPresetSave = false;
 
   // Remove the preset entry
   this->mData.presets.erase(this->mData.presets.begin() + lCurrentIndex - 1);
@@ -641,14 +628,12 @@ void BatchConversionPicker::addNewEmptyPreset()
   // Display the last preset
   auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
 
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
-  lActivePresetNumber->setValue(lNumberOfPresets);
+  // Display the new created preset
+  this->findChild<QSpinBox*>(QString("active_preset_number"))->setValue(lNumberOfPresets);
 }
 
 void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
 {
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
-
   auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
 
   // Previous preset
@@ -656,7 +641,8 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   auto lWasPreviousPresetFocused{lPreviousPreset->hasFocus()};
   lPreviousPreset->setDisabled(lNumberOfPresets == 0 || aNextIndex <= 1);
 
-  // Active preset number
+  // Update active preset number spinbox
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
   if (qobject_cast<QSpinBox*>(this->sender()) != lActivePresetNumber)
   {
     this->updateActivePresetNumberSpinBox();
@@ -683,6 +669,7 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   // Drop widgets: Body, Feet, Hands
   auto lNoPresetLabel{this->findChild<QLabel*>(QString("no_preset_label"))};
   lNoPresetLabel->setHidden(lNumberOfPresets > 0);
+
   auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
   lDropSectionBody->setHidden(lNumberOfPresets == 0);
   auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
@@ -694,7 +681,7 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
 
   if (lNumberOfPresets > 0)
   {
-    const auto& lDataToSet = this->mData.presets.at(aNextIndex - 1);
+    const auto& lDataToSet = this->mData.presets.at(static_cast<size_t>(aNextIndex - 1));
     lDropSectionBody->setData(lDataToSet);
     lDropSectionFeet->setData(lDataToSet);
     lDropSectionHands->setData(lDataToSet);
@@ -711,7 +698,7 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
     auto lNamesInAppLineEdit{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))};
 
     mPreventPresetSave = true;
-    const auto& lPathsPair = this->mData.presets.at(aNextIndex - 1).getNames();
+    const auto& lPathsPair = this->mData.presets.at(static_cast<size_t>(aNextIndex - 1)).getNames();
     lOSPXMLNamesLineEdit->setText(lPathsPair.first);
     lNamesInAppLineEdit->setText(lPathsPair.second);
     mPreventPresetSave = false;
@@ -731,11 +718,106 @@ void BatchConversionPicker::updateActivePresetNumberSpinBox()
 
 void BatchConversionPicker::quickCreatePreset()
 {
-  // Check if any alread existing preset can be completed with left data
-
   // Analyze the left data to split between everything
+  std::map<QString, std::set<QString>> lDetectedPresets;
 
-  // TODO:
+  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  auto lSelectedEntry{lPathsList->currentItem()};
+  if (lSelectedEntry != nullptr)
+  {
+    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
+
+    if (lPosition != this->mData.scannedData.end())
+    {
+      // Create the BCDragWidget
+      for (const auto& lValue : lPosition->second)
+      {
+        auto lLastSlashPosition{lValue.lastIndexOf('/')};
+        auto lKey{lValue.left(lLastSlashPosition)};
+        auto lMeshName{lValue.mid(lLastSlashPosition + 1)};
+
+        // The key does not exist
+        if (lDetectedPresets.find(lKey) == lDetectedPresets.end())
+        {
+          lDetectedPresets.insert({lKey, {lMeshName}});
+        }
+        else
+        {
+          lDetectedPresets.at(lKey).insert(lMeshName);
+        }
+      }
+    }
+  }
+
+  // Clear the presets that do not have any useful entries
+  Utils::ClearUselessEntries(lDetectedPresets);
+
+  // Warn the user that no preset could be made from left data
+  if (lDetectedPresets.size() == 0)
+  {
+    Utils::DisplayWarningMessage(tr("Error: No preset could be made from available data."));
+    return;
+  }
+
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+
+  // Ask the user if they want to create the detected possible presets
+  if (Utils::DisplayQuestionMessage(this,
+                                    tr("Create %1 presets?").arg(lDetectedPresets.size()),
+                                    tr("Do you want to create %1 new preset(s)?").arg(lDetectedPresets.size()),
+                                    lIconFolder,
+                                    "help-circle",
+                                    tr("Create the presets"),
+                                    tr("Cancel the creation"),
+                                    "",
+                                    this->mSettings.warningColor,
+                                    this->mSettings.successColor,
+                                    "",
+                                    false)
+      == ButtonClicked::YES)
+  {
+    // TODO: Check if any already existing preset can be completed with left data
+
+    // Iterate the list of new presets that need to be created
+    for (const auto& lPreset : lDetectedPresets)
+    {
+      // Create a new empty preset for each newly created preset
+      this->addNewEmptyPreset();
+
+      // Iterate the meshes names
+      for (const auto& lMeshPart : lPreset.second)
+      {
+        // Simulate the drag&drop of the ressources
+        auto lRessourcePath{lPreset.first + "/" + lMeshPart};
+        auto lRessourceType{Utils::GetMeshTypeFromFileName(lRessourcePath)};
+        BCDropWidget* lTarget{nullptr};
+
+        switch (lRessourceType)
+        {
+          case BCGroupWidgetCallContext::BODY:
+            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_body"))->findChild<BCDropWidget*>(QString("drop_widget"));
+            break;
+          case BCGroupWidgetCallContext::FEET:
+            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_feet"))->findChild<BCDropWidget*>(QString("drop_widget"));
+            break;
+          case BCGroupWidgetCallContext::HANDS:
+            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_hands"))->findChild<BCDropWidget*>(QString("drop_widget"));
+            break;
+          case BCGroupWidgetCallContext::SKELETON:
+            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))->findChild<BCDropWidget*>(QString("drop_widget"));
+            break;
+          default:
+            continue;
+        }
+
+        if (lTarget != nullptr)
+        {
+          lTarget->simulateDropEvent(lSelectedEntry->text(), lRessourcePath);
+        }
+      }
+    }
+  }
 }
 
 void BatchConversionPicker::validateSelection()

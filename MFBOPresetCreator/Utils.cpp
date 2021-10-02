@@ -435,10 +435,25 @@ BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName
     return BCGroupWidgetCallContext::EYES;
 
   // Skeleton
-  if (aFileName.mid(aFileName.lastIndexOf("/") + 1).contains("skeleton", Qt::CaseInsensitive))
+  if (aFileName.mid(aFileName.lastIndexOf('/') + 1).contains("skeleton", Qt::CaseInsensitive))
     return BCGroupWidgetCallContext::SKELETON;
 
   return BCGroupWidgetCallContext::UNDEFINED;
+}
+
+void Utils::ClearUselessEntries(std::map<QString, std::set<QString>>& aScannedData)
+{
+  for (auto lIt = aScannedData.begin(); lIt != aScannedData.end();)
+  {
+    // If no useful data has been found, delete the current entry from the map
+    if (!Utils::ContainsBodyOrHandsOrFeetMesh<std::set<QString>>(lIt->second))
+    {
+      lIt = aScannedData.erase(lIt);
+      continue;
+    }
+
+    ++lIt;
+  }
 }
 
 bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBody)
@@ -544,7 +559,7 @@ QString Utils::GetPresetNameFromXMLFile(const QString& aPath)
     lPresetName = lXMLMember.attribute("name", "");
   }
 
-  return lPresetName.left(lPresetName.lastIndexOf(QChar('-')) - 1);
+  return lPresetName.left(lPresetName.lastIndexOf('-') - 1);
 }
 
 std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& aPath)
