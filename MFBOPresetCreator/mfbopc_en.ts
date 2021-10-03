@@ -435,156 +435,199 @@ Note of ModOrganizer2 users: select your &quot;mods&quot; directory as the input
 <context>
     <name>BatchConversionPicker</name>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="38"/>
+        <location filename="BatchConversionPicker.cpp" line="39"/>
         <source>Closing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="39"/>
+        <location filename="BatchConversionPicker.cpp" line="40"/>
         <source>Do you want to close the window?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="42"/>
+        <location filename="BatchConversionPicker.cpp" line="43"/>
         <source>Close the window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="43"/>
+        <location filename="BatchConversionPicker.cpp" line="44"/>
+        <location filename="BatchConversionPicker.cpp" line="850"/>
+        <location filename="BatchConversionPicker.cpp" line="880"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="69"/>
+        <location filename="BatchConversionPicker.cpp" line="70"/>
         <source>Batch Conversion: Results picker</source>
         <oldsource>Batch Conversion: results picker</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="122"/>
+        <location filename="BatchConversionPicker.cpp" line="123"/>
         <source>Available data (drag these entries)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="166"/>
+        <location filename="BatchConversionPicker.cpp" line="167"/>
         <source>Presets to generate (drop the entries here)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="176"/>
+        <location filename="BatchConversionPicker.cpp" line="177"/>
         <source>Body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="186"/>
+        <location filename="BatchConversionPicker.cpp" line="187"/>
         <source>Hands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="181"/>
+        <location filename="BatchConversionPicker.cpp" line="182"/>
         <source>Feet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="100"/>
+        <location filename="BatchConversionPicker.cpp" line="101"/>
         <source>Origin mod(s)&apos; directory(ies) (click to display the data)</source>
         <oldsource>Origin mod(s)&apos; folder(s) (click to display the data)</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="127"/>
+        <location filename="BatchConversionPicker.cpp" line="128"/>
         <source>No data available for the selected origin directory</source>
         <oldsource>No data available for the selected origin folder</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="136"/>
+        <location filename="BatchConversionPicker.cpp" line="137"/>
         <source>Quick preset(s) creation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="171"/>
+        <location filename="BatchConversionPicker.cpp" line="172"/>
         <source>No preset created at the moment.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="191"/>
+        <location filename="BatchConversionPicker.cpp" line="192"/>
         <source>Skeleton</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="196"/>
+        <location filename="BatchConversionPicker.cpp" line="197"/>
         <source>BodySlide output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="213"/>
+        <location filename="BatchConversionPicker.cpp" line="214"/>
         <source>BodySlide files names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="220"/>
-        <location filename="BatchConversionPicker.cpp" line="242"/>
+        <location filename="BatchConversionPicker.cpp" line="221"/>
+        <location filename="BatchConversionPicker.cpp" line="243"/>
         <source>Preview:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="233"/>
+        <location filename="BatchConversionPicker.cpp" line="234"/>
         <source>Presets names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="234"/>
+        <location filename="BatchConversionPicker.cpp" line="235"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="252"/>
+        <location filename="BatchConversionPicker.cpp" line="253"/>
         <source>Previous preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="261"/>
+        <location filename="BatchConversionPicker.cpp" line="262"/>
         <source>Next preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="265"/>
+        <location filename="BatchConversionPicker.cpp" line="266"/>
         <source>Remove current preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="269"/>
+        <location filename="BatchConversionPicker.cpp" line="270"/>
         <source>Add new preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="277"/>
+        <location filename="BatchConversionPicker.cpp" line="278"/>
         <source>Batch generate the files on my computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="758"/>
+        <location filename="BatchConversionPicker.cpp" line="761"/>
         <source>Error: No preset could be made from available data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="767"/>
+        <location filename="BatchConversionPicker.cpp" line="770"/>
         <source>Create %1 presets?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="768"/>
+        <location filename="BatchConversionPicker.cpp" line="771"/>
         <source>Do you want to create %1 new preset(s)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="771"/>
-        <source>Create the presets</source>
+        <location filename="BatchConversionPicker.cpp" line="774"/>
+        <source>Create the %1 new preset(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="772"/>
+        <location filename="BatchConversionPicker.cpp" line="845"/>
+        <source>Invalid preset detected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="846"/>
+        <source>The preset number %1 is not valid.
+
+A preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.
+
+Would you like to delete this invalid preset and continue, or cancel the generation and fix this preset?</source>
+        <oldsource>The preset number %1 is not valid.
+
+A preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.
+
+Would you like to delete this invalid preset and continue, or cancel the validation and fix this preset?</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="849"/>
+        <source>Delete the preset number %1 and continue the generation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="875"/>
+        <source>No valid preset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="876"/>
+        <source>No valid preset has been found.
+
+Would you like to close the batch conversion: results picker window now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="879"/>
+        <source>Close the batch conversion: results picker window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversionPicker.cpp" line="775"/>
         <source>Cancel the creation</source>
         <translation type="unfinished"></translation>
     </message>

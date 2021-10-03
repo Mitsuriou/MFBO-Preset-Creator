@@ -34,19 +34,20 @@ void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-  if (Utils::DisplayQuestionMessage(this,
-                                    tr("Closing"),
-                                    tr("Do you want to close the window?"),
-                                    lIconFolder,
-                                    "help-circle",
-                                    tr("Close the window"),
-                                    tr("Go back to the batch conversion: results picker window"),
-                                    "",
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
-                                    "",
-                                    false)
-      == ButtonClicked::YES)
+  if (this->mData.presets.size() == 0
+      || Utils::DisplayQuestionMessage(this,
+                                       tr("Closing"),
+                                       tr("Do you want to close the window?"),
+                                       lIconFolder,
+                                       "help-circle",
+                                       tr("Close the window"),
+                                       tr("Go back to the batch conversion: results picker window"),
+                                       "",
+                                       this->mSettings.dangerColor,
+                                       this->mSettings.successColor,
+                                       "",
+                                       false)
+           == ButtonClicked::YES)
   {
     aEvent->accept();
   }
@@ -741,6 +742,7 @@ void BatchConversionPicker::quickCreatePreset()
         {
           lDetectedPresets.insert({lKey, {lMeshName}});
         }
+        // The key already exists
         else
         {
           lDetectedPresets.at(lKey).insert(lMeshName);
@@ -753,7 +755,8 @@ void BatchConversionPicker::quickCreatePreset()
   Utils::ClearUselessEntries(lDetectedPresets);
 
   // Warn the user that no preset could be made from left data
-  if (lDetectedPresets.size() == 0)
+  auto lNumberOfNewPresets{lDetectedPresets.size()};
+  if (lNumberOfNewPresets == 0)
   {
     Utils::DisplayWarningMessage(tr("Error: No preset could be made from available data."));
     return;
@@ -764,17 +767,17 @@ void BatchConversionPicker::quickCreatePreset()
 
   // Ask the user if they want to create the detected possible presets
   if (Utils::DisplayQuestionMessage(this,
-                                    tr("Create %1 presets?").arg(lDetectedPresets.size()),
-                                    tr("Do you want to create %1 new preset(s)?").arg(lDetectedPresets.size()),
+                                    tr("Create %1 presets?").arg(lNumberOfNewPresets),
+                                    tr("Do you want to create %1 new preset(s)?").arg(lNumberOfNewPresets),
                                     lIconFolder,
                                     "help-circle",
-                                    tr("Create the presets"),
+                                    tr("Create the %1 new preset(s)").arg(lNumberOfNewPresets),
                                     tr("Cancel the creation"),
                                     "",
-                                    this->mSettings.warningColor,
+                                    this->mSettings.successColor,
                                     this->mSettings.successColor,
                                     "",
-                                    false)
+                                    true)
       == ButtonClicked::YES)
   {
     // TODO: Check if any already existing preset can be completed with left data
@@ -822,24 +825,76 @@ void BatchConversionPicker::quickCreatePreset()
 
 void BatchConversionPicker::validateSelection()
 {
-  // TODO: Check to restore this line, after the TODO below
-  //this->mData.scannedData.clear(); // Clear the data to send a skinier object
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
-  auto lRemovedPresetsCount{0};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+
   for (int i = 0; i < this->mData.presets.size(); i++)
   {
+    // If the current preset is not valid
     if (!this->mData.presets.at(i).isValid())
     {
-      this->mData.presets.erase(this->mData.presets.begin() + i);
-      // TODO: Avoid removing the preset directly. Ask the user if they want to continue this way (removed) or they want to fix the issues
-      lRemovedPresetsCount++;
-      i--;
+      auto lNaturalIndex{i + 1};
+      // Display the invalid preset in the interface
+      lActivePresetNumber->setValue(lNaturalIndex);
+
+      // TODO: In the message below, detail to the user why the preset is not valid precisely
+      // Ask the user what to do with it
+      if (Utils::DisplayQuestionMessage(this,
+                                        tr("Invalid preset detected"),
+                                        tr("The preset number %1 is not valid.\n\nA preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.\n\nWould you like to delete this invalid preset and continue, or cancel the generation and fix this preset?").arg(lNaturalIndex),
+                                        lIconFolder,
+                                        "help-circle",
+                                        tr("Delete the preset number %1 and continue the generation").arg(lNaturalIndex),
+                                        tr("Go back to the batch conversion: results picker window"),
+                                        "",
+                                        this->mSettings.dangerColor,
+                                        this->mSettings.successColor,
+                                        "",
+                                        false)
+          == ButtonClicked::YES)
+      {
+        this->removeActivePreset();
+        this->updateActivePresetNumberSpinBox(); // Force the refresh of the spin box since the preset since it will be ignored then
+        this->updatePresetInterfaceState(lNaturalIndex);
+        i--;
+      }
+      else
+      {
+        // Cancel the whole check and go back to the Batch Conversion Picker window
+        return;
+      }
     }
   }
 
-  // TODO: Tell the user that some presets were not valid
+  // Tell the user no preset has been made
+  if (this->mData.presets.size() == 0)
+  {
+    if (Utils::DisplayQuestionMessage(this,
+                                      tr("No valid preset"),
+                                      tr("No valid preset has been found.\n\nWould you like to close the batch conversion: results picker window now?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Close the batch conversion: results picker window"),
+                                      tr("Go back to the batch conversion: results picker window"),
+                                      "",
+                                      this->mSettings.warningColor,
+                                      this->mSettings.successColor,
+                                      "",
+                                      false)
+        == ButtonClicked::YES)
+    {
+      this->accept();
+    }
+    else
+    {
+      // Cancel the whole check and go back to the Batch Conversion Picker window
+      return;
+    }
+  }
 
-  // TODO: Emit the signal with the mData object as unique parameter
+  // Emit the event to start generating the presets files on the user's disk
   emit presetsCreationValidated(this->mData);
 
   this->accept();
