@@ -3,6 +3,8 @@
 #include "BCGroupWidget.h"
 #include "Struct.h"
 #include <QDialog>
+#include <map>
+#include <set>
 
 class BatchConversionPicker final : public QDialog
 {
@@ -25,6 +27,7 @@ private:
   std::vector<BCDragWidget*> mMiddleListButtons;
   bool mPreventPresetSave{true};
 
+  // General
   void setWindowProperties();
   void initializeGUI();
   void connectGroupWidgetEvents(BCGroupWidget* lGroupWidget);
@@ -52,8 +55,11 @@ private:
   void updatePresetInterfaceState(const int aNextIndex);
   void updateActivePresetNumberSpinBox();
 
-  //
-  void quickCreatePreset();
+  // Presets manipulation
+  void fullQuickCreatePreset();
+  void simpleQuickCreatePreset();
+  std::map<QString, std::set<QString>> findNewPresets(const QString& aOriginFolder);
+  void generateNewPresets(const std::multimap<QString, std::map<QString, std::set<QString>>>& aPresets); // multimap<origin_folder, map<path, set<mesh_file_name>>>
   void validateSelection();
 
   // GUI widgets events

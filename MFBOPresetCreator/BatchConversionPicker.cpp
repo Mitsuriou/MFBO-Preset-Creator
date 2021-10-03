@@ -100,12 +100,17 @@ void BatchConversionPicker::initializeGUI()
   // Title
   auto lLeftTitle{new QLabel(tr("Origin mod(s)' directory(ies) (click to display the data)"))};
   lLeftTitle->setAlignment(Qt::AlignCenter);
+  lLeftTitle->setWordWrap(true);
   lLeftLayout->addWidget(lLeftTitle);
 
   // Paths list
   auto lLeftList{new QListWidget(this)};
   lLeftList->setObjectName(QString("left_list"));
   lLeftLayout->addWidget(lLeftList);
+
+  // Full quick preset creation button
+  auto lFullQuickPresetCreationButton{ComponentFactory::CreateButton(this, tr("Quick preset(s) creation (all mods)"), "", "bolt", lIconFolder, "full_quick_preset_creation", false, true)};
+  lLeftLayout->addWidget(lFullQuickPresetCreationButton);
 
   /*=============*/
   /* Middle list */
@@ -122,11 +127,13 @@ void BatchConversionPicker::initializeGUI()
   // Title
   auto lMiddleTitle{new QLabel(tr("Available data (drag these entries)"))};
   lMiddleTitle->setAlignment(Qt::AlignCenter);
+  lMiddleTitle->setWordWrap(true);
   lMiddleLayout->addWidget(lMiddleTitle);
 
   // Label for the "no data available" case
   auto lNoDataLabel{new QLabel(tr("No data available for the selected origin directory"), this)};
   lNoDataLabel->setObjectName(QString("no_data_label"));
+  lNoDataLabel->setWordWrap(true);
   lNoDataLabel->hide();
   lMiddleLayout->addWidget(lNoDataLabel);
 
@@ -134,8 +141,8 @@ void BatchConversionPicker::initializeGUI()
   ComponentFactory::CreateScrollAreaWindowLayout(this, true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
 
   // Quick preset creation button
-  auto lQuickPresetCreationButton{ComponentFactory::CreateButton(this, tr("Quick preset(s) creation"), "", "bolt", lIconFolder, "quick_preset_creation", true, true)};
-  lMiddleLayout->addWidget(lQuickPresetCreationButton);
+  auto lSimpleQuickPresetCreationButton{ComponentFactory::CreateButton(this, tr("Quick preset(s) creation (active mod)"), "", "bolt", lIconFolder, "simple_quick_preset_creation", true, true)};
+  lMiddleLayout->addWidget(lSimpleQuickPresetCreationButton);
 
   /*============*/
   /* Right list */
@@ -297,7 +304,8 @@ void BatchConversionPicker::initializeGUI()
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
   this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
   this->connect(lLeftList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::refreshMiddleList);
-  this->connect(lQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::quickCreatePreset);
+  this->connect(lFullQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::fullQuickCreatePreset);
+  this->connect(lSimpleQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::simpleQuickCreatePreset);
 
   this->connect(lPreviousPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToPreviousPreset);
   this->connect(lNextPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToNextPreset);
@@ -348,7 +356,7 @@ void BatchConversionPicker::refreshMiddleList()
   auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
-    auto lQuickPresetCreationButton{this->findChild<QPushButton*>(QString("quick_preset_creation"))};
+    auto lQuickPresetCreationButton{this->findChild<QPushButton*>(QString("simple_quick_preset_creation"))};
     auto lNoDataLabel{this->findChild<QLabel*>(QString("no_data_label"))};
     auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
 
@@ -717,45 +725,81 @@ void BatchConversionPicker::updateActivePresetNumberSpinBox()
   lActivePresetNumber->setSuffix(QString(" / %1").arg(lNumberOfPresets));
 }
 
-void BatchConversionPicker::quickCreatePreset()
+void BatchConversionPicker::fullQuickCreatePreset()
 {
-  // Analyze the left data to split between everything
-  std::map<QString, std::set<QString>> lDetectedPresets;
+  std::multimap<QString, std::map<QString, std::set<QString>>> lPresets;
 
+  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  for (int i = 0; i < lPathsList->count(); i++)
+  {
+    auto lEntry{lPathsList->item(i)};
+    if (lEntry != nullptr)
+    {
+      lPresets.insert({lEntry->text(), this->findNewPresets(lEntry->text())});
+      // + add a message if the key is already defined
+    }
+  }
+
+  this->generateNewPresets(lPresets);
+}
+
+void BatchConversionPicker::simpleQuickCreatePreset()
+{
   auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
   auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
-    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
+    std::multimap<QString, std::map<QString, std::set<QString>>> lPresets;
+    lPresets.insert({lSelectedEntry->text(), this->findNewPresets(lSelectedEntry->text())});
+    this->generateNewPresets(lPresets);
+  }
+}
 
-    if (lPosition != this->mData.scannedData.end())
+std::map<QString, std::set<QString>> BatchConversionPicker::findNewPresets(const QString& aOriginFolder)
+{
+  // Analyze the left data to split between everything
+  std::map<QString, std::set<QString>> lPresets;
+
+  auto lPosition{this->mData.scannedData.find(aOriginFolder)};
+  if (lPosition != this->mData.scannedData.end())
+  {
+    // Create the BCDragWidget
+    for (const auto& lValue : lPosition->second)
     {
-      // Create the BCDragWidget
-      for (const auto& lValue : lPosition->second)
-      {
-        auto lLastSlashPosition{lValue.lastIndexOf('/')};
-        auto lKey{lValue.left(lLastSlashPosition)};
-        auto lMeshName{lValue.mid(lLastSlashPosition + 1)};
+      // Parse the data
+      const auto lLastSlashPosition{lValue.lastIndexOf('/')};
+      const auto lKey{lValue.left(lLastSlashPosition)};
+      const auto lMeshName{lValue.mid(lLastSlashPosition + 1)};
 
+      if (lPresets.find(lKey) == lPresets.end())
+      {
         // The key does not exist
-        if (lDetectedPresets.find(lKey) == lDetectedPresets.end())
-        {
-          lDetectedPresets.insert({lKey, {lMeshName}});
-        }
+        lPresets.insert({lKey, {lMeshName}});
+      }
+      else
+      {
         // The key already exists
-        else
-        {
-          lDetectedPresets.at(lKey).insert(lMeshName);
-        }
+        lPresets.at(lKey).insert(lMeshName);
       }
     }
   }
 
   // Clear the presets that do not have any useful entries
-  Utils::ClearUselessEntries(lDetectedPresets);
+  Utils::ClearUselessEntries(lPresets);
+
+  return lPresets;
+}
+
+void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std::map<QString, std::set<QString>>>& aPresets)
+{
+  // Count the number of presets to create
+  auto lNumberOfNewPresets{0};
+  for (const auto& lEntry : aPresets)
+  {
+      lNumberOfNewPresets += static_cast<int>(lEntry.second.size());
+  }
 
   // Warn the user that no preset could be made from left data
-  auto lNumberOfNewPresets{lDetectedPresets.size()};
   if (lNumberOfNewPresets == 0)
   {
     Utils::DisplayWarningMessage(tr("Error: No preset could be made from available data."));
@@ -767,15 +811,15 @@ void BatchConversionPicker::quickCreatePreset()
 
   // Ask the user if they want to create the detected possible presets
   if (Utils::DisplayQuestionMessage(this,
-                                    tr("Create %1 presets?").arg(lNumberOfNewPresets),
+                                    tr("Create new preset(s)?"),
                                     tr("Do you want to create %1 new preset(s)?").arg(lNumberOfNewPresets),
                                     lIconFolder,
                                     "help-circle",
                                     tr("Create the %1 new preset(s)").arg(lNumberOfNewPresets),
-                                    tr("Cancel the creation"),
+                                    tr("Do not create the %1 new preset(s)").arg(lNumberOfNewPresets),
                                     "",
                                     this->mSettings.successColor,
-                                    this->mSettings.successColor,
+                                    "",
                                     "",
                                     true)
       == ButtonClicked::YES)
@@ -783,40 +827,43 @@ void BatchConversionPicker::quickCreatePreset()
     // TODO: Check if any already existing preset can be completed with left data
 
     // Iterate the list of new presets that need to be created
-    for (const auto& lPreset : lDetectedPresets)
+    for (const auto& lEntry : aPresets)
     {
-      // Create a new empty preset for each newly created preset
-      this->addNewEmptyPreset();
-
-      // Iterate the meshes names
-      for (const auto& lMeshPart : lPreset.second)
+      for (const auto& lPreset : lEntry.second)
       {
-        // Simulate the drag&drop of the ressources
-        auto lRessourcePath{lPreset.first + "/" + lMeshPart};
-        auto lRessourceType{Utils::GetMeshTypeFromFileName(lRessourcePath)};
-        BCDropWidget* lTarget{nullptr};
+        // Create a new empty preset for each newly created preset
+        this->addNewEmptyPreset();
 
-        switch (lRessourceType)
+        // Iterate the meshes names
+        for (const auto& lMeshPart : lPreset.second)
         {
-          case BCGroupWidgetCallContext::BODY:
-            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_body"))->findChild<BCDropWidget*>(QString("drop_widget"));
-            break;
-          case BCGroupWidgetCallContext::FEET:
-            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_feet"))->findChild<BCDropWidget*>(QString("drop_widget"));
-            break;
-          case BCGroupWidgetCallContext::HANDS:
-            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_hands"))->findChild<BCDropWidget*>(QString("drop_widget"));
-            break;
-          case BCGroupWidgetCallContext::SKELETON:
-            lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))->findChild<BCDropWidget*>(QString("drop_widget"));
-            break;
-          default:
-            continue;
-        }
+          // Simulate the drag&drop of the ressources
+          auto lRessourcePath{lPreset.first + "/" + lMeshPart};
+          auto lRessourceType{Utils::GetMeshTypeFromFileName(lRessourcePath)};
+          BCDropWidget* lTarget{nullptr};
 
-        if (lTarget != nullptr)
-        {
-          lTarget->simulateDropEvent(lSelectedEntry->text(), lRessourcePath);
+          switch (lRessourceType)
+          {
+            case BCGroupWidgetCallContext::BODY:
+              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_body"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              break;
+            case BCGroupWidgetCallContext::FEET:
+              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_feet"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              break;
+            case BCGroupWidgetCallContext::HANDS:
+              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_hands"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              break;
+            case BCGroupWidgetCallContext::SKELETON:
+              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              break;
+            default:
+              continue;
+          }
+
+          if (lTarget != nullptr)
+          {
+            lTarget->simulateDropEvent(lEntry.first, lRessourcePath);
+          }
         }
       }
     }

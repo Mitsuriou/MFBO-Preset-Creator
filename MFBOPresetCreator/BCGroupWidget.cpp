@@ -57,6 +57,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
 {
   auto lRemoveButton{this->findChild<QPushButton*>(QString("remove_button"))};
+  auto lDuplicateButton{this->findChild<QPushButton*>(QString("duplicate_button"))};
   auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
 
   if (this->mCallContext == BCGroupWidgetCallContext::BODY)
@@ -65,11 +66,13 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     if (lData.second.isEmpty())
     {
       lRemoveButton->hide();
+      lDuplicateButton->hide();
       lDropWidget->resetData();
     }
     else
     {
       lRemoveButton->show();
+      lDuplicateButton->show();
       lDropWidget->setData(lData.first, lData.second);
     }
   }
@@ -79,11 +82,13 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     if (lData.second.isEmpty())
     {
       lRemoveButton->hide();
+      lDuplicateButton->hide();
       lDropWidget->resetData();
     }
     else
     {
       lRemoveButton->show();
+      lDuplicateButton->show();
       lDropWidget->setData(lData.first, lData.second);
     }
   }
@@ -93,11 +98,13 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     if (lData.getRessourcePath().isEmpty())
     {
       lRemoveButton->hide();
+      lDuplicateButton->hide();
       lDropWidget->resetData();
     }
     else
     {
       lRemoveButton->show();
+      lDuplicateButton->show();
       lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), lData.mustUseAlternativeModel());
     }
   }
@@ -107,11 +114,13 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     if (lData.getRessourcePath().isEmpty())
     {
       lRemoveButton->hide();
+      lDuplicateButton->hide();
       lDropWidget->resetData();
     }
     else
     {
       lRemoveButton->show();
+      lDuplicateButton->show();
       lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), lData.mustUseAlternativeModel());
     }
   }
