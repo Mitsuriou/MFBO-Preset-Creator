@@ -33,8 +33,25 @@ public:
   static ApplicationVersionRelative CompareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2);
 
   // Message boxes
+  static void DisplayInfoMessage(QWidget* aParent,
+                                 const QString& aTitle,
+                                 const QString& aMessage,
+                                 const QString& aIconFolder,
+                                 const QString& aIconName,
+                                 const QString& aButtonText);
   static void DisplayWarningMessage(const QString& aMessage);
-  static ButtonClicked DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
+  static ButtonClicked DisplayQuestionMessage(QWidget* aParent,
+                                              const QString& aTitle,
+                                              const QString& aMessage,
+                                              const QString& aIconFolder,
+                                              const QString& aIconName,
+                                              const QString& aTextBtnYes,
+                                              const QString& aTextBtnNo,
+                                              const QString& aTextBtnOther,
+                                              const QString& aColorYesBtn,
+                                              const QString& aColorNoBtn,
+                                              const QString& aColorOtherBtn,
+                                              const bool aIsYesBtnDefault);
 
   // GitHub API
   static VersionsInformation ParseGitHubReleasesRequestResult(const QString& aResult);

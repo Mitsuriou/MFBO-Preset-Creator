@@ -390,8 +390,8 @@ void TexturesAssistant::launchSearchProcess()
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
+                                      this->mSettings.warningColor,
                                       this->mSettings.successColor,
-                                      this->mSettings.dangerColor,
                                       "",
                                       true)
         != ButtonClicked::YES)

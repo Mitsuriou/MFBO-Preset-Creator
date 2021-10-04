@@ -73,7 +73,7 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
                                                  tr("Save the project and quit the application"),
                                                  this->mSettings.dangerColor,
                                                  this->mSettings.successColor,
-                                                 this->mSettings.successColor,
+                                                 this->mSettings.warningColor,
                                                  false)};
 
   if (lUserAnswer == ButtonClicked::YES)
@@ -582,13 +582,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
     if (aResult == "fetch_error")
     {
-      QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
-      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
-
-      auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
-      lOKButton->setCursor(Qt::PointingHandCursor);
-      lConfirmationBox.setDefaultButton(lOKButton);
-      lConfirmationBox.exec();
+      Utils::DisplayInfoMessage(this, lTitle, lMessage, lIconFolder, "alert-circle", tr("OK"));
     }
     else if (this->mNewStableVersionAvailable || this->mNewBetaVersionAvailable)
     {
@@ -678,7 +672,7 @@ void MFBOPresetCreator::quickRelaunch()
                                                  tr("Save the project and quit the application"),
                                                  this->mSettings.dangerColor,
                                                  this->mSettings.successColor,
-                                                 this->mSettings.successColor,
+                                                 this->mSettings.warningColor,
                                                  false)};
 
   if (lUserAnswer == ButtonClicked::YES)

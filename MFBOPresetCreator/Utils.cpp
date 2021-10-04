@@ -156,19 +156,47 @@ ApplicationVersionRelative Utils::CompareVersionNumbers(const QString& aVersionN
   return ApplicationVersionRelative::EQUIVALENT;
 }
 
-void Utils::DisplayWarningMessage(const QString& aMessage)
+void Utils::DisplayInfoMessage(QWidget* aParent,
+                               const QString& aTitle,
+                               const QString& aMessage,
+                               const QString& aIconFolder,
+                               const QString& aIconName,
+                               const QString& aButtonText)
 {
-  QMessageBox lBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
-  lBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
+  QMessageBox lInformationBox(QMessageBox::Icon::Information, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
+  lInformationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
-  QPushButton lButton(tr("OK"));
-  lButton.setCursor(Qt::PointingHandCursor);
-  lBox.addButton(&lButton, QMessageBox::ButtonRole::AcceptRole);
+  auto lOKButton{lInformationBox.addButton(aButtonText, QMessageBox::ButtonRole::AcceptRole)};
+  lOKButton->setCursor(Qt::PointingHandCursor);
+  lInformationBox.setDefaultButton(lOKButton);
 
-  lBox.exec();
+  lInformationBox.exec();
 }
 
-ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault)
+void Utils::DisplayWarningMessage(const QString& aMessage)
+{
+  QMessageBox lWarningBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
+  lWarningBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
+
+  auto lOKButton{lWarningBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+  lOKButton->setCursor(Qt::PointingHandCursor);
+  lWarningBox.setDefaultButton(lOKButton);
+
+  lWarningBox.exec();
+}
+
+ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent,
+                                            const QString& aTitle,
+                                            const QString& aMessage,
+                                            const QString& aIconFolder,
+                                            const QString& aIconName,
+                                            const QString& aTextBtnYes,
+                                            const QString& aTextBtnNo,
+                                            const QString& aTextBtnOther,
+                                            const QString& aColorYesBtn,
+                                            const QString& aColorNoBtn,
+                                            const QString& aColorOtherBtn,
+                                            const bool aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
   lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
@@ -831,17 +859,7 @@ void Utils::SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFileP
     // Project file save: success window
     if (aParent && !aIconFolder.isEmpty())
     {
-      QMessageBox lConfirmationBox(QMessageBox::Icon::Information,
-                                   tr("Project successfully saved"),
-                                   tr("The project file has successfully been saved to \"%1\".").arg(aFilePath),
-                                   QMessageBox::StandardButton::NoButton,
-                                   aParent);
-      lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/alert-circle").arg(aIconFolder)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
-
-      auto lOKButton{lConfirmationBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
-      lOKButton->setCursor(Qt::PointingHandCursor);
-      lConfirmationBox.setDefaultButton(lOKButton);
-      lConfirmationBox.exec();
+      Utils::DisplayInfoMessage(aParent, tr("Project successfully saved"), tr("The project file has successfully been saved to \"%1\".").arg(aFilePath), aIconFolder, "alert-circle", tr("OK"));
     }
   }
   else if (aParent && !aIconFolder.isEmpty())

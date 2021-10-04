@@ -796,7 +796,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
   auto lNumberOfNewPresets{0};
   for (const auto& lEntry : aPresets)
   {
-      lNumberOfNewPresets += static_cast<int>(lEntry.second.size());
+    lNumberOfNewPresets += static_cast<int>(lEntry.second.size());
   }
 
   // Warn the user that no preset could be made from left data
@@ -875,6 +875,19 @@ void BatchConversionPicker::validateSelection()
   // User theme accent
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
 
+  // Inform the user that the window will be closed since no preset were made
+  if (this->mData.presets.size() == 0)
+  {
+    Utils::DisplayInfoMessage(this,
+                              tr("No preset created"),
+                              tr("You have not created any preset. Batch conversion: results picker window is going to be closed."),
+                              lIconFolder,
+                              "alert-circle",
+                              tr("OK"));
+    this->accept();
+    return;
+  }
+
   auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
 
   for (int i = 0; i < this->mData.presets.size(); i++)
@@ -915,7 +928,7 @@ void BatchConversionPicker::validateSelection()
     }
   }
 
-  // Tell the user no preset has been made
+  // Tell the user that there is not any valid preset
   if (this->mData.presets.size() == 0)
   {
     if (Utils::DisplayQuestionMessage(this,
@@ -926,7 +939,7 @@ void BatchConversionPicker::validateSelection()
                                       tr("Close the batch conversion: results picker window"),
                                       tr("Go back to the batch conversion: results picker window"),
                                       "",
-                                      this->mSettings.warningColor,
+                                      this->mSettings.dangerColor,
                                       this->mSettings.successColor,
                                       "",
                                       false)
@@ -941,10 +954,26 @@ void BatchConversionPicker::validateSelection()
     }
   }
 
-  // Emit the event to start generating the presets files on the user's disk
-  emit presetsCreationValidated(this->mData);
+  // Ask the user if they want to start the generation now
+  if (Utils::DisplayQuestionMessage(this,
+                                    tr("Start bacth generation now?"),
+                                    tr("%1 valid preset(s) has (have) been found.\n\nWould you like to generate it (them) now?").arg(this->mData.presets.size()),
+                                    lIconFolder,
+                                    "help-circle",
+                                    tr("Generate the preset(s) files on my disk"),
+                                    tr("Go back to the batch conversion: results picker window"),
+                                    "",
+                                    this->mSettings.warningColor,
+                                    this->mSettings.successColor,
+                                    "",
+                                    false)
+      == ButtonClicked::YES)
+  {
+    // Emit the event to start generating the presets files on the user's disk
+    emit presetsCreationValidated(this->mData);
 
-  this->accept();
+    this->accept();
+  }
 }
 
 void BatchConversionPicker::groupBoxChecked(bool aIsChecked)

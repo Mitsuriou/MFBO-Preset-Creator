@@ -1483,38 +1483,15 @@ void PresetCreator::generateDirectoryStructure()
   auto lTitle{tr("Generation successful")};
   auto lMessage{tr("Every file has been correctly generated. You can now exit the application or create another conversion!")};
 
+  // Open the directory where the file structure has been created
   if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
   {
-    QMessageBox lConfirmationBox(QMessageBox::Icon::Information, lTitle, lMessage, QMessageBox::StandardButton::NoButton, this);
-    lConfirmationBox.setIconPixmap(QPixmap(":/icons/green-info-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
-
-    auto lOKButton{lConfirmationBox.addButton(tr("Open the generated directory"), QMessageBox::ButtonRole::AcceptRole)};
-    lOKButton->setCursor(Qt::PointingHandCursor);
-    lConfirmationBox.setDefaultButton(lOKButton);
-    lConfirmationBox.exec();
-
-    // Open the directory where the file structure has been created
+    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
-  else
+  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   {
-    if (Utils::DisplayQuestionMessage(this,
-                                      lTitle,
-                                      lMessage,
-                                      "icons",
-                                      "green-info-circle",
-                                      tr("Open the generated directory"),
-                                      tr("OK"),
-                                      "",
-                                      "",
-                                      "",
-                                      "",
-                                      false)
-        == ButtonClicked::YES)
-    {
-      // Open the directory where the file structure has been created
-      QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
-    }
+    QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
 }
 
