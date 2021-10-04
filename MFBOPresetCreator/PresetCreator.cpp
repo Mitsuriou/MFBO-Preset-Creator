@@ -829,131 +829,6 @@ void PresetCreator::updateAvailableBodyVersions()
   lFeetSelector->setCurrentIndex(0);
 }
 
-bool PresetCreator::generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames)
-{
-  // Create the SliderGroups directory
-  auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
-
-  if (!QDir(lSliderGroupsDirectory).exists())
-  {
-    QDir().mkpath(lSliderGroupsDirectory);
-  }
-  else if (!aGenerateFilesInExistingMainDirectory)
-  {
-    Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderGroupsDirectory));
-    return false;
-  }
-
-  // Construct the file content
-  auto lBodySelected{static_cast<BodyNameVersion>(aBodySelected)};
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, aFeetModIndex)};
-  auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(aBodyslideSlidersetsNames, lUserFilters, lBodySelected, aMustUseBeastHands, aFeetModIndex)};
-
-  // Create the OSP file on disk
-  auto lXMLPathName(lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml");
-
-  QFile lXMLFile(lXMLPathName);
-  if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-  {
-    QTextStream lTextStream(&lXMLFile);
-    lTextStream << lXMLFileContent;
-    lTextStream.flush();
-
-    lXMLFile.close();
-  }
-  else
-  {
-    Utils::DisplayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lXMLPathName));
-    return false;
-  }
-
-  return true;
-}
-
-bool PresetCreator::generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
-{
-  // Create the SliderSets directory
-  auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
-
-  if (!QDir(lSliderSetsDirectory).exists())
-  {
-    QDir().mkpath(lSliderSetsDirectory);
-  }
-  else if (!aGenerateFilesInExistingMainDirectory)
-  {
-    Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderSetsDirectory));
-    return false;
-  }
-
-  // Construct the file content
-  auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(aBodyslideSlidersetsNames, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
-
-  // Fill the custom variables
-  lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
-  lOSPFileContent.replace(QString("{%%feet_output_path%%}"), aMeshesPathFeet.replace("/", "\\"));
-  lOSPFileContent.replace(QString("{%%hands_output_path%%}"), aMeshesPathHands.replace("/", "\\"));
-  lOSPFileContent.replace(QString("{%%body_output_file%%}"), !aBodyName.isEmpty() ? aBodyName : "femalebody");
-  lOSPFileContent.replace(QString("{%%feet_output_file%%}"), !aFeetName.isEmpty() ? aFeetName : "femalefeet");
-  lOSPFileContent.replace(QString("{%%hands_output_file%%}"), !aHandsName.isEmpty() ? aHandsName : "femalehands");
-
-  // Create the OSP file on disk
-  auto lOSPPathName(lSliderSetsDirectory + QDir::separator() + aOSPXMLNames + ".osp");
-
-  QFile lOSPFile(lOSPPathName);
-  if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-  {
-    QTextStream lTextStream(&lOSPFile);
-    lTextStream << lOSPFileContent;
-    lTextStream.flush();
-
-    lOSPFile.close();
-  }
-  else
-  {
-    Utils::DisplayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
-    return false;
-  }
-
-  return true;
-}
-
-bool PresetCreator::generateSkeletonFile(const QString& aEntryDirectory, const QString& aSkeletonPath)
-{
-  if (!aSkeletonPath.isEmpty())
-  {
-    auto lSkeletonDirectory{aEntryDirectory + QDir::separator() + aSkeletonPath};
-    QDir().mkpath(lSkeletonDirectory);
-
-    auto lSkeletonName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
-
-    // Custom skeleton chooser
-    auto lSkeletonChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
-    auto lPath{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooser->currentText())};
-
-    auto lSkeletonWriteLocation{QString("%1%2%3.nif").arg(lSkeletonDirectory, QDir::separator(), lSkeletonName)};
-
-    if (!QFile::copy(lPath, lSkeletonWriteLocation))
-    {
-      Utils::DisplayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
-
-      // Fallback option if the custom skeleton could not be copied
-      if (!QFile::copy(":/ressources/skeleton_female", lSkeletonWriteLocation))
-      {
-        Utils::DisplayWarningMessage(tr("The skeleton file could not be created even using the default skeleton.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths."));
-        return false;
-      }
-    }
-  }
-  else
-  {
-    Utils::DisplayWarningMessage(tr("Error: no path given for the custom skeleton."));
-    return false;
-  }
-
-  return true;
-}
-
 void PresetCreator::populateSkeletonChooser()
 {
   auto lRootDir{Utils::GetAppDataPathFolder() + "assets/skeletons/"};
@@ -1434,7 +1309,11 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // XML file
-  if (!this->generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames))
+  auto lSelectedBodyName{static_cast<BodyNameVersion>(lBodySelected)};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lSelectedBodyName, lFeetModIndex)};
+
+  if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lUserFilters))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1446,7 +1325,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // OSP file
-  if (!this->generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
+  if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1462,10 +1341,16 @@ void PresetCreator::generateDirectoryStructure()
 
   if (lMustCopySkeleton)
   {
-    auto lSkeletonPath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};
-    Utils::CleanPathString(lSkeletonPath);
+    // Read location
+    auto lSourceSkeletonFileName{this->findChild<QComboBox*>(QString("skeleton_chooser"))->currentText()};
+    auto lSourceSkeletonReadPath{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSourceSkeletonFileName)};
 
-    if (!this->generateSkeletonFile(lEntryDirectory, lSkeletonPath))
+    // Write location
+    auto lDestinationSkeletonRelativePath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};
+    Utils::CleanPathString(lDestinationSkeletonRelativePath);
+    auto lDestinationSkeletonFileName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
+
+    if (!Utils::generateSkeletonFile(lSourceSkeletonReadPath, lEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)

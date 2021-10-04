@@ -72,6 +72,32 @@ public:
   static QString GetIconRessourceFolder(const GUITheme& aTheme);
 
   // Skyrim related stuff
+  static bool generateXMLFile(const QString& aEntryDirectory,
+                              const bool aGenerateFilesInExistingMainDirectory,
+                              const QString& aOSPXMLNames,
+                              const bool aMustUseBeastHands,
+                              const BodyNameVersion& aBodySelected,
+                              const int aFeetModIndex,
+                              const QString& aBodyslideSlidersetsNames,
+                              const std::vector<Struct::Filter>& aBodySlideFilters);
+  static bool generateOSPFile(const QString& aEntryDirectory,
+                              const bool aGenerateFilesInExistingMainDirectory,
+                              const QString& aOSPXMLNames,
+                              const bool aMustUseBeastHands,
+                              const int aBodySelected,
+                              const int aFeetModIndex,
+                              const QString& aBodyslideSlidersetsNames,
+                              QString aMeshesPathBody,
+                              QString aMeshesPathFeet,
+                              QString aMeshesPathHands,
+                              const QString& aBodyName,
+                              const QString& aFeetName,
+                              const QString& aHandsName);
+  static bool generateSkeletonFile(const QString& aSourcePath,
+                                   const QString& aDestinationEntryDirectory,
+                                   const QString& aDestinationRelativePath,
+                                   const QString& aDestinationFileName);
+
   static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
   template<typename T>
   static bool ContainsBodyOrHandsOrFeetMesh(const T& aList);

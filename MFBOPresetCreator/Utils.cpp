@@ -2,6 +2,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Enum.h"
+#include "SliderFileBuilder.h"
 #include <QAction>
 #include <QApplication>
 #include <QComboBox>
@@ -438,6 +439,135 @@ bool Utils::IsThemeDark(const GUITheme& aTheme)
 QString Utils::GetIconRessourceFolder(const GUITheme& aTheme)
 {
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
+}
+
+bool Utils::generateXMLFile(const QString& aEntryDirectory,
+                            const bool aGenerateFilesInExistingMainDirectory,
+                            const QString& aOSPXMLNames,
+                            const bool aMustUseBeastHands,
+                            const BodyNameVersion& aBodySelected,
+                            const int aFeetModIndex,
+                            const QString& aBodyslideSlidersetsNames,
+                            const std::vector<Struct::Filter>& aBodySlideFilters)
+{
+  // Create the SliderGroups directory
+  auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
+
+  if (!QDir(lSliderGroupsDirectory).exists())
+  {
+    QDir().mkpath(lSliderGroupsDirectory);
+  }
+  else if (!aGenerateFilesInExistingMainDirectory)
+  {
+    Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderGroupsDirectory));
+    return false;
+  }
+
+  // Construct the file content
+  auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(aBodyslideSlidersetsNames, aBodySlideFilters, aBodySelected, aMustUseBeastHands, aFeetModIndex)};
+
+  // Create the OSP file on disk
+  auto lXMLPathName(lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml");
+
+  QFile lXMLFile(lXMLPathName);
+  if (lXMLFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+  {
+    QTextStream lTextStream(&lXMLFile);
+    lTextStream << lXMLFileContent;
+    lTextStream.flush();
+
+    lXMLFile.close();
+  }
+  else
+  {
+    Utils::DisplayWarningMessage(tr("Error while trying to create the XML file \"%1\". Aborting process.").arg(lXMLPathName));
+    return false;
+  }
+
+  return true;
+}
+
+bool Utils::generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
+{
+  // Create the SliderSets directory
+  auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
+
+  if (!QDir(lSliderSetsDirectory).exists())
+  {
+    QDir().mkpath(lSliderSetsDirectory);
+  }
+  else if (!aGenerateFilesInExistingMainDirectory)
+  {
+    Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderSetsDirectory));
+    return false;
+  }
+
+  // Construct the file content
+  auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(aBodyslideSlidersetsNames, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
+
+  // Fill the custom variables
+  lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
+  lOSPFileContent.replace(QString("{%%feet_output_path%%}"), aMeshesPathFeet.replace("/", "\\"));
+  lOSPFileContent.replace(QString("{%%hands_output_path%%}"), aMeshesPathHands.replace("/", "\\"));
+  lOSPFileContent.replace(QString("{%%body_output_file%%}"), !aBodyName.isEmpty() ? aBodyName : "femalebody");
+  lOSPFileContent.replace(QString("{%%feet_output_file%%}"), !aFeetName.isEmpty() ? aFeetName : "femalefeet");
+  lOSPFileContent.replace(QString("{%%hands_output_file%%}"), !aHandsName.isEmpty() ? aHandsName : "femalehands");
+
+  // Create the OSP file on disk
+  auto lOSPPathName(lSliderSetsDirectory + QDir::separator() + aOSPXMLNames + ".osp");
+
+  QFile lOSPFile(lOSPPathName);
+  if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+  {
+    QTextStream lTextStream(&lOSPFile);
+    lTextStream << lOSPFileContent;
+    lTextStream.flush();
+
+    lOSPFile.close();
+  }
+  else
+  {
+    Utils::DisplayWarningMessage(tr("Error while trying to create the OSP file \"%1\". Aborting process.").arg(lOSPPathName));
+    return false;
+  }
+
+  return true;
+}
+
+bool Utils::generateSkeletonFile(const QString& aSourcePath,
+                                 const QString& aDestinationEntryDirectory,
+                                 const QString& aDestinationRelativePath,
+                                 const QString& aDestinationFileName)
+{
+  if (!aDestinationRelativePath.isEmpty())
+  {
+    // Create the directory in which the skeleton file will be created
+    auto lDestinationSkeletonDirectory{aDestinationEntryDirectory + QDir::separator() + aDestinationRelativePath};
+    QDir().mkpath(lDestinationSkeletonDirectory);
+
+    // Full destination path
+    auto lDestinationPath{QString("%1%2%3.nif").arg(lDestinationSkeletonDirectory, QDir::separator(), aDestinationFileName)};
+
+    // Try to copy the skeleton file
+    if (!QFile::copy(aSourcePath, lDestinationPath))
+    {
+      Utils::DisplayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
+
+      // Fallback option if the custom skeleton could not be copied
+      if (!QFile::copy(":/ressources/skeleton_female", lDestinationPath))
+      {
+        Utils::DisplayWarningMessage(tr("The skeleton file could not be created even using the default skeleton.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths."));
+        return false;
+      }
+    }
+  }
+  else
+  {
+    Utils::DisplayWarningMessage(tr("Error: no path given for the custom skeleton."));
+    return false;
+  }
+
+  return true;
 }
 
 BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName)

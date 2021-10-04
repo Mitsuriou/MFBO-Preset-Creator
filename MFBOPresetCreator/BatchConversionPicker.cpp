@@ -899,6 +899,8 @@ void BatchConversionPicker::validateSelection()
       // Display the invalid preset in the interface
       lActivePresetNumber->setValue(lNaturalIndex);
 
+      // TODO: Check if two presets have the same BodySlide files names, because it will not be possible to generate both of them at the same place
+
       // TODO: In the message below, detail to the user why the preset is not valid precisely
       // Ask the user what to do with it
       if (Utils::DisplayQuestionMessage(this,
@@ -969,6 +971,9 @@ void BatchConversionPicker::validateSelection()
                                     false)
       == ButtonClicked::YES)
   {
+    // Clear the scanned data to send a thinier object
+    this->mData.scannedData.clear();
+
     // Emit the event to start generating the presets files on the user's disk
     emit presetsCreationValidated(this->mData);
 
