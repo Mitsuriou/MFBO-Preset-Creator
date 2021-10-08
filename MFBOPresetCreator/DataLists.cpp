@@ -36,7 +36,7 @@ QStringList DataLists::GetVersionsFromBodyName(const BodyName& aBody)
     case BodyName::BHUNP_BBP_ADVANCED:
     case BodyName::BHUNP_TBBP:
     case BodyName::BHUNP_TBBP_ADVANCED:
-      lBodies = QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.38")});
+      lBodies = QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.39")});
       break;
     case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
       lBodies = QStringList({QString("2.25"), QString("2.30")});
@@ -154,13 +154,13 @@ std::pair<int, int> DataLists::GetSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::BHUNP_TBBP_2_31:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
       return std::pair<int, int>(static_cast<int>(aBodyVersion) - 26, 3);
-    case BodyNameVersion::BHUNP_3BBB_2_35:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
-    case BodyNameVersion::BHUNP_BBP_2_35:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
-    case BodyNameVersion::BHUNP_TBBP_2_35:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
+    case BodyNameVersion::BHUNP_3BBB_2_35_TO_2_39:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_39:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_39:
+    case BodyNameVersion::BHUNP_BBP_2_35_TO_2_39:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_39:
+    case BodyNameVersion::BHUNP_TBBP_2_35_TO_2_39:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_39:
       return std::pair<int, int>(static_cast<int>(aBodyVersion) - 33, 4);
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
@@ -198,7 +198,7 @@ QString DataLists::GetQRCPathFromBodyName(const BodyNameVersion& aBody, const in
     // For the beast hands, use the default CBBE v.1.6.1 beast hands
     if (aRessourceType == BodyPartType::BEAST_HANDS)
     {
-      return ":/presets/beast_hands/cbbe 1.6.1";
+      return ":/presets/beast_hands/cbbe/1.6.1";
     }
 
     if (aRessourceType == BodyPartType::FEET)

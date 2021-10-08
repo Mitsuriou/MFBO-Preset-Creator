@@ -661,189 +661,60 @@ void BatchConversion::launchSearchProcess()
 
 void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPresetsData)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
-
   // Selected body
   const auto& lBodySelected{static_cast<int>(aPresetsData.bodyMod)};
 
   // Selected feet
   const auto& lFeetModIndex{aPresetsData.feetModIndex};
 
-  // Iterate in the presets list
-  for (const auto& lPreset : aPresetsData.presets)
+  // Output paths
+  auto lEntryDirectory{aPresetsData.fullOutputPath};
+
+  // Create main directory
+  auto lGenerateFilesInExistingMainDirectory{aPresetsData.mustGenerateFilesInExistingDirectory};
+  if (!QDir(lEntryDirectory).exists())
   {
-    // WIP: TODO: Update the whole code below
-
-    // Beast hands
-    auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))};
-    auto lMustUseBeastHands{lCheckboxUseBeastHands->isEnabled() && lCheckboxUseBeastHands->isChecked()};
-
-    // Body meshes path and name
-    auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))->text().trimmed()};
-    Utils::CleanPathString(lMeshesPathBody);
-    auto lBodyName{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))->text().trimmed()};
-    Utils::CleanPathString(lBodyName);
-
-    // Feet meshes path and name
-    const auto lInputMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))};
-    const auto lSkipFeetCheck{!lInputMeshesPathFeet->isEnabled()};
-    auto lMeshesPathFeet{lInputMeshesPathFeet->text().trimmed()};
-    Utils::CleanPathString(lMeshesPathFeet);
-    auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
-    Utils::CleanPathString(lFeetName);
-
-    // Hands meshes path and name
-    auto lInputMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))};
-    auto lSkipHandsCheck{!lInputMeshesPathHands->isEnabled()};
-    auto lMeshesPathHands{lInputMeshesPathHands->text().trimmed()};
-    Utils::CleanPathString(lMeshesPathHands);
-    auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
-    Utils::CleanPathString(lHandsName);
-
-    // BodySlide names
-    auto lOSPXMLNames{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text().trimmed()};
-    Utils::CleanBreaksString(lOSPXMLNames);
-    auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
-    Utils::CleanBreaksString(lBodyslideSlidersetsNames);
-
-    // Output paths
-    auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
-    auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
-    Utils::CleanPathString(lSubDirectory);
-
-    // Does the user want to define the path only through the secondary path?
-    auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
-
-    // Full extract path
-    auto lEntryDirectory{lSubDirectory};
-    if (!lUseOnlySubdir)
+    // Wait to know the result of the mkdir()
+    if (!QDir().mkpath(lEntryDirectory))
     {
-      lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
-    }
-
-    // Check if the full extract path has been given by the user
-    if (lEntryDirectory.isEmpty())
-    {
-      Utils::DisplayWarningMessage(tr("Error: no path given to export the files."));
-      return;
-    }
-
-    // Check if the path could be valid
-    if (lEntryDirectory.startsWith(QDir::separator()))
-    {
-      Utils::DisplayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
-      return;
-    }
-
-    // Create main directory
-    auto lGenerateFilesInExistingMainDirectory{false};
-    if (!QDir(lEntryDirectory).exists())
-    {
-      // Wait to know the result of the mkdir()
-      if (!QDir().mkpath(lEntryDirectory))
+      if (!lGenerateFilesInExistingMainDirectory)
       {
         Utils::DisplayWarningMessage(tr("Error while creating the main directory: \"%1\" could not be created on your computer.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lEntryDirectory));
         return;
       }
     }
-    else
-    {
-      // Since the directory already exist, ask the user to generate another preset in it
-      if (Utils::DisplayQuestionMessage(this,
-                                        tr("Already existing directory"),
-                                        tr("The directory \"%1\" already exists on your computer. Do you still want to generate the files in this directory?").arg(lEntryDirectory),
-                                        lIconFolder,
-                                        "help-circle",
-                                        tr("Continue the files generation"),
-                                        tr("Cancel the files generation"),
-                                        "",
-                                        this->mSettings.warningColor,
-                                        this->mSettings.successColor,
-                                        "",
-                                        true)
-          != ButtonClicked::YES)
-      {
-        return;
-      }
+  }
 
-      lGenerateFilesInExistingMainDirectory = true;
-    }
+  // Iterate in the presets list
+  for (const auto& lPreset : aPresetsData.presets)
+  {
+    // Beast hands
+    auto lMustUseBeastHands{lPreset.getHandsData().mustUseAlternativeModel()};
+
+    // Body meshes path and name
+    const auto lBodyLastSlashPosition{lPreset.getBodyData().second.lastIndexOf('/')};
+    const auto lMeshesPathBody{lPreset.getBodyData().second.left(lBodyLastSlashPosition)};
+    const auto lBodyName{lPreset.getBodyData().second.mid(lBodyLastSlashPosition + 1)};
+
+    // Feet meshes path and name
+    const auto lFeetLastSlashPosition{lPreset.getFeetData().second.lastIndexOf('/')};
+    const auto lMeshesPathFeet{lPreset.getFeetData().second.left(lFeetLastSlashPosition)};
+    const auto lFeetName{lPreset.getFeetData().second.mid(lFeetLastSlashPosition + 1)};
+
+    // Hands meshes path and name
+    const auto lHandsLastSlashPosition{lPreset.getHandsData().getRessourcePath().lastIndexOf('/')};
+    const auto lMeshesPathHands{lPreset.getHandsData().getRessourcePath().left(lHandsLastSlashPosition)};
+    const auto lHandsName{lPreset.getHandsData().getRessourcePath().mid(lHandsLastSlashPosition + 1)};
+
+    // BodySlide names
+    auto lOSPXMLNames{lPreset.getNames().first};
+    auto lBodyslideSlidersetsNames{lPreset.getNames().second};
 
     // Export the meshes
-    if (lMeshesPathBody.isEmpty())
-    {
-      Utils::DisplayWarningMessage(tr("Error: no path has been given for the body meshes."));
-
-      // Remove the directory since the generation is incomplete
-      if (!lGenerateFilesInExistingMainDirectory)
-      {
-        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-      }
-
-      return;
-    }
-
-    if (lMeshesPathFeet.isEmpty() && !lSkipFeetCheck)
-    {
-      Utils::DisplayWarningMessage(tr("Error: no path has been given for the feet meshes."));
-
-      // Remove the directory since the generation is incomplete
-      if (!lGenerateFilesInExistingMainDirectory)
-      {
-        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-      }
-
-      return;
-    }
-
-    if (lMeshesPathHands.isEmpty() && !lSkipHandsCheck)
-    {
-      Utils::DisplayWarningMessage(tr("Error: no path has been given for the hands meshes."));
-
-      // Remove the directory since the generation is incomplete
-      if (!lGenerateFilesInExistingMainDirectory)
-      {
-        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-      }
-
-      return;
-    }
-
-    // Check if a name has been given for the OSP and XML files
-    if (lOSPXMLNames.isEmpty())
-    {
-      Utils::DisplayWarningMessage(tr("Error: no name given for the BodySlide files."));
-
-      // Remove the directory since the generation is incomplete
-      if (!lGenerateFilesInExistingMainDirectory)
-      {
-        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-      }
-
-      return;
-    }
-
-    // Check if a name has been given for the presets
-    if (lBodyslideSlidersetsNames.isEmpty())
-    {
-      Utils::DisplayWarningMessage(tr("Error: no name given for the slider sets (names that appear in the BodySlide application)."));
-
-      // Remove the directory since the generation is incomplete
-      if (!lGenerateFilesInExistingMainDirectory)
-      {
-        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-      }
-
-      return;
-    }
-
     // XML file
     auto lSelectedBodyName{static_cast<BodyNameVersion>(lBodySelected)};
-    auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-    auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lSelectedBodyName, lFeetModIndex)};
 
-    if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lUserFilters))
+    if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.filters, true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -855,7 +726,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     }
 
     // OSP file
-    if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
+    if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -867,18 +738,27 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     }
 
     // Skeleton
-    auto lMustCopySkeleton{this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->isChecked()};
+    auto lMustCopySkeleton{!lPreset.getSkeletonData().getRessourcePath().isEmpty()};
 
     if (lMustCopySkeleton)
     {
       // Read location
-      auto lSourceSkeletonFileName{this->findChild<QComboBox*>(QString("skeleton_chooser"))->currentText()};
-      auto lSourceSkeletonReadPath{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSourceSkeletonFileName)};
+      QString lSourceSkeletonReadPath;
+      if (lPreset.mustSkeletonUseAlternativeModel())
+      {
+        // Beast skeleton
+        lSourceSkeletonReadPath = aPresetsData.beastSkeletonPath;
+      }
+      else
+      {
+        // Human skeleton
+        lSourceSkeletonReadPath = aPresetsData.humanSkeletonPath;
+      }
 
       // Write location
-      auto lDestinationSkeletonRelativePath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};
-      Utils::CleanPathString(lDestinationSkeletonRelativePath);
-      auto lDestinationSkeletonFileName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
+      const auto lSkeletonLastSlashPosition{lPreset.getSkeletonData().getRessourcePath().lastIndexOf('/')};
+      const auto lDestinationSkeletonRelativePath{lPreset.getSkeletonData().getRessourcePath().left(lSkeletonLastSlashPosition)};
+      const auto lDestinationSkeletonFileName{lPreset.getSkeletonData().getRessourcePath().mid(lSkeletonLastSlashPosition + 1)};
 
       if (!Utils::generateSkeletonFile(lSourceSkeletonReadPath, lEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
       {
@@ -893,22 +773,21 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     }
   }
 
-  // TODO: Restore the code once the preset is OK
-  //// Update the color of the output directory preview
-  //this->updateOutputPreview();
+  // Update the color of the output directory preview
+  this->updateOutputPreview();
 
-  //auto lTitle{tr("Generation successful")};
-  //auto lMessage{tr("Every file has been correctly generated. You can now exit the application or create another conversion!")};
+  //auto lTitle{tr("Batch generation successful")};
+  //auto lMessage{tr("Every file has been correctly generated.")};
 
   //// Open the directory where the file structure has been created
-  //if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
+  //if (mSettings.batchConversionAutomaticallyOpenGeneratedDirectory)
   //{
   //  Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
-  //  QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
+  //  QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
   //}
   //else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   //{
-  //  QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
+  //  QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
   //}
 }
 

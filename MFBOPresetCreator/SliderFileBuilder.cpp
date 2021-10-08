@@ -143,7 +143,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::BHUNP_3BBB_2_25:
       case BodyNameVersion::BHUNP_3BBB_2_30:
       case BodyNameVersion::BHUNP_3BBB_2_31:
-      case BodyNameVersion::BHUNP_3BBB_2_35:
+      case BodyNameVersion::BHUNP_3BBB_2_35_TO_2_39:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
@@ -166,7 +166,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
-      case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35:
+      case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_39:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
@@ -189,7 +189,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
       case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
-      case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35:
+      case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_39:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
@@ -212,7 +212,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::BHUNP_BBP_2_25:
       case BodyNameVersion::BHUNP_BBP_2_30:
       case BodyNameVersion::BHUNP_BBP_2_31:
-      case BodyNameVersion::BHUNP_BBP_2_35:
+      case BodyNameVersion::BHUNP_BBP_2_35_TO_2_39:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
@@ -235,7 +235,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
       case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
       case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
-      case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35:
+      case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_39:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
@@ -258,7 +258,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::BHUNP_TBBP_2_25:
       case BodyNameVersion::BHUNP_TBBP_2_30:
       case BodyNameVersion::BHUNP_TBBP_2_31:
-      case BodyNameVersion::BHUNP_TBBP_2_35:
+      case BodyNameVersion::BHUNP_TBBP_2_35_TO_2_39:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {
@@ -281,7 +281,7 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
       case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
       case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
       case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
-      case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35:
+      case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_39:
         // Body
         if (aTargetBlocks / 100 == 1 && lFilter.isBodyCompatible())
         {

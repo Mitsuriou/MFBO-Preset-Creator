@@ -362,7 +362,7 @@ namespace Struct
       this->names = std::make_pair(aFilesNames, aPresetsNames);
     }
 
-    std::pair<QString, QString> getNames() const
+    const std::pair<QString, QString>& getNames() const
     {
       return this->names;
     }
@@ -378,7 +378,7 @@ namespace Struct
       this->setBodyData("", "");
     }
 
-    std::pair<QString, QString> getBodyData() const
+    const std::pair<QString, QString>& getBodyData() const
     {
       return this->body;
     }
@@ -394,7 +394,7 @@ namespace Struct
       this->setFeetData("", "");
     }
 
-    std::pair<QString, QString> getFeetData() const
+    const std::pair<QString, QString>& getFeetData() const
     {
       return this->feet;
     }
@@ -412,7 +412,7 @@ namespace Struct
       this->setHandsData("", "", false);
     }
 
-    BatchConversionEntry getHandsData() const
+    const BatchConversionEntry& getHandsData() const
     {
       return this->hands;
     };
@@ -440,7 +440,7 @@ namespace Struct
       this->setSkeletonData("", "", false);
     }
 
-    BatchConversionEntry getSkeletonData() const
+    const BatchConversionEntry& getSkeletonData() const
     {
       return this->skeleton;
     };

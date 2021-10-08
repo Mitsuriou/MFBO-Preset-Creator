@@ -79,7 +79,8 @@ public:
                               const BodyNameVersion& aBodySelected,
                               const int aFeetModIndex,
                               const QString& aBodyslideSlidersetsNames,
-                              const std::vector<Struct::Filter>& aBodySlideFilters);
+                              const std::vector<Struct::Filter>& aBodySlideFilters,
+                              const bool aIsBatchConversionPreset);
   static bool generateOSPFile(const QString& aEntryDirectory,
                               const bool aGenerateFilesInExistingMainDirectory,
                               const QString& aOSPXMLNames,
@@ -92,7 +93,8 @@ public:
                               QString aMeshesPathHands,
                               const QString& aBodyName,
                               const QString& aFeetName,
-                              const QString& aHandsName);
+                              const QString& aHandsName,
+                              const bool aIsBatchConversionPreset);
   static bool generateSkeletonFile(const QString& aSourcePath,
                                    const QString& aDestinationEntryDirectory,
                                    const QString& aDestinationRelativePath,

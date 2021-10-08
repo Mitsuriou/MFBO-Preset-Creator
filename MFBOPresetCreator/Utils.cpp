@@ -448,7 +448,8 @@ bool Utils::generateXMLFile(const QString& aEntryDirectory,
                             const BodyNameVersion& aBodySelected,
                             const int aFeetModIndex,
                             const QString& aBodyslideSlidersetsNames,
-                            const std::vector<Struct::Filter>& aBodySlideFilters)
+                            const std::vector<Struct::Filter>& aBodySlideFilters,
+                            const bool aIsBatchConversionPreset)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -457,7 +458,7 @@ bool Utils::generateXMLFile(const QString& aEntryDirectory,
   {
     QDir().mkpath(lSliderGroupsDirectory);
   }
-  else if (!aGenerateFilesInExistingMainDirectory)
+  else if (!aGenerateFilesInExistingMainDirectory && !aIsBatchConversionPreset)
   {
     Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderGroupsDirectory));
     return false;
@@ -487,7 +488,20 @@ bool Utils::generateXMLFile(const QString& aEntryDirectory,
   return true;
 }
 
-bool Utils::generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName)
+bool Utils::generateOSPFile(const QString& aEntryDirectory,
+                            const bool aGenerateFilesInExistingMainDirectory,
+                            const QString& aOSPXMLNames,
+                            const bool aMustUseBeastHands,
+                            const int aBodySelected,
+                            const int aFeetModIndex,
+                            const QString& aBodyslideSlidersetsNames,
+                            QString aMeshesPathBody,
+                            QString aMeshesPathFeet,
+                            QString aMeshesPathHands,
+                            const QString& aBodyName,
+                            const QString& aFeetName,
+                            const QString& aHandsName,
+                            const bool aIsBatchConversionPreset)
 {
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
@@ -496,7 +510,7 @@ bool Utils::generateOSPFile(const QString& aEntryDirectory, const bool aGenerate
   {
     QDir().mkpath(lSliderSetsDirectory);
   }
-  else if (!aGenerateFilesInExistingMainDirectory)
+  else if (!aGenerateFilesInExistingMainDirectory && !aIsBatchConversionPreset)
   {
     Utils::DisplayWarningMessage(tr("Error while creating the meshes directory: \"%1\" already exists.").arg(lSliderSetsDirectory));
     return false;

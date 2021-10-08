@@ -1157,7 +1157,6 @@ void PresetCreator::generateDirectoryStructure()
 
   // Feet meshes path and name
   const auto lInputMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))};
-  const auto lSkipFeetCheck{!lInputMeshesPathFeet->isEnabled()};
   auto lMeshesPathFeet{lInputMeshesPathFeet->text().trimmed()};
   Utils::CleanPathString(lMeshesPathFeet);
   auto lFeetName{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))->text().trimmed()};
@@ -1165,7 +1164,6 @@ void PresetCreator::generateDirectoryStructure()
 
   // Hands meshes path and name
   auto lInputMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))};
-  auto lSkipHandsCheck{!lInputMeshesPathHands->isEnabled()};
   auto lMeshesPathHands{lInputMeshesPathHands->text().trimmed()};
   Utils::CleanPathString(lMeshesPathHands);
   auto lHandsName{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->text().trimmed()};
@@ -1254,7 +1252,7 @@ void PresetCreator::generateDirectoryStructure()
     return;
   }
 
-  if (lMeshesPathFeet.isEmpty() && !lSkipFeetCheck)
+  if (lMeshesPathFeet.isEmpty())
   {
     Utils::DisplayWarningMessage(tr("Error: no path has been given for the feet meshes."));
 
@@ -1267,7 +1265,7 @@ void PresetCreator::generateDirectoryStructure()
     return;
   }
 
-  if (lMeshesPathHands.isEmpty() && !lSkipHandsCheck)
+  if (lMeshesPathHands.isEmpty())
   {
     Utils::DisplayWarningMessage(tr("Error: no path has been given for the hands meshes."));
 
@@ -1313,7 +1311,7 @@ void PresetCreator::generateDirectoryStructure()
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lSelectedBodyName, lFeetModIndex)};
 
-  if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lUserFilters))
+  if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lUserFilters, false))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1325,7 +1323,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // OSP file
-  if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName))
+  if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, false))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
