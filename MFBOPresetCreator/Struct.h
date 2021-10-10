@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Enum.h"
 #include "LangManager.h"
+#include <QJsonObject>
 #include <QString>
 #include <QStringList>
 #include <map>
@@ -103,96 +104,220 @@ namespace Struct
     }
   };
 
-  struct Settings
+  struct GeneralSettings
   {
   public:
-    GUITheme appTheme{GUITheme::MITSURIOU_DARK_THEME};
+    bool eachButtonSavesItsLastUsedPath{true};
+    StartupAction startupAction{StartupAction::OPEN_WELCOME_SCREEN};
+
+    QJsonObject toJson() const
+    {
+      QJsonObject lNode;
+      lNode["eachButtonSavesItsLastUsedPath"] = this->eachButtonSavesItsLastUsedPath;
+      lNode["startupAction"] = static_cast<int>(this->startupAction);
+      return lNode;
+    }
+
+    bool operator==(const Struct::GeneralSettings& rhs)
+    {
+      return (
+        this->eachButtonSavesItsLastUsedPath == rhs.eachButtonSavesItsLastUsedPath
+        && this->startupAction == rhs.startupAction);
+    }
+
+    bool operator!=(const Struct::GeneralSettings& rhs)
+    {
+      return (
+        this->eachButtonSavesItsLastUsedPath != rhs.eachButtonSavesItsLastUsedPath
+        || this->startupAction != rhs.startupAction);
+    }
+  };
+
+  struct DisplaySettings
+  {
+  public:
+    GUITheme applicationTheme{GUITheme::MITSURIOU_DARK_THEME};
     DialogOpeningMode assistedConversionDialogOpeningMode{DialogOpeningMode::WINDOWED};
-    bool assistedConversionScanOnlyMeshesSubdir{false};
     DialogOpeningMode batchConversionDialogOpeningMode{DialogOpeningMode::WINDOWED};
-    QString batchConversionOutputPath{""};
     DialogOpeningMode batchConversionPickerDialogOpeningMode{DialogOpeningMode::WINDOWED};
     DialogOpeningMode bodySlidePresetsRetargetingDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString dangerColor{"#f44034"};
-    BodyNameVersion defaultBatchConversionBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
-    int defaultMainFeetMod{0};
-    BodyNameVersion defaultMainWindowBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
-    BodyNameVersion defaultRetargetingToolBody{BodyNameVersion::CBBE_3BBB_3BA_1_50};
-    int defaultRetargetingToolFeetMod{0};
-    bool eachButtonSavesItsLastUsedPath{true};
     Struct::Font font;
     ApplicationLanguage language{LangManager::GetSystemLanguage()};
-    bool mainWindowAutomaticallyOpenGeneratedDirectory{true};
     int mainWindowHeight{620};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
-    QString mainWindowOutputPath{""};
     int mainWindowWidth{1000};
-    bool retargetingToolAutomaticallyOpenGeneratedDirectory{true};
-    StartupAction startupAction{StartupAction::OPEN_WELCOME_SCREEN};
     QString successColor{"#48c774"};
     DialogOpeningMode texturesAssistantDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString warningColor{"#ffbc6b"};
 
-    bool operator==(const Struct::Settings& aSettings)
+    QJsonObject toJson() const
     {
-      return (
-        this->appTheme == aSettings.appTheme
-        && this->assistedConversionDialogOpeningMode == aSettings.assistedConversionDialogOpeningMode
-        && this->assistedConversionScanOnlyMeshesSubdir == aSettings.assistedConversionScanOnlyMeshesSubdir
-        && this->batchConversionDialogOpeningMode == aSettings.batchConversionDialogOpeningMode
-        && this->batchConversionOutputPath == aSettings.batchConversionOutputPath
-        && this->batchConversionPickerDialogOpeningMode == aSettings.batchConversionPickerDialogOpeningMode
-        && this->bodySlidePresetsRetargetingDialogOpeningMode == aSettings.bodySlidePresetsRetargetingDialogOpeningMode
-        && this->dangerColor == aSettings.dangerColor
-        && this->defaultBatchConversionBody == aSettings.defaultBatchConversionBody
-        && this->defaultMainFeetMod == aSettings.defaultMainFeetMod
-        && this->defaultMainWindowBody == aSettings.defaultMainWindowBody
-        && this->defaultRetargetingToolBody == aSettings.defaultRetargetingToolBody
-        && this->defaultRetargetingToolFeetMod == aSettings.defaultRetargetingToolFeetMod
-        && this->eachButtonSavesItsLastUsedPath == aSettings.eachButtonSavesItsLastUsedPath
-        && this->font == aSettings.font
-        && this->language == aSettings.language
-        && this->mainWindowAutomaticallyOpenGeneratedDirectory == aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
-        && this->mainWindowHeight == aSettings.mainWindowHeight
-        && this->mainWindowOpeningMode == aSettings.mainWindowOpeningMode
-        && this->mainWindowOutputPath == aSettings.mainWindowOutputPath
-        && this->mainWindowWidth == aSettings.mainWindowWidth
-        && this->retargetingToolAutomaticallyOpenGeneratedDirectory == aSettings.retargetingToolAutomaticallyOpenGeneratedDirectory
-        && this->startupAction == aSettings.startupAction
-        && this->successColor == aSettings.successColor
-        && this->texturesAssistantDialogOpeningMode == aSettings.texturesAssistantDialogOpeningMode
-        && this->warningColor == aSettings.warningColor);
+      // Font
+      QJsonObject lFontNode;
+      lFontNode["family"] = this->font.family;
+      lFontNode["italic"] = this->font.italic;
+      lFontNode["size"] = this->font.size;
+      lFontNode["strikeOut"] = this->font.strikeOut;
+      lFontNode["styleName"] = this->font.styleName;
+      lFontNode["underline"] = this->font.underline;
+      lFontNode["weight"] = this->font.weight;
+
+      // Display
+      QJsonObject lDisplayNode;
+      lDisplayNode["applicationTheme"] = static_cast<int>(this->applicationTheme);
+      lDisplayNode["assistedConversionDialogOpeningMode"] = static_cast<int>(this->assistedConversionDialogOpeningMode);
+      lDisplayNode["batchConversionDialogOpeningMode"] = static_cast<int>(this->batchConversionDialogOpeningMode);
+      lDisplayNode["batchConversionPickerDialogOpeningMode"] = static_cast<int>(this->batchConversionPickerDialogOpeningMode);
+      lDisplayNode["bodySlidePresetsRetargetingDialogOpeningMode"] = static_cast<int>(this->bodySlidePresetsRetargetingDialogOpeningMode);
+      lDisplayNode["dangerColor"] = this->dangerColor;
+      lDisplayNode["font"] = lFontNode;
+      lDisplayNode["language"] = static_cast<int>(this->language);
+      lDisplayNode["mainWindowHeight"] = this->mainWindowHeight;
+      lDisplayNode["mainWindowOpeningMode"] = static_cast<int>(this->mainWindowOpeningMode);
+      lDisplayNode["mainWindowWidth"] = this->mainWindowWidth;
+      lDisplayNode["successColor"] = this->successColor;
+      lDisplayNode["texturesAssistantDialogOpeningMode"] = static_cast<int>(this->texturesAssistantDialogOpeningMode);
+      lDisplayNode["warningColor"] = this->warningColor;
+
+      return lDisplayNode;
     }
 
-    bool operator!=(const Struct::Settings& aSettings)
+    bool operator==(const Struct::DisplaySettings& rhs)
     {
       return (
-        this->appTheme != aSettings.appTheme
-        || this->assistedConversionDialogOpeningMode != aSettings.assistedConversionDialogOpeningMode
-        || this->assistedConversionScanOnlyMeshesSubdir != aSettings.assistedConversionScanOnlyMeshesSubdir
-        || this->batchConversionDialogOpeningMode != aSettings.batchConversionDialogOpeningMode
-        || this->batchConversionOutputPath != aSettings.batchConversionOutputPath
-        || this->batchConversionPickerDialogOpeningMode != aSettings.batchConversionPickerDialogOpeningMode
-        || this->bodySlidePresetsRetargetingDialogOpeningMode != aSettings.bodySlidePresetsRetargetingDialogOpeningMode
-        || this->dangerColor != aSettings.dangerColor
-        || this->defaultBatchConversionBody != aSettings.defaultBatchConversionBody
-        || this->defaultMainFeetMod != aSettings.defaultMainFeetMod
-        || this->defaultMainWindowBody != aSettings.defaultMainWindowBody
-        || this->defaultRetargetingToolBody != aSettings.defaultRetargetingToolBody
-        || this->defaultRetargetingToolFeetMod != aSettings.defaultRetargetingToolFeetMod
-        || this->eachButtonSavesItsLastUsedPath != aSettings.eachButtonSavesItsLastUsedPath
-        || this->font != aSettings.font
-        || this->language != aSettings.language
-        || this->mainWindowAutomaticallyOpenGeneratedDirectory != aSettings.mainWindowAutomaticallyOpenGeneratedDirectory
-        || this->mainWindowHeight != aSettings.mainWindowHeight
-        || this->mainWindowOpeningMode != aSettings.mainWindowOpeningMode
-        || this->mainWindowOutputPath != aSettings.mainWindowOutputPath
-        || this->mainWindowWidth != aSettings.mainWindowWidth
-        || this->retargetingToolAutomaticallyOpenGeneratedDirectory != aSettings.retargetingToolAutomaticallyOpenGeneratedDirectory
-        || this->startupAction != aSettings.startupAction
-        || this->successColor != aSettings.successColor
-        || this->texturesAssistantDialogOpeningMode != aSettings.texturesAssistantDialogOpeningMode
-        || this->warningColor != aSettings.warningColor);
+        this->applicationTheme == rhs.applicationTheme
+        && this->assistedConversionDialogOpeningMode == rhs.assistedConversionDialogOpeningMode
+        && this->batchConversionDialogOpeningMode == rhs.batchConversionDialogOpeningMode
+        && this->batchConversionPickerDialogOpeningMode == rhs.batchConversionPickerDialogOpeningMode
+        && this->bodySlidePresetsRetargetingDialogOpeningMode == rhs.bodySlidePresetsRetargetingDialogOpeningMode
+        && this->dangerColor == rhs.dangerColor
+        && this->font == rhs.font
+        && this->language == rhs.language
+        && this->mainWindowHeight == rhs.mainWindowHeight
+        && this->mainWindowOpeningMode == rhs.mainWindowOpeningMode
+        && this->mainWindowWidth == rhs.mainWindowWidth
+        && this->successColor == rhs.successColor
+        && this->texturesAssistantDialogOpeningMode == rhs.texturesAssistantDialogOpeningMode
+        && this->warningColor == rhs.warningColor);
+    };
+
+    bool operator!=(const Struct::DisplaySettings& rhs)
+    {
+      return (
+        this->applicationTheme != rhs.applicationTheme
+        || this->assistedConversionDialogOpeningMode != rhs.assistedConversionDialogOpeningMode
+        || this->batchConversionDialogOpeningMode != rhs.batchConversionDialogOpeningMode
+        || this->batchConversionPickerDialogOpeningMode != rhs.batchConversionPickerDialogOpeningMode
+        || this->bodySlidePresetsRetargetingDialogOpeningMode != rhs.bodySlidePresetsRetargetingDialogOpeningMode
+        || this->dangerColor != rhs.dangerColor
+        || this->font != rhs.font
+        || this->language != rhs.language
+        || this->mainWindowHeight != rhs.mainWindowHeight
+        || this->mainWindowOpeningMode != rhs.mainWindowOpeningMode
+        || this->mainWindowWidth != rhs.mainWindowWidth
+        || this->successColor != rhs.successColor
+        || this->texturesAssistantDialogOpeningMode != rhs.texturesAssistantDialogOpeningMode
+        || this->warningColor != rhs.warningColor);
+    };
+  };
+
+  struct BodyFeetSettings
+  {
+  public:
+    BodyNameVersion bodyMod{BodyNameVersion::CBBE_3BBB_3BA_1_50};
+    int feetMod{0};
+
+    QJsonObject toJson() const
+    {
+      QJsonObject lNode;
+      lNode["bodyMod"] = static_cast<int>(this->bodyMod);
+      lNode["feetMod"] = this->feetMod;
+      return lNode;
+    }
+
+    bool operator==(const Struct::BodyFeetSettings& rhs)
+    {
+      return (
+        this->bodyMod == rhs.bodyMod
+        && this->feetMod == rhs.feetMod);
+    }
+
+    bool operator!=(const Struct::BodyFeetSettings& rhs)
+    {
+      return (
+        this->bodyMod != rhs.bodyMod
+        || this->feetMod != rhs.feetMod);
+    }
+  };
+
+  struct GenericDialogSettings
+  {
+  public:
+    bool automaticallyOpenFinalDirectory{true};
+    BodyFeetSettings defaultBodyFeet;
+
+    QJsonObject toJson() const
+    {
+      QJsonObject lNode;
+      lNode["automaticallyOpenFinalDirectory"] = this->automaticallyOpenFinalDirectory;
+      lNode["defaultBodyFeet"] = this->defaultBodyFeet.toJson();
+      return lNode;
+    }
+
+    bool operator==(const Struct::GenericDialogSettings& rhs)
+    {
+      return (
+        this->automaticallyOpenFinalDirectory == rhs.automaticallyOpenFinalDirectory
+        && this->defaultBodyFeet == rhs.defaultBodyFeet);
+    }
+
+    bool operator!=(const Struct::GenericDialogSettings& rhs)
+    {
+      return (
+        this->automaticallyOpenFinalDirectory != rhs.automaticallyOpenFinalDirectory
+        || this->defaultBodyFeet != rhs.defaultBodyFeet);
+    }
+  };
+
+  struct Settings
+  {
+    GenericDialogSettings batchConversion;
+    DisplaySettings display;
+    GeneralSettings general;
+    GenericDialogSettings presetCreator;
+    GenericDialogSettings presetsRetargeting;
+
+    QJsonObject toJson() const
+    {
+      QJsonObject lRootNode;
+      lRootNode["batchConversion"] = this->batchConversion.toJson();
+      lRootNode["display"] = this->display.toJson();
+      lRootNode["general"] = this->general.toJson();
+      lRootNode["presetCreator"] = this->presetCreator.toJson();
+      lRootNode["presetsRetargeting"] = this->presetsRetargeting.toJson();
+
+      return lRootNode;
+    }
+
+    bool operator==(const Struct::Settings& rhs)
+    {
+      return (
+        this->batchConversion == rhs.batchConversion
+        && this->display == rhs.display
+        && this->general == rhs.general
+        && this->presetCreator == rhs.presetCreator
+        && this->presetsRetargeting == rhs.presetsRetargeting);
+    }
+
+    bool operator!=(const Struct::Settings& rhs)
+    {
+      return (
+        this->batchConversion != rhs.batchConversion
+        || this->display != rhs.display
+        || this->general != rhs.general
+        || this->presetCreator != rhs.presetCreator
+        || this->presetsRetargeting != rhs.presetsRetargeting);
     }
   };
 
@@ -226,7 +351,7 @@ namespace Struct
     QString name{""};
     int role{0};
 
-    explicit AssistedConversionResult() {}
+    explicit AssistedConversionResult() = delete;
   };
 
   struct Filter
@@ -266,7 +391,7 @@ namespace Struct
     bool feet{false};
     bool hands{false};
 
-    explicit Filter() {}
+    explicit Filter() = delete;
   };
 
   struct BatchConversionEntry

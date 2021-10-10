@@ -36,7 +36,7 @@ public:
   static QGridLayout* CreateScrollAreaComponentLayout(QWidget* aParent);
 
   // Full UI blocks
-  static void CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth, const int aFontSize);
+  static void CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const int aMinimumFirstColumnWidth, const int aFontSize);
 
 private:
   explicit ComponentFactory(){};

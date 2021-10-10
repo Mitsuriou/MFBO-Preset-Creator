@@ -180,7 +180,7 @@ int main(int argc, char* argv[])
     lMainApplication.processEvents();
 
     // Apply custom language and translation
-    auto lLanguageToSet{Utils::GetShortLanguageNameFromEnum(static_cast<int>(lSettings.language))};
+    auto lLanguageToSet{Utils::GetShortLanguageNameFromEnum(static_cast<int>(lSettings.display.language))};
 
     auto lTranslator{new QTranslator()};
     if (lTranslator->load(QString(":/translations/mfbopc_%1.qm").arg(lLanguageToSet)))

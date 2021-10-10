@@ -26,13 +26,13 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
 
   // Show the window when it's completely built
   this->adjustSize();
-  aSettings.batchConversionPickerDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+  aSettings.display.batchConversionPickerDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   if (this->mData.presets.size() == 0
       || Utils::DisplayQuestionMessage(this,
@@ -43,8 +43,8 @@ void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
                                        tr("Close the window"),
                                        tr("Go back to the batch conversion: results picker window"),
                                        "",
-                                       this->mSettings.dangerColor,
-                                       this->mSettings.successColor,
+                                       this->mSettings.display.dangerColor,
+                                       this->mSettings.display.successColor,
                                        "",
                                        false)
            == ButtonClicked::YES)
@@ -75,7 +75,7 @@ void BatchConversionPicker::setWindowProperties()
 void BatchConversionPicker::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, false)};
@@ -203,7 +203,7 @@ void BatchConversionPicker::initializeGUI()
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
   lBodyslideGroupBox->setObjectName(QString("bodyslide_groupbox"));
-  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
   Utils::SetGroupBoxState(lBodyslideGroupBox, false);
   lRightDataLayout->addWidget(lBodyslideGroupBox);
@@ -408,11 +408,11 @@ void BatchConversionPicker::updateOSPXMLPreview(QString aText)
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
 
-  auto lNewTextColor{this->mSettings.successColor};
+  auto lNewTextColor{this->mSettings.display.successColor};
 
   if (!lIsValidPath)
   {
-    lNewTextColor = this->mSettings.dangerColor;
+    lNewTextColor = this->mSettings.display.dangerColor;
   }
 
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -445,11 +445,11 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mData.bodyMod, lMustUseBeastHands));      // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
-  auto lNewTextColor{this->mSettings.successColor};
+  auto lNewTextColor{this->mSettings.display.successColor};
 
   if (!lIsValidPath)
   {
-    lNewTextColor = this->mSettings.dangerColor;
+    lNewTextColor = this->mSettings.display.dangerColor;
   }
 
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_bodyslide_preview"))};
@@ -807,7 +807,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Ask the user if they want to create the detected possible presets
   if (Utils::DisplayQuestionMessage(this,
@@ -818,7 +818,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
                                     tr("Create the %1 new preset(s)").arg(lNumberOfNewPresets),
                                     tr("Do not create the %1 new preset(s)").arg(lNumberOfNewPresets),
                                     "",
-                                    this->mSettings.successColor,
+                                    this->mSettings.display.successColor,
                                     "",
                                     "",
                                     true)
@@ -873,7 +873,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
 void BatchConversionPicker::validateSelection()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Inform the user that the window will be closed since no preset were made
   if (this->mData.presets.size() == 0)
@@ -911,8 +911,8 @@ void BatchConversionPicker::validateSelection()
                                         tr("Delete the preset number %1 and continue the generation").arg(lNaturalIndex),
                                         tr("Go back to the batch conversion: results picker window"),
                                         "",
-                                        this->mSettings.dangerColor,
-                                        this->mSettings.successColor,
+                                        this->mSettings.display.dangerColor,
+                                        this->mSettings.display.successColor,
                                         "",
                                         false)
           == ButtonClicked::YES)
@@ -941,8 +941,8 @@ void BatchConversionPicker::validateSelection()
                                       tr("Close the batch conversion: results picker window"),
                                       tr("Go back to the batch conversion: results picker window"),
                                       "",
-                                      this->mSettings.dangerColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.dangerColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       false)
         == ButtonClicked::YES)
@@ -958,15 +958,15 @@ void BatchConversionPicker::validateSelection()
 
   // Ask the user if they want to start the generation now
   if (Utils::DisplayQuestionMessage(this,
-                                    tr("Start bacth generation now?"),
+                                    tr("Start batch generation now?"),
                                     tr("%1 valid preset(s) has (have) been found.\n\nWould you like to generate it (them) now?").arg(this->mData.presets.size()),
                                     lIconFolder,
                                     "help-circle",
                                     tr("Generate the preset(s) files on my disk"),
                                     tr("Go back to the batch conversion: results picker window"),
                                     "",
-                                    this->mSettings.warningColor,
-                                    this->mSettings.successColor,
+                                    this->mSettings.display.warningColor,
+                                    this->mSettings.display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)

@@ -27,7 +27,7 @@ AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings&
 
   // Show the window when it's completely built
   this->adjustSize();
-  aSettings.assistedConversionDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+  aSettings.display.assistedConversionDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void AssistedConversion::closeEvent(QCloseEvent* aEvent)
@@ -43,7 +43,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -53,8 +53,8 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the assisted conversion tool window"),
                                     "",
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
+                                    this->mSettings.display.dangerColor,
+                                    this->mSettings.display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -89,9 +89,9 @@ void AssistedConversion::initializeGUI()
   this->setLayout(lMainLayout);
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
-  // First line
+  // Input path
   lMainLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
@@ -105,9 +105,13 @@ void AssistedConversion::initializeGUI()
   auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
   lMainLayout->addWidget(lInputPathChooser, 0, 2);
 
+  // Scan only "meshes" directory
+  auto lScanMeshesSubdirsOnly{ComponentFactory::CreateCheckBox(this, tr("Only scan the \"meshes\" subdirectory of the mod"), "", "only_scan_meshes_dir", true)};
+  lMainLayout->addWidget(lScanMeshesSubdirsOnly, 1, 0, 1, 3, Qt::AlignTop);
+
   // Launch search button
   auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
-  lMainLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
+  lMainLayout->addWidget(lLaunchSearchButton, 2, 0, 1, 3, Qt::AlignTop);
 
   // Hint zone
   this->displayHintZone();
@@ -181,7 +185,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   auto lKey{std::string()};
 
   auto lRootDir{aRootDir};
-  if (this->mSettings.assistedConversionScanOnlyMeshesSubdir)
+  if (this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked())
   {
     lRootDir.append("/meshes");
   }
@@ -335,7 +339,7 @@ void AssistedConversion::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "assistedConversionInput", lPath);
@@ -356,7 +360,7 @@ void AssistedConversion::chooseInputDirectory()
 void AssistedConversion::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   if (this->hasUserSelectedAnything())
   {
@@ -368,8 +372,8 @@ void AssistedConversion::launchSearchProcess()
                                       tr("Relaunch the scan"),
                                       tr("Cancel the relaunch"),
                                       "",
-                                      this->mSettings.dangerColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.dangerColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       false)
         != ButtonClicked::YES)
@@ -392,8 +396,8 @@ void AssistedConversion::launchSearchProcess()
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
-                                      this->mSettings.warningColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)
@@ -413,8 +417,8 @@ void AssistedConversion::launchSearchProcess()
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
-                                      this->mSettings.warningColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)
@@ -476,13 +480,13 @@ void AssistedConversion::validateSelection()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
-                                      Utils::GetIconRessourceFolder(this->mSettings.appTheme),
+                                      Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme),
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),
                                       "",
-                                      this->mSettings.successColor,
-                                      this->mSettings.dangerColor,
+                                      this->mSettings.display.successColor,
+                                      this->mSettings.display.dangerColor,
                                       "",
                                       true)
         != ButtonClicked::YES)

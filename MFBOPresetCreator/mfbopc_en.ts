@@ -48,119 +48,125 @@
     </message>
     <message>
         <location filename="AssistedConversion.cpp" line="109"/>
+        <source>Only scan the &quot;meshes&quot; subdirectory of the mod</source>
+        <oldsource>Only scan the &quot;meshes&quot; subdirectories of the mod</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AssistedConversion.cpp" line="113"/>
         <source>Launch the scan of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="126"/>
+        <location filename="AssistedConversion.cpp" line="130"/>
         <source>Awaiting the launch of a scan...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="168"/>
+        <location filename="AssistedConversion.cpp" line="172"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="168"/>
+        <location filename="AssistedConversion.cpp" line="172"/>
         <source>Scanning the directory. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="195"/>
+        <location filename="AssistedConversion.cpp" line="199"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="364"/>
         <location filename="AssistedConversion.cpp" line="368"/>
+        <location filename="AssistedConversion.cpp" line="372"/>
         <source>Relaunch the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="369"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="369"/>
+        <location filename="AssistedConversion.cpp" line="373"/>
         <source>Cancel the relaunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="477"/>
+        <location filename="AssistedConversion.cpp" line="481"/>
         <source>No entry selected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="478"/>
+        <location filename="AssistedConversion.cpp" line="482"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="481"/>
+        <location filename="AssistedConversion.cpp" line="485"/>
         <source>Validate as is</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="482"/>
+        <location filename="AssistedConversion.cpp" line="486"/>
         <source>Cancel, I wanted to select values</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="388"/>
+        <location filename="AssistedConversion.cpp" line="392"/>
         <source>No root file has been found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="389"/>
+        <location filename="AssistedConversion.cpp" line="393"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="392"/>
-        <location filename="AssistedConversion.cpp" line="413"/>
+        <location filename="AssistedConversion.cpp" line="396"/>
+        <location filename="AssistedConversion.cpp" line="417"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="393"/>
-        <location filename="AssistedConversion.cpp" line="414"/>
+        <location filename="AssistedConversion.cpp" line="397"/>
+        <location filename="AssistedConversion.cpp" line="418"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="409"/>
+        <location filename="AssistedConversion.cpp" line="413"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="410"/>
+        <location filename="AssistedConversion.cpp" line="414"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="437"/>
+        <location filename="AssistedConversion.cpp" line="441"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="450"/>
+        <location filename="AssistedConversion.cpp" line="454"/>
         <source>File path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="451"/>
+        <location filename="AssistedConversion.cpp" line="455"/>
         <source>*.nif file name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="452"/>
+        <location filename="AssistedConversion.cpp" line="456"/>
         <source>Action</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="463"/>
+        <location filename="AssistedConversion.cpp" line="467"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation></translation>
     </message>
@@ -364,7 +370,6 @@
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="523"/>
-        <location filename="BatchConversion.cpp" line="752"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -393,25 +398,32 @@ Note of ModOrganizer2 users: select your &quot;mods&quot; directory as the input
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="BatchConversion.cpp" line="779"/>
+        <source>Batch generation successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="780"/>
+        <source>Every preset has been correctly generated.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="BatchConversion.cpp" line="483"/>
         <source>Error: no path given to search for files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="505"/>
-        <location filename="BatchConversion.cpp" line="725"/>
         <source>Error: no path given to export the files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="512"/>
-        <location filename="BatchConversion.cpp" line="732"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="522"/>
-        <location filename="BatchConversion.cpp" line="751"/>
         <source>Already existing directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -431,70 +443,25 @@ Note of ModOrganizer2 users: select your &quot;mods&quot; directory as the input
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="743"/>
+        <location filename="BatchConversion.cpp" line="682"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="755"/>
-        <source>Continue the files generation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="756"/>
-        <source>Cancel the files generation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="773"/>
-        <source>Error: no path has been given for the body meshes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="786"/>
-        <source>Error: no path has been given for the feet meshes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="799"/>
-        <source>Error: no path has been given for the hands meshes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="813"/>
-        <source>Error: no name given for the BodySlide files.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="827"/>
-        <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="895"/>
-        <source>Generation successful</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="896"/>
-        <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="BatchConversion.cpp" line="901"/>
-        <location filename="BatchConversion.cpp" line="904"/>
+        <location filename="BatchConversion.cpp" line="785"/>
+        <location filename="BatchConversion.cpp" line="788"/>
         <source>Open the retargeted directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="904"/>
+        <location filename="BatchConversion.cpp" line="788"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="1029"/>
+        <location filename="BatchConversion.cpp" line="913"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
@@ -518,9 +485,9 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="BatchConversionPicker.cpp" line="44"/>
-        <location filename="BatchConversionPicker.cpp" line="910"/>
-        <location filename="BatchConversionPicker.cpp" line="940"/>
-        <location filename="BatchConversionPicker.cpp" line="964"/>
+        <location filename="BatchConversionPicker.cpp" line="912"/>
+        <location filename="BatchConversionPicker.cpp" line="942"/>
+        <location filename="BatchConversionPicker.cpp" line="966"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
@@ -679,12 +646,12 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="905"/>
+        <location filename="BatchConversionPicker.cpp" line="907"/>
         <source>Invalid preset detected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="906"/>
+        <location filename="BatchConversionPicker.cpp" line="908"/>
         <source>The preset number %1 is not valid.
 
 A preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.
@@ -698,41 +665,42 @@ Would you like to delete this invalid preset and continue, or cancel the validat
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="909"/>
+        <location filename="BatchConversionPicker.cpp" line="911"/>
         <source>Delete the preset number %1 and continue the generation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="935"/>
+        <location filename="BatchConversionPicker.cpp" line="937"/>
         <source>No valid preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="936"/>
+        <location filename="BatchConversionPicker.cpp" line="938"/>
         <source>No valid preset has been found.
 
 Would you like to close the batch conversion: results picker window now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="939"/>
+        <location filename="BatchConversionPicker.cpp" line="941"/>
         <source>Close the batch conversion: results picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="959"/>
-        <source>Start bacth generation now?</source>
+        <location filename="BatchConversionPicker.cpp" line="961"/>
+        <source>Start batch generation now?</source>
+        <oldsource>Start bacth generation now?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="960"/>
+        <location filename="BatchConversionPicker.cpp" line="962"/>
         <source>%1 valid preset(s) has (have) been found.
 
 Would you like to generate it (them) now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="963"/>
+        <location filename="BatchConversionPicker.cpp" line="965"/>
         <source>Generate the preset(s) files on my disk</source>
         <translation type="unfinished"></translation>
     </message>
@@ -854,27 +822,27 @@ Would you like to generate it (them) now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="188"/>
+        <location filename="ComponentFactory.cpp" line="184"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="192"/>
+        <location filename="ComponentFactory.cpp" line="188"/>
         <source>Output subdirectory name/path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="199"/>
+        <location filename="ComponentFactory.cpp" line="195"/>
         <source>Use only subdirectory path?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="201"/>
+        <location filename="ComponentFactory.cpp" line="197"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="205"/>
+        <location filename="ComponentFactory.cpp" line="201"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
@@ -927,114 +895,114 @@ Would you like to generate it (them) now?</source>
 <context>
     <name>MFBOPresetCreator</name>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="67"/>
+        <location filename="MFBOPresetCreator.cpp" line="68"/>
         <source>Quitting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="71"/>
+        <location filename="MFBOPresetCreator.cpp" line="72"/>
         <source>Quit the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="72"/>
-        <location filename="MFBOPresetCreator.cpp" line="671"/>
+        <location filename="MFBOPresetCreator.cpp" line="73"/>
+        <location filename="MFBOPresetCreator.cpp" line="673"/>
         <source>Go back to the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="167"/>
+        <location filename="MFBOPresetCreator.cpp" line="168"/>
         <source>File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="172"/>
+        <location filename="MFBOPresetCreator.cpp" line="173"/>
         <source>Welcome screen</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="178"/>
+        <location filename="MFBOPresetCreator.cpp" line="179"/>
         <source>Open project...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="183"/>
+        <location filename="MFBOPresetCreator.cpp" line="184"/>
         <source>Save</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="189"/>
+        <location filename="MFBOPresetCreator.cpp" line="190"/>
         <source>Save as</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="206"/>
+        <location filename="MFBOPresetCreator.cpp" line="207"/>
         <source>Exit</source>
         <oldsource>&amp;Exit</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="210"/>
+        <location filename="MFBOPresetCreator.cpp" line="211"/>
         <source>Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="219"/>
+        <location filename="MFBOPresetCreator.cpp" line="220"/>
         <source>Textures Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="223"/>
+        <location filename="MFBOPresetCreator.cpp" line="224"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="227"/>
+        <location filename="MFBOPresetCreator.cpp" line="228"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="233"/>
+        <location filename="MFBOPresetCreator.cpp" line="234"/>
         <source> (stable update available)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="250"/>
+        <location filename="MFBOPresetCreator.cpp" line="251"/>
         <source>Report a bug...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="260"/>
+        <location filename="MFBOPresetCreator.cpp" line="261"/>
         <source>GitHub (github.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="264"/>
+        <location filename="MFBOPresetCreator.cpp" line="265"/>
         <source>GitLab (gitlab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="268"/>
+        <location filename="MFBOPresetCreator.cpp" line="269"/>
         <source>Useful links...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="278"/>
+        <location filename="MFBOPresetCreator.cpp" line="279"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="282"/>
+        <location filename="MFBOPresetCreator.cpp" line="283"/>
         <source>View the source code (github.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="286"/>
+        <location filename="MFBOPresetCreator.cpp" line="287"/>
         <source>View the source code (gitlab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="196"/>
+        <location filename="MFBOPresetCreator.cpp" line="197"/>
         <source>Settings</source>
         <translation></translation>
     </message>
@@ -1044,66 +1012,66 @@ Would you like to generate it (them) now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="672"/>
+        <location filename="MFBOPresetCreator.cpp" line="74"/>
+        <location filename="MFBOPresetCreator.cpp" line="674"/>
         <source>Save the project and quit the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="215"/>
+        <location filename="MFBOPresetCreator.cpp" line="216"/>
         <source>Batch Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="235"/>
+        <location filename="MFBOPresetCreator.cpp" line="236"/>
         <source> (BETA update available)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="237"/>
+        <location filename="MFBOPresetCreator.cpp" line="238"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="242"/>
+        <location filename="MFBOPresetCreator.cpp" line="243"/>
         <source>Check for updates</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="246"/>
+        <location filename="MFBOPresetCreator.cpp" line="247"/>
         <source>Current version&apos;s release notes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="256"/>
-        <location filename="MFBOPresetCreator.cpp" line="274"/>
+        <location filename="MFBOPresetCreator.cpp" line="257"/>
+        <location filename="MFBOPresetCreator.cpp" line="275"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <oldsource>Nexus Mods page</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="290"/>
+        <location filename="MFBOPresetCreator.cpp" line="291"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="543"/>
+        <location filename="MFBOPresetCreator.cpp" line="545"/>
         <source>Error while searching for a new update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="544"/>
+        <location filename="MFBOPresetCreator.cpp" line="546"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="558"/>
+        <location filename="MFBOPresetCreator.cpp" line="560"/>
         <source>BETA update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="559"/>
+        <location filename="MFBOPresetCreator.cpp" line="561"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -1111,12 +1079,12 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="567"/>
+        <location filename="MFBOPresetCreator.cpp" line="569"/>
         <source>Stable update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="568"/>
+        <location filename="MFBOPresetCreator.cpp" line="570"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -1124,38 +1092,38 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="585"/>
+        <location filename="MFBOPresetCreator.cpp" line="587"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="594"/>
+        <location filename="MFBOPresetCreator.cpp" line="596"/>
         <source>Download and install the update now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="595"/>
+        <location filename="MFBOPresetCreator.cpp" line="597"/>
         <source>Download later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="667"/>
+        <location filename="MFBOPresetCreator.cpp" line="669"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="670"/>
+        <location filename="MFBOPresetCreator.cpp" line="672"/>
         <source>Quickly restart the application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="202"/>
-        <location filename="MFBOPresetCreator.cpp" line="666"/>
+        <location filename="MFBOPresetCreator.cpp" line="203"/>
+        <location filename="MFBOPresetCreator.cpp" line="668"/>
         <source>Quick restart</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="68"/>
+        <location filename="MFBOPresetCreator.cpp" line="69"/>
         <source>You will lose all the unsaved data. Do you still want to quit the application?</source>
         <translation></translation>
     </message>
@@ -1328,68 +1296,68 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1198"/>
+        <location filename="PresetCreator.cpp" line="1196"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1205"/>
+        <location filename="PresetCreator.cpp" line="1203"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1369"/>
+        <location filename="PresetCreator.cpp" line="1367"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1468"/>
+        <location filename="PresetCreator.cpp" line="1466"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1224"/>
+        <location filename="PresetCreator.cpp" line="1222"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1225"/>
+        <location filename="PresetCreator.cpp" line="1223"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <oldsource>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1228"/>
+        <location filename="PresetCreator.cpp" line="1226"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1229"/>
+        <location filename="PresetCreator.cpp" line="1227"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1246"/>
+        <location filename="PresetCreator.cpp" line="1244"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1259"/>
+        <location filename="PresetCreator.cpp" line="1257"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1272"/>
+        <location filename="PresetCreator.cpp" line="1270"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1286"/>
+        <location filename="PresetCreator.cpp" line="1284"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1300"/>
+        <location filename="PresetCreator.cpp" line="1298"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
@@ -1434,25 +1402,26 @@ Do you want to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1216"/>
+        <location filename="PresetCreator.cpp" line="1214"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1368"/>
+        <location filename="PresetCreator.cpp" line="1366"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1374"/>
-        <location filename="PresetCreator.cpp" line="1377"/>
-        <source>Open the retargeted directory</source>
+        <location filename="PresetCreator.cpp" line="1372"/>
+        <location filename="PresetCreator.cpp" line="1375"/>
+        <source>Open the generated directory</source>
+        <oldsource>Open the retargeted directory</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1377"/>
+        <location filename="PresetCreator.cpp" line="1375"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1801,7 +1770,7 @@ Please make sure your internet connection is working correctly and try again.</s
     </message>
     <message>
         <location filename="Settings.cpp" line="266"/>
-        <location filename="Settings.cpp" line="478"/>
+        <location filename="Settings.cpp" line="500"/>
         <source>General</source>
         <translation></translation>
     </message>
@@ -1849,53 +1818,40 @@ Please make sure your internet connection is working correctly and try again.</s
     </message>
     <message>
         <location filename="Settings.cpp" line="318"/>
-        <location filename="Settings.cpp" line="389"/>
+        <location filename="Settings.cpp" line="376"/>
+        <location filename="Settings.cpp" line="434"/>
         <source>Default selected body:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="337"/>
-        <location filename="Settings.cpp" line="408"/>
+        <location filename="Settings.cpp" line="395"/>
+        <location filename="Settings.cpp" line="453"/>
         <source>Default selected feet mod:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="360"/>
-        <source>Post-generation tasks:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="419"/>
-        <source>Post-processing tasks:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="445"/>
-        <source>Software&apos; scan behavior:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="465"/>
+        <location filename="Settings.cpp" line="487"/>
         <source>Last used paths</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="468"/>
+        <location filename="Settings.cpp" line="490"/>
         <source>Remove all the history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="480"/>
+        <location filename="Settings.cpp" line="502"/>
         <source>Batch Conv.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="481"/>
+        <location filename="Settings.cpp" line="503"/>
         <source>Batch Conv.: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="508"/>
+        <location filename="Settings.cpp" line="530"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
@@ -1925,18 +1881,24 @@ Please make sure your internet connection is working correctly and try again.</s
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="384"/>
-        <source>BodySlide Presets&apos; Retargeting</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="442"/>
-        <source>Assisted Conversion</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="Settings.cpp" line="348"/>
-        <source>Output directory path:</source>
+        <location filename="Settings.cpp" line="406"/>
+        <source>Post-generation task:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="371"/>
+        <source>Batch Conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="408"/>
+        <source>Automatically open the output directory after a batch generation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="429"/>
+        <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
@@ -1945,72 +1907,62 @@ Please make sure your internet connection is working correctly and try again.</s
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="356"/>
-        <source>Choose a directory...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="362"/>
+        <location filename="Settings.cpp" line="350"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="421"/>
+        <location filename="Settings.cpp" line="466"/>
         <source>Automatically open the retargeted directory after the retargeting process succeeded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="447"/>
-        <source>Only scan the &quot;meshes&quot; subdirectory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings.cpp" line="479"/>
+        <location filename="Settings.cpp" line="501"/>
         <source>Main window: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="482"/>
+        <location filename="Settings.cpp" line="504"/>
         <source>Assist. Conv.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="483"/>
+        <location filename="Settings.cpp" line="505"/>
         <source>Presets&apos; Ret.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="484"/>
+        <location filename="Settings.cpp" line="506"/>
         <source>Presets&apos; Ret.: output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="485"/>
+        <location filename="Settings.cpp" line="507"/>
         <source>Textures Assist.: input</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="486"/>
+        <location filename="Settings.cpp" line="508"/>
         <source>Loaded project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="487"/>
+        <location filename="Settings.cpp" line="509"/>
         <source>Saved project</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="502"/>
+        <location filename="Settings.cpp" line="524"/>
         <source>Restore default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="812"/>
+        <location filename="Settings.cpp" line="842"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="813"/>
+        <location filename="Settings.cpp" line="843"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
@@ -2018,12 +1970,12 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="816"/>
+        <location filename="Settings.cpp" line="846"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="817"/>
+        <location filename="Settings.cpp" line="847"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
@@ -2038,7 +1990,12 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="505"/>
+        <location filename="Settings.cpp" line="464"/>
+        <source>Post-processing task:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="527"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
@@ -2326,85 +2283,85 @@ Please make sure your internet connection is working correctly and try again.
     </message>
     <message>
         <location filename="Utils.cpp" line="182"/>
-        <location filename="Utils.cpp" line="992"/>
+        <location filename="Utils.cpp" line="1006"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="462"/>
-        <location filename="Utils.cpp" line="501"/>
+        <location filename="Utils.cpp" line="463"/>
+        <location filename="Utils.cpp" line="515"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="483"/>
+        <location filename="Utils.cpp" line="484"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="530"/>
+        <location filename="Utils.cpp" line="544"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="554"/>
+        <location filename="Utils.cpp" line="568"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="559"/>
+        <location filename="Utils.cpp" line="573"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="566"/>
+        <location filename="Utils.cpp" line="580"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="686"/>
+        <location filename="Utils.cpp" line="700"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="706"/>
-        <location filename="Utils.cpp" line="739"/>
-        <location filename="Utils.cpp" line="832"/>
+        <location filename="Utils.cpp" line="720"/>
+        <location filename="Utils.cpp" line="753"/>
+        <location filename="Utils.cpp" line="846"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="992"/>
+        <location filename="Utils.cpp" line="1006"/>
         <source>Project successfully saved</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="992"/>
+        <location filename="Utils.cpp" line="1006"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="998"/>
+        <location filename="Utils.cpp" line="1012"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1549"/>
+        <location filename="Utils.cpp" line="1662"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1651"/>
-        <location filename="Utils.cpp" line="1675"/>
+        <location filename="Utils.cpp" line="1764"/>
+        <location filename="Utils.cpp" line="1788"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1669"/>
+        <location filename="Utils.cpp" line="1782"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>
@@ -2417,160 +2374,160 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="83"/>
+        <location filename="WelcomeScreen.cpp" line="84"/>
         <source>Show the welcome screen at application startup</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="89"/>
+        <location filename="WelcomeScreen.cpp" line="93"/>
         <source>MFBO: Preset Creator v.%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="116"/>
+        <location filename="WelcomeScreen.cpp" line="120"/>
         <source>Latest stable release notes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="101"/>
-        <location filename="WelcomeScreen.cpp" line="126"/>
-        <location filename="WelcomeScreen.cpp" line="149"/>
+        <location filename="WelcomeScreen.cpp" line="105"/>
+        <location filename="WelcomeScreen.cpp" line="130"/>
+        <location filename="WelcomeScreen.cpp" line="160"/>
         <source>Contacting GitHub.com...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="98"/>
+        <location filename="WelcomeScreen.cpp" line="102"/>
         <source>Current version&apos;s release notes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="131"/>
+        <location filename="WelcomeScreen.cpp" line="136"/>
         <source>Download the latest stable update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="139"/>
+        <location filename="WelcomeScreen.cpp" line="150"/>
         <source>Latest BETA release notes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="154"/>
+        <location filename="WelcomeScreen.cpp" line="166"/>
         <source>Download the latest BETA update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="161"/>
+        <location filename="WelcomeScreen.cpp" line="179"/>
         <source>Incoming features</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="163"/>
+        <location filename="WelcomeScreen.cpp" line="181"/>
         <source>You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:</source>
         <oldsource>You can consult the list of incoming features and enhancements and ask for new features requests by clicking the button below:</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="167"/>
+        <location filename="WelcomeScreen.cpp" line="185"/>
         <source>Incoming features list (github.com)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="173"/>
+        <location filename="WelcomeScreen.cpp" line="191"/>
         <source>Known issues</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="175"/>
+        <location filename="WelcomeScreen.cpp" line="193"/>
         <source>You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="179"/>
+        <location filename="WelcomeScreen.cpp" line="197"/>
         <source>Known issues list (github.com)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="185"/>
+        <location filename="WelcomeScreen.cpp" line="203"/>
         <source>User guide and tutorials</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="191"/>
+        <location filename="WelcomeScreen.cpp" line="209"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="307"/>
+        <location filename="WelcomeScreen.cpp" line="325"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="327"/>
-        <location filename="WelcomeScreen.cpp" line="370"/>
-        <location filename="WelcomeScreen.cpp" line="411"/>
+        <location filename="WelcomeScreen.cpp" line="345"/>
+        <location filename="WelcomeScreen.cpp" line="388"/>
+        <location filename="WelcomeScreen.cpp" line="429"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="332"/>
+        <location filename="WelcomeScreen.cpp" line="350"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="343"/>
+        <location filename="WelcomeScreen.cpp" line="361"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="353"/>
+        <location filename="WelcomeScreen.cpp" line="371"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="376"/>
+        <location filename="WelcomeScreen.cpp" line="394"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="387"/>
+        <location filename="WelcomeScreen.cpp" line="405"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="432"/>
+        <location filename="WelcomeScreen.cpp" line="450"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="382"/>
+        <location filename="WelcomeScreen.cpp" line="400"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="187"/>
+        <location filename="WelcomeScreen.cpp" line="205"/>
         <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="394"/>
+        <location filename="WelcomeScreen.cpp" line="412"/>
         <source>You are running a developer version.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="416"/>
+        <location filename="WelcomeScreen.cpp" line="434"/>
         <source>No BETA version found on GitHub.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="421"/>
+        <location filename="WelcomeScreen.cpp" line="439"/>
         <source>No newer BETA version is currently available.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="426"/>
+        <location filename="WelcomeScreen.cpp" line="444"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation></translation>
     </message>

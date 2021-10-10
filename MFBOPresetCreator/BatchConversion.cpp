@@ -43,7 +43,7 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
 
   // Show the window when it's completely built
   this->adjustSize();
-  aSettings.batchConversionDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+  aSettings.display.batchConversionDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void BatchConversion::closeEvent(QCloseEvent* aEvent)
@@ -56,7 +56,7 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -66,8 +66,8 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the batch conversion window"),
                                     "",
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
+                                    this->mSettings.display.dangerColor,
+                                    this->mSettings.display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -99,11 +99,11 @@ void BatchConversion::setWindowProperties()
 void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // General group box
   auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::AddIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.display.font.size);
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::SetGroupBoxState(lGeneralGroupBox, false);
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
@@ -141,11 +141,11 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::AddIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.display.font.size);
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::SetGroupBoxState(lSkeletonGroupBox, false);
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
@@ -193,11 +193,11 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::SetGroupBoxState(lBodyslideGroupBox, false);
   aLayout.addWidget(lBodyslideGroupBox, 2, 0);
@@ -210,7 +210,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultBatchConversionBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.batchConversion.defaultBodyFeet.bodyMod)};
 
   lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
@@ -241,7 +241,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
+  lFeetSelector->setCurrentIndex(this->mSettings.batchConversion.defaultBodyFeet.feetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lBodyNameVersionWrapper->addWidget(lFeetSelector);
 
@@ -285,10 +285,10 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.batchConversionOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
+  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
   auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
 
@@ -309,11 +309,11 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 void BatchConversion::setupRemainingGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
   auto lScanTweaksGroupBox{new QGroupBox(tr("Scan tweaks").append("  "), this)};
-  Utils::AddIconToGroupBox(lScanTweaksGroupBox, lIconFolder, "cog", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lScanTweaksGroupBox, lIconFolder, "cog", this->mSettings.display.font.size);
   this->connect(lScanTweaksGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::SetGroupBoxState(lScanTweaksGroupBox, false);
   aLayout.addWidget(lScanTweaksGroupBox, 4, 0);
@@ -349,7 +349,7 @@ void BatchConversion::setupRemainingGUI(QGridLayout& aLayout)
 void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Batch generate button
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the directory"), "", "build", lIconFolder)};
@@ -454,7 +454,7 @@ void BatchConversion::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "batchConversionInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "batchConversionInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "batchConversionInput", lPath);
@@ -472,7 +472,7 @@ void BatchConversion::chooseInputDirectory()
 void BatchConversion::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Input path
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
@@ -526,8 +526,8 @@ void BatchConversion::launchSearchProcess()
                                       tr("Continue the search"),
                                       tr("Cancel the search"),
                                       "",
-                                      this->mSettings.warningColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)
@@ -776,19 +776,19 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
   // Update the color of the output directory preview
   this->updateOutputPreview();
 
-  //auto lTitle{tr("Batch generation successful")};
-  //auto lMessage{tr("Every file has been correctly generated.")};
+  auto lTitle{tr("Batch generation successful")};
+  auto lMessage{tr("Every preset has been correctly generated.")};
 
-  //// Open the directory where the file structure has been created
-  //if (mSettings.batchConversionAutomaticallyOpenGeneratedDirectory)
-  //{
-  //  Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
-  //  QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
-  //}
-  //else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
-  //{
-  //  QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
-  //}
+  // Open the directory where the file structure has been created
+  if (this->mSettings.batchConversion.automaticallyOpenFinalDirectory)
+  {
+    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
+  }
+  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  {
+    QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
+  }
 }
 
 void BatchConversion::populateSkeletonChoosers()
@@ -829,13 +829,13 @@ void BatchConversion::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.successColor, this->mSettings.warningColor, this->mSettings.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
 }
 
 void BatchConversion::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "batchConversionOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "batchConversionOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "batchConversionOutput", lPath);

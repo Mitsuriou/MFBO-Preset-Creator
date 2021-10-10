@@ -132,7 +132,16 @@ public:
 
   // Settings
   static void CheckSettingsFileExistence();
+
   static Struct::Settings LoadSettingsFromFile();
+  static void ParseSettingsCompatibility(Struct::Settings& aSettings, const QJsonObject& aJSONObject);
+  static void ParseSettings(Struct::Settings& aSettings, const QJsonObject& aJSONObject);
+  static void ParseDisplaySettings(Struct::DisplaySettings& aSettings, const QJsonObject& aJSONObject);
+  static void ParseFontSettings(Struct::Font& aSettings, const QJsonObject& aJSONObject);
+  static void ParseGeneralSettings(Struct::GeneralSettings& aSettings, const QJsonObject& aJSONObject);
+  static void ParseGenericDialogSettings(Struct::GenericDialogSettings& aSettings, const QJsonObject& aJSONObject);
+  static void ParseBodyFeetSettings(Struct::BodyFeetSettings& aSettings, const QJsonObject& aJSONObject);
+
   static void SaveSettingsToFile(const Struct::Settings& aSettings);
   static QJsonObject SettingsStructToJson(const Struct::Settings& aSettings);
 

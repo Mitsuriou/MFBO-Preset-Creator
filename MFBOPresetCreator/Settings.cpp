@@ -56,7 +56,7 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   if (this->getSettingsFromGUI() != this->mSettings || this->mPathEntryCleared)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
@@ -66,8 +66,8 @@ void Settings::closeEvent(QCloseEvent* aEvent)
                                       tr("Close the settings window without saving"),
                                       tr("Go back to the settings window"),
                                       "",
-                                      this->mSettings.dangerColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.dangerColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       false)
         != ButtonClicked::YES)
@@ -105,12 +105,12 @@ void Settings::initializeGUI()
   if (Utils::RESTART_PENDING)
   {
     lStarLabel->setText(tr("Warning: A restart of the application is pending. You should not modify any value marked with the \"*\" character until you restart the application."));
-    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.dangerColor));
+    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.display.dangerColor));
   }
   else
   {
     lStarLabel->setText(tr("Note: Modifying a value marked with the \"*\" character will require a restart of the application to be applied correctly."));
-    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.warningColor));
+    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.display.warningColor));
   }
   lMainLayout->addWidget(lStarLabel, 0, 0);
 
@@ -124,8 +124,8 @@ void Settings::initializeGUI()
   this->setupDisplayTab(*lTabWidget);
   this->setupGeneralTab(*lTabWidget);
   this->setupPresetCreatorTab(*lTabWidget);
+  this->setupBatchConversionToolTab(*lTabWidget);
   this->setupRetargetingToolTab(*lTabWidget);
-  this->setupAssistedConversionTab(*lTabWidget);
   this->setupLastPathsTab(*lTabWidget);
 
   this->setupButtons(*lButtonLayout);
@@ -137,7 +137,7 @@ void Settings::initializeGUI()
 void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -250,7 +250,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -299,7 +299,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -313,7 +313,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(lIconFolder))), tr("Preset Creator"));
 
   // DEFAULT SELECTED BODY AND VERSION
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetCreator.defaultBodyFeet.bodyMod)};
 
   lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
@@ -340,37 +340,82 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
+  lFeetSelector->setCurrentIndex(this->mSettings.presetCreator.defaultBodyFeet.feetMod);
   lFeetSelector->setObjectName(QString("feet_mod_main"));
   lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
 
-  // OUTPUT PATH PREVIEW
-  lTabLayout->addWidget(new QLabel(tr("Output directory path:"), this), 4, 0, 1, 2);
-
-  auto lOutputPathLineEdit{new QLineEdit("", this)};
-  lOutputPathLineEdit->setReadOnly(true);
-  lOutputPathLineEdit->setObjectName(QString("output_path_directory"));
-  lTabLayout->addWidget(lOutputPathLineEdit, 5, 0);
-
-  // OUTPUT PATH CHOOSER
-  auto lOutputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
-  lTabLayout->addWidget(lOutputPathChooser, 5, 1);
-
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
-  lTabLayout->addWidget(new QLabel(tr("Post-generation tasks:"), this), 6, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 6, 0, 1, 2);
 
   auto lAutoOpenDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the generated preset's output directory after a generation"), "", "auto_open_generated_dir")};
   lTabLayout->addWidget(lAutoOpenDirCheckbox, 7, 0, 1, 2);
 
   // Event binding
-  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &Settings::chooseExportDirectory);
   this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBodyVersions);
+}
+
+void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
+
+  // Layout
+  auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/reorder").arg(lIconFolder))), tr("Batch Conversion"));
+
+  // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.batchConversion.defaultBodyFeet.bodyMod)};
+
+  lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
+
+  auto lBodyNameSelector{new QComboBox(this)};
+  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
+  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
+  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
+  lBodyNameSelector->setObjectName(QString("batch_conversion_body_selector_name"));
+  lTabLayout->addWidget(lBodyNameSelector, 1, 0);
+
+  auto lBodyVersionSelector{new QComboBox(this)};
+  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
+  lBodyVersionSelector->setObjectName(QString("batch_conversion_body_selector_version"));
+  lTabLayout->addWidget(lBodyVersionSelector, 1, 1);
+
+  // Feet mod
+  lTabLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
+
+  auto lFeetSelector{new QComboBox(this)};
+  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
+  lFeetSelector->setCursor(Qt::PointingHandCursor);
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lFeetSelector->setCurrentIndex(this->mSettings.batchConversion.defaultBodyFeet.feetMod);
+  lFeetSelector->setObjectName(QString("feet_mod_batch_conversion"));
+  lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
+
+  // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
+  lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 4, 0, 1, 2);
+
+  auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the output directory after a batch generation"), "", "auto_open_batch_generated_dir")};
+  lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 5, 0, 1, 2);
+
+  // Event binding
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBatchConversionBodyVersions);
 }
 
 void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -384,25 +429,25 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))), tr("BodySlide Presets' Retargeting"));
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetsRetargeting.defaultBodyFeet.bodyMod)};
 
   lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
 
-  auto lUpgradeBodyNameSelector{new QComboBox(this)};
-  lUpgradeBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
-  lUpgradeBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeBodyNameSelector->addItems(DataLists::GetBodiesNames());
-  lUpgradeBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
-  lUpgradeBodyNameSelector->setObjectName(QString("upgrade_body_selector_name"));
-  lTabLayout->addWidget(lUpgradeBodyNameSelector, 1, 0);
+  auto lBodyNameSelector{new QComboBox(this)};
+  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
+  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
+  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
+  lBodyNameSelector->setObjectName(QString("upgrade_body_selector_name"));
+  lTabLayout->addWidget(lBodyNameSelector, 1, 0);
 
-  auto lUpgradeBodyVersionSelector{new QComboBox(this)};
-  lUpgradeBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lUpgradeBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lUpgradeBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lUpgradeBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
-  lUpgradeBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
-  lTabLayout->addWidget(lUpgradeBodyVersionSelector, 1, 1);
+  auto lBodyVersionSelector{new QComboBox(this)};
+  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
+  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
+  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
+  lBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
+  lTabLayout->addWidget(lBodyVersionSelector, 1, 1);
 
   // Feet mod
   lTabLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
@@ -411,47 +456,24 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(mSettings.defaultRetargetingToolFeetMod);
+  lFeetSelector->setCurrentIndex(this->mSettings.presetsRetargeting.defaultBodyFeet.feetMod);
   lFeetSelector->setObjectName(QString("feet_mod_retargeting_tool"));
   lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
-  lTabLayout->addWidget(new QLabel(tr("Post-processing tasks:"), this), 4, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Post-processing task:"), this), 4, 0, 1, 2);
 
   auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the retargeted directory after the retargeting process succeeded"), "", "auto_open_retargeted_dir")};
   lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 5, 0, 1, 2);
 
   // Event binding
-  this->connect(lUpgradeBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
-}
-
-void Settings::setupAssistedConversionTab(QTabWidget& aTabWidget)
-{
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
-
-  // Tab widget
-  auto lTabContent{new QWidget(this)};
-
-  // Layout
-  auto lTabLayout{new QVBoxLayout(lTabContent)};
-  lTabLayout->setSpacing(10);
-  lTabLayout->setAlignment(Qt::AlignTop);
-  lTabContent->setLayout(lTabLayout);
-
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/pencil").arg(lIconFolder))), tr("Assisted Conversion"));
-
-  // ONLY SCAN THE MESHES SUBDIRECTORY
-  lTabLayout->addWidget(new QLabel(tr("Software' scan behavior:"), this));
-
-  auto lScanOnlyMeshesFolder{ComponentFactory::CreateCheckBox(this, tr("Only scan the \"meshes\" subdirectory"), "", "assis_conv_only_scan_meshes_dir")};
-  lTabLayout->addWidget(lScanOnlyMeshesFolder);
+  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
 }
 
 void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -484,7 +506,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind every single "clear path" button
   const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};
@@ -496,7 +518,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 
 void Settings::setupButtons(QHBoxLayout& aLayout)
 {
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the buttons
   auto lRestoreDefaultButton{ComponentFactory::CreateButton(this, tr("Restore default"), "", "restore", lIconFolder, "", false, true)};
@@ -528,11 +550,37 @@ void Settings::createDialogOpeningModeBlock(QGridLayout& aLayout, const QString&
 
 void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 {
-  auto lLang{this->findChild<QComboBox*>(QString("language"))};
-  lLang->setCurrentIndex(static_cast<int>(aSettingsToLoad.language));
+  // Display
+  loadDisplayTabSettings(aSettingsToLoad.display);
 
-  // Reset the font
-  QFont lFont(aSettingsToLoad.font.family, aSettingsToLoad.font.size, aSettingsToLoad.font.weight, aSettingsToLoad.font.italic);
+  // General
+  loadGeneralTabSettings(aSettingsToLoad.general);
+
+  // Preset Creator
+  loadGenericDialogSettings(aSettingsToLoad.presetCreator, "default_body_selector_name", "default_body_selector_version", "feet_mod_main", "auto_open_generated_dir");
+
+  // Batch conversion
+  loadGenericDialogSettings(aSettingsToLoad.batchConversion, "batch_conversion_body_selector_name", "batch_conversion_body_selector_version", "feet_mod_retargeting_tool", "auto_open_batch_generated_dir");
+
+  // BodySlide Presets' Retargeting
+  loadGenericDialogSettings(aSettingsToLoad.presetsRetargeting, "upgrade_body_selector_name", "upgrade_body_selector_version", "feet_mod_retargeting_tool", "auto_open_retargeted_dir");
+}
+
+void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsToLoad)
+{
+  // Language
+  auto lLanguage{this->findChild<QComboBox*>(QString("language"))};
+  lLanguage->setCurrentIndex(static_cast<int>(aSettingsToLoad.language));
+
+  // Application theme
+  auto lApplicationTheme{this->findChild<QComboBox*>(QString("app_theme"))};
+  lApplicationTheme->setCurrentIndex(static_cast<int>(aSettingsToLoad.applicationTheme));
+
+  // Font
+  QFont lFont(aSettingsToLoad.font.family,
+              aSettingsToLoad.font.size,
+              aSettingsToLoad.font.weight,
+              aSettingsToLoad.font.italic);
   lFont.setStyleName(aSettingsToLoad.font.styleName);
   lFont.setUnderline(aSettingsToLoad.font.underline);
   lFont.setStrikeOut(aSettingsToLoad.font.strikeOut);
@@ -540,15 +588,25 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
   this->mNewFont = lFont;
   this->applyFontButtonStyle(this->mNewFont);
 
-  auto lAppTheme{this->findChild<QComboBox*>(QString("app_theme"))};
-  lAppTheme->setCurrentIndex(static_cast<int>(aSettingsToLoad.appTheme));
-
+  // Window width
   auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))};
   lWindowWidth->setText(QString::number(aSettingsToLoad.mainWindowWidth));
 
+  // Window height
   auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))};
   lWindowHeight->setText(QString::number(aSettingsToLoad.mainWindowHeight));
 
+  // Colors
+  this->mNewSuccessColor = aSettingsToLoad.successColor;
+  this->applySuccessColorButton(this->mNewSuccessColor);
+
+  this->mNewWarningColor = aSettingsToLoad.warningColor;
+  this->applyWarningColorButton(this->mNewWarningColor);
+
+  this->mNewDangerColor = aSettingsToLoad.dangerColor;
+  this->applyDangerColorButton(this->mNewDangerColor);
+
+  // Windows' default opening modes
   auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("main_window_opening_mode"))};
   lWindowOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.mainWindowOpeningMode));
 
@@ -566,33 +624,10 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 
   auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))};
   lBodySlidePresetsRetargetingDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.bodySlidePresetsRetargetingDialogOpeningMode));
+}
 
-  auto lDefaultBody{DataLists::GetSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultMainWindowBody)};
-  this->findChild<QComboBox*>(QString("default_body_selector_name"))->setCurrentIndex(lDefaultBody.first);
-  this->findChild<QComboBox*>(QString("default_body_selector_version"))->setCurrentIndex(lDefaultBody.second);
-
-  auto lDefaultUpgradeBody{DataLists::GetSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultRetargetingToolBody)};
-  this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->setCurrentIndex(lDefaultUpgradeBody.first);
-  this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->setCurrentIndex(lDefaultUpgradeBody.second);
-
-  auto lDefaultMainFeetMod{this->findChild<QComboBox*>(QString("feet_mod_main"))};
-  lDefaultMainFeetMod->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultMainFeetMod));
-
-  auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))};
-  lDefaultRetargetingToolFeetMod->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultRetargetingToolFeetMod));
-
-  auto lAutoOpenRetargetedDirCheckbox{this->findChild<QCheckBox*>(QString("auto_open_retargeted_dir"))};
-  lAutoOpenRetargetedDirCheckbox->setChecked(aSettingsToLoad.retargetingToolAutomaticallyOpenGeneratedDirectory);
-
-  auto lMainWindowOutputPath{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  lMainWindowOutputPath->setText(aSettingsToLoad.mainWindowOutputPath);
-
-  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))};
-  lAutoOpenGeneratedDir->setChecked(aSettingsToLoad.mainWindowAutomaticallyOpenGeneratedDirectory);
-
-  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>(QString("assis_conv_only_scan_meshes_dir"))};
-  lAssisConvScanOnlyMeshesDir->setChecked(aSettingsToLoad.assistedConversionScanOnlyMeshesSubdir);
-
+void Settings::loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsToLoad)
+{
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))};
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
 
@@ -611,15 +646,23 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
       this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->setChecked(true);
       break;
   }
+}
 
-  this->mNewSuccessColor = aSettingsToLoad.successColor;
-  this->applySuccessColorButton(this->mNewSuccessColor);
+void Settings::loadGenericDialogSettings(const Struct::GenericDialogSettings& aSettingsToLoad,
+                                         const QString& aObjectNameBodyNameSelector,
+                                         const QString& aObjectNameBodyVersionSelector,
+                                         const QString& aObjectNameFeetSelector,
+                                         const QString& aObjectNamePostActionTask)
+{
+  auto lBodyNameVersion{DataLists::GetSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultBodyFeet.bodyMod)};
+  this->findChild<QComboBox*>(aObjectNameBodyNameSelector)->setCurrentIndex(lBodyNameVersion.first);
+  this->findChild<QComboBox*>(aObjectNameBodyVersionSelector)->setCurrentIndex(lBodyNameVersion.second);
 
-  this->mNewWarningColor = aSettingsToLoad.warningColor;
-  this->applyWarningColorButton(this->mNewWarningColor);
+  auto lFeet{this->findChild<QComboBox*>(aObjectNameFeetSelector)};
+  lFeet->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultBodyFeet.feetMod));
 
-  this->mNewDangerColor = aSettingsToLoad.dangerColor;
-  this->applyDangerColorButton(this->mNewDangerColor);
+  auto lPostGenTask{this->findChild<QCheckBox*>(aObjectNamePostActionTask)};
+  lPostGenTask->setChecked(aSettingsToLoad.automaticallyOpenFinalDirectory);
 }
 
 Struct::Settings Settings::getSettingsFromGUI() const
@@ -642,13 +685,11 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QString("textures_assistant_opening_mode"))->currentIndex()};
   auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("assisted_conversion_opening_mode"))->currentIndex()};
   auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))->currentIndex()};
-  auto lMainWindowOutputPath{this->findChild<QLineEdit*>(QString("output_path_directory"))->text()};
   auto lWelcomeActionWelcomeScreen{this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->isChecked()};
   auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
   auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
   auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))->isChecked()};
   auto lAutoOpenRetargetedDir{this->findChild<QCheckBox*>(QString("auto_open_retargeted_dir"))->isChecked()};
-  auto lAssisConvScanOnlyMeshesDir{this->findChild<QCheckBox*>(QString("assis_conv_only_scan_meshes_dir"))->isChecked()};
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))->isChecked()};
 
   Struct::Settings lSettings;
@@ -658,112 +699,100 @@ Struct::Settings Settings::getSettingsFromGUI() const
   switch (lEnumLang)
   {
     case ApplicationLanguage::ENGLISH:
-      lSettings.language = ApplicationLanguage::ENGLISH;
+      lSettings.display.language = ApplicationLanguage::ENGLISH;
       break;
     case ApplicationLanguage::FRENCH:
-      lSettings.language = ApplicationLanguage::FRENCH;
+      lSettings.display.language = ApplicationLanguage::FRENCH;
       break;
     case ApplicationLanguage::CHINESE_TRADITIONAL:
-      lSettings.language = ApplicationLanguage::CHINESE_TRADITIONAL;
+      lSettings.display.language = ApplicationLanguage::CHINESE_TRADITIONAL;
       break;
     default:
-      lSettings.language = ApplicationLanguage::ENGLISH;
+      lSettings.display.language = ApplicationLanguage::ENGLISH;
       break;
   }
 
   // Font family
-  lSettings.font.family = this->mNewFont.family();
-  lSettings.font.italic = this->mNewFont.italic();
-  lSettings.font.size = this->mNewFont.pointSize();
-  lSettings.font.strikeOut = this->mNewFont.strikeOut();
-  lSettings.font.styleName = this->mNewFont.styleName();
-  lSettings.font.underline = this->mNewFont.underline();
-  lSettings.font.weight = this->mNewFont.weight();
+  lSettings.display.font.family = this->mNewFont.family();
+  lSettings.display.font.italic = this->mNewFont.italic();
+  lSettings.display.font.size = this->mNewFont.pointSize();
+  lSettings.display.font.strikeOut = this->mNewFont.strikeOut();
+  lSettings.display.font.styleName = this->mNewFont.styleName();
+  lSettings.display.font.underline = this->mNewFont.underline();
+  lSettings.display.font.weight = this->mNewFont.weight();
 
   // Application theme
-  lSettings.appTheme = static_cast<GUITheme>(lAppTheme);
+  lSettings.display.applicationTheme = static_cast<GUITheme>(lAppTheme);
 
   // Window width
   if (lWindowWidth.size() > 0)
   {
-    lSettings.mainWindowWidth = lWindowWidth.toInt();
+    lSettings.display.mainWindowWidth = lWindowWidth.toInt();
   }
 
   // Window height
   if (lWindowHeight.size() > 0)
   {
-    lSettings.mainWindowHeight = lWindowHeight.toInt();
+    lSettings.display.mainWindowHeight = lWindowHeight.toInt();
   }
 
   // Opening mode: main window
-  lSettings.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lWindowOpeningMode);
+  lSettings.display.mainWindowOpeningMode = static_cast<WindowOpeningMode>(lWindowOpeningMode);
 
   // Opening mode: batch conversion
-  lSettings.batchConversionDialogOpeningMode = static_cast<DialogOpeningMode>(lBatchConversionDialogOpeningMode);
+  lSettings.display.batchConversionDialogOpeningMode = static_cast<DialogOpeningMode>(lBatchConversionDialogOpeningMode);
 
   // Opening mode: batch conversion picker
-  lSettings.batchConversionPickerDialogOpeningMode = static_cast<DialogOpeningMode>(lBatchConversionPickerDialogOpeningMode);
+  lSettings.display.batchConversionPickerDialogOpeningMode = static_cast<DialogOpeningMode>(lBatchConversionPickerDialogOpeningMode);
 
   // Opening mode: textures assistant
-  lSettings.texturesAssistantDialogOpeningMode = static_cast<DialogOpeningMode>(lTexturesAssistantDialogOpeningMode);
+  lSettings.display.texturesAssistantDialogOpeningMode = static_cast<DialogOpeningMode>(lTexturesAssistantDialogOpeningMode);
 
   // Opening mode: assisted conversion
-  lSettings.assistedConversionDialogOpeningMode = static_cast<DialogOpeningMode>(lAssistedConversionDialogOpeningMode);
+  lSettings.display.assistedConversionDialogOpeningMode = static_cast<DialogOpeningMode>(lAssistedConversionDialogOpeningMode);
 
   // Opening mode: bodySlide presets' retargeting
-  lSettings.bodySlidePresetsRetargetingDialogOpeningMode = static_cast<DialogOpeningMode>(lBodySlidePresetsRetargetingDialogOpeningMode);
+  lSettings.display.bodySlidePresetsRetargetingDialogOpeningMode = static_cast<DialogOpeningMode>(lBodySlidePresetsRetargetingDialogOpeningMode);
 
   // Default selected body and version (main)
-  lSettings.defaultMainWindowBody = static_cast<BodyNameVersion>(lDefaultBodyVersion);
+  lSettings.presetCreator.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(lDefaultBodyVersion);
 
   // Default selected body and version (Retargeting tool)
-  lSettings.defaultRetargetingToolBody = static_cast<BodyNameVersion>(lDefaultRetargetBodyVersion);
+  lSettings.presetsRetargeting.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(lDefaultRetargetBodyVersion);
 
   // Default selected feet mod (main)
-  lSettings.defaultMainFeetMod = lDefaultMainFeetMod;
+  lSettings.presetCreator.defaultBodyFeet.feetMod = lDefaultMainFeetMod;
 
   // Default selected feet mod (Retargeting tool)
-  lSettings.defaultRetargetingToolFeetMod = lDefaultRetargetingToolFeetMod;
-
-  // Main window output path
-  if (lMainWindowOutputPath.size() > 0)
-  {
-    lSettings.mainWindowOutputPath = lMainWindowOutputPath;
-  }
+  lSettings.presetsRetargeting.defaultBodyFeet.feetMod = lDefaultRetargetingToolFeetMod;
 
   // Show welcome screen at application startup
   if (lWelcomeActionWelcomeScreen)
   {
-    lSettings.startupAction = StartupAction::OPEN_WELCOME_SCREEN;
+    lSettings.general.startupAction = StartupAction::OPEN_WELCOME_SCREEN;
   }
   else if (lWelcomeActionUpdater)
   {
-    lSettings.startupAction = StartupAction::CHECK_FOR_UPDATES;
+    lSettings.general.startupAction = StartupAction::CHECK_FOR_UPDATES;
   }
   else if (lWelcomeActionNone)
   {
-    lSettings.startupAction = StartupAction::SKIP_UPDATE_CHECKS;
+    lSettings.general.startupAction = StartupAction::SKIP_UPDATE_CHECKS;
   }
 
   // Automatically open generated directory
-  lSettings.mainWindowAutomaticallyOpenGeneratedDirectory = lAutoOpenGeneratedDir;
+  lSettings.presetCreator.automaticallyOpenFinalDirectory = lAutoOpenGeneratedDir;
 
   // Automatically open retargeted directory
-  lSettings.retargetingToolAutomaticallyOpenGeneratedDirectory = lAutoOpenRetargetedDir;
-
-  // Assisted Conversion: only scan the meshes subdir
-  lSettings.assistedConversionScanOnlyMeshesSubdir = lAssisConvScanOnlyMeshesDir;
+  lSettings.presetsRetargeting.automaticallyOpenFinalDirectory = lAutoOpenRetargetedDir;
 
   // Each button stores the last opened path
-  lSettings.eachButtonSavesItsLastUsedPath = lEachButtonSavesItsLastUsedPath;
+  lSettings.general.eachButtonSavesItsLastUsedPath = lEachButtonSavesItsLastUsedPath;
 
   // Colors
-  lSettings.successColor = this->mNewSuccessColor;
-  lSettings.warningColor = this->mNewWarningColor;
-  lSettings.dangerColor = this->mNewDangerColor;
-
-  // TODO: Add the settings GUI for Batch Conversion
-  // TODO: Add more settings for default selected values in many windows
+  lSettings.display.successColor = this->mNewSuccessColor;
+  lSettings.display.warningColor = this->mNewWarningColor;
+  lSettings.display.dangerColor = this->mNewDangerColor;
 
   return lSettings;
 }
@@ -796,17 +825,18 @@ void Settings::saveSettings()
 {
   auto lSettings{this->getSettingsFromGUI()};
 
-  this->mMustRebootMainApp = (this->mSettings.language != lSettings.language
-                              || this->mSettings.appTheme != lSettings.appTheme
-                              || this->mSettings.font != lSettings.font
-                              || this->mSettings.successColor != lSettings.successColor
-                              || this->mSettings.warningColor != lSettings.warningColor
-                              || this->mSettings.dangerColor != lSettings.dangerColor);
+  // Check if a restart of the app is required
+  this->mMustRebootMainApp = (this->mSettings.display.language != lSettings.display.language
+                              || this->mSettings.display.applicationTheme != lSettings.display.applicationTheme
+                              || this->mSettings.display.font != lSettings.display.font
+                              || this->mSettings.display.successColor != lSettings.display.successColor
+                              || this->mSettings.display.warningColor != lSettings.display.warningColor
+                              || this->mSettings.display.dangerColor != lSettings.display.dangerColor);
 
-  if (mMustRebootMainApp)
+  if (this->mMustRebootMainApp)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Application settings changed"),
@@ -816,8 +846,8 @@ void Settings::saveSettings()
                                       tr("Restart now"),
                                       tr("Go back to the application and restart later"),
                                       "",
-                                      this->mSettings.dangerColor,
-                                      this->mSettings.warningColor,
+                                      this->mSettings.display.dangerColor,
+                                      this->mSettings.display.warningColor,
                                       "",
                                       false)
         == ButtonClicked::YES)
@@ -856,6 +886,23 @@ void Settings::updateAvailableBodyVersions()
   lFeetSelector->setCurrentIndex(0);
 }
 
+void Settings::updateAvailableBatchConversionBodyVersions()
+{
+  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("batch_conversion_body_selector_name"))->currentIndex())};
+
+  // Version
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("batch_conversion_body_selector_version"))};
+  lBodyVersionSelector->clear();
+  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
+  lBodyVersionSelector->setCurrentIndex(0);
+
+  // Feet mod
+  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_batch_conversion"))};
+  lFeetSelector->clear();
+  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
+  lFeetSelector->setCurrentIndex(0);
+}
+
 void Settings::updateAvailableUpgradeBodyVersions()
 {
   auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex())};
@@ -878,13 +925,6 @@ void Settings::restoreDefaultSettings()
   // Create a default settings object and load it into the GUI
   Struct::Settings lSettings;
   this->loadSettings(lSettings);
-}
-
-void Settings::chooseExportDirectory()
-{
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lLineEdit->text().size() > 0 ? lLineEdit->text() : QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))};
-  lLineEdit->setText(lPath);
 }
 
 void Settings::chooseFont()

@@ -39,7 +39,7 @@ void ReleaseNotesViewer::initializeGUI()
   // Main title
   auto lMainTitle{new QLabel(tr("Current version's release notes"), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.font.size * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.size * 2));
   this->layout()->addWidget(lMainTitle);
 
   // Fetch status
@@ -58,15 +58,15 @@ void ReleaseNotesViewer::initializeGUI()
 void ReleaseNotesViewer::overrideHTMLLinksColor(QString& aHTMLString)
 {
   // If no color change is needed
-  if (this->mSettings.appTheme != GUITheme::MITSURIOU_BLACK_THEME
-      && this->mSettings.appTheme != GUITheme::MITSURIOU_DARK_THEME
-      && this->mSettings.appTheme != GUITheme::MITSURIOU_LIGHT_THEME)
+  if (this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_BLACK_THEME
+      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_DARK_THEME
+      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_LIGHT_THEME)
   {
     return;
   }
 
   // Hacky links' colors override for some themes
-  const auto lLinksColorOverride(this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
+  const auto lLinksColorOverride(this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
 
   // Go through the string to find the link colors
   auto i{0};

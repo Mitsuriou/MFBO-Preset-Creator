@@ -40,7 +40,8 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
 #endif
 
   // Check for new versions
-  if (this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN || this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES)
+  if (this->mSettings.general.startupAction == StartupAction::OPEN_WELCOME_SCREEN
+      || this->mSettings.general.startupAction == StartupAction::CHECK_FOR_UPDATES)
   {
     this->checkForUpdate();
   }
@@ -54,7 +55,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())
@@ -71,9 +72,9 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
                                                  tr("Quit the application"),
                                                  tr("Go back to the application"),
                                                  tr("Save the project and quit the application"),
-                                                 this->mSettings.dangerColor,
-                                                 this->mSettings.successColor,
-                                                 this->mSettings.warningColor,
+                                                 this->mSettings.display.dangerColor,
+                                                 this->mSettings.display.successColor,
+                                                 this->mSettings.display.warningColor,
                                                  false)};
 
   if (lUserAnswer == ButtonClicked::YES)
@@ -138,14 +139,14 @@ void MFBOPresetCreator::initializeGUI()
   lMainContainer->setObjectName(QString("main_container"));
   this->setCentralWidget(lMainContainer);
 
-  this->refreshUI(mSettings, false);
+  this->refreshUI(this->mSettings, false);
 
   this->setAcceptDrops(true);
 
   Utils::CleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
 
-  if (this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN)
+  if (this->mSettings.general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)
   {
     this->launchWelcomeScreen();
   }
@@ -156,7 +157,7 @@ void MFBOPresetCreator::initializeGUI()
 void MFBOPresetCreator::setupMenuBar()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Menu bar
   auto lMenuBar{new QMenuBar(this)};
@@ -323,10 +324,11 @@ void MFBOPresetCreator::showWindow()
   auto lScreenGeom{lDesktopScreen->availableGeometry()};
 
   // If the window size is correct for the user's screen
-  if (mSettings.mainWindowWidth < lScreenGeom.width() && mSettings.mainWindowHeight < lScreenGeom.height())
+  if (this->mSettings.display.mainWindowWidth < lScreenGeom.width()
+      && mSettings.display.mainWindowHeight < lScreenGeom.height())
   {
-    auto lWidth{mSettings.mainWindowWidth};
-    auto lHeight{mSettings.mainWindowHeight};
+    auto lWidth{this->mSettings.display.mainWindowWidth};
+    auto lHeight{this->mSettings.display.mainWindowHeight};
 
     // The window should not be too small
     if (lWidth < 900)
@@ -344,14 +346,14 @@ void MFBOPresetCreator::showWindow()
   }
 
   // Select the main window opening mode
-  if (mSettings.mainWindowOpeningMode == WindowOpeningMode::MINIMIZED)
+  if (this->mSettings.display.mainWindowOpeningMode == WindowOpeningMode::MINIMIZED)
   {
     this->showMinimized();
 
     // Make the taskbar icon blink (Windows only)
     QApplication::alert(this, 4000);
   }
-  else if (mSettings.mainWindowOpeningMode == WindowOpeningMode::WINDOWED)
+  else if (this->mSettings.display.mainWindowOpeningMode == WindowOpeningMode::WINDOWED)
   {
     this->show();
   }
@@ -360,7 +362,7 @@ void MFBOPresetCreator::showWindow()
   auto lPosY{(lScreenGeom.height() - this->frameGeometry().height()) / 2 + 31};
   this->setGeometry(QRect(lPosX, lPosY, this->geometry().width(), this->geometry().height()));
 
-  if (mSettings.mainWindowOpeningMode == WindowOpeningMode::MAXIMIZED)
+  if (this->mSettings.display.mainWindowOpeningMode == WindowOpeningMode::MAXIMIZED)
   {
     this->showMaximized();
   }
@@ -376,7 +378,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
 {
   auto lQSSFileName{QString()};
 
-  switch (this->mSettings.appTheme)
+  switch (this->mSettings.display.applicationTheme)
   {
     case GUITheme::WINDOWS_VISTA:
       break;
@@ -427,7 +429,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   this->enableLineEditPlaceholders(lLineEditsToReactivate);
 
   // Reset icons color
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>(QString("edit_filters"))};
   lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
@@ -574,11 +576,11 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   this->initializeGUI();
 
-  // TODO: Correct the behavior of the popup, when the main window launches as minimized
-  if (this->mSettings.startupAction == StartupAction::CHECK_FOR_UPDATES && !lTitle.isEmpty() && !lMessage.isEmpty())
+  // TODO: Fix the buggy behavior of the popup, when the main window launches as minimized
+  if (this->mSettings.general.startupAction == StartupAction::CHECK_FOR_UPDATES && !lTitle.isEmpty() && !lMessage.isEmpty())
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
     if (aResult == "fetch_error")
     {
@@ -594,8 +596,8 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
                                         tr("Download and install the update now"),
                                         tr("Download later"),
                                         "",
-                                        this->mSettings.successColor,
-                                        this->mSettings.dangerColor,
+                                        this->mSettings.display.successColor,
+                                        this->mSettings.display.dangerColor,
                                         "",
                                         true)
           == ButtonClicked::YES)
@@ -622,13 +624,13 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     this->applyGlobalStyleSheet();
 
     // Set the font properties
-    applyFont(aSettings.font.family,
-              aSettings.font.styleName,
-              aSettings.font.size,
-              aSettings.font.weight,
-              aSettings.font.italic,
-              aSettings.font.underline,
-              aSettings.font.strikeOut);
+    applyFont(aSettings.display.font.family,
+              aSettings.display.font.styleName,
+              aSettings.display.font.size,
+              aSettings.display.font.weight,
+              aSettings.display.font.italic,
+              aSettings.display.font.underline,
+              aSettings.display.font.strikeOut);
   }
 }
 
@@ -653,7 +655,7 @@ void MFBOPresetCreator::saveProject(const bool aIsQuittingContext)
 void MFBOPresetCreator::quickRelaunch()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())
@@ -670,9 +672,9 @@ void MFBOPresetCreator::quickRelaunch()
                                                  tr("Quickly restart the application"),
                                                  tr("Go back to the application"),
                                                  tr("Save the project and quit the application"),
-                                                 this->mSettings.dangerColor,
-                                                 this->mSettings.successColor,
-                                                 this->mSettings.warningColor,
+                                                 this->mSettings.display.dangerColor,
+                                                 this->mSettings.display.successColor,
+                                                 this->mSettings.display.warningColor,
                                                  false)};
 
   if (lUserAnswer == ButtonClicked::YES)

@@ -32,14 +32,24 @@ private:
   void setupDisplayTab(QTabWidget& aTabWidget);
   void setupGeneralTab(QTabWidget& aTabWidget);
   void setupPresetCreatorTab(QTabWidget& aTabWidget);
+  void setupBatchConversionToolTab(QTabWidget& aTabWidget);
   void setupRetargetingToolTab(QTabWidget& aTabWidget);
-  void setupAssistedConversionTab(QTabWidget& aTabWidget);
   void setupLastPathsTab(QTabWidget& aTabWidget);
+
   void setupButtons(QHBoxLayout& aLayout);
 
   void createDialogOpeningModeBlock(QGridLayout& aLayout, const QString& aLabelTitle, const QString& aObjectName, const int aRow, const int aCol);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);
+  void loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsToLoad);
+  void loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsToLoad);
+  void loadGenericDialogSettings(const Struct::GenericDialogSettings& aSettingsToLoad, 
+                                 const QString& aObjectNameBodyNameSelector,
+                                 const QString& aObjectNameBodyVersionSelector,
+                                 const QString& aObjectNameFeetSelector,
+                                 const QString& aObjectNamePostActionTask);
+  
+
   Struct::Settings getSettingsFromGUI() const;
 
   // Preview on buttons
@@ -51,9 +61,9 @@ private:
   //#pragma region PRIVATE_SLOTS
   void saveSettings();
   void updateAvailableBodyVersions();
+  void updateAvailableBatchConversionBodyVersions();
   void updateAvailableUpgradeBodyVersions();
   void restoreDefaultSettings();
-  void chooseExportDirectory();
   void chooseFont();
   void chooseSuccessColor();
   void chooseWarningColor();

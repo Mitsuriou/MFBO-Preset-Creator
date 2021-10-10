@@ -35,7 +35,7 @@ RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSett
 
   // Show the window when it's completely built
   this->adjustSize();
-  aSettings.bodySlidePresetsRetargetingDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+  aSettings.display.bodySlidePresetsRetargetingDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void RetargetingTool::closeEvent(QCloseEvent* aEvent)
@@ -48,7 +48,7 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -58,8 +58,8 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the retargeting tool window"),
                                     "",
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
+                                    this->mSettings.display.dangerColor,
+                                    this->mSettings.display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -101,11 +101,11 @@ void RetargetingTool::initializeGUI()
 void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // General group box
   auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::AddIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.display.font.size);
   this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
   Utils::SetGroupBoxState(lGeneralGroupBox, false);
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
@@ -117,7 +117,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->setAlignment(Qt::AlignTop);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultRetargetingToolBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetsRetargeting.defaultBodyFeet.bodyMod)};
 
   lGeneralGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
@@ -148,7 +148,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
+  lFeetSelector->setCurrentIndex(this->mSettings.presetsRetargeting.defaultBodyFeet.feetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lBodyNameVersionWrapper->addWidget(lFeetSelector);
 
@@ -189,7 +189,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Backup group box
   auto lBackupGroupBox{new QGroupBox(tr("Backup").append("  "), this)};
-  Utils::AddIconToGroupBox(lBackupGroupBox, lIconFolder, "restore", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBackupGroupBox, lIconFolder, "restore", this->mSettings.display.font.size);
   this->connect(lBackupGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
   Utils::SetGroupBoxState(lBackupGroupBox, false);
   aLayout.addWidget(lBackupGroupBox, 1, 0);
@@ -305,7 +305,7 @@ void RetargetingTool::updateAvailableBodyVersions()
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
@@ -319,7 +319,7 @@ void RetargetingTool::chooseInputDirectory()
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
@@ -409,7 +409,7 @@ void RetargetingTool::updateBackupPreview()
 
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("backup_path_preview"))};
-  auto lNewTextColor{this->mSettings.successColor};
+  auto lNewTextColor{this->mSettings.display.successColor};
 
   if (lIsValidPath)
   {
@@ -420,17 +420,17 @@ void RetargetingTool::updateBackupPreview()
     if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
         || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
     {
-      lNewTextColor = this->mSettings.dangerColor;
+      lNewTextColor = this->mSettings.display.dangerColor;
     }
     // Check if the wanted backup directory already exists
     else if (QDir(lFullPath).exists())
     {
-      lNewTextColor = this->mSettings.warningColor;
+      lNewTextColor = this->mSettings.display.warningColor;
     }
   }
   else
   {
-    lNewTextColor = this->mSettings.dangerColor;
+    lNewTextColor = this->mSettings.display.dangerColor;
   }
 
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -823,7 +823,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   auto lMessage{tr("All the files have been correctly retargeted. You can now close this window!")};
 
   // Open the directory where the file structure has been created
-  if (mSettings.retargetingToolAutomaticallyOpenGeneratedDirectory)
+  if (this->mSettings.presetsRetargeting.automaticallyOpenFinalDirectory)
   {
     Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));

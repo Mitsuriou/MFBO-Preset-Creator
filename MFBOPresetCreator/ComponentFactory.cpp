@@ -152,7 +152,7 @@ QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)
   return lDataContainer;
 }
 
-void ComponentFactory::CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const QString& aInitialOutputPath, const int aMinimumFirstColumnWidth, const int aFontSize)
+void ComponentFactory::CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const int aMinimumFirstColumnWidth, const int aFontSize)
 {
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
@@ -178,10 +178,6 @@ void ComponentFactory::CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, c
   auto lOutputPathLineEdit{new QLineEdit(aParent)};
   lOutputPathLineEdit->setReadOnly(true);
   lOutputPathLineEdit->setObjectName(QString("output_path_directory"));
-  if (!aInitialOutputPath.isEmpty())
-  {
-    lOutputPathLineEdit->setText(aInitialOutputPath);
-  }
   lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
   // Main directory's file chooser button

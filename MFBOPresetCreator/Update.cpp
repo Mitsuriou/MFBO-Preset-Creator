@@ -96,11 +96,11 @@ void Update::initializeGUI()
   /*============*/
   auto lMainTitle{new QLabel(tr("Check for updates") + lForcedVersionSuffix, this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.font.size * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.size * 2));
   this->layout()->addWidget(lMainTitle);
 
   // Check for updates
-  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconRessourceFolder(this->mSettings.appTheme), "search_button")};
+  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme), "search_button")};
   lUpdateButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
   this->layout()->addWidget(lUpdateButton);
@@ -127,15 +127,15 @@ void Update::initializeGUI()
 void Update::overrideHTMLLinksColor(QString& aHTMLString)
 {
   // If no color change is needed
-  if (this->mSettings.appTheme != GUITheme::MITSURIOU_BLACK_THEME
-      && this->mSettings.appTheme != GUITheme::MITSURIOU_DARK_THEME
-      && this->mSettings.appTheme != GUITheme::MITSURIOU_LIGHT_THEME)
+  if (this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_BLACK_THEME
+      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_DARK_THEME
+      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_LIGHT_THEME)
   {
     return;
   }
 
   // Hacky links' colors override for some themes
-  const auto lLinksColorOverride(this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
+  const auto lLinksColorOverride(this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
 
   // Go through the string to find the link colors
   auto i{0};
@@ -180,7 +180,7 @@ void Update::displayUpdateMessage(const QString& aResult)
 
   if (aResult == "fetch_error")
   {
-    QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath)));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Check for updates once again"));
@@ -212,7 +212,7 @@ void Update::displayUpdateMessage(const QString& aResult)
       }
 
       // A new beta version is available
-      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Download the update"));
@@ -251,7 +251,7 @@ void Update::displayUpdateMessage(const QString& aResult)
       }
 
       // A new stable version is available
-      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Download the update"));
@@ -278,7 +278,7 @@ void Update::displayUpdateMessage(const QString& aResult)
     else
     {
       // The user runs the latest version
-      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
+      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setDisabled(true);
@@ -320,7 +320,7 @@ void Update::downloadLatestUpdate()
   lSearchButton->setToolTip(tr("Cancel the download"));
 
   // Update the icon in case the user had an error before
-  QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+  QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
   lSearchButton->setIcon(QIcon(QPixmap(lPath)));
   lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
 
@@ -494,7 +494,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
     if (Utils::IsRunningStandaloneVersion())
     {
       // The app has been downloaded
-      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/folder" : ":/black/folder"};
+      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/folder" : ":/black/folder"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Show the ZIP file in Windows Explorer"));
@@ -518,7 +518,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
     else
     {
       // The app has been downloaded
-      QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
+      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Close MFBOPC and install the update"));
@@ -548,7 +548,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
   else
   {
     // Error while downloading
-    QString lPath{Utils::IsThemeDark(mSettings.appTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath)));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Try to download the update once again"));

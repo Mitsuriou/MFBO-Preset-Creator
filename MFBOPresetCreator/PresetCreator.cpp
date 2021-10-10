@@ -50,7 +50,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
   if (!aSkipFileChooser)
   {
     // Open a file chooser dialog
-    const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
+    const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastLoadedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
     lFileToLoad = QFileDialog::getOpenFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
   }
 
@@ -66,13 +66,13 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Unsaved data"),
                                       tr("It seems that you have some unsaved data. Do you still want to open the project file \"%1\"?").arg(lFileToLoad),
-                                      Utils::GetIconRessourceFolder(this->mSettings.appTheme),
+                                      Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme),
                                       "help-circle",
                                       tr("Open the project without saving"),
                                       tr("Cancel the file opening"),
                                       "",
-                                      this->mSettings.dangerColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.dangerColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       false)
         != ButtonClicked::YES)
@@ -96,7 +96,7 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
   if (aIsSaveAsContext || (!aIsSaveAsContext && this->mLastUsedSavePath.isEmpty()))
   {
     // Open a file saver dialog
-    const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.eachButtonSavesItsLastUsedPath)};
+    const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
     lFilePath = QFileDialog::getSaveFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
     Utils::UpdatePathAtKey(this->mLastPaths, "lastSavedProject", lFilePath);
 
@@ -113,7 +113,7 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   Utils::SaveAsJsonFile(this->saveValuesToJsonObject(), lFilePath, this, lIconFolder);
   this->setHasUserDoneSomething(false);
@@ -254,13 +254,13 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
     if (Utils::DisplayQuestionMessage(this,
                                       tr("One mesh data was not assigned"),
                                       lMessage,
-                                      Utils::GetIconRessourceFolder(this->mSettings.appTheme),
+                                      Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme),
                                       "help-circle",
                                       tr("Clear all the unassigned entries"),
                                       tr("Keep the currently set values for the unassigned entries"),
                                       "",
-                                      this->mSettings.warningColor,
-                                      this->mSettings.warningColor,
+                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.warningColor,
                                       "",
                                       false)
         == ButtonClicked::YES)
@@ -300,11 +300,11 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Body meshes group box
   auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes").append("  "), this)};
-  Utils::AddIconToGroupBox(lMeshesGroupBox, lIconFolder, "body", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lMeshesGroupBox, lIconFolder, "body", this->mSettings.display.font.size);
   this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::SetGroupBoxState(lMeshesGroupBox, false);
   aLayout.addWidget(lMeshesGroupBox, 0, 0);
@@ -396,11 +396,11 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::AddIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.display.font.size);
   this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::SetGroupBoxState(lSkeletonGroupBox, false);
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
@@ -494,11 +494,11 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
   this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
   Utils::SetGroupBoxState(lBodyslideGroupBox, false);
   aLayout.addWidget(lBodyslideGroupBox, 2, 0);
@@ -511,7 +511,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(mSettings.defaultMainWindowBody)};
+  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetCreator.defaultBodyFeet.bodyMod)};
 
   lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
@@ -542,7 +542,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lFeetSelector->setItemDelegate(new QStyledItemDelegate());
   lFeetSelector->setCursor(Qt::PointingHandCursor);
   lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(mSettings.defaultMainFeetMod);
+  lFeetSelector->setCurrentIndex(this->mSettings.presetCreator.defaultBodyFeet.feetMod);
   lFeetSelector->setObjectName(QString("feet_mod_selector"));
   lBodyNameVersionWrapper->addWidget(lFeetSelector);
 
@@ -630,10 +630,10 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, mSettings.mainWindowOutputPath, this->mMinimumFirstColumnWidth, this->mSettings.font.size);
+  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
   auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
   this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
 
@@ -654,7 +654,7 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 void PresetCreator::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Generate button
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Generate the files on my computer"), "", "build", lIconFolder)};
@@ -911,7 +911,7 @@ void PresetCreator::updateMeshesPreview()
   lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet, lFeetName));
   lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands, lHandsName));
 
-  auto lNewTextColor{this->mSettings.successColor};
+  auto lNewTextColor{this->mSettings.display.successColor};
 
   if (lIsValidPath)
   {
@@ -919,12 +919,12 @@ void PresetCreator::updateMeshesPreview()
         || (!lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathFeet.length() < 8))
         || (!lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathHands.length() < 8)))
     {
-      lNewTextColor = this->mSettings.warningColor;
+      lNewTextColor = this->mSettings.display.warningColor;
     }
   }
   else
   {
-    lNewTextColor = this->mSettings.dangerColor;
+    lNewTextColor = this->mSettings.display.dangerColor;
   }
 
   lPreviewLabel->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -945,7 +945,7 @@ void PresetCreator::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.successColor, this->mSettings.warningColor, this->mSettings.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
 }
 
 void PresetCreator::updateOSPXMLPreview(QString aText)
@@ -969,11 +969,11 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
       "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
       .arg(aText));
 
-  auto lNewTextColor{this->mSettings.successColor};
+  auto lNewTextColor{this->mSettings.display.successColor};
 
   if (!lIsValidPath)
   {
-    lNewTextColor = this->mSettings.dangerColor;
+    lNewTextColor = this->mSettings.display.dangerColor;
   }
 
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -1006,11 +1006,11 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
   lConstructedPreviewText.append(Utils::GetHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
-  auto lNewTextColor{this->mSettings.successColor};
+  auto lNewTextColor{this->mSettings.display.successColor};
 
   if (!lIsValidPath)
   {
-    lNewTextColor = this->mSettings.dangerColor;
+    lNewTextColor = this->mSettings.display.dangerColor;
   }
 
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_bodyslide_preview"))};
@@ -1106,16 +1106,16 @@ void PresetCreator::updateSkeletonPreview()
 
     if (!lStart || (lStart && lSkeletonPath.length() < 8))
     {
-      lNewTextColor = this->mSettings.warningColor;
+      lNewTextColor = this->mSettings.display.warningColor;
     }
     else
     {
-      lNewTextColor = this->mSettings.successColor;
+      lNewTextColor = this->mSettings.display.successColor;
     }
   }
   else if (this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->isChecked())
   {
-    lNewTextColor = this->mSettings.dangerColor;
+    lNewTextColor = this->mSettings.display.dangerColor;
   }
 
   lOutputPathPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -1125,7 +1125,7 @@ void PresetCreator::updateSkeletonPreview()
 void PresetCreator::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
   auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "mainWindowOutput", lPath);
@@ -1135,7 +1135,7 @@ void PresetCreator::chooseExportDirectory()
 void PresetCreator::generateDirectoryStructure()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Selected body
   auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
@@ -1226,8 +1226,8 @@ void PresetCreator::generateDirectoryStructure()
                                       tr("Continue the files generation"),
                                       tr("Cancel the files generation"),
                                       "",
-                                      this->mSettings.warningColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)
@@ -1367,12 +1367,12 @@ void PresetCreator::generateDirectoryStructure()
   auto lMessage{tr("Every file has been correctly generated. You can now exit the application or create another conversion!")};
 
   // Open the directory where the file structure has been created
-  if (mSettings.mainWindowAutomaticallyOpenGeneratedDirectory)
+  if (this->mSettings.presetCreator.automaticallyOpenFinalDirectory)
   {
-    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
+    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the generated directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
-  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }

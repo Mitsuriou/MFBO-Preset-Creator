@@ -12,7 +12,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   , mCallContext(aCallContext)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(aSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(aSettings.display.applicationTheme)};
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
@@ -20,7 +20,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   this->setLayout(lMainLayout);
 
   auto lSection{new QGroupBox(aSectionTitle + QString("  "), this)};
-  Utils::AddIconToGroupBox(lSection, lIconFolder, aSectionIconName, aSettings.font.size);
+  Utils::AddIconToGroupBox(lSection, lIconFolder, aSectionIconName, aSettings.display.font.size);
   this->connect(lSection, &QGroupBox::toggled, this, &BCGroupWidget::groupBoxChecked);
   Utils::SetGroupBoxState(lSection, false);
 

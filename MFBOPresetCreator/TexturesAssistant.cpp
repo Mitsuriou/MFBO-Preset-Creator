@@ -28,7 +28,7 @@ TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& a
 
   // Show the window when it's completely built
   this->adjustSize();
-  aSettings.texturesAssistantDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+  aSettings.display.texturesAssistantDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
@@ -40,7 +40,7 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -50,8 +50,8 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the textures assistant window"),
                                     "",
-                                    this->mSettings.dangerColor,
-                                    this->mSettings.successColor,
+                                    this->mSettings.display.dangerColor,
+                                    this->mSettings.display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -81,7 +81,7 @@ void TexturesAssistant::setWindowProperties()
 void TexturesAssistant::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Main window layout
   auto lMainGrid{new QGridLayout(this)};
@@ -277,12 +277,12 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
   auto lRowIndex{0};
 
   // Head ressources blocks
   auto lHeadGroup{new QGroupBox(tr("Head textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lHeadGroup, lIconFolder, "woman-head", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lHeadGroup, lIconFolder, "woman-head", this->mSettings.display.font.size);
   this->connect(lHeadGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::SetGroupBoxState(lHeadGroup, false);
 
@@ -294,7 +294,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Hands ressources blocks
   auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.display.font.size);
   this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::SetGroupBoxState(lHandsGroup, false);
 
@@ -306,7 +306,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Body ressources blocks
   auto lBodyGroup{new QGroupBox(tr("Body textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyGroup, lIconFolder, "body", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lBodyGroup, lIconFolder, "body", this->mSettings.display.font.size);
   this->connect(lBodyGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::SetGroupBoxState(lBodyGroup, false);
 
@@ -318,7 +318,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
 
   // Other textures files
   auto lOtherGroup{new QGroupBox(tr("Other .DDS textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lOtherGroup, lIconFolder, "textures", this->mSettings.font.size);
+  Utils::AddIconToGroupBox(lOtherGroup, lIconFolder, "textures", this->mSettings.display.font.size);
   this->connect(lOtherGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
   Utils::SetGroupBoxState(lOtherGroup, false);
 
@@ -354,7 +354,7 @@ void TexturesAssistant::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantInput", lPath);
@@ -375,7 +375,7 @@ void TexturesAssistant::chooseInputDirectory()
 void TexturesAssistant::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
@@ -390,8 +390,8 @@ void TexturesAssistant::launchSearchProcess()
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
-                                      this->mSettings.warningColor,
-                                      this->mSettings.successColor,
+                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)

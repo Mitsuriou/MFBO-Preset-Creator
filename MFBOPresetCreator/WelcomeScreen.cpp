@@ -12,7 +12,7 @@
 WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
-  , mInitializationStartupAction(aSettings.startupAction)
+  , mInitializationStartupAction(aSettings.general.startupAction)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -35,15 +35,15 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
   auto lSettingsCopy{this->mSettings};
   if (this->mInitializationStartupAction == StartupAction::OPEN_WELCOME_SCREEN && !lShowHideWelcomeScreen->isChecked())
   {
-    lSettingsCopy.startupAction = StartupAction::CHECK_FOR_UPDATES;
+    lSettingsCopy.general.startupAction = StartupAction::CHECK_FOR_UPDATES;
   }
   else if (lShowHideWelcomeScreen->isChecked())
   {
-    lSettingsCopy.startupAction = StartupAction::OPEN_WELCOME_SCREEN;
+    lSettingsCopy.general.startupAction = StartupAction::OPEN_WELCOME_SCREEN;
   }
   else
   {
-    lSettingsCopy.startupAction = this->mInitializationStartupAction;
+    lSettingsCopy.general.startupAction = this->mInitializationStartupAction;
   }
 
   Utils::SaveSettingsToFile(lSettingsCopy);
@@ -72,7 +72,7 @@ void WelcomeScreen::setWindowProperties()
 void WelcomeScreen::initializeGUI()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.appTheme)};
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Main layout
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, true, false)};
@@ -80,7 +80,11 @@ void WelcomeScreen::initializeGUI()
   /*================================*/
   /* Show / Hide the welcome screen */
   /*================================*/
-  auto lShowHideWelcomeScreen{ComponentFactory::CreateCheckBox(this, tr("Show the welcome screen at application startup"), "", "always_show_welcome_screen", this->mSettings.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
+  auto lShowHideWelcomeScreen{ComponentFactory::CreateCheckBox(this,
+                                                               tr("Show the welcome screen at application startup"),
+                                                               "",
+                                                               "always_show_welcome_screen",
+                                                               this->mSettings.general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
   lMainLayout->addWidget(lShowHideWelcomeScreen);
 
   /*============*/
@@ -88,14 +92,14 @@ void WelcomeScreen::initializeGUI()
   /*============*/
   auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::GetApplicationVersion()), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.font.size * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.size * 2));
   lMainLayout->addWidget(lMainTitle);
 
   /*=================*/
   /* CURRENT VERSION */
   /*=================*/
   // Current version's release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Current version's release notes"), this->mSettings.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Current version's release notes"), this->mSettings.display.font.size));
 
   // Current version's status label
   auto lCurrentVersionStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
@@ -113,7 +117,7 @@ void WelcomeScreen::initializeGUI()
   /* STABLE */
   /*========*/
   // Stable version release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest stable release notes"), this->mSettings.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest stable release notes"), this->mSettings.display.font.size));
 
   // Latest stable release notes
   auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
@@ -128,7 +132,14 @@ void WelcomeScreen::initializeGUI()
   lMainLayout->addWidget(lStableStatusLabel);
 
   // Download stable update button
-  auto lDownloadStableUpdate{ComponentFactory::CreateButton(this, tr("Download the latest stable update"), "", "cloud-download", lIconFolder, "download_stable_update", false, true)};
+  auto lDownloadStableUpdate{ComponentFactory::CreateButton(this,
+                                                            tr("Download the latest stable update"),
+                                                            "",
+                                                            "cloud-download",
+                                                            lIconFolder,
+                                                            "download_stable_update",
+                                                            false,
+                                                            true)};
   lMainLayout->addWidget(lDownloadStableUpdate);
   lDownloadStableUpdate->hide();
 
@@ -136,7 +147,7 @@ void WelcomeScreen::initializeGUI()
   /* BETA */
   /*======*/
   // BETA version release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest BETA release notes"), this->mSettings.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest BETA release notes"), this->mSettings.display.font.size));
 
   // Latest BETA release notes
   auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
@@ -151,14 +162,21 @@ void WelcomeScreen::initializeGUI()
   lMainLayout->addWidget(lBetaStatusLabel);
 
   // Download BETA update button
-  auto lDownloadBetaUpdate{ComponentFactory::CreateButton(this, tr("Download the latest BETA update"), "", "cloud-download", lIconFolder, "download_beta_update", false, true)};
+  auto lDownloadBetaUpdate{ComponentFactory::CreateButton(this,
+                                                          tr("Download the latest BETA update"),
+                                                          "",
+                                                          "cloud-download",
+                                                          lIconFolder,
+                                                          "download_beta_update",
+                                                          false,
+                                                          true)};
   lMainLayout->addWidget(lDownloadBetaUpdate);
   lDownloadBetaUpdate->hide();
 
   /*===================*/
   /* Incoming features */
   /*===================*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.display.font.size));
 
   auto lIncomingFeaturesLabel{new QLabel(tr("You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:"), this)};
   lIncomingFeaturesLabel->setWordWrap(true);
@@ -170,7 +188,7 @@ void WelcomeScreen::initializeGUI()
   /*==============*/
   /* Known issues */
   /*==============*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.display.font.size));
 
   auto lKnownIssuesLabel{new QLabel(tr("You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:"), this)};
   lKnownIssuesLabel->setWordWrap(true);
@@ -182,7 +200,7 @@ void WelcomeScreen::initializeGUI()
   /*=====================*/
   /* Guide and tutorials */
   /*=====================*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.display.font.size));
 
   auto lGuideLabel{new QLabel(tr("Whether it is your first time using the application or you're wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:"), this)};
   lGuideLabel->setWordWrap(true);
@@ -208,11 +226,11 @@ QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, 
   // Hacky links' colors override for some themes
   auto lColorOverride{QString()};
 
-  if (this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME
-      || this->mSettings.appTheme == GUITheme::MITSURIOU_DARK_THEME
-      || this->mSettings.appTheme == GUITheme::MITSURIOU_LIGHT_THEME)
+  if (this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME
+      || this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_DARK_THEME
+      || this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_LIGHT_THEME)
   {
-    lColorOverride = this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff;") : QString("color:#e95985;");
+    lColorOverride = this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff;") : QString("color:#e95985;");
   }
 
   lLabel->setStyleSheet(QString("font-size: %1pt; %2").arg(static_cast<int>(floor(aAppFontSize * 1.75))).arg(lColorOverride));
@@ -223,15 +241,15 @@ QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, 
 void WelcomeScreen::overrideHTMLLinksColor(QString& aHTMLString)
 {
   // If no color change is needed
-  if (this->mSettings.appTheme != GUITheme::MITSURIOU_BLACK_THEME
-      && this->mSettings.appTheme != GUITheme::MITSURIOU_DARK_THEME
-      && this->mSettings.appTheme != GUITheme::MITSURIOU_LIGHT_THEME)
+  if (this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_BLACK_THEME
+      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_DARK_THEME
+      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_LIGHT_THEME)
   {
     return;
   }
 
   // Hacky links' colors override for some themes
-  const auto lLinksColorOverride(this->mSettings.appTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
+  const auto lLinksColorOverride(this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
 
   // Go through the string to find the link colors
   auto i{0};
