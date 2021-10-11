@@ -619,11 +619,8 @@ void BatchConversionPicker::removeActivePreset()
 
   // Update the preset interface block
   auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
-  this->updatePresetInterfaceState(lNumberOfPresets);
-
-  // Display the new focused preset
   auto lNextIndex{lCurrentIndex > lNumberOfPresets ? lNumberOfPresets : lCurrentIndex};
-  lActivePresetNumber->setValue(lNextIndex);
+  this->updatePresetInterfaceState(lNextIndex);
 }
 
 void BatchConversionPicker::addNewEmptyPreset()
