@@ -367,14 +367,17 @@ QString SliderFileBuilder::GetFeetLineForBHUNP(const int aFeetModIndex)
 std::vector<Struct::Filter> SliderFileBuilder::GetXMLDefaultFiltersFromBody(const BodyNameVersion& aBody)
 {
   auto lDefaultFilters{std::vector<Struct::Filter>()};
+
+  // Push the MFBO filter for any body base
   lDefaultFilters.push_back(Struct::Filter("MFBO", true, true, true));
 
   if (Utils::IsCBBEBasedBody(aBody))
   {
+    // Common filters
     lDefaultFilters.push_back(Struct::Filter("CBBE", true, true, true));
     lDefaultFilters.push_back(Struct::Filter("CBBE Bodies", true, true, true));
 
-    auto lBodyMod{static_cast<BodyName>(DataLists::GetSplittedNameVersionFromBodyVersion(aBody).first)};
+    const auto lBodyMod{static_cast<BodyName>(DataLists::GetSplittedNameVersionFromBodyVersion(aBody).first)};
 
     // For Mimir only
     if (lBodyMod == BodyName::MIMIR_EBONIC_BODY)

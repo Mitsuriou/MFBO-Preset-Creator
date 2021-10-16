@@ -33,25 +33,9 @@ public:
   static ApplicationVersionRelative CompareVersionNumbers(const QString& aVersionNumber1, const QString& aVersionNumber2);
 
   // Message boxes
-  static void DisplayInfoMessage(QWidget* aParent,
-                                 const QString& aTitle,
-                                 const QString& aMessage,
-                                 const QString& aIconFolder,
-                                 const QString& aIconName,
-                                 const QString& aButtonText);
+  static void DisplayInfoMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aButtonText);
   static void DisplayWarningMessage(const QString& aMessage);
-  static ButtonClicked DisplayQuestionMessage(QWidget* aParent,
-                                              const QString& aTitle,
-                                              const QString& aMessage,
-                                              const QString& aIconFolder,
-                                              const QString& aIconName,
-                                              const QString& aTextBtnYes,
-                                              const QString& aTextBtnNo,
-                                              const QString& aTextBtnOther,
-                                              const QString& aColorYesBtn,
-                                              const QString& aColorNoBtn,
-                                              const QString& aColorOtherBtn,
-                                              const bool aIsYesBtnDefault);
+  static ButtonClicked DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault);
   static void DisplayErrorMessage(const QString& aMessage);
 
   // GitHub API
@@ -73,33 +57,9 @@ public:
   static QString GetIconRessourceFolder(const GUITheme& aTheme);
 
   // Skyrim related stuff
-  static bool generateXMLFile(const QString& aEntryDirectory,
-                              const bool aGenerateFilesInExistingMainDirectory,
-                              const QString& aOSPXMLNames,
-                              const bool aMustUseBeastHands,
-                              const BodyNameVersion& aBodySelected,
-                              const int aFeetModIndex,
-                              const QString& aBodyslideSlidersetsNames,
-                              const std::vector<Struct::Filter>& aBodySlideFilters,
-                              const bool aIsBatchConversionPreset);
-  static bool generateOSPFile(const QString& aEntryDirectory,
-                              const bool aGenerateFilesInExistingMainDirectory,
-                              const QString& aOSPXMLNames,
-                              const bool aMustUseBeastHands,
-                              const int aBodySelected,
-                              const int aFeetModIndex,
-                              const QString& aBodyslideSlidersetsNames,
-                              QString aMeshesPathBody,
-                              QString aMeshesPathFeet,
-                              QString aMeshesPathHands,
-                              const QString& aBodyName,
-                              const QString& aFeetName,
-                              const QString& aHandsName,
-                              const bool aIsBatchConversionPreset);
-  static bool generateSkeletonFile(const QString& aSourcePath,
-                                   const QString& aDestinationEntryDirectory,
-                                   const QString& aDestinationRelativePath,
-                                   const QString& aDestinationFileName);
+  static bool generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset);
+  static bool generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName, const bool aIsBatchConversionPreset);
+  static bool generateSkeletonFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName);
 
   static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
   template<typename T>

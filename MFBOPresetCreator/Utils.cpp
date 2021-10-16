@@ -157,12 +157,7 @@ ApplicationVersionRelative Utils::CompareVersionNumbers(const QString& aVersionN
   return ApplicationVersionRelative::EQUIVALENT;
 }
 
-void Utils::DisplayInfoMessage(QWidget* aParent,
-                               const QString& aTitle,
-                               const QString& aMessage,
-                               const QString& aIconFolder,
-                               const QString& aIconName,
-                               const QString& aButtonText)
+void Utils::DisplayInfoMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aButtonText)
 {
   QMessageBox lInformationBox(QMessageBox::Icon::Information, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
   lInformationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
@@ -186,18 +181,7 @@ void Utils::DisplayWarningMessage(const QString& aMessage)
   lWarningBox.exec();
 }
 
-ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent,
-                                            const QString& aTitle,
-                                            const QString& aMessage,
-                                            const QString& aIconFolder,
-                                            const QString& aIconName,
-                                            const QString& aTextBtnYes,
-                                            const QString& aTextBtnNo,
-                                            const QString& aTextBtnOther,
-                                            const QString& aColorYesBtn,
-                                            const QString& aColorNoBtn,
-                                            const QString& aColorOtherBtn,
-                                            const bool aIsYesBtnDefault)
+ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent, const QString& aTitle, const QString& aMessage, const QString& aIconFolder, const QString& aIconName, const QString& aTextBtnYes, const QString& aTextBtnNo, const QString& aTextBtnOther, const QString& aColorYesBtn, const QString& aColorNoBtn, const QString& aColorOtherBtn, const bool aIsYesBtnDefault)
 {
   QMessageBox lConfirmationBox(QMessageBox::Icon::Question, aTitle, aMessage, QMessageBox::StandardButton::NoButton, aParent);
   lConfirmationBox.setIconPixmap(QPixmap(QString(":/%1/%2").arg(aIconFolder, aIconName)).scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
@@ -453,15 +437,7 @@ QString Utils::GetIconRessourceFolder(const GUITheme& aTheme)
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-bool Utils::generateXMLFile(const QString& aEntryDirectory,
-                            const bool aGenerateFilesInExistingMainDirectory,
-                            const QString& aOSPXMLNames,
-                            const bool aMustUseBeastHands,
-                            const BodyNameVersion& aBodySelected,
-                            const int aFeetModIndex,
-                            const QString& aBodyslideSlidersetsNames,
-                            const std::vector<Struct::Filter>& aBodySlideFilters,
-                            const bool aIsBatchConversionPreset)
+bool Utils::generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -500,20 +476,7 @@ bool Utils::generateXMLFile(const QString& aEntryDirectory,
   return true;
 }
 
-bool Utils::generateOSPFile(const QString& aEntryDirectory,
-                            const bool aGenerateFilesInExistingMainDirectory,
-                            const QString& aOSPXMLNames,
-                            const bool aMustUseBeastHands,
-                            const int aBodySelected,
-                            const int aFeetModIndex,
-                            const QString& aBodyslideSlidersetsNames,
-                            QString aMeshesPathBody,
-                            QString aMeshesPathFeet,
-                            QString aMeshesPathHands,
-                            const QString& aBodyName,
-                            const QString& aFeetName,
-                            const QString& aHandsName,
-                            const bool aIsBatchConversionPreset)
+bool Utils::generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName, const bool aIsBatchConversionPreset)
 {
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
@@ -560,10 +523,7 @@ bool Utils::generateOSPFile(const QString& aEntryDirectory,
   return true;
 }
 
-bool Utils::generateSkeletonFile(const QString& aSourcePath,
-                                 const QString& aDestinationEntryDirectory,
-                                 const QString& aDestinationRelativePath,
-                                 const QString& aDestinationFileName)
+bool Utils::generateSkeletonFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName)
 {
   if (!aDestinationRelativePath.isEmpty())
   {
@@ -869,24 +829,30 @@ bool Utils::IsPresetUsingBeastHands(const QString& aPath)
 
 QString Utils::GetHandsSliderValue(const BodyNameVersion& aBody, const bool aMustUseBeastHands)
 {
-  if (Utils::IsCBBEBasedBody(aBody) && aMustUseBeastHands)
+  if (Utils::IsCBBEBasedBody(aBody))
   {
-    return QString("%1 - CBBE Hands Beast");
-  }
+    if (aMustUseBeastHands)
+    {
+      return QString("%1 - CBBE Hands Beast");
+    }
 
-  switch (aBody)
-  {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
+    const auto lBodyMod{static_cast<BodyName>(DataLists::GetSplittedNameVersionFromBodyVersion(aBody).first)};
+
+    // For Mimir or CBBE 3BBB 3BA
+    if (lBodyMod == BodyName::MIMIR_EBONIC_BODY || lBodyMod == BodyName::CBBE_3BBB_3BA)
+    {
       return QString("%1 - CBBE 3BBB Hands");
-    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+    }
+
+    // For CBBE 3BBB SMP
+    if (lBodyMod == BodyName::CBBE_SMP_3BBB)
+    {
       return QString("%1 - CBBE Hands");
-    default: // UNP-based bodies
-      return QString("%1 - BHUNP 3BBB Advanced Hands");
+    }
+  }
+  else
+  {
+    return QString("%1 - BHUNP 3BBB Advanced Hands");
   }
 }
 
