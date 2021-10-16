@@ -320,6 +320,12 @@ QString SliderFileBuilder::BuildXMLFileContent(const QString& aLineName,
           lBuiltContent.append("%1%1<Member name=\"%2 - BHUNP 3BBB Advanced Hands\"/>\n");
         }
         break;
+      case BodyNameVersion::INVALID_VALUE:
+        // It should not be possible to reach this statement
+        break;
+      default:
+        // It should not be possible to reach this statement
+        break;
     }
 
     lBuiltContent.append("%1</Group>\n");
@@ -368,21 +374,18 @@ std::vector<Struct::Filter> SliderFileBuilder::GetXMLDefaultFiltersFromBody(cons
     lDefaultFilters.push_back(Struct::Filter("CBBE", true, true, true));
     lDefaultFilters.push_back(Struct::Filter("CBBE Bodies", true, true, true));
 
-    // More specific filters
-    switch (aBody)
+    auto lBodyMod{static_cast<BodyName>(DataLists::GetSplittedNameVersionFromBodyVersion(aBody).first)};
+
+    // For Mimir only
+    if (lBodyMod == BodyName::MIMIR_EBONIC_BODY)
     {
-      case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-      case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
-        lDefaultFilters.push_back(Struct::Filter("3BA", true, true, true));
-#if __cplusplus >= 201703L // C++17 and newer
-        [[fallthrough]];
-#endif
-      case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-      case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-      case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-        lDefaultFilters.push_back(Struct::Filter("3BBB", true, true, true));
-        break;
+      lDefaultFilters.push_back(Struct::Filter("3BA", true, true, true));
+    }
+
+    // For Mimir or CBBE 3BBB 3BA
+    if (lBodyMod == BodyName::MIMIR_EBONIC_BODY || lBodyMod == BodyName::CBBE_3BBB_3BA)
+    {
+      lDefaultFilters.push_back(Struct::Filter("3BBB", true, true, true));
     }
   }
   else

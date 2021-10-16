@@ -52,6 +52,7 @@ public:
                                               const QString& aColorNoBtn,
                                               const QString& aColorOtherBtn,
                                               const bool aIsYesBtnDefault);
+  static void DisplayErrorMessage(const QString& aMessage);
 
   // GitHub API
   static VersionsInformation ParseGitHubReleasesRequestResult(const QString& aResult);

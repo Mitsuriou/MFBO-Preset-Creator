@@ -30,7 +30,8 @@ private:
   void setupSkeletonGUI(QGridLayout& aLayout);
   void setupBodySlideGUI(QGridLayout& aLayout);
   void setupOutputGUI(QGridLayout& aLayout);
-  void setupRemainingGUI(QGridLayout& aLayout);
+  void setupScanTweaksGUI(QGridLayout& aLayout);
+  void setupGenerationAdjustmentGUI(QGridLayout& aLayout);
   void setupButtons(QHBoxLayout& aLayout);
 
   void launchPicker(const std::map<QString, std::set<QString>>& aScannedData, const bool aMustGenerateFilesInExistingDirectory);

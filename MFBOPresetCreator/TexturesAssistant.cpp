@@ -231,7 +231,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   {
     const auto& lFilePath{lNifFile.second.first.toStdString()};
     const auto& lFileName{lNifFile.second.second};
-    std::map<std::string, std::vector<QString>>* lMap = nullptr;
+    std::map<std::string, std::vector<QString>>* lMap{nullptr};
 
     if (lFileName.contains("head"))
     {
@@ -246,14 +246,17 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
       lMap = &lGroupedPaths.bodyTextures;
     }
 
-    auto lPosition{lMap->find(lFilePath)};
-    if (lPosition == lMap->end())
+    if (lMap != nullptr)
     {
-      lMap->insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
-    }
-    else
-    {
-      lPosition->second.push_back(lFileName);
+      auto lPosition{lMap->find(lFilePath)};
+      if (lPosition == lMap->end())
+      {
+        lMap->insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
+      }
+      else
+      {
+        lPosition->second.push_back(lFileName);
+      }
     }
   }
 

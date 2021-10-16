@@ -25,10 +25,10 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
   this->setLayout(lMainLayout);
 
   // Tweak the group box text and icon
-  auto lGroupBoxTitle{tr("Unknown mesh type")};
-  auto lGroupBoxIcon{QString("mesh")};
+  QString lGroupBoxTitle;
+  QString lGroupBoxIcon;
 
-  auto lRessourceType{Utils::GetMeshTypeFromFileName(aRessourcePath)};
+  const auto lRessourceType{Utils::GetMeshTypeFromFileName(aRessourcePath)};
   switch (lRessourceType)
   {
     case BCGroupWidgetCallContext::BODY:
@@ -55,21 +55,25 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
       lGroupBoxTitle = tr("Skeleton mesh");
       lGroupBoxIcon = "skeleton";
       break;
+    case BCGroupWidgetCallContext::UNDEFINED:
+      lGroupBoxTitle = tr("Unknown mesh type");
+      lGroupBoxIcon = "mesh";
+      break;
   }
 
-  auto lSection{new QGroupBox(lGroupBoxTitle.append("  "), this)};
+  const auto lSection{new QGroupBox(lGroupBoxTitle.append("  "), this)};
   Utils::AddIconToGroupBox(lSection, lIconFolder, lGroupBoxIcon, aSettings.display.font.size);
   this->connect(lSection, &QGroupBox::toggled, this, &BCDragWidget::groupBoxChecked);
   Utils::SetGroupBoxState(lSection, false);
 
-  auto lSectionLayout{new QVBoxLayout(this)};
+  const auto lSectionLayout{new QVBoxLayout(this)};
   lSectionLayout->setSpacing(10);
   lSectionLayout->setContentsMargins(15, 20, 15, 15);
   lSection->setLayout(lSectionLayout);
 
   lMainLayout->addWidget(lSection);
 
-  auto lPathLabel{new QLabel(this->mRessourcePath, this)};
+  const auto lPathLabel{new QLabel(this->mRessourcePath, this)};
   lSectionLayout->addWidget(lPathLabel);
 
   // Change the cursor

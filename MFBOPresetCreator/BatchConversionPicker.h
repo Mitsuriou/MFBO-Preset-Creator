@@ -34,6 +34,7 @@ private:
   void displayLeftList();
 
   // Update the GUI
+  void refreshLeftListFont();
   void refreshMiddleList();
   void updateOSPXMLPreview(QString aText);
   void updateBodyslideNamesPreview(QString aText);

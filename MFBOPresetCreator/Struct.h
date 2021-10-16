@@ -597,6 +597,7 @@ namespace Struct
     std::vector<Struct::Filter> filters;
     QString fullOutputPath;
     bool mustGenerateFilesInExistingDirectory{false};
+    bool mustGenerateEachPresetInADedicatedDirectory{false};
     std::map<QString, std::vector<QString>> scannedData;
     std::vector<BatchConversionPresetData> presets;
 

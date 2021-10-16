@@ -131,7 +131,7 @@ void AssistedConversion::displayHintZone()
   lHintZone->setMinimumHeight(300);
   lHintZone->setObjectName(QString("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
-  lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
+  lMainLayout->addWidget(lHintZone, 3, 0, 1, 3);
 }
 
 void AssistedConversion::deleteAlreadyExistingWindowBottom() const

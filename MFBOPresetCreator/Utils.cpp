@@ -247,6 +247,18 @@ ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent,
   return ButtonClicked::CLOSE_WINDOW;
 }
 
+void Utils::DisplayErrorMessage(const QString& aMessage)
+{
+  QMessageBox lWarningBox(QMessageBox::Icon::Critical, tr("Error"), aMessage);
+  lWarningBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
+
+  auto lOKButton{lWarningBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
+  lOKButton->setCursor(Qt::PointingHandCursor);
+  lWarningBox.setDefaultButton(lOKButton);
+
+  lWarningBox.exec();
+}
+
 VersionsInformation Utils::ParseGitHubReleasesRequestResult(const QString& aResult)
 {
   VersionsInformation lVersionsInformation;

@@ -232,9 +232,7 @@ void Update::displayUpdateMessage(const QString& aResult)
       }
       Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new BETA version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the BETA version \"%2\":")
-                              .arg(lCurrentVersion)
-                              .arg(lVersionsInformation.getLatestBetaVersionNumber())
-                              .arg(this->mSaveFilePath));
+                              .arg(lCurrentVersion, lVersionsInformation.getLatestBetaVersionNumber(), this->mSaveFilePath));
     }
     // A new stable version is available
     else if (!this->mForceBetaContext && Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::NEWER)
@@ -271,9 +269,7 @@ void Update::displayUpdateMessage(const QString& aResult)
       }
       Utils::CleanPathString(this->mSaveFilePath);
       lFetchStatus->setText(tr("You are currently running the version \"%1\".\nThe new stable version \"%2\" is available on GitHub.\n\nClick on the download button above to start downloading the update.\nThe download size is about 11MB~.\nThe download will be saved under \"%3\".\n\nBelow are the release notes for the stable version \"%2\":")
-                              .arg(lCurrentVersion)
-                              .arg(lVersionsInformation.getLatestStableVersionNumber())
-                              .arg(this->mSaveFilePath));
+                              .arg(lCurrentVersion, lVersionsInformation.getLatestStableVersionNumber(), this->mSaveFilePath));
     }
     else
     {

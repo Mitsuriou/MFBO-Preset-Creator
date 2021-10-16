@@ -40,10 +40,21 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 
   // Remove data entry button
   auto lRemoveButton{ComponentFactory::CreateButton(this, tr("Remove this data entry"), "", "cross", lIconFolder, "remove_button", false, true)};
+
+  QSizePolicy lSizePolicyRemoveButton{lRemoveButton->sizePolicy()};
+  lSizePolicyRemoveButton.setRetainSizeWhenHidden(true);
+  lRemoveButton->setSizePolicy(lSizePolicyRemoveButton);
+
   lRemoveButton->hide();
   lSectionLayout->addWidget(lRemoveButton, 0, 1);
 
+  // Duplicate data entry button
   auto lDuplicateButton{ComponentFactory::CreateButton(this, tr("Duplicate this data entry"), "", "duplicate", lIconFolder, "duplicate_button", false, true)};
+
+  QSizePolicy lSizePolicyDuplicateButton{lDuplicateButton->sizePolicy()};
+  lSizePolicyDuplicateButton.setRetainSizeWhenHidden(true);
+  lDuplicateButton->setSizePolicy(lSizePolicyDuplicateButton);
+
   lDuplicateButton->hide();
   lSectionLayout->addWidget(lDuplicateButton, 1, 1);
 

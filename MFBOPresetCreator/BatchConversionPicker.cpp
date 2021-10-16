@@ -133,6 +133,10 @@ void BatchConversionPicker::initializeGUI()
   // Label for the "no data available" case
   auto lNoDataLabel{new QLabel(tr("No data available for the selected origin directory"), this)};
   lNoDataLabel->setObjectName(QString("no_data_label"));
+  auto lItalicFont{lNoDataLabel->font()};
+  lItalicFont.setItalic(true);
+  lNoDataLabel->setFont(lItalicFont);
+  lNoDataLabel->setAlignment(Qt::AlignCenter);
   lNoDataLabel->setWordWrap(true);
   lNoDataLabel->hide();
   lMiddleLayout->addWidget(lNoDataLabel);
@@ -237,8 +241,7 @@ void BatchConversionPicker::initializeGUI()
   lNamesInApp->setTextFormat(Qt::RichText);
   lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
                                "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
-                         .arg(lIconFolder)
-                         .arg(tr("Presets names:")));
+                         .arg(lIconFolder, tr("Presets names:")));
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
@@ -339,10 +342,28 @@ void BatchConversionPicker::displayLeftList()
   lPathsList->setFocus();
 }
 
+void BatchConversionPicker::refreshLeftListFont()
+{
+  const auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+
+  for (int i = 0; i < lPathsList->count(); i++)
+  {
+    const auto lListItem{lPathsList->item(i)};
+    const auto lPosition{this->mData.scannedData.find(lListItem->text())};
+    if (lPosition != this->mData.scannedData.end())
+    {
+      // Make the item written in italic if no data is available anymore
+      auto lFont{lListItem->font()};
+      lFont.setItalic(lPosition->second.size() == 0);
+      lListItem->setFont(lFont);
+    }
+  }
+}
+
 void BatchConversionPicker::refreshMiddleList()
 {
   // Delete all children of the middle list
-  auto lOptionsList{this->findChild<QGridLayout*>(QString("middle_list"))};
+  const auto lOptionsList{this->findChild<QGridLayout*>(QString("middle_list"))};
 
   const auto lButtonsListSize{static_cast<int>(this->mMiddleListButtons.size())};
   for (int i = 0; i < lButtonsListSize; i++)
@@ -352,13 +373,13 @@ void BatchConversionPicker::refreshMiddleList()
   }
 
   // Add the entries in the options list, based on the paths list' selected item
-  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
-  auto lSelectedEntry{lPathsList->currentItem()};
+  const auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  const auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
-    auto lQuickPresetCreationButton{this->findChild<QPushButton*>(QString("simple_quick_preset_creation"))};
-    auto lNoDataLabel{this->findChild<QLabel*>(QString("no_data_label"))};
-    auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
+    const auto lQuickPresetCreationButton{this->findChild<QPushButton*>(QString("simple_quick_preset_creation"))};
+    const auto lNoDataLabel{this->findChild<QLabel*>(QString("no_data_label"))};
+    const auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
 
     if (lPosition != this->mData.scannedData.end())
     {
@@ -375,7 +396,7 @@ void BatchConversionPicker::refreshMiddleList()
         // Create the BCDragWidget
         for (const auto& lValue : lPosition->second)
         {
-          auto lDraggableWidget{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
+          const auto lDraggableWidget{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
           this->mMiddleListButtons.push_back(lDraggableWidget);
           lOptionsList->addWidget(lDraggableWidget);
         }
@@ -385,8 +406,7 @@ void BatchConversionPicker::refreshMiddleList()
     }
   }
 
-  // TODO: change the color of the left list if there is not any data available in the middle list anymore
-  // TODO: make the current left list index disabled if there is not any data available in the middle list anymore
+  this->refreshLeftListFont();
 }
 
 void BatchConversionPicker::updateOSPXMLPreview(QString aText)
@@ -427,8 +447,6 @@ void BatchConversionPicker::updateOSPXMLPreview(QString aText)
 
 void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
 {
-  //auto lMustUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))->isChecked()};
-  auto lMustUseBeastHands{false}; // TODO: Check if it is necessary to get this parameter from a dynamic analyze
   auto lIsValidPath{true};
 
   Utils::CleanPathString(aText);
@@ -437,6 +455,18 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   {
     aText = QString("*");
     lIsValidPath = false;
+  }
+
+  // Read the beast hands state
+  auto lMustUseBeastHands{false};
+
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lCurrentIndex{lActivePresetNumber->value()};
+  if (lCurrentIndex > 0
+      && lCurrentIndex <= this->mData.presets.size()
+      && this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).mustHandsUseAlternativeModel())
+  {
+    lMustUseBeastHands = true;
   }
 
   auto lConstructedPreviewText{QString()};
@@ -564,6 +594,10 @@ void BatchConversionPicker::handsCheckBoxStateChanged(const bool aIsActive)
     return;
 
   this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).setHandsUseAlternativeModel(aIsActive);
+
+  // Refresh the preview since the alternative model can impact the BodySlide presets names
+  auto lNamesInAppValue{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text()};
+  this->updateBodyslideNamesPreview(lNamesInAppValue);
 }
 
 void BatchConversionPicker::skeletonCheckBoxStateChanged(const bool aIsActive)
@@ -586,7 +620,7 @@ void BatchConversionPicker::saveBodySlideDataToPreset()
   auto lNamesInAppValue{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text()};
 
   // Update the current preset
-  this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).setNames(lOSPXMLNamesValue, lNamesInAppValue);
+  this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).setNames(lOSPXMLNamesValue.trimmed(), lNamesInAppValue.trimmed());
 }
 
 void BatchConversionPicker::goToPreviousPreset() const
@@ -707,6 +741,11 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
     const auto& lPathsPair = this->mData.presets.at(static_cast<size_t>(aNextIndex - 1)).getNames();
     lOSPXMLNamesLineEdit->setText(lPathsPair.first);
     lNamesInAppLineEdit->setText(lPathsPair.second);
+
+    // Force refresh (sometimes it will be done twice)
+    this->updateOSPXMLPreview(lPathsPair.first);
+    this->updateBodyslideNamesPreview(lPathsPair.second);
+
     mPreventPresetSave = false;
   }
 }
@@ -865,6 +904,8 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
       }
     }
   }
+
+  this->refreshLeftListFont();
 }
 
 void BatchConversionPicker::validateSelection()
@@ -889,14 +930,13 @@ void BatchConversionPicker::validateSelection()
 
   for (int i = 0; i < this->mData.presets.size(); i++)
   {
+    auto lNaturalIndex{i + 1};
+
     // If the current preset is not valid
     if (!this->mData.presets.at(i).isValid())
     {
-      auto lNaturalIndex{i + 1};
       // Display the invalid preset in the interface
       lActivePresetNumber->setValue(lNaturalIndex);
-
-      // TODO: Check if two presets have the same BodySlide files names, because it will not be possible to generate both of them at the same place
 
       // TODO: In the message below, detail to the user why the preset is not valid precisely
       // Ask the user what to do with it
@@ -916,11 +956,27 @@ void BatchConversionPicker::validateSelection()
       {
         this->removeActivePreset();
         this->updateActivePresetNumberSpinBox(); // Force the refresh of the spin box since the preset since it will be ignored then
-        this->updatePresetInterfaceState(lNaturalIndex);
+        this->updatePresetInterfaceState(i);
         i--;
       }
       else
       {
+        // Cancel the whole check and go back to the Batch Conversion Picker window
+        return;
+      }
+    }
+
+    // Check if two presets have the same BodySlide files names,
+    // because it will not be possible to generate both of them under the same name
+    for (int j = 0; j < this->mData.presets.size(); j++)
+    {
+      if (i != j && mData.presets.at(i).getNames().first.compare(mData.presets.at(j).getNames().first) == 0)
+      {
+        Utils::DisplayErrorMessage(tr("The presets number %1 and number %2 have the same BodySlide files names \"%3\" defined.\n\nPlease make sure the files names are different before trying to batch generate the files again.")
+                                     .arg(lNaturalIndex)
+                                     .arg(j + 1)
+                                     .arg(mData.presets.at(i).getNames().first));
+
         // Cancel the whole check and go back to the Batch Conversion Picker window
         return;
       }

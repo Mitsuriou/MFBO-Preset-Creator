@@ -36,7 +36,8 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
   this->setupSkeletonGUI(*lMainLayout);
   this->setupBodySlideGUI(*lMainLayout);
   this->setupOutputGUI(*lMainLayout);
-  this->setupRemainingGUI(*lMainLayout);
+  this->setupScanTweaksGUI(*lMainLayout);
+  this->setupGenerationAdjustmentGUI(*lMainLayout);
   this->setupButtons(*lButtonLayout);
 
   this->mHasUserDoneSomething = false;
@@ -101,38 +102,38 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   // User theme accent
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
-  // General group box
-  auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::AddIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.display.font.size);
-  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lGeneralGroupBox, false);
-  aLayout.addWidget(lGeneralGroupBox, 0, 0);
+  // Group box
+  auto lGroupBox{new QGroupBox(tr("General").append("  "), this)};
+  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "tune", this->mSettings.display.font.size);
+  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::SetGroupBoxState(lGroupBox, false);
+  aLayout.addWidget(lGroupBox, 0, 0);
 
   // Grid layout
-  auto lGeneralGridLayout{new QGridLayout(lGeneralGroupBox)};
-  lGeneralGridLayout->setColumnStretch(0, 0);
-  lGeneralGridLayout->setColumnStretch(1, 1);
-  lGeneralGridLayout->setColumnStretch(2, 1);
-  lGeneralGridLayout->setColumnStretch(3, 2);
-  lGeneralGridLayout->setColumnStretch(4, 0);
-  lGeneralGridLayout->setSpacing(10);
-  lGeneralGridLayout->setContentsMargins(15, 20, 15, 15);
-  lGeneralGridLayout->setAlignment(Qt::AlignTop);
-  lGeneralGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+  auto lLayout{new QGridLayout(lGroupBox)};
+  lLayout->setColumnStretch(0, 0);
+  lLayout->setColumnStretch(1, 1);
+  lLayout->setColumnStretch(2, 1);
+  lLayout->setColumnStretch(3, 2);
+  lLayout->setColumnStretch(4, 0);
+  lLayout->setSpacing(10);
+  lLayout->setContentsMargins(15, 20, 15, 15);
+  lLayout->setAlignment(Qt::AlignTop);
+  lLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // First line
-  lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
+  lLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
   auto lInputPathLineEdit{new QLineEdit("", this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
-  lGeneralGridLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
+  lLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
 
   // Input chooser
   auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
-  lGeneralGridLayout->addWidget(lInputPathChooser, 0, 4);
+  lLayout->addWidget(lInputPathChooser, 0, 4);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
@@ -143,45 +144,45 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   // User theme accent
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
-  // Custom skeleton group box
-  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::AddIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.display.font.size);
-  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lSkeletonGroupBox, false);
-  aLayout.addWidget(lSkeletonGroupBox, 1, 0);
+  // Group box
+  auto lGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
+  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "skeleton", this->mSettings.display.font.size);
+  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::SetGroupBoxState(lGroupBox, false);
+  aLayout.addWidget(lGroupBox, 1, 0);
 
-  auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
-  lSkeletonGridLayout->setColumnStretch(0, 0);
-  lSkeletonGridLayout->setColumnStretch(1, 1);
-  lSkeletonGridLayout->setColumnStretch(2, 0);
-  lSkeletonGridLayout->setSpacing(10);
-  lSkeletonGridLayout->setContentsMargins(15, 20, 15, 15);
-  lSkeletonGridLayout->setAlignment(Qt::AlignTop);
-  lSkeletonGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+  auto lLayout{new QGridLayout(lGroupBox)};
+  lLayout->setColumnStretch(0, 0);
+  lLayout->setColumnStretch(1, 1);
+  lLayout->setColumnStretch(2, 0);
+  lLayout->setSpacing(10);
+  lLayout->setContentsMargins(15, 20, 15, 15);
+  lLayout->setAlignment(Qt::AlignTop);
+  lLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Human skeleton file
-  lSkeletonGridLayout->addWidget(new QLabel(tr("Skeleton file (human):"), this), 1, 0);
+  lLayout->addWidget(new QLabel(tr("Skeleton file (human):"), this), 1, 0);
 
   auto lSkeletonChooserHuman{new QComboBox(this)};
   lSkeletonChooserHuman->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserHuman->setCursor(Qt::PointingHandCursor);
   lSkeletonChooserHuman->setObjectName(QString("skeleton_chooser_human"));
-  lSkeletonGridLayout->addWidget(lSkeletonChooserHuman, 1, 1);
+  lLayout->addWidget(lSkeletonChooserHuman, 1, 1);
 
   auto lSkeletonRefresherHuman{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
-  lSkeletonGridLayout->addWidget(lSkeletonRefresherHuman, 1, 2);
+  lLayout->addWidget(lSkeletonRefresherHuman, 1, 2);
 
   // Beast skeleton file
-  lSkeletonGridLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 2, 0);
+  lLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 2, 0);
 
   auto lSkeletonChooserBeast{new QComboBox(this)};
   lSkeletonChooserBeast->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserBeast->setCursor(Qt::PointingHandCursor);
   lSkeletonChooserBeast->setObjectName(QString("skeleton_chooser_beast"));
-  lSkeletonGridLayout->addWidget(lSkeletonChooserBeast, 2, 1);
+  lLayout->addWidget(lSkeletonChooserBeast, 2, 1);
 
   auto lSkeletonRefresherBeast{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
-  lSkeletonGridLayout->addWidget(lSkeletonRefresherBeast, 2, 2);
+  lLayout->addWidget(lSkeletonRefresherBeast, 2, 2);
 
   this->populateSkeletonChoosers();
 
@@ -195,28 +196,28 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   // User theme accent
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
-  // BodySlide output settings group box
-  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
-  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lBodyslideGroupBox, false);
-  aLayout.addWidget(lBodyslideGroupBox, 2, 0);
+  // Group box
+  auto lGroupBox{new QGroupBox(tr("BodySlide").append("  "), this)};
+  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
+  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::SetGroupBoxState(lGroupBox, false);
+  aLayout.addWidget(lGroupBox, 2, 0);
 
   // Grid layout
-  auto lBodyslideGridLayout{new QGridLayout(lBodyslideGroupBox)};
-  lBodyslideGridLayout->setSpacing(10);
-  lBodyslideGridLayout->setContentsMargins(15, 20, 15, 15);
-  lBodyslideGridLayout->setAlignment(Qt::AlignTop);
-  lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+  auto lLayout{new QGridLayout(lGroupBox)};
+  lLayout->setSpacing(10);
+  lLayout->setContentsMargins(15, 20, 15, 15);
+  lLayout->setAlignment(Qt::AlignTop);
+  lLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
   auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.batchConversion.defaultBodyFeet.bodyMod)};
 
-  lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
+  lLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
 
-  auto lBodyNameVersionWrapper{new QHBoxLayout(lBodyslideGroupBox)};
+  auto lBodyNameVersionWrapper{new QHBoxLayout(lGroupBox)};
   lBodyNameVersionWrapper->setMargin(0);
-  lBodyslideGridLayout->addLayout(lBodyNameVersionWrapper, 0, 1);
+  lLayout->addLayout(lBodyNameVersionWrapper, 0, 1);
 
   // Body Name
   auto lBodyNameSelector{new QComboBox(this)};
@@ -248,11 +249,11 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyNameVersionWrapper->addStretch();
 
   // Filters
-  lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 1, 0);
+  lLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 1, 0);
 
-  auto lFiltersWrapper{new QHBoxLayout(lBodyslideGroupBox)};
+  auto lFiltersWrapper{new QHBoxLayout(lGroupBox)};
   lFiltersWrapper->setMargin(0);
-  lBodyslideGridLayout->addLayout(lFiltersWrapper, 1, 1);
+  lLayout->addLayout(lFiltersWrapper, 1, 1);
 
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
@@ -306,44 +307,78 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
   this->updateOutputPreview();
 }
 
-void BatchConversion::setupRemainingGUI(QGridLayout& aLayout)
+void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 {
   // User theme accent
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lScanTweaksGroupBox{new QGroupBox(tr("Scan tweaks").append("  "), this)};
-  Utils::AddIconToGroupBox(lScanTweaksGroupBox, lIconFolder, "cog", this->mSettings.display.font.size);
-  this->connect(lScanTweaksGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lScanTweaksGroupBox, false);
-  aLayout.addWidget(lScanTweaksGroupBox, 4, 0);
+  auto lGroupBox{new QGroupBox(tr("Scan tweaks").append("  "), this)};
+  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "cog", this->mSettings.display.font.size);
+  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::SetGroupBoxState(lGroupBox, false);
+  aLayout.addWidget(lGroupBox, 4, 0);
 
-  // Grid layout
-  auto lScanTweaksGridLayout{new QVBoxLayout(lScanTweaksGroupBox)};
-  lScanTweaksGridLayout->setSpacing(10);
-  lScanTweaksGridLayout->setContentsMargins(15, 20, 15, 15);
-  lScanTweaksGridLayout->setAlignment(Qt::AlignTop);
+  // Layout
+  auto lLayout{new QVBoxLayout(lGroupBox)};
+  lLayout->setSpacing(10);
+  lLayout->setContentsMargins(15, 20, 15, 15);
+  lLayout->setAlignment(Qt::AlignTop);
 
-  // Soft search selector
+  // Search mode selector
   auto lSoftSearch{new QRadioButton(tr("Smart search (only files with a name matching a certain pattern are listed)"), this)};
   lSoftSearch->setCursor(Qt::PointingHandCursor);
   lSoftSearch->setObjectName(QString("scan_soft_search"));
-  lScanTweaksGridLayout->addWidget(lSoftSearch);
+  lLayout->addWidget(lSoftSearch);
 
   auto lHeavierSearch{new QRadioButton(tr("Advanced search (every single .nif file is listed)"), this)};
   lHeavierSearch->setCursor(Qt::PointingHandCursor);
   lHeavierSearch->setObjectName(QString("scan_advanced_search"));
-  lScanTweaksGridLayout->addWidget(lHeavierSearch);
+  lLayout->addWidget(lHeavierSearch);
 
   // Scan only "meshes" directory
   auto lScanMeshesSubdirsOnly{ComponentFactory::CreateCheckBox(this, tr("Only scan the \"meshes\" subdirectories of each mod"), "", "only_scan_meshes_dir", true)};
-  lScanTweaksGridLayout->addWidget(lScanMeshesSubdirsOnly);
+  lLayout->addWidget(lScanMeshesSubdirsOnly);
 
   // Clear the irrelevant entries
   auto lMustClearIrrelevantEntries{ComponentFactory::CreateCheckBox(this, tr("Clear the irrelevant entries (mods which do not contain any body, hands and feet mesh)"), "", "clear_irrelevant_entries", true)};
-  lScanTweaksGridLayout->addWidget(lMustClearIrrelevantEntries);
+  lLayout->addWidget(lMustClearIrrelevantEntries);
 
+  // Post-bind events
   lSoftSearch->setChecked(true);
+}
+
+void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Group box
+  auto lGroupBox{new QGroupBox(tr("Generation tweaks").append("  "), this)};
+  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "cog", this->mSettings.display.font.size);
+  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
+  Utils::SetGroupBoxState(lGroupBox, false);
+  aLayout.addWidget(lGroupBox, 5, 0);
+
+  // Layout
+  auto lLayout{new QVBoxLayout(lGroupBox)};
+  lLayout->setSpacing(10);
+  lLayout->setContentsMargins(15, 20, 15, 15);
+  lLayout->setAlignment(Qt::AlignTop);
+
+  // Generation method selector
+  auto lGenerateDataArchitecture{new QRadioButton(tr("Generate everything for the \"Data\" directory directly"), this)};
+  lGenerateDataArchitecture->setCursor(Qt::PointingHandCursor);
+  lGenerateDataArchitecture->setObjectName(QString("generate_data_architecture"));
+  lLayout->addWidget(lGenerateDataArchitecture);
+
+  auto lGenerateDedicatedModArchitecture{new QRadioButton(tr("Generate each preset in a dedicated directory"), this)};
+  lGenerateDedicatedModArchitecture->setCursor(Qt::PointingHandCursor);
+  lGenerateDedicatedModArchitecture->setObjectName(QString("generate_dedicated_mod_architecture"));
+  lLayout->addWidget(lGenerateDedicatedModArchitecture);
+
+  // Post-bind events
+  lGenerateDataArchitecture->setChecked(true);
 }
 
 void BatchConversion::setupButtons(QHBoxLayout& aLayout)
@@ -389,6 +424,9 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   // Does the user want to define the path only through the secondary path?
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
 
+  // Generation method
+  auto lGenerateEachPresetInDedicatedDir{this->findChild<QRadioButton*>(QString("generate_dedicated_mod_architecture"))->isChecked()};
+
   // Full extract path
   auto lEntryDirectory{lSubDirectory};
   if (!lUseOnlySubdir)
@@ -404,6 +442,7 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   lData.filters = lUserFilters;
   lData.fullOutputPath = lEntryDirectory;
   lData.mustGenerateFilesInExistingDirectory = aMustGenerateFilesInExistingDirectory;
+  lData.mustGenerateEachPresetInADedicatedDirectory = lGenerateEachPresetInDedicatedDir;
   lData.scannedData = Utils::ToMapQsVecQs(aScannedData);
 
   auto lBCPicker{new BatchConversionPicker(this, this->mSettings, lData)};
@@ -668,7 +707,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
   const auto& lFeetModIndex{aPresetsData.feetModIndex};
 
   // Output paths
-  auto lEntryDirectory{aPresetsData.fullOutputPath};
+  const auto lEntryDirectory{aPresetsData.fullOutputPath};
 
   // Create main directory
   auto lGenerateFilesInExistingMainDirectory{aPresetsData.mustGenerateFilesInExistingDirectory};
@@ -710,28 +749,36 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     auto lOSPXMLNames{lPreset.getNames().first};
     auto lBodyslideSlidersetsNames{lPreset.getNames().second};
 
+    // If the user wants to generate each preset in a dedicated directory,
+    // update the path by adding the
+    auto lPresetEntryDirectory{lEntryDirectory};
+    if (aPresetsData.mustGenerateEachPresetInADedicatedDirectory)
+    {
+      lPresetEntryDirectory.append('/').append(lOSPXMLNames);
+    }
+
     // Export the meshes
     // XML file
     auto lSelectedBodyName{static_cast<BodyNameVersion>(lBodySelected)};
 
-    if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.filters, true))
+    if (!Utils::generateXMLFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.filters, true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
       {
-        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
+        Utils::RemoveDirectoryAndSubDirs(lPresetEntryDirectory);
       }
 
       return;
     }
 
     // OSP file
-    if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
+    if (!Utils::generateOSPFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
       {
-        Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
+        Utils::RemoveDirectoryAndSubDirs(lPresetEntryDirectory);
       }
 
       return;
@@ -760,12 +807,12 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
       const auto lDestinationSkeletonRelativePath{lPreset.getSkeletonData().getRessourcePath().left(lSkeletonLastSlashPosition)};
       const auto lDestinationSkeletonFileName{lPreset.getSkeletonData().getRessourcePath().mid(lSkeletonLastSlashPosition + 1)};
 
-      if (!Utils::generateSkeletonFile(lSourceSkeletonReadPath, lEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
+      if (!Utils::generateSkeletonFile(lSourceSkeletonReadPath, lPresetEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
       {
         // Remove the directory since the generation is incomplete
         if (!lGenerateFilesInExistingMainDirectory)
         {
-          Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
+          Utils::RemoveDirectoryAndSubDirs(lPresetEntryDirectory);
         }
 
         return;
@@ -782,10 +829,10 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
   // Open the directory where the file structure has been created
   if (this->mSettings.batchConversion.automaticallyOpenFinalDirectory)
   {
-    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
+    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the batch generated directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
   }
-  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the batch generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
   }

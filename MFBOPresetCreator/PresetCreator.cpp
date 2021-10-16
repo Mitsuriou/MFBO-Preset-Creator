@@ -16,7 +16,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <QPushbutton>
+#include <QPushButton>
 #include <QScrollArea>
 #include <QStandardPaths>
 #include <QStyledItemDelegate>
@@ -180,6 +180,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
         lHandsHaveBeenSet = true;
         break;
       case AssistedConversionRole::SKELETON:
+      {
         auto lNeedCustomSkeleton{this->findChild<QCheckBox*>(QString("use_custom_skeleton"))};
         if (!lNeedCustomSkeleton->isChecked())
         {
@@ -190,6 +191,13 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
         this->findChild<QLineEdit*>(QString("skeleton_name"))->setText(lResult.getName());
 
         lSkeletonHasBeenSet = true;
+        break;
+      }
+      case AssistedConversionRole::IGNORED:
+        // It should not be possible to reach this statement
+        break;
+      default:
+        // It should not be possible to reach this statement
         break;
     }
   }
@@ -418,8 +426,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
                          "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
                          " %2"
                          "</p>")
-                   .arg(lIconFolder)
-                   .arg(lText)};
+                   .arg(lIconFolder, lText)};
   lLabelSkeleton->setText(lRichText);
   lLabelSkeleton->setTextFormat(Qt::RichText);
   lLabelSkeleton->setToolTip(QString(tr("Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.")));
@@ -568,8 +575,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lNamesInApp->setTextFormat(Qt::RichText);
   lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
                                "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
-                         .arg(lIconFolder)
-                         .arg(tr("Presets names:")));
+                         .arg(lIconFolder, tr("Presets names:")));
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 

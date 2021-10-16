@@ -165,6 +165,8 @@ std::pair<int, int> DataLists::GetSplittedNameVersionFromBodyVersion(BodyNameVer
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return std::pair<int, int>(static_cast<int>(BodyName::MIMIR_EBONIC_BODY), static_cast<int>(aBodyVersion) - 42);
+    case BodyNameVersion::INVALID_VALUE:
+      return std::pair<int, int>(-1, -1);
   }
 
   return std::pair<int, int>(-1, -1);
@@ -184,6 +186,9 @@ QString DataLists::GetQRCPathFromBodyName(const BodyNameVersion& aBody, const in
       break;
     case BodyPartType::HANDS:
       lRessource = "hands";
+      break;
+    case BodyPartType::BEAST_HANDS:
+      // Do not initialize anything here, since the beast hands are handled later, if needed
       break;
   }
 
@@ -215,88 +220,71 @@ QString DataLists::GetQRCPathFromBodyName(const BodyNameVersion& aBody, const in
       }
     }
 
-    switch (lCastedBodyName)
-    {
-      case BodyName::CBBE_3BBB_3BA:
-        lResolvedModName = "cbbe 3bbb 3ba";
-        break;
-      case BodyName::CBBE_SMP_3BBB:
-        lResolvedModName = "cbbe smp 3bbb";
-        break;
-      case BodyName::MIMIR_EBONIC_BODY:
-        lResolvedModName = "mimir ebonic body";
-        break;
-    }
+    if (lCastedBodyName == BodyName::CBBE_3BBB_3BA)
+      lResolvedModName = "cbbe 3bbb 3ba";
+    else if (lCastedBodyName == BodyName::CBBE_SMP_3BBB)
+      lResolvedModName = "cbbe smp 3bbb";
+    else if (lCastedBodyName == BodyName::MIMIR_EBONIC_BODY)
+      lResolvedModName = "mimir ebonic body";
   }
   // UNP-based bodies
   else
   {
-    switch (aRessourceType)
+    if (aRessourceType == BodyPartType::BODY)
     {
-      case BodyPartType::BODY:
-        switch (lCastedBodyName)
-        {
-          case BodyName::BHUNP_3BBB:
-            lResolvedModName = "bhunp 3bbb";
-            break;
-          case BodyName::BHUNP_3BBB_ADVANCED:
-            lResolvedModName = "bhunp 3bbb advanced";
-            break;
-          case BodyName::BHUNP_3BBB_ADVANCED_VER_2:
-            lResolvedModName = "bhunp 3bbb advanced ver 2";
-            break;
-          case BodyName::BHUNP_BBP:
-            lResolvedModName = "bhunp bbp";
-            break;
-          case BodyName::BHUNP_BBP_ADVANCED:
-            lResolvedModName = "bhunp bbp advanced";
-            break;
-          case BodyName::BHUNP_TBBP:
-            lResolvedModName = "bhunp tbbp";
-            break;
-          case BodyName::BHUNP_TBBP_ADVANCED:
-            lResolvedModName = "bhunp tbbp advanced";
-            break;
-          case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-            lResolvedModName = "bhunp 3bbb advanced ver 2 nevernude";
-            break;
-        }
-        break;
-      case BodyPartType::FEET:
-        if (aRessourceType == BodyPartType::FEET)
-        {
-          switch (aFeetModIndex)
-          {
-            case 0:
-              // Default: follow the normal workflow to use the default BHUNP feet
-              lResolvedModName = "bhunp";
-              break;
-            case 1:
-              // More Sliders for Feet - Normal
-              return ":/presets/feet/msf/normal/bhunp/1.1"; // TODO: Handle the feet mods version numbers
-            case 2:
-              // More Sliders for Feet - High Heels
-              return ":/presets/feet/msf/high heels/bhunp/1.1"; // TODO: Handle the feet mods version numbers
-            case 3:
-              // HG Feet and Toes BHUNP SE - HGFeet UUNP
-              return ":/presets/feet/hg feet/bhunp"; // TODO: Handle the feet mods version numbers
-            case 4:
-              // Khrysamere HG Feet (BHUNP)
-              return ":/presets/feet/khrysamere hg feet/normal/1.6.1"; // TODO: Handle the feet mods version numbers
-            case 5:
-              // Khrysamere HG Feet (Claws) (BHUNP)
-              return ":/presets/feet/khrysamere hg feet/claws/1.6.1"; // TODO: Handle the feet mods version numbers
-          }
-        }
-#if __cplusplus >= 201703L // C++17 and newer
-        [[fallthrough]];
-#endif
-      case BodyPartType::HANDS:
-        // Use the default BHUNP hands
-        lResolvedModName = "bhunp";
-        break;
-      default:
-        return "";
+      if (lCastedBodyName == BodyName::BHUNP_3BBB)
+        lResolvedModName = "bhunp 3bbb";
+      else if (lCastedBodyName == BodyName::BHUNP_3BBB_ADVANCED)
+        lResolvedModName = "bhunp 3bbb advanced";
+      else if (lCastedBodyName == BodyName::BHUNP_3BBB_ADVANCED_VER_2)
+        lResolvedModName = "bhunp 3bbb advanced ver 2";
+      else if (lCastedBodyName == BodyName::BHUNP_BBP)
+        lResolvedModName = "bhunp bbp";
+      else if (lCastedBodyName == BodyName::BHUNP_BBP_ADVANCED)
+        lResolvedModName = "bhunp bbp advanced";
+      else if (lCastedBodyName == BodyName::BHUNP_TBBP)
+        lResolvedModName = "bhunp tbbp";
+      else if (lCastedBodyName == BodyName::BHUNP_TBBP_ADVANCED)
+        lResolvedModName = "bhunp tbbp advanced";
+      else if (lCastedBodyName == BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
+        lResolvedModName = "bhunp 3bbb advanced ver 2 nevernude";
+    }
+    else if (aRessourceType == BodyPartType::FEET)
+    {
+      switch (aFeetModIndex)
+      {
+        case 0:
+          // Default: follow the normal workflow to use the default BHUNP feet
+          lResolvedModName = "bhunp";
+          break;
+        case 1:
+          // More Sliders for Feet - Normal
+          return ":/presets/feet/msf/normal/bhunp/1.1"; // TODO: Handle the feet mods version numbers
+        case 2:
+          // More Sliders for Feet - High Heels
+          return ":/presets/feet/msf/high heels/bhunp/1.1"; // TODO: Handle the feet mods version numbers
+        case 3:
+          // HG Feet and Toes BHUNP SE - HGFeet UUNP
+          return ":/presets/feet/hg feet/bhunp"; // TODO: Handle the feet mods version numbers
+        case 4:
+          // Khrysamere HG Feet (BHUNP)
+          return ":/presets/feet/khrysamere hg feet/normal/1.6.1"; // TODO: Handle the feet mods version numbers
+        case 5:
+          // Khrysamere HG Feet (Claws) (BHUNP)
+          return ":/presets/feet/khrysamere hg feet/claws/1.6.1"; // TODO: Handle the feet mods version numbers
+      }
+
+      // Use the default BHUNP feet
+      lResolvedModName = "bhunp";
+    }
+    else if (aRessourceType == BodyPartType::HANDS)
+    {
+      // Use the default BHUNP hands
+      lResolvedModName = "bhunp";
+    }
+    else
+    {
+      return "";
     }
   }
 
