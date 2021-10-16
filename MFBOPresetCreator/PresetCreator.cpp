@@ -423,9 +423,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   auto lLabelSkeleton{new QLabel(this)};
   auto lText{tr("Use a custom skeleton?")};
   auto lRichText{QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
-                         "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\">"
-                         " %2"
-                         "</p>")
+                         "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
                    .arg(lIconFolder, lText)};
   lLabelSkeleton->setText(lRichText);
   lLabelSkeleton->setTextFormat(Qt::RichText);
