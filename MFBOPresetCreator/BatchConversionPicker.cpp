@@ -411,31 +411,22 @@ void BatchConversionPicker::refreshMiddleList()
 
 void BatchConversionPicker::updateOSPXMLPreview(QString aText)
 {
+  aText = Utils::CleanBreaksString(aText.trimmed());
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_osp_xml_preview"))};
   auto lIsValidPath{true};
 
-  Utils::CleanPathString(aText);
-
-  if (aText.trimmed().isEmpty())
+  if (aText.isEmpty() || aText.contains('\\') || aText.contains('/'))
   {
     aText = QString::fromStdString("*");
     lIsValidPath = false;
   }
 
-  auto lConstructedPreviewText(
-    QString(
-      "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderGroups/%1.xml\n"
-      "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
-      .arg(aText));
+  auto lConstructedPreviewText{QString(
+                                 "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderGroups/%1.xml\n"
+                                 "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
+                                 .arg(aText)};
 
-  auto lNewTextColor{this->mSettings.display.successColor};
-
-  if (!lIsValidPath)
-  {
-    lNewTextColor = this->mSettings.display.dangerColor;
-  }
-
-  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
+  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lIsValidPath ? this->mSettings.display.successColor : this->mSettings.display.dangerColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 
   // Save the data in the preset
@@ -616,11 +607,13 @@ void BatchConversionPicker::saveBodySlideDataToPreset()
     return;
 
   // Read the data in the GUI
-  auto lOSPXMLNamesValue{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text()};
-  auto lNamesInAppValue{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text()};
+  auto lOSPXMLNames{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text().trimmed()};
+  Utils::CleanBreaksString(lOSPXMLNames);
+  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
+  Utils::CleanBreaksString(lBodyslideSlidersetsNames);
 
   // Update the current preset
-  this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).setNames(lOSPXMLNamesValue.trimmed(), lNamesInAppValue.trimmed());
+  this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).setNames(lOSPXMLNames, lBodyslideSlidersetsNames);
 }
 
 void BatchConversionPicker::goToPreviousPreset() const

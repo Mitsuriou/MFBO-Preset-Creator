@@ -490,9 +490,9 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="BatchConversionPicker.cpp" line="44"/>
-        <location filename="BatchConversionPicker.cpp" line="949"/>
-        <location filename="BatchConversionPicker.cpp" line="995"/>
-        <location filename="BatchConversionPicker.cpp" line="1019"/>
+        <location filename="BatchConversionPicker.cpp" line="942"/>
+        <location filename="BatchConversionPicker.cpp" line="988"/>
+        <location filename="BatchConversionPicker.cpp" line="1012"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation></translation>
     </message>
@@ -608,52 +608,52 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="841"/>
+        <location filename="BatchConversionPicker.cpp" line="834"/>
         <source>Error: No preset could be made from available data.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="850"/>
+        <location filename="BatchConversionPicker.cpp" line="843"/>
         <source>Create new preset(s)?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="851"/>
+        <location filename="BatchConversionPicker.cpp" line="844"/>
         <source>Do you want to create %1 new preset(s)?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="854"/>
+        <location filename="BatchConversionPicker.cpp" line="847"/>
         <source>Create the %1 new preset(s)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="855"/>
+        <location filename="BatchConversionPicker.cpp" line="848"/>
         <source>Do not create the %1 new preset(s)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="920"/>
+        <location filename="BatchConversionPicker.cpp" line="913"/>
         <source>No preset created</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="921"/>
+        <location filename="BatchConversionPicker.cpp" line="914"/>
         <source>You have not created any preset. Batch conversion: results picker window is going to be closed.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="924"/>
+        <location filename="BatchConversionPicker.cpp" line="917"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="944"/>
+        <location filename="BatchConversionPicker.cpp" line="937"/>
         <source>Invalid preset detected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="945"/>
+        <location filename="BatchConversionPicker.cpp" line="938"/>
         <source>The preset number %1 is not valid.
 
 A preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.
@@ -662,48 +662,48 @@ Would you like to delete this invalid preset and continue, or cancel the generat
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="948"/>
+        <location filename="BatchConversionPicker.cpp" line="941"/>
         <source>Delete the preset number %1 and continue the generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="975"/>
+        <location filename="BatchConversionPicker.cpp" line="968"/>
         <source>The presets number %1 and number %2 have the same BodySlide files names &quot;%3&quot; defined.
 
 Please make sure the files names are different before trying to batch generate the files again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="990"/>
+        <location filename="BatchConversionPicker.cpp" line="983"/>
         <source>No valid preset</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="991"/>
+        <location filename="BatchConversionPicker.cpp" line="984"/>
         <source>No valid preset has been found.
 
 Would you like to close the batch conversion: results picker window now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="994"/>
+        <location filename="BatchConversionPicker.cpp" line="987"/>
         <source>Close the batch conversion: results picker window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="1014"/>
+        <location filename="BatchConversionPicker.cpp" line="1007"/>
         <source>Start batch generation now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="1015"/>
+        <location filename="BatchConversionPicker.cpp" line="1008"/>
         <source>%1 valid preset(s) has (have) been found.
 
 Would you like to generate it (them) now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="1018"/>
+        <location filename="BatchConversionPicker.cpp" line="1011"/>
         <source>Generate the preset(s) files on my disk</source>
         <translation></translation>
     </message>
@@ -1218,9 +1218,9 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="379"/>
-        <location filename="PresetCreator.cpp" line="480"/>
-        <location filename="PresetCreator.cpp" line="566"/>
-        <location filename="PresetCreator.cpp" line="587"/>
+        <location filename="PresetCreator.cpp" line="478"/>
+        <location filename="PresetCreator.cpp" line="564"/>
+        <location filename="PresetCreator.cpp" line="585"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
@@ -1230,132 +1230,132 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="439"/>
+        <location filename="PresetCreator.cpp" line="437"/>
         <source>Skeleton file:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="451"/>
+        <location filename="PresetCreator.cpp" line="449"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="455"/>
+        <location filename="PresetCreator.cpp" line="453"/>
         <source>Skeleton path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="465"/>
+        <location filename="PresetCreator.cpp" line="463"/>
         <source>Skeleton file name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="475"/>
+        <location filename="PresetCreator.cpp" line="473"/>
         <source>.nif</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="507"/>
+        <location filename="PresetCreator.cpp" line="505"/>
         <source>BodySlide output</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="523"/>
+        <location filename="PresetCreator.cpp" line="521"/>
         <source>Targeted body and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="559"/>
+        <location filename="PresetCreator.cpp" line="557"/>
         <source>BodySlide files names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="578"/>
+        <location filename="PresetCreator.cpp" line="576"/>
         <source>Presets names:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="579"/>
+        <location filename="PresetCreator.cpp" line="577"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="594"/>
+        <location filename="PresetCreator.cpp" line="592"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="612"/>
+        <location filename="PresetCreator.cpp" line="610"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="666"/>
+        <location filename="PresetCreator.cpp" line="664"/>
         <source>Generate the files on my computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1202"/>
+        <location filename="PresetCreator.cpp" line="1191"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1209"/>
+        <location filename="PresetCreator.cpp" line="1198"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1373"/>
+        <location filename="PresetCreator.cpp" line="1362"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1472"/>
+        <location filename="PresetCreator.cpp" line="1461"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1228"/>
+        <location filename="PresetCreator.cpp" line="1217"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1229"/>
+        <location filename="PresetCreator.cpp" line="1218"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1232"/>
+        <location filename="PresetCreator.cpp" line="1221"/>
         <source>Continue the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1233"/>
+        <location filename="PresetCreator.cpp" line="1222"/>
         <source>Cancel the files generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1250"/>
+        <location filename="PresetCreator.cpp" line="1239"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1263"/>
+        <location filename="PresetCreator.cpp" line="1252"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1276"/>
+        <location filename="PresetCreator.cpp" line="1265"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1290"/>
+        <location filename="PresetCreator.cpp" line="1279"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1304"/>
+        <location filename="PresetCreator.cpp" line="1293"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation></translation>
     </message>
@@ -1390,35 +1390,35 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="432"/>
+        <location filename="PresetCreator.cpp" line="430"/>
         <source>Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="435"/>
+        <location filename="PresetCreator.cpp" line="433"/>
         <source>Check this box if the follower or NPC uses a custom skeleton</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1220"/>
+        <location filename="PresetCreator.cpp" line="1209"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1372"/>
+        <location filename="PresetCreator.cpp" line="1361"/>
         <source>Generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1378"/>
-        <location filename="PresetCreator.cpp" line="1381"/>
+        <location filename="PresetCreator.cpp" line="1367"/>
+        <location filename="PresetCreator.cpp" line="1370"/>
         <source>Open the generated directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1381"/>
+        <location filename="PresetCreator.cpp" line="1370"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -2268,97 +2268,97 @@ Please make sure your internet connection is working correctly and try again.
 <context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="179"/>
+        <location filename="Utils.cpp" line="174"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="182"/>
-        <location filename="Utils.cpp" line="255"/>
-        <location filename="Utils.cpp" line="1018"/>
+        <location filename="Utils.cpp" line="177"/>
+        <location filename="Utils.cpp" line="239"/>
+        <location filename="Utils.cpp" line="986"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="252"/>
+        <location filename="Utils.cpp" line="236"/>
         <source>Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="475"/>
-        <location filename="Utils.cpp" line="527"/>
+        <location filename="Utils.cpp" line="451"/>
+        <location filename="Utils.cpp" line="490"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="496"/>
+        <location filename="Utils.cpp" line="472"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="556"/>
+        <location filename="Utils.cpp" line="519"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="580"/>
+        <location filename="Utils.cpp" line="540"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="585"/>
+        <location filename="Utils.cpp" line="545"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="592"/>
+        <location filename="Utils.cpp" line="552"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="712"/>
+        <location filename="Utils.cpp" line="672"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="732"/>
-        <location filename="Utils.cpp" line="765"/>
-        <location filename="Utils.cpp" line="858"/>
+        <location filename="Utils.cpp" line="692"/>
+        <location filename="Utils.cpp" line="725"/>
+        <location filename="Utils.cpp" line="818"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1018"/>
+        <location filename="Utils.cpp" line="986"/>
         <source>Project successfully saved</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1018"/>
+        <location filename="Utils.cpp" line="986"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1024"/>
+        <location filename="Utils.cpp" line="992"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1674"/>
+        <location filename="Utils.cpp" line="1642"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1776"/>
-        <location filename="Utils.cpp" line="1800"/>
+        <location filename="Utils.cpp" line="1744"/>
+        <location filename="Utils.cpp" line="1768"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1794"/>
+        <location filename="Utils.cpp" line="1762"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>

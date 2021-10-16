@@ -956,31 +956,22 @@ void PresetCreator::updateOSPXMLPreview(QString aText)
 {
   this->setHasUserDoneSomething(true);
 
+  aText = Utils::CleanBreaksString(aText.trimmed());
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_osp_xml_preview"))};
   auto lIsValidPath{true};
 
-  Utils::CleanPathString(aText);
-
-  if (aText.trimmed().isEmpty())
+  if (aText.isEmpty() || aText.contains('\\') || aText.contains('/'))
   {
     aText = QString::fromStdString("*");
     lIsValidPath = false;
   }
 
-  auto lConstructedPreviewText(
-    QString(
-      "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderGroups/%1.xml\n"
-      "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
-      .arg(aText));
+  auto lConstructedPreviewText{QString(
+                                 "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderGroups/%1.xml\n"
+                                 "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
+                                 .arg(aText)};
 
-  auto lNewTextColor{this->mSettings.display.successColor};
-
-  if (!lIsValidPath)
-  {
-    lNewTextColor = this->mSettings.display.dangerColor;
-  }
-
-  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
+  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lIsValidPath ? this->mSettings.display.successColor : this->mSettings.display.dangerColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 }
 

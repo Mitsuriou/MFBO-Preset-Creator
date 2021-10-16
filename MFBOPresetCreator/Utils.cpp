@@ -854,6 +854,8 @@ QString Utils::GetHandsSliderValue(const BodyNameVersion& aBody, const bool aMus
   {
     return QString("%1 - BHUNP 3BBB Advanced Hands");
   }
+
+  return "";
 }
 
 QString Utils::GetFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)
