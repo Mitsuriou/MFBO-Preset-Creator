@@ -500,7 +500,7 @@ namespace Struct
 
     void resetBodyData()
     {
-      this->setBodyData("", "");
+      this->setBodyData(QString(), QString());
     }
 
     const std::pair<QString, QString>& getBodyData() const
@@ -516,7 +516,7 @@ namespace Struct
 
     void resetFeetData()
     {
-      this->setFeetData("", "");
+      this->setFeetData(QString(), QString());
     }
 
     const std::pair<QString, QString>& getFeetData() const
@@ -534,7 +534,7 @@ namespace Struct
 
     void resetHandsData()
     {
-      this->setHandsData("", "", false);
+      this->setHandsData(QString(), QString(), false);
     }
 
     const BatchConversionEntry& getHandsData() const
@@ -562,7 +562,7 @@ namespace Struct
 
     void resetSkeletonData()
     {
-      this->setSkeletonData("", "", false);
+      this->setSkeletonData(QString(), QString(), false);
     }
 
     const BatchConversionEntry& getSkeletonData() const
@@ -590,6 +590,121 @@ namespace Struct
 
   struct BatchConversionData
   {
+  public:
+    explicit BatchConversionData(const QString& aHumanSkeletonPath,
+                                 const QString& aBeastSkeletonPath,
+                                 const BodyNameVersion& aBodyMod,
+                                 const int aFeetModIndex,
+                                 const std::vector<Struct::Filter>& aFilters,
+                                 const QString& aFullOutputPath,
+                                 const bool aMustGenerateFilesInExistingDirectory,
+                                 const bool aMustGenerateEachPresetInADedicatedDirectory,
+                                 const std::map<QString, std::vector<QString>>& aScannedData)
+    {
+      this->humanSkeletonPath = aHumanSkeletonPath;
+      this->beastSkeletonPath = aBeastSkeletonPath;
+      this->bodyMod = aBodyMod;
+      this->feetModIndex = aFeetModIndex;
+      this->filters = aFilters;
+      this->fullOutputPath = aFullOutputPath;
+      this->mustGenerateFilesInExistingDirectory = aMustGenerateFilesInExistingDirectory;
+      this->mustGenerateEachPresetInADedicatedDirectory = aMustGenerateEachPresetInADedicatedDirectory;
+      this->scannedData = aScannedData;
+    }
+
+    // Human skeleton path
+    void setHumanSkeletonPath(const QString& aHumanSkeletonPath)
+    {
+      this->humanSkeletonPath = aHumanSkeletonPath;
+    }
+
+    QString getHumanSkeletonPath() const
+    {
+      return this->humanSkeletonPath;
+    }
+
+    // Beast skeleton path
+    void setBeastSkeletonPath(const QString& aBeastSkeletonPath)
+    {
+      this->beastSkeletonPath = aBeastSkeletonPath;
+    }
+
+    QString getBeastSkeletonPath() const
+    {
+      return this->beastSkeletonPath;
+    }
+
+    // Body mod
+    void setBodyMod(const BodyNameVersion& aBodyMod)
+    {
+      this->bodyMod = aBodyMod;
+    }
+
+    BodyNameVersion getBodyMod() const
+    {
+      return this->bodyMod;
+    }
+
+    // Body mod
+    void setFeetModIndex(const int aFeetModIndex)
+    {
+      this->feetModIndex = aFeetModIndex;
+    }
+
+    int getFeetModIndex() const
+    {
+      return this->feetModIndex;
+    }
+
+    // Filters list
+    void setFiltersList(const std::vector<Struct::Filter>& aFilters)
+    {
+      this->filters = aFilters;
+    }
+
+    const std::vector<Struct::Filter>& getFiltersList() const
+    {
+      return this->filters;
+    }
+
+    // Output path
+    void setFullOutputPath(const QString& aFullOutputPath)
+    {
+      this->fullOutputPath = aFullOutputPath;
+    }
+
+    QString getFullOutputPath() const
+    {
+      return this->fullOutputPath;
+    }
+
+    // Must generate files in existing directory
+    void setMustGenerateFilesInExistingDirectory(const bool aMustGenerateFilesInExistingDirectory)
+    {
+      this->mustGenerateFilesInExistingDirectory = aMustGenerateFilesInExistingDirectory;
+    }
+
+    bool getMustGenerateFilesInExistingDirectory() const
+    {
+      return this->mustGenerateFilesInExistingDirectory;
+    }
+
+    // Must generate each preset in a dedicated directory
+    void setMustGenerateEachPresetInADedicatedDirectory(const bool aMustGenerateEachPresetInADedicatedDirectory)
+    {
+      this->mustGenerateEachPresetInADedicatedDirectory = aMustGenerateEachPresetInADedicatedDirectory;
+    }
+
+    bool getMustGenerateEachPresetInADedicatedDirectory() const
+    {
+      return this->mustGenerateEachPresetInADedicatedDirectory;
+    }
+
+    // Public attributes, because getters cannot return references to these objects
+    std::map<QString, std::vector<QString>> scannedData;
+    std::vector<BatchConversionPresetData> presets;
+
+  private:
     QString humanSkeletonPath;
     QString beastSkeletonPath;
     BodyNameVersion bodyMod{BodyNameVersion::INVALID_VALUE};
@@ -598,9 +713,5 @@ namespace Struct
     QString fullOutputPath;
     bool mustGenerateFilesInExistingDirectory{false};
     bool mustGenerateEachPresetInADedicatedDirectory{false};
-    std::map<QString, std::vector<QString>> scannedData;
-    std::vector<BatchConversionPresetData> presets;
-
-    // TODO: Make this structure cleaner (with a constructor and private attributes)
   };
 }

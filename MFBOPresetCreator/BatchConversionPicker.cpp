@@ -461,9 +461,9 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   }
 
   auto lConstructedPreviewText{QString()};
-  lConstructedPreviewText.append(Utils::GetBodySliderValue(this->mData.bodyMod));                           // Body
-  lConstructedPreviewText.append(Utils::GetFeetSliderValue(this->mData.bodyMod, this->mData.feetModIndex)); // Feet
-  lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mData.bodyMod, lMustUseBeastHands));      // Hands
+  lConstructedPreviewText.append(Utils::GetBodySliderValue(this->mData.getBodyMod()));                                // Body
+  lConstructedPreviewText.append(Utils::GetFeetSliderValue(this->mData.getBodyMod(), this->mData.getFeetModIndex())); // Feet
+  lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mData.getBodyMod(), lMustUseBeastHands));           // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.display.successColor};

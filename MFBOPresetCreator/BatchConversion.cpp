@@ -424,9 +424,6 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   // Does the user want to define the path only through the secondary path?
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
 
-  // Generation method
-  auto lGenerateEachPresetInDedicatedDir{this->findChild<QRadioButton*>(QString("generate_dedicated_mod_architecture"))->isChecked()};
-
   // Full extract path
   auto lEntryDirectory{lSubDirectory};
   if (!lUseOnlySubdir)
@@ -434,16 +431,19 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
     lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
   }
 
-  auto lData{Struct::BatchConversionData()};
-  lData.humanSkeletonPath = lSkeletonPathHuman;
-  lData.beastSkeletonPath = lSkeletonPathBeast;
-  lData.bodyMod = lBodySelected;
-  lData.feetModIndex = lFeetModIndex;
-  lData.filters = lUserFilters;
-  lData.fullOutputPath = lEntryDirectory;
-  lData.mustGenerateFilesInExistingDirectory = aMustGenerateFilesInExistingDirectory;
-  lData.mustGenerateEachPresetInADedicatedDirectory = lGenerateEachPresetInDedicatedDir;
-  lData.scannedData = Utils::ToMapQsVecQs(aScannedData);
+  // Generation method
+  auto lGenerateEachPresetInDedicatedDir{this->findChild<QRadioButton*>(QString("generate_dedicated_mod_architecture"))->isChecked()};
+
+  // Construct the data container
+  auto lData{Struct::BatchConversionData(lSkeletonPathHuman,
+                                         lSkeletonPathBeast,
+                                         lBodySelected,
+                                         lFeetModIndex,
+                                         lUserFilters,
+                                         lEntryDirectory,
+                                         aMustGenerateFilesInExistingDirectory,
+                                         lGenerateEachPresetInDedicatedDir,
+                                         Utils::ToMapQsVecQs(aScannedData))};
 
   auto lBCPicker{new BatchConversionPicker(this, this->mSettings, lData)};
   this->connect(lBCPicker, &BatchConversionPicker::presetsCreationValidated, this, &BatchConversion::batchCreatePresets);
@@ -701,16 +701,16 @@ void BatchConversion::launchSearchProcess()
 void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPresetsData)
 {
   // Selected body
-  const auto& lBodySelected{static_cast<int>(aPresetsData.bodyMod)};
+  const auto& lBodySelected{static_cast<int>(aPresetsData.getBodyMod())};
 
   // Selected feet
-  const auto& lFeetModIndex{aPresetsData.feetModIndex};
+  const auto& lFeetModIndex{aPresetsData.getFeetModIndex()};
 
   // Output paths
-  const auto lEntryDirectory{aPresetsData.fullOutputPath};
+  const auto lEntryDirectory{aPresetsData.getFullOutputPath()};
 
   // Create main directory
-  auto lGenerateFilesInExistingMainDirectory{aPresetsData.mustGenerateFilesInExistingDirectory};
+  auto lGenerateFilesInExistingMainDirectory{aPresetsData.getMustGenerateFilesInExistingDirectory()};
   if (!QDir(lEntryDirectory).exists())
   {
     // Wait to know the result of the mkdir()
@@ -752,7 +752,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     // If the user wants to generate each preset in a dedicated directory,
     // update the path by adding the
     auto lPresetEntryDirectory{lEntryDirectory};
-    if (aPresetsData.mustGenerateEachPresetInADedicatedDirectory)
+    if (aPresetsData.getMustGenerateEachPresetInADedicatedDirectory())
     {
       lPresetEntryDirectory.append('/').append(lOSPXMLNames);
     }
@@ -761,7 +761,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     // XML file
     auto lSelectedBodyName{static_cast<BodyNameVersion>(lBodySelected)};
 
-    if (!Utils::generateXMLFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.filters, true))
+    if (!Utils::generateXMLFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.getFiltersList(), true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -794,12 +794,12 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
       if (lPreset.mustSkeletonUseAlternativeModel())
       {
         // Beast skeleton
-        lSourceSkeletonReadPath = aPresetsData.beastSkeletonPath;
+        lSourceSkeletonReadPath = aPresetsData.getBeastSkeletonPath();
       }
       else
       {
         // Human skeleton
-        lSourceSkeletonReadPath = aPresetsData.humanSkeletonPath;
+        lSourceSkeletonReadPath = aPresetsData.getHumanSkeletonPath();
       }
 
       // Write location
@@ -830,11 +830,11 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
   if (this->mSettings.batchConversion.automaticallyOpenFinalDirectory)
   {
     Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the batch generated directory"));
-    QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.getFullOutputPath()));
   }
   else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the batch generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.fullOutputPath));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.getFullOutputPath()));
   }
 }
 
