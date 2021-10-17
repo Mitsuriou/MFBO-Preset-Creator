@@ -1004,99 +1004,99 @@ Would you like to generate it (them) now?</source>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="673"/>
+        <location filename="MFBOPresetCreator.cpp" line="677"/>
         <source>Go back to the application</source>
         <translation>回到應用程式</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="74"/>
-        <location filename="MFBOPresetCreator.cpp" line="674"/>
+        <location filename="MFBOPresetCreator.cpp" line="678"/>
         <source>Save the project and quit the application</source>
         <translation>儲存專案並關閉應用程式</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="168"/>
+        <location filename="MFBOPresetCreator.cpp" line="170"/>
         <source>File</source>
         <translation>檔案</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="173"/>
+        <location filename="MFBOPresetCreator.cpp" line="175"/>
         <source>Welcome screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="179"/>
+        <location filename="MFBOPresetCreator.cpp" line="181"/>
         <source>Open project...</source>
         <translation>開啟檔案(Project)...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="184"/>
+        <location filename="MFBOPresetCreator.cpp" line="186"/>
         <source>Save</source>
         <translation>儲存檔案</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="190"/>
+        <location filename="MFBOPresetCreator.cpp" line="192"/>
         <source>Save as</source>
         <translation>另存新檔</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="197"/>
+        <location filename="MFBOPresetCreator.cpp" line="199"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="203"/>
-        <location filename="MFBOPresetCreator.cpp" line="668"/>
+        <location filename="MFBOPresetCreator.cpp" line="205"/>
+        <location filename="MFBOPresetCreator.cpp" line="672"/>
         <source>Quick restart</source>
         <translation>快速重啟</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="207"/>
+        <location filename="MFBOPresetCreator.cpp" line="209"/>
         <source>Exit</source>
         <translation>離開</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="211"/>
+        <location filename="MFBOPresetCreator.cpp" line="213"/>
         <source>Tools</source>
         <translation>工具</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="216"/>
+        <location filename="MFBOPresetCreator.cpp" line="218"/>
         <source>Batch Conversion</source>
         <translation>批次轉換</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="220"/>
+        <location filename="MFBOPresetCreator.cpp" line="222"/>
         <source>Textures Assistant</source>
         <translation>貼圖(Textures)助手</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="224"/>
+        <location filename="MFBOPresetCreator.cpp" line="226"/>
         <source>Assisted Conversion</source>
         <translation>輔助轉換</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="228"/>
+        <location filename="MFBOPresetCreator.cpp" line="230"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>重定向BodySlide檔案</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="234"/>
+        <location filename="MFBOPresetCreator.cpp" line="236"/>
         <source> (stable update available)</source>
         <translation> (有可用的正式版更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="236"/>
+        <location filename="MFBOPresetCreator.cpp" line="238"/>
         <source> (BETA update available)</source>
         <translation> (有可用的BETA更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="560"/>
+        <location filename="MFBOPresetCreator.cpp" line="562"/>
         <source>BETA update available</source>
         <translation>有可用的BETA更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="561"/>
+        <location filename="MFBOPresetCreator.cpp" line="563"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -1104,12 +1104,12 @@ Do you want to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="569"/>
+        <location filename="MFBOPresetCreator.cpp" line="571"/>
         <source>Stable update available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="570"/>
+        <location filename="MFBOPresetCreator.cpp" line="572"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -1121,52 +1121,52 @@ Do you want to download it now?</source>
         <translation type="vanished"> (有可用的Beta更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="238"/>
+        <location filename="MFBOPresetCreator.cpp" line="240"/>
         <source>Help</source>
         <translation>幫助</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="243"/>
+        <location filename="MFBOPresetCreator.cpp" line="245"/>
         <source>Check for updates</source>
         <translation>檢查更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="247"/>
+        <location filename="MFBOPresetCreator.cpp" line="249"/>
         <source>Current version&apos;s release notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="251"/>
+        <location filename="MFBOPresetCreator.cpp" line="253"/>
         <source>Report a bug...</source>
         <translation>回報Bug...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="261"/>
+        <location filename="MFBOPresetCreator.cpp" line="263"/>
         <source>GitHub (github.com)</source>
         <translation>GitHub (github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="265"/>
+        <location filename="MFBOPresetCreator.cpp" line="267"/>
         <source>GitLab (gitlab.com)</source>
         <translation>GitLab (gitlab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="269"/>
+        <location filename="MFBOPresetCreator.cpp" line="271"/>
         <source>Useful links...</source>
         <translation>建議參閱連結...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="279"/>
+        <location filename="MFBOPresetCreator.cpp" line="281"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>使用教學(docs.google.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="283"/>
+        <location filename="MFBOPresetCreator.cpp" line="285"/>
         <source>View the source code (github.com)</source>
         <translation>參考原始碼(github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="287"/>
+        <location filename="MFBOPresetCreator.cpp" line="289"/>
         <source>View the source code (gitlab.com)</source>
         <translation>參考原始碼(gitlab.com)</translation>
     </message>
@@ -1175,8 +1175,8 @@ Do you want to download it now?</source>
         <translation type="vanished">建議參閱連結</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="257"/>
-        <location filename="MFBOPresetCreator.cpp" line="275"/>
+        <location filename="MFBOPresetCreator.cpp" line="259"/>
+        <location filename="MFBOPresetCreator.cpp" line="277"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <oldsource>Nexus Mods page</oldsource>
         <translation>Nexus Mods 頁面 (nexusmods.com)</translation>
@@ -1194,17 +1194,17 @@ Do you want to download it now?</source>
         <translation type="vanished">參考原始碼(GitLab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="291"/>
+        <location filename="MFBOPresetCreator.cpp" line="293"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="545"/>
+        <location filename="MFBOPresetCreator.cpp" line="547"/>
         <source>Error while searching for a new update</source>
         <translation>無法搜尋更新檔</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="546"/>
+        <location filename="MFBOPresetCreator.cpp" line="548"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>找不到更新檔...
@@ -1237,27 +1237,27 @@ Do you want to download it now?</source>
 請問是否下載該版本?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="587"/>
+        <location filename="MFBOPresetCreator.cpp" line="591"/>
         <source>OK</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="596"/>
+        <location filename="MFBOPresetCreator.cpp" line="600"/>
         <source>Download and install the update now</source>
         <translation>立即下載並更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="597"/>
+        <location filename="MFBOPresetCreator.cpp" line="601"/>
         <source>Download later</source>
         <translation>稍後再下載</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="669"/>
+        <location filename="MFBOPresetCreator.cpp" line="673"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>你將失去所有未儲存進度?確定要快速重啟程式?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="672"/>
+        <location filename="MFBOPresetCreator.cpp" line="676"/>
         <source>Quickly restart the application</source>
         <translation>快速重新開啟應用程式</translation>
     </message>

@@ -146,7 +146,9 @@ void MFBOPresetCreator::initializeGUI()
   Utils::CleanPathString(this->mInjectedFilePath);
   lMainContainer->loadProject(this->mInjectedFilePath, true);
 
-  if (this->mSettings.general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)
+  // Avoid displaying anything if the software was launched in minimized mode
+  if (this->mSettings.display.mainWindowOpeningMode != WindowOpeningMode::MINIMIZED
+      && this->mSettings.general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)
   {
     this->launchWelcomeScreen();
   }
@@ -576,8 +578,10 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 
   this->initializeGUI();
 
-  // TODO: Fix the buggy behavior of the popup, when the main window launches as minimized
-  if (this->mSettings.general.startupAction == StartupAction::CHECK_FOR_UPDATES && !lTitle.isEmpty() && !lMessage.isEmpty())
+  // Avoid displaying anything if the software was launched in minimized mode
+  if (this->mSettings.display.mainWindowOpeningMode != WindowOpeningMode::MINIMIZED
+      && this->mSettings.general.startupAction == StartupAction::CHECK_FOR_UPDATES
+      && !lTitle.isEmpty() && !lMessage.isEmpty())
   {
     // User theme accent
     const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
