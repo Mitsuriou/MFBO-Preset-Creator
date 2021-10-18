@@ -9,6 +9,8 @@
 #include <QObject>
 #include <set>
 
+#define DLLEXP __declspec(dllexport)
+
 class Utils final : public QObject
 {
   Q_OBJECT
@@ -66,8 +68,8 @@ public:
   static bool ContainsBodyOrHandsOrFeetMesh(const T& aList);
   static void ClearUselessEntries(std::map<QString, std::set<QString>>& aScannedData);
 
-  static bool IsCBBEBasedBody(const BodyNameVersion& aBody);
-  static bool IsCBBEBasedBody(const BodyName& aBody);
+  static DLLEXP bool IsCBBEBasedBody(const BodyNameVersion& aBody);
+  static DLLEXP bool IsCBBEBasedBody(const BodyName& aBody);
   static bool IsBodySupportingBeastHands(const BodyNameVersion& aBody);
 
   // App data behavior settings
