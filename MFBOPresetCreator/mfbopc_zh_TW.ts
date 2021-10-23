@@ -938,44 +938,44 @@ Would you like to generate it (them) now?</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="321"/>
+        <location filename="DataLists.cpp" line="320"/>
         <source>Minimized</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="322"/>
-        <location filename="DataLists.cpp" line="329"/>
+        <location filename="DataLists.cpp" line="321"/>
+        <location filename="DataLists.cpp" line="328"/>
         <source>Windowed</source>
         <translation>視窗化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="323"/>
-        <location filename="DataLists.cpp" line="330"/>
+        <location filename="DataLists.cpp" line="322"/>
+        <location filename="DataLists.cpp" line="329"/>
         <source>Maximized</source>
         <translation>最大化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="361"/>
+        <location filename="DataLists.cpp" line="360"/>
         <source>[ignore]</source>
         <translation>[忽略]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="362"/>
+        <location filename="DataLists.cpp" line="361"/>
         <source>Body mesh</source>
         <translation>身體模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="363"/>
+        <location filename="DataLists.cpp" line="362"/>
         <source>Feet mesh</source>
         <translation>腳部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="364"/>
+        <location filename="DataLists.cpp" line="363"/>
         <source>Hands mesh</source>
         <translation>手部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="365"/>
+        <location filename="DataLists.cpp" line="364"/>
         <source>Skeleton mesh</source>
         <translation>骨架模型</translation>
     </message>

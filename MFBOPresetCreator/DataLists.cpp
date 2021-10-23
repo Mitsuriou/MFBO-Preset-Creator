@@ -19,16 +19,12 @@ QStringList DataLists::GetBodiesNames()
 
 QStringList DataLists::GetVersionsFromBodyName(const BodyName& aBody)
 {
-  QStringList lBodies;
-
   switch (aBody)
   {
     case BodyName::CBBE_3BBB_3BA:
-      lBodies = QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06")});
-      break;
+      return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06")});
     case BodyName::CBBE_SMP_3BBB:
-      lBodies.append(QString("1.2.0"));
-      break;
+      return QStringList(QString("1.2.0"));
     case BodyName::BHUNP_3BBB:
     case BodyName::BHUNP_3BBB_ADVANCED:
     case BodyName::BHUNP_3BBB_ADVANCED_VER_2:
@@ -36,23 +32,26 @@ QStringList DataLists::GetVersionsFromBodyName(const BodyName& aBody)
     case BodyName::BHUNP_BBP_ADVANCED:
     case BodyName::BHUNP_TBBP:
     case BodyName::BHUNP_TBBP_ADVANCED:
-      lBodies = QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.39")});
-      break;
+      return QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.39")});
     case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-      lBodies = QStringList({QString("2.25"), QString("2.30")});
-      break;
+      return QStringList({QString("2.25"), QString("2.30")});
     case BodyName::MIMIR_EBONIC_BODY:
-      lBodies = QStringList({QString("1.2"), QString("1.2 foot fix")});
-      break;
+      return QStringList({QString("1.2"), QString("1.2 foot fix")});
   }
 
-  return lBodies;
+  return QStringList();
 }
 
 BodyNameVersion DataLists::GetBodyNameVersion(const BodyName& aBody, const int aRelativeVersion)
 {
   // Ignore the cases where the checkboxes have no index selected
   if (aRelativeVersion == -1)
+  {
+    return BodyNameVersion::INVALID_VALUE;
+  }
+
+  // Avoid having an undefined version selected
+  if (aRelativeVersion > DataLists::GetVersionsFromBodyName(aBody).size())
   {
     return BodyNameVersion::INVALID_VALUE;
   }

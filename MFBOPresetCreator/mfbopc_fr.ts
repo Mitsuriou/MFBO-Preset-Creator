@@ -869,44 +869,44 @@ Voulez-vous fermer la fenêtre conversion par lot : sélecteur de résultats mai
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="321"/>
+        <location filename="DataLists.cpp" line="320"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="322"/>
-        <location filename="DataLists.cpp" line="329"/>
+        <location filename="DataLists.cpp" line="321"/>
+        <location filename="DataLists.cpp" line="328"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="323"/>
-        <location filename="DataLists.cpp" line="330"/>
+        <location filename="DataLists.cpp" line="322"/>
+        <location filename="DataLists.cpp" line="329"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="361"/>
+        <location filename="DataLists.cpp" line="360"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="362"/>
+        <location filename="DataLists.cpp" line="361"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="363"/>
+        <location filename="DataLists.cpp" line="362"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="364"/>
+        <location filename="DataLists.cpp" line="363"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="365"/>
+        <location filename="DataLists.cpp" line="364"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>

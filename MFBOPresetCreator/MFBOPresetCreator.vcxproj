@@ -77,9 +77,7 @@ echo ####### STARTING BUILDING MFBO:Preset Creator #######
 echo #####################################################
 echo #####################################################</Command>
     </PreBuildEvent>
-    <Link>
-      <AdditionalOptions>/NODEFAULTLIB:library</AdditionalOptions>
-    </Link>
+    <Link />
     <QtTranslation />
     <QtTranslation>
       <QmOutputDir>$(ProjectDir)</QmOutputDir>
@@ -114,6 +112,7 @@ echo #####################################################</Command>
       <BuildAction>lupdate_lrelease</BuildAction>
       <QmOutputDir>$(ProjectDir)</QmOutputDir>
     </QtTranslation>
+    <Link />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">
     <Link />
@@ -143,6 +142,7 @@ echo #####################################################</Command>
       <BuildAction>lupdate_lrelease</BuildAction>
       <QmOutputDir>$(ProjectDir)</QmOutputDir>
     </QtTranslation>
+    <Link />
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>$(DefaultQtVersion)</QtInstall>

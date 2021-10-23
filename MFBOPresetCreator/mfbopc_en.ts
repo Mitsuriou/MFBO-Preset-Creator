@@ -853,44 +853,44 @@ Would you like to generate it (them) now?</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="321"/>
+        <location filename="DataLists.cpp" line="320"/>
         <source>Minimized</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="DataLists.cpp" line="321"/>
+        <location filename="DataLists.cpp" line="328"/>
+        <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="322"/>
         <location filename="DataLists.cpp" line="329"/>
-        <source>Windowed</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="DataLists.cpp" line="323"/>
-        <location filename="DataLists.cpp" line="330"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="361"/>
+        <location filename="DataLists.cpp" line="360"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="362"/>
+        <location filename="DataLists.cpp" line="361"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="363"/>
+        <location filename="DataLists.cpp" line="362"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="364"/>
+        <location filename="DataLists.cpp" line="363"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="365"/>
+        <location filename="DataLists.cpp" line="364"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
