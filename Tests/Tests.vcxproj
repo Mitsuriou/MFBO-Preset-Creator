@@ -65,7 +65,6 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -87,15 +86,14 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;D:\Qt\5.15.2\msvc2019_64\lib;$(SolutionDir)$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>D:\Qt\5.15.2\msvc2019_64\lib\*.lib;$(SolutionDir)MFBOPresetCreator\$(IntDir)*.obj;MFBOPresetCreator.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt5Network.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Xml.lib;$(SolutionDir)MFBOPresetCreator\$(IntDir)*.obj;MFBOPresetCreator.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>for %%f in (D:\Qt\5.15.2\msvc2019_64\bin\Qt5*.dll) do @copy /y %%f $(SolutionDir)$(Platform)\$(Configuration)\Tests\</Command>
+      <Command>for %%f in (D:\Qt\5.15.2\msvc2019_64\bin\Qt5*d.dll) do @copy /y %%f $(SolutionDir)$(Platform)\$(Configuration)\Tests\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
