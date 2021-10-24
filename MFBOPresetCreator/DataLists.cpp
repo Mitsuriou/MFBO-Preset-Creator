@@ -51,7 +51,7 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyName& aBody, const int a
   }
 
   // Avoid having an undefined version selected
-  if (aRelativeVersion > DataLists::GetVersionsFromBodyName(aBody).size())
+  if (aRelativeVersion >= DataLists::GetVersionsFromBodyName(aBody).size())
   {
     return BodyNameVersion::INVALID_VALUE;
   }
