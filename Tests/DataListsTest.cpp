@@ -1,5 +1,4 @@
-#include "pch.h"
-
+// Unit test framework
 #include "CppUnitTest.h"
 
 // Files to test
