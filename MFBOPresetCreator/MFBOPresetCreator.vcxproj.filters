@@ -73,6 +73,9 @@
     <ClCompile Include="VersionsInformation.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="TargetMeshesPicker.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -225,6 +228,9 @@
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="ReleaseNotesViewer.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TargetMeshesPicker.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>

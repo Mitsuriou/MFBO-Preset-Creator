@@ -64,6 +64,11 @@ enum class BodyName
   MIMIR_EBONIC_BODY
 };
 
+enum class FeetNameVersion
+{
+
+};
+
 enum class ApplicationLanguage
 {
   ENGLISH,

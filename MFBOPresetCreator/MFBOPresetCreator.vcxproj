@@ -246,12 +246,14 @@ echo #####################################################</Command>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="SliderFileBuilder.cpp" />
+    <ClCompile Include="TargetMeshesPicker.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
     <ClCompile Include="TexturesAssistant.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="VersionsInformation.cpp" />
     <ClCompile Include="WelcomeScreen.cpp" />
+    <QtMoc Include="TargetMeshesPicker.h" />
     <ClInclude Include="VersionsInformation.h" />
     <QtMoc Include="WelcomeScreen.h" />
     <QtMoc Include="TexturesAssistant.h" />

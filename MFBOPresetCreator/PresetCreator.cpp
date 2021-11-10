@@ -21,6 +21,8 @@
 #include <QStandardPaths>
 #include <QStyledItemDelegate>
 
+#include "TargetMeshesPicker.h"
+
 PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QWidget(aParent)
   , mSettings(aSettings)
@@ -629,6 +631,8 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
+
+  new TargetMeshesPicker(this, this->mSettings, this->mLastPaths);
 }
 
 void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
