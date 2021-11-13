@@ -269,7 +269,9 @@ QMenu::separator {
 /*LIST WIDGET*/
 /*************/
 QListWidget {
-  border: 1px solid white;
+  border: 1px solid qlineargradient(x1: 0 y1: 0, x2: 1 y2: 1, stop: 0 #ff558d, stop: 1 rgb(106, 130, 251));
+  border-left-color: #d960a9;
+  border-right-color: #9077df;
   color: black;
   background-color: white;
   alternate-background-color: #edf0f5;

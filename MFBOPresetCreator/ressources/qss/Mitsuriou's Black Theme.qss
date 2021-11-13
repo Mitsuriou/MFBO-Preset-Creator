@@ -263,7 +263,7 @@ QMenu::separator {
 /*LIST WIDGET*/
 /*************/
 QListWidget {
-  border: 1px solid #080808;
+  border: 1px solid #3991ff;
   color: white;
   background-color: #080808;
   alternate-background-color: #101010;
