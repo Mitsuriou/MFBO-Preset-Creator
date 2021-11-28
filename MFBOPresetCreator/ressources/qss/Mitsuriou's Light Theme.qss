@@ -291,10 +291,14 @@ QListWidget::item::focus {
   border: 1px solid black;
 }
 
-QListWidget::item::hover,
+QListWidget::item::hover {
+  border: 1px solid #ff558d;
+  color: #787878;
+}
+
 QListWidget::item::focus::hover {
   border: 1px solid #ff558d;
-  color: black;
+  color:#BC6783
 }
 
 QListWidget::item QWidget {
