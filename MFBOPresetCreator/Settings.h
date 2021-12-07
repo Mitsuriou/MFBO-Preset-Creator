@@ -25,6 +25,12 @@ private:
   QString mNewSuccessColor;
   QString mNewWarningColor;
   QString mNewDangerColor;
+  BodyNameVersion mNewPresetCreatorTargetBodyMesh;
+  FeetNameVersion mNewPresetCreatorTargetFeetMesh;
+  BodyNameVersion mNewBatchConversionTargetBodyMesh;
+  FeetNameVersion mNewBatchConversionTargetFeetMesh;
+  BodyNameVersion mNewRetargetingToolTargetBodyMesh;
+  FeetNameVersion mNewRetargetingToolTargetFeetMesh;
 
   void setWindowProperties();
   void initializeGUI();
@@ -43,12 +49,7 @@ private:
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   void loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsToLoad);
   void loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsToLoad);
-  void loadGenericDialogSettings(const Struct::GenericDialogSettings& aSettingsToLoad, 
-                                 const QString& aObjectNameBodyNameSelector,
-                                 const QString& aObjectNameBodyVersionSelector,
-                                 const QString& aObjectNameFeetSelector,
-                                 const QString& aObjectNamePostActionTask);
-  
+  void loadGenericDialogSettings(const Struct::GenericDialogSettings& aSettingsToLoad, const QString& aObjectNamePostActionTask);
 
   Struct::Settings getSettingsFromGUI() const;
 
@@ -58,18 +59,27 @@ private:
   void applyWarningColorButton(const QString& aColor) const;
   void applyDangerColorButton(const QString& aColor) const;
 
-  //#pragma region PRIVATE_SLOTS
+  // Dialog buttons
   void saveSettings();
-  void updateAvailableBodyVersions();
-  void updateAvailableBatchConversionBodyVersions();
-  void updateAvailableUpgradeBodyVersions();
   void restoreDefaultSettings();
+
+  // Meshes choices
+  void openPresetCreatorTargetMeshesPicker();
+  void openBatchConversionTargetMeshesPicker();
+  void openRetargetingToolTargetMeshesPicker();
+  void presetCreatorTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
+  void batchConversionTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
+  void retargetingToolTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
+  void targetMeshesChanged(BodyNameVersion& aBodyToUpdate, FeetNameVersion& aFeetToUpdate, const BodyNameVersion& aBody, const FeetNameVersion& aFeet, const QString& aObjectNamePrefix);
+
+  // Style choices
   void chooseFont();
   void chooseSuccessColor();
   void chooseWarningColor();
   void chooseDangerColor();
+
+  // Shortcut
   void goToLastPathsTab();
-  //#pragma endregion PRIVATE_SLOTS
 
   // Clear paths
   void clearPathButtonClicked();

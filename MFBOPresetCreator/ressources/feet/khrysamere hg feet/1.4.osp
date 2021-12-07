@@ -1,0 +1,327 @@
+﻿    <SliderSet name="%1 - [Khrysamere] K Feet">
+        <DataFolder>[Khrysamere] K Feet</DataFolder>
+        <SourceFile>[Khrysamere] K Feet.nif</SourceFile>
+        <OutputPath>{%%feet_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
+        <Shape target="CfeetNails.003_2" DataFolder="[Khrysamere] HG Feet (Claws) (BHUNP)">CfeetNails.003_2</Shape>
+        <Shape target="HGFeet">HGFeet</Shape>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="HGFeet7B High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Bombshell Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Bombshell High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Natural Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Natural High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Cleavage Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Cleavage High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7B BCup Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="HGFeet7B BCup High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B BCup High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Oppai Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="HGFeet7B Oppai High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7B CH Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="HGFeet7B CH High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP Pushup Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP Pushup High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP Skinny Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP Skinny High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP Perky Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNP Perky High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPB Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPB High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPB Chapi" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPB Oppai v1" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPB Oppai v3.2 Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPB Oppai v3.2 High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPetite Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPetite High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPC Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPC High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPCM Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPCM High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPSH Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPSH High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPK Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPK High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPK Bonus Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPK Bonus High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUN7B Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="HGFeetUN7B High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPBB Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPBB High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="HGFeetSeraphim Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="HGFeetSeraphim High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="HGFeetDemonfet Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="HGFeetDemonfet High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="HGFeetDream Girl Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="HGFeetDream Girl High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="HGFeetTop Model Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="HGFeetTop Model High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="HGFeetLeito Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="HGFeetLeito High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPF Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPF High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPFx Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="HGFeetUNPFx High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUNPFx High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="HGFeetMCBM Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="HGFeetMCBM High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="HGFeetVenus Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="HGFeetVenus High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetVenus High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="HGFeetManga Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="HGFeetManga High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="HGFeetCHSBHC Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="HGFeetCHSBHC High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetCHSBHC High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7BUNP Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7BUNP Low</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="HGFeetCNHF Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="HGFeetCNHF High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="HGFeetCNHF Bonus Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="HGFeetCNHF Bonus High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="HGFeetZGGB-R2 Low" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="HighHeel" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2HighHeel" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2HighHeel</Data>
+            <Data name="HGFeetHighHeel" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetHighHeel</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="HGFeet7BUNP High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeet7BUNP High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="HGFeetZGGB-R2 High" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetZGGB-R2 High</Data>
+        </Slider>
+        <Slider name="BreastConverge" invert="false" small="0" big="0">
+            <Data name="HGFeetBreastConverge" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBreastConverge</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="HGFeetChubbyLegs" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetChubbyLegs</Data>
+        </Slider>
+        <Slider name="Pinky Toe Angle" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Pinky Toe Angle" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Pinky Toe Angle</Data>
+            <Data name="HGFeetPinky Toe Angle" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetPinky Toe Angle</Data>
+        </Slider>
+        <Slider name="Unrealistic" invert="false" small="0" big="0">
+            <Data name="HGFeetUnrealistic" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUnrealistic</Data>
+        </Slider>
+        <Slider name="Shoulders" invert="false" small="0" big="0">
+            <Data name="HGFeetShoulders" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetShoulders</Data>
+        </Slider>
+        <Slider name="Upper Heel" invert="false" small="0" big="0">
+            <Data name="HGFeetUpper Heel" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetUpper Heel</Data>
+        </Slider>
+        <Slider name="Medial Malleolus" invert="false" small="0" big="0">
+            <Data name="HGFeetMedial Malleolus" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetMedial Malleolus</Data>
+        </Slider>
+        <Slider name="Ball" invert="false" small="0" big="0">
+            <Data name="HGFeetBall" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBall</Data>
+        </Slider>
+        <Slider name="Archilles Tendon" invert="false" small="0" big="0">
+            <Data name="HGFeetArchilles Tendon" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetArchilles Tendon</Data>
+        </Slider>
+        <Slider name="Big Toe Spread" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Big Toe Spread" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Big Toe Spread</Data>
+            <Data name="HGFeetBig Toe Spread" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBig Toe Spread</Data>
+        </Slider>
+        <Slider name="Round Big Toe" invert="false" small="0" big="0">
+            <Data name="HGFeetRound Big Toe" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetRound Big Toe</Data>
+        </Slider>
+        <Slider name="Round Toes" invert="false" small="0" big="0">
+            <Data name="HGFeetRound Toes" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetRound Toes</Data>
+        </Slider>
+        <Slider name="Big Toe Length" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Big Toe Length" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Big Toe Length</Data>
+            <Data name="HGFeetBig Toe Length" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBig Toe Length</Data>
+        </Slider>
+        <Slider name="Long Toe Length" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Long Toe Length" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Long Toe Length</Data>
+            <Data name="HGFeetLong Toe Length" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetLong Toe Length</Data>
+        </Slider>
+        <Slider name="Middle Toe Length" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Middle Toe Length" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Middle Toe Length</Data>
+            <Data name="HGFeetMiddle Toe Length" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetMiddle Toe Length</Data>
+        </Slider>
+        <Slider name="Claw Nails" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Claw Nails" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Claw Nails</Data>
+        </Slider>
+        <Slider name="Big Toe Horizontal Angle" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Big Toe Horizontal Angle" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Big Toe Horizontal Angle</Data>
+            <Data name="HGFeetBig Toe Horizontal Angle" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBig Toe Horizontal Angle</Data>
+        </Slider>
+        <Slider name="Nails Longer" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Nails Longer" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Nails Longer</Data>
+        </Slider>
+        <Slider name="Sinus" invert="false" small="0" big="0">
+            <Data name="HGFeetSinus" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetSinus</Data>
+        </Slider>
+        <Slider name="Arms" invert="false" small="0" big="0">
+            <Data name="HGFeetArms" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetArms</Data>
+        </Slider>
+        <Slider name="Ball Curve" invert="false" small="0" big="0">
+            <Data name="HGFeetBall Curve" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBall Curve</Data>
+        </Slider>
+        <Slider name="Big Toe Neck Shape" invert="false" small="0" big="0">
+            <Data name="HGFeetBig Toe Neck Shape" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBig Toe Neck Shape</Data>
+        </Slider>
+        <Slider name="Heel Width" invert="false" small="0" big="0">
+            <Data name="HGFeetHeel Width" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetHeel Width</Data>
+        </Slider>
+        <Slider name="Feet Longer" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Feet Longer" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Feet Longer</Data>
+            <Data name="HGFeetFeet Longer" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetFeet Longer</Data>
+        </Slider>
+        <Slider name="Feet Shorter" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Feet Shorter" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Feet Shorter</Data>
+            <Data name="HGFeetFeet Shorter" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetFeet Shorter</Data>
+        </Slider>
+        <Slider name="Big Toe Vertical Angle" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Big Toe Vertical Angle" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Big Toe Vertical Angle</Data>
+            <Data name="HGFeetBig Toe Vertical Angle" target="HGFeet" local="true">[Khrysamere] K Feet.osd\HGFeetBig Toe Vertical Angle</Data>
+        </Slider>
+        <Slider name="Big Toe Vertical Claw Nail Fix" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Big Toe Vertical Claw Nail Fix" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Big Toe Vertical Claw Nail Fix</Data>
+        </Slider>
+        <Slider name="Big Toe Vertical Nails Longer Fix" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2Big Toe Vertical Nails Longer Fix" target="CfeetNails.003_2" local="true">[Khrysamere] K Feet.osd\CfeetNails.003_2Big Toe Vertical Nails Longer Fix</Data>
+        </Slider>
+    </SliderSet>

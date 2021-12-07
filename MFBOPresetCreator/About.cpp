@@ -68,20 +68,26 @@ void About::initializeGUI()
       "<li>Some GUI themes were taken from <a%1 href='https://github.com/6788-00'>6788-00's GitHub repository</a>.</li>"
       "<li>Some GUI themes were taken from <a%1 href='https://github.com/Alexhuszagh/BreezeStyleSheets'>Alexhuszagh/BreezeStyleSheets GitHub page</a>.</li>"
       "</ul><br />"
-      "Ressources bundled in this application:<ul style='margin: 0;'>"
-      "<li>The major parts of the BodySlide (OSP and XML) files that are generated with MFBOPC were taken from:<ul style='margin: 0;'>"
+      "Ressources bundled in this application:"
+      "<ul style='margin: 0;'>"
+      "<li>The major parts of the BodySlide (OSP and XML) files that are generated with MFBOPC were taken from:"
+      "<ul style='margin: 0;'>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/198'>Caliente's Beautiful Bodies Enhancer -CBBE-</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/30174'>CBBE 3BBB</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/29023'>CBBE SMP (3BBB)</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/31126'>BHUNP (UUNP Next Generation) SSE</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/51173'>Mimir Ebonic Body (Custom CBBE sliders and CBBE preset) V.2</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
+      "<li>the <a%1 href='https://coco2048.blogspot.com/'>[COCO]Body V6.66 3BBB LE & SE Ultimate</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
+      "<br />"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/30072'>MSF - More Sliders for Feet CBBE - BHUNP (High Heel)</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.sunkeumjeong.com/post/hg-feet-and-toes-bhunp-se'>HG Feet and Toes BHUNP SE</a> mod on Sunjeong's website and modified by Dylan Jacquemin.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/50679'>Khrysamere HG Feet Replacer (BHUNP)</a> mod on NexusMod and modified by Dylan Jacquemin.</li>"
-      "</ul></li><li>The \"skeleton_female.nif\" and \"skeletonbeast_female.nif\" files have been taken from<br />"
-      "the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/1988'>XP32 Maximum Skeleton Special Extended - XPMSSE</a> "
-      "mod on NexusMod. The files have not been modified.</li>"
-      "</ul></p>")
+      "</ul><br />"
+      "The \"skeleton_female.nif\" and \"skeletonbeast_female.nif\" files have been taken from:"
+      "<ul style='margin: 0;'>"
+      "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/1988'>XP32 Maximum Skeleton Special Extended - XPMSSE</a> mod on NexusMod. The files have not been modified.</li>"
+      "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/59284'>Vera's Female Skeleton</a> mod on NexusMod. The files have not been modified.</li>"
+      "</ul></p></ul>")
       .arg(lLinksColorOverride)};
 
   auto lTextContainer{new QLabel(this)};

@@ -28,6 +28,8 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mMinimumFirstColumnWidth(275)
+  , mTargetBodyMesh(aSettings.presetCreator.defaultBodyFeet.bodyMesh)
+  , mTargetFeetMesh(aSettings.presetCreator.defaultBodyFeet.feetMesh)
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this)};
@@ -518,42 +520,14 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetCreator.defaultBodyFeet.bodyMod)};
-
-  lBodyslideGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
-
-  auto lBodyNameVersionWrapper{new QHBoxLayout(lBodyslideGroupBox)};
-  lBodyNameVersionWrapper->setMargin(0);
-  lBodyslideGridLayout->addLayout(lBodyNameVersionWrapper, 0, 1);
-
-  // Body Name
-  auto lBodyNameSelector{new QComboBox(this)};
-  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
-  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
-  lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  lBodyNameVersionWrapper->addWidget(lBodyNameSelector);
-
-  // Body Version
-  auto lBodyVersionSelector{new QComboBox(this)};
-  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
-  lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  lBodyNameVersionWrapper->addWidget(lBodyVersionSelector);
-
-  // Feet mod chooser
-  auto lFeetSelector{new QComboBox(this)};
-  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
-  lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(this->mSettings.presetCreator.defaultBodyFeet.feetMod);
-  lFeetSelector->setObjectName(QString("feet_mod_selector"));
-  lBodyNameVersionWrapper->addWidget(lFeetSelector);
-
-  lBodyNameVersionWrapper->addStretch();
+  auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
+                                                                          *lBodyslideGridLayout,
+                                                                          true,
+                                                                          0,
+                                                                          lIconFolder,
+                                                                          QString("target_meshes_picker_button"),
+                                                                          QString("currently_targeted_body"),
+                                                                          QString("currently_targeted_feet"))};
 
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
@@ -613,26 +587,19 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Pre-bind initialization functions
+  this->targetMeshesChanged(this->mTargetBodyMesh, this->mTargetFeetMesh);
   this->updateOSPXMLPreview(QString());
   this->updateBodyslideNamesPreview(QString());
 
   // Event binding
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateAvailableBodyVersions);
-  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&PresetCreator::refreshAllPreviewFields));
+  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &PresetCreator::openTargetMeshesPicker);
   this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
   this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
   this->connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
-
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
-  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
-  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
-
-  new TargetMeshesPicker(this, this->mSettings, this->mLastPaths);
 }
 
 void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
@@ -693,10 +660,21 @@ void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
   this->findChild<QLineEdit*>(QString("skeleton_name"))->setText(lFile["skeleton_name"].toString());
   this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->setChecked(lFile["use_custom_skeleton"].toBool()); // Finish by checking or unchecking the box
 
-  // BodySlide
-  Utils::SelectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_name")), lFile["body_selector_name"].toInt());
-  Utils::SelectComboBoxAt(this->findChild<QComboBox*>(QString("body_selector_version")), lFile["body_selector_version"].toInt());
-  Utils::SelectComboBoxAt(this->findChild<QComboBox*>(QString("feet_mod_selector")), lFile["feet_mod_selector"].toInt());
+  // Body and feet meshes: compatiblity
+  if (Utils::CompareVersionNumbers(lFile["applicationVersion"].toString(), "3.5.0.0") == ApplicationVersionRelative::OLDER)
+  {
+    const auto lCompatibilityData{DataLists::ReadBodyFeetModsCompatibility(lFile["body_selector_name"].toInt(),
+                                                                           lFile["body_selector_version"].toInt(),
+                                                                           lFile["feet_mod_selector"].toInt())};
+    this->targetMeshesChanged(lCompatibilityData.first, lCompatibilityData.second);
+  }
+  // Body and feet meshes: last format version
+  else
+  {
+    this->targetMeshesChanged(static_cast<BodyNameVersion>(lFile["body_mesh"].toInt()),
+                              static_cast<FeetNameVersion>(lFile["feet_mesh"].toInt()));
+  }
+
   this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->setText(lFile["names_osp_xml_input"].toString());
   this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->setText(lFile["names_bodyslide_input"].toString());
 
@@ -757,17 +735,11 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
   auto lSkeletonName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
   lProject["skeleton_name"] = lSkeletonName;
 
-  // Body name
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  lProject["body_selector_name"] = lBodyNameSelected;
+  // Targeted body mesh
+  lProject["body_mesh"] = static_cast<int>(this->mTargetBodyMesh);
 
-  // Body version
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  lProject["body_selector_version"] = lBodyVersionSelected;
-
-  // Feet mod
-  auto lFeetModSelected{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
-  lProject["feet_mod_selector"] = lFeetModSelected;
+  // Targeted feet mesh
+  lProject["feet_mesh"] = static_cast<int>(this->mTargetFeetMesh);
 
   // OSP and XML names
   auto lOSPXMLNames{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text().trimmed()};
@@ -793,7 +765,7 @@ QJsonObject PresetCreator::saveValuesToJsonObject()
   return lProject;
 }
 
-void PresetCreator::updateGUIOnBodyChange()
+void PresetCreator::updateBeastHandsCheckboxState()
 {
   // Get the GUI components
   auto lLabelBeastHands{this->findChild<QLabel*>(QString("label_use_beast_hands"))};
@@ -802,15 +774,7 @@ void PresetCreator::updateGUIOnBodyChange()
   // The new "disabled" state to apply
   auto lDisableBeastHands{false};
 
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  if (lBodyVersionSelected == -1)
-  {
-    return;
-  }
-  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-
-  if (!Utils::IsBodySupportingBeastHands(lBodySelected))
+  if (!Utils::IsBodySupportingBeastHands(this->mTargetBodyMesh))
   {
     lDisableBeastHands = true;
     lMustUseBeastHands->setChecked(false);
@@ -818,23 +782,6 @@ void PresetCreator::updateGUIOnBodyChange()
 
   lLabelBeastHands->setDisabled(lDisableBeastHands);
   lMustUseBeastHands->setDisabled(lDisableBeastHands);
-}
-
-void PresetCreator::updateAvailableBodyVersions()
-{
-  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
-
-  // Version
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
-  lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
-  lBodyVersionSelector->setCurrentIndex(0);
-
-  // Feet mod
-  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_selector"))};
-  lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
-  lFeetSelector->setCurrentIndex(0);
 }
 
 void PresetCreator::populateSkeletonChooser()
@@ -994,15 +941,10 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
     lIsValidPath = false;
   }
 
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
-
   auto lConstructedPreviewText{QString()};
-  lConstructedPreviewText.append(Utils::GetBodySliderValue(lBodySelected));                      // Body
-  lConstructedPreviewText.append(Utils::GetFeetSliderValue(lBodySelected, lFeetModIndex));       // Feet
-  lConstructedPreviewText.append(Utils::GetHandsSliderValue(lBodySelected, lMustUseBeastHands)); // Hands
+  lConstructedPreviewText.append(Utils::GetBodySliderValue(this->mTargetBodyMesh));                      // Body
+  lConstructedPreviewText.append(Utils::GetFeetSliderValue(this->mTargetFeetMesh));                      // Feet
+  lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mTargetBodyMesh, lMustUseBeastHands)); // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
   auto lNewTextColor{this->mSettings.display.successColor};
@@ -1136,14 +1078,6 @@ void PresetCreator::generateDirectoryStructure()
   // User theme accent
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
-  // Selected body
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{static_cast<int>(DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected))};
-
-  // Selected feet
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
-
   // Beast hands
   auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))};
   auto lMustUseBeastHands{lCheckboxUseBeastHands->isEnabled() && lCheckboxUseBeastHands->isChecked()};
@@ -1225,7 +1159,7 @@ void PresetCreator::generateDirectoryStructure()
                                       tr("Continue the files generation"),
                                       tr("Cancel the files generation"),
                                       "",
-                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.dangerColor,
                                       this->mSettings.display.successColor,
                                       "",
                                       true)
@@ -1306,11 +1240,10 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // XML file
-  auto lSelectedBodyName{static_cast<BodyNameVersion>(lBodySelected)};
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lSelectedBodyName, lFeetModIndex)};
+  auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), this->mTargetBodyMesh, this->mTargetFeetMesh)};
 
-  if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lUserFilters, false))
+  if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lUserFilters, false))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1322,7 +1255,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // OSP file
-  if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, false))
+  if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, false))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1387,7 +1320,7 @@ void PresetCreator::refreshAllPreviewFields()
   this->setHasUserDoneSomething(true);
 
   // Update the GUI based on the available
-  this->updateGUIOnBodyChange();
+  this->updateBeastHandsCheckboxState();
 
   // Refresh the preview of the body meshes parts
   this->updateMeshesPreview();
@@ -1395,6 +1328,39 @@ void PresetCreator::refreshAllPreviewFields()
   // Refresh the names in the bodyslide application
   auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
   this->updateBodyslideNamesPreview(lBodyslideSlidersetsNames);
+}
+
+void PresetCreator::openTargetMeshesPicker()
+{
+  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &PresetCreator::targetMeshesChanged);
+}
+
+void PresetCreator::targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
+{
+  // Update the class members
+  this->mTargetBodyMesh = aBody;
+  this->mTargetFeetMesh = aFeet;
+
+  // Update the "targeted body mesh" text content
+  const auto lBodyText{
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body")};
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1").arg(lBodyText));
+
+  // Update the "targeted feet mesh" text content
+  const auto lFeetText{
+    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
+
+  auto lCurrentlyTargetedFeet{this->findChild<QLabel*>("currently_targeted_feet")};
+  lCurrentlyTargetedFeet->setText(tr("Targeted feet: %1").arg(lFeetText));
+
+  // Force the refresh of preview fields
+  this->refreshAllPreviewFields();
+
+  // Force the refresh of the filters list preview
+  this->updateBodySlideFiltersListPreview();
 }
 
 void PresetCreator::openBodySlideFiltersEditor()
@@ -1442,18 +1408,14 @@ void PresetCreator::updateBodySlideFiltersList(const std::map<QString, QStringLi
 
 void PresetCreator::updateBodySlideFiltersListPreview()
 {
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
-
-  // Take custom MSF filter
-  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
-
+  // Get the GUI widgets
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
 
+  // Get any eventual additional filters
+  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};
   auto lText{QString()};
+
   if (lFiltersListChooser->currentIndex() != -1)
   {
     lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));

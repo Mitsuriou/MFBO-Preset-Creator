@@ -21,10 +21,9 @@ public:
 
   // String
   static void CleanPathString(QString& aPath);
-  static QString CleanPathString(const QString& aPath);
+  [[nodiscard]] static QString CleanPathString(const QString& aPath);
   static void CleanBreaksString(QString& aString);
-  static QString CleanBreaksString(const QString& aString);
-  static QStringList SplitString(QString aString, const QString& aSeparator);
+  [[nodiscard]] static QString CleanBreaksString(const QString& aString);
 
   // Convert types
   static std::map<QString, std::vector<QString>> ToMapQsVecQs(const std::map<QString, std::set<QString>>& aMap);
@@ -59,8 +58,8 @@ public:
   static QString GetIconRessourceFolder(const GUITheme& aTheme);
 
   // Skyrim related stuff
-  static bool generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset);
-  static bool generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName, const bool aIsBatchConversionPreset);
+  static bool generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset);
+  static bool generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName, const bool aIsBatchConversionPreset);
   static bool generateSkeletonFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName);
 
   static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
@@ -68,9 +67,10 @@ public:
   static bool ContainsBodyOrHandsOrFeetMesh(const T& aList);
   static void ClearUselessEntries(std::map<QString, std::set<QString>>& aScannedData);
 
-  static DLLEXP bool IsCBBEBasedBody(const BodyNameVersion& aBody);
-  static DLLEXP bool IsCBBEBasedBody(const BodyName& aBody);
-  static bool IsBodySupportingBeastHands(const BodyNameVersion& aBody);
+  static DLLEXP bool IsCBBEBasedBody(const BodyName& aBodyName);
+  static DLLEXP bool IsCBBEBasedBody(const BodyVariant& aBodyVariant);
+  static DLLEXP bool IsCBBEBasedBody(const BodyNameVersion& aBodyNameVersion);
+  static bool IsBodySupportingBeastHands(const BodyNameVersion& aBodyNameVersion);
 
   // App data behavior settings
   static bool IsRunningStandaloneVersion();
@@ -85,12 +85,12 @@ public:
   static bool IsPresetUsingBeastHands(const QString& aPath);
 
   // Preset values
-  static QString GetHandsSliderValue(const BodyNameVersion& aBody, const bool aMustUseBeastHands);
-  static QString GetFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex);
-  static QString GetBodySliderValue(const BodyNameVersion& aBody);
+  static QString GetBodySliderValue(const BodyNameVersion& aBodyNameVersion);
+  static QString GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion);
+  static QString GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, const bool aMustUseBeastHands);
 
   // Load and save
-  static void SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent = nullptr, const QString& aIconFolder = QString(""));
+  static void SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent = nullptr, const QString& aIconFolder = QString());
   static QJsonObject LoadFromJsonFile(const QString& aFilePath);
 
   // Settings
@@ -98,12 +98,12 @@ public:
 
   static Struct::Settings LoadSettingsFromFile();
   static void ParseSettingsCompatibility(Struct::Settings& aSettings, const QJsonObject& aJSONObject);
-  static void ParseSettings(Struct::Settings& aSettings, const QJsonObject& aJSONObject);
+  static void ParseSettings(Struct::Settings& aSettings, const QJsonObject& aJSONObject, const QString& aSettingsFileVersion);
   static void ParseDisplaySettings(Struct::DisplaySettings& aSettings, const QJsonObject& aJSONObject);
   static void ParseFontSettings(Struct::Font& aSettings, const QJsonObject& aJSONObject);
   static void ParseGeneralSettings(Struct::GeneralSettings& aSettings, const QJsonObject& aJSONObject);
-  static void ParseGenericDialogSettings(Struct::GenericDialogSettings& aSettings, const QJsonObject& aJSONObject);
-  static void ParseBodyFeetSettings(Struct::BodyFeetSettings& aSettings, const QJsonObject& aJSONObject);
+  static void ParseGenericDialogSettings(Struct::GenericDialogSettings& aSettings, const QJsonObject& aJSONObject, const QString& aSettingsFileVersion);
+  static void ParseBodyFeetSettings(Struct::BodyFeetSettings& aSettings, const QJsonObject& aJSONObject, const QString& aSettingsFileVersion);
 
   static void SaveSettingsToFile(const Struct::Settings& aSettings);
   static QJsonObject SettingsStructToJson(const Struct::Settings& aSettings);
@@ -113,8 +113,8 @@ public:
   static std::map<QString, QStringList> LoadFiltersFromFile();
   static void SaveFiltersToFile(const std::map<QString, QStringList>& aList);
   static QJsonObject FiltersMapToJson(const std::map<QString, QStringList>& aList);
-  static QString GetAdditionalFeetFilter(const BodyNameVersion& aBody, const int aFeetModIndex);
-  static std::vector<Struct::Filter> GetFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex);
+  static QString GetAdditionalFeetFilter(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion);
+  static std::vector<Struct::Filter> GetFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion);
 
   // Paths
   static void CheckLastPathsFileExistence();

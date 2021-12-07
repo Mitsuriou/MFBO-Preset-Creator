@@ -225,29 +225,25 @@ namespace Struct
   struct BodyFeetSettings
   {
   public:
-    BodyNameVersion bodyMod{BodyNameVersion::CBBE_3BBB_3BA_1_50};
-    int feetMod{0};
+    BodyNameVersion bodyMesh{BodyNameVersion::CBBE_3BA_3BBB_1_50};
+    FeetNameVersion feetMesh{FeetNameVersion::CBBE_3BA_3BBB_1_50};
 
     QJsonObject toJson() const
     {
       QJsonObject lNode;
-      lNode["bodyMod"] = static_cast<int>(this->bodyMod);
-      lNode["feetMod"] = this->feetMod;
+      lNode["bodyMesh"] = static_cast<int>(this->bodyMesh);
+      lNode["feetMesh"] = static_cast<int>(this->feetMesh);
       return lNode;
     }
 
     bool operator==(const Struct::BodyFeetSettings& rhs)
     {
-      return (
-        this->bodyMod == rhs.bodyMod
-        && this->feetMod == rhs.feetMod);
+      return (this->bodyMesh == rhs.bodyMesh && this->feetMesh == rhs.feetMesh);
     }
 
     bool operator!=(const Struct::BodyFeetSettings& rhs)
     {
-      return (
-        this->bodyMod != rhs.bodyMod
-        || this->feetMod != rhs.feetMod);
+      return (this->bodyMesh != rhs.bodyMesh || this->feetMesh != rhs.feetMesh);
     }
   };
 
@@ -594,7 +590,7 @@ namespace Struct
     explicit BatchConversionData(const QString& aHumanSkeletonPath,
                                  const QString& aBeastSkeletonPath,
                                  const BodyNameVersion& aBodyMod,
-                                 const int aFeetModIndex,
+                                 const FeetNameVersion& aFeetNameVersion,
                                  const std::vector<Struct::Filter>& aFilters,
                                  const QString& aFullOutputPath,
                                  const bool aMustGenerateFilesInExistingDirectory,
@@ -604,7 +600,7 @@ namespace Struct
       this->humanSkeletonPath = aHumanSkeletonPath;
       this->beastSkeletonPath = aBeastSkeletonPath;
       this->bodyMod = aBodyMod;
-      this->feetModIndex = aFeetModIndex;
+      this->feetMod = aFeetNameVersion;
       this->filters = aFilters;
       this->fullOutputPath = aFullOutputPath;
       this->mustGenerateFilesInExistingDirectory = aMustGenerateFilesInExistingDirectory;
@@ -646,14 +642,14 @@ namespace Struct
     }
 
     // Body mod
-    void setFeetModIndex(const int aFeetModIndex)
+    void setFeetModIndex(const FeetNameVersion& aFeetNameVersion)
     {
-      this->feetModIndex = aFeetModIndex;
+      this->feetMod = aFeetNameVersion;
     }
 
-    int getFeetModIndex() const
+    FeetNameVersion getFeetModIndex() const
     {
-      return this->feetModIndex;
+      return this->feetMod;
     }
 
     // Filters list
@@ -707,8 +703,8 @@ namespace Struct
   private:
     QString humanSkeletonPath;
     QString beastSkeletonPath;
-    BodyNameVersion bodyMod{BodyNameVersion::INVALID_VALUE};
-    int feetModIndex{-1};
+    BodyNameVersion bodyMod{BodyNameVersion::_INVALID_VALUE};
+    FeetNameVersion feetMod{FeetNameVersion::_INVALID_VALUE};
     std::vector<Struct::Filter> filters;
     QString fullOutputPath;
     bool mustGenerateFilesInExistingDirectory{false};

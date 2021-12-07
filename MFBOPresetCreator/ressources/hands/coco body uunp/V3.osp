@@ -1,0 +1,250 @@
+﻿    <SliderSet name="%1 - [COCO]bodyHands_B_v3">
+        <DataFolder>[COCO]BODY_V3</DataFolder>
+        <SourceFile>[COCO]bodyHands_B_v3.nif</SourceFile>
+        <OutputPath>{%%hands_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%hands_output_file%%}</OutputFile>
+        <Shape target="HAND_B_v2">HAND_B_v2</Shape>
+        <Slider name="Arms" invert="true" small="100" big="100">
+            <Data name="HAND_B_v2Arms" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Arms</Data>
+        </Slider>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Bombshell Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Bombshell High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Natural Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Natural High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Cleavage Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Cleavage High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B BCup Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B BCup High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B BCup High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27BUNP Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27BUNP Low</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27BUNP High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27BUNP High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Oppai Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B Oppai High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B CH Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v27B CH High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v27B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP Pushup Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP Pushup High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP Skinny Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP Skinny High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP Perky Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNP Perky High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPB Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPB High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPB Chapi" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPB Oppai v1" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPB Oppai v3.2 Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPB Oppai v3.2 High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPetite Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPetite High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPC Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPC High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPCM Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPCM High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPSH Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPSH High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPK Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPK High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPK Bonus Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPK Bonus High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UN7B Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UN7B High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPBB Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPBB High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Seraphim Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Seraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Seraphim High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Seraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Demonfet Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Demonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Demonfet High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Demonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Dream Girl Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Dream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Dream Girl High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Dream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Top Model Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Top Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Top Model High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Top Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Leito Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Leito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Leito High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Leito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPF Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPF High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPFx Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2UNPFx High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2UNPFx High</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2CNHF Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2CNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2CNHF High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2CNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2CNHF Bonus Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2CNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2CNHF Bonus High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2CNHF Bonus High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2MCBM Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2MCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2MCBM High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2MCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Venus Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Venus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Venus High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Venus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2ZGGB-R2 Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2ZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2ZGGB-R2 High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2ZGGB-R2 High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Manga Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Manga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2Manga High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2Manga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2CHSBHC Low" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2CHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2CHSBHC High" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2CHSBHC High</Data>
+        </Slider>
+        <Slider name="COCO_wrist" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2COCO_wrist" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2COCO_wrist</Data>
+        </Slider>
+        <Slider name="COCO_breast03" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2COCO_breast03" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2COCO_breast03</Data>
+        </Slider>
+        <Slider name="COCO_breast04" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2COCO_breast04" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2COCO_breast04</Data>
+        </Slider>
+        <Slider name="COCO_body01" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2COCO_body01" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2COCO_body01</Data>
+        </Slider>
+        <Slider name="COCO_body02" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2COCO_body02" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2COCO_body02</Data>
+        </Slider>
+        <Slider name="COCO_body03" invert="false" small="0" big="0">
+            <Data name="HAND_B_v2COCO_body03" target="HAND_B_v2" local="true">[COCO]bodyHands_B_v3.osd\HAND_B_v2COCO_body03</Data>
+        </Slider>
+    </SliderSet>

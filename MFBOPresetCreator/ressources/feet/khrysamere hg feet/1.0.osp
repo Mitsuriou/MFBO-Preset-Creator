@@ -1,9 +1,9 @@
-    <SliderSet name="%1 - [Khrysamere] HG Feet (BHUNP)">
+﻿    <SliderSet name="%1 - [Khrysamere] HG Feet (BHUNP)">
         <DataFolder>[Khrysamere] HG Feet (BHUNP)</DataFolder>
         <SourceFile>[Khrysamere] HG Feet (BHUNP).nif</SourceFile>
         <OutputPath>{%%feet_output_path%%}</OutputPath>
         <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
-        <Shape target="CfeetNails.003_2" DataFolder="HG Feet Khrysamere Edit BHUNP V5">CfeetNails.003_2</Shape>
+        <Shape target="CfeetNails.003_2" DataFolder="[Khrysamere] HG Feet (Claws) (BHUNP)">CfeetNails.003_2</Shape>
         <Shape target="CfeetNails_2">CfeetNails_2</Shape>
         <Shape target="HGFeet">HGFeet</Shape>
         <Slider name="7B Low" invert="false" small="0" big="0">
@@ -11,12 +11,6 @@
         </Slider>
         <Slider name="7B High" invert="false" small="0" big="0">
             <Data name="HGFeet7B High" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeet7B High</Data>
-        </Slider>
-        <Slider name="7BUNP Low" invert="false" small="0" big="0">
-            <Data name="HGFeet7BUNP Low" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeet7BUNP Low</Data>
-        </Slider>
-        <Slider name="7BUNP High" invert="false" small="0" big="0">
-            <Data name="HGFeet7BUNP High" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeet7BUNP High</Data>
         </Slider>
         <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
             <Data name="HGFeet7B Bombshell Low" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeet7B Bombshell Low</Data>
@@ -210,6 +204,9 @@
         <Slider name="CHSBHC High" invert="false" small="0" big="0">
             <Data name="HGFeetCHSBHC High" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeetCHSBHC High</Data>
         </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="HGFeet7BUNP Low" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeet7BUNP Low</Data>
+        </Slider>
         <Slider name="CNHF Low" invert="false" small="0" big="0">
             <Data name="HGFeetCNHF Low" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeetCNHF Low</Data>
         </Slider>
@@ -225,6 +222,14 @@
         <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
             <Data name="HGFeetZGGB-R2 Low" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeetZGGB-R2 Low</Data>
         </Slider>
+        <Slider name="HighHeel" invert="false" small="0" big="0">
+            <Data name="CfeetNails.003_2HighHeel" target="CfeetNails.003_2" local="true">[Khrysamere] HG Feet (BHUNP).osd\CfeetNails.003_2HighHeel</Data>
+            <Data name="HGFeetHighHeel" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeetHighHeel</Data>
+            <Data name="CfeetNails_2HighHeel" target="CfeetNails_2" local="true">[Khrysamere] HG Feet (BHUNP).osd\CfeetNails_2HighHeel</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="HGFeet7BUNP High" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeet7BUNP High</Data>
+        </Slider>
         <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
             <Data name="HGFeetZGGB-R2 High" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeetZGGB-R2 High</Data>
         </Slider>
@@ -236,10 +241,5 @@
         </Slider>
         <Slider name="Legs" invert="true" small="100" big="100">
             <Data name="HGFeetLegs" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeetLegs</Data>
-        </Slider>
-        <Slider name="HighHeel" invert="false" small="0" big="0">
-            <Data name="HGFeetHighHeel" target="HGFeet" local="true">[Khrysamere] HG Feet (BHUNP).osd\HGFeetHighHeel</Data>
-            <Data name="CfeetNails_2HighHeel" target="CfeetNails_2" local="true">[Khrysamere] HG Feet (BHUNP).osd\CfeetNails_2HighHeel</Data>
-            <Data name="CfeetNails.003_2HighHeel" target="CfeetNails.003_2">[Khrysamere] HG Feet (BHUNP).osd\CfeetNails_2HighHeel</Data>
         </Slider>
     </SliderSet>

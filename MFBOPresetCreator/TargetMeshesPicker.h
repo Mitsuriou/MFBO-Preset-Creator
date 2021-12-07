@@ -2,13 +2,17 @@
 #include "Struct.h"
 #include <QDialog>
 #include <QGridLayout>
+#include <QListWidget>
 
 class TargetMeshesPicker final : public QDialog
 {
   Q_OBJECT
 
 public:
-  explicit TargetMeshesPicker(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+  explicit TargetMeshesPicker(QWidget* aParent,
+                              const Struct::Settings& aSettings,
+                              const BodyNameVersion& aPreSelectedBody,
+                              const FeetNameVersion& aPreSelectedFeet);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -16,13 +20,44 @@ protected:
 
 private:
   const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths;
+  const BodyNameVersion mOriginalBody;
+  const FeetNameVersion mOriginalFeet;
 
+  // Body related list widgets
+  int mCurrentBodyBase;
+  int mCurrentBodyVersionNumber;
+  int mCurrentBodyVersionName;
+  // Feet related list widgets
+  int mCurrentFeetBase;
+  int mCurrentFeetVersionNumber;
+  int mCurrentFeetVersionName;
+
+  // Widgets
+  QListWidget* mListBodyName{nullptr};
+  QListWidget* mListBodyVersion{nullptr};
+  QListWidget* mListBodyVariantName{nullptr};
+  QListWidget* mListFeetName{nullptr};
+  QListWidget* mListFeetVersion{nullptr};
+  QListWidget* mListFeetVariantName{nullptr};
+
+  // Common functions
   void setWindowProperties();
   void initializeGUI();
 
+  BodyVariant getChosenBodyVariant() const;
+  BodyNameVersion getChosenBodyName() const;
+  FeetNameVersion getChosenFeetName() const;
+
   // GUI widgets events
+  void validateAndClose();
   void groupBoxChecked(bool aIsChecked);
+  // Body GUI widgets events
+  void bodyNameIndexChanged(const int aNewIndex);
+  void bodyVersionIndexChanged(const int aNewIndex);
+  void bodyVariantIndexChanged(const int aNewIndex);
+  // Feet GUI widgets events
+  void feetNameIndexChanged(const int aNewIndex);
+  void feetVersionIndexChanged(const int aNewIndex);
 
   explicit TargetMeshesPicker(const TargetMeshesPicker&) = delete;
   TargetMeshesPicker& operator=(const TargetMeshesPicker&) = delete;

@@ -152,6 +152,49 @@ QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)
   return lDataContainer;
 }
 
+QPushButton* ComponentFactory::CreateTargetMeshesPickerLine(QWidget* aParent,
+                                                            QGridLayout& aLayout,
+                                                            const bool aMustGenerateHorizontally,
+                                                            const int aLayoutRow,
+                                                            const QString& aIconFolder,
+                                                            const QString& aButtonObjectName,
+                                                            const QString& aBodyLabelObjectName,
+                                                            const QString& aFeetLabelObjectName)
+{
+  // Targeted body and version
+  aLayout.addWidget(new QLabel(tr("Targeted body and version:"), aParent), aLayoutRow, 0);
+
+  QBoxLayout* lBodyNameVersionWrapper = nullptr;
+  if (aMustGenerateHorizontally)
+  {
+    lBodyNameVersionWrapper = new QHBoxLayout(aParent);
+    lBodyNameVersionWrapper->setMargin(0);
+    aLayout.addLayout(lBodyNameVersionWrapper, aLayoutRow, 1);
+  }
+  else
+  {
+    lBodyNameVersionWrapper = new QVBoxLayout(aParent);
+    lBodyNameVersionWrapper->setMargin(0);
+    aLayout.addLayout(lBodyNameVersionWrapper, aLayoutRow + 1, 0);
+  }
+
+  auto lTargetMeshesPicker{ComponentFactory::CreateButton(aParent, tr("Choose target meshes"), "", "mesh", aIconFolder, aButtonObjectName, false, true)};
+  lBodyNameVersionWrapper->addWidget(lTargetMeshesPicker);
+
+  auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body and version:"), aParent)};
+  lCurrentlyTargetedBody->setObjectName(aBodyLabelObjectName);
+  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedBody);
+
+  auto lCurrentlyTargetedFeet{new QLabel(tr("Targeted feet and version:"), aParent)};
+  lCurrentlyTargetedFeet->setObjectName(aFeetLabelObjectName);
+  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedFeet);
+
+  if (aMustGenerateHorizontally)
+    lBodyNameVersionWrapper->addStretch();
+
+  return lTargetMeshesPicker;
+}
+
 void ComponentFactory::CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const int aMinimumFirstColumnWidth, const int aFontSize)
 {
   // Output group box

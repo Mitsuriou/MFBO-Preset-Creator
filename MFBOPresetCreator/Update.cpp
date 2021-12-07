@@ -89,7 +89,7 @@ void Update::initializeGUI()
   this->setLayout(new QVBoxLayout(this));
   this->layout()->setAlignment(Qt::AlignTop);
 
-  const auto lForcedVersionSuffix(this->mForceStableContext ? tr(" (stable only)") : (this->mForceBetaContext ? tr(" (BETA only)") : QString("")));
+  const auto lForcedVersionSuffix(this->mForceStableContext ? tr(" (stable only)") : (this->mForceBetaContext ? tr(" (BETA only)") : QString()));
 
   /*============*/
   /* Main title */

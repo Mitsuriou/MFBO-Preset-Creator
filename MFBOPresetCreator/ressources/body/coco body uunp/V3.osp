@@ -1,0 +1,430 @@
+﻿    <SliderSet name="%1 - [COCO]body_B_v3">
+        <DataFolder>[COCO]BODY_V3</DataFolder>
+        <SourceFile>[COCO]body_B_v3.nif</SourceFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
+        <Shape target="bodybv3_outfit">bodybv3_outfit</Shape>
+        <Slider name="Breasts" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitBreasts" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreasts</Data>
+        </Slider>
+        <Slider name="BreastsSmall" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitBreastsSmall" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastsSmall</Data>
+        </Slider>
+        <Slider name="BreastsSH" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastsSH" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastsSH</Data>
+        </Slider>
+        <Slider name="BreastsSSH" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastsSSH" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastsSSH</Data>
+        </Slider>
+        <Slider name="BreastsFantasy" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastsFantasy" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastsFantasy</Data>
+        </Slider>
+        <Slider name="DoubleMelon" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitDoubleMelon" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitDoubleMelon</Data>
+        </Slider>
+        <Slider name="BreastCleavage" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastCleavage" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastCleavage</Data>
+        </Slider>
+        <Slider name="BreastFlatness" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastFlatness" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastFlatness</Data>
+        </Slider>
+        <Slider name="BreastGravity" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastGravity" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastGravity</Data>
+        </Slider>
+        <Slider name="PushUp" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitPushUp" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitPushUp</Data>
+        </Slider>
+        <Slider name="BreastHeight" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastHeight" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastHeight</Data>
+        </Slider>
+        <Slider name="BreastPerkiness" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastPerkiness" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastPerkiness</Data>
+        </Slider>
+        <Slider name="BreastWidth" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBreastWidth" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBreastWidth</Data>
+        </Slider>
+        <Slider name="NippleDistance" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitNippleDistance" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNippleDistance</Data>
+        </Slider>
+        <Slider name="NipplePerkiness" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitNipplePerkiness" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNipplePerkiness</Data>
+        </Slider>
+        <Slider name="NippleLength" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitNippleLength" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNippleLength</Data>
+        </Slider>
+        <Slider name="NippleSize" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitNippleSize" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNippleSize</Data>
+        </Slider>
+        <Slider name="NippleAreola" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitNippleAreola" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNippleAreola</Data>
+        </Slider>
+        <Slider name="NippleUp" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitNippleUp" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNippleUp</Data>
+        </Slider>
+        <Slider name="NippleDown" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitNippleDown" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNippleDown</Data>
+        </Slider>
+        <Slider name="NippleTip" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitNippleTip" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNippleTip</Data>
+        </Slider>
+        <Slider name="Arms" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitArms" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitArms</Data>
+        </Slider>
+        <Slider name="ChubbyArms" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitChubbyArms" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitChubbyArms</Data>
+        </Slider>
+        <Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitShoulderSmooth" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitShoulderSmooth</Data>
+        </Slider>
+        <Slider name="ShoulderWidth" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitShoulderWidth" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitShoulderWidth</Data>
+        </Slider>
+        <Slider name="BigTorso" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBigTorso" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBigTorso</Data>
+        </Slider>
+        <Slider name="Waist" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitWaist" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitWaist</Data>
+        </Slider>
+        <Slider name="WideWaistLine" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitWideWaistLine" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitWideWaistLine</Data>
+        </Slider>
+        <Slider name="ChubbyWaist" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitChubbyWaist" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitChubbyWaist</Data>
+        </Slider>
+        <Slider name="Belly" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBelly" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBelly</Data>
+        </Slider>
+        <Slider name="BigBelly" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBigBelly" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBigBelly</Data>
+        </Slider>
+        <Slider name="PregnancyBelly" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitPregnancyBelly" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitPregnancyBelly</Data>
+        </Slider>
+        <Slider name="TummyTuck" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitTummyTuck" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitTummyTuck</Data>
+        </Slider>
+        <Slider name="Back" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBack" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBack</Data>
+        </Slider>
+        <Slider name="Hipbone" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitHipbone" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitHipbone</Data>
+        </Slider>
+        <Slider name="Hips" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitHips" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitHips</Data>
+        </Slider>
+        <Slider name="ButtCrack" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitButtCrack" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitButtCrack</Data>
+        </Slider>
+        <Slider name="Butt" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitButt" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitButt</Data>
+        </Slider>
+        <Slider name="ButtSmall" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitButtSmall" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitButtSmall</Data>
+        </Slider>
+        <Slider name="ButtShape2" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitButtShape2" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitButtShape2</Data>
+        </Slider>
+        <Slider name="BigButt" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitBigButt" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitBigButt</Data>
+        </Slider>
+        <Slider name="ChubbyButt" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitChubbyButt" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitChubbyButt</Data>
+        </Slider>
+        <Slider name="AppleCheeks" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitAppleCheeks" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitAppleCheeks</Data>
+        </Slider>
+        <Slider name="RoundAss" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitRoundAss" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitRoundAss</Data>
+        </Slider>
+        <Slider name="SlimThighs" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitSlimThighs" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitSlimThighs</Data>
+        </Slider>
+        <Slider name="Thighs" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitThighs" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitThighs</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitChubbyLegs" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitChubbyLegs</Data>
+        </Slider>
+        <Slider name="Legs" invert="true" small="100" big="100">
+            <Data name="bodybv3_outfitLegs" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitLegs</Data>
+        </Slider>
+        <Slider name="KneeHeight" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitKneeHeight" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitKneeHeight</Data>
+        </Slider>
+        <Slider name="CalfSize" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCalfSize" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCalfSize</Data>
+        </Slider>
+        <Slider name="CalfSmooth" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCalfSmooth" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCalfSmooth</Data>
+        </Slider>
+        <Slider name="Neck" invert="false" small="100" big="0" hidden="true">
+            <Data name="bodybv3_outfitNeck" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitNeck</Data>
+        </Slider>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Bombshell Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Bombshell High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Natural Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Natural High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Cleavage Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Cleavage High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B BCup Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B BCup High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B BCup High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7BUNP Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7BUNP Low</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7BUNP High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7BUNP High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Oppai Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B Oppai High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B CH Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfit7B CH High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfit7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP Pushup Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP Pushup High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP Skinny Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP Skinny High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP Perky Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNP Perky High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPB Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPB High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPB Chapi" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPB Oppai v1" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPB Oppai v3.2 Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPB Oppai v3.2 High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPetite Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPetite High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPC Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPC High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPCM Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPCM High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPSH Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPSH High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPK Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPK High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPK Bonus Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPK Bonus High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUN7B Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUN7B High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPBB Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPBB High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitSeraphim Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitSeraphim High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitDemonfet Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitDemonfet High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitDream Girl Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitDream Girl High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitTop Model Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitTop Model High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitLeito Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitLeito High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPF Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPF High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPFx Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitUNPFx High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitUNPFx High</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCNHF Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCNHF High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCNHF Bonus Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCNHF Bonus High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitMCBM Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitMCBM High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitVenus Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitVenus High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitVenus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitZGGB-R2 Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitZGGB-R2 High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitZGGB-R2 High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitManga Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitManga High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCHSBHC Low" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCHSBHC High" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCHSBHC High</Data>
+        </Slider>
+        <Slider name="COCO_wrist" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_wrist" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_wrist</Data>
+        </Slider>
+        <Slider name="COCO_ankle" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_ankle" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_ankle</Data>
+        </Slider>
+        <Slider name="COCO_breast01" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_breast01" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_breast01</Data>
+        </Slider>
+        <Slider name="COCO_breast02" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_breast02" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_breast02</Data>
+        </Slider>
+        <Slider name="COCO_breast03" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_breast03" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_breast03</Data>
+        </Slider>
+        <Slider name="COCO_breast04" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_breast04" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_breast04</Data>
+        </Slider>
+        <Slider name="COCO_breast05" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_breast05" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_breast05</Data>
+        </Slider>
+        <Slider name="COCO_breast06" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_breast06" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_breast06</Data>
+        </Slider>
+        <Slider name="COCO_breast07" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_breast07" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_breast07</Data>
+        </Slider>
+        <Slider name="COCO_body01" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_body01" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_body01</Data>
+        </Slider>
+        <Slider name="COCO_body02" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_body02" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_body02</Data>
+        </Slider>
+        <Slider name="COCO_body03" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_body03" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_body03</Data>
+        </Slider>
+        <Slider name="COCO_labia01" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_labia01" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_labia01</Data>
+        </Slider>
+        <Slider name="COCO_labia02" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_labia02" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_labia02</Data>
+        </Slider>
+        <Slider name="COCO_labia03" invert="false" small="0" big="0">
+            <Data name="bodybv3_outfitCOCO_labia03" target="bodybv3_outfit" local="true">[COCO]body_B_v3.osd\bodybv3_outfitCOCO_labia03</Data>
+        </Slider>
+    </SliderSet>

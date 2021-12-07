@@ -1,0 +1,265 @@
+﻿    <SliderSet name="%1 - [COCO]3Bsmp_FeetV4_B">
+        <DataFolder>[COCO]BODY2021_V4</DataFolder>
+        <SourceFile>[COCO]3Bsmp_FeetV4_B.nif</SourceFile>
+        <OutputPath>{%%feet_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
+        <Shape target="Feet">Feet</Shape>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="FeetChubbyLegs" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetChubbyLegs</Data>
+        </Slider>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="Feet7B High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Bombshell Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="Feet7B Bombshell High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Natural Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="Feet7B Natural High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Cleavage Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="Feet7B Cleavage High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="Feet7B BCup Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="Feet7B BCup High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B BCup High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="Feet7BUNP Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7BUNP Low</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="Feet7BUNP High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7BUNP High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="Feet7B Oppai Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="Feet7B Oppai High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="Feet7B CH Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="Feet7B CH High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\Feet7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="FeetUNP High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Pushup Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Pushup High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Skinny Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Skinny High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="FeetUNP Perky Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="FeetUNP Perky High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="FeetUNPB High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Chapi" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v1" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v3.2 Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="FeetUNPB Oppai v3.2 High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPetite Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="FeetUNPetite High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPC Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="FeetUNPC High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPCM Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="FeetUNPCM High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPSH Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="FeetUNPSH High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="FeetUNPK High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Bonus Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="FeetUNPK Bonus High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="FeetUN7B Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="FeetUN7B High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPBB Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="FeetUNPBB High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="FeetSeraphim Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="FeetSeraphim High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="FeetDemonfet Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="FeetDemonfet High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="FeetDream Girl Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="FeetDream Girl High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="FeetTop Model Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="FeetTop Model High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="FeetLeito Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="FeetLeito High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPF Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="FeetUNPF High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="FeetUNPFx Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="FeetUNPFx High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetUNPFx High</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="FeetCNHF High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Bonus Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="FeetCNHF Bonus High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="FeetMCBM Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="FeetMCBM High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="FeetVenus Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="FeetVenus High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetVenus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="FeetZGGB-R2 Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="FeetZGGB-R2 High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetZGGB-R2 High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="FeetManga Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="FeetManga High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="FeetCHSBHC Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="FeetCHSBHC High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCHSBHC High</Data>
+        </Slider>
+        <Slider name="Aruru6Duck Low" invert="false" small="0" big="0">
+            <Data name="FeetAruru6Duck Low" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetAruru6Duck Low</Data>
+        </Slider>
+        <Slider name="Aruru6Duck High" invert="false" small="0" big="0">
+            <Data name="FeetAruru6Duck High" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetAruru6Duck High</Data>
+        </Slider>
+        <Slider name="COCO_NippleErection" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_NippleErection" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCOCO_NippleErection</Data>
+        </Slider>
+        <Slider name="BreastConverge" invert="false" small="0" big="0">
+            <Data name="FeetBreastConverge" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetBreastConverge</Data>
+        </Slider>
+        <Slider name="LegsThin" invert="false" small="0" big="0">
+            <Data name="FeetLegsThin" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetLegsThin</Data>
+        </Slider>
+        <Slider name="COCO_ankle" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_ankle" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCOCO_ankle</Data>
+        </Slider>
+        <Slider name="COCO_handfeetseamfix" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_handfeetseamfix" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCOCO_handfeetseamfix</Data>
+        </Slider>
+        <Slider name="COCO_body01" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_body01" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCOCO_body01</Data>
+        </Slider>
+        <Slider name="COCO_body02" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_body02" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCOCO_body02</Data>
+        </Slider>
+        <Slider name="COCO_body03" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_body03" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCOCO_body03</Data>
+        </Slider>
+        <Slider name="COCO_body04" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_body04" target="Feet" local="true">[COCO]3Bsmp_FeetV4_B.osd\FeetCOCO_body04</Data>
+        </Slider>
+    </SliderSet>

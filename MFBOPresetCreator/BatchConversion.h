@@ -24,6 +24,8 @@ private:
   std::map<QString, QStringList> mFiltersList;
   bool mHasUserDoneSomething;
   int mMinimumFirstColumnWidth;
+  BodyNameVersion mTargetBodyMesh;
+  FeetNameVersion mTargetFeetMesh;
 
   void setWindowProperties();
   void setupGeneralGUI(QGridLayout& aLayout);
@@ -39,7 +41,6 @@ private:
   void userHasDoneAnAction();
   void userHasDoneAnAction(int);
 
-  void updateAvailableBodyVersions();
   void chooseInputDirectory();
   void launchSearchProcess();
   void batchCreatePresets(const Struct::BatchConversionData& aPresetsData);
@@ -51,11 +52,15 @@ private:
 
   void chooseExportDirectory();
 
+  // Target meshes pikcker
+  void openTargetMeshesPicker();
+  void targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
+
   // BodySlide Filters Editor
   void openBodySlideFiltersEditor();
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
-  void updateBodySlideFiltersListPreview(int aIndex);
+  void updateBodySlideFiltersListPreview();
 
   // GUI widgets events
   void groupBoxChecked(bool aIsChecked);

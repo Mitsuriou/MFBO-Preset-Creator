@@ -12,7 +12,7 @@ public:
   explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
   // Function that will to be called from outside this class
-  void loadProject(const QString& lFilePath = QString(""), const bool aSkipFileChooser = false);
+  void loadProject(const QString& lFilePath = QString(), const bool aSkipFileChooser = false);
   void saveProject(const bool aIsSaveAsContext);
   void setHasUserDoneSomething(const bool aHasUserDoneSomething);
   bool hasUserDoneSomething();
@@ -27,6 +27,8 @@ private:
   bool mHasUserDoneSomething;
   QString mLastUsedSavePath;
   int mMinimumFirstColumnWidth;
+  BodyNameVersion mTargetBodyMesh;
+  FeetNameVersion mTargetFeetMesh;
 
   // GUI creation
   void setupBodyMeshesGUI(QGridLayout& aLayout);
@@ -40,8 +42,7 @@ private:
   QJsonObject saveValuesToJsonObject();
 
   // GUI update scripts
-  void updateGUIOnBodyChange();
-  void updateAvailableBodyVersions();
+  void updateBeastHandsCheckboxState();
 
   //#pragma region PRIVATE_SLOTS
   void populateSkeletonChooser();
@@ -61,6 +62,10 @@ private:
 
   void refreshAllPreviewFields(int);
   void refreshAllPreviewFields();
+
+  // Target meshes pikcker
+  void openTargetMeshesPicker();
+  void targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
 
   // BodySlide Filters Editor
   void openBodySlideFiltersEditor();

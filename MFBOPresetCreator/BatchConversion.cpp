@@ -4,6 +4,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Enum.h"
+#include "TargetMeshesPicker.h"
 #include "Utils.h"
 #include <QApplication>
 #include <QCheckBox>
@@ -23,6 +24,8 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mMinimumFirstColumnWidth(300)
+  , mTargetBodyMesh(aSettings.batchConversion.defaultBodyFeet.bodyMesh)
+  , mTargetFeetMesh(aSettings.batchConversion.defaultBodyFeet.feetMesh)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -211,42 +214,14 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.batchConversion.defaultBodyFeet.bodyMod)};
-
-  lLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
-
-  auto lBodyNameVersionWrapper{new QHBoxLayout(lGroupBox)};
-  lBodyNameVersionWrapper->setMargin(0);
-  lLayout->addLayout(lBodyNameVersionWrapper, 0, 1);
-
-  // Body Name
-  auto lBodyNameSelector{new QComboBox(this)};
-  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
-  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
-  lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  lBodyNameVersionWrapper->addWidget(lBodyNameSelector);
-
-  // Body Version
-  auto lBodyVersionSelector{new QComboBox(this)};
-  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
-  lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  lBodyNameVersionWrapper->addWidget(lBodyVersionSelector);
-
-  // Feet mod chooser
-  auto lFeetSelector{new QComboBox(this)};
-  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
-  lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(this->mSettings.batchConversion.defaultBodyFeet.feetMod);
-  lFeetSelector->setObjectName(QString("feet_mod_selector"));
-  lBodyNameVersionWrapper->addWidget(lFeetSelector);
-
-  lBodyNameVersionWrapper->addStretch();
+  auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
+                                                                          *lLayout,
+                                                                          true,
+                                                                          0,
+                                                                          lIconFolder,
+                                                                          QString("target_meshes_picker_button"),
+                                                                          QString("currently_targeted_body"),
+                                                                          QString("currently_targeted_feet"))};
 
   // Filters
   lLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 1, 0);
@@ -270,13 +245,12 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
   lFiltersWrapper->addWidget(lEditFilters);
 
-  // Event binding
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateAvailableBodyVersions);
-  this->connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
+  // Pre-bind initialization functions
+  this->targetMeshesChanged(this->mTargetBodyMesh, this->mTargetFeetMesh);
 
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
-  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
-  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
+  // Event binding
+  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &BatchConversion::openTargetMeshesPicker);
+  this->connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
   this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
 
   // Post-bind initialization functions
@@ -396,17 +370,9 @@ void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 
 void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData, const bool aMustGenerateFilesInExistingDirectory)
 {
-  // Selected body
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-
-  // Selected feet
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
-
   // Filters list
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
+  auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), this->mTargetBodyMesh, this->mTargetFeetMesh)};
 
   // Human skeleton
   auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
@@ -437,8 +403,8 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
   // Construct the data container
   auto lData{Struct::BatchConversionData(lSkeletonPathHuman,
                                          lSkeletonPathBeast,
-                                         lBodySelected,
-                                         lFeetModIndex,
+                                         this->mTargetBodyMesh,
+                                         this->mTargetFeetMesh,
                                          lUserFilters,
                                          lEntryDirectory,
                                          aMustGenerateFilesInExistingDirectory,
@@ -468,23 +434,6 @@ void BatchConversion::userHasDoneAnAction(int)
   // Body version selector
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
   this->disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
-}
-
-void BatchConversion::updateAvailableBodyVersions()
-{
-  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
-
-  // Version
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
-  lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
-  lBodyVersionSelector->setCurrentIndex(0);
-
-  // Feet mod
-  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_selector"))};
-  lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
-  lFeetSelector->setCurrentIndex(0);
 }
 
 void BatchConversion::chooseInputDirectory()
@@ -773,7 +722,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     }
 
     // OSP file
-    if (!Utils::generateOSPFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lBodySelected, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
+    if (!Utils::generateOSPFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -889,6 +838,36 @@ void BatchConversion::chooseExportDirectory()
   this->updateOutputPreview();
 }
 
+void BatchConversion::openTargetMeshesPicker()
+{
+  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &BatchConversion::targetMeshesChanged);
+}
+
+void BatchConversion::targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
+{
+  // Update the class members
+  this->mTargetBodyMesh = aBody;
+  this->mTargetFeetMesh = aFeet;
+
+  // Update the "targeted body mesh" text content
+  const auto lBodyText{
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body")};
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1").arg(lBodyText));
+
+  // Update the "targeted feet mesh" text content
+  const auto lFeetText{
+    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
+
+  auto lCurrentlyTargetedFeet{this->findChild<QLabel*>("currently_targeted_feet")};
+  lCurrentlyTargetedFeet->setText(tr("Targeted feet: %1").arg(lFeetText));
+
+  // Force the refresh of the filters list preview
+  this->updateBodySlideFiltersListPreview();
+}
+
 void BatchConversion::openBodySlideFiltersEditor()
 {
   auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList)};
@@ -932,23 +911,16 @@ void BatchConversion::updateBodySlideFiltersList(const std::map<QString, QString
   Utils::UpdateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
-void BatchConversion::updateBodySlideFiltersListPreview(int)
+void BatchConversion::updateBodySlideFiltersListPreview()
 {
-  // Selected body
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-
-  // Selected feet
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
-
-  // Take custom MSF filter
-  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
-
+  // Get the GUI widgets
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
 
+  // Get any eventual additional filters
+  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};
   auto lText{QString()};
+
   if (lFiltersListChooser->currentIndex() != -1)
   {
     lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));

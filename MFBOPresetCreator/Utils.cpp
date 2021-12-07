@@ -81,22 +81,6 @@ QString Utils::CleanBreaksString(const QString& aString)
   return lPath;
 }
 
-QStringList Utils::SplitString(QString aString, const QString& aSeparator)
-{
-  auto lList{aString.split(QString(aSeparator))};
-
-  auto lSize{lList.size()};
-  for (int i = 0; i < lSize; i++)
-  {
-    if (lList.at(i).trimmed().compare("", Qt::CaseInsensitive) == 0)
-    {
-      lList.removeAt(i);
-    }
-  }
-
-  return lList;
-}
-
 std::map<QString, std::vector<QString>> Utils::ToMapQsVecQs(const std::map<QString, std::set<QString>>& aMap)
 {
   std::map<QString, std::vector<QString>> lNewMap;
@@ -437,7 +421,7 @@ QString Utils::GetIconRessourceFolder(const GUITheme& aTheme)
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-bool Utils::generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset)
+bool Utils::generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -453,7 +437,7 @@ bool Utils::generateXMLFile(const QString& aEntryDirectory, const bool aGenerate
   }
 
   // Construct the file content
-  auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(aBodyslideSlidersetsNames, aBodySlideFilters, aBodySelected, aMustUseBeastHands, aFeetModIndex)};
+  auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(aBodyslideSlidersetsNames, aBodySlideFilters, aBodyNameVersion, aFeetNameVersion, aMustUseBeastHands)};
 
   // Create the OSP file on disk
   auto lXMLPathName(lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml");
@@ -476,7 +460,20 @@ bool Utils::generateXMLFile(const QString& aEntryDirectory, const bool aGenerate
   return true;
 }
 
-bool Utils::generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const int aBodySelected, const int aFeetModIndex, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName, const bool aIsBatchConversionPreset)
+bool Utils::generateOSPFile(const QString& aEntryDirectory,
+                            const bool aGenerateFilesInExistingMainDirectory,
+                            const QString& aOSPXMLNames,
+                            const bool aMustUseBeastHands,
+                            const BodyNameVersion& aBodyNameVersion,
+                            const FeetNameVersion& aFeetNameVersion,
+                            const QString& aBodyslideSlidersetsNames,
+                            QString aMeshesPathBody,
+                            QString aMeshesPathFeet,
+                            QString aMeshesPathHands,
+                            const QString& aBodyName,
+                            const QString& aFeetName,
+                            const QString& aHandsName,
+                            const bool aIsBatchConversionPreset)
 {
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
@@ -492,7 +489,7 @@ bool Utils::generateOSPFile(const QString& aEntryDirectory, const bool aGenerate
   }
 
   // Construct the file content
-  auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(aBodyslideSlidersetsNames, static_cast<BodyNameVersion>(aBodySelected), aMustUseBeastHands, aFeetModIndex)};
+  auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(aBodyslideSlidersetsNames, aBodyNameVersion, aFeetNameVersion, aMustUseBeastHands)};
 
   // Fill the custom variables
   lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
@@ -533,6 +530,14 @@ bool Utils::generateSkeletonFile(const QString& aSourcePath, const QString& aDes
 
     // Full destination path
     auto lDestinationPath{QString("%1%2%3.nif").arg(lDestinationSkeletonDirectory, QDir::separator(), aDestinationFileName)};
+
+    // If the preset is being generated on an already existing directory, remove the skeleton file if it already exists
+    if (QFile::exists(lDestinationPath))
+    {
+      auto lFile{QFile(lDestinationPath)};
+      lFile.setPermissions(QFile::ReadUser | QFile::WriteUser);
+      lFile.remove();
+    }
 
     // Try to copy the skeleton file
     if (!QFile::copy(aSourcePath, lDestinationPath))
@@ -600,29 +605,13 @@ void Utils::ClearUselessEntries(std::map<QString, std::set<QString>>& aScannedDa
   }
 }
 
-bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBody)
+bool Utils::IsCBBEBasedBody(const BodyName& aBodyName)
 {
-  switch (aBody)
+  switch (aBodyName)
   {
-    case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-    case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-    case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
-      return true;
-    default: // UNP-based bodies
-      return false;
-  }
-}
-
-bool Utils::IsCBBEBasedBody(const BodyName& aBody)
-{
-  switch (aBody)
-  {
-    case BodyName::CBBE_3BBB_3BA:
+    case BodyName::CBBE_3BA_3BBB:
     case BodyName::CBBE_SMP_3BBB:
+    case BodyName::COCO_BODY_CBBE:
     case BodyName::MIMIR_EBONIC_BODY:
       return true;
     default: // UNP-based bodies
@@ -630,9 +619,23 @@ bool Utils::IsCBBEBasedBody(const BodyName& aBody)
   }
 }
 
-bool Utils::IsBodySupportingBeastHands(const BodyNameVersion& aBody)
+bool Utils::IsCBBEBasedBody(const BodyVariant& aBodyVariant)
 {
-  return Utils::IsCBBEBasedBody(aBody);
+  auto lBodyName{DataLists::GetName(aBodyVariant)};
+
+  return Utils::IsCBBEBasedBody(lBodyName);
+}
+
+bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBodyNameVersion)
+{
+  auto lBodyName{DataLists::GetName(DataLists::GetVariant(aBodyNameVersion))};
+
+  return Utils::IsCBBEBasedBody(lBodyName);
+}
+
+bool Utils::IsBodySupportingBeastHands(const BodyNameVersion& aBodyNameVersion)
+{
+  return Utils::IsCBBEBasedBody(aBodyNameVersion);
 }
 
 bool Utils::IsRunningStandaloneVersion()
@@ -737,18 +740,21 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
       lTempSet.setName(lSliderSet.attribute("name", "")); // Name
 
       // TODO: Improve these checks:
-      if (lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
+      if (lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2 Nevernude", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP BBP", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP BBP Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP TBBP", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP TBBP Advanced", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - SE 3BBB Body Amazing", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - 3BBB Body Amazing", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive))
+          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2 Nevernude", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - [COCO]3Bsmp_BodyV4_A", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Body_A", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - [COCO]body_B_v3", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - [COCO]3Bsmp_BodyV4_B", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Body_B", Qt::CaseInsensitive))
       {
         lTempSet.setMeshPart("Body"); //Body
       }
@@ -759,16 +765,34 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
                || lTempSet.getName().endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive))
+               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_HandV4_A", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Hands_A", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO]bodyHands_B_v3", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_HandV4_B", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Hands_B", Qt::CaseInsensitive))
       {
         lTempSet.setMeshPart("Hands"); // Hands
       }
       else if (lTempSet.getName().endsWith(" - Feet", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_FeetV4_A", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Feet_A", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO]bodyFeets_B_v3", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_FeetV4_B", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Feet_B", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - Feet (MSF - normal)", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive))
+               || lTempSet.getName().endsWith(" - CBBE MSF Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - BHUNP Feet MSF", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - CBBE MSF Feet High Heel", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - BHUNP Feet High Heel MSF", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - HGFeet UUNP", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [Khrysamere] HG Feet (BHUNP)", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [Khrysamere] K Feet", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - [Khrysamere] K Feet v5.0", Qt::CaseInsensitive))
       {
         lTempSet.setMeshPart("Feet"); // Feet
       }
@@ -827,149 +851,228 @@ bool Utils::IsPresetUsingBeastHands(const QString& aPath)
   return false;
 }
 
-QString Utils::GetHandsSliderValue(const BodyNameVersion& aBody, const bool aMustUseBeastHands)
+QString Utils::GetBodySliderValue(const BodyNameVersion& aBodyNameVersion)
 {
-  if (Utils::IsCBBEBasedBody(aBody))
+  const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
+  const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+
+  auto lBodyValue{QString()};
+
+  switch (lBodyVariant)
   {
-    if (aMustUseBeastHands)
-    {
-      return QString("%1 - CBBE Hands Beast");
-    }
-
-    const auto lBodyMod{static_cast<BodyName>(DataLists::GetSplittedNameVersionFromBodyVersion(aBody).first)};
-
-    // For Mimir or CBBE 3BBB 3BA
-    if (lBodyMod == BodyName::MIMIR_EBONIC_BODY || lBodyMod == BodyName::CBBE_3BBB_3BA)
-    {
-      return QString("%1 - CBBE 3BBB Hands");
-    }
-
-    // For CBBE 3BBB SMP
-    if (lBodyMod == BodyName::CBBE_SMP_3BBB)
-    {
-      return QString("%1 - CBBE Hands");
-    }
+    case BodyVariant::CBBE_3BA_3BBB:
+    case BodyVariant::MIMIR_EBONIC_BODY:
+      lBodyValue = QString("%1 - CBBE 3BBB Body Amazing");
+      break;
+    case BodyVariant::BHUNP_3BBB:
+      lBodyValue = QString("%1 - BHUNP 3BBB");
+      break;
+    case BodyVariant::BHUNP_3BBB_ADVANCED:
+      lBodyValue = QString("%1 - BHUNP 3BBB Advanced");
+      break;
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+      lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2");
+      break;
+    case BodyVariant::BHUNP_BBP:
+      lBodyValue = QString("%1 - BHUNP BBP");
+      break;
+    case BodyVariant::BHUNP_BBP_ADVANCED:
+      lBodyValue = QString("%1 - BHUNP BBP Advanced");
+      break;
+    case BodyVariant::BHUNP_TBBP:
+      lBodyValue = QString("%1 - BHUNP TBBP");
+      break;
+    case BodyVariant::BHUNP_TBBP_ADVANCED:
+      lBodyValue = QString("%1 - BHUNP TBBP Advanced");
+      break;
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
+      lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2 Nevernude");
+      break;
+    case BodyVariant::CBBE_SMP_3BBB:
+      lBodyValue = QString("%1 - CBBE Body SMP (3BBB)");
+      break;
+    case BodyVariant::COCO_BODY_CBBE:
+      switch (lVersionIndex)
+      {
+        case 0:
+          lBodyValue = QString("%1 - [COCO]3Bsmp_BodyV4_A");
+          break;
+        case 1:
+          lBodyValue = QString("%1 - [COCO 3BBB V6]Body_A");
+          break;
+        default:
+          // Keep the default empty text
+          break;
+      }
+      break;
+    case BodyVariant::COCO_BODY_UUNP:
+      switch (lVersionIndex)
+      {
+        case 0:
+          lBodyValue = QString("%1 - [COCO]body_B_v3");
+          break;
+        case 1:
+          lBodyValue = QString("%1 - [COCO]3Bsmp_BodyV4_B");
+          break;
+        case 2:
+          lBodyValue = QString("%1 - [COCO 3BBB V6]Body_B");
+          break;
+        default:
+          // Keep the default empty text
+          break;
+      }
+      break;
+    case BodyVariant::_INVALID_VALUE:
+    default:
+      // Keep the default empty text
+      break;
   }
-  else
-  {
-    return QString("%1 - BHUNP 3BBB Advanced Hands");
-  }
 
-  return "";
+  return (lBodyValue + "\n");
 }
 
-QString Utils::GetFeetSliderValue(const BodyNameVersion& aBody, const int aFeetModIndex)
+QString Utils::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
 {
+  const auto lVariant{DataLists::GetVariant(aFeetNameVersion)};
+  const auto lVersionIndex{DataLists::GetVersionIndex(aFeetNameVersion)};
+
   auto lFeetValue{QString()};
 
-  if (Utils::IsCBBEBasedBody(aBody))
+  switch (lVariant)
   {
-    switch (aFeetModIndex)
-    {
-      case 0:
-        // Default
-        switch (aBody)
-        {
-          case BodyNameVersion::CBBE_3BBB_3BA_1_50:
-          case BodyNameVersion::CBBE_3BBB_3BA_1_51_TO_1_55:
-          case BodyNameVersion::CBBE_3BBB_3BA_2_02_TO_2_04:
-          case BodyNameVersion::CBBE_3BBB_3BA_2_06:
-          case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
-          case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
-            lFeetValue = QString("%1 - CBBE 3BBB Feet");
-            break;
-          case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
-            lFeetValue = QString("%1 - CBBE Feet");
-            break;
-        }
-        break;
-      case 1:
-        // More Sliders for Feet - Normal
-        lFeetValue = QString("%1 - Feet (MSF - normal)");
-        break;
-      case 2:
-        // More Sliders for Feet - High Heels
-        lFeetValue = QString("%1 - Feet (MSF - HH)");
-        break;
-    }
-  }
-  else
-  {
-    switch (aFeetModIndex)
-    {
-      case 0:
-        // Default
-        lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
-        break;
-      case 1:
-        // More Sliders for Feet - Normal
-        lFeetValue = QString("%1 - Feet (MSF - normal)");
-        break;
-      case 2:
-        // More Sliders for Feet - High Heels
-        lFeetValue = QString("%1 - Feet (MSF - HH)");
-        break;
-      case 3:
-        // HG Feet and Toes BHUNP SE - HGFeet UUNP
-        lFeetValue = QString("%1 - HGFeet UUNP");
-        break;
-      case 4:
-        // Khrysamere HG Feet (BHUNP)
-        lFeetValue = QString("%1 - [Khrysamere] HG Feet (BHUNP)");
-        break;
-      case 5:
-        // Khrysamere HG Feet (Claws) (BHUNP)
-        lFeetValue = QString("%1 - [Khrysamere] HG Feet (Claws) (BHUNP)");
-        break;
-    }
+    case FeetVariant::CBBE:
+      lFeetValue = QString("%1 - CBBE Feet");
+      break;
+    case FeetVariant::BHUNP:
+      lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
+      break;
+    case FeetVariant::CBBE_3BA_3BBB:
+      lFeetValue = QString("%1 - CBBE 3BBB Feet");
+      break;
+    case FeetVariant::COCO_BODY_CBBE:
+      switch (lVersionIndex)
+      {
+        case 0:
+          lFeetValue = QString("%1 - [COCO]3Bsmp_FeetV4_A");
+          break;
+        case 1:
+          lFeetValue = QString("%1 - [COCO 3BBB V6]Feet_A");
+          break;
+        default:
+          // Keep the default empty text
+          break;
+      }
+      break;
+    case FeetVariant::COCO_BODY_UUNP:
+      switch (lVersionIndex)
+      {
+        case 0:
+          lFeetValue = QString("%1 - [COCO]bodyFeets_B_v3");
+          break;
+        case 1:
+          lFeetValue = QString("%1 - [COCO]3Bsmp_FeetV4_B");
+          break;
+        case 2:
+          lFeetValue = QString("%1 - [COCO 3BBB V6]Feet_B");
+          break;
+        default:
+          // Keep the default empty text
+          break;
+      }
+      break;
+    case FeetVariant::MIMIR_EBONIC_BODY:
+      lFeetValue = QString("%1 - CBBE 3BBB Feet");
+      break;
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
+      lFeetValue = QString("%1 - CBBE MSF Feet");
+      break;
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP:
+      lFeetValue = QString("%1 - BHUNP Feet MSF");
+      break;
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE:
+      lFeetValue = QString("%1 - CBBE MSF Feet High Heel");
+      break;
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP:
+      lFeetValue = QString("%1 - BHUNP Feet High Heel MSF");
+      break;
+    case FeetVariant::HG_FEET:
+      lFeetValue = QString("%1 - HGFeet UUNP");
+      break;
+    case FeetVariant::KHRYSAMERE_HG_FEET:
+      switch (lVersionIndex)
+      {
+        case 0:
+          lFeetValue = QString("%1 - [Khrysamere] HG Feet (BHUNP)");
+          break;
+        case 1:
+          lFeetValue = QString("%1 - [Khrysamere] K Feet");
+          break;
+        case 2:
+          lFeetValue = QString("%1 - [Khrysamere] K Feet");
+          break;
+        case 3:
+          lFeetValue = QString("%1 - [Khrysamere] K Feet v5.0");
+          break;
+        case 4:
+          lFeetValue = QString("%1 - [Khrysamere] K Feet");
+          break;
+        default:
+          // Keep the default empty text
+          break;
+      }
+      // Keep the default empty text
+      break;
   }
 
   return (lFeetValue + "\n");
 }
 
-QString Utils::GetBodySliderValue(const BodyNameVersion& aBody)
+QString Utils::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, const bool aMustUseBeastHands)
 {
-  auto lBodyVersion{DataLists::GetSplittedNameVersionFromBodyVersion(aBody)};
-  auto lCastedBodyName{static_cast<BodyName>(lBodyVersion.first)};
-
-  auto lBodyValue{QString()};
-
-  switch (lCastedBodyName)
+  // Beast hands
+  if (Utils::IsCBBEBasedBody(aBodyNameVersion) && aMustUseBeastHands)
   {
-    case BodyName::CBBE_3BBB_3BA:
-    case BodyName::MIMIR_EBONIC_BODY:
-      lBodyValue = QString("%1 - CBBE 3BBB Body Amazing");
-      break;
-    case BodyName::CBBE_SMP_3BBB:
-      lBodyValue = QString("%1 - CBBE Body SMP (3BBB)");
-      break;
-    case BodyName::BHUNP_3BBB:
-      lBodyValue = QString("%1 - BHUNP 3BBB");
-      break;
-    case BodyName::BHUNP_3BBB_ADVANCED:
-      lBodyValue = QString("%1 - BHUNP 3BBB Advanced");
-      break;
-    case BodyName::BHUNP_3BBB_ADVANCED_VER_2:
-      lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2");
-      break;
-    case BodyName::BHUNP_BBP:
-      lBodyValue = QString("%1 - BHUNP BBP");
-      break;
-    case BodyName::BHUNP_BBP_ADVANCED:
-      lBodyValue = QString("%1 - BHUNP BBP Advanced");
-      break;
-    case BodyName::BHUNP_TBBP:
-      lBodyValue = QString("%1 - BHUNP TBBP");
-      break;
-    case BodyName::BHUNP_TBBP_ADVANCED:
-      lBodyValue = QString("%1 - BHUNP TBBP Advanced");
-      break;
-    case BodyName::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-      lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2 Nevernude");
-      break;
+    return QString("%1 - CBBE Hands Beast");
   }
 
-  return (lBodyValue + "\n");
+  auto lBodyName{DataLists::GetName(aBodyNameVersion)};
+  auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+
+  switch (lBodyName)
+  {
+    case BodyName::CBBE_3BA_3BBB:
+    case BodyName::MIMIR_EBONIC_BODY:
+      return QString("%1 - CBBE 3BBB Hands");
+    case BodyName::BHUNP_UUNP_NEXT_GENERATION:
+      return QString("%1 - BHUNP 3BBB Advanced Hands");
+    case BodyName::CBBE_SMP_3BBB:
+      return QString("%1 - CBBE Hands");
+    case BodyName::COCO_BODY_CBBE:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("%1 - [COCO]3Bsmp_HandV4_A");
+        case 1:
+          return QString("%1 - [COCO 3BBB V6]Hands_A");
+        default:
+          return QString();
+      }
+    case BodyName::COCO_BODY_UUNP:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("%1 - [COCO]bodyHands_B_v3");
+        case 1:
+          return QString("%1 - [COCO]3Bsmp_HandV4_B");
+        case 2:
+          return QString("%1 - [COCO 3BBB V6]Hands_B");
+        default:
+          return QString();
+      }
+    case BodyName::_INVALID_VALUE:
+    default:
+      return QString();
+  }
 }
 
 void Utils::SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent, const QString& aIconFolder)
@@ -1041,7 +1144,7 @@ Struct::Settings Utils::LoadSettingsFromFile()
   // New file format since v.3.4.0.0
   else
   {
-    Utils::ParseSettings(lSettings, lSettingsJSON);
+    Utils::ParseSettings(lSettings, lSettingsJSON, lSettingsJSON["applicationVersion"].toString());
   }
 
   Utils::PrintMessageStdOut("User settings:");
@@ -1078,19 +1181,19 @@ void Utils::ParseSettingsCompatibility(Struct::Settings& aSettings, const QJsonO
 
   // Preset Creator: Default body name and version
   if (aJSONObject.contains("defaultMainWindowBody") && aJSONObject["defaultMainWindowBody"].isDouble())
-    aSettings.presetCreator.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(aJSONObject["defaultMainWindowBody"].toInt());
+    aSettings.presetCreator.defaultBodyFeet.bodyMesh = static_cast<BodyNameVersion>(aJSONObject["defaultMainWindowBody"].toInt());
 
   // Preset Creator: Default feet mod
   if (aJSONObject.contains("defaultMainFeetMod") && aJSONObject["defaultMainFeetMod"].isDouble())
-    aSettings.presetCreator.defaultBodyFeet.feetMod = aJSONObject["defaultMainFeetMod"].toInt();
+    aSettings.presetCreator.defaultBodyFeet.feetMesh = static_cast<FeetNameVersion>(aJSONObject["defaultMainFeetMod"].toInt());
 
   // Default BodySlide Presets' Retargeting body name and version
   if (aJSONObject.contains("defaultRetargetingToolBody") && aJSONObject["defaultRetargetingToolBody"].isDouble())
-    aSettings.presetsRetargeting.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(aJSONObject["defaultRetargetingToolBody"].toInt());
+    aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh = static_cast<BodyNameVersion>(aJSONObject["defaultRetargetingToolBody"].toInt());
 
   // Retargeting Tool: Default feet mod
   if (aJSONObject.contains("defaultRetargetingToolFeetMod") && aJSONObject["defaultRetargetingToolFeetMod"].isDouble())
-    aSettings.presetsRetargeting.defaultBodyFeet.feetMod = aJSONObject["defaultRetargetingToolFeetMod"].toInt();
+    aSettings.presetsRetargeting.defaultBodyFeet.feetMesh = static_cast<FeetNameVersion>(aJSONObject["defaultRetargetingToolFeetMod"].toInt());
 
   // Each button stores the last opened path
   if (aJSONObject.contains("eachButtonSavesItsLastUsedPath") && aJSONObject["eachButtonSavesItsLastUsedPath"].isBool())
@@ -1153,28 +1256,28 @@ void Utils::ParseSettingsCompatibility(Struct::Settings& aSettings, const QJsonO
 
     // "retargetingToolDefaultBody" -> "defaultRetargetingToolBody"
     if (aJSONObject.contains("retargetingToolDefaultBody") && aJSONObject["retargetingToolDefaultBody"].isDouble())
-      aSettings.presetsRetargeting.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(aJSONObject["retargetingToolDefaultBody"].toInt());
+      aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh = static_cast<BodyNameVersion>(aJSONObject["retargetingToolDefaultBody"].toInt());
 
     // "defaultBody" -> "defaultMainWindowBody"
     if (aJSONObject.contains("defaultBody") && aJSONObject["defaultBody"].isDouble())
-      aSettings.presetCreator.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(aJSONObject["defaultBody"].toInt());
+      aSettings.presetCreator.defaultBodyFeet.bodyMesh = static_cast<BodyNameVersion>(aJSONObject["defaultBody"].toInt());
   }
   // For any JSON format upgrade / settings values changed
   else if (Utils::CompareVersionNumbers(aJSONObject["applicationVersion"].toString(), "3.2.0.0") == ApplicationVersionRelative::OLDER)
   {
-    aSettings.presetCreator.defaultBodyFeet.bodyMod = BodyNameVersion::CBBE_3BBB_3BA_1_50;
-    aSettings.presetsRetargeting.defaultBodyFeet.bodyMod = BodyNameVersion::CBBE_3BBB_3BA_1_50;
-    aSettings.batchConversion.defaultBodyFeet.bodyMod = BodyNameVersion::CBBE_3BBB_3BA_1_50;
+    aSettings.presetCreator.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_1_50;
+    aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_1_50;
+    aSettings.batchConversion.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_1_50;
     aSettings.display.applicationTheme = GUITheme::MITSURIOU_DARK_THEME;
   }
 }
 
-void Utils::ParseSettings(Struct::Settings& aSettings, const QJsonObject& aJSONObject)
+void Utils::ParseSettings(Struct::Settings& aSettings, const QJsonObject& aJSONObject, const QString& aSettingsFileVersion)
 {
   // batchConversion
   if (aJSONObject.contains("batchConversion") && aJSONObject["batchConversion"].isObject())
   {
-    Utils::ParseGenericDialogSettings(aSettings.batchConversion, aJSONObject["batchConversion"].toObject());
+    Utils::ParseGenericDialogSettings(aSettings.batchConversion, aJSONObject["batchConversion"].toObject(), aSettingsFileVersion);
   }
 
   // display
@@ -1192,13 +1295,13 @@ void Utils::ParseSettings(Struct::Settings& aSettings, const QJsonObject& aJSONO
   // presetCreator
   if (aJSONObject.contains("presetCreator") && aJSONObject["presetCreator"].isObject())
   {
-    Utils::ParseGenericDialogSettings(aSettings.presetCreator, aJSONObject["presetCreator"].toObject());
+    Utils::ParseGenericDialogSettings(aSettings.presetCreator, aJSONObject["presetCreator"].toObject(), aSettingsFileVersion);
   }
 
   // presetsRetargeting
   if (aJSONObject.contains("presetsRetargeting") && aJSONObject["presetsRetargeting"].isObject())
   {
-    Utils::ParseGenericDialogSettings(aSettings.presetsRetargeting, aJSONObject["presetsRetargeting"].toObject());
+    Utils::ParseGenericDialogSettings(aSettings.presetsRetargeting, aJSONObject["presetsRetargeting"].toObject(), aSettingsFileVersion);
   }
 }
 
@@ -1307,7 +1410,7 @@ void Utils::ParseGeneralSettings(Struct::GeneralSettings& aSettings, const QJson
   }
 }
 
-void Utils::ParseGenericDialogSettings(Struct::GenericDialogSettings& aSettings, const QJsonObject& aJSONObject)
+void Utils::ParseGenericDialogSettings(Struct::GenericDialogSettings& aSettings, const QJsonObject& aJSONObject, const QString& aSettingsFileVersion)
 {
   // automaticallyOpenFinalDirectory
   if (aJSONObject.contains("automaticallyOpenFinalDirectory") && aJSONObject["automaticallyOpenFinalDirectory"].isBool())
@@ -1316,19 +1419,34 @@ void Utils::ParseGenericDialogSettings(Struct::GenericDialogSettings& aSettings,
   // defaultBodyFeet
   if (aJSONObject.contains("defaultBodyFeet") && aJSONObject["defaultBodyFeet"].isObject())
   {
-    Utils::ParseBodyFeetSettings(aSettings.defaultBodyFeet, aJSONObject["defaultBodyFeet"].toObject());
+    Utils::ParseBodyFeetSettings(aSettings.defaultBodyFeet, aJSONObject["defaultBodyFeet"].toObject(), aSettingsFileVersion);
   }
 }
 
-void Utils::ParseBodyFeetSettings(Struct::BodyFeetSettings& aSettings, const QJsonObject& aJSONObject)
+void Utils::ParseBodyFeetSettings(Struct::BodyFeetSettings& aSettings, const QJsonObject& aJSONObject, const QString& aSettingsFileVersion)
 {
-  // bodyMod
-  if (aJSONObject.contains("bodyMod") && aJSONObject["bodyMod"].isDouble())
-    aSettings.bodyMod = static_cast<BodyNameVersion>(aJSONObject["bodyMod"].toInt());
+  // Compatibility mode
+  if (Utils::CompareVersionNumbers(aSettingsFileVersion, "3.5.0.0") == ApplicationVersionRelative::OLDER)
+  {
+    const auto lCompatibilityBodyMod{DataLists::GetSplittedNameVersionFromBodyVersionCompatibility(aJSONObject["bodyMod"].toInt())};
+    const auto lCompatibilityData{DataLists::ReadBodyFeetModsCompatibility(lCompatibilityBodyMod.first,
+                                                                           lCompatibilityBodyMod.second,
+                                                                           aJSONObject["feetMod"].toInt())};
 
-  // feetMod
-  if (aJSONObject.contains("feetMod") && aJSONObject["feetMod"].isDouble())
-    aSettings.feetMod = aJSONObject["feetMod"].toInt();
+    aSettings.bodyMesh = lCompatibilityData.first;
+    aSettings.feetMesh = lCompatibilityData.second;
+  }
+  // Last format version
+  else
+  {
+    // bodyMod
+    if (aJSONObject.contains("bodyMesh") && aJSONObject["bodyMesh"].isDouble())
+      aSettings.bodyMesh = static_cast<BodyNameVersion>(aJSONObject["bodyMesh"].toInt());
+
+    // feetMod
+    if (aJSONObject.contains("feetMesh") && aJSONObject["feetMesh"].isDouble())
+      aSettings.feetMesh = static_cast<FeetNameVersion>(aJSONObject["feetMesh"].toInt());
+  }
 }
 
 void Utils::SaveSettingsToFile(const Struct::Settings& aSettings)
@@ -1394,26 +1512,38 @@ QJsonObject Utils::FiltersMapToJson(const std::map<QString, QStringList>& aList)
   return QJsonObject::fromVariantMap(lVarMap);
 }
 
-QString Utils::GetAdditionalFeetFilter(const BodyNameVersion& aBody, const int aFeetModIndex)
+QString Utils::GetAdditionalFeetFilter(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion)
 {
-  if (aFeetModIndex == 1 || aFeetModIndex == 2)
+  const auto lIsCBBEBody{Utils::IsCBBEBasedBody(aBodyNameVersion)};
+  const auto lFeetName{DataLists::GetName(aFeetNameVersion)};
+  switch (lFeetName)
   {
-    if (Utils::IsCBBEBasedBody(aBody))
+    case FeetName::MORE_SLIDERS_FOR_FEET:
     {
-      return QString("MSF CBBE Feet");
+      if (lIsCBBEBody)
+        return QString("MSF CBBE Feet");
+
+      return QString("MSF BHUNP Feet");
     }
+    case FeetName::HG_FEET:
+    {
+      if (lIsCBBEBody)
+        return QString();
 
-    return QString("MSF BHUNP Feet");
+      return QString("HGFeet UUNP");
+    }
+    case FeetName::CBBE:
+    case FeetName::BHUNP:
+    case FeetName::CBBE_3BA_3BBB:
+    case FeetName::COCO_BODY:
+    case FeetName::MIMIR_EBONIC_BODY:
+    case FeetName::KHRYSAMERE_HG_FEET:
+    default:
+      return QString();
   }
-  else if (!Utils::IsCBBEBasedBody(aBody) && (aFeetModIndex == 3 || aFeetModIndex == 4 || aFeetModIndex == 5))
-  {
-    return QString("HGFeet UUNP");
-  }
-
-  return QString();
 }
 
-std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBody, const int aFeetModIndex)
+std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion)
 {
   auto lExportFilters{std::vector<Struct::Filter>()};
 
@@ -1428,7 +1558,7 @@ std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, Q
       }
 
       // Additional feet slider
-      lExportFilters.push_back(Struct::Filter(Utils::GetAdditionalFeetFilter(aBody, aFeetModIndex), false, true, false));
+      lExportFilters.push_back(Struct::Filter(Utils::GetAdditionalFeetFilter(aBodyNameVersion, aFeetNameVersion), false, true, false));
 
       break;
     }
@@ -1439,7 +1569,7 @@ std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, Q
 
 void Utils::CheckLastPathsFileExistence()
 {
-  auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
+  const auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
   if (!QFile(lLastPathsFilePath).exists())
   {
     // Create a default "last paths" file if it does not exist
@@ -1457,8 +1587,8 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
 {
   Utils::CheckLastPathsFileExistence();
 
-  auto lLastPathsFilePath(Utils::GetAppDataPathFolder() + "paths.json");
-  QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(lLastPathsFilePath)};
+  const auto lLastPathsFilePath(Utils::GetAppDataPathFolder() + "paths.json");
+  const QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(lLastPathsFilePath)};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
   std::map<QString, QString> lLastPathsList{
@@ -1483,20 +1613,20 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
 
 void Utils::SaveLastPathsToFile(const std::map<QString, QString>& aList)
 {
-  auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
+  const auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
   Utils::SaveAsJsonFile(Utils::LastPathsStructToJson(aList), lLastPathsFilePath);
 }
 
 QJsonObject Utils::LastPathsStructToJson(const std::map<QString, QString>& aList)
 {
-  QVariantMap lVarMap;
+  QVariantMap lMap;
 
   for (const auto& lPair : aList)
   {
-    lVarMap.insert(lPair.first, lPair.second);
+    lMap.insert(lPair.first, lPair.second);
   }
 
-  return QJsonObject::fromVariantMap(lVarMap);
+  return QJsonObject::fromVariantMap(lMap);
 }
 
 QString Utils::GetPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool aUseKeyPath)
@@ -1574,7 +1704,7 @@ bool Utils::UpdatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
 
 QString Utils::GetShortLanguageNameFromEnum(const int aEnumValue)
 {
-  auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
+  const auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
   switch (lEnumLang)
   {
     case ApplicationLanguage::ENGLISH:
@@ -1633,13 +1763,13 @@ void Utils::AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aR
 {
   aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);
 
-  auto lGeneralValue{new QLineEdit(aValue, aParent)};
+  const auto lGeneralValue{new QLineEdit(aValue, aParent)};
   lGeneralValue->setReadOnly(true);
   lGeneralValue->setCursor(Qt::CursorShape::IBeamCursor);
   lGeneralValue->setObjectName(QString("line_edit_path_%1").arg(aRow));
   aLayout->addWidget(lGeneralValue, aRow, 1);
 
-  auto lGeneralEmptyButton{ComponentFactory::CreateButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), aValue.isEmpty(), true)};
+  const auto lGeneralEmptyButton{ComponentFactory::CreateButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), aValue.isEmpty(), true)};
   aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
 }
 
@@ -1726,7 +1856,8 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
 {
   auto lMainDirectory{aMainDirTextEdit->text().trimmed()};
   Utils::CleanPathString(lMainDirectory);
-  Utils::CleanPathString(aSubDirectory);
+  auto lSubDirectory{aSubDirectory};
+  Utils::CleanPathString(lSubDirectory);
   auto lIsValidPath{true};
 
   // Construct full path
@@ -1735,9 +1866,9 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
   {
     aMainDirTextEdit->setDisabled(true);
 
-    if (!aSubDirectory.isEmpty())
+    if (!lSubDirectory.isEmpty())
     {
-      lFullPath = aSubDirectory;
+      lFullPath = lSubDirectory;
     }
     else
     {
@@ -1747,19 +1878,19 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
   }
   else
   {
-    if (!lMainDirectory.isEmpty() && !aSubDirectory.isEmpty())
+    if (!lMainDirectory.isEmpty() && !lSubDirectory.isEmpty())
     {
-      lFullPath = lMainDirectory + "/" + aSubDirectory;
+      lFullPath = lMainDirectory + "/" + lSubDirectory;
       aMainDirTextEdit->setDisabled(false);
     }
-    else if (!lMainDirectory.isEmpty() && aSubDirectory.isEmpty())
+    else if (!lMainDirectory.isEmpty() && lSubDirectory.isEmpty())
     {
       lFullPath = lMainDirectory;
       aMainDirTextEdit->setDisabled(false);
     }
-    else if (lMainDirectory.isEmpty() && !aSubDirectory.isEmpty())
+    else if (lMainDirectory.isEmpty() && !lSubDirectory.isEmpty())
     {
-      lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%1\".").arg(aSubDirectory);
+      lFullPath = tr("You must choose a directory through the file chooser. Current path defined: \" /%1\".").arg(lSubDirectory);
       aMainDirTextEdit->setDisabled(true);
       lIsValidPath = false;
     }

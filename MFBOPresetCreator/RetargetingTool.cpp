@@ -4,6 +4,7 @@
 #include "DataLists.h"
 #include "Enum.h"
 #include "SliderFileBuilder.h"
+#include "TargetMeshesPicker.h"
 #include "Utils.h"
 #include <QApplication>
 #include <QCheckBox>
@@ -26,6 +27,8 @@ RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSett
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
+  , mTargetBodyMesh(aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh)
+  , mTargetFeetMesh(aSettings.presetsRetargeting.defaultBodyFeet.feetMesh)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -117,42 +120,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->setAlignment(Qt::AlignTop);
 
   // Targeted body and version
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetsRetargeting.defaultBodyFeet.bodyMod)};
-
-  lGeneralGridLayout->addWidget(new QLabel(tr("Targeted body and version:"), this), 0, 0);
-
-  auto lBodyNameVersionWrapper{new QHBoxLayout(lGeneralGroupBox)};
-  lBodyNameVersionWrapper->setMargin(0);
-  lGeneralGridLayout->addLayout(lBodyNameVersionWrapper, 0, 1, 1, 2);
-
-  // Body Name
-  auto lBodyNameSelector{new QComboBox(this)};
-  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
-  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
-  lBodyNameSelector->setObjectName(QString("body_selector_name"));
-  lBodyNameVersionWrapper->addWidget(lBodyNameSelector);
-
-  // Body Version
-  auto lBodyVersionSelector{new QComboBox(this)};
-  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
-  lBodyVersionSelector->setObjectName(QString("body_selector_version"));
-  lBodyNameVersionWrapper->addWidget(lBodyVersionSelector);
-
-  // Feet mod chooser
-  auto lFeetSelector{new QComboBox(this)};
-  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
-  lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(this->mSettings.presetsRetargeting.defaultBodyFeet.feetMod);
-  lFeetSelector->setObjectName(QString("feet_mod_selector"));
-  lBodyNameVersionWrapper->addWidget(lFeetSelector);
-
-  lBodyNameVersionWrapper->addStretch();
+  auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
+                                                                          *lGeneralGridLayout,
+                                                                          true,
+                                                                          0,
+                                                                          lIconFolder,
+                                                                          QString("target_meshes_picker_button"),
+                                                                          QString("currently_targeted_body"),
+                                                                          QString("currently_targeted_feet"))};
 
   // Input path
   lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 1, 0);
@@ -243,13 +218,11 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Retarget all the files under the input path"), "", "arrow-up", lIconFolder, "objectname", false, true)};
   aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
 
-  // Event bindings for user actions (disconnected the first time the user does an action in the GUI)
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
-  this->connect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
+  // Pre-bind initialization functions
+  this->targetMeshesChanged(this->mTargetBodyMesh, this->mTargetFeetMesh);
 
   // Event binding
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateAvailableBodyVersions);
-  this->connect(lFeetSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateBodySlideFiltersListPreview);
+  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &RetargetingTool::openTargetMeshesPicker);
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
   this->connect(lKeepBackup, &QCheckBox::stateChanged, this, &RetargetingTool::updateBackupState);
   lKeepBackup->setChecked(true);
@@ -283,23 +256,6 @@ void RetargetingTool::userHasDoneAnAction(int)
   // Body version selector
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
   this->disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
-}
-
-void RetargetingTool::updateAvailableBodyVersions()
-{
-  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex())};
-
-  // Version
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
-  lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
-  lBodyVersionSelector->setCurrentIndex(0);
-
-  // Feet mod
-  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_selector"))};
-  lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
-  lFeetSelector->setCurrentIndex(0);
 }
 
 void RetargetingTool::chooseInputDirectory()
@@ -441,14 +397,6 @@ void RetargetingTool::launchUpDownGradeProcess()
 {
   // Input Directory
   auto lRootDir{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
-
-  // Selected body
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-
-  // Selected feet
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
 
   // Check if the input path has been given by the user
   if (lRootDir.isEmpty())
@@ -642,7 +590,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Check, if the preset is using beast hands, if the chosen body does not support beast hands
     auto lSkipBeastHands{false};
-    if (lMustUseBeastHands && !Utils::IsBodySupportingBeastHands(lBodySelected))
+    if (lMustUseBeastHands && !Utils::IsBodySupportingBeastHands(this->mTargetBodyMesh))
     {
       Utils::DisplayWarningMessage(tr("The chosen body/version does not support beast hands. The retargeting of the OSP file \"%1\" has been skipped.").arg(it2.fileInfo().absoluteFilePath()));
       lSkipBeastHands = true;
@@ -676,7 +624,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
       lOSPUsedSliders.insert(std::make_pair(lFileName, lOptions));
 
-      auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(lPresetName, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOptions)};
+      auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(lPresetName, this->mTargetBodyMesh, this->mTargetFeetMesh, lMustUseBeastHands, lOptions)};
 
       // Fill the custom variables
       for (const auto& lSliderSet : lParsedSliderSets)
@@ -796,8 +744,8 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Construct the file content
     auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-    auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), lBodySelected, lFeetModIndex)};
-    auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(lPresetName, lUserFilters, lBodySelected, lMustUseBeastHands, lFeetModIndex, lOSPUsedSliders.find(lFileName)->second)};
+    auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), this->mTargetBodyMesh, this->mTargetFeetMesh)};
+    auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(lPresetName, lUserFilters, this->mTargetBodyMesh, this->mTargetFeetMesh, lMustUseBeastHands, lOSPUsedSliders.find(lFileName)->second)};
 
     // Create the OSP file on disk
     QFile lXMLFile(lAbsFilePath);
@@ -832,6 +780,36 @@ void RetargetingTool::launchUpDownGradeProcess()
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
   }
+}
+
+void RetargetingTool::openTargetMeshesPicker()
+{
+  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &RetargetingTool::targetMeshesChanged);
+}
+
+void RetargetingTool::targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
+{
+  // Update the class members
+  this->mTargetBodyMesh = aBody;
+  this->mTargetFeetMesh = aFeet;
+
+  // Update the "targeted body mesh" text content
+  const auto lBodyText{
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body")};
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1").arg(lBodyText));
+
+  // Update the "targeted feet mesh" text content
+  const auto lFeetText{
+    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
+
+  auto lCurrentlyTargetedFeet{this->findChild<QLabel*>("currently_targeted_feet")};
+  lCurrentlyTargetedFeet->setText(tr("Targeted feet: %1").arg(lFeetText));
+
+  // Force the refresh of the filters list preview
+  this->updateBodySlideFiltersListPreview();
 }
 
 void RetargetingTool::openBodySlideFiltersEditor()
@@ -877,20 +855,16 @@ void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QString
   Utils::UpdateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
-void RetargetingTool::updateBodySlideFiltersListPreview(int)
+void RetargetingTool::updateBodySlideFiltersListPreview()
 {
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("body_selector_version"))->currentIndex()};
-  auto lBodySelected{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-  auto lFeetModIndex{this->findChild<QComboBox*>(QString("feet_mod_selector"))->currentIndex()};
-
-  // Take custom MSF filter
-  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(lBodySelected, lFeetModIndex)};
-
+  // Get the GUI widgets
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
 
+  // Get any eventual additional filters
+  auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};
   auto lText{QString()};
+
   if (lFiltersListChooser->currentIndex() != -1)
   {
     lText = this->mFiltersList.find(lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()))->second.join(QString(" ; "));

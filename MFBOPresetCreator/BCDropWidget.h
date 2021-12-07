@@ -35,7 +35,7 @@ private:
   void checkBoxStateChanged(int aNewState);
 
   // GUI
-  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = QString(""), const QString& aNewRessourceText = QString(""), const bool aUseAlternativeModel = false);
+  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = QString(), const QString& aNewRessourceText = QString(), const bool aUseAlternativeModel = false);
   QCheckBox* createCheckBox(const QString& lText, QGridLayout& aLayout);
 
   explicit BCDropWidget(const BCDropWidget&) = delete;

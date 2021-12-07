@@ -1,6 +1,7 @@
 #include "Settings.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "TargetMeshesPicker.h"
 #include "Utils.h"
 #include <QAbstractSlider>
 #include <QApplication>
@@ -89,7 +90,7 @@ void Settings::setWindowProperties()
 {
   this->setModal(true);
   this->setMinimumWidth(950);
-  this->setMinimumHeight(670);
+  this->setMinimumHeight(620);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(tr("Settings"));
   this->setWindowIcon(QIcon(QPixmap(":/black/cog")));
@@ -312,46 +313,24 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(lIconFolder))), tr("Preset Creator"));
 
-  // DEFAULT SELECTED BODY AND VERSION
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetCreator.defaultBodyFeet.bodyMod)};
-
-  lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
-
-  auto lBodyNameSelector{new QComboBox(this)};
-  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
-  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
-  lBodyNameSelector->setObjectName(QString("default_body_selector_name"));
-  lTabLayout->addWidget(lBodyNameSelector, 1, 0);
-
-  auto lBodyVersionSelector{new QComboBox(this)};
-  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
-  lBodyVersionSelector->setObjectName(QString("default_body_selector_version"));
-  lTabLayout->addWidget(lBodyVersionSelector, 1, 1);
-
-  // Feet mod
-  lTabLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
-
-  auto lFeetSelector{new QComboBox(this)};
-  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
-  lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(this->mSettings.presetCreator.defaultBodyFeet.feetMod);
-  lFeetSelector->setObjectName(QString("feet_mod_main"));
-  lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
+  // DEFAULT TARGETED BODY AND FEET VERSION
+  auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
+                                                                          *lTabLayout,
+                                                                          false,
+                                                                          0,
+                                                                          lIconFolder,
+                                                                          QString("main_target_meshes_picker_button"),
+                                                                          QString("main_currently_targeted_body"),
+                                                                          QString("main_currently_targeted_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
-  lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 6, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 2, 0);
 
   auto lAutoOpenDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the generated preset's output directory after a generation"), "", "auto_open_generated_dir")};
-  lTabLayout->addWidget(lAutoOpenDirCheckbox, 7, 0, 1, 2);
+  lTabLayout->addWidget(lAutoOpenDirCheckbox, 3, 0);
 
   // Event binding
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBodyVersions);
+  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openPresetCreatorTargetMeshesPicker);
 }
 
 void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
@@ -370,46 +349,24 @@ void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
 
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/reorder").arg(lIconFolder))), tr("Batch Conversion"));
 
-  // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.batchConversion.defaultBodyFeet.bodyMod)};
-
-  lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
-
-  auto lBodyNameSelector{new QComboBox(this)};
-  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
-  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
-  lBodyNameSelector->setObjectName(QString("batch_conversion_body_selector_name"));
-  lTabLayout->addWidget(lBodyNameSelector, 1, 0);
-
-  auto lBodyVersionSelector{new QComboBox(this)};
-  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
-  lBodyVersionSelector->setObjectName(QString("batch_conversion_body_selector_version"));
-  lTabLayout->addWidget(lBodyVersionSelector, 1, 1);
-
-  // Feet mod
-  lTabLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
-
-  auto lFeetSelector{new QComboBox(this)};
-  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
-  lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(this->mSettings.batchConversion.defaultBodyFeet.feetMod);
-  lFeetSelector->setObjectName(QString("feet_mod_batch_conversion"));
-  lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
+  // DEFAULT TARGETED BODY AND FEET VERSION (BATCH CONVERSION)
+  auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
+                                                                          *lTabLayout,
+                                                                          false,
+                                                                          0,
+                                                                          lIconFolder,
+                                                                          QString("batch_conversion_target_meshes_picker_button"),
+                                                                          QString("batch_conversion_currently_targeted_body"),
+                                                                          QString("batch_conversion_currently_targeted_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
-  lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 4, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 2, 0);
 
   auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the output directory after a batch generation"), "", "auto_open_batch_generated_dir")};
-  lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 5, 0, 1, 2);
+  lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 3, 0);
 
   // Event binding
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableBatchConversionBodyVersions);
+  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openBatchConversionTargetMeshesPicker);
 }
 
 void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
@@ -429,45 +386,23 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))), tr("BodySlide Presets' Retargeting"));
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
-  auto lDefaultBodyVersionSettings{DataLists::GetSplittedNameVersionFromBodyVersion(this->mSettings.presetsRetargeting.defaultBodyFeet.bodyMod)};
-
-  lTabLayout->addWidget(new QLabel(tr("Default selected body:"), this), 0, 0, 1, 2);
-
-  auto lBodyNameSelector{new QComboBox(this)};
-  lBodyNameSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyNameSelector->setCursor(Qt::PointingHandCursor);
-  lBodyNameSelector->addItems(DataLists::GetBodiesNames());
-  lBodyNameSelector->setCurrentIndex(lDefaultBodyVersionSettings.first);
-  lBodyNameSelector->setObjectName(QString("upgrade_body_selector_name"));
-  lTabLayout->addWidget(lBodyNameSelector, 1, 0);
-
-  auto lBodyVersionSelector{new QComboBox(this)};
-  lBodyVersionSelector->setItemDelegate(new QStyledItemDelegate());
-  lBodyVersionSelector->setCursor(Qt::PointingHandCursor);
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lBodyVersionSelector->setCurrentIndex(lDefaultBodyVersionSettings.second);
-  lBodyVersionSelector->setObjectName(QString("upgrade_body_selector_version"));
-  lTabLayout->addWidget(lBodyVersionSelector, 1, 1);
-
-  // Feet mod
-  lTabLayout->addWidget(new QLabel(tr("Default selected feet mod:"), this), 2, 0, 1, 2);
-
-  auto lFeetSelector{new QComboBox(this)};
-  lFeetSelector->setItemDelegate(new QStyledItemDelegate());
-  lFeetSelector->setCursor(Qt::PointingHandCursor);
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(static_cast<BodyName>(lDefaultBodyVersionSettings.first)));
-  lFeetSelector->setCurrentIndex(this->mSettings.presetsRetargeting.defaultBodyFeet.feetMod);
-  lFeetSelector->setObjectName(QString("feet_mod_retargeting_tool"));
-  lTabLayout->addWidget(lFeetSelector, 3, 0, 1, 2);
+  auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
+                                                                          *lTabLayout,
+                                                                          false,
+                                                                          0,
+                                                                          lIconFolder,
+                                                                          QString("retargeting_tool_target_meshes_picker_button"),
+                                                                          QString("retargeting_tool_currently_targeted_body"),
+                                                                          QString("retargeting_tool_currently_targeted_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
-  lTabLayout->addWidget(new QLabel(tr("Post-processing task:"), this), 4, 0, 1, 2);
+  lTabLayout->addWidget(new QLabel(tr("Post-processing task:"), this), 2, 0);
 
   auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the retargeted directory after the retargeting process succeeded"), "", "auto_open_retargeted_dir")};
-  lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 5, 0, 1, 2);
+  lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 3, 0);
 
   // Event binding
-  this->connect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, &Settings::updateAvailableUpgradeBodyVersions);
+  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openRetargetingToolTargetMeshesPicker);
 }
 
 void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
@@ -551,19 +486,24 @@ void Settings::createDialogOpeningModeBlock(QGridLayout& aLayout, const QString&
 void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 {
   // Display
-  loadDisplayTabSettings(aSettingsToLoad.display);
+  this->loadDisplayTabSettings(aSettingsToLoad.display);
 
   // General
-  loadGeneralTabSettings(aSettingsToLoad.general);
+  this->loadGeneralTabSettings(aSettingsToLoad.general);
+
+  // TODO: Optimize the calls below, with the wanted function as a parameter of loadGenericDialogSettings()
 
   // Preset Creator
-  loadGenericDialogSettings(aSettingsToLoad.presetCreator, "default_body_selector_name", "default_body_selector_version", "feet_mod_main", "auto_open_generated_dir");
+  this->presetCreatorTargetMeshesChanged(aSettingsToLoad.presetCreator.defaultBodyFeet.bodyMesh, aSettingsToLoad.presetCreator.defaultBodyFeet.feetMesh);
+  this->loadGenericDialogSettings(aSettingsToLoad.presetCreator, "auto_open_generated_dir");
 
   // Batch conversion
-  loadGenericDialogSettings(aSettingsToLoad.batchConversion, "batch_conversion_body_selector_name", "batch_conversion_body_selector_version", "feet_mod_retargeting_tool", "auto_open_batch_generated_dir");
+  this->batchConversionTargetMeshesChanged(aSettingsToLoad.batchConversion.defaultBodyFeet.bodyMesh, aSettingsToLoad.batchConversion.defaultBodyFeet.feetMesh);
+  this->loadGenericDialogSettings(aSettingsToLoad.batchConversion, "auto_open_batch_generated_dir");
 
   // BodySlide Presets' Retargeting
-  loadGenericDialogSettings(aSettingsToLoad.presetsRetargeting, "upgrade_body_selector_name", "upgrade_body_selector_version", "feet_mod_retargeting_tool", "auto_open_retargeted_dir");
+  this->retargetingToolTargetMeshesChanged(aSettingsToLoad.presetsRetargeting.defaultBodyFeet.bodyMesh, aSettingsToLoad.presetsRetargeting.defaultBodyFeet.feetMesh);
+  this->loadGenericDialogSettings(aSettingsToLoad.presetsRetargeting, "auto_open_retargeted_dir");
 }
 
 void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsToLoad)
@@ -648,19 +588,8 @@ void Settings::loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsTo
   }
 }
 
-void Settings::loadGenericDialogSettings(const Struct::GenericDialogSettings& aSettingsToLoad,
-                                         const QString& aObjectNameBodyNameSelector,
-                                         const QString& aObjectNameBodyVersionSelector,
-                                         const QString& aObjectNameFeetSelector,
-                                         const QString& aObjectNamePostActionTask)
+void Settings::loadGenericDialogSettings(const Struct::GenericDialogSettings& aSettingsToLoad, const QString& aObjectNamePostActionTask)
 {
-  auto lBodyNameVersion{DataLists::GetSplittedNameVersionFromBodyVersion(aSettingsToLoad.defaultBodyFeet.bodyMod)};
-  this->findChild<QComboBox*>(aObjectNameBodyNameSelector)->setCurrentIndex(lBodyNameVersion.first);
-  this->findChild<QComboBox*>(aObjectNameBodyVersionSelector)->setCurrentIndex(lBodyNameVersion.second);
-
-  auto lFeet{this->findChild<QComboBox*>(aObjectNameFeetSelector)};
-  lFeet->setCurrentIndex(static_cast<int>(aSettingsToLoad.defaultBodyFeet.feetMod));
-
   auto lPostGenTask{this->findChild<QCheckBox*>(aObjectNamePostActionTask)};
   lPostGenTask->setChecked(aSettingsToLoad.automaticallyOpenFinalDirectory);
 }
@@ -671,14 +600,6 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lAppTheme{this->findChild<QComboBox*>(QString("app_theme"))->currentIndex()};
   auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))->text().trimmed()};
   auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))->text().trimmed()};
-  auto lBodyNameSelected{this->findChild<QComboBox*>(QString("default_body_selector_name"))->currentIndex()};
-  auto lBodyVersionSelected{this->findChild<QComboBox*>(QString("default_body_selector_version"))->currentIndex()};
-  auto lDefaultBodyVersion{DataLists::GetBodyNameVersion(static_cast<BodyName>(lBodyNameSelected), lBodyVersionSelected)};
-  auto lUpBodyNameSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex()};
-  auto lUpBodyVersionSelected{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))->currentIndex()};
-  auto lDefaultRetargetBodyVersion{DataLists::GetBodyNameVersion(static_cast<BodyName>(lUpBodyNameSelected), lUpBodyVersionSelected)};
-  auto lDefaultMainFeetMod{this->findChild<QComboBox*>(QString("feet_mod_main"))->currentIndex()};
-  auto lDefaultRetargetingToolFeetMod{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))->currentIndex()};
   auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("main_window_opening_mode"))->currentIndex()};
   auto lBatchConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_opening_mode"))->currentIndex()};
   auto lBatchConversionPickerDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_picker_opening_mode"))->currentIndex()};
@@ -755,16 +676,22 @@ Struct::Settings Settings::getSettingsFromGUI() const
   lSettings.display.bodySlidePresetsRetargetingDialogOpeningMode = static_cast<DialogOpeningMode>(lBodySlidePresetsRetargetingDialogOpeningMode);
 
   // Default selected body and version (main)
-  lSettings.presetCreator.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(lDefaultBodyVersion);
+  lSettings.presetCreator.defaultBodyFeet.bodyMesh = this->mNewPresetCreatorTargetBodyMesh;
+
+  // Default selected body and version (Batch conversion)
+  lSettings.batchConversion.defaultBodyFeet.bodyMesh = this->mNewBatchConversionTargetBodyMesh;
 
   // Default selected body and version (Retargeting tool)
-  lSettings.presetsRetargeting.defaultBodyFeet.bodyMod = static_cast<BodyNameVersion>(lDefaultRetargetBodyVersion);
+  lSettings.presetsRetargeting.defaultBodyFeet.bodyMesh = this->mNewRetargetingToolTargetBodyMesh;
 
   // Default selected feet mod (main)
-  lSettings.presetCreator.defaultBodyFeet.feetMod = lDefaultMainFeetMod;
+  lSettings.presetCreator.defaultBodyFeet.feetMesh = this->mNewPresetCreatorTargetFeetMesh;
+
+  // Default selected feet mod (Batch conversion)
+  lSettings.batchConversion.defaultBodyFeet.feetMesh = this->mNewBatchConversionTargetFeetMesh;
 
   // Default selected feet mod (Retargeting tool)
-  lSettings.presetsRetargeting.defaultBodyFeet.feetMod = lDefaultRetargetingToolFeetMod;
+  lSettings.presetsRetargeting.defaultBodyFeet.feetMesh = this->mNewRetargetingToolTargetFeetMesh;
 
   // Show welcome screen at application startup
   if (lWelcomeActionWelcomeScreen)
@@ -869,62 +796,65 @@ void Settings::saveSettings()
   this->close();
 }
 
-void Settings::updateAvailableBodyVersions()
-{
-  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("default_body_selector_name"))->currentIndex())};
-
-  // Version
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("default_body_selector_version"))};
-  lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
-  lBodyVersionSelector->setCurrentIndex(0);
-
-  // Feet mod
-  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_main"))};
-  lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
-  lFeetSelector->setCurrentIndex(0);
-}
-
-void Settings::updateAvailableBatchConversionBodyVersions()
-{
-  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("batch_conversion_body_selector_name"))->currentIndex())};
-
-  // Version
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("batch_conversion_body_selector_version"))};
-  lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
-  lBodyVersionSelector->setCurrentIndex(0);
-
-  // Feet mod
-  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_batch_conversion"))};
-  lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
-  lFeetSelector->setCurrentIndex(0);
-}
-
-void Settings::updateAvailableUpgradeBodyVersions()
-{
-  auto lBodyName{static_cast<BodyName>(this->findChild<QComboBox*>(QString("upgrade_body_selector_name"))->currentIndex())};
-
-  // Version
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("upgrade_body_selector_version"))};
-  lBodyVersionSelector->clear();
-  lBodyVersionSelector->addItems(DataLists::GetVersionsFromBodyName(lBodyName));
-  lBodyVersionSelector->setCurrentIndex(0);
-
-  // Feet mod
-  auto lFeetSelector{this->findChild<QComboBox*>(QString("feet_mod_retargeting_tool"))};
-  lFeetSelector->clear();
-  lFeetSelector->addItems(DataLists::GetFeetModsFromBodyName(lBodyName));
-  lFeetSelector->setCurrentIndex(0);
-}
-
 void Settings::restoreDefaultSettings()
 {
   // Create a default settings object and load it into the GUI
   Struct::Settings lSettings;
   this->loadSettings(lSettings);
+}
+
+void Settings::openPresetCreatorTargetMeshesPicker()
+{
+  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mSettings.presetCreator.defaultBodyFeet.bodyMesh, this->mSettings.presetCreator.defaultBodyFeet.feetMesh)};
+  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::presetCreatorTargetMeshesChanged);
+}
+
+void Settings::openBatchConversionTargetMeshesPicker()
+{
+  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mSettings.batchConversion.defaultBodyFeet.bodyMesh, this->mSettings.batchConversion.defaultBodyFeet.feetMesh)};
+  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::batchConversionTargetMeshesChanged);
+}
+
+void Settings::openRetargetingToolTargetMeshesPicker()
+{
+  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mSettings.presetsRetargeting.defaultBodyFeet.bodyMesh, this->mSettings.presetsRetargeting.defaultBodyFeet.feetMesh)};
+  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::retargetingToolTargetMeshesChanged);
+}
+
+void Settings::presetCreatorTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
+{
+  this->targetMeshesChanged(this->mNewPresetCreatorTargetBodyMesh, this->mNewPresetCreatorTargetFeetMesh, aBody, aFeet, QString("main"));
+}
+
+void Settings::batchConversionTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
+{
+  this->targetMeshesChanged(this->mNewBatchConversionTargetBodyMesh, this->mNewBatchConversionTargetFeetMesh, aBody, aFeet, QString("batch_conversion"));
+}
+
+void Settings::retargetingToolTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
+{
+  this->targetMeshesChanged(this->mNewRetargetingToolTargetBodyMesh, this->mNewRetargetingToolTargetFeetMesh, aBody, aFeet, QString("retargeting_tool"));
+}
+
+void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate, FeetNameVersion& aFeetToUpdate, const BodyNameVersion& aBody, const FeetNameVersion& aFeet, const QString& aObjectNamePrefix)
+{
+  // Update the class members
+  aBodyToUpdate = aBody;
+  aFeetToUpdate = aFeet;
+
+  // Update the "targeted body mesh" text content
+  const auto lBodyText{
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>(QString("%1_currently_targeted_body").arg(aObjectNamePrefix))};
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1").arg(lBodyText));
+
+  // Update the "targeted feet mesh" text content
+  const auto lFeetText{
+    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
+
+  auto lCurrentlyTargetedFeet{this->findChild<QLabel*>(QString("%1_currently_targeted_feet").arg(aObjectNamePrefix))};
+  lCurrentlyTargetedFeet->setText(tr("Targeted feet: %1").arg(lFeetText));
 }
 
 void Settings::chooseFont()
