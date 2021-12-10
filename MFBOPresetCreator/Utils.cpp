@@ -1558,7 +1558,11 @@ std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, Q
       }
 
       // Additional feet slider
-      lExportFilters.push_back(Struct::Filter(Utils::GetAdditionalFeetFilter(aBodyNameVersion, aFeetNameVersion), false, true, false));
+      const auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(aBodyNameVersion, aFeetNameVersion)};
+      if (!lAdditionalFilter.isEmpty())
+      {
+        lExportFilters.push_back(Struct::Filter(lAdditionalFilter, false, true, false));
+      }
 
       break;
     }
