@@ -78,7 +78,6 @@ void Update::setWindowProperties()
   this->setMinimumWidth(700);
   this->setMinimumHeight(500);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowTitle(tr("Check for updates"));
   this->setWindowIcon(QIcon(QPixmap(":/black/cloud-search")));
 }

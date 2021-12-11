@@ -26,7 +26,6 @@ void ReleaseNotesViewer::setWindowProperties()
   this->setMinimumHeight(500);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(tr("Current version's release notes"));
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowIcon(QIcon(QPixmap(":/black/text-snippet")));
 }
 

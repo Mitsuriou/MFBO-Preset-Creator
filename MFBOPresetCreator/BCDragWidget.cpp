@@ -117,7 +117,7 @@ void BCDragWidget::mouseMoveEvent(QMouseEvent* aEvent)
   lDataObject["originFolder"] = this->mOriginFolder;
   lDataObject["ressourcePath"] = this->mRessourcePath;
 
-  QMimeData* lMimeData = new QMimeData;
+  QMimeData* lMimeData{new QMimeData};
   lMimeData->setData("application/json", QJsonDocument(lDataObject).toJson());
 
   QDrag* lDragObject{new QDrag(this)};

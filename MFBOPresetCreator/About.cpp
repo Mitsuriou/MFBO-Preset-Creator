@@ -20,7 +20,6 @@ void About::setWindowProperties()
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(tr("About"));
-  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setWindowIcon(QIcon(QPixmap(":/black/info-circle")));
 
   // Hacky window's background color change for Windows Vista theme

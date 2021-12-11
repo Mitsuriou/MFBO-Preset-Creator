@@ -103,8 +103,9 @@ int main(int argc, char* argv[])
     // Reset the value
     Utils::RESTART_PENDING = false;
 
-    qApp->setAttribute(Qt::AA_EnableHighDpiScaling);
-    qApp->setApplicationVersion("3.5.0.0");
+    qApp->setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    qApp->setAttribute(Qt::AA_DisableWindowContextHelpButton, true);
+    qApp->setApplicationVersion("3.5.1.0");
     const auto& lAppVersion{Utils::GetApplicationVersion()};
 
     Utils::PrintMessageStdOut("Creating the application instance...");

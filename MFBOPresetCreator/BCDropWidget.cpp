@@ -89,10 +89,15 @@ void BCDropWidget::simulateDropEvent(const QString& aOriginFolder, const QString
   lDataObject["originFolder"] = aOriginFolder;
   lDataObject["ressourcePath"] = aRessourcePath;
 
-  QMimeData* lMimeData = new QMimeData;
+  QMimeData* lMimeData{new QMimeData};
   lMimeData->setData("application/json", QJsonDocument(lDataObject).toJson());
 
-  QDropEvent* lDropEvent = new QDropEvent(this->geometry().bottomLeft(), Qt::MoveAction, lMimeData, Qt::LeftButton, Qt::KeyboardModifier::NoModifier, QEvent::Type::DragMove);
+  QDropEvent* lDropEvent{new QDropEvent(this->geometry().bottomLeft(),
+                                        Qt::MoveAction,
+                                        lMimeData,
+                                        Qt::LeftButton,
+                                        Qt::KeyboardModifier::NoModifier,
+                                        QEvent::Type::DragMove)};
   this->dropEvent(lDropEvent);
 }
 
