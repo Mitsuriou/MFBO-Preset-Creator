@@ -921,48 +921,52 @@ Would you like to generate it (them) now?</source>
 <context>
     <name>ComponentFactory</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="165"/>
-        <location filename="ComponentFactory.cpp" line="184"/>
+        <location filename="ComponentFactory.cpp" line="178"/>
         <source>Targeted body and version:</source>
         <translation>目標身形與版本:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="181"/>
+        <location filename="ComponentFactory.cpp" line="174"/>
         <source>Choose target meshes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="188"/>
+        <location filename="ComponentFactory.cpp" line="165"/>
+        <source>Targeted meshes mods:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="182"/>
         <source>Targeted feet and version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="201"/>
+        <location filename="ComponentFactory.cpp" line="192"/>
         <source>Files generation&apos;s output location</source>
         <translation>輸出檔案設定</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="219"/>
+        <location filename="ComponentFactory.cpp" line="210"/>
         <source>Output directory path:</source>
         <translation>輸出資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="227"/>
+        <location filename="ComponentFactory.cpp" line="218"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="231"/>
+        <location filename="ComponentFactory.cpp" line="222"/>
         <source>Output subdirectory name/path:</source>
         <translation>輸出子資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="238"/>
+        <location filename="ComponentFactory.cpp" line="229"/>
         <source>Use only subdirectory path?</source>
         <translation>使用子資料夾路徑?</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="240"/>
+        <location filename="ComponentFactory.cpp" line="231"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation>勾選此欄以輸出檔案於子資料夾路徑(風險自負)</translation>
     </message>
@@ -971,7 +975,7 @@ Would you like to generate it (them) now?</source>
         <translation type="vanished">勾選此欄以輸出檔案於子資料夾路徑(風險自負)。</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="244"/>
+        <location filename="ComponentFactory.cpp" line="235"/>
         <source>Preview:</source>
         <translation>預覽:</translation>
     </message>
@@ -2833,18 +2837,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1772"/>
+        <location filename="Utils.cpp" line="1776"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1875"/>
-        <location filename="Utils.cpp" line="1899"/>
+        <location filename="Utils.cpp" line="1879"/>
+        <location filename="Utils.cpp" line="1903"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1893"/>
+        <location filename="Utils.cpp" line="1897"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

@@ -820,53 +820,57 @@ Would you like to generate it (them) now?</source>
 <context>
     <name>ComponentFactory</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="165"/>
-        <location filename="ComponentFactory.cpp" line="184"/>
+        <location filename="ComponentFactory.cpp" line="178"/>
         <source>Targeted body and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="181"/>
+        <location filename="ComponentFactory.cpp" line="174"/>
         <source>Choose target meshes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="188"/>
+        <location filename="ComponentFactory.cpp" line="165"/>
+        <source>Targeted meshes mods:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="182"/>
         <source>Targeted feet and version:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="201"/>
+        <location filename="ComponentFactory.cpp" line="192"/>
         <source>Files generation&apos;s output location</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="219"/>
+        <location filename="ComponentFactory.cpp" line="210"/>
         <source>Output directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="227"/>
+        <location filename="ComponentFactory.cpp" line="218"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="231"/>
+        <location filename="ComponentFactory.cpp" line="222"/>
         <source>Output subdirectory name/path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="238"/>
+        <location filename="ComponentFactory.cpp" line="229"/>
         <source>Use only subdirectory path?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="240"/>
+        <location filename="ComponentFactory.cpp" line="231"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="244"/>
+        <location filename="ComponentFactory.cpp" line="235"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
@@ -2448,18 +2452,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1772"/>
+        <location filename="Utils.cpp" line="1776"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1875"/>
-        <location filename="Utils.cpp" line="1899"/>
+        <location filename="Utils.cpp" line="1879"/>
+        <location filename="Utils.cpp" line="1903"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1893"/>
+        <location filename="Utils.cpp" line="1897"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>

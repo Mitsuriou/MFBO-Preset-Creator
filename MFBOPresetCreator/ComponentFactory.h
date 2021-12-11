@@ -39,7 +39,7 @@ public:
   // Full UI blocks
   static QPushButton* CreateTargetMeshesPickerLine(QWidget* aParent,
                                                    QGridLayout& aLayout,
-                                                   const bool aMustGenerateHorizontally,
+                                                   const bool aSingleLineForLabelAndActions,
                                                    const int aLayoutRow,
                                                    const QString& aIconFolder,
                                                    const QString& aButtonObjectName,

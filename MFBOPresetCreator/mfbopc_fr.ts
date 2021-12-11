@@ -840,53 +840,57 @@ Voulez-vous fermer la fenêtre conversion par lot : sélecteur de résultats mai
 <context>
     <name>ComponentFactory</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="165"/>
-        <location filename="ComponentFactory.cpp" line="184"/>
+        <location filename="ComponentFactory.cpp" line="178"/>
         <source>Targeted body and version:</source>
         <translation>Corps et version ciblés :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="181"/>
+        <location filename="ComponentFactory.cpp" line="174"/>
         <source>Choose target meshes</source>
         <translation>Choisir les meshes cibles</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="188"/>
+        <location filename="ComponentFactory.cpp" line="165"/>
+        <source>Targeted meshes mods:</source>
+        <translation>Mods de meshes ciblés :</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="182"/>
         <source>Targeted feet and version:</source>
         <translation>Pieds et version ciblés :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="201"/>
+        <location filename="ComponentFactory.cpp" line="192"/>
         <source>Files generation&apos;s output location</source>
         <translation>Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="219"/>
+        <location filename="ComponentFactory.cpp" line="210"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="227"/>
+        <location filename="ComponentFactory.cpp" line="218"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="231"/>
+        <location filename="ComponentFactory.cpp" line="222"/>
         <source>Output subdirectory name/path:</source>
         <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="238"/>
+        <location filename="ComponentFactory.cpp" line="229"/>
         <source>Use only subdirectory path?</source>
         <translation>Utiliser seulement le sous-répertoire ?</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="240"/>
+        <location filename="ComponentFactory.cpp" line="231"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation>Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques)</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="244"/>
+        <location filename="ComponentFactory.cpp" line="235"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
@@ -2525,18 +2529,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1772"/>
+        <location filename="Utils.cpp" line="1776"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1875"/>
-        <location filename="Utils.cpp" line="1899"/>
+        <location filename="Utils.cpp" line="1879"/>
+        <location filename="Utils.cpp" line="1903"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1893"/>
+        <location filename="Utils.cpp" line="1897"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

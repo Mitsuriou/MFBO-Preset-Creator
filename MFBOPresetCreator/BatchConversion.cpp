@@ -234,6 +234,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   lFiltersListChooser->setCursor(Qt::PointingHandCursor);
   lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
+  lFiltersListChooser->setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy::AdjustToContents);
   lFiltersWrapper->addWidget(lFiltersListChooser);
 
   auto lFiltersList{new QLabel("", this)};

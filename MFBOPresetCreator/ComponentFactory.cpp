@@ -154,7 +154,7 @@ QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)
 
 QPushButton* ComponentFactory::CreateTargetMeshesPickerLine(QWidget* aParent,
                                                             QGridLayout& aLayout,
-                                                            const bool aMustGenerateHorizontally,
+                                                            const bool aSingleLineForLabelAndActions,
                                                             const int aLayoutRow,
                                                             const QString& aIconFolder,
                                                             const QString& aButtonObjectName,
@@ -162,35 +162,26 @@ QPushButton* ComponentFactory::CreateTargetMeshesPickerLine(QWidget* aParent,
                                                             const QString& aFeetLabelObjectName)
 {
   // Targeted body and version
-  aLayout.addWidget(new QLabel(tr("Targeted body and version:"), aParent), aLayoutRow, 0);
+  aLayout.addWidget(new QLabel(tr("Targeted meshes mods:"), aParent), aLayoutRow, 0);
 
-  QBoxLayout* lBodyNameVersionWrapper = nullptr;
-  if (aMustGenerateHorizontally)
-  {
-    lBodyNameVersionWrapper = new QHBoxLayout(aParent);
-    lBodyNameVersionWrapper->setMargin(0);
-    aLayout.addLayout(lBodyNameVersionWrapper, aLayoutRow, 1);
-  }
-  else
-  {
-    lBodyNameVersionWrapper = new QVBoxLayout(aParent);
-    lBodyNameVersionWrapper->setMargin(0);
-    aLayout.addLayout(lBodyNameVersionWrapper, aLayoutRow + 1, 0);
-  }
+  QGridLayout* lBodyNameVersionWrapper{new QGridLayout(aParent)};
+  lBodyNameVersionWrapper->setColumnStretch(lBodyNameVersionWrapper->columnCount(), 1);
+  lBodyNameVersionWrapper->setMargin(0);
+  aLayout.addLayout(lBodyNameVersionWrapper,
+                    aLayoutRow + aSingleLineForLabelAndActions ? 0 : 1,
+                    aSingleLineForLabelAndActions ? 1 : 0);
 
   auto lTargetMeshesPicker{ComponentFactory::CreateButton(aParent, tr("Choose target meshes"), "", "mesh", aIconFolder, aButtonObjectName, false, true)};
-  lBodyNameVersionWrapper->addWidget(lTargetMeshesPicker);
+  lTargetMeshesPicker->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding); // Allow the button to take a 2-rows height
+  lBodyNameVersionWrapper->addWidget(lTargetMeshesPicker, 0, 0, 2, 1);
 
   auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body and version:"), aParent)};
   lCurrentlyTargetedBody->setObjectName(aBodyLabelObjectName);
-  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedBody);
+  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedBody, 0, 1);
 
   auto lCurrentlyTargetedFeet{new QLabel(tr("Targeted feet and version:"), aParent)};
   lCurrentlyTargetedFeet->setObjectName(aFeetLabelObjectName);
-  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedFeet);
-
-  if (aMustGenerateHorizontally)
-    lBodyNameVersionWrapper->addStretch();
+  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedFeet, 1, 1);
 
   return lTargetMeshesPicker;
 }
