@@ -172,41 +172,41 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lFile);
 
   // Action: Launch the welcome screen
-  auto lLaunchWelcomeScreen{Utils::BuildQAction(this, tr("Welcome screen"), QKeySequence(Qt::SHIFT + Qt::Key::Key_Escape), "home", lIconFolder)};
+  auto lLaunchWelcomeScreen{Utils::BuildQAction(this, tr("Welcome screen"), QKeySequence(Qt::SHIFT | Qt::Key::Key_Escape), "home", lIconFolder)};
   lFile->addAction(lLaunchWelcomeScreen);
 
   lFile->addSeparator();
 
   // Action: Open project file
-  auto lOpenProjectFile{Utils::BuildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL + Qt::Key_O), "file", lIconFolder)};
+  auto lOpenProjectFile{Utils::BuildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL | Qt::Key_O), "file", lIconFolder)};
   lOpenProjectFile->setObjectName(QString("action_open_project"));
   lFile->addAction(lOpenProjectFile);
 
   // Action: Save current project
-  auto lSaveProject{Utils::BuildQAction(this, tr("Save"), QKeySequence(Qt::CTRL + Qt::Key_S), "save", lIconFolder)};
+  auto lSaveProject{Utils::BuildQAction(this, tr("Save"), QKeySequence(Qt::CTRL | Qt::Key_S), "save", lIconFolder)};
   lSaveProject->setObjectName(QString("action_save_project"));
   lSaveProject->setDisabled(true);
   lFile->addAction(lSaveProject);
 
   // Action: Save current project as
-  auto lSaveProjectAs{Utils::BuildQAction(this, tr("Save as"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), "save", lIconFolder)};
+  auto lSaveProjectAs{Utils::BuildQAction(this, tr("Save as"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S), "save", lIconFolder)};
   lSaveProjectAs->setObjectName(QString("action_save_project_as"));
   lFile->addAction(lSaveProjectAs);
 
   lFile->addSeparator();
 
   // Action: Settings
-  auto lOpenSettings{Utils::BuildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O), "cog", lIconFolder)};
+  auto lOpenSettings{Utils::BuildQAction(this, tr("Settings"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_O), "cog", lIconFolder)};
   lFile->addAction(lOpenSettings);
 
   lFile->addSeparator();
 
   // Action: Relaunch the app
-  auto lRelaunchApp{Utils::BuildQAction(this, tr("Quick restart"), QKeySequence(Qt::CTRL + Qt::Key_F5), "refresh", lIconFolder)};
+  auto lRelaunchApp{Utils::BuildQAction(this, tr("Quick restart"), QKeySequence(Qt::CTRL | Qt::Key_F5), "refresh", lIconFolder)};
   lFile->addAction(lRelaunchApp);
 
   // Action: Exit
-  auto lExitApp{Utils::BuildQAction(this, tr("Exit"), QKeySequence(Qt::ALT + Qt::Key_F4), "cross", lIconFolder)};
+  auto lExitApp{Utils::BuildQAction(this, tr("Exit"), QKeySequence(Qt::ALT | Qt::Key_F4), "cross", lIconFolder)};
   lFile->addAction(lExitApp);
 
   // Menu: Tools
@@ -215,19 +215,19 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lTools);
 
   // Action: Batch conversion
-  auto lOpenBatchConv{Utils::BuildQAction(this, tr("Batch Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_R), "reorder", lIconFolder)};
+  auto lOpenBatchConv{Utils::BuildQAction(this, tr("Batch Conversion"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_R), "reorder", lIconFolder)};
   lTools->addAction(lOpenBatchConv);
 
   // Action: Textures Assistant
-  auto lOpenTextAssist{Utils::BuildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T), "textures", lIconFolder)};
+  auto lOpenTextAssist{Utils::BuildQAction(this, tr("Textures Assistant"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_T), "textures", lIconFolder)};
   lTools->addAction(lOpenTextAssist);
 
   // Action: Assisted Conversion
-  auto lOpenAssiConv{Utils::BuildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Y), "pencil", lIconFolder)};
+  auto lOpenAssiConv{Utils::BuildQAction(this, tr("Assisted Conversion"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_Y), "pencil", lIconFolder)};
   lTools->addAction(lOpenAssiConv);
 
   // Action: BodySlide Presets' Retargeting
-  auto lOpenRetaTools{Utils::BuildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_H), "arrow-up", lIconFolder)};
+  auto lOpenRetaTools{Utils::BuildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_H), "arrow-up", lIconFolder)};
   lTools->addAction(lOpenRetaTools);
 
   // Menu: Help
@@ -242,7 +242,7 @@ void MFBOPresetCreator::setupMenuBar()
   lMenuBar->addMenu(lHelp);
 
   // Action: Check for updates
-  auto lOpenUpdate{Utils::BuildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL + Qt::Key_U), "cloud-search", lIconFolder)};
+  auto lOpenUpdate{Utils::BuildQAction(this, tr("Check for updates") + lUpdateAvailableText, QKeySequence(Qt::CTRL | Qt::Key_U), "cloud-search", lIconFolder)};
   lHelp->addAction(lOpenUpdate);
 
   // Action: Open current version's release notes
@@ -274,11 +274,11 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addMenu(lLinksSubmenu);
 
   // Action: Nexus page link
-  auto lOpenNexus{Utils::BuildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(Qt::CTRL + Qt::Key_N), "nexus-logo", lIconFolder)};
+  auto lOpenNexus{Utils::BuildQAction(this, tr("Nexus Mods page (nexusmods.com)"), QKeySequence(Qt::CTRL | Qt::Key_N), "nexus-logo", lIconFolder)};
   lLinksSubmenu->addAction(lOpenNexus);
 
   // Action: open URL to Doogle Docs: Guide and tutorials
-  auto lOpenGuide{Utils::BuildQAction(this, tr("User guide and tutorials (docs.google.com)"), QKeySequence(Qt::CTRL + Qt::Key_G), "text-file", lIconFolder)};
+  auto lOpenGuide{Utils::BuildQAction(this, tr("User guide and tutorials (docs.google.com)"), QKeySequence(Qt::CTRL | Qt::Key_G), "text-file", lIconFolder)};
   lLinksSubmenu->addAction(lOpenGuide);
 
   // Action: Source code on GitHub
@@ -290,7 +290,7 @@ void MFBOPresetCreator::setupMenuBar()
   lLinksSubmenu->addAction(lOpenSourceCodeGitLab);
 
   // Action: About
-  auto lOpenAbout{Utils::BuildQAction(this, tr("About"), QKeySequence(Qt::CTRL + Qt::Key_I), "info-circle", lIconFolder)};
+  auto lOpenAbout{Utils::BuildQAction(this, tr("About"), QKeySequence(Qt::CTRL | Qt::Key_I), "info-circle", lIconFolder)};
   lHelp->addAction(lOpenAbout);
 
   // Event binding
