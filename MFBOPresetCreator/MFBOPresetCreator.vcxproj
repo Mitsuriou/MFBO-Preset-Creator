@@ -154,22 +154,22 @@ echo #####################################################</Command>
     <Link />
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtModules>core;gui;network;widgets;winextras;xml</QtModules>
+    <QtInstall>5.15.2</QtInstall>
+    <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtModules>core;gui;network;widgets;winextras;xml</QtModules>
+    <QtInstall>5.15.2</QtInstall>
+    <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" Label="QtSettings">
-    <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtModules>core;gui;network;widgets;winextras;xml</QtModules>
+    <QtInstall>5.15.2</QtInstall>
+    <QtModules>core;gui;network;widgets;xml</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>

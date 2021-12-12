@@ -5,11 +5,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
-#ifdef Q_OS_WIN
-#include <QWinTaskbarButton>
-#include <QWinTaskbarProgress>
-#endif
-
 // File downloading made with the great help of
 // https://www.bogotobogo.com/Qt/Qt5_QNetworkRequest_Http_File_Download.php
 
@@ -19,7 +14,6 @@ class Update final : public QDialog
 
 public:
   explicit Update(QWidget* aParent, const Struct::Settings& aSettings, const bool aForceStableContext, const bool aForceBetaContext);
-  ~Update();
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -31,11 +25,6 @@ private:
   const Struct::Settings mSettings;
   QString mSaveFilePath;
   QNetworkAccessManager mManager;
-
-#ifdef Q_OS_WIN
-  QWinTaskbarButton* mTaskbarAppButton;
-  QWinTaskbarProgress* mTaskbarProgressBar;
-#endif
 
   // File download attributes
   QUrl mDownloadURL;
