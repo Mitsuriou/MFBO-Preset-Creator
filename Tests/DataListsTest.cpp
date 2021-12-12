@@ -13,35 +13,41 @@ namespace Microsoft
     namespace CppUnitTestFramework
     {
       // Body enumerations
-      std::wstring ToString(const BodyName& aBodyName)
+      template<>
+      inline std::wstring __cdecl ToString<BodyName>(const BodyName& t)
       {
-        return std::to_wstring(static_cast<int>(aBodyName));
+        return std::to_wstring(static_cast<int>(t));
       }
 
-      std::wstring ToString(const BodyVariant& aBodyVariant)
+      template<>
+      inline std::wstring __cdecl ToString<BodyVariant>(const BodyVariant& t)
       {
-        return std::to_wstring(static_cast<int>(aBodyVariant));
+        return std::to_wstring(static_cast<int>(t));
       }
 
-      std::wstring ToString(const BodyNameVersion& aBodyNameVersion)
+      template<>
+      inline std::wstring __cdecl ToString<BodyNameVersion>(const BodyNameVersion& t)
       {
-        return std::to_wstring(static_cast<int>(aBodyNameVersion));
+        return std::to_wstring(static_cast<int>(t));
       }
 
       // Feet enumerations
-      std::wstring ToString(const FeetName& aFeetName)
+      template<>
+      inline std::wstring __cdecl ToString<FeetName>(const FeetName& t)
       {
-        return std::to_wstring(static_cast<int>(aFeetName));
+        return std::to_wstring(static_cast<int>(t));
       }
 
-      std::wstring ToString(const FeetVariant& aFeetVariant)
+      template<>
+      inline std::wstring __cdecl ToString<FeetVariant>(const FeetVariant& t)
       {
-        return std::to_wstring(static_cast<int>(aFeetVariant));
+        return std::to_wstring(static_cast<int>(t));
       }
 
-      std::wstring ToString(const FeetNameVersion& aFeetNameVersion)
+      template<>
+      inline std::wstring __cdecl ToString<FeetNameVersion>(const FeetNameVersion& t)
       {
-        return std::to_wstring(static_cast<int>(aFeetNameVersion));
+        return std::to_wstring(static_cast<int>(t));
       }
     }
   }
