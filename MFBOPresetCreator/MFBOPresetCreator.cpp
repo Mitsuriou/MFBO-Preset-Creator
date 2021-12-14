@@ -189,7 +189,7 @@ void MFBOPresetCreator::setupMenuBar()
   lFile->addAction(lSaveProject);
 
   // Action: Save current project as
-  auto lSaveProjectAs{Utils::BuildQAction(this, tr("Save as"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S), "save", lIconFolder)};
+  auto lSaveProjectAs{Utils::BuildQAction(this, tr("Save as..."), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S), "save", lIconFolder)};
   lSaveProjectAs->setObjectName(QString("action_save_project_as"));
   lFile->addAction(lSaveProjectAs);
 

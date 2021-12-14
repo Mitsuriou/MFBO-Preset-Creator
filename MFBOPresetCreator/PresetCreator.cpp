@@ -102,13 +102,16 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
     // Open a file saver dialog
     const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastSavedProject", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
     lFilePath = QFileDialog::getSaveFileName(this, "", lContextPath, "Preset Creator Project (*.pcp *.json)");
-    Utils::UpdatePathAtKey(this->mLastPaths, "lastSavedProject", lFilePath);
 
-    if (!lFilePath.isEmpty())
+    // If the user canceled
+    if (lFilePath.isEmpty())
     {
-      this->mLastUsedSavePath = lFilePath;
-      this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(false);
+      return;
     }
+
+    Utils::UpdatePathAtKey(this->mLastPaths, "lastSavedProject", lFilePath);
+    this->mLastUsedSavePath = lFilePath;
+    this->parentWidget()->findChild<QAction*>(QString("action_save_project"))->setDisabled(false);
   }
 
   if (this->mLastUsedSavePath.isEmpty())

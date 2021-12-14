@@ -72,100 +72,100 @@
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="199"/>
+        <location filename="AssistedConversion.cpp" line="198"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="368"/>
-        <location filename="AssistedConversion.cpp" line="372"/>
+        <location filename="AssistedConversion.cpp" line="367"/>
+        <location filename="AssistedConversion.cpp" line="371"/>
         <source>Relaunch the scan</source>
         <translation>Relancer le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="369"/>
+        <location filename="AssistedConversion.cpp" line="368"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="373"/>
+        <location filename="AssistedConversion.cpp" line="372"/>
         <source>Cancel the relaunch</source>
         <translation>Annuler le relancement</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="481"/>
+        <location filename="AssistedConversion.cpp" line="480"/>
         <source>No entry selected</source>
         <translation>Aucune entrée sélectionnée</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="482"/>
+        <location filename="AssistedConversion.cpp" line="481"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation>Vous n&apos;avez sélectionné aucune entrée. Voulez-vous quand même valider la sélection telle quelle ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="485"/>
+        <location filename="AssistedConversion.cpp" line="484"/>
         <source>Validate as is</source>
         <translation>Valider tel quel</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="486"/>
+        <location filename="AssistedConversion.cpp" line="485"/>
         <source>Cancel, I wanted to select values</source>
         <translation>Annuler, je veux sélectionner des valeurs</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="392"/>
+        <location filename="AssistedConversion.cpp" line="391"/>
         <source>No root file has been found</source>
         <translation>Aucun fichier racine n&apos;a été trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="393"/>
+        <location filename="AssistedConversion.cpp" line="392"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation>Aucun fichier ESL, ESM ou ESP n&apos;ont été trouvés dans le répertoire scanné. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="396"/>
-        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="395"/>
+        <location filename="AssistedConversion.cpp" line="416"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="397"/>
-        <location filename="AssistedConversion.cpp" line="418"/>
+        <location filename="AssistedConversion.cpp" line="396"/>
+        <location filename="AssistedConversion.cpp" line="417"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="413"/>
+        <location filename="AssistedConversion.cpp" line="412"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="414"/>
+        <location filename="AssistedConversion.cpp" line="413"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="441"/>
+        <location filename="AssistedConversion.cpp" line="440"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation>Aucun fichier NIF n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="454"/>
+        <location filename="AssistedConversion.cpp" line="453"/>
         <source>File path</source>
         <translation>Emplacement du fichier</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="455"/>
+        <location filename="AssistedConversion.cpp" line="454"/>
         <source>*.nif file name</source>
         <translation>Nom du fichier *.nif</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="456"/>
+        <location filename="AssistedConversion.cpp" line="455"/>
         <source>Action</source>
         <translation>Action</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="467"/>
+        <location filename="AssistedConversion.cpp" line="466"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>Valider la (les) sélection(s) ci-dessus et revenir sur la fenêtre principale</translation>
     </message>
@@ -221,18 +221,18 @@
         <translation>Cocher cette case si le follower ou le NPC utilise un squelette de bête</translation>
     </message>
     <message>
-        <location filename="BCDropWidget.cpp" line="194"/>
         <location filename="BCDropWidget.cpp" line="199"/>
+        <location filename="BCDropWidget.cpp" line="204"/>
         <source>Drop some data here...</source>
         <translation>Déposez des données ici...</translation>
     </message>
     <message>
-        <location filename="BCDropWidget.cpp" line="205"/>
+        <location filename="BCDropWidget.cpp" line="210"/>
         <source>Mesh path:</source>
         <translation>Emplacement de la mesh :</translation>
     </message>
     <message>
-        <location filename="BCDropWidget.cpp" line="207"/>
+        <location filename="BCDropWidget.cpp" line="212"/>
         <source>Origin mod:</source>
         <translation>Mod d&apos;origine :</translation>
     </message>
@@ -297,62 +297,62 @@
         <translation type="vanished">Corps et version ciblés :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="290"/>
+        <location filename="BatchConversion.cpp" line="291"/>
         <source>Scan tweaks</source>
         <translation>Ajustements du scan</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="303"/>
+        <location filename="BatchConversion.cpp" line="304"/>
         <source>Smart search (only files with a name matching a certain pattern are listed)</source>
         <translation>Recherche intelligente (seuls les fichiers dont le nom correspond à un certain motif sont listés)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="308"/>
+        <location filename="BatchConversion.cpp" line="309"/>
         <source>Advanced search (every single .nif file is listed)</source>
         <translation>Recherche avancée (chaque fichier .nif est listé)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="314"/>
+        <location filename="BatchConversion.cpp" line="315"/>
         <source>Only scan the &quot;meshes&quot; subdirectories of each mod</source>
         <translation>Scanner seulement les sous-répertoires &quot;meshes&quot; de chaque mod</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="318"/>
+        <location filename="BatchConversion.cpp" line="319"/>
         <source>Clear the irrelevant entries (mods which do not contain any body, hands and feet mesh)</source>
         <translation>Nettoyer les entrées non pertinentes (mods qui ne contiennent pas de mesh de corps, de mains et de pieds)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="331"/>
+        <location filename="BatchConversion.cpp" line="332"/>
         <source>Generation tweaks</source>
         <translation>Ajustements de la génération</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="344"/>
+        <location filename="BatchConversion.cpp" line="345"/>
         <source>Generate everything for the &quot;Data&quot; directory directly</source>
         <translation>Tout générer pour le répertoire &quot;Data&quot; directement</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="349"/>
+        <location filename="BatchConversion.cpp" line="350"/>
         <source>Generate each preset in a dedicated directory</source>
         <translation>Générer chaque preset dans un répetoire dédié</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="364"/>
+        <location filename="BatchConversion.cpp" line="365"/>
         <source>Launch the scan of the directory</source>
         <translation>Lancer le scan du répertoire</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="511"/>
+        <location filename="BatchConversion.cpp" line="512"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation>Le répertoire &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même générer les fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="514"/>
+        <location filename="BatchConversion.cpp" line="515"/>
         <source>Continue the search</source>
         <translation>Continuer la recherche</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="515"/>
+        <location filename="BatchConversion.cpp" line="516"/>
         <source>Cancel the search</source>
         <translation>Annuler la recherche</translation>
     </message>
@@ -386,17 +386,17 @@ Note pour les utilisateurs de ModOrganizer2 : sélectionnez votre répertoire &q
         <translation>Ouvrir le répertoire généré par lot</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="471"/>
+        <location filename="BatchConversion.cpp" line="472"/>
         <source>Error: no path given to search for files.</source>
         <translation>Erreur : aucun emplacement donné pour chercher des fichiers.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="493"/>
+        <location filename="BatchConversion.cpp" line="494"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="500"/>
+        <location filename="BatchConversion.cpp" line="501"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
@@ -410,17 +410,17 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="510"/>
+        <location filename="BatchConversion.cpp" line="511"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="538"/>
+        <location filename="BatchConversion.cpp" line="539"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="538"/>
+        <location filename="BatchConversion.cpp" line="539"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
@@ -461,7 +461,7 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="245"/>
+        <location filename="BatchConversion.cpp" line="246"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
@@ -756,83 +756,83 @@ Voulez-vous fermer la fenêtre conversion par lot : sélecteur de résultats mai
         <translation>Revenir sur la fenêtre de l&apos;éditeur</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="86"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="85"/>
         <source>BodySlide filters editor</source>
         <translation>Éditeur de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="113"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="112"/>
         <source>Edit set:</source>
         <translation>Éditer le set :</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="125"/>
-        <location filename="BodySlideFiltersEditor.cpp" line="285"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="124"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="284"/>
         <source>Add a new BodySlide filters set</source>
         <translation>Ajouter un nouveau set de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="125"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="124"/>
         <source>New set</source>
         <translation>Nouveau set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="129"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="128"/>
         <source>Remove the selected BodySlide filters set</source>
         <translation>Supprimer le set de filtres BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="129"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="128"/>
         <source>Remove set</source>
         <translation>Supprimer le set</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="140"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="139"/>
         <source>Add a new BodySlide filter</source>
         <translation>Ajouter un nouveau filtre BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="140"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="139"/>
         <source>New filter</source>
         <translation>Nouveau filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="145"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="144"/>
         <source>Remove the selected BodySlide filter</source>
         <translation>Supprimer le filtre BodySlide sélectionné</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="145"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="144"/>
         <source>Remove filter</source>
         <translation>Supprimer le filtre</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="150"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="149"/>
         <source>Remove all the BodySlide filters</source>
         <translation>Supprimer tous les filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="150"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="149"/>
         <source>Remove all</source>
         <translation>Supprimer tous</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="186"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="185"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="189"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="188"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="285"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="284"/>
         <source>Filters set name:</source>
         <translation>Nom du set de filtres :</translation>
     </message>
     <message>
-        <location filename="BodySlideFiltersEditor.cpp" line="303"/>
+        <location filename="BodySlideFiltersEditor.cpp" line="302"/>
         <source>Error: there is already one set with the name &quot;%1&quot;.</source>
         <translation>Erreur : il y a déjà un set portant le nom &quot;%1&quot;.</translation>
     </message>
@@ -991,8 +991,9 @@ Voulez-vous fermer la fenêtre conversion par lot : sélecteur de résultats mai
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="192"/>
-        <source>Save as</source>
-        <translation>Enregistrer sous</translation>
+        <source>Save as...</source>
+        <oldsource>Save as</oldsource>
+        <translation>Enregistrer sous...</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="209"/>
@@ -1287,12 +1288,12 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Sortie BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1350"/>
+        <location filename="PresetCreator.cpp" line="1351"/>
         <source>Targeted body: %1</source>
         <translation>Corps ciblé : %1</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1357"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Targeted feet: %1</source>
         <translation>Pieds ciblés : %1</translation>
     </message>
@@ -1312,18 +1313,18 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="586"/>
+        <location filename="PresetCreator.cpp" line="587"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1304"/>
-        <location filename="PresetCreator.cpp" line="1307"/>
+        <location filename="PresetCreator.cpp" line="1305"/>
+        <location filename="PresetCreator.cpp" line="1308"/>
         <source>Open the generated directory</source>
         <translation>Ouvrir le répertoire généré</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1147"/>
+        <location filename="PresetCreator.cpp" line="1148"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1332,7 +1333,7 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1427"/>
+        <location filename="PresetCreator.cpp" line="1428"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -1362,47 +1363,47 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="635"/>
+        <location filename="PresetCreator.cpp" line="636"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1129"/>
+        <location filename="PresetCreator.cpp" line="1130"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1136"/>
+        <location filename="PresetCreator.cpp" line="1137"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1299"/>
+        <location filename="PresetCreator.cpp" line="1300"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1177"/>
+        <location filename="PresetCreator.cpp" line="1178"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de corps.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1190"/>
+        <location filename="PresetCreator.cpp" line="1191"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de pieds.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1203"/>
+        <location filename="PresetCreator.cpp" line="1204"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1217"/>
+        <location filename="PresetCreator.cpp" line="1218"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1231"/>
+        <location filename="PresetCreator.cpp" line="1232"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
@@ -1417,7 +1418,7 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1307"/>
+        <location filename="PresetCreator.cpp" line="1308"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1461,27 +1462,27 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1155"/>
+        <location filename="PresetCreator.cpp" line="1156"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1156"/>
+        <location filename="PresetCreator.cpp" line="1157"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation>Le répertoire &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même générer les fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1159"/>
+        <location filename="PresetCreator.cpp" line="1160"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1160"/>
+        <location filename="PresetCreator.cpp" line="1161"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1298"/>
+        <location filename="PresetCreator.cpp" line="1299"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1490,39 +1491,39 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <name>ReleaseNotesViewer</name>
     <message>
         <location filename="ReleaseNotesViewer.cpp" line="28"/>
-        <location filename="ReleaseNotesViewer.cpp" line="40"/>
+        <location filename="ReleaseNotesViewer.cpp" line="39"/>
         <source>Current version&apos;s release notes</source>
         <translation>Notes de publication de la version actuelle</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="82"/>
+        <location filename="ReleaseNotesViewer.cpp" line="81"/>
         <source>Contacting GitHub.com...</source>
         <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="115"/>
+        <location filename="ReleaseNotesViewer.cpp" line="114"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version.
 Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="125"/>
+        <location filename="ReleaseNotesViewer.cpp" line="124"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>Une erreur s&apos;est produite lors de l&apos;analyse des données de l&apos;API GitHub. Veuillez réessayer dans quelques secondes.</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="129"/>
+        <location filename="ReleaseNotesViewer.cpp" line="128"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version BETA &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="134"/>
+        <location filename="ReleaseNotesViewer.cpp" line="133"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version stable &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="139"/>
+        <location filename="ReleaseNotesViewer.cpp" line="138"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>Les notes de publication pour la version &quot;%1&quot; n&apos;ont pas été trouvées.</translation>
     </message>
@@ -1556,7 +1557,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     </message>
     <message>
         <location filename="RetargetingTool.cpp" line="140"/>
-        <location filename="RetargetingTool.cpp" line="194"/>
+        <location filename="RetargetingTool.cpp" line="195"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
@@ -1566,42 +1567,42 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="162"/>
+        <location filename="RetargetingTool.cpp" line="163"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="166"/>
+        <location filename="RetargetingTool.cpp" line="167"/>
         <source>Backup</source>
         <translation>Backup</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="179"/>
+        <location filename="RetargetingTool.cpp" line="180"/>
         <source>Keep a backup?</source>
         <translation>Garder un backup ?</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="181"/>
+        <location filename="RetargetingTool.cpp" line="182"/>
         <source>You should always check this box to avoid any data loss or corruption</source>
         <translation>Vous devriez toujours avoir cette case cochée pour éviter de perdre ou de corrompre des données</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="185"/>
+        <location filename="RetargetingTool.cpp" line="186"/>
         <source>Backup directory path:</source>
         <translation>Emplacement du répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="198"/>
+        <location filename="RetargetingTool.cpp" line="199"/>
         <source>Backup subdirectory name/path:</source>
         <translation>Nom/emplacement du sous-répertoire du backup :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="207"/>
+        <location filename="RetargetingTool.cpp" line="208"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="437"/>
+        <location filename="RetargetingTool.cpp" line="438"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation>Erreur: il est impossible de backup un répertoire au sein de lui-même. Veuillez choisir un autre emplacement.</translation>
     </message>
@@ -1626,60 +1627,60 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="501"/>
-        <location filename="RetargetingTool.cpp" line="548"/>
-        <location filename="RetargetingTool.cpp" line="685"/>
+        <location filename="RetargetingTool.cpp" line="500"/>
+        <location filename="RetargetingTool.cpp" line="547"/>
+        <location filename="RetargetingTool.cpp" line="684"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="566"/>
+        <location filename="RetargetingTool.cpp" line="565"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="587"/>
+        <location filename="RetargetingTool.cpp" line="586"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation>Aucune donnée trouvée dans le fichier XML associé. Le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="595"/>
+        <location filename="RetargetingTool.cpp" line="594"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation>Le choix de corps/version ne supporte pas les mains de bêtes. Le reciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="802"/>
+        <location filename="RetargetingTool.cpp" line="801"/>
         <source>Targeted body: %1</source>
         <translation>Corps ciblé : %1</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="809"/>
+        <location filename="RetargetingTool.cpp" line="808"/>
         <source>Targeted feet: %1</source>
         <translation>Pieds ciblés : %1</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="876"/>
+        <location filename="RetargetingTool.cpp" line="875"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="522"/>
+        <location filename="RetargetingTool.cpp" line="521"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="771"/>
+        <location filename="RetargetingTool.cpp" line="770"/>
         <source>All the files have been correctly retargeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement reciblés . Vous pouvez maintenant fermer cette fenêtre !</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="776"/>
-        <location filename="RetargetingTool.cpp" line="779"/>
+        <location filename="RetargetingTool.cpp" line="775"/>
+        <location filename="RetargetingTool.cpp" line="778"/>
         <source>Open the retargeted directory</source>
         <translation>Ouvrir le répertoire reciblé</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="779"/>
+        <location filename="RetargetingTool.cpp" line="778"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1689,37 +1690,37 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Reciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="530"/>
+        <location filename="RetargetingTool.cpp" line="529"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="661"/>
+        <location filename="RetargetingTool.cpp" line="660"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="675"/>
+        <location filename="RetargetingTool.cpp" line="674"/>
         <source>Patching XML files. Please wait...</source>
         <translation>Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="713"/>
+        <location filename="RetargetingTool.cpp" line="712"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="762"/>
+        <location filename="RetargetingTool.cpp" line="761"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="770"/>
+        <location filename="RetargetingTool.cpp" line="769"/>
         <source>Retargeting successful</source>
         <translation>Reciblage réussi</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="218"/>
+        <location filename="RetargetingTool.cpp" line="219"/>
         <source>Retarget all the files under the input path</source>
         <translation>Recibler tous les fichiers sous l&apos;emplacement d&apos;entrée</translation>
     </message>
@@ -1733,22 +1734,22 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation type="vanished">Corps et version ciblés :</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="361"/>
+        <location filename="RetargetingTool.cpp" line="362"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="404"/>
+        <location filename="RetargetingTool.cpp" line="405"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation>Erreur : aucun emplacement donné pour le reciblage.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="425"/>
+        <location filename="RetargetingTool.cpp" line="426"/>
         <source>Error: no path given to backup the files.</source>
         <translation>Erreur : aucun emplacement donné pour le backup des fichiers.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="444"/>
+        <location filename="RetargetingTool.cpp" line="445"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour le backup des fichiers semble invalide.</translation>
     </message>
@@ -2149,12 +2150,12 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
 <context>
     <name>TextInputDialog</name>
     <message>
-        <location filename="TextInputDialog.cpp" line="84"/>
+        <location filename="TextInputDialog.cpp" line="83"/>
         <source>Add</source>
         <translation>Ajouter</translation>
     </message>
     <message>
-        <location filename="TextInputDialog.cpp" line="88"/>
+        <location filename="TextInputDialog.cpp" line="87"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -2217,57 +2218,57 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="197"/>
+        <location filename="TexturesAssistant.cpp" line="196"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="287"/>
+        <location filename="TexturesAssistant.cpp" line="286"/>
         <source>Head textures</source>
         <translation>Textures de tête</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="299"/>
+        <location filename="TexturesAssistant.cpp" line="298"/>
         <source>Hands textures</source>
         <translation>Textures de mains</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="311"/>
+        <location filename="TexturesAssistant.cpp" line="310"/>
         <source>Body textures</source>
         <translation>Textures de corps</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="323"/>
+        <location filename="TexturesAssistant.cpp" line="322"/>
         <source>Other .DDS textures</source>
         <translation>Autres textures .DDS</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="389"/>
+        <location filename="TexturesAssistant.cpp" line="388"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="390"/>
+        <location filename="TexturesAssistant.cpp" line="389"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="393"/>
+        <location filename="TexturesAssistant.cpp" line="392"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="394"/>
+        <location filename="TexturesAssistant.cpp" line="393"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="409"/>
+        <location filename="TexturesAssistant.cpp" line="408"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>Aucun répertoire &quot;textures&quot; n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="423"/>
+        <location filename="TexturesAssistant.cpp" line="422"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>Aucun fichier DDS n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
@@ -2275,60 +2276,60 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
 <context>
     <name>Update</name>
     <message>
-        <location filename="Update.cpp" line="82"/>
-        <location filename="Update.cpp" line="97"/>
-        <location filename="Update.cpp" line="103"/>
+        <location filename="Update.cpp" line="66"/>
+        <location filename="Update.cpp" line="81"/>
+        <location filename="Update.cpp" line="87"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="151"/>
+        <location filename="Update.cpp" line="135"/>
         <source>Contacting GitHub.com...</source>
         <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="599"/>
+        <location filename="Update.cpp" line="549"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
         <translation>Le processus de mise à jour n&apos;a pas pu être démarré. Veuillez vérifier que votre pare-feu et votre anti-virus ne bloquent pas le fichier de mise à jour, avant d&apos;essayer à nouveau.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="186"/>
-        <location filename="Update.cpp" line="187"/>
+        <location filename="Update.cpp" line="170"/>
+        <location filename="Update.cpp" line="171"/>
         <source>Check for updates once again</source>
         <translation>Vérifier une nouvelle fois les mises à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="112"/>
+        <location filename="Update.cpp" line="96"/>
         <source>Initializing...</source>
         <translation>Initialisation...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="189"/>
+        <location filename="Update.cpp" line="173"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version.
 Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="218"/>
-        <location filename="Update.cpp" line="219"/>
-        <location filename="Update.cpp" line="255"/>
-        <location filename="Update.cpp" line="256"/>
+        <location filename="Update.cpp" line="202"/>
+        <location filename="Update.cpp" line="203"/>
+        <location filename="Update.cpp" line="239"/>
+        <location filename="Update.cpp" line="240"/>
         <source>Download the update</source>
         <translation>Télécharger la mise à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="92"/>
+        <location filename="Update.cpp" line="76"/>
         <source> (stable only)</source>
         <translation> (stable uniquement)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="92"/>
+        <location filename="Update.cpp" line="76"/>
         <source> (BETA only)</source>
         <translation> (BETA uniquement)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="234"/>
+        <location filename="Update.cpp" line="218"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -2347,7 +2348,7 @@ Le téléchargement sera enregistré sous &quot;%3&quot;.
 Vous trouverez ci-dessous les notes de publication pour la version BETA &quot;%2&quot; :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="271"/>
+        <location filename="Update.cpp" line="255"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -2366,35 +2367,35 @@ Le téléchargement sera enregistré sous &quot;%3&quot;.
 Vous trouverez ci-dessous les notes de publication pour la version stable &quot;%2&quot; :</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="281"/>
-        <location filename="Update.cpp" line="282"/>
+        <location filename="Update.cpp" line="265"/>
+        <location filename="Update.cpp" line="266"/>
         <source>Already running the latest version</source>
         <translation>Dernière version déjà en cours d&apos;utilisation</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="283"/>
+        <location filename="Update.cpp" line="267"/>
         <source>Awesome! You are already running the latest available version.</source>
         <translation>Génial ! Vous utilisez déjà la dernière version disponible.</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="315"/>
-        <location filename="Update.cpp" line="316"/>
+        <location filename="Update.cpp" line="292"/>
+        <location filename="Update.cpp" line="293"/>
         <source>Cancel the download</source>
         <translation>Annuler le téléchargement</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="360"/>
-        <location filename="Update.cpp" line="361"/>
+        <location filename="Update.cpp" line="331"/>
+        <location filename="Update.cpp" line="332"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation>Téléchargement annulé : cliquez pour essayer de télécharger la mise à jour une nouvelle fois</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="402"/>
+        <location filename="Update.cpp" line="368"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation>%1 octets sur %2 octets (%p%)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="484"/>
+        <location filename="Update.cpp" line="444"/>
         <source>Download successful. Click the button above to open the directory where the file has been downloaded.
 
 </source>
@@ -2403,7 +2404,7 @@ Vous trouverez ci-dessous les notes de publication pour la version stable &quot;
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="485"/>
+        <location filename="Update.cpp" line="445"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -2414,7 +2415,7 @@ Assurez-vous que vous avez tout enregistré avant de commencer la mise à jour c
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="486"/>
+        <location filename="Update.cpp" line="446"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -2425,20 +2426,20 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="496"/>
-        <location filename="Update.cpp" line="497"/>
+        <location filename="Update.cpp" line="456"/>
+        <location filename="Update.cpp" line="457"/>
         <source>Show the ZIP file in Windows Explorer</source>
         <translation>Montrer le fichier ZIP dans l&apos;Explorateur Windows</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="520"/>
-        <location filename="Update.cpp" line="521"/>
+        <location filename="Update.cpp" line="480"/>
+        <location filename="Update.cpp" line="481"/>
         <source>Close MFBOPC and install the update</source>
         <translation>Fermer MFBOPC et installer la mise à jour</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="550"/>
-        <location filename="Update.cpp" line="551"/>
+        <location filename="Update.cpp" line="505"/>
+        <location filename="Update.cpp" line="506"/>
         <source>Try to download the update once again</source>
         <translation>Essayer de télécharger la mise à jour une nouvelle fois</translation>
     </message>
