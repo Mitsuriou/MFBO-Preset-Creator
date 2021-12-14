@@ -1345,109 +1345,109 @@ Do you want to download it now?</source>
         <translation>取消開啟檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="218"/>
+        <location filename="PresetCreator.cpp" line="221"/>
         <source>the body</source>
         <translation>身體</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="226"/>
+        <location filename="PresetCreator.cpp" line="229"/>
         <source> and the feet</source>
         <translation>和腳</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="230"/>
+        <location filename="PresetCreator.cpp" line="233"/>
         <source>, the feet</source>
         <translation>,腳</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="234"/>
+        <location filename="PresetCreator.cpp" line="237"/>
         <source>the feet</source>
         <translation>腳</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="244"/>
+        <location filename="PresetCreator.cpp" line="247"/>
         <source> and the hands</source>
         <translation>和手</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="248"/>
+        <location filename="PresetCreator.cpp" line="251"/>
         <source>the hands</source>
         <translation>手</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="258"/>
+        <location filename="PresetCreator.cpp" line="261"/>
         <source>You did not select any file for %1 meshes. Would you like to clear all these unassigned entries or keep their currently set values?</source>
         <translatorcomment>?</translatorcomment>
         <translation>未選擇 %1 模型. 是否要清除未設定條目 或者 保存當前數值設定?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="263"/>
+        <location filename="PresetCreator.cpp" line="266"/>
         <source>You did not select any file for %1 mesh. Would you like to clear this unassigned entry or keep its currently set value?</source>
         <translation>未選擇 %1 模型. 是否要清除未設定條目 或者 保存當前數值設定?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="267"/>
+        <location filename="PresetCreator.cpp" line="270"/>
         <source>One mesh data was not assigned</source>
         <translation>有未設定的模型檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="271"/>
+        <location filename="PresetCreator.cpp" line="274"/>
         <source>Clear all the unassigned entries</source>
         <translation>清除所有未設定的條目</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="272"/>
+        <location filename="PresetCreator.cpp" line="275"/>
         <source>Keep the currently set values for the unassigned entries</source>
         <translation>保存當前未設定條目之數值設定</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="318"/>
+        <location filename="PresetCreator.cpp" line="321"/>
         <source>Original mod&apos;s body meshes</source>
         <translation>原mod身體模型路徑</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="332"/>
+        <location filename="PresetCreator.cpp" line="335"/>
         <source>Meshes paths and names:</source>
         <translation>模型路徑與名稱:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="348"/>
-        <location filename="PresetCreator.cpp" line="364"/>
-        <location filename="PresetCreator.cpp" line="380"/>
+        <location filename="PresetCreator.cpp" line="351"/>
+        <location filename="PresetCreator.cpp" line="367"/>
+        <location filename="PresetCreator.cpp" line="383"/>
         <source>_0.nif/_1.nif</source>
         <translation>_0.nif/_1.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="383"/>
-        <location filename="PresetCreator.cpp" line="482"/>
-        <location filename="PresetCreator.cpp" line="540"/>
-        <location filename="PresetCreator.cpp" line="561"/>
+        <location filename="PresetCreator.cpp" line="386"/>
+        <location filename="PresetCreator.cpp" line="485"/>
+        <location filename="PresetCreator.cpp" line="543"/>
+        <location filename="PresetCreator.cpp" line="564"/>
         <source>Preview:</source>
         <translation>預覽:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="391"/>
+        <location filename="PresetCreator.cpp" line="394"/>
         <source>Use beast hands?</source>
         <translation>使用野獸手掌模型?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="395"/>
+        <location filename="PresetCreator.cpp" line="398"/>
         <source>Check this box if the follower or NPC uses beast hands</source>
         <oldsource>Check this box if the follower or NPC uses beast hands.</oldsource>
         <translation>如果NPC/隨從使用野獸手掌，請勾選此欄</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="414"/>
+        <location filename="PresetCreator.cpp" line="417"/>
         <source>Skeleton</source>
         <translation>骨架</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="428"/>
+        <location filename="PresetCreator.cpp" line="431"/>
         <source>Use a custom skeleton?</source>
         <translation>使用獨立骨架?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="434"/>
+        <location filename="PresetCreator.cpp" line="437"/>
         <source>Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation>不覆蓋骨架檔案可能會導致胸部碰撞物理不準確。</translation>
     </message>
@@ -1456,32 +1456,32 @@ Do you want to download it now?</source>
         <translation type="vanished">若NPC/隨從使用獨立骨架，勾選此欄。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="441"/>
+        <location filename="PresetCreator.cpp" line="444"/>
         <source>Skeleton file:</source>
         <translation>骨架檔案:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="453"/>
+        <location filename="PresetCreator.cpp" line="456"/>
         <source>Refresh</source>
         <translation>重新整理</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="457"/>
+        <location filename="PresetCreator.cpp" line="460"/>
         <source>Skeleton path:</source>
         <translation>骨架路徑:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="467"/>
+        <location filename="PresetCreator.cpp" line="470"/>
         <source>Skeleton file name:</source>
         <translation>骨架檔案名稱:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="477"/>
+        <location filename="PresetCreator.cpp" line="480"/>
         <source>.nif</source>
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="509"/>
+        <location filename="PresetCreator.cpp" line="512"/>
         <source>BodySlide output</source>
         <translation>BodySlide 輸出</translation>
     </message>
@@ -1490,42 +1490,42 @@ Do you want to download it now?</source>
         <translation type="vanished">目標身形與版本:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1351"/>
+        <location filename="PresetCreator.cpp" line="1354"/>
         <source>Targeted body: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1358"/>
+        <location filename="PresetCreator.cpp" line="1361"/>
         <source>Targeted feet: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="533"/>
+        <location filename="PresetCreator.cpp" line="536"/>
         <source>BodySlide files names:</source>
         <translation>BodySlide檔案名稱:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="552"/>
+        <location filename="PresetCreator.cpp" line="555"/>
         <source>Presets names:</source>
         <translation>身形(Preset)名稱:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="553"/>
+        <location filename="PresetCreator.cpp" line="556"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation>此欄顯示輸出檔案將會顯示在BodySlide中的名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="568"/>
+        <location filename="PresetCreator.cpp" line="571"/>
         <source>BodySlide filters:</source>
         <translation>BodySlide分類標籤:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="587"/>
+        <location filename="PresetCreator.cpp" line="590"/>
         <source>Edit BodySlide filters sets</source>
         <translation>管理BodySlide分類群組</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="636"/>
+        <location filename="PresetCreator.cpp" line="639"/>
         <source>Generate the files on my computer</source>
         <translation>在電腦中生成檔案</translation>
     </message>
@@ -1552,7 +1552,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">錯誤:無法產生預設骨架檔案。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1148"/>
+        <location filename="PresetCreator.cpp" line="1151"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1575,12 +1575,12 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1130"/>
+        <location filename="PresetCreator.cpp" line="1133"/>
         <source>Error: no path given to export the files.</source>
         <translation>錯誤:未指定輸出路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1137"/>
+        <location filename="PresetCreator.cpp" line="1140"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>錯誤:無效的輸出路徑。</translation>
     </message>
@@ -1589,80 +1589,80 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">錯誤:無法產生資料夾:&quot;%1&quot;。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1156"/>
+        <location filename="PresetCreator.cpp" line="1159"/>
         <source>Already existing directory</source>
         <translation>已存在資料夾</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1157"/>
+        <location filename="PresetCreator.cpp" line="1160"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <oldsource>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</oldsource>
         <translation>資料夾:&quot;%1&quot;已存在。是否確定在此資料夾輸出檔案?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1160"/>
+        <location filename="PresetCreator.cpp" line="1163"/>
         <source>Continue the files generation</source>
         <translation>繼續執行產生檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1161"/>
+        <location filename="PresetCreator.cpp" line="1164"/>
         <source>Cancel the files generation</source>
         <translation>取消產生檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1178"/>
+        <location filename="PresetCreator.cpp" line="1181"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>錯誤:未指定身體檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1191"/>
+        <location filename="PresetCreator.cpp" line="1194"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>錯誤:未指定腳部檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1204"/>
+        <location filename="PresetCreator.cpp" line="1207"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>錯誤:未指定手部檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1218"/>
+        <location filename="PresetCreator.cpp" line="1221"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>錯誤:未指定BodySlide檔案名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1232"/>
+        <location filename="PresetCreator.cpp" line="1235"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>錯誤:未指定BodySlide檔案名稱(顯示在BodySlide程式中的名稱)。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1299"/>
+        <location filename="PresetCreator.cpp" line="1302"/>
         <source>Generation successful</source>
         <translation>檔案輸出成功</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1300"/>
+        <location filename="PresetCreator.cpp" line="1303"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>所有檔案皆成功輸出，可以關閉程式或者輸出其他角色的BodySlide檔案!</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1305"/>
         <location filename="PresetCreator.cpp" line="1308"/>
+        <location filename="PresetCreator.cpp" line="1311"/>
         <source>Open the generated directory</source>
         <oldsource>Open the retargeted directory</oldsource>
         <translation>開啟輸出檔案資料夾</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1308"/>
+        <location filename="PresetCreator.cpp" line="1311"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="437"/>
+        <location filename="PresetCreator.cpp" line="440"/>
         <source>Check this box if the follower or NPC uses a custom skeleton</source>
         <translation>若NPC/隨從使用獨立骨架，請勾選此欄</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1428"/>
+        <location filename="PresetCreator.cpp" line="1431"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
