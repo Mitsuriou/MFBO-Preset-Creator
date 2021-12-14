@@ -800,16 +800,8 @@ std::map<QString, std::set<QString>> BatchConversionPicker::findNewPresets(const
       const auto lKey{lValue.left(lLastSlashPosition)};
       const auto lMeshName{lValue.mid(lLastSlashPosition + 1)};
 
-      if (lPresets.find(lKey) == lPresets.end())
-      {
-        // The key does not exist
-        lPresets.insert({lKey, {lMeshName}});
-      }
-      else
-      {
-        // The key already exists
-        lPresets.at(lKey).insert(lMeshName);
-      }
+      // Insert the data
+      lPresets[lKey].insert(lMeshName);
     }
   }
 

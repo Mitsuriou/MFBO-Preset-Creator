@@ -66,6 +66,7 @@
         <file alias="mesh">ressources/software/icons/black/mesh.png</file>
         <file alias="eye">ressources/software/icons/black/eye.png</file>
         <file alias="duplicate">ressources/software/icons/black/duplicate.png</file>
+        <file alias="mouth">ressources/software/icons/black/mouth.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -127,6 +128,7 @@
         <file alias="mesh">ressources/software/icons/white/mesh.png</file>
         <file alias="eye">ressources/software/icons/white/eye.png</file>
         <file alias="duplicate">ressources/software/icons/white/duplicate.png</file>
+        <file alias="mouth">ressources/software/icons/white/mouth.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

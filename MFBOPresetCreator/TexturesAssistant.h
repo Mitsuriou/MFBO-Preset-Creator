@@ -35,6 +35,8 @@ private:
     std::map<std::string, std::vector<QString>> headTextures;
     std::map<std::string, std::vector<QString>> handsTextures;
     std::map<std::string, std::vector<QString>> bodyTextures;
+    std::map<std::string, std::vector<QString>> extraBodyTextures;
+    std::map<std::string, std::vector<QString>> mouthTextures;
   };
 
   void setWindowProperties();

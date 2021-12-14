@@ -557,16 +557,16 @@ void BatchConversion::launchSearchProcess()
   auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
   auto lMustClearIrrelevantEntries{this->findChild<QCheckBox*>(QString("clear_irrelevant_entries"))->isChecked()};
   auto lHeavierSearchEnabled{this->findChild<QRadioButton*>(QString("scan_advanced_search"))->isChecked()};
-  auto lMeshesFilesToFind{QStringList({"femalebody_0.nif",
-                                       "femalebody_1.nif",
-                                       "femalehands_0.nif",
-                                       "femalehands_1.nif",
-                                       "femalehandsargonian_0.nif",
-                                       "femalehandsargonian_1.nif",
-                                       "femalefeet_0.nif",
-                                       "femalefeet_1.nif",
-                                       "skeleton_female.nif",
-                                       "skeletonbeast_female.nif"})};
+  QStringList lMeshesFilesToFind{"femalebody_0.nif",
+                                 "femalebody_1.nif",
+                                 "femalehands_0.nif",
+                                 "femalehands_1.nif",
+                                 "femalehandsargonian_0.nif",
+                                 "femalehandsargonian_1.nif",
+                                 "femalefeet_0.nif",
+                                 "femalefeet_1.nif",
+                                 "skeleton_female.nif",
+                                 "skeletonbeast_female.nif"};
 
   QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
@@ -610,17 +610,8 @@ void BatchConversion::launchSearchProcess()
       Utils::CleanPathString(lKey);
       lSecondArgument = QString("%1/%2").arg(lRelativeDirPath.mid(lFirstSlashPosition + 1), lFileName);
 
-      lMapPosition = lScannedData.find(lKey);
-      if (lMapPosition != lScannedData.end())
-      {
-        // Insert the data in the already existing map entry
-        lMapPosition->second.insert(lSecondArgument);
-      }
-      else
-      {
-        // Create a new map entry
-        lScannedData.insert(std::make_pair(lKey, std::set<QString>({lSecondArgument})));
-      }
+      // Insert the data
+      lScannedData[lKey].insert(lSecondArgument);
     }
 
     qApp->processEvents();
@@ -790,7 +781,7 @@ void BatchConversion::populateSkeletonChoosers()
 {
   auto lRootDir{Utils::GetAppDataPathFolder() + "assets/skeletons/"};
   Utils::CleanPathString(lRootDir);
-  auto lAvailableSkeletons{QStringList()};
+  QStringList lAvailableSkeletons;
 
   // Search for all "*.nif" files
   QDirIterator it(lRootDir, QStringList() << QString("*.nif"), QDir::Files, QDirIterator::Subdirectories);

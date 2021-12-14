@@ -170,19 +170,29 @@ TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const 
   auto lFileName{QString()};
   auto lKey{std::string()};
 
-  auto lTexturesFilesToFind{
-    QStringList({"femalebody_1.dds",
-                 "femalebody_1_msn.dds",
-                 "femalebody_1_s.dds",
-                 "femalebody_1_sk.dds",
-                 "femalehands_1.dds",
-                 "femalehands_1_msn.dds",
-                 "femalehands_1_s.dds",
-                 "femalehands_1_sk.dds",
-                 "femalehead.dds",
-                 "femalehead_msn.dds",
-                 "femalehead_s.dds",
-                 "femalehead_sk.dds"})};
+  QStringList lTexturesFilesToFind{// Body
+                                   "femalebody_1.dds",
+                                   "femalebody_1_s.dds",
+                                   "femalebody_1_sk.dds",
+                                   "femalebody_1_msn.dds",
+                                   // Body extra
+                                   "femalebody_etc_v2_1.dds",
+                                   "femalebody_etc_v2_1_s.dds",
+                                   "femalebody_etc_v2_1_sk.dds",
+                                   "femalebody_etc_v2_1_msn.dds",
+                                   // Hands
+                                   "femalehands_1.dds",
+                                   "femalehands_1_s.dds",
+                                   "femalehands_1_sk.dds",
+                                   "femalehands_1_msn.dds",
+                                   // Head
+                                   "femalehead.dds",
+                                   "femalehead_s.dds",
+                                   "femalehead_sk.dds",
+                                   "femalehead_msn.dds",
+                                   // Mouth
+                                   "mouthhuman.dds",
+                                   "mouthhuman_n.dds"};
 
   // Suffix the root directory to earch only in the "textures" subfolder
   auto lRootDir{QString("%1/textures").arg(aRootDir)};
@@ -240,22 +250,22 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
     {
       lMap = &lGroupedPaths.handsTextures;
     }
+    else if (lNifFile.second.second.contains("body_etc"))
+    {
+      lMap = &lGroupedPaths.extraBodyTextures;
+    }
     else if (lNifFile.second.second.contains("body"))
     {
       lMap = &lGroupedPaths.bodyTextures;
     }
+    else if (lNifFile.second.second.contains("mouth"))
+    {
+      lMap = &lGroupedPaths.mouthTextures;
+    }
 
     if (lMap != nullptr)
     {
-      auto lPosition{lMap->find(lFilePath)};
-      if (lPosition == lMap->end())
-      {
-        lMap->insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
-      }
-      else
-      {
-        lPosition->second.push_back(lFileName);
-      }
+      (*lMap)[lFilePath].push_back(lFileName);
     }
   }
 
@@ -266,16 +276,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   {
     const auto& lFilePath{lNifFile.second.first.toStdString()};
     const auto& lFileName{lNifFile.second.second};
-
-    auto lPosition{lOtherPaths.find(lFilePath)};
-    if (lPosition == lOtherPaths.end())
-    {
-      lOtherPaths.insert(std::make_pair(lFilePath, std::vector<QString>({lFileName})));
-    }
-    else
-    {
-      lPosition->second.push_back(lFileName);
-    }
+    lOtherPaths[lFilePath].push_back(lFileName);
   }
 
   // User theme accent
@@ -294,17 +295,17 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   this->createRessourceBlock(lGroupedPaths.headTextures, lHeadGroupContainer);
   aLayout->addWidget(lHeadGroup, lRowIndex++, 0);
 
-  // Hands ressources blocks
-  auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.display.font.size);
-  this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lHandsGroup, false);
+  // Mouth ressources blocks
+  auto lMouthGroup{new QGroupBox(tr("Mouth textures").append("  "), this)};
+  Utils::AddIconToGroupBox(lMouthGroup, lIconFolder, "mouth", this->mSettings.display.font.size);
+  this->connect(lMouthGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::SetGroupBoxState(lMouthGroup, false);
 
-  auto lHandsGroupContainer{new QGridLayout(this)};
-  lHandsGroupContainer->setSpacing(16);
-  lHandsGroup->setLayout(lHandsGroupContainer);
-  this->createRessourceBlock(lGroupedPaths.handsTextures, lHandsGroupContainer);
-  aLayout->addWidget(lHandsGroup, lRowIndex++, 0);
+  auto lMouthGroupContainer{new QGridLayout(this)};
+  lMouthGroupContainer->setSpacing(16);
+  lMouthGroup->setLayout(lMouthGroupContainer);
+  this->createRessourceBlock(lGroupedPaths.mouthTextures, lMouthGroupContainer);
+  aLayout->addWidget(lMouthGroup, lRowIndex++, 0);
 
   // Body ressources blocks
   auto lBodyGroup{new QGroupBox(tr("Body textures").append("  "), this)};
@@ -317,6 +318,30 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   lBodyGroup->setLayout(lBodyGroupContainer);
   this->createRessourceBlock(lGroupedPaths.bodyTextures, lBodyGroupContainer);
   aLayout->addWidget(lBodyGroup, lRowIndex++, 0);
+
+  // Extra body ressources blocks
+  auto lBodyExtraGroup{new QGroupBox(tr("Extra body textures").append("  "), this)};
+  Utils::AddIconToGroupBox(lBodyExtraGroup, lIconFolder, "more", this->mSettings.display.font.size);
+  this->connect(lBodyExtraGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::SetGroupBoxState(lBodyExtraGroup, false);
+
+  auto lBodyExtraGroupContainer{new QGridLayout(this)};
+  lBodyExtraGroupContainer->setSpacing(16);
+  lBodyExtraGroup->setLayout(lBodyExtraGroupContainer);
+  this->createRessourceBlock(lGroupedPaths.extraBodyTextures, lBodyExtraGroupContainer);
+  aLayout->addWidget(lBodyExtraGroup, lRowIndex++, 0);
+
+  // Hands ressources blocks
+  auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
+  Utils::AddIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.display.font.size);
+  this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::SetGroupBoxState(lHandsGroup, false);
+
+  auto lHandsGroupContainer{new QGridLayout(this)};
+  lHandsGroupContainer->setSpacing(16);
+  lHandsGroup->setLayout(lHandsGroupContainer);
+  this->createRessourceBlock(lGroupedPaths.handsTextures, lHandsGroupContainer);
+  aLayout->addWidget(lHandsGroup, lRowIndex++, 0);
 
   // Other textures files
   auto lOtherGroup{new QGroupBox(tr("Other .DDS textures").append("  "), this)};

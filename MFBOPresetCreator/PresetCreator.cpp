@@ -791,7 +791,7 @@ void PresetCreator::populateSkeletonChooser()
 {
   auto lRootDir{Utils::GetAppDataPathFolder() + "assets/skeletons/"};
   Utils::CleanPathString(lRootDir);
-  auto lAvailableSkeletons{QStringList()};
+  QStringList lAvailableSkeletons;
 
   // Search for all "*.nif" files
   QDirIterator it(lRootDir, QStringList() << QString("*.nif"), QDir::Files, QDirIterator::Subdirectories);
