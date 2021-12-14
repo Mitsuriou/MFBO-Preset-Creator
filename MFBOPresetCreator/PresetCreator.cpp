@@ -529,8 +529,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
                                                                           0,
                                                                           lIconFolder,
                                                                           QString("target_meshes_picker_button"),
-                                                                          QString("currently_targeted_body"),
-                                                                          QString("currently_targeted_feet"))};
+                                                                          QString("currently_targeted_body_feet"))};
 
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
@@ -1350,15 +1349,12 @@ void PresetCreator::targetMeshesChanged(const BodyNameVersion& aBody, const Feet
   const auto lBodyText{
     QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
 
-  auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body")};
-  lCurrentlyTargetedBody->setText(tr("Targeted body: %1").arg(lBodyText));
-
   // Update the "targeted feet mesh" text content
   const auto lFeetText{
     QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
-  auto lCurrentlyTargetedFeet{this->findChild<QLabel*>("currently_targeted_feet")};
-  lCurrentlyTargetedFeet->setText(tr("Targeted feet: %1").arg(lFeetText));
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body_feet")};
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText).arg(lFeetText));
 
   // Force the refresh of preview fields
   this->refreshAllPreviewFields();

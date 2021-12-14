@@ -158,30 +158,25 @@ QPushButton* ComponentFactory::CreateTargetMeshesPickerLine(QWidget* aParent,
                                                             const int aLayoutRow,
                                                             const QString& aIconFolder,
                                                             const QString& aButtonObjectName,
-                                                            const QString& aBodyLabelObjectName,
-                                                            const QString& aFeetLabelObjectName)
+                                                            const QString& aLabelObjectName)
 {
   // Targeted body and version
   aLayout.addWidget(new QLabel(tr("Targeted meshes mods:"), aParent), aLayoutRow, 0);
 
-  QGridLayout* lBodyNameVersionWrapper{new QGridLayout(aParent)};
-  lBodyNameVersionWrapper->setColumnStretch(lBodyNameVersionWrapper->columnCount(), 1);
+  QHBoxLayout* lBodyNameVersionWrapper{new QHBoxLayout(aParent)};
   lBodyNameVersionWrapper->setMargin(0);
   aLayout.addLayout(lBodyNameVersionWrapper,
                     aLayoutRow + aSingleLineForLabelAndActions ? 0 : 1,
                     aSingleLineForLabelAndActions ? 1 : 0);
 
   auto lTargetMeshesPicker{ComponentFactory::CreateButton(aParent, tr("Choose target meshes"), "", "mesh", aIconFolder, aButtonObjectName, false, true)};
-  lTargetMeshesPicker->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding); // Allow the button to take a 2-rows height
-  lBodyNameVersionWrapper->addWidget(lTargetMeshesPicker, 0, 0, 2, 1);
+  lBodyNameVersionWrapper->addWidget(lTargetMeshesPicker);
 
-  auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body and version:"), aParent)};
-  lCurrentlyTargetedBody->setObjectName(aBodyLabelObjectName);
-  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedBody, 0, 1);
+  auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body: -\nTargeted feet: -"), aParent)};
+  lCurrentlyTargetedBody->setObjectName(aLabelObjectName);
+  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedBody);
 
-  auto lCurrentlyTargetedFeet{new QLabel(tr("Targeted feet and version:"), aParent)};
-  lCurrentlyTargetedFeet->setObjectName(aFeetLabelObjectName);
-  lBodyNameVersionWrapper->addWidget(lCurrentlyTargetedFeet, 1, 1);
+  lBodyNameVersionWrapper->addStretch();
 
   return lTargetMeshesPicker;
 }

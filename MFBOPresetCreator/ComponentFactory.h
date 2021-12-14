@@ -43,8 +43,7 @@ public:
                                                    const int aLayoutRow,
                                                    const QString& aIconFolder,
                                                    const QString& aButtonObjectName,
-                                                   const QString& aBodyLabelObjectName,
-                                                   const QString& aFeetLabelObjectName);
+                                                   const QString& aLabelObjectName);
 
   static void CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const int aMinimumFirstColumnWidth, const int aFontSize);
 

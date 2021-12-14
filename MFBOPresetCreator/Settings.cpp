@@ -320,8 +320,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
                                                                           0,
                                                                           lIconFolder,
                                                                           QString("main_target_meshes_picker_button"),
-                                                                          QString("main_currently_targeted_body"),
-                                                                          QString("main_currently_targeted_feet"))};
+                                                                          QString("main_currently_targeted_body_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 2, 0);
@@ -356,8 +355,7 @@ void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
                                                                           0,
                                                                           lIconFolder,
                                                                           QString("batch_conversion_target_meshes_picker_button"),
-                                                                          QString("batch_conversion_currently_targeted_body"),
-                                                                          QString("batch_conversion_currently_targeted_feet"))};
+                                                                          QString("batch_conversion_currently_targeted_body_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 2, 0);
@@ -392,8 +390,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
                                                                           0,
                                                                           lIconFolder,
                                                                           QString("retargeting_tool_target_meshes_picker_button"),
-                                                                          QString("retargeting_tool_currently_targeted_body"),
-                                                                          QString("retargeting_tool_currently_targeted_feet"))};
+                                                                          QString("retargeting_tool_currently_targeted_body_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-processing task:"), this), 2, 0);
@@ -846,15 +843,12 @@ void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate, FeetNameVersi
   const auto lBodyText{
     QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
 
-  auto lCurrentlyTargetedBody{this->findChild<QLabel*>(QString("%1_currently_targeted_body").arg(aObjectNamePrefix))};
-  lCurrentlyTargetedBody->setText(tr("Targeted body: %1").arg(lBodyText));
-
   // Update the "targeted feet mesh" text content
   const auto lFeetText{
     QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
-  auto lCurrentlyTargetedFeet{this->findChild<QLabel*>(QString("%1_currently_targeted_feet").arg(aObjectNamePrefix))};
-  lCurrentlyTargetedFeet->setText(tr("Targeted feet: %1").arg(lFeetText));
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>(QString("%1_currently_targeted_body_feet").arg(aObjectNamePrefix))};
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText).arg(lFeetText));
 }
 
 void Settings::chooseFont()

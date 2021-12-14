@@ -126,8 +126,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
                                                                           0,
                                                                           lIconFolder,
                                                                           QString("target_meshes_picker_button"),
-                                                                          QString("currently_targeted_body"),
-                                                                          QString("currently_targeted_feet"))};
+                                                                          QString("currently_targeted_body_feet"))};
 
   // Input path
   lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 1, 0);
@@ -797,15 +796,12 @@ void RetargetingTool::targetMeshesChanged(const BodyNameVersion& aBody, const Fe
   const auto lBodyText{
     QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
 
-  auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body")};
-  lCurrentlyTargetedBody->setText(tr("Targeted body: %1").arg(lBodyText));
-
   // Update the "targeted feet mesh" text content
   const auto lFeetText{
     QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
-  auto lCurrentlyTargetedFeet{this->findChild<QLabel*>("currently_targeted_feet")};
-  lCurrentlyTargetedFeet->setText(tr("Targeted feet: %1").arg(lFeetText));
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body_feet")};
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText).arg(lFeetText));
 
   // Force the refresh of the filters list preview
   this->updateBodySlideFiltersListPreview();

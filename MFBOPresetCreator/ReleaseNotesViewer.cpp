@@ -1,6 +1,8 @@
 #include "ReleaseNotesViewer.h"
+#include "ComponentFactory.h"
 #include "Enum.h"
 #include "Utils.h"
+#include <QDesktopServices>
 #include <QNetworkReply>
 #include <QTextBrowser>
 
@@ -52,6 +54,16 @@ void ReleaseNotesViewer::initializeGUI()
   lViewer->setObjectName(QString("viewer"));
   lViewer->setOpenExternalLinks(true);
   this->layout()->addWidget(lViewer);
+
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Open in default browser button
+  auto lButton{ComponentFactory::CreateButton(this, tr("View in default browser"), "", "external", lIconFolder)};
+  this->layout()->addWidget(lButton);
+
+  // Event binding
+  this->connect(lButton, &QPushButton::clicked, this, &ReleaseNotesViewer::viewInDefaultBrowser);
 }
 
 void ReleaseNotesViewer::overrideHTMLLinksColor(QString& aHTMLString)
@@ -143,4 +155,10 @@ void ReleaseNotesViewer::displayUpdateMessage(const QString& aResult)
   auto lHTMLString{lViewer->toHtml()};
   this->overrideHTMLLinksColor(lHTMLString);
   lViewer->setHtml(lHTMLString);
+}
+
+void ReleaseNotesViewer::viewInDefaultBrowser()
+{
+  const auto lCurrentVersion{Utils::GetApplicationVersion()};
+  QDesktopServices::openUrl(QUrl(QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/tag/%1").arg(lCurrentVersion)));
 }
