@@ -1256,6 +1256,10 @@ QStringList DataLists::GetKnownTexturesFilesNames()
                       QString("femalebody_1_sk.dds"),
                       QString("femalebody_1_msn.dds"),
                       // Body extra
+                      QString("femalebody_etc_1.dds"),
+                      QString("femalebody_etc_1_s.dds"),
+                      QString("femalebody_etc_1_sk.dds"),
+                      QString("femalebody_etc_1_msn.dds"),
                       QString("femalebody_etc_v2_1.dds"),
                       QString("femalebody_etc_v2_1_s.dds"),
                       QString("femalebody_etc_v2_1_sk.dds"),
@@ -1270,6 +1274,10 @@ QStringList DataLists::GetKnownTexturesFilesNames()
                       QString("femalehead_s.dds"),
                       QString("femalehead_sk.dds"),
                       QString("femalehead_msn.dds"),
+                      QString("femaleheadvampire.dds"),
+                      QString("femaleheadvampire_msn.dds"),
+                      QString("femaleheaddetail_frekles.dds"),
+                      QString("femaleheaddetail_rough.dds"),
                       // Mouth
                       QString("mouthhuman.dds"),
                       QString("mouthhuman_n.dds")});
