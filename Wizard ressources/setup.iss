@@ -42,6 +42,8 @@ Source: ".\assets\*"; DestDir: "{localappdata}\MFBOPresetCreator\assets"; Flags:
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\MFBOPresetCreator.exe"
 Name: "{autodesktop}\{#AppName} (v.{#AppVersion})"; Filename: "{app}\MFBOPresetCreator.exe"; Tasks: desktopicon
 
+[InstallDelete]
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female - XPMSSE (v4.72)"
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - XPMSSE (v4.72)"
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female - XPMSSE (v4.80)"
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - XPMSSE (v4.80)"
