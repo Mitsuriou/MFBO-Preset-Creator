@@ -42,6 +42,12 @@ Source: ".\assets\*"; DestDir: "{localappdata}\MFBOPresetCreator\assets"; Flags:
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\MFBOPresetCreator.exe"
 Name: "{autodesktop}\{#AppName} (v.{#AppVersion})"; Filename: "{app}\MFBOPresetCreator.exe"; Tasks: desktopicon
 
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - XPMSSE (v4.72)"
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female - XPMSSE (v4.80)"
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - XPMSSE (v4.80)"
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female - Vera's Female Skeleton (v1.52)"
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - Vera's Female Skeleton (v1.52)"
+
 [Run]
 Filename: "{app}\MFBOPresetCreator.exe"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
 
