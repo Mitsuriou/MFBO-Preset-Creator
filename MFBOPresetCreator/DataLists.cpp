@@ -17,7 +17,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
   {
     case BodyName::CBBE_3BA_3BBB:
     {
-      return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 and 2.14")});
+      return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.16")});
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
@@ -201,7 +201,7 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
     case FeetName::BHUNP:
       return QStringList{QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.41")};
     case FeetName::CBBE_3BA_3BBB:
-      return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 and 2.14")};
+      return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.16")};
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
         return QStringList{QString("V4"), QString("V6")};
