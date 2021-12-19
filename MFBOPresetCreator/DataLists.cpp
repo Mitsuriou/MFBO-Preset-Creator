@@ -1248,6 +1248,33 @@ std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibi
   return std::make_pair(DataLists::GetBodyNameVersion(lBodyVariant, aBodyVersion), lFeetToSet);
 }
 
+QStringList DataLists::GetKnownTexturesFilesNames()
+{
+  return QStringList({// Body
+                      QString("femalebody_1.dds"),
+                      QString("femalebody_1_s.dds"),
+                      QString("femalebody_1_sk.dds"),
+                      QString("femalebody_1_msn.dds"),
+                      // Body extra
+                      QString("femalebody_etc_v2_1.dds"),
+                      QString("femalebody_etc_v2_1_s.dds"),
+                      QString("femalebody_etc_v2_1_sk.dds"),
+                      QString("femalebody_etc_v2_1_msn.dds"),
+                      // Hands
+                      QString("femalehands_1.dds"),
+                      QString("femalehands_1_s.dds"),
+                      QString("femalehands_1_sk.dds"),
+                      QString("femalehands_1_msn.dds"),
+                      // Head
+                      QString("femalehead.dds"),
+                      QString("femalehead_s.dds"),
+                      QString("femalehead_sk.dds"),
+                      QString("femalehead_msn.dds"),
+                      // Mouth
+                      QString("mouthhuman.dds"),
+                      QString("mouthhuman_n.dds")});
+}
+
 QStringList DataLists::GetWindowOpeningModes()
 {
   return QStringList{tr("Minimized"),
@@ -1295,14 +1322,15 @@ QStringList DataLists::GetAssistedConversionActions()
 
 QStringList DataLists::GetLastPathsKeys()
 {
-  return QStringList{"general",
-                     "mainWindowOutput",
-                     "batchConversionInput",
-                     "batchConversionOutput",
-                     "assistedConversionInput",
-                     "retargetingToolInput",
-                     "retargetingToolOutput",
-                     "texturesAssistantInput",
-                     "lastLoadedProject",
-                     "lastSavedProject"};
+  return QStringList{QString("general"),
+                     QString("mainWindowOutput"),
+                     QString("batchConversionInput"),
+                     QString("batchConversionOutput"),
+                     QString("assistedConversionInput"),
+                     QString("retargetingToolInput"),
+                     QString("retargetingToolOutput"),
+                     QString("texturesAssistantInput"),
+                     QString("texturesAssistantOutput"),
+                     QString("lastLoadedProject"),
+                     QString("lastSavedProject")};
 }

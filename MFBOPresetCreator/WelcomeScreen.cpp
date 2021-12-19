@@ -238,27 +238,6 @@ QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, 
   return lLabel;
 }
 
-void WelcomeScreen::overrideHTMLLinksColor(QString& aHTMLString)
-{
-  // If no color change is needed
-  if (this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_BLACK_THEME
-      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_DARK_THEME
-      && this->mSettings.display.applicationTheme != GUITheme::MITSURIOU_LIGHT_THEME)
-  {
-    return;
-  }
-
-  // Hacky links' colors override for some themes
-  const auto lLinksColorOverride(this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
-
-  // Go through the string to find the link colors
-  auto i{0};
-  while ((i = aHTMLString.indexOf("color:#0000ff", i)) != -1)
-  {
-    aHTMLString.replace(i, lLinksColorOverride.size(), lLinksColorOverride);
-  }
-}
-
 void WelcomeScreen::launchUpdateDialog()
 {
   const auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
@@ -352,7 +331,7 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 
     // Links color override
     auto lHTMLString{lBrowserCurrentVersionReleaseNotes->toHtml()};
-    this->overrideHTMLLinksColor(lHTMLString);
+    Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
     lBrowserCurrentVersionReleaseNotes->setHtml(lHTMLString);
   }
   else if (lVersionsInformation.stableVersionsListContains(lCurrentVersion))
@@ -363,7 +342,7 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 
     // Links color override
     auto lHTMLString{lBrowserCurrentVersionReleaseNotes->toHtml()};
-    this->overrideHTMLLinksColor(lHTMLString);
+    Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
     lBrowserCurrentVersionReleaseNotes->setHtml(lHTMLString);
   }
   else
@@ -379,7 +358,7 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 
   // Links color override
   auto lHTMLString{lBrowserStableReleaseNotes->toHtml()};
-  this->overrideHTMLLinksColor(lHTMLString);
+  Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
   lBrowserStableReleaseNotes->setHtml(lHTMLString);
 
   // Parsing error
@@ -421,7 +400,7 @@ void WelcomeScreen::displayUpdateMessage(const QString& aResult)
 
   // Links color override
   lHTMLString = lBrowserBetaReleaseNotes->toHtml();
-  this->overrideHTMLLinksColor(lHTMLString);
+  Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
   lBrowserBetaReleaseNotes->setHtml(lHTMLString);
 
   // Parsing error

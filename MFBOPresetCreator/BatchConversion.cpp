@@ -106,7 +106,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{new QGroupBox(tr("General").append("  "), this)};
+  auto lGroupBox{new QGroupBox(tr("Input location").append("  "), this)};
   Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "tune", this->mSettings.display.font.size);
   this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
   Utils::SetGroupBoxState(lGroupBox, false);
@@ -116,9 +116,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   auto lLayout{new QGridLayout(lGroupBox)};
   lLayout->setColumnStretch(0, 0);
   lLayout->setColumnStretch(1, 1);
-  lLayout->setColumnStretch(2, 1);
-  lLayout->setColumnStretch(3, 2);
-  lLayout->setColumnStretch(4, 0);
+  lLayout->setColumnStretch(2, 0);
   lLayout->setSpacing(10);
   lLayout->setContentsMargins(15, 20, 15, 15);
   lLayout->setAlignment(Qt::AlignTop);
@@ -128,15 +126,15 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   lLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
-  auto lInputPathLineEdit{new QLineEdit("", this)};
+  auto lInputPathLineEdit{new QLineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
-  lLayout->addWidget(lInputPathLineEdit, 0, 1, 1, 3);
+  lLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
   auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
-  lLayout->addWidget(lInputPathChooser, 0, 4);
+  lLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
@@ -164,40 +162,40 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
 
   // Human skeleton file
-  lLayout->addWidget(new QLabel(tr("Skeleton file (human):"), this), 1, 0);
+  lLayout->addWidget(new QLabel(tr("Skeleton file (human):"), this), 0, 0);
 
   auto lSkeletonChooserHuman{new QComboBox(this)};
   lSkeletonChooserHuman->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserHuman->setCursor(Qt::PointingHandCursor);
   lSkeletonChooserHuman->setObjectName(QString("skeleton_chooser_human"));
-  lLayout->addWidget(lSkeletonChooserHuman, 1, 1);
+  lLayout->addWidget(lSkeletonChooserHuman, 0, 1);
 
   // Refresh button
   auto lSkeletonRefresherHuman{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
-  lLayout->addWidget(lSkeletonRefresherHuman, 1, 2);
+  lLayout->addWidget(lSkeletonRefresherHuman, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, "", "Open the skeletons assets directory", "folder", lIconFolder)};
-  lLayout->addWidget(lOpenAssetsDirectoryHuman, 1, 3);
+  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder)};
+  lLayout->addWidget(lOpenAssetsDirectoryHuman, 0, 3);
 
   // Beast skeleton file
-  lLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 2, 0);
+  lLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 1, 0);
 
   auto lSkeletonChooserBeast{new QComboBox(this)};
   lSkeletonChooserBeast->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserBeast->setCursor(Qt::PointingHandCursor);
   lSkeletonChooserBeast->setObjectName(QString("skeleton_chooser_beast"));
-  lLayout->addWidget(lSkeletonChooserBeast, 2, 1);
+  lLayout->addWidget(lSkeletonChooserBeast, 1, 1);
 
   // Refresh button
   auto lSkeletonRefresherBeast{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
-  lLayout->addWidget(lSkeletonRefresherBeast, 2, 2);
+  lLayout->addWidget(lSkeletonRefresherBeast, 1, 2);
 
   this->populateSkeletonChoosers();
 
   // Open assets directory
-  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, "", "Open the skeletons assets directory", "folder", lIconFolder)};
-  lLayout->addWidget(lOpenAssetsDirectoryBeast, 2, 3);
+  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder)};
+  lLayout->addWidget(lOpenAssetsDirectoryBeast, 1, 3);
 
   // Event binding
   this->connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
@@ -712,7 +710,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     // XML file
     auto lSelectedBodyName{static_cast<BodyNameVersion>(lBodySelected)};
 
-    if (!Utils::generateXMLFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.getFiltersList(), true))
+    if (!Utils::CreateXMLFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.getFiltersList(), true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -724,7 +722,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     }
 
     // OSP file
-    if (!Utils::generateOSPFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
+    if (!Utils::CreateOSPFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -758,7 +756,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
       const auto lDestinationSkeletonRelativePath{lPreset.getSkeletonData().getRessourcePath().left(lSkeletonLastSlashPosition)};
       const auto lDestinationSkeletonFileName{lPreset.getSkeletonData().getRessourcePath().mid(lSkeletonLastSlashPosition + 1)};
 
-      if (!Utils::generateSkeletonFile(lSourceSkeletonReadPath, lPresetEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
+      if (!Utils::CreateSkeletonFile(lSourceSkeletonReadPath, lPresetEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
       {
         // Remove the directory since the generation is incomplete
         if (!lGenerateFilesInExistingMainDirectory)
@@ -780,10 +778,10 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
   // Open the directory where the file structure has been created
   if (this->mSettings.batchConversion.automaticallyOpenFinalDirectory)
   {
-    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the batch generated directory"));
+    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the batch generated directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.getFullOutputPath()));
   }
-  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the batch generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the batch generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.getFullOutputPath()));
   }
@@ -839,7 +837,7 @@ void BatchConversion::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "batchConversionOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
+  const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "batchConversionOutput", lPath);
   this->updateOutputPreview();

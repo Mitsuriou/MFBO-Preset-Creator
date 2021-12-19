@@ -67,6 +67,8 @@
         <file alias="eye">ressources/software/icons/black/eye.png</file>
         <file alias="duplicate">ressources/software/icons/black/duplicate.png</file>
         <file alias="mouth">ressources/software/icons/black/mouth.png</file>
+        <file alias="folder-search">ressources/software/icons/black/folder-search.png</file>
+        <file alias="done">ressources/software/icons/black/done.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
@@ -129,6 +131,8 @@
         <file alias="eye">ressources/software/icons/white/eye.png</file>
         <file alias="duplicate">ressources/software/icons/white/duplicate.png</file>
         <file alias="mouth">ressources/software/icons/white/mouth.png</file>
+        <file alias="folder-search">ressources/software/icons/white/folder-search.png</file>
+        <file alias="done">ressources/software/icons/white/done.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>
@@ -409,8 +413,9 @@
         <file alias="Roboto">ressources/fonts/Roboto-Regular.ttf</file>
     </qresource>
     <qresource prefix="/icons">
-        <file alias="green-info-circle">ressources/software/icons/common/green-info-circle.png</file>
-        <file alias="red-alert-circle">ressources/software/icons/common/red-alert-circle.png</file>
+        <file alias="green-info">ressources/software/icons/common/green-info.png</file>
+        <file alias="orange-warning">ressources/software/icons/common/orange-warning.png</file>
+        <file alias="red-dangerous">ressources/software/icons/common/red-dangerous.png</file>
     </qresource>
     <qresource prefix="/presets/body">
         <file alias="cbbe 3bbb 3ba/1.50">ressources/body/cbbe 3bbb 3ba/1.50.osp</file>

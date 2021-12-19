@@ -56,11 +56,13 @@ public:
   // Theming
   static bool IsThemeDark(const GUITheme& aTheme);
   static QString GetIconRessourceFolder(const GUITheme& aTheme);
+  static void OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme);
 
   // Skyrim related stuff
-  static bool generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset);
-  static bool generateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName, const bool aIsBatchConversionPreset);
-  static bool generateSkeletonFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName);
+  static bool CreateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset);
+  static bool CreateOSPFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, QString aMeshesPathBody, QString aMeshesPathFeet, QString aMeshesPathHands, const QString& aBodyName, const QString& aFeetName, const QString& aHandsName, const bool aIsBatchConversionPreset);
+  static void CreateTextureFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName);
+  static bool CreateSkeletonFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName);
 
   static BCGroupWidgetCallContext GetMeshTypeFromFileName(const QString& aFileName);
   template<typename T>

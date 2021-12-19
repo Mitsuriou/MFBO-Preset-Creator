@@ -156,7 +156,7 @@ void Utils::DisplayInfoMessage(QWidget* aParent, const QString& aTitle, const QS
 void Utils::DisplayWarningMessage(const QString& aMessage)
 {
   QMessageBox lWarningBox(QMessageBox::Icon::Warning, tr("Warning"), aMessage);
-  lWarningBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
+  lWarningBox.setIconPixmap(QPixmap(":/icons/orange-warning").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
   auto lOKButton{lWarningBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
   lOKButton->setCursor(Qt::PointingHandCursor);
@@ -218,7 +218,7 @@ ButtonClicked Utils::DisplayQuestionMessage(QWidget* aParent, const QString& aTi
 void Utils::DisplayErrorMessage(const QString& aMessage)
 {
   QMessageBox lWarningBox(QMessageBox::Icon::Critical, tr("Error"), aMessage);
-  lWarningBox.setIconPixmap(QPixmap(":/icons/red-alert-circle").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
+  lWarningBox.setIconPixmap(QPixmap(":/icons/red-dangerous").scaledToHeight(17 * 2)); // TODO: Multiply the size by the DPI scale
 
   auto lOKButton{lWarningBox.addButton(tr("OK"), QMessageBox::ButtonRole::AcceptRole)};
   lOKButton->setCursor(Qt::PointingHandCursor);
@@ -421,7 +421,28 @@ QString Utils::GetIconRessourceFolder(const GUITheme& aTheme)
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
-bool Utils::generateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset)
+void Utils::OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme)
+{
+  // If no color change is needed
+  if (aTheme != GUITheme::MITSURIOU_BLACK_THEME
+      && aTheme != GUITheme::MITSURIOU_DARK_THEME
+      && aTheme != GUITheme::MITSURIOU_LIGHT_THEME)
+  {
+    return;
+  }
+
+  // Hacky links' colors override for some themes
+  const auto lLinksColorOverride(aTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
+
+  // Go through the string to find the link colors
+  auto i{0};
+  while ((i = aHTMLString.indexOf("color:#0000ff", i)) != -1)
+  {
+    aHTMLString.replace(i, lLinksColorOverride.size(), lLinksColorOverride);
+  }
+}
+
+bool Utils::CreateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -460,20 +481,20 @@ bool Utils::generateXMLFile(const QString& aEntryDirectory, const bool aGenerate
   return true;
 }
 
-bool Utils::generateOSPFile(const QString& aEntryDirectory,
-                            const bool aGenerateFilesInExistingMainDirectory,
-                            const QString& aOSPXMLNames,
-                            const bool aMustUseBeastHands,
-                            const BodyNameVersion& aBodyNameVersion,
-                            const FeetNameVersion& aFeetNameVersion,
-                            const QString& aBodyslideSlidersetsNames,
-                            QString aMeshesPathBody,
-                            QString aMeshesPathFeet,
-                            QString aMeshesPathHands,
-                            const QString& aBodyName,
-                            const QString& aFeetName,
-                            const QString& aHandsName,
-                            const bool aIsBatchConversionPreset)
+bool Utils::CreateOSPFile(const QString& aEntryDirectory,
+                          const bool aGenerateFilesInExistingMainDirectory,
+                          const QString& aOSPXMLNames,
+                          const bool aMustUseBeastHands,
+                          const BodyNameVersion& aBodyNameVersion,
+                          const FeetNameVersion& aFeetNameVersion,
+                          const QString& aBodyslideSlidersetsNames,
+                          QString aMeshesPathBody,
+                          QString aMeshesPathFeet,
+                          QString aMeshesPathHands,
+                          const QString& aBodyName,
+                          const QString& aFeetName,
+                          const QString& aHandsName,
+                          const bool aIsBatchConversionPreset)
 {
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
@@ -520,7 +541,34 @@ bool Utils::generateOSPFile(const QString& aEntryDirectory,
   return true;
 }
 
-bool Utils::generateSkeletonFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName)
+void Utils::CreateTextureFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName)
+{
+  // Create the directory in which the texture file will be created
+  auto lDestinationDirectory{aDestinationEntryDirectory + QDir::separator() + aDestinationRelativePath};
+  QDir().mkpath(lDestinationDirectory);
+
+  // Full destination path
+  auto lDestinationFullPath{QString("%1%2%3.dds").arg(lDestinationDirectory, QDir::separator(), aDestinationFileName)};
+
+  // If the preset is being generated on an already existing directory, remove the file if it already exists
+  if (QFile::exists(lDestinationFullPath))
+  {
+    auto lFile{QFile(lDestinationFullPath)};
+    lFile.setPermissions(QFile::ReadUser | QFile::WriteUser);
+    lFile.remove();
+  }
+
+  // Source file path
+  auto lSourceFilPath{QString("%1%2%3").arg(aSourcePath, QDir::separator(), aDestinationFileName)};
+
+  // Try to copy the texture file
+  if (!QFile::copy(lSourceFilPath, lDestinationFullPath))
+  {
+    Utils::DisplayWarningMessage(tr("The texture file \"%1\" was not found or could not be copied.").arg(aDestinationFileName));
+  }
+}
+
+bool Utils::CreateSkeletonFile(const QString& aSourcePath, const QString& aDestinationEntryDirectory, const QString& aDestinationRelativePath, const QString& aDestinationFileName)
 {
   if (!aDestinationRelativePath.isEmpty())
   {
@@ -1086,7 +1134,7 @@ void Utils::SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFileP
     // Project file save: success window
     if (aParent && !aIconFolder.isEmpty())
     {
-      Utils::DisplayInfoMessage(aParent, tr("Project successfully saved"), tr("The project file has successfully been saved to \"%1\".").arg(aFilePath), aIconFolder, "alert-circle", tr("OK"));
+      Utils::DisplayInfoMessage(aParent, tr("Project successfully saved"), tr("The project file has successfully been saved to \"%1\".").arg(aFilePath), aIconFolder, "done", tr("OK"));
     }
   }
   else if (aParent && !aIconFolder.isEmpty())
@@ -1605,7 +1653,8 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
     {"mainWindowOutput", ""},
     {"retargetingToolInput", ""},
     {"retargetingToolOutput", ""},
-    {"texturesAssistantInput", ""}};
+    {"texturesAssistantInput", ""},
+    {"texturesAssistantOutput", ""}};
 
   for (const auto& lKey : lVariantMap.keys())
   {

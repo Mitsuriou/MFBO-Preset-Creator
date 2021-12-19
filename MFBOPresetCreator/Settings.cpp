@@ -185,7 +185,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   // WINDOW WIDTH
   lTabLayout->addWidget(new QLabel(tr("Default main window width:"), this), 6, 0);
 
-  auto lWinWidthInput{new QLineEdit("", this)};
+  auto lWinWidthInput{new QLineEdit(this)};
   lWinWidthInput->setObjectName(QString("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 9999, this));
   lTabLayout->addWidget(lWinWidthInput, 7, 0);
@@ -193,7 +193,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   // WINDOW HEIGHT
   lTabLayout->addWidget(new QLabel(tr("Default main window height:"), this), 8, 0);
 
-  auto lWinHeightInput{new QLineEdit("", this)};
+  auto lWinHeightInput{new QLineEdit(this)};
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
   lTabLayout->addWidget(lWinHeightInput, 9, 0);
@@ -437,6 +437,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->mLastPaths.find("retargetingToolInput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths.find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths.find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: output"), this->mLastPaths.find("texturesAssistantOutput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths.find("lastLoadedProject")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Saved project"), this->mLastPaths.find("lastSavedProject")->second, lIconFolder, QString("cross"));
 

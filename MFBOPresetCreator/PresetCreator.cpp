@@ -458,7 +458,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, "", "Open the skeletons assets directory", "folder", lIconFolder, "open_skeletons_assets_directory")};
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder, "open_skeletons_assets_directory")};
   lSkeletonGridLayout->addWidget(lOpenAssetsDirectory, 1, 3);
 
   // Skeleton path
@@ -1084,7 +1084,7 @@ void PresetCreator::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
   const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "mainWindowOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
+  const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "mainWindowOutput", lPath);
   this->updateOutputPreview();
@@ -1260,7 +1260,7 @@ void PresetCreator::generateDirectoryStructure()
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), this->mTargetBodyMesh, this->mTargetFeetMesh)};
 
-  if (!Utils::generateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lUserFilters, false))
+  if (!Utils::CreateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lUserFilters, false))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1272,7 +1272,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // OSP file
-  if (!Utils::generateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, false))
+  if (!Utils::CreateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, false))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1297,7 +1297,7 @@ void PresetCreator::generateDirectoryStructure()
     Utils::CleanPathString(lDestinationSkeletonRelativePath);
     auto lDestinationSkeletonFileName{this->findChild<QLineEdit*>(QString("skeleton_name"))->text()};
 
-    if (!Utils::generateSkeletonFile(lSourceSkeletonReadPath, lEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
+    if (!Utils::CreateSkeletonFile(lSourceSkeletonReadPath, lEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -1318,10 +1318,10 @@ void PresetCreator::generateDirectoryStructure()
   // Open the directory where the file structure has been created
   if (this->mSettings.presetCreator.automaticallyOpenFinalDirectory)
   {
-    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the generated directory"));
+    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the generated directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
-  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }

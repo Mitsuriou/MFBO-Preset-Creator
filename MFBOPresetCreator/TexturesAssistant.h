@@ -15,23 +15,16 @@ protected:
   void reject() override;
 
 private:
-  const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths;
-  bool mHasUserDoneSomething;
-  QString mScannedDirName;
-
   struct ScannedData
   {
-  public:
-    // The map is storing <path+fileName, <path, fileName>>
-    std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> groupedTextures;
-    // The map is storing <path+fileName, <path, fileName>>
-    std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> otherTextures;
+    // std::vector<relative_path, file_name_with_extension>
+    std::vector<std::pair<QString, QString>> groupedTextures;
+    // std::vector<relative_path, file_name_with_extension>
+    std::vector<std::pair<QString, QString>> otherTextures;
   };
 
   struct GroupedData
   {
-  public:
     std::map<std::string, std::vector<QString>> headTextures;
     std::map<std::string, std::vector<QString>> handsTextures;
     std::map<std::string, std::vector<QString>> bodyTextures;
@@ -39,22 +32,38 @@ private:
     std::map<std::string, std::vector<QString>> mouthTextures;
   };
 
+  const Struct::Settings mSettings;
+  std::map<QString, QString>* mLastPaths;
+  bool mHasUserDoneSomething;
+  int mMinimumFirstColumnWidth;
+  TexturesAssistant::ScannedData mScannedFiles;
+
+  // GUI creation
   void setWindowProperties();
   void initializeGUI();
   void displayHintZone();
+  void setupTexturesSetGUI(QGridLayout& aLayout);
+  void setupOutputBox(QGridLayout& aLayout);
+  void setupButtons(QGridLayout& aLayout);
   void deleteAlreadyExistingWindowBottom() const;
 
-  TexturesAssistant::ScannedData scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
-  void displayFoundTextures(QGridLayout* aLayout, const TexturesAssistant::ScannedData& aScannedData);
+  // Files scan and results display in the GUI
+  void scanForTexturesFiles(const QString& aRootDir, const QString& aFileExtension);
+  void displayTexturesFilesList();
   void createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout);
 
-  //#pragma region PRIVATE_SLOTS
-  void chooseInputDirectory();
-  void launchSearchProcess();
+  void updateOutputPreview();
+
+  void generateTexturesStructure();
 
   // GUI widgets events
+  void chooseInputDirectory();
+  void launchSearchProcess();
+  void populateTexturesSetChooser();
+  void openTexturesSetsAssetsDirectory();
+  void useOnlySubdirStateChanged(int);
+  void chooseExportDirectory();
   void groupBoxChecked(bool aIsChecked);
-  //#pragma endregion PRIVATE_SLOTS
 
   explicit TexturesAssistant(const TexturesAssistant&) = delete;
   TexturesAssistant& operator=(const TexturesAssistant&) = delete;

@@ -25,7 +25,6 @@ private:
   void initializeGUI();
   // Utils functions
   QLabel* createTitleLabel(QWidget* aParent, const QString& aText, const int aAppFontSize);
-  void overrideHTMLLinksColor(QString& aHTMLString);
   // Dialog
   void launchUpdateDialog();
   void openIncomingFeatures();

@@ -59,6 +59,9 @@ public:
   static DLLEXP std::pair<int, int> GetSplittedNameVersionFromBodyVersionCompatibility(const int aBodyVersion);
   static DLLEXP std::pair<BodyNameVersion, FeetNameVersion> ReadBodyFeetModsCompatibility(const int aBodyName, const int aBodyVersion, const int aFeetIndex);
 
+  //
+  static QStringList GetKnownTexturesFilesNames();
+
   // Other data lists
   static QStringList GetWindowOpeningModes();
   static QStringList GetDialogOpeningModes();

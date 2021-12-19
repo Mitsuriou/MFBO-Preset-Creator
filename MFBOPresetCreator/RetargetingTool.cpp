@@ -131,7 +131,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // Input path
   lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 1, 0);
 
-  auto lInputPathLineEdit{new QLineEdit("", this)};
+  auto lInputPathLineEdit{new QLineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1);
@@ -186,7 +186,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupPathLabel->setObjectName(QString("backup_path_label"));
   lBackupGridLayout->addWidget(lBackupPathLabel, 1, 0);
 
-  auto lBackupPathLineEdit{new QLineEdit("", this)};
+  auto lBackupPathLineEdit{new QLineEdit(this)};
   lBackupPathLineEdit->setReadOnly(true);
   lBackupPathLineEdit->setObjectName(QString("backup_path_directory"));
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
@@ -199,7 +199,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lLabelSubDirectoryBackupPath->setObjectName(QString("backup_subdir_label"));
   lBackupGridLayout->addWidget(lLabelSubDirectoryBackupPath, 2, 0);
 
-  auto lBackupSubpathLineEdit{new QLineEdit("", this)};
+  auto lBackupSubpathLineEdit{new QLineEdit(this)};
   lBackupSubpathLineEdit->setObjectName(QString("backup_path_subdirectory"));
   lBackupGridLayout->addWidget(lBackupSubpathLineEdit, 2, 1);
 
@@ -262,7 +262,7 @@ void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
   const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
+  const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
 
@@ -276,7 +276,7 @@ void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
   const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
-  auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
+  const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
   this->updateBackupPreview();
@@ -771,10 +771,10 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Open the directory where the file structure has been created
   if (this->mSettings.presetsRetargeting.automaticallyOpenFinalDirectory)
   {
-    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"));
+    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the retargeted directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
   }
-  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info-circle", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
   }

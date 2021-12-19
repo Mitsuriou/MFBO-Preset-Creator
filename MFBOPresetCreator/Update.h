@@ -35,7 +35,6 @@ private:
   // GUI functions
   void setWindowProperties();
   void initializeGUI();
-  void overrideHTMLLinksColor(QString& aHTMLString);
 
   // Check for updates
   void checkForUpdate();

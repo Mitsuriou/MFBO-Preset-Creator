@@ -142,7 +142,7 @@ QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)
   auto lDataContainer{new QGridLayout(aParent)};
   lDataContainer->setObjectName(QString("data_container"));
   lDataContainer->setAlignment(Qt::AlignTop);
-  lDataContainer->setContentsMargins(0, 0, 0, 0);
+  lDataContainer->setContentsMargins(10, 10, 10, 10);
 
   lMainWidget->setLayout(lDataContainer);
 
@@ -181,14 +181,22 @@ QPushButton* ComponentFactory::CreateTargetMeshesPickerLine(QWidget* aParent,
   return lTargetMeshesPicker;
 }
 
-void ComponentFactory::CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const int aMinimumFirstColumnWidth, const int aFontSize)
+void ComponentFactory::CreateOutputBox(QWidget* aParent,
+                                       QGridLayout& aLayout,
+                                       const int aLayoutRow,
+                                       const int aLayoutCol,
+                                       const QString& aIconFolder,
+                                       const int aMinimumFirstColumnWidth,
+                                       const int aFontSize,
+                                       const int aRowSpan,
+                                       const int aColumnSpan)
 {
   // Output group box
   auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
   Utils::AddIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree", aFontSize);
   Utils::SetGroupBoxState(lOutputGroupBox, false);
   lOutputGroupBox->setObjectName(QString("output_group_box"));
-  aLayout.addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol);
+  aLayout.addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol, aRowSpan, aColumnSpan);
 
   // Grid layout
   auto lOutputGridLayout{new QGridLayout(lOutputGroupBox)};

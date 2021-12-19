@@ -279,43 +279,42 @@
         <translation>批次轉換</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="109"/>
         <source>General</source>
-        <translation>一般</translation>
+        <translation type="vanished">一般</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="128"/>
+        <location filename="BatchConversion.cpp" line="126"/>
         <source>Input path:</source>
         <translation>匯入檔案路徑:</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="138"/>
+        <location filename="BatchConversion.cpp" line="136"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="151"/>
+        <location filename="BatchConversion.cpp" line="149"/>
         <source>Skeleton</source>
         <translation>骨架</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="167"/>
+        <location filename="BatchConversion.cpp" line="165"/>
         <source>Skeleton file (human):</source>
         <translation>骨架檔案(人類):</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="175"/>
-        <location filename="BatchConversion.cpp" line="187"/>
+        <location filename="BatchConversion.cpp" line="174"/>
+        <location filename="BatchConversion.cpp" line="191"/>
         <source>Refresh</source>
         <translation>重新整理</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="179"/>
+        <location filename="BatchConversion.cpp" line="182"/>
         <source>Skeleton file (beast):</source>
         <translation>骨架檔案(生物):</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="203"/>
+        <location filename="BatchConversion.cpp" line="213"/>
         <source>BodySlide</source>
         <translation>BodySlide</translation>
     </message>
@@ -324,70 +323,70 @@
         <translation type="vanished">目標身形與版本:</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="290"/>
+        <location filename="BatchConversion.cpp" line="300"/>
         <source>Scan tweaks</source>
         <translation>偵測選項</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="303"/>
+        <location filename="BatchConversion.cpp" line="313"/>
         <source>Smart search (only files with a name matching a certain pattern are listed)</source>
         <oldsource>Smart search (only files with a name matching a certain pattern are listed) - recommended</oldsource>
         <translation>智能搜尋 (列出符合特定格式的檔案)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="308"/>
+        <location filename="BatchConversion.cpp" line="318"/>
         <source>Advanced search (every single .nif file is listed)</source>
         <oldsource>Advanced search (detect every single .nif file)</oldsource>
         <translation>進階搜尋 (列出所有.nif檔)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="314"/>
+        <location filename="BatchConversion.cpp" line="324"/>
         <source>Only scan the &quot;meshes&quot; subdirectories of each mod</source>
         <translation>只掃描每個Mod中的&quot;meshes&quot;資料夾</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="318"/>
+        <location filename="BatchConversion.cpp" line="328"/>
         <source>Clear the irrelevant entries (mods which do not contain any body, hands and feet mesh)</source>
         <oldsource>Clear the irrelevent entries (mods which do not contain a boby, hands or feet mesh)</oldsource>
         <translation>清除無關條目(沒有任何身體、手部、腳部模型之Mod)</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="331"/>
+        <location filename="BatchConversion.cpp" line="341"/>
         <source>Generation tweaks</source>
         <translation>輸出設定</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="344"/>
+        <location filename="BatchConversion.cpp" line="354"/>
         <source>Generate everything for the &quot;Data&quot; directory directly</source>
         <translation>直接輸出所有檔案至&quot;Data&quot;資料夾</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="349"/>
+        <location filename="BatchConversion.cpp" line="359"/>
         <source>Generate each preset in a dedicated directory</source>
         <translation>輸出檔案至各Mod資料夾</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="364"/>
+        <location filename="BatchConversion.cpp" line="374"/>
         <source>Launch the scan of the directory</source>
         <translation>開始掃描資料夾</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="511"/>
+        <location filename="BatchConversion.cpp" line="521"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation>資料夾:&quot;%1&quot;已存在。是否確定在此資料夾輸出檔案?</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="514"/>
+        <location filename="BatchConversion.cpp" line="524"/>
         <source>Continue the search</source>
         <translation>繼續搜尋</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="515"/>
+        <location filename="BatchConversion.cpp" line="525"/>
         <source>Cancel the search</source>
         <translation>取消搜尋</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="635"/>
+        <location filename="BatchConversion.cpp" line="636"/>
         <source>No data found for the given input directory. Please try to change it before retrying again.
 
 Note: If you want to convert a single mod only, please use the &quot;Assisted Conversion&quot; tool instead.
@@ -405,44 +404,49 @@ Note: 如果只想要轉換單獨一個Mod，可以使用輔助轉換工具(Assi
 Note: ModOrganizer2使用者請使用你的Mod路徑為輸入路徑。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="774"/>
+        <location filename="BatchConversion.cpp" line="775"/>
         <source>Batch generation successful</source>
         <translation>批次轉換輸出成功</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="775"/>
+        <location filename="BatchConversion.cpp" line="776"/>
         <source>Every preset has been correctly generated.</source>
         <translation>成功輸出所有Preset。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="780"/>
-        <location filename="BatchConversion.cpp" line="783"/>
+        <location filename="BatchConversion.cpp" line="781"/>
+        <location filename="BatchConversion.cpp" line="784"/>
         <source>Open the batch generated directory</source>
         <translation>開啟批次輸出檔案資料夾</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="861"/>
+        <location filename="BatchConversion.cpp" line="867"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="471"/>
+        <location filename="BatchConversion.cpp" line="481"/>
         <source>Error: no path given to search for files.</source>
         <translation>錯誤:未指定搜尋路徑。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="493"/>
+        <location filename="BatchConversion.cpp" line="109"/>
+        <source>Input location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="BatchConversion.cpp" line="503"/>
         <source>Error: no path given to export the files.</source>
         <translation>錯誤:未指定輸出路徑。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="500"/>
+        <location filename="BatchConversion.cpp" line="510"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>錯誤:無效的輸出路徑。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="669"/>
+        <location filename="BatchConversion.cpp" line="670"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -451,7 +455,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="510"/>
+        <location filename="BatchConversion.cpp" line="520"/>
         <source>Already existing directory</source>
         <translation>已存在資料夾</translation>
     </message>
@@ -468,17 +472,17 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="obsolete">取消產生檔案</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="538"/>
+        <location filename="BatchConversion.cpp" line="548"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="538"/>
+        <location filename="BatchConversion.cpp" line="548"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="577"/>
+        <location filename="BatchConversion.cpp" line="587"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
@@ -511,12 +515,12 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="obsolete">所有檔案皆成功輸出，可以關閉程式或者輸出其他角色的BodySlide檔案!</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="783"/>
+        <location filename="BatchConversion.cpp" line="784"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="928"/>
+        <location filename="BatchConversion.cpp" line="934"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
@@ -533,12 +537,12 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">Bodyslide程式中使用的Preset名稱。</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="226"/>
+        <location filename="BatchConversion.cpp" line="236"/>
         <source>BodySlide filters:</source>
         <translation>BodySlide分類標籤:</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="245"/>
+        <location filename="BatchConversion.cpp" line="255"/>
         <source>Edit BodySlide filters sets</source>
         <translation>管理BodySlide分類群組</translation>
     </message>
@@ -574,9 +578,9 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="BatchConversionPicker.cpp" line="44"/>
-        <location filename="BatchConversionPicker.cpp" line="942"/>
-        <location filename="BatchConversionPicker.cpp" line="988"/>
-        <location filename="BatchConversionPicker.cpp" line="1012"/>
+        <location filename="BatchConversionPicker.cpp" line="934"/>
+        <location filename="BatchConversionPicker.cpp" line="980"/>
+        <location filename="BatchConversionPicker.cpp" line="1004"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation>回到批次轉換輸出選取工具(Batch Conversion:results picker)</translation>
     </message>
@@ -694,52 +698,52 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>批次產生檔案</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="834"/>
+        <location filename="BatchConversionPicker.cpp" line="826"/>
         <source>Error: No preset could be made from available data.</source>
         <translation>錯誤: 無法從當前檔案中產生身形(Preset)。</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="843"/>
+        <location filename="BatchConversionPicker.cpp" line="835"/>
         <source>Create new preset(s)?</source>
         <translation>產生新身形(Preset(s))?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="844"/>
+        <location filename="BatchConversionPicker.cpp" line="836"/>
         <source>Do you want to create %1 new preset(s)?</source>
         <translation>確定要產生 %1 新身形(preset(s))?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="847"/>
+        <location filename="BatchConversionPicker.cpp" line="839"/>
         <source>Create the %1 new preset(s)</source>
         <translation>產生 %1 個新身形(preset(s))</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="848"/>
+        <location filename="BatchConversionPicker.cpp" line="840"/>
         <source>Do not create the %1 new preset(s)</source>
         <translation>不要產生 %1 個新身形(preset(s))</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="913"/>
+        <location filename="BatchConversionPicker.cpp" line="905"/>
         <source>No preset created</source>
         <translation>未產生任何身形(Presets)檔案</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="914"/>
+        <location filename="BatchConversionPicker.cpp" line="906"/>
         <source>You have not created any preset. Batch conversion: results picker window is going to be closed.</source>
         <translation>未產生任何身形(Presets)檔案。批次轉換輸出選取(Batch conversion: results picker)視窗即將關閉。</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="917"/>
+        <location filename="BatchConversionPicker.cpp" line="909"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="937"/>
+        <location filename="BatchConversionPicker.cpp" line="929"/>
         <source>Invalid preset detected</source>
         <translation>偵測到不符合的身形</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="938"/>
+        <location filename="BatchConversionPicker.cpp" line="930"/>
         <source>The preset number %1 is not valid.
 
 A preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.
@@ -757,12 +761,12 @@ Would you like to delete this invalid preset and continue, or cancel the validat
 是否要刪除此項並繼續作業? 或者取消作業並修正此身形?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="941"/>
+        <location filename="BatchConversionPicker.cpp" line="933"/>
         <source>Delete the preset number %1 and continue the generation</source>
         <translation>刪除第 %1 項並繼續作業</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="968"/>
+        <location filename="BatchConversionPicker.cpp" line="960"/>
         <source>The presets number %1 and number %2 have the same BodySlide files names &quot;%3&quot; defined.
 
 Please make sure the files names are different before trying to batch generate the files again.</source>
@@ -771,12 +775,12 @@ Please make sure the files names are different before trying to batch generate t
 請在確認所有檔名不一樣之後重試。</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="983"/>
+        <location filename="BatchConversionPicker.cpp" line="975"/>
         <source>No valid preset</source>
         <translation>未有可用的身形(Preset)</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="984"/>
+        <location filename="BatchConversionPicker.cpp" line="976"/>
         <source>No valid preset has been found.
 
 Would you like to close the batch conversion: results picker window now?</source>
@@ -785,18 +789,18 @@ Would you like to close the batch conversion: results picker window now?</source
 請問是否關閉批次轉換輸出選項(batch conversion: result picker)視窗?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="987"/>
+        <location filename="BatchConversionPicker.cpp" line="979"/>
         <source>Close the batch conversion: results picker window</source>
         <translation>關閉批次轉換輸出選項(batch conversion: result picker)視窗</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="1007"/>
+        <location filename="BatchConversionPicker.cpp" line="999"/>
         <source>Start batch generation now?</source>
         <oldsource>Start bacth generation now?</oldsource>
         <translation>開始批次轉換?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="1008"/>
+        <location filename="BatchConversionPicker.cpp" line="1000"/>
         <source>%1 valid preset(s) has (have) been found.
 
 Would you like to generate it (them) now?</source>
@@ -805,7 +809,7 @@ Would you like to generate it (them) now?</source>
 是否立即生成檔案?</translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="1011"/>
+        <location filename="BatchConversionPicker.cpp" line="1003"/>
         <source>Generate the preset(s) files on my disk</source>
         <translation>在電腦中生成身形檔案</translation>
     </message>
@@ -937,32 +941,32 @@ Targeted feet: -</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="187"/>
+        <location filename="ComponentFactory.cpp" line="195"/>
         <source>Files generation&apos;s output location</source>
         <translation>輸出檔案設定</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="205"/>
+        <location filename="ComponentFactory.cpp" line="213"/>
         <source>Output directory path:</source>
         <translation>輸出資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="213"/>
+        <location filename="ComponentFactory.cpp" line="221"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="217"/>
+        <location filename="ComponentFactory.cpp" line="225"/>
         <source>Output subdirectory name/path:</source>
         <translation>輸出子資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="224"/>
+        <location filename="ComponentFactory.cpp" line="232"/>
         <source>Use only subdirectory path?</source>
         <translation>使用子資料夾路徑?</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="226"/>
+        <location filename="ComponentFactory.cpp" line="234"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation>勾選此欄以輸出檔案於子資料夾路徑(風險自負)</translation>
     </message>
@@ -971,7 +975,7 @@ Targeted feet: -</source>
         <translation type="vanished">勾選此欄以輸出檔案於子資料夾路徑(風險自負)。</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="230"/>
+        <location filename="ComponentFactory.cpp" line="238"/>
         <source>Preview:</source>
         <translation>預覽:</translation>
     </message>
@@ -979,44 +983,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1253"/>
+        <location filename="DataLists.cpp" line="1280"/>
         <source>Minimized</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1254"/>
-        <location filename="DataLists.cpp" line="1260"/>
+        <location filename="DataLists.cpp" line="1281"/>
+        <location filename="DataLists.cpp" line="1287"/>
         <source>Windowed</source>
         <translation>視窗化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1255"/>
-        <location filename="DataLists.cpp" line="1261"/>
+        <location filename="DataLists.cpp" line="1282"/>
+        <location filename="DataLists.cpp" line="1288"/>
         <source>Maximized</source>
         <translation>最大化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1289"/>
+        <location filename="DataLists.cpp" line="1316"/>
         <source>[ignore]</source>
         <translation>[忽略]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1290"/>
+        <location filename="DataLists.cpp" line="1317"/>
         <source>Body mesh</source>
         <translation>身體模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1291"/>
+        <location filename="DataLists.cpp" line="1318"/>
         <source>Feet mesh</source>
         <translation>腳部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1292"/>
+        <location filename="DataLists.cpp" line="1319"/>
         <source>Hands mesh</source>
         <translation>手部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1293"/>
+        <location filename="DataLists.cpp" line="1320"/>
         <source>Skeleton mesh</source>
         <translation>骨架模型</translation>
     </message>
@@ -1079,7 +1083,7 @@ Targeted feet: -</source>
         <location filename="MFBOPresetCreator.cpp" line="192"/>
         <source>Save as...</source>
         <oldsource>Save as</oldsource>
-        <translation type="unfinished">另存新檔</translation>
+        <translation>另存新檔...</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="199"/>
@@ -1415,9 +1419,9 @@ Do you want to download it now?</source>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="386"/>
-        <location filename="PresetCreator.cpp" line="485"/>
-        <location filename="PresetCreator.cpp" line="542"/>
-        <location filename="PresetCreator.cpp" line="563"/>
+        <location filename="PresetCreator.cpp" line="490"/>
+        <location filename="PresetCreator.cpp" line="548"/>
+        <location filename="PresetCreator.cpp" line="569"/>
         <source>Preview:</source>
         <translation>預覽:</translation>
     </message>
@@ -1457,27 +1461,27 @@ Do you want to download it now?</source>
         <translation>骨架檔案:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="456"/>
+        <location filename="PresetCreator.cpp" line="457"/>
         <source>Refresh</source>
         <translation>重新整理</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="460"/>
+        <location filename="PresetCreator.cpp" line="465"/>
         <source>Skeleton path:</source>
         <translation>骨架路徑:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="470"/>
+        <location filename="PresetCreator.cpp" line="475"/>
         <source>Skeleton file name:</source>
         <translation>骨架檔案名稱:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="480"/>
+        <location filename="PresetCreator.cpp" line="485"/>
         <source>.nif</source>
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="512"/>
+        <location filename="PresetCreator.cpp" line="518"/>
         <source>BodySlide output</source>
         <translation>BodySlide 輸出</translation>
     </message>
@@ -1486,32 +1490,32 @@ Do you want to download it now?</source>
         <translation type="vanished">目標身形與版本:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="535"/>
+        <location filename="PresetCreator.cpp" line="541"/>
         <source>BodySlide files names:</source>
         <translation>BodySlide檔案名稱:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="554"/>
+        <location filename="PresetCreator.cpp" line="560"/>
         <source>Presets names:</source>
         <translation>身形(Preset)名稱:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="555"/>
+        <location filename="PresetCreator.cpp" line="561"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation>此欄顯示輸出檔案將會顯示在BodySlide中的名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="570"/>
+        <location filename="PresetCreator.cpp" line="576"/>
         <source>BodySlide filters:</source>
         <translation>BodySlide分類標籤:</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="589"/>
+        <location filename="PresetCreator.cpp" line="595"/>
         <source>Edit BodySlide filters sets</source>
         <translation>管理BodySlide分類群組</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="638"/>
+        <location filename="PresetCreator.cpp" line="644"/>
         <source>Generate the files on my computer</source>
         <translation>在電腦中生成檔案</translation>
     </message>
@@ -1538,7 +1542,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">錯誤:無法產生預設骨架檔案。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1150"/>
+        <location filename="PresetCreator.cpp" line="1164"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1561,12 +1565,12 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1132"/>
+        <location filename="PresetCreator.cpp" line="1146"/>
         <source>Error: no path given to export the files.</source>
         <translation>錯誤:未指定輸出路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1139"/>
+        <location filename="PresetCreator.cpp" line="1153"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>錯誤:無效的輸出路徑。</translation>
     </message>
@@ -1575,70 +1579,70 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">錯誤:無法產生資料夾:&quot;%1&quot;。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1158"/>
+        <location filename="PresetCreator.cpp" line="1172"/>
         <source>Already existing directory</source>
         <translation>已存在資料夾</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1159"/>
+        <location filename="PresetCreator.cpp" line="1173"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <oldsource>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</oldsource>
         <translation>資料夾:&quot;%1&quot;已存在。是否確定在此資料夾輸出檔案?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1162"/>
+        <location filename="PresetCreator.cpp" line="1176"/>
         <source>Continue the files generation</source>
         <translation>繼續執行產生檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1163"/>
+        <location filename="PresetCreator.cpp" line="1177"/>
         <source>Cancel the files generation</source>
         <translation>取消產生檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1180"/>
+        <location filename="PresetCreator.cpp" line="1194"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>錯誤:未指定身體檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1193"/>
+        <location filename="PresetCreator.cpp" line="1207"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>錯誤:未指定腳部檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1206"/>
+        <location filename="PresetCreator.cpp" line="1220"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>錯誤:未指定手部檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1220"/>
+        <location filename="PresetCreator.cpp" line="1234"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>錯誤:未指定BodySlide檔案名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1234"/>
+        <location filename="PresetCreator.cpp" line="1248"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>錯誤:未指定BodySlide檔案名稱(顯示在BodySlide程式中的名稱)。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1301"/>
+        <location filename="PresetCreator.cpp" line="1315"/>
         <source>Generation successful</source>
         <translation>檔案輸出成功</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1302"/>
+        <location filename="PresetCreator.cpp" line="1316"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>所有檔案皆成功輸出，可以關閉程式或者輸出其他角色的BodySlide檔案!</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1307"/>
-        <location filename="PresetCreator.cpp" line="1310"/>
+        <location filename="PresetCreator.cpp" line="1321"/>
+        <location filename="PresetCreator.cpp" line="1324"/>
         <source>Open the generated directory</source>
         <oldsource>Open the retargeted directory</oldsource>
         <translation>開啟輸出檔案資料夾</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1310"/>
+        <location filename="PresetCreator.cpp" line="1324"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1648,13 +1652,13 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>若NPC/隨從使用獨立骨架，請勾選此欄</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1357"/>
+        <location filename="PresetCreator.cpp" line="1371"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1427"/>
+        <location filename="PresetCreator.cpp" line="1441"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
@@ -1673,35 +1677,35 @@ Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="93"/>
+        <location filename="ReleaseNotesViewer.cpp" line="72"/>
         <source>Contacting GitHub.com...</source>
         <translation>正在連接Github.com...</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="126"/>
+        <location filename="ReleaseNotesViewer.cpp" line="105"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>找不到更新檔...
 請確認網路連線狀況。</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="136"/>
+        <location filename="ReleaseNotesViewer.cpp" line="115"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>無法取得Github的API...
 請稍後重試。</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="140"/>
+        <location filename="ReleaseNotesViewer.cpp" line="119"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>以下為Beta版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="145"/>
+        <location filename="ReleaseNotesViewer.cpp" line="124"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>以下為正式版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="150"/>
+        <location filename="ReleaseNotesViewer.cpp" line="129"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>找不到版本 &quot;%1&quot; 的細節。</translation>
     </message>
@@ -2103,7 +2107,12 @@ Targeted feet: %2</source>
         <translation>輸出完成後動作:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="851"/>
+        <location filename="Settings.cpp" line="440"/>
+        <source>Textures Assist.: output</source>
+        <translation>材質(Textures)助手: 輸出</translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="852"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
@@ -2243,37 +2252,37 @@ Targeted feet: %2</source>
         <translation>材質(Textures)助手: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="440"/>
+        <location filename="Settings.cpp" line="441"/>
         <source>Loaded project</source>
         <translation>當前運行檔案(Project)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="441"/>
+        <location filename="Settings.cpp" line="442"/>
         <source>Saved project</source>
         <translation>已儲存檔案(Project)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="456"/>
+        <location filename="Settings.cpp" line="457"/>
         <source>Restore default</source>
         <translation>回覆預設</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="459"/>
+        <location filename="Settings.cpp" line="460"/>
         <source>Save and close</source>
         <translation>儲存後關閉</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="462"/>
+        <location filename="Settings.cpp" line="463"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="766"/>
+        <location filename="Settings.cpp" line="767"/>
         <source>Application settings changed</source>
         <translation>已更改程式設定</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="767"/>
+        <location filename="Settings.cpp" line="768"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
@@ -2284,12 +2293,12 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="vanished">已儲存所有設定。有需要重啟才能生效的設定。 是否立即重啟程式?</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="770"/>
+        <location filename="Settings.cpp" line="771"/>
         <source>Restart now</source>
         <translation>立即重啟</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="771"/>
+        <location filename="Settings.cpp" line="772"/>
         <source>Go back to the application and restart later</source>
         <translation>回到應用程式稍後再重啟</translation>
     </message>
@@ -2384,112 +2393,213 @@ Would you like to restart the application now (you will lose all unsaved data)?<
 <context>
     <name>TexturesAssistant</name>
     <message>
-        <location filename="TexturesAssistant.cpp" line="46"/>
+        <location filename="TexturesAssistant.cpp" line="49"/>
         <source>Closing</source>
         <translation>關閉中</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="47"/>
+        <location filename="TexturesAssistant.cpp" line="50"/>
         <source>Do you want to close the window?</source>
         <translation>確定關閉視窗?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="50"/>
+        <location filename="TexturesAssistant.cpp" line="53"/>
         <source>Close the window</source>
         <translation>關閉視窗</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="51"/>
+        <location filename="TexturesAssistant.cpp" line="54"/>
         <source>Go back to the textures assistant window</source>
         <translation>回到貼圖助手(textures assistant)視窗</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="77"/>
+        <location filename="TexturesAssistant.cpp" line="80"/>
         <source>Textures Assistant</source>
         <translation>貼圖(Textures)助手</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="94"/>
+        <location filename="TexturesAssistant.cpp" line="98"/>
         <source>Input path:</source>
         <translation>匯入檔案路徑:</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="104"/>
+        <location filename="TexturesAssistant.cpp" line="108"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="108"/>
+        <location filename="TexturesAssistant.cpp" line="112"/>
         <source>Launch the scan of the mod</source>
         <translation>開始掃描MOD</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="125"/>
+        <location filename="TexturesAssistant.cpp" line="131"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>等待偵測開始...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="160"/>
+        <location filename="TexturesAssistant.cpp" line="156"/>
+        <source>Textures set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="174"/>
+        <source>Textures set:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="183"/>
+        <source>Refresh</source>
+        <translation>重新整理</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="228"/>
+        <source>Create the files structure on my computer</source>
+        <oldsource>Generate the files on my computer</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="264"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="160"/>
+        <location filename="TexturesAssistant.cpp" line="264"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="196"/>
+        <location filename="TexturesAssistant.cpp" line="285"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="286"/>
+        <location filename="TexturesAssistant.cpp" line="364"/>
         <source>Head textures</source>
         <translation>頭部貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="298"/>
+        <location filename="TexturesAssistant.cpp" line="376"/>
+        <source>Mouth textures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="400"/>
+        <source>Extra body textures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="412"/>
         <source>Hands textures</source>
         <translation>手部貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="310"/>
+        <location filename="TexturesAssistant.cpp" line="388"/>
         <source>Body textures</source>
         <translation>身體貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="322"/>
+        <location filename="TexturesAssistant.cpp" line="424"/>
         <source>Other .DDS textures</source>
         <translation>其他DDS檔貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="388"/>
+        <location filename="TexturesAssistant.cpp" line="473"/>
+        <source>Error: no textures set chosen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="495"/>
+        <source>Error: no path given to export the files.</source>
+        <translation>錯誤:未指定輸出路徑。</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="502"/>
+        <source>Error: the path given to export the files seems to be invalid.</source>
+        <translation type="unfinished">錯誤:無效的輸出路徑。</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="513"/>
+        <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
+Be sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
+Be sure that you used characters authorized by your OS in the given paths.</source>
+        <oldsource>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
+Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
+Be sure that you used characters authorized by your OS in the given paths.</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="521"/>
+        <source>Already existing directory</source>
+        <translation type="unfinished">已存在資料夾</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="522"/>
+        <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
+        <oldsource>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</oldsource>
+        <translation type="unfinished">資料夾:&quot;%1&quot;已存在。是否確定在此資料夾輸出檔案?</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="525"/>
+        <source>Continue the files creation</source>
+        <oldsource>Continue the files generation</oldsource>
+        <translation type="unfinished">繼續執行產生檔案</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="526"/>
+        <source>Cancel the files creation</source>
+        <oldsource>Cancel the files generation</oldsource>
+        <translation type="unfinished">取消產生檔案</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="553"/>
+        <source>Files creation successful</source>
+        <oldsource>Generation successful</oldsource>
+        <translation type="unfinished">檔案輸出成功</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="554"/>
+        <source>The texture files have been correctly created.</source>
+        <oldsource>The textures files have been correctly created.</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="557"/>
+        <source>Open the created directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="557"/>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="599"/>
         <source>BSA file found</source>
         <translation>找到BSA檔</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="389"/>
+        <location filename="TexturesAssistant.cpp" line="600"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>偵測到資料夾存在BSA檔案。由於本程式不支援BSA檔案，建議解壓縮BSA檔後再進行掃描。是否繼續進行掃描?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="392"/>
+        <location filename="TexturesAssistant.cpp" line="603"/>
         <source>Continue the scan</source>
         <translation>繼續偵測</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="393"/>
+        <location filename="TexturesAssistant.cpp" line="604"/>
         <source>Cancel the scan</source>
         <translation>取消偵測</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="408"/>
+        <location filename="TexturesAssistant.cpp" line="619"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>掃描範圍中找不到名稱為&quot;textures&quot;的資料夾。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="422"/>
+        <location filename="TexturesAssistant.cpp" line="633"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>掃描範圍中找不到任何DDS檔。</translation>
     </message>
@@ -2513,13 +2623,13 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation>初始化中...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="170"/>
-        <location filename="Update.cpp" line="171"/>
+        <location filename="Update.cpp" line="149"/>
+        <location filename="Update.cpp" line="150"/>
         <source>Check for updates once again</source>
         <translation>再次檢查更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="173"/>
+        <location filename="Update.cpp" line="152"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>找不到更新檔...
@@ -2542,10 +2652,10 @@ Below are the release notes for the latest stable version:</source>
 以下為正式版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="202"/>
-        <location filename="Update.cpp" line="203"/>
-        <location filename="Update.cpp" line="239"/>
-        <location filename="Update.cpp" line="240"/>
+        <location filename="Update.cpp" line="181"/>
+        <location filename="Update.cpp" line="182"/>
+        <location filename="Update.cpp" line="218"/>
+        <location filename="Update.cpp" line="219"/>
         <source>Download the update</source>
         <translation>下載更新</translation>
     </message>
@@ -2608,7 +2718,7 @@ Below are the release notes for this version:</source>
 以下為此版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="445"/>
+        <location filename="Update.cpp" line="424"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -2619,7 +2729,7 @@ Make sure that you saved everything before starting the update as the applicatio
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="446"/>
+        <location filename="Update.cpp" line="425"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -2630,19 +2740,19 @@ Please make sure your internet connection is working correctly and try again.
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="480"/>
-        <location filename="Update.cpp" line="481"/>
+        <location filename="Update.cpp" line="459"/>
+        <location filename="Update.cpp" line="460"/>
         <source>Close MFBOPC and install the update</source>
         <translation>關閉MFBOPC程式並開始更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="505"/>
-        <location filename="Update.cpp" line="506"/>
+        <location filename="Update.cpp" line="484"/>
+        <location filename="Update.cpp" line="485"/>
         <source>Try to download the update once again</source>
         <translation>重新嘗試下載更新檔</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="135"/>
+        <location filename="Update.cpp" line="114"/>
         <source>Contacting GitHub.com...</source>
         <translation>正在連接Github.com...</translation>
     </message>
@@ -2657,7 +2767,7 @@ Please make sure your internet connection is working correctly and try again.
         <translation> (只要BETA版)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="218"/>
+        <location filename="Update.cpp" line="197"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -2676,7 +2786,7 @@ Below are the release notes for the BETA version &quot;%2&quot;:</source>
 以下為BETA版本 &quot;%2&quot; 的更新資訊:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="255"/>
+        <location filename="Update.cpp" line="234"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -2695,35 +2805,35 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
 以下為BETA版本 &quot;%2&quot; 的更新資訊:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="265"/>
-        <location filename="Update.cpp" line="266"/>
+        <location filename="Update.cpp" line="244"/>
+        <location filename="Update.cpp" line="245"/>
         <source>Already running the latest version</source>
         <translation>您已在運行最新的版本</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="267"/>
+        <location filename="Update.cpp" line="246"/>
         <source>Awesome! You are already running the latest available version.</source>
         <translation>太棒了! 您已在運行最新的版本。</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="292"/>
-        <location filename="Update.cpp" line="293"/>
+        <location filename="Update.cpp" line="271"/>
+        <location filename="Update.cpp" line="272"/>
         <source>Cancel the download</source>
         <translation>取消下載</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="331"/>
-        <location filename="Update.cpp" line="332"/>
+        <location filename="Update.cpp" line="310"/>
+        <location filename="Update.cpp" line="311"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation>已取消下載: 點選以重新嘗試下載更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="368"/>
+        <location filename="Update.cpp" line="347"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation>%2 bytes之中已下載 %1 bytes (%p%)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="444"/>
+        <location filename="Update.cpp" line="423"/>
         <source>Download successful. Click the button above to open the directory where the file has been downloaded.
 
 </source>
@@ -2732,13 +2842,13 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="456"/>
-        <location filename="Update.cpp" line="457"/>
+        <location filename="Update.cpp" line="435"/>
+        <location filename="Update.cpp" line="436"/>
         <source>Show the ZIP file in Windows Explorer</source>
         <translation>在檔案瀏覽中開啟ZIP檔</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="549"/>
+        <location filename="Update.cpp" line="528"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
         <translation>無法開始更新，重試前請確認防火牆與防毒軟體未封鎖本程式。</translation>
     </message>
@@ -2753,7 +2863,7 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1089"/>
+        <location filename="Utils.cpp" line="1137"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2763,62 +2873,67 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="435"/>
-        <location filename="Utils.cpp" line="487"/>
+        <location filename="Utils.cpp" line="456"/>
+        <location filename="Utils.cpp" line="508"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>錯誤:已存在同名輸出資料夾&quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="456"/>
+        <location filename="Utils.cpp" line="477"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>產生XML檔 &quot;%1&quot; 時發生錯誤。取消中。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="516"/>
+        <location filename="Utils.cpp" line="537"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>產生OSP檔 &quot;%1&quot; 時發生錯誤。取消中。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="545"/>
+        <location filename="Utils.cpp" line="567"/>
+        <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Utils.cpp" line="593"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>未找到或無法複製獨立骨架檔案。將會使用預設的XPMSSE(4.72版本)骨架檔案...</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="550"/>
+        <location filename="Utils.cpp" line="598"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>錯誤:無法產生預設骨架檔案。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="557"/>
+        <location filename="Utils.cpp" line="605"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>錯誤:未指定獨立骨架路徑。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="675"/>
+        <location filename="Utils.cpp" line="723"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>無法找到內部檔案e &quot;%1&quot; 。請回報給開發者並提供bug產生步驟。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="695"/>
-        <location filename="Utils.cpp" line="728"/>
-        <location filename="Utils.cpp" line="842"/>
+        <location filename="Utils.cpp" line="743"/>
+        <location filename="Utils.cpp" line="776"/>
+        <location filename="Utils.cpp" line="890"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1089"/>
+        <location filename="Utils.cpp" line="1137"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1089"/>
+        <location filename="Utils.cpp" line="1137"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1095"/>
+        <location filename="Utils.cpp" line="1143"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2827,18 +2942,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1776"/>
+        <location filename="Utils.cpp" line="1825"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1879"/>
-        <location filename="Utils.cpp" line="1903"/>
+        <location filename="Utils.cpp" line="1928"/>
+        <location filename="Utils.cpp" line="1952"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1897"/>
+        <location filename="Utils.cpp" line="1946"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
@@ -2934,55 +3049,55 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>使用教學(docs.google.com)</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="325"/>
+        <location filename="WelcomeScreen.cpp" line="304"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation>發生錯誤...請確認網路連線並稍後重試。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="345"/>
-        <location filename="WelcomeScreen.cpp" line="388"/>
-        <location filename="WelcomeScreen.cpp" line="430"/>
+        <location filename="WelcomeScreen.cpp" line="324"/>
+        <location filename="WelcomeScreen.cpp" line="367"/>
+        <location filename="WelcomeScreen.cpp" line="409"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>無法取得Github的API...請稍後重試。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="350"/>
+        <location filename="WelcomeScreen.cpp" line="329"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>以下為Beta版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="361"/>
+        <location filename="WelcomeScreen.cpp" line="340"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>以下為正式版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="371"/>
+        <location filename="WelcomeScreen.cpp" line="350"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>找不到版本 &quot;%1&quot; 的細節。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="394"/>
+        <location filename="WelcomeScreen.cpp" line="373"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>已找到Github上最新的正式版本 &quot;%1&quot;。
 點下方以開啟更新視窗:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="406"/>
+        <location filename="WelcomeScreen.cpp" line="385"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation>你正在運行Beta版本。以上為最新正式版本的資訊
 點下方以開啟更新視窗:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="451"/>
+        <location filename="WelcomeScreen.cpp" line="430"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>已找到Github上最新的BETA版本 &quot;%1&quot;。
 點下方以開啟更新視窗:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="400"/>
+        <location filename="WelcomeScreen.cpp" line="379"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation>您已在運行最新的正式版本 &quot;%1&quot;。</translation>
     </message>
@@ -2992,23 +3107,23 @@ Press the button below to open the updater window:</source>
         <translation>不論您是第一次使用本工具或者對特定功能有興趣，皆建議可以點選下方參考使用者說明以及詳細教學:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="413"/>
-        <location filename="WelcomeScreen.cpp" line="458"/>
+        <location filename="WelcomeScreen.cpp" line="392"/>
+        <location filename="WelcomeScreen.cpp" line="437"/>
         <source>You are running a developer version.</source>
         <translation>您正在運行開發者版本。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="435"/>
+        <location filename="WelcomeScreen.cpp" line="414"/>
         <source>No BETA version found on GitHub.</source>
         <translation>未在Github上找到BETA版本。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="440"/>
+        <location filename="WelcomeScreen.cpp" line="419"/>
         <source>No newer BETA version is currently available.</source>
         <translation>找不到更新的BETA版本。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="445"/>
+        <location filename="WelcomeScreen.cpp" line="424"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation>您已在運行最新的Beta版本&quot;%1&quot;。</translation>
     </message>

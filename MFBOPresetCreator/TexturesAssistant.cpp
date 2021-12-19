@@ -5,6 +5,7 @@
 #include <QAbstractSlider>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QDesktopServices>
 #include <QDirIterator>
 #include <QFileDialog>
 #include <QGroupBox>
@@ -15,12 +16,14 @@
 #include <QProgressDialog>
 #include <QPushButton>
 #include <QScrollArea>
+#include <QStyledItemDelegate>
 
 TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mHasUserDoneSomething(false)
+  , mMinimumFirstColumnWidth(300)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -88,13 +91,14 @@ void TexturesAssistant::initializeGUI()
   lMainGrid->setSpacing(10);
   lMainGrid->setContentsMargins(10, 10, 10, 10);
   lMainGrid->setAlignment(Qt::AlignTop);
+  lMainGrid->setRowStretch(2, 1);
   this->setLayout(lMainGrid);
 
   // First line
   lMainGrid->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input label
-  auto lInputPathLineEdit{new QLineEdit("", this)};
+  auto lInputPathLineEdit{new QLineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
@@ -108,8 +112,11 @@ void TexturesAssistant::initializeGUI()
   auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
   lMainGrid->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
 
-  // Hint zone
+  // Setup all the different GUI components
   this->displayHintZone();
+  this->setupTexturesSetGUI(*lMainGrid);
+  this->setupOutputBox(*lMainGrid);
+  this->setupButtons(*lMainGrid);
 
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseInputDirectory);
@@ -121,32 +128,129 @@ void TexturesAssistant::displayHintZone()
   this->deleteAlreadyExistingWindowBottom();
 
   // Get the window's layout
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
-  lHintZone->setMinimumHeight(300);
   lHintZone->setObjectName(QString("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
-  lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
+  qobject_cast<QGridLayout*>(this->layout())->addWidget(lHintZone, 2, 0, 1, 3);
+
+  // Disable the groupboxes
+  auto lTexturesSetGroupBox{this->findChild<QGroupBox*>(QString("textures_set_groupbox"))};
+  if (lTexturesSetGroupBox != nullptr)
+    lTexturesSetGroupBox->setDisabled(true);
+
+  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
+  if (lOutputGroupBox != nullptr)
+    lOutputGroupBox->setDisabled(true);
+
+  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
+  if (lGenerateButton != nullptr)
+    lGenerateButton->setDisabled(true);
+}
+
+void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Group box
+  auto lGroupBox{new QGroupBox(tr("Textures set").append("  "), this)};
+  lGroupBox->setObjectName(QString("textures_set_groupbox"));
+  lGroupBox->setDisabled(true);
+  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "textures", this->mSettings.display.font.size);
+  this->connect(lGroupBox, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+  Utils::SetGroupBoxState(lGroupBox, false);
+  aLayout.addWidget(lGroupBox, 3, 0, 1, 3);
+
+  auto lLayout{new QGridLayout(lGroupBox)};
+  lLayout->setColumnStretch(0, 0);
+  lLayout->setColumnStretch(1, 1);
+  lLayout->setColumnStretch(2, 0);
+  lLayout->setSpacing(10);
+  lLayout->setContentsMargins(15, 20, 15, 15);
+  lLayout->setAlignment(Qt::AlignTop);
+  lLayout->setColumnMinimumWidth(0, this->mMinimumFirstColumnWidth);
+
+  // Human skeleton file
+  lLayout->addWidget(new QLabel(tr("Textures set:"), this), 0, 0);
+
+  auto lTexturesSetChooser{new QComboBox(this)};
+  lTexturesSetChooser->setItemDelegate(new QStyledItemDelegate());
+  lTexturesSetChooser->setCursor(Qt::PointingHandCursor);
+  lTexturesSetChooser->setObjectName(QString("textures_set_chooser"));
+  lLayout->addWidget(lTexturesSetChooser, 0, 1);
+
+  // Refresh button
+  auto lTexturesSetRefresher{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
+  lLayout->addWidget(lTexturesSetRefresher, 0, 2);
+
+  // Open assets directory
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder)};
+  lLayout->addWidget(lOpenAssetsDirectory, 0, 3);
+
+  this->populateTexturesSetChooser();
+
+  // Event binding
+  this->connect(lTexturesSetRefresher, &QPushButton::clicked, this, &TexturesAssistant::populateTexturesSetChooser);
+  this->connect(lOpenAssetsDirectory, &QPushButton::clicked, this, &TexturesAssistant::openTexturesSetsAssetsDirectory);
+}
+
+void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Create the group box
+  ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size, 1, 3);
+  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
+  lOutputGroupBox->setDisabled(true);
+  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
+
+  // Event binding
+  auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
+  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseExportDirectory);
+
+  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
+  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TexturesAssistant::updateOutputPreview);
+
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
+  this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &TexturesAssistant::useOnlySubdirStateChanged);
+
+  // Pre-filled data
+  this->updateOutputPreview();
+}
+
+void TexturesAssistant::setupButtons(QGridLayout& aLayout)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Generate button
+  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Create the files structure on my computer"), "", "build", lIconFolder, "generate_set")};
+  lGenerateButton->setDisabled(true);
+  aLayout.addWidget(lGenerateButton, 5, 0, 1, 3);
+
+  // Event binding
+  this->connect(lGenerateButton, &QPushButton::clicked, this, &TexturesAssistant::generateTexturesStructure);
 }
 
 void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
 {
   auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
-  if (lHintZone)
+  if (lHintZone != nullptr)
   {
     delete lHintZone;
     lHintZone = nullptr;
   }
 
-  auto lOldScrollArea{this->findChild<QScrollArea*>(QString("scrollable_zone"))};
-  if (lOldScrollArea)
+  auto lScrollZone{this->findChild<QScrollArea*>(QString("scrollable_zone"))};
+  if (lScrollZone != nullptr)
   {
-    delete lOldScrollArea;
-    lOldScrollArea = nullptr;
+    delete lScrollZone;
+    lScrollZone = nullptr;
   }
 }
 
-TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
+void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QString& aFileExtension)
 {
   // Progress bar
   auto lProgressBar{new QProgressBar(this->parentWidget())};
@@ -164,38 +268,13 @@ TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const 
 
   qApp->processEvents();
 
-  TexturesAssistant::ScannedData lScannedFiles;
+  this->mScannedFiles.groupedTextures.clear();
+  this->mScannedFiles.otherTextures.clear();
 
-  auto lRelativeDirPath{QString()};
-  auto lFileName{QString()};
-  auto lKey{std::string()};
-
-  QStringList lTexturesFilesToFind{// Body
-                                   "femalebody_1.dds",
-                                   "femalebody_1_s.dds",
-                                   "femalebody_1_sk.dds",
-                                   "femalebody_1_msn.dds",
-                                   // Body extra
-                                   "femalebody_etc_v2_1.dds",
-                                   "femalebody_etc_v2_1_s.dds",
-                                   "femalebody_etc_v2_1_sk.dds",
-                                   "femalebody_etc_v2_1_msn.dds",
-                                   // Hands
-                                   "femalehands_1.dds",
-                                   "femalehands_1_s.dds",
-                                   "femalehands_1_sk.dds",
-                                   "femalehands_1_msn.dds",
-                                   // Head
-                                   "femalehead.dds",
-                                   "femalehead_s.dds",
-                                   "femalehead_sk.dds",
-                                   "femalehead_msn.dds",
-                                   // Mouth
-                                   "mouthhuman.dds",
-                                   "mouthhuman_n.dds"};
+  const QStringList lTexturesFilesToFind{DataLists::GetKnownTexturesFilesNames()};
 
   // Suffix the root directory to earch only in the "textures" subfolder
-  auto lRootDir{QString("%1/textures").arg(aRootDir)};
+  const auto lRootDir{QString("%1/textures").arg(aRootDir)};
 
   QDirIterator it(lRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
@@ -204,79 +283,77 @@ TexturesAssistant::ScannedData TexturesAssistant::scanForFilesByExtension(const 
     if (lProgressDialog.wasCanceled())
     {
       Utils::DisplayWarningMessage(tr("Process aborted by the user."));
-      return {};
+      return;
     }
 
     it.next();
 
     // Get the current directory
-    lRelativeDirPath = it.fileInfo().absolutePath().remove(aRootDir + "/", Qt::CaseInsensitive);
+    const auto lRelativeDirPath{it.fileInfo().absolutePath().remove(aRootDir + "/", Qt::CaseInsensitive)};
 
-    lFileName = it.fileInfo().fileName();
+    const auto lFileName = it.fileInfo().fileName();
 
-    // Construct the key of the map
-    lKey = QString("%1/textures/%2").arg(lRelativeDirPath, lFileName).toStdString();
-
-    // check if the file is relative to a body, hands or head textures
+    // Check if the file is relative to a texture for a known mesh type
     if (lTexturesFilesToFind.contains(lFileName))
     {
-      lScannedFiles.groupedTextures.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));
+      this->mScannedFiles.groupedTextures.push_back(std::make_pair(lRelativeDirPath, lFileName));
     }
     else
     {
-      lScannedFiles.otherTextures.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));
+      this->mScannedFiles.otherTextures.push_back(std::make_pair(lRelativeDirPath, lFileName));
     }
   }
-
-  return lScannedFiles;
 }
 
-void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const TexturesAssistant::ScannedData& aScannedData)
+void TexturesAssistant::displayTexturesFilesList()
 {
+  // Delete already existing the hint label or the layout and the validation button
+  this->deleteAlreadyExistingWindowBottom();
+
+  // Create the scroll area wrapper
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this)};
+  qobject_cast<QGridLayout*>(this->layout())->addLayout(lDataContainer, 2, 0, 1, 3);
+
   // Parse the grouped textures to split them in multiple storages
   TexturesAssistant::GroupedData lGroupedPaths;
 
-  for (const auto& lNifFile : aScannedData.groupedTextures)
+  for (const auto& lNifFile : this->mScannedFiles.groupedTextures)
   {
-    const auto& lFilePath{lNifFile.second.first.toStdString()};
-    const auto& lFileName{lNifFile.second.second};
-    std::map<std::string, std::vector<QString>>* lMap{nullptr};
+    std::map<std::string, std::vector<QString>>* lTargetMapToFill{nullptr};
 
-    if (lFileName.contains("head"))
+    if (lNifFile.second.contains("head"))
     {
-      lMap = &lGroupedPaths.headTextures;
+      lTargetMapToFill = &lGroupedPaths.headTextures;
     }
-    else if (lNifFile.second.second.contains("hands"))
+    else if (lNifFile.second.contains("hands"))
     {
-      lMap = &lGroupedPaths.handsTextures;
+      lTargetMapToFill = &lGroupedPaths.handsTextures;
     }
-    else if (lNifFile.second.second.contains("body_etc"))
+    else if (lNifFile.second.contains("body_etc"))
     {
-      lMap = &lGroupedPaths.extraBodyTextures;
+      lTargetMapToFill = &lGroupedPaths.extraBodyTextures;
     }
-    else if (lNifFile.second.second.contains("body"))
+    else if (lNifFile.second.contains("body"))
     {
-      lMap = &lGroupedPaths.bodyTextures;
+      lTargetMapToFill = &lGroupedPaths.bodyTextures;
     }
-    else if (lNifFile.second.second.contains("mouth"))
+    else if (lNifFile.second.contains("mouth"))
     {
-      lMap = &lGroupedPaths.mouthTextures;
+      lTargetMapToFill = &lGroupedPaths.mouthTextures;
     }
 
-    if (lMap != nullptr)
+    if (lTargetMapToFill != nullptr)
     {
-      (*lMap)[lFilePath].push_back(lFileName);
+      (*lTargetMapToFill)[lNifFile.first.toStdString()].push_back(lNifFile.second);
     }
   }
 
   // Parse the other textures to change their storage type to be compatible with the display function
   auto lOtherPaths{std::map<std::string, std::vector<QString>>()};
 
-  for (const auto& lNifFile : aScannedData.otherTextures)
+  for (const auto& lNifFile : this->mScannedFiles.otherTextures)
   {
-    const auto& lFilePath{lNifFile.second.first.toStdString()};
-    const auto& lFileName{lNifFile.second.second};
-    lOtherPaths[lFilePath].push_back(lFileName);
+    lOtherPaths[lNifFile.first.toStdString()].push_back(lNifFile.second);
   }
 
   // User theme accent
@@ -293,7 +370,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   lHeadGroupContainer->setSpacing(16);
   lHeadGroup->setLayout(lHeadGroupContainer);
   this->createRessourceBlock(lGroupedPaths.headTextures, lHeadGroupContainer);
-  aLayout->addWidget(lHeadGroup, lRowIndex++, 0);
+  lDataContainer->addWidget(lHeadGroup, lRowIndex++, 0);
 
   // Mouth ressources blocks
   auto lMouthGroup{new QGroupBox(tr("Mouth textures").append("  "), this)};
@@ -305,7 +382,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   lMouthGroupContainer->setSpacing(16);
   lMouthGroup->setLayout(lMouthGroupContainer);
   this->createRessourceBlock(lGroupedPaths.mouthTextures, lMouthGroupContainer);
-  aLayout->addWidget(lMouthGroup, lRowIndex++, 0);
+  lDataContainer->addWidget(lMouthGroup, lRowIndex++, 0);
 
   // Body ressources blocks
   auto lBodyGroup{new QGroupBox(tr("Body textures").append("  "), this)};
@@ -317,7 +394,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   lBodyGroupContainer->setSpacing(16);
   lBodyGroup->setLayout(lBodyGroupContainer);
   this->createRessourceBlock(lGroupedPaths.bodyTextures, lBodyGroupContainer);
-  aLayout->addWidget(lBodyGroup, lRowIndex++, 0);
+  lDataContainer->addWidget(lBodyGroup, lRowIndex++, 0);
 
   // Extra body ressources blocks
   auto lBodyExtraGroup{new QGroupBox(tr("Extra body textures").append("  "), this)};
@@ -329,7 +406,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   lBodyExtraGroupContainer->setSpacing(16);
   lBodyExtraGroup->setLayout(lBodyExtraGroupContainer);
   this->createRessourceBlock(lGroupedPaths.extraBodyTextures, lBodyExtraGroupContainer);
-  aLayout->addWidget(lBodyExtraGroup, lRowIndex++, 0);
+  lDataContainer->addWidget(lBodyExtraGroup, lRowIndex++, 0);
 
   // Hands ressources blocks
   auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
@@ -341,9 +418,9 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   lHandsGroupContainer->setSpacing(16);
   lHandsGroup->setLayout(lHandsGroupContainer);
   this->createRessourceBlock(lGroupedPaths.handsTextures, lHandsGroupContainer);
-  aLayout->addWidget(lHandsGroup, lRowIndex++, 0);
+  lDataContainer->addWidget(lHandsGroup, lRowIndex++, 0);
 
-  // Other textures files
+  // Other texture files
   auto lOtherGroup{new QGroupBox(tr("Other .DDS textures").append("  "), this)};
   Utils::AddIconToGroupBox(lOtherGroup, lIconFolder, "textures", this->mSettings.display.font.size);
   this->connect(lOtherGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
@@ -353,7 +430,7 @@ void TexturesAssistant::displayFoundTextures(QGridLayout* aLayout, const Texture
   lOtherGroupContainer->setSpacing(16);
   lOtherGroup->setLayout(lOtherGroupContainer);
   this->createRessourceBlock(lOtherPaths, lOtherGroupContainer);
-  aLayout->addWidget(lOtherGroup, lRowIndex++, 0);
+  lDataContainer->addWidget(lOtherGroup, lRowIndex++, 0);
 }
 
 void TexturesAssistant::createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout)
@@ -371,6 +448,115 @@ void TexturesAssistant::createRessourceBlock(const std::map<std::string, std::ve
 
     aLayout->addWidget(new QLabel(QString::fromStdString(lRootPath.first), this), lRowIndex, 0, Qt::AlignLeft);
     aLayout->addWidget(new QLabel(lConcatenatedFileNames, this), lRowIndex++, 1, Qt::AlignLeft);
+  }
+}
+
+void TexturesAssistant::updateOutputPreview()
+{
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
+
+  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
+}
+
+void TexturesAssistant::generateTexturesStructure()
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Textures set
+  auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
+  if (lTexturesSetChooser->currentIndex() == -1 || lTexturesSetChooser->count() == 0)
+  {
+    Utils::DisplayWarningMessage(tr("Error: no textures set chosen."));
+    return;
+  }
+
+  // Output paths
+  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  Utils::CleanPathString(lSubDirectory);
+
+  // Does the user want to define the path only through the secondary path?
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+
+  // Full extract path
+  auto lEntryDirectory{lSubDirectory};
+  if (!lUseOnlySubdir)
+  {
+    lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
+  }
+
+  // Check if the full extract path has been given by the user
+  if (lEntryDirectory.isEmpty())
+  {
+    Utils::DisplayWarningMessage(tr("Error: no path given to export the files."));
+    return;
+  }
+
+  // Check if the path could be valid
+  if (lEntryDirectory.startsWith(QDir::separator()))
+  {
+    Utils::DisplayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
+    return;
+  }
+
+  // Create main directory
+  auto lCreateFilesInExistingMainDirectory{false};
+  if (!QDir(lEntryDirectory).exists())
+  {
+    // Wait to know the result of the mkdir()
+    if (!QDir().mkpath(lEntryDirectory))
+    {
+      Utils::DisplayWarningMessage(tr("Error while creating the main directory: \"%1\" could not be created on your computer.\nBe sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lEntryDirectory));
+      return;
+    }
+  }
+  else
+  {
+    // Since the directory already exist, ask the user to put other files in it
+    if (Utils::DisplayQuestionMessage(this,
+                                      tr("Already existing directory"),
+                                      tr("The directory \"%1\" already exists on your computer. Do you still want to create the files in this directory?").arg(lEntryDirectory),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the files creation"),
+                                      tr("Cancel the files creation"),
+                                      "",
+                                      this->mSettings.display.dangerColor,
+                                      this->mSettings.display.successColor,
+                                      "",
+                                      true)
+        != ButtonClicked::YES)
+    {
+      return;
+    }
+
+    lCreateFilesInExistingMainDirectory = true;
+  }
+
+  // Read location
+  auto lSourceTexturesFolderName{lTexturesSetChooser->currentText()};
+  auto lSourceTexturesReadPath{QString("%1assets/textures/%2").arg(Utils::GetAppDataPathFolder(), lSourceTexturesFolderName)};
+
+  // Iterate through the texture files lists
+  for (const auto& lFoundTextureFile : this->mScannedFiles.groupedTextures)
+  {
+    Utils::CreateTextureFile(lSourceTexturesReadPath, lEntryDirectory, lFoundTextureFile.first, lFoundTextureFile.second);
+  }
+
+  // Update the color of the output directory preview
+  this->updateOutputPreview();
+
+  auto lTitle{tr("Files creation successful")};
+  auto lMessage{tr("The texture files have been correctly created.")};
+
+  // Open the directory where the file structure has been created
+  if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the created directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  {
+    QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
 }
 
@@ -434,28 +620,76 @@ void TexturesAssistant::launchSearchProcess()
   }
 
   // Fetch all the "*dds" files
-  const auto& lFoundDdsFiles{this->scanForFilesByExtension(lInputPath, "*.dds")};
-  this->mScannedDirName = QDir(lInputPath).dirName();
+  this->scanForTexturesFiles(lInputPath, "*.dds");
 
   // No file found
-  if (lFoundDdsFiles.groupedTextures.size() == 0 && lFoundDdsFiles.otherTextures.size() == 0)
+  if (this->mScannedFiles.groupedTextures.size() == 0 && this->mScannedFiles.otherTextures.size() == 0)
   {
     this->displayHintZone();
+
     auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
-    if (lHintZone)
+    if (lHintZone != nullptr)
     {
       lHintZone->setText(tr("No DDS file was found in the scanned directory."));
     }
     return;
   }
 
-  // Delete already existing the hint label or the layout and the validation button
-  this->deleteAlreadyExistingWindowBottom();
+  // Display the data
+  this->displayTexturesFilesList();
 
-  // Create the scroll area chooser
-  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this)};
+  // Re-enable the groupboxes
+  auto lTexturesSetGroupBox{this->findChild<QGroupBox*>(QString("textures_set_groupbox"))};
+  if (lTexturesSetGroupBox != nullptr)
+    lTexturesSetGroupBox->setDisabled(false);
 
-  this->displayFoundTextures(lDataContainer, lFoundDdsFiles);
+  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
+  if (lOutputGroupBox != nullptr)
+    lOutputGroupBox->setDisabled(false);
+
+  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
+  if (lGenerateButton != nullptr)
+    lGenerateButton->setDisabled(false);
+}
+
+void TexturesAssistant::populateTexturesSetChooser()
+{
+  auto lRootDir{Utils::GetAppDataPathFolder() + "assets/textures/"};
+  Utils::CleanPathString(lRootDir);
+  QStringList lAvailableTexturesSets;
+
+  // Search for all "*.nif" files
+  QDirIterator it(lRootDir, QStringList(), QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot);
+  while (it.hasNext())
+  {
+    it.next();
+    lAvailableTexturesSets.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
+  }
+
+  // Clear the combo box and add the found files to it
+  auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
+  lTexturesSetChooser->clear();
+  lTexturesSetChooser->addItems(lAvailableTexturesSets);
+}
+
+void TexturesAssistant::openTexturesSetsAssetsDirectory()
+{
+  QDesktopServices::openUrl(QUrl::fromLocalFile(QString("%1assets/textures").arg(Utils::GetAppDataPathFolder())));
+}
+
+void TexturesAssistant::useOnlySubdirStateChanged(int)
+{
+  this->updateOutputPreview();
+}
+
+void TexturesAssistant::chooseExportDirectory()
+{
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
+  lLineEdit->setText(lPath);
+  Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantOutput", lPath);
+  this->updateOutputPreview();
 }
 
 void TexturesAssistant::groupBoxChecked(bool aIsChecked)

@@ -11,6 +11,13 @@ QWidget::focus {
   outline: none;
 }
 
+/*************/
+/*SCROLL AREA*/
+/*************/
+QScrollArea {
+  border: 1px solid #3991ff;
+}
+
 /*******/
 /*LABEL*/
 /*******/

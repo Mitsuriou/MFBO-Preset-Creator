@@ -45,7 +45,15 @@ public:
                                                    const QString& aButtonObjectName,
                                                    const QString& aLabelObjectName);
 
-  static void CreateOutputBox(QWidget* aParent, QGridLayout& aLayout, const int aLayoutRow, const int aLayoutCol, const QString& aIconFolder, const int aMinimumFirstColumnWidth, const int aFontSize);
+  static void CreateOutputBox(QWidget* aParent,
+                              QGridLayout& aLayout,
+                              const int aLayoutRow,
+                              const int aLayoutCol,
+                              const QString& aIconFolder,
+                              const int aMinimumFirstColumnWidth,
+                              const int aFontSize,
+                              const int aRowSpan = 1,
+                              const int aColumnSpan = 1);
 
 private:
   explicit ComponentFactory(){};
