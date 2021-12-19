@@ -46,6 +46,7 @@ private:
 
   //#pragma region PRIVATE_SLOTS
   void populateSkeletonChooser();
+  void openSkeletonsAssetsDirectory();
 
   // Update the GUI preview
   void updateMeshesPreview();

@@ -172,8 +172,13 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lSkeletonChooserHuman->setObjectName(QString("skeleton_chooser_human"));
   lLayout->addWidget(lSkeletonChooserHuman, 1, 1);
 
+  // Refresh button
   auto lSkeletonRefresherHuman{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
   lLayout->addWidget(lSkeletonRefresherHuman, 1, 2);
+
+  // Open assets directory
+  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, "", "Open the skeletons assets directory", "folder", lIconFolder)};
+  lLayout->addWidget(lOpenAssetsDirectoryHuman, 1, 3);
 
   // Beast skeleton file
   lLayout->addWidget(new QLabel(tr("Skeleton file (beast):"), this), 2, 0);
@@ -184,14 +189,21 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lSkeletonChooserBeast->setObjectName(QString("skeleton_chooser_beast"));
   lLayout->addWidget(lSkeletonChooserBeast, 2, 1);
 
+  // Refresh button
   auto lSkeletonRefresherBeast{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
   lLayout->addWidget(lSkeletonRefresherBeast, 2, 2);
 
   this->populateSkeletonChoosers();
 
+  // Open assets directory
+  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, "", "Open the skeletons assets directory", "folder", lIconFolder)};
+  lLayout->addWidget(lOpenAssetsDirectoryBeast, 2, 3);
+
   // Event binding
   this->connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
+  this->connect(lOpenAssetsDirectoryHuman, &QPushButton::clicked, this, &BatchConversion::openSkeletonsAssetsDirectory);
   this->connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
+  this->connect(lOpenAssetsDirectoryBeast, &QPushButton::clicked, this, &BatchConversion::openSkeletonsAssetsDirectory);
 }
 
 void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
@@ -799,6 +811,11 @@ void BatchConversion::populateSkeletonChoosers()
   auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
   lSkeletonChooserBeast->clear();
   lSkeletonChooserBeast->addItems(lAvailableSkeletons);
+}
+
+void BatchConversion::openSkeletonsAssetsDirectory()
+{
+  QDesktopServices::openUrl(QUrl::fromLocalFile(QString("%1assets/skeletons").arg(Utils::GetAppDataPathFolder())));
 }
 
 void BatchConversion::useOnlySubdirStateChanged(int)

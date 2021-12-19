@@ -45,6 +45,7 @@ private:
   void launchSearchProcess();
   void batchCreatePresets(const Struct::BatchConversionData& aPresetsData);
   void populateSkeletonChoosers();
+  void openSkeletonsAssetsDirectory();
 
   // Update the GUI preview
   void useOnlySubdirStateChanged(int);

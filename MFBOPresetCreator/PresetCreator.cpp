@@ -453,8 +453,13 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   this->populateSkeletonChooser();
 
+  // Refresh button
   auto lSkeletonRefresher{ComponentFactory::CreateButton(this, tr("Refresh"), "", "", lIconFolder, "skeleton_chooser_refresher")};
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
+
+  // Open assets directory
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, "", "Open the skeletons assets directory", "folder", lIconFolder, "open_skeletons_assets_directory")};
+  lSkeletonGridLayout->addWidget(lOpenAssetsDirectory, 1, 3);
 
   // Skeleton path
   auto lLabelSkeletonPath{new QLabel(tr("Skeleton path:"), this)};
@@ -500,6 +505,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
   this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &PresetCreator::populateSkeletonChooser);
+  this->connect(lOpenAssetsDirectory, &QPushButton::clicked, this, &PresetCreator::openSkeletonsAssetsDirectory);
   this->connect(lSkeletonName, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
 }
 
@@ -807,6 +813,11 @@ void PresetCreator::populateSkeletonChooser()
   lSkeletonChooser->addItems(lAvailableSkeletons);
 }
 
+void PresetCreator::openSkeletonsAssetsDirectory()
+{
+  QDesktopServices::openUrl(QUrl::fromLocalFile(QString("%1assets/skeletons").arg(Utils::GetAppDataPathFolder())));
+}
+
 void PresetCreator::updateMeshesPreview()
 {
   // Body meshes path and name
@@ -968,6 +979,7 @@ void PresetCreator::updateSkeletonPathState(int aState)
   auto lLabelChooser{this->findChild<QLabel*>(QString("label_skeleton_chooser"))};
   auto lChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
   auto lChooserRefresher{this->findChild<QPushButton*>(QString("skeleton_chooser_refresher"))};
+  auto lOpenAssetsDirectory{this->findChild<QPushButton*>(QString("open_skeletons_assets_directory"))};
 
   // Directory
   auto lLabelPathDir{this->findChild<QLabel*>(QString("label_skeleton_path_directory"))};
@@ -992,6 +1004,7 @@ void PresetCreator::updateSkeletonPathState(int aState)
       lLabelChooser->setDisabled(true);
       lChooser->setDisabled(true);
       lChooserRefresher->setDisabled(true);
+      lOpenAssetsDirectory->setDisabled(true);
       lLabelPathDir->setDisabled(true);
       lPathDir->setDisabled(true);
       lLabelSkeleton->setDisabled(true);
@@ -1005,6 +1018,7 @@ void PresetCreator::updateSkeletonPathState(int aState)
       lLabelChooser->setDisabled(false);
       lChooser->setDisabled(false);
       lChooserRefresher->setDisabled(false);
+      lOpenAssetsDirectory->setDisabled(false);
       lLabelPathDir->setDisabled(false);
       lPathDir->setDisabled(false);
       lLabelSkeleton->setDisabled(false);
