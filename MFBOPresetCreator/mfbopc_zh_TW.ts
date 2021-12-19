@@ -983,44 +983,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1280"/>
+        <location filename="DataLists.cpp" line="1288"/>
         <source>Minimized</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1281"/>
-        <location filename="DataLists.cpp" line="1287"/>
+        <location filename="DataLists.cpp" line="1289"/>
+        <location filename="DataLists.cpp" line="1295"/>
         <source>Windowed</source>
         <translation>視窗化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1282"/>
-        <location filename="DataLists.cpp" line="1288"/>
+        <location filename="DataLists.cpp" line="1290"/>
+        <location filename="DataLists.cpp" line="1296"/>
         <source>Maximized</source>
         <translation>最大化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1316"/>
+        <location filename="DataLists.cpp" line="1324"/>
         <source>[ignore]</source>
         <translation>[忽略]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1317"/>
+        <location filename="DataLists.cpp" line="1325"/>
         <source>Body mesh</source>
         <translation>身體模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1318"/>
+        <location filename="DataLists.cpp" line="1326"/>
         <source>Feet mesh</source>
         <translation>腳部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1319"/>
+        <location filename="DataLists.cpp" line="1327"/>
         <source>Hands mesh</source>
         <translation>手部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1320"/>
+        <location filename="DataLists.cpp" line="1328"/>
         <source>Skeleton mesh</source>
         <translation>骨架模型</translation>
     </message>

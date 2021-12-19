@@ -21,7 +21,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
-      return QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.41")});
+      return QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42")});
     }
     case BodyName::CBBE_SMP_3BBB:
     {
@@ -199,7 +199,7 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
     case FeetName::CBBE:
       return QStringList{QString("1.6.1")};
     case FeetName::BHUNP:
-      return QStringList{QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.41")};
+      return QStringList{QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42")};
     case FeetName::CBBE_3BA_3BBB:
       return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.16")};
     case FeetName::COCO_BODY:
@@ -475,43 +475,43 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::BHUNP_3BBB_2_25:
     case BodyNameVersion::BHUNP_3BBB_2_30:
     case BodyNameVersion::BHUNP_3BBB_2_31:
-    case BodyNameVersion::BHUNP_3BBB_2_35_TO_2_41:
+    case BodyNameVersion::BHUNP_3BBB_2_35_TO_2_42:
       return BodyVariant::BHUNP_3BBB;
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_41:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42:
       return BodyVariant::BHUNP_3BBB_ADVANCED;
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
-    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_41:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42:
       return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2;
     case BodyNameVersion::BHUNP_BBP_2_20:
     case BodyNameVersion::BHUNP_BBP_2_25:
     case BodyNameVersion::BHUNP_BBP_2_30:
     case BodyNameVersion::BHUNP_BBP_2_31:
-    case BodyNameVersion::BHUNP_BBP_2_35_TO_2_41:
+    case BodyNameVersion::BHUNP_BBP_2_35_TO_2_42:
       return BodyVariant::BHUNP_BBP;
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
-    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_41:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42:
       return BodyVariant::BHUNP_BBP_ADVANCED;
     case BodyNameVersion::BHUNP_TBBP_2_20:
     case BodyNameVersion::BHUNP_TBBP_2_25:
     case BodyNameVersion::BHUNP_TBBP_2_30:
     case BodyNameVersion::BHUNP_TBBP_2_31:
-    case BodyNameVersion::BHUNP_TBBP_2_35_TO_2_41:
+    case BodyNameVersion::BHUNP_TBBP_2_35_TO_2_42:
       return BodyVariant::BHUNP_TBBP;
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
-    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_41:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42:
       return BodyVariant::BHUNP_TBBP_ADVANCED;
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
@@ -571,7 +571,7 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::BHUNP_3BBB_2_25:
     case FeetNameVersion::BHUNP_3BBB_2_30:
     case FeetNameVersion::BHUNP_3BBB_2_31:
-    case FeetNameVersion::BHUNP_3BBB_2_35_TO_2_41:
+    case FeetNameVersion::BHUNP_3BBB_2_35_TO_2_42:
       return FeetVariant::BHUNP;
     case FeetNameVersion::CBBE_3BA_3BBB_1_50:
     case FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55:
