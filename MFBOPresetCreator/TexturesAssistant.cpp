@@ -504,7 +504,6 @@ void TexturesAssistant::generateTexturesStructure()
   }
 
   // Create main directory
-  auto lCreateFilesInExistingMainDirectory{false};
   if (!QDir(lEntryDirectory).exists())
   {
     // Wait to know the result of the mkdir()
@@ -533,8 +532,6 @@ void TexturesAssistant::generateTexturesStructure()
     {
       return;
     }
-
-    lCreateFilesInExistingMainDirectory = true;
   }
 
   // Read location

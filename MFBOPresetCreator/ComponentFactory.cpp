@@ -166,8 +166,8 @@ QPushButton* ComponentFactory::CreateTargetMeshesPickerLine(QWidget* aParent,
   QHBoxLayout* lBodyNameVersionWrapper{new QHBoxLayout(aParent)};
   lBodyNameVersionWrapper->setMargin(0);
   aLayout.addLayout(lBodyNameVersionWrapper,
-                    aLayoutRow + aSingleLineForLabelAndActions ? 0 : 1,
-                    aSingleLineForLabelAndActions ? 1 : 0);
+                    aLayoutRow + (aSingleLineForLabelAndActions ? 0 : 1),
+                    (aSingleLineForLabelAndActions ? 1 : 0));
 
   auto lTargetMeshesPicker{ComponentFactory::CreateButton(aParent, tr("Choose target meshes"), "", "mesh", aIconFolder, aButtonObjectName, false, true)};
   lBodyNameVersionWrapper->addWidget(lTargetMeshesPicker);

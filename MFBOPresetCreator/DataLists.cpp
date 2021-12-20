@@ -8,13 +8,18 @@ QStringList DataLists::GetBodyNamesList()
                      QString("CBBE SMP (3BBB) - by Ousnius"),
                      QString("COCO Body CBBE - by COCO"),
                      QString("COCO Body UUNP - by COCO"),
-                     QString("Mimir Ebonic Body V.2 - by Medley")};
+                     QString("Mimir Ebonic Body V.2 - by Medley"),
+                     QString("BHUNP Lite - AKA ASDASDF Body - by Myst")};
 }
 
 QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
 {
   switch (aBodyName)
   {
+    case BodyName::_INVALID_VALUE:
+    {
+      return QStringList();
+    }
     case BodyName::CBBE_3BA_3BBB:
     {
       return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.16")});
@@ -39,18 +44,23 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
     {
       return QStringList({QString("1.2"), QString("1.2 foot fix")});
     }
-    case BodyName::_INVALID_VALUE:
-    default:
+    case BodyName::BHUNP_LITE_ASDASDF:
     {
-      return QStringList(QString());
+      return QStringList(QString("1.13"));
     }
   }
+
+  return QStringList();
 }
 
 QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int aRelativeVersion)
 {
   switch (aBodyName)
   {
+    case BodyName::_INVALID_VALUE:
+    {
+      return QStringList();
+    }
     case BodyName::CBBE_3BA_3BBB:
     {
       // All the version numbers propose the variant below:
@@ -95,18 +105,33 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
       // All the version numbers propose the variant below:
       return QStringList{QString("Mimir Ebonic Body")};
     }
-    case BodyName::_INVALID_VALUE:
-    default:
+    case BodyName::BHUNP_LITE_ASDASDF:
     {
-      return QStringList(QString());
+      // All the version numbers propose the variants below:
+      return QStringList{QString("ASDASDF_3BBB"),
+                         QString("ASDASDF_3BBB_NO_THIGH_JIGGLE"),
+                         QString("ASDASDF_BBP"),
+                         QString("ASDASDF_BBP_NO_THIGH_JIGGLE"),
+                         QString("ASDASDF_TBBP"),
+                         QString("ASDASDF_TBBP_NO_THIGH_JIGGLE"),
+                         QString("ASDASDF_ALTERBODY_3BBB"),
+                         QString("ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE"),
+                         QString("ASDASDF_ALTERBODY_BBP"),
+                         QString("ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE"),
+                         QString("ASDASDF_ALTERBODY_TBBP"),
+                         QString("ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE")};
     }
   }
+
+  return QStringList();
 }
 
 QString DataLists::GetQRCRessourceName(const BodyVariant& aBodyVariant)
 {
   switch (aBodyVariant)
   {
+    case BodyVariant::_INVALID_VALUE:
+      return QString();
     case BodyVariant::CBBE_3BA_3BBB:
       return QString("cbbe 3bbb 3ba");
     case BodyVariant::BHUNP_3BBB:
@@ -133,10 +158,9 @@ QString DataLists::GetQRCRessourceName(const BodyVariant& aBodyVariant)
       return QString("coco body uunp");
     case BodyVariant::MIMIR_EBONIC_BODY:
       return QString("mimir ebonic body");
-    case BodyVariant::_INVALID_VALUE:
-    default:
-      return QString();
   }
+
+  return QString();
 }
 
 QStringList DataLists::GetFeetNamesList(const BodyVariant& aBodyVariant)
@@ -185,17 +209,20 @@ QStringList DataLists::GetFeetNamesList(const BodyVariant& aBodyVariant)
                          QString("More Sliders for Feet - by Balveric")};
     }
     case BodyVariant::_INVALID_VALUE:
-    default:
     {
-      return QStringList(QString());
+      return QStringList();
     }
   }
+
+  return QStringList();
 }
 
 QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool aIsCBBEBody)
 {
   switch (aFeetName)
   {
+    case FeetName::_INVALID_VALUE:
+      return QStringList();
     case FeetName::CBBE:
       return QStringList{QString("1.6.1")};
     case FeetName::BHUNP:
@@ -217,16 +244,19 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
       return QStringList{QString("1")};
     case FeetName::KHRYSAMERE_HG_FEET:
       return QStringList{QString("1.0"), QString("1.3.3"), QString("1.4"), QString("1.5"), QString("1.6")};
-    case FeetName::_INVALID_VALUE:
-    default:
-      return QStringList(QString());
+    case FeetName::ASDASDF:
+      return QStringList{QString("1.13")};
   }
+
+  return QStringList();
 }
 
 QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName)
 {
   switch (aFeetName)
   {
+    case FeetName::_INVALID_VALUE:
+      return QStringList();
     case FeetName::CBBE:
       return QStringList{QString("CBBE Default Feet")};
     case FeetName::BHUNP:
@@ -244,10 +274,11 @@ QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName)
       return QStringList{QString("HGFeet UUNP")};
     case FeetName::KHRYSAMERE_HG_FEET:
       return QStringList{QString("K Feet")};
-    case FeetName::_INVALID_VALUE:
-    default:
-      return QStringList(QString());
+    case FeetName::ASDASDF:
+      return QStringList{QString("ASDASDF BHUNP Feet")};
   }
+
+  return QStringList();
 }
 
 QString DataLists::GetQRCRessourceName(const BodyVariant& aBodyVariant, const FeetNameVersion& aFeetNameVersion)
@@ -255,6 +286,8 @@ QString DataLists::GetQRCRessourceName(const BodyVariant& aBodyVariant, const Fe
   auto lFeetName{DataLists::GetName(aFeetNameVersion)};
   switch (lFeetName)
   {
+    case FeetName::_INVALID_VALUE:
+      return QString();
     case FeetName::CBBE:
       return QString("cbbe");
     case FeetName::BHUNP:
@@ -285,10 +318,11 @@ QString DataLists::GetQRCRessourceName(const BodyVariant& aBodyVariant, const Fe
       return QString("hg feet/bhunp");
     case FeetName::KHRYSAMERE_HG_FEET:
       return QString("khrysamere hg feet");
-    case FeetName::_INVALID_VALUE:
-    default:
-      return QString();
+    case FeetName::ASDASDF:
+      return QString("asdasdf");
   }
+
+  return QString();
 }
 
 BodyName DataLists::GetName(const BodyVariant& aBodyVariant)
@@ -296,6 +330,8 @@ BodyName DataLists::GetName(const BodyVariant& aBodyVariant)
   // Return the parent body name of a given variant
   switch (aBodyVariant)
   {
+    case BodyVariant::_INVALID_VALUE:
+      return BodyName::_INVALID_VALUE;
     case BodyVariant::CBBE_3BA_3BBB:
       return BodyName::CBBE_3BA_3BBB;
     case BodyVariant::BHUNP_3BBB:
@@ -315,16 +351,17 @@ BodyName DataLists::GetName(const BodyVariant& aBodyVariant)
       return BodyName::COCO_BODY_UUNP;
     case BodyVariant::MIMIR_EBONIC_BODY:
       return BodyName::MIMIR_EBONIC_BODY;
-    case BodyVariant::_INVALID_VALUE:
-    default:
-      return BodyName::_INVALID_VALUE;
   }
+
+  return BodyName::_INVALID_VALUE;
 }
 
 FeetName DataLists::GetName(const FeetVariant& aFeetVariant)
 {
   switch (aFeetVariant)
   {
+    case FeetVariant::_INVALID_VALUE:
+      return FeetName::_INVALID_VALUE;
     case FeetVariant::CBBE:
       return FeetName::CBBE;
     case FeetVariant::BHUNP:
@@ -345,10 +382,11 @@ FeetName DataLists::GetName(const FeetVariant& aFeetVariant)
       return FeetName::HG_FEET;
     case FeetVariant::KHRYSAMERE_HG_FEET:
       return FeetName::KHRYSAMERE_HG_FEET;
-    case FeetVariant::_INVALID_VALUE:
-    default:
-      return FeetName::_INVALID_VALUE;
+    case FeetVariant::ASDASDF:
+      return FeetName::ASDASDF;
   }
+
+  return FeetName::_INVALID_VALUE;
 }
 
 BodyName DataLists::GetName(const BodyNameVersion& aBodyNameVersion)
@@ -365,6 +403,10 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
 {
   switch (aBodyVariant)
   {
+    case BodyVariant::_INVALID_VALUE:
+    {
+      return FeetName::_INVALID_VALUE;
+    }
     case BodyVariant::CBBE_3BA_3BBB:
     {
       switch (aRelativeFeetName)
@@ -373,9 +415,9 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
           return FeetName::CBBE_3BA_3BBB;
         case 1:
           return FeetName::MORE_SLIDERS_FOR_FEET;
-        default:
-          return FeetName::_INVALID_VALUE;
       }
+
+      return FeetName::_INVALID_VALUE;
     }
     case BodyVariant::BHUNP_3BBB:
     case BodyVariant::BHUNP_3BBB_ADVANCED:
@@ -396,9 +438,9 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
           return FeetName::HG_FEET;
         case 3:
           return FeetName::KHRYSAMERE_HG_FEET;
-        default:
-          return FeetName::_INVALID_VALUE;
       }
+
+      return FeetName::_INVALID_VALUE;
     }
     case BodyVariant::CBBE_SMP_3BBB:
     {
@@ -408,9 +450,9 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
           return FeetName::CBBE;
         case 1:
           return FeetName::MORE_SLIDERS_FOR_FEET;
-        default:
-          return FeetName::_INVALID_VALUE;
       }
+
+      return FeetName::_INVALID_VALUE;
     }
     case BodyVariant::COCO_BODY_CBBE:
     {
@@ -420,9 +462,9 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
           return FeetName::COCO_BODY;
         case 1:
           return FeetName::MORE_SLIDERS_FOR_FEET;
-        default:
-          return FeetName::_INVALID_VALUE;
       }
+
+      return FeetName::_INVALID_VALUE;
     }
     case BodyVariant::COCO_BODY_UUNP:
     {
@@ -436,9 +478,9 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
           return FeetName::HG_FEET;
         case 3:
           return FeetName::KHRYSAMERE_HG_FEET;
-        default:
-          return FeetName::_INVALID_VALUE;
       }
+
+      return FeetName::_INVALID_VALUE;
     }
     case BodyVariant::MIMIR_EBONIC_BODY:
     {
@@ -448,22 +490,21 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
           return FeetName::MIMIR_EBONIC_BODY;
         case 1:
           return FeetName::MORE_SLIDERS_FOR_FEET;
-        default:
-          return FeetName::_INVALID_VALUE;
       }
-    }
-    case BodyVariant::_INVALID_VALUE:
-    default:
-    {
+
       return FeetName::_INVALID_VALUE;
     }
   }
+
+  return FeetName::_INVALID_VALUE;
 }
 
 BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
 {
   switch (aBodyNameVersion)
   {
+    case BodyNameVersion::_INVALID_VALUE:
+      return BodyVariant::_INVALID_VALUE;
     case BodyNameVersion::CBBE_3BA_3BBB_1_50:
     case BodyNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55:
     case BodyNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
@@ -528,16 +569,17 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return BodyVariant::MIMIR_EBONIC_BODY;
-    case BodyNameVersion::_INVALID_VALUE:
-    default:
-      return BodyVariant::_INVALID_VALUE;
   }
+
+  return BodyVariant::_INVALID_VALUE;
 }
 
 BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelativeVersion, const int aRelativeVariant)
 {
   switch (aBodyName)
   {
+    case BodyName::_INVALID_VALUE:
+      return BodyVariant::_INVALID_VALUE;
     case BodyName::CBBE_3BA_3BBB:
       return BodyVariant::CBBE_3BA_3BBB;
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
@@ -546,7 +588,9 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
       {
         return BodyVariant::_INVALID_VALUE;
       }
-      return static_cast<BodyVariant>(aRelativeVariant + 1);
+
+      // BodyVariant::BHUNP_3BBB is the first variant
+      return static_cast<BodyVariant>(aRelativeVariant + static_cast<int>(BodyVariant::BHUNP_3BBB));
     case BodyName::CBBE_SMP_3BBB:
       return BodyVariant::CBBE_SMP_3BBB;
     case BodyName::COCO_BODY_CBBE:
@@ -555,16 +599,20 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
       return BodyVariant::COCO_BODY_UUNP;
     case BodyName::MIMIR_EBONIC_BODY:
       return BodyVariant::MIMIR_EBONIC_BODY;
-    case BodyName::_INVALID_VALUE:
-    default:
-      return BodyVariant::_INVALID_VALUE;
+    case BodyName::BHUNP_LITE_ASDASDF:
+      // BodyVariant::ASDASDF_3BBB is the first variant
+      return static_cast<BodyVariant>(aRelativeVariant + static_cast<int>(BodyVariant::ASDASDF_3BBB));
   }
+
+  return BodyVariant::_INVALID_VALUE;
 }
 
 FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
 {
   switch (aFeetNameVersion)
   {
+    case FeetNameVersion::_INVALID_VALUE:
+      return FeetVariant::_INVALID_VALUE;
     case FeetNameVersion::CBBE_1_6_1:
       return FeetVariant::CBBE;
     case FeetNameVersion::BHUNP_3BBB_2_20:
@@ -590,6 +638,8 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::MIMIR_EBONIC_BODY_1_2:
     case FeetNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return FeetVariant::MIMIR_EBONIC_BODY;
+    case FeetNameVersion::ASDASDF_1_13:
+      return FeetVariant::ASDASDF;
     case FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE_1_0:
       return FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE;
     case FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP_1_1:
@@ -606,10 +656,9 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::KHRYSAMERE_HG_FEET_1_5:
     case FeetNameVersion::KHRYSAMERE_HG_FEET_1_6:
       return FeetVariant::KHRYSAMERE_HG_FEET;
-    case FeetNameVersion::_INVALID_VALUE:
-    default:
-      return FeetVariant::_INVALID_VALUE;
   }
+
+  return FeetVariant::_INVALID_VALUE;
 }
 
 FeetVariant DataLists::GetVariant(const FeetName& aFeetName, const int aRelativeVersion, const int aRelativeVariant, const bool aIsCBBEBody)
@@ -618,6 +667,8 @@ FeetVariant DataLists::GetVariant(const FeetName& aFeetName, const int aRelative
 
   switch (aFeetName)
   {
+    case FeetName::_INVALID_VALUE:
+      return FeetVariant::_INVALID_VALUE;
     case FeetName::CBBE:
       return FeetVariant::CBBE;
     case FeetName::BHUNP:
@@ -632,6 +683,8 @@ FeetVariant DataLists::GetVariant(const FeetName& aFeetName, const int aRelative
       return FeetVariant::COCO_BODY_UUNP;
     case FeetName::MIMIR_EBONIC_BODY:
       return FeetVariant::MIMIR_EBONIC_BODY;
+    case FeetName::ASDASDF:
+      return FeetVariant::ASDASDF;
     case FeetName::MORE_SLIDERS_FOR_FEET:
       if (aIsCBBEBody)
       {
@@ -650,9 +703,9 @@ FeetVariant DataLists::GetVariant(const FeetName& aFeetName, const int aRelative
       return FeetVariant::HG_FEET;
     case FeetName::KHRYSAMERE_HG_FEET:
       return FeetVariant::KHRYSAMERE_HG_FEET;
-    default:
-      return FeetVariant::_INVALID_VALUE;
   }
+
+  return FeetVariant::_INVALID_VALUE;
 }
 
 BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, const int aRelativeVersion)
@@ -700,11 +753,14 @@ FeetNameVersion DataLists::GetFeetNameVersion(const FeetVariant& aFeetVariant, c
 
   switch (lFeetName)
   {
+    case FeetName::_INVALID_VALUE:
+      return FeetNameVersion::_INVALID_VALUE;
     case FeetName::CBBE:
     case FeetName::BHUNP:
     case FeetName::CBBE_3BA_3BBB:
     case FeetName::COCO_BODY:
     case FeetName::MIMIR_EBONIC_BODY:
+    case FeetName::ASDASDF:
     case FeetName::MORE_SLIDERS_FOR_FEET:
     case FeetName::HG_FEET:
     case FeetName::KHRYSAMERE_HG_FEET:
@@ -755,6 +811,8 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
   auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
   switch (lBodyVariant)
   {
+    case BodyVariant::_INVALID_VALUE:
+      return -1;
     case BodyVariant::CBBE_3BA_3BBB:
     case BodyVariant::CBBE_SMP_3BBB:
     case BodyVariant::COCO_BODY_CBBE:
@@ -770,9 +828,9 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
     case BodyVariant::BHUNP_TBBP_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
       return static_cast<int>(lBodyVariant) - 1;
-    default:
-      return -1;
   }
+
+  return -1;
 }
 
 int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersion& aFeetNameVersion)
@@ -781,6 +839,10 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
 
   switch (aBodyVariant)
   {
+    case BodyVariant::_INVALID_VALUE:
+    {
+      return -1;
+    }
     case BodyVariant::CBBE_3BA_3BBB:
     {
       switch (lFeetName)
@@ -789,9 +851,9 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
-        default:
-          return -1;
       }
+
+      return -1;
     }
     case BodyVariant::BHUNP_3BBB:
     case BodyVariant::BHUNP_3BBB_ADVANCED:
@@ -812,9 +874,9 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 2;
         case FeetName::KHRYSAMERE_HG_FEET:
           return 3;
-        default:
-          return -1;
       }
+
+      return -1;
     }
     case BodyVariant::CBBE_SMP_3BBB:
     {
@@ -824,9 +886,9 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
-        default:
-          return -1;
       }
+
+      return -1;
     }
     case BodyVariant::COCO_BODY_CBBE:
     {
@@ -836,9 +898,9 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
-        default:
-          return -1;
       }
+
+      return -1;
     }
     case BodyVariant::COCO_BODY_UUNP:
     {
@@ -846,9 +908,9 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
       {
         case FeetName::COCO_BODY:
           return 0;
-        default:
-          return -1;
       }
+
+      return -1;
     }
     case BodyVariant::MIMIR_EBONIC_BODY:
     {
@@ -858,16 +920,13 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
-        default:
-          return -1;
       }
-    }
-    case BodyVariant::_INVALID_VALUE:
-    default:
-    {
+
       return -1;
     }
   }
+
+  return -1;
 }
 
 int DataLists::GetVersionIndex(const FeetNameVersion& aFeetNameVersion)
@@ -891,23 +950,26 @@ int DataLists::GetVariantIndex(const FeetNameVersion& aFeetNameVersion)
   auto lFeetVariant{DataLists::GetVariant(aFeetNameVersion)};
   switch (lFeetVariant)
   {
+    case FeetVariant::_INVALID_VALUE:
+      return -1;
     case FeetVariant::CBBE:
     case FeetVariant::BHUNP:
     case FeetVariant::CBBE_3BA_3BBB:
     case FeetVariant::COCO_BODY_CBBE:
     case FeetVariant::COCO_BODY_UUNP:
     case FeetVariant::MIMIR_EBONIC_BODY:
-    case FeetVariant::HG_FEET:
-    case FeetVariant::KHRYSAMERE_HG_FEET:
+    case FeetVariant::ASDASDF:
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP:
+    case FeetVariant::HG_FEET:
+    case FeetVariant::KHRYSAMERE_HG_FEET:
       return 0;
     case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE:
     case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP:
       return 1;
-    default:
-      return -1;
   }
+
+  return -1;
 }
 
 QString DataLists::GetVersionString(const BodyNameVersion& aBodyNameVersion)
@@ -925,6 +987,8 @@ BodyNameVersion DataLists::GetFirstKey(const BodyVariant& aBodyVariant)
   // Return the lowest index of BodyNameVersion of a given BodyVariant
   switch (aBodyVariant)
   {
+    case BodyVariant::_INVALID_VALUE:
+      return BodyNameVersion::_INVALID_VALUE;
     case BodyVariant::CBBE_3BA_3BBB:
       return BodyNameVersion::CBBE_3BA_3BBB_1_50;
     case BodyVariant::BHUNP_3BBB:
@@ -951,16 +1015,17 @@ BodyNameVersion DataLists::GetFirstKey(const BodyVariant& aBodyVariant)
       return BodyNameVersion::COCO_BODY_UUNP_V3;
     case BodyVariant::MIMIR_EBONIC_BODY:
       return BodyNameVersion::MIMIR_EBONIC_BODY_1_2;
-    case BodyVariant::_INVALID_VALUE:
-    default:
-      return BodyNameVersion::_INVALID_VALUE;
   }
+
+  return BodyNameVersion::_INVALID_VALUE;
 }
 
 FeetNameVersion DataLists::GetFirstKey(const FeetVariant& aFeetVariant)
 {
   switch (aFeetVariant)
   {
+    case FeetVariant::_INVALID_VALUE:
+      return FeetNameVersion::_INVALID_VALUE;
     case FeetVariant::CBBE:
       return FeetNameVersion::CBBE_1_6_1;
     case FeetVariant::BHUNP:
@@ -973,6 +1038,8 @@ FeetNameVersion DataLists::GetFirstKey(const FeetVariant& aFeetVariant)
       return FeetNameVersion::COCO_BODY_UUNP_V3;
     case FeetVariant::MIMIR_EBONIC_BODY:
       return FeetNameVersion::MIMIR_EBONIC_BODY_1_2;
+    case FeetVariant::ASDASDF:
+      return FeetNameVersion::ASDASDF_1_13;
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
       return FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE_1_0;
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP:
@@ -985,10 +1052,9 @@ FeetNameVersion DataLists::GetFirstKey(const FeetVariant& aFeetVariant)
       return FeetNameVersion::HG_FEET_1;
     case FeetVariant::KHRYSAMERE_HG_FEET:
       return FeetNameVersion::KHRYSAMERE_HG_FEET_1_0;
-    case FeetVariant::_INVALID_VALUE:
-    default:
-      return FeetNameVersion::_INVALID_VALUE;
   }
+
+  return FeetNameVersion::_INVALID_VALUE;
 }
 
 QString DataLists::GetQRCPathForRessource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aRessourceType)
@@ -1021,6 +1087,9 @@ QString DataLists::GetQRCPathForRessource(const BodyNameVersion& aBodyNameVersio
       auto lBodyName{DataLists::GetName(aBodyNameVersion)};
       switch (lBodyName)
       {
+        case BodyName::_INVALID_VALUE:
+          lRessourceVersion = QString();
+          break;
         case BodyName::CBBE_3BA_3BBB:
           lRessourceName = QString("cbbe 3bbb 3ba");
           break;
@@ -1040,9 +1109,8 @@ QString DataLists::GetQRCPathForRessource(const BodyNameVersion& aBodyNameVersio
         case BodyName::MIMIR_EBONIC_BODY:
           lRessourceName = QString("mimir ebonic body");
           break;
-        case BodyName::_INVALID_VALUE:
-        default:
-          lRessourceVersion = QString();
+        case BodyName::BHUNP_LITE_ASDASDF:
+          lRessourceName = QString("asdasdf");
           break;
       }
 
@@ -1123,9 +1191,9 @@ std::pair<int, int> DataLists::GetSplittedNameVersionFromBodyVersionCompatibilit
     case 42: // MIMIR_EBONIC_BODY_1_2:
     case 43: // MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return std::pair<int, int>(static_cast<int>(BodyName::MIMIR_EBONIC_BODY), static_cast<int>(aBodyVersion) - 42);
-    default:
-      return std::pair<int, int>(-1, -1);
   }
+
+  return std::pair<int, int>(-1, -1);
 }
 
 std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibility(const int aBodyName, const int aBodyVersion, const int aFeetIndex)
@@ -1168,9 +1236,6 @@ std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibi
     case 10:
       lBodyVariant = BodyVariant::MIMIR_EBONIC_BODY;
       break;
-    default:
-      // Do nothing
-      break;
   }
 
   // Feet compatibility
@@ -1202,9 +1267,6 @@ std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibi
       case 2:
         lFeetToSet = DataLists::GetFirstKey(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE);
         break;
-      default:
-        // Do nothing
-        break;
     }
   }
   else
@@ -1232,9 +1294,6 @@ std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibi
       //Khrysamere HG Feet (Claws) (BHUNP)
       case 5:
         lFeetToSet = DataLists::GetFirstKey(FeetVariant::KHRYSAMERE_HG_FEET);
-        break;
-      default:
-        // Do nothing
         break;
     }
   }

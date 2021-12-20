@@ -1368,7 +1368,7 @@ void PresetCreator::targetMeshesChanged(const BodyNameVersion& aBody, const Feet
     QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
   auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body_feet")};
-  lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText).arg(lFeetText));
+  lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText, lFeetText));
 
   // Force the refresh of preview fields
   this->refreshAllPreviewFields();

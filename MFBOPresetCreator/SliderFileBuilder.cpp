@@ -90,6 +90,9 @@ QString SliderFileBuilder::GetBodyLine(const BodyNameVersion& aBodyNameVersion)
 
   switch (lBodyVariant)
   {
+    case BodyVariant::_INVALID_VALUE:
+      // Keep the default empty text
+      break;
     case BodyVariant::CBBE_3BA_3BBB:
     case BodyVariant::MIMIR_EBONIC_BODY:
       lSliderSetName = QString("CBBE 3BBB Body Amazing");
@@ -130,9 +133,6 @@ QString SliderFileBuilder::GetBodyLine(const BodyNameVersion& aBodyNameVersion)
         case 1:
           lSliderSetName = QString("[COCO 3BBB V6]Body_A");
           break;
-        default:
-          // Keep the default empty text
-          break;
       }
       break;
     case BodyVariant::COCO_BODY_UUNP:
@@ -147,14 +147,43 @@ QString SliderFileBuilder::GetBodyLine(const BodyNameVersion& aBodyNameVersion)
         case 2:
           lSliderSetName = QString("[COCO 3BBB V6]Body_B");
           break;
-        default:
-          // Keep the default empty text
-          break;
       }
       break;
-    case BodyVariant::_INVALID_VALUE:
-    default:
-      // Keep the default empty text
+    case BodyVariant::ASDASDF_3BBB:
+      lSliderSetName = QString("ASDASDF-BHUNP 3BBB");
+      break;
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+      lSliderSetName = QString("ASDASDF-BHUNP 3BBB - No Thigh Jiggle");
+      break;
+    case BodyVariant::ASDASDF_BBP:
+      lSliderSetName = QString("ASDASDF-BHUNP BBP");
+      break;
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+      lSliderSetName = QString("ASDASDF-BHUNP BBP - No Thigh Jiggle");
+      break;
+    case BodyVariant::ASDASDF_TBBP:
+      lSliderSetName = QString("ASDASDF-BHUNP TBBP");
+      break;
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+      lSliderSetName = QString("ASDASDF-BHUNP TBBP - No Thigh Jiggle");
+      break;
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+      lSliderSetName = QString("ASDASDF-BHUNP_AlterBody 3BBB");
+      break;
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+      lSliderSetName = QString("ASDASDF-BHUNP_AlterBody 3BBB - No Thigh Jiggle");
+      break;
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+      lSliderSetName = QString("ASDASDF-BHUNP_AlterBody BBP");
+      break;
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+      lSliderSetName = QString("ASDASDF-BHUNP_AlterBody BBP - No Thigh Jiggle");
+      break;
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+      lSliderSetName = QString("ASDASDF-BHUNP_AlterBody TBBP");
+      break;
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+      lSliderSetName = QString("ASDASDF-BHUNP_AlterBody TBBP - No Thigh Jiggle");
       break;
   }
 
@@ -170,6 +199,9 @@ QString SliderFileBuilder::GetFeetLine(const FeetNameVersion& aFeetNameVersion)
 
   switch (lVariant)
   {
+    case FeetVariant::_INVALID_VALUE:
+      // Keep the default empty text
+      break;
     case FeetVariant::CBBE:
       lSliderSetName = QString("CBBE Feet");
       break;
@@ -188,9 +220,6 @@ QString SliderFileBuilder::GetFeetLine(const FeetNameVersion& aFeetNameVersion)
         case 1:
           lSliderSetName = QString("[COCO 3BBB V6]Feet_A");
           break;
-        default:
-          // Keep the default empty text
-          break;
       }
       break;
     case FeetVariant::COCO_BODY_UUNP:
@@ -204,9 +233,6 @@ QString SliderFileBuilder::GetFeetLine(const FeetNameVersion& aFeetNameVersion)
           break;
         case 2:
           lSliderSetName = QString("[COCO 3BBB V6]Feet_B");
-          break;
-        default:
-          // Keep the default empty text
           break;
       }
       break;
@@ -246,12 +272,10 @@ QString SliderFileBuilder::GetFeetLine(const FeetNameVersion& aFeetNameVersion)
         case 4:
           lSliderSetName = QString("[Khrysamere] K Feet");
           break;
-        default:
-          // Keep the default empty text
-          break;
       }
-      // Keep the default empty text
       break;
+    case FeetVariant::ASDASDF:
+      lSliderSetName = QString("ASDASDF-BHUNP Feet");
   }
 
   return QString("%1%1<Member name=\"%2 - ").append(lSliderSetName).append(QString("\"/>\n"));
@@ -272,6 +296,9 @@ QString SliderFileBuilder::GetHandsLine(const BodyNameVersion& aBodyNameVersion,
 
   switch (lBodyName)
   {
+    case BodyName::_INVALID_VALUE:
+      // Keep the default empty text
+      break;
     case BodyName::CBBE_3BA_3BBB:
     case BodyName::MIMIR_EBONIC_BODY:
       lSliderSetName = QString("CBBE 3BBB Hands");
@@ -291,9 +318,6 @@ QString SliderFileBuilder::GetHandsLine(const BodyNameVersion& aBodyNameVersion,
         case 1:
           lSliderSetName = QString("[COCO 3BBB V6]Hands_A");
           break;
-        default:
-          // Keep the default empty text
-          break;
       }
       break;
     case BodyName::COCO_BODY_UUNP:
@@ -308,14 +332,10 @@ QString SliderFileBuilder::GetHandsLine(const BodyNameVersion& aBodyNameVersion,
         case 2:
           lSliderSetName = QString("[COCO 3BBB V6]Hands_B");
           break;
-        default:
-          // Keep the default empty text
-          break;
       }
       break;
-    case BodyName::_INVALID_VALUE:
-    default:
-      // Keep the default empty text
+    case BodyName::BHUNP_LITE_ASDASDF:
+      lSliderSetName = QString("ASDASDF-BHUNP Hands");
       break;
   }
 

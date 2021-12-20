@@ -17,8 +17,8 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void dragEnterEvent(QDragEnterEvent* aEvent);
-  void dropEvent(QDropEvent* aEvent);
+  void dragEnterEvent(QDragEnterEvent* aEvent) override;
+  void dropEvent(QDropEvent* aEvent) override;
 
 private:
   Ui::MFBOPresetCreatorClass ui;

@@ -14,9 +14,7 @@ TRANSLATIONS += mfbopc_en.ts \
     mfbopc_zh_TW.ts
 win32:RC_FILE = MFBOPresetCreator.rc
 QT += core gui network widgets xml
-win32:QT += winextras
 HEADERS += ./resource.h \
-    ./stdafx.h \
     ./WelcomeScreen.h \
     ./TexturesAssistant.h \
     ./TextInputDialog.h \
@@ -41,7 +39,8 @@ HEADERS += ./resource.h \
     ./Utils.h \
     ./BCDragWidget.h \
     ./BCDropWidget.h \
-    ./BCGroupWidget.h
+    ./BCGroupWidget.h \
+    TargetMeshesPicker.h
 SOURCES += ./main.cpp \
     ./About.cpp \
     ./AssistedConversion.cpp \
@@ -65,7 +64,8 @@ SOURCES += ./main.cpp \
     ./VersionsInformation.cpp \
     ./BCDragWidget.cpp \
     ./BCDropWidget.cpp \
-    ./BCGroupWidget.cpp
+    ./BCGroupWidget.cpp \
+    TargetMeshesPicker.cpp
 FORMS += ./MFBOPresetCreator.ui
 TRANSLATIONS += ./mfbopc_en.ts \
     ./mfbopc_fr.ts \

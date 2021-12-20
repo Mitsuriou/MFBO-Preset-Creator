@@ -553,7 +553,7 @@ void Utils::CreateTextureFile(const QString& aSourcePath, const QString& aDestin
   // If the preset is being generated on an already existing directory, remove the file if it already exists
   if (QFile::exists(lDestinationFullPath))
   {
-    auto lFile{QFile(lDestinationFullPath)};
+    QFile lFile(lDestinationFullPath);
     lFile.setPermissions(QFile::ReadUser | QFile::WriteUser);
     lFile.remove();
   }
@@ -582,7 +582,7 @@ bool Utils::CreateSkeletonFile(const QString& aSourcePath, const QString& aDesti
     // If the preset is being generated on an already existing directory, remove the skeleton file if it already exists
     if (QFile::exists(lDestinationPath))
     {
-      auto lFile{QFile(lDestinationPath)};
+      QFile lFile(lDestinationPath);
       lFile.setPermissions(QFile::ReadUser | QFile::WriteUser);
       lFile.remove();
     }
@@ -632,7 +632,7 @@ BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName
     return BCGroupWidgetCallContext::EYES;
 
   // Skeleton
-  if (aFileName.mid(aFileName.lastIndexOf('/') + 1).contains("skeleton", Qt::CaseInsensitive))
+  if (aFileName.midRef(aFileName.lastIndexOf('/') + 1).contains("skeleton", Qt::CaseInsensitive))
     return BCGroupWidgetCallContext::SKELETON;
 
   return BCGroupWidgetCallContext::UNDEFINED;
@@ -1068,6 +1068,10 @@ QString Utils::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
           // Keep the default empty text
           break;
       }
+      // Keep the default empty text
+      break;
+  case FeetVariant::_INVALID_VALUE:
+  default:
       // Keep the default empty text
       break;
   }
@@ -1531,10 +1535,11 @@ std::map<QString, QStringList> Utils::LoadFiltersFromFile()
   auto lFiltersFilePath(Utils::GetAppDataPathFolder() + "filters.json");
   QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(lFiltersFilePath)};
 
-  auto lVariantMap{lObtainedJSON.toVariantMap()};
   std::map<QString, QStringList> lFiltersList;
+  const auto lVariantMap{lObtainedJSON.toVariantMap()};
+  const auto lKeys{lVariantMap.keys()};
 
-  for (const auto& lKey : lVariantMap.keys())
+  for (const auto& lKey : lKeys)
   {
     lFiltersList.insert(std::make_pair(lKey, lVariantMap.value(lKey, "").toStringList()));
   }
@@ -1626,7 +1631,9 @@ void Utils::CheckLastPathsFileExistence()
   {
     // Create a default "last paths" file if it does not exist
     std::map<QString, QString> lMap;
-    for (const auto& lKey : DataLists::GetLastPathsKeys())
+    const auto lKeys{DataLists::GetLastPathsKeys()};
+
+    for (const auto& lKey : lKeys)
     {
       lMap.insert(std::make_pair(lKey, QString()));
     }
@@ -1656,7 +1663,8 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
     {"texturesAssistantInput", ""},
     {"texturesAssistantOutput", ""}};
 
-  for (const auto& lKey : lVariantMap.keys())
+  const auto lKeys{lVariantMap.keys()};
+  for (const auto& lKey : lKeys)
   {
     lLastPathsList.find(lKey)->second = lVariantMap.value(lKey, "").toString();
   }
@@ -1808,8 +1816,7 @@ void Utils::AddIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, 
   aGroupBox->setStyleSheet(QString("QGroupBox{font-size: %1pt;}"
                                    "QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%2/%3);}")
                              .arg(static_cast<int>(floor(aFontSize * 1.25)))
-                             .arg(aIconFolder)
-                             .arg(aIconName));
+                             .arg(aIconFolder, aIconName));
 }
 
 void Utils::AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
