@@ -19,6 +19,7 @@
 #include <QVersionNumber>
 #include <QtXml/QDomDocument>
 #include <iostream>
+#include <math.h>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -1070,8 +1071,8 @@ QString Utils::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
       }
       // Keep the default empty text
       break;
-  case FeetVariant::_INVALID_VALUE:
-  default:
+    case FeetVariant::_INVALID_VALUE:
+    default:
       // Keep the default empty text
       break;
   }
@@ -1903,7 +1904,7 @@ void Utils::UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringLi
       lPrevIndex++;
     }
 
-    if (lPrevIndex == aFilterList.size())
+    if (lPrevIndex == static_cast<int>(aFilterList.size()))
     {
       lPrevIndex = 0;
     }

@@ -7,6 +7,6 @@ public:
   static ApplicationLanguage GetSystemLanguage();
 
 private:
+  explicit LangManager() {}
   ~LangManager() = delete;
-  explicit LangManager(){};
 };

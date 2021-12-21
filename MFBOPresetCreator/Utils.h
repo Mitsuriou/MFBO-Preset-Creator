@@ -9,7 +9,11 @@
 #include <QObject>
 #include <set>
 
+#if defined(_MSC_VER) && !defined(DLLEXP)
 #define DLLEXP __declspec(dllexport)
+#elif !defined(DLLEXP)
+#define DLLEXP
+#endif
 
 class Utils final : public QObject
 {
@@ -146,7 +150,7 @@ public:
   static void PrintMessageStdOut(const QString& aMessage);
 
 private:
-  explicit Utils(){};
+  explicit Utils() {}
   explicit Utils(const Utils&) = delete;
   Utils& operator=(const Utils&) = delete;
 };

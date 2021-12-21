@@ -393,7 +393,7 @@ namespace Struct
   struct BatchConversionEntry
   {
   public:
-    explicit BatchConversionEntry(){};
+    explicit BatchConversionEntry() {}
 
     explicit BatchConversionEntry(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
     {
@@ -444,7 +444,7 @@ namespace Struct
   struct BatchConversionPresetData
   {
   public:
-    explicit BatchConversionPresetData(){};
+    explicit BatchConversionPresetData() {}
 
     explicit BatchConversionPresetData(const QString& aFilesNames,
                                        const QString& aPresetsNames,

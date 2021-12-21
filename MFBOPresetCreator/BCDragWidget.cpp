@@ -4,7 +4,7 @@
 #include <QDrag>
 #include <QGridLayout>
 #include <QGroupBox>
-#include <QJsonDocument >
+#include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
 #include <QMimeData>

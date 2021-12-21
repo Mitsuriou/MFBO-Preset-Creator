@@ -2856,84 +2856,84 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
 <context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="158"/>
+        <location filename="Utils.cpp" line="159"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="161"/>
-        <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1141"/>
+        <location filename="Utils.cpp" line="162"/>
+        <location filename="Utils.cpp" line="224"/>
+        <location filename="Utils.cpp" line="1142"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="220"/>
+        <location filename="Utils.cpp" line="221"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="456"/>
-        <location filename="Utils.cpp" line="508"/>
+        <location filename="Utils.cpp" line="457"/>
+        <location filename="Utils.cpp" line="509"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>錯誤:已存在同名輸出資料夾&quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="477"/>
+        <location filename="Utils.cpp" line="478"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>產生XML檔 &quot;%1&quot; 時發生錯誤。取消中。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="537"/>
+        <location filename="Utils.cpp" line="538"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>產生OSP檔 &quot;%1&quot; 時發生錯誤。取消中。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="567"/>
+        <location filename="Utils.cpp" line="568"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="593"/>
+        <location filename="Utils.cpp" line="594"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>未找到或無法複製獨立骨架檔案。將會使用預設的XPMSSE(4.72版本)骨架檔案...</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="598"/>
+        <location filename="Utils.cpp" line="599"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>錯誤:無法產生預設骨架檔案。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="605"/>
+        <location filename="Utils.cpp" line="606"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>錯誤:未指定獨立骨架路徑。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="723"/>
+        <location filename="Utils.cpp" line="724"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>無法找到內部檔案e &quot;%1&quot; 。請回報給開發者並提供bug產生步驟。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="743"/>
-        <location filename="Utils.cpp" line="776"/>
-        <location filename="Utils.cpp" line="890"/>
+        <location filename="Utils.cpp" line="744"/>
+        <location filename="Utils.cpp" line="777"/>
+        <location filename="Utils.cpp" line="891"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1141"/>
+        <location filename="Utils.cpp" line="1142"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1141"/>
+        <location filename="Utils.cpp" line="1142"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1147"/>
+        <location filename="Utils.cpp" line="1148"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2942,18 +2942,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1832"/>
+        <location filename="Utils.cpp" line="1833"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1935"/>
-        <location filename="Utils.cpp" line="1959"/>
+        <location filename="Utils.cpp" line="1936"/>
+        <location filename="Utils.cpp" line="1960"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1953"/>
+        <location filename="Utils.cpp" line="1954"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
@@ -2961,169 +2961,169 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 <context>
     <name>WelcomeScreen</name>
     <message>
-        <location filename="WelcomeScreen.cpp" line="68"/>
+        <location filename="WelcomeScreen.cpp" line="69"/>
         <source>Welcome screen</source>
         <translation>初始化畫面</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="84"/>
+        <location filename="WelcomeScreen.cpp" line="85"/>
         <source>Show the welcome screen at application startup</source>
         <translation>開啟程式時顯示初始畫面</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="93"/>
+        <location filename="WelcomeScreen.cpp" line="94"/>
         <source>MFBO: Preset Creator v.%1</source>
         <translation>MFBO: Preset Creator v.%1</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="120"/>
+        <location filename="WelcomeScreen.cpp" line="121"/>
         <source>Latest stable release notes</source>
         <translation>最新正式版本資訊</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="105"/>
-        <location filename="WelcomeScreen.cpp" line="130"/>
-        <location filename="WelcomeScreen.cpp" line="160"/>
+        <location filename="WelcomeScreen.cpp" line="106"/>
+        <location filename="WelcomeScreen.cpp" line="131"/>
+        <location filename="WelcomeScreen.cpp" line="161"/>
         <source>Contacting GitHub.com...</source>
         <translation>正在連接Github.com...</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="102"/>
+        <location filename="WelcomeScreen.cpp" line="103"/>
         <source>Current version&apos;s release notes</source>
         <translation>當前版本資訊</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="136"/>
+        <location filename="WelcomeScreen.cpp" line="137"/>
         <source>Download the latest stable update</source>
         <translation>下載最新正式版本更新</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="150"/>
+        <location filename="WelcomeScreen.cpp" line="151"/>
         <source>Latest BETA release notes</source>
         <translation>最新BETA版本資訊</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="166"/>
+        <location filename="WelcomeScreen.cpp" line="167"/>
         <source>Download the latest BETA update</source>
         <translation>下載最新BETA版本更新</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="179"/>
+        <location filename="WelcomeScreen.cpp" line="180"/>
         <source>Incoming features</source>
         <translation>預計更新內容</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="181"/>
+        <location filename="WelcomeScreen.cpp" line="182"/>
         <source>You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:</source>
         <oldsource>You can consult the list of incoming features and enhancements and ask for new features requests by clicking the button below:</oldsource>
         <translation>點下方諮詢或提供更新內容意見:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="185"/>
+        <location filename="WelcomeScreen.cpp" line="186"/>
         <source>Incoming features list (github.com)</source>
         <translation>預計更新項目 (Github.com)</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="191"/>
+        <location filename="WelcomeScreen.cpp" line="192"/>
         <source>Known issues</source>
         <translation>已知問題</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="193"/>
+        <location filename="WelcomeScreen.cpp" line="194"/>
         <source>You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:</source>
         <translation>點下方參考已知Bug清單或回報新錯誤:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="197"/>
+        <location filename="WelcomeScreen.cpp" line="198"/>
         <source>Known issues list (github.com)</source>
         <translation>已知Bug清單 (github.com)</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="203"/>
+        <location filename="WelcomeScreen.cpp" line="204"/>
         <source>User guide and tutorials</source>
         <translation>使用者教學</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="209"/>
+        <location filename="WelcomeScreen.cpp" line="210"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>使用教學(docs.google.com)</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="304"/>
+        <location filename="WelcomeScreen.cpp" line="305"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation>發生錯誤...請確認網路連線並稍後重試。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="324"/>
-        <location filename="WelcomeScreen.cpp" line="367"/>
-        <location filename="WelcomeScreen.cpp" line="409"/>
+        <location filename="WelcomeScreen.cpp" line="325"/>
+        <location filename="WelcomeScreen.cpp" line="368"/>
+        <location filename="WelcomeScreen.cpp" line="410"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>無法取得Github的API...請稍後重試。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="329"/>
+        <location filename="WelcomeScreen.cpp" line="330"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>以下為Beta版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="340"/>
+        <location filename="WelcomeScreen.cpp" line="341"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>以下為正式版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="350"/>
+        <location filename="WelcomeScreen.cpp" line="351"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>找不到版本 &quot;%1&quot; 的細節。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="373"/>
+        <location filename="WelcomeScreen.cpp" line="374"/>
         <source>The new stable version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>已找到Github上最新的正式版本 &quot;%1&quot;。
 點下方以開啟更新視窗:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="385"/>
+        <location filename="WelcomeScreen.cpp" line="386"/>
         <source>You are running a BETA version. Above are displayed the latest stable version release notes.
 Press the button below to open the updater window:</source>
         <translation>你正在運行Beta版本。以上為最新正式版本的資訊
 點下方以開啟更新視窗:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="430"/>
+        <location filename="WelcomeScreen.cpp" line="431"/>
         <source>The new BETA version &quot;%1&quot; is available on GitHub.
 Press the button below to open the updater window:</source>
         <translation>已找到Github上最新的BETA版本 &quot;%1&quot;。
 點下方以開啟更新視窗:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="379"/>
+        <location filename="WelcomeScreen.cpp" line="380"/>
         <source>You are already running the latest stable version &quot;%1&quot;.</source>
         <translation>您已在運行最新的正式版本 &quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="205"/>
+        <location filename="WelcomeScreen.cpp" line="206"/>
         <source>Whether it is your first time using the application or you&apos;re wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:</source>
         <translation>不論您是第一次使用本工具或者對特定功能有興趣，皆建議可以點選下方參考使用者說明以及詳細教學:</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="392"/>
-        <location filename="WelcomeScreen.cpp" line="437"/>
+        <location filename="WelcomeScreen.cpp" line="393"/>
+        <location filename="WelcomeScreen.cpp" line="438"/>
         <source>You are running a developer version.</source>
         <translation>您正在運行開發者版本。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="414"/>
+        <location filename="WelcomeScreen.cpp" line="415"/>
         <source>No BETA version found on GitHub.</source>
         <translation>未在Github上找到BETA版本。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="419"/>
+        <location filename="WelcomeScreen.cpp" line="420"/>
         <source>No newer BETA version is currently available.</source>
         <translation>找不到更新的BETA版本。</translation>
     </message>
     <message>
-        <location filename="WelcomeScreen.cpp" line="424"/>
+        <location filename="WelcomeScreen.cpp" line="425"/>
         <source>You are already running the latest BETA version &quot;%1&quot;.</source>
         <translation>您已在運行最新的Beta版本&quot;%1&quot;。</translation>
     </message>

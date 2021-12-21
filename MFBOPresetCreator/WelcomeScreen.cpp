@@ -8,6 +8,7 @@
 #include <QIcon>
 #include <QScrollArea>
 #include <QTextBrowser>
+#include <math.h>
 
 WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)

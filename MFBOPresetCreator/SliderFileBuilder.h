@@ -22,5 +22,5 @@ public:
   static std::vector<Struct::Filter> GetXMLDefaultFiltersFromBody(const BodyNameVersion& aBody);
 
 private:
-  explicit SliderFileBuilder(){};
+  explicit SliderFileBuilder() {}
 };

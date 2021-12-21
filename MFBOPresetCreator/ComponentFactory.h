@@ -56,7 +56,7 @@ public:
                               const int aColumnSpan = 1);
 
 private:
-  explicit ComponentFactory(){};
+  explicit ComponentFactory() {}
   explicit ComponentFactory(const ComponentFactory&) = delete;
   ComponentFactory& operator=(const ComponentFactory&) = delete;
 };

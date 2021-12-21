@@ -452,10 +452,10 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   auto lMustUseBeastHands{false};
 
   auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
-  auto lCurrentIndex{lActivePresetNumber->value()};
+  const auto lCurrentIndex{lActivePresetNumber->value()};
   if (lCurrentIndex > 0
-      && lCurrentIndex <= this->mData.presets.size()
-      && this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).mustHandsUseAlternativeModel())
+      && lCurrentIndex <= static_cast<int>(this->mData.presets.size())
+      && this->mData.presets.at(static_cast<size_t>(lCurrentIndex - 1)).mustHandsUseAlternativeModel())
   {
     lMustUseBeastHands = true;
   }
@@ -639,7 +639,7 @@ void BatchConversionPicker::removeActivePreset()
   this->mPreventPresetSave = false;
 
   auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
-  auto lCurrentIndex{lActivePresetNumber->value()};
+  const auto lCurrentIndex{lActivePresetNumber->value()};
 
   // Remove the preset entry
   this->mData.presets.erase(this->mData.presets.begin() + lCurrentIndex - 1);
@@ -913,9 +913,9 @@ void BatchConversionPicker::validateSelection()
 
   auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
 
-  for (int i = 0; i < this->mData.presets.size(); i++)
+  for (size_t i = 0; i < this->mData.presets.size(); i++)
   {
-    auto lNaturalIndex{i + 1};
+    const auto lNaturalIndex{static_cast<int>(i + 1)};
 
     // If the current preset is not valid
     if (!this->mData.presets.at(i).isValid())
@@ -941,7 +941,7 @@ void BatchConversionPicker::validateSelection()
       {
         this->removeActivePreset();
         this->updateActivePresetNumberSpinBox(); // Force the refresh of the spin box since the preset since it will be ignored then
-        this->updatePresetInterfaceState(i);
+        this->updatePresetInterfaceState(static_cast<int>(i));
         i--;
       }
       else
@@ -953,7 +953,7 @@ void BatchConversionPicker::validateSelection()
 
     // Check if two presets have the same BodySlide files names,
     // because it will not be possible to generate both of them under the same name
-    for (int j = 0; j < this->mData.presets.size(); j++)
+    for (size_t j = 0; j < this->mData.presets.size(); j++)
     {
       if (i != j && mData.presets.at(i).getNames().first.compare(mData.presets.at(j).getNames().first) == 0)
       {

@@ -3,7 +3,11 @@
 #include <QObject>
 #include <QStringList>
 
+#if defined(_MSC_VER) && !defined(DLLEXP)
 #define DLLEXP __declspec(dllexport)
+#elif !defined(DLLEXP)
+#define DLLEXP
+#endif
 
 class DataLists final : public QObject
 {
@@ -71,7 +75,7 @@ public:
   static QStringList GetLastPathsKeys();
 
 private:
-  explicit DataLists(){};
+  explicit DataLists() {}
   explicit DataLists(const DataLists&) = delete;
   DataLists& operator=(const DataLists&) = delete;
 };

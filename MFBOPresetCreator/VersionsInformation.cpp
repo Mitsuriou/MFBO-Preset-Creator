@@ -2,6 +2,9 @@
 
 QString VersionsInformation::getLatestStableVersionNumber() const
 {
+  if (this->stableVersionsList.size() == 0)
+    return QString();
+
   return this->stableVersionsList.at(0).first;
 }
 
@@ -25,11 +28,17 @@ QString VersionsInformation::getStableReleaseNotes(const QString& aVersion) cons
 
 QString VersionsInformation::getLatestStableReleaseNotes() const
 {
+  if (this->stableVersionsList.size() == 0)
+    return QString();
+
   return this->stableVersionsList.begin()->second;
 }
 
 QString VersionsInformation::getLatestBetaVersionNumber() const
 {
+  if (this->betaVersionsList.size() == 0)
+    return QString();
+
   return this->betaVersionsList.at(0).first;
 }
 
@@ -53,6 +62,9 @@ QString VersionsInformation::getBetaReleaseNotes(const QString& aVersion) const
 
 QString VersionsInformation::getLatestBetaReleaseNotes() const
 {
+  if (this->betaVersionsList.size() == 0)
+    return QString();
+
   return this->betaVersionsList.begin()->second;
 }
 
