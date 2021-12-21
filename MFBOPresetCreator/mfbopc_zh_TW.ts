@@ -983,44 +983,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1288"/>
+        <location filename="DataLists.cpp" line="1517"/>
         <source>Minimized</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1289"/>
-        <location filename="DataLists.cpp" line="1295"/>
+        <location filename="DataLists.cpp" line="1518"/>
+        <location filename="DataLists.cpp" line="1524"/>
         <source>Windowed</source>
         <translation>視窗化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1290"/>
-        <location filename="DataLists.cpp" line="1296"/>
+        <location filename="DataLists.cpp" line="1519"/>
+        <location filename="DataLists.cpp" line="1525"/>
         <source>Maximized</source>
         <translation>最大化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1324"/>
+        <location filename="DataLists.cpp" line="1553"/>
         <source>[ignore]</source>
         <translation>[忽略]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1325"/>
+        <location filename="DataLists.cpp" line="1554"/>
         <source>Body mesh</source>
         <translation>身體模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1326"/>
+        <location filename="DataLists.cpp" line="1555"/>
         <source>Feet mesh</source>
         <translation>腳部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1327"/>
+        <location filename="DataLists.cpp" line="1556"/>
         <source>Hands mesh</source>
         <translation>手部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1328"/>
+        <location filename="DataLists.cpp" line="1557"/>
         <source>Skeleton mesh</source>
         <translation>骨架模型</translation>
     </message>
@@ -2519,7 +2519,7 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="unfinished">錯誤:無效的輸出路徑。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="513"/>
+        <location filename="TexturesAssistant.cpp" line="512"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2529,77 +2529,77 @@ Be sure that you used characters authorized by your OS in the given paths.</olds
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="521"/>
+        <location filename="TexturesAssistant.cpp" line="520"/>
         <source>Already existing directory</source>
         <translation type="unfinished">已存在資料夾</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="522"/>
+        <location filename="TexturesAssistant.cpp" line="521"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
         <oldsource>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</oldsource>
         <translation type="unfinished">資料夾:&quot;%1&quot;已存在。是否確定在此資料夾輸出檔案?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="525"/>
+        <location filename="TexturesAssistant.cpp" line="524"/>
         <source>Continue the files creation</source>
         <oldsource>Continue the files generation</oldsource>
         <translation type="unfinished">繼續執行產生檔案</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="526"/>
+        <location filename="TexturesAssistant.cpp" line="525"/>
         <source>Cancel the files creation</source>
         <oldsource>Cancel the files generation</oldsource>
         <translation type="unfinished">取消產生檔案</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="553"/>
+        <location filename="TexturesAssistant.cpp" line="550"/>
         <source>Files creation successful</source>
         <oldsource>Generation successful</oldsource>
         <translation type="unfinished">檔案輸出成功</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="554"/>
+        <location filename="TexturesAssistant.cpp" line="551"/>
         <source>The texture files have been correctly created.</source>
         <oldsource>The textures files have been correctly created.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="557"/>
+        <location filename="TexturesAssistant.cpp" line="554"/>
         <source>Open the created directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="557"/>
+        <location filename="TexturesAssistant.cpp" line="554"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="599"/>
+        <location filename="TexturesAssistant.cpp" line="596"/>
         <source>BSA file found</source>
         <translation>找到BSA檔</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="600"/>
+        <location filename="TexturesAssistant.cpp" line="597"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>偵測到資料夾存在BSA檔案。由於本程式不支援BSA檔案，建議解壓縮BSA檔後再進行掃描。是否繼續進行掃描?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="603"/>
+        <location filename="TexturesAssistant.cpp" line="600"/>
         <source>Continue the scan</source>
         <translation>繼續偵測</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="604"/>
+        <location filename="TexturesAssistant.cpp" line="601"/>
         <source>Cancel the scan</source>
         <translation>取消偵測</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="619"/>
+        <location filename="TexturesAssistant.cpp" line="616"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>掃描範圍中找不到名稱為&quot;textures&quot;的資料夾。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="633"/>
+        <location filename="TexturesAssistant.cpp" line="630"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>掃描範圍中找不到任何DDS檔。</translation>
     </message>
@@ -2863,7 +2863,7 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1137"/>
+        <location filename="Utils.cpp" line="1141"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2923,17 +2923,17 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1137"/>
+        <location filename="Utils.cpp" line="1141"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1137"/>
+        <location filename="Utils.cpp" line="1141"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1143"/>
+        <location filename="Utils.cpp" line="1147"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2942,18 +2942,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1825"/>
+        <location filename="Utils.cpp" line="1832"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1928"/>
-        <location filename="Utils.cpp" line="1952"/>
+        <location filename="Utils.cpp" line="1935"/>
+        <location filename="Utils.cpp" line="1959"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1946"/>
+        <location filename="Utils.cpp" line="1953"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

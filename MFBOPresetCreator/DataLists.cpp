@@ -108,18 +108,18 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
     case BodyName::BHUNP_LITE_ASDASDF:
     {
       // All the version numbers propose the variants below:
-      return QStringList{QString("ASDASDF_3BBB"),
-                         QString("ASDASDF_3BBB_NO_THIGH_JIGGLE"),
-                         QString("ASDASDF_BBP"),
-                         QString("ASDASDF_BBP_NO_THIGH_JIGGLE"),
-                         QString("ASDASDF_TBBP"),
-                         QString("ASDASDF_TBBP_NO_THIGH_JIGGLE"),
-                         QString("ASDASDF_ALTERBODY_3BBB"),
-                         QString("ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE"),
-                         QString("ASDASDF_ALTERBODY_BBP"),
-                         QString("ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE"),
-                         QString("ASDASDF_ALTERBODY_TBBP"),
-                         QString("ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE")};
+      return QStringList{QString("ASDASDF 3BBB"),
+                         QString("ASDASDF 3BBB - NO THIGH JIGGLE"),
+                         QString("ASDASDF BBP"),
+                         QString("ASDASDF BBP - NO THIGH JIGGLE"),
+                         QString("ASDASDF TBBP"),
+                         QString("ASDASDF TBBP - NO THIGH JIGGLE"),
+                         QString("ASDASDF ALTERBODY 3BBB"),
+                         QString("ASDASDF ALTERBODY 3BBB - NO THIGH JIGGLE"),
+                         QString("ASDASDF ALTERBODY BBP"),
+                         QString("ASDASDF ALTERBODY BBP - NO THIGH JIGGLE"),
+                         QString("ASDASDF ALTERBODY TBBP"),
+                         QString("ASDASDF ALTERBODY TBBP - NO THIGH JIGGLE")};
     }
   }
 
@@ -158,6 +158,30 @@ QString DataLists::GetQRCRessourceName(const BodyVariant& aBodyVariant)
       return QString("coco body uunp");
     case BodyVariant::MIMIR_EBONIC_BODY:
       return QString("mimir ebonic body");
+    case BodyVariant::ASDASDF_3BBB:
+      return QString("asdasdf 3bbb");
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+      return QString("asdasdf 3bbb - ntj");
+    case BodyVariant::ASDASDF_BBP:
+      return QString("asdasdf bbp");
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+      return QString("asdasdf bbp - ntj");
+    case BodyVariant::ASDASDF_TBBP:
+      return QString("asdasdf tbbp");
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+      return QString("asdasdf tbbp - ntj");
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+      return QString("asdasdf alterbody 3bbb");
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+      return QString("asdasdf alterbody 3bbb - ntj");
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+      return QString("asdasdf alterbody bbp");
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+      return QString("asdasdf alterbody bbp - ntj");
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+      return QString("asdasdf alterbody tbbp");
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+      return QString("asdasdf alterbody tbbp - ntj");
   }
 
   return QString();
@@ -207,6 +231,24 @@ QStringList DataLists::GetFeetNamesList(const BodyVariant& aBodyVariant)
     {
       return QStringList{QString("CBBE 3BBB Feet - by Medley"),
                          QString("More Sliders for Feet - by Balveric")};
+    }
+    case BodyVariant::ASDASDF_3BBB:
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_BBP:
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_TBBP:
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+    {
+      return QStringList{QString("ASDASDF BHUNP Feet - by Myst"),
+                         QString("More Sliders for Feet - by Balveric"),
+                         QString("HG Feet and Toes UNP - by SunJeong"),
+                         QString("K Feet - by Khrysamere")};
     }
     case BodyVariant::_INVALID_VALUE:
     {
@@ -351,6 +393,19 @@ BodyName DataLists::GetName(const BodyVariant& aBodyVariant)
       return BodyName::COCO_BODY_UUNP;
     case BodyVariant::MIMIR_EBONIC_BODY:
       return BodyName::MIMIR_EBONIC_BODY;
+    case BodyVariant::ASDASDF_3BBB:
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_BBP:
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_TBBP:
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+      return BodyName::BHUNP_LITE_ASDASDF;
   }
 
   return BodyName::_INVALID_VALUE;
@@ -494,6 +549,33 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
 
       return FeetName::_INVALID_VALUE;
     }
+    case BodyVariant::ASDASDF_3BBB:
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_BBP:
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_TBBP:
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+    {
+      switch (aRelativeFeetName)
+      {
+        case 0:
+          return FeetName::ASDASDF;
+        case 1:
+          return FeetName::MORE_SLIDERS_FOR_FEET;
+        case 2:
+          return FeetName::HG_FEET;
+        case 3:
+          return FeetName::KHRYSAMERE_HG_FEET;
+      }
+
+      return FeetName::_INVALID_VALUE;
+    }
   }
 
   return FeetName::_INVALID_VALUE;
@@ -569,6 +651,30 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return BodyVariant::MIMIR_EBONIC_BODY;
+    case BodyNameVersion::ASDASDF_3BBB_1_13:
+      return BodyVariant::ASDASDF_3BBB;
+    case BodyNameVersion::ASDASDF_3BBB_NO_THIGH_JIGGLE_1_13:
+      return BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE;
+    case BodyNameVersion::ASDASDF_BBP_1_13:
+      return BodyVariant::ASDASDF_BBP;
+    case BodyNameVersion::ASDASDF_BBP_NO_THIGH_JIGGLE_1_13:
+      return BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE;
+    case BodyNameVersion::ASDASDF_TBBP_1_13:
+      return BodyVariant::ASDASDF_TBBP;
+    case BodyNameVersion::ASDASDF_TBBP_NO_THIGH_JIGGLE_1_13:
+      return BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE;
+    case BodyNameVersion::ASDASDF_ALTERBODY_3BBB_1_13:
+      return BodyVariant::ASDASDF_ALTERBODY_3BBB;
+    case BodyNameVersion::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE_1_13:
+      return BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE;
+    case BodyNameVersion::ASDASDF_ALTERBODY_BBP_1_13:
+      return BodyVariant::ASDASDF_ALTERBODY_BBP;
+    case BodyNameVersion::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE_1_13:
+      return BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE;
+    case BodyNameVersion::ASDASDF_ALTERBODY_TBBP_1_13:
+      return BodyVariant::ASDASDF_ALTERBODY_TBBP;
+    case BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13:
+      return BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE;
   }
 
   return BodyVariant::_INVALID_VALUE;
@@ -808,7 +914,7 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
     return -1;
   }
 
-  auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
+  const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
   switch (lBodyVariant)
   {
     case BodyVariant::_INVALID_VALUE:
@@ -827,7 +933,20 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
     case BodyVariant::BHUNP_TBBP:
     case BodyVariant::BHUNP_TBBP_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-      return static_cast<int>(lBodyVariant) - 1;
+      return static_cast<int>(lBodyVariant) - static_cast<int>(BodyVariant::BHUNP_3BBB);
+    case BodyVariant::ASDASDF_3BBB:
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_BBP:
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_TBBP:
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+      return static_cast<int>(lBodyVariant) - static_cast<int>(BodyVariant::ASDASDF_3BBB);
   }
 
   return -1;
@@ -835,7 +954,7 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
 
 int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersion& aFeetNameVersion)
 {
-  auto lFeetName{DataLists::GetName(aFeetNameVersion)};
+  const auto lFeetName{DataLists::GetName(aFeetNameVersion)};
 
   switch (aBodyVariant)
   {
@@ -920,6 +1039,33 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
+      }
+
+      return -1;
+    }
+    case BodyVariant::ASDASDF_3BBB:
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_BBP:
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_TBBP:
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+    {
+      switch (lFeetName)
+      {
+        case FeetName::ASDASDF:
+          return 0;
+        case FeetName::MORE_SLIDERS_FOR_FEET:
+          return 1;
+        case FeetName::HG_FEET:
+          return 2;
+        case FeetName::KHRYSAMERE_HG_FEET:
+          return 3;
       }
 
       return -1;
@@ -1015,6 +1161,30 @@ BodyNameVersion DataLists::GetFirstKey(const BodyVariant& aBodyVariant)
       return BodyNameVersion::COCO_BODY_UUNP_V3;
     case BodyVariant::MIMIR_EBONIC_BODY:
       return BodyNameVersion::MIMIR_EBONIC_BODY_1_2;
+    case BodyVariant::ASDASDF_3BBB:
+      return BodyNameVersion::ASDASDF_3BBB_1_13;
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+      return BodyNameVersion::ASDASDF_3BBB_NO_THIGH_JIGGLE_1_13;
+    case BodyVariant::ASDASDF_BBP:
+      return BodyNameVersion::ASDASDF_BBP_1_13;
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+      return BodyNameVersion::ASDASDF_BBP_NO_THIGH_JIGGLE_1_13;
+    case BodyVariant::ASDASDF_TBBP:
+      return BodyNameVersion::ASDASDF_TBBP_1_13;
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+      return BodyNameVersion::ASDASDF_TBBP_NO_THIGH_JIGGLE_1_13;
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+      return BodyNameVersion::ASDASDF_ALTERBODY_3BBB_1_13;
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+      return BodyNameVersion::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE_1_13;
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+      return BodyNameVersion::ASDASDF_ALTERBODY_BBP_1_13;
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+      return BodyNameVersion::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE_1_13;
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+      return BodyNameVersion::ASDASDF_ALTERBODY_TBBP_1_13;
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+      return BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13;
   }
 
   return BodyNameVersion::_INVALID_VALUE;

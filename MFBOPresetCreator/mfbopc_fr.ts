@@ -888,44 +888,44 @@ Pieds ciblés : -</translation>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1288"/>
+        <location filename="DataLists.cpp" line="1517"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1289"/>
-        <location filename="DataLists.cpp" line="1295"/>
+        <location filename="DataLists.cpp" line="1518"/>
+        <location filename="DataLists.cpp" line="1524"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1290"/>
-        <location filename="DataLists.cpp" line="1296"/>
+        <location filename="DataLists.cpp" line="1519"/>
+        <location filename="DataLists.cpp" line="1525"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1324"/>
+        <location filename="DataLists.cpp" line="1553"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1325"/>
+        <location filename="DataLists.cpp" line="1554"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1326"/>
+        <location filename="DataLists.cpp" line="1555"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1327"/>
+        <location filename="DataLists.cpp" line="1556"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1328"/>
+        <location filename="DataLists.cpp" line="1557"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
@@ -2260,7 +2260,7 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="513"/>
+        <location filename="TexturesAssistant.cpp" line="512"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2269,72 +2269,72 @@ Assurez vous de ne pas créer les fichiers dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="521"/>
+        <location filename="TexturesAssistant.cpp" line="520"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="522"/>
+        <location filename="TexturesAssistant.cpp" line="521"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
         <translation>Le répertoire &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même créer les fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="525"/>
+        <location filename="TexturesAssistant.cpp" line="524"/>
         <source>Continue the files creation</source>
         <translation>Continuer la création de fichiers</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="526"/>
+        <location filename="TexturesAssistant.cpp" line="525"/>
         <source>Cancel the files creation</source>
         <translation>Annuler la création de fichiers</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="553"/>
+        <location filename="TexturesAssistant.cpp" line="550"/>
         <source>Files creation successful</source>
         <translation>Création de fichiers réussie</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="554"/>
+        <location filename="TexturesAssistant.cpp" line="551"/>
         <source>The texture files have been correctly created.</source>
         <translation>Tous les fichiers de texture ont été correctement créés.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="557"/>
+        <location filename="TexturesAssistant.cpp" line="554"/>
         <source>Open the created directory</source>
         <translation>Ouvrir le répertoire créé</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="557"/>
+        <location filename="TexturesAssistant.cpp" line="554"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="599"/>
+        <location filename="TexturesAssistant.cpp" line="596"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="600"/>
+        <location filename="TexturesAssistant.cpp" line="597"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="603"/>
+        <location filename="TexturesAssistant.cpp" line="600"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="604"/>
+        <location filename="TexturesAssistant.cpp" line="601"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="619"/>
+        <location filename="TexturesAssistant.cpp" line="616"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>Aucun répertoire &quot;textures&quot; n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="633"/>
+        <location filename="TexturesAssistant.cpp" line="630"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>Aucun fichier DDS n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
@@ -2520,7 +2520,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1137"/>
+        <location filename="Utils.cpp" line="1141"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2582,17 +2582,17 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1137"/>
+        <location filename="Utils.cpp" line="1141"/>
         <source>Project successfully saved</source>
         <translation>Projet sauvegardé avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1137"/>
+        <location filename="Utils.cpp" line="1141"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>Le fichier de projet a été sauvegardé vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1143"/>
+        <location filename="Utils.cpp" line="1147"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2601,18 +2601,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1825"/>
+        <location filename="Utils.cpp" line="1832"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1928"/>
-        <location filename="Utils.cpp" line="1952"/>
+        <location filename="Utils.cpp" line="1935"/>
+        <location filename="Utils.cpp" line="1959"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1946"/>
+        <location filename="Utils.cpp" line="1953"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

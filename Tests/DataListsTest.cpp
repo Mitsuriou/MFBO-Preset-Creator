@@ -74,6 +74,18 @@ namespace Tests
       Assert::AreEqual(BodyName::COCO_BODY_CBBE, DataLists::GetName(BodyVariant::COCO_BODY_CBBE));
       Assert::AreEqual(BodyName::COCO_BODY_UUNP, DataLists::GetName(BodyVariant::COCO_BODY_UUNP));
       Assert::AreEqual(BodyName::MIMIR_EBONIC_BODY, DataLists::GetName(BodyVariant::MIMIR_EBONIC_BODY));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_3BBB));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_BBP));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_TBBP));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP));
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE));
     }
 
     TEST_METHOD(FeetName__GetName__FeetVariant)
@@ -85,6 +97,7 @@ namespace Tests
       Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_CBBE));
       Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_UUNP));
       Assert::AreEqual(FeetName::MIMIR_EBONIC_BODY, DataLists::GetName(FeetVariant::MIMIR_EBONIC_BODY));
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(FeetVariant::ASDASDF));
       Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE));
       Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP));
       Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE));
@@ -162,6 +175,30 @@ namespace Tests
       // MIMIR_EBONIC_BODY
       Assert::AreEqual(BodyName::MIMIR_EBONIC_BODY, DataLists::GetName(BodyNameVersion::MIMIR_EBONIC_BODY_1_2));
       Assert::AreEqual(BodyName::MIMIR_EBONIC_BODY, DataLists::GetName(BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX));
+      // ASDASDF_3BBB
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_3BBB_1_13));
+      // ASDASDF_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_3BBB_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_BBP
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_BBP_1_13));
+      // ASDASDF_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_BBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_TBBP
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_TBBP_1_13));
+      // ASDASDF_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_TBBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_3BBB
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_1_13));
+      // ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_BBP
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_ALTERBODY_BBP_1_13));
+      // ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_TBBP
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_1_13));
+      // ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyName::BHUNP_LITE_ASDASDF, DataLists::GetName(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13));
     }
 
     TEST_METHOD(FeetName__GetName__FeetNameVersion)
@@ -192,6 +229,8 @@ namespace Tests
       // MIMIR_EBONIC_BODY
       Assert::AreEqual(FeetName::MIMIR_EBONIC_BODY, DataLists::GetName(FeetNameVersion::MIMIR_EBONIC_BODY_1_2));
       Assert::AreEqual(FeetName::MIMIR_EBONIC_BODY, DataLists::GetName(FeetNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX));
+      // ASDASDF
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(FeetNameVersion::ASDASDF_1_13));
       // MORE_SLIDERS_FOR_FEET
       Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE_1_0));
       Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP_1_1));
@@ -308,6 +347,102 @@ namespace Tests
       Assert::AreEqual(FeetName::MIMIR_EBONIC_BODY, DataLists::GetName(BodyVariant::MIMIR_EBONIC_BODY, 0));     // MIMIR
       Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::MIMIR_EBONIC_BODY, 1)); // MSF
       Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::MIMIR_EBONIC_BODY, 2));        // invalid
+
+      // BodyVariant::ASDASDF_3BBB
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_3BBB, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_3BBB, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_3BBB, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_3BBB, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_3BBB, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_3BBB, 4));        // invalid
+
+      // BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE, 4));        // invalid
+
+      // BodyVariant::ASDASDF_BBP
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_BBP, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_BBP, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_BBP, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_BBP, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_BBP, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_BBP, 4));        // invalid
+
+      // BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE, 4));        // invalid
+
+      // BodyVariant::ASDASDF_TBBP
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_TBBP, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_TBBP, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_TBBP, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_TBBP, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_TBBP, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_TBBP, 4));        // invalid
+
+      // BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE, 4));        // invalid
+
+      // BodyVariant::ASDASDF_ALTERBODY_3BBB
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB, 4));        // invalid
+
+      // BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE, 4));        // invalid
+
+      // BodyVariant::ASDASDF_ALTERBODY_BBP
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP, 4));        // invalid
+
+      // BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE, 4));        // invalid
+
+      // BodyVariant::ASDASDF_ALTERBODY_TBBP
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP, 4));        // invalid
+
+      // BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, -1));       // invalid
+      Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, 0));               // ASDASDF
+      Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, 1)); // MSF
+      Assert::AreEqual(FeetName::HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, 2));               // HG FEET
+      Assert::AreEqual(FeetName::KHRYSAMERE_HG_FEET, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, 3));    // KHRYSAMERE HG FEET
+      Assert::AreEqual(FeetName::_INVALID_VALUE, DataLists::GetName(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, 4));        // invalid
     }
 
     TEST_METHOD(BodyVariant__GetVariant__BodyNameVersion)
@@ -377,6 +512,30 @@ namespace Tests
       // MIMIR_EBONIC_BODY
       Assert::AreEqual(BodyVariant::MIMIR_EBONIC_BODY, DataLists::GetVariant(BodyNameVersion::MIMIR_EBONIC_BODY_1_2));
       Assert::AreEqual(BodyVariant::MIMIR_EBONIC_BODY, DataLists::GetVariant(BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX));
+      // ASDASDF_3BBB
+      Assert::AreEqual(BodyVariant::ASDASDF_3BBB, DataLists::GetVariant(BodyNameVersion::ASDASDF_3BBB_1_13));
+      // ASDASDF_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE, DataLists::GetVariant(BodyNameVersion::ASDASDF_3BBB_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_BBP
+      Assert::AreEqual(BodyVariant::ASDASDF_BBP, DataLists::GetVariant(BodyNameVersion::ASDASDF_BBP_1_13));
+      // ASDASDF_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE, DataLists::GetVariant(BodyNameVersion::ASDASDF_BBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_TBBP
+      Assert::AreEqual(BodyVariant::ASDASDF_TBBP, DataLists::GetVariant(BodyNameVersion::ASDASDF_TBBP_1_13));
+      // ASDASDF_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE, DataLists::GetVariant(BodyNameVersion::ASDASDF_TBBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_3BBB
+      Assert::AreEqual(BodyVariant::ASDASDF_ALTERBODY_3BBB, DataLists::GetVariant(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_1_13));
+      // ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE, DataLists::GetVariant(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_BBP
+      Assert::AreEqual(BodyVariant::ASDASDF_ALTERBODY_BBP, DataLists::GetVariant(BodyNameVersion::ASDASDF_ALTERBODY_BBP_1_13));
+      // ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE, DataLists::GetVariant(BodyNameVersion::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_TBBP
+      Assert::AreEqual(BodyVariant::ASDASDF_ALTERBODY_TBBP, DataLists::GetVariant(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_1_13));
+      // ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, DataLists::GetVariant(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13));
     }
 
     TEST_METHOD(BodyVariant__GetVariant__BodyName_int_int)
