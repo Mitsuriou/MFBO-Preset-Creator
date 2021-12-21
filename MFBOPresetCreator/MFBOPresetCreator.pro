@@ -1,19 +1,9 @@
-TEMPLATE = app
-TARGET = MFBOPresetCreator
-DESTDIR = ../x64/Debug
-CONFIG += debug
-DEFINES += $(Qt_DEFINES_)
-LIBS += -L"."
-DEPENDPATH += .
-MOC_DIR += .
-OBJECTS_DIR += debug
-UI_DIR += .
-RCC_DIR += .
-TRANSLATIONS += mfbopc_en.ts \
-    mfbopc_fr.ts \
-    mfbopc_zh_TW.ts
-win32:RC_FILE = MFBOPresetCreator.rc
 QT += core gui network widgets xml
+
+TEMPLATE = app
+
+CONFIG += c++17
+
 HEADERS += ./resource.h \
     ./WelcomeScreen.h \
     ./TexturesAssistant.h \
@@ -41,6 +31,7 @@ HEADERS += ./resource.h \
     ./BCDropWidget.h \
     ./BCGroupWidget.h \
     TargetMeshesPicker.h
+
 SOURCES += ./main.cpp \
     ./About.cpp \
     ./AssistedConversion.cpp \
@@ -66,8 +57,13 @@ SOURCES += ./main.cpp \
     ./BCDropWidget.cpp \
     ./BCGroupWidget.cpp \
     TargetMeshesPicker.cpp
+
 FORMS += ./MFBOPresetCreator.ui
+
+win32:RC_FILE = MFBOPresetCreator.rc
+
+RESOURCES += MFBOPresetCreator.qrc
+
 TRANSLATIONS += ./mfbopc_en.ts \
     ./mfbopc_fr.ts \
     ./mfbopc_zh_TW.ts
-RESOURCES += MFBOPresetCreator.qrc
