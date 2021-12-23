@@ -60,8 +60,6 @@ SOURCES += ./main.cpp \
 
 FORMS += ./MFBOPresetCreator.ui
 
-win32:RC_FILE = MFBOPresetCreator.rc
-
 RESOURCES += MFBOPresetCreator.qrc
 
 TRANSLATIONS += ./mfbopc_en.ts \

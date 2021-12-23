@@ -237,9 +237,26 @@ VersionsInformation Utils::ParseGitHubReleasesRequestResult(const QString& aResu
   QJsonDocument lJsonDocument{QJsonDocument::fromJson(aResult.toUtf8())};
   QJsonArray lTagsArray{lJsonDocument.array()};
 
+  // If no data is found, return the empty set
+  if (lTagsArray.size() == 0)
+    return lVersionsInformation;
+
+  // In case the data is one level deeper
+  if (lTagsArray.size() == 1)
+  {
+    lTagsArray = lTagsArray.at(0).toArray();
+
+    // If there is still no data, return the empty set
+    if (lTagsArray.size() == 0)
+      return lVersionsInformation;
+  }
+
   // Iterate in the versions array
   for (int i = 0; i < lTagsArray.size(); i++)
   {
+    if (lTagsArray.at(i)["tag_name"].isNull() || !lTagsArray.at(i)["tag_name"].isString())
+      continue;
+
     // Parse the tag_name
     lTagName = Utils::CleanBreaksString(lTagsArray.at(i)["tag_name"].toString());
 
