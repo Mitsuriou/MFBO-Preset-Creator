@@ -1871,12 +1871,12 @@ void Utils::SetGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed)
   {
     aGroupBox->setChecked(false);
     aGroupBox->setMaximumHeight(qApp->fontMetrics().height() * 1.5);
-    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F5));
+    lTitle.replace(lTitle.length() - 1, 1, QChar(0x25B6));
   }
   else
   {
     aGroupBox->setMaximumHeight(QWIDGETSIZE_MAX);
-    lTitle.replace(lTitle.length() - 1, 1, QChar(0x23F7));
+    lTitle.replace(lTitle.length() - 1, 1, QChar(0x25BC));
   }
 
   // Update the title with the updated chevron state
