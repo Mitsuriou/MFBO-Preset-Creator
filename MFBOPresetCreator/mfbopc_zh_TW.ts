@@ -2863,7 +2863,7 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
     <message>
         <location filename="Utils.cpp" line="162"/>
         <location filename="Utils.cpp" line="224"/>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2873,67 +2873,67 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="457"/>
-        <location filename="Utils.cpp" line="509"/>
+        <location filename="Utils.cpp" line="474"/>
+        <location filename="Utils.cpp" line="526"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>錯誤:已存在同名輸出資料夾&quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="478"/>
+        <location filename="Utils.cpp" line="495"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>產生XML檔 &quot;%1&quot; 時發生錯誤。取消中。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="538"/>
+        <location filename="Utils.cpp" line="555"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>產生OSP檔 &quot;%1&quot; 時發生錯誤。取消中。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="568"/>
+        <location filename="Utils.cpp" line="585"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="594"/>
+        <location filename="Utils.cpp" line="611"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>未找到或無法複製獨立骨架檔案。將會使用預設的XPMSSE(4.72版本)骨架檔案...</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="599"/>
+        <location filename="Utils.cpp" line="616"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation>錯誤:無法產生預設骨架檔案。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="606"/>
+        <location filename="Utils.cpp" line="623"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>錯誤:未指定獨立骨架路徑。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="724"/>
+        <location filename="Utils.cpp" line="741"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>無法找到內部檔案e &quot;%1&quot; 。請回報給開發者並提供bug產生步驟。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="744"/>
-        <location filename="Utils.cpp" line="777"/>
-        <location filename="Utils.cpp" line="891"/>
+        <location filename="Utils.cpp" line="761"/>
+        <location filename="Utils.cpp" line="794"/>
+        <location filename="Utils.cpp" line="908"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1148"/>
+        <location filename="Utils.cpp" line="1165"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2942,18 +2942,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1833"/>
+        <location filename="Utils.cpp" line="1850"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1936"/>
-        <location filename="Utils.cpp" line="1960"/>
+        <location filename="Utils.cpp" line="1953"/>
+        <location filename="Utils.cpp" line="1977"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1954"/>
+        <location filename="Utils.cpp" line="1971"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

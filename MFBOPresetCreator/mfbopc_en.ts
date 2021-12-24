@@ -2462,7 +2462,7 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Utils.cpp" line="162"/>
         <location filename="Utils.cpp" line="224"/>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -2472,85 +2472,85 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="457"/>
-        <location filename="Utils.cpp" line="509"/>
+        <location filename="Utils.cpp" line="474"/>
+        <location filename="Utils.cpp" line="526"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="478"/>
+        <location filename="Utils.cpp" line="495"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="538"/>
+        <location filename="Utils.cpp" line="555"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="568"/>
+        <location filename="Utils.cpp" line="585"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="594"/>
+        <location filename="Utils.cpp" line="611"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="599"/>
+        <location filename="Utils.cpp" line="616"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="606"/>
+        <location filename="Utils.cpp" line="623"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="724"/>
+        <location filename="Utils.cpp" line="741"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="744"/>
-        <location filename="Utils.cpp" line="777"/>
-        <location filename="Utils.cpp" line="891"/>
+        <location filename="Utils.cpp" line="761"/>
+        <location filename="Utils.cpp" line="794"/>
+        <location filename="Utils.cpp" line="908"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>Project successfully saved</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1148"/>
+        <location filename="Utils.cpp" line="1165"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1833"/>
+        <location filename="Utils.cpp" line="1850"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1936"/>
-        <location filename="Utils.cpp" line="1960"/>
+        <location filename="Utils.cpp" line="1953"/>
+        <location filename="Utils.cpp" line="1977"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1954"/>
+        <location filename="Utils.cpp" line="1971"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>

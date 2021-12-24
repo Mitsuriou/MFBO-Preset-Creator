@@ -2520,7 +2520,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     <message>
         <location filename="Utils.cpp" line="162"/>
         <location filename="Utils.cpp" line="224"/>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2530,33 +2530,33 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="457"/>
-        <location filename="Utils.cpp" line="509"/>
+        <location filename="Utils.cpp" line="474"/>
+        <location filename="Utils.cpp" line="526"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="478"/>
+        <location filename="Utils.cpp" line="495"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="538"/>
+        <location filename="Utils.cpp" line="555"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="568"/>
+        <location filename="Utils.cpp" line="585"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
         <translation>Le fichier de texture &quot;%1&quot; n&apos;a pas été trouvé ou n&apos;a pas pu être copié.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="594"/>
+        <location filename="Utils.cpp" line="611"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="599"/>
+        <location filename="Utils.cpp" line="616"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2565,34 +2565,34 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="606"/>
+        <location filename="Utils.cpp" line="623"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="724"/>
+        <location filename="Utils.cpp" line="741"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>Le fichier interne &quot;%1&quot; n&apos;a pas pu être trouvé. Veuillez sigaler ce problème au développeur avec les étapes pour reproduire ce bug.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="744"/>
-        <location filename="Utils.cpp" line="777"/>
-        <location filename="Utils.cpp" line="891"/>
+        <location filename="Utils.cpp" line="761"/>
+        <location filename="Utils.cpp" line="794"/>
+        <location filename="Utils.cpp" line="908"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>Project successfully saved</source>
         <translation>Projet sauvegardé avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1142"/>
+        <location filename="Utils.cpp" line="1159"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>Le fichier de projet a été sauvegardé vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1148"/>
+        <location filename="Utils.cpp" line="1165"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2601,18 +2601,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1833"/>
+        <location filename="Utils.cpp" line="1850"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1936"/>
-        <location filename="Utils.cpp" line="1960"/>
+        <location filename="Utils.cpp" line="1953"/>
+        <location filename="Utils.cpp" line="1977"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1954"/>
+        <location filename="Utils.cpp" line="1971"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
