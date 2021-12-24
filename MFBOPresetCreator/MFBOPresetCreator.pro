@@ -1,5 +1,7 @@
 QT += core gui network widgets xml
 
+QMAKE_LFLAGS += -no-pie
+
 TEMPLATE = app
 
 CONFIG += c++17
