@@ -2652,10 +2652,10 @@ Below are the release notes for the latest stable version:</source>
 以下為正式版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="181"/>
-        <location filename="Update.cpp" line="182"/>
-        <location filename="Update.cpp" line="218"/>
-        <location filename="Update.cpp" line="219"/>
+        <location filename="Update.cpp" line="185"/>
+        <location filename="Update.cpp" line="186"/>
+        <location filename="Update.cpp" line="226"/>
+        <location filename="Update.cpp" line="227"/>
         <source>Download the update</source>
         <translation>下載更新</translation>
     </message>
@@ -2718,7 +2718,7 @@ Below are the release notes for this version:</source>
 以下為此版本的更新紀錄:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="424"/>
+        <location filename="Update.cpp" line="432"/>
         <source>Download successful. Click the button above to start updating MFBOPC.
 Make sure that you saved everything before starting the update as the application will be closed!
 
@@ -2729,7 +2729,7 @@ Make sure that you saved everything before starting the update as the applicatio
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="425"/>
+        <location filename="Update.cpp" line="433"/>
         <source>An error has occurred while downloading the update.
 Please make sure your internet connection is working correctly and try again.
 
@@ -2740,14 +2740,14 @@ Please make sure your internet connection is working correctly and try again.
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="459"/>
-        <location filename="Update.cpp" line="460"/>
+        <location filename="Update.cpp" line="467"/>
+        <location filename="Update.cpp" line="468"/>
         <source>Close MFBOPC and install the update</source>
         <translation>關閉MFBOPC程式並開始更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="484"/>
-        <location filename="Update.cpp" line="485"/>
+        <location filename="Update.cpp" line="492"/>
+        <location filename="Update.cpp" line="493"/>
         <source>Try to download the update once again</source>
         <translation>重新嘗試下載更新檔</translation>
     </message>
@@ -2767,7 +2767,7 @@ Please make sure your internet connection is working correctly and try again.
         <translation> (只要BETA版)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="197"/>
+        <location filename="Update.cpp" line="201"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -2786,7 +2786,7 @@ Below are the release notes for the BETA version &quot;%2&quot;:</source>
 以下為BETA版本 &quot;%2&quot; 的更新資訊:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="234"/>
+        <location filename="Update.cpp" line="242"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -2805,35 +2805,35 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
 以下為BETA版本 &quot;%2&quot; 的更新資訊:</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="244"/>
-        <location filename="Update.cpp" line="245"/>
+        <location filename="Update.cpp" line="252"/>
+        <location filename="Update.cpp" line="253"/>
         <source>Already running the latest version</source>
         <translation>您已在運行最新的版本</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="246"/>
+        <location filename="Update.cpp" line="254"/>
         <source>Awesome! You are already running the latest available version.</source>
         <translation>太棒了! 您已在運行最新的版本。</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="271"/>
-        <location filename="Update.cpp" line="272"/>
+        <location filename="Update.cpp" line="279"/>
+        <location filename="Update.cpp" line="280"/>
         <source>Cancel the download</source>
         <translation>取消下載</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="310"/>
-        <location filename="Update.cpp" line="311"/>
+        <location filename="Update.cpp" line="318"/>
+        <location filename="Update.cpp" line="319"/>
         <source>Download canceled: click to try to download the update once again</source>
         <translation>已取消下載: 點選以重新嘗試下載更新</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="347"/>
+        <location filename="Update.cpp" line="355"/>
         <source>%1 bytes out of %2 bytes (%p%)</source>
         <translation>%2 bytes之中已下載 %1 bytes (%p%)</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="423"/>
+        <location filename="Update.cpp" line="431"/>
         <source>Download successful. Click the button above to open the directory where the file has been downloaded.
 
 </source>
@@ -2842,13 +2842,13 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
 </translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="435"/>
-        <location filename="Update.cpp" line="436"/>
+        <location filename="Update.cpp" line="443"/>
+        <location filename="Update.cpp" line="444"/>
         <source>Show the ZIP file in Windows Explorer</source>
         <translation>在檔案瀏覽中開啟ZIP檔</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="528"/>
+        <location filename="Update.cpp" line="536"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
         <translation>無法開始更新，重試前請確認防火牆與防毒軟體未封鎖本程式。</translation>
     </message>

@@ -167,7 +167,11 @@ void Update::displayUpdateMessage(const QString& aResult)
 
       if (Utils::IsRunningStandaloneVersion())
       {
-        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.zip").arg(lVersionsInformation.getLatestBetaVersionNumber());
+#ifdef Q_OS_WIN
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.windows.zip").arg(lVersionsInformation.getLatestBetaVersionNumber());
+#elif
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.linux.zip").arg(lVersionsInformation.getLatestBetaVersionNumber());
+#endif
       }
       else
       {
@@ -204,7 +208,11 @@ void Update::displayUpdateMessage(const QString& aResult)
 
       if (Utils::IsRunningStandaloneVersion())
       {
-        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.zip").arg(lVersionsInformation.getLatestStableVersionNumber());
+#ifdef Q_OS_WIN
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.windows.zip").arg(lVersionsInformation.getLatestStableVersionNumber());
+#elif
+        this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.linux.zip").arg(lVersionsInformation.getLatestStableVersionNumber());
+#endif
       }
       else
       {
