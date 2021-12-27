@@ -11,7 +11,6 @@
 #include <QDesktopServices>
 #include <QDirIterator>
 #include <QFileDialog>
-#include <QGroupBox>
 #include <QJsonObject>
 #include <QLabel>
 #include <QLineEdit>
@@ -318,10 +317,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Body meshes group box
-  auto lMeshesGroupBox{new QGroupBox(tr("Original mod's body meshes").append("  "), this)};
-  Utils::AddIconToGroupBox(lMeshesGroupBox, lIconFolder, "body", this->mSettings.display.font.size);
-  this->connect(lMeshesGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
-  Utils::SetGroupBoxState(lMeshesGroupBox, false);
+  auto lMeshesGroupBox{ComponentFactory::CreateGroupBox(this, tr("Original mod's body meshes"), "body", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lMeshesGroupBox, 0, 0);
 
   // Grid layout
@@ -414,10 +410,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Custom skeleton group box
-  auto lSkeletonGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::AddIconToGroupBox(lSkeletonGroupBox, lIconFolder, "skeleton", this->mSettings.display.font.size);
-  this->connect(lSkeletonGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
-  Utils::SetGroupBoxState(lSkeletonGroupBox, false);
+  auto lSkeletonGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
@@ -515,10 +508,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // BodySlide output settings group box
-  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
-  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
-  Utils::SetGroupBoxState(lBodyslideGroupBox, false);
+  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lBodyslideGroupBox, 2, 0);
 
   // Grid layout
@@ -618,8 +608,6 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 
   // Create the group box
   ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
-  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
-  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &PresetCreator::groupBoxChecked);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
@@ -1445,13 +1433,4 @@ void PresetCreator::updateBodySlideFiltersListPreview()
   lFiltersList->setText(lText);
 
   this->setHasUserDoneSomething(true);
-}
-
-void PresetCreator::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

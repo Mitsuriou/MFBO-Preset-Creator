@@ -74,8 +74,6 @@ private:
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
 
-  // GUI widgets events
-  void groupBoxChecked(bool aIsChecked);
   //#pragma endregion PRIVATE_SLOTS
 
   explicit PresetCreator(const PresetCreator&) = delete;

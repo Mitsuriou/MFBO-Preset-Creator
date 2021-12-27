@@ -13,7 +13,6 @@
 #include <QDesktopServices>
 #include <QDirIterator>
 #include <QFileDialog>
-#include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
@@ -107,10 +106,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // General group box
-  auto lGeneralGroupBox{new QGroupBox(tr("General").append("  "), this)};
-  Utils::AddIconToGroupBox(lGeneralGroupBox, lIconFolder, "tune", this->mSettings.display.font.size);
-  this->connect(lGeneralGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
-  Utils::SetGroupBoxState(lGeneralGroupBox, false);
+  auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -163,10 +159,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Backup group box
-  auto lBackupGroupBox{new QGroupBox(tr("Backup").append("  "), this)};
-  Utils::AddIconToGroupBox(lBackupGroupBox, lIconFolder, "restore", this->mSettings.display.font.size);
-  this->connect(lBackupGroupBox, &QGroupBox::toggled, this, &RetargetingTool::groupBoxChecked);
-  Utils::SetGroupBoxState(lBackupGroupBox, false);
+  auto lBackupGroupBox{ComponentFactory::CreateGroupBox(this, tr("Backup"), "restore", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lBackupGroupBox, 1, 0);
 
   // Grid layout
@@ -875,13 +868,4 @@ void RetargetingTool::updateBodySlideFiltersListPreview()
   lFiltersList->setText(lText);
 
   this->userHasDoneAnAction();
-}
-
-void RetargetingTool::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

@@ -155,21 +155,21 @@ echo #####################################################</Command>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>5.15.2</QtInstall>
-    <QtModules>core;gui;network;widgets;xml</QtModules>
+    <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>5.15.2</QtInstall>
-    <QtModules>core;gui;network;widgets;xml</QtModules>
+    <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" Label="QtSettings">
     <QtInstall>5.15.2</QtInstall>
-    <QtModules>core;gui;network;widgets;xml</QtModules>
+    <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
@@ -236,6 +236,7 @@ echo #####################################################</Command>
     <ClCompile Include="ComponentFactory.cpp" />
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
+    <ClCompile Include="GroupBox.cpp" />
     <ClCompile Include="LangManager.cpp" />
     <ClCompile Include="ReleaseNotesViewer.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -257,6 +258,7 @@ echo #####################################################</Command>
     <ClCompile Include="VersionsInformation.cpp" />
     <ClCompile Include="WelcomeScreen.cpp" />
     <QtMoc Include="TargetMeshesPicker.h" />
+    <QtMoc Include="GroupBox.h" />
     <ClInclude Include="VersionsInformation.h" />
     <QtMoc Include="WelcomeScreen.h" />
     <QtMoc Include="TexturesAssistant.h" />

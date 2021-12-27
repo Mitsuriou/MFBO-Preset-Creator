@@ -3,7 +3,6 @@
 #include "VersionsInformation.h"
 #include <QComboBox>
 #include <QGridLayout>
-#include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
 #include <QObject>
@@ -136,12 +135,10 @@ public:
 
   // Widgets builder
   static QAction* BuildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder);
-  static void AddIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName, const int aFontSize);
   static void AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName);
 
   // GUI modifiers
   static void SelectComboBoxAt(QComboBox* aComboBox, const int aIndex);
-  static void SetGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed);
   static void UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel);
   static void UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview);
 

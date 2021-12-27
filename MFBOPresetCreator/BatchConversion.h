@@ -63,9 +63,6 @@ private:
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
 
-  // GUI widgets events
-  void groupBoxChecked(bool aIsChecked);
-
   explicit BatchConversion(const BatchConversion&) = delete;
   BatchConversion& operator=(const BatchConversion&) = delete;
 };

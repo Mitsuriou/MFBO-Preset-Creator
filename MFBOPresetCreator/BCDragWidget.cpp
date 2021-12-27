@@ -1,9 +1,9 @@
 #include "BCDragWidget.h"
+#include "ComponentFactory.h"
 #include "Utils.h"
 #include <QApplication>
 #include <QDrag>
 #include <QGridLayout>
-#include <QGroupBox>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
@@ -61,20 +61,17 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
       break;
   }
 
-  const auto lSection{new QGroupBox(lGroupBoxTitle.append("  "), this)};
-  Utils::AddIconToGroupBox(lSection, lIconFolder, lGroupBoxIcon, aSettings.display.font.size);
-  this->connect(lSection, &QGroupBox::toggled, this, &BCDragWidget::groupBoxChecked);
-  Utils::SetGroupBoxState(lSection, false);
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, lGroupBoxTitle, lGroupBoxIcon, lIconFolder, aSettings.display.font.size)};
 
-  const auto lSectionLayout{new QVBoxLayout(this)};
-  lSectionLayout->setSpacing(10);
-  lSectionLayout->setContentsMargins(15, 20, 15, 15);
-  lSection->setLayout(lSectionLayout);
+  const auto lGroupBoxLayout{new QVBoxLayout(this)};
+  lGroupBoxLayout->setSpacing(10);
+  lGroupBoxLayout->setContentsMargins(15, 20, 15, 15);
+  lGroupBox->setLayout(lGroupBoxLayout);
 
-  lMainLayout->addWidget(lSection);
+  lMainLayout->addWidget(lGroupBox);
 
   const auto lPathLabel{new QLabel(this->mRessourcePath, this)};
-  lSectionLayout->addWidget(lPathLabel);
+  lGroupBoxLayout->addWidget(lPathLabel);
 
   // Change the cursor
   this->setCursor(Qt::OpenHandCursor);
@@ -123,13 +120,4 @@ void BCDragWidget::mouseMoveEvent(QMouseEvent* aEvent)
   QDrag* lDragObject{new QDrag(this)};
   lDragObject->setMimeData(lMimeData);
   lDragObject->exec(Qt::MoveAction);
-}
-
-void BCDragWidget::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

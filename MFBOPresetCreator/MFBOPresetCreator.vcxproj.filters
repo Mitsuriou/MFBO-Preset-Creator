@@ -76,6 +76,9 @@
     <ClCompile Include="TargetMeshesPicker.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="GroupBox.cpp">
+      <Filter>Source Files\Qt Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -141,6 +144,12 @@
     </Filter>
     <Filter Include="Source Files\Drag and Drop">
       <UniqueIdentifier>{6bc77066-e119-492f-8b42-fb09bba1e18e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Qt Class">
+      <UniqueIdentifier>{ed92a39b-09a1-4fda-afb0-bf97c29c202c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Qt Class">
+      <UniqueIdentifier>{322b3896-4998-4607-afde-0b48217fbc7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +241,9 @@
     </QtMoc>
     <QtMoc Include="TargetMeshesPicker.h">
       <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="GroupBox.h">
+      <Filter>Header Files\Qt Class</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

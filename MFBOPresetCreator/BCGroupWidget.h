@@ -4,7 +4,7 @@
 #include "Struct.h"
 #include <QWidget>
 
-class BCGroupWidget : public QWidget
+class BCGroupWidget final : public QWidget
 {
   Q_OBJECT
 
@@ -25,9 +25,6 @@ private:
 
   void dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked);
   void checkBoxStateChangedReceiver(const bool aIsActive);
-
-  // GUI widgets events
-  void groupBoxChecked(bool aIsChecked);
 
   explicit BCGroupWidget(const BCGroupWidget&) = delete;
   BCGroupWidget& operator=(const BCGroupWidget&) = delete;

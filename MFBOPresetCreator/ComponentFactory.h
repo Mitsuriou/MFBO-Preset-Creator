@@ -1,4 +1,6 @@
 #pragma once
+
+#include "GroupBox.h"
 #include <QCheckBox>
 #include <QGridLayout>
 #include <QObject>
@@ -24,6 +26,14 @@ public:
                                    const QString& aTooltipText,
                                    const QString& aObjectName = QString(),
                                    const bool lIsChecked = false);
+
+  static GroupBox* CreateGroupBox(QWidget* aParent,
+                                  const QString& aTitle,
+                                  const QString& aIconName,
+                                  const QString& aIconFolder,
+                                  const int aFontSize,
+                                  const QString& aObjectName = QString(),
+                                  const bool aIsDisabled = false);
 
   // Constructed components
   static QGridLayout* CreateScrollAreaWindowLayout(QWidget* aParent,

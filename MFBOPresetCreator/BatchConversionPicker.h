@@ -63,9 +63,6 @@ private:
   void generateNewPresets(const std::multimap<QString, std::map<QString, std::set<QString>>>& aPresets); // multimap<origin_folder, map<path, set<mesh_file_name>>>
   void validateSelection();
 
-  // GUI widgets events
-  void groupBoxChecked(bool aIsChecked);
-
   explicit BatchConversionPicker(const BatchConversionPicker&) = delete;
   BatchConversionPicker& operator=(const BatchConversionPicker&) = delete;
 };

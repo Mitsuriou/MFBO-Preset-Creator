@@ -82,10 +82,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted body group box */
   /*=========================*/
-  auto lBodyGroupBox{new QGroupBox(tr("Body mod").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyGroupBox, lIconFolder, "body", this->mSettings.display.font.size);
-  this->connect(lBodyGroupBox, &QGroupBox::toggled, this, &TargetMeshesPicker::groupBoxChecked);
-  Utils::SetGroupBoxState(lBodyGroupBox, false);
+  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", lIconFolder, this->mSettings.display.font.size)};
   lMainLayout->addWidget(lBodyGroupBox);
 
   // Grid layout
@@ -116,10 +113,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted feet group box */
   /*=========================*/
-  auto lFeetGroupBox{new QGroupBox(tr("Feet mod").append("  "), this)};
-  Utils::AddIconToGroupBox(lFeetGroupBox, lIconFolder, "foot", this->mSettings.display.font.size);
-  this->connect(lFeetGroupBox, &QGroupBox::toggled, this, &TargetMeshesPicker::groupBoxChecked);
-  Utils::SetGroupBoxState(lFeetGroupBox, false);
+  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", lIconFolder, this->mSettings.display.font.size)};
   lMainLayout->addWidget(lFeetGroupBox);
 
   // Grid layout
@@ -232,15 +226,6 @@ void TargetMeshesPicker::validateAndClose()
 {
   emit valuesChosen(getChosenBodyName(), getChosenFeetName());
   this->accept();
-}
-
-void TargetMeshesPicker::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }
 
 void TargetMeshesPicker::bodyNameIndexChanged(const int aNewIndex)

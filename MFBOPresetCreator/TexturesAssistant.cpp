@@ -8,7 +8,6 @@
 #include <QDesktopServices>
 #include <QDirIterator>
 #include <QFileDialog>
-#include <QGroupBox>
 #include <QIcon>
 #include <QLabel>
 #include <QLineEdit>
@@ -134,11 +133,11 @@ void TexturesAssistant::displayHintZone()
   qobject_cast<QGridLayout*>(this->layout())->addWidget(lHintZone, 2, 0, 1, 3);
 
   // Disable the groupboxes
-  auto lTexturesSetGroupBox{this->findChild<QGroupBox*>(QString("textures_set_groupbox"))};
+  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
   if (lTexturesSetGroupBox != nullptr)
     lTexturesSetGroupBox->setDisabled(true);
 
-  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
   if (lOutputGroupBox != nullptr)
     lOutputGroupBox->setDisabled(true);
 
@@ -153,12 +152,7 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{new QGroupBox(tr("Textures set").append("  "), this)};
-  lGroupBox->setObjectName(QString("textures_set_groupbox"));
-  lGroupBox->setDisabled(true);
-  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "textures", this->mSettings.display.font.size);
-  this->connect(lGroupBox, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lGroupBox, false);
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Textures set"), "textures", lIconFolder, this->mSettings.display.font.size, "textures_set_groupbox", true)};
   aLayout.addWidget(lGroupBox, 3, 0, 1, 3);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -201,9 +195,8 @@ void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
 
   // Create the group box
   ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size, 1, 3);
-  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
   lOutputGroupBox->setDisabled(true);
-  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
@@ -361,10 +354,7 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lRowIndex{0};
 
   // Head ressources blocks
-  auto lHeadGroup{new QGroupBox(tr("Head textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lHeadGroup, lIconFolder, "woman-head", this->mSettings.display.font.size);
-  this->connect(lHeadGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lHeadGroup, false);
+  auto lHeadGroup{ComponentFactory::CreateGroupBox(this, tr("Head textures"), "woman-head", lIconFolder, this->mSettings.display.font.size)};
 
   auto lHeadGroupContainer{new QGridLayout(this)};
   lHeadGroupContainer->setSpacing(16);
@@ -373,10 +363,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lHeadGroup, lRowIndex++, 0);
 
   // Mouth ressources blocks
-  auto lMouthGroup{new QGroupBox(tr("Mouth textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lMouthGroup, lIconFolder, "mouth", this->mSettings.display.font.size);
-  this->connect(lMouthGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lMouthGroup, false);
+  auto lMouthGroup{ComponentFactory::CreateGroupBox(this, tr("Mouth textures"), "mouth", lIconFolder, this->mSettings.display.font.size)};
 
   auto lMouthGroupContainer{new QGridLayout(this)};
   lMouthGroupContainer->setSpacing(16);
@@ -385,10 +372,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lMouthGroup, lRowIndex++, 0);
 
   // Body ressources blocks
-  auto lBodyGroup{new QGroupBox(tr("Body textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyGroup, lIconFolder, "body", this->mSettings.display.font.size);
-  this->connect(lBodyGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lBodyGroup, false);
+  auto lBodyGroup{ComponentFactory::CreateGroupBox(this, tr("Body textures"), "body", lIconFolder, this->mSettings.display.font.size)};
 
   auto lBodyGroupContainer{new QGridLayout(this)};
   lBodyGroupContainer->setSpacing(16);
@@ -397,10 +381,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lBodyGroup, lRowIndex++, 0);
 
   // Extra body ressources blocks
-  auto lBodyExtraGroup{new QGroupBox(tr("Extra body textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lBodyExtraGroup, lIconFolder, "more", this->mSettings.display.font.size);
-  this->connect(lBodyExtraGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lBodyExtraGroup, false);
+  auto lBodyExtraGroup{ComponentFactory::CreateGroupBox(this, tr("Extra body textures"), "more", lIconFolder, this->mSettings.display.font.size)};
 
   auto lBodyExtraGroupContainer{new QGridLayout(this)};
   lBodyExtraGroupContainer->setSpacing(16);
@@ -409,10 +390,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lBodyExtraGroup, lRowIndex++, 0);
 
   // Hands ressources blocks
-  auto lHandsGroup{new QGroupBox(tr("Hands textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lHandsGroup, lIconFolder, "hand", this->mSettings.display.font.size);
-  this->connect(lHandsGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lHandsGroup, false);
+  auto lHandsGroup{ComponentFactory::CreateGroupBox(this, tr("Hands textures"), "hand", lIconFolder, this->mSettings.display.font.size)};
 
   auto lHandsGroupContainer{new QGridLayout(this)};
   lHandsGroupContainer->setSpacing(16);
@@ -421,10 +399,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lHandsGroup, lRowIndex++, 0);
 
   // Other texture files
-  auto lOtherGroup{new QGroupBox(tr("Other .DDS textures").append("  "), this)};
-  Utils::AddIconToGroupBox(lOtherGroup, lIconFolder, "textures", this->mSettings.display.font.size);
-  this->connect(lOtherGroup, &QGroupBox::toggled, this, &TexturesAssistant::groupBoxChecked);
-  Utils::SetGroupBoxState(lOtherGroup, false);
+  auto lOtherGroup{ComponentFactory::CreateGroupBox(this, tr("Other .DDS textures"), "textures", lIconFolder, this->mSettings.display.font.size)};
 
   auto lOtherGroupContainer{new QGridLayout(this)};
   lOtherGroupContainer->setSpacing(16);
@@ -636,11 +611,11 @@ void TexturesAssistant::launchSearchProcess()
   this->displayTexturesFilesList();
 
   // Re-enable the groupboxes
-  auto lTexturesSetGroupBox{this->findChild<QGroupBox*>(QString("textures_set_groupbox"))};
+  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
   if (lTexturesSetGroupBox != nullptr)
     lTexturesSetGroupBox->setDisabled(false);
 
-  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
   if (lOutputGroupBox != nullptr)
     lOutputGroupBox->setDisabled(false);
 
@@ -687,13 +662,4 @@ void TexturesAssistant::chooseExportDirectory()
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantOutput", lPath);
   this->updateOutputPreview();
-}
-
-void TexturesAssistant::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

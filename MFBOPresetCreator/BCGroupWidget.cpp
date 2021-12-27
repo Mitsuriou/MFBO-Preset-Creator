@@ -3,7 +3,6 @@
 #include "ComponentFactory.h"
 #include "Utils.h"
 #include <QGridLayout>
-#include <QGroupBox>
 #include <QPushButton>
 #include <QVBoxLayout>
 
@@ -19,10 +18,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lMainLayout->setMargin(0);
   this->setLayout(lMainLayout);
 
-  auto lSection{new QGroupBox(aSectionTitle + QString("  "), this)};
-  Utils::AddIconToGroupBox(lSection, lIconFolder, aSectionIconName, aSettings.display.font.size);
-  this->connect(lSection, &QGroupBox::toggled, this, &BCGroupWidget::groupBoxChecked);
-  Utils::SetGroupBoxState(lSection, false);
+  auto lSection{ComponentFactory::CreateGroupBox(this, aSectionTitle, aSectionIconName, lIconFolder, aSettings.display.font.size)};
 
   auto lSectionLayout{new QGridLayout(this)};
   lSectionLayout->setSpacing(10);
@@ -184,13 +180,4 @@ void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, 
 void BCGroupWidget::checkBoxStateChangedReceiver(const bool aIsActive)
 {
   emit BCGroupWidget::checkBoxStateChangedTriggered(aIsActive);
-}
-
-void BCGroupWidget::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

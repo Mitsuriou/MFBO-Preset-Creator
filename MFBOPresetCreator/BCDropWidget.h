@@ -5,7 +5,7 @@
 #include <QGridLayout>
 #include <QWidget>
 
-class BCDropWidget : public QWidget
+class BCDropWidget final : public QWidget
 {
   Q_OBJECT
 

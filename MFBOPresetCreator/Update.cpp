@@ -169,7 +169,7 @@ void Update::displayUpdateMessage(const QString& aResult)
       {
 #ifdef Q_OS_WIN
         this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.windows.zip").arg(lVersionsInformation.getLatestBetaVersionNumber());
-#elif
+#else
         this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.linux.zip").arg(lVersionsInformation.getLatestBetaVersionNumber());
 #endif
       }
@@ -210,7 +210,7 @@ void Update::displayUpdateMessage(const QString& aResult)
       {
 #ifdef Q_OS_WIN
         this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.windows.zip").arg(lVersionsInformation.getLatestStableVersionNumber());
-#elif
+#else
         this->mDownloadURL = QString("https://github.com/Mitsuriou/MFBO-Preset-Creator/releases/download/%1/MFBOPC.v%1.standalone.linux.zip").arg(lVersionsInformation.getLatestStableVersionNumber());
 #endif
       }

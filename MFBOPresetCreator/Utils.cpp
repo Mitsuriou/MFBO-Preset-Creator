@@ -7,7 +7,6 @@
 #include <QApplication>
 #include <QComboBox>
 #include <QDirIterator>
-#include <QGroupBox>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -1828,15 +1827,6 @@ QAction* Utils::BuildQAction(QWidget* aParent, const QString& aText, const QKeyS
   return lAction;
 }
 
-void Utils::AddIconToGroupBox(QGroupBox* aGroupBox, const QString& aIconFolder, const QString& aIconName, const int aFontSize)
-{
-  aGroupBox->setCheckable(true);
-  aGroupBox->setStyleSheet(QString("QGroupBox{font-size: %1pt;}"
-                                   "QGroupBox::indicator{width: 16px; height: 16px; image: url(:/%2/%3);}")
-                             .arg(static_cast<int>(floor(aFontSize * 1.25)))
-                             .arg(aIconFolder, aIconName));
-}
-
 void Utils::AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
 {
   aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);
@@ -1861,26 +1851,6 @@ void Utils::SelectComboBoxAt(QComboBox* aComboBox, const int aIndex)
   {
     aComboBox->setCurrentIndex(aIndex);
   }
-}
-
-void Utils::SetGroupBoxState(QGroupBox* aGroupBox, const bool aIsCollapsed)
-{
-  auto lTitle{aGroupBox->title()};
-
-  if (aIsCollapsed)
-  {
-    aGroupBox->setChecked(false);
-    aGroupBox->setMaximumHeight(qApp->fontMetrics().height() * 1.5);
-    lTitle.replace(lTitle.length() - 1, 1, QChar(0x25B6));
-  }
-  else
-  {
-    aGroupBox->setMaximumHeight(QWIDGETSIZE_MAX);
-    lTitle.replace(lTitle.length() - 1, 1, QChar(0x25BC));
-  }
-
-  // Update the title with the updated chevron state
-  aGroupBox->setTitle(lTitle);
 }
 
 void Utils::UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel)

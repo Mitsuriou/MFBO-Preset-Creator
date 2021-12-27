@@ -106,10 +106,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{new QGroupBox(tr("Input location").append("  "), this)};
-  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "tune", this->mSettings.display.font.size);
-  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lGroupBox, false);
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Input location"), "tune", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lGroupBox, 0, 0);
 
   // Grid layout
@@ -146,10 +143,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{new QGroupBox(tr("Skeleton").append("  "), this)};
-  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "skeleton", this->mSettings.display.font.size);
-  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lGroupBox, false);
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lGroupBox, 1, 0);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -210,10 +204,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{new QGroupBox(tr("BodySlide").append("  "), this)};
-  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
-  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lGroupBox, false);
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lGroupBox, 2, 0);
 
   // Grid layout
@@ -274,8 +265,6 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 
   // Create the group box
   ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
-  auto lOutputGroupBox{this->findChild<QGroupBox*>(QString("output_group_box"))};
-  this->connect(lOutputGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
@@ -297,10 +286,7 @@ void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{new QGroupBox(tr("Scan tweaks").append("  "), this)};
-  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "cog", this->mSettings.display.font.size);
-  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lGroupBox, false);
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lGroupBox, 4, 0);
 
   // Layout
@@ -338,10 +324,7 @@ void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{new QGroupBox(tr("Generation tweaks").append("  "), this)};
-  Utils::AddIconToGroupBox(lGroupBox, lIconFolder, "cog", this->mSettings.display.font.size);
-  this->connect(lGroupBox, &QGroupBox::toggled, this, &BatchConversion::groupBoxChecked);
-  Utils::SetGroupBoxState(lGroupBox, false);
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", lIconFolder, this->mSettings.display.font.size)};
   aLayout.addWidget(lGroupBox, 5, 0);
 
   // Layout
@@ -938,13 +921,4 @@ void BatchConversion::updateBodySlideFiltersListPreview()
   lFiltersList->setText(lText);
 
   this->userHasDoneAnAction();
-}
-
-void BatchConversion::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }

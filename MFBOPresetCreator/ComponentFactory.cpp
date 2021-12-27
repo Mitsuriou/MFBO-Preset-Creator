@@ -54,7 +54,11 @@ QPushButton* ComponentFactory::CreateButton(
   return lButton;
 }
 
-QCheckBox* ComponentFactory::CreateCheckBox(QWidget* aParent, const QString& aText, const QString& aTooltipText, const QString& aObjectName, const bool lIsChecked)
+QCheckBox* ComponentFactory::CreateCheckBox(QWidget* aParent,
+                                            const QString& aText,
+                                            const QString& aTooltipText,
+                                            const QString& aObjectName,
+                                            const bool lIsChecked)
 {
   // Declare and instanciate the checkbox
   auto lCheckBox{new QCheckBox(aText, aParent)};
@@ -75,6 +79,17 @@ QCheckBox* ComponentFactory::CreateCheckBox(QWidget* aParent, const QString& aTe
   lCheckBox->setChecked(lIsChecked);
 
   return lCheckBox;
+}
+
+GroupBox* ComponentFactory::CreateGroupBox(QWidget* aParent,
+                                           const QString& aTitle,
+                                           const QString& aIconName,
+                                           const QString& aIconFolder,
+                                           const int aFontSize,
+                                           const QString& aObjectName,
+                                           const bool aIsDisabled)
+{
+  return (new GroupBox(aParent, aTitle, aIconName, aIconFolder, aFontSize, aObjectName, aIsDisabled));
 }
 
 QGridLayout* ComponentFactory::CreateScrollAreaWindowLayout(QWidget* aParent,
@@ -192,10 +207,7 @@ void ComponentFactory::CreateOutputBox(QWidget* aParent,
                                        const int aColumnSpan)
 {
   // Output group box
-  auto lOutputGroupBox{new QGroupBox(tr("Files generation's output location").append("  "), aParent)};
-  Utils::AddIconToGroupBox(lOutputGroupBox, aIconFolder, "file-tree", aFontSize);
-  Utils::SetGroupBoxState(lOutputGroupBox, false);
-  lOutputGroupBox->setObjectName(QString("output_group_box"));
+  auto lOutputGroupBox{ComponentFactory::CreateGroupBox(aParent, tr("Files generation's output location"), "file-tree", aIconFolder, aFontSize, "output_group_box")};
   aLayout.addWidget(lOutputGroupBox, aLayoutRow, aLayoutCol, aRowSpan, aColumnSpan);
 
   // Grid layout

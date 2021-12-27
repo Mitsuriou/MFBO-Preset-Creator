@@ -63,7 +63,6 @@ private:
   void openTexturesSetsAssetsDirectory();
   void useOnlySubdirStateChanged(int);
   void chooseExportDirectory();
-  void groupBoxChecked(bool aIsChecked);
 
   explicit TexturesAssistant(const TexturesAssistant&) = delete;
   TexturesAssistant& operator=(const TexturesAssistant&) = delete;

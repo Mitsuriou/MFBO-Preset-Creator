@@ -11,7 +11,6 @@
 #include <QComboBox>
 #include <QFileDialog>
 #include <QFontDialog>
-#include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>

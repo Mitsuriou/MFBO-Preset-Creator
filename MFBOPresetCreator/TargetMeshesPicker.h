@@ -50,7 +50,6 @@ private:
 
   // GUI widgets events
   void validateAndClose();
-  void groupBoxChecked(bool aIsChecked);
   // Body GUI widgets events
   void bodyNameIndexChanged(const int aNewIndex);
   void bodyVersionIndexChanged(const int aNewIndex);

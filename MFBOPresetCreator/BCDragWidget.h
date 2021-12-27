@@ -3,7 +3,7 @@
 #include "Struct.h"
 #include <QWidget>
 
-class BCDragWidget : public QWidget
+class BCDragWidget final : public QWidget
 {
   Q_OBJECT
 
@@ -19,9 +19,6 @@ private:
   QPoint mDragStartPosition;
   QString mOriginFolder;
   QString mRessourcePath;
-
-  // GUI widgets events
-  void groupBoxChecked(bool aIsChecked);
 
   explicit BCDragWidget(const BCDragWidget&) = delete;
   BCDragWidget& operator=(const BCDragWidget&) = delete;

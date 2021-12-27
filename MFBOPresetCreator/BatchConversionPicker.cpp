@@ -4,7 +4,6 @@
 #include "Utils.h"
 #include <QCloseEvent>
 #include <QGridLayout>
-#include <QGroupBox>
 #include <QIcon>
 #include <QLabel>
 #include <QLineEdit>
@@ -205,11 +204,7 @@ void BatchConversionPicker::initializeGUI()
   lRightDataLayout->addWidget(lDropSectionSkeleton);
 
   // BodySlide output settings group box
-  auto lBodyslideGroupBox{new QGroupBox(tr("BodySlide output").append("  "), this)};
-  lBodyslideGroupBox->setObjectName(QString("bodyslide_groupbox"));
-  Utils::AddIconToGroupBox(lBodyslideGroupBox, lIconFolder, "bodyslide-logo", this->mSettings.display.font.size);
-  this->connect(lBodyslideGroupBox, &QGroupBox::toggled, this, &BatchConversionPicker::groupBoxChecked);
-  Utils::SetGroupBoxState(lBodyslideGroupBox, false);
+  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size, "bodyslide_groupbox")};
   lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -722,7 +717,7 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   }
 
   // BodySlide data
-  auto lBodyslideGroupBox{this->findChild<QGroupBox*>(QString("bodyslide_groupbox"))};
+  auto lBodyslideGroupBox{this->findChild<GroupBox*>(QString("bodyslide_groupbox"))};
   lBodyslideGroupBox->setHidden(lNumberOfPresets == 0);
 
   if (lNumberOfPresets > 0)
@@ -1017,13 +1012,4 @@ void BatchConversionPicker::validateSelection()
 
     this->accept();
   }
-}
-
-void BatchConversionPicker::groupBoxChecked(bool aIsChecked)
-{
-  auto lGroupBox{qobject_cast<QGroupBox*>(this->sender())};
-  if (lGroupBox == nullptr)
-    return;
-
-  Utils::SetGroupBoxState(lGroupBox, !aIsChecked);
 }
