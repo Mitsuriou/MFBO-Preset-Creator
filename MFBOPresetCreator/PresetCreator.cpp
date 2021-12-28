@@ -486,7 +486,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 
   auto lSkeletonPathsPreview{new QLabel(this)};
   lSkeletonPathsPreview->setObjectName(QString("skeleton_path_preview"));
-  lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 4, 1);
+  lSkeletonGridLayout->addWidget(lSkeletonPathsPreview, 4, 1, 1, 3);
 
   // Initialization functions
   this->updateSkeletonPreview();
@@ -1122,11 +1122,11 @@ void PresetCreator::generateDirectoryStructure()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
 
   // Full extract path
-  auto lEntryDirectory{lSubDirectory};
-  if (!lUseOnlySubdir)
-  {
+  QString lEntryDirectory;
+  if (lUseOnlySubdir)
+    lEntryDirectory = lSubDirectory;
+  else if (!lMainDirectory.isEmpty())
     lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
-  }
 
   // Check if the full extract path has been given by the user
   if (lEntryDirectory.isEmpty())
@@ -1136,7 +1136,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // Check if the path could be valid
-  if (lEntryDirectory.startsWith(QDir::separator()))
+  if (lEntryDirectory.startsWith('/') || lEntryDirectory.startsWith('\\'))
   {
     Utils::DisplayWarningMessage(tr("Error: the path given to export the files seems to be invalid."));
     return;
