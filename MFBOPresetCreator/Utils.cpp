@@ -576,7 +576,7 @@ void Utils::CreateTextureFile(const QString& aSourcePath, const QString& aDestin
   }
 
   // Source file path
-  auto lSourceFilPath{QString("%1%2%3").arg(aSourcePath, QDir::separator(), aDestinationFileName)};
+  auto lSourceFilPath{QString("%1%2%3.dds").arg(aSourcePath, QDir::separator(), aDestinationFileName)};
 
   // Try to copy the texture file
   if (!QFile::copy(lSourceFilPath, lDestinationFullPath))

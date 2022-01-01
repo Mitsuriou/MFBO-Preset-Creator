@@ -284,7 +284,10 @@ void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QStr
     // Get the current directory
     const auto lRelativeDirPath{it.fileInfo().absolutePath().remove(aRootDir + "/", Qt::CaseInsensitive)};
 
-    const auto lFileName = it.fileInfo().fileName();
+    auto lFileName = it.fileInfo().fileName();
+
+    // Clean the file name from any artifact
+    lFileName.remove(".dds", Qt::CaseInsensitive);
 
     // Check if the file is relative to a texture for a known mesh type
     if (lTexturesFilesToFind.contains(lFileName))

@@ -1480,36 +1480,36 @@ std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibi
 QStringList DataLists::GetKnownTexturesFilesNames()
 {
   return QStringList({// Body
-                      QString("femalebody_1.dds"),
-                      QString("femalebody_1_s.dds"),
-                      QString("femalebody_1_sk.dds"),
-                      QString("femalebody_1_msn.dds"),
+                      QString("femalebody_1"),
+                      QString("femalebody_1_s"),
+                      QString("femalebody_1_sk"),
+                      QString("femalebody_1_msn"),
                       // Body extra
-                      QString("femalebody_etc_1.dds"),
-                      QString("femalebody_etc_1_s.dds"),
-                      QString("femalebody_etc_1_sk.dds"),
-                      QString("femalebody_etc_1_msn.dds"),
-                      QString("femalebody_etc_v2_1.dds"),
-                      QString("femalebody_etc_v2_1_s.dds"),
-                      QString("femalebody_etc_v2_1_sk.dds"),
-                      QString("femalebody_etc_v2_1_msn.dds"),
+                      QString("femalebody_etc_1"),
+                      QString("femalebody_etc_1_s"),
+                      QString("femalebody_etc_1_sk"),
+                      QString("femalebody_etc_1_msn"),
+                      QString("femalebody_etc_v2_1"),
+                      QString("femalebody_etc_v2_1_s"),
+                      QString("femalebody_etc_v2_1_sk"),
+                      QString("femalebody_etc_v2_1_msn"),
                       // Hands
-                      QString("femalehands_1.dds"),
-                      QString("femalehands_1_s.dds"),
-                      QString("femalehands_1_sk.dds"),
-                      QString("femalehands_1_msn.dds"),
+                      QString("femalehands_1"),
+                      QString("femalehands_1_s"),
+                      QString("femalehands_1_sk"),
+                      QString("femalehands_1_msn"),
                       // Head
-                      QString("femalehead.dds"),
-                      QString("femalehead_s.dds"),
-                      QString("femalehead_sk.dds"),
-                      QString("femalehead_msn.dds"),
-                      QString("femaleheadvampire.dds"),
-                      QString("femaleheadvampire_msn.dds"),
-                      QString("femaleheaddetail_frekles.dds"),
-                      QString("femaleheaddetail_rough.dds"),
+                      QString("femalehead"),
+                      QString("femalehead_s"),
+                      QString("femalehead_sk"),
+                      QString("femalehead_msn"),
+                      QString("femaleheadvampire"),
+                      QString("femaleheadvampire_msn"),
+                      QString("femaleheaddetail_frekles"),
+                      QString("femaleheaddetail_rough"),
                       // Mouth
-                      QString("mouthhuman.dds"),
-                      QString("mouthhuman_n.dds")});
+                      QString("mouthhuman"),
+                      QString("mouthhuman_n")});
 }
 
 QStringList DataLists::GetWindowOpeningModes()
