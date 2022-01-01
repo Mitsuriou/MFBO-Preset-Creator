@@ -289,6 +289,10 @@ void MFBOPresetCreator::setupMenuBar()
   auto lOpenSourceCodeGitLab{Utils::BuildQAction(this, tr("View the source code (gitlab.com)"), QKeySequence(), "gitlab", lIconFolder)};
   lLinksSubmenu->addAction(lOpenSourceCodeGitLab);
 
+  // Action: Ko-Fi page
+  auto lOpenKoFiPage{Utils::BuildQAction(this, tr("Donate - buy me a coffee (ko-fi.com)"), QKeySequence(), "coffee", lIconFolder)};
+  lHelp->addAction(lOpenKoFiPage);
+
   // Action: About
   auto lOpenAbout{Utils::BuildQAction(this, tr("About"), QKeySequence(Qt::CTRL | Qt::Key_I), "info-circle", lIconFolder)};
   lHelp->addAction(lOpenAbout);
@@ -314,6 +318,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lOpenSourceCodeGitHub, &QAction::triggered, this, &MFBOPresetCreator::openGitHubSourceCodePage);
   this->connect(lOpenSourceCodeGitLab, &QAction::triggered, this, &MFBOPresetCreator::openGitLabSourceCodePage);
   this->connect(lOpenGuide, &QAction::triggered, this, &MFBOPresetCreator::openGoogleDriveGuide);
+  this->connect(lOpenKoFiPage, &QAction::triggered, this, &MFBOPresetCreator::openKoFiPage);
   this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
 }
 
@@ -787,6 +792,11 @@ void MFBOPresetCreator::openGitLabSourceCodePage()
 void MFBOPresetCreator::openGoogleDriveGuide()
 {
   QDesktopServices::openUrl(QUrl("https://docs.google.com/document/d/1WpDKMk_WoPRrj0Lkst6TptUGEFAC2xYGd3HUBYxPQ-A/edit?usp=sharing"));
+}
+
+void MFBOPresetCreator::openKoFiPage()
+{
+  QDesktopServices::openUrl(QUrl("https://ko-fi.com/mitsuriou"));
 }
 
 void MFBOPresetCreator::launchAboutDialog()

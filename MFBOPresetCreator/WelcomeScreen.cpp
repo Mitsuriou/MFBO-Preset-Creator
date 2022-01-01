@@ -96,6 +96,26 @@ void WelcomeScreen::initializeGUI()
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.size * 2));
   lMainLayout->addWidget(lMainTitle);
 
+  /*============*/
+  /* Ko-Fi page */
+  /*============*/
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Support me: donate - buy me a coffee"), this->mSettings.display.font.size));
+
+  auto lFreewareLabel{new QLabel(tr("Anything I create is for free and is created during my free time. Any given cent is meaningful to me. If you want to support me financially, click the button below:"), this)};
+  lFreewareLabel->setWordWrap(true);
+  lMainLayout->addWidget(lFreewareLabel);
+
+  // Donate button
+  auto lDonateButton{ComponentFactory::CreateButton(this,
+                                                    tr("Donate - buy me a coffee (ko-fi.com)"),
+                                                    "",
+                                                    "coffee",
+                                                    lIconFolder,
+                                                    "",
+                                                    false,
+                                                    true)};
+  lMainLayout->addWidget(lDonateButton);
+
   /*=================*/
   /* CURRENT VERSION */
   /*=================*/
@@ -213,6 +233,7 @@ void WelcomeScreen::initializeGUI()
   /*===============*/
   /* Event binding */
   /*===============*/
+  this->connect(lDonateButton, &QPushButton::clicked, this, &WelcomeScreen::openKoFiPage);
   this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
   this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
   this->connect(lOpenIncomingFeatures, &QPushButton::clicked, this, &WelcomeScreen::openIncomingFeatures);
@@ -234,9 +255,14 @@ QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, 
     lColorOverride = this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff;") : QString("color:#e95985;");
   }
 
-  lLabel->setStyleSheet(QString("font-size: %1pt; %2").arg(static_cast<int>(floor(aAppFontSize * 1.75))).arg(lColorOverride));
+  lLabel->setStyleSheet(QString("qproperty-indent:0; margin: 0; padding: 0; margin-top: 15px; font-size: %1pt; %2").arg(static_cast<int>(floor(aAppFontSize * 1.75))).arg(lColorOverride));
 
   return lLabel;
+}
+
+void WelcomeScreen::openKoFiPage()
+{
+  QDesktopServices::openUrl(QUrl("https://ko-fi.com/mitsuriou"));
 }
 
 void WelcomeScreen::launchUpdateDialog()

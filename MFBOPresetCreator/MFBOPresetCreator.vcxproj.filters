@@ -77,7 +77,7 @@
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="GroupBox.cpp">
-      <Filter>Source Files\Qt Class</Filter>
+      <Filter>Source Files\Qt Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,12 +111,6 @@
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
-    <Filter Include="C++ App Ressources">
-      <UniqueIdentifier>{6c557561-e475-413b-9a0b-e95921564d0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Qt Ressources">
-      <UniqueIdentifier>{d9a50dd6-abfd-4d7f-a1c6-b7b3fcceeec4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Translation Files">
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
@@ -145,11 +139,14 @@
     <Filter Include="Source Files\Drag and Drop">
       <UniqueIdentifier>{6bc77066-e119-492f-8b42-fb09bba1e18e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Qt Class">
-      <UniqueIdentifier>{ed92a39b-09a1-4fda-afb0-bf97c29c202c}</UniqueIdentifier>
+    <Filter Include="App Resources">
+      <UniqueIdentifier>{6c557561-e475-413b-9a0b-e95921564d0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Qt Class">
+    <Filter Include="Source Files\Qt Classes">
       <UniqueIdentifier>{322b3896-4998-4607-afde-0b48217fbc7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Qt Classes">
+      <UniqueIdentifier>{ed92a39b-09a1-4fda-afb0-bf97c29c202c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,12 +156,12 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MFBOPresetCreator.rc">
-      <Filter>C++ App Ressources</Filter>
+      <Filter>App Resources</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="ressources/software/icon.ico">
-      <Filter>C++ App Ressources</Filter>
+      <Filter>App Resources</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -243,12 +240,12 @@
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="GroupBox.h">
-      <Filter>Header Files\Qt Class</Filter>
+      <Filter>Header Files\Qt Classes</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MFBOPresetCreator.qrc">
-      <Filter>Qt Ressources</Filter>
+      <Filter>App Resources</Filter>
     </QtRcc>
   </ItemGroup>
 </Project>

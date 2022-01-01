@@ -68,6 +68,7 @@ private:
   void openGitHubSourceCodePage();
   void openGitLabSourceCodePage();
   void openGoogleDriveGuide();
+  void openKoFiPage();
   // Dialog
   void launchAboutDialog();
 

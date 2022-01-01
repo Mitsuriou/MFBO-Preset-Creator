@@ -638,7 +638,13 @@ void TexturesAssistant::populateTexturesSetChooser()
   while (it.hasNext())
   {
     it.next();
-    lAvailableTexturesSets.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
+
+    const auto lCurrentDirectory{QDir(it.filePath())};
+    const auto lFilesList{lCurrentDirectory.entryList(QStringList() << "*.dds", QDir::Filter::Files)};
+    if (lFilesList.count() > 0)
+    {
+      lAvailableTexturesSets.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
+    }
   }
 
   // Clear the combo box and add the found files to it

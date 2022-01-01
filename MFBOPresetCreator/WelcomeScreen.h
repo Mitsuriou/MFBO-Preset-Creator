@@ -26,6 +26,7 @@ private:
   // Utils functions
   QLabel* createTitleLabel(QWidget* aParent, const QString& aText, const int aAppFontSize);
   // Dialog
+  void openKoFiPage();
   void launchUpdateDialog();
   void openIncomingFeatures();
   void openKnownIssues();
