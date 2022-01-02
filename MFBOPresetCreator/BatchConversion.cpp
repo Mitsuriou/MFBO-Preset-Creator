@@ -784,14 +784,41 @@ void BatchConversion::populateSkeletonChoosers()
     lAvailableSkeletons.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
   }
 
+  /*=======*/
+  /* Human */
+  /*=======*/
+  // Get the combobox
+  const auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
+
+  // Save the selected skeleton file name
+  const auto lPreviousIndexHuman{lSkeletonChooserHuman->currentIndex()};
+  const auto lPreviousHumanSkeleton{lSkeletonChooserHuman->itemText(lPreviousIndexHuman)};
+
   // Clear the combo box and add the found files to it
-  auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
   lSkeletonChooserHuman->clear();
   lSkeletonChooserHuman->addItems(lAvailableSkeletons);
 
-  auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
+  // Reselect the previously selected skeleton, if it still exists
+  if (lPreviousIndexHuman != -1)
+    lSkeletonChooserHuman->setCurrentIndex(lAvailableSkeletons.indexOf(lPreviousHumanSkeleton));
+
+  /*=======*/
+  /* Beast */
+  /*=======*/
+  // Get the combobox
+  const auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
+
+  // Save the selected skeleton file name
+  const auto lPreviousIndexBeast{lSkeletonChooserBeast->currentIndex()};
+  const auto lPreviousBeastSkeleton{lSkeletonChooserBeast->itemText(lPreviousIndexBeast)};
+
+  // Clear the combo box and add the found files to it
   lSkeletonChooserBeast->clear();
   lSkeletonChooserBeast->addItems(lAvailableSkeletons);
+
+  // Reselect the previously selected skeleton, if it still exists
+  if (lPreviousIndexBeast != -1)
+    lSkeletonChooserBeast->setCurrentIndex(lAvailableSkeletons.indexOf(lPreviousBeastSkeleton));
 }
 
 void BatchConversion::openSkeletonsAssetsDirectory()

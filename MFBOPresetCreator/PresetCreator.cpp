@@ -795,10 +795,20 @@ void PresetCreator::populateSkeletonChooser()
     lAvailableSkeletons.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
   }
 
+  // Get the combobox
+  const auto lSkeletonChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
+
+  // Save the selected skeleton file name
+  const auto lPreviousIndex{lSkeletonChooser->currentIndex()};
+  const auto lPreviousSkeleton{lSkeletonChooser->itemText(lPreviousIndex)};
+
   // Clear the combo box and add the found files to it
-  auto lSkeletonChooser{this->findChild<QComboBox*>(QString("skeleton_chooser"))};
   lSkeletonChooser->clear();
   lSkeletonChooser->addItems(lAvailableSkeletons);
+
+  // Reselect the previously selected skeleton, if it still exists
+  if (lPreviousIndex != -1)
+    lSkeletonChooser->setCurrentIndex(lAvailableSkeletons.indexOf(lPreviousSkeleton));
 }
 
 void PresetCreator::openSkeletonsAssetsDirectory()

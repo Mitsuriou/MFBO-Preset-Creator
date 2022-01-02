@@ -337,7 +337,7 @@ void BodySlideFiltersEditor::removeSet()
 void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
 {
   auto lNewSetName{QString(aNewSetName)};
-  auto lPreviousText{this->mFiltersListChooser->itemText(this->mFiltersListChooser->currentIndex())};
+  const auto lPreviousText{this->mFiltersListChooser->itemText(this->mFiltersListChooser->currentIndex())};
 
   // Save the curent cursor position to restore it later
   auto lCursorPos{this->mFiltersListChooser->lineEdit()->cursorPosition()};

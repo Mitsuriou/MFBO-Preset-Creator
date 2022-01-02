@@ -647,10 +647,20 @@ void TexturesAssistant::populateTexturesSetChooser()
     }
   }
 
+  // Get the combobox
+  const auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
+
+  // Save the selected textures set file name
+  const auto lPreviousIndex{lTexturesSetChooser->currentIndex()};
+  const auto lPreviousTexturesSet{lTexturesSetChooser->itemText(lPreviousIndex)};
+
   // Clear the combo box and add the found files to it
-  auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
   lTexturesSetChooser->clear();
   lTexturesSetChooser->addItems(lAvailableTexturesSets);
+
+  // Reselect the previously selected textures set, if it still exists
+  if (lPreviousIndex != -1)
+    lTexturesSetChooser->setCurrentIndex(lAvailableTexturesSets.indexOf(lPreviousTexturesSet));
 }
 
 void TexturesAssistant::openTexturesSetsAssetsDirectory()
