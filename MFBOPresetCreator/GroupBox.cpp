@@ -1,8 +1,7 @@
 #include "GroupBox.h"
 #include "Utils.h"
 #include <QApplication>
-#include <QPropertyAnimation>
-#include <QTimer>
+#include <math.h>
 
 GroupBox::GroupBox(QWidget* aParent,
                    const QString& aTitle,

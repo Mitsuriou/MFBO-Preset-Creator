@@ -97,6 +97,12 @@ QString SliderFileBuilder::GetBodyLine(const BodyNameVersion& aBodyNameVersion)
     case BodyVariant::MIMIR_EBONIC_BODY:
       lSliderSetName = QString("CBBE 3BBB Body Amazing");
       break;
+    case BodyVariant::CBBE_3BA_3BBB_NEVERNUDE:
+      lSliderSetName = QString("CBBE 3BBB Amazing NeverNude");
+      break;
+    case BodyVariant::CBBE_3BA_3BBB_UNDERWEAR:
+      lSliderSetName = QString("CBBE 3BBB Amazing Underwear");
+      break;
     case BodyVariant::BHUNP_3BBB:
       lSliderSetName = QString("BHUNP 3BBB");
       break;
