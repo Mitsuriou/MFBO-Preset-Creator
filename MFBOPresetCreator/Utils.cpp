@@ -806,6 +806,8 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
 
       // TODO: Improve these checks:
       if (lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing NeverNude", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing Underwear", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
@@ -918,230 +920,17 @@ bool Utils::IsPresetUsingBeastHands(const QString& aPath)
 
 QString Utils::GetBodySliderValue(const BodyNameVersion& aBodyNameVersion)
 {
-  const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
-  const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
-
-  auto lBodyValue{QString()};
-
-  switch (lBodyVariant)
-  {
-    case BodyVariant::CBBE_3BA_3BBB:
-    case BodyVariant::MIMIR_EBONIC_BODY:
-      lBodyValue = QString("%1 - CBBE 3BBB Body Amazing");
-      break;
-    case BodyVariant::BHUNP_3BBB:
-      lBodyValue = QString("%1 - BHUNP 3BBB");
-      break;
-    case BodyVariant::BHUNP_3BBB_ADVANCED:
-      lBodyValue = QString("%1 - BHUNP 3BBB Advanced");
-      break;
-    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
-      lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2");
-      break;
-    case BodyVariant::BHUNP_BBP:
-      lBodyValue = QString("%1 - BHUNP BBP");
-      break;
-    case BodyVariant::BHUNP_BBP_ADVANCED:
-      lBodyValue = QString("%1 - BHUNP BBP Advanced");
-      break;
-    case BodyVariant::BHUNP_TBBP:
-      lBodyValue = QString("%1 - BHUNP TBBP");
-      break;
-    case BodyVariant::BHUNP_TBBP_ADVANCED:
-      lBodyValue = QString("%1 - BHUNP TBBP Advanced");
-      break;
-    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-      lBodyValue = QString("%1 - BHUNP 3BBB Advanced Ver 2 Nevernude");
-      break;
-    case BodyVariant::CBBE_SMP_3BBB:
-      lBodyValue = QString("%1 - CBBE Body SMP (3BBB)");
-      break;
-    case BodyVariant::COCO_BODY_CBBE:
-      switch (lVersionIndex)
-      {
-        case 0:
-          lBodyValue = QString("%1 - [COCO]3Bsmp_BodyV4_A");
-          break;
-        case 1:
-          lBodyValue = QString("%1 - [COCO 3BBB V6]Body_A");
-          break;
-        default:
-          // Keep the default empty text
-          break;
-      }
-      break;
-    case BodyVariant::COCO_BODY_UUNP:
-      switch (lVersionIndex)
-      {
-        case 0:
-          lBodyValue = QString("%1 - [COCO]body_B_v3");
-          break;
-        case 1:
-          lBodyValue = QString("%1 - [COCO]3Bsmp_BodyV4_B");
-          break;
-        case 2:
-          lBodyValue = QString("%1 - [COCO 3BBB V6]Body_B");
-          break;
-        default:
-          // Keep the default empty text
-          break;
-      }
-      break;
-    case BodyVariant::_INVALID_VALUE:
-    default:
-      // Keep the default empty text
-      break;
-  }
-
-  return (lBodyValue + "\n");
+  return QString("%1 - ").append(DataLists::GetBodySliderValue(aBodyNameVersion)).append(QString("\n"));
 }
 
 QString Utils::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
 {
-  const auto lVariant{DataLists::GetVariant(aFeetNameVersion)};
-  const auto lVersionIndex{DataLists::GetVersionIndex(aFeetNameVersion)};
-
-  auto lFeetValue{QString()};
-
-  switch (lVariant)
-  {
-    case FeetVariant::CBBE:
-      lFeetValue = QString("%1 - CBBE Feet");
-      break;
-    case FeetVariant::BHUNP:
-      lFeetValue = QString("%1 - BHUNP 3BBB Advanced Feet");
-      break;
-    case FeetVariant::CBBE_3BA_3BBB:
-      lFeetValue = QString("%1 - CBBE 3BBB Feet");
-      break;
-    case FeetVariant::COCO_BODY_CBBE:
-      switch (lVersionIndex)
-      {
-        case 0:
-          lFeetValue = QString("%1 - [COCO]3Bsmp_FeetV4_A");
-          break;
-        case 1:
-          lFeetValue = QString("%1 - [COCO 3BBB V6]Feet_A");
-          break;
-        default:
-          // Keep the default empty text
-          break;
-      }
-      break;
-    case FeetVariant::COCO_BODY_UUNP:
-      switch (lVersionIndex)
-      {
-        case 0:
-          lFeetValue = QString("%1 - [COCO]bodyFeets_B_v3");
-          break;
-        case 1:
-          lFeetValue = QString("%1 - [COCO]3Bsmp_FeetV4_B");
-          break;
-        case 2:
-          lFeetValue = QString("%1 - [COCO 3BBB V6]Feet_B");
-          break;
-        default:
-          // Keep the default empty text
-          break;
-      }
-      break;
-    case FeetVariant::MIMIR_EBONIC_BODY:
-      lFeetValue = QString("%1 - CBBE 3BBB Feet");
-      break;
-    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
-      lFeetValue = QString("%1 - CBBE MSF Feet");
-      break;
-    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP:
-      lFeetValue = QString("%1 - BHUNP Feet MSF");
-      break;
-    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE:
-      lFeetValue = QString("%1 - CBBE MSF Feet High Heel");
-      break;
-    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP:
-      lFeetValue = QString("%1 - BHUNP Feet High Heel MSF");
-      break;
-    case FeetVariant::HG_FEET:
-      lFeetValue = QString("%1 - HGFeet UUNP");
-      break;
-    case FeetVariant::KHRYSAMERE_HG_FEET:
-      switch (lVersionIndex)
-      {
-        case 0:
-          lFeetValue = QString("%1 - [Khrysamere] HG Feet (BHUNP)");
-          break;
-        case 1:
-          lFeetValue = QString("%1 - [Khrysamere] K Feet");
-          break;
-        case 2:
-          lFeetValue = QString("%1 - [Khrysamere] K Feet");
-          break;
-        case 3:
-          lFeetValue = QString("%1 - [Khrysamere] K Feet v5.0");
-          break;
-        case 4:
-          lFeetValue = QString("%1 - [Khrysamere] K Feet");
-          break;
-        default:
-          // Keep the default empty text
-          break;
-      }
-      // Keep the default empty text
-      break;
-    case FeetVariant::_INVALID_VALUE:
-    default:
-      // Keep the default empty text
-      break;
-  }
-
-  return (lFeetValue + "\n");
+  return QString("%1 - ").append(DataLists::GetFeetSliderValue(aFeetNameVersion)).append(QString("\n"));
 }
 
 QString Utils::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, const bool aMustUseBeastHands)
 {
-  // Beast hands
-  if (Utils::IsCBBEBasedBody(aBodyNameVersion) && aMustUseBeastHands)
-  {
-    return QString("%1 - CBBE Hands Beast");
-  }
-
-  auto lBodyName{DataLists::GetName(aBodyNameVersion)};
-  auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
-
-  switch (lBodyName)
-  {
-    case BodyName::CBBE_3BA_3BBB:
-    case BodyName::MIMIR_EBONIC_BODY:
-      return QString("%1 - CBBE 3BBB Hands");
-    case BodyName::BHUNP_UUNP_NEXT_GENERATION:
-      return QString("%1 - BHUNP 3BBB Advanced Hands");
-    case BodyName::CBBE_SMP_3BBB:
-      return QString("%1 - CBBE Hands");
-    case BodyName::COCO_BODY_CBBE:
-      switch (lVersionIndex)
-      {
-        case 0:
-          return QString("%1 - [COCO]3Bsmp_HandV4_A");
-        case 1:
-          return QString("%1 - [COCO 3BBB V6]Hands_A");
-        default:
-          return QString();
-      }
-    case BodyName::COCO_BODY_UUNP:
-      switch (lVersionIndex)
-      {
-        case 0:
-          return QString("%1 - [COCO]bodyHands_B_v3");
-        case 1:
-          return QString("%1 - [COCO]3Bsmp_HandV4_B");
-        case 2:
-          return QString("%1 - [COCO 3BBB V6]Hands_B");
-        default:
-          return QString();
-      }
-    case BodyName::_INVALID_VALUE:
-    default:
-      return QString();
-  }
+  return QString("%1 - ").append(DataLists::GetHandsSliderValue(aBodyNameVersion, aMustUseBeastHands));
 }
 
 void Utils::SaveAsJsonFile(const QJsonObject& aJsonToSave, const QString& aFilePath, QWidget* aParent, const QString& aIconFolder)

@@ -870,44 +870,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1620"/>
+        <location filename="DataLists.cpp" line="1816"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1621"/>
-        <location filename="DataLists.cpp" line="1627"/>
+        <location filename="DataLists.cpp" line="1817"/>
+        <location filename="DataLists.cpp" line="1823"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1622"/>
-        <location filename="DataLists.cpp" line="1628"/>
+        <location filename="DataLists.cpp" line="1818"/>
+        <location filename="DataLists.cpp" line="1824"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1656"/>
+        <location filename="DataLists.cpp" line="1852"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1657"/>
+        <location filename="DataLists.cpp" line="1853"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1658"/>
+        <location filename="DataLists.cpp" line="1854"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1659"/>
+        <location filename="DataLists.cpp" line="1855"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1660"/>
+        <location filename="DataLists.cpp" line="1856"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -2467,7 +2467,7 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1158"/>
+        <location filename="Utils.cpp" line="947"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -2522,40 +2522,40 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     <message>
         <location filename="Utils.cpp" line="760"/>
         <location filename="Utils.cpp" line="793"/>
-        <location filename="Utils.cpp" line="907"/>
+        <location filename="Utils.cpp" line="909"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1158"/>
+        <location filename="Utils.cpp" line="947"/>
         <source>Project successfully saved</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1158"/>
+        <location filename="Utils.cpp" line="947"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1164"/>
+        <location filename="Utils.cpp" line="953"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1840"/>
+        <location filename="Utils.cpp" line="1629"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1923"/>
-        <location filename="Utils.cpp" line="1947"/>
+        <location filename="Utils.cpp" line="1712"/>
+        <location filename="Utils.cpp" line="1736"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1941"/>
+        <location filename="Utils.cpp" line="1730"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>

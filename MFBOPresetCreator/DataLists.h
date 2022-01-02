@@ -66,6 +66,11 @@ public:
   //
   static QStringList GetKnownTexturesFilesNames();
 
+  // Slider files data
+  static QString GetBodySliderValue(const BodyNameVersion& aBodyNameVersion);
+  static QString GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion);
+  static QString GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, const bool aMustUseBeastHands);
+
   // Other data lists
   static QStringList GetWindowOpeningModes();
   static QStringList GetDialogOpeningModes();

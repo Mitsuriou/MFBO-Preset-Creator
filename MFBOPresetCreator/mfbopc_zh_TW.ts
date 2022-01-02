@@ -983,44 +983,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1620"/>
+        <location filename="DataLists.cpp" line="1816"/>
         <source>Minimized</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1621"/>
-        <location filename="DataLists.cpp" line="1627"/>
+        <location filename="DataLists.cpp" line="1817"/>
+        <location filename="DataLists.cpp" line="1823"/>
         <source>Windowed</source>
         <translation>視窗化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1622"/>
-        <location filename="DataLists.cpp" line="1628"/>
+        <location filename="DataLists.cpp" line="1818"/>
+        <location filename="DataLists.cpp" line="1824"/>
         <source>Maximized</source>
         <translation>最大化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1656"/>
+        <location filename="DataLists.cpp" line="1852"/>
         <source>[ignore]</source>
         <translation>[忽略]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1657"/>
+        <location filename="DataLists.cpp" line="1853"/>
         <source>Body mesh</source>
         <translation>身體模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1658"/>
+        <location filename="DataLists.cpp" line="1854"/>
         <source>Feet mesh</source>
         <translation>腳部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1659"/>
+        <location filename="DataLists.cpp" line="1855"/>
         <source>Hands mesh</source>
         <translation>手部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1660"/>
+        <location filename="DataLists.cpp" line="1856"/>
         <source>Skeleton mesh</source>
         <translation>骨架模型</translation>
     </message>
@@ -2868,7 +2868,7 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1158"/>
+        <location filename="Utils.cpp" line="947"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2923,22 +2923,22 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     <message>
         <location filename="Utils.cpp" line="760"/>
         <location filename="Utils.cpp" line="793"/>
-        <location filename="Utils.cpp" line="907"/>
+        <location filename="Utils.cpp" line="909"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1158"/>
+        <location filename="Utils.cpp" line="947"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1158"/>
+        <location filename="Utils.cpp" line="947"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1164"/>
+        <location filename="Utils.cpp" line="953"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2947,18 +2947,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1840"/>
+        <location filename="Utils.cpp" line="1629"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1923"/>
-        <location filename="Utils.cpp" line="1947"/>
+        <location filename="Utils.cpp" line="1712"/>
+        <location filename="Utils.cpp" line="1736"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1941"/>
+        <location filename="Utils.cpp" line="1730"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

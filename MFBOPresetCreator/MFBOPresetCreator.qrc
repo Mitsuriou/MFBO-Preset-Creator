@@ -522,6 +522,8 @@
         <file alias="coco body uunp/V6">resources/body/coco body uunp/V6.osp</file>
         <file alias="mimir ebonic body/1.2">resources/body/mimir ebonic body/1.2.osp</file>
         <file alias="mimir ebonic body/1.2 foot fix">resources/body/mimir ebonic body/1.2 foot fix.osp</file>
+        <file alias="cbbe 3bbb 3ba nevernude/2.13 to 2.16">resources/body/cbbe 3bbb 3ba nevernude/2.13_to_2.16.osp</file>
+        <file alias="cbbe 3bbb 3ba underwear/2.13 to 2.16">resources/body/cbbe 3bbb 3ba underwear/2.13_to_2.16.osp</file>
     </qresource>
     <qresource prefix="/presets/feet">
         <file alias="cbbe/1.6.1">resources/feet/cbbe/1.6.1.osp</file>

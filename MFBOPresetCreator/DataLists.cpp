@@ -1615,6 +1615,202 @@ QStringList DataLists::GetKnownTexturesFilesNames()
                       QString("mouthhuman_n")});
 }
 
+QString DataLists::GetBodySliderValue(const BodyNameVersion& aBodyNameVersion)
+{
+  const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
+  const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+
+  switch (lBodyVariant)
+  {
+    case BodyVariant::CBBE_3BA_3BBB:
+    case BodyVariant::MIMIR_EBONIC_BODY:
+      return QString("CBBE 3BBB Body Amazing");
+    case BodyVariant::CBBE_3BA_3BBB_NEVERNUDE:
+      return QString("CBBE 3BBB Amazing NeverNude");
+    case BodyVariant::CBBE_3BA_3BBB_UNDERWEAR:
+      return QString("CBBE 3BBB Amazing Underwear");
+    case BodyVariant::BHUNP_3BBB:
+      return QString("BHUNP 3BBB");
+    case BodyVariant::BHUNP_3BBB_ADVANCED:
+      return QString("BHUNP 3BBB Advanced");
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+      return QString("BHUNP 3BBB Advanced Ver 2");
+    case BodyVariant::BHUNP_BBP:
+      return QString("BHUNP BBP");
+    case BodyVariant::BHUNP_BBP_ADVANCED:
+      return QString("BHUNP BBP Advanced");
+    case BodyVariant::BHUNP_TBBP:
+      return QString("BHUNP TBBP");
+    case BodyVariant::BHUNP_TBBP_ADVANCED:
+      return QString("BHUNP TBBP Advanced");
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
+      return QString("BHUNP 3BBB Advanced Ver 2 Nevernude");
+    case BodyVariant::CBBE_SMP_3BBB:
+      return QString("CBBE Body SMP (3BBB)");
+    case BodyVariant::COCO_BODY_CBBE:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("[COCO]3Bsmp_BodyV4_A");
+        case 1:
+          return QString("[COCO 3BBB V6]Body_A");
+      }
+    case BodyVariant::COCO_BODY_UUNP:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("[COCO]body_B_v3");
+        case 1:
+          return QString("[COCO]3Bsmp_BodyV4_B");
+        case 2:
+          return QString("[COCO 3BBB V6]Body_B");
+      }
+    case BodyVariant::ASDASDF_3BBB:
+      return QString("ASDASDF-BHUNP 3BBB");
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+      return QString("ASDASDF-BHUNP 3BBB - No Thigh Jiggle");
+    case BodyVariant::ASDASDF_BBP:
+      return QString("ASDASDF-BHUNP BBP");
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+      return QString("ASDASDF-BHUNP BBP - No Thigh Jiggle");
+    case BodyVariant::ASDASDF_TBBP:
+      return QString("ASDASDF-BHUNP TBBP");
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+      return QString("ASDASDF-BHUNP TBBP - No Thigh Jiggle");
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+      return QString("ASDASDF-BHUNP_AlterBody 3BBB");
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+      return QString("ASDASDF-BHUNP_AlterBody 3BBB - No Thigh Jiggle");
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+      return QString("ASDASDF-BHUNP_AlterBody BBP");
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+      return QString("ASDASDF-BHUNP_AlterBody BBP - No Thigh Jiggle");
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+      return QString("ASDASDF-BHUNP_AlterBody TBBP");
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+      return QString("ASDASDF-BHUNP_AlterBody TBBP - No Thigh Jiggle");
+    case BodyVariant::_INVALID_VALUE:
+      return QString();
+  }
+
+  return QString();
+}
+
+QString DataLists::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
+{
+  const auto lVariant{DataLists::GetVariant(aFeetNameVersion)};
+  const auto lVersionIndex{DataLists::GetVersionIndex(aFeetNameVersion)};
+
+  switch (lVariant)
+  {
+    case FeetVariant::CBBE:
+      return QString("CBBE Feet");
+    case FeetVariant::BHUNP:
+      return QString("BHUNP 3BBB Advanced Feet");
+    case FeetVariant::CBBE_3BA_3BBB:
+      return QString("CBBE 3BBB Feet");
+    case FeetVariant::COCO_BODY_CBBE:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("[COCO]3Bsmp_FeetV4_A");
+        case 1:
+          return QString("[COCO 3BBB V6]Feet_A");
+      }
+    case FeetVariant::COCO_BODY_UUNP:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("[COCO]bodyFeets_B_v3");
+        case 1:
+          return QString("[COCO]3Bsmp_FeetV4_B");
+        case 2:
+          return QString("[COCO 3BBB V6]Feet_B");
+      }
+    case FeetVariant::MIMIR_EBONIC_BODY:
+      return QString("CBBE 3BBB Feet");
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
+      return QString("CBBE MSF Feet");
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP:
+      return QString("BHUNP Feet MSF");
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE:
+      return QString("CBBE MSF Feet High Heel");
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP:
+      return QString("BHUNP Feet High Heel MSF");
+    case FeetVariant::HG_FEET:
+      return QString("HGFeet UUNP");
+    case FeetVariant::KHRYSAMERE_HG_FEET:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("[Khrysamere] HG Feet (BHUNP)");
+        case 1:
+          return QString("[Khrysamere] K Feet");
+        case 2:
+          return QString("[Khrysamere] K Feet");
+        case 3:
+          return QString("[Khrysamere] K Feet v5.0");
+        case 4:
+          return QString("[Khrysamere] K Feet");
+      }
+    case FeetVariant::ASDASDF:
+      return QString("ASDASDF-BHUNP Feet");
+    case FeetVariant::_INVALID_VALUE:
+      return QString();
+  }
+
+  return QString();
+}
+
+QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, const bool aMustUseBeastHands)
+{
+  // Beast hands
+  if (Utils::IsCBBEBasedBody(aBodyNameVersion) && aMustUseBeastHands)
+  {
+    return QString("CBBE Hands Beast");
+  }
+
+  auto lBodyName{DataLists::GetName(aBodyNameVersion)};
+  auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+
+  auto lSliderSetName{QString()};
+
+  switch (lBodyName)
+  {
+    case BodyName::CBBE_3BA_3BBB:
+    case BodyName::MIMIR_EBONIC_BODY:
+      return QString("CBBE 3BBB Hands");
+    case BodyName::BHUNP_UUNP_NEXT_GENERATION:
+      return QString("BHUNP 3BBB Advanced Hands");
+    case BodyName::CBBE_SMP_3BBB:
+      return QString("CBBE Hands");
+    case BodyName::COCO_BODY_CBBE:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("[COCO]3Bsmp_HandV4_A");
+        case 1:
+          return QString("[COCO 3BBB V6]Hands_A");
+      }
+    case BodyName::COCO_BODY_UUNP:
+      switch (lVersionIndex)
+      {
+        case 0:
+          return QString("[COCO]bodyHands_B_v3");
+        case 1:
+          return QString("[COCO]3Bsmp_HandV4_B");
+        case 2:
+          return QString("[COCO 3BBB V6]Hands_B");
+      }
+    case BodyName::BHUNP_LITE_ASDASDF:
+      return QString("ASDASDF-BHUNP Hands");
+    case BodyName::_INVALID_VALUE:
+      return QString();
+  }
+
+  return QString();
+}
+
 QStringList DataLists::GetWindowOpeningModes()
 {
   return QStringList{tr("Minimized"),
