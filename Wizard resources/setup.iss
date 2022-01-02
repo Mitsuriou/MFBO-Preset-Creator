@@ -37,6 +37,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: ".\client release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: ".\filters.json"; DestDir: "{localappdata}\MFBOPresetCreator"; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist
 Source: ".\assets\*"; DestDir: "{localappdata}\MFBOPresetCreator\assets"; Flags: ignoreversion recursesubdirs createallsubdirs uninsneveruninstall onlyifdoesntexist
+Source: ".\fonts\Roboto-Regular.ttf"; DestDir: "{commonfonts}"; FontInstall: "Roboto"; Flags: onlyifdoesntexist uninsneveruninstall
 
 [Icons]
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\MFBOPresetCreator.exe"
