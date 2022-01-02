@@ -395,10 +395,10 @@ namespace Struct
   public:
     explicit BatchConversionEntry() {}
 
-    explicit BatchConversionEntry(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
+    explicit BatchConversionEntry(const QString& aOriginFolder, const QString& aResourcePath, const bool aUseAlternativeModel)
     {
       setOriginFolder(aOriginFolder);
-      setRessourcePath(aRessourcePath);
+      setResourcePath(aResourcePath);
       setUseAlternativeModel(aUseAlternativeModel);
     }
 
@@ -413,15 +413,15 @@ namespace Struct
       return this->originFolder;
     }
 
-    // Ressource path
-    void setRessourcePath(const QString& aRessourcePath)
+    // Resource path
+    void setResourcePath(const QString& aResourcePath)
     {
-      this->ressourcePath = aRessourcePath;
+      this->resourcesPath = aResourcePath;
     }
 
-    QString getRessourcePath() const
+    QString getResourcePath() const
     {
-      return this->ressourcePath;
+      return this->resourcesPath;
     }
 
     // Alternative model
@@ -437,7 +437,7 @@ namespace Struct
 
   private:
     QString originFolder;
-    QString ressourcePath;
+    QString resourcesPath;
     bool useAlternativeModel{false}; // Use beasts variants model
   };
 
@@ -474,7 +474,7 @@ namespace Struct
       // The skeleton is facultative
       return (!this->names.first.isEmpty()
               && !this->names.second.isEmpty()
-              && (!this->body.second.isEmpty() || !this->feet.second.isEmpty() || !this->hands.getRessourcePath().isEmpty()));
+              && (!this->body.second.isEmpty() || !this->feet.second.isEmpty() || !this->hands.getResourcePath().isEmpty()));
     };
 
     // Names
@@ -489,9 +489,9 @@ namespace Struct
     }
 
     // Body
-    void setBodyData(const QString& aOriginFolder, const QString& aRessourcePath)
+    void setBodyData(const QString& aOriginFolder, const QString& aResourcePath)
     {
-      this->body = std::make_pair(aOriginFolder, aRessourcePath);
+      this->body = std::make_pair(aOriginFolder, aResourcePath);
     }
 
     void resetBodyData()
@@ -505,9 +505,9 @@ namespace Struct
     }
 
     // Feet
-    void setFeetData(const QString& aOriginFolder, const QString& aRessourcePath)
+    void setFeetData(const QString& aOriginFolder, const QString& aResourcePath)
     {
-      this->feet = std::make_pair(aOriginFolder, aRessourcePath);
+      this->feet = std::make_pair(aOriginFolder, aResourcePath);
     }
 
     void resetFeetData()
@@ -521,10 +521,10 @@ namespace Struct
     }
 
     // Hands
-    void setHandsData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
+    void setHandsData(const QString& aOriginFolder, const QString& aResourcePath, const bool aUseAlternativeModel)
     {
       this->hands.setOriginFolder(aOriginFolder);
-      this->hands.setRessourcePath(aRessourcePath);
+      this->hands.setResourcePath(aResourcePath);
       this->hands.setUseAlternativeModel(aUseAlternativeModel);
     };
 
@@ -549,10 +549,10 @@ namespace Struct
     }
 
     // Skeleton
-    void setSkeletonData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
+    void setSkeletonData(const QString& aOriginFolder, const QString& aResourcePath, const bool aUseAlternativeModel)
     {
       this->skeleton.setOriginFolder(aOriginFolder);
-      this->skeleton.setRessourcePath(aRessourcePath);
+      this->skeleton.setResourcePath(aResourcePath);
       this->skeleton.setUseAlternativeModel(aUseAlternativeModel);
     };
 
@@ -578,10 +578,10 @@ namespace Struct
 
   private:
     std::pair<QString, QString> names; // <OSP and XML files names, Presets names in BodySlide>
-    std::pair<QString, QString> body;  // <origin mod name, mesh path/name (aka full ressource path)>
-    std::pair<QString, QString> feet;  // <origin mod name, mesh path/name (aka full ressource path)>
-    BatchConversionEntry hands;        // <origin mod name, mesh path/name (aka full ressource path), use alternate model>
-    BatchConversionEntry skeleton;     // <origin mod name, mesh path/name (aka full ressource path), mash name, use alternate model>
+    std::pair<QString, QString> body;  // <origin mod name, mesh path/name (aka full resource path)>
+    std::pair<QString, QString> feet;  // <origin mod name, mesh path/name (aka full resource path)>
+    BatchConversionEntry hands;        // <origin mod name, mesh path/name (aka full resource path), use alternate model>
+    BatchConversionEntry skeleton;     // <origin mod name, mesh path/name (aka full resource path), mash name, use alternate model>
   };
 
   struct BatchConversionData

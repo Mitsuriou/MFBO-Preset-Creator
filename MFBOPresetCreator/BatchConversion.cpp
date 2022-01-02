@@ -60,7 +60,7 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -103,7 +103,7 @@ void BatchConversion::setWindowProperties()
 void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Input location"), "tune", lIconFolder, this->mSettings.display.font.size)};
@@ -140,7 +140,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.size)};
@@ -201,7 +201,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size)};
@@ -261,7 +261,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
   ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
@@ -283,7 +283,7 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", lIconFolder, this->mSettings.display.font.size)};
@@ -321,7 +321,7 @@ void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", lIconFolder, this->mSettings.display.font.size)};
@@ -351,7 +351,7 @@ void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Batch generate button
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the directory"), "", "build", lIconFolder)};
@@ -453,7 +453,7 @@ void BatchConversion::chooseInputDirectory()
 void BatchConversion::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Input path
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
@@ -673,9 +673,9 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     const auto lFeetName{lPreset.getFeetData().second.mid(lFeetLastSlashPosition + 1)};
 
     // Hands meshes path and name
-    const auto lHandsLastSlashPosition{lPreset.getHandsData().getRessourcePath().lastIndexOf('/')};
-    const auto lMeshesPathHands{lPreset.getHandsData().getRessourcePath().left(lHandsLastSlashPosition)};
-    const auto lHandsName{lPreset.getHandsData().getRessourcePath().mid(lHandsLastSlashPosition + 1)};
+    const auto lHandsLastSlashPosition{lPreset.getHandsData().getResourcePath().lastIndexOf('/')};
+    const auto lMeshesPathHands{lPreset.getHandsData().getResourcePath().left(lHandsLastSlashPosition)};
+    const auto lHandsName{lPreset.getHandsData().getResourcePath().mid(lHandsLastSlashPosition + 1)};
 
     // BodySlide names
     auto lOSPXMLNames{lPreset.getNames().first};
@@ -717,7 +717,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     }
 
     // Skeleton
-    auto lMustCopySkeleton{!lPreset.getSkeletonData().getRessourcePath().isEmpty()};
+    auto lMustCopySkeleton{!lPreset.getSkeletonData().getResourcePath().isEmpty()};
 
     if (lMustCopySkeleton)
     {
@@ -735,9 +735,9 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
       }
 
       // Write location
-      const auto lSkeletonLastSlashPosition{lPreset.getSkeletonData().getRessourcePath().lastIndexOf('/')};
-      const auto lDestinationSkeletonRelativePath{lPreset.getSkeletonData().getRessourcePath().left(lSkeletonLastSlashPosition)};
-      const auto lDestinationSkeletonFileName{lPreset.getSkeletonData().getRessourcePath().mid(lSkeletonLastSlashPosition + 1)};
+      const auto lSkeletonLastSlashPosition{lPreset.getSkeletonData().getResourcePath().lastIndexOf('/')};
+      const auto lDestinationSkeletonRelativePath{lPreset.getSkeletonData().getResourcePath().left(lSkeletonLastSlashPosition)};
+      const auto lDestinationSkeletonFileName{lPreset.getSkeletonData().getResourcePath().mid(lSkeletonLastSlashPosition + 1)};
 
       if (!Utils::CreateSkeletonFile(lSourceSkeletonReadPath, lPresetEntryDirectory, lDestinationSkeletonRelativePath, lDestinationSkeletonFileName))
       {
@@ -867,7 +867,7 @@ void BatchConversion::targetMeshesChanged(const BodyNameVersion& aBody, const Fe
 
   // Update the "targeted body mesh" text content
   const auto lBodyText{
-    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVersionIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
 
   // Update the "targeted feet mesh" text content
   const auto lFeetText{

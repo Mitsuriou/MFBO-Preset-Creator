@@ -160,7 +160,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="ressources/software/icon.ico">
+    <Image Include="resources/software/icon.ico">
       <Filter>App Resources</Filter>
     </Image>
   </ItemGroup>

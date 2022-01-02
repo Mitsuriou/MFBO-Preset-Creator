@@ -58,7 +58,7 @@ public:
 
   // Theming
   static bool IsThemeDark(const GUITheme& aTheme);
-  static QString GetIconRessourceFolder(const GUITheme& aTheme);
+  static QString GetIconResourceFolder(const GUITheme& aTheme);
   static void OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme);
 
   // Skyrim related stuff
@@ -157,15 +157,15 @@ inline bool Utils::ContainsBodyOrHandsOrFeetMesh(const T& aList)
 {
   static_assert(std::is_same<typename T::value_type, QString>::value, "T must be a standard container of QString");
 
-  auto lRessourceType{BCGroupWidgetCallContext::UNDEFINED};
+  auto lResourceType{BCGroupWidgetCallContext::UNDEFINED};
 
   // Iterate through the list of meshes paths
   for (const auto& lValue : aList)
   {
-    lRessourceType = Utils::GetMeshTypeFromFileName(lValue);
+    lResourceType = Utils::GetMeshTypeFromFileName(lValue);
 
-    // Check if the ressource if of any useful type
-    if (lRessourceType == BCGroupWidgetCallContext::BODY || lRessourceType == BCGroupWidgetCallContext::FEET || lRessourceType == BCGroupWidgetCallContext::HANDS)
+    // Check if the resource if of any useful type
+    if (lResourceType == BCGroupWidgetCallContext::BODY || lResourceType == BCGroupWidgetCallContext::FEET || lResourceType == BCGroupWidgetCallContext::HANDS)
     {
       return true;
     }

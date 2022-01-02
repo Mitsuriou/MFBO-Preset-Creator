@@ -15,15 +15,15 @@ public:
   void duplicateData();
 
 signals:
-  void removePressed(const QString& aOriginFolder, const QString& aRessourcePath);
-  void duplicatePressed(const QString& aOriginFolder, const QString& aRessourcePath);
-  void dropEventTriggered(const QString& aOriginFolder, const QString& aRessourcePath, const bool isCheckBoxChecked);
+  void removePressed(const QString& aOriginFolder, const QString& aResourcePath);
+  void duplicatePressed(const QString& aOriginFolder, const QString& aResourcePath);
+  void dropEventTriggered(const QString& aOriginFolder, const QString& aResourcePath, const bool isCheckBoxChecked);
   void checkBoxStateChangedTriggered(const bool aIsActive);
 
 private:
   BCGroupWidgetCallContext mCallContext{BCGroupWidgetCallContext::UNDEFINED};
 
-  void dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked);
+  void dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldResourcePath, const QString& aNewOriginFolder, const QString& aNewResourcePath, const bool isCheckBoxChecked);
   void checkBoxStateChangedReceiver(const bool aIsActive);
 
   explicit BCGroupWidget(const BCGroupWidget&) = delete;

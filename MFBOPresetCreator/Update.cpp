@@ -84,7 +84,7 @@ void Update::initializeGUI()
   this->layout()->addWidget(lMainTitle);
 
   // Check for updates
-  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme), "search_button")};
+  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme), "search_button")};
   lUpdateButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
   this->layout()->addWidget(lUpdateButton);

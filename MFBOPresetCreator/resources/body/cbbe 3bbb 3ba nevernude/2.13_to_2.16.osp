@@ -1,0 +1,662 @@
+    <SliderSet name="%1 - CBBE 3BBB Amazing NeverNude">
+        <DataFolder>SE 3BBB Amazing</DataFolder>
+        <SourceFile>CBBE 3BBB Amazing NeverNude.nif</SourceFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
+        <Shape target="3BA" DataFolder="SE 3BBB Amazing">3BA</Shape>
+        <Shape target="3BA_Anus">3BA_Anus</Shape>
+        <Shape target="3BA_Vagina">3BA_Vagina</Shape>
+        <Shape target="Bra">Bra</Shape>
+        <Shape target="Panty">Panty</Shape>
+        <Slider name="AnkleSize" invert="false" small="100" big="0">
+            <Data name="3BAAnkleSize" target="3BA">SE 3BBB Body Amazing v2.osd\3BAAnkleSize</Data>
+        </Slider>
+        <Slider name="AppleCheeks" invert="false" small="0" big="0">
+            <Data name="3BAAppleCheeks" target="3BA">SE 3BBB Body Amazing v2.osd\3BAAppleCheeks</Data>
+            <Data name="BraAppleCheeks" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraAppleCheeks</Data>
+            <Data name="PantyAppleCheeks" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyAppleCheeks</Data>
+            <Data name="3BA_VaginaAppleCheeks" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaAppleCheeks</Data>
+            <Data name="3BA_AnusAppleCheeks" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusAppleCheeks</Data>
+        </Slider>
+        <Slider name="AreolaSize" invert="false" small="0" big="0" uv="true">
+            <Data name="3BAAreolaSize" target="3BA">SE 3BBB Body Amazing v2.osd\3BAAreolaSize</Data>
+        </Slider>
+        <Slider name="Arms" invert="false" small="0" big="0">
+            <Data name="3BAArms" target="3BA">SE 3BBB Body Amazing v2.osd\3BAArms</Data>
+            <Data name="BraArms" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraArms</Data>
+        </Slider>
+        <Slider name="Back" invert="false" small="0" big="0">
+            <Data name="3BABack" target="3BA">SE 3BBB Body Amazing v2.osd\3BABack</Data>
+            <Data name="BraBack" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBack</Data>
+            <Data name="PantyBack" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBack</Data>
+        </Slider>
+        <Slider name="BackArch" invert="false" small="0" big="0">
+            <Data name="3BABackArch" target="3BA">SE 3BBB Body Amazing v2.osd\3BABackArch</Data>
+            <Data name="BraBackArch" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBackArch</Data>
+            <Data name="PantyBackArch" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBackArch</Data>
+        </Slider>
+        <Slider name="Belly" invert="false" small="0" big="0">
+            <Data name="3BABelly" target="3BA">SE 3BBB Body Amazing v2.osd\3BABelly</Data>
+            <Data name="BraBelly" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBelly</Data>
+            <Data name="PantyBelly" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBelly</Data>
+        </Slider>
+        <Slider name="BigBelly" invert="false" small="0" big="0">
+            <Data name="3BABigBelly" target="3BA">SE 3BBB Body Amazing v2.osd\3BABigBelly</Data>
+            <Data name="BraBigBelly" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBigBelly</Data>
+            <Data name="PantyBigBelly" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBigBelly</Data>
+            <Data name="3BA_VaginaBigBelly" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaBigBelly</Data>
+        </Slider>
+        <Slider name="BigButt" invert="false" small="0" big="0">
+            <Data name="3BABigButt" target="3BA">SE 3BBB Body Amazing v2.osd\3BABigButt</Data>
+            <Data name="BraBigButt" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBigButt</Data>
+            <Data name="PantyBigButt" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBigButt</Data>
+            <Data name="3BA_VaginaBigButt" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaBigButt</Data>
+            <Data name="3BA_AnusBigButt" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusBigButt</Data>
+        </Slider>
+        <Slider name="BigTorso" invert="false" small="0" big="0">
+            <Data name="3BABigTorso" target="3BA">SE 3BBB Body Amazing v2.osd\3BABigTorso</Data>
+            <Data name="BraBigTorso" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBigTorso</Data>
+            <Data name="PantyBigTorso" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBigTorso</Data>
+        </Slider>
+        <Slider name="BreastCenter" invert="false" small="0" big="0">
+            <Data name="3BABreastCenter" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastCenter</Data>
+            <Data name="BraBreastCenter" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastCenter</Data>
+        </Slider>
+        <Slider name="BreastCenterBig" invert="false" small="0" big="0">
+            <Data name="3BABreastCenterBig" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastCenterBig</Data>
+            <Data name="BraBreastCenterBig" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastCenterBig</Data>
+        </Slider>
+        <Slider name="BreastCleavage" invert="false" small="0" big="0">
+            <Data name="3BABreastCleavage" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastCleavage</Data>
+            <Data name="BraBreastCleavage" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastCleavage</Data>
+        </Slider>
+        <Slider name="BreastFlatness2" invert="false" small="0" big="0">
+            <Data name="3BABreastFlatness2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastFlatness2</Data>
+            <Data name="BraBreastFlatness2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastFlatness2</Data>
+        </Slider>
+        <Slider name="BreastFlatness" invert="false" small="0" big="0">
+            <Data name="3BABreastFlatness" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastFlatness</Data>
+            <Data name="BraBreastFlatness" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastFlatness</Data>
+        </Slider>
+        <Slider name="BreastGravity2" invert="false" small="0" big="0">
+            <Data name="3BABreastGravity2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastGravity2</Data>
+            <Data name="BraBreastGravity2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastGravity2</Data>
+        </Slider>
+        <Slider name="BreastHeight" invert="false" small="0" big="0">
+            <Data name="3BABreastHeight" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastHeight</Data>
+            <Data name="BraBreastHeight" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastHeight</Data>
+        </Slider>
+        <Slider name="BreastPerkiness" invert="false" small="0" big="0">
+            <Data name="3BABreastPerkiness" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastPerkiness</Data>
+            <Data name="BraBreastPerkiness" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastPerkiness</Data>
+        </Slider>
+        <Slider name="Breasts" invert="false" small="0" big="0">
+            <Data name="3BABreasts" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreasts</Data>
+            <Data name="BraBreasts" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreasts</Data>
+        </Slider>
+        <Slider name="BreastsFantasy" invert="false" small="0" big="0">
+            <Data name="3BABreastsFantasy" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsFantasy</Data>
+            <Data name="BraBreastsFantasy" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsFantasy</Data>
+        </Slider>
+        <Slider name="BreastsGone" invert="false" small="0" big="0">
+            <Data name="3BABreastsGone" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsGone</Data>
+            <Data name="BraBreastsGone" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsGone</Data>
+        </Slider>
+        <Slider name="BreastsNewSH" invert="false" small="0" big="0">
+            <Data name="3BABreastsNewSH" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsNewSH</Data>
+            <Data name="BraBreastsNewSH" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsNewSH</Data>
+        </Slider>
+        <Slider name="BreastsNewSHSymmetry" invert="false" small="0" big="0">
+            <Data name="3BABreastsNewSHSymmetry" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsNewSHSymmetry</Data>
+            <Data name="BraBreastsNewSHSymmetry" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsNewSHSymmetry</Data>
+        </Slider>
+        <Slider name="BreastsSmall" invert="false" small="0" big="0">
+            <Data name="3BABreastsSmall" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsSmall</Data>
+            <Data name="BraBreastsSmall" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsSmall</Data>
+            <Data name="PantyBreastsSmall" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBreastsSmall</Data>
+        </Slider>
+        <Slider name="BreastsSmall2" invert="false" small="0" big="0">
+            <Data name="3BABreastsSmall2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsSmall2</Data>
+            <Data name="BraBreastsSmall2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsSmall2</Data>
+            <Data name="PantyBreastsSmall2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBreastsSmall2</Data>
+        </Slider>
+        <Slider name="BreastsTogether" invert="false" small="0" big="0">
+            <Data name="3BABreastsTogether" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsTogether</Data>
+            <Data name="BraBreastsTogether" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsTogether</Data>
+        </Slider>
+        <Slider name="BreastTopSlope" invert="false" small="0" big="0">
+            <Data name="3BABreastTopSlope" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastTopSlope</Data>
+            <Data name="BraBreastTopSlope" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastTopSlope</Data>
+        </Slider>
+        <Slider name="BreastWidth" invert="false" small="0" big="0">
+            <Data name="3BABreastWidth" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastWidth</Data>
+            <Data name="BraBreastWidth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastWidth</Data>
+        </Slider>
+        <Slider name="Butt" invert="false" small="0" big="0">
+            <Data name="3BAButt" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButt</Data>
+            <Data name="BraButt" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraButt</Data>
+            <Data name="PantyButt" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButt</Data>
+            <Data name="3BA_VaginaButt" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaButt</Data>
+            <Data name="3BA_AnusButt" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusButt</Data>
+        </Slider>
+        <Slider name="ButtClassic" invert="false" small="0" big="0">
+            <Data name="3BAButtClassic" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtClassic</Data>
+            <Data name="BraButtClassic" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraButtClassic</Data>
+            <Data name="PantyButtClassic" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtClassic</Data>
+            <Data name="3BA_VaginaButtClassic" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaButtClassic</Data>
+            <Data name="3BA_AnusButtClassic" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusButtClassic</Data>
+        </Slider>
+        <Slider name="ButtCrack" invert="false" small="0" big="0">
+            <Data name="3BAButtCrack" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtCrack</Data>
+            <Data name="PantyButtCrack" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtCrack</Data>
+            <Data name="3BA_VaginaButtCrack" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaButtCrack</Data>
+            <Data name="3BA_AnusButtCrack" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusButtCrack</Data>
+        </Slider>
+        <Slider name="ButtShape2" invert="false" small="0" big="0">
+            <Data name="3BAButtShape2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtShape2</Data>
+            <Data name="BraButtShape2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraButtShape2</Data>
+            <Data name="PantyButtShape2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtShape2</Data>
+            <Data name="3BA_VaginaButtShape2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaButtShape2</Data>
+            <Data name="3BA_AnusButtShape2" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusButtShape2</Data>
+        </Slider>
+        <Slider name="ButtSmall" invert="false" small="0" big="0">
+            <Data name="3BAButtSmall" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtSmall</Data>
+            <Data name="BraButtSmall" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraButtSmall</Data>
+            <Data name="PantyButtSmall" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtSmall</Data>
+            <Data name="3BA_VaginaButtSmall" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaButtSmall</Data>
+            <Data name="3BA_AnusButtSmall" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusButtSmall</Data>
+        </Slider>
+        <Slider name="CalfSize" invert="false" small="0" big="0">
+            <Data name="3BACalfSize" target="3BA">SE 3BBB Body Amazing v2.osd\3BACalfSize</Data>
+        </Slider>
+        <Slider name="CalfSmooth" invert="false" small="0" big="0">
+            <Data name="3BACalfSmooth" target="3BA">SE 3BBB Body Amazing v2.osd\3BACalfSmooth</Data>
+        </Slider>
+        <Slider name="ChestDepth" invert="false" small="0" big="0">
+            <Data name="3BAChestDepth" target="3BA">SE 3BBB Body Amazing v2.osd\3BAChestDepth</Data>
+            <Data name="BraChestDepth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraChestDepth</Data>
+            <Data name="PantyChestDepth" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyChestDepth</Data>
+        </Slider>
+        <Slider name="ChestWidth" invert="false" small="0" big="0">
+            <Data name="3BAChestWidth" target="3BA">SE 3BBB Body Amazing v2.osd\3BAChestWidth</Data>
+            <Data name="BraChestWidth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraChestWidth</Data>
+            <Data name="PantyChestWidth" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyChestWidth</Data>
+        </Slider>
+        <Slider name="ChubbyArms" invert="false" small="0" big="0">
+            <Data name="3BAChubbyArms" target="3BA">SE 3BBB Body Amazing v2.osd\3BAChubbyArms</Data>
+            <Data name="BraChubbyArms" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraChubbyArms</Data>
+        </Slider>
+        <Slider name="ChubbyButt" invert="false" small="0" big="0">
+            <Data name="3BAChubbyButt" target="3BA">SE 3BBB Body Amazing v2.osd\3BAChubbyButt</Data>
+            <Data name="BraChubbyButt" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraChubbyButt</Data>
+            <Data name="PantyChubbyButt" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyChubbyButt</Data>
+            <Data name="3BA_VaginaChubbyButt" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaChubbyButt</Data>
+            <Data name="3BA_AnusChubbyButt" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusChubbyButt</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="3BAChubbyLegs" target="3BA">SE 3BBB Body Amazing v2.osd\3BAChubbyLegs</Data>
+            <Data name="PantyChubbyLegs" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyChubbyLegs</Data>
+            <Data name="3BA_VaginaChubbyLegs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaChubbyLegs</Data>
+            <Data name="3BA_AnusChubbyLegs" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusChubbyLegs</Data>
+        </Slider>
+        <Slider name="ChubbyWaist" invert="false" small="0" big="0">
+            <Data name="3BAChubbyWaist" target="3BA">SE 3BBB Body Amazing v2.osd\3BAChubbyWaist</Data>
+            <Data name="BraChubbyWaist" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraChubbyWaist</Data>
+            <Data name="PantyChubbyWaist" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyChubbyWaist</Data>
+            <Data name="3BA_VaginaChubbyWaist" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaChubbyWaist</Data>
+            <Data name="3BA_AnusChubbyWaist" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusChubbyWaist</Data>
+        </Slider>
+        <Slider name="CrotchBack" invert="false" small="0" big="0">
+            <Data name="3BACrotchBack" target="3BA">SE 3BBB Body Amazing v2.osd\3BACrotchBack</Data>
+            <Data name="PantyCrotchBack" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyCrotchBack</Data>
+            <Data name="3BA_VaginaCrotchBack" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaCrotchBack</Data>
+            <Data name="3BA_AnusCrotchBack" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusCrotchBack</Data>
+        </Slider>
+        <Slider name="DoubleMelon" invert="false" small="0" big="0">
+            <Data name="3BADoubleMelon" target="3BA">SE 3BBB Body Amazing v2.osd\3BADoubleMelon</Data>
+            <Data name="BraDoubleMelon" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraDoubleMelon</Data>
+        </Slider>
+        <Slider name="ForearmSize" invert="false" small="0" big="0">
+            <Data name="3BAForearmSize" target="3BA">SE 3BBB Body Amazing v2.osd\3BAForearmSize</Data>
+        </Slider>
+        <Slider name="Groin" invert="false" small="0" big="0">
+            <Data name="3BAGroin" target="3BA">SE 3BBB Body Amazing v2.osd\3BAGroin</Data>
+            <Data name="PantyGroin" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyGroin</Data>
+            <Data name="3BA_VaginaGroin" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaGroin</Data>
+            <Data name="3BA_AnusGroin" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusGroin</Data>
+        </Slider>
+        <Slider name="HipBone" invert="false" small="0" big="0">
+            <Data name="3BAHipBone" target="3BA">SE 3BBB Body Amazing v2.osd\3BAHipBone</Data>
+            <Data name="PantyHipBone" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyHipBone</Data>
+            <Data name="3BA_VaginaHipBone" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaHipBone</Data>
+        </Slider>
+        <Slider name="HipForward" invert="false" small="0" big="0">
+            <Data name="3BAHipForward" target="3BA">SE 3BBB Body Amazing v2.osd\3BAHipForward</Data>
+            <Data name="BraHipForward" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraHipForward</Data>
+            <Data name="PantyHipForward" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyHipForward</Data>
+            <Data name="3BA_VaginaHipForward" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaHipForward</Data>
+            <Data name="3BA_AnusHipForward" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusHipForward</Data>
+        </Slider>
+        <Slider name="Hips" invert="false" small="0" big="0">
+            <Data name="3BAHips" target="3BA">SE 3BBB Body Amazing v2.osd\3BAHips</Data>
+            <Data name="PantyHips" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyHips</Data>
+            <Data name="3BA_VaginaHips" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaHips</Data>
+            <Data name="3BA_AnusHips" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusHips</Data>
+        </Slider>
+        <Slider name="HipUpperWidth" invert="false" small="0" big="0">
+            <Data name="3BAHipUpperWidth" target="3BA">SE 3BBB Body Amazing v2.osd\3BAHipUpperWidth</Data>
+            <Data name="BraHipUpperWidth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraHipUpperWidth</Data>
+            <Data name="PantyHipUpperWidth" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyHipUpperWidth</Data>
+        </Slider>
+        <Slider name="KneeHeight" invert="false" small="0" big="0">
+            <Data name="3BAKneeHeight" target="3BA">SE 3BBB Body Amazing v2.osd\3BAKneeHeight</Data>
+        </Slider>
+        <Slider name="KneeShape" invert="false" small="0" big="0">
+            <Data name="3BAKneeShape" target="3BA">SE 3BBB Body Amazing v2.osd\3BAKneeShape</Data>
+        </Slider>
+        <Slider name="LegShapeClassic" invert="false" small="0" big="0">
+            <Data name="3BALegShapeClassic" target="3BA">SE 3BBB Body Amazing v2.osd\3BALegShapeClassic</Data>
+        </Slider>
+        <Slider name="LegsThin" invert="false" small="0" big="0">
+            <Data name="3BALegsThin" target="3BA">SE 3BBB Body Amazing v2.osd\3BALegsThin</Data>
+            <Data name="PantyLegsThin" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyLegsThin</Data>
+        </Slider>
+        <Slider name="MuscleAbs" invert="false" small="0" big="0">
+            <Data name="3BAMuscleAbs" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleAbs</Data>
+            <Data name="BraMuscleAbs" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraMuscleAbs</Data>
+            <Data name="PantyMuscleAbs" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyMuscleAbs</Data>
+        </Slider>
+        <Slider name="MuscleArms" invert="false" small="0" big="0">
+            <Data name="3BAMuscleArms" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleArms</Data>
+            <Data name="BraMuscleArms" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraMuscleArms</Data>
+        </Slider>
+        <Slider name="MuscleButt" invert="false" small="0" big="0">
+            <Data name="3BAMuscleButt" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleButt</Data>
+            <Data name="PantyMuscleButt" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyMuscleButt</Data>
+        </Slider>
+        <Slider name="MuscleLegs" invert="false" small="0" big="0">
+            <Data name="3BAMuscleLegs" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleLegs</Data>
+            <Data name="PantyMuscleLegs" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyMuscleLegs</Data>
+            <Data name="3BA_VaginaMuscleLegs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaMuscleLegs</Data>
+            <Data name="3BA_AnusMuscleLegs" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusMuscleLegs</Data>
+        </Slider>
+        <Slider name="MusclePecs" invert="false" small="0" big="0">
+            <Data name="3BAMusclePecs" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMusclePecs</Data>
+            <Data name="BraMusclePecs" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraMusclePecs</Data>
+        </Slider>
+        <Slider name="NavelEven" invert="false" small="0" big="0">
+            <Data name="3BANavelEven" target="3BA">SE 3BBB Body Amazing v2.osd\3BANavelEven</Data>
+        </Slider>
+        <Slider name="NeckSeam" invert="false" small="100" big="0" hidden="true">
+            <Data name="3BANeckSeam" target="3BA">SE 3BBB Body Amazing v2.osd\3BANeckSeam</Data>
+            <Data name="BraNeckSeam" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNeckSeam</Data>
+        </Slider>
+        <Slider name="NipBGone" invert="false" small="0" big="0">
+            <Data name="3BANipBGone" target="3BA">SE 3BBB Body Amazing v2.osd\3BANipBGone</Data>
+            <Data name="BraNipBGone" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNipBGone</Data>
+        </Slider>
+        <Slider name="NippleDistance" invert="false" small="0" big="0">
+            <Data name="3BANippleDistance" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleDistance</Data>
+            <Data name="BraNippleDistance" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleDistance</Data>
+        </Slider>
+        <Slider name="NippleDown" invert="false" small="0" big="0">
+            <Data name="3BANippleDown" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleDown</Data>
+            <Data name="BraNippleDown" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleDown</Data>
+        </Slider>
+        <Slider name="NippleLength" invert="false" small="0" big="0">
+            <Data name="3BANippleLength" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleLength</Data>
+            <Data name="BraNippleLength" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleLength</Data>
+        </Slider>
+        <Slider name="NippleManga" invert="false" small="0" big="0">
+            <Data name="3BANippleManga" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleManga</Data>
+            <Data name="BraNippleManga" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleManga</Data>
+        </Slider>
+        <Slider name="NipplePerkiness" invert="false" small="0" big="0">
+            <Data name="3BANipplePerkiness" target="3BA">SE 3BBB Body Amazing v2.osd\3BANipplePerkiness</Data>
+            <Data name="BraNipplePerkiness" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNipplePerkiness</Data>
+        </Slider>
+        <Slider name="NipplePerkManga" invert="false" small="0" big="0">
+            <Data name="3BANipplePerkManga" target="3BA">SE 3BBB Body Amazing v2.osd\3BANipplePerkManga</Data>
+            <Data name="BraNipplePerkManga" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNipplePerkManga</Data>
+        </Slider>
+        <Slider name="NippleSize" invert="false" small="0" big="0">
+            <Data name="3BANippleSize" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleSize</Data>
+            <Data name="BraNippleSize" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleSize</Data>
+        </Slider>
+        <Slider name="NippleTip" invert="false" small="0" big="0">
+            <Data name="3BANippleTip" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleTip</Data>
+            <Data name="BraNippleTip" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleTip</Data>
+        </Slider>
+        <Slider name="NippleTipManga" invert="false" small="0" big="0">
+            <Data name="3BANippleTipManga" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleTipManga</Data>
+            <Data name="BraNippleTipManga" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleTipManga</Data>
+        </Slider>
+        <Slider name="NippleUp" invert="false" small="0" big="0">
+            <Data name="3BANippleUp" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleUp</Data>
+            <Data name="BraNippleUp" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleUp</Data>
+        </Slider>
+        <Slider name="PregnancyBelly" invert="false" small="0" big="0">
+            <Data name="3BAPregnancyBelly" target="3BA">SE 3BBB Body Amazing v2.osd\3BAPregnancyBelly</Data>
+            <Data name="BraPregnancyBelly" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraPregnancyBelly</Data>
+            <Data name="PantyPregnancyBelly" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyPregnancyBelly</Data>
+            <Data name="3BA_VaginaPregnancyBelly" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaPregnancyBelly</Data>
+        </Slider>
+        <Slider name="PushUp" invert="false" small="0" big="0">
+            <Data name="3BAPushUp" target="3BA">SE 3BBB Body Amazing v2.osd\3BAPushUp</Data>
+            <Data name="BraPushUp" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraPushUp</Data>
+        </Slider>
+        <Slider name="RibsProminance" invert="false" small="0" big="0">
+            <Data name="3BARibsProminance" target="3BA">SE 3BBB Body Amazing v2.osd\3BARibsProminance</Data>
+            <Data name="BraRibsProminance" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraRibsProminance</Data>
+        </Slider>
+        <Slider name="RoundAss" invert="false" small="0" big="0">
+            <Data name="3BARoundAss" target="3BA">SE 3BBB Body Amazing v2.osd\3BARoundAss</Data>
+            <Data name="PantyRoundAss" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyRoundAss</Data>
+            <Data name="3BA_VaginaRoundAss" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaRoundAss</Data>
+            <Data name="3BA_AnusRoundAss" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusRoundAss</Data>
+        </Slider>
+        <Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+            <Data name="3BAShoulderSmooth" target="3BA">SE 3BBB Body Amazing v2.osd\3BAShoulderSmooth</Data>
+            <Data name="BraShoulderSmooth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraShoulderSmooth</Data>
+        </Slider>
+        <Slider name="ShoulderTweak" invert="false" small="0" big="0">
+            <Data name="3BAShoulderTweak" target="3BA">SE 3BBB Body Amazing v2.osd\3BAShoulderTweak</Data>
+            <Data name="BraShoulderTweak" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraShoulderTweak</Data>
+        </Slider>
+        <Slider name="ShoulderWidth" invert="false" small="0" big="0">
+            <Data name="3BAShoulderWidth" target="3BA">SE 3BBB Body Amazing v2.osd\3BAShoulderWidth</Data>
+            <Data name="BraShoulderWidth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraShoulderWidth</Data>
+        </Slider>
+        <Slider name="SlimThighs" invert="false" small="0" big="0">
+            <Data name="3BASlimThighs" target="3BA">SE 3BBB Body Amazing v2.osd\3BASlimThighs</Data>
+            <Data name="PantySlimThighs" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantySlimThighs</Data>
+            <Data name="3BA_VaginaSlimThighs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaSlimThighs</Data>
+            <Data name="3BA_AnusSlimThighs" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusSlimThighs</Data>
+        </Slider>
+        <Slider name="SternumDepth" invert="false" small="0" big="0">
+            <Data name="3BASternumDepth" target="3BA">SE 3BBB Body Amazing v2.osd\3BASternumDepth</Data>
+            <Data name="BraSternumDepth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraSternumDepth</Data>
+        </Slider>
+        <Slider name="SternumHeight" invert="false" small="0" big="0">
+            <Data name="3BASternumHeight" target="3BA">SE 3BBB Body Amazing v2.osd\3BASternumHeight</Data>
+            <Data name="BraSternumHeight" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraSternumHeight</Data>
+        </Slider>
+        <Slider name="Thighs" invert="false" small="0" big="0">
+            <Data name="3BAThighs" target="3BA">SE 3BBB Body Amazing v2.osd\3BAThighs</Data>
+            <Data name="PantyThighs" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyThighs</Data>
+            <Data name="3BA_VaginaThighs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaThighs</Data>
+            <Data name="3BA_AnusThighs" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusThighs</Data>
+        </Slider>
+        <Slider name="TummyTuck" invert="false" small="0" big="0">
+            <Data name="3BATummyTuck" target="3BA">SE 3BBB Body Amazing v2.osd\3BATummyTuck</Data>
+            <Data name="BraTummyTuck" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraTummyTuck</Data>
+            <Data name="PantyTummyTuck" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyTummyTuck</Data>
+            <Data name="3BA_VaginaTummyTuck" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaTummyTuck</Data>
+        </Slider>
+        <Slider name="Waist" invert="false" small="0" big="0">
+            <Data name="3BAWaist" target="3BA">SE 3BBB Body Amazing v2.osd\3BAWaist</Data>
+            <Data name="BraWaist" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraWaist</Data>
+            <Data name="PantyWaist" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyWaist</Data>
+        </Slider>
+        <Slider name="WaistHeight" invert="false" small="0" big="0">
+            <Data name="3BAWaistHeight" target="3BA">SE 3BBB Body Amazing v2.osd\3BAWaistHeight</Data>
+            <Data name="BraWaistHeight" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraWaistHeight</Data>
+            <Data name="PantyWaistHeight" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyWaistHeight</Data>
+            <Data name="3BA_VaginaWaistHeight" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaWaistHeight</Data>
+            <Data name="3BA_AnusWaistHeight" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusWaistHeight</Data>
+        </Slider>
+        <Slider name="WideWaistLine" invert="false" small="0" big="0">
+            <Data name="3BAWideWaistLine" target="3BA">SE 3BBB Body Amazing v2.osd\3BAWideWaistLine</Data>
+            <Data name="BraWideWaistLine" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraWideWaistLine</Data>
+            <Data name="PantyWideWaistLine" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyWideWaistLine</Data>
+        </Slider>
+        <Slider name="WristSize" invert="false" small="100" big="0">
+            <Data name="3BAWristSize" target="3BA">SE 3BBB Body Amazing v2.osd\3BAWristSize</Data>
+        </Slider>
+        <Slider name="7B Lower" invert="false" small="0" big="0">
+            <Data name="3BA7B Lower" target="3BA">SE 3BBB Body Amazing v2.osd\3BA7B Lower</Data>
+            <Data name="Bra7B Lower" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\Bra7B Lower</Data>
+            <Data name="Panty7B Lower" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\Panty7B Lower</Data>
+            <Data name="3BA_Vagina7B Lower" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_Vagina7B Lower</Data>
+            <Data name="3BA_Anus7B Lower" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_Anus7B Lower</Data>
+        </Slider>
+        <Slider name="7B Upper" invert="false" small="0" big="0">
+            <Data name="3BA7B Upper" target="3BA">SE 3BBB Body Amazing v2.osd\3BA7B Upper</Data>
+            <Data name="Bra7B Upper" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\Bra7B Upper</Data>
+        </Slider>
+        <Slider name="VanillaSSEHi" invert="false" small="0" big="0">
+            <Data name="3BAVanillaSSEHi" target="3BA">SE 3BBB Body Amazing v2.osd\3BAVanillaSSEHi</Data>
+            <Data name="BraVanillaSSEHi" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraVanillaSSEHi</Data>
+            <Data name="PantyVanillaSSEHi" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyVanillaSSEHi</Data>
+            <Data name="3BA_VaginaVanillaSSEHi" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaVanillaSSEHi</Data>
+            <Data name="3BA_AnusVanillaSSEHi" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusVanillaSSEHi</Data>
+        </Slider>
+        <Slider name="VanillaSSELo" invert="false" small="0" big="0">
+            <Data name="3BAVanillaSSELo" target="3BA">SE 3BBB Body Amazing v2.osd\3BAVanillaSSELo</Data>
+            <Data name="BraVanillaSSELo" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraVanillaSSELo</Data>
+            <Data name="PantyVanillaSSELo" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyVanillaSSELo</Data>
+            <Data name="3BA_VaginaVanillaSSELo" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaVanillaSSELo</Data>
+            <Data name="3BA_AnusVanillaSSELo" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusVanillaSSELo</Data>
+        </Slider>
+        <Slider name="OldBaseShape" invert="false" small="0" big="0">
+            <Data name="3BAOldBaseShape" target="3BA">SE 3BBB Body Amazing v2.osd\3BAOldBaseShape</Data>
+            <Data name="BraOldBaseShape" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraOldBaseShape</Data>
+            <Data name="PantyOldBaseShape" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyOldBaseShape</Data>
+            <Data name="3BA_VaginaOldBaseShape" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaOldBaseShape</Data>
+            <Data name="3BA_AnusOldBaseShape" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusOldBaseShape</Data>
+        </Slider>
+        <Slider name="ArmpitShape_v2" invert="false" small="0" big="0">
+            <Data name="3BAArmpitShape_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAArmpitShape_v2</Data>
+            <Data name="BraArmpitShape_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraArmpitShape_v2</Data>
+        </Slider>
+        <Slider name="AreolaPull_v2" invert="false" small="0" big="0">
+            <Data name="3BAAreolaPull_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAAreolaPull_v2</Data>
+            <Data name="BraAreolaPull_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraAreolaPull_v2</Data>
+        </Slider>
+        <Slider name="BackValley_v2" invert="false" small="0" big="0">
+            <Data name="3BABackValley_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABackValley_v2</Data>
+            <Data name="BraBackValley_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBackValley_v2</Data>
+            <Data name="PantyBackValley_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBackValley_v2</Data>
+        </Slider>
+        <Slider name="BackWing_v2" invert="false" small="0" big="0">
+            <Data name="3BABackWing_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABackWing_v2</Data>
+            <Data name="BraBackWing_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBackWing_v2</Data>
+        </Slider>
+        <Slider name="BellyFrontUpFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellyFrontUpFat_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABellyFrontUpFat_v2</Data>
+            <Data name="BraBellyFrontUpFat_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBellyFrontUpFat_v2</Data>
+            <Data name="PantyBellyFrontUpFat_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBellyFrontUpFat_v2</Data>
+        </Slider>
+        <Slider name="BellyFrontDownFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellyFrontDownFat_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABellyFrontDownFat_v2</Data>
+            <Data name="PantyBellyFrontDownFat_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBellyFrontDownFat_v2</Data>
+        </Slider>
+        <Slider name="BellySideUpFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellySideUpFat_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABellySideUpFat_v2</Data>
+        </Slider>
+        <Slider name="BellySideDownFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellySideDownFat_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABellySideDownFat_v2</Data>
+            <Data name="PantyBellySideDownFat_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBellySideDownFat_v2</Data>
+        </Slider>
+        <Slider name="BellyUnder_v2" invert="false" small="0" big="0">
+            <Data name="3BABellyUnder_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABellyUnder_v2</Data>
+            <Data name="PantyBellyUnder_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyBellyUnder_v2</Data>
+            <Data name="3BA_VaginaBellyUnder_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaBellyUnder_v2</Data>
+        </Slider>
+        <Slider name="BreastsConverage_v2" invert="false" small="0" big="0">
+            <Data name="3BABreastsConverage_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsConverage_v2</Data>
+            <Data name="BraBreastsConverage_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsConverage_v2</Data>
+        </Slider>
+        <Slider name="BreastSideShape" invert="false" small="0" big="0">
+            <Data name="3BABreastSideShape" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastSideShape</Data>
+            <Data name="BraBreastSideShape" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastSideShape</Data>
+        </Slider>
+        <Slider name="BreastUnderDepth" invert="false" small="0" big="0">
+            <Data name="3BABreastUnderDepth" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastUnderDepth</Data>
+            <Data name="BraBreastUnderDepth" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastUnderDepth</Data>
+        </Slider>
+        <Slider name="BreastsPressed_v2" invert="false" small="0" big="0">
+            <Data name="3BABreastsPressed_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BABreastsPressed_v2</Data>
+            <Data name="BraBreastsPressed_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraBreastsPressed_v2</Data>
+        </Slider>
+        <Slider name="ButtSaggy_v2" invert="false" small="0" big="0">
+            <Data name="3BAButtSaggy_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtSaggy_v2</Data>
+            <Data name="PantyButtSaggy_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtSaggy_v2</Data>
+            <Data name="3BA_AnusButtSaggy_v2" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusButtSaggy_v2</Data>
+        </Slider>
+        <Slider name="ButtDimples" invert="false" small="0" big="0">
+            <Data name="3BAButtDimples" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtDimples</Data>
+            <Data name="PantyButtDimples" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtDimples</Data>
+        </Slider>
+        <Slider name="ButtUnderFold" invert="false" small="0" big="0">
+            <Data name="3BAButtUnderFold" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtUnderFold</Data>
+            <Data name="PantyButtUnderFold" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtUnderFold</Data>
+            <Data name="3BA_VaginaButtUnderFold" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaButtUnderFold</Data>
+        </Slider>
+        <Slider name="ButtPressed_v2" invert="false" small="0" big="0">
+            <Data name="3BAButtPressed_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtPressed_v2</Data>
+            <Data name="PantyButtPressed_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtPressed_v2</Data>
+            <Data name="3BA_VaginaButtPressed_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaButtPressed_v2</Data>
+            <Data name="3BA_AnusButtPressed_v2" target="3BA_Anus" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_AnusButtPressed_v2</Data>
+        </Slider>
+        <Slider name="ButtNarrow_v2" invert="false" small="0" big="0">
+            <Data name="3BAButtNarrow_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAButtNarrow_v2</Data>
+            <Data name="PantyButtNarrow_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyButtNarrow_v2</Data>
+        </Slider>
+        <Slider name="CalfFBThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BACalfFBThicc_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BACalfFBThicc_v2</Data>
+        </Slider>
+        <Slider name="Clavicle_v2" invert="false" small="0" big="0">
+            <Data name="3BAClavicle_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAClavicle_v2</Data>
+            <Data name="BraClavicle_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraClavicle_v2</Data>
+        </Slider>
+        <Slider name="HipCarved" invert="false" small="0" big="0">
+            <Data name="3BAHipCarved" target="3BA">SE 3BBB Body Amazing v2.osd\3BAHipCarved</Data>
+            <Data name="PantyHipCarved" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyHipCarved</Data>
+        </Slider>
+        <Slider name="HipNarrow_v2" invert="false" small="0" big="0">
+            <Data name="3BAHipNarrow_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAHipNarrow_v2</Data>
+            <Data name="PantyHipNarrow_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyHipNarrow_v2</Data>
+        </Slider>
+        <Slider name="KneeTogether_v2" invert="false" small="0" big="0">
+            <Data name="3BAKneeTogether_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAKneeTogether_v2</Data>
+        </Slider>
+        <Slider name="MuscleBack_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleBack_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleBack_v2</Data>
+            <Data name="BraMuscleBack_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraMuscleBack_v2</Data>
+            <Data name="PantyMuscleBack_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyMuscleBack_v2</Data>
+        </Slider>
+        <Slider name="MuscleMoreAbs_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleMoreAbs_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleMoreAbs_v2</Data>
+            <Data name="BraMuscleMoreAbs_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraMuscleMoreAbs_v2</Data>
+            <Data name="PantyMuscleMoreAbs_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyMuscleMoreAbs_v2</Data>
+        </Slider>
+        <Slider name="MuscleMoreArms_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleMoreArms_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleMoreArms_v2</Data>
+            <Data name="BraMuscleMoreArms_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraMuscleMoreArms_v2</Data>
+        </Slider>
+        <Slider name="MuscleMoreLegs_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleMoreLegs_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAMuscleMoreLegs_v2</Data>
+            <Data name="PantyMuscleMoreLegs_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyMuscleMoreLegs_v2</Data>
+        </Slider>
+        <Slider name="NippleDip" invert="false" small="0" big="0">
+            <Data name="3BANippleDip" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleDip</Data>
+        </Slider>
+        <Slider name="NippleCrease_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleCrease_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleCrease_v2</Data>
+        </Slider>
+        <Slider name="NipplePuffy_v2" invert="false" small="0" big="0">
+            <Data name="3BANipplePuffy_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANipplePuffy_v2</Data>
+            <Data name="BraNipplePuffy_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNipplePuffy_v2</Data>
+        </Slider>
+        <Slider name="NippleShy_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleShy_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleShy_v2</Data>
+            <Data name="BraNippleShy_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleShy_v2</Data>
+        </Slider>
+        <Slider name="NippleThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleThicc_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleThicc_v2</Data>
+            <Data name="BraNippleThicc_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleThicc_v2</Data>
+        </Slider>
+        <Slider name="NippleInvert_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleInvert_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleInvert_v2</Data>
+            <Data name="BraNippleInvert_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleInvert_v2</Data>
+        </Slider>
+        <Slider name="NippleSquash1_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleSquash1_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleSquash1_v2</Data>
+            <Data name="BraNippleSquash1_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleSquash1_v2</Data>
+        </Slider>
+        <Slider name="NippleSquash2_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleSquash2_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleSquash2_v2</Data>
+            <Data name="BraNippleSquash2_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleSquash2_v2</Data>
+        </Slider>
+        <Slider name="NippleBump_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleBump_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleBump_v2</Data>
+            <Data name="BraNippleBump_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleBump_v2</Data>
+        </Slider>
+        <Slider name="NippleCrumpled_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleCrumpled_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleCrumpled_v2</Data>
+        </Slider>
+        <Slider name="NippleTube_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleTube_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BANippleTube_v2</Data>
+            <Data name="BraNippleTube_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraNippleTube_v2</Data>
+        </Slider>
+        <Slider name="RibsMore_v2" invert="false" small="0" big="0">
+            <Data name="3BARibsMore_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BARibsMore_v2</Data>
+            <Data name="BraRibsMore_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraRibsMore_v2</Data>
+        </Slider>
+        <Slider name="ThighOutsideThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BAThighOutsideThicc_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAThighOutsideThicc_v2</Data>
+            <Data name="PantyThighOutsideThicc_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyThighOutsideThicc_v2</Data>
+        </Slider>
+        <Slider name="ThighInsideThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BAThighInsideThicc_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAThighInsideThicc_v2</Data>
+            <Data name="PantyThighInsideThicc_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyThighInsideThicc_v2</Data>
+            <Data name="3BA_VaginaThighInsideThicc_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaThighInsideThicc_v2</Data>
+        </Slider>
+        <Slider name="ThighFBThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BAThighFBThicc_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAThighFBThicc_v2</Data>
+            <Data name="PantyThighFBThicc_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyThighFBThicc_v2</Data>
+        </Slider>
+        <Slider name="LegSpread_v2" invert="false" small="0" big="0">
+            <Data name="3BALegSpread_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BALegSpread_v2</Data>
+            <Data name="BraLegSpread_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraLegSpread_v2</Data>
+            <Data name="PantyLegSpread_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyLegSpread_v2</Data>
+        </Slider>
+        <Slider name="UNPHip_v2" invert="false" small="0" big="0">
+            <Data name="3BAUNPHip_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BAUNPHip_v2</Data>
+            <Data name="BraUNPHip_v2" target="Bra" local="true">CBBE 3BBB Amazing NeverNude.osd\BraUNPHip_v2</Data>
+            <Data name="PantyUNPHip_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyUNPHip_v2</Data>
+        </Slider>
+        <Slider name="7BLeg_v2" invert="false" small="0" big="0">
+            <Data name="3BA7BLeg_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BA7BLeg_v2</Data>
+            <Data name="Panty7BLeg_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\Panty7BLeg_v2</Data>
+        </Slider>
+        <Slider name="Labiapuffyness" invert="false" small="0" big="0">
+            <Data name="3BALabiapuffyness" target="3BA">SE 3BBB Body Amazing v2.osd\3BALabiapuffyness</Data>
+            <Data name="PantyLabiapuffyness" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyLabiapuffyness</Data>
+            <Data name="3BA_VaginaLabiapuffyness" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaLabiapuffyness</Data>
+        </Slider>
+        <Slider name="LabiaMorePuffyness_v2" invert="false" small="0" big="0">
+            <Data name="3BALabiaMorePuffyness_v2" target="3BA">SE 3BBB Body Amazing v2.osd\3BALabiaMorePuffyness_v2</Data>
+            <Data name="PantyLabiaMorePuffyness_v2" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyLabiaMorePuffyness_v2</Data>
+            <Data name="3BA_VaginaLabiaMorePuffyness_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaLabiaMorePuffyness_v2</Data>
+        </Slider>
+        <Slider name="Cutepuffyness" invert="false" small="0" big="0">
+            <Data name="3BACutepuffyness" target="3BA">SE 3BBB Body Amazing v2.osd\3BACutepuffyness</Data>
+            <Data name="PantyCutepuffyness" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyCutepuffyness</Data>
+            <Data name="3BA_VaginaCutepuffyness" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaCutepuffyness</Data>
+        </Slider>
+        <Slider name="CBPC" invert="false" small="0" big="0">
+            <Data name="3BACBPC" target="3BA">SE 3BBB Body Amazing v2.osd\3BACBPC</Data>
+            <Data name="PantyCBPC" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyCBPC</Data>
+            <Data name="3BA_VaginaCBPC" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaCBPC</Data>
+        </Slider>
+        <Slider name="CrotchGap" invert="false" small="0" big="0">
+            <Data name="3BACrotchGap" target="3BA">SE 3BBB Body Amazing v2.osd\3BACrotchGap</Data>
+            <Data name="PantyCrotchGap" target="Panty" local="true">CBBE 3BBB Amazing NeverNude.osd\PantyCrotchGap</Data>
+            <Data name="3BA_VaginaCrotchGap" target="3BA_Vagina" local="true">CBBE 3BBB Amazing NeverNude.osd\3BA_VaginaCrotchGap</Data>
+        </Slider>
+        <Slider name="NippleZap" invert="false" small="100" big="100" hidden="true" zap="true">
+            <Data name="3BANippleZap" target="3BA" local="true">CBBE 3BBB Amazing NeverNude.osd\3BANippleZap</Data>
+        </Slider>
+    </SliderSet>

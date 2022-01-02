@@ -433,7 +433,7 @@ bool Utils::IsThemeDark(const GUITheme& aTheme)
   }
 }
 
-QString Utils::GetIconRessourceFolder(const GUITheme& aTheme)
+QString Utils::GetIconResourceFolder(const GUITheme& aTheme)
 {
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
@@ -610,7 +610,7 @@ bool Utils::CreateSkeletonFile(const QString& aSourcePath, const QString& aDesti
       Utils::DisplayWarningMessage(tr("The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead..."));
 
       // Fallback option if the custom skeleton could not be copied
-      if (!QFile::copy(":/ressources/skeleton_female", lDestinationPath))
+      if (!QFile::copy(":/resources/skeleton_female", lDestinationPath))
       {
         Utils::DisplayWarningMessage(tr("The skeleton file could not be created even using the default skeleton.\nBe sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths."));
         return false;

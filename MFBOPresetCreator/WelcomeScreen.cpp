@@ -73,7 +73,7 @@ void WelcomeScreen::setWindowProperties()
 void WelcomeScreen::initializeGUI()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Main layout
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, true, false)};

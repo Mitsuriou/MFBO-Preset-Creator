@@ -56,7 +56,7 @@ void TextInputDialog::setWindowProperties(const QString& aTitle)
 void TextInputDialog::initializeGUI(const QString& aLabel)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mAppTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mAppTheme)};
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};

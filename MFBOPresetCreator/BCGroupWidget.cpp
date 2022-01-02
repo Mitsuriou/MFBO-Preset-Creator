@@ -11,7 +11,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   , mCallContext(aCallContext)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(aSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(aSettings.display.applicationTheme)};
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
@@ -102,7 +102,7 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
   else if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
   {
     auto lData{aData.getHandsData()};
-    if (lData.getRessourcePath().isEmpty())
+    if (lData.getResourcePath().isEmpty())
     {
       lRemoveButton->hide();
       lDuplicateButton->hide();
@@ -112,13 +112,13 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     {
       lRemoveButton->show();
       lDuplicateButton->show();
-      lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), lData.mustUseAlternativeModel());
+      lDropWidget->setData(lData.getOriginFolder(), lData.getResourcePath(), lData.mustUseAlternativeModel());
     }
   }
   else if (this->mCallContext == BCGroupWidgetCallContext::SKELETON)
   {
     auto lData{aData.getSkeletonData()};
-    if (lData.getRessourcePath().isEmpty())
+    if (lData.getResourcePath().isEmpty())
     {
       lRemoveButton->hide();
       lDuplicateButton->hide();
@@ -128,7 +128,7 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
     {
       lRemoveButton->show();
       lDuplicateButton->show();
-      lDropWidget->setData(lData.getOriginFolder(), lData.getRessourcePath(), lData.mustUseAlternativeModel());
+      lDropWidget->setData(lData.getOriginFolder(), lData.getResourcePath(), lData.mustUseAlternativeModel());
     }
   }
 }
@@ -142,29 +142,29 @@ void BCGroupWidget::removeData()
   // Lower treatment
   auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
   auto lOriginFolder{lDropWidget->getOriginFolder()};
-  auto lRessourcePath{lDropWidget->getRessourcePath()};
+  auto lResourcePath{lDropWidget->getResourcePath()};
   lDropWidget->resetData();
 
   // Upper treatment
-  emit BCGroupWidget::removePressed(lOriginFolder, lRessourcePath);
+  emit BCGroupWidget::removePressed(lOriginFolder, lResourcePath);
 }
 
 void BCGroupWidget::duplicateData()
 {
   auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
   auto lOriginFolder{lDropWidget->getOriginFolder()};
-  auto lRessourcePath{lDropWidget->getRessourcePath()};
+  auto lResourcePath{lDropWidget->getResourcePath()};
 
-  emit BCGroupWidget::duplicatePressed(lOriginFolder, lRessourcePath);
+  emit BCGroupWidget::duplicatePressed(lOriginFolder, lResourcePath);
 }
 
-void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked)
+void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldResourcePath, const QString& aNewOriginFolder, const QString& aNewResourcePath, const bool isCheckBoxChecked)
 {
   // Check if any data was already set in the drop widget
   if (!aOldOriginFolder.isEmpty() && !aNewOriginFolder.isEmpty())
   {
-    emit BCGroupWidget::removePressed(aOldOriginFolder, aOldRessourcePath); // Simulate a click on the "remove" button to make the data go in list again
-    this->findChild<BCDropWidget*>(QString("drop_widget"))->resetData();    // Finally, reset the drop widget data
+    emit BCGroupWidget::removePressed(aOldOriginFolder, aOldResourcePath); // Simulate a click on the "remove" button to make the data go in list again
+    this->findChild<BCDropWidget*>(QString("drop_widget"))->resetData();   // Finally, reset the drop widget data
   }
   else
   {
@@ -174,7 +174,7 @@ void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, 
   }
 
   // Upper treatment
-  emit BCGroupWidget::dropEventTriggered(aNewOriginFolder, aNewRessourcePath, isCheckBoxChecked);
+  emit BCGroupWidget::dropEventTriggered(aNewOriginFolder, aNewResourcePath, isCheckBoxChecked);
 }
 
 void BCGroupWidget::checkBoxStateChangedReceiver(const bool aIsActive)

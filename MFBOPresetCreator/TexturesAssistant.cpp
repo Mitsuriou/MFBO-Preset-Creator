@@ -42,7 +42,7 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -83,7 +83,7 @@ void TexturesAssistant::setWindowProperties()
 void TexturesAssistant::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Main window layout
   auto lMainGrid{new QGridLayout(this)};
@@ -149,7 +149,7 @@ void TexturesAssistant::displayHintZone()
 void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Textures set"), "textures", lIconFolder, this->mSettings.display.font.size, "textures_set_groupbox", true)};
@@ -191,7 +191,7 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
 void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
   ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size, 1, 3);
@@ -215,7 +215,7 @@ void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
 void TexturesAssistant::setupButtons(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Generate button
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Create the files structure on my computer"), "", "build", lIconFolder, "generate_set")};
@@ -353,7 +353,7 @@ void TexturesAssistant::displayTexturesFilesList()
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
   auto lRowIndex{0};
 
   // Head resources blocks
@@ -362,7 +362,7 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lHeadGroupContainer{new QGridLayout(this)};
   lHeadGroupContainer->setSpacing(16);
   lHeadGroup->setLayout(lHeadGroupContainer);
-  this->createRessourceBlock(lGroupedPaths.headTextures, lHeadGroupContainer);
+  this->createResourceBlock(lGroupedPaths.headTextures, lHeadGroupContainer);
   lDataContainer->addWidget(lHeadGroup, lRowIndex++, 0);
 
   // Mouth resources blocks
@@ -371,7 +371,7 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lMouthGroupContainer{new QGridLayout(this)};
   lMouthGroupContainer->setSpacing(16);
   lMouthGroup->setLayout(lMouthGroupContainer);
-  this->createRessourceBlock(lGroupedPaths.mouthTextures, lMouthGroupContainer);
+  this->createResourceBlock(lGroupedPaths.mouthTextures, lMouthGroupContainer);
   lDataContainer->addWidget(lMouthGroup, lRowIndex++, 0);
 
   // Body resources blocks
@@ -380,7 +380,7 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lBodyGroupContainer{new QGridLayout(this)};
   lBodyGroupContainer->setSpacing(16);
   lBodyGroup->setLayout(lBodyGroupContainer);
-  this->createRessourceBlock(lGroupedPaths.bodyTextures, lBodyGroupContainer);
+  this->createResourceBlock(lGroupedPaths.bodyTextures, lBodyGroupContainer);
   lDataContainer->addWidget(lBodyGroup, lRowIndex++, 0);
 
   // Extra body resources blocks
@@ -389,7 +389,7 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lBodyExtraGroupContainer{new QGridLayout(this)};
   lBodyExtraGroupContainer->setSpacing(16);
   lBodyExtraGroup->setLayout(lBodyExtraGroupContainer);
-  this->createRessourceBlock(lGroupedPaths.extraBodyTextures, lBodyExtraGroupContainer);
+  this->createResourceBlock(lGroupedPaths.extraBodyTextures, lBodyExtraGroupContainer);
   lDataContainer->addWidget(lBodyExtraGroup, lRowIndex++, 0);
 
   // Hands resources blocks
@@ -398,7 +398,7 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lHandsGroupContainer{new QGridLayout(this)};
   lHandsGroupContainer->setSpacing(16);
   lHandsGroup->setLayout(lHandsGroupContainer);
-  this->createRessourceBlock(lGroupedPaths.handsTextures, lHandsGroupContainer);
+  this->createResourceBlock(lGroupedPaths.handsTextures, lHandsGroupContainer);
   lDataContainer->addWidget(lHandsGroup, lRowIndex++, 0);
 
   // Other texture files
@@ -407,11 +407,11 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lOtherGroupContainer{new QGridLayout(this)};
   lOtherGroupContainer->setSpacing(16);
   lOtherGroup->setLayout(lOtherGroupContainer);
-  this->createRessourceBlock(lOtherPaths, lOtherGroupContainer);
+  this->createResourceBlock(lOtherPaths, lOtherGroupContainer);
   lDataContainer->addWidget(lOtherGroup, lRowIndex++, 0);
 }
 
-void TexturesAssistant::createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout)
+void TexturesAssistant::createResourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout)
 {
   auto lRowIndex{0};
   for (const auto& lRootPath : aMap)
@@ -442,7 +442,7 @@ void TexturesAssistant::updateOutputPreview()
 void TexturesAssistant::generateTexturesStructure()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Textures set
   auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
@@ -563,7 +563,7 @@ void TexturesAssistant::chooseInputDirectory()
 void TexturesAssistant::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 

@@ -50,7 +50,7 @@ private:
   // Files scan and results display in the GUI
   void scanForTexturesFiles(const QString& aRootDir, const QString& aFileExtension);
   void displayTexturesFilesList();
-  void createRessourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout);
+  void createResourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout);
 
   void updateOutputPreview();
 

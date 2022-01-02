@@ -50,7 +50,7 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -103,7 +103,7 @@ void RetargetingTool::initializeGUI()
 void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // General group box
   auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", lIconFolder, this->mSettings.display.font.size)};
@@ -787,7 +787,7 @@ void RetargetingTool::targetMeshesChanged(const BodyNameVersion& aBody, const Fe
 
   // Update the "targeted body mesh" text content
   const auto lBodyText{
-    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVersionIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
 
   // Update the "targeted feet mesh" text content
   const auto lFeetText{

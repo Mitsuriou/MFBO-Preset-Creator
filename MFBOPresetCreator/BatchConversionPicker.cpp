@@ -31,7 +31,7 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
 void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   if (this->mData.presets.size() == 0
       || Utils::DisplayQuestionMessage(this,
@@ -74,7 +74,7 @@ void BatchConversionPicker::setWindowProperties()
 void BatchConversionPicker::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, false)};
@@ -479,7 +479,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   }
 }
 
-void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath, const bool isCheckBoxChecked)
+void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aResourcePath, const bool isCheckBoxChecked)
 {
   // Search to remove the used entry from the available data to make presets
   auto lPosition{this->mData.scannedData.find(aOriginFolder)};
@@ -490,7 +490,7 @@ void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOrigi
     for (const auto& lValue : lPosition->second)
     {
       // Delete the entry
-      if (lValue == aRessourcePath)
+      if (lValue == aResourcePath)
       {
         lPosition->second.erase(lIterator);
         break;
@@ -514,30 +514,30 @@ void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOrigi
 
   if (this->sender() == lDropSectionBody)
   {
-    lPreset.setBodyData(aOriginFolder, aRessourcePath);
+    lPreset.setBodyData(aOriginFolder, aResourcePath);
   }
   else if (this->sender() == lDropSectionFeet)
   {
-    lPreset.setFeetData(aOriginFolder, aRessourcePath);
+    lPreset.setFeetData(aOriginFolder, aResourcePath);
   }
   else if (this->sender() == lDropSectionHands)
   {
-    lPreset.setHandsData(aOriginFolder, aRessourcePath, isCheckBoxChecked);
+    lPreset.setHandsData(aOriginFolder, aResourcePath, isCheckBoxChecked);
   }
   else if (this->sender() == lDropSectionSkeleton)
   {
-    lPreset.setSkeletonData(aOriginFolder, aRessourcePath, isCheckBoxChecked);
+    lPreset.setSkeletonData(aOriginFolder, aResourcePath, isCheckBoxChecked);
   }
 }
 
-void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath)
+void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aResourcePath)
 {
   // Search to remove the used entry from the available data to make presets
   auto lPosition{this->mData.scannedData.find(aOriginFolder)};
   if (lPosition != this->mData.scannedData.end())
   {
     // Re-insert the wanted entry
-    lPosition->second.push_back(aRessourcePath);
+    lPosition->second.push_back(aResourcePath);
   }
 
   // Finally, refresh the middle list with the entry added
@@ -823,7 +823,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Ask the user if they want to create the detected possible presets
   if (Utils::DisplayQuestionMessage(this,
@@ -854,11 +854,11 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
         for (const auto& lMeshPart : lPreset.second)
         {
           // Simulate the drag&drop of the resources
-          auto lRessourcePath{lPreset.first + "/" + lMeshPart};
-          auto lRessourceType{Utils::GetMeshTypeFromFileName(lRessourcePath)};
+          auto lResourcePath{lPreset.first + "/" + lMeshPart};
+          auto lResourceType{Utils::GetMeshTypeFromFileName(lResourcePath)};
           BCDropWidget* lTarget{nullptr};
 
-          switch (lRessourceType)
+          switch (lResourceType)
           {
             case BCGroupWidgetCallContext::BODY:
               lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_body"))->findChild<BCDropWidget*>(QString("drop_widget"));
@@ -878,7 +878,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
 
           if (lTarget != nullptr)
           {
-            lTarget->simulateDropEvent(lEntry.first, lRessourcePath);
+            lTarget->simulateDropEvent(lEntry.first, lResourcePath);
           }
         }
       }
@@ -891,7 +891,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
 void BatchConversionPicker::validateSelection()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Inform the user that the window will be closed since no preset were made
   if (this->mData.presets.size() == 0)

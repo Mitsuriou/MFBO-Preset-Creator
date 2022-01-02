@@ -31,7 +31,7 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
 void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -72,7 +72,7 @@ void TargetMeshesPicker::setWindowProperties()
 void TargetMeshesPicker::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Main window container
   auto lMainLayout{new QVBoxLayout(this)};

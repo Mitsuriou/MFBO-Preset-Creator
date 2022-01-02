@@ -18,13 +18,13 @@ public:
   static QStringList GetBodyNamesList();
   static QStringList GetBodyVersionsList(const BodyName& aBodyName);
   static QStringList GetBodyVariantsList(const BodyName& aBodyName, const int aVersionNumber);
-  static QString GetQRCRessourceName(const BodyVariant& aBodyVariant);
+  static QString GetQRCResourceName(const BodyVariant& aBodyVariant);
 
   // Lists of feet related stuff
   static QStringList GetFeetNamesList(const BodyVariant& aBodyVariant);
   static QStringList GetFeetVersionsList(const FeetName& aFeetName, const bool aIsCBBEBody);
   static QStringList GetFeetVariantsList(const FeetName& aFeetName);
-  static QString GetQRCRessourceName(const BodyVariant& aBodyVariant, const FeetNameVersion& aFeetNameVersion);
+  static QString GetQRCResourceName(const BodyVariant& aBodyVariant, const FeetNameVersion& aFeetNameVersion);
 
   // Body lists and enum values type conversions
   static DLLEXP BodyName GetName(const BodyVariant& aBodyVariant);
@@ -57,7 +57,7 @@ public:
   static DLLEXP BodyNameVersion GetFirstKey(const BodyVariant& aBodyVariant);
   static DLLEXP FeetNameVersion GetFirstKey(const FeetVariant& aFeetVariant);
 
-  static DLLEXP QString GetQRCPathForRessource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aRessourceType);
+  static DLLEXP QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType);
 
   // Pre 3.5.x.x data to 3.5.x.x+ data format
   static DLLEXP std::pair<int, int> GetSplittedNameVersionFromBodyVersionCompatibility(const int aBodyVersion);

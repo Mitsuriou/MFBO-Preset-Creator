@@ -43,7 +43,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -89,7 +89,7 @@ void AssistedConversion::initializeGUI()
   this->setLayout(lMainLayout);
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Input path
   lMainLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
@@ -359,7 +359,7 @@ void AssistedConversion::chooseInputDirectory()
 void AssistedConversion::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   if (this->hasUserSelectedAnything())
   {
@@ -479,7 +479,7 @@ void AssistedConversion::validateSelection()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
-                                      Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme),
+                                      Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme),
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),

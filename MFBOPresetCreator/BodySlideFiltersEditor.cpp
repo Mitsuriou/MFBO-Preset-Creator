@@ -49,7 +49,7 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
       || !(std::equal(this->mOriginalFiltersList.begin(), this->mOriginalFiltersList.end(), this->mFiltersList.begin())))
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
@@ -106,7 +106,7 @@ void BodySlideFiltersEditor::initializeGUI()
 void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Body filter set chooser
   aLayout.addWidget(new QLabel(tr("Edit set:"), this), 0, 0);
@@ -174,7 +174,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};

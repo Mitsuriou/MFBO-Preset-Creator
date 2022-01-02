@@ -61,33 +61,33 @@ QString BCDropWidget::getOriginFolder() const
   return this->mOriginFolder;
 }
 
-QString BCDropWidget::getRessourcePath() const
+QString BCDropWidget::getResourcePath() const
 {
-  return this->mRessourcePath;
+  return this->mResourcePath;
 }
 
 void BCDropWidget::resetData()
 {
   // Clear the two strings
   this->mOriginFolder.clear();
-  this->mRessourcePath.clear();
+  this->mResourcePath.clear();
 
   this->tweakWidgetsVisibility(true);
 }
 
-void BCDropWidget::setData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel)
+void BCDropWidget::setData(const QString& aOriginFolder, const QString& aResourcePath, const bool aUseAlternativeModel)
 {
   this->mOriginFolder = aOriginFolder;
-  this->mRessourcePath = aRessourcePath;
-  this->tweakWidgetsVisibility(aRessourcePath.isEmpty(), aOriginFolder, aRessourcePath, aUseAlternativeModel);
+  this->mResourcePath = aResourcePath;
+  this->tweakWidgetsVisibility(aResourcePath.isEmpty(), aOriginFolder, aResourcePath, aUseAlternativeModel);
 }
 
-void BCDropWidget::simulateDropEvent(const QString& aOriginFolder, const QString& aRessourcePath)
+void BCDropWidget::simulateDropEvent(const QString& aOriginFolder, const QString& aResourcePath)
 {
   // Accept the drag, set the mime data to be transfered
   QJsonObject lDataObject;
   lDataObject["originFolder"] = aOriginFolder;
-  lDataObject["ressourcePath"] = aRessourcePath;
+  lDataObject["resourcesPath"] = aResourcePath;
 
   QMimeData* lMimeData{new QMimeData};
   lMimeData->setData("application/json", QJsonDocument(lDataObject).toJson());
@@ -135,13 +135,13 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
     // Parse the JSON string
     auto lDataObject{QJsonDocument::fromJson(aEvent->mimeData()->data("application/json")).object()};
 
-    // Check (smartly) is the new ressource is has alternative model name / pattern
+    // Check (smartly) is the new resource is has alternative model name / pattern
     auto lMustUseAlternativeModel{false};
 
     if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
     {
       // femalehandsargonian
-      if (lDataObject["ressourcePath"].toString().endsWith("femalehandsargonian"))
+      if (lDataObject["resourcesPath"].toString().endsWith("femalehandsargonian"))
       {
         lMustUseAlternativeModel = true;
       }
@@ -149,21 +149,21 @@ void BCDropWidget::dropEvent(QDropEvent* aEvent)
     else if (this->mCallContext == BCGroupWidgetCallContext::SKELETON)
     {
       // skeletonbeast_female
-      if (lDataObject["ressourcePath"].toString().endsWith("skeletonbeast_female"))
+      if (lDataObject["resourcesPath"].toString().endsWith("skeletonbeast_female"))
       {
         lMustUseAlternativeModel = true;
       }
     }
 
     // Upper treatment (before updating the data)
-    emit BCDropWidget::dropEventTriggered(this->mOriginFolder, this->mRessourcePath, lDataObject["originFolder"].toString(), lDataObject["ressourcePath"].toString(), lMustUseAlternativeModel);
+    emit BCDropWidget::dropEventTriggered(this->mOriginFolder, this->mResourcePath, lDataObject["originFolder"].toString(), lDataObject["resourcesPath"].toString(), lMustUseAlternativeModel);
 
     // Save the new data
     this->mOriginFolder = lDataObject["originFolder"].toString();
-    this->mRessourcePath = lDataObject["ressourcePath"].toString();
+    this->mResourcePath = lDataObject["resourcesPath"].toString();
 
     // Update the displayed information
-    this->tweakWidgetsVisibility(false, this->mOriginFolder, this->mRessourcePath, lMustUseAlternativeModel);
+    this->tweakWidgetsVisibility(false, this->mOriginFolder, this->mResourcePath, lMustUseAlternativeModel);
   }
 }
 
@@ -172,7 +172,7 @@ void BCDropWidget::checkBoxStateChanged(int aNewState)
   emit BCDropWidget::checkBoxStateChangedTriggered(aNewState == Qt::CheckState::Checked);
 }
 
-void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText, const QString& aNewRessourceText, const bool aUseAlternativeModel)
+void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText, const QString& aNewResourceText, const bool aUseAlternativeModel)
 {
   auto lPathLabel{this->findChild<QLabel*>(QString("path_label"))};
   auto lPathContent{this->findChild<QLabel*>(QString("path_content"))};
@@ -208,7 +208,7 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
   else
   {
     lPathLabel->setText(tr("Mesh path:"));
-    lPathContent->setText(aNewRessourceText);
+    lPathContent->setText(aNewResourceText);
     lOriginLabel->setText(tr("Origin mod:"));
     lOriginContent->setText(aNewOriginText);
 

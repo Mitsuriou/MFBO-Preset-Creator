@@ -69,7 +69,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Unsaved data"),
                                       tr("It seems that you have some unsaved data. Do you still want to open the project file \"%1\"?").arg(lFileToLoad),
-                                      Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme),
+                                      Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme),
                                       "help-circle",
                                       tr("Open the project without saving"),
                                       tr("Cancel the file opening"),
@@ -119,7 +119,7 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   Utils::SaveAsJsonFile(this->saveValuesToJsonObject(), lFilePath, this, lIconFolder);
   this->setHasUserDoneSomething(false);
@@ -268,7 +268,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
     if (Utils::DisplayQuestionMessage(this,
                                       tr("One mesh data was not assigned"),
                                       lMessage,
-                                      Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme),
+                                      Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme),
                                       "help-circle",
                                       tr("Clear all the unassigned entries"),
                                       tr("Keep the currently set values for the unassigned entries"),
@@ -314,7 +314,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
 void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Body meshes group box
   auto lMeshesGroupBox{ComponentFactory::CreateGroupBox(this, tr("Original mod's body meshes"), "body", lIconFolder, this->mSettings.display.font.size)};
@@ -407,7 +407,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
 void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Custom skeleton group box
   auto lSkeletonGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.size)};
@@ -505,7 +505,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
 void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size)};
@@ -604,7 +604,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
 void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
   ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
@@ -626,7 +626,7 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 void PresetCreator::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Generate button
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Generate the files on my computer"), "", "build", lIconFolder)};
@@ -1091,7 +1091,7 @@ void PresetCreator::chooseExportDirectory()
 void PresetCreator::generateDirectoryStructure()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Beast hands
   auto lCheckboxUseBeastHands{this->findChild<QCheckBox*>(QString("use_beast_hands"))};
@@ -1359,7 +1359,7 @@ void PresetCreator::targetMeshesChanged(const BodyNameVersion& aBody, const Feet
 
   // Update the "targeted body mesh" text content
   const auto lBodyText{
-    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVersionIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
 
   // Update the "targeted feet mesh" text content
   const auto lFeetText{

@@ -11,13 +11,13 @@
 #include <QMouseEvent>
 #include <QVBoxLayout>
 
-BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aRessourcePath)
+BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aResourcePath)
   : QWidget(aParent)
   , mOriginFolder(aOriginFolder)
-  , mRessourcePath(aRessourcePath)
+  , mResourcePath(aResourcePath)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(aSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(aSettings.display.applicationTheme)};
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
@@ -28,8 +28,8 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
   QString lGroupBoxTitle;
   QString lGroupBoxIcon;
 
-  const auto lRessourceType{Utils::GetMeshTypeFromFileName(aRessourcePath)};
-  switch (lRessourceType)
+  const auto lResourceType{Utils::GetMeshTypeFromFileName(aResourcePath)};
+  switch (lResourceType)
   {
     case BCGroupWidgetCallContext::BODY:
       lGroupBoxTitle = tr("Body mesh");
@@ -70,7 +70,7 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
 
   lMainLayout->addWidget(lGroupBox);
 
-  const auto lPathLabel{new QLabel(this->mRessourcePath, this)};
+  const auto lPathLabel{new QLabel(this->mResourcePath, this)};
   lGroupBoxLayout->addWidget(lPathLabel);
 
   // Change the cursor
@@ -112,7 +112,7 @@ void BCDragWidget::mouseMoveEvent(QMouseEvent* aEvent)
   // Accept the drag, set the mime data to be transfered
   QJsonObject lDataObject;
   lDataObject["originFolder"] = this->mOriginFolder;
-  lDataObject["ressourcePath"] = this->mRessourcePath;
+  lDataObject["resourcesPath"] = this->mResourcePath;
 
   QMimeData* lMimeData{new QMimeData};
   lMimeData->setData("application/json", QJsonDocument(lDataObject).toJson());

@@ -12,13 +12,13 @@ class BCDropWidget final : public QWidget
 public:
   explicit BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCallContext);
   QString getOriginFolder() const;
-  QString getRessourcePath() const;
+  QString getResourcePath() const;
   void resetData();
-  void setData(const QString& aOriginFolder, const QString& aRessourcePath, const bool aUseAlternativeModel = false);
-  void simulateDropEvent(const QString& aOriginFolder, const QString& aRessourcePath);
+  void setData(const QString& aOriginFolder, const QString& aResourcePath, const bool aUseAlternativeModel = false);
+  void simulateDropEvent(const QString& aOriginFolder, const QString& aResourcePath);
 
 signals:
-  void dropEventTriggered(const QString& aOldOriginFolder, const QString& aOldRessourcePath, const QString& aNewOriginFolder, const QString& aNewRessourcePath, const bool isCheckBoxChecked = false);
+  void dropEventTriggered(const QString& aOldOriginFolder, const QString& aOldResourcePath, const QString& aNewOriginFolder, const QString& aNewResourcePath, const bool isCheckBoxChecked = false);
   void checkBoxStateChangedTriggered(const bool aIsActive);
 
 protected:
@@ -29,13 +29,13 @@ protected:
 private:
   BCGroupWidgetCallContext mCallContext{BCGroupWidgetCallContext::UNDEFINED};
   QString mOriginFolder;
-  QString mRessourcePath;
+  QString mResourcePath;
 
   // Event handlers
   void checkBoxStateChanged(int aNewState);
 
   // GUI
-  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = QString(), const QString& aNewRessourceText = QString(), const bool aUseAlternativeModel = false);
+  void tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText = QString(), const QString& aNewResourceText = QString(), const bool aUseAlternativeModel = false);
   QCheckBox* createCheckBox(const QString& lText, QGridLayout& aLayout);
 
   explicit BCDropWidget(const BCDropWidget&) = delete;

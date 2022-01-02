@@ -8,7 +8,7 @@ class BCDragWidget final : public QWidget
   Q_OBJECT
 
 public:
-  explicit BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aRessourcePath);
+  explicit BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, const QString& aOriginFolder, const QString& aResourcePath);
 
 protected:
   void mousePressEvent(QMouseEvent* aEvent) override;
@@ -18,7 +18,7 @@ protected:
 private:
   QPoint mDragStartPosition;
   QString mOriginFolder;
-  QString mRessourcePath;
+  QString mResourcePath;
 
   explicit BCDragWidget(const BCDragWidget&) = delete;
   BCDragWidget& operator=(const BCDragWidget&) = delete;

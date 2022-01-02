@@ -56,7 +56,7 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   if (this->getSettingsFromGUI() != this->mSettings || this->mPathEntryCleared)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
@@ -137,7 +137,7 @@ void Settings::initializeGUI()
 void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -250,7 +250,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -299,7 +299,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -334,7 +334,7 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -369,7 +369,7 @@ void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
 void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -404,7 +404,7 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -450,7 +450,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 
 void Settings::setupButtons(QHBoxLayout& aLayout)
 {
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the buttons
   auto lRestoreDefaultButton{ComponentFactory::CreateButton(this, tr("Restore default"), "", "restore", lIconFolder, "", false, true)};
@@ -760,7 +760,7 @@ void Settings::saveSettings()
   if (this->mMustRebootMainApp)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Application settings changed"),
@@ -841,7 +841,7 @@ void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate, FeetNameVersi
 
   // Update the "targeted body mesh" text content
   const auto lBodyText{
-    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVariantIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
+    QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(aBody), DataLists::GetVersionIndex(aBody)).at(DataLists::GetVariantIndex(aBody)), DataLists::GetVersionString(aBody))};
 
   // Update the "targeted feet mesh" text content
   const auto lFeetText{

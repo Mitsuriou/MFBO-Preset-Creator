@@ -1,0 +1,669 @@
+/* v1.1 Paper Black Mono by 6788-00 */
+/* https://6788-00.tumblr.com/ */
+
+/* Color Palette                    */
+/* Background - Main      | #000    */
+/* Background - Content   | #000    */
+/* Hover                  | #5C5C5C */
+/* Selected               | #3D3D3D */
+/* Text                   | #D3D3D3 */
+/* Text - Hovered         | #FFF    */
+/* Text - Selected        | #FFF    */
+
+/* All */
+
+QWidget {
+  /* most of the window */
+  background: #000;
+  font-size: 13px;
+  color: #d3d3d3;
+  border: 0;
+}
+
+QWidget:disabled {
+  /* Disabled Elements */
+  color: #808080;
+}
+
+/* General Views */
+
+QAbstractItemView {
+  alternate-background-color: transparent;
+  show-decoration-selected: 1;
+  selection-background-color: #5c5c5c;
+}
+
+QAbstractItemView::item {
+  min-height: 24px;
+}
+
+QAbstractItemView::branch:hover,
+QAbstractItemView::item:hover {
+  /* rows on left and right pane when moused-over */
+  background: #5c5c5c;
+  color: #fff;
+}
+
+QAbstractItemView::branch:selected,
+QAbstractItemView::item:selected {
+  background: #3d3d3d;
+}
+
+/* Tree Views and List Views */
+
+QTreeView {
+  /* Views that can have multiple Branches (e.g. Left Pane, Archives Tab) */
+  border: 2px solid transparent;
+  border-top: 2px solid #3d3d3d;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+QTreeView::branch:closed:has-children:has-siblings,
+QTreeView::branch:closed:has-children:!has-siblings {
+  /* Closed Branches */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/right.svg);
+}
+
+QTreeView::branch:open:has-children:has-siblings,
+QTreeView::branch:open:has-children:!has-siblings {
+  /* Open Branches */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/down.svg);
+}
+
+QListView {
+  /* List Views (e.g. Saves Tab) */
+  border-top: 2px solid #3d3d3d;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+/* Toolbar */
+
+QToolBar {
+  border-bottom: 2px solid #000;
+  margin: 0 12px;
+}
+
+QToolBar::handle {
+  height: 0;
+  border: 1px solid #3d3d3d;
+}
+
+QToolBar QWidget {
+  background: transparent;
+}
+
+QToolBar QMenu {
+  /* dropdown menus */
+  margin-top: -2px;
+}
+
+QToolButton {
+  /* Toolbar Buttons */
+  padding: 4px;
+  border-radius: 10px;
+  margin: 6px;
+}
+
+QToolButton:hover {
+  /* Toolbar Buttons when Moused-Over */
+  background: #5c5c5c;
+}
+
+QToolButton:pressed {
+  /* Toolbar Buttons with Menus Expanded */
+  background: #000;
+}
+
+QToolButton:menu-indicator {
+  /* expandable indicator on toolbar buttons */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/down.svg);
+  margin: -4px;
+  subcontrol-position: center bottom;
+}
+
+/* Group Boxes */
+
+QGroupBox {
+  /* Boxes that Group Multiple Elements Together (e.g. on Settings) */
+  padding: 27px 4px;
+  border: 0;
+}
+
+QGroupBox::title {
+  background: transparent;
+  subcontrol-origin: padding;
+  subcontrol-position: top left;
+  padding: 6px;
+}
+
+/* Text Fields */
+
+QLineEdit {
+  /* Single Line Text Fields (e.g. Filters) */
+  min-height: 20px;
+  padding-left: 6px;
+  border: 2px solid #3d3d3d;
+  border-radius: 10px;
+}
+
+QLineEdit:hover {
+  background: #5c5c5c;
+}
+
+QTextEdit {
+  /* Large Text Fields */
+  border-top: 2px solid #3d3d3d;
+  border-bottom: 2px solid #3d3d3d;
+  border-radius: 0;
+}
+
+/* Most Dropdown Menus */
+
+QComboBox {
+  /* Dropdown Menus */
+  min-height: 20px;
+  padding-left: 6px;
+  border: 2px solid #3d3d3d;
+  border-radius: 10px;
+  margin: 4px 0;
+}
+
+QComboBox:hover {
+  /* Dropdown Menus when Mouse-Over */
+  background: #5c5c5c;
+}
+
+QComboBox:on {
+  /* Expanded Dropdown Menus */
+  background: #3d3d3d;
+  color: #fff;
+}
+
+QComboBox::drop-down {
+  /* The Area for the Expandable Indicator */
+  width: 20px;
+  subcontrol-origin: padding;
+  subcontrol-position: top right;
+  border: none;
+}
+
+QComboBox::down-arrow {
+  /* Image for the Expandable Indicator */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/down.svg);
+}
+
+QComboBox QAbstractItemView {
+  /* The Actual Menu that is Expanded */
+  border-top: 2px solid #3d3d3d;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+/* Most Buttons */
+
+QPushButton {
+  min-height: 16px;
+  padding: 2px 12px;
+  border: 2px solid #3d3d3d;
+  border-radius: 10px;
+}
+
+QPushButton:hover {
+  background: #5c5c5c;
+}
+
+QPushButton:pressed {
+  background: #3d3d3d;
+}
+
+QPushButton::menu-indicator {
+  /* expandable indicator for most buttons */
+  subcontrol-position: right center;
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/down.svg);
+  padding: 2px;
+  margin: 4px;
+}
+
+/* Scroll Bars */
+
+/* Horizontal */
+
+QScrollBar:horizontal {
+  /* horizontal scroll bar */
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid #3d3d3d;
+  margin: 0 25px -2px 25px;
+}
+
+QScrollBar::handle:horizontal {
+  /* handle for horizontal scroll bars */
+  background: #3d3d3d;
+  min-width: 32px;
+  border-radius: 6px;
+  margin: 2px 0;
+}
+
+QScrollBar::add-line:horizontal {
+  /* scroll right button */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/right.svg);
+  width: 25px;
+  subcontrol-position: right;
+  subcontrol-origin: margin;
+  border-left: 2px solid #3d3d3d;
+  border-top: 2px solid #3d3d3d;
+  margin: 0 -2px -2px 0;
+}
+
+QScrollBar::sub-line:horizontal {
+  /* scroll left button */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/left.svg);
+  width: 25px;
+  subcontrol-position: left;
+  subcontrol-origin: margin;
+  border-right: 2px solid #3d3d3d;
+  border-top: 2px solid #3d3d3d;
+  margin: 0 0 -2px -2px;
+}
+
+/* Vertical */
+
+QScrollBar:vertical {
+  /* vertical scroll bar */
+  width: 20px;
+  border: 2px solid transparent;
+  margin: 25px -2px 25px 0;
+}
+
+QScrollBar::handle:vertical {
+  /* handle for vertical scroll bars */
+  min-height: 32px;
+  background: #3d3d3d;
+  border-radius: 6px;
+  margin: 0 2px;
+}
+
+QScrollBar::add-line:vertical {
+  /* scroll down button */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/down.svg);
+  height: 25px;
+  subcontrol-position: bottom;
+  subcontrol-origin: margin;
+  border-top: 2px solid #3d3d3d;
+  margin: 0 -2px -2px 0;
+}
+
+QScrollBar::sub-line:vertical {
+  /* scroll up button */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/up.svg);
+  height: 25px;
+  subcontrol-position: top;
+  subcontrol-origin: margin;
+  border-bottom: 2px solid #3d3d3d;
+  margin: -2px -2px 0 0;
+}
+
+/* Combined */
+
+QScrollBar::handle:horizontal:hover,
+QScrollBar::handle:vertical:hover,
+QScrollBar::add-line:horizontal:hover,
+QScrollBar::sub-line:horizontal:hover,
+QScrollBar::add-line:vertical:hover,
+QScrollBar::sub-line:vertical:hover {
+  /* buttons and handles when moused-over */
+  background: #5c5c5c;
+}
+
+QScrollBar::handle:horizontal:pressed,
+QScrollBar::handle:vertical:pressed,
+QScrollBar::add-line:horizontal:pressed,
+QScrollBar::sub-line:horizontal:pressed,
+QScrollBar::add-line:vertical:pressed,
+QScrollBar::sub-line:vertical:pressed {
+  /* buttons and handles when clicked */
+  background: #3d3d3d;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal,
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+  /* area on scroll bars where clicking it scrolls to where you clicked */
+  background: transparent;
+}
+
+/* Corner */
+
+QAbstractScrollArea::corner {
+  /* corner between where a vertical scrollbar and a horizontal scrollbar meet */
+  background: transparent;
+  border-top: 2px solid #3d3d3d;
+  border-left: 2px solid #3d3d3d;
+  margin: 0 -2px -2px 0;
+}
+
+/* Header Rows */
+
+QHeaderView {
+  /* header row (i.e. Mod Name, Flags, Category, etc.) */
+  background: transparent;
+}
+
+QHeaderView::section {
+  /* each section on the header row (i.e. Mod name is one section and Flags another) */
+  background: transparent;
+  height: 23px;
+  padding: 0 5px;
+  border: 0;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+QHeaderView::section:hover {
+  /* a section on a header row when hovered */
+  background: #5c5c5c;
+}
+
+QHeaderView::up-arrow {
+  /* ascending sort indicator */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/up.svg);
+  padding-right: 4px;
+  height: 10px;
+  width: 10px;
+}
+
+QHeaderView::down-arrow {
+  /* descending sort indicator */
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/down.svg);
+  padding-right: 4px;
+  height: 10px;
+  width: 10px;
+}
+
+/* Right Click Menus & Toolbar Dropdown Menus */
+
+QMenu {
+  border-top: 2px solid #3d3d3d;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+QMenu::item {
+  background: transparent;
+  padding: 5px 20px 5px 24px;
+}
+
+QMenu::item:selected {
+  /* rows on right click menus when moused-over (i dunno) */
+  background: #5c5c5c;
+  border: none;
+}
+
+QMenu::separator {
+  height: 2px;
+  background: #3d3d3d;
+}
+
+QMenu::icon {
+  /* area for icons on right click menus */
+  padding: 4px;
+}
+
+QMenu::right-arrow {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/right.svg);
+  padding-right: 5px;
+}
+
+QMenu QPushButton {
+  /* Change Categories and Primary Categories buttons */
+  min-height: 24px;
+  padding: 2px 24px;
+  text-align: left;
+  border: 0;
+  border-radius: 0;
+}
+
+QMenu QCheckBox,
+QMenu QRadioButton {
+  /* checkboxes on right click menus (change categories)*/
+  padding: 2px 6px;
+}
+
+QMenu QCheckBox:hover {
+  background: #5c5c5c;
+}
+
+/* Right Pane and Tab Bars */
+
+QTabWidget::pane {
+  /* Right Pane */
+  top: 1px;
+  padding: 2px 2px 4px 2px;
+  border-top: 2px solid #3d3d3d;
+  margin-top: -1px;
+}
+
+QTabWidget::tab-bar {
+  /* All Tabs */
+  alignment: center;
+}
+
+QTabBar::tab {
+  /* Tabs */
+  padding: 4% 10%;
+  border: 2px solid transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin: 3px 1px -2px 0;
+}
+
+QTabBar::tab:selected {
+  /* Tabs when Selected */
+  border: 2px solid #3d3d3d;
+}
+
+QTabBar::tab:hover {
+  /* Tabs when Moused-Over */
+  background: #5c5c5c;
+  color: #d3d3d3;
+}
+
+QTabBar QToolButton,
+QTabBar QToolButton:disabled {
+  /* Buttons to Scroll between Tabs on the Information Dialog when the Dialog is too Small */
+  width: 0;
+  background: 0;
+}
+
+/* Checkboxes */
+
+/* Unchecked */
+
+QTreeView::indicator:unchecked,
+QCheckBox::indicator:unchecked,
+QGroupBox::indicator:unchecked,
+QRadioButton::indicator:unchecked {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Checkboxes/Unchecked/unchecked.svg);
+  width: 14px;
+  height: 14px;
+}
+
+QCheckBox::indicator:unchecked:hover,
+QGroupBox::indicator:unchecked:hover,
+QRadioButton::indicator:unchecked:hover {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Checkboxes/Unchecked/hover.svg);
+  width: 14px;
+  height: 14px;
+}
+
+QTreeView::indicator:unchecked:selected {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Checkboxes/Unchecked/selected.svg);
+}
+
+/* Checked */
+
+QTreeView::indicator:checked,
+QCheckBox::indicator:checked,
+QGroupBox::indicator:checked,
+QRadioButton::indicator:checked {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Checkboxes/Checked/check.svg);
+  width: 14px;
+  height: 14px;
+}
+
+QCheckBox::indicator:checked:hover,
+QGroupBox::indicator:checked:hover,
+QRadioButton::indicator:checked:hover {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Checkboxes/Checked/hover.svg);
+  width: 14px;
+  height: 14px;
+}
+
+QTreeView::indicator:checked:selected {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Checkboxes/Checked/selected.svg);
+}
+
+/* Disabled */
+
+QCheckBox::indicator:disabled {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Checkboxes/disabled.svg);
+}
+
+/* Spinboxes                                          */
+/* Boxes for Selecting Numbers (e.g. on Configurator) */
+
+QSpinBox,
+QDoubleSpinBox {
+  min-height: 22px;
+  min-width: 60px;
+  padding: 0 2px;
+  border-top: 2px solid #3d3d3d;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+/* Up Button */
+
+QSpinBox::up-button,
+QDoubleSpinBox::up-button {
+  min-height: 28px;
+  min-width: 20px;
+  subcontrol-position: center right;
+  border-left: 2px solid #3d3d3d;
+}
+
+QSpinBox::up-arrow,
+QDoubleSpinBox::up-arrow {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/up.svg);
+}
+
+/* Down Button */
+
+QSpinBox::down-button,
+QDoubleSpinBox::down-button {
+  min-height: 28px;
+  min-width: 20px;
+  subcontrol-position: center left;
+  border-right: 2px solid #3d3d3d;
+}
+
+QSpinBox::down-arrow,
+QDoubleSpinBox::down-arrow {
+  image: url(:/qss-resources/resources/qss/Paper/Mono/Black/Arrows/down.svg);
+}
+
+/* Hover */
+
+QSpinBox::up-button:hover,
+QSpinBox::down-button:hover,
+QDoubleSpinBox::up-button:hover,
+QDoubleSpinBox::down-button:hover {
+  background: #5c5c5c;
+}
+
+/* Sliders */
+
+QSlider::groove {
+  height: 0;
+  border: 1px solid #008484;
+}
+
+QSlider::handle {
+  background: #fff;
+  border: 2px solid #008484;
+  border-radius: 6px;
+  margin: -10px;
+}
+
+QSlider::handle:hover {
+  background: #008484;
+}
+
+/* Progress Bars (Downloads) */
+
+QProgressBar {
+  text-align: center;
+  border: 2px solid #3d3d3d;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+QProgressBar::chunk {
+  border-right: 2px solid #3d3d3d;
+}
+
+/* New Downloads View */
+
+/* Standard */
+
+DownloadListWidget[downloadView="standard"]::item {
+  min-height: 44px;
+  margin: -16px 0;
+}
+
+QProgressBar[downloadView="standard"] {
+  background: transparent;
+  margin: 11px 0;
+}
+
+/* Compact */
+
+DownloadListWidget[downloadView="compact"]::item {
+  min-height: 22px;
+  margin: -4px 0;
+}
+
+QProgressBar[downloadView="compact"] {
+  background: transparent;
+}
+
+/* Splitters */
+
+QSplitter {
+  /* for resizing the left pane, right pane, or log console */
+  height: 2px;
+  width: 2px;
+}
+
+QSplitter::handle {
+  /* actual visible handle */
+  background: #3d3d3d;
+  margin: 0 10px;
+}
+
+QSplitter::handle:vertical {
+  background: transparent;
+}
+
+/* Misc */
+
+QToolTip {
+  background: #000;
+  font-size: 13px;
+  color: #d3d3d3;
+  padding: 4px;
+  border-top: 2px solid #3d3d3d;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+QTableView {
+  /* Tables (i.e. Configure Categories) */
+  border: 0;
+}

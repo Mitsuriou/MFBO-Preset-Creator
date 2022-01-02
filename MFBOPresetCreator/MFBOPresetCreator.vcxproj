@@ -106,7 +106,7 @@ echo ############# FINISHED BUILDING MFBO:PC #############
 echo ### COPYING EXECUTABLE INTO CLIENT RELEASE FOLDER ###
 echo #####################################################
 echo #####################################################
-echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard ressources\client release\$(TargetFileName)"</Command>
+echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client release\$(TargetFileName)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>echo #####################################################
@@ -138,7 +138,7 @@ echo ############# FINISHED BUILDING MFBO:PC #############
 echo ### COPYING EXECUTABLE INTO CLIENT RELEASE FOLDER ###
 echo #####################################################
 echo #####################################################
-echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard ressources\client release\$(TargetFileName)"</Command>
+echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client release\$(TargetFileName)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>echo #####################################################
@@ -294,7 +294,7 @@ echo #####################################################</Command>
     <ResourceCompile Include="MFBOPresetCreator.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="ressources/software/icon.ico" />
+    <Image Include="resources/software/icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">

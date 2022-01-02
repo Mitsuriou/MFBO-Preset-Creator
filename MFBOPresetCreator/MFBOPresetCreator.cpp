@@ -55,7 +55,7 @@ MFBOPresetCreator::MFBOPresetCreator(const Struct::Settings& aSettings, const QS
 void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())
@@ -161,7 +161,7 @@ void MFBOPresetCreator::initializeGUI()
 void MFBOPresetCreator::setupMenuBar()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Menu bar
   auto lMenuBar{new QMenuBar(this)};
@@ -436,7 +436,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   this->enableLineEditPlaceholders(lLineEditsToReactivate);
 
   // Reset icons color
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>(QString("edit_filters"))};
   lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
@@ -589,7 +589,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
       && !lTitle.isEmpty() && !lMessage.isEmpty())
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
     if (aResult == "fetch_error")
     {
@@ -664,7 +664,7 @@ void MFBOPresetCreator::saveProject(const bool aIsQuittingContext)
 void MFBOPresetCreator::quickRelaunch()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())

@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Ignore compiled EXE
-Wizard ressources/*/*.exe
+Wizard resources/*/*.exe

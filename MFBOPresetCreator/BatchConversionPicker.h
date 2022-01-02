@@ -40,8 +40,8 @@ private:
   void updateBodyslideNamesPreview(QString aText);
 
   // Through-layer communications
-  void removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath, const bool isCheckBoxChecked = false);
-  void addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aRessourcePath);
+  void removeDataFromActiveMiddleList(const QString& aOriginFolder, const QString& aResourcePath, const bool isCheckBoxChecked = false);
+  void addDataToActiveMiddleList(const QString& aOriginFolder, const QString& aResourcePath);
   void handsCheckBoxStateChanged(const bool aIsActive);
   void skeletonCheckBoxStateChanged(const bool aIsActive);
 

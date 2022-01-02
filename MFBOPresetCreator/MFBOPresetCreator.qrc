@@ -1,140 +1,140 @@
 <RCC>
     <qresource prefix="/application">
-        <file alias="icon">ressources/software/icon.png</file>
-        <file alias="splashscreen">ressources/software/splashscreen.png</file>
+        <file alias="icon">resources/software/icon.png</file>
+        <file alias="splashscreen">resources/software/splashscreen.png</file>
     </qresource>
-    <qresource prefix="/ressources">
-        <file alias="skeleton_female">ressources/skeleton/skeleton_female.nif</file>
+    <qresource prefix="/resources">
+        <file alias="skeleton_female">resources/skeleton/skeleton_female.nif</file>
     </qresource>
     <qresource prefix="/black">
-        <file alias="alert-circle">ressources/software/icons/black/alert-circle.png</file>
-        <file alias="arrow-up">ressources/software/icons/black/arrow-up.png</file>
-        <file alias="cloud-check">ressources/software/icons/black/cloud-check.png</file>
-        <file alias="cloud-download">ressources/software/icons/black/cloud-download.png</file>
-        <file alias="cloud-search">ressources/software/icons/black/cloud-search.png</file>
-        <file alias="cog">ressources/software/icons/black/cog.png</file>
-        <file alias="cross">ressources/software/icons/black/cross.png</file>
-        <file alias="developer">ressources/software/icons/black/developer.png</file>
-        <file alias="filter">ressources/software/icons/black/filter.png</file>
-        <file alias="folder">ressources/software/icons/black/folder.png</file>
-        <file alias="info-circle">ressources/software/icons/black/info-circle.png</file>
-        <file alias="minus">ressources/software/icons/black/minus.png</file>
-        <file alias="open-in-browser">ressources/software/icons/black/open-in-browser.png</file>
-        <file alias="pencil">ressources/software/icons/black/pencil.png</file>
-        <file alias="playlist-plus">ressources/software/icons/black/playlist-plus.png</file>
-        <file alias="plus">ressources/software/icons/black/plus.png</file>
-        <file alias="refresh">ressources/software/icons/black/refresh.png</file>
-        <file alias="restore">ressources/software/icons/black/restore.png</file>
-        <file alias="save">ressources/software/icons/black/save.png</file>
-        <file alias="search">ressources/software/icons/black/search.png</file>
-        <file alias="text">ressources/software/icons/black/text.png</file>
-        <file alias="trash">ressources/software/icons/black/trash.png</file>
-        <file alias="trash-lines">ressources/software/icons/black/trash-lines.png</file>
-        <file alias="undo">ressources/software/icons/black/undo.png</file>
-        <file alias="build">ressources/software/icons/black/build.png</file>
-        <file alias="playlist-check">ressources/software/icons/black/playlist-check.png</file>
-        <file alias="help-circle">ressources/software/icons/black/help-circle.png</file>
-        <file alias="info-circle-smaller">ressources/software/icons/black/info-circle-smaller.png</file>
-        <file alias="text-file">ressources/software/icons/black/text-file.png</file>
-        <file alias="nexus-logo">ressources/software/icons/black/nexus-logo.png</file>
-        <file alias="code">ressources/software/icons/black/code.png</file>
-        <file alias="link">ressources/software/icons/black/link.png</file>
-        <file alias="color">ressources/software/icons/black/color.png</file>
-        <file alias="textures">ressources/software/icons/black/textures.png</file>
-        <file alias="body">ressources/software/icons/black/body.png</file>
-        <file alias="hand">ressources/software/icons/black/hand.png</file>
-        <file alias="foot">ressources/software/icons/black/foot.png</file>
-        <file alias="woman-head">ressources/software/icons/black/woman-head.png</file>
-        <file alias="skeleton">ressources/software/icons/black/skeleton.png</file>
-        <file alias="home">ressources/software/icons/black/home.png</file>
-        <file alias="monitor">ressources/software/icons/black/monitor.png</file>
-        <file alias="more">ressources/software/icons/black/more.png</file>
-        <file alias="tune">ressources/software/icons/black/tune.png</file>
-        <file alias="file-tree">ressources/software/icons/black/file-tree.png</file>
-        <file alias="bodyslide-logo">ressources/software/icons/black/bodyslide-logo.png</file>
-        <file alias="file">ressources/software/icons/black/file.png</file>
-        <file alias="reorder">ressources/software/icons/black/reorder.png</file>
-        <file alias="bug">ressources/software/icons/black/bug.png</file>
-        <file alias="github">ressources/software/icons/black/github.png</file>
-        <file alias="gitlab">ressources/software/icons/black/gitlab.png</file>
-        <file alias="external">ressources/software/icons/black/external.png</file>
-        <file alias="tab">ressources/software/icons/black/tab.png</file>
-        <file alias="text-snippet">ressources/software/icons/black/text-snippet.png</file>
-        <file alias="arrow-left">ressources/software/icons/black/arrow-left.png</file>
-        <file alias="arrow-right">ressources/software/icons/black/arrow-right.png</file>
-        <file alias="bolt">ressources/software/icons/black/bolt.png</file>
-        <file alias="mesh">ressources/software/icons/black/mesh.png</file>
-        <file alias="eye">ressources/software/icons/black/eye.png</file>
-        <file alias="duplicate">ressources/software/icons/black/duplicate.png</file>
-        <file alias="mouth">ressources/software/icons/black/mouth.png</file>
-        <file alias="folder-search">ressources/software/icons/black/folder-search.png</file>
-        <file alias="done">ressources/software/icons/black/done.png</file>
-        <file alias="coffee">ressources/software/icons/black/coffee.png</file>
+        <file alias="alert-circle">resources/software/icons/black/alert-circle.png</file>
+        <file alias="arrow-up">resources/software/icons/black/arrow-up.png</file>
+        <file alias="cloud-check">resources/software/icons/black/cloud-check.png</file>
+        <file alias="cloud-download">resources/software/icons/black/cloud-download.png</file>
+        <file alias="cloud-search">resources/software/icons/black/cloud-search.png</file>
+        <file alias="cog">resources/software/icons/black/cog.png</file>
+        <file alias="cross">resources/software/icons/black/cross.png</file>
+        <file alias="developer">resources/software/icons/black/developer.png</file>
+        <file alias="filter">resources/software/icons/black/filter.png</file>
+        <file alias="folder">resources/software/icons/black/folder.png</file>
+        <file alias="info-circle">resources/software/icons/black/info-circle.png</file>
+        <file alias="minus">resources/software/icons/black/minus.png</file>
+        <file alias="open-in-browser">resources/software/icons/black/open-in-browser.png</file>
+        <file alias="pencil">resources/software/icons/black/pencil.png</file>
+        <file alias="playlist-plus">resources/software/icons/black/playlist-plus.png</file>
+        <file alias="plus">resources/software/icons/black/plus.png</file>
+        <file alias="refresh">resources/software/icons/black/refresh.png</file>
+        <file alias="restore">resources/software/icons/black/restore.png</file>
+        <file alias="save">resources/software/icons/black/save.png</file>
+        <file alias="search">resources/software/icons/black/search.png</file>
+        <file alias="text">resources/software/icons/black/text.png</file>
+        <file alias="trash">resources/software/icons/black/trash.png</file>
+        <file alias="trash-lines">resources/software/icons/black/trash-lines.png</file>
+        <file alias="undo">resources/software/icons/black/undo.png</file>
+        <file alias="build">resources/software/icons/black/build.png</file>
+        <file alias="playlist-check">resources/software/icons/black/playlist-check.png</file>
+        <file alias="help-circle">resources/software/icons/black/help-circle.png</file>
+        <file alias="info-circle-smaller">resources/software/icons/black/info-circle-smaller.png</file>
+        <file alias="text-file">resources/software/icons/black/text-file.png</file>
+        <file alias="nexus-logo">resources/software/icons/black/nexus-logo.png</file>
+        <file alias="code">resources/software/icons/black/code.png</file>
+        <file alias="link">resources/software/icons/black/link.png</file>
+        <file alias="color">resources/software/icons/black/color.png</file>
+        <file alias="textures">resources/software/icons/black/textures.png</file>
+        <file alias="body">resources/software/icons/black/body.png</file>
+        <file alias="hand">resources/software/icons/black/hand.png</file>
+        <file alias="foot">resources/software/icons/black/foot.png</file>
+        <file alias="woman-head">resources/software/icons/black/woman-head.png</file>
+        <file alias="skeleton">resources/software/icons/black/skeleton.png</file>
+        <file alias="home">resources/software/icons/black/home.png</file>
+        <file alias="monitor">resources/software/icons/black/monitor.png</file>
+        <file alias="more">resources/software/icons/black/more.png</file>
+        <file alias="tune">resources/software/icons/black/tune.png</file>
+        <file alias="file-tree">resources/software/icons/black/file-tree.png</file>
+        <file alias="bodyslide-logo">resources/software/icons/black/bodyslide-logo.png</file>
+        <file alias="file">resources/software/icons/black/file.png</file>
+        <file alias="reorder">resources/software/icons/black/reorder.png</file>
+        <file alias="bug">resources/software/icons/black/bug.png</file>
+        <file alias="github">resources/software/icons/black/github.png</file>
+        <file alias="gitlab">resources/software/icons/black/gitlab.png</file>
+        <file alias="external">resources/software/icons/black/external.png</file>
+        <file alias="tab">resources/software/icons/black/tab.png</file>
+        <file alias="text-snippet">resources/software/icons/black/text-snippet.png</file>
+        <file alias="arrow-left">resources/software/icons/black/arrow-left.png</file>
+        <file alias="arrow-right">resources/software/icons/black/arrow-right.png</file>
+        <file alias="bolt">resources/software/icons/black/bolt.png</file>
+        <file alias="mesh">resources/software/icons/black/mesh.png</file>
+        <file alias="eye">resources/software/icons/black/eye.png</file>
+        <file alias="duplicate">resources/software/icons/black/duplicate.png</file>
+        <file alias="mouth">resources/software/icons/black/mouth.png</file>
+        <file alias="folder-search">resources/software/icons/black/folder-search.png</file>
+        <file alias="done">resources/software/icons/black/done.png</file>
+        <file alias="coffee">resources/software/icons/black/coffee.png</file>
     </qresource>
     <qresource prefix="/white">
-        <file alias="alert-circle">ressources/software/icons/white/alert-circle.png</file>
-        <file alias="arrow-up">ressources/software/icons/white/arrow-up.png</file>
-        <file alias="cloud-check">ressources/software/icons/white/cloud-check.png</file>
-        <file alias="cloud-download">ressources/software/icons/white/cloud-download.png</file>
-        <file alias="cloud-search">ressources/software/icons/white/cloud-search.png</file>
-        <file alias="cog">ressources/software/icons/white/cog.png</file>
-        <file alias="cross">ressources/software/icons/white/cross.png</file>
-        <file alias="developer">ressources/software/icons/white/developer.png</file>
-        <file alias="filter">ressources/software/icons/white/filter.png</file>
-        <file alias="folder">ressources/software/icons/white/folder.png</file>
-        <file alias="info-circle">ressources/software/icons/white/info-circle.png</file>
-        <file alias="minus">ressources/software/icons/white/minus.png</file>
-        <file alias="open-in-browser">ressources/software/icons/white/open-in-browser.png</file>
-        <file alias="pencil">ressources/software/icons/white/pencil.png</file>
-        <file alias="playlist-plus">ressources/software/icons/white/playlist-plus.png</file>
-        <file alias="plus">ressources/software/icons/white/plus.png</file>
-        <file alias="refresh">ressources/software/icons/white/refresh.png</file>
-        <file alias="restore">ressources/software/icons/white/restore.png</file>
-        <file alias="save">ressources/software/icons/white/save.png</file>
-        <file alias="search">ressources/software/icons/white/search.png</file>
-        <file alias="text">ressources/software/icons/white/text.png</file>
-        <file alias="trash">ressources/software/icons/white/trash.png</file>
-        <file alias="trash-lines">ressources/software/icons/white/trash-lines.png</file>
-        <file alias="undo">ressources/software/icons/white/undo.png</file>
-        <file alias="build">ressources/software/icons/white/build.png</file>
-        <file alias="playlist-check">ressources/software/icons/white/playlist-check.png</file>
-        <file alias="help-circle">ressources/software/icons/white/help-circle.png</file>
-        <file alias="info-circle-smaller">ressources/software/icons/white/info-circle-smaller.png</file>
-        <file alias="text-file">ressources/software/icons/white/text-file.png</file>
-        <file alias="nexus-logo">ressources/software/icons/white/nexus-logo.png</file>
-        <file alias="code">ressources/software/icons/white/code.png</file>
-        <file alias="link">ressources/software/icons/white/link.png</file>
-        <file alias="color">ressources/software/icons/white/color.png</file>
-        <file alias="textures">ressources/software/icons/white/textures.png</file>
-        <file alias="body">ressources/software/icons/white/body.png</file>
-        <file alias="hand">ressources/software/icons/white/hand.png</file>
-        <file alias="foot">ressources/software/icons/white/foot.png</file>
-        <file alias="woman-head">ressources/software/icons/white/woman-head.png</file>
-        <file alias="skeleton">ressources/software/icons/white/skeleton.png</file>
-        <file alias="home">ressources/software/icons/white/home.png</file>
-        <file alias="monitor">ressources/software/icons/white/monitor.png</file>
-        <file alias="more">ressources/software/icons/white/more.png</file>
-        <file alias="tune">ressources/software/icons/white/tune.png</file>
-        <file alias="file-tree">ressources/software/icons/white/file-tree.png</file>
-        <file alias="bodyslide-logo">ressources/software/icons/white/bodyslide-logo.png</file>
-        <file alias="file">ressources/software/icons/white/file.png</file>
-        <file alias="reorder">ressources/software/icons/white/reorder.png</file>
-        <file alias="bug">ressources/software/icons/white/bug.png</file>
-        <file alias="github">ressources/software/icons/white/github.png</file>
-        <file alias="gitlab">ressources/software/icons/white/gitlab.png</file>
-        <file alias="external">ressources/software/icons/white/external.png</file>
-        <file alias="tab">ressources/software/icons/white/tab.png</file>
-        <file alias="text-snippet">ressources/software/icons/white/text-snippet.png</file>
-        <file alias="arrow-left">ressources/software/icons/white/arrow-left.png</file>
-        <file alias="arrow-right">ressources/software/icons/white/arrow-right.png</file>
-        <file alias="bolt">ressources/software/icons/white/bolt.png</file>
-        <file alias="mesh">ressources/software/icons/white/mesh.png</file>
-        <file alias="eye">ressources/software/icons/white/eye.png</file>
-        <file alias="duplicate">ressources/software/icons/white/duplicate.png</file>
-        <file alias="mouth">ressources/software/icons/white/mouth.png</file>
-        <file alias="folder-search">ressources/software/icons/white/folder-search.png</file>
-        <file alias="done">ressources/software/icons/white/done.png</file>
-        <file alias="coffee">ressources/software/icons/white/coffee.png</file>
+        <file alias="alert-circle">resources/software/icons/white/alert-circle.png</file>
+        <file alias="arrow-up">resources/software/icons/white/arrow-up.png</file>
+        <file alias="cloud-check">resources/software/icons/white/cloud-check.png</file>
+        <file alias="cloud-download">resources/software/icons/white/cloud-download.png</file>
+        <file alias="cloud-search">resources/software/icons/white/cloud-search.png</file>
+        <file alias="cog">resources/software/icons/white/cog.png</file>
+        <file alias="cross">resources/software/icons/white/cross.png</file>
+        <file alias="developer">resources/software/icons/white/developer.png</file>
+        <file alias="filter">resources/software/icons/white/filter.png</file>
+        <file alias="folder">resources/software/icons/white/folder.png</file>
+        <file alias="info-circle">resources/software/icons/white/info-circle.png</file>
+        <file alias="minus">resources/software/icons/white/minus.png</file>
+        <file alias="open-in-browser">resources/software/icons/white/open-in-browser.png</file>
+        <file alias="pencil">resources/software/icons/white/pencil.png</file>
+        <file alias="playlist-plus">resources/software/icons/white/playlist-plus.png</file>
+        <file alias="plus">resources/software/icons/white/plus.png</file>
+        <file alias="refresh">resources/software/icons/white/refresh.png</file>
+        <file alias="restore">resources/software/icons/white/restore.png</file>
+        <file alias="save">resources/software/icons/white/save.png</file>
+        <file alias="search">resources/software/icons/white/search.png</file>
+        <file alias="text">resources/software/icons/white/text.png</file>
+        <file alias="trash">resources/software/icons/white/trash.png</file>
+        <file alias="trash-lines">resources/software/icons/white/trash-lines.png</file>
+        <file alias="undo">resources/software/icons/white/undo.png</file>
+        <file alias="build">resources/software/icons/white/build.png</file>
+        <file alias="playlist-check">resources/software/icons/white/playlist-check.png</file>
+        <file alias="help-circle">resources/software/icons/white/help-circle.png</file>
+        <file alias="info-circle-smaller">resources/software/icons/white/info-circle-smaller.png</file>
+        <file alias="text-file">resources/software/icons/white/text-file.png</file>
+        <file alias="nexus-logo">resources/software/icons/white/nexus-logo.png</file>
+        <file alias="code">resources/software/icons/white/code.png</file>
+        <file alias="link">resources/software/icons/white/link.png</file>
+        <file alias="color">resources/software/icons/white/color.png</file>
+        <file alias="textures">resources/software/icons/white/textures.png</file>
+        <file alias="body">resources/software/icons/white/body.png</file>
+        <file alias="hand">resources/software/icons/white/hand.png</file>
+        <file alias="foot">resources/software/icons/white/foot.png</file>
+        <file alias="woman-head">resources/software/icons/white/woman-head.png</file>
+        <file alias="skeleton">resources/software/icons/white/skeleton.png</file>
+        <file alias="home">resources/software/icons/white/home.png</file>
+        <file alias="monitor">resources/software/icons/white/monitor.png</file>
+        <file alias="more">resources/software/icons/white/more.png</file>
+        <file alias="tune">resources/software/icons/white/tune.png</file>
+        <file alias="file-tree">resources/software/icons/white/file-tree.png</file>
+        <file alias="bodyslide-logo">resources/software/icons/white/bodyslide-logo.png</file>
+        <file alias="file">resources/software/icons/white/file.png</file>
+        <file alias="reorder">resources/software/icons/white/reorder.png</file>
+        <file alias="bug">resources/software/icons/white/bug.png</file>
+        <file alias="github">resources/software/icons/white/github.png</file>
+        <file alias="gitlab">resources/software/icons/white/gitlab.png</file>
+        <file alias="external">resources/software/icons/white/external.png</file>
+        <file alias="tab">resources/software/icons/white/tab.png</file>
+        <file alias="text-snippet">resources/software/icons/white/text-snippet.png</file>
+        <file alias="arrow-left">resources/software/icons/white/arrow-left.png</file>
+        <file alias="arrow-right">resources/software/icons/white/arrow-right.png</file>
+        <file alias="bolt">resources/software/icons/white/bolt.png</file>
+        <file alias="mesh">resources/software/icons/white/mesh.png</file>
+        <file alias="eye">resources/software/icons/white/eye.png</file>
+        <file alias="duplicate">resources/software/icons/white/duplicate.png</file>
+        <file alias="mouth">resources/software/icons/white/mouth.png</file>
+        <file alias="folder-search">resources/software/icons/white/folder-search.png</file>
+        <file alias="done">resources/software/icons/white/done.png</file>
+        <file alias="coffee">resources/software/icons/white/coffee.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>
@@ -142,440 +142,440 @@
         <file>mfbopc_zh_TW.qm</file>
     </qresource>
     <qresource prefix="/qss">
-        <file alias="Paper Black Mono.qss">ressources/qss/Paper Black Mono.qss</file>
-        <file alias="Paper Dark by 6788.qss">ressources/qss/Paper Dark by 6788.qss</file>
-        <file alias="Paper Light by 6788.qss">ressources/qss/Paper Light by 6788.qss</file>
-        <file alias="Paper White Mono.qss">ressources/qss/Paper White Mono.qss</file>
-        <file alias="Alexhuszagh's Breeze Dark.qss">ressources/qss/Alexhuszagh's Breeze Dark.qss</file>
-        <file alias="Alexhuszagh's Breeze Light.qss">ressources/qss/Alexhuszagh's Breeze Light.qss</file>
-        <file alias="Mitsuriou's Black Theme.qss">ressources/qss/Mitsuriou's Black Theme.qss</file>
-        <file alias="Mitsuriou's Dark Theme.qss">ressources/qss/Mitsuriou's Dark Theme.qss</file>
-        <file alias="Mitsuriou's Light Theme.qss">ressources/qss/Mitsuriou's Light Theme.qss</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_closed.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_closed_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_end.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_end_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_more.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_more_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_open.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/branch_open_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/calendar_next.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/calendar_previous.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_checked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_checked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_indeterminate.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_indeterminate_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_unchecked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/checkbox_unchecked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/close.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/close_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/close_pressed.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_cancel.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_close.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_discard.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_help.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_no.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_ok.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_open.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_reset.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog_save.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-cancel.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-close.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-discard.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-help.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-no.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-ok.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-open.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-reset.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/dialog-save.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/down_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/down_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/down_arrow_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/hmovetoolbar.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/hseptoolbar.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/left_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/left_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message_critical.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message_information.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message_question.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message_warning.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message-critical.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message-information.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message-question.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/message-warning.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_checked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_checked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_unchecked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/radio_unchecked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/right_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/right_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/sizegrip.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/transparent.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/undock.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/undock_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/up_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/up_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/up_arrow_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/vline.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/vmovetoolbar.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Dark/vseptoolbar.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_closed.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_closed_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_end.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_end_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_more.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_more_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_open.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/branch_open_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/calendar_next.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/calendar_previous.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_checked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_checked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_indeterminate.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_indeterminate_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_unchecked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/checkbox_unchecked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/close.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/close_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/close_pressed.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_cancel.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_close.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_discard.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_help.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_no.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_ok.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_open.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_reset.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog_save.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-cancel.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-close.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-discard.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-help.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-no.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-ok.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-open.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-reset.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/dialog-save.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/down_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/down_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/down_arrow_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/hmovetoolbar.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/hseptoolbar.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/left_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/left_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message_critical.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message_information.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message_question.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message_warning.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message-critical.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message-information.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message-question.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/message-warning.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/radio_checked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/radio_checked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/radio_unchecked.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/radio_unchecked_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/right_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/right_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/sizegrip.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/transparent.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/undock.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/undock_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/up_arrow.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/up_arrow_disabled.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/up_arrow_hover.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/vline.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/vmovetoolbar.svg</file>
-        <file>ressources/qss/Alexhuszagh Breeze Light/vseptoolbar.svg</file>
+        <file alias="Paper Black Mono.qss">resources/qss/Paper Black Mono.qss</file>
+        <file alias="Paper Dark by 6788.qss">resources/qss/Paper Dark by 6788.qss</file>
+        <file alias="Paper Light by 6788.qss">resources/qss/Paper Light by 6788.qss</file>
+        <file alias="Paper White Mono.qss">resources/qss/Paper White Mono.qss</file>
+        <file alias="Alexhuszagh's Breeze Dark.qss">resources/qss/Alexhuszagh's Breeze Dark.qss</file>
+        <file alias="Alexhuszagh's Breeze Light.qss">resources/qss/Alexhuszagh's Breeze Light.qss</file>
+        <file alias="Mitsuriou's Black Theme.qss">resources/qss/Mitsuriou's Black Theme.qss</file>
+        <file alias="Mitsuriou's Dark Theme.qss">resources/qss/Mitsuriou's Dark Theme.qss</file>
+        <file alias="Mitsuriou's Light Theme.qss">resources/qss/Mitsuriou's Light Theme.qss</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_closed.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_closed_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_end.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_end_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_more.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_more_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_open.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/branch_open_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/calendar_next.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/calendar_previous.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/checkbox_checked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/checkbox_checked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/checkbox_indeterminate.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/checkbox_indeterminate_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/checkbox_unchecked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/checkbox_unchecked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/close.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/close_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/close_pressed.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_cancel.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_close.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_discard.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_help.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_no.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_ok.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_open.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_reset.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog_save.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-cancel.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-close.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-discard.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-help.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-no.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-ok.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-open.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-reset.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/dialog-save.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/down_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/down_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/down_arrow_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/hmovetoolbar.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/hseptoolbar.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/left_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/left_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message_critical.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message_information.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message_question.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message_warning.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message-critical.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message-information.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message-question.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/message-warning.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/radio_checked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/radio_checked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/radio_unchecked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/radio_unchecked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/right_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/right_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/sizegrip.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/transparent.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/undock.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/undock_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/up_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/up_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/up_arrow_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/vline.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/vmovetoolbar.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Dark/vseptoolbar.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_closed.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_closed_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_end.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_end_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_more.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_more_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_open.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/branch_open_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/calendar_next.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/calendar_previous.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/checkbox_checked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/checkbox_checked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/checkbox_indeterminate.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/checkbox_indeterminate_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/checkbox_unchecked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/checkbox_unchecked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/close.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/close_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/close_pressed.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_cancel.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_close.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_discard.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_help.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_no.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_ok.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_open.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_reset.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog_save.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-cancel.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-close.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-discard.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-help.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-no.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-ok.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-open.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-reset.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/dialog-save.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/down_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/down_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/down_arrow_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/hmovetoolbar.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/hseptoolbar.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/left_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/left_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message_critical.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message_information.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message_question.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message_warning.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message-critical.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message-information.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message-question.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/message-warning.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/radio_checked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/radio_checked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/radio_unchecked.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/radio_unchecked_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/right_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/right_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/sizegrip.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/transparent.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/undock.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/undock_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/up_arrow.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/up_arrow_disabled.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/up_arrow_hover.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/vline.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/vmovetoolbar.svg</file>
+        <file>resources/qss/Alexhuszagh Breeze Light/vseptoolbar.svg</file>
     </qresource>
-    <qresource prefix="/qss-ressources">
-        <file>ressources/qss/Paper/Dark/backup.svg</file>
-        <file>ressources/qss/Paper/Dark/cross.svg</file>
-        <file>ressources/qss/Paper/Dark/dots.svg</file>
-        <file>ressources/qss/Paper/Dark/folder.svg</file>
-        <file>ressources/qss/Paper/Dark/heart.svg</file>
-        <file>ressources/qss/Paper/Dark/minus.svg</file>
-        <file>ressources/qss/Paper/Dark/mo2.svg</file>
-        <file>ressources/qss/Paper/Dark/nexus.svg</file>
-        <file>ressources/qss/Paper/Dark/pin.svg</file>
-        <file>ressources/qss/Paper/Dark/plus.svg</file>
-        <file>ressources/qss/Paper/Dark/refresh.svg</file>
-        <file>ressources/qss/Paper/Dark/restore.svg</file>
-        <file>ressources/qss/Paper/Dark/run.svg</file>
-        <file>ressources/qss/Paper/Dark/shortcut.svg</file>
-        <file>ressources/qss/Paper/Dark/sort.svg</file>
-        <file>ressources/qss/Paper/Dark/Arrows/Large/down.svg</file>
-        <file>ressources/qss/Paper/Dark/Arrows/Large/up.svg</file>
-        <file>ressources/qss/Paper/Dark/Arrows/down.svg</file>
-        <file>ressources/qss/Paper/Dark/Arrows/left.svg</file>
-        <file>ressources/qss/Paper/Dark/Arrows/right.svg</file>
-        <file>ressources/qss/Paper/Dark/Arrows/up.svg</file>
-        <file>ressources/qss/Paper/Dark/Checkboxes/Checked/check.svg</file>
-        <file>ressources/qss/Paper/Dark/Checkboxes/Checked/hover.svg</file>
-        <file>ressources/qss/Paper/Dark/Checkboxes/Radio Buttons/hover.svg</file>
-        <file>ressources/qss/Paper/Dark/Checkboxes/Radio Buttons/radio.svg</file>
-        <file>ressources/qss/Paper/Dark/Checkboxes/Unchecked/hover.svg</file>
-        <file>ressources/qss/Paper/Dark/Checkboxes/Unchecked/unchecked.svg</file>
-        <file>ressources/qss/Paper/Dark/Checkboxes/Disabled.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/archives.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/endorse.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/executables.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/help.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/instances.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/nexus.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/problems.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/profiles.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/settings.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/tools.svg</file>
-        <file>ressources/qss/Paper/Dark/Toolbar/update.svg</file>
-        <file>ressources/qss/Paper/Light/Arrows/Large/down.svg</file>
-        <file>ressources/qss/Paper/Light/Arrows/Large/up.svg</file>
-        <file>ressources/qss/Paper/Light/Arrows/down.svg</file>
-        <file>ressources/qss/Paper/Light/Arrows/left.svg</file>
-        <file>ressources/qss/Paper/Light/Arrows/right.svg</file>
-        <file>ressources/qss/Paper/Light/Arrows/up.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Checked/check.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Checked/hover.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Checked/selected.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Radio Buttons/hover.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Radio Buttons/radio.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Unchecked/hover.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Unchecked/selected.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/Unchecked/unchecked.svg</file>
-        <file>ressources/qss/Paper/Light/Checkboxes/disabled.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/archives.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/endorse.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/executables.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/help.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/instances.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/nexus.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/problems.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/profiles.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/settings.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/tools.svg</file>
-        <file>ressources/qss/Paper/Light/Toolbar/update.svg</file>
-        <file>ressources/qss/Paper/Light/backup.svg</file>
-        <file>ressources/qss/Paper/Light/cross.svg</file>
-        <file>ressources/qss/Paper/Light/dots.svg</file>
-        <file>ressources/qss/Paper/Light/folder.svg</file>
-        <file>ressources/qss/Paper/Light/heart.svg</file>
-        <file>ressources/qss/Paper/Light/minus.svg</file>
-        <file>ressources/qss/Paper/Light/mo2.svg</file>
-        <file>ressources/qss/Paper/Light/nexus.svg</file>
-        <file>ressources/qss/Paper/Light/pin.svg</file>
-        <file>ressources/qss/Paper/Light/plus.svg</file>
-        <file>ressources/qss/Paper/Light/refresh.svg</file>
-        <file>ressources/qss/Paper/Light/restore.svg</file>
-        <file>ressources/qss/Paper/Light/run.svg</file>
-        <file>ressources/qss/Paper/Light/shortcut.svg</file>
-        <file>ressources/qss/Paper/Light/sort.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Arrows/down.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Arrows/left.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Arrows/right.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Arrows/up.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Checked/check.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Checked/hover.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Checked/selected.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Unchecked/hover.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Unchecked/selected.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Checkboxes/Unchecked/unchecked.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/Checkboxes/disabled.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/backup.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/cross.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/dots.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/folder.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/heart.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/minus.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/nexus.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/pin.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/plus.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/refresh.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/restore.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/restore-alt.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/run.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/shortcut.svg</file>
-        <file>ressources/qss/Paper/Mono/Black/sort.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/down.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/left.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/right.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/Selected/up.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/down.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/left.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/right.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Arrows/up.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Checkboxes/Checked/check.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Checkboxes/Checked/hover.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Checkboxes/Checked/selected.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Checkboxes/Unchecked/hover.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Checkboxes/Unchecked/selected.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Checkboxes/Unchecked/unchecked.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Checkboxes/disabled.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/archives.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/endorse.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/executables.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/help.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/instances.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/nexus.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/problems.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/profiles.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/settings.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/tools.svg</file>
-        <file>ressources/qss/Paper/Mono/White/Toolbar/update.svg</file>
-        <file>ressources/qss/Paper/Mono/White/backup.svg</file>
-        <file>ressources/qss/Paper/Mono/White/dots.svg</file>
-        <file>ressources/qss/Paper/Mono/White/folder.svg</file>
-        <file>ressources/qss/Paper/Mono/White/heart.svg</file>
-        <file>ressources/qss/Paper/Mono/White/refresh.svg</file>
-        <file>ressources/qss/Paper/Mono/White/restore.svg</file>
-        <file>ressources/qss/Paper/Mono/White/restore-alt.svg</file>
-        <file>ressources/qss/Paper/Mono/White/run.svg</file>
-        <file>ressources/qss/Paper/Mono/White/shortcut.svg</file>
-        <file>ressources/qss/Paper/Mono/White/sort.svg</file>
+    <qresource prefix="/qss-resources">
+        <file>resources/qss/Paper/Dark/backup.svg</file>
+        <file>resources/qss/Paper/Dark/cross.svg</file>
+        <file>resources/qss/Paper/Dark/dots.svg</file>
+        <file>resources/qss/Paper/Dark/folder.svg</file>
+        <file>resources/qss/Paper/Dark/heart.svg</file>
+        <file>resources/qss/Paper/Dark/minus.svg</file>
+        <file>resources/qss/Paper/Dark/mo2.svg</file>
+        <file>resources/qss/Paper/Dark/nexus.svg</file>
+        <file>resources/qss/Paper/Dark/pin.svg</file>
+        <file>resources/qss/Paper/Dark/plus.svg</file>
+        <file>resources/qss/Paper/Dark/refresh.svg</file>
+        <file>resources/qss/Paper/Dark/restore.svg</file>
+        <file>resources/qss/Paper/Dark/run.svg</file>
+        <file>resources/qss/Paper/Dark/shortcut.svg</file>
+        <file>resources/qss/Paper/Dark/sort.svg</file>
+        <file>resources/qss/Paper/Dark/Arrows/Large/down.svg</file>
+        <file>resources/qss/Paper/Dark/Arrows/Large/up.svg</file>
+        <file>resources/qss/Paper/Dark/Arrows/down.svg</file>
+        <file>resources/qss/Paper/Dark/Arrows/left.svg</file>
+        <file>resources/qss/Paper/Dark/Arrows/right.svg</file>
+        <file>resources/qss/Paper/Dark/Arrows/up.svg</file>
+        <file>resources/qss/Paper/Dark/Checkboxes/Checked/check.svg</file>
+        <file>resources/qss/Paper/Dark/Checkboxes/Checked/hover.svg</file>
+        <file>resources/qss/Paper/Dark/Checkboxes/Radio Buttons/hover.svg</file>
+        <file>resources/qss/Paper/Dark/Checkboxes/Radio Buttons/radio.svg</file>
+        <file>resources/qss/Paper/Dark/Checkboxes/Unchecked/hover.svg</file>
+        <file>resources/qss/Paper/Dark/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>resources/qss/Paper/Dark/Checkboxes/Disabled.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/archives.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/endorse.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/executables.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/help.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/instances.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/nexus.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/problems.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/profiles.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/settings.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/tools.svg</file>
+        <file>resources/qss/Paper/Dark/Toolbar/update.svg</file>
+        <file>resources/qss/Paper/Light/Arrows/Large/down.svg</file>
+        <file>resources/qss/Paper/Light/Arrows/Large/up.svg</file>
+        <file>resources/qss/Paper/Light/Arrows/down.svg</file>
+        <file>resources/qss/Paper/Light/Arrows/left.svg</file>
+        <file>resources/qss/Paper/Light/Arrows/right.svg</file>
+        <file>resources/qss/Paper/Light/Arrows/up.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Checked/check.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Checked/hover.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Checked/selected.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Radio Buttons/hover.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Radio Buttons/radio.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Unchecked/hover.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Unchecked/selected.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>resources/qss/Paper/Light/Checkboxes/disabled.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/archives.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/endorse.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/executables.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/help.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/instances.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/nexus.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/problems.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/profiles.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/settings.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/tools.svg</file>
+        <file>resources/qss/Paper/Light/Toolbar/update.svg</file>
+        <file>resources/qss/Paper/Light/backup.svg</file>
+        <file>resources/qss/Paper/Light/cross.svg</file>
+        <file>resources/qss/Paper/Light/dots.svg</file>
+        <file>resources/qss/Paper/Light/folder.svg</file>
+        <file>resources/qss/Paper/Light/heart.svg</file>
+        <file>resources/qss/Paper/Light/minus.svg</file>
+        <file>resources/qss/Paper/Light/mo2.svg</file>
+        <file>resources/qss/Paper/Light/nexus.svg</file>
+        <file>resources/qss/Paper/Light/pin.svg</file>
+        <file>resources/qss/Paper/Light/plus.svg</file>
+        <file>resources/qss/Paper/Light/refresh.svg</file>
+        <file>resources/qss/Paper/Light/restore.svg</file>
+        <file>resources/qss/Paper/Light/run.svg</file>
+        <file>resources/qss/Paper/Light/shortcut.svg</file>
+        <file>resources/qss/Paper/Light/sort.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Arrows/down.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Arrows/left.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Arrows/right.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Arrows/up.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Checkboxes/Checked/check.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Checkboxes/Checked/hover.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Checkboxes/Checked/selected.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Checkboxes/Unchecked/hover.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Checkboxes/Unchecked/selected.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>resources/qss/Paper/Mono/Black/Checkboxes/disabled.svg</file>
+        <file>resources/qss/Paper/Mono/Black/backup.svg</file>
+        <file>resources/qss/Paper/Mono/Black/cross.svg</file>
+        <file>resources/qss/Paper/Mono/Black/dots.svg</file>
+        <file>resources/qss/Paper/Mono/Black/folder.svg</file>
+        <file>resources/qss/Paper/Mono/Black/heart.svg</file>
+        <file>resources/qss/Paper/Mono/Black/minus.svg</file>
+        <file>resources/qss/Paper/Mono/Black/nexus.svg</file>
+        <file>resources/qss/Paper/Mono/Black/pin.svg</file>
+        <file>resources/qss/Paper/Mono/Black/plus.svg</file>
+        <file>resources/qss/Paper/Mono/Black/refresh.svg</file>
+        <file>resources/qss/Paper/Mono/Black/restore.svg</file>
+        <file>resources/qss/Paper/Mono/Black/restore-alt.svg</file>
+        <file>resources/qss/Paper/Mono/Black/run.svg</file>
+        <file>resources/qss/Paper/Mono/Black/shortcut.svg</file>
+        <file>resources/qss/Paper/Mono/Black/sort.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/Selected/down.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/Selected/left.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/Selected/right.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/Selected/up.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/down.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/left.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/right.svg</file>
+        <file>resources/qss/Paper/Mono/White/Arrows/up.svg</file>
+        <file>resources/qss/Paper/Mono/White/Checkboxes/Checked/check.svg</file>
+        <file>resources/qss/Paper/Mono/White/Checkboxes/Checked/hover.svg</file>
+        <file>resources/qss/Paper/Mono/White/Checkboxes/Checked/selected.svg</file>
+        <file>resources/qss/Paper/Mono/White/Checkboxes/Unchecked/hover.svg</file>
+        <file>resources/qss/Paper/Mono/White/Checkboxes/Unchecked/selected.svg</file>
+        <file>resources/qss/Paper/Mono/White/Checkboxes/Unchecked/unchecked.svg</file>
+        <file>resources/qss/Paper/Mono/White/Checkboxes/disabled.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/archives.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/endorse.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/executables.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/help.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/instances.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/nexus.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/problems.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/profiles.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/settings.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/tools.svg</file>
+        <file>resources/qss/Paper/Mono/White/Toolbar/update.svg</file>
+        <file>resources/qss/Paper/Mono/White/backup.svg</file>
+        <file>resources/qss/Paper/Mono/White/dots.svg</file>
+        <file>resources/qss/Paper/Mono/White/folder.svg</file>
+        <file>resources/qss/Paper/Mono/White/heart.svg</file>
+        <file>resources/qss/Paper/Mono/White/refresh.svg</file>
+        <file>resources/qss/Paper/Mono/White/restore.svg</file>
+        <file>resources/qss/Paper/Mono/White/restore-alt.svg</file>
+        <file>resources/qss/Paper/Mono/White/run.svg</file>
+        <file>resources/qss/Paper/Mono/White/shortcut.svg</file>
+        <file>resources/qss/Paper/Mono/White/sort.svg</file>
     </qresource>
     <qresource prefix="/mitsuriou_black">
-        <file alias="chevron-bottom">ressources/qss/Mitsuriou's Black Theme/chevron-bottom.png</file>
-        <file alias="chevron-left">ressources/qss/Mitsuriou's Black Theme/chevron-left.png</file>
-        <file alias="chevron-right">ressources/qss/Mitsuriou's Black Theme/chevron-right.png</file>
-        <file alias="chevron-top">ressources/qss/Mitsuriou's Black Theme/chevron-top.png</file>
-        <file alias="chevron-bottom-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-bottom-disabled.png</file>
-        <file alias="chevron-left-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-left-disabled.png</file>
-        <file alias="chevron-right-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-right-disabled.png</file>
-        <file alias="chevron-top-disabled">ressources/qss/Mitsuriou's Black Theme/chevron-top-disabled.png</file>
+        <file alias="chevron-bottom">resources/qss/Mitsuriou's Black Theme/chevron-bottom.png</file>
+        <file alias="chevron-left">resources/qss/Mitsuriou's Black Theme/chevron-left.png</file>
+        <file alias="chevron-right">resources/qss/Mitsuriou's Black Theme/chevron-right.png</file>
+        <file alias="chevron-top">resources/qss/Mitsuriou's Black Theme/chevron-top.png</file>
+        <file alias="chevron-bottom-disabled">resources/qss/Mitsuriou's Black Theme/chevron-bottom-disabled.png</file>
+        <file alias="chevron-left-disabled">resources/qss/Mitsuriou's Black Theme/chevron-left-disabled.png</file>
+        <file alias="chevron-right-disabled">resources/qss/Mitsuriou's Black Theme/chevron-right-disabled.png</file>
+        <file alias="chevron-top-disabled">resources/qss/Mitsuriou's Black Theme/chevron-top-disabled.png</file>
     </qresource>
     <qresource prefix="/mitsuriou_dark">
-        <file alias="chevron-bottom">ressources/qss/Mitsuriou's Dark Theme/chevron-bottom.png</file>
-        <file alias="chevron-left">ressources/qss/Mitsuriou's Dark Theme/chevron-left.png</file>
-        <file alias="chevron-right">ressources/qss/Mitsuriou's Dark Theme/chevron-right.png</file>
-        <file alias="chevron-top">ressources/qss/Mitsuriou's Dark Theme/chevron-top.png</file>
-        <file alias="chevron-bottom-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-bottom-disabled.png</file>
-        <file alias="chevron-left-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-left-disabled.png</file>
-        <file alias="chevron-right-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-right-disabled.png</file>
-        <file alias="chevron-top-disabled">ressources/qss/Mitsuriou's Dark Theme/chevron-top-disabled.png</file>
+        <file alias="chevron-bottom">resources/qss/Mitsuriou's Dark Theme/chevron-bottom.png</file>
+        <file alias="chevron-left">resources/qss/Mitsuriou's Dark Theme/chevron-left.png</file>
+        <file alias="chevron-right">resources/qss/Mitsuriou's Dark Theme/chevron-right.png</file>
+        <file alias="chevron-top">resources/qss/Mitsuriou's Dark Theme/chevron-top.png</file>
+        <file alias="chevron-bottom-disabled">resources/qss/Mitsuriou's Dark Theme/chevron-bottom-disabled.png</file>
+        <file alias="chevron-left-disabled">resources/qss/Mitsuriou's Dark Theme/chevron-left-disabled.png</file>
+        <file alias="chevron-right-disabled">resources/qss/Mitsuriou's Dark Theme/chevron-right-disabled.png</file>
+        <file alias="chevron-top-disabled">resources/qss/Mitsuriou's Dark Theme/chevron-top-disabled.png</file>
     </qresource>
     <qresource prefix="/mitsuriou_light">
-        <file alias="chevron-bottom">ressources/qss/Mitsuriou's Light Theme/chevron-bottom.png</file>
-        <file alias="chevron-left">ressources/qss/Mitsuriou's Light Theme/chevron-left.png</file>
-        <file alias="chevron-right">ressources/qss/Mitsuriou's Light Theme/chevron-right.png</file>
-        <file alias="chevron-top">ressources/qss/Mitsuriou's Light Theme/chevron-top.png</file>
-        <file alias="chevron-bottom-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-bottom-disabled.png</file>
-        <file alias="chevron-left-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-left-disabled.png</file>
-        <file alias="chevron-right-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-right-disabled.png</file>
-        <file alias="chevron-top-disabled">ressources/qss/Mitsuriou's Light Theme/chevron-top-disabled.png</file>
+        <file alias="chevron-bottom">resources/qss/Mitsuriou's Light Theme/chevron-bottom.png</file>
+        <file alias="chevron-left">resources/qss/Mitsuriou's Light Theme/chevron-left.png</file>
+        <file alias="chevron-right">resources/qss/Mitsuriou's Light Theme/chevron-right.png</file>
+        <file alias="chevron-top">resources/qss/Mitsuriou's Light Theme/chevron-top.png</file>
+        <file alias="chevron-bottom-disabled">resources/qss/Mitsuriou's Light Theme/chevron-bottom-disabled.png</file>
+        <file alias="chevron-left-disabled">resources/qss/Mitsuriou's Light Theme/chevron-left-disabled.png</file>
+        <file alias="chevron-right-disabled">resources/qss/Mitsuriou's Light Theme/chevron-right-disabled.png</file>
+        <file alias="chevron-top-disabled">resources/qss/Mitsuriou's Light Theme/chevron-top-disabled.png</file>
     </qresource>
     <qresource prefix="/fonts">
-        <file alias="Roboto">ressources/fonts/Roboto-Regular.ttf</file>
+        <file alias="Roboto">resources/fonts/Roboto-Regular.ttf</file>
     </qresource>
     <qresource prefix="/icons">
-        <file alias="green-info">ressources/software/icons/common/green-info.png</file>
-        <file alias="orange-warning">ressources/software/icons/common/orange-warning.png</file>
-        <file alias="red-dangerous">ressources/software/icons/common/red-dangerous.png</file>
+        <file alias="green-info">resources/software/icons/common/green-info.png</file>
+        <file alias="orange-warning">resources/software/icons/common/orange-warning.png</file>
+        <file alias="red-dangerous">resources/software/icons/common/red-dangerous.png</file>
     </qresource>
     <qresource prefix="/presets/body">
-        <file alias="cbbe 3bbb 3ba/1.50">ressources/body/cbbe 3bbb 3ba/1.50.osp</file>
-        <file alias="cbbe 3bbb 3ba/1.51 to 1.55">ressources/body/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.02 to 2.04">ressources/body/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.06">ressources/body/cbbe 3bbb 3ba/2.06.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.11 and 2.12">ressources/body/cbbe 3bbb 3ba/2.11_and_2.12.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.13 to 2.16">ressources/body/cbbe 3bbb 3ba/2.13_to_2.16.osp</file>
-        <file alias="bhunp 3bbb/2.20">ressources/body/bhunp 3bbb/2.20.osp</file>
-        <file alias="bhunp 3bbb/2.25">ressources/body/bhunp 3bbb/2.25.osp</file>
-        <file alias="bhunp 3bbb/2.30">ressources/body/bhunp 3bbb/2.30.osp</file>
-        <file alias="bhunp 3bbb/2.31">ressources/body/bhunp 3bbb/2.31.osp</file>
-        <file alias="bhunp 3bbb/2.35 to 2.42">ressources/body/bhunp 3bbb/2.35_to_2.42.osp</file>
-        <file alias="bhunp 3bbb advanced/2.20">ressources/body/bhunp 3bbb advanced/2.20.osp</file>
-        <file alias="bhunp 3bbb advanced/2.25">ressources/body/bhunp 3bbb advanced/2.25.osp</file>
-        <file alias="bhunp 3bbb advanced/2.30">ressources/body/bhunp 3bbb advanced/2.30.osp</file>
-        <file alias="bhunp 3bbb advanced/2.31">ressources/body/bhunp 3bbb advanced/2.31.osp</file>
-        <file alias="bhunp 3bbb advanced/2.35 to 2.42">ressources/body/bhunp 3bbb advanced/2.35_to_2.42.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.20">ressources/body/bhunp 3bbb advanced ver 2/2.20.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.25">ressources/body/bhunp 3bbb advanced ver 2/2.25.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.30">ressources/body/bhunp 3bbb advanced ver 2/2.30.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.31">ressources/body/bhunp 3bbb advanced ver 2/2.31.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2/2.35 to 2.42">ressources/body/bhunp 3bbb advanced ver 2/2.35_to_2.42.osp</file>
-        <file alias="bhunp bbp/2.20">ressources/body/bhunp bbp/2.20.osp</file>
-        <file alias="bhunp bbp/2.25">ressources/body/bhunp bbp/2.25.osp</file>
-        <file alias="bhunp bbp/2.30">ressources/body/bhunp bbp/2.30.osp</file>
-        <file alias="bhunp bbp/2.31">ressources/body/bhunp bbp/2.31.osp</file>
-        <file alias="bhunp bbp/2.35 to 2.42">ressources/body/bhunp bbp/2.35_to_2.42.osp</file>
-        <file alias="bhunp bbp advanced/2.20">ressources/body/bhunp bbp advanced/2.20.osp</file>
-        <file alias="bhunp bbp advanced/2.25">ressources/body/bhunp bbp advanced/2.25.osp</file>
-        <file alias="bhunp bbp advanced/2.30">ressources/body/bhunp bbp advanced/2.30.osp</file>
-        <file alias="bhunp bbp advanced/2.31">ressources/body/bhunp bbp advanced/2.31.osp</file>
-        <file alias="bhunp bbp advanced/2.35 to 2.42">ressources/body/bhunp bbp advanced/2.35_to_2.42.osp</file>
-        <file alias="bhunp tbbp/2.20">ressources/body/bhunp tbbp/2.20.osp</file>
-        <file alias="bhunp tbbp/2.25">ressources/body/bhunp tbbp/2.25.osp</file>
-        <file alias="bhunp tbbp/2.30">ressources/body/bhunp tbbp/2.30.osp</file>
-        <file alias="bhunp tbbp/2.31">ressources/body/bhunp tbbp/2.31.osp</file>
-        <file alias="bhunp tbbp/2.35 to 2.42">ressources/body/bhunp tbbp/2.35_to_2.42.osp</file>
-        <file alias="bhunp tbbp advanced/2.20">ressources/body/bhunp tbbp advanced/2.20.osp</file>
-        <file alias="bhunp tbbp advanced/2.25">ressources/body/bhunp tbbp advanced/2.25.osp</file>
-        <file alias="bhunp tbbp advanced/2.30">ressources/body/bhunp tbbp advanced/2.30.osp</file>
-        <file alias="bhunp tbbp advanced/2.31">ressources/body/bhunp tbbp advanced/2.31.osp</file>
-        <file alias="bhunp tbbp advanced/2.35 to 2.42">ressources/body/bhunp tbbp advanced/2.35_to_2.42.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2 nevernude/2.25">ressources/body/bhunp 3bbb advanced ver 2 nevernude/2.25.osp</file>
-        <file alias="bhunp 3bbb advanced ver 2 nevernude/2.30">ressources/body/bhunp 3bbb advanced ver 2 nevernude/2.30.osp</file>
-        <file alias="cbbe smp 3bbb/1.2.0">ressources/body/cbbe smp 3bbb/1.2.0.osp</file>
-        <file alias="coco body cbbe/V4">ressources/body/coco body cbbe/V4.osp</file>
-        <file alias="coco body cbbe/V6">ressources/body/coco body cbbe/V6.osp</file>
-        <file alias="coco body uunp/V3">ressources/body/coco body uunp/V3.osp</file>
-        <file alias="coco body uunp/V4">ressources/body/coco body uunp/V4.osp</file>
-        <file alias="coco body uunp/V6">ressources/body/coco body uunp/V6.osp</file>
-        <file alias="mimir ebonic body/1.2">ressources/body/mimir ebonic body/1.2.osp</file>
-        <file alias="mimir ebonic body/1.2 foot fix">ressources/body/mimir ebonic body/1.2 foot fix.osp</file>
+        <file alias="cbbe 3bbb 3ba/1.50">resources/body/cbbe 3bbb 3ba/1.50.osp</file>
+        <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/body/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/body/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.06">resources/body/cbbe 3bbb 3ba/2.06.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.11 and 2.12">resources/body/cbbe 3bbb 3ba/2.11_and_2.12.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.13 to 2.16">resources/body/cbbe 3bbb 3ba/2.13_to_2.16.osp</file>
+        <file alias="bhunp 3bbb/2.20">resources/body/bhunp 3bbb/2.20.osp</file>
+        <file alias="bhunp 3bbb/2.25">resources/body/bhunp 3bbb/2.25.osp</file>
+        <file alias="bhunp 3bbb/2.30">resources/body/bhunp 3bbb/2.30.osp</file>
+        <file alias="bhunp 3bbb/2.31">resources/body/bhunp 3bbb/2.31.osp</file>
+        <file alias="bhunp 3bbb/2.35 to 2.42">resources/body/bhunp 3bbb/2.35_to_2.42.osp</file>
+        <file alias="bhunp 3bbb advanced/2.20">resources/body/bhunp 3bbb advanced/2.20.osp</file>
+        <file alias="bhunp 3bbb advanced/2.25">resources/body/bhunp 3bbb advanced/2.25.osp</file>
+        <file alias="bhunp 3bbb advanced/2.30">resources/body/bhunp 3bbb advanced/2.30.osp</file>
+        <file alias="bhunp 3bbb advanced/2.31">resources/body/bhunp 3bbb advanced/2.31.osp</file>
+        <file alias="bhunp 3bbb advanced/2.35 to 2.42">resources/body/bhunp 3bbb advanced/2.35_to_2.42.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2/2.20">resources/body/bhunp 3bbb advanced ver 2/2.20.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2/2.25">resources/body/bhunp 3bbb advanced ver 2/2.25.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2/2.30">resources/body/bhunp 3bbb advanced ver 2/2.30.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2/2.31">resources/body/bhunp 3bbb advanced ver 2/2.31.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2/2.35 to 2.42">resources/body/bhunp 3bbb advanced ver 2/2.35_to_2.42.osp</file>
+        <file alias="bhunp bbp/2.20">resources/body/bhunp bbp/2.20.osp</file>
+        <file alias="bhunp bbp/2.25">resources/body/bhunp bbp/2.25.osp</file>
+        <file alias="bhunp bbp/2.30">resources/body/bhunp bbp/2.30.osp</file>
+        <file alias="bhunp bbp/2.31">resources/body/bhunp bbp/2.31.osp</file>
+        <file alias="bhunp bbp/2.35 to 2.42">resources/body/bhunp bbp/2.35_to_2.42.osp</file>
+        <file alias="bhunp bbp advanced/2.20">resources/body/bhunp bbp advanced/2.20.osp</file>
+        <file alias="bhunp bbp advanced/2.25">resources/body/bhunp bbp advanced/2.25.osp</file>
+        <file alias="bhunp bbp advanced/2.30">resources/body/bhunp bbp advanced/2.30.osp</file>
+        <file alias="bhunp bbp advanced/2.31">resources/body/bhunp bbp advanced/2.31.osp</file>
+        <file alias="bhunp bbp advanced/2.35 to 2.42">resources/body/bhunp bbp advanced/2.35_to_2.42.osp</file>
+        <file alias="bhunp tbbp/2.20">resources/body/bhunp tbbp/2.20.osp</file>
+        <file alias="bhunp tbbp/2.25">resources/body/bhunp tbbp/2.25.osp</file>
+        <file alias="bhunp tbbp/2.30">resources/body/bhunp tbbp/2.30.osp</file>
+        <file alias="bhunp tbbp/2.31">resources/body/bhunp tbbp/2.31.osp</file>
+        <file alias="bhunp tbbp/2.35 to 2.42">resources/body/bhunp tbbp/2.35_to_2.42.osp</file>
+        <file alias="bhunp tbbp advanced/2.20">resources/body/bhunp tbbp advanced/2.20.osp</file>
+        <file alias="bhunp tbbp advanced/2.25">resources/body/bhunp tbbp advanced/2.25.osp</file>
+        <file alias="bhunp tbbp advanced/2.30">resources/body/bhunp tbbp advanced/2.30.osp</file>
+        <file alias="bhunp tbbp advanced/2.31">resources/body/bhunp tbbp advanced/2.31.osp</file>
+        <file alias="bhunp tbbp advanced/2.35 to 2.42">resources/body/bhunp tbbp advanced/2.35_to_2.42.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2 nevernude/2.25">resources/body/bhunp 3bbb advanced ver 2 nevernude/2.25.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2 nevernude/2.30">resources/body/bhunp 3bbb advanced ver 2 nevernude/2.30.osp</file>
+        <file alias="cbbe smp 3bbb/1.2.0">resources/body/cbbe smp 3bbb/1.2.0.osp</file>
+        <file alias="coco body cbbe/V4">resources/body/coco body cbbe/V4.osp</file>
+        <file alias="coco body cbbe/V6">resources/body/coco body cbbe/V6.osp</file>
+        <file alias="coco body uunp/V3">resources/body/coco body uunp/V3.osp</file>
+        <file alias="coco body uunp/V4">resources/body/coco body uunp/V4.osp</file>
+        <file alias="coco body uunp/V6">resources/body/coco body uunp/V6.osp</file>
+        <file alias="mimir ebonic body/1.2">resources/body/mimir ebonic body/1.2.osp</file>
+        <file alias="mimir ebonic body/1.2 foot fix">resources/body/mimir ebonic body/1.2 foot fix.osp</file>
     </qresource>
     <qresource prefix="/presets/feet">
-        <file alias="cbbe/1.6.1">ressources/feet/cbbe/1.6.1.osp</file>
-        <file alias="bhunp/2.20">ressources/feet/bhunp/2.20.osp</file>
-        <file alias="bhunp/2.25">ressources/feet/bhunp/2.25.osp</file>
-        <file alias="bhunp/2.30">ressources/feet/bhunp/2.30.osp</file>
-        <file alias="bhunp/2.31">ressources/feet/bhunp/2.31.osp</file>
-        <file alias="bhunp/2.35 to 2.42">ressources/feet/bhunp/2.35_to_2.42.osp</file>
-        <file alias="cbbe 3bbb 3ba/1.50">ressources/feet/cbbe 3bbb 3ba/1.50.osp</file>
-        <file alias="cbbe 3bbb 3ba/1.51 to 1.55">ressources/feet/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.02 to 2.04">ressources/feet/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.06">ressources/feet/cbbe 3bbb 3ba/2.06.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.11 and 2.12">ressources/feet/cbbe 3bbb 3ba/2.11_and_2.12.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.13 to 2.16">ressources/feet/cbbe 3bbb 3ba/2.13_to_2.16.osp</file>
-        <file alias="coco body cbbe/V4">ressources/feet/coco body cbbe/V4.osp</file>
-        <file alias="coco body cbbe/V6">ressources/feet/coco body cbbe/V6.osp</file>
-        <file alias="coco body uunp/V3">ressources/feet/coco body uunp/V3.osp</file>
-        <file alias="coco body uunp/V4">ressources/feet/coco body uunp/V4.osp</file>
-        <file alias="coco body uunp/V6">ressources/feet/coco body uunp/V6.osp</file>
-        <file alias="mimir ebonic body/1.2">ressources/feet/mimir ebonic body/1.2.osp</file>
-        <file alias="mimir ebonic body/1.2 foot fix">ressources/feet/mimir ebonic body/1.2 foot fix.osp</file>
-        <file alias="msf/normal/cbbe/1.0">ressources/feet/msf normal cbbe/1.0.osp</file>
-        <file alias="msf/normal/bhunp/1.1">ressources/feet/msf normal bhunp/1.1.osp</file>
-        <file alias="msf/high heels/cbbe/1.0">ressources/feet/msf high heels cbbe/1.0.osp</file>
-        <file alias="msf/high heels/bhunp/1.1">ressources/feet/msf high heels bhunp/1.1.osp</file>
-        <file alias="hg feet/bhunp/1">ressources/feet/hg feet bhunp/1.osp</file>
-        <file alias="khrysamere hg feet/1.0">ressources/feet/khrysamere hg feet/1.0.osp</file>
-        <file alias="khrysamere hg feet/1.3.3">ressources/feet/khrysamere hg feet/1.3.3.osp</file>
-        <file alias="khrysamere hg feet/1.4">ressources/feet/khrysamere hg feet/1.4.osp</file>
-        <file alias="khrysamere hg feet/1.5">ressources/feet/khrysamere hg feet/1.5.osp</file>
-        <file alias="khrysamere hg feet/1.6">ressources/feet/khrysamere hg feet/1.6.osp</file>
+        <file alias="cbbe/1.6.1">resources/feet/cbbe/1.6.1.osp</file>
+        <file alias="bhunp/2.20">resources/feet/bhunp/2.20.osp</file>
+        <file alias="bhunp/2.25">resources/feet/bhunp/2.25.osp</file>
+        <file alias="bhunp/2.30">resources/feet/bhunp/2.30.osp</file>
+        <file alias="bhunp/2.31">resources/feet/bhunp/2.31.osp</file>
+        <file alias="bhunp/2.35 to 2.42">resources/feet/bhunp/2.35_to_2.42.osp</file>
+        <file alias="cbbe 3bbb 3ba/1.50">resources/feet/cbbe 3bbb 3ba/1.50.osp</file>
+        <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/feet/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/feet/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.06">resources/feet/cbbe 3bbb 3ba/2.06.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.11 and 2.12">resources/feet/cbbe 3bbb 3ba/2.11_and_2.12.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.13 to 2.16">resources/feet/cbbe 3bbb 3ba/2.13_to_2.16.osp</file>
+        <file alias="coco body cbbe/V4">resources/feet/coco body cbbe/V4.osp</file>
+        <file alias="coco body cbbe/V6">resources/feet/coco body cbbe/V6.osp</file>
+        <file alias="coco body uunp/V3">resources/feet/coco body uunp/V3.osp</file>
+        <file alias="coco body uunp/V4">resources/feet/coco body uunp/V4.osp</file>
+        <file alias="coco body uunp/V6">resources/feet/coco body uunp/V6.osp</file>
+        <file alias="mimir ebonic body/1.2">resources/feet/mimir ebonic body/1.2.osp</file>
+        <file alias="mimir ebonic body/1.2 foot fix">resources/feet/mimir ebonic body/1.2 foot fix.osp</file>
+        <file alias="msf/normal/cbbe/1.0">resources/feet/msf normal cbbe/1.0.osp</file>
+        <file alias="msf/normal/bhunp/1.1">resources/feet/msf normal bhunp/1.1.osp</file>
+        <file alias="msf/high heels/cbbe/1.0">resources/feet/msf high heels cbbe/1.0.osp</file>
+        <file alias="msf/high heels/bhunp/1.1">resources/feet/msf high heels bhunp/1.1.osp</file>
+        <file alias="hg feet/bhunp/1">resources/feet/hg feet bhunp/1.osp</file>
+        <file alias="khrysamere hg feet/1.0">resources/feet/khrysamere hg feet/1.0.osp</file>
+        <file alias="khrysamere hg feet/1.3.3">resources/feet/khrysamere hg feet/1.3.3.osp</file>
+        <file alias="khrysamere hg feet/1.4">resources/feet/khrysamere hg feet/1.4.osp</file>
+        <file alias="khrysamere hg feet/1.5">resources/feet/khrysamere hg feet/1.5.osp</file>
+        <file alias="khrysamere hg feet/1.6">resources/feet/khrysamere hg feet/1.6.osp</file>
     </qresource>
     <qresource prefix="/presets/hands">
-        <file alias="cbbe/1.6.1">ressources/hands/cbbe/1.6.1.osp</file>
-        <file alias="bhunp/2.20">ressources/hands/bhunp/2.20.osp</file>
-        <file alias="bhunp/2.25">ressources/hands/bhunp/2.25.osp</file>
-        <file alias="bhunp/2.30">ressources/hands/bhunp/2.30.osp</file>
-        <file alias="bhunp/2.31">ressources/hands/bhunp/2.31.osp</file>
-        <file alias="bhunp/2.35 to 2.42">ressources/hands/bhunp/2.35_to_2.42.osp</file>
-        <file alias="cbbe 3bbb 3ba/1.50">ressources/hands/cbbe 3bbb 3ba/1.50.osp</file>
-        <file alias="cbbe 3bbb 3ba/1.51 to 1.55">ressources/hands/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.02 to 2.04">ressources/hands/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.06">ressources/hands/cbbe 3bbb 3ba/2.06.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.11 and 2.12">ressources/hands/cbbe 3bbb 3ba/2.11_and_2.12.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.13 to 2.16">ressources/hands/cbbe 3bbb 3ba/2.13_to_2.16.osp</file>
-        <file alias="coco body cbbe/V4">ressources/hands/coco body cbbe/V4.osp</file>
-        <file alias="coco body cbbe/V6">ressources/hands/coco body cbbe/V6.osp</file>
-        <file alias="coco body uunp/V3">ressources/hands/coco body uunp/V3.osp</file>
-        <file alias="coco body uunp/V4">ressources/hands/coco body uunp/V4.osp</file>
-        <file alias="coco body uunp/V6">ressources/hands/coco body uunp/V6.osp</file>
-        <file alias="mimir ebonic body/1.2">ressources/hands/mimir ebonic body/1.2.osp</file>
-        <file alias="mimir ebonic body/1.2 foot fix">ressources/hands/mimir ebonic body/1.2 foot fix.osp</file>
+        <file alias="cbbe/1.6.1">resources/hands/cbbe/1.6.1.osp</file>
+        <file alias="bhunp/2.20">resources/hands/bhunp/2.20.osp</file>
+        <file alias="bhunp/2.25">resources/hands/bhunp/2.25.osp</file>
+        <file alias="bhunp/2.30">resources/hands/bhunp/2.30.osp</file>
+        <file alias="bhunp/2.31">resources/hands/bhunp/2.31.osp</file>
+        <file alias="bhunp/2.35 to 2.42">resources/hands/bhunp/2.35_to_2.42.osp</file>
+        <file alias="cbbe 3bbb 3ba/1.50">resources/hands/cbbe 3bbb 3ba/1.50.osp</file>
+        <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/hands/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/hands/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.06">resources/hands/cbbe 3bbb 3ba/2.06.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.11 and 2.12">resources/hands/cbbe 3bbb 3ba/2.11_and_2.12.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.13 to 2.16">resources/hands/cbbe 3bbb 3ba/2.13_to_2.16.osp</file>
+        <file alias="coco body cbbe/V4">resources/hands/coco body cbbe/V4.osp</file>
+        <file alias="coco body cbbe/V6">resources/hands/coco body cbbe/V6.osp</file>
+        <file alias="coco body uunp/V3">resources/hands/coco body uunp/V3.osp</file>
+        <file alias="coco body uunp/V4">resources/hands/coco body uunp/V4.osp</file>
+        <file alias="coco body uunp/V6">resources/hands/coco body uunp/V6.osp</file>
+        <file alias="mimir ebonic body/1.2">resources/hands/mimir ebonic body/1.2.osp</file>
+        <file alias="mimir ebonic body/1.2 foot fix">resources/hands/mimir ebonic body/1.2 foot fix.osp</file>
     </qresource>
     <qresource prefix="/presets/beast_hands">
-        <file alias="cbbe/1.6.1">ressources/hands/cbbe/beast_1.6.1.osp</file>
+        <file alias="cbbe/1.6.1">resources/hands/cbbe/beast_1.6.1.osp</file>
     </qresource>
 </RCC>
