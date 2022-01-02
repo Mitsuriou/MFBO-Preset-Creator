@@ -1655,6 +1655,7 @@ QString DataLists::GetBodySliderValue(const BodyNameVersion& aBodyNameVersion)
         case 1:
           return QString("[COCO 3BBB V6]Body_A");
       }
+      return QString();
     case BodyVariant::COCO_BODY_UUNP:
       switch (lVersionIndex)
       {
@@ -1665,6 +1666,7 @@ QString DataLists::GetBodySliderValue(const BodyNameVersion& aBodyNameVersion)
         case 2:
           return QString("[COCO 3BBB V6]Body_B");
       }
+      return QString();
     case BodyVariant::ASDASDF_3BBB:
       return QString("ASDASDF-BHUNP 3BBB");
     case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
@@ -1717,6 +1719,7 @@ QString DataLists::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
         case 1:
           return QString("[COCO 3BBB V6]Feet_A");
       }
+      return QString();
     case FeetVariant::COCO_BODY_UUNP:
       switch (lVersionIndex)
       {
@@ -1727,6 +1730,7 @@ QString DataLists::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
         case 2:
           return QString("[COCO 3BBB V6]Feet_B");
       }
+      return QString();
     case FeetVariant::MIMIR_EBONIC_BODY:
       return QString("CBBE 3BBB Feet");
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
@@ -1753,6 +1757,7 @@ QString DataLists::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
         case 4:
           return QString("[Khrysamere] K Feet");
       }
+      return QString();
     case FeetVariant::ASDASDF:
       return QString("ASDASDF-BHUNP Feet");
     case FeetVariant::_INVALID_VALUE:
@@ -1792,6 +1797,7 @@ QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, 
         case 1:
           return QString("[COCO 3BBB V6]Hands_A");
       }
+      return QString();
     case BodyName::COCO_BODY_UUNP:
       switch (lVersionIndex)
       {
@@ -1802,6 +1808,7 @@ QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, 
         case 2:
           return QString("[COCO 3BBB V6]Hands_B");
       }
+      return QString();
     case BodyName::BHUNP_LITE_ASDASDF:
       return QString("ASDASDF-BHUNP Hands");
     case BodyName::_INVALID_VALUE:
