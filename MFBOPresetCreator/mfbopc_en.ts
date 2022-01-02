@@ -870,44 +870,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1816"/>
+        <location filename="DataLists.cpp" line="1823"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1817"/>
-        <location filename="DataLists.cpp" line="1823"/>
+        <location filename="DataLists.cpp" line="1824"/>
+        <location filename="DataLists.cpp" line="1830"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1818"/>
-        <location filename="DataLists.cpp" line="1824"/>
+        <location filename="DataLists.cpp" line="1825"/>
+        <location filename="DataLists.cpp" line="1831"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1852"/>
+        <location filename="DataLists.cpp" line="1859"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1853"/>
+        <location filename="DataLists.cpp" line="1860"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1854"/>
+        <location filename="DataLists.cpp" line="1861"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1855"/>
+        <location filename="DataLists.cpp" line="1862"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1856"/>
+        <location filename="DataLists.cpp" line="1863"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
