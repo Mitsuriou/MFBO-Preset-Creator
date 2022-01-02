@@ -154,6 +154,8 @@ void MFBOPresetCreator::initializeGUI()
   }
 
   this->showWindow();
+
+  QApplication::processEvents();
 }
 
 void MFBOPresetCreator::setupMenuBar()
@@ -327,29 +329,27 @@ void MFBOPresetCreator::showWindow()
   this->adjustSize();
 
   // Set the size of the window
-  auto lDesktopScreen{QGuiApplication::primaryScreen()};
-  auto lScreenGeom{lDesktopScreen->availableGeometry()};
+  const auto lAvailableScreenGeometry{QGuiApplication::primaryScreen()->availableGeometry()};
+
+  // Calculate the size of the borders and the title bar
+  const auto lWidthOffset{this->frameGeometry().width() - this->geometry().width()};
+  const auto lLeftWidthOffset{this->geometry().x() - this->frameGeometry().x()};
+
+  const auto lHeightOffset{this->frameGeometry().height() - this->geometry().height()};
+  const auto lTopHeightOffset{this->geometry().y() - this->frameGeometry().y()};
 
   // If the window size is correct for the user's screen
-  if (this->mSettings.display.mainWindowWidth < lScreenGeom.width()
-      && mSettings.display.mainWindowHeight < lScreenGeom.height())
+  if (this->mSettings.display.mainWindowWidth <= lAvailableScreenGeometry.width()
+      && mSettings.display.mainWindowHeight <= lAvailableScreenGeometry.height())
   {
-    auto lWidth{this->mSettings.display.mainWindowWidth};
-    auto lHeight{this->mSettings.display.mainWindowHeight};
-
-    // The window should not be too small
-    if (lWidth < 900)
-    {
-      lWidth = 900;
-    }
-
-    if (lHeight < 600)
-    {
-      lHeight = 600;
-    }
-
-    // Resize the window
-    this->resize(lWidth - 2, lHeight - 62);
+    // Resize the window (and prevent it from being too small)
+    this->resize(std::max(this->mSettings.display.mainWindowWidth, 1000) - lWidthOffset,
+                 std::max(this->mSettings.display.mainWindowHeight, 620) - lHeightOffset);
+  }
+  else
+  {
+    // Resize the window to default sizes since it is too big for the screen
+    this->resize(1000 - lWidthOffset, 620 - lHeightOffset);
   }
 
   // Select the main window opening mode
@@ -358,15 +358,15 @@ void MFBOPresetCreator::showWindow()
     this->showMinimized();
 
     // Make the taskbar icon blink (Windows only)
-    QApplication::alert(this, 4000);
+    QApplication::alert(this, 0);
   }
   else if (this->mSettings.display.mainWindowOpeningMode == WindowOpeningMode::WINDOWED)
   {
     this->show();
   }
 
-  auto lPosX{(lScreenGeom.width() - this->frameGeometry().width()) / 2 + 1};
-  auto lPosY{(lScreenGeom.height() - this->frameGeometry().height()) / 2 + 31};
+  auto lPosX{(lAvailableScreenGeometry.width() - this->frameGeometry().width()) / 2 + lLeftWidthOffset};
+  auto lPosY{(lAvailableScreenGeometry.height() - this->frameGeometry().height()) / 2 + lTopHeightOffset};
   this->setGeometry(QRect(lPosX, lPosY, this->geometry().width(), this->geometry().height()));
 
   if (this->mSettings.display.mainWindowOpeningMode == WindowOpeningMode::MAXIMIZED)

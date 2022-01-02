@@ -853,7 +853,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
         // Iterate the meshes names
         for (const auto& lMeshPart : lPreset.second)
         {
-          // Simulate the drag&drop of the ressources
+          // Simulate the drag&drop of the resources
           auto lRessourcePath{lPreset.first + "/" + lMeshPart};
           auto lRessourceType{Utils::GetMeshTypeFromFileName(lRessourcePath)};
           BCDropWidget* lTarget{nullptr};

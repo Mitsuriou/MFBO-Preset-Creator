@@ -356,7 +356,7 @@ void TexturesAssistant::displayTexturesFilesList()
   const auto& lIconFolder{Utils::GetIconRessourceFolder(this->mSettings.display.applicationTheme)};
   auto lRowIndex{0};
 
-  // Head ressources blocks
+  // Head resources blocks
   auto lHeadGroup{ComponentFactory::CreateGroupBox(this, tr("Head textures"), "woman-head", lIconFolder, this->mSettings.display.font.size)};
 
   auto lHeadGroupContainer{new QGridLayout(this)};
@@ -365,7 +365,7 @@ void TexturesAssistant::displayTexturesFilesList()
   this->createRessourceBlock(lGroupedPaths.headTextures, lHeadGroupContainer);
   lDataContainer->addWidget(lHeadGroup, lRowIndex++, 0);
 
-  // Mouth ressources blocks
+  // Mouth resources blocks
   auto lMouthGroup{ComponentFactory::CreateGroupBox(this, tr("Mouth textures"), "mouth", lIconFolder, this->mSettings.display.font.size)};
 
   auto lMouthGroupContainer{new QGridLayout(this)};
@@ -374,7 +374,7 @@ void TexturesAssistant::displayTexturesFilesList()
   this->createRessourceBlock(lGroupedPaths.mouthTextures, lMouthGroupContainer);
   lDataContainer->addWidget(lMouthGroup, lRowIndex++, 0);
 
-  // Body ressources blocks
+  // Body resources blocks
   auto lBodyGroup{ComponentFactory::CreateGroupBox(this, tr("Body textures"), "body", lIconFolder, this->mSettings.display.font.size)};
 
   auto lBodyGroupContainer{new QGridLayout(this)};
@@ -383,7 +383,7 @@ void TexturesAssistant::displayTexturesFilesList()
   this->createRessourceBlock(lGroupedPaths.bodyTextures, lBodyGroupContainer);
   lDataContainer->addWidget(lBodyGroup, lRowIndex++, 0);
 
-  // Extra body ressources blocks
+  // Extra body resources blocks
   auto lBodyExtraGroup{ComponentFactory::CreateGroupBox(this, tr("Extra body textures"), "more", lIconFolder, this->mSettings.display.font.size)};
 
   auto lBodyExtraGroupContainer{new QGridLayout(this)};
@@ -392,7 +392,7 @@ void TexturesAssistant::displayTexturesFilesList()
   this->createRessourceBlock(lGroupedPaths.extraBodyTextures, lBodyExtraGroupContainer);
   lDataContainer->addWidget(lBodyExtraGroup, lRowIndex++, 0);
 
-  // Hands ressources blocks
+  // Hands resources blocks
   auto lHandsGroup{ComponentFactory::CreateGroupBox(this, tr("Hands textures"), "hand", lIconFolder, this->mSettings.display.font.size)};
 
   auto lHandsGroupContainer{new QGridLayout(this)};

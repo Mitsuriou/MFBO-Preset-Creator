@@ -1527,7 +1527,7 @@ QStringList DataLists::GetDialogOpeningModes()
 
 QStringList DataLists::GetAppThemes()
 {
-  return QStringList{QString("Windows Vista"),
+  return QStringList{QString("Default OS theme"),
                      QString("Mitsuriou's Black Theme"),
                      QString("Mitsuriou's Dark Theme"),
                      QString("Mitsuriou's Light Theme"),
