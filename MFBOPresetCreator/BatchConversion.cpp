@@ -800,7 +800,9 @@ void BatchConversion::populateSkeletonChoosers()
 
   // Reselect the previously selected skeleton, if it still exists
   if (lPreviousIndexHuman != -1)
-    lSkeletonChooserHuman->setCurrentIndex(lAvailableSkeletons.indexOf(lPreviousHumanSkeleton));
+    lSkeletonChooserHuman->setCurrentIndex(std::max(lAvailableSkeletons.indexOf(lPreviousHumanSkeleton), 0));
+  else if (lSkeletonChooserHuman->count() > 0)
+    lSkeletonChooserHuman->setCurrentIndex(0);
 
   /*=======*/
   /* Beast */
@@ -818,7 +820,9 @@ void BatchConversion::populateSkeletonChoosers()
 
   // Reselect the previously selected skeleton, if it still exists
   if (lPreviousIndexBeast != -1)
-    lSkeletonChooserBeast->setCurrentIndex(lAvailableSkeletons.indexOf(lPreviousBeastSkeleton));
+    lSkeletonChooserBeast->setCurrentIndex(std::max(lAvailableSkeletons.indexOf(lPreviousBeastSkeleton), 0));
+  else if (lSkeletonChooserBeast->count() > 0)
+    lSkeletonChooserBeast->setCurrentIndex(0);
 }
 
 void BatchConversion::openSkeletonsAssetsDirectory()

@@ -660,7 +660,9 @@ void TexturesAssistant::populateTexturesSetChooser()
 
   // Reselect the previously selected textures set, if it still exists
   if (lPreviousIndex != -1)
-    lTexturesSetChooser->setCurrentIndex(lAvailableTexturesSets.indexOf(lPreviousTexturesSet));
+    lTexturesSetChooser->setCurrentIndex(std::max(lAvailableTexturesSets.indexOf(lPreviousTexturesSet), 0));
+  else if (lTexturesSetChooser->count() > 0)
+    lTexturesSetChooser->setCurrentIndex(0);
 }
 
 void TexturesAssistant::openTexturesSetsAssetsDirectory()

@@ -808,7 +808,9 @@ void PresetCreator::populateSkeletonChooser()
 
   // Reselect the previously selected skeleton, if it still exists
   if (lPreviousIndex != -1)
-    lSkeletonChooser->setCurrentIndex(lAvailableSkeletons.indexOf(lPreviousSkeleton));
+    lSkeletonChooser->setCurrentIndex(std::max(lAvailableSkeletons.indexOf(lPreviousSkeleton), 0));
+  else if (lSkeletonChooser->count() > 0)
+    lSkeletonChooser->setCurrentIndex(0);
 }
 
 void PresetCreator::openSkeletonsAssetsDirectory()

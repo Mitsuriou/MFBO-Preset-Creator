@@ -420,7 +420,7 @@ Note: ModOrganizer2使用者請使用你的Mod路徑為輸入路徑。</translat
         <translation>開啟批次輸出檔案資料夾</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="877"/>
+        <location filename="BatchConversion.cpp" line="881"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
@@ -520,7 +520,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="944"/>
+        <location filename="BatchConversion.cpp" line="948"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
@@ -1547,7 +1547,7 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">錯誤:無法產生預設骨架檔案。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1162"/>
+        <location filename="PresetCreator.cpp" line="1164"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1570,12 +1570,12 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1144"/>
+        <location filename="PresetCreator.cpp" line="1146"/>
         <source>Error: no path given to export the files.</source>
         <translation>錯誤:未指定輸出路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1151"/>
+        <location filename="PresetCreator.cpp" line="1153"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>錯誤:無效的輸出路徑。</translation>
     </message>
@@ -1584,70 +1584,70 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="vanished">錯誤:無法產生資料夾:&quot;%1&quot;。請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1170"/>
+        <location filename="PresetCreator.cpp" line="1172"/>
         <source>Already existing directory</source>
         <translation>已存在資料夾</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1171"/>
+        <location filename="PresetCreator.cpp" line="1173"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <oldsource>The main directory &quot;%1&quot; already exists on your computer. Do you still want to continue the files generation in this directory?</oldsource>
         <translation>資料夾:&quot;%1&quot;已存在。是否確定在此資料夾輸出檔案?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1174"/>
+        <location filename="PresetCreator.cpp" line="1176"/>
         <source>Continue the files generation</source>
         <translation>繼續執行產生檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1175"/>
+        <location filename="PresetCreator.cpp" line="1177"/>
         <source>Cancel the files generation</source>
         <translation>取消產生檔案</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1192"/>
+        <location filename="PresetCreator.cpp" line="1194"/>
         <source>Error: no path has been given for the body meshes.</source>
         <translation>錯誤:未指定身體檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1205"/>
+        <location filename="PresetCreator.cpp" line="1207"/>
         <source>Error: no path has been given for the feet meshes.</source>
         <translation>錯誤:未指定腳部檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1218"/>
+        <location filename="PresetCreator.cpp" line="1220"/>
         <source>Error: no path has been given for the hands meshes.</source>
         <translation>錯誤:未指定手部檔案路徑。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1232"/>
+        <location filename="PresetCreator.cpp" line="1234"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>錯誤:未指定BodySlide檔案名稱。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1246"/>
+        <location filename="PresetCreator.cpp" line="1248"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>錯誤:未指定BodySlide檔案名稱(顯示在BodySlide程式中的名稱)。</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1313"/>
+        <location filename="PresetCreator.cpp" line="1315"/>
         <source>Generation successful</source>
         <translation>檔案輸出成功</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1314"/>
+        <location filename="PresetCreator.cpp" line="1316"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>所有檔案皆成功輸出，可以關閉程式或者輸出其他角色的BodySlide檔案!</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1319"/>
-        <location filename="PresetCreator.cpp" line="1322"/>
+        <location filename="PresetCreator.cpp" line="1321"/>
+        <location filename="PresetCreator.cpp" line="1324"/>
         <source>Open the generated directory</source>
         <oldsource>Open the retargeted directory</oldsource>
         <translation>開啟輸出檔案資料夾</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1322"/>
+        <location filename="PresetCreator.cpp" line="1324"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1657,13 +1657,13 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>若NPC/隨從使用獨立骨架，請勾選此欄</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1369"/>
+        <location filename="PresetCreator.cpp" line="1371"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1439"/>
+        <location filename="PresetCreator.cpp" line="1441"/>
         <source> (feet only)</source>
         <translation> (只有腳部)</translation>
     </message>
