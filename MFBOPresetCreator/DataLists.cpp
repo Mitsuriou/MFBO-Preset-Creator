@@ -22,7 +22,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
     }
     case BodyName::CBBE_3BA_3BBB:
     {
-      return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.16")});
+      return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.17")});
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
@@ -66,7 +66,7 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
       // All the version numbers propose the variant below:
       QStringList lVariantsList{QString("CBBE 3BBB Body Amazing")};
 
-      // Only for "2.13 to 2.16"
+      // Only for "2.13 to 2.17"
       if (aRelativeVersion == 5)
       {
         lVariantsList.append(QString("CBBE 3BBB Amazing NeverNude"));
@@ -285,7 +285,7 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
     case FeetName::BHUNP:
       return QStringList{QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42")};
     case FeetName::CBBE_3BA_3BBB:
-      return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.16")};
+      return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.17")};
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
         return QStringList{QString("V4"), QString("V6")};
@@ -613,13 +613,13 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
     case BodyNameVersion::CBBE_3BA_3BBB_2_06:
     case BodyNameVersion::CBBE_3BA_3BBB_2_11_AND_2_12:
-    case BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_16:
+    case BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_17:
       return BodyVariant::CBBE_3BA_3BBB;
     //
-    case BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_16:
+    case BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_17:
       return BodyVariant::CBBE_3BA_3BBB_NEVERNUDE;
     //
-    case BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_16:
+    case BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_17:
       return BodyVariant::CBBE_3BA_3BBB_UNDERWEAR;
     //
     case BodyNameVersion::BHUNP_3BBB_2_20:
@@ -739,7 +739,7 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
       return BodyVariant::_INVALID_VALUE;
     case BodyName::CBBE_3BA_3BBB:
     {
-      // If not "2.13 to 2.16" but trying to use nevernude or underwear key, this is invalid
+      // If not "2.13 to 2.17" but trying to use nevernude or underwear key, this is invalid
       if (aRelativeVersion != 5 && aRelativeVariant > 0)
       {
         return BodyVariant::_INVALID_VALUE;
@@ -793,7 +793,7 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
     case FeetNameVersion::CBBE_3BA_3BBB_2_06:
     case FeetNameVersion::CBBE_3BA_3BBB_2_11_AND_2_12:
-    case FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_16:
+    case FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_17:
       return FeetVariant::CBBE_3BA_3BBB;
     case FeetNameVersion::COCO_BODY_CBBE_V4:
     case FeetNameVersion::COCO_BODY_CBBE_V6:
@@ -886,11 +886,11 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, c
 
   if (aBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE || aBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR)
   {
-    // If not "2.13 to 2.16" but trying to use nevernude or underwear key, this is invalid
+    // If not "2.13 to 2.17" but trying to use nevernude or underwear key, this is invalid
     if (aRelativeVersion != 5)
       return BodyNameVersion::_INVALID_VALUE;
 
-    // "1.50" is the first BHUNP version, while "2.13 to 2.16" is the first version of the nevernude/underwear variant
+    // "1.50" is the first BHUNP version, while "2.13 to 2.17" is the first version of the nevernude/underwear variant
     lVersionNumberOffset = 5;
   }
   else if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
@@ -909,8 +909,8 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, c
 
   const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(aBodyVariant))};
 
-  // CBBE_3BA_3BBB_NEVERNUDE is only available in version "2.13 to 2.16"
-  // CBBE_3BA_3BBB_UNDERWEAR is only available in version "2.13 to 2.16"
+  // CBBE_3BA_3BBB_NEVERNUDE is only available in version "2.13 to 2.17"
+  // CBBE_3BA_3BBB_UNDERWEAR is only available in version "2.13 to 2.17"
   // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE is only available in version "2.25" and version "2.30"
   if (aBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE
       || aBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR
@@ -987,7 +987,7 @@ int DataLists::GetVersionIndex(const BodyNameVersion& aBodyNameVersion)
 
   if (lBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE || lBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR)
   {
-    // "1.50" is the first BHUNP version, while "2.13 to 2.16" is the first version of the nevernude/underwear variant
+    // "1.50" is the first BHUNP version, while "2.13 to 2.17" is the first version of the nevernude/underwear variant
     lVersionNumberOffset = 5;
   }
   else if (lBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
@@ -1237,9 +1237,9 @@ BodyNameVersion DataLists::GetFirstKey(const BodyVariant& aBodyVariant)
     case BodyVariant::CBBE_3BA_3BBB:
       return BodyNameVersion::CBBE_3BA_3BBB_1_50;
     case BodyVariant::CBBE_3BA_3BBB_NEVERNUDE:
-      return BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_16;
+      return BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_17;
     case BodyVariant::CBBE_3BA_3BBB_UNDERWEAR:
-      return BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_16;
+      return BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_17;
     case BodyVariant::BHUNP_3BBB:
       return BodyNameVersion::BHUNP_3BBB_2_20;
     case BodyVariant::BHUNP_3BBB_ADVANCED:
