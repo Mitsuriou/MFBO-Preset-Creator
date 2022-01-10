@@ -423,7 +423,8 @@ Note: ModOrganizer2使用者請使用你的Mod路徑為輸入路徑。</translat
         <location filename="BatchConversion.cpp" line="881"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>目標身型: %1
+目標腳部: %2</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="464"/>
@@ -433,7 +434,7 @@ Targeted feet: %2</source>
     <message>
         <location filename="BatchConversion.cpp" line="109"/>
         <source>Input location</source>
-        <translation type="unfinished"></translation>
+        <translation>來源Mod檔案</translation>
     </message>
     <message>
         <location filename="BatchConversion.cpp" line="486"/>
@@ -927,18 +928,19 @@ Would you like to generate it (them) now?</source>
     <message>
         <location filename="ComponentFactory.cpp" line="187"/>
         <source>Choose target meshes</source>
-        <translation type="unfinished"></translation>
+        <translation>選擇目標模型</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="179"/>
         <source>Targeted meshes mods:</source>
-        <translation type="unfinished"></translation>
+        <translation>目標模型Mods:</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="190"/>
         <source>Targeted body: -
 Targeted feet: -</source>
-        <translation type="unfinished"></translation>
+        <translation>目標身型: -
+目標腳部: -</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="210"/>
@@ -1139,7 +1141,7 @@ Targeted feet: -</source>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="295"/>
         <source>Donate - buy me a coffee (ko-fi.com)</source>
-        <translation type="unfinished"></translation>
+        <translation>贊助 - 買杯咖啡給我 (ko-fi.com)</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="567"/>
@@ -1660,7 +1662,8 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <location filename="PresetCreator.cpp" line="1371"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>目標身型: %1
+目標腳部: %2</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="1441"/>
@@ -1679,7 +1682,7 @@ Targeted feet: %2</source>
     <message>
         <location filename="ReleaseNotesViewer.cpp" line="62"/>
         <source>View in default browser</source>
-        <translation type="unfinished"></translation>
+        <translation>在預設瀏覽器中</translation>
     </message>
     <message>
         <location filename="ReleaseNotesViewer.cpp" line="72"/>
@@ -1926,7 +1929,8 @@ Please make sure your internet connection is working correctly and try again.</s
         <location filename="RetargetingTool.cpp" line="797"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>目標身型: %1
+目標腳部: %2</translation>
     </message>
     <message>
         <source>All the files have been correctly re-targeted. You can now close this window!</source>
@@ -2120,7 +2124,8 @@ Targeted feet: %2</source>
         <location filename="Settings.cpp" line="851"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>目標身型: %1
+目標腳部: %2</translation>
     </message>
     <message>
         <source>Check for updates at application startup</source>
@@ -2328,48 +2333,48 @@ Would you like to restart the application now (you will lose all unsaved data)?<
     <message>
         <location filename="TargetMeshesPicker.cpp" line="42"/>
         <source>Go back to the target meshes picker window</source>
-        <translation type="unfinished"></translation>
+        <translation>回到&quot;模型選擇(meshes picker)&quot;視窗</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="68"/>
         <source>Target Meshes Picker</source>
-        <translation type="unfinished"></translation>
+        <translation>選擇目標模型</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="85"/>
         <source>Body mod</source>
-        <translation type="unfinished"></translation>
+        <translation>身體Mod</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="95"/>
         <source>Body base mod:</source>
-        <translation type="unfinished"></translation>
+        <translation>身體模型使用之Mod:</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="97"/>
         <location filename="TargetMeshesPicker.cpp" line="128"/>
         <source>Version number:</source>
-        <translation type="unfinished"></translation>
+        <translation>版本:</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="99"/>
         <source>Targeted body mesh:</source>
-        <translation type="unfinished"></translation>
+        <translation>目標身體模型:</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="116"/>
         <source>Feet mod</source>
-        <translation type="unfinished"></translation>
+        <translation>腳部Mod</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="126"/>
         <source>Feet base mod:</source>
-        <translation type="unfinished"></translation>
+        <translation>腳部模型使用之Mod:</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="130"/>
         <source>Targeted feet mesh:</source>
-        <translation type="unfinished"></translation>
+        <translation>目標腳部模型:</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="149"/>
@@ -2445,12 +2450,12 @@ Would you like to restart the application now (you will lose all unsaved data)?<
     <message>
         <location filename="TexturesAssistant.cpp" line="155"/>
         <source>Textures set</source>
-        <translation type="unfinished"></translation>
+        <translation>貼圖檔</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="168"/>
         <source>Textures set:</source>
-        <translation type="unfinished"></translation>
+        <translation>貼圖檔:</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="177"/>
@@ -2461,7 +2466,7 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <location filename="TexturesAssistant.cpp" line="221"/>
         <source>Create the files structure on my computer</source>
         <oldsource>Generate the files on my computer</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>在電腦中產生檔案路徑</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="257"/>
@@ -2486,12 +2491,12 @@ Would you like to restart the application now (you will lose all unsaved data)?<
     <message>
         <location filename="TexturesAssistant.cpp" line="369"/>
         <source>Mouth textures</source>
-        <translation type="unfinished"></translation>
+        <translation>嘴巴貼圖</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="387"/>
         <source>Extra body textures</source>
-        <translation type="unfinished"></translation>
+        <translation>額外身體貼圖</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="396"/>
@@ -2511,7 +2516,7 @@ Would you like to restart the application now (you will lose all unsaved data)?<
     <message>
         <location filename="TexturesAssistant.cpp" line="451"/>
         <source>Error: no textures set chosen.</source>
-        <translation type="unfinished"></translation>
+        <translation>錯誤: 未選擇貼圖檔。</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="473"/>
@@ -2521,7 +2526,7 @@ Would you like to restart the application now (you will lose all unsaved data)?<
     <message>
         <location filename="TexturesAssistant.cpp" line="480"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
-        <translation type="unfinished">錯誤:無效的輸出路徑。</translation>
+        <translation>錯誤:無效的輸出路徑。</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="490"/>
@@ -2531,47 +2536,49 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <oldsource>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>錯誤:無法產生資料夾:&quot;%1&quot;。
+請確認路徑非:OneDrive/DropBox，並確認給予此應用程式足夠權限。
+或建議使用英文路徑名稱。</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="498"/>
         <source>Already existing directory</source>
-        <translation type="unfinished">已存在資料夾</translation>
+        <translation>已存在資料夾</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="499"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
         <oldsource>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</oldsource>
-        <translation type="unfinished">資料夾:&quot;%1&quot;已存在。是否確定在此資料夾輸出檔案?</translation>
+        <translation>資料夾:&quot;%1&quot;已存在。是否確定在此資料夾生成檔案?</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="502"/>
         <source>Continue the files creation</source>
         <oldsource>Continue the files generation</oldsource>
-        <translation type="unfinished">繼續執行產生檔案</translation>
+        <translation>繼續執行產生檔案</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="503"/>
         <source>Cancel the files creation</source>
         <oldsource>Cancel the files generation</oldsource>
-        <translation type="unfinished">取消產生檔案</translation>
+        <translation>取消產生檔案</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="528"/>
         <source>Files creation successful</source>
         <oldsource>Generation successful</oldsource>
-        <translation type="unfinished">檔案輸出成功</translation>
+        <translation>成功生成檔案</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="529"/>
         <source>The texture files have been correctly created.</source>
         <oldsource>The textures files have been correctly created.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>成功生成貼圖檔。</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="532"/>
         <source>Open the created directory</source>
-        <translation type="unfinished"></translation>
+        <translation>開啟生成檔案資料夾</translation>
     </message>
     <message>
         <location filename="TexturesAssistant.cpp" line="532"/>
@@ -2896,7 +2903,7 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
     <message>
         <location filename="Utils.cpp" line="584"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
-        <translation type="unfinished"></translation>
+        <translation>找不到或者無法複製貼圖檔 &quot;%1&quot;。</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="610"/>
@@ -2995,17 +3002,17 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     <message>
         <location filename="WelcomeScreen.cpp" line="102"/>
         <source>Support me: donate - buy me a coffee</source>
-        <translation type="unfinished"></translation>
+        <translation>支持我 - 買杯咖啡給我 (ko-fi.com)</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="104"/>
         <source>Anything I create is for free and is created during my free time. Any given cent is meaningful to me. If you want to support me financially, click the button below:</source>
-        <translation type="unfinished"></translation>
+        <translation>我的創作皆為免費且是於閒暇時間製作。任何捐款對我來說都意義非凡。若你想要贊助我，可以點擊以下連結:</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="110"/>
         <source>Donate - buy me a coffee (ko-fi.com)</source>
-        <translation type="unfinished"></translation>
+        <translation>贊助 - 買杯咖啡給我 (ko-fi.com)</translation>
     </message>
     <message>
         <location filename="WelcomeScreen.cpp" line="123"/>
