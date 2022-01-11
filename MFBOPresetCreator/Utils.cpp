@@ -1161,6 +1161,49 @@ void Utils::ParseSettings(Struct::Settings& aSettings, const QJsonObject& aJSONO
   {
     Utils::ParseGenericDialogSettings(aSettings.presetsRetargeting, aJSONObject["presetsRetargeting"].toObject(), aSettingsFileVersion);
   }
+
+  // Override some settings to avoid compatiblity issues when coming from older versions
+  if (Utils::CompareVersionNumbers(aSettingsFileVersion, "3.6.3.0") == ApplicationVersionRelative::OLDER)
+  {
+    // Preset Creator
+    const auto lPresetCreatorDefaultBodyMesh{static_cast<int>(aSettings.presetCreator.defaultBodyFeet.bodyMesh)};
+    if (lPresetCreatorDefaultBodyMesh == 4)
+      aSettings.presetCreator.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12;
+    else if (lPresetCreatorDefaultBodyMesh == 5)
+      aSettings.presetCreator.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18;
+
+    const auto lPresetCreatorDefaultFeetMesh{static_cast<int>(aSettings.presetCreator.defaultBodyFeet.feetMesh)};
+    if (lPresetCreatorDefaultFeetMesh == 10)
+      aSettings.presetCreator.defaultBodyFeet.feetMesh = FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12;
+    else if (lPresetCreatorDefaultFeetMesh == 11)
+      aSettings.presetCreator.defaultBodyFeet.feetMesh = FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18;
+
+    // Presets Retargeting
+    const auto lPresetsRetargetingDefaultBodyMesh{static_cast<int>(aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh)};
+    if (lPresetsRetargetingDefaultBodyMesh == 4)
+      aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12;
+    else if (lPresetsRetargetingDefaultBodyMesh == 5)
+      aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18;
+
+    const auto lPresetsRetargetingDefaultFeetMesh{static_cast<int>(aSettings.presetsRetargeting.defaultBodyFeet.feetMesh)};
+    if (lPresetsRetargetingDefaultFeetMesh == 10)
+      aSettings.presetsRetargeting.defaultBodyFeet.feetMesh = FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12;
+    else if (lPresetsRetargetingDefaultFeetMesh == 11)
+      aSettings.presetsRetargeting.defaultBodyFeet.feetMesh = FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18;
+
+    // Batch Conversion
+    const auto lBatchConversionDefaultBodyMesh{static_cast<int>(aSettings.batchConversion.defaultBodyFeet.bodyMesh)};
+    if (lBatchConversionDefaultBodyMesh == 4)
+      aSettings.batchConversion.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12;
+    else if (lBatchConversionDefaultBodyMesh == 5)
+      aSettings.batchConversion.defaultBodyFeet.bodyMesh = BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18;
+
+    const auto lBatchConversionDefaultFeetMesh{static_cast<int>(aSettings.batchConversion.defaultBodyFeet.feetMesh)};
+    if (lBatchConversionDefaultFeetMesh == 10)
+      aSettings.batchConversion.defaultBodyFeet.feetMesh = FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12;
+    else if (lBatchConversionDefaultFeetMesh == 11)
+      aSettings.batchConversion.defaultBodyFeet.feetMesh = FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18;
+  }
 }
 
 void Utils::ParseDisplaySettings(Struct::DisplaySettings& aSettings, const QJsonObject& aJSONObject)

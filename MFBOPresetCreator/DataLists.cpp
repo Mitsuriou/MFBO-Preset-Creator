@@ -22,7 +22,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
     }
     case BodyName::CBBE_3BA_3BBB:
     {
-      return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.18")});
+      return QStringList({QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06 - 2.11 - 2.12"), QString("2.13 to 2.18")});
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
@@ -67,7 +67,7 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
       QStringList lVariantsList{QString("CBBE 3BBB Body Amazing")};
 
       // Only for "2.13 to 2.18"
-      if (aRelativeVersion == 5)
+      if (aRelativeVersion == 4)
       {
         lVariantsList.append(QString("CBBE 3BBB Amazing NeverNude"));
         lVariantsList.append(QString("CBBE 3BBB Amazing Underwear"));
@@ -285,7 +285,7 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
     case FeetName::BHUNP:
       return QStringList{QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42")};
     case FeetName::CBBE_3BA_3BBB:
-      return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06"), QString("2.11 and 2.12"), QString("2.13 to 2.18")};
+      return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06 - 2.11 - 2.12"), QString("2.13 to 2.18")};
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
         return QStringList{QString("V4"), QString("V6")};
@@ -611,8 +611,7 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::CBBE_3BA_3BBB_1_50:
     case BodyNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55:
     case BodyNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
-    case BodyNameVersion::CBBE_3BA_3BBB_2_06:
-    case BodyNameVersion::CBBE_3BA_3BBB_2_11_AND_2_12:
+    case BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
     case BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18:
       return BodyVariant::CBBE_3BA_3BBB;
     //
@@ -740,7 +739,7 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
     case BodyName::CBBE_3BA_3BBB:
     {
       // If not "2.13 to 2.18" but trying to use nevernude or underwear key, this is invalid
-      if (aRelativeVersion != 5 && aRelativeVariant > 0)
+      if (aRelativeVersion != 4 && aRelativeVariant > 0)
       {
         return BodyVariant::_INVALID_VALUE;
       }
@@ -791,8 +790,7 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::CBBE_3BA_3BBB_1_50:
     case FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55:
     case FeetNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
-    case FeetNameVersion::CBBE_3BA_3BBB_2_06:
-    case FeetNameVersion::CBBE_3BA_3BBB_2_11_AND_2_12:
+    case FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
     case FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18:
       return FeetVariant::CBBE_3BA_3BBB;
     case FeetNameVersion::COCO_BODY_CBBE_V4:
@@ -887,11 +885,11 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, c
   if (aBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE || aBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR)
   {
     // If not "2.13 to 2.18" but trying to use nevernude or underwear key, this is invalid
-    if (aRelativeVersion != 5)
+    if (aRelativeVersion != 4)
       return BodyNameVersion::_INVALID_VALUE;
 
     // "1.50" is the first BHUNP version, while "2.13 to 2.18" is the first version of the nevernude/underwear variant
-    lVersionNumberOffset = 5;
+    lVersionNumberOffset = 4;
   }
   else if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
   {
@@ -988,7 +986,7 @@ int DataLists::GetVersionIndex(const BodyNameVersion& aBodyNameVersion)
   if (lBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE || lBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR)
   {
     // "1.50" is the first BHUNP version, while "2.13 to 2.18" is the first version of the nevernude/underwear variant
-    lVersionNumberOffset = 5;
+    lVersionNumberOffset = 4;
   }
   else if (lBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
   {
