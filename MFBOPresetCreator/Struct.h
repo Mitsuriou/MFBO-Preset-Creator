@@ -136,7 +136,7 @@ namespace Struct
   struct DisplaySettings
   {
   public:
-    GUITheme applicationTheme{GUITheme::MITSURIOU_DARK_THEME};
+    GUITheme applicationTheme{GUITheme::MITSURIOU_BLACK_THEME};
     DialogOpeningMode assistedConversionDialogOpeningMode{DialogOpeningMode::WINDOWED};
     DialogOpeningMode batchConversionDialogOpeningMode{DialogOpeningMode::WINDOWED};
     DialogOpeningMode batchConversionPickerDialogOpeningMode{DialogOpeningMode::WINDOWED};
