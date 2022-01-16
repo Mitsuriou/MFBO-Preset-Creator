@@ -810,7 +810,7 @@ void MFBOPresetCreator::updateCheckFinished()
 
   if (lReply->error() == QNetworkReply::NoError)
   {
-    this->displayUpdateMessage(QString::fromLocal8Bit(lReply->readAll()));
+    this->displayUpdateMessage(QString::fromUtf8(lReply->readAll()));
   }
   else
   {

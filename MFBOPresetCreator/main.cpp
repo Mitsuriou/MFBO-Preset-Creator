@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
 
     qApp->setAttribute(Qt::AA_EnableHighDpiScaling, true);
     qApp->setAttribute(Qt::AA_DisableWindowContextHelpButton, true);
-    qApp->setApplicationVersion("3.6.3.0");
+    qApp->setApplicationVersion("3.6.1.0");
     const auto& lAppVersion{Utils::GetApplicationVersion()};
 
     Utils::PrintMessageStdOut("Creating the application instance...");
@@ -147,7 +147,7 @@ int main(int argc, char* argv[])
     {
       if (lInstallerLogFile.open(QIODevice::ReadOnly | QIODevice::Text))
       {
-        auto lPathToDelete{QString::fromLocal8Bit(lInstallerLogFile.readAll())};
+        const auto lPathToDelete{QString::fromUtf8(lInstallerLogFile.readAll())};
         lInstallerLogFile.close();
 
         QFile lInstallerFile(lPathToDelete);
