@@ -1,0 +1,10 @@
+﻿    <SliderSet name="%1 - [COCO]UUNPV6_HH100">
+        <DataFolder>[COCO]3BBB_V6_HHfeet</DataFolder>
+        <SourceFile>[COCO]UUNPV6_HH100.nif</SourceFile>
+        <OutputPath>{%%feet_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
+        <Shape target="Feet" DataFolder="[COCO]3BBB_V6_HHfeet">Feet</Shape>
+        <Slider name="[COCO]UUNP_HH_2021" invert="false" small="0" big="0">
+            <Data name="Feet[COCO]UUNP_HH_2021" target="Feet" local="true">[COCO]UUNPV6_HH100.osd\Feet[COCO]UUNP_HH_2021</Data>
+        </Slider>
+    </SliderSet>

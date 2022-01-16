@@ -428,9 +428,15 @@ bool Utils::IsThemeDark(const GUITheme& aTheme)
     case GUITheme::PAPER_DARK:
     case GUITheme::PAPER_BLACK_MONO:
       return true;
-    default:
+    case GUITheme::WINDOWS_VISTA:
+    case GUITheme::MITSURIOU_LIGHT_THEME:
+    case GUITheme::ALEXHUSZAGH_BREEZE_LIGHT:
+    case GUITheme::PAPER_LIGHT:
+    case GUITheme::PAPER_WHITE_MONO:
       return false;
   }
+
+  return false;
 }
 
 QString Utils::GetIconResourceFolder(const GUITheme& aTheme)
@@ -674,14 +680,22 @@ bool Utils::IsCBBEBasedBody(const BodyName& aBodyName)
 {
   switch (aBodyName)
   {
+    case BodyName::_INVALID_VALUE:
+      return false;
+    // CBBE-based bodies
     case BodyName::CBBE_3BA_3BBB:
     case BodyName::CBBE_SMP_3BBB:
     case BodyName::COCO_BODY_CBBE:
     case BodyName::MIMIR_EBONIC_BODY:
       return true;
-    default: // UNP-based bodies
+      // UNP-based bodies
+    case BodyName::BHUNP_UUNP_NEXT_GENERATION:
+    case BodyName::COCO_BODY_UUNP:
+    case BodyName::BHUNP_LITE_ASDASDF:
       return false;
   }
+
+  return false;
 }
 
 bool Utils::IsCBBEBasedBody(const BodyVariant& aBodyVariant)
@@ -701,6 +715,19 @@ bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBodyNameVersion)
 bool Utils::IsBodySupportingBeastHands(const BodyNameVersion& aBodyNameVersion)
 {
   return Utils::IsCBBEBasedBody(aBodyNameVersion);
+}
+
+bool Utils::IsVersionOffsetValid(const BodyVariant& aBodyVariant, const int aRelativeVersion)
+{
+  if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE && aRelativeVersion > 2)
+    return false;
+
+  return (aRelativeVersion >= DataLists::GetVersionOffset(aBodyVariant));
+}
+
+bool Utils::IsVersionOffsetValid(const FeetVariant& aFeetVariant, const int aRelativeVersion)
+{
+  return (aRelativeVersion >= DataLists::GetVersionOffset(aFeetVariant));
 }
 
 bool Utils::IsRunningStandaloneVersion()
@@ -1434,15 +1461,17 @@ QString Utils::GetAdditionalFeetFilter(const BodyNameVersion& aBodyNameVersion, 
 
       return QString("HGFeet UUNP");
     }
+    case FeetName::_INVALID_VALUE:
     case FeetName::CBBE:
     case FeetName::BHUNP:
     case FeetName::CBBE_3BA_3BBB:
     case FeetName::COCO_BODY:
     case FeetName::MIMIR_EBONIC_BODY:
+    case FeetName::ASDASDF:
     case FeetName::KHRYSAMERE_HG_FEET:
-    default:
       return QString();
   }
+  return QString();
 }
 
 std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, QStringList>& aList, const QString& aKey, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion)
@@ -1623,9 +1652,9 @@ QString Utils::GetShortLanguageNameFromEnum(const int aEnumValue)
       return "fr";
     case ApplicationLanguage::CHINESE_TRADITIONAL:
       return "zh_TW";
-    default:
-      return "en";
   }
+
+  return "en";
 }
 
 ApplicationLanguage Utils::GetStructLanguageFromName(const QString& aShortName)

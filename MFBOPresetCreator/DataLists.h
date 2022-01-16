@@ -23,7 +23,7 @@ public:
   // Lists of feet related stuff
   static QStringList GetFeetNamesList(const BodyVariant& aBodyVariant);
   static QStringList GetFeetVersionsList(const FeetName& aFeetName, const bool aIsCBBEBody);
-  static QStringList GetFeetVariantsList(const FeetName& aFeetName);
+  static QStringList GetFeetVariantsList(const FeetName& aFeetName, const int aRelativeVersion, const bool aIsCBBEBody);
   static QString GetQRCResourceName(const BodyVariant& aBodyVariant, const FeetNameVersion& aFeetNameVersion);
 
   // Body lists and enum values type conversions
@@ -56,6 +56,8 @@ public:
   // Other operations with lists and enum values
   static DLLEXP BodyNameVersion GetFirstKey(const BodyVariant& aBodyVariant);
   static DLLEXP FeetNameVersion GetFirstKey(const FeetVariant& aFeetVariant);
+  static DLLEXP int GetVersionOffset(const BodyVariant& aBodyVariant);
+  static DLLEXP int GetVersionOffset(const FeetVariant& aFeetVariant);
 
   static DLLEXP QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType);
 

@@ -34,11 +34,11 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
     }
     case BodyName::COCO_BODY_CBBE:
     {
-      return QStringList({QString("V4"), QString("V6")});
+      return QStringList({QString("V4"), QString("V6"), QString("V6.8")});
     }
     case BodyName::COCO_BODY_UUNP:
     {
-      return QStringList({QString("V3"), QString("V4"), QString("V6")});
+      return QStringList({QString("V3"), QString("V4"), QString("V6"), QString("V6.8")});
     }
     case BodyName::MIMIR_EBONIC_BODY:
     {
@@ -288,9 +288,9 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
       return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06 - 2.11 - 2.12"), QString("2.13 to 2.18")};
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
-        return QStringList{QString("V4"), QString("V6")};
+        return QStringList{QString("V4"), QString("V6"), QString("V6.8")};
 
-      return QStringList{QString("V3"), QString("V4"), QString("V6")};
+      return QStringList{QString("V3"), QString("V4"), QString("V6"), QString("V6.8")};
     case FeetName::MIMIR_EBONIC_BODY:
       return QStringList{QString("1.2"), QString("1.2 foot fix")};
     case FeetName::MORE_SLIDERS_FOR_FEET:
@@ -308,7 +308,7 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
   return QStringList();
 }
 
-QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName)
+QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName, const int aRelativeVersion, const bool aIsCBBEBody)
 {
   switch (aFeetName)
   {
@@ -321,7 +321,19 @@ QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName)
     case FeetName::CBBE_3BA_3BBB:
       return QStringList{QString("CBBE 3BBB Feet")};
     case FeetName::COCO_BODY:
-      return QStringList{QString("COCO Feet")};
+    {
+      // All the version numbers propose the variants below:
+      QStringList lVariantsList{QString("COCO Feet - Normal")};
+
+      // Only for "V6" and "V6.8"
+      if ((aIsCBBEBody && (aRelativeVersion == 1 || aRelativeVersion == 2))    // CBBE
+          || !aIsCBBEBody && (aRelativeVersion == 2 || aRelativeVersion == 3)) // UUNP
+      {
+        lVariantsList.append(QString("COCO Feet - High Heels"));
+      }
+
+      return lVariantsList;
+    }
     case FeetName::MIMIR_EBONIC_BODY:
       return QStringList{QString("CBBE 3BBB Feet")};
     case FeetName::MORE_SLIDERS_FOR_FEET:
@@ -352,9 +364,28 @@ QString DataLists::GetQRCResourceName(const BodyVariant& aBodyVariant, const Fee
     case FeetName::CBBE_3BA_3BBB:
       return QString("cbbe 3bbb 3ba");
     case FeetName::COCO_BODY:
+    {
+      auto lFeetVariant{DataLists::GetVariant(aFeetNameVersion)};
+
+      // CBBE
       if (Utils::IsCBBEBasedBody(aBodyVariant))
-        return QString("coco body cbbe");
-      return QString("coco body uunp");
+      {
+        if (lFeetVariant == FeetVariant::COCO_BODY_HIGH_HEELS_CBBE)
+        {
+          return QString("coco body/high heels/cbbe");
+        }
+
+        return QString("coco body/normal/cbbe");
+      }
+
+      // UUNP
+      if (lFeetVariant == FeetVariant::COCO_BODY_HIGH_HEELS_UUNP)
+      {
+        return QString("coco body/high heels/uunp");
+      }
+
+      return QString("coco body/normal/uunp");
+    }
     case FeetName::MIMIR_EBONIC_BODY:
       return QString("mimir ebonic body");
     case FeetName::MORE_SLIDERS_FOR_FEET:
@@ -440,8 +471,10 @@ FeetName DataLists::GetName(const FeetVariant& aFeetVariant)
       return FeetName::BHUNP;
     case FeetVariant::CBBE_3BA_3BBB:
       return FeetName::CBBE_3BA_3BBB;
-    case FeetVariant::COCO_BODY_CBBE:
-    case FeetVariant::COCO_BODY_UUNP:
+    case FeetVariant::COCO_BODY_NORMAL_CBBE:
+    case FeetVariant::COCO_BODY_NORMAL_UUNP:
+    case FeetVariant::COCO_BODY_HIGH_HEELS_CBBE:
+    case FeetVariant::COCO_BODY_HIGH_HEELS_UUNP:
       return FeetName::COCO_BODY;
     case FeetVariant::MIMIR_EBONIC_BODY:
       return FeetName::MIMIR_EBONIC_BODY;
@@ -679,11 +712,13 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     //
     case BodyNameVersion::COCO_BODY_CBBE_V4:
     case BodyNameVersion::COCO_BODY_CBBE_V6:
+    case BodyNameVersion::COCO_BODY_CBBE_V6_8:
       return BodyVariant::COCO_BODY_CBBE;
     //
     case BodyNameVersion::COCO_BODY_UUNP_V3:
     case BodyNameVersion::COCO_BODY_UUNP_V4:
     case BodyNameVersion::COCO_BODY_UUNP_V6:
+    case BodyNameVersion::COCO_BODY_UUNP_V6_8:
       return BodyVariant::COCO_BODY_UUNP;
     //
     case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
@@ -793,13 +828,21 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
     case FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18:
       return FeetVariant::CBBE_3BA_3BBB;
-    case FeetNameVersion::COCO_BODY_CBBE_V4:
-    case FeetNameVersion::COCO_BODY_CBBE_V6:
-      return FeetVariant::COCO_BODY_CBBE;
-    case FeetNameVersion::COCO_BODY_UUNP_V3:
-    case FeetNameVersion::COCO_BODY_UUNP_V4:
-    case FeetNameVersion::COCO_BODY_UUNP_V6:
-      return FeetVariant::COCO_BODY_UUNP;
+    case FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4:
+    case FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6:
+    case FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6_8:
+      return FeetVariant::COCO_BODY_NORMAL_CBBE;
+    case FeetNameVersion::COCO_BODY_NORMAL_UUNP_V3:
+    case FeetNameVersion::COCO_BODY_NORMAL_UUNP_V4:
+    case FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6:
+    case FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6_8:
+      return FeetVariant::COCO_BODY_NORMAL_UUNP;
+    case FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6:
+    case FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6_8:
+      return FeetVariant::COCO_BODY_HIGH_HEELS_CBBE;
+    case FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6:
+    case FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6_8:
+      return FeetVariant::COCO_BODY_HIGH_HEELS_UUNP;
     case FeetNameVersion::MIMIR_EBONIC_BODY_1_2:
     case FeetNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
       return FeetVariant::MIMIR_EBONIC_BODY;
@@ -843,9 +886,17 @@ FeetVariant DataLists::GetVariant(const FeetName& aFeetName, const int aRelative
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
       {
-        return FeetVariant::COCO_BODY_CBBE;
+        if (aRelativeVariant == 0)
+        {
+          return FeetVariant::COCO_BODY_NORMAL_CBBE;
+        }
+        return FeetVariant::COCO_BODY_HIGH_HEELS_CBBE;
       }
-      return FeetVariant::COCO_BODY_UUNP;
+      if (aRelativeVariant == 0)
+      {
+        return FeetVariant::COCO_BODY_NORMAL_UUNP;
+      }
+      return FeetVariant::COCO_BODY_HIGH_HEELS_UUNP;
     case FeetName::MIMIR_EBONIC_BODY:
       return FeetVariant::MIMIR_EBONIC_BODY;
     case FeetName::ASDASDF:
@@ -879,42 +930,16 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, c
   if (aRelativeVersion == -1)
     return BodyNameVersion::_INVALID_VALUE;
 
-  // Calculate an offset if the first version number of a variant is not the version of the base body itself
-  auto lVersionNumberOffset{0};
-
-  if (aBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE || aBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR)
-  {
-    // If not "2.13 to 2.18" but trying to use nevernude or underwear key, this is invalid
-    if (aRelativeVersion != 4)
-      return BodyNameVersion::_INVALID_VALUE;
-
-    // "1.50" is the first BHUNP version, while "2.13 to 2.18" is the first version of the nevernude/underwear variant
-    lVersionNumberOffset = 4;
-  }
-  else if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
-  {
-    // If not 2.25 and 2.30 but trying to use nevernude key, this is invalid
-    if (aRelativeVersion != 1 && aRelativeVersion != 2)
-      return BodyNameVersion::_INVALID_VALUE;
-
-    // 2.20 is the first BHUNP version, while 2.25 is the first version of the nevernude variant
-    lVersionNumberOffset = 1;
-  }
-
   // Avoid having an undefined version selected
   if (aRelativeVersion >= DataLists::GetBodyVersionsList(DataLists::GetName(aBodyVariant)).size())
     return BodyNameVersion::_INVALID_VALUE;
 
-  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(aBodyVariant))};
+  if (!Utils::IsVersionOffsetValid(aBodyVariant, aRelativeVersion))
+  {
+    return BodyNameVersion::_INVALID_VALUE;
+  }
 
-  // CBBE_3BA_3BBB_NEVERNUDE is only available in version "2.13 to 2.18"
-  // CBBE_3BA_3BBB_UNDERWEAR is only available in version "2.13 to 2.18"
-  // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE is only available in version "2.25" and version "2.30"
-  if (aBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE
-      || aBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR
-      || aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
-    return static_cast<BodyNameVersion>(lOffsetFirstKey + aRelativeVersion - lVersionNumberOffset);
-
+  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(aBodyVariant)) - DataLists::GetVersionOffset(aBodyVariant)};
   return static_cast<BodyNameVersion>(lOffsetFirstKey + aRelativeVersion);
 }
 
@@ -925,7 +950,6 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyName& aBodyName, const i
     return BodyNameVersion::_INVALID_VALUE;
 
   const auto lBodyVariant{DataLists::GetVariant(aBodyName, aRelativeVersion, aRelativeVariant)};
-
   return DataLists::GetBodyNameVersion(lBodyVariant, aRelativeVersion);
 }
 
@@ -939,8 +963,13 @@ FeetNameVersion DataLists::GetFeetNameVersion(const FeetVariant& aFeetVariant, c
   if (aRelativeVersion >= DataLists::GetFeetVersionsList(DataLists::GetName(aFeetVariant), aIsCBBEBody).size())
     return FeetNameVersion::_INVALID_VALUE;
 
-  auto lFeetName{DataLists::GetName(aFeetVariant)};
-  auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(aFeetVariant))};
+  if (!Utils::IsVersionOffsetValid(aFeetVariant, aRelativeVersion))
+  {
+    return FeetNameVersion::_INVALID_VALUE;
+  }
+
+  const auto lFeetName{DataLists::GetName(aFeetVariant)};
+  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(aFeetVariant)) - DataLists::GetVersionOffset(aFeetVariant)};
 
   switch (lFeetName)
   {
@@ -975,35 +1004,17 @@ FeetNameVersion DataLists::GetFeetNameVersion(const FeetName& aFeetName, const i
 int DataLists::GetVersionIndex(const BodyNameVersion& aBodyNameVersion)
 {
   if (aBodyNameVersion == BodyNameVersion::_INVALID_VALUE)
-  {
     return -1;
-  }
 
-  // Calculate an offset if the first version number of a variant is not the version of the base body itself
-  auto lVersionNumberOffset{0};
-  auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
-
-  if (lBodyVariant == BodyVariant::CBBE_3BA_3BBB_NEVERNUDE || lBodyVariant == BodyVariant::CBBE_3BA_3BBB_UNDERWEAR)
-  {
-    // "1.50" is the first BHUNP version, while "2.13 to 2.18" is the first version of the nevernude/underwear variant
-    lVersionNumberOffset = 4;
-  }
-  else if (lBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE)
-  {
-    // 2.20 is the first BHUNP version, while 2.25 is the first version of the nevernude variant
-    lVersionNumberOffset = 1;
-  }
-
-  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(DataLists::GetVariant(aBodyNameVersion)))};
-  return (static_cast<int>(aBodyNameVersion) - lOffsetFirstKey + lVersionNumberOffset);
+  const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
+  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(lBodyVariant))};
+  return (static_cast<int>(aBodyNameVersion) - lOffsetFirstKey + DataLists::GetVersionOffset(lBodyVariant));
 }
 
 int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
 {
   if (aBodyNameVersion == BodyNameVersion::_INVALID_VALUE)
-  {
     return -1;
-  }
 
   const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
   switch (lBodyVariant)
@@ -1179,18 +1190,17 @@ int DataLists::GetVersionIndex(const FeetNameVersion& aFeetNameVersion)
     return -1;
   }
 
-  auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(DataLists::GetVariant(aFeetNameVersion)))};
+  const auto lFeetVariant{DataLists::GetVariant(aFeetNameVersion)};
+  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(lFeetVariant)) - DataLists::GetVersionOffset(lFeetVariant)};
   return (static_cast<int>(aFeetNameVersion) - lOffsetFirstKey);
 }
 
 int DataLists::GetVariantIndex(const FeetNameVersion& aFeetNameVersion)
 {
   if (aFeetNameVersion == FeetNameVersion::_INVALID_VALUE)
-  {
     return -1;
-  }
 
-  auto lFeetVariant{DataLists::GetVariant(aFeetNameVersion)};
+  const auto lFeetVariant{DataLists::GetVariant(aFeetNameVersion)};
   switch (lFeetVariant)
   {
     case FeetVariant::_INVALID_VALUE:
@@ -1198,8 +1208,8 @@ int DataLists::GetVariantIndex(const FeetNameVersion& aFeetNameVersion)
     case FeetVariant::CBBE:
     case FeetVariant::BHUNP:
     case FeetVariant::CBBE_3BA_3BBB:
-    case FeetVariant::COCO_BODY_CBBE:
-    case FeetVariant::COCO_BODY_UUNP:
+    case FeetVariant::COCO_BODY_NORMAL_CBBE:
+    case FeetVariant::COCO_BODY_NORMAL_UUNP:
     case FeetVariant::MIMIR_EBONIC_BODY:
     case FeetVariant::ASDASDF:
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
@@ -1207,6 +1217,8 @@ int DataLists::GetVariantIndex(const FeetNameVersion& aFeetNameVersion)
     case FeetVariant::HG_FEET:
     case FeetVariant::KHRYSAMERE_HG_FEET:
       return 0;
+    case FeetVariant::COCO_BODY_HIGH_HEELS_CBBE:
+    case FeetVariant::COCO_BODY_HIGH_HEELS_UUNP:
     case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE:
     case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP:
       return 1;
@@ -1303,10 +1315,14 @@ FeetNameVersion DataLists::GetFirstKey(const FeetVariant& aFeetVariant)
       return FeetNameVersion::BHUNP_3BBB_2_20;
     case FeetVariant::CBBE_3BA_3BBB:
       return FeetNameVersion::CBBE_3BA_3BBB_1_50;
-    case FeetVariant::COCO_BODY_CBBE:
-      return FeetNameVersion::COCO_BODY_CBBE_V4;
-    case FeetVariant::COCO_BODY_UUNP:
-      return FeetNameVersion::COCO_BODY_UUNP_V3;
+    case FeetVariant::COCO_BODY_NORMAL_CBBE:
+      return FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4;
+    case FeetVariant::COCO_BODY_NORMAL_UUNP:
+      return FeetNameVersion::COCO_BODY_NORMAL_UUNP_V3;
+    case FeetVariant::COCO_BODY_HIGH_HEELS_CBBE:
+      return FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6;
+    case FeetVariant::COCO_BODY_HIGH_HEELS_UUNP:
+      return FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6;
     case FeetVariant::MIMIR_EBONIC_BODY:
       return FeetNameVersion::MIMIR_EBONIC_BODY_1_2;
     case FeetVariant::ASDASDF:
@@ -1326,6 +1342,74 @@ FeetNameVersion DataLists::GetFirstKey(const FeetVariant& aFeetVariant)
   }
 
   return FeetNameVersion::_INVALID_VALUE;
+}
+
+int DataLists::GetVersionOffset(const BodyVariant& aBodyVariant)
+{
+  switch (aBodyVariant)
+  {
+    case BodyVariant::_INVALID_VALUE:
+    case BodyVariant::CBBE_3BA_3BBB:
+    case BodyVariant::BHUNP_3BBB:
+    case BodyVariant::BHUNP_3BBB_ADVANCED:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+    case BodyVariant::BHUNP_BBP:
+    case BodyVariant::BHUNP_BBP_ADVANCED:
+    case BodyVariant::BHUNP_TBBP:
+    case BodyVariant::BHUNP_TBBP_ADVANCED:
+    case BodyVariant::CBBE_SMP_3BBB:
+    case BodyVariant::COCO_BODY_CBBE:
+    case BodyVariant::COCO_BODY_UUNP:
+    case BodyVariant::MIMIR_EBONIC_BODY:
+    case BodyVariant::ASDASDF_3BBB:
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_BBP:
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_TBBP:
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+      return 0;
+    case BodyVariant::CBBE_3BA_3BBB_NEVERNUDE:
+    case BodyVariant::CBBE_3BA_3BBB_UNDERWEAR:
+      return 4; // Ignore "1.50", "1.51 to 1.55", "2.02 to 2.04" and "2.06 - 2.11 - 2.12"
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
+      return 1; // Ignore "2.20"
+  }
+
+  return 0;
+}
+
+int DataLists::GetVersionOffset(const FeetVariant& aFeetVariant)
+{
+  switch (aFeetVariant)
+  {
+    case FeetVariant::_INVALID_VALUE:
+    case FeetVariant::CBBE:
+    case FeetVariant::BHUNP:
+    case FeetVariant::CBBE_3BA_3BBB:
+    case FeetVariant::COCO_BODY_NORMAL_CBBE:
+    case FeetVariant::COCO_BODY_NORMAL_UUNP:
+    case FeetVariant::MIMIR_EBONIC_BODY:
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP:
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE:
+    case FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP:
+    case FeetVariant::HG_FEET:
+    case FeetVariant::KHRYSAMERE_HG_FEET:
+    case FeetVariant::ASDASDF:
+      return 0;
+    case FeetVariant::COCO_BODY_HIGH_HEELS_CBBE:
+      return 1; // Ignore "V4"
+    case FeetVariant::COCO_BODY_HIGH_HEELS_UUNP:
+      return 2; // Ignore "V3" and "V4"
+  }
+
+  return 0;
 }
 
 QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType)
@@ -1709,26 +1793,34 @@ QString DataLists::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
       return QString("BHUNP 3BBB Advanced Feet");
     case FeetVariant::CBBE_3BA_3BBB:
       return QString("CBBE 3BBB Feet");
-    case FeetVariant::COCO_BODY_CBBE:
+    case FeetVariant::COCO_BODY_NORMAL_CBBE:
       switch (lVersionIndex)
       {
-        case 0:
+        case 0: // V4
           return QString("[COCO]3Bsmp_FeetV4_A");
-        case 1:
+        case 1: // V6
+        case 2: // V6.8
           return QString("[COCO 3BBB V6]Feet_A");
       }
       return QString();
-    case FeetVariant::COCO_BODY_UUNP:
+    case FeetVariant::COCO_BODY_NORMAL_UUNP:
       switch (lVersionIndex)
       {
-        case 0:
+        case 0: // V3
           return QString("[COCO]bodyFeets_B_v3");
-        case 1:
+        case 1: // V4
           return QString("[COCO]3Bsmp_FeetV4_B");
-        case 2:
+        case 2: // V6
+        case 3: // V6.8
           return QString("[COCO 3BBB V6]Feet_B");
       }
       return QString();
+    case FeetVariant::COCO_BODY_HIGH_HEELS_CBBE:
+      // V6 or V6.8
+      return QString("[COCO]CBBEV6_HH100");
+    case FeetVariant::COCO_BODY_HIGH_HEELS_UUNP:
+      // V6 or V6.8
+      return QString("[COCO]UUNPV6_HH100");
     case FeetVariant::MIMIR_EBONIC_BODY:
       return QString("CBBE 3BBB Feet");
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:

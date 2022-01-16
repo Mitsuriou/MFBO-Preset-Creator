@@ -40,6 +40,11 @@ private:
   QListWidget* mListFeetVersion{nullptr};
   QListWidget* mListFeetVariantName{nullptr};
 
+  // Smarter lists behavior
+  bool mIsWindowInitialized{false};
+  QString mLastSelectedFeetName;
+  QString mLastSelectedFeetVariant;
+
   // Common functions
   void setWindowProperties();
   void initializeGUI();
@@ -57,6 +62,7 @@ private:
   // Feet GUI widgets events
   void feetNameIndexChanged(const int aNewIndex);
   void feetVersionIndexChanged(const int aNewIndex);
+  void feetVariantIndexChanged(const int aNewIndex);
 
   explicit TargetMeshesPicker(const TargetMeshesPicker&) = delete;
   TargetMeshesPicker& operator=(const TargetMeshesPicker&) = delete;

@@ -17,9 +17,6 @@ public:
 
   void setExpandState(const bool aMustExpand);
 
-signals:
-  void toggled(bool on);
-
 private:
   int mFontSize;
   int mExpandedHeight{-1};

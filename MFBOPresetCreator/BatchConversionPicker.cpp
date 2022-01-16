@@ -872,7 +872,9 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
             case BCGroupWidgetCallContext::SKELETON:
               lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))->findChild<BCDropWidget*>(QString("drop_widget"));
               break;
-            default:
+            case BCGroupWidgetCallContext::UNDEFINED:
+            case BCGroupWidgetCallContext::HEAD:
+            case BCGroupWidgetCallContext::EYES:
               continue;
           }
 

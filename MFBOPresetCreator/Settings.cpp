@@ -568,6 +568,9 @@ void Settings::loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsTo
   auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))};
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
 
+  // Security in case the switch below does not get any verified condition
+  this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->setChecked(true);
+
   switch (aSettingsToLoad.startupAction)
   {
     case StartupAction::OPEN_WELCOME_SCREEN:
@@ -578,9 +581,6 @@ void Settings::loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsTo
       break;
     case StartupAction::SKIP_UPDATE_CHECKS:
       this->findChild<QRadioButton*>(QString("welcome_action_none"))->setChecked(true);
-      break;
-    default:
-      this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->setChecked(true);
       break;
   }
 }
@@ -624,9 +624,6 @@ Struct::Settings Settings::getSettingsFromGUI() const
       break;
     case ApplicationLanguage::CHINESE_TRADITIONAL:
       lSettings.display.language = ApplicationLanguage::CHINESE_TRADITIONAL;
-      break;
-    default:
-      lSettings.display.language = ApplicationLanguage::ENGLISH;
       break;
   }
 
@@ -845,7 +842,7 @@ void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate, FeetNameVersi
 
   // Update the "targeted feet mesh" text content
   const auto lFeetText{
-    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
+    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet), DataLists::GetVersionIndex(aFeet), Utils::IsCBBEBasedBody(aBody)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
   auto lCurrentlyTargetedBody{this->findChild<QLabel*>(QString("%1_currently_targeted_body_feet").arg(aObjectNamePrefix))};
   lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText, lFeetText));

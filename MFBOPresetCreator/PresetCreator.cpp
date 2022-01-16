@@ -200,10 +200,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
         break;
       }
       case AssistedConversionRole::IGNORED:
-        // It should not be possible to reach this statement
-        break;
-      default:
-        // It should not be possible to reach this statement
+        // Do nothing
         break;
     }
   }
@@ -1365,7 +1362,7 @@ void PresetCreator::targetMeshesChanged(const BodyNameVersion& aBody, const Feet
 
   // Update the "targeted feet mesh" text content
   const auto lFeetText{
-    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
+    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet), DataLists::GetVersionIndex(aFeet), Utils::IsCBBEBasedBody(aBody)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
   auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body_feet")};
   lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText, lFeetText));

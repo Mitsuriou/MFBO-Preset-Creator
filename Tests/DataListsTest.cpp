@@ -96,8 +96,10 @@ namespace Tests
       Assert::AreEqual(FeetName::CBBE, DataLists::GetName(FeetVariant::CBBE));
       Assert::AreEqual(FeetName::BHUNP, DataLists::GetName(FeetVariant::BHUNP));
       Assert::AreEqual(FeetName::CBBE_3BA_3BBB, DataLists::GetName(FeetVariant::CBBE_3BA_3BBB));
-      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_CBBE));
-      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_UUNP));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_NORMAL_CBBE));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_NORMAL_UUNP));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_HIGH_HEELS_CBBE));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetVariant::COCO_BODY_HIGH_HEELS_UUNP));
       Assert::AreEqual(FeetName::MIMIR_EBONIC_BODY, DataLists::GetName(FeetVariant::MIMIR_EBONIC_BODY));
       Assert::AreEqual(FeetName::ASDASDF, DataLists::GetName(FeetVariant::ASDASDF));
       Assert::AreEqual(FeetName::MORE_SLIDERS_FOR_FEET, DataLists::GetName(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE));
@@ -222,12 +224,18 @@ namespace Tests
       Assert::AreEqual(FeetName::CBBE_3BA_3BBB, DataLists::GetName(FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12));
       Assert::AreEqual(FeetName::CBBE_3BA_3BBB, DataLists::GetName(FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18));
       // COCO_BODY_CBBE
-      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_CBBE_V4));
-      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_CBBE_V6));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6_8));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6_8));
       // COCO_BODY_UUNP
-      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_UUNP_V3));
-      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_UUNP_V4));
-      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_UUNP_V6));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V3));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V4));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6_8));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6));
+      Assert::AreEqual(FeetName::COCO_BODY, DataLists::GetName(FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6_8));
       // MIMIR_EBONIC_BODY
       Assert::AreEqual(FeetName::MIMIR_EBONIC_BODY, DataLists::GetName(FeetNameVersion::MIMIR_EBONIC_BODY_1_2));
       Assert::AreEqual(FeetName::MIMIR_EBONIC_BODY, DataLists::GetName(FeetNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX));
@@ -701,14 +709,16 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_CBBE, -1));
       Assert::AreEqual(BodyNameVersion::COCO_BODY_CBBE_V4, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_CBBE, 0));
       Assert::AreEqual(BodyNameVersion::COCO_BODY_CBBE_V6, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_CBBE, 1));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_CBBE, 2));
+      Assert::AreEqual(BodyNameVersion::COCO_BODY_CBBE_V6_8, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_CBBE, 2));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_CBBE, 3));
 
       // COCO_BODY_UUNP
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_UUNP, -1));
       Assert::AreEqual(BodyNameVersion::COCO_BODY_UUNP_V3, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_UUNP, 0));
       Assert::AreEqual(BodyNameVersion::COCO_BODY_UUNP_V4, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_UUNP, 1));
       Assert::AreEqual(BodyNameVersion::COCO_BODY_UUNP_V6, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_UUNP, 2));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_UUNP, 3));
+      Assert::AreEqual(BodyNameVersion::COCO_BODY_UUNP_V6_8, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_UUNP, 3));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::COCO_BODY_UUNP, 4));
 
       // MIMIR_EBONIC_BODY
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::MIMIR_EBONIC_BODY, -1));

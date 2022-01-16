@@ -1,0 +1,628 @@
+﻿    <SliderSet name="%1 - [COCO 3BBB V6]Body_A">
+        <DataFolder>[COCO]SMP_BODY_V6</DataFolder>
+        <SourceFile>[COCO 3BBB V6]Body_A.nif</SourceFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
+        <Shape target="BaseShape" DataFolder="[COCO]SMP_BODY_V6">BaseShape</Shape>
+        <Slider name="Breasts" invert="true" small="100" big="100">
+            <Data name="BaseShapeBreasts" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreasts</Data>
+        </Slider>
+        <Slider name="BreastsSmall" invert="true" small="100" big="100">
+            <Data name="BaseShapeBreastsSmall" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastsSmall</Data>
+        </Slider>
+        <Slider name="BreastsSH" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastsSH" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastsSH</Data>
+        </Slider>
+        <Slider name="BreastsSSH" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastsSSH" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastsSSH</Data>
+        </Slider>
+        <Slider name="BreastsFantasy" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastsFantasy" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastsFantasy</Data>
+        </Slider>
+        <Slider name="DoubleMelon" invert="false" small="0" big="0">
+            <Data name="BaseShapeDoubleMelon" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeDoubleMelon</Data>
+        </Slider>
+        <Slider name="BreastCleavage" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastCleavage" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastCleavage</Data>
+        </Slider>
+        <Slider name="BreastFlatness" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastFlatness" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastFlatness</Data>
+        </Slider>
+        <Slider name="BreastGravity" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastGravity" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastGravity</Data>
+        </Slider>
+        <Slider name="PushUp" invert="false" small="0" big="0">
+            <Data name="BaseShapePushUp" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapePushUp</Data>
+        </Slider>
+        <Slider name="BreastHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastHeight" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastHeight</Data>
+        </Slider>
+        <Slider name="BreastPerkiness" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastPerkiness" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastPerkiness</Data>
+        </Slider>
+        <Slider name="BreastWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastWidth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastWidth</Data>
+        </Slider>
+        <Slider name="NippleDistance" invert="true" small="100" big="100">
+            <Data name="BaseShapeNippleDistance" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNippleDistance</Data>
+        </Slider>
+        <Slider name="NipplePerkiness" invert="false" small="0" big="0">
+            <Data name="BaseShapeNipplePerkiness" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNipplePerkiness</Data>
+        </Slider>
+        <Slider name="NippleLength" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleLength" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNippleLength</Data>
+        </Slider>
+        <Slider name="NippleSize" invert="true" small="100" big="100">
+            <Data name="BaseShapeNippleSize" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNippleSize</Data>
+        </Slider>
+        <Slider name="NippleAreola" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleAreola" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNippleAreola</Data>
+        </Slider>
+        <Slider name="NippleUp" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleUp" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNippleUp</Data>
+        </Slider>
+        <Slider name="NippleDown" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleDown" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNippleDown</Data>
+        </Slider>
+        <Slider name="NippleTip" invert="false" small="0" big="0">
+            <Data name="BaseShapeNippleTip" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNippleTip</Data>
+        </Slider>
+        <Slider name="Arms" invert="true" small="100" big="100">
+            <Data name="BaseShapeArms" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeArms</Data>
+        </Slider>
+        <Slider name="ChubbyArms" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyArms" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeChubbyArms</Data>
+        </Slider>
+        <Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+            <Data name="BaseShapeShoulderSmooth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeShoulderSmooth</Data>
+        </Slider>
+        <Slider name="ShoulderWidth" invert="true" small="100" big="100">
+            <Data name="BaseShapeShoulderWidth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeShoulderWidth</Data>
+        </Slider>
+        <Slider name="BigTorso" invert="false" small="0" big="0">
+            <Data name="BaseShapeBigTorso" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBigTorso</Data>
+        </Slider>
+        <Slider name="Waist" invert="false" small="0" big="0">
+            <Data name="BaseShapeWaist" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeWaist</Data>
+        </Slider>
+        <Slider name="WideWaistLine" invert="false" small="0" big="0">
+            <Data name="BaseShapeWideWaistLine" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeWideWaistLine</Data>
+        </Slider>
+        <Slider name="ChubbyWaist" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyWaist" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeChubbyWaist</Data>
+        </Slider>
+        <Slider name="Belly" invert="false" small="0" big="0">
+            <Data name="BaseShapeBelly" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBelly</Data>
+        </Slider>
+        <Slider name="BigBelly" invert="false" small="0" big="0">
+            <Data name="BaseShapeBigBelly" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBigBelly</Data>
+        </Slider>
+        <Slider name="PregnancyBelly" invert="false" small="0" big="0">
+            <Data name="BaseShapePregnancyBelly" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapePregnancyBelly</Data>
+        </Slider>
+        <Slider name="TummyTuck" invert="false" small="0" big="0">
+            <Data name="BaseShapeTummyTuck" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeTummyTuck</Data>
+        </Slider>
+        <Slider name="Back" invert="false" small="0" big="0">
+            <Data name="BaseShapeBack" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBack</Data>
+        </Slider>
+        <Slider name="Hipbone" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipbone" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeHipbone</Data>
+        </Slider>
+        <Slider name="Hips" invert="false" small="0" big="0">
+            <Data name="BaseShapeHips" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeHips</Data>
+        </Slider>
+        <Slider name="ButtCrack" invert="true" small="100" big="100">
+            <Data name="BaseShapeButtCrack" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeButtCrack</Data>
+        </Slider>
+        <Slider name="Butt" invert="true" small="100" big="100">
+            <Data name="BaseShapeButt" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeButt</Data>
+        </Slider>
+        <Slider name="ButtSmall" invert="true" small="100" big="100">
+            <Data name="BaseShapeButtSmall" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeButtSmall</Data>
+        </Slider>
+        <Slider name="ButtShape2" invert="false" small="0" big="0">
+            <Data name="BaseShapeButtShape2" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeButtShape2</Data>
+        </Slider>
+        <Slider name="BigButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeBigButt" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBigButt</Data>
+        </Slider>
+        <Slider name="ChubbyButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyButt" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeChubbyButt</Data>
+        </Slider>
+        <Slider name="AppleCheeks" invert="false" small="0" big="0">
+            <Data name="BaseShapeAppleCheeks" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeAppleCheeks</Data>
+        </Slider>
+        <Slider name="RoundAss" invert="false" small="0" big="0">
+            <Data name="BaseShapeRoundAss" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeRoundAss</Data>
+        </Slider>
+        <Slider name="SlimThighs" invert="false" small="0" big="0">
+            <Data name="BaseShapeSlimThighs" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeSlimThighs</Data>
+        </Slider>
+        <Slider name="Thighs" invert="false" small="0" big="0">
+            <Data name="BaseShapeThighs" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeThighs</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="BaseShapeChubbyLegs" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeChubbyLegs</Data>
+        </Slider>
+        <Slider name="Legs" invert="true" small="100" big="100">
+            <Data name="BaseShapeLegs" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeLegs</Data>
+        </Slider>
+        <Slider name="KneeHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeKneeHeight" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeKneeHeight</Data>
+        </Slider>
+        <Slider name="CalfSize" invert="false" small="0" big="0">
+            <Data name="BaseShapeCalfSize" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCalfSize</Data>
+        </Slider>
+        <Slider name="CalfSmooth" invert="false" small="0" big="0">
+            <Data name="BaseShapeCalfSmooth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCalfSmooth</Data>
+        </Slider>
+        <Slider name="Neck" invert="false" small="100" big="0" hidden="true">
+            <Data name="BaseShapeNeck" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNeck</Data>
+        </Slider>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Low</Data>
+        </Slider>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Bombshell Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Bombshell High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Natural Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Natural High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Cleavage Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Cleavage High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B BCup Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B BCup High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B BCup High</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7BUNP Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7BUNP Low</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="BaseShape7BUNP High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7BUNP High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Oppai Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B Oppai High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="BaseShape7B CH Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="BaseShape7B CH High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShape7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Pushup Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Pushup High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Skinny Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Skinny High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Perky Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNP Perky High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Chapi" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Chapi" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPB Chapi</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v1" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Oppai v1" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPB Oppai v1</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Oppai v3.2 Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPB Oppai v3.2 High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPetite Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPetite High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPC Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPC High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPCM Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPCM High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPSH Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPSH High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPK High</Data>
+        </Slider>
+        <Slider name="UNPK Bonus Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK Bonus Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPK Bonus Low</Data>
+        </Slider>
+        <Slider name="UNPK Bonus High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPK Bonus High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPK Bonus High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUN7B Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUN7B High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPBB Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPBB High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPBB High</Data>
+        </Slider>
+        <Slider name="Seraphim Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeSeraphim Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeSeraphim Low</Data>
+        </Slider>
+        <Slider name="Seraphim High" invert="false" small="0" big="0">
+            <Data name="BaseShapeSeraphim High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeSeraphim High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeDemonfet Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="BaseShapeDemonfet High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeDream Girl Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="BaseShapeDream Girl High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeTop Model Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="BaseShapeTop Model High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeLeito Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="BaseShapeLeito High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeLeito High</Data>
+        </Slider>
+        <Slider name="UNPF Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPF Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPF Low</Data>
+        </Slider>
+        <Slider name="UNPF High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPF High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPF High</Data>
+        </Slider>
+        <Slider name="UNPFx Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPFx Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPFx Low</Data>
+        </Slider>
+        <Slider name="UNPFx High" invert="false" small="0" big="0">
+            <Data name="BaseShapeUNPFx High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeUNPFx High</Data>
+        </Slider>
+        <Slider name="CNHF Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCNHF Low</Data>
+        </Slider>
+        <Slider name="CNHF High" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCNHF High</Data>
+        </Slider>
+        <Slider name="CNHF Bonus Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF Bonus Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCNHF Bonus Low</Data>
+        </Slider>
+        <Slider name="CNHF Bonus High" invert="false" small="0" big="0">
+            <Data name="BaseShapeCNHF Bonus High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCNHF Bonus High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeMCBM Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="BaseShapeMCBM High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeMCBM High</Data>
+        </Slider>
+        <Slider name="Venus Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeVenus Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeVenus Low</Data>
+        </Slider>
+        <Slider name="Venus High" invert="false" small="0" big="0">
+            <Data name="BaseShapeVenus High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeVenus High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeZGGB-R2 Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="BaseShapeZGGB-R2 High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeZGGB-R2 High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeManga Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="BaseShapeManga High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeCHSBHC Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="BaseShapeCHSBHC High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCHSBHC High</Data>
+        </Slider>
+        <Slider name="Aruru6Duck Low" invert="false" small="0" big="0">
+            <Data name="BaseShapeAruru6Duck Low" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeAruru6Duck Low</Data>
+        </Slider>
+        <Slider name="Aruru6Duck High" invert="false" small="0" big="0">
+            <Data name="BaseShapeAruru6Duck High" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeAruru6Duck High</Data>
+        </Slider>
+        <Slider name="COCO_NippleErection" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_NippleErection" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_NippleErection</Data>
+        </Slider>
+        <Slider name="BreastConverge" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastConverge" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastConverge</Data>
+        </Slider>
+        <Slider name="COCO_PussyCute" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PussyCute" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PussyCute</Data>
+        </Slider>
+        <Slider name="COCO_PussyHilly" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PussyHilly" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PussyHilly</Data>
+        </Slider>
+        <Slider name="COCO_ClitorisErection" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_ClitorisErection" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_ClitorisErection</Data>
+        </Slider>
+        <Slider name="COCO_PussyMajora" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PussyMajora" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PussyMajora</Data>
+        </Slider>
+        <Slider name="COCO_PussyMinora" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PussyMinora" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PussyMinora</Data>
+        </Slider>
+        <Slider name="COCO_PussyMajoraBig" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PussyMajoraBig" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PussyMajoraBig</Data>
+        </Slider>
+        <Slider name="BackArch" invert="false" small="0" big="0">
+            <Data name="BaseShapeBackArch" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBackArch</Data>
+        </Slider>
+        <Slider name="BreastCenter" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastCenter" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastCenter</Data>
+        </Slider>
+        <Slider name="BreastCenterBig" invert="false" small="0" big="0">
+            <Data name="BaseShapeBreastCenterBig" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBreastCenterBig</Data>
+        </Slider>
+        <Slider name="BotePregnancy" invert="false" small="0" big="0">
+            <Data name="BaseShapeBotePregnancy" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeBotePregnancy</Data>
+        </Slider>
+        <Slider name="ChestDepth" invert="false" small="0" big="0">
+            <Data name="BaseShapeChestDepth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeChestDepth</Data>
+        </Slider>
+        <Slider name="ChestWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeChestWidth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeChestWidth</Data>
+        </Slider>
+        <Slider name="CrotchBack" invert="false" small="0" big="0">
+            <Data name="BaseShapeCrotchBack" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCrotchBack</Data>
+        </Slider>
+        <Slider name="ForearmSize" invert="false" small="0" big="0">
+            <Data name="BaseShapeForearmSize" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeForearmSize</Data>
+        </Slider>
+        <Slider name="Groin" invert="false" small="0" big="0">
+            <Data name="BaseShapeGroin" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeGroin</Data>
+        </Slider>
+        <Slider name="HipBone" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipBone" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeHipBone</Data>
+        </Slider>
+        <Slider name="HipForward" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipForward" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeHipForward</Data>
+        </Slider>
+        <Slider name="HipUpperWidth" invert="false" small="0" big="0">
+            <Data name="BaseShapeHipUpperWidth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeHipUpperWidth</Data>
+        </Slider>
+        <Slider name="KneeShape" invert="false" small="0" big="0">
+            <Data name="BaseShapeKneeShape" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeKneeShape</Data>
+        </Slider>
+        <Slider name="LeftBreastFuck" invert="false" small="0" big="0">
+            <Data name="BaseShapeLeftBreastFuck" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeLeftBreastFuck</Data>
+        </Slider>
+        <Slider name="LegsThin" invert="false" small="0" big="0">
+            <Data name="BaseShapeLegsThin" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeLegsThin</Data>
+        </Slider>
+        <Slider name="MuscleArms" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleArms" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeMuscleArms</Data>
+        </Slider>
+        <Slider name="MuscleLegs" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleLegs" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeMuscleLegs</Data>
+        </Slider>
+        <Slider name="MuscleButt" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleButt" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeMuscleButt</Data>
+        </Slider>
+        <Slider name="MusclePecs" invert="false" small="0" big="0">
+            <Data name="BaseShapeMusclePecs" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeMusclePecs</Data>
+        </Slider>
+        <Slider name="MuscleAbs" invert="false" small="0" big="0">
+            <Data name="BaseShapeMuscleAbs" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeMuscleAbs</Data>
+        </Slider>
+        <Slider name="NipplePuffyAreola" invert="false" small="0" big="0">
+            <Data name="BaseShapeNipplePuffyAreola" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeNipplePuffyAreola</Data>
+        </Slider>
+        <Slider name="COCO_PussyOpen" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PussyOpen" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PussyOpen</Data>
+        </Slider>
+        <Slider name="RightBreastFuck" invert="false" small="0" big="0">
+            <Data name="BaseShapeRightBreastFuck" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeRightBreastFuck</Data>
+        </Slider>
+        <Slider name="RibsProminance" invert="false" small="0" big="0">
+            <Data name="BaseShapeRibsProminance" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeRibsProminance</Data>
+        </Slider>
+        <Slider name="ShoulderTweak" invert="false" small="0" big="0">
+            <Data name="BaseShapeShoulderTweak" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeShoulderTweak</Data>
+        </Slider>
+        <Slider name="SternumDepth" invert="false" small="0" big="0">
+            <Data name="BaseShapeSternumDepth" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeSternumDepth</Data>
+        </Slider>
+        <Slider name="SternumHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeSternumHeight" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeSternumHeight</Data>
+        </Slider>
+        <Slider name="Top Slope" invert="false" small="0" big="0">
+            <Data name="BaseShapeTop Slope" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeTop Slope</Data>
+        </Slider>
+        <Slider name="WaistHeight" invert="false" small="0" big="0">
+            <Data name="BaseShapeWaistHeight" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeWaistHeight</Data>
+        </Slider>
+        <Slider name="COCO_AnusSpread" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_AnusSpread" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_AnusSpread</Data>
+        </Slider>
+        <Slider name="COCO_Breastsflat" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_Breastsflat" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_Breastsflat</Data>
+        </Slider>
+        <Slider name="COCO_Nipflat" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_Nipflat" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_Nipflat</Data>
+        </Slider>
+        <Slider name="COCO_wrist" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_wrist" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_wrist</Data>
+        </Slider>
+        <Slider name="COCO_ankle" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_ankle" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_ankle</Data>
+        </Slider>
+        <Slider name="COCO_handfeetseamfix" invert="false" small="100" big="100">
+            <Data name="BaseShapeCOCO_handfeetseamfix" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_handfeetseamfix</Data>
+        </Slider>
+        <Slider name="COCO_body01" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_body01" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_body01</Data>
+        </Slider>
+        <Slider name="COCO_body02" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_body02" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_body02</Data>
+        </Slider>
+        <Slider name="COCO_body03" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_body03" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_body03</Data>
+        </Slider>
+        <Slider name="COCO_breast01" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast01" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast01</Data>
+        </Slider>
+        <Slider name="COCO_breast02" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast02" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast02</Data>
+        </Slider>
+        <Slider name="COCO_breast03" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast03" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast03</Data>
+        </Slider>
+        <Slider name="COCO_breast04" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast04" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast04</Data>
+        </Slider>
+        <Slider name="COCO_breast05" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast05" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast05</Data>
+        </Slider>
+        <Slider name="COCO_breast06" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast06" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast06</Data>
+        </Slider>
+        <Slider name="COCO_breast07" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast07" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast07</Data>
+        </Slider>
+        <Slider name="COCO_body04" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_body04" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_body04</Data>
+        </Slider>
+        <Slider name="COCO_labia01" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labia01" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labia01</Data>
+        </Slider>
+        <Slider name="COCO_labia02" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labia02" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labia02</Data>
+        </Slider>
+        <Slider name="COCO_labia03" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labia03" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labia03</Data>
+        </Slider>
+        <Slider name="COCO_labia04" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labia04" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labia04</Data>
+        </Slider>
+        <Slider name="COCO_labia05" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labia05" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labia05</Data>
+        </Slider>
+        <Slider name="COCO_labia06" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labia06" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labia06</Data>
+        </Slider>
+        <Slider name="COCO_labia07" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labia07" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labia07</Data>
+        </Slider>
+        <Slider name="COCO_breast_expand" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast_expand" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast_expand</Data>
+        </Slider>
+        <Slider name="COCO_breast_pinch" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast_pinch" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast_pinch</Data>
+        </Slider>
+        <Slider name="COCO_butt_expand" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_butt_expand" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_butt_expand</Data>
+        </Slider>
+        <Slider name="COCO_butt_pinch" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_butt_pinch" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_butt_pinch</Data>
+        </Slider>
+        <Slider name="COCO_butt_gravity" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_butt_gravity" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_butt_gravity</Data>
+        </Slider>
+        <Slider name="COCO_butt_flat" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_butt_flat" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_butt_flat</Data>
+        </Slider>
+        <Slider name="COCO_butt_huge" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_butt_huge" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_butt_huge</Data>
+        </Slider>
+        <Slider name="COCO_breast08" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_breast08" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_breast08</Data>
+        </Slider>
+        <Slider name="SmallSeam" invert="false" small="0" big="0">
+            <Data name="BaseShapeSmallSeam" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeSmallSeam</Data>
+        </Slider>
+        <Slider name="Ankles" invert="false" small="0" big="0">
+            <Data name="BaseShapeAnkles" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeAnkles</Data>
+        </Slider>
+        <Slider name="COCOAnalPositionup" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCOAnalPositionup" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCOAnalPositionup</Data>
+        </Slider>
+        <Slider name="COCOAnalPositionlow" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCOAnalPositionlow" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCOAnalPositionlow</Data>
+        </Slider>
+        <Slider name="COCO_labiaStretch" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_labiaStretch" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_labiaStretch</Data>
+        </Slider>
+        <Slider name="COCO_CrotchGap" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_CrotchGap" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_CrotchGap</Data>
+        </Slider>
+        <Slider name="COCO_RibsMore" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_RibsMore" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_RibsMore</Data>
+        </Slider>
+        <Slider name="COCO_ArmpitShape" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_ArmpitShape" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_ArmpitShape</Data>
+        </Slider>
+        <Slider name="COCO_PrepuceClitoris" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PrepuceClitoris" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PrepuceClitoris</Data>
+        </Slider>
+        <Slider name="COCO_PrepuceStretch" invert="false" small="0" big="0">
+            <Data name="BaseShapeCOCO_PrepuceStretch" target="BaseShape" local="true">[COCO 3BBB V6]Body_A.osd\BaseShapeCOCO_PrepuceStretch</Data>
+        </Slider>
+    </SliderSet>

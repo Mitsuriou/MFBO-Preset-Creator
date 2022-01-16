@@ -160,6 +160,7 @@ void TargetMeshesPicker::initializeGUI()
   this->connect(this->mListBodyVariantName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyVariantIndexChanged);
   this->connect(this->mListFeetName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetNameIndexChanged);
   this->connect(this->mListFeetVersion, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVersionIndexChanged);
+  this->connect(this->mListFeetVariantName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVariantIndexChanged);
 
   this->connect(lSaveButton, &QPushButton::clicked, this, &TargetMeshesPicker::validateAndClose);
   this->connect(lCloseButton, &QPushButton::clicked, this, &TargetMeshesPicker::close);
@@ -173,12 +174,14 @@ void TargetMeshesPicker::initializeGUI()
   this->mListFeetName->setCurrentRow(DataLists::GetNameIndex(DataLists::GetVariant(this->mOriginalBody), this->mOriginalFeet));
   this->mListFeetVersion->setCurrentRow(DataLists::GetVersionIndex(this->mOriginalFeet));
   this->mListFeetVariantName->setCurrentRow(DataLists::GetVariantIndex(this->mOriginalFeet));
+
+  this->mIsWindowInitialized = true;
 }
 
 BodyVariant TargetMeshesPicker::getChosenBodyVariant() const
 {
   // Get the selected body name
-  auto lSelectedBodyName{static_cast<BodyName>(this->mListBodyName->currentRow())};
+  const auto lSelectedBodyName{static_cast<BodyName>(this->mListBodyName->currentRow())};
 
   // Get the selected relative version number
   const auto lSelectedVersionNumber{this->mListBodyVersion->currentRow()};
@@ -192,7 +195,7 @@ BodyVariant TargetMeshesPicker::getChosenBodyVariant() const
 BodyNameVersion TargetMeshesPicker::getChosenBodyName() const
 {
   // Get the selected body name
-  auto lSelectedBodyName{static_cast<BodyName>(this->mListBodyName->currentRow())};
+  const auto lSelectedBodyName{static_cast<BodyName>(this->mListBodyName->currentRow())};
 
   // Get the selected relative version number
   const auto lSelectedVersionNumber{this->mListBodyVersion->currentRow()};
@@ -206,11 +209,11 @@ BodyNameVersion TargetMeshesPicker::getChosenBodyName() const
 FeetNameVersion TargetMeshesPicker::getChosenFeetName() const
 {
   // Get the dependent body
-  auto lBodyVariant{DataLists::GetVariant(this->getChosenBodyName())};
+  const auto lBodyVariant{DataLists::GetVariant(this->getChosenBodyName())};
 
   // Get the selected feet name
-  auto lSelectedFeetName{this->mListFeetName->currentRow()};
-  auto lFeetName{DataLists::GetName(lBodyVariant, lSelectedFeetName)};
+  const auto lSelectedFeetName{this->mListFeetName->currentRow()};
+  const auto lFeetName{DataLists::GetName(lBodyVariant, lSelectedFeetName)};
 
   // Get the selected relative version number
   const auto lSelectedVersionNumber{this->mListFeetVersion->currentRow()};
@@ -250,41 +253,137 @@ void TargetMeshesPicker::bodyVersionIndexChanged(const int aNewIndex)
   this->mListBodyVariantName->clear();
   this->mListBodyVariantName->addItems(DataLists::GetBodyVariantsList(lSelectedBodyName, aNewIndex));
 
-  // Reselect the first available version automatically
+  // Reselect the first available variant automatically
   this->mListBodyVariantName->setCurrentRow(0);
 }
 
 void TargetMeshesPicker::bodyVariantIndexChanged(const int)
 {
   this->mListFeetName->clear();
-  this->mListFeetName->addItems(DataLists::GetFeetNamesList(DataLists::GetVariant(getChosenBodyName())));
+  const auto lAvailableFeetNames{DataLists::GetFeetNamesList(DataLists::GetVariant(getChosenBodyName()))};
+  this->mListFeetName->addItems(lAvailableFeetNames);
 
-  // Reselect the first available version automatically
-  this->mListFeetName->setCurrentRow(0);
+  // Smarter lists behavior
+  if (this->mIsWindowInitialized)
+  {
+    // If the feet name is still available with the newly select body-name combo, restore it
+    const auto lFeetVersionNumberListIndex{lAvailableFeetNames.indexOf(this->mLastSelectedFeetName)};
+    if (lFeetVersionNumberListIndex != -1)
+    {
+      this->mListFeetName->setCurrentRow(lFeetVersionNumberListIndex);
+    }
+    // If it is not available anymore, reselect the first available name
+    else
+    {
+      this->mListFeetName->setCurrentRow(0);
+    }
+  }
+  // Window initialization: select the first available name
+  else
+  {
+    this->mListFeetName->setCurrentRow(0);
+  }
 }
 
 void TargetMeshesPicker::feetNameIndexChanged(const int aNewIndex)
 {
   // Get the dependent body
-  auto lBodyVariant{DataLists::GetVariant(this->getChosenBodyName())};
+  const auto lBodyVariant{DataLists::GetVariant(this->getChosenBodyName())};
 
   // Refresh the content of the second list
   this->mListFeetVersion->clear();
-  this->mListFeetVersion->addItems(DataLists::GetFeetVersionsList(DataLists::GetName(lBodyVariant, aNewIndex), Utils::IsCBBEBasedBody(lBodyVariant)));
+  const auto lAvailableFeetVersions{DataLists::GetFeetVersionsList(DataLists::GetName(lBodyVariant, aNewIndex), Utils::IsCBBEBasedBody(lBodyVariant))};
+  this->mListFeetVersion->addItems(lAvailableFeetVersions);
 
-  // Reselect the first available version automatically
-  this->mListFeetVersion->setCurrentRow(0);
+  // Smarter lists behavior
+  if (this->mListBodyVersion->currentRow() != -1)
+  {
+    const auto lSelectedBodyVersionVersionNumber{this->mListBodyVersion->currentItem()->text()};
+    const auto lFeetVersionNumberListIndex{lAvailableFeetVersions.indexOf(lSelectedBodyVersionVersionNumber)};
+
+    if (lFeetVersionNumberListIndex != -1)
+    {
+      // Make an version number being written in italic if it is the recommended value
+      auto lListItem{this->mListFeetVersion->item(lFeetVersionNumberListIndex)};
+      auto lFont{lListItem->font()};
+      lFont.setItalic(true);
+      lListItem->setFont(lFont);
+
+      // Smart feet version selection, based on the selected body version
+      if (this->mIsWindowInitialized)
+      {
+        this->mListFeetVersion->setCurrentRow(lFeetVersionNumberListIndex);
+      }
+      else
+      {
+        this->mListFeetVersion->setCurrentRow(0);
+      }
+    }
+    else
+    {
+      this->mListFeetVersion->setCurrentRow(0);
+    }
+  }
+  else
+  {
+    this->mListFeetVersion->setCurrentRow(0);
+  }
+
+  // Save the currently selected feet name
+  if (aNewIndex != -1)
+  {
+    auto lCurrentlySelectedFeetName{this->mListFeetName->currentItem()->text()};
+    if (!lCurrentlySelectedFeetName.isEmpty())
+    {
+      this->mLastSelectedFeetName = lCurrentlySelectedFeetName;
+    }
+  }
 }
 
-void TargetMeshesPicker::feetVersionIndexChanged(const int)
+void TargetMeshesPicker::feetVersionIndexChanged(const int aNewIndex)
 {
+  // Get the dependent body
+  const auto lBodyVariant{DataLists::GetVariant(this->getChosenBodyName())};
+
   // Get the selected feet
-  auto lSelectedFeetName{this->mListFeetName->currentRow()};
+  const auto lSelectedFeetName{this->mListFeetName->currentRow()};
 
   // Refresh the content of the third list
   this->mListFeetVariantName->clear();
-  this->mListFeetVariantName->addItems(DataLists::GetFeetVariantsList(DataLists::GetName(getChosenBodyVariant(), lSelectedFeetName)));
+  const auto lAvailableFeetVariants{DataLists::GetFeetVariantsList(DataLists::GetName(getChosenBodyVariant(), lSelectedFeetName), aNewIndex, Utils::IsCBBEBasedBody(lBodyVariant))};
+  this->mListFeetVariantName->addItems(lAvailableFeetVariants);
 
-  // Reselect the first available version automatically
-  this->mListFeetVariantName->setCurrentRow(0);
+  // Smarter lists behavior
+  if (this->mIsWindowInitialized)
+  {
+    // If the feet name is still available with the newly select body-name combo, restore it
+    const auto lFeetVersionNumberListIndex{lAvailableFeetVariants.indexOf(this->mLastSelectedFeetVariant)};
+    if (lFeetVersionNumberListIndex != -1)
+    {
+      this->mListFeetVariantName->setCurrentRow(lFeetVersionNumberListIndex);
+    }
+    // If it is not available anymore, reselect the first available variant
+    else
+    {
+      this->mListFeetVariantName->setCurrentRow(0);
+    }
+  }
+  // Window initialization: select the first available variant
+  else
+  {
+    this->mListFeetVariantName->setCurrentRow(0);
+  }
+}
+
+void TargetMeshesPicker::feetVariantIndexChanged(const int aNewIndex)
+{
+  // Save the currently selected feet variant
+  if (aNewIndex != -1)
+  {
+    auto lCurrentlySelectedFeetName{this->mListFeetVariantName->currentItem()->text()};
+    if (!lCurrentlySelectedFeetName.isEmpty())
+    {
+      this->mLastSelectedFeetVariant = lCurrentlySelectedFeetName;
+    }
+  }
 }

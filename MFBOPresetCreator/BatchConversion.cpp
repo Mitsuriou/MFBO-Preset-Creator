@@ -875,7 +875,7 @@ void BatchConversion::targetMeshesChanged(const BodyNameVersion& aBody, const Fe
 
   // Update the "targeted feet mesh" text content
   const auto lFeetText{
-    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
+    QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet), DataLists::GetVersionIndex(aFeet), Utils::IsCBBEBasedBody(aBody)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
   auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body_feet")};
   lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText, lFeetText));

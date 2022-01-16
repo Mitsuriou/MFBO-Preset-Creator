@@ -77,6 +77,9 @@ public:
   static DLLEXP bool IsCBBEBasedBody(const BodyNameVersion& aBodyNameVersion);
   static bool IsBodySupportingBeastHands(const BodyNameVersion& aBodyNameVersion);
 
+  static DLLEXP bool IsVersionOffsetValid(const BodyVariant& aBodyVariant, const int aRelativeVersion);
+  static DLLEXP bool IsVersionOffsetValid(const FeetVariant& aFeetVariant, const int aRelativeVersion);
+
   // App data behavior settings
   static bool IsRunningStandaloneVersion();
   static QString GetAppDataPathFolder();
