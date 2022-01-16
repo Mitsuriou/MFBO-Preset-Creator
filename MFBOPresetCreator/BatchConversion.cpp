@@ -533,7 +533,7 @@ void BatchConversion::launchSearchProcess()
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 
-  qApp->processEvents();
+  QCoreApplication::processEvents();
 
   // The map is storing map<original folder path, set<meshes/.../.../fileName>>
   std::map<QString, std::set<QString>> lScannedData;
@@ -607,7 +607,7 @@ void BatchConversion::launchSearchProcess()
       lScannedData[lKey].insert(lSecondArgument);
     }
 
-    qApp->processEvents();
+    QCoreApplication::processEvents();
   }
 
   // Hide the progress dialog

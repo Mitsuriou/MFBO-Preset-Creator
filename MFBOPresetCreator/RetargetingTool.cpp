@@ -446,7 +446,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     lLayout.addWidget(&lLabel);
     lDialog.show();
 
-    qApp->processEvents();
+    QCoreApplication::processEvents();
 
     // Copy the directory and its content
     if (!Utils::CopyRecursively(lRootDir, lFullBackupDirectory))
@@ -515,7 +515,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
-    qApp->processEvents();
+    QCoreApplication::processEvents();
   }
 
   lProgressDialog.setLabelText(tr("Parsing and patching OSP files. Please wait..."));
@@ -660,7 +660,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
-    qApp->processEvents();
+    QCoreApplication::processEvents();
   }
 
   lProgressDialog.setLabelText(tr("Patching XML files. Please wait..."));
@@ -710,7 +710,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     if (lSkipXMLLastTreatment)
     {
       lProgressDialog.setValue(++lTreatedFiles);
-      qApp->processEvents();
+      QCoreApplication::processEvents();
       continue;
     }
 
@@ -755,7 +755,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     lProgressDialog.setValue(++lTreatedFiles);
-    qApp->processEvents();
+    QCoreApplication::processEvents();
   }
 
   auto lTitle{tr("Retargeting successful")};

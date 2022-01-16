@@ -174,7 +174,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 
-  qApp->processEvents();
+  QCoreApplication::processEvents();
 
   // The map is storing <path+fileName, <path, fileName>>
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;

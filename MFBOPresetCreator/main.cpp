@@ -134,12 +134,12 @@ int main(int argc, char* argv[])
     Utils::PrintMessageStdOut("Starting the application...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Starting the application...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     lSplashScreen.show();
-    lMainApplication.processEvents();
+    QCoreApplication::processEvents();
 
     // Update the message
     Utils::PrintMessageStdOut("Cleaning temporary installer files...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Cleaning temporary installer files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
-    lMainApplication.processEvents();
+    QCoreApplication::processEvents();
 
     // Check if an installer file needs to be removed at launch
     QFile lInstallerLogFile(Utils::GetAppDataPathFolder() + "installer.log");
@@ -162,7 +162,7 @@ int main(int argc, char* argv[])
     // Update the message
     Utils::PrintMessageStdOut("Reading and applying custom fonts...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Reading and applying custom fonts...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
-    lMainApplication.processEvents();
+    QCoreApplication::processEvents();
 
     // Embed custom fonts
     QFontDatabase::addApplicationFont(":/fonts/Roboto");
@@ -170,7 +170,7 @@ int main(int argc, char* argv[])
     // Update the message
     Utils::PrintMessageStdOut("Loading user settings...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Loading user settings...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
-    lMainApplication.processEvents();
+    QCoreApplication::processEvents();
 
     // Read settings file
     auto lSettings{Utils::LoadSettingsFromFile()};
@@ -178,7 +178,7 @@ int main(int argc, char* argv[])
     // Update the message
     Utils::PrintMessageStdOut("Applying translation files...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Applying translation files...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
-    lMainApplication.processEvents();
+    QCoreApplication::processEvents();
 
     // Apply custom language and translation
     auto lLanguageToSet{Utils::GetShortLanguageNameFromEnum(static_cast<int>(lSettings.display.language))};
@@ -199,7 +199,7 @@ int main(int argc, char* argv[])
     // Update the message
     Utils::PrintMessageStdOut("Creating the main window...");
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Creating the main window...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
-    lMainApplication.processEvents();
+    QCoreApplication::processEvents();
 
     // Create and show the main window
     MFBOPresetCreator lMainWindow(lSettings, lInjectedFilePath);

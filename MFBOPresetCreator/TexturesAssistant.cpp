@@ -259,7 +259,7 @@ void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QStr
   lProgressDialog.setModal(true);
   lProgressDialog.show();
 
-  qApp->processEvents();
+  QCoreApplication::processEvents();
 
   this->mScannedFiles.groupedTextures.clear();
   this->mScannedFiles.otherTextures.clear();

@@ -155,7 +155,7 @@ void MFBOPresetCreator::initializeGUI()
 
   this->showWindow();
 
-  QApplication::processEvents();
+  QCoreApplication::processEvents();
 }
 
 void MFBOPresetCreator::setupMenuBar()
