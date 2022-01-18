@@ -1,6 +1,7 @@
 #pragma once
 #include "Struct.h"
 #include <QDialog>
+#include <QFileSystemWatcher>
 #include <QGridLayout>
 
 class TexturesAssistant final : public QDialog
@@ -32,6 +33,7 @@ private:
     std::map<std::string, std::vector<QString>> mouthTextures;
   };
 
+  QFileSystemWatcher* mFileWatcher;
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   bool mHasUserDoneSomething;

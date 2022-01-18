@@ -2,6 +2,7 @@
 #include "Struct.h"
 #include "VersionsInformation.h"
 #include <QComboBox>
+#include <QFileSystemWatcher>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -143,7 +144,14 @@ public:
   // GUI modifiers
   static void SelectComboBoxAt(QComboBox* aComboBox, const int aIndex);
   static void UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringList>& aFilterList, QComboBox* aComboBox, QLabel* aFiltersLabel);
-  static void UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview);
+  static void UpdateOutputPreview(QFileSystemWatcher* aFileWatcher,
+                                  QLineEdit* aMainDirTextEdit,
+                                  const QString& aSubDirectory,
+                                  const bool aUseOnlySubdir,
+                                  const QString& aSuccessColor,
+                                  const QString& aWarningColor,
+                                  const QString& aDangerColor,
+                                  QLabel* aOutputPathsPreview);
 
   // Windows console
   static void BindConsoleToStdOut();

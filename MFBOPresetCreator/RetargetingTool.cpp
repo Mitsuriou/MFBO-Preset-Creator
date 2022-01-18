@@ -24,6 +24,7 @@
 
 RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
+  , mFileWatcher(new QFileSystemWatcher())
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mTargetBodyMesh(aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh)
@@ -32,6 +33,8 @@ RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSett
   // Build the window's interface
   this->setWindowProperties();
   this->initializeGUI();
+
+  QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &RetargetingTool::updateBackupPreview);
 
   this->mHasUserDoneSomething = false;
 
@@ -263,6 +266,8 @@ void RetargetingTool::chooseInputDirectory()
   {
     this->userHasDoneAnAction();
   }
+
+  this->updateBackupPreview();
 }
 
 void RetargetingTool::chooseBackupDirectory()
@@ -356,13 +361,16 @@ void RetargetingTool::updateBackupPreview()
     lIsValidPath = false;
   }
 
+  // Clear all the watched paths
+  this->mFileWatcher->removePaths(this->mFileWatcher->files());
+
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("backup_path_preview"))};
   auto lNewTextColor{this->mSettings.display.successColor};
 
   if (lIsValidPath)
   {
-    auto lInputPath{Utils::CleanPathString(this->findChild<QLineEdit*>(QString("input_path_directory"))->text())};
+    const auto lInputPath{Utils::CleanPathString(this->findChild<QLineEdit*>(QString("input_path_directory"))->text())};
     const auto lFullPathConst{lFullPath};
 
     // Check if the user is trying to backup the directory into itself
@@ -376,6 +384,9 @@ void RetargetingTool::updateBackupPreview()
     {
       lNewTextColor = this->mSettings.display.warningColor;
     }
+
+    // Add a new path to watch to
+    this->mFileWatcher->addPath(lFullPath);
   }
   else
   {

@@ -19,6 +19,7 @@
 
 TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
+  , mFileWatcher(new QFileSystemWatcher())
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mHasUserDoneSomething(false)
@@ -120,6 +121,8 @@ void TexturesAssistant::initializeGUI()
   // Event binding
   this->connect(lInputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseInputDirectory);
   this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &TexturesAssistant::launchSearchProcess);
+
+  QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &TexturesAssistant::updateOutputPreview);
 }
 
 void TexturesAssistant::displayHintZone()
@@ -436,7 +439,7 @@ void TexturesAssistant::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
 }
 
 void TexturesAssistant::generateTexturesStructure()

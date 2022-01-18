@@ -24,6 +24,7 @@
 
 PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QWidget(aParent)
+  , mFileWatcher(new QFileSystemWatcher())
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mMinimumFirstColumnWidth(275)
@@ -43,6 +44,8 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
 
   // Update the GUI based on the values entered
   this->refreshAllPreviewFields();
+
+  QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &PresetCreator::updateOutputPreview);
 
   this->setHasUserDoneSomething(false);
 }
@@ -911,7 +914,7 @@ void PresetCreator::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
 }
 
 void PresetCreator::updateOSPXMLPreview(QString aText)

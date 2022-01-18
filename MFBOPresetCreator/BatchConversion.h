@@ -1,6 +1,7 @@
 #pragma once
 #include "Struct.h"
 #include <QDialog>
+#include <QFileSystemWatcher>
 #include <QGridLayout>
 #include <set>
 
@@ -19,6 +20,7 @@ protected:
   void reject() override;
 
 private:
+  QFileSystemWatcher* mFileWatcher;
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   std::map<QString, QStringList> mFiltersList;

@@ -1761,7 +1761,7 @@ void Utils::UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringLi
   }
 }
 
-void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview)
+void Utils::UpdateOutputPreview(QFileSystemWatcher* aFileWatcher, QLineEdit* aMainDirTextEdit, const QString& aSubDirectory, const bool aUseOnlySubdir, const QString& aSuccessColor, const QString& aWarningColor, const QString& aDangerColor, QLabel* aOutputPathsPreview)
 {
   auto lMainDirectory{aMainDirTextEdit->text().trimmed()};
   Utils::CleanPathString(lMainDirectory);
@@ -1770,7 +1770,8 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
   auto lIsValidPath{true};
 
   // Construct full path
-  auto lFullPath{QString()};
+  QString lFullPath;
+
   if (aUseOnlySubdir)
   {
     aMainDirTextEdit->setDisabled(true);
@@ -1811,6 +1812,9 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
     }
   }
 
+  // Clear all the watched paths
+  aFileWatcher->removePaths(aFileWatcher->files());
+
   // Set the full path value in the preview label
   auto lNewTextColor{aSuccessColor};
 
@@ -1820,6 +1824,9 @@ void Utils::UpdateOutputPreview(QLineEdit* aMainDirTextEdit, const QString& aSub
     {
       lNewTextColor = aWarningColor;
     }
+
+    // Add a new path to watch to
+    aFileWatcher->addPath(lFullPath);
   }
   else
   {

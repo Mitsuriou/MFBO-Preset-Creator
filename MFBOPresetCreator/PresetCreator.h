@@ -1,5 +1,6 @@
 #pragma once
 #include "Struct.h"
+#include <QFileSystemWatcher>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QWidget>
@@ -21,6 +22,7 @@ public:
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
 
 private:
+  QFileSystemWatcher* mFileWatcher;
   Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   std::map<QString, QStringList> mFiltersList;

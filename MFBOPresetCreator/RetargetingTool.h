@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Struct.h"
 #include <QDialog>
+#include <QFileSystemWatcher>
 #include <QGridLayout>
 
 class RetargetingTool final : public QDialog
@@ -18,6 +19,7 @@ protected:
   void reject() override;
 
 private:
+  QFileSystemWatcher* mFileWatcher;
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   bool mHasUserDoneSomething;

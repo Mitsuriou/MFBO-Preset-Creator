@@ -21,6 +21,7 @@
 
 BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
+  , mFileWatcher(new QFileSystemWatcher())
   , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mMinimumFirstColumnWidth(300)
@@ -42,6 +43,8 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
   this->setupScanTweaksGUI(*lMainLayout);
   this->setupGenerationAdjustmentGUI(*lMainLayout);
   this->setupButtons(*lButtonLayout);
+
+  QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &BatchConversion::updateOutputPreview);
 
   this->mHasUserDoneSomething = false;
 
@@ -844,7 +847,7 @@ void BatchConversion::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  Utils::UpdateOutputPreview(lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
 }
 
 void BatchConversion::chooseExportDirectory()
