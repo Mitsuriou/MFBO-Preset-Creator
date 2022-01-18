@@ -253,138 +253,138 @@
 <context>
     <name>BatchConversion</name>
     <message>
-        <location filename="BatchConversion.cpp" line="66"/>
+        <location filename="BatchConversion.cpp" line="69"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="67"/>
+        <location filename="BatchConversion.cpp" line="70"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="70"/>
+        <location filename="BatchConversion.cpp" line="73"/>
         <source>Close the window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="71"/>
+        <location filename="BatchConversion.cpp" line="74"/>
         <source>Go back to the batch conversion window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="99"/>
+        <location filename="BatchConversion.cpp" line="102"/>
         <source>Batch Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="123"/>
+        <location filename="BatchConversion.cpp" line="126"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="133"/>
+        <location filename="BatchConversion.cpp" line="136"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="146"/>
+        <location filename="BatchConversion.cpp" line="149"/>
         <source>Skeleton</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="159"/>
+        <location filename="BatchConversion.cpp" line="162"/>
         <source>Skeleton file (human):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="168"/>
-        <location filename="BatchConversion.cpp" line="185"/>
+        <location filename="BatchConversion.cpp" line="171"/>
+        <location filename="BatchConversion.cpp" line="188"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="176"/>
+        <location filename="BatchConversion.cpp" line="179"/>
         <source>Skeleton file (beast):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="207"/>
+        <location filename="BatchConversion.cpp" line="210"/>
         <source>BodySlide</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="227"/>
+        <location filename="BatchConversion.cpp" line="230"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="246"/>
+        <location filename="BatchConversion.cpp" line="249"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="289"/>
+        <location filename="BatchConversion.cpp" line="292"/>
         <source>Scan tweaks</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="299"/>
+        <location filename="BatchConversion.cpp" line="302"/>
         <source>Smart search (only files with a name matching a certain pattern are listed)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="304"/>
+        <location filename="BatchConversion.cpp" line="307"/>
         <source>Advanced search (every single .nif file is listed)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="310"/>
+        <location filename="BatchConversion.cpp" line="313"/>
         <source>Only scan the &quot;meshes&quot; subdirectories of each mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="314"/>
+        <location filename="BatchConversion.cpp" line="317"/>
         <source>Clear the irrelevant entries (mods which do not contain any body, hands and feet mesh)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="327"/>
+        <location filename="BatchConversion.cpp" line="330"/>
         <source>Generation tweaks</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="337"/>
+        <location filename="BatchConversion.cpp" line="340"/>
         <source>Generate everything for the &quot;Data&quot; directory directly</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="342"/>
+        <location filename="BatchConversion.cpp" line="345"/>
         <source>Generate each preset in a dedicated directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="357"/>
+        <location filename="BatchConversion.cpp" line="360"/>
         <source>Launch the scan of the directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="504"/>
+        <location filename="BatchConversion.cpp" line="507"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="507"/>
+        <location filename="BatchConversion.cpp" line="510"/>
         <source>Continue the search</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="508"/>
+        <location filename="BatchConversion.cpp" line="511"/>
         <source>Cancel the search</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="619"/>
+        <location filename="BatchConversion.cpp" line="622"/>
         <source>No data found for the given input directory. Please try to change it before retrying again.
 
 Note: If you want to convert a single mod only, please use the &quot;Assisted Conversion&quot; tool instead.
@@ -393,81 +393,81 @@ Note of ModOrganizer2 users: select your &quot;mods&quot; directory as the input
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="758"/>
+        <location filename="BatchConversion.cpp" line="761"/>
         <source>Batch generation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="759"/>
+        <location filename="BatchConversion.cpp" line="762"/>
         <source>Every preset has been correctly generated.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="764"/>
         <location filename="BatchConversion.cpp" line="767"/>
+        <location filename="BatchConversion.cpp" line="770"/>
         <source>Open the batch generated directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="881"/>
+        <location filename="BatchConversion.cpp" line="884"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="948"/>
+        <location filename="BatchConversion.cpp" line="951"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="464"/>
+        <location filename="BatchConversion.cpp" line="467"/>
         <source>Error: no path given to search for files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="109"/>
+        <location filename="BatchConversion.cpp" line="112"/>
         <source>Input location</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="486"/>
+        <location filename="BatchConversion.cpp" line="489"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="493"/>
+        <location filename="BatchConversion.cpp" line="496"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="503"/>
+        <location filename="BatchConversion.cpp" line="506"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="531"/>
+        <location filename="BatchConversion.cpp" line="534"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="531"/>
+        <location filename="BatchConversion.cpp" line="534"/>
         <source>Scanning the directory. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="570"/>
+        <location filename="BatchConversion.cpp" line="573"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="653"/>
+        <location filename="BatchConversion.cpp" line="656"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="767"/>
+        <location filename="BatchConversion.cpp" line="770"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -491,9 +491,9 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="BatchConversionPicker.cpp" line="43"/>
-        <location filename="BatchConversionPicker.cpp" line="929"/>
-        <location filename="BatchConversionPicker.cpp" line="975"/>
-        <location filename="BatchConversionPicker.cpp" line="999"/>
+        <location filename="BatchConversionPicker.cpp" line="931"/>
+        <location filename="BatchConversionPicker.cpp" line="977"/>
+        <location filename="BatchConversionPicker.cpp" line="1001"/>
         <source>Go back to the batch conversion: results picker window</source>
         <translation></translation>
     </message>
@@ -634,27 +634,27 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="900"/>
+        <location filename="BatchConversionPicker.cpp" line="902"/>
         <source>No preset created</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="901"/>
+        <location filename="BatchConversionPicker.cpp" line="903"/>
         <source>You have not created any preset. Batch conversion: results picker window is going to be closed.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="904"/>
+        <location filename="BatchConversionPicker.cpp" line="906"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="924"/>
+        <location filename="BatchConversionPicker.cpp" line="926"/>
         <source>Invalid preset detected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="925"/>
+        <location filename="BatchConversionPicker.cpp" line="927"/>
         <source>The preset number %1 is not valid.
 
 A preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.
@@ -663,48 +663,48 @@ Would you like to delete this invalid preset and continue, or cancel the generat
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="928"/>
+        <location filename="BatchConversionPicker.cpp" line="930"/>
         <source>Delete the preset number %1 and continue the generation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="955"/>
+        <location filename="BatchConversionPicker.cpp" line="957"/>
         <source>The presets number %1 and number %2 have the same BodySlide files names &quot;%3&quot; defined.
 
 Please make sure the files names are different before trying to batch generate the files again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="970"/>
+        <location filename="BatchConversionPicker.cpp" line="972"/>
         <source>No valid preset</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="971"/>
+        <location filename="BatchConversionPicker.cpp" line="973"/>
         <source>No valid preset has been found.
 
 Would you like to close the batch conversion: results picker window now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="974"/>
+        <location filename="BatchConversionPicker.cpp" line="976"/>
         <source>Close the batch conversion: results picker window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="994"/>
+        <location filename="BatchConversionPicker.cpp" line="996"/>
         <source>Start batch generation now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="995"/>
+        <location filename="BatchConversionPicker.cpp" line="997"/>
         <source>%1 valid preset(s) has (have) been found.
 
 Would you like to generate it (them) now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="BatchConversionPicker.cpp" line="998"/>
+        <location filename="BatchConversionPicker.cpp" line="1000"/>
         <source>Generate the preset(s) files on my disk</source>
         <translation></translation>
     </message>
@@ -870,44 +870,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1823"/>
+        <location filename="DataLists.cpp" line="1913"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1824"/>
-        <location filename="DataLists.cpp" line="1830"/>
+        <location filename="DataLists.cpp" line="1914"/>
+        <location filename="DataLists.cpp" line="1920"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1825"/>
-        <location filename="DataLists.cpp" line="1831"/>
+        <location filename="DataLists.cpp" line="1915"/>
+        <location filename="DataLists.cpp" line="1921"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1859"/>
+        <location filename="DataLists.cpp" line="1949"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1860"/>
+        <location filename="DataLists.cpp" line="1950"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1861"/>
+        <location filename="DataLists.cpp" line="1951"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1862"/>
+        <location filename="DataLists.cpp" line="1952"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1863"/>
+        <location filename="DataLists.cpp" line="1953"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -1189,22 +1189,22 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="70"/>
+        <location filename="PresetCreator.cpp" line="73"/>
         <source>Unsaved data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="71"/>
+        <location filename="PresetCreator.cpp" line="74"/>
         <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%1&quot;?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="74"/>
+        <location filename="PresetCreator.cpp" line="77"/>
         <source>Open the project without saving</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="75"/>
+        <location filename="PresetCreator.cpp" line="78"/>
         <source>Cancel the file opening</source>
         <translation></translation>
     </message>
@@ -1494,217 +1494,217 @@ Please make sure your internet connection is working correctly and try again.</s
 <context>
     <name>RetargetingTool</name>
     <message>
-        <location filename="RetargetingTool.cpp" line="56"/>
+        <location filename="RetargetingTool.cpp" line="59"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="57"/>
+        <location filename="RetargetingTool.cpp" line="60"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="60"/>
+        <location filename="RetargetingTool.cpp" line="63"/>
         <source>Close the window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="61"/>
+        <location filename="RetargetingTool.cpp" line="64"/>
         <source>Go back to the retargeting tool window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="128"/>
+        <location filename="RetargetingTool.cpp" line="131"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="135"/>
-        <location filename="RetargetingTool.cpp" line="187"/>
+        <location filename="RetargetingTool.cpp" line="138"/>
+        <location filename="RetargetingTool.cpp" line="190"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="139"/>
+        <location filename="RetargetingTool.cpp" line="142"/>
         <source>BodySlide filters:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="158"/>
+        <location filename="RetargetingTool.cpp" line="161"/>
         <source>Edit BodySlide filters sets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="162"/>
+        <location filename="RetargetingTool.cpp" line="165"/>
         <source>Backup</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="172"/>
+        <location filename="RetargetingTool.cpp" line="175"/>
         <source>Keep a backup?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="174"/>
+        <location filename="RetargetingTool.cpp" line="177"/>
         <source>You should always check this box to avoid any data loss or corruption</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="178"/>
+        <location filename="RetargetingTool.cpp" line="181"/>
         <source>Backup directory path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="191"/>
+        <location filename="RetargetingTool.cpp" line="194"/>
         <source>Backup subdirectory name/path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="200"/>
+        <location filename="RetargetingTool.cpp" line="203"/>
         <source>Preview:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="397"/>
+        <location filename="RetargetingTool.cpp" line="408"/>
         <source>Error: no path path given for the retargeting.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="418"/>
+        <location filename="RetargetingTool.cpp" line="429"/>
         <source>Error: no path given to backup the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="430"/>
+        <location filename="RetargetingTool.cpp" line="441"/>
         <source>Error: it is not possible to backup a directory inside itself. Choose another backup location.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="437"/>
+        <location filename="RetargetingTool.cpp" line="448"/>
         <source>Error: the path given to backup the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="445"/>
+        <location filename="RetargetingTool.cpp" line="456"/>
         <source>The backup is currently being created. Depending on your computer, it can take a certain time. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="454"/>
+        <location filename="RetargetingTool.cpp" line="465"/>
         <source>Error: the backup could not be created. Please try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="471"/>
+        <location filename="RetargetingTool.cpp" line="482"/>
         <source>Parsing XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="471"/>
+        <location filename="RetargetingTool.cpp" line="482"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="492"/>
-        <location filename="RetargetingTool.cpp" line="539"/>
-        <location filename="RetargetingTool.cpp" line="676"/>
+        <location filename="RetargetingTool.cpp" line="503"/>
+        <location filename="RetargetingTool.cpp" line="550"/>
+        <location filename="RetargetingTool.cpp" line="687"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="513"/>
+        <location filename="RetargetingTool.cpp" line="524"/>
         <source>Error while trying to parse the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="521"/>
+        <location filename="RetargetingTool.cpp" line="532"/>
         <source>Parsing and patching OSP files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="557"/>
+        <location filename="RetargetingTool.cpp" line="568"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="578"/>
+        <location filename="RetargetingTool.cpp" line="589"/>
         <source>No data found from the associated XML file. The file &quot;%1&quot; was not modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="586"/>
+        <location filename="RetargetingTool.cpp" line="597"/>
         <source>The chosen body/version does not support beast hands. The retargeting of the OSP file &quot;%1&quot; has been skipped.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="652"/>
+        <location filename="RetargetingTool.cpp" line="663"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="666"/>
+        <location filename="RetargetingTool.cpp" line="677"/>
         <source>Patching XML files. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="704"/>
+        <location filename="RetargetingTool.cpp" line="715"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="753"/>
+        <location filename="RetargetingTool.cpp" line="764"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="761"/>
+        <location filename="RetargetingTool.cpp" line="772"/>
         <source>Retargeting successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="762"/>
+        <location filename="RetargetingTool.cpp" line="773"/>
         <source>All the files have been correctly retargeted. You can now close this window!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="767"/>
-        <location filename="RetargetingTool.cpp" line="770"/>
+        <location filename="RetargetingTool.cpp" line="778"/>
+        <location filename="RetargetingTool.cpp" line="781"/>
         <source>Open the retargeted directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="770"/>
+        <location filename="RetargetingTool.cpp" line="781"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="797"/>
+        <location filename="RetargetingTool.cpp" line="808"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="864"/>
+        <location filename="RetargetingTool.cpp" line="875"/>
         <source> (feet only)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="89"/>
+        <location filename="RetargetingTool.cpp" line="92"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="211"/>
+        <location filename="RetargetingTool.cpp" line="214"/>
         <source>Retarget all the files under the input path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="109"/>
+        <location filename="RetargetingTool.cpp" line="112"/>
         <source>General</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="354"/>
+        <location filename="RetargetingTool.cpp" line="359"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
@@ -1894,7 +1894,7 @@ Targeted feet: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="851"/>
+        <location filename="Settings.cpp" line="848"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation></translation>
@@ -1980,24 +1980,24 @@ Targeted feet: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="766"/>
+        <location filename="Settings.cpp" line="763"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="767"/>
+        <location filename="Settings.cpp" line="764"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="770"/>
+        <location filename="Settings.cpp" line="767"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="771"/>
+        <location filename="Settings.cpp" line="768"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
@@ -2107,204 +2107,204 @@ Would you like to restart the application now (you will lose all unsaved data)?<
 <context>
     <name>TexturesAssistant</name>
     <message>
-        <location filename="TexturesAssistant.cpp" line="48"/>
+        <location filename="TexturesAssistant.cpp" line="49"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="49"/>
+        <location filename="TexturesAssistant.cpp" line="50"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="52"/>
+        <location filename="TexturesAssistant.cpp" line="53"/>
         <source>Close the window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="53"/>
+        <location filename="TexturesAssistant.cpp" line="54"/>
         <source>Go back to the textures assistant window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="79"/>
+        <location filename="TexturesAssistant.cpp" line="80"/>
         <source>Textures Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="97"/>
+        <location filename="TexturesAssistant.cpp" line="98"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="107"/>
+        <location filename="TexturesAssistant.cpp" line="108"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="111"/>
+        <location filename="TexturesAssistant.cpp" line="112"/>
         <source>Launch the scan of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="130"/>
+        <location filename="TexturesAssistant.cpp" line="133"/>
         <source>Awaiting the launch of a scan...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="155"/>
+        <location filename="TexturesAssistant.cpp" line="158"/>
         <source>Textures set</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="168"/>
+        <location filename="TexturesAssistant.cpp" line="171"/>
         <source>Textures set:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="177"/>
+        <location filename="TexturesAssistant.cpp" line="180"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="221"/>
+        <location filename="TexturesAssistant.cpp" line="224"/>
         <source>Create the files structure on my computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="257"/>
+        <location filename="TexturesAssistant.cpp" line="260"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="257"/>
+        <location filename="TexturesAssistant.cpp" line="260"/>
         <source>Scanning the directory. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="278"/>
+        <location filename="TexturesAssistant.cpp" line="281"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="360"/>
+        <location filename="TexturesAssistant.cpp" line="363"/>
         <source>Head textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="369"/>
+        <location filename="TexturesAssistant.cpp" line="372"/>
         <source>Mouth textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="387"/>
+        <location filename="TexturesAssistant.cpp" line="390"/>
         <source>Extra body textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="396"/>
+        <location filename="TexturesAssistant.cpp" line="399"/>
         <source>Hands textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="378"/>
+        <location filename="TexturesAssistant.cpp" line="381"/>
         <source>Body textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="405"/>
+        <location filename="TexturesAssistant.cpp" line="408"/>
         <source>Other .DDS textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="451"/>
+        <location filename="TexturesAssistant.cpp" line="454"/>
         <source>Error: no textures set chosen.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="473"/>
+        <location filename="TexturesAssistant.cpp" line="476"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="480"/>
+        <location filename="TexturesAssistant.cpp" line="483"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="490"/>
+        <location filename="TexturesAssistant.cpp" line="493"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="498"/>
+        <location filename="TexturesAssistant.cpp" line="501"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="499"/>
+        <location filename="TexturesAssistant.cpp" line="502"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="502"/>
+        <location filename="TexturesAssistant.cpp" line="505"/>
         <source>Continue the files creation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="503"/>
+        <location filename="TexturesAssistant.cpp" line="506"/>
         <source>Cancel the files creation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="528"/>
+        <location filename="TexturesAssistant.cpp" line="531"/>
         <source>Files creation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="529"/>
+        <location filename="TexturesAssistant.cpp" line="532"/>
         <source>The texture files have been correctly created.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="532"/>
+        <location filename="TexturesAssistant.cpp" line="535"/>
         <source>Open the created directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="532"/>
+        <location filename="TexturesAssistant.cpp" line="535"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="574"/>
+        <location filename="TexturesAssistant.cpp" line="577"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="575"/>
+        <location filename="TexturesAssistant.cpp" line="578"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="578"/>
+        <location filename="TexturesAssistant.cpp" line="581"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="579"/>
+        <location filename="TexturesAssistant.cpp" line="582"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="594"/>
+        <location filename="TexturesAssistant.cpp" line="597"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="608"/>
+        <location filename="TexturesAssistant.cpp" line="611"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation></translation>
     </message>
@@ -2467,7 +2467,7 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="947"/>
+        <location filename="Utils.cpp" line="974"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -2477,85 +2477,85 @@ Please make sure your internet connection is working correctly and try again.
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="473"/>
-        <location filename="Utils.cpp" line="525"/>
+        <location filename="Utils.cpp" line="479"/>
+        <location filename="Utils.cpp" line="531"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="494"/>
+        <location filename="Utils.cpp" line="500"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="554"/>
+        <location filename="Utils.cpp" line="560"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="584"/>
+        <location filename="Utils.cpp" line="590"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="610"/>
+        <location filename="Utils.cpp" line="616"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="615"/>
+        <location filename="Utils.cpp" line="621"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="622"/>
+        <location filename="Utils.cpp" line="628"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="740"/>
+        <location filename="Utils.cpp" line="767"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="760"/>
-        <location filename="Utils.cpp" line="793"/>
-        <location filename="Utils.cpp" line="909"/>
+        <location filename="Utils.cpp" line="787"/>
+        <location filename="Utils.cpp" line="820"/>
+        <location filename="Utils.cpp" line="936"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="947"/>
+        <location filename="Utils.cpp" line="974"/>
         <source>Project successfully saved</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="947"/>
+        <location filename="Utils.cpp" line="974"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="953"/>
+        <location filename="Utils.cpp" line="980"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1629"/>
+        <location filename="Utils.cpp" line="1701"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1712"/>
-        <location filename="Utils.cpp" line="1736"/>
+        <location filename="Utils.cpp" line="1785"/>
+        <location filename="Utils.cpp" line="1809"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1730"/>
+        <location filename="Utils.cpp" line="1803"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>
