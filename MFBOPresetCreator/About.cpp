@@ -76,7 +76,7 @@ void About::initializeGUI()
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/29023'>CBBE SMP (3BBB)</a> mod and modified by Mitsuriou.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/31126'>BHUNP (UUNP Next Generation) SSE</a> mod and modified by Mitsuriou.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/51173'>Mimir Ebonic Body (Custom CBBE sliders and CBBE preset) V.2</a> mod and modified by Mitsuriou.</li>"
-      "<li>the <a%1 href='https://coco2048.blogspot.com/'>[COCO]Body V6.66 3BBB LE & SE Ultimate</a> mod and modified by Mitsuriou.</li>"
+      "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/62052'>COCO Body (3BBB) SE</a> mod and modified by Mitsuriou.</li>"
       "<li>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/59287'>BHUNP Lite - AKA ASDASDF Body (Also Myst's Settings)</a> mod and modified by Mitsuriou.</li>"
       "<li style='margin-top: 5px;'>the <a%1 href='https://www.nexusmods.com/skyrimspecialedition/mods/30072'>MSF - More Sliders for Feet CBBE - BHUNP (High Heel)</a> mod and modified by Mitsuriou.</li>"
       "<li>the <a%1 href='https://www.sunkeumjeong.com/post/hg-feet-and-toes-bhunp-se'>HG Feet and Toes BHUNP SE</a> mod and modified by Mitsuriou.</li>"
