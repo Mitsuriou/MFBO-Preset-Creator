@@ -327,7 +327,7 @@ QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName, const int 
 
       // Only for "V6" and "V6.8"
       if ((aIsCBBEBody && (aRelativeVersion == 1 || aRelativeVersion == 2))    // CBBE
-          || !aIsCBBEBody && (aRelativeVersion == 2 || aRelativeVersion == 3)) // UUNP
+          || (!aIsCBBEBody && (aRelativeVersion == 2 || aRelativeVersion == 3))) // UUNP
       {
         lVariantsList.append(QString("COCO Feet - High Heels"));
       }
