@@ -422,7 +422,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
 
   qApp->setStyleSheet("");
 
-  if (lQSSFileName != "")
+  if (!lQSSFileName.isEmpty())
   {
     QFile lQSSFile(":qss/" + lQSSFileName + ".qss");
     if (lQSSFile.open(QIODevice::ReadOnly | QIODevice::Text))

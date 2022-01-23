@@ -43,6 +43,12 @@ RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSett
   aSettings.display.bodySlidePresetsRetargetingDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
+RetargetingTool::~RetargetingTool()
+{
+  this->mFileWatcher->removePaths(this->mFileWatcher->files());
+  delete this->mFileWatcher;
+}
+
 void RetargetingTool::closeEvent(QCloseEvent* aEvent)
 {
   if (!this->mHasUserDoneSomething)
@@ -519,7 +525,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     // Build the names buffer
     lNamesBuffer.push_back(QPair<QString, QString>(it.fileInfo().completeBaseName(), Utils::GetPresetNameFromXMLFile(lAbsFilePath)));
 
-    if (lNamesBuffer.at(lNamesBuffer.size() - 1).second == "")
+    if (lNamesBuffer.at(lNamesBuffer.size() - 1).second.isEmpty())
     {
       Utils::DisplayWarningMessage(tr("Error while trying to parse the XML file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
@@ -584,7 +590,7 @@ void RetargetingTool::launchUpDownGradeProcess()
       }
     }
 
-    if (lPresetName == "")
+    if (lPresetName.isEmpty())
     {
       Utils::DisplayWarningMessage(tr("No data found from the associated XML file. The file \"%1\" was not modified.").arg(it2.fileInfo().absoluteFilePath()));
       continue;

@@ -50,6 +50,12 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
   this->setHasUserDoneSomething(false);
 }
 
+PresetCreator::~PresetCreator()
+{
+  this->mFileWatcher->removePaths(this->mFileWatcher->files());
+  delete this->mFileWatcher;
+}
+
 void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileChooser)
 {
   QString lFileToLoad{lFilePath};
@@ -841,59 +847,64 @@ void PresetCreator::updateMeshesPreview()
   // Get preview label
   auto lPreviewLabel{this->findChild<QLabel*>(QString("meshes_preview"))};
   auto lFullPreview{QString()};
-  auto lIsValidPath{true};
-
-  if (lMeshesPathBody == "")
-  {
-    lMeshesPathBody = "*";
-    lIsValidPath = false;
-  }
-
-  if (lMeshesPathFeet == "")
-  {
-    lMeshesPathFeet = "*";
-    lIsValidPath = false;
-  }
-
-  if (lMeshesPathHands == "")
-  {
-    lMeshesPathHands = "*";
-    lIsValidPath = false;
-  }
-
-  if (lBodyName == "")
-  {
-    lBodyName = "femalebody";
-  }
-
-  if (lFeetName == "")
-  {
-    lFeetName = "femalefeet";
-  }
-
-  if (lHandsName == "")
-  {
-    lHandsName = "femalehands";
-  }
-
-  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody, lBodyName));
-  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet, lFeetName));
-  lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands, lHandsName));
 
   auto lNewTextColor{this->mSettings.display.successColor};
-
-  if (lIsValidPath)
+  if (lMeshesPathBody.isEmpty() && lMeshesPathFeet.isEmpty() && lMeshesPathHands.isEmpty())
   {
-    if ((!lMeshesPathBody.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathBody.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathBody.length() < 8))
-        || (!lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathFeet.length() < 8))
-        || (!lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathHands.length() < 8)))
+    lNewTextColor = this->mSettings.display.dangerColor;
+  }
+
+  // Body preview line
+  if (!lMeshesPathBody.isEmpty())
+  {
+    // Preview
+    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathBody, !lBodyName.isEmpty() ? lBodyName : "femalebody"));
+
+    if (!lMeshesPathBody.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathBody.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathBody.length() < 8))
     {
       lNewTextColor = this->mSettings.display.warningColor;
     }
   }
   else
   {
-    lNewTextColor = this->mSettings.display.dangerColor;
+    // The generation of this part will be ignored
+    lFullPreview.append(QString("-\n"));
+  }
+
+  // Feet preview line
+  if (!lMeshesPathFeet.isEmpty())
+  {
+    // Preview
+    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet, !lFeetName.isEmpty() ? lFeetName : "femaleFeet"));
+
+    if (lNewTextColor.compare(this->mSettings.display.successColor) == 0
+        && (!lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathFeet.length() < 8)))
+    {
+      lNewTextColor = this->mSettings.display.warningColor;
+    }
+  }
+  else
+  {
+    // The generation of this part will be ignored
+    lFullPreview.append(QString("-\n"));
+  }
+
+  // Hands preview line
+  if (!lMeshesPathHands.isEmpty())
+  {
+    // Preview
+    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands, !lHandsName.isEmpty() ? lHandsName : "femaleHands"));
+
+    if (lNewTextColor.compare(this->mSettings.display.successColor) == 0
+        && (!lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathHands.length() < 8)))
+    {
+      lNewTextColor = this->mSettings.display.warningColor;
+    }
+  }
+  else
+  {
+    // The generation of this part will be ignored
+    lFullPreview.append(QString("-"));
   }
 
   lPreviewLabel->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -1188,44 +1199,25 @@ void PresetCreator::generateDirectoryStructure()
     lGenerateFilesInExistingMainDirectory = true;
   }
 
-  // Export the meshes
-  if (lMeshesPathBody.isEmpty())
+  // Analyze the data that needs to be generated
+  unsigned char lOptions{0};
+
+  // Body
+  if (!lMeshesPathBody.isEmpty())
   {
-    Utils::DisplayWarningMessage(tr("Error: no path has been given for the body meshes."));
-
-    // Remove the directory since the generation is incomplete
-    if (!lGenerateFilesInExistingMainDirectory)
-    {
-      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-    }
-
-    return;
+    lOptions += 100;
   }
 
-  if (lMeshesPathFeet.isEmpty())
+  // Feet
+  if (!lMeshesPathFeet.isEmpty())
   {
-    Utils::DisplayWarningMessage(tr("Error: no path has been given for the feet meshes."));
-
-    // Remove the directory since the generation is incomplete
-    if (!lGenerateFilesInExistingMainDirectory)
-    {
-      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-    }
-
-    return;
+    lOptions += 10;
   }
 
-  if (lMeshesPathHands.isEmpty())
+  // Hands
+  if (!lMeshesPathHands.isEmpty())
   {
-    Utils::DisplayWarningMessage(tr("Error: no path has been given for the hands meshes."));
-
-    // Remove the directory since the generation is incomplete
-    if (!lGenerateFilesInExistingMainDirectory)
-    {
-      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
-    }
-
-    return;
+    lOptions += 1;
   }
 
   // Check if a name has been given for the OSP and XML files
@@ -1260,7 +1252,7 @@ void PresetCreator::generateDirectoryStructure()
   auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
   auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), this->mTargetBodyMesh, this->mTargetFeetMesh)};
 
-  if (!Utils::CreateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lUserFilters, false))
+  if (!Utils::CreateXMLFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lUserFilters, false, lOptions))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)
@@ -1272,7 +1264,7 @@ void PresetCreator::generateDirectoryStructure()
   }
 
   // OSP file
-  if (!Utils::CreateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, false))
+  if (!Utils::CreateOSPFile(lEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, this->mTargetBodyMesh, this->mTargetFeetMesh, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, false, lOptions))
   {
     // Remove the directory since the generation is incomplete
     if (!lGenerateFilesInExistingMainDirectory)

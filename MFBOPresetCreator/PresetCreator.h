@@ -11,6 +11,7 @@ class PresetCreator final : public QWidget
 
 public:
   explicit PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+  ~PresetCreator();
 
   // Function that will to be called from outside this class
   void loadProject(const QString& lFilePath = QString(), const bool aSkipFileChooser = false);

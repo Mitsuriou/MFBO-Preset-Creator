@@ -53,6 +53,12 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
   aSettings.display.batchConversionDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
+BatchConversion::~BatchConversion()
+{
+  this->mFileWatcher->removePaths(this->mFileWatcher->files());
+  delete this->mFileWatcher;
+}
+
 void BatchConversion::closeEvent(QCloseEvent* aEvent)
 {
   if (!this->mHasUserDoneSomething)
@@ -680,6 +686,27 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     const auto lMeshesPathHands{lPreset.getHandsData().getResourcePath().left(lHandsLastSlashPosition)};
     const auto lHandsName{lPreset.getHandsData().getResourcePath().mid(lHandsLastSlashPosition + 1)};
 
+    // Analyze the data that needs to be generated
+    unsigned char lOptions{0};
+
+    // Body
+    if (!lMeshesPathBody.isEmpty() && !lBodyName.isEmpty())
+    {
+      lOptions += 100;
+    }
+
+    // Feet
+    if (!lMeshesPathFeet.isEmpty() && !lFeetName.isEmpty())
+    {
+      lOptions += 10;
+    }
+
+    // Hands
+    if (!lMeshesPathHands.isEmpty() && !lHandsName.isEmpty())
+    {
+      lOptions += 1;
+    }
+
     // BodySlide names
     auto lOSPXMLNames{lPreset.getNames().first};
     auto lBodyslideSlidersetsNames{lPreset.getNames().second};
@@ -696,7 +723,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     // XML file
     auto lSelectedBodyName{static_cast<BodyNameVersion>(lBodySelected)};
 
-    if (!Utils::CreateXMLFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.getFiltersList(), true))
+    if (!Utils::CreateXMLFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, aPresetsData.getFiltersList(), true, lOptions))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)
@@ -708,7 +735,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
     }
 
     // OSP file
-    if (!Utils::CreateOSPFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true))
+    if (!Utils::CreateOSPFile(lPresetEntryDirectory, lGenerateFilesInExistingMainDirectory, lOSPXMLNames, lMustUseBeastHands, lSelectedBodyName, lFeetModIndex, lBodyslideSlidersetsNames, lMeshesPathBody, lMeshesPathFeet, lMeshesPathHands, lBodyName, lFeetName, lHandsName, true, lOptions))
     {
       // Remove the directory since the generation is incomplete
       if (!lGenerateFilesInExistingMainDirectory)

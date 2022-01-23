@@ -34,6 +34,12 @@ TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& a
   aSettings.display.texturesAssistantDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
+TexturesAssistant::~TexturesAssistant()
+{
+  this->mFileWatcher->removePaths(this->mFileWatcher->files());
+  delete this->mFileWatcher;
+}
+
 void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
 {
   if (!this->mHasUserDoneSomething)

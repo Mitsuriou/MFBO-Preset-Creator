@@ -11,6 +11,7 @@ class BatchConversion final : public QDialog
 
 public:
   explicit BatchConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+  ~BatchConversion();
 
 signals:
   void modalClosed();

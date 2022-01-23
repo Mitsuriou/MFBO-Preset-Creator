@@ -465,7 +465,7 @@ void Utils::OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme)
   }
 }
 
-bool Utils::CreateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset)
+bool Utils::CreateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset, const unsigned char& aTargetBlocks)
 {
   // Create the SliderGroups directory
   auto lSliderGroupsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderGroups"};
@@ -481,7 +481,7 @@ bool Utils::CreateXMLFile(const QString& aEntryDirectory, const bool aGenerateFi
   }
 
   // Construct the file content
-  auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(aBodyslideSlidersetsNames, aBodySlideFilters, aBodyNameVersion, aFeetNameVersion, aMustUseBeastHands)};
+  auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(aBodyslideSlidersetsNames, aBodySlideFilters, aBodyNameVersion, aFeetNameVersion, aMustUseBeastHands, aTargetBlocks)};
 
   // Create the OSP file on disk
   auto lXMLPathName(lSliderGroupsDirectory + QDir::separator() + aOSPXMLNames + ".xml");
@@ -517,7 +517,8 @@ bool Utils::CreateOSPFile(const QString& aEntryDirectory,
                           const QString& aBodyName,
                           const QString& aFeetName,
                           const QString& aHandsName,
-                          const bool aIsBatchConversionPreset)
+                          const bool aIsBatchConversionPreset,
+                          const unsigned char& aTargetBlocks)
 {
   // Create the SliderSets directory
   auto lSliderSetsDirectory{aEntryDirectory + QDir::separator() + "CalienteTools" + QDir::separator() + "BodySlide" + QDir::separator() + "SliderSets"};
@@ -533,7 +534,7 @@ bool Utils::CreateOSPFile(const QString& aEntryDirectory,
   }
 
   // Construct the file content
-  auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(aBodyslideSlidersetsNames, aBodyNameVersion, aFeetNameVersion, aMustUseBeastHands)};
+  auto lOSPFileContent{SliderFileBuilder::BuildOSPFileContent(aBodyslideSlidersetsNames, aBodyNameVersion, aFeetNameVersion, aMustUseBeastHands, aTargetBlocks)};
 
   // Fill the custom variables
   lOSPFileContent.replace(QString("{%%body_output_path%%}"), aMeshesPathBody.replace("/", "\\"));
@@ -903,7 +904,7 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
           lTempSet.setOutputFile(lChild.firstChild().toText().data()); // OutputFile
         }
 
-        if (lTempSet.getOutputPath() != "" && lTempSet.getOutputFile() != "")
+        if (!lTempSet.getOutputPath().isEmpty() && !lTempSet.getOutputFile().isEmpty())
         {
           break;
         }
@@ -1736,7 +1737,7 @@ void Utils::UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringLi
     aComboBox->addItem(lPair.first);
   }
 
-  if (lPrevKey == "" || aFilterList.count(lPrevKey) == 0)
+  if (lPrevKey.isEmpty() || aFilterList.count(lPrevKey) == 0)
   {
     aComboBox->setCurrentIndex(0);
   }
