@@ -1220,6 +1220,19 @@ void PresetCreator::generateDirectoryStructure()
     lOptions += 1;
   }
 
+  if (lOptions == 0)
+  {
+    Utils::DisplayWarningMessage(tr("Error: no path has been given for any mesh."));
+
+    // Remove the directory since the generation is incomplete
+    if (!lGenerateFilesInExistingMainDirectory)
+    {
+      Utils::RemoveDirectoryAndSubDirs(lEntryDirectory);
+    }
+
+    return;
+  }
+
   // Check if a name has been given for the OSP and XML files
   if (lOSPXMLNames.isEmpty())
   {
