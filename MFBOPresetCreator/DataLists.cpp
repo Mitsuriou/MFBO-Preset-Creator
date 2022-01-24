@@ -326,7 +326,7 @@ QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName, const int 
       QStringList lVariantsList{QString("COCO Feet - Normal")};
 
       // Only for "V6" and "V6.8"
-      if ((aIsCBBEBody && (aRelativeVersion == 1 || aRelativeVersion == 2))    // CBBE
+      if ((aIsCBBEBody && (aRelativeVersion == 1 || aRelativeVersion == 2))      // CBBE
           || (!aIsCBBEBody && (aRelativeVersion == 2 || aRelativeVersion == 3))) // UUNP
       {
         lVariantsList.append(QString("COCO Feet - High Heels"));
@@ -1867,8 +1867,6 @@ QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, 
 
   auto lBodyName{DataLists::GetName(aBodyNameVersion)};
   auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
-
-  auto lSliderSetName{QString()};
 
   switch (lBodyName)
   {
