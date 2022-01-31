@@ -1,0 +1,196 @@
+    <SliderSet name="%1 - BHUNP 3BBB Advanced Hands Ver 3">
+        <DataFolder>BHUNP 3BBB Advanced</DataFolder>
+        <SourceFile>BHUNP 3BBB Advanced Hands Ver 3.nif</SourceFile>
+        <OutputPath>{%%hands_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%hands_output_file%%}</OutputFile>
+        <Shape target="Hands">Hands</Shape>
+        <Shape target="Nails">Nails</Shape>
+        <Slider name="7B High" invert="false" small="0" big="0">
+            <Data name="Hands7B High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B High</Data>
+        </Slider>
+        <Slider name="7B Bombshell Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Bombshell Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Bombshell Low</Data>
+        </Slider>
+        <Slider name="7B Bombshell High" invert="false" small="0" big="0">
+            <Data name="Hands7B Bombshell High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Bombshell High</Data>
+        </Slider>
+        <Slider name="7B Natural Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Natural Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Natural Low</Data>
+        </Slider>
+        <Slider name="7B Natural High" invert="false" small="0" big="0">
+            <Data name="Hands7B Natural High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Natural High</Data>
+        </Slider>
+        <Slider name="7B Cleavage Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Cleavage Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Cleavage Low</Data>
+        </Slider>
+        <Slider name="7B Cleavage High" invert="false" small="0" big="0">
+            <Data name="Hands7B Cleavage High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Cleavage High</Data>
+        </Slider>
+        <Slider name="7B BCup Low" invert="false" small="0" big="0">
+            <Data name="Hands7B BCup Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B BCup Low</Data>
+        </Slider>
+        <Slider name="7B BCup High" invert="false" small="0" big="0">
+            <Data name="Hands7B BCup High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B BCup High</Data>
+        </Slider>
+        <Slider name="7B Oppai Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Oppai Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Oppai Low</Data>
+        </Slider>
+        <Slider name="7B Oppai High" invert="false" small="0" big="0">
+            <Data name="Hands7B Oppai High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Oppai High</Data>
+        </Slider>
+        <Slider name="7B CH Low" invert="false" small="0" big="0">
+            <Data name="Hands7B CH Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B CH Low</Data>
+        </Slider>
+        <Slider name="7B CH High" invert="false" small="0" big="0">
+            <Data name="Hands7B CH High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B CH High</Data>
+        </Slider>
+        <Slider name="UNP Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP Low</Data>
+        </Slider>
+        <Slider name="UNP High" invert="false" small="0" big="0">
+            <Data name="HandsUNP High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP High</Data>
+        </Slider>
+        <Slider name="UNP Pushup Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Pushup Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP Pushup Low</Data>
+        </Slider>
+        <Slider name="UNP Pushup High" invert="false" small="0" big="0">
+            <Data name="HandsUNP Pushup High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP Pushup High</Data>
+        </Slider>
+        <Slider name="UNP Skinny Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Skinny Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP Skinny Low</Data>
+        </Slider>
+        <Slider name="UNP Skinny High" invert="false" small="0" big="0">
+            <Data name="HandsUNP Skinny High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP Skinny High</Data>
+        </Slider>
+        <Slider name="UNP Perky Low" invert="false" small="0" big="0">
+            <Data name="HandsUNP Perky Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP Perky Low</Data>
+        </Slider>
+        <Slider name="UNP Perky High" invert="false" small="0" big="0">
+            <Data name="HandsUNP Perky High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNP Perky High</Data>
+        </Slider>
+        <Slider name="UNPB Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPB Low</Data>
+        </Slider>
+        <Slider name="UNPB High" invert="false" small="0" big="0">
+            <Data name="HandsUNPB High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPB High</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Oppai v3.2 Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPB Oppai v3.2 Low</Data>
+        </Slider>
+        <Slider name="UNPB Oppai v3.2 High" invert="false" small="0" big="0">
+            <Data name="HandsUNPB Oppai v3.2 High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPB Oppai v3.2 High</Data>
+        </Slider>
+        <Slider name="UNPetite Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPetite Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPetite Low</Data>
+        </Slider>
+        <Slider name="UNPetite High" invert="false" small="0" big="0">
+            <Data name="HandsUNPetite High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPetite High</Data>
+        </Slider>
+        <Slider name="UNPC Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPC Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPC Low</Data>
+        </Slider>
+        <Slider name="UNPC High" invert="false" small="0" big="0">
+            <Data name="HandsUNPC High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPC High</Data>
+        </Slider>
+        <Slider name="UNPCM Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPCM Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPCM Low</Data>
+        </Slider>
+        <Slider name="UNPCM High" invert="false" small="0" big="0">
+            <Data name="HandsUNPCM High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPCM High</Data>
+        </Slider>
+        <Slider name="UNPSH Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPSH Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPSH Low</Data>
+        </Slider>
+        <Slider name="UNPSH High" invert="false" small="0" big="0">
+            <Data name="HandsUNPSH High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPSH High</Data>
+        </Slider>
+        <Slider name="UNPK Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPK Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPK Low</Data>
+        </Slider>
+        <Slider name="UNPK High" invert="false" small="0" big="0">
+            <Data name="HandsUNPK High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPK High</Data>
+        </Slider>
+        <Slider name="UN7B Low" invert="false" small="0" big="0">
+            <Data name="HandsUN7B Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUN7B Low</Data>
+        </Slider>
+        <Slider name="UN7B High" invert="false" small="0" big="0">
+            <Data name="HandsUN7B High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUN7B High</Data>
+        </Slider>
+        <Slider name="UNPBB Low" invert="false" small="0" big="0">
+            <Data name="HandsUNPBB Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPBB Low</Data>
+            <Data name="NailsUNPBB Low" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\NailsUNPBB Low</Data>
+        </Slider>
+        <Slider name="UNPBB High" invert="false" small="0" big="0">
+            <Data name="HandsUNPBB High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsUNPBB High</Data>
+        </Slider>
+        <Slider name="Demonfet Low" invert="false" small="0" big="0">
+            <Data name="HandsDemonfet Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsDemonfet Low</Data>
+            <Data name="NailsDemonfet Low" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\NailsDemonfet Low</Data>
+        </Slider>
+        <Slider name="Demonfet High" invert="false" small="0" big="0">
+            <Data name="HandsDemonfet High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsDemonfet High</Data>
+        </Slider>
+        <Slider name="Dream Girl Low" invert="false" small="0" big="0">
+            <Data name="HandsDream Girl Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsDream Girl Low</Data>
+            <Data name="NailsDream Girl Low" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\NailsDream Girl Low</Data>
+        </Slider>
+        <Slider name="Dream Girl High" invert="false" small="0" big="0">
+            <Data name="HandsDream Girl High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsDream Girl High</Data>
+            <Data name="NailsDream Girl High" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\NailsDream Girl High</Data>
+        </Slider>
+        <Slider name="Top Model Low" invert="false" small="0" big="0">
+            <Data name="HandsTop Model Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsTop Model Low</Data>
+        </Slider>
+        <Slider name="Top Model High" invert="false" small="0" big="0">
+            <Data name="HandsTop Model High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsTop Model High</Data>
+        </Slider>
+        <Slider name="Leito Low" invert="false" small="0" big="0">
+            <Data name="HandsLeito Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsLeito Low</Data>
+            <Data name="NailsLeito Low" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\NailsLeito Low</Data>
+        </Slider>
+        <Slider name="Leito High" invert="false" small="0" big="0">
+            <Data name="HandsLeito High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsLeito High</Data>
+        </Slider>
+        <Slider name="MCBM Low" invert="false" small="0" big="0">
+            <Data name="HandsMCBM Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsMCBM Low</Data>
+            <Data name="NailsMCBM Low" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\NailsMCBM Low</Data>
+        </Slider>
+        <Slider name="MCBM High" invert="false" small="0" big="0">
+            <Data name="HandsMCBM High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsMCBM High</Data>
+        </Slider>
+        <Slider name="Manga Low" invert="false" small="0" big="0">
+            <Data name="HandsManga Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsManga Low</Data>
+        </Slider>
+        <Slider name="Manga High" invert="false" small="0" big="0">
+            <Data name="HandsManga High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsManga High</Data>
+        </Slider>
+        <Slider name="CHSBHC Low" invert="false" small="0" big="0">
+            <Data name="HandsCHSBHC Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsCHSBHC Low</Data>
+        </Slider>
+        <Slider name="CHSBHC High" invert="false" small="0" big="0">
+            <Data name="HandsCHSBHC High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsCHSBHC High</Data>
+        </Slider>
+        <Slider name="Aruru6Duck High" invert="false" small="0" big="0">
+            <Data name="HandsAruru6Duck High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsAruru6Duck High</Data>
+        </Slider>
+        <Slider name="Arms" invert="true" small="100" big="100">
+            <Data name="HandsArms" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsArms</Data>
+        </Slider>
+        <Slider name="7B Low" invert="false" small="0" big="0">
+            <Data name="Hands7B Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7B Low</Data>
+            <Data name="Nails7B Low" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Nails7B Low</Data>
+        </Slider>
+        <Slider name="7BUNP Low" invert="false" small="0" big="0">
+            <Data name="Hands7BUNP Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7BUNP Low</Data>
+            <Data name="Nails7BUNP Low" target="Nails" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Nails7BUNP Low</Data>
+        </Slider>
+        <Slider name="7BUNP High" invert="false" small="0" big="0">
+            <Data name="Hands7BUNP High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\Hands7BUNP High</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 Low" invert="false" small="0" big="0">
+            <Data name="HandsZGGB-R2 Low" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsZGGB-R2 Low</Data>
+        </Slider>
+        <Slider name="ZGGB-R2 High" invert="false" small="0" big="0">
+            <Data name="HandsZGGB-R2 High" target="Hands" local="true">BHUNP 3BBB Advanced Hands Ver 3.osd\HandsZGGB-R2 High</Data>
+        </Slider>
+    </SliderSet>

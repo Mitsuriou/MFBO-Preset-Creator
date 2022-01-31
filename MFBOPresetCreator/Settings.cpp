@@ -88,7 +88,7 @@ void Settings::reject()
 void Settings::setWindowProperties()
 {
   this->setModal(true);
-  this->setMinimumWidth(950);
+  this->setMinimumWidth(1000);
   this->setMinimumHeight(620);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(tr("Settings"));

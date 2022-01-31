@@ -63,7 +63,8 @@ void TargetMeshesPicker::reject()
 void TargetMeshesPicker::setWindowProperties()
 {
   this->setModal(true);
-  this->setMinimumWidth(700);
+  this->setMinimumWidth(1100);
+  this->setMinimumHeight(650);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(tr("Target Meshes Picker"));
   this->setWindowIcon(QIcon(QPixmap(":/black/mesh")));
@@ -89,6 +90,9 @@ void TargetMeshesPicker::initializeGUI()
   auto lBodyLayout{new QGridLayout(lBodyGroupBox)};
   lBodyLayout->setSpacing(10);
   lBodyLayout->setContentsMargins(15, 20, 15, 15);
+  lBodyLayout->setColumnStretch(0, 2);
+  lBodyLayout->setColumnStretch(1, 1);
+  lBodyLayout->setColumnStretch(2, 2);
   lBodyLayout->setAlignment(Qt::AlignTop);
 
   // Add the labels
@@ -120,6 +124,9 @@ void TargetMeshesPicker::initializeGUI()
   auto lFeetLayout{new QGridLayout(lFeetGroupBox)};
   lFeetLayout->setSpacing(10);
   lFeetLayout->setContentsMargins(15, 20, 15, 15);
+  lFeetLayout->setColumnStretch(0, 2);
+  lFeetLayout->setColumnStretch(1, 1);
+  lFeetLayout->setColumnStretch(2, 2);
   lFeetLayout->setAlignment(Qt::AlignTop);
 
   // Add the labels
@@ -140,6 +147,13 @@ void TargetMeshesPicker::initializeGUI()
 
   this->mListFeetVariantName->setAlternatingRowColors(true);
   lFeetLayout->addWidget(this->mListFeetVariantName, 1, 2);
+
+  /*========================================*/
+  /* Label for currently chosen meshes mods */
+  /*========================================*/
+  auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body: -\nTargeted feet: -"), this)};
+  lCurrentlyTargetedBody->setObjectName("currently_targeted_body_feet");
+  lMainLayout->addWidget(lCurrentlyTargetedBody);
 
   /*================*/
   /* Bottom buttons */
@@ -385,5 +399,22 @@ void TargetMeshesPicker::feetVariantIndexChanged(const int aNewIndex)
     {
       this->mLastSelectedFeetVariant = lCurrentlySelectedFeetName;
     }
+  }
+
+  const auto lChosenBodyName{this->getChosenBodyName()};
+  const auto lChosenFeetName{this->getChosenFeetName()};
+
+  if (lChosenBodyName != BodyNameVersion::_INVALID_VALUE && lChosenFeetName != FeetNameVersion::_INVALID_VALUE)
+  {
+    // Update the "targeted body mesh" text content
+    const auto lBodyText{
+      QString("%1 [v.%2]").arg(DataLists::GetBodyVariantsList(DataLists::GetName(lChosenBodyName), DataLists::GetVersionIndex(lChosenBodyName)).at(DataLists::GetVariantIndex(lChosenBodyName)), DataLists::GetVersionString(lChosenBodyName))};
+
+    // Update the "targeted feet mesh" text content
+    const auto lFeetText{
+      QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(lChosenFeetName), DataLists::GetVersionIndex(lChosenFeetName), Utils::IsCBBEBasedBody(lChosenBodyName)).at(DataLists::GetVariantIndex(lChosenFeetName)), DataLists::GetVersionString(lChosenBodyName, lChosenFeetName))};
+
+    auto lCurrentlyTargetedBody{this->findChild<QLabel*>("currently_targeted_body_feet")};
+    lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText, lFeetText));
   }
 }

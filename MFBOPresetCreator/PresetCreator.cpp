@@ -875,7 +875,7 @@ void PresetCreator::updateMeshesPreview()
   if (!lMeshesPathFeet.isEmpty())
   {
     // Preview
-    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet, !lFeetName.isEmpty() ? lFeetName : "femaleFeet"));
+    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif\n").arg(lMeshesPathFeet, !lFeetName.isEmpty() ? lFeetName : "femalefeet"));
 
     if (lNewTextColor.compare(this->mSettings.display.successColor) == 0
         && (!lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathFeet.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathFeet.length() < 8)))
@@ -893,7 +893,7 @@ void PresetCreator::updateMeshesPreview()
   if (!lMeshesPathHands.isEmpty())
   {
     // Preview
-    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands, !lHandsName.isEmpty() ? lHandsName : "femaleHands"));
+    lFullPreview.append(QString("[...]/Skyrim Special Edition/Data/%1/%2_[0/1].nif").arg(lMeshesPathHands, !lHandsName.isEmpty() ? lHandsName : "femalehands"));
 
     if (lNewTextColor.compare(this->mSettings.display.successColor) == 0
         && (!lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) || (lMeshesPathHands.startsWith("meshes/", Qt::CaseInsensitive) && lMeshesPathHands.length() < 8)))

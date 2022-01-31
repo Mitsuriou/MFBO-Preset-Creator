@@ -56,7 +56,8 @@ public:
   // Other operations with lists and enum values
   static DLLEXP BodyNameVersion GetFirstKey(const BodyVariant& aBodyVariant);
   static DLLEXP FeetNameVersion GetFirstKey(const FeetVariant& aFeetVariant);
-  static DLLEXP int GetVersionOffset(const BodyVariant& aBodyVariant);
+  static DLLEXP int GetVersionOffset(const BodyNameVersion& aBodyNameVersion);
+  static DLLEXP int GetVersionOffset(const BodyVariant& aBodyVariant, const int aRelativeVersion);
   static DLLEXP int GetVersionOffset(const FeetVariant& aFeetVariant);
 
   static DLLEXP QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType);

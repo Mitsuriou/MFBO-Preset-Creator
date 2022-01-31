@@ -26,7 +26,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
-      return QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42")});
+      return QStringList({QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42"), QString("3.00")});
     }
     case BodyName::CBBE_SMP_3BBB:
     {
@@ -77,17 +77,36 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
-      // All the version numbers propose the variants below:
-      QStringList lVariantsList{QString("BHUNP 3BBB"),
-                                QString("BHUNP 3BBB Advanced"),
-                                QString("BHUNP 3BBB Advanced Ver 2"),
-                                QString("BHUNP BBP"),
-                                QString("BHUNP BBP Advanced"),
-                                QString("BHUNP TBBP"),
-                                QString("BHUNP TBBP Advanced")};
+      QStringList lVariantsList;
 
-      // Only for "2.25" and "2.30"
-      if (aRelativeVersion == 1 || aRelativeVersion == 2)
+      // For "2.20" to "2.35 to 2.42"
+      if (aRelativeVersion <= 4)
+        lVariantsList.append(QString("BHUNP 3BBB"));
+
+      // All the version numbers propose the variant below:
+      lVariantsList.append(QString("BHUNP 3BBB Advanced"));
+      lVariantsList.append(QString("BHUNP 3BBB Advanced Ver 2"));
+
+      // Only for "3.00"
+      if (aRelativeVersion >= 5)
+        lVariantsList.append(QString("BHUNP 3BBB Advanced Ver 3"));
+
+      // For "2.20" to "2.35 to 2.42"
+      if (aRelativeVersion <= 4)
+        lVariantsList.append(QString("BHUNP BBP"));
+
+      // All the version numbers propose the variant below:
+      lVariantsList.append(QString("BHUNP BBP Advanced"));
+
+      // For "2.20" to "2.35 to 2.42"
+      if (aRelativeVersion <= 4)
+        lVariantsList.append(QString("BHUNP TBBP"));
+
+      // All the version numbers propose the variant below:
+      lVariantsList.append(QString("BHUNP TBBP Advanced"));
+
+      // Only for "2.25", "2.30" and "2.35 to 2.42" and above
+      if (aRelativeVersion == 1 || aRelativeVersion == 2 || aRelativeVersion >= 4)
       {
         lVariantsList.append(QString("BHUNP 3BBB Advanced Ver 2 (Nevernude)"));
       }
@@ -153,6 +172,8 @@ QString DataLists::GetQRCResourceName(const BodyVariant& aBodyVariant)
       return QString("bhunp 3bbb advanced");
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
       return QString("bhunp 3bbb advanced ver 2");
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
+      return QString("bhunp 3bbb advanced ver 3");
     case BodyVariant::BHUNP_BBP:
       return QString("bhunp bbp");
     case BodyVariant::BHUNP_BBP_ADVANCED:
@@ -214,6 +235,7 @@ QStringList DataLists::GetFeetNamesList(const BodyVariant& aBodyVariant)
     case BodyVariant::BHUNP_3BBB:
     case BodyVariant::BHUNP_3BBB_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
     case BodyVariant::BHUNP_BBP:
     case BodyVariant::BHUNP_BBP_ADVANCED:
     case BodyVariant::BHUNP_TBBP:
@@ -221,6 +243,7 @@ QStringList DataLists::GetFeetNamesList(const BodyVariant& aBodyVariant)
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
     {
       return QStringList{QString("BHUNP 3BBB Advanced Feet - by Bakafactory and Haeun"),
+                         QString("BHUNP 3BBB Advanced Feet Ver 3 - by Bakafactory and Haeun"),
                          QString("More Sliders for Feet - by Balveric"),
                          QString("HG Feet and Toes UNP - by SunJeong"),
                          QString("K Feet - by Khrysamere")};
@@ -283,7 +306,7 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
     case FeetName::CBBE:
       return QStringList{QString("1.6.1")};
     case FeetName::BHUNP:
-      return QStringList{QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42")};
+      return QStringList{QString("2.20"), QString("2.25"), QString("2.30"), QString("2.31"), QString("2.35 to 2.42"), QString("3.00")};
     case FeetName::CBBE_3BA_3BBB:
       return QStringList{QString("1.50"), QString("1.51 to 1.55"), QString("2.02 to 2.04"), QString("2.06 - 2.11 - 2.12"), QString("2.13 to 2.18")};
     case FeetName::COCO_BODY:
@@ -427,6 +450,7 @@ BodyName DataLists::GetName(const BodyVariant& aBodyVariant)
     case BodyVariant::BHUNP_3BBB:
     case BodyVariant::BHUNP_3BBB_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
     case BodyVariant::BHUNP_BBP:
     case BodyVariant::BHUNP_BBP_ADVANCED:
     case BodyVariant::BHUNP_TBBP:
@@ -529,6 +553,7 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
     case BodyVariant::BHUNP_3BBB:
     case BodyVariant::BHUNP_3BBB_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
     case BodyVariant::BHUNP_BBP:
     case BodyVariant::BHUNP_BBP_ADVANCED:
     case BodyVariant::BHUNP_TBBP:
@@ -666,6 +691,7 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_3_00:
       return BodyVariant::BHUNP_3BBB_ADVANCED;
       //
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
@@ -673,7 +699,11 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_00:
       return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2;
+      //
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00:
+      return BodyVariant::BHUNP_3BBB_ADVANCED_VER_3;
     //
     case BodyNameVersion::BHUNP_BBP_2_20:
     case BodyNameVersion::BHUNP_BBP_2_25:
@@ -687,6 +717,7 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
     case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_3_00:
       return BodyVariant::BHUNP_BBP_ADVANCED;
     //
     case BodyNameVersion::BHUNP_TBBP_2_20:
@@ -701,10 +732,13 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
     case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_3_00:
       return BodyVariant::BHUNP_TBBP_ADVANCED;
     //
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
     case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_00:
       return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE;
     //
     case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
@@ -783,14 +817,77 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
-      // If not 2.25 and 2.30 but trying to use nevernude key, this is invalid
-      if (aRelativeVersion != 1 && aRelativeVersion != 2 && aRelativeVariant > 6)
+      switch (aRelativeVersion)
       {
-        return BodyVariant::_INVALID_VALUE;
+        // 2.20
+        case 0:
+          // 2.31
+        case 3:
+          switch (aRelativeVariant)
+          {
+            case 0:
+              return BodyVariant::BHUNP_3BBB;
+            case 1:
+              return BodyVariant::BHUNP_3BBB_ADVANCED;
+            case 2:
+              return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2;
+            case 3:
+              return BodyVariant::BHUNP_BBP;
+            case 4:
+              return BodyVariant::BHUNP_BBP_ADVANCED;
+            case 5:
+              return BodyVariant::BHUNP_TBBP;
+            case 6:
+              return BodyVariant::BHUNP_TBBP_ADVANCED;
+          }
+          break;
+        // 2.25
+        case 1:
+        // 2.30
+        case 2:
+        // 2.35 to 2.42
+        case 4:
+          switch (aRelativeVariant)
+          {
+            case 0:
+              return BodyVariant::BHUNP_3BBB;
+            case 1:
+              return BodyVariant::BHUNP_3BBB_ADVANCED;
+            case 2:
+              return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2;
+            case 3:
+              return BodyVariant::BHUNP_BBP;
+            case 4:
+              return BodyVariant::BHUNP_BBP_ADVANCED;
+            case 5:
+              return BodyVariant::BHUNP_TBBP;
+            case 6:
+              return BodyVariant::BHUNP_TBBP_ADVANCED;
+            case 7:
+              return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE;
+          }
+          break;
+        // 3.00
+        case 5:
+          switch (aRelativeVariant)
+          {
+            case 0:
+              return BodyVariant::BHUNP_3BBB_ADVANCED;
+            case 1:
+              return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2;
+            case 2:
+              return BodyVariant::BHUNP_3BBB_ADVANCED_VER_3;
+            case 3:
+              return BodyVariant::BHUNP_BBP_ADVANCED;
+            case 4:
+              return BodyVariant::BHUNP_TBBP_ADVANCED;
+            case 5:
+              return BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE;
+          }
+          break;
       }
 
-      // BodyVariant::BHUNP_3BBB is the first variant
-      return static_cast<BodyVariant>(aRelativeVariant + static_cast<int>(BodyVariant::BHUNP_3BBB));
+      return BodyVariant::_INVALID_VALUE;
     }
     case BodyName::CBBE_SMP_3BBB:
       return BodyVariant::CBBE_SMP_3BBB;
@@ -821,6 +918,7 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::BHUNP_3BBB_2_30:
     case FeetNameVersion::BHUNP_3BBB_2_31:
     case FeetNameVersion::BHUNP_3BBB_2_35_TO_2_42:
+    case FeetNameVersion::BHUNP_3BBB_3_00:
       return FeetVariant::BHUNP;
     case FeetNameVersion::CBBE_3BA_3BBB_1_50:
     case FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55:
@@ -939,7 +1037,7 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, c
     return BodyNameVersion::_INVALID_VALUE;
   }
 
-  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(aBodyVariant)) - DataLists::GetVersionOffset(aBodyVariant)};
+  const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(aBodyVariant)) - DataLists::GetVersionOffset(aBodyVariant, aRelativeVersion)};
   return static_cast<BodyNameVersion>(lOffsetFirstKey + aRelativeVersion);
 }
 
@@ -1008,7 +1106,7 @@ int DataLists::GetVersionIndex(const BodyNameVersion& aBodyNameVersion)
 
   const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
   const auto lOffsetFirstKey{static_cast<int>(DataLists::GetFirstKey(lBodyVariant))};
-  return (static_cast<int>(aBodyNameVersion) - lOffsetFirstKey + DataLists::GetVersionOffset(lBodyVariant));
+  return (static_cast<int>(aBodyNameVersion) - lOffsetFirstKey + DataLists::GetVersionOffset(aBodyNameVersion));
 }
 
 int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
@@ -1017,6 +1115,8 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
     return -1;
 
   const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
+  const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+
   switch (lBodyVariant)
   {
     case BodyVariant::_INVALID_VALUE:
@@ -1034,12 +1134,95 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
     case BodyVariant::BHUNP_3BBB:
     case BodyVariant::BHUNP_3BBB_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
     case BodyVariant::BHUNP_BBP:
     case BodyVariant::BHUNP_BBP_ADVANCED:
     case BodyVariant::BHUNP_TBBP:
     case BodyVariant::BHUNP_TBBP_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-      return static_cast<int>(lBodyVariant) - static_cast<int>(BodyVariant::BHUNP_3BBB);
+    {
+      switch (lVersionIndex)
+      {
+          // "2.20" or "2.31"
+        case 0:
+        case 3:
+        {
+          switch (lBodyVariant)
+          {
+            case BodyVariant::BHUNP_3BBB:
+              return 0;
+            case BodyVariant::BHUNP_3BBB_ADVANCED:
+              return 1;
+            case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+              return 2;
+            case BodyVariant::BHUNP_BBP:
+              return 3;
+            case BodyVariant::BHUNP_BBP_ADVANCED:
+              return 4;
+            case BodyVariant::BHUNP_TBBP:
+              return 5;
+            case BodyVariant::BHUNP_TBBP_ADVANCED:
+              return 6;
+            default:
+              // Prevent warnings:
+              return -1;
+          }
+        }
+        // "2.25", "2.30" or "2.35 to 2.42"
+        case 1:
+        case 2:
+        case 4:
+        {
+          switch (lBodyVariant)
+          {
+            case BodyVariant::BHUNP_3BBB:
+              return 0;
+            case BodyVariant::BHUNP_3BBB_ADVANCED:
+              return 1;
+            case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+              return 2;
+            case BodyVariant::BHUNP_BBP:
+              return 3;
+            case BodyVariant::BHUNP_BBP_ADVANCED:
+              return 4;
+            case BodyVariant::BHUNP_TBBP:
+              return 5;
+            case BodyVariant::BHUNP_TBBP_ADVANCED:
+              return 6;
+            case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
+              return 7;
+            default:
+              // Prevent warnings:
+              return -1;
+          }
+        }
+        // "3.00"
+        case 5:
+        {
+          switch (lBodyVariant)
+          {
+            case BodyVariant::BHUNP_3BBB_ADVANCED:
+              return 0;
+            case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+              return 1;
+            case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
+              return 2;
+            case BodyVariant::BHUNP_BBP_ADVANCED:
+              return 3;
+            case BodyVariant::BHUNP_TBBP_ADVANCED:
+              return 4;
+            case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
+              return 5;
+            default:
+              // Prevent warnings:
+              return -1;
+          }
+        }
+        default:
+          // Prevent warnings:
+          return -1;
+      }
+    }
     case BodyVariant::ASDASDF_3BBB:
     case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
     case BodyVariant::ASDASDF_BBP:
@@ -1078,13 +1261,15 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
+        default:
+          // Prevent warnings:
+          return -1;
       }
-
-      return -1;
     }
     case BodyVariant::BHUNP_3BBB:
     case BodyVariant::BHUNP_3BBB_ADVANCED:
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
     case BodyVariant::BHUNP_BBP:
     case BodyVariant::BHUNP_BBP_ADVANCED:
     case BodyVariant::BHUNP_TBBP:
@@ -1101,9 +1286,10 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 2;
         case FeetName::KHRYSAMERE_HG_FEET:
           return 3;
+        default:
+          // Prevent warnings:
+          return -1;
       }
-
-      return -1;
     }
     case BodyVariant::CBBE_SMP_3BBB:
     {
@@ -1113,9 +1299,10 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
+        default:
+          // Prevent warnings:
+          return -1;
       }
-
-      return -1;
     }
     case BodyVariant::COCO_BODY_CBBE:
     {
@@ -1125,9 +1312,10 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
+        default:
+          // Prevent warnings:
+          return -1;
       }
-
-      return -1;
     }
     case BodyVariant::COCO_BODY_UUNP:
     {
@@ -1135,9 +1323,10 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
       {
         case FeetName::COCO_BODY:
           return 0;
+        default:
+          // Prevent warnings:
+          return -1;
       }
-
-      return -1;
     }
     case BodyVariant::MIMIR_EBONIC_BODY:
     {
@@ -1147,9 +1336,10 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 0;
         case FeetName::MORE_SLIDERS_FOR_FEET:
           return 1;
+        default:
+          // Prevent warnings:
+          return -1;
       }
-
-      return -1;
     }
     case BodyVariant::ASDASDF_3BBB:
     case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
@@ -1174,9 +1364,10 @@ int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const FeetNameVersi
           return 2;
         case FeetName::KHRYSAMERE_HG_FEET:
           return 3;
+        default:
+          // Prevent warnings:
+          return -1;
       }
-
-      return -1;
     }
   }
 
@@ -1256,6 +1447,8 @@ BodyNameVersion DataLists::GetFirstKey(const BodyVariant& aBodyVariant)
       return BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20;
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
       return BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20;
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
+      return BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00;
     case BodyVariant::BHUNP_BBP:
       return BodyNameVersion::BHUNP_BBP_2_20;
     case BodyVariant::BHUNP_BBP_ADVANCED:
@@ -1344,7 +1537,105 @@ FeetNameVersion DataLists::GetFirstKey(const FeetVariant& aFeetVariant)
   return FeetNameVersion::_INVALID_VALUE;
 }
 
-int DataLists::GetVersionOffset(const BodyVariant& aBodyVariant)
+int DataLists::GetVersionOffset(const BodyNameVersion& aBodyNameVersion)
+{
+  switch (aBodyNameVersion)
+  {
+    case BodyNameVersion::_INVALID_VALUE:
+    case BodyNameVersion::CBBE_3BA_3BBB_1_50:
+    case BodyNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55:
+    case BodyNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
+    case BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
+    case BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18:
+    case BodyNameVersion::BHUNP_3BBB_2_20:
+    case BodyNameVersion::BHUNP_3BBB_2_25:
+    case BodyNameVersion::BHUNP_3BBB_2_30:
+    case BodyNameVersion::BHUNP_3BBB_2_31:
+    case BodyNameVersion::BHUNP_3BBB_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_3_00:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_00:
+    case BodyNameVersion::BHUNP_BBP_2_20:
+    case BodyNameVersion::BHUNP_BBP_2_25:
+    case BodyNameVersion::BHUNP_BBP_2_30:
+    case BodyNameVersion::BHUNP_BBP_2_31:
+    case BodyNameVersion::BHUNP_BBP_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_20:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_25:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_30:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_31:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_BBP_ADVANCED_3_00:
+    case BodyNameVersion::BHUNP_TBBP_2_20:
+    case BodyNameVersion::BHUNP_TBBP_2_25:
+    case BodyNameVersion::BHUNP_TBBP_2_30:
+    case BodyNameVersion::BHUNP_TBBP_2_31:
+    case BodyNameVersion::BHUNP_TBBP_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_TBBP_ADVANCED_3_00:
+    case BodyNameVersion::CBBE_SMP_3BBB_1_2_0:
+    case BodyNameVersion::COCO_BODY_CBBE_V4:
+    case BodyNameVersion::COCO_BODY_CBBE_V6:
+    case BodyNameVersion::COCO_BODY_CBBE_V6_8:
+    case BodyNameVersion::COCO_BODY_UUNP_V3:
+    case BodyNameVersion::COCO_BODY_UUNP_V4:
+    case BodyNameVersion::COCO_BODY_UUNP_V6:
+    case BodyNameVersion::COCO_BODY_UUNP_V6_8:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2:
+    case BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
+    case BodyNameVersion::ASDASDF_3BBB_1_13:
+    case BodyNameVersion::ASDASDF_3BBB_NO_THIGH_JIGGLE_1_13:
+    case BodyNameVersion::ASDASDF_BBP_1_13:
+    case BodyNameVersion::ASDASDF_BBP_NO_THIGH_JIGGLE_1_13:
+    case BodyNameVersion::ASDASDF_TBBP_1_13:
+    case BodyNameVersion::ASDASDF_TBBP_NO_THIGH_JIGGLE_1_13:
+    case BodyNameVersion::ASDASDF_ALTERBODY_3BBB_1_13:
+    case BodyNameVersion::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE_1_13:
+    case BodyNameVersion::ASDASDF_ALTERBODY_BBP_1_13:
+    case BodyNameVersion::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE_1_13:
+    case BodyNameVersion::ASDASDF_ALTERBODY_TBBP_1_13:
+    case BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13:
+    {
+      return 0;
+    }
+    case BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_18:
+    case BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_18:
+    {
+      return 4; // Ignore "1.50", "1.51 to 1.55", "2.02 to 2.04" and "2.06 - 2.11 - 2.12"
+    }
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00:
+    {
+      return 5; // Ignore "2.20", "2.25", "2.30", "2.31" and "2.35 to 2.42"
+    }
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30:
+    {
+      return 1; // Ignore "2.20"
+    }
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_35_TO_2_42:
+    case BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_00:
+    {
+      return 2; // Ignore "2.20" and "2.31"
+    }
+  }
+
+  return 0;
+}
+
+int DataLists::GetVersionOffset(const BodyVariant& aBodyVariant, const int aRelativeVersion)
 {
   switch (aBodyVariant)
   {
@@ -1373,12 +1664,30 @@ int DataLists::GetVersionOffset(const BodyVariant& aBodyVariant)
     case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
     case BodyVariant::ASDASDF_ALTERBODY_TBBP:
     case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+    {
       return 0;
+    }
     case BodyVariant::CBBE_3BA_3BBB_NEVERNUDE:
     case BodyVariant::CBBE_3BA_3BBB_UNDERWEAR:
+    {
       return 4; // Ignore "1.50", "1.51 to 1.55", "2.02 to 2.04" and "2.06 - 2.11 - 2.12"
+    }
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
+    {
+      return 5; // Ignore "2.20", "2.25", "2.30", "2.31" and "2.35 to 2.42"
+    }
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
-      return 1; // Ignore "2.20"
+    {
+      if (aRelativeVersion == 1 || aRelativeVersion == 2)
+      {
+        return 1; // Ignore "2.20"
+      }
+      if (aRelativeVersion == 4 || aRelativeVersion == 5)
+      {
+        return 2; // Ignore "2.20" and "2.31"
+      }
+      return 0; // Default case
+    }
   }
 
   return 0;
@@ -1439,7 +1748,7 @@ QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion
       lResourceType = "hands";
       lResourceVersion = DataLists::GetVersionString(aBodyNameVersion);
 
-      auto lBodyName{DataLists::GetName(aBodyNameVersion)};
+      const auto lBodyName{DataLists::GetName(aBodyNameVersion)};
       switch (lBodyName)
       {
         case BodyName::_INVALID_VALUE:
@@ -1717,6 +2026,8 @@ QString DataLists::GetBodySliderValue(const BodyNameVersion& aBodyNameVersion)
       return QString("BHUNP 3BBB Advanced");
     case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
       return QString("BHUNP 3BBB Advanced Ver 2");
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
+      return QString("BHUNP 3BBB Advanced Ver 3");
     case BodyVariant::BHUNP_BBP:
       return QString("BHUNP BBP");
     case BodyVariant::BHUNP_BBP_ADVANCED:
@@ -1865,8 +2176,8 @@ QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, 
     return QString("CBBE Hands Beast");
   }
 
-  auto lBodyName{DataLists::GetName(aBodyNameVersion)};
-  auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+  const auto lBodyName{DataLists::GetName(aBodyNameVersion)};
+  const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
 
   switch (lBodyName)
   {

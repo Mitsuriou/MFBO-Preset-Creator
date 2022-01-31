@@ -701,16 +701,12 @@ bool Utils::IsCBBEBasedBody(const BodyName& aBodyName)
 
 bool Utils::IsCBBEBasedBody(const BodyVariant& aBodyVariant)
 {
-  auto lBodyName{DataLists::GetName(aBodyVariant)};
-
-  return Utils::IsCBBEBasedBody(lBodyName);
+  return Utils::IsCBBEBasedBody(DataLists::GetName(aBodyVariant));
 }
 
 bool Utils::IsCBBEBasedBody(const BodyNameVersion& aBodyNameVersion)
 {
-  auto lBodyName{DataLists::GetName(DataLists::GetVariant(aBodyNameVersion))};
-
-  return Utils::IsCBBEBasedBody(lBodyName);
+  return Utils::IsCBBEBasedBody(DataLists::GetName(DataLists::GetVariant(aBodyNameVersion)));
 }
 
 bool Utils::IsBodySupportingBeastHands(const BodyNameVersion& aBodyNameVersion)
@@ -720,10 +716,18 @@ bool Utils::IsBodySupportingBeastHands(const BodyNameVersion& aBodyNameVersion)
 
 bool Utils::IsVersionOffsetValid(const BodyVariant& aBodyVariant, const int aRelativeVersion)
 {
-  if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE && aRelativeVersion > 2)
+  if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE
+      && (aRelativeVersion != 1 && aRelativeVersion != 2 && aRelativeVersion != 4 && aRelativeVersion != 5))
+  {
     return false;
+  }
 
-  return (aRelativeVersion >= DataLists::GetVersionOffset(aBodyVariant));
+  if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_3 && aRelativeVersion != 5)
+  {
+    return false;
+  }
+
+  return (aRelativeVersion >= DataLists::GetVersionOffset(aBodyVariant, aRelativeVersion));
 }
 
 bool Utils::IsVersionOffsetValid(const FeetVariant& aFeetVariant, const int aRelativeVersion)
@@ -833,6 +837,7 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
       lTempSet.setName(lSliderSet.attribute("name", "")); // Name
 
       // TODO: Improve these checks:
+      // TODO: Update the entries for BHUNP V3.00
       if (lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing NeverNude", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing Underwear", Qt::CaseInsensitive)
