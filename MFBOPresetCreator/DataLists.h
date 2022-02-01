@@ -50,8 +50,8 @@ public:
   static DLLEXP int GetVersionIndex(const FeetNameVersion& aFeetNameVersion);
   static DLLEXP int GetVariantIndex(const FeetNameVersion& aFeetNameVersion);
 
-  static DLLEXP QString GetVersionString(const BodyNameVersion& aBodyNameVersion);
-  static DLLEXP QString GetVersionString(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion);
+  static QString GetVersionString(const BodyNameVersion& aBodyNameVersion);
+  static QString GetVersionString(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion);
 
   // Other operations with lists and enum values
   static DLLEXP BodyNameVersion GetFirstKey(const BodyVariant& aBodyVariant);
@@ -60,7 +60,7 @@ public:
   static DLLEXP int GetVersionOffset(const BodyVariant& aBodyVariant, const int aRelativeVersion);
   static DLLEXP int GetVersionOffset(const FeetVariant& aFeetVariant);
 
-  static DLLEXP QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType);
+  static QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType);
 
   // Pre 3.5.x.x data to 3.5.x.x+ data format
   static DLLEXP std::pair<int, int> GetSplittedNameVersionFromBodyVersionCompatibility(const int aBodyVersion);

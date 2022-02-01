@@ -639,7 +639,7 @@ namespace Tests
       // TODO
     }
 
-    TEST_METHOD(BodyNameVersion__GetBodyNameVersion__BodyVariant__int)
+    TEST_METHOD(BodyNameVersion__GetBodyNameVersion__BodyVariant_int)
     {
       // CBBE_3BA_3BBB
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::CBBE_3BA_3BBB, -1));
@@ -839,6 +839,297 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, -1));
       Assert::AreEqual(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13, DataLists::GetBodyNameVersion(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, 0));
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE, 1));
+    }
+
+    TEST_METHOD(BodyNameVersion__GetBodyNameVersion__BodyName_int_int)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(BodyNameVersion__GetBodyNameVersion__FeetVariant_int_bool)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(BodyNameVersion__GetBodyNameVersion__FeetName_int_int_bool)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(int__GetVersionIndex__BodyNameVersion)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(int__GetVariantIndex__BodyNameVersion)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(int__GetNameIndex__BodyVariant_FeetNameVersion)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(int__GetVersionIndex__FeetNameVersion)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(int__GetVariantIndex__FeetNameVersion)
+    {
+      Assert::AreEqual(-1, DataLists::GetVariantIndex(FeetNameVersion::_INVALID_VALUE));
+      // CBBE
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_1_6_1));
+      // BHUNP 3BBB Advanced Feet
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_20));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_25));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_30));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_31));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      // CBBE_3BA_3BBB
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_3BA_3BBB_1_50));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18));
+      // COCO_BODY_CBBE
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6_8));
+      // COCO_BODY_UUNP
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V3));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V4));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6_8));
+      // COCO_BODY_CBBE
+      Assert::AreEqual(1, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6));
+      Assert::AreEqual(1, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6_8));
+      // COCO_BODY_UUNP
+      Assert::AreEqual(1, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6));
+      Assert::AreEqual(1, DataLists::GetVariantIndex(FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6_8));
+      // MIMIR_EBONIC_BODY
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::MIMIR_EBONIC_BODY_1_2));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX));
+      // ASDASDF
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::ASDASDF_1_13));
+      // MORE_SLIDERS_FOR_FEET
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE_1_0));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP_1_1));
+      Assert::AreEqual(1, DataLists::GetVariantIndex(FeetNameVersion::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE_1_0));
+      Assert::AreEqual(1, DataLists::GetVariantIndex(FeetNameVersion::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP_1_1));
+      // HG_FEET
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::HG_FEET_1));
+      // KHRYSAMERE_HG_FEET
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::KHRYSAMERE_HG_FEET_1_0));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::KHRYSAMERE_HG_FEET_1_3_3));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::KHRYSAMERE_HG_FEET_1_4));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::KHRYSAMERE_HG_FEET_1_5));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::KHRYSAMERE_HG_FEET_1_6));
+    }
+
+    TEST_METHOD(BodyNameVersion__GetFirstKey__BodyVariant)
+    {
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetFirstKey(BodyVariant::_INVALID_VALUE));
+      // CBBE 3BA 3BBB
+      Assert::AreEqual(BodyNameVersion::CBBE_3BA_3BBB_1_50, DataLists::GetFirstKey(BodyVariant::CBBE_3BA_3BBB));
+      Assert::AreEqual(BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_18, DataLists::GetFirstKey(BodyVariant::CBBE_3BA_3BBB_NEVERNUDE));
+      Assert::AreEqual(BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_18, DataLists::GetFirstKey(BodyVariant::CBBE_3BA_3BBB_UNDERWEAR));
+      // BHUNP
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_2_20, DataLists::GetFirstKey(BodyVariant::BHUNP_3BBB));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20, DataLists::GetFirstKey(BodyVariant::BHUNP_3BBB_ADVANCED));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20, DataLists::GetFirstKey(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02, DataLists::GetFirstKey(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3));
+      Assert::AreEqual(BodyNameVersion::BHUNP_BBP_2_20, DataLists::GetFirstKey(BodyVariant::BHUNP_BBP));
+      Assert::AreEqual(BodyNameVersion::BHUNP_BBP_ADVANCED_2_20, DataLists::GetFirstKey(BodyVariant::BHUNP_BBP_ADVANCED));
+      Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_2_20, DataLists::GetFirstKey(BodyVariant::BHUNP_TBBP));
+      Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20, DataLists::GetFirstKey(BodyVariant::BHUNP_TBBP_ADVANCED));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25, DataLists::GetFirstKey(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE));
+      // CBBE SMP 3BBB
+      Assert::AreEqual(BodyNameVersion::CBBE_SMP_3BBB_1_2_0, DataLists::GetFirstKey(BodyVariant::CBBE_SMP_3BBB));
+      // COCO BODY
+      Assert::AreEqual(BodyNameVersion::COCO_BODY_CBBE_V4, DataLists::GetFirstKey(BodyVariant::COCO_BODY_CBBE));
+      Assert::AreEqual(BodyNameVersion::COCO_BODY_UUNP_V3, DataLists::GetFirstKey(BodyVariant::COCO_BODY_UUNP));
+      // MIMIR EBONIC BODY
+      Assert::AreEqual(BodyNameVersion::MIMIR_EBONIC_BODY_1_2, DataLists::GetFirstKey(BodyVariant::MIMIR_EBONIC_BODY));
+      // ASDASDF
+      Assert::AreEqual(BodyNameVersion::ASDASDF_3BBB_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_3BBB));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_3BBB_NO_THIGH_JIGGLE_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_BBP_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_BBP));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_BBP_NO_THIGH_JIGGLE_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_TBBP_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_TBBP));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_TBBP_NO_THIGH_JIGGLE_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_ALTERBODY_3BBB));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_ALTERBODY_BBP_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_ALTERBODY_BBP));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_ALTERBODY_TBBP));
+      Assert::AreEqual(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13, DataLists::GetFirstKey(BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE));
+    }
+
+    TEST_METHOD(FeetNameVersion__GetFirstKey__FeetVariant)
+    {
+      Assert::AreEqual(FeetNameVersion::_INVALID_VALUE, DataLists::GetFirstKey(FeetVariant::_INVALID_VALUE));
+      Assert::AreEqual(FeetNameVersion::CBBE_1_6_1, DataLists::GetFirstKey(FeetVariant::CBBE));
+      Assert::AreEqual(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_20, DataLists::GetFirstKey(FeetVariant::BHUNP_3BBB_ADVANCED));
+      Assert::AreEqual(FeetNameVersion::CBBE_3BA_3BBB_1_50, DataLists::GetFirstKey(FeetVariant::CBBE_3BA_3BBB));
+      Assert::AreEqual(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4, DataLists::GetFirstKey(FeetVariant::COCO_BODY_NORMAL_CBBE));
+      Assert::AreEqual(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V3, DataLists::GetFirstKey(FeetVariant::COCO_BODY_NORMAL_UUNP));
+      Assert::AreEqual(FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6, DataLists::GetFirstKey(FeetVariant::COCO_BODY_HIGH_HEELS_CBBE));
+      Assert::AreEqual(FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6, DataLists::GetFirstKey(FeetVariant::COCO_BODY_HIGH_HEELS_UUNP));
+      Assert::AreEqual(FeetNameVersion::MIMIR_EBONIC_BODY_1_2, DataLists::GetFirstKey(FeetVariant::MIMIR_EBONIC_BODY));
+      Assert::AreEqual(FeetNameVersion::ASDASDF_1_13, DataLists::GetFirstKey(FeetVariant::ASDASDF));
+      Assert::AreEqual(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE_1_0, DataLists::GetFirstKey(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE));
+      Assert::AreEqual(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP_1_1, DataLists::GetFirstKey(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP));
+      Assert::AreEqual(FeetNameVersion::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE_1_0, DataLists::GetFirstKey(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE));
+      Assert::AreEqual(FeetNameVersion::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP_1_1, DataLists::GetFirstKey(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP));
+      Assert::AreEqual(FeetNameVersion::HG_FEET_1, DataLists::GetFirstKey(FeetVariant::HG_FEET));
+      Assert::AreEqual(FeetNameVersion::KHRYSAMERE_HG_FEET_1_0, DataLists::GetFirstKey(FeetVariant::KHRYSAMERE_HG_FEET));
+    }
+
+    TEST_METHOD(int__GetVersionOffset__BodyNameVersion)
+    {
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::_INVALID_VALUE));
+      // CBBE_3BA_3BBB
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::CBBE_3BA_3BBB_1_50));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18));
+      // CBBE_3BA_3BBB_NEVERNUDE
+      Assert::AreEqual(4, DataLists::GetVersionOffset(BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_18));
+      // CBBE_3BA_3BBB_UNDERWEAR
+      Assert::AreEqual(4, DataLists::GetVersionOffset(BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_18));
+      // BHUNP_3BBB
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_2_20));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_2_25));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_2_30));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_2_31));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_3_00_TO_3_02));
+      // BHUNP_3BBB_ADVANCED
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_30));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      // BHUNP_3BBB_ADVANCED_VER_2
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_30));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_00_TO_3_02));
+      // BHUNP_3BBB_ADVANCED_VER_3
+      Assert::AreEqual(5, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02));
+      // BHUNP_BBP
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_20));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_25));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_30));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_31));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_3_00_TO_3_02));
+      // BHUNP_BBP_ADVANCED
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_20));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_25));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_30));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_31));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_3_00_TO_3_02));
+      // BHUNP_TBBP
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_20));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_25));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_30));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_31));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_3_00_TO_3_02));
+      // BHUNP_TBBP_ADVANCED
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_30));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_00_TO_3_02));
+      // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE
+      Assert::AreEqual(1, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25));
+      Assert::AreEqual(1, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30));
+      Assert::AreEqual(2, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_35_TO_2_42));
+      Assert::AreEqual(2, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_00_TO_3_02));
+      // CBBE_SMP_3BBB
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::CBBE_SMP_3BBB_1_2_0));
+      // COCO_BODY_CBBE
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::COCO_BODY_CBBE_V4));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::COCO_BODY_CBBE_V6));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::COCO_BODY_CBBE_V6_8));
+      // COCO_BODY_UUNP
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::COCO_BODY_UUNP_V3));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::COCO_BODY_UUNP_V4));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::COCO_BODY_UUNP_V6));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::COCO_BODY_UUNP_V6_8));
+      // MIMIR_EBONIC_BODY
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::MIMIR_EBONIC_BODY_1_2));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX));
+      // ASDASDF_3BBB
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_3BBB_1_13));
+      // ASDASDF_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_3BBB_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_BBP
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_BBP_1_13));
+      // ASDASDF_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_BBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_TBBP
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_TBBP_1_13));
+      // ASDASDF_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_TBBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_3BBB
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_1_13));
+      // ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_BBP
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_ALTERBODY_BBP_1_13));
+      // ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE_1_13));
+      // ASDASDF_ALTERBODY_TBBP
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_1_13));
+      // ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE_1_13));
+    }
+
+    TEST_METHOD(int__GetVersionOffset__BodyVariant_int)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(int__GetVersionOffset__FeetVariant)
+    {
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::_INVALID_VALUE));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::CBBE));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::BHUNP_3BBB_ADVANCED));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::CBBE_3BA_3BBB));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::COCO_BODY_NORMAL_CBBE));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::COCO_BODY_NORMAL_UUNP));
+      Assert::AreEqual(1, DataLists::GetVersionOffset(FeetVariant::COCO_BODY_HIGH_HEELS_CBBE));
+      Assert::AreEqual(2, DataLists::GetVersionOffset(FeetVariant::COCO_BODY_HIGH_HEELS_UUNP));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::MIMIR_EBONIC_BODY));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::ASDASDF));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::HG_FEET));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::KHRYSAMERE_HG_FEET));
+    }
+
+    TEST_METHOD(pair__GetSplittedNameVersionFromBodyVersionCompatibility__int)
+    {
+      // TODO
+    }
+
+    TEST_METHOD(pair__ReadBodyFeetModsCompatibility__int_int_int)
+    {
+      // TODO
     }
   };
 }

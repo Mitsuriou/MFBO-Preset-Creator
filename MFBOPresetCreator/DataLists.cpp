@@ -1524,11 +1524,17 @@ int DataLists::GetVersionOffset(const BodyNameVersion& aBodyNameVersion)
       return 2; // Ignore "2.20" and "2.31"
     }
   }
+
   return 0;
 }
 
 int DataLists::GetVersionOffset(const BodyVariant& aBodyVariant, const int aRelativeVersion)
 {
+  if (aRelativeVersion < 0)
+  {
+    return 0;
+  }
+
   switch (aBodyVariant)
   {
     case BodyVariant::_INVALID_VALUE:
