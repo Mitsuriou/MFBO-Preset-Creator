@@ -837,13 +837,13 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
       lTempSet.setName(lSliderSet.attribute("name", "")); // Name
 
       // TODO: Improve these checks:
-      // TODO: Update the entries for BHUNP V3.00
       if (lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing NeverNude", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing Underwear", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
+          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 3", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP BBP", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP BBP Advanced", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - BHUNP TBBP", Qt::CaseInsensitive)
@@ -866,6 +866,7 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive)
+               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands Ver 3", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - [COCO]3Bsmp_HandV4_A", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Hands_A", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - [COCO]bodyHands_B_v3", Qt::CaseInsensitive)
@@ -1469,7 +1470,7 @@ QString Utils::GetAdditionalFeetFilter(const BodyNameVersion& aBodyNameVersion, 
     }
     case FeetName::_INVALID_VALUE:
     case FeetName::CBBE:
-    case FeetName::BHUNP:
+    case FeetName::BHUNP_3BBB_ADVANCED:
     case FeetName::CBBE_3BA_3BBB:
     case FeetName::COCO_BODY:
     case FeetName::MIMIR_EBONIC_BODY:
