@@ -81,6 +81,8 @@ public:
   static DLLEXP bool IsVersionOffsetValid(const BodyVariant& aBodyVariant, const int aRelativeVersion);
   static DLLEXP bool IsVersionOffsetValid(const FeetVariant& aFeetVariant, const int aRelativeVersion);
 
+  static DLLEXP bool QRCResourceExists(const QString& aRessourcePath);
+
   // App data behavior settings
   static bool IsRunningStandaloneVersion();
   static QString GetAppDataPathFolder();

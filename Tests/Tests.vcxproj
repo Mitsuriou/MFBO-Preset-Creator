@@ -106,6 +106,7 @@ copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Xmld.dll $(SolutionDir)$(Platform)\$(Con
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataListsTest.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MFBOPresetCreator\MFBOPresetCreator.vcxproj">

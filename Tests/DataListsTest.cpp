@@ -130,6 +130,7 @@ namespace Tests
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_2_31));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_3_03));
       // BHUNP_3BBB_ADVANCED
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25));
@@ -137,6 +138,7 @@ namespace Tests
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_03));
       // BHUNP_3BBB_ADVANCED_VER_2
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25));
@@ -144,8 +146,10 @@ namespace Tests
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_03));
       // BHUNP_3BBB_ADVANCED_VER_3
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_03));
       // BHUNP_BBP
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_2_20));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_2_25));
@@ -153,6 +157,7 @@ namespace Tests
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_2_31));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_3_03));
       // BHUNP_BBP_ADVANCED
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_ADVANCED_2_20));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_ADVANCED_2_25));
@@ -160,6 +165,7 @@ namespace Tests
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_ADVANCED_2_31));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_BBP_ADVANCED_3_03));
       // BHUNP_TBBP
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_2_20));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_2_25));
@@ -167,6 +173,7 @@ namespace Tests
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_2_31));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_3_03));
       // BHUNP_TBBP_ADVANCED
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25));
@@ -174,11 +181,13 @@ namespace Tests
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_03));
       // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_35_TO_2_42));
       Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_00_TO_3_02));
+      Assert::AreEqual(BodyName::BHUNP_UUNP_NEXT_GENERATION, DataLists::GetName(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_03));
       // CBBE_SMP_3BBB
       Assert::AreEqual(BodyName::CBBE_SMP_3BBB, DataLists::GetName(BodyNameVersion::CBBE_SMP_3BBB_1_2_0));
       // COCO_BODY_CBBE
@@ -231,6 +240,7 @@ namespace Tests
       Assert::AreEqual(FeetName::BHUNP_3BBB_ADVANCED, DataLists::GetName(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_31));
       Assert::AreEqual(FeetName::BHUNP_3BBB_ADVANCED, DataLists::GetName(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(FeetName::BHUNP_3BBB_ADVANCED, DataLists::GetName(FeetNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(FeetName::BHUNP_3BBB_ADVANCED, DataLists::GetName(FeetNameVersion::BHUNP_3BBB_ADVANCED_3_03));
       // CBBE_3BA_3BBB
       Assert::AreEqual(FeetName::CBBE_3BA_3BBB, DataLists::GetName(FeetNameVersion::CBBE_3BA_3BBB_1_50));
       Assert::AreEqual(FeetName::CBBE_3BA_3BBB, DataLists::GetName(FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55));
@@ -515,6 +525,7 @@ namespace Tests
       Assert::AreEqual(BodyVariant::BHUNP_3BBB, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_2_31));
       Assert::AreEqual(BodyVariant::BHUNP_3BBB, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_2_35_TO_2_42));
       Assert::AreEqual(BodyVariant::BHUNP_3BBB, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_3BBB, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_3_03));
 
       // BHUNP_3BBB_ADVANCED
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20));
@@ -523,6 +534,7 @@ namespace Tests
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31));
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_03));
 
       // BHUNP_3BBB_ADVANCED_VER_2
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20));
@@ -531,9 +543,11 @@ namespace Tests
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31));
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42));
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_03));
 
       // BHUNP_3BBB_ADVANCED_VER_3
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_03));
 
       // BHUNP_BBP
       Assert::AreEqual(BodyVariant::BHUNP_BBP, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_2_20));
@@ -542,6 +556,7 @@ namespace Tests
       Assert::AreEqual(BodyVariant::BHUNP_BBP, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_2_31));
       Assert::AreEqual(BodyVariant::BHUNP_BBP, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_2_35_TO_2_42));
       Assert::AreEqual(BodyVariant::BHUNP_BBP, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_BBP, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_3_03));
 
       // BHUNP_BBP_ADVANCED
       Assert::AreEqual(BodyVariant::BHUNP_BBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_ADVANCED_2_20));
@@ -550,6 +565,7 @@ namespace Tests
       Assert::AreEqual(BodyVariant::BHUNP_BBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_ADVANCED_2_31));
       Assert::AreEqual(BodyVariant::BHUNP_BBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(BodyVariant::BHUNP_BBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_BBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_BBP_ADVANCED_3_03));
 
       // BHUNP_TBBP
       Assert::AreEqual(BodyVariant::BHUNP_TBBP, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_2_20));
@@ -558,6 +574,7 @@ namespace Tests
       Assert::AreEqual(BodyVariant::BHUNP_TBBP, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_2_31));
       Assert::AreEqual(BodyVariant::BHUNP_TBBP, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_2_35_TO_2_42));
       Assert::AreEqual(BodyVariant::BHUNP_TBBP, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_TBBP, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_3_03));
 
       // BHUNP_TBBP_ADVANCED
       Assert::AreEqual(BodyVariant::BHUNP_TBBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20));
@@ -566,6 +583,7 @@ namespace Tests
       Assert::AreEqual(BodyVariant::BHUNP_TBBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31));
       Assert::AreEqual(BodyVariant::BHUNP_TBBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(BodyVariant::BHUNP_TBBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(BodyVariant::BHUNP_TBBP_ADVANCED, DataLists::GetVariant(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_03));
 
       // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE
       Assert::AreEqual(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, DataLists::GetVariant(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25));
@@ -626,12 +644,57 @@ namespace Tests
 
     TEST_METHOD(BodyVariant__GetVariant__BodyName_int_int)
     {
+      Assert::AreEqual(BodyVariant::_INVALID_VALUE, DataLists::GetVariant(BodyName::_INVALID_VALUE, -1, -1));
+      Assert::AreEqual(BodyVariant::_INVALID_VALUE, DataLists::GetVariant(BodyName::_INVALID_VALUE, -1, 0));
+      Assert::AreEqual(BodyVariant::_INVALID_VALUE, DataLists::GetVariant(BodyName::_INVALID_VALUE, -1, 1));
+      Assert::AreEqual(BodyVariant::_INVALID_VALUE, DataLists::GetVariant(BodyName::_INVALID_VALUE, 0, -1));
+      Assert::AreEqual(BodyVariant::_INVALID_VALUE, DataLists::GetVariant(BodyName::_INVALID_VALUE, 1, -1));
+      Assert::AreEqual(BodyVariant::_INVALID_VALUE, DataLists::GetVariant(BodyName::_INVALID_VALUE, 0, 0));
+      Assert::AreEqual(BodyVariant::_INVALID_VALUE, DataLists::GetVariant(BodyName::_INVALID_VALUE, 1, 1));
+
       // TODO
     }
 
     TEST_METHOD(FeetVariant__GetVariant__FeetNameVersion)
     {
-      // TODO
+      Assert::AreEqual(FeetVariant::_INVALID_VALUE, DataLists::GetVariant(FeetNameVersion::_INVALID_VALUE));
+      Assert::AreEqual(FeetVariant::CBBE, DataLists::GetVariant(FeetNameVersion::CBBE_1_6_1));
+      Assert::AreEqual(FeetVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_20));
+      Assert::AreEqual(FeetVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_25));
+      Assert::AreEqual(FeetVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_30));
+      Assert::AreEqual(FeetVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_31));
+      Assert::AreEqual(FeetVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
+      Assert::AreEqual(FeetVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(FeetNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(FeetVariant::BHUNP_3BBB_ADVANCED, DataLists::GetVariant(FeetNameVersion::BHUNP_3BBB_ADVANCED_3_03));
+      Assert::AreEqual(FeetVariant::CBBE_3BA_3BBB, DataLists::GetVariant(FeetNameVersion::CBBE_3BA_3BBB_1_50));
+      Assert::AreEqual(FeetVariant::CBBE_3BA_3BBB, DataLists::GetVariant(FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55));
+      Assert::AreEqual(FeetVariant::CBBE_3BA_3BBB, DataLists::GetVariant(FeetNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04));
+      Assert::AreEqual(FeetVariant::CBBE_3BA_3BBB, DataLists::GetVariant(FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12));
+      Assert::AreEqual(FeetVariant::CBBE_3BA_3BBB, DataLists::GetVariant(FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18));
+      Assert::AreEqual(FeetVariant::COCO_BODY_NORMAL_CBBE, DataLists::GetVariant(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4));
+      Assert::AreEqual(FeetVariant::COCO_BODY_NORMAL_CBBE, DataLists::GetVariant(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6));
+      Assert::AreEqual(FeetVariant::COCO_BODY_NORMAL_CBBE, DataLists::GetVariant(FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6_8));
+      Assert::AreEqual(FeetVariant::COCO_BODY_NORMAL_UUNP, DataLists::GetVariant(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V3));
+      Assert::AreEqual(FeetVariant::COCO_BODY_NORMAL_UUNP, DataLists::GetVariant(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V4));
+      Assert::AreEqual(FeetVariant::COCO_BODY_NORMAL_UUNP, DataLists::GetVariant(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6));
+      Assert::AreEqual(FeetVariant::COCO_BODY_NORMAL_UUNP, DataLists::GetVariant(FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6_8));
+      Assert::AreEqual(FeetVariant::COCO_BODY_HIGH_HEELS_CBBE, DataLists::GetVariant(FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6));
+      Assert::AreEqual(FeetVariant::COCO_BODY_HIGH_HEELS_CBBE, DataLists::GetVariant(FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6_8));
+      Assert::AreEqual(FeetVariant::COCO_BODY_HIGH_HEELS_UUNP, DataLists::GetVariant(FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6));
+      Assert::AreEqual(FeetVariant::COCO_BODY_HIGH_HEELS_UUNP, DataLists::GetVariant(FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6_8));
+      Assert::AreEqual(FeetVariant::MIMIR_EBONIC_BODY, DataLists::GetVariant(FeetNameVersion::MIMIR_EBONIC_BODY_1_2));
+      Assert::AreEqual(FeetVariant::MIMIR_EBONIC_BODY, DataLists::GetVariant(FeetNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX));
+      Assert::AreEqual(FeetVariant::ASDASDF, DataLists::GetVariant(FeetNameVersion::ASDASDF_1_13));
+      Assert::AreEqual(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE, DataLists::GetVariant(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE_1_0));
+      Assert::AreEqual(FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP, DataLists::GetVariant(FeetNameVersion::MORE_SLIDERS_FOR_FEET_NORMAL_BHUNP_1_1));
+      Assert::AreEqual(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE, DataLists::GetVariant(FeetNameVersion::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_CBBE_1_0));
+      Assert::AreEqual(FeetVariant::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP, DataLists::GetVariant(FeetNameVersion::MORE_SLIDERS_FOR_FEET_HIGH_HEELS_BHUNP_1_1));
+      Assert::AreEqual(FeetVariant::HG_FEET, DataLists::GetVariant(FeetNameVersion::HG_FEET_1));
+      Assert::AreEqual(FeetVariant::KHRYSAMERE_HG_FEET, DataLists::GetVariant(FeetNameVersion::KHRYSAMERE_HG_FEET_1_0));
+      Assert::AreEqual(FeetVariant::KHRYSAMERE_HG_FEET, DataLists::GetVariant(FeetNameVersion::KHRYSAMERE_HG_FEET_1_3_3));
+      Assert::AreEqual(FeetVariant::KHRYSAMERE_HG_FEET, DataLists::GetVariant(FeetNameVersion::KHRYSAMERE_HG_FEET_1_4));
+      Assert::AreEqual(FeetVariant::KHRYSAMERE_HG_FEET, DataLists::GetVariant(FeetNameVersion::KHRYSAMERE_HG_FEET_1_5));
+      Assert::AreEqual(FeetVariant::KHRYSAMERE_HG_FEET, DataLists::GetVariant(FeetNameVersion::KHRYSAMERE_HG_FEET_1_6));
     }
 
     TEST_METHOD(FeetVariant__GetVariant__FeetName_int_int_bool)
@@ -672,7 +735,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_2_31, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB, 7));
 
       // BHUNP_3BBB_ADVANCED
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED, -1));
@@ -682,7 +746,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED, 7));
 
       // BHUNP_3BBB_ADVANCED_VER_2
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, -1));
@@ -692,7 +757,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2, 7));
 
       // BHUNP_3BBB_ADVANCED_VER_3
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, -1));
@@ -702,7 +768,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, 3));
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_3, 7));
 
       // BHUNP_BBP
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP, -1));
@@ -712,7 +779,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::BHUNP_BBP_2_31, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_BBP_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_BBP_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_BBP_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP, 7));
 
       // BHUNP_BBP_ADVANCED
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP_ADVANCED, -1));
@@ -722,7 +790,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::BHUNP_BBP_ADVANCED_2_31, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP_ADVANCED, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP_ADVANCED, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_BBP_ADVANCED_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP_ADVANCED, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP_ADVANCED, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_BBP_ADVANCED_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP_ADVANCED, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_BBP_ADVANCED, 7));
 
       // BHUNP_TBBP
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP, -1));
@@ -732,7 +801,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_2_31, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP, 7));
 
       // BHUNP_TBBP_ADVANCED
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP_ADVANCED, -1));
@@ -742,7 +812,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP_ADVANCED, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP_ADVANCED, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP_ADVANCED, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP_ADVANCED, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP_ADVANCED, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_TBBP_ADVANCED, 7));
 
       // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, -1));
@@ -752,7 +823,8 @@ namespace Tests
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, 3));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_35_TO_2_42, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, 4));
       Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_00_TO_3_02, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, 5));
-      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, 6));
+      Assert::AreEqual(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_03, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, 6));
+      Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE, 7));
 
       // CBBE_SMP_3BBB
       Assert::AreEqual(BodyNameVersion::_INVALID_VALUE, DataLists::GetBodyNameVersion(BodyVariant::CBBE_SMP_3BBB, -1));
@@ -888,6 +960,7 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_31));
       Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::BHUNP_3BBB_ADVANCED_3_03));
       // CBBE_3BA_3BBB
       Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_3BA_3BBB_1_50));
       Assert::AreEqual(0, DataLists::GetVariantIndex(FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55));
@@ -1008,6 +1081,7 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_2_31));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_3_03));
       // BHUNP_3BBB_ADVANCED
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25));
@@ -1015,6 +1089,7 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_31));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_03));
       // BHUNP_3BBB_ADVANCED_VER_2
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25));
@@ -1022,8 +1097,10 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_31));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_03));
       // BHUNP_3BBB_ADVANCED_VER_3
       Assert::AreEqual(5, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02));
+      Assert::AreEqual(5, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_03));
       // BHUNP_BBP
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_20));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_25));
@@ -1031,6 +1108,7 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_31));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_3_03));
       // BHUNP_BBP_ADVANCED
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_20));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_25));
@@ -1038,6 +1116,7 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_31));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_BBP_ADVANCED_3_03));
       // BHUNP_TBBP
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_20));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_25));
@@ -1045,6 +1124,7 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_31));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_3_03));
       // BHUNP_TBBP_ADVANCED
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25));
@@ -1052,11 +1132,13 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_31));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_35_TO_2_42));
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_00_TO_3_02));
+      Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_03));
       // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE
       Assert::AreEqual(1, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25));
       Assert::AreEqual(1, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30));
       Assert::AreEqual(2, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_35_TO_2_42));
       Assert::AreEqual(2, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_00_TO_3_02));
+      Assert::AreEqual(2, DataLists::GetVersionOffset(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_03));
       // CBBE_SMP_3BBB
       Assert::AreEqual(0, DataLists::GetVersionOffset(BodyNameVersion::CBBE_SMP_3BBB_1_2_0));
       // COCO_BODY_CBBE
