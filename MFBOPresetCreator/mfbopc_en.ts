@@ -870,44 +870,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1911"/>
+        <location filename="DataLists.cpp" line="2294"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1912"/>
-        <location filename="DataLists.cpp" line="1918"/>
+        <location filename="DataLists.cpp" line="2295"/>
+        <location filename="DataLists.cpp" line="2301"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1913"/>
-        <location filename="DataLists.cpp" line="1919"/>
+        <location filename="DataLists.cpp" line="2296"/>
+        <location filename="DataLists.cpp" line="2302"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1947"/>
+        <location filename="DataLists.cpp" line="2330"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1948"/>
+        <location filename="DataLists.cpp" line="2331"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1949"/>
+        <location filename="DataLists.cpp" line="2332"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1950"/>
+        <location filename="DataLists.cpp" line="2333"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1951"/>
+        <location filename="DataLists.cpp" line="2334"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -2030,54 +2030,66 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="68"/>
+        <location filename="TargetMeshesPicker.cpp" line="69"/>
         <source>Target Meshes Picker</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="85"/>
+        <location filename="TargetMeshesPicker.cpp" line="86"/>
         <source>Body mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="95"/>
+        <location filename="TargetMeshesPicker.cpp" line="99"/>
         <source>Body base mod:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="97"/>
-        <location filename="TargetMeshesPicker.cpp" line="128"/>
+        <location filename="TargetMeshesPicker.cpp" line="101"/>
+        <location filename="TargetMeshesPicker.cpp" line="135"/>
         <source>Version number:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="99"/>
+        <location filename="TargetMeshesPicker.cpp" line="103"/>
         <source>Targeted body mesh:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="116"/>
+        <location filename="TargetMeshesPicker.cpp" line="120"/>
         <source>Feet mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="126"/>
+        <location filename="TargetMeshesPicker.cpp" line="133"/>
         <source>Feet base mod:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="130"/>
+        <location filename="TargetMeshesPicker.cpp" line="137"/>
         <source>Targeted feet mesh:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="149"/>
+        <location filename="TargetMeshesPicker.cpp" line="154"/>
+        <source>Targeted body: -
+Targeted feet: -</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TargetMeshesPicker.cpp" line="163"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="152"/>
+        <location filename="TargetMeshesPicker.cpp" line="166"/>
         <source>Cancel</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TargetMeshesPicker.cpp" line="418"/>
+        <source>Targeted body: %1
+Targeted feet: %2</source>
         <translation></translation>
     </message>
 </context>
@@ -2457,7 +2469,7 @@ Please make sure your internet connection is working correctly and try again.
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="975"/>
+        <location filename="Utils.cpp" line="987"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -2505,47 +2517,47 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="768"/>
+        <location filename="Utils.cpp" line="778"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="788"/>
-        <location filename="Utils.cpp" line="821"/>
-        <location filename="Utils.cpp" line="937"/>
+        <location filename="Utils.cpp" line="798"/>
+        <location filename="Utils.cpp" line="831"/>
+        <location filename="Utils.cpp" line="949"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="975"/>
+        <location filename="Utils.cpp" line="987"/>
         <source>Project successfully saved</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="975"/>
+        <location filename="Utils.cpp" line="987"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="981"/>
+        <location filename="Utils.cpp" line="993"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1702"/>
+        <location filename="Utils.cpp" line="1714"/>
         <source>Remove from history</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1786"/>
-        <location filename="Utils.cpp" line="1810"/>
+        <location filename="Utils.cpp" line="1798"/>
+        <location filename="Utils.cpp" line="1822"/>
         <source>No path given or invalid path given.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1804"/>
+        <location filename="Utils.cpp" line="1816"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation></translation>
     </message>

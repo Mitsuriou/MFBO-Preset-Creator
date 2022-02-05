@@ -985,44 +985,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="1911"/>
+        <location filename="DataLists.cpp" line="2294"/>
         <source>Minimized</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1912"/>
-        <location filename="DataLists.cpp" line="1918"/>
+        <location filename="DataLists.cpp" line="2295"/>
+        <location filename="DataLists.cpp" line="2301"/>
         <source>Windowed</source>
         <translation>視窗化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1913"/>
-        <location filename="DataLists.cpp" line="1919"/>
+        <location filename="DataLists.cpp" line="2296"/>
+        <location filename="DataLists.cpp" line="2302"/>
         <source>Maximized</source>
         <translation>最大化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1947"/>
+        <location filename="DataLists.cpp" line="2330"/>
         <source>[ignore]</source>
         <translation>[忽略]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1948"/>
+        <location filename="DataLists.cpp" line="2331"/>
         <source>Body mesh</source>
         <translation>身體模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1949"/>
+        <location filename="DataLists.cpp" line="2332"/>
         <source>Feet mesh</source>
         <translation>腳部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1950"/>
+        <location filename="DataLists.cpp" line="2333"/>
         <source>Hands mesh</source>
         <translation>手部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="1951"/>
+        <location filename="DataLists.cpp" line="2334"/>
         <source>Skeleton mesh</source>
         <translation>骨架模型</translation>
     </message>
@@ -2338,55 +2338,69 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation>回到&quot;模型選擇(meshes picker)&quot;視窗</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="68"/>
+        <location filename="TargetMeshesPicker.cpp" line="69"/>
         <source>Target Meshes Picker</source>
         <translation>選擇目標模型</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="85"/>
+        <location filename="TargetMeshesPicker.cpp" line="86"/>
         <source>Body mod</source>
         <translation>身體Mod</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="95"/>
+        <location filename="TargetMeshesPicker.cpp" line="99"/>
         <source>Body base mod:</source>
         <translation>身體模型使用之Mod:</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="97"/>
-        <location filename="TargetMeshesPicker.cpp" line="128"/>
+        <location filename="TargetMeshesPicker.cpp" line="101"/>
+        <location filename="TargetMeshesPicker.cpp" line="135"/>
         <source>Version number:</source>
         <translation>版本:</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="99"/>
+        <location filename="TargetMeshesPicker.cpp" line="103"/>
         <source>Targeted body mesh:</source>
         <translation>目標身體模型:</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="116"/>
+        <location filename="TargetMeshesPicker.cpp" line="120"/>
         <source>Feet mod</source>
         <translation>腳部Mod</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="126"/>
+        <location filename="TargetMeshesPicker.cpp" line="133"/>
         <source>Feet base mod:</source>
         <translation>腳部模型使用之Mod:</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="130"/>
+        <location filename="TargetMeshesPicker.cpp" line="137"/>
         <source>Targeted feet mesh:</source>
         <translation>目標腳部模型:</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="149"/>
+        <location filename="TargetMeshesPicker.cpp" line="154"/>
+        <source>Targeted body: -
+Targeted feet: -</source>
+        <translation>目標身型: -
+目標腳部: -</translation>
+    </message>
+    <message>
+        <location filename="TargetMeshesPicker.cpp" line="163"/>
         <source>Save and close</source>
         <translation>儲存後關閉</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="152"/>
+        <location filename="TargetMeshesPicker.cpp" line="166"/>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="TargetMeshesPicker.cpp" line="418"/>
+        <source>Targeted body: %1
+Targeted feet: %2</source>
+        <translation>目標身型: %1
+目標腳部: %2</translation>
     </message>
 </context>
 <context>
@@ -2877,7 +2891,7 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="975"/>
+        <location filename="Utils.cpp" line="987"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2925,29 +2939,29 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation>錯誤:未指定獨立骨架路徑。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="768"/>
+        <location filename="Utils.cpp" line="778"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>無法找到內部檔案e &quot;%1&quot; 。請回報給開發者並提供bug產生步驟。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="788"/>
-        <location filename="Utils.cpp" line="821"/>
-        <location filename="Utils.cpp" line="937"/>
+        <location filename="Utils.cpp" line="798"/>
+        <location filename="Utils.cpp" line="831"/>
+        <location filename="Utils.cpp" line="949"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="975"/>
+        <location filename="Utils.cpp" line="987"/>
         <source>Project successfully saved</source>
         <translation>成功儲存專案</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="975"/>
+        <location filename="Utils.cpp" line="987"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>專案成功儲存於 &quot;%1 。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="981"/>
+        <location filename="Utils.cpp" line="993"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2956,18 +2970,18 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1702"/>
+        <location filename="Utils.cpp" line="1714"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1786"/>
-        <location filename="Utils.cpp" line="1810"/>
+        <location filename="Utils.cpp" line="1798"/>
+        <location filename="Utils.cpp" line="1822"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1804"/>
+        <location filename="Utils.cpp" line="1816"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>
