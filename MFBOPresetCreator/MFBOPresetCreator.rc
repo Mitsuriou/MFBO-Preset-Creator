@@ -61,7 +61,7 @@ IDI_ICON1               ICON                    "resources/software/icon.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 3,7,0,0
+ FILEVERSION 3,7,1,0
  PRODUCTVERSION 3,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -77,7 +77,7 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
-            VALUE "FileVersion", "3.7.0.0"
+            VALUE "FileVersion", "3.7.1.0"
             VALUE "InternalName", "MFBO Preset Creator"
             VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
             VALUE "ProductName", "MFBO: Preset Creator"
@@ -85,7 +85,7 @@ BEGIN
         END
         BLOCK "000904b0"
         BEGIN
-            VALUE "FileVersion", "3.7.0.0"
+            VALUE "FileVersion", "3.7.1.0"
             VALUE "InternalName", "MFBO Preset Creator"
             VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
             VALUE "ProductName", "MFBO: Preset Creator"
@@ -93,7 +93,7 @@ BEGIN
         END
         BLOCK "000c04b0"
         BEGIN
-            VALUE "FileVersion", "3.7.0.0"
+            VALUE "FileVersion", "3.7.1.0"
             VALUE "InternalName", "MFBO Preset Creator"
             VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
             VALUE "ProductName", "MFBO : Cr�ateur de Preset"

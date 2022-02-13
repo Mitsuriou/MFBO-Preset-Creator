@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
 
     qApp->setAttribute(Qt::AA_EnableHighDpiScaling, true);
     qApp->setAttribute(Qt::AA_DisableWindowContextHelpButton, true);
-    qApp->setApplicationVersion("3.7.0.0");
+    qApp->setApplicationVersion("3.7.1.0");
     const auto& lAppVersion{Utils::GetApplicationVersion()};
 
     Utils::PrintMessageStdOut("Creating the application instance...");
