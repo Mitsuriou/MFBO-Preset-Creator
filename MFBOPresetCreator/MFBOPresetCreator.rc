@@ -96,7 +96,7 @@ BEGIN
             VALUE "FileVersion", "3.7.1.0"
             VALUE "InternalName", "MFBO Preset Creator"
             VALUE "LegalCopyright", "Dylan Jacquemin (Mitsuriou)"
-            VALUE "ProductName", "MFBO : Crï¿½ateur de Preset"
+            VALUE "ProductName", "MFBO : Créateur de Preset"
             VALUE "ProductVersion", "3.0.0.0"
         END
     END
