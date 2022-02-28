@@ -26,7 +26,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
                           QString("1.51 to 1.55"),
                           QString("2.02 to 2.04"),
                           QString("2.06 - 2.11 - 2.12"),
-                          QString("2.13 to 2.18")});
+                          QString("2.13 to 2.20")});
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
@@ -37,7 +37,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
                           QString("2.35 to 2.42"),
                           QString("3.00 to 3.02"),
                           QString("3.03"),
-                          QString("3.04")});
+                          QString("3.04 and 3.05")});
     }
     case BodyName::CBBE_SMP_3BBB:
     {
@@ -77,7 +77,7 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
       // All the version numbers propose the variant below:
       QStringList lVariantsList{QString("CBBE 3BBB Body Amazing")};
 
-      // Only for "2.13 to 2.18"
+      // Only for "2.13 to 2.20"
       if (aRelativeVersion == 4)
       {
         lVariantsList.append(QString("CBBE 3BBB Amazing NeverNude"));
@@ -95,7 +95,7 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
       lVariantsList.append(QString("BHUNP 3BBB Advanced"));
       lVariantsList.append(QString("BHUNP 3BBB Advanced Ver 2"));
 
-      // Only for "3.00 to 3.02", "3.03" and "3.04"
+      // Only for "3.00 to 3.02", "3.03" and "3.04 and 3.05"
       if (aRelativeVersion >= 5 && aRelativeVersion <= 7)
         lVariantsList.append(QString("BHUNP 3BBB Advanced Ver 3"));
 
@@ -312,13 +312,13 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
                          QString("2.35 to 2.42"),
                          QString("3.00 to 3.02"),
                          QString("3.03"),
-                         QString("3.04")};
+                         QString("3.04 and 3.05")};
     case FeetName::CBBE_3BA_3BBB:
       return QStringList{QString("1.50"),
                          QString("1.51 to 1.55"),
                          QString("2.02 to 2.04"),
                          QString("2.06 - 2.11 - 2.12"),
-                         QString("2.13 to 2.18")};
+                         QString("2.13 to 2.20")};
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
         return QStringList{QString("V4"), QString("V6"), QString("V6.8")};
@@ -876,7 +876,7 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
       return BodyVariant::_INVALID_VALUE;
     case BodyName::CBBE_3BA_3BBB:
     {
-      // If not "2.13 to 2.18" but trying to use nevernude or underwear key, this is invalid
+      // If not "2.13 to 2.20" but trying to use nevernude or underwear key, this is invalid
       if (aRelativeVersion != 4 && aRelativeVariant > 0)
       {
         return BodyVariant::_INVALID_VALUE;
@@ -910,7 +910,7 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
         }
         case 5: // "3.00 to 3.02"
         case 6: // "3.03"
-        case 7: // "3.04"
+        case 7: // "3.04 and 3.05"
         {
           break;
         }
@@ -1236,7 +1236,7 @@ int DataLists::GetVariantIndex(const BodyNameVersion& aBodyNameVersion)
         }
         case 5: // "3.00 to 3.02"
         case 6: // "3.03"
-        case 7: // "3.04"
+        case 7: // "3.04 and 3.05"
         {
           break;
         }
@@ -1732,7 +1732,7 @@ int DataLists::GetVersionOffset(const BodyVariant& aBodyVariant, const int aRela
       }
 
       if (aRelativeVersion == 4                               // Only for 2.35 to 2.42"
-          || (aRelativeVersion >= 5 && aRelativeVersion <= 7) // Only for "3.00 to 3.02", "3.03" and "3.04"
+          || (aRelativeVersion >= 5 && aRelativeVersion <= 7) // Only for "3.00 to 3.02", "3.03" and "3.04 and 3.05"
       )
       {
         return 2; // Ignore "2.20" and then "2.31"
@@ -2267,7 +2267,7 @@ QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, 
       // TODO: Remove this workaround once the user can choose hands meshes
       const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
       if (lBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_3
-          && (lVersionIndex >= 5 && lVersionIndex <= 7) // Only for "3.00 to 3.02", "3.03" and "3.04"
+          && (lVersionIndex >= 5 && lVersionIndex <= 7) // Only for "3.00 to 3.02", "3.03" and "3.04 and 3.05"
       )
       {
         return QString("BHUNP 3BBB Advanced Hands Ver 3");

@@ -50,6 +50,9 @@ Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\F
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - XPMSSE (v4.80)"
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female - Vera's Female Skeleton (v1.52)"
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - Vera's Female Skeleton (v1.52)"
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Vera's Female Skeleton (v.1.60)"
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Vera's Female Skeleton - alternative (v.1.60)"
+Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Vera's Female Skeleton (v.1.70)"
 
 [Run]
 Filename: "{app}\MFBOPresetCreator.exe"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
