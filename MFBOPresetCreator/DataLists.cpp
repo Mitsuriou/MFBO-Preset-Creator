@@ -26,7 +26,7 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
                           QString("1.51 to 1.55"),
                           QString("2.02 to 2.04"),
                           QString("2.06 - 2.11 - 2.12"),
-                          QString("2.13 to 2.20")});
+                          QString("2.13 to 2.22")});
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
@@ -77,7 +77,7 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
       // All the version numbers propose the variant below:
       QStringList lVariantsList{QString("CBBE 3BBB Body Amazing")};
 
-      // Only for "2.13 to 2.20"
+      // Only for "2.13 to 2.22"
       if (aRelativeVersion == 4)
       {
         lVariantsList.append(QString("CBBE 3BBB Amazing NeverNude"));
@@ -318,7 +318,7 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
                          QString("1.51 to 1.55"),
                          QString("2.02 to 2.04"),
                          QString("2.06 - 2.11 - 2.12"),
-                         QString("2.13 to 2.20")};
+                         QString("2.13 to 2.22")};
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
         return QStringList{QString("V4"), QString("V6"), QString("V6.8")};
@@ -876,7 +876,7 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
       return BodyVariant::_INVALID_VALUE;
     case BodyName::CBBE_3BA_3BBB:
     {
-      // If not "2.13 to 2.20" but trying to use nevernude or underwear key, this is invalid
+      // If not "2.13 to 2.22" but trying to use nevernude or underwear key, this is invalid
       if (aRelativeVersion != 4 && aRelativeVariant > 0)
       {
         return BodyVariant::_INVALID_VALUE;
@@ -2031,7 +2031,7 @@ std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibi
         break;
       // Khrysamere HG Feet (BHUNP)
       case 4:
-      //Khrysamere HG Feet (Claws) (BHUNP)
+      // Khrysamere HG Feet (Claws) (BHUNP)
       case 5:
         lFeetToSet = DataLists::GetFirstKey(FeetVariant::KHRYSAMERE_HG_FEET);
         break;

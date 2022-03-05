@@ -30,6 +30,12 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
 
 void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
 {
+  if (this->getChosenBodyName() == this->mOriginalBody && this->getChosenFeetName() == this->mOriginalFeet)
+  {
+    aEvent->accept();
+    return;
+  }
+
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
