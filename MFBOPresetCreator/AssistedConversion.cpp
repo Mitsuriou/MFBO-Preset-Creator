@@ -484,8 +484,8 @@ void AssistedConversion::validateSelection()
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),
                                       "",
-                                      this->mSettings.display.successColor,
                                       this->mSettings.display.dangerColor,
+                                      this->mSettings.display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)

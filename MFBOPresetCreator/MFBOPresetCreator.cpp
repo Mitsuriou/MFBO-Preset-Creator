@@ -605,8 +605,8 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
                                         tr("Download and install the update now"),
                                         tr("Download later"),
                                         "",
-                                        this->mSettings.display.successColor,
                                         this->mSettings.display.dangerColor,
+                                        this->mSettings.display.successColor,
                                         "",
                                         true)
           == ButtonClicked::YES)
