@@ -239,6 +239,7 @@ echo #####################################################</Command>
     <ClCompile Include="ComponentFactory.cpp" />
     <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
+    <ClCompile Include="FirstInstallWindow.cpp" />
     <ClCompile Include="GroupBox.cpp" />
     <ClCompile Include="LangManager.cpp" />
     <ClCompile Include="ReleaseNotesViewer.cpp" />
@@ -256,12 +257,15 @@ echo #####################################################</Command>
     <ClCompile Include="TargetMeshesPicker.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
     <ClCompile Include="TexturesAssistant.cpp" />
+    <ClCompile Include="ThemeCard.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="VersionsInformation.cpp" />
     <ClCompile Include="WelcomeScreen.cpp" />
     <QtMoc Include="TargetMeshesPicker.h" />
     <QtMoc Include="GroupBox.h" />
+    <QtMoc Include="FirstInstallWindow.h" />
+    <QtMoc Include="ThemeCard.h" />
     <ClInclude Include="VersionsInformation.h" />
     <QtMoc Include="WelcomeScreen.h" />
     <QtMoc Include="TexturesAssistant.h" />

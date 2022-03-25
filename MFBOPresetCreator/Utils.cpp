@@ -418,6 +418,22 @@ bool Utils::RemoveDirectoryAndSubDirs(const QString& aPath)
   return QDir(aPath).removeRecursively();
 }
 
+void Utils::ApplyApplicationStyleSheet(const QString& aQSSFileName)
+{
+  qApp->setStyleSheet("");
+
+  if (!aQSSFileName.isEmpty())
+  {
+    QFile lQSSFile(":qss/" + aQSSFileName + ".qss");
+    if (lQSSFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+      QTextStream lStream(&lQSSFile);
+      qApp->setStyleSheet(lStream.readAll());
+      lQSSFile.close();
+    }
+  }
+}
+
 bool Utils::IsThemeDark(const GUITheme& aTheme)
 {
   switch (aTheme)
@@ -864,7 +880,7 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
           || lTempSet.getName().endsWith(" - [COCO]3Bsmp_BodyV4_B", Qt::CaseInsensitive)
           || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Body_B", Qt::CaseInsensitive))
       {
-        lTempSet.setMeshPart("Body"); //Body
+        lTempSet.setMeshPart("Body"); // Body
       }
       else if (lTempSet.getName().endsWith(" - Hands", Qt::CaseInsensitive)
                || lTempSet.getName().endsWith(" - Beast Hands", Qt::CaseInsensitive)
@@ -1013,23 +1029,25 @@ QJsonObject Utils::LoadFromJsonFile(const QString& aFilePath)
   return lJsonDocument.object();
 }
 
-void Utils::CheckSettingsFileExistence()
+QString Utils::SettingsFullFilePath()
 {
-  auto lSettingsFilePath{Utils::GetAppDataPathFolder() + "config.json"};
-  if (!QFile(lSettingsFilePath).exists())
-  {
-    // Create a default setting file if it does not exist
-    Utils::SaveSettingsToFile(Struct::Settings());
-  }
+  return Utils::GetAppDataPathFolder().append("config.json");
+}
+
+bool Utils::SettingsFileExists()
+{
+  return QFile(Utils::SettingsFullFilePath()).exists();
 }
 
 Struct::Settings Utils::LoadSettingsFromFile()
 {
-  Utils::CheckSettingsFileExistence();
+  // If the settings file does not exist, return a defaulted settings struct
+  if (!Utils::SettingsFileExists())
+  {
+    return Struct::Settings();
+  }
 
-  auto lSettingsFilePath{Utils::GetAppDataPathFolder() + "config.json"};
-  QJsonObject lSettingsJSON{Utils::LoadFromJsonFile(lSettingsFilePath)};
-
+  const QJsonObject lSettingsJSON{Utils::LoadFromJsonFile(Utils::SettingsFullFilePath())};
   Struct::Settings lSettings;
 
   // Compatiblity mod for settings created from an older version than v.3.4.0.0
@@ -1394,8 +1412,7 @@ void Utils::ParseBodyFeetSettings(Struct::BodyFeetSettings& aSettings, const QJs
 
 void Utils::SaveSettingsToFile(const Struct::Settings& aSettings)
 {
-  auto lSettingsFilePath{Utils::GetAppDataPathFolder() + "config.json"};
-  Utils::SaveAsJsonFile(Utils::SettingsStructToJson(aSettings), lSettingsFilePath);
+  Utils::SaveAsJsonFile(Utils::SettingsStructToJson(aSettings), Utils::SettingsFullFilePath());
 }
 
 QJsonObject Utils::SettingsStructToJson(const Struct::Settings& aSettings)
@@ -1858,9 +1875,9 @@ void Utils::BindConsoleToStdOut()
   FreeConsole();
   AllocConsole();
   FILE* lOutFile{NULL};
-  //freopen_s(&lOutFile, "CONIN$", "r", stdin);
+  // freopen_s(&lOutFile, "CONIN$", "r", stdin);
   freopen_s(&lOutFile, "CONOUT$", "w", stdout);
-  //freopen_s(&lOutFile, "CONOUT$", "w", stderr);
+  // freopen_s(&lOutFile, "CONOUT$", "w", stderr);
   SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
 #endif
 }

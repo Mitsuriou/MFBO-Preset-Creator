@@ -58,6 +58,7 @@ public:
   static bool RemoveDirectoryAndSubDirs(const QString& aPath);
 
   // Theming
+  static void ApplyApplicationStyleSheet(const QString& aQSSFileName);
   static bool IsThemeDark(const GUITheme& aTheme);
   static QString GetIconResourceFolder(const GUITheme& aTheme);
   static void OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme);
@@ -105,7 +106,8 @@ public:
   static QJsonObject LoadFromJsonFile(const QString& aFilePath);
 
   // Settings
-  static void CheckSettingsFileExistence();
+  static QString SettingsFullFilePath();
+  static bool SettingsFileExists();
 
   static Struct::Settings LoadSettingsFromFile();
   static void ParseSettingsCompatibility(Struct::Settings& aSettings, const QJsonObject& aJSONObject);

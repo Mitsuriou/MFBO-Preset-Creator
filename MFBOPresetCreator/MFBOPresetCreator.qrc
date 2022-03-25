@@ -142,10 +142,10 @@
         <file>mfbopc_zh_TW.qm</file>
     </qresource>
     <qresource prefix="/qss">
-        <file alias="Paper Black Mono.qss">resources/qss/Paper Black Mono.qss</file>
+        <file alias="Paper Black Mono by 6788.qss">resources/qss/Paper Black Mono.qss</file>
         <file alias="Paper Dark by 6788.qss">resources/qss/Paper Dark by 6788.qss</file>
         <file alias="Paper Light by 6788.qss">resources/qss/Paper Light by 6788.qss</file>
-        <file alias="Paper White Mono.qss">resources/qss/Paper White Mono.qss</file>
+        <file alias="Paper White Mono by 6788.qss">resources/qss/Paper White Mono.qss</file>
         <file alias="Alexhuszagh's Breeze Dark.qss">resources/qss/Alexhuszagh's Breeze Dark.qss</file>
         <file alias="Alexhuszagh's Breeze Light.qss">resources/qss/Alexhuszagh's Breeze Light.qss</file>
         <file alias="Mitsuriou's Black Theme.qss">resources/qss/Mitsuriou's Black Theme.qss</file>
@@ -431,6 +431,18 @@
         <file>resources/qss/Paper/Mono/White/run.svg</file>
         <file>resources/qss/Paper/Mono/White/shortcut.svg</file>
         <file>resources/qss/Paper/Mono/White/sort.svg</file>
+    </qresource>
+    <qresource prefix="/qss-previews">
+        <file alias="Default OS theme">resources/qss-previews/Default OS theme.jpg</file>
+        <file alias="Mitsuriou's Black Theme">resources/qss-previews/Mitsuriou's Black Theme.jpg</file>
+        <file alias="Mitsuriou's Dark Theme">resources/qss-previews/Mitsuriou's Dark Theme.jpg</file>
+        <file alias="Mitsuriou's Light Theme">resources/qss-previews/Mitsuriou's Light Theme.jpg</file>
+        <file alias="Alexhuszagh's Breeze Dark">resources/qss-previews/Alexhuszagh's Breeze Dark.jpg</file>
+        <file alias="Alexhuszagh's Breeze Light">resources/qss-previews/Alexhuszagh's Breeze Light.jpg</file>
+        <file alias="Paper Dark by 6788">resources/qss-previews/Paper Dark by 6788.jpg</file>
+        <file alias="Paper Light by 6788">resources/qss-previews/Paper Light by 6788.jpg</file>
+        <file alias="Paper Black Mono by 6788">resources/qss-previews/Paper Black Mono by 6788.jpg</file>
+        <file alias="Paper White Mono by 6788">resources/qss-previews/Paper White Mono by 6788.jpg</file>
     </qresource>
     <qresource prefix="/mitsuriou_black">
         <file alias="chevron-bottom">resources/qss/Mitsuriou's Black Theme/chevron-bottom.png</file>

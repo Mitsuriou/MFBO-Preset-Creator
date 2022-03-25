@@ -79,6 +79,12 @@
     <ClCompile Include="GroupBox.cpp">
       <Filter>Source Files\Qt Classes</Filter>
     </ClCompile>
+    <ClCompile Include="FirstInstallWindow.cpp">
+      <Filter>Source Files\First Install Wizard</Filter>
+    </ClCompile>
+    <ClCompile Include="ThemeCard.cpp">
+      <Filter>Source Files\First Install Wizard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -147,6 +153,12 @@
     </Filter>
     <Filter Include="Header Files\Qt Classes">
       <UniqueIdentifier>{ed92a39b-09a1-4fda-afb0-bf97c29c202c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\First Install Wizard">
+      <UniqueIdentifier>{639995a3-517d-4c3a-b2ca-16a2dc016e61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\First Install Wizard">
+      <UniqueIdentifier>{37b9e63f-7168-47c6-befa-02de9b4ba9d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +253,12 @@
     </QtMoc>
     <QtMoc Include="GroupBox.h">
       <Filter>Header Files\Qt Classes</Filter>
+    </QtMoc>
+    <QtMoc Include="FirstInstallWindow.h">
+      <Filter>Header Files\First Install Wizard</Filter>
+    </QtMoc>
+    <QtMoc Include="ThemeCard.h">
+      <Filter>Header Files\First Install Wizard</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

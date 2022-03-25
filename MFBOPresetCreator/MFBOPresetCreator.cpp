@@ -411,27 +411,16 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
       lQSSFileName = "Paper Light by 6788";
       break;
     case GUITheme::PAPER_BLACK_MONO:
-      lQSSFileName = "Paper Black Mono";
+      lQSSFileName = "Paper Black Mono by 6788";
       break;
     case GUITheme::PAPER_WHITE_MONO:
-      lQSSFileName = "Paper White Mono";
+      lQSSFileName = "Paper White Mono by 6788";
       break;
   }
 
-  auto lLineEditsToReactivate{this->disableLineEditPlaceholders()};
+  const auto lLineEditsToReactivate{this->disableLineEditPlaceholders()};
 
-  qApp->setStyleSheet("");
-
-  if (!lQSSFileName.isEmpty())
-  {
-    QFile lQSSFile(":qss/" + lQSSFileName + ".qss");
-    if (lQSSFile.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-      QTextStream lStream(&lQSSFile);
-      qApp->setStyleSheet(lStream.readAll());
-      lQSSFile.close();
-    }
-  }
+  Utils::ApplyApplicationStyleSheet(lQSSFileName);
 
   this->enableLineEditPlaceholders(lLineEditsToReactivate);
 

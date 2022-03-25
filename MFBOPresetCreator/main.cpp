@@ -1,4 +1,5 @@
-﻿#include "MFBOPresetCreator.h"
+﻿#include "FirstInstallWindow.h"
+#include "MFBOPresetCreator.h"
 #include "Utils.h"
 #include <QDir>
 #include <QFile>
@@ -173,7 +174,7 @@ int main(int argc, char* argv[])
     QCoreApplication::processEvents();
 
     // Read settings file
-    auto lSettings{Utils::LoadSettingsFromFile()};
+    const auto lSettings{Utils::LoadSettingsFromFile()};
 
     // Update the message
     Utils::PrintMessageStdOut("Applying translation files...");
@@ -201,14 +202,26 @@ int main(int argc, char* argv[])
     lSplashScreen.showMessage(QString("MFBOPC (v.%1): Creating the main window...").arg(lAppVersion), Qt::AlignBottom | Qt::AlignRight, Qt::white);
     QCoreApplication::processEvents();
 
-    // Create and show the main window
-    MFBOPresetCreator lMainWindow(lSettings, lInjectedFilePath);
+    // Keep the pointer of the main window launched below
+    QMainWindow* lLaunchedMainWindow{nullptr};
 
-    // Avoid re-injecting the file a second time if quick reloading the application
-    lInjectedFilePath.clear();
+    // If the settings file does not exist, display the FirstInstallWindow
+    if (!Utils::SettingsFileExists())
+    {
+      lLaunchedMainWindow = new FirstInstallWindow();
+    }
+    // Elseway, display the software interface directly
+    else
+    {
+      // Create and show the main window
+      lLaunchedMainWindow = new MFBOPresetCreator(lSettings, lInjectedFilePath);
+
+      // Avoid re-injecting the file a second time if quick reloading the application
+      lInjectedFilePath.clear();
+    }
 
     // Make the splash screen disappear when the main window is displayed
-    lSplashScreen.finish(&lMainWindow);
+    lSplashScreen.finish(lLaunchedMainWindow);
 
     // Launch the application
     currentExitCode = lMainApplication.exec();
