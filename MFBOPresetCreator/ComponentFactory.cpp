@@ -145,7 +145,11 @@ QGridLayout* ComponentFactory::CreateScrollAreaWindowLayout(QWidget* aParent,
   return lNestedLayout;
 }
 
-QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)
+QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent,
+                                                               const int aRow,
+                                                               const int aColumn,
+                                                               const int aRowSpan,
+                                                               const int aColumnSpan)
 {
   auto lScrollArea{new QScrollArea(aParent)};
   lScrollArea->setObjectName(QString("scrollable_zone"));
@@ -162,7 +166,7 @@ QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent)
   lMainWidget->setLayout(lDataContainer);
 
   auto lMainLayout{qobject_cast<QGridLayout*>(aParent->layout())};
-  lMainLayout->addWidget(lScrollArea, 2, 0, 1, 3);
+  lMainLayout->addWidget(lScrollArea, aRow, aColumn, aRowSpan, aColumnSpan);
 
   return lDataContainer;
 }

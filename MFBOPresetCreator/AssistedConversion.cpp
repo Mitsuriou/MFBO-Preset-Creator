@@ -446,7 +446,7 @@ void AssistedConversion::launchSearchProcess()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this)};
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 3, 0, 1, 3)};
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
 
   // Columns header
@@ -464,7 +464,7 @@ void AssistedConversion::launchSearchProcess()
 
   // Create the validation button
   auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
-  lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
+  lMainLayout->addWidget(lValidateSelection, 4, 0, 1, 3);
 
   this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
 }

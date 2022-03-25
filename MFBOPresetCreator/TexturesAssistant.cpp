@@ -316,8 +316,7 @@ void TexturesAssistant::displayTexturesFilesList()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area wrapper
-  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this)};
-  qobject_cast<QGridLayout*>(this->layout())->addLayout(lDataContainer, 2, 0, 1, 3);
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 2, 0, 1, 3)};
 
   // Parse the grouped textures to split them in multiple storages
   TexturesAssistant::GroupedData lGroupedPaths;

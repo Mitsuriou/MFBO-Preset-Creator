@@ -44,7 +44,11 @@ public:
                                                    const QMargins& aNestedLayoutMargins = QMargins(10, 10, 10, 10),
                                                    const QString& aNestedLayoutObjectName = QString("main_layout"));
 
-  static QGridLayout* CreateScrollAreaComponentLayout(QWidget* aParent);
+  static QGridLayout* CreateScrollAreaComponentLayout(QWidget* aParent,
+                                                      const int aRow,
+                                                      const int aColumn,
+                                                      const int aRowSpan = 1,
+                                                      const int aColumnSpan = 1);
 
   // Full UI blocks
   static QPushButton* CreateTargetMeshesPickerLine(QWidget* aParent,
