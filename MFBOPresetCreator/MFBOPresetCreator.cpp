@@ -387,7 +387,7 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
 
   switch (this->mSettings.display.applicationTheme)
   {
-    case GUITheme::WINDOWS_VISTA:
+    case GUITheme::DEFAULT_OS_THEME:
       break;
     case GUITheme::MITSURIOU_BLACK_THEME:
       lQSSFileName = "Mitsuriou's Black Theme";

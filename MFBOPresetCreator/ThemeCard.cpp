@@ -6,30 +6,36 @@
 ThemeCard::ThemeCard(const QString& aThemeName, QWidget* aParent)
   : QWidget(aParent)
   , mThemeName(aThemeName)
+  , mPreviewImage(QPixmap(QString(":/qss-previews/%2").arg(aThemeName)))
 {
   auto lWrapper{new QVBoxLayout(this)};
   this->setLayout(lWrapper);
 
   // Preview image
-  auto lImageLabel{new QLabel(this)};
+  const auto lImageLabel{new QLabel(this)};
   lImageLabel->setObjectName("image_label");
-  this->mPreviewImage = QPixmap(QString(":/qss-previews/%2").arg(aThemeName));
-  lImageLabel->setPixmap(this->mPreviewImage.scaled(lImageLabel->size(),
-                                                    Qt::AspectRatioMode::KeepAspectRatio,
-                                                    Qt::TransformationMode::SmoothTransformation));
   lWrapper->addWidget(lImageLabel);
 
   // Load button
-  auto lButton{ComponentFactory::CreateButton(this, aThemeName, "", "", "")};
+  const auto lButton{ComponentFactory::CreateButton(this, aThemeName, "", "", "")};
   lWrapper->addWidget(lButton);
 
   // Event binding
   QObject::connect(lButton, &QPushButton::clicked, this, &ThemeCard::buttonClicked);
+
+  // Simulate a resize event
+  this->resizeEvent(nullptr);
 }
 
 void ThemeCard::resizeEvent(QResizeEvent*)
 {
   auto lImageLabel{this->findChild<QLabel*>("image_label")};
+
+  const auto lOriginalWidth{this->mPreviewImage.width()};
+  const auto lOriginalHeight{this->mPreviewImage.height()};
+
+  lImageLabel->setMinimumSize(1, lImageLabel->width() / (lOriginalWidth * lOriginalHeight));
+
   lImageLabel->setPixmap(this->mPreviewImage.scaledToWidth(lImageLabel->width(),
                                                            Qt::TransformationMode::SmoothTransformation));
 }

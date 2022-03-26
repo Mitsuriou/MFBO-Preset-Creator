@@ -276,7 +276,7 @@ enum class ApplicationLanguage
 
 enum class GUITheme
 {
-  WINDOWS_VISTA,
+  DEFAULT_OS_THEME,
   MITSURIOU_BLACK_THEME,
   MITSURIOU_DARK_THEME,
   MITSURIOU_LIGHT_THEME,

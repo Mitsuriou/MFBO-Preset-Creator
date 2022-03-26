@@ -14,8 +14,10 @@ protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
+  GUITheme mLastLoadedTheme{GUITheme::DEFAULT_OS_THEME};
+
   void initializeGUI();
-  void setupButtons(QHBoxLayout& aLayout);
+  void setupButtons();
 
   void loadQSSTheme(const QString& aThemeName);
 };

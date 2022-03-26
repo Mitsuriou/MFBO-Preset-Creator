@@ -444,7 +444,7 @@ bool Utils::IsThemeDark(const GUITheme& aTheme)
     case GUITheme::PAPER_DARK:
     case GUITheme::PAPER_BLACK_MONO:
       return true;
-    case GUITheme::WINDOWS_VISTA:
+    case GUITheme::DEFAULT_OS_THEME:
     case GUITheme::MITSURIOU_LIGHT_THEME:
     case GUITheme::ALEXHUSZAGH_BREEZE_LIGHT:
     case GUITheme::PAPER_LIGHT:

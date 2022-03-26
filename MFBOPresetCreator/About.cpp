@@ -23,7 +23,7 @@ void About::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/info-circle")));
 
   // Hacky window's background color change for Windows Vista theme
-  if (this->mSettings.display.applicationTheme == GUITheme::WINDOWS_VISTA)
+  if (this->mSettings.display.applicationTheme == GUITheme::DEFAULT_OS_THEME)
   {
     this->setStyleSheet("background-color: white;");
   }
