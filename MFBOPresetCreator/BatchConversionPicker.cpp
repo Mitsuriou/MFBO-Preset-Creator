@@ -204,7 +204,7 @@ void BatchConversionPicker::initializeGUI()
   lRightDataLayout->addWidget(lDropSectionSkeleton);
 
   // BodySlide output settings group box
-  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size, "bodyslide_groupbox")};
+  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.pointSize, "bodyslide_groupbox")};
   lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout

@@ -93,13 +93,13 @@ void WelcomeScreen::initializeGUI()
   /*============*/
   auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::GetApplicationVersion()), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.size * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.pointSize * 2));
   lMainLayout->addWidget(lMainTitle);
 
   /*============*/
   /* Ko-Fi page */
   /*============*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Support me: donate - buy me a coffee"), this->mSettings.display.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Support me: donate - buy me a coffee"), this->mSettings.display.font.pointSize));
 
   auto lFreewareLabel{new QLabel(tr("Anything I create is for free and is created during my free time. Any given cent is meaningful to me. If you want to support me financially, click the button below:"), this)};
   lFreewareLabel->setWordWrap(true);
@@ -120,7 +120,7 @@ void WelcomeScreen::initializeGUI()
   /* CURRENT VERSION */
   /*=================*/
   // Current version's release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Current version's release notes"), this->mSettings.display.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Current version's release notes"), this->mSettings.display.font.pointSize));
 
   // Current version's status label
   auto lCurrentVersionStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
@@ -138,7 +138,7 @@ void WelcomeScreen::initializeGUI()
   /* STABLE */
   /*========*/
   // Stable version release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest stable release notes"), this->mSettings.display.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest stable release notes"), this->mSettings.display.font.pointSize));
 
   // Latest stable release notes
   auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
@@ -168,7 +168,7 @@ void WelcomeScreen::initializeGUI()
   /* BETA */
   /*======*/
   // BETA version release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest BETA release notes"), this->mSettings.display.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest BETA release notes"), this->mSettings.display.font.pointSize));
 
   // Latest BETA release notes
   auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
@@ -197,7 +197,7 @@ void WelcomeScreen::initializeGUI()
   /*===================*/
   /* Incoming features */
   /*===================*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.display.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.display.font.pointSize));
 
   auto lIncomingFeaturesLabel{new QLabel(tr("You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:"), this)};
   lIncomingFeaturesLabel->setWordWrap(true);
@@ -209,7 +209,7 @@ void WelcomeScreen::initializeGUI()
   /*==============*/
   /* Known issues */
   /*==============*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.display.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.display.font.pointSize));
 
   auto lKnownIssuesLabel{new QLabel(tr("You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:"), this)};
   lKnownIssuesLabel->setWordWrap(true);
@@ -221,7 +221,7 @@ void WelcomeScreen::initializeGUI()
   /*=====================*/
   /* Guide and tutorials */
   /*=====================*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.display.font.size));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.display.font.pointSize));
 
   auto lGuideLabel{new QLabel(tr("Whether it is your first time using the application or you're wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:"), this)};
   lGuideLabel->setWordWrap(true);

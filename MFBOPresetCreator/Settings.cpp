@@ -515,7 +515,7 @@ void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsTo
 
   // Font
   QFont lFont(aSettingsToLoad.font.family,
-              aSettingsToLoad.font.size,
+              aSettingsToLoad.font.pointSize,
               aSettingsToLoad.font.weight,
               aSettingsToLoad.font.italic);
   lFont.setStyleName(aSettingsToLoad.font.styleName);
@@ -630,7 +630,7 @@ Struct::Settings Settings::getSettingsFromGUI() const
   // Font family
   lSettings.display.font.family = this->mNewFont.family();
   lSettings.display.font.italic = this->mNewFont.italic();
-  lSettings.display.font.size = this->mNewFont.pointSize();
+  lSettings.display.font.pointSize = this->mNewFont.pointSize();
   lSettings.display.font.strikeOut = this->mNewFont.strikeOut();
   lSettings.display.font.styleName = this->mNewFont.styleName();
   lSettings.display.font.underline = this->mNewFont.underline();

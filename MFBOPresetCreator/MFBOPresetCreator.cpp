@@ -624,7 +624,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     // Set the font properties
     applyFont(aSettings.display.font.family,
               aSettings.display.font.styleName,
-              aSettings.display.font.size,
+              aSettings.display.font.pointSize,
               aSettings.display.font.weight,
               aSettings.display.font.italic,
               aSettings.display.font.underline,

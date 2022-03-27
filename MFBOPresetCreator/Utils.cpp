@@ -1337,7 +1337,7 @@ void Utils::ParseFontSettings(Struct::Font& aSettings, const QJsonObject& aJSONO
 
   // size
   if (aJSONObject.contains("size") && aJSONObject["size"].isDouble())
-    aSettings.size = aJSONObject["size"].toInt();
+    aSettings.pointSize = aJSONObject["size"].toInt();
 
   // strikeOut
   if (aJSONObject.contains("strikeOut") && aJSONObject["strikeOut"].isBool())

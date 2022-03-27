@@ -89,7 +89,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted body group box */
   /*=========================*/
-  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", lIconFolder, this->mSettings.display.font.size)};
+  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", lIconFolder, this->mSettings.display.font.pointSize)};
   lMainLayout->addWidget(lBodyGroupBox);
 
   // Grid layout
@@ -123,7 +123,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted feet group box */
   /*=========================*/
-  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", lIconFolder, this->mSettings.display.font.size)};
+  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", lIconFolder, this->mSettings.display.font.pointSize)};
   lMainLayout->addWidget(lFeetGroupBox);
 
   // Grid layout

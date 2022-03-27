@@ -115,7 +115,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Input location"), "tune", lIconFolder, this->mSettings.display.font.size)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Input location"), "tune", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 0, 0);
 
   // Grid layout
@@ -152,7 +152,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.size)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 1, 0);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -213,7 +213,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 2, 0);
 
   // Grid layout
@@ -273,7 +273,7 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
+  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.pointSize);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
@@ -295,7 +295,7 @@ void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", lIconFolder, this->mSettings.display.font.size)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 4, 0);
 
   // Layout
@@ -333,7 +333,7 @@ void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", lIconFolder, this->mSettings.display.font.size)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 5, 0);
 
   // Layout

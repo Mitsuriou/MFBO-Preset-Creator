@@ -32,6 +32,7 @@ private:
 
   // Utils functions
   bool hasUserSelectedAnything() const;
+  bool isFileNameRecognized(const QString& aFileName);
 
   //#pragma region PRIVATE_SLOTS
   void chooseInputDirectory();

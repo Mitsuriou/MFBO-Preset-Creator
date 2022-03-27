@@ -40,7 +40,7 @@ void ReleaseNotesViewer::initializeGUI()
   // Main title
   auto lMainTitle{new QLabel(tr("Current version's release notes"), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.size * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.pointSize * 2));
   this->layout()->addWidget(lMainTitle);
 
   // Fetch status

@@ -61,7 +61,7 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
       break;
   }
 
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, lGroupBoxTitle, lGroupBoxIcon, lIconFolder, aSettings.display.font.size)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, lGroupBoxTitle, lGroupBoxIcon, lIconFolder, aSettings.display.font.pointSize)};
 
   const auto lGroupBoxLayout{new QVBoxLayout(this)};
   lGroupBoxLayout->setSpacing(10);

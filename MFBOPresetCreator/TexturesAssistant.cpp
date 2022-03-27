@@ -161,7 +161,7 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Textures set"), "textures", lIconFolder, this->mSettings.display.font.size, "textures_set_groupbox", true)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Textures set"), "textures", lIconFolder, this->mSettings.display.font.pointSize, "textures_set_groupbox", true)};
   aLayout.addWidget(lGroupBox, 3, 0, 1, 3);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -203,7 +203,7 @@ void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size, 1, 3);
+  ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.pointSize, 1, 3);
   auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
   lOutputGroupBox->setDisabled(true);
 
@@ -365,7 +365,7 @@ void TexturesAssistant::displayTexturesFilesList()
   auto lRowIndex{0};
 
   // Head resources blocks
-  auto lHeadGroup{ComponentFactory::CreateGroupBox(this, tr("Head textures"), "woman-head", lIconFolder, this->mSettings.display.font.size)};
+  auto lHeadGroup{ComponentFactory::CreateGroupBox(this, tr("Head textures"), "woman-head", lIconFolder, this->mSettings.display.font.pointSize)};
 
   auto lHeadGroupContainer{new QGridLayout(this)};
   lHeadGroupContainer->setSpacing(16);
@@ -374,7 +374,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lHeadGroup, lRowIndex++, 0);
 
   // Mouth resources blocks
-  auto lMouthGroup{ComponentFactory::CreateGroupBox(this, tr("Mouth textures"), "mouth", lIconFolder, this->mSettings.display.font.size)};
+  auto lMouthGroup{ComponentFactory::CreateGroupBox(this, tr("Mouth textures"), "mouth", lIconFolder, this->mSettings.display.font.pointSize)};
 
   auto lMouthGroupContainer{new QGridLayout(this)};
   lMouthGroupContainer->setSpacing(16);
@@ -383,7 +383,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lMouthGroup, lRowIndex++, 0);
 
   // Body resources blocks
-  auto lBodyGroup{ComponentFactory::CreateGroupBox(this, tr("Body textures"), "body", lIconFolder, this->mSettings.display.font.size)};
+  auto lBodyGroup{ComponentFactory::CreateGroupBox(this, tr("Body textures"), "body", lIconFolder, this->mSettings.display.font.pointSize)};
 
   auto lBodyGroupContainer{new QGridLayout(this)};
   lBodyGroupContainer->setSpacing(16);
@@ -392,7 +392,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lBodyGroup, lRowIndex++, 0);
 
   // Extra body resources blocks
-  auto lBodyExtraGroup{ComponentFactory::CreateGroupBox(this, tr("Extra body textures"), "more", lIconFolder, this->mSettings.display.font.size)};
+  auto lBodyExtraGroup{ComponentFactory::CreateGroupBox(this, tr("Extra body textures"), "more", lIconFolder, this->mSettings.display.font.pointSize)};
 
   auto lBodyExtraGroupContainer{new QGridLayout(this)};
   lBodyExtraGroupContainer->setSpacing(16);
@@ -401,7 +401,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lBodyExtraGroup, lRowIndex++, 0);
 
   // Hands resources blocks
-  auto lHandsGroup{ComponentFactory::CreateGroupBox(this, tr("Hands textures"), "hand", lIconFolder, this->mSettings.display.font.size)};
+  auto lHandsGroup{ComponentFactory::CreateGroupBox(this, tr("Hands textures"), "hand", lIconFolder, this->mSettings.display.font.pointSize)};
 
   auto lHandsGroupContainer{new QGridLayout(this)};
   lHandsGroupContainer->setSpacing(16);
@@ -410,7 +410,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lHandsGroup, lRowIndex++, 0);
 
   // Other texture files
-  auto lOtherGroup{ComponentFactory::CreateGroupBox(this, tr("Other .DDS textures"), "textures", lIconFolder, this->mSettings.display.font.size)};
+  auto lOtherGroup{ComponentFactory::CreateGroupBox(this, tr("Other .DDS textures"), "textures", lIconFolder, this->mSettings.display.font.pointSize)};
 
   auto lOtherGroupContainer{new QGridLayout(this)};
   lOtherGroupContainer->setSpacing(16);

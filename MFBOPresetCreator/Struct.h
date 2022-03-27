@@ -74,7 +74,7 @@ namespace Struct
   public:
     QString family{"Roboto"};
     bool italic{false};
-    int size{10};
+    int pointSize{10};
     bool strikeOut{false};
     QString styleName{"Regular"};
     bool underline{false};
@@ -85,7 +85,7 @@ namespace Struct
       return (
         this->family == aSettings.family
         && this->italic == aSettings.italic
-        && this->size == aSettings.size
+        && this->pointSize == aSettings.pointSize
         && this->strikeOut == aSettings.strikeOut
         && this->styleName == aSettings.styleName
         && this->underline == aSettings.underline
@@ -96,7 +96,7 @@ namespace Struct
     {
       return (this->family != aSettings.family
               || this->italic != aSettings.italic
-              || this->size != aSettings.size
+              || this->pointSize != aSettings.pointSize
               || this->strikeOut != aSettings.strikeOut
               || this->styleName != aSettings.styleName
               || this->underline != aSettings.underline
@@ -157,7 +157,7 @@ namespace Struct
       QJsonObject lFontNode;
       lFontNode["family"] = this->font.family;
       lFontNode["italic"] = this->font.italic;
-      lFontNode["size"] = this->font.size;
+      lFontNode["size"] = this->font.pointSize;
       lFontNode["strikeOut"] = this->font.strikeOut;
       lFontNode["styleName"] = this->font.styleName;
       lFontNode["underline"] = this->font.underline;

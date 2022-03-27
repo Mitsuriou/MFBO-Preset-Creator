@@ -115,7 +115,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // General group box
-  auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", lIconFolder, this->mSettings.display.font.size)};
+  auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -168,7 +168,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Backup group box
-  auto lBackupGroupBox{ComponentFactory::CreateGroupBox(this, tr("Backup"), "restore", lIconFolder, this->mSettings.display.font.size)};
+  auto lBackupGroupBox{ComponentFactory::CreateGroupBox(this, tr("Backup"), "restore", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lBackupGroupBox, 1, 0);
 
   // Grid layout
@@ -440,7 +440,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
     const auto lFullPathConst{lFullBackupDirectory};
 
-    //if (lFullBackupDirectory.startsWith())
+    // if (lFullBackupDirectory.startsWith())
     if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
         || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
     {

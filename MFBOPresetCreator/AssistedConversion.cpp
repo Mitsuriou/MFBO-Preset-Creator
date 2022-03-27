@@ -7,6 +7,7 @@
 #include <QCloseEvent>
 #include <QComboBox>
 #include <QDirIterator>
+#include <QDomDocument>
 #include <QFileDialog>
 #include <QListView>
 #include <QProgressBar>
@@ -223,28 +224,32 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
 
 void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex)
 {
-  auto lMustUseBoldFont{aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
-                        || aFileName.compare("skeletonbeast_female", Qt::CaseInsensitive) == 0
-                        || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
-                        || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
-                        || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0};
+  const auto lMustUseBoldFont{isFileNameRecognized(aFileName)};
+  const auto lFontSize{qApp->font().pointSize()};
 
   // Path
   auto lPathLabel{new QLabel(aPath, this)};
+  lPathLabel->setTextFormat(Qt::TextFormat::RichText);
+
+  const auto lFirstTagStart{QString("<span style=\"font-weight: 900; font-size: %1pt;\">").arg(lFontSize + 1)};
+  const auto lSecondTagStart{QString("<span style=\"font-weight: 100; font-style: italic; font-size: %1pt;\">").arg(lFontSize - 1)};
+  const auto lTagEnd{QString("</span>")};
+
   if (lMustUseBoldFont)
-  {
-    lPathLabel->setTextFormat(Qt::TextFormat::RichText);
-    lPathLabel->setText(QString("<span style=\"font-weight: 900;\">%1</span>").arg(aPath));
-  }
+    lPathLabel->setText(lFirstTagStart + aPath + lTagEnd);
+  else
+    lPathLabel->setText(lSecondTagStart + aPath + lTagEnd);
+
   aLayout.addWidget(lPathLabel, aRowIndex, 0, Qt::AlignLeft);
 
   // File name
   auto lFileNameLabel{new QLabel(aFileName, this)};
+  lFileNameLabel->setTextFormat(Qt::TextFormat::RichText);
+
   if (lMustUseBoldFont)
-  {
-    lFileNameLabel->setTextFormat(Qt::TextFormat::RichText);
-    lFileNameLabel->setText(QString("<span style=\"font-weight: 900;\">%1</span>").arg(aFileName));
-  }
+    lFileNameLabel->setText(lFirstTagStart + aFileName + lTagEnd);
+  else
+    lFileNameLabel->setText(lSecondTagStart + aFileName + lTagEnd);
 
   aLayout.addWidget(lFileNameLabel, aRowIndex, 1, Qt::AlignLeft);
 
@@ -297,16 +302,24 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
     lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
     if (lFilePath.startsWith("<span"))
     {
-      lFilePath.remove("<span style=\"font-weight: 900;\">");
-      lFilePath.remove("</span>");
+      // Parse the inner text of the XML span tag
+      QDomDocument lDoc;
+      lDoc.setContent(lFilePath);
+      const auto lElementToParse{lDoc.documentElement()};
+
+      lFilePath = lElementToParse.text();
     }
 
     // Second column is the file name
     lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
     if (lFileName.startsWith("<span"))
     {
-      lFileName.remove("<span style=\"font-weight: 900;\">");
-      lFileName.remove("</span>");
+      // Parse the inner text of the XML span tag
+      QDomDocument lDoc;
+      lDoc.setContent(lFileName);
+      const auto lElementToParse{lDoc.documentElement()};
+
+      lFileName = lElementToParse.text();
     }
 
     // Save the gotten values
@@ -329,6 +342,15 @@ bool AssistedConversion::hasUserSelectedAnything() const
 
   // The user did not select any value
   return false;
+}
+
+bool AssistedConversion::isFileNameRecognized(const QString& aFileName)
+{
+  return (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
+          || aFileName.compare("skeletonbeast_female", Qt::CaseInsensitive) == 0
+          || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
+          || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
+          || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0);
 }
 
 void AssistedConversion::chooseInputDirectory()
@@ -427,7 +449,7 @@ void AssistedConversion::launchSearchProcess()
   }
 
   // Fetch all the "*.nif" files
-  const auto& lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
+  const auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
   this->mScannedDirName = QDir(lInputPath).dirName();
 
   // No file found
@@ -457,9 +479,19 @@ void AssistedConversion::launchSearchProcess()
   auto lNextRow{1};
   this->mBoxSelectedIndexes.clear();
 
+  std::vector<std::pair<QString, QString>> lNifFilesInformation;
   for (const auto& lNifFile : lFoundNifFiles)
   {
-    this->createSelectionBlock(*lDataContainer, lNifFile.second.second, lNifFile.second.first, lNextRow++);
+    lNifFilesInformation.push_back(lNifFile.second);
+  }
+
+  std::sort(lNifFilesInformation.begin(), lNifFilesInformation.end(), [=](const std::pair<QString, QString>& lhs, const std::pair<QString, QString>& rhs) {
+    return isFileNameRecognized(lhs.second) && !isFileNameRecognized(rhs.second);
+  });
+
+  for (const auto& lNifFileInformation : lNifFilesInformation)
+  {
+    this->createSelectionBlock(*lDataContainer, lNifFileInformation.second, lNifFileInformation.first, lNextRow++);
   }
 
   // Create the validation button

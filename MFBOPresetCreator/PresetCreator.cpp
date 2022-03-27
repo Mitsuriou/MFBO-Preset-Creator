@@ -323,7 +323,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Body meshes group box
-  auto lMeshesGroupBox{ComponentFactory::CreateGroupBox(this, tr("Original mod's body meshes"), "body", lIconFolder, this->mSettings.display.font.size)};
+  auto lMeshesGroupBox{ComponentFactory::CreateGroupBox(this, tr("Original mod's body meshes"), "body", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lMeshesGroupBox, 0, 0);
 
   // Grid layout
@@ -416,7 +416,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Custom skeleton group box
-  auto lSkeletonGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.size)};
+  auto lSkeletonGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lSkeletonGroupBox, 1, 0);
 
   auto lSkeletonGridLayout{new QGridLayout(lSkeletonGroupBox)};
@@ -514,7 +514,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // BodySlide output settings group box
-  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.size)};
+  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.pointSize)};
   aLayout.addWidget(lBodyslideGroupBox, 2, 0);
 
   // Grid layout
@@ -613,7 +613,7 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.size);
+  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.pointSize);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};

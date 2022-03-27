@@ -18,7 +18,7 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lMainLayout->setMargin(0);
   this->setLayout(lMainLayout);
 
-  auto lSection{ComponentFactory::CreateGroupBox(this, aSectionTitle, aSectionIconName, lIconFolder, aSettings.display.font.size)};
+  auto lSection{ComponentFactory::CreateGroupBox(this, aSectionTitle, aSectionIconName, lIconFolder, aSettings.display.font.pointSize)};
 
   auto lSectionLayout{new QGridLayout(this)};
   lSectionLayout->setSpacing(10);
