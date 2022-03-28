@@ -487,7 +487,7 @@
         <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/body/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
         <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/body/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
         <file alias="cbbe 3bbb 3ba/2.06 - 2.11 - 2.12">resources/body/cbbe 3bbb 3ba/2.06_and_2.11_and_2.12.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.13 to 2.22">resources/body/cbbe 3bbb 3ba/2.13_to_2.22.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.13 to 2.22 - 2.30 - 2.31">resources/body/cbbe 3bbb 3ba/2.13_to_2.22_-_2.30_-_2.31.osp</file>
         <file alias="bhunp 3bbb/2.20">resources/body/bhunp 3bbb/2.20.osp</file>
         <file alias="bhunp 3bbb/2.25">resources/body/bhunp 3bbb/2.25.osp</file>
         <file alias="bhunp 3bbb/2.30">resources/body/bhunp 3bbb/2.30.osp</file>
@@ -563,8 +563,8 @@
         <file alias="coco body uunp/V6.8">resources/body/coco body uunp/V6.8.osp</file>
         <file alias="mimir ebonic body/1.2">resources/body/mimir ebonic body/1.2.osp</file>
         <file alias="mimir ebonic body/1.2 foot fix">resources/body/mimir ebonic body/1.2 foot fix.osp</file>
-        <file alias="cbbe 3bbb 3ba nevernude/2.13 to 2.22">resources/body/cbbe 3bbb 3ba nevernude/2.13_to_2.22.osp</file>
-        <file alias="cbbe 3bbb 3ba underwear/2.13 to 2.22">resources/body/cbbe 3bbb 3ba underwear/2.13_to_2.22.osp</file>
+        <file alias="cbbe 3bbb 3ba nevernude/2.13 to 2.22 - 2.30 - 2.31">resources/body/cbbe 3bbb 3ba nevernude/2.13_to_2.22_-_2.30_-_2.31.osp</file>
+        <file alias="cbbe 3bbb 3ba underwear/2.13 to 2.22 - 2.30 - 2.31">resources/body/cbbe 3bbb 3ba underwear/2.13_to_2.22_-_2.30_-_2.31.osp</file>
         <file alias="asdasdf 3bbb/1.13">resources/body/asdasdf 3bbb/1.13.osp</file>
         <file alias="asdasdf 3bbb - ntj/1.13">resources/body/asdasdf 3bbb - ntj/1.13.osp</file>
         <file alias="asdasdf alterbody 3bbb/1.13">resources/body/asdasdf alterbody 3bbb/1.13.osp</file>
@@ -592,7 +592,7 @@
         <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/feet/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
         <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/feet/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
         <file alias="cbbe 3bbb 3ba/2.06 - 2.11 - 2.12">resources/feet/cbbe 3bbb 3ba/2.06_and_2.11_and_2.12.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.13 to 2.22">resources/feet/cbbe 3bbb 3ba/2.13_to_2.22.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.13 to 2.22 - 2.30 - 2.31">resources/feet/cbbe 3bbb 3ba/2.13_to_2.22_-_2.30_-_2.31.osp</file>
         <file alias="coco body/normal/cbbe/V4">resources/feet/coco body normal cbbe/V4.osp</file>
         <file alias="coco body/normal/cbbe/V6">resources/feet/coco body normal cbbe/V6.osp</file>
         <file alias="coco body/normal/cbbe/V6.8">resources/feet/coco body normal cbbe/V6.8.osp</file>
@@ -635,7 +635,7 @@
         <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/hands/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
         <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/hands/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
         <file alias="cbbe 3bbb 3ba/2.06 - 2.11 - 2.12">resources/hands/cbbe 3bbb 3ba/2.06_and_2.11_and_2.12.osp</file>
-        <file alias="cbbe 3bbb 3ba/2.13 to 2.22">resources/hands/cbbe 3bbb 3ba/2.13_to_2.22.osp</file>
+        <file alias="cbbe 3bbb 3ba/2.13 to 2.22 - 2.30 - 2.31">resources/hands/cbbe 3bbb 3ba/2.13_to_2.22_-_2.30_-_2.31.osp</file>
         <file alias="coco body cbbe/V4">resources/hands/coco body cbbe/V4.osp</file>
         <file alias="coco body cbbe/V6">resources/hands/coco body cbbe/V6.osp</file>
         <file alias="coco body cbbe/V6.8">resources/hands/coco body cbbe/V6.8.osp</file>
