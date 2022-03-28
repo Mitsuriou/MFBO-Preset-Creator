@@ -17,7 +17,7 @@ BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCa
 
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
-  lMainLayout->setMargin(0);
+  lMainLayout->setContentsMargins(0, 0, 0, 0);
   lMainLayout->setSpacing(10);
   lMainLayout->setColumnStretch(0, 0);
   lMainLayout->setColumnStretch(1, 1);

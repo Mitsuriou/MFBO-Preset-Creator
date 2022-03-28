@@ -8,7 +8,6 @@
 #include <QLibraryInfo>
 #include <QSplashScreen>
 #include <QStandardPaths>
-#include <QTextCodec>
 #include <QTranslator>
 #include <iostream>
 
@@ -32,7 +31,7 @@ bool isArgValidFilePath(const QString& aPathToTest)
 int main(int argc, char* argv[])
 {
   auto currentExitCode{0};
-  auto lInjectedFilePath{QString()};
+  QString lInjectedFilePath;
 
   // Check the launch arguments
   if (argc >= 2 || FORCE_CONSOLE_DISPLAY)
@@ -104,9 +103,7 @@ int main(int argc, char* argv[])
     // Reset the value
     Utils::RESTART_PENDING = false;
 
-    qApp->setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    qApp->setAttribute(Qt::AA_DisableWindowContextHelpButton, true);
-    qApp->setApplicationVersion("3.8.0.0");
+    qApp->setApplicationVersion("4.0.0.0");
     const auto& lAppVersion{Utils::GetApplicationVersion()};
 
     Utils::PrintMessageStdOut("Creating the application instance...");
@@ -114,7 +111,7 @@ int main(int argc, char* argv[])
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
 
-    auto lAppNamePreffix{QString()};
+    QString lAppNamePreffix;
     if (Utils::IsRunningStandaloneVersion())
     {
       lAppNamePreffix = "[standalone] ";
@@ -124,9 +121,6 @@ int main(int argc, char* argv[])
     lMainApplication.setApplicationName("MFBOPresetCreator");
     lMainApplication.setApplicationVersion(lAppVersion);
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
-
-    // Set the codec
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
     // Show the splash screen
     const QPixmap lSplashScreenBackground(":/application/splashscreen");
@@ -192,7 +186,7 @@ int main(int argc, char* argv[])
 
     // Apply default Qt language and translation
     auto lQtBaseTranslator{new QTranslator()};
-    if (lQtBaseTranslator->load(QString("qt_%1.qm").arg(lLanguageToSet), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (lQtBaseTranslator->load(QString("qt_%1.qm").arg(lLanguageToSet), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
     {
       lMainApplication.installTranslator(lQtBaseTranslator);
     }

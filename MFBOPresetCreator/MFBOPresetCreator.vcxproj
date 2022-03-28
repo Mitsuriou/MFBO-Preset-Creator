@@ -157,21 +157,21 @@ echo #####################################################</Command>
     <Link />
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>5.15.2</QtInstall>
+    <QtInstall>6.2.4</QtInstall>
     <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>5.15.2</QtInstall>
+    <QtInstall>6.2.4</QtInstall>
     <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
     <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" Label="QtSettings">
-    <QtInstall>5.15.2</QtInstall>
+    <QtInstall>6.2.4</QtInstall>
     <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>

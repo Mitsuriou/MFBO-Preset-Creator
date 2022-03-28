@@ -81,7 +81,7 @@ void BatchConversionPicker::initializeGUI()
 
   // 3 columns splitter
   auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
-  lMainLayout->setMargin(0);
+  lMainLayout->setContentsMargins(0, 0, 0, 0);
   lMainLayout->addWidget(lSplitter, 0, 0);
 
   /*===========*/
@@ -455,7 +455,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
     lMustUseBeastHands = true;
   }
 
-  auto lConstructedPreviewText{QString()};
+  QString lConstructedPreviewText;
   lConstructedPreviewText.append(Utils::GetBodySliderValue(this->mData.getBodyMod()));                      // Body
   lConstructedPreviewText.append(Utils::GetFeetSliderValue(this->mData.getFeetModIndex()));                 // Feet
   lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mData.getBodyMod(), lMustUseBeastHands)); // Hands

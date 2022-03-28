@@ -236,7 +236,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 1, 0);
 
   auto lFiltersWrapper{new QHBoxLayout(lGroupBox)};
-  lFiltersWrapper->setMargin(0);
+  lFiltersWrapper->setContentsMargins(0, 0, 0, 0);
   lLayout->addLayout(lFiltersWrapper, 1, 1);
 
   auto lFiltersListChooser{new QComboBox(this)};
@@ -548,13 +548,13 @@ void BatchConversion::launchSearchProcess()
   std::map<QString, std::set<QString>> lScannedData;
   std::map<QString, std::set<QString>>::iterator lMapPosition;
 
-  auto lRelativeDirPath{QString()};
+  QString lRelativeDirPath;
   auto lFirstSlashPosition{-1};
   auto lSecondSlashPosition{-1};
-  auto lCurrentModSubDirName{QString()};
-  auto lFileName{QString()};
-  auto lKey{QString()};
-  auto lSecondArgument{QString()};
+  QString lCurrentModSubDirName;
+  QString lFileName;
+  QString lKey;
+  QString lSecondArgument;
 
   auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
   auto lMustClearIrrelevantEntries{this->findChild<QCheckBox*>(QString("clear_irrelevant_entries"))->isChecked()};
@@ -830,7 +830,7 @@ void BatchConversion::populateSkeletonChoosers()
 
   // Reselect the previously selected skeleton, if it still exists
   if (lPreviousIndexHuman != -1)
-    lSkeletonChooserHuman->setCurrentIndex(std::max(lAvailableSkeletons.indexOf(lPreviousHumanSkeleton), 0));
+    lSkeletonChooserHuman->setCurrentIndex(std::max(static_cast<int>(lAvailableSkeletons.indexOf(lPreviousHumanSkeleton)), 0));
   else if (lSkeletonChooserHuman->count() > 0)
     lSkeletonChooserHuman->setCurrentIndex(0);
 
@@ -850,7 +850,7 @@ void BatchConversion::populateSkeletonChoosers()
 
   // Reselect the previously selected skeleton, if it still exists
   if (lPreviousIndexBeast != -1)
-    lSkeletonChooserBeast->setCurrentIndex(std::max(lAvailableSkeletons.indexOf(lPreviousBeastSkeleton), 0));
+    lSkeletonChooserBeast->setCurrentIndex(std::max(static_cast<int>(lAvailableSkeletons.indexOf(lPreviousBeastSkeleton)), 0));
   else if (lSkeletonChooserBeast->count() > 0)
     lSkeletonChooserBeast->setCurrentIndex(0);
 }
@@ -965,7 +965,7 @@ void BatchConversion::updateBodySlideFiltersListPreview()
 
   // Get any eventual additional filters
   auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};
-  auto lText{QString()};
+  QString lText;
 
   if (lFiltersListChooser->currentIndex() != -1)
   {

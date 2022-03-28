@@ -148,7 +148,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 2, 0);
 
   auto lFiltersWrapper{new QHBoxLayout(lGeneralGroupBox)};
-  lFiltersWrapper->setMargin(0);
+  lFiltersWrapper->setContentsMargins(0, 0, 0, 0);
   lGeneralGridLayout->addLayout(lFiltersWrapper, 2, 1, 1, 2);
 
   auto lFiltersListChooser{new QComboBox(this)};
@@ -349,7 +349,7 @@ void RetargetingTool::updateBackupPreview()
   auto lIsValidPath{true};
 
   // Construct full path
-  auto lFullPath{QString()};
+  QString lFullPath;
   if (!lMainDirectory.isEmpty() && !lSubDirectory.isEmpty())
   {
     lFullPath = lMainDirectory + "/" + lSubDirectory;
@@ -493,8 +493,8 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Iterate through all the files
   std::vector<QPair<QString, QString>> lNamesBuffer;
 
-  auto lAbsFilePath{QString()};
-  auto lRelativeDirs{QString()};
+  QString lAbsFilePath;
+  QString lRelativeDirs;
   std::vector<Struct::SliderSet> lParsedSliderSets;
 
   lProgressBar->setRange(0, lNumberXMLFiles);
@@ -576,7 +576,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Search for the preset name in the buffer
-    auto lPresetName{QString()};
+    QString lPresetName;
     auto lBufferLocationToRemove{-1};
 
     auto lOSPBufSize{static_cast<int>(lOSPBuffer.size())};
@@ -732,7 +732,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Searching for the preset name in the buffer
-    auto lPresetName{QString()};
+    QString lPresetName;
     auto lNamesBufSize{static_cast<int>(lNamesBuffer.size())};
 
     for (int i = 0; i < lNamesBufSize; i++)
@@ -868,7 +868,7 @@ void RetargetingTool::updateBodySlideFiltersListPreview()
 
   // Get any eventual additional filters
   auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};
-  auto lText{QString()};
+  QString lText;
 
   if (lFiltersListChooser->currentIndex() != -1)
   {

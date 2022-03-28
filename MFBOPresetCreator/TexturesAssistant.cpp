@@ -424,7 +424,7 @@ void TexturesAssistant::createResourceBlock(const std::map<std::string, std::vec
   auto lRowIndex{0};
   for (const auto& lRootPath : aMap)
   {
-    auto lConcatenatedFileNames{QString()};
+    QString lConcatenatedFileNames;
 
     for (const auto& lFileName : lRootPath.second)
     {
@@ -668,7 +668,7 @@ void TexturesAssistant::populateTexturesSetChooser()
 
   // Reselect the previously selected textures set, if it still exists
   if (lPreviousIndex != -1)
-    lTexturesSetChooser->setCurrentIndex(std::max(lAvailableTexturesSets.indexOf(lPreviousTexturesSet), 0));
+    lTexturesSetChooser->setCurrentIndex(std::max(static_cast<int>(lAvailableTexturesSets.indexOf(lPreviousTexturesSet)), 0));
   else if (lTexturesSetChooser->count() > 0)
     lTexturesSetChooser->setCurrentIndex(0);
 }

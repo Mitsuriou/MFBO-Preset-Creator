@@ -37,7 +37,7 @@ void About::initializeGUI()
   this->layout()->setContentsMargins(10, 10, 10, 10);
 
   // Hacky links' colors override for some themes
-  auto lLinksColorOverride{QString()};
+  QString lLinksColorOverride;
   if (this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME)
   {
     lLinksColorOverride = " style='color: #3991ff;'";

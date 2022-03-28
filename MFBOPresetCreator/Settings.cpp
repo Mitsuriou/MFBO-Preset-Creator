@@ -176,7 +176,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lGUIThemeSelector, 3, 0);
 
   // FONT FAMILY
-  lTabLayout->addWidget(new QLabel(QString("* " + tr("Font:")), this), 4, 0);
+  lTabLayout->addWidget(new QLabel(QString(tr("Font:")), this), 4, 0);
 
   auto lFontChooser{ComponentFactory::CreateButton(this, tr("Change font properties"), "", "text", lIconFolder, "font_chooser", false, true)};
   lTabLayout->addWidget(lFontChooser, 5, 0);
@@ -749,7 +749,6 @@ void Settings::saveSettings()
   // Check if a restart of the app is required
   this->mMustRebootMainApp = (this->mSettings.display.language != lSettings.display.language
                               || this->mSettings.display.applicationTheme != lSettings.display.applicationTheme
-                              || this->mSettings.display.font != lSettings.display.font
                               || this->mSettings.display.successColor != lSettings.display.successColor
                               || this->mSettings.display.warningColor != lSettings.display.warningColor
                               || this->mSettings.display.dangerColor != lSettings.display.dangerColor);

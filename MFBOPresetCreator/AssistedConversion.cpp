@@ -180,9 +180,9 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   // The map is storing <path+fileName, <path, fileName>>
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
 
-  auto lRelativeDirPath{QString()};
-  auto lFileName{QString()};
-  auto lKey{std::string()};
+  QString lRelativeDirPath;
+  QString lFileName;
+  std::string lKey;
 
   auto lRootDir{aRootDir};
   if (this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked())
@@ -284,8 +284,8 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
 
   std::vector<Struct::AssistedConversionResult> lResults;
   QComboBox* lComboBox{nullptr};
-  auto lFilePath{QString()};
-  auto lFileName{QString()};
+  QString lFilePath;
+  QString lFileName;
 
   // For each row (skip the row 0 because it is a "header")
   for (int i = 1; i < lLinesToTreat; i++)
