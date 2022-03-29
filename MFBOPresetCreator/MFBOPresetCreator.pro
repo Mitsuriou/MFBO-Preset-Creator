@@ -32,8 +32,10 @@ HEADERS += ./resource.h \
     ./BCDragWidget.h \
     ./BCDropWidget.h \
     ./BCGroupWidget.h \
+    FirstInstallWindow.h \
     GroupBox.h \
-    TargetMeshesPicker.h
+    TargetMeshesPicker.h \
+    ThemeCard.h
 
 SOURCES += ./main.cpp \
     ./About.cpp \
@@ -59,8 +61,10 @@ SOURCES += ./main.cpp \
     ./BCDragWidget.cpp \
     ./BCDropWidget.cpp \
     ./BCGroupWidget.cpp \
+    FirstInstallWindow.cpp \
     GroupBox.cpp \
-    TargetMeshesPicker.cpp
+    TargetMeshesPicker.cpp \
+    ThemeCard.cpp
 
 FORMS += ./MFBOPresetCreator.ui
 

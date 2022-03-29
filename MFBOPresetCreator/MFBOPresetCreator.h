@@ -34,7 +34,13 @@ private:
   void showWindow();
   void launchWelcomeScreen();
   void applyGlobalStyleSheet();
-  void applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut);
+  void applyFont(const QString& aFamily,
+                 const QString& aStyleName,
+                 const int aSize,
+                 const int aWeight,
+                 const bool aItalic,
+                 const bool aUnderline,
+                 const bool aStrikeOut);
   std::vector<QLineEdit*> disableLineEditPlaceholders();
   void enableLineEditPlaceholders(std::vector<QLineEdit*> aLineEditsToReactivate);
 

@@ -52,7 +52,8 @@ void GroupBox::setExpandState(const bool aMustExpand)
   {
     this->mExpandedHeight = this->geometry().height();
 
-    this->setMaximumHeight(qApp->fontMetrics().height() * 1.5);
+    const auto lFontMetrics{QFontMetricsF(qApp->font())};
+    this->setMaximumHeight(lFontMetrics.height() * 1.5);
     lTitle.replace(lTitle.length() - 1, 1, QChar(0x25B6));
   }
 

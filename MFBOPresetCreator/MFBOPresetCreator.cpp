@@ -428,15 +428,27 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   auto lEditFiltersButton{this->findChild<QPushButton*>(QString("edit_filters"))};
-  lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
-  lEditFiltersButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
+  if (lEditFiltersButton != nullptr)
+  {
+    lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
+    lEditFiltersButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
+  }
 
   auto lSkeletonRefresherButton{this->findChild<QPushButton*>(QString("skeleton_chooser_refresher"))};
-  lSkeletonRefresherButton->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
-  lSkeletonRefresherButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
+  if (lSkeletonRefresherButton != nullptr)
+  {
+    lSkeletonRefresherButton->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
+    lSkeletonRefresherButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
+  }
 }
 
-void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize, int aWeight, bool aItalic, bool aUnderline, bool aStrikeOut)
+void MFBOPresetCreator::applyFont(const QString& aFamily,
+                                  const QString& aStyleName,
+                                  const int aSize,
+                                  const int aWeight,
+                                  const bool aItalic,
+                                  const bool aUnderline,
+                                  const bool aStrikeOut)
 {
   // Set the font properties
   QFont lFont(aFamily, aSize, aWeight, aItalic);
@@ -445,6 +457,13 @@ void MFBOPresetCreator::applyFont(QString aFamily, QString aStyleName, int aSize
   lFont.setStrikeOut(aStrikeOut);
   lFont.setStyleStrategy(QFont::PreferAntialias);
   qApp->setFont(lFont);
+
+  // Refresh the font of all the existing widgets
+  const auto lWidgets{QObject::findChildren<QWidget*>()};
+  for (auto lWidgetPtr : lWidgets)
+  {
+    lWidgetPtr->setFont(lFont);
+  }
 }
 
 std::vector<QLineEdit*> MFBOPresetCreator::disableLineEditPlaceholders()
@@ -514,9 +533,9 @@ std::vector<QLineEdit*> MFBOPresetCreator::disableLineEditPlaceholders()
 void MFBOPresetCreator::enableLineEditPlaceholders(std::vector<QLineEdit*> aLineEditsToReactivate)
 {
   // Workaround for style glitch with QSS and QLineEdit
-  for (auto& lLineEdit : aLineEditsToReactivate)
+  for (auto lLineEditPtr : aLineEditsToReactivate)
   {
-    lLineEdit->setDisabled(false);
+    lLineEditPtr->setDisabled(false);
   }
 }
 
@@ -622,13 +641,13 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     this->applyGlobalStyleSheet();
 
     // Set the font properties
-    applyFont(aSettings.display.font.family,
-              aSettings.display.font.styleName,
-              aSettings.display.font.pointSize,
-              aSettings.display.font.weight,
-              aSettings.display.font.italic,
-              aSettings.display.font.underline,
-              aSettings.display.font.strikeOut);
+    this->applyFont(aSettings.display.font.family,
+                    aSettings.display.font.styleName,
+                    aSettings.display.font.pointSize,
+                    aSettings.display.font.weight,
+                    aSettings.display.font.italic,
+                    aSettings.display.font.underline,
+                    aSettings.display.font.strikeOut);
   }
 }
 

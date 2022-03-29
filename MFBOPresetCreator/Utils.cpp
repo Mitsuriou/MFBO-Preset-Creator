@@ -761,7 +761,7 @@ bool Utils::QRCResourceExists(const QString& aRessourcePath)
 
 bool Utils::IsRunningStandaloneVersion()
 {
-  QDir lDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+  QDir lDir(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
   return !lDir.exists();
 }
 
@@ -770,10 +770,10 @@ QString Utils::GetAppDataPathFolder()
 #if defined(DEBUG) || !defined(QT_NO_DEBUG)
   return QCoreApplication::applicationDirPath() + QDir::separator();
 #else
-  QDir lDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+  QDir lDir(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
   if (lDir.exists())
   {
-    return QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator();
+    return QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + QDir::separator();
   }
 
   return QCoreApplication::applicationDirPath() + QDir::separator();
