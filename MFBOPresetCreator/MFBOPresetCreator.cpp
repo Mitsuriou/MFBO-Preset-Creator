@@ -639,16 +639,16 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
   {
     // Apply the QSS theme
     this->applyGlobalStyleSheet();
-
-    // Set the font properties
-    this->applyFont(aSettings.display.font.family,
-                    aSettings.display.font.styleName,
-                    aSettings.display.font.pointSize,
-                    aSettings.display.font.weight,
-                    aSettings.display.font.italic,
-                    aSettings.display.font.underline,
-                    aSettings.display.font.strikeOut);
   }
+
+  // Set the font properties
+  this->applyFont(aSettings.display.font.family,
+                  aSettings.display.font.styleName,
+                  aSettings.display.font.pointSize,
+                  aSettings.display.font.weight,
+                  aSettings.display.font.italic,
+                  aSettings.display.font.underline,
+                  aSettings.display.font.strikeOut);
 }
 
 void MFBOPresetCreator::loadProject()

@@ -182,7 +182,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
 
   QString lRelativeDirPath;
   QString lFileName;
-  auto lKey{std::string()};
+  std::string lKey;
 
   auto lRootDir{aRootDir};
   if (this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked())
