@@ -424,7 +424,7 @@ void TexturesAssistant::createResourceBlock(const std::map<std::string, std::vec
   auto lRowIndex{0};
   for (const auto& lRootPath : aMap)
   {
-    auto lConcatenatedFileNames{QString()};
+    QString lConcatenatedFileNames;
 
     for (const auto& lFileName : lRootPath.second)
     {

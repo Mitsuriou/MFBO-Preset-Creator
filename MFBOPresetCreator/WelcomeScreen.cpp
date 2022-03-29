@@ -246,7 +246,7 @@ QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, 
   auto lLabel{new QLabel(aText, aParent)};
 
   // Hacky links' colors override for some themes
-  auto lColorOverride{QString()};
+  QString lColorOverride;
 
   if (this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME
       || this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_DARK_THEME

@@ -218,7 +218,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
   if (!lBodiesHaveBeenSet || !lFeetHaveBeenSet || !lHandsHaveBeenSet)
   {
     // Compose the detailed string of errors
-    auto lUnassignedEntries{QString()};
+    QString lUnassignedEntries;
     auto lItemsNumber{0};
 
     if (!lBodiesHaveBeenSet)
@@ -259,7 +259,7 @@ void PresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::v
       lItemsNumber++;
     }
 
-    auto lMessage{QString()};
+    QString lMessage;
     if (lItemsNumber > 1)
     {
       // Plural
@@ -846,7 +846,7 @@ void PresetCreator::updateMeshesPreview()
 
   // Get preview label
   auto lPreviewLabel{this->findChild<QLabel*>(QString("meshes_preview"))};
-  auto lFullPreview{QString()};
+  QString lFullPreview;
 
   auto lNewTextColor{this->mSettings.display.successColor};
   if (lMeshesPathBody.isEmpty() && lMeshesPathFeet.isEmpty() && lMeshesPathHands.isEmpty())
@@ -966,7 +966,7 @@ void PresetCreator::updateBodyslideNamesPreview(QString aText)
     lIsValidPath = false;
   }
 
-  auto lConstructedPreviewText{QString()};
+  QString lConstructedPreviewText;
   lConstructedPreviewText.append(Utils::GetBodySliderValue(this->mTargetBodyMesh));                      // Body
   lConstructedPreviewText.append(Utils::GetFeetSliderValue(this->mTargetFeetMesh));                      // Feet
   lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mTargetBodyMesh, lMustUseBeastHands)); // Hands
@@ -1067,7 +1067,7 @@ void PresetCreator::updateSkeletonPreview()
   auto lConstructedPath(QString("[...]/Skyrim Special Edition/Data/%1/%2.nif").arg(lSkeletonPath, lSkeletonName));
   auto lOutputPathPreview{this->findChild<QLabel*>(QString("skeleton_path_preview"))};
 
-  auto lNewTextColor{QString()};
+  QString lNewTextColor;
 
   if (lIsValidPath)
   {
@@ -1433,7 +1433,7 @@ void PresetCreator::updateBodySlideFiltersListPreview()
 
   // Get any eventual additional filters
   auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};
-  auto lText{QString()};
+  QString lText;
 
   if (lFiltersListChooser->currentIndex() != -1)
   {

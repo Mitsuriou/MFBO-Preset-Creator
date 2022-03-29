@@ -233,7 +233,7 @@ void MFBOPresetCreator::setupMenuBar()
   lTools->addAction(lOpenRetaTools);
 
   // Menu: Help
-  auto lUpdateAvailableText{QString()};
+  QString lUpdateAvailableText;
   if (this->mNewStableVersionAvailable)
     lUpdateAvailableText = tr(" (stable update available)");
   else if (this->mNewBetaVersionAvailable)
@@ -383,7 +383,7 @@ void MFBOPresetCreator::launchWelcomeScreen()
 
 void MFBOPresetCreator::applyGlobalStyleSheet()
 {
-  auto lQSSFileName{QString()};
+  QString lQSSFileName;
 
   switch (this->mSettings.display.applicationTheme)
   {
@@ -533,8 +533,8 @@ void MFBOPresetCreator::checkForUpdate()
 void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
 {
   // Display a message based on new available versions
-  auto lTitle{QString()};
-  auto lMessage{QString()};
+  QString lTitle;
+  QString lMessage;
 
   if (aResult == "fetch_error")
   {

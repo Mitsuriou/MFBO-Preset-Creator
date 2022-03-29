@@ -455,7 +455,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
     lMustUseBeastHands = true;
   }
 
-  auto lConstructedPreviewText{QString()};
+  QString lConstructedPreviewText;
   lConstructedPreviewText.append(Utils::GetBodySliderValue(this->mData.getBodyMod()));                      // Body
   lConstructedPreviewText.append(Utils::GetFeetSliderValue(this->mData.getFeetModIndex()));                 // Feet
   lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mData.getBodyMod(), lMustUseBeastHands)); // Hands

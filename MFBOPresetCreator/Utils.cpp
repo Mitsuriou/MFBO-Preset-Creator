@@ -230,7 +230,7 @@ void Utils::DisplayErrorMessage(const QString& aMessage)
 VersionsInformation Utils::ParseGitHubReleasesRequestResult(const QString& aResult)
 {
   VersionsInformation lVersionsInformation;
-  auto lTagName{QString()};
+  QString lTagName;
 
   // Create a JSON from the fetched string and parse the "tag_name" data
   QJsonDocument lJsonDocument{QJsonDocument::fromJson(aResult.toUtf8())};
@@ -304,8 +304,8 @@ int Utils::GetNumberFilesByExtensionRecursive(const QString& aRootDir, const QSt
 int Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootDir, const QString& aFileExtension)
 {
   auto lNumber{0};
-  auto lAbsFilePath{QString()};
-  auto lRelativeDirs{QString()};
+  QString lAbsFilePath;
+  QString lRelativeDirs;
 
   QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
@@ -818,7 +818,7 @@ QString Utils::GetPresetNameFromXMLFile(const QString& aPath)
   }
 
   auto lXMLGroup{lXMLDocument.documentElement().firstChild().toElement()};
-  auto lPresetName{QString()};
+  QString lPresetName;
 
   if (lXMLGroup.tagName() == "Group")
   {
@@ -955,7 +955,7 @@ bool Utils::IsPresetUsingBeastHands(const QString& aPath)
 {
   QFile lReadFile(aPath);
 
-  auto lFileContent{QString()};
+  QString lFileContent;
 
   if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {

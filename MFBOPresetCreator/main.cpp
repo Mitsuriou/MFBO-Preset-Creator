@@ -32,7 +32,7 @@ bool isArgValidFilePath(const QString& aPathToTest)
 int main(int argc, char* argv[])
 {
   auto currentExitCode{0};
-  auto lInjectedFilePath{QString()};
+  QString lInjectedFilePath;
 
   // Check the launch arguments
   if (argc >= 2 || FORCE_CONSOLE_DISPLAY)
@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
     // Create the main GUI handler
     QApplication lMainApplication(argc, argv);
 
-    auto lAppNamePreffix{QString()};
+    QString lAppNamePreffix;
     if (Utils::IsRunningStandaloneVersion())
     {
       lAppNamePreffix = "[standalone] ";

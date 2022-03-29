@@ -548,13 +548,13 @@ void BatchConversion::launchSearchProcess()
   std::map<QString, std::set<QString>> lScannedData;
   std::map<QString, std::set<QString>>::iterator lMapPosition;
 
-  auto lRelativeDirPath{QString()};
+  QString lRelativeDirPath;
   auto lFirstSlashPosition{-1};
   auto lSecondSlashPosition{-1};
-  auto lCurrentModSubDirName{QString()};
-  auto lFileName{QString()};
-  auto lKey{QString()};
-  auto lSecondArgument{QString()};
+  QString lCurrentModSubDirName;
+  QString lFileName;
+  QString lKey;
+  QString lSecondArgument;
 
   auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
   auto lMustClearIrrelevantEntries{this->findChild<QCheckBox*>(QString("clear_irrelevant_entries"))->isChecked()};
@@ -965,7 +965,7 @@ void BatchConversion::updateBodySlideFiltersListPreview()
 
   // Get any eventual additional filters
   auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};
-  auto lText{QString()};
+  QString lText;
 
   if (lFiltersListChooser->currentIndex() != -1)
   {
