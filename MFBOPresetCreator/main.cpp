@@ -16,7 +16,7 @@
 #endif
 
 #if defined(DEBUG) || !defined(QT_NO_DEBUG)
-bool FORCE_CONSOLE_DISPLAY = false;
+bool FORCE_CONSOLE_DISPLAY = true;
 #else
 bool FORCE_CONSOLE_DISPLAY = false;
 #endif
@@ -96,6 +96,14 @@ int main(int argc, char* argv[])
     Utils::PrintMessageStdOut("");
     Utils::PrintMessageStdOut("Running MFBOPC in debug mode");
     Utils::PrintMessageStdOut("Checking support for SSL...");
+
+    const auto lAvailableBackends{QSslSocket::availableBackends()};
+    for (const auto& lBackend : lAvailableBackends)
+    {
+      Utils::PrintMessageStdOut(QString("Found SSL backend \"%1\"").arg(lBackend));
+    }
+
+    Utils::PrintMessageStdOut(QString("SSL backend: ").arg(QSslSocket::activeBackend()));
     Utils::PrintMessageStdOut(QString("Supports SSL? %1").arg(QSslSocket::supportsSsl() ? "yes" : "no"));
     Utils::PrintMessageStdOut(QString("SSL version information: %1").arg(QSslSocket::sslLibraryBuildVersionString()));
     Utils::PrintMessageStdOut("");
