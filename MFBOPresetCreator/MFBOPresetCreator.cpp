@@ -251,6 +251,8 @@ void MFBOPresetCreator::setupMenuBar()
   auto lOpenCurrentVersionReleaseNotes{Utils::BuildQAction(this, tr("Current version's release notes"), QKeySequence(), "text-snippet", lIconFolder)};
   lHelp->addAction(lOpenCurrentVersionReleaseNotes);
 
+  lHelp->addSeparator();
+
   // Submenu: Report a bug
   auto lReportBugSubmenu{new QMenu(tr("Report a bug..."), this)};
   lReportBugSubmenu->setIcon(QIcon(QPixmap(QString(":/%1/bug").arg(lIconFolder))));
@@ -283,6 +285,8 @@ void MFBOPresetCreator::setupMenuBar()
   auto lOpenGuide{Utils::BuildQAction(this, tr("User guide and tutorials (docs.google.com)"), QKeySequence(Qt::CTRL | Qt::Key_G), "text-file", lIconFolder)};
   lLinksSubmenu->addAction(lOpenGuide);
 
+  lHelp->addSeparator();
+
   // Action: Source code on GitHub
   auto lOpenSourceCodeGitHub{Utils::BuildQAction(this, tr("View the source code (github.com)"), QKeySequence(), "github", lIconFolder)};
   lLinksSubmenu->addAction(lOpenSourceCodeGitHub);
@@ -295,9 +299,15 @@ void MFBOPresetCreator::setupMenuBar()
   auto lOpenKoFiPage{Utils::BuildQAction(this, tr("Donate - buy me a coffee (ko-fi.com)"), QKeySequence(), "coffee", lIconFolder)};
   lHelp->addAction(lOpenKoFiPage);
 
+  lHelp->addSeparator();
+
   // Action: About
   auto lOpenAbout{Utils::BuildQAction(this, tr("About"), QKeySequence(Qt::CTRL | Qt::Key_I), "info-circle", lIconFolder)};
   lHelp->addAction(lOpenAbout);
+
+  // Action: About Qt
+  auto lOpenAboutQt{Utils::BuildQAction(this, tr("About Qt"), QKeySequence(), "qt-logo", lIconFolder)};
+  lHelp->addAction(lOpenAboutQt);
 
   // Event binding
   this->connect(lLaunchWelcomeScreen, &QAction::triggered, this, &MFBOPresetCreator::launchWelcomeScreen);
@@ -322,6 +332,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lOpenGuide, &QAction::triggered, this, &MFBOPresetCreator::openGoogleDriveGuide);
   this->connect(lOpenKoFiPage, &QAction::triggered, this, &MFBOPresetCreator::openKoFiPage);
   this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
+  this->connect(lOpenAboutQt, &QAction::triggered, this, &MFBOPresetCreator::launchAboutQtDialog);
 }
 
 void MFBOPresetCreator::showWindow()
@@ -810,6 +821,11 @@ void MFBOPresetCreator::openKoFiPage()
 void MFBOPresetCreator::launchAboutDialog()
 {
   new About(this, this->mSettings);
+}
+
+void MFBOPresetCreator::launchAboutQtDialog()
+{
+  QApplication::aboutQt();
 }
 
 void MFBOPresetCreator::updateCheckFinished()

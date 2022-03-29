@@ -77,6 +77,7 @@ private:
   void openKoFiPage();
   // Dialog
   void launchAboutDialog();
+  void launchAboutQtDialog();
 
   // Check for updates
   void updateCheckFinished();
