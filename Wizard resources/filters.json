@@ -16,5 +16,17 @@
         "MFBO",
         "CBBE",
         "CBBE Bodies"
+    ],
+    "COCO CBBE 3BBB": [
+        "MFBO",
+        "CBAdvanced",
+        "COCO CBBE 3BBB"
+    ],
+    "COCO UUNP 3BBB": [
+        "MFBO",
+        "CBAdvanced",
+        "COCO UUNP 3BBB",
+        "UUNP 3BBB",
+        "Unified UNP"
     ]
 }

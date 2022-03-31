@@ -107,11 +107,13 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V4, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6_8, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6_9_AND_V6_95, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       // COCO_BODY_UUNP
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V3, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V4, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6_8, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6_9_AND_V6_95, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       // MIMIR_EBONIC_BODY
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::MIMIR_EBONIC_BODY_1_2, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX, FeetNameVersion::_INVALID_VALUE, BodyPartType::BODY)));
@@ -167,17 +169,21 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V4, FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6, FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6_8, FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6_8, BodyPartType::FEET)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6_9_AND_V6_95, FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6_9_AND_V6_95, BodyPartType::FEET)));
       // COCO_BODY_UUNP
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V3, FeetNameVersion::COCO_BODY_NORMAL_UUNP_V3, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V4, FeetNameVersion::COCO_BODY_NORMAL_UUNP_V4, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6, FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6_8, FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6_8, BodyPartType::FEET)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6_9_AND_V6_95, FeetNameVersion::COCO_BODY_NORMAL_UUNP_V6_9_AND_V6_95, BodyPartType::FEET)));
       // COCO_BODY_CBBE
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6, FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6_8, FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6_8, BodyPartType::FEET)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_CBBE_V6_9_AND_V6_95, FeetNameVersion::COCO_BODY_HIGH_HEELS_CBBE_V6_9_AND_V6_95, BodyPartType::FEET)));
       // COCO_BODY_UUNP
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6, FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6_8, FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6_8, BodyPartType::FEET)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::COCO_BODY_UUNP_V6_9_AND_V6_95, FeetNameVersion::COCO_BODY_HIGH_HEELS_UUNP_V6_9_AND_V6_95, BodyPartType::FEET)));
       // MIMIR_EBONIC_BODY
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::MIMIR_EBONIC_BODY_1_2, FeetNameVersion::MIMIR_EBONIC_BODY_1_2, BodyPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX, FeetNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX, BodyPartType::FEET)));
