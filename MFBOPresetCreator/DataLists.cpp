@@ -2213,11 +2213,28 @@ QString DataLists::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
       }
       return QString();
     case FeetVariant::COCO_BODY_HIGH_HEELS_CBBE:
-      // "V6" or "V6.8" or "V6.9 - V6.95"
-      return QString("[COCO]CBBEV6_HH100");
+      switch (lVersionIndex)
+      {
+        case 0: // "V4"
+        case 1: // "V6"
+        case 2: // "V6.8"
+          return QString("[COCO]CBBEV6_HH100");
+        case 3: // "V6.9 - V6.95"
+          return QString("[COCO]CBBEV6_Heelfeets");
+      }
+      return QString();
     case FeetVariant::COCO_BODY_HIGH_HEELS_UUNP:
-      // "V6" or "V6.8" or "V6.9 - V6.95"
-      return QString("[COCO]UUNPV6_HH100");
+      switch (lVersionIndex)
+      {
+        case 0: // "V3"
+        case 1: // "V4"
+        case 2: // "V6"
+        case 3: // "V6.8"
+          return QString("[COCO]UUNPV6_HH100");
+        case 4: // "V6.9 - V6.95"
+          return QString("[COCO]UUNPV6_Heelfeets");
+      }
+      return QString();
     case FeetVariant::MIMIR_EBONIC_BODY:
       return QString("CBBE 3BBB Feet");
     case FeetVariant::MORE_SLIDERS_FOR_FEET_NORMAL_CBBE:

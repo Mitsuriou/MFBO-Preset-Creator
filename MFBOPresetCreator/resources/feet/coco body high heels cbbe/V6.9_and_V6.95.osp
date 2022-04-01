@@ -1,10 +1,12 @@
-﻿    <SliderSet name="%1 - [COCO]CBBEV6_HH100">
-        <DataFolder>[COCO]3BBB_V6_HHfeet</DataFolder>
-        <SourceFile>[COCO]CBBEV6_HH100.nif</SourceFile>
-        <OutputPath>{%%feet_output_path%%}</OutputPath>
-        <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
-        <Shape target="Feet" DataFolder="[COCO]3BBB_V6_HHfeet">Feet</Shape>
-        <Slider name="[COCO]CBBE_HH_2021" invert="false" small="0" big="0">
-            <Data name="Feet[COCO]CBBE_HH_2021" target="Feet" local="true">[COCO]CBBEV6_HH100.osd\Feet[COCO]CBBE_HH_2021</Data>
-        </Slider>
-    </SliderSet>
+﻿    <SliderSetInfo version="1">
+        <SliderSet name="%1 - [COCO]CBBEV6_Heelfeets">
+            <DataFolder>[COCO]3BBB_V6_HHfeet</DataFolder>
+            <SourceFile>[COCO]CBBEV6_Heelfeets.nif</SourceFile>
+            <OutputPath>{%%feet_output_path%%}</OutputPath>
+            <OutputFile GenWeights="true">{%%feet_output_file%%}</OutputFile>
+            <Shape target="Feet_outfit">Feet_outfit</Shape>
+            <Slider name="[COCO]CBBE_Heels_2022" invert="false" small="0" big="0">
+                <Data name="Feet_outfit[COCO]CBBE_Heels_2022" target="Feet_outfit" local="true">[COCO]CBBEV6_Heelfeets.osd\Feet_outfit[COCO]CBBE_Heels_2022</Data>
+            </Slider>
+        </SliderSet>
+    </SliderSetInfo>

@@ -271,4 +271,13 @@
         <Slider name="SmallSeam" invert="false" small="0" big="0">
             <Data name="HandsSmallSeam" target="Hands" local="true">[COCO 3BBB V6]Hands_A.osd\HandsSmallSeam</Data>
         </Slider>
+        <Slider name="COCO_body05 Chubby" invert="false" small="0" big="0">
+            <Data name="HandsCOCO_body05 Chubby" target="Hands" local="true">[COCO 3BBB V6]Hands_A.osd\HandsCOCO_body05 Chubby</Data>
+        </Slider>
+        <Slider name="VanillaSSELo" invert="false" small="0" big="0">
+            <Data name="HandsVanillaSSELo" target="Hands" local="true">[COCO 3BBB V6]Hands_A.osd\HandsVanillaSSELo</Data>
+        </Slider>
+        <Slider name="VanillaSSEHi" invert="false" small="0" big="0">
+            <Data name="HandsVanillaSSEHi" target="Hands" local="true">[COCO 3BBB V6]Hands_A.osd\HandsVanillaSSEHi</Data>
+        </Slider>
     </SliderSet>

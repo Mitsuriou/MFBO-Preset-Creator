@@ -271,4 +271,31 @@
         <Slider name="Ankles" invert="false" small="0" big="0">
             <Data name="FeetAnkles" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetAnkles</Data>
         </Slider>
+        <Slider name="COCO_body05 Chubby" invert="false" small="0" big="0">
+            <Data name="FeetCOCO_body05 Chubby" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetCOCO_body05 Chubby</Data>
+        </Slider>
+        <Slider name="VanillaSSELo" invert="false" small="0" big="0">
+            <Data name="FeetVanillaSSELo" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetVanillaSSELo</Data>
+        </Slider>
+        <Slider name="VanillaSSEHi" invert="false" small="0" big="0">
+            <Data name="FeetVanillaSSEHi" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetVanillaSSEHi</Data>
+        </Slider>
+        <Slider name="COCO Base To 3ba Base" invert="false" small="0" big="0">
+            <Data name="FeetCOCO Base To 3ba Base" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetCOCO Base To 3ba Base</Data>
+        </Slider>
+        <Slider name="COCO Body01 Lower" invert="false" small="0" big="0">
+            <Data name="FeetCOCO Body01 Lower" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetCOCO Body01 Lower</Data>
+        </Slider>
+        <Slider name="COCO Body04 Lower" invert="false" small="0" big="0">
+            <Data name="FeetCOCO Body04 Lower" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetCOCO Body04 Lower</Data>
+        </Slider>
+        <Slider name="COCO Venus Lower" invert="false" small="0" big="0">
+            <Data name="FeetCOCO Venus Lower" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetCOCO Venus Lower</Data>
+        </Slider>
+        <Slider name="COCO Skinny Lower" invert="false" small="0" big="0">
+            <Data name="FeetCOCO Skinny Lower" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetCOCO Skinny Lower</Data>
+        </Slider>
+        <Slider name="COCO 7B Lower" invert="false" small="0" big="0">
+            <Data name="FeetCOCO 7B Lower" target="Feet" local="true">[COCO 3BBB V6]Feet_A.osd\FeetCOCO 7B Lower</Data>
+        </Slider>
     </SliderSet>
