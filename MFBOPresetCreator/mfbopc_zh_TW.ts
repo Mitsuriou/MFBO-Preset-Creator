@@ -12,161 +12,161 @@
 <context>
     <name>AssistedConversion</name>
     <message>
-        <location filename="AssistedConversion.cpp" line="49"/>
+        <location filename="AssistedConversion.cpp" line="50"/>
         <source>Closing</source>
         <translation>關閉中</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="50"/>
+        <location filename="AssistedConversion.cpp" line="51"/>
         <source>Do you want to close the window?</source>
         <translation>確定關閉視窗?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="53"/>
+        <location filename="AssistedConversion.cpp" line="54"/>
         <source>Close the window</source>
         <translation>關閉視窗</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="54"/>
+        <location filename="AssistedConversion.cpp" line="55"/>
         <source>Go back to the assisted conversion tool window</source>
         <translation>回到輔助轉換視窗</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="80"/>
+        <location filename="AssistedConversion.cpp" line="81"/>
         <source>Assisted Conversion</source>
         <translation>輔助轉換</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="95"/>
+        <location filename="AssistedConversion.cpp" line="96"/>
         <source>Input path:</source>
         <translation>匯入檔案路徑:</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="105"/>
+        <location filename="AssistedConversion.cpp" line="106"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="109"/>
+        <location filename="AssistedConversion.cpp" line="110"/>
         <source>Only scan the &quot;meshes&quot; subdirectory of the mod</source>
         <oldsource>Only scan the &quot;meshes&quot; subdirectories of the mod</oldsource>
         <translation>只掃描&quot;meshes&quot;資料夾</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="113"/>
+        <location filename="AssistedConversion.cpp" line="114"/>
         <source>Launch the scan of the mod</source>
         <translation>開始掃描MOD</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="130"/>
+        <location filename="AssistedConversion.cpp" line="131"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>等待偵測開始...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="172"/>
+        <location filename="AssistedConversion.cpp" line="173"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="172"/>
+        <location filename="AssistedConversion.cpp" line="173"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="198"/>
+        <location filename="AssistedConversion.cpp" line="199"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="367"/>
-        <location filename="AssistedConversion.cpp" line="371"/>
+        <location filename="AssistedConversion.cpp" line="389"/>
+        <location filename="AssistedConversion.cpp" line="393"/>
         <source>Relaunch the scan</source>
         <translation>重新偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="368"/>
+        <location filename="AssistedConversion.cpp" line="390"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation>將失去所有為保存進度。請問是否繼續重啟偵測?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="372"/>
+        <location filename="AssistedConversion.cpp" line="394"/>
         <source>Cancel the relaunch</source>
         <translation>取消重新開始</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="391"/>
+        <location filename="AssistedConversion.cpp" line="413"/>
         <source>No root file has been found</source>
         <translation>未發現根目錄檔案</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="392"/>
+        <location filename="AssistedConversion.cpp" line="414"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation>未發現ESL/ESM/ESP檔。請問是否繼續偵測?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="395"/>
-        <location filename="AssistedConversion.cpp" line="416"/>
+        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="438"/>
         <source>Continue the scan</source>
         <translation>繼續偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="396"/>
-        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="418"/>
+        <location filename="AssistedConversion.cpp" line="439"/>
         <source>Cancel the scan</source>
         <translation>取消偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="412"/>
+        <location filename="AssistedConversion.cpp" line="434"/>
         <source>BSA file found</source>
         <translation>偵測到BSA檔</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="413"/>
+        <location filename="AssistedConversion.cpp" line="435"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>偵測到資料夾存在BSA檔案。由於本程式不支援BSA檔案，建議解壓縮BSA檔後繼續操作。是否繼續進行操作?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="440"/>
+        <location filename="AssistedConversion.cpp" line="462"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation>未發現NIF檔案。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="475"/>
         <source>File path</source>
         <translation>檔案位置</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="454"/>
+        <location filename="AssistedConversion.cpp" line="476"/>
         <source>*.nif file name</source>
         <translation>.nif檔案名稱</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="455"/>
+        <location filename="AssistedConversion.cpp" line="477"/>
         <source>Action</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="466"/>
+        <location filename="AssistedConversion.cpp" line="498"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>驗證已選選項，並回到主視窗</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="480"/>
+        <location filename="AssistedConversion.cpp" line="512"/>
         <source>No entry selected</source>
         <translation>未選擇任何條目</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="481"/>
+        <location filename="AssistedConversion.cpp" line="513"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation>未選擇任何條目。是否直接驗證當前所選?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="484"/>
+        <location filename="AssistedConversion.cpp" line="516"/>
         <source>Validate as is</source>
         <translation>照原樣驗正</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="485"/>
+        <location filename="AssistedConversion.cpp" line="517"/>
         <source>Cancel, I wanted to select values</source>
         <translation>取消，我想要調整數值</translation>
     </message>
@@ -985,44 +985,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="2323"/>
+        <location filename="DataLists.cpp" line="2373"/>
         <source>Minimized</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2324"/>
-        <location filename="DataLists.cpp" line="2330"/>
+        <location filename="DataLists.cpp" line="2374"/>
+        <location filename="DataLists.cpp" line="2380"/>
         <source>Windowed</source>
         <translation>視窗化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2325"/>
-        <location filename="DataLists.cpp" line="2331"/>
+        <location filename="DataLists.cpp" line="2375"/>
+        <location filename="DataLists.cpp" line="2381"/>
         <source>Maximized</source>
         <translation>最大化</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2359"/>
+        <location filename="DataLists.cpp" line="2409"/>
         <source>[ignore]</source>
         <translation>[忽略]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2360"/>
+        <location filename="DataLists.cpp" line="2410"/>
         <source>Body mesh</source>
         <translation>身體模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2361"/>
+        <location filename="DataLists.cpp" line="2411"/>
         <source>Feet mesh</source>
         <translation>腳部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2362"/>
+        <location filename="DataLists.cpp" line="2412"/>
         <source>Hands mesh</source>
         <translation>手部模型</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2363"/>
+        <location filename="DataLists.cpp" line="2413"/>
         <source>Skeleton mesh</source>
         <translation>骨架模型</translation>
     </message>
@@ -1037,7 +1037,7 @@ Targeted feet: -</source>
     <message>
         <location filename="FirstInstallWindow.cpp" line="54"/>
         <source>Application theme</source>
-        <translation type="unfinished"></translation>
+        <translation>應用程式主題</translation>
     </message>
     <message>
         <location filename="FirstInstallWindow.cpp" line="91"/>
@@ -1069,13 +1069,13 @@ Targeted feet: -</source>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="671"/>
+        <location filename="MFBOPresetCreator.cpp" line="701"/>
         <source>Go back to the application</source>
         <translation>回到應用程式</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="74"/>
-        <location filename="MFBOPresetCreator.cpp" line="672"/>
+        <location filename="MFBOPresetCreator.cpp" line="702"/>
         <source>Save the project and quit the application</source>
         <translation>儲存專案並關閉應用程式</translation>
     </message>
@@ -1112,7 +1112,7 @@ Targeted feet: -</source>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="207"/>
-        <location filename="MFBOPresetCreator.cpp" line="666"/>
+        <location filename="MFBOPresetCreator.cpp" line="696"/>
         <source>Quick restart</source>
         <translation>快速重啟</translation>
     </message>
@@ -1157,17 +1157,22 @@ Targeted feet: -</source>
         <translation> (有可用的BETA更新)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="295"/>
+        <location filename="MFBOPresetCreator.cpp" line="299"/>
         <source>Donate - buy me a coffee (ko-fi.com)</source>
         <translation>贊助 - 買杯咖啡給我 (ko-fi.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="556"/>
+        <location filename="MFBOPresetCreator.cpp" line="309"/>
+        <source>About Qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="586"/>
         <source>BETA update available</source>
         <translation>有可用的BETA更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="557"/>
+        <location filename="MFBOPresetCreator.cpp" line="587"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -1178,12 +1183,12 @@ Do you want to download it now?</source>
 請問是否下載該版本?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="565"/>
+        <location filename="MFBOPresetCreator.cpp" line="595"/>
         <source>Stable update available</source>
         <translation>有可用的正式版更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="566"/>
+        <location filename="MFBOPresetCreator.cpp" line="596"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -1213,37 +1218,37 @@ Do you want to download it now?</source>
         <translation>當前版本資訊</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="255"/>
+        <location filename="MFBOPresetCreator.cpp" line="257"/>
         <source>Report a bug...</source>
         <translation>回報Bug...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="265"/>
+        <location filename="MFBOPresetCreator.cpp" line="267"/>
         <source>GitHub (github.com)</source>
         <translation>GitHub (github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="269"/>
+        <location filename="MFBOPresetCreator.cpp" line="271"/>
         <source>GitLab (gitlab.com)</source>
         <translation>GitLab (gitlab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="273"/>
+        <location filename="MFBOPresetCreator.cpp" line="275"/>
         <source>Useful links...</source>
         <translation>建議參閱連結...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="283"/>
+        <location filename="MFBOPresetCreator.cpp" line="285"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>使用教學(docs.google.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="287"/>
+        <location filename="MFBOPresetCreator.cpp" line="291"/>
         <source>View the source code (github.com)</source>
         <translation>參考原始碼(github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="291"/>
+        <location filename="MFBOPresetCreator.cpp" line="295"/>
         <source>View the source code (gitlab.com)</source>
         <translation>參考原始碼(gitlab.com)</translation>
     </message>
@@ -1252,8 +1257,8 @@ Do you want to download it now?</source>
         <translation type="vanished">建議參閱連結</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="261"/>
-        <location filename="MFBOPresetCreator.cpp" line="279"/>
+        <location filename="MFBOPresetCreator.cpp" line="263"/>
+        <location filename="MFBOPresetCreator.cpp" line="281"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <oldsource>Nexus Mods page</oldsource>
         <translation>Nexus Mods 頁面 (nexusmods.com)</translation>
@@ -1271,17 +1276,17 @@ Do you want to download it now?</source>
         <translation type="vanished">參考原始碼(GitLab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="299"/>
+        <location filename="MFBOPresetCreator.cpp" line="305"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="541"/>
+        <location filename="MFBOPresetCreator.cpp" line="571"/>
         <source>Error while searching for a new update</source>
         <translation>無法搜尋更新檔</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="542"/>
+        <location filename="MFBOPresetCreator.cpp" line="572"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>找不到更新檔...
@@ -1314,27 +1319,27 @@ Do you want to download it now?</source>
 請問是否下載該版本?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="585"/>
+        <location filename="MFBOPresetCreator.cpp" line="615"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="594"/>
+        <location filename="MFBOPresetCreator.cpp" line="624"/>
         <source>Download and install the update now</source>
         <translation>立即下載並更新</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="595"/>
+        <location filename="MFBOPresetCreator.cpp" line="625"/>
         <source>Download later</source>
         <translation>稍後再下載</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="667"/>
+        <location filename="MFBOPresetCreator.cpp" line="697"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>你將失去所有未儲存進度?確定要快速重啟程式?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="670"/>
+        <location filename="MFBOPresetCreator.cpp" line="700"/>
         <source>Quickly restart the application</source>
         <translation>快速重新開啟應用程式</translation>
     </message>
@@ -2141,7 +2146,7 @@ Targeted feet: %2</source>
         <translation>材質(Textures)助手: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="848"/>
+        <location filename="Settings.cpp" line="847"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>目標身型: %1
@@ -2307,12 +2312,12 @@ Targeted feet: %2</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="763"/>
+        <location filename="Settings.cpp" line="762"/>
         <source>Application settings changed</source>
         <translation>已更改程式設定</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="764"/>
+        <location filename="Settings.cpp" line="763"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
@@ -2323,12 +2328,12 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="vanished">已儲存所有設定。有需要重啟才能生效的設定。 是否立即重啟程式?</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="767"/>
+        <location filename="Settings.cpp" line="766"/>
         <source>Restart now</source>
         <translation>立即重啟</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="768"/>
+        <location filename="Settings.cpp" line="767"/>
         <source>Go back to the application and restart later</source>
         <translation>回到應用程式稍後再重啟</translation>
     </message>

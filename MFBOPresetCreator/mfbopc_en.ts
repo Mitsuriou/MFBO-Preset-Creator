@@ -12,160 +12,160 @@
 <context>
     <name>AssistedConversion</name>
     <message>
-        <location filename="AssistedConversion.cpp" line="49"/>
+        <location filename="AssistedConversion.cpp" line="50"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="50"/>
+        <location filename="AssistedConversion.cpp" line="51"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="53"/>
+        <location filename="AssistedConversion.cpp" line="54"/>
         <source>Close the window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="54"/>
+        <location filename="AssistedConversion.cpp" line="55"/>
         <source>Go back to the assisted conversion tool window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="80"/>
+        <location filename="AssistedConversion.cpp" line="81"/>
         <source>Assisted Conversion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="95"/>
+        <location filename="AssistedConversion.cpp" line="96"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="105"/>
+        <location filename="AssistedConversion.cpp" line="106"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="109"/>
+        <location filename="AssistedConversion.cpp" line="110"/>
         <source>Only scan the &quot;meshes&quot; subdirectory of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="113"/>
+        <location filename="AssistedConversion.cpp" line="114"/>
         <source>Launch the scan of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="130"/>
+        <location filename="AssistedConversion.cpp" line="131"/>
         <source>Awaiting the launch of a scan...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="172"/>
+        <location filename="AssistedConversion.cpp" line="173"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="172"/>
+        <location filename="AssistedConversion.cpp" line="173"/>
         <source>Scanning the directory. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="198"/>
+        <location filename="AssistedConversion.cpp" line="199"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="367"/>
-        <location filename="AssistedConversion.cpp" line="371"/>
+        <location filename="AssistedConversion.cpp" line="389"/>
+        <location filename="AssistedConversion.cpp" line="393"/>
         <source>Relaunch the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="368"/>
+        <location filename="AssistedConversion.cpp" line="390"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="372"/>
+        <location filename="AssistedConversion.cpp" line="394"/>
         <source>Cancel the relaunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="480"/>
+        <location filename="AssistedConversion.cpp" line="512"/>
         <source>No entry selected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="481"/>
+        <location filename="AssistedConversion.cpp" line="513"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="484"/>
+        <location filename="AssistedConversion.cpp" line="516"/>
         <source>Validate as is</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="485"/>
+        <location filename="AssistedConversion.cpp" line="517"/>
         <source>Cancel, I wanted to select values</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="391"/>
+        <location filename="AssistedConversion.cpp" line="413"/>
         <source>No root file has been found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="392"/>
+        <location filename="AssistedConversion.cpp" line="414"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="395"/>
-        <location filename="AssistedConversion.cpp" line="416"/>
+        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="438"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="396"/>
-        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="418"/>
+        <location filename="AssistedConversion.cpp" line="439"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="412"/>
+        <location filename="AssistedConversion.cpp" line="434"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="413"/>
+        <location filename="AssistedConversion.cpp" line="435"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="440"/>
+        <location filename="AssistedConversion.cpp" line="462"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="475"/>
         <source>File path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="454"/>
+        <location filename="AssistedConversion.cpp" line="476"/>
         <source>*.nif file name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="455"/>
+        <location filename="AssistedConversion.cpp" line="477"/>
         <source>Action</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="466"/>
+        <location filename="AssistedConversion.cpp" line="498"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation></translation>
     </message>
@@ -870,44 +870,44 @@ Targeted feet: -</source>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="2323"/>
+        <location filename="DataLists.cpp" line="2373"/>
         <source>Minimized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2324"/>
-        <location filename="DataLists.cpp" line="2330"/>
+        <location filename="DataLists.cpp" line="2374"/>
+        <location filename="DataLists.cpp" line="2380"/>
         <source>Windowed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2325"/>
-        <location filename="DataLists.cpp" line="2331"/>
+        <location filename="DataLists.cpp" line="2375"/>
+        <location filename="DataLists.cpp" line="2381"/>
         <source>Maximized</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2359"/>
+        <location filename="DataLists.cpp" line="2409"/>
         <source>[ignore]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2360"/>
+        <location filename="DataLists.cpp" line="2410"/>
         <source>Body mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2361"/>
+        <location filename="DataLists.cpp" line="2411"/>
         <source>Feet mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2362"/>
+        <location filename="DataLists.cpp" line="2412"/>
         <source>Hands mesh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2363"/>
+        <location filename="DataLists.cpp" line="2413"/>
         <source>Skeleton mesh</source>
         <translation></translation>
     </message>
@@ -917,17 +917,17 @@ Targeted feet: -</source>
     <message>
         <location filename="FirstInstallWindow.cpp" line="13"/>
         <source>First Installation Wizard</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="FirstInstallWindow.cpp" line="54"/>
         <source>Application theme</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="FirstInstallWindow.cpp" line="91"/>
         <source>Validate and launch MFBO: Preset Creator</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -944,7 +944,7 @@ Targeted feet: -</source>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="671"/>
+        <location filename="MFBOPresetCreator.cpp" line="701"/>
         <source>Go back to the application</source>
         <translation></translation>
     </message>
@@ -1004,37 +1004,37 @@ Targeted feet: -</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="255"/>
+        <location filename="MFBOPresetCreator.cpp" line="257"/>
         <source>Report a bug...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="265"/>
+        <location filename="MFBOPresetCreator.cpp" line="267"/>
         <source>GitHub (github.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="269"/>
+        <location filename="MFBOPresetCreator.cpp" line="271"/>
         <source>GitLab (gitlab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="273"/>
+        <location filename="MFBOPresetCreator.cpp" line="275"/>
         <source>Useful links...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="283"/>
+        <location filename="MFBOPresetCreator.cpp" line="285"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="287"/>
+        <location filename="MFBOPresetCreator.cpp" line="291"/>
         <source>View the source code (github.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="291"/>
+        <location filename="MFBOPresetCreator.cpp" line="295"/>
         <source>View the source code (gitlab.com)</source>
         <translation></translation>
     </message>
@@ -1050,7 +1050,7 @@ Targeted feet: -</source>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="74"/>
-        <location filename="MFBOPresetCreator.cpp" line="672"/>
+        <location filename="MFBOPresetCreator.cpp" line="702"/>
         <source>Save the project and quit the application</source>
         <translation></translation>
     </message>
@@ -1080,39 +1080,44 @@ Targeted feet: -</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="261"/>
-        <location filename="MFBOPresetCreator.cpp" line="279"/>
+        <location filename="MFBOPresetCreator.cpp" line="263"/>
+        <location filename="MFBOPresetCreator.cpp" line="281"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="295"/>
+        <location filename="MFBOPresetCreator.cpp" line="299"/>
         <source>Donate - buy me a coffee (ko-fi.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="299"/>
+        <location filename="MFBOPresetCreator.cpp" line="305"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="541"/>
+        <location filename="MFBOPresetCreator.cpp" line="309"/>
+        <source>About Qt</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="571"/>
         <source>Error while searching for a new update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="542"/>
+        <location filename="MFBOPresetCreator.cpp" line="572"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="556"/>
+        <location filename="MFBOPresetCreator.cpp" line="586"/>
         <source>BETA update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="557"/>
+        <location filename="MFBOPresetCreator.cpp" line="587"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -1120,12 +1125,12 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="565"/>
+        <location filename="MFBOPresetCreator.cpp" line="595"/>
         <source>Stable update available</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="566"/>
+        <location filename="MFBOPresetCreator.cpp" line="596"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -1133,33 +1138,33 @@ Do you want to download it now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="585"/>
+        <location filename="MFBOPresetCreator.cpp" line="615"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="594"/>
+        <location filename="MFBOPresetCreator.cpp" line="624"/>
         <source>Download and install the update now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="595"/>
+        <location filename="MFBOPresetCreator.cpp" line="625"/>
         <source>Download later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="667"/>
+        <location filename="MFBOPresetCreator.cpp" line="697"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="670"/>
+        <location filename="MFBOPresetCreator.cpp" line="700"/>
         <source>Quickly restart the application</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="207"/>
-        <location filename="MFBOPresetCreator.cpp" line="666"/>
+        <location filename="MFBOPresetCreator.cpp" line="696"/>
         <source>Quick restart</source>
         <translation></translation>
     </message>
@@ -1902,7 +1907,7 @@ Targeted feet: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="848"/>
+        <location filename="Settings.cpp" line="847"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation></translation>
@@ -1988,24 +1993,24 @@ Targeted feet: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="763"/>
+        <location filename="Settings.cpp" line="762"/>
         <source>Application settings changed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="764"/>
+        <location filename="Settings.cpp" line="763"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="767"/>
+        <location filename="Settings.cpp" line="766"/>
         <source>Restart now</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="768"/>
+        <location filename="Settings.cpp" line="767"/>
         <source>Go back to the application and restart later</source>
         <translation></translation>
     </message>
