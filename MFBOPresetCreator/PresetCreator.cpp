@@ -1167,7 +1167,7 @@ void PresetCreator::generateDirectoryStructure()
 
   // Create main directory
   auto lGenerateFilesInExistingMainDirectory{false};
-  if (!QDir(lEntryDirectory).exists())
+  if (!QDir(lEntryDirectory).exists() || (QDir(lEntryDirectory).exists() && QDir(lEntryDirectory).isEmpty()))
   {
     // Wait to know the result of the mkdir()
     if (!QDir().mkpath(lEntryDirectory))

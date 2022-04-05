@@ -505,7 +505,7 @@ void BatchConversion::launchSearchProcess()
 
   // Create main directory
   auto lMustGenerateFilesInExistingDirectory{false};
-  if (QDir(lEntryDirectory).exists())
+  if (QDir(lEntryDirectory).exists() && !QDir(lEntryDirectory).isEmpty())
   {
     // Since the directory already exist, ask the user to generate another preset in it
     if (Utils::DisplayQuestionMessage(this,

@@ -490,7 +490,7 @@ void TexturesAssistant::generateTexturesStructure()
   }
 
   // Create main directory
-  if (!QDir(lEntryDirectory).exists())
+  if (!QDir(lEntryDirectory).exists() || (QDir(lEntryDirectory).exists() && QDir(lEntryDirectory).isEmpty()))
   {
     // Wait to know the result of the mkdir()
     if (!QDir().mkpath(lEntryDirectory))
