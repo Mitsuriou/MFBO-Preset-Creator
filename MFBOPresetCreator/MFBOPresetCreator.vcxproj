@@ -108,7 +108,7 @@ echo ############# FINISHED BUILDING MFBO:PC #############
 echo ### COPYING EXECUTABLE INTO CLIENT RELEASE FOLDER ###
 echo #####################################################
 echo #####################################################
-echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client release\$(TargetFileName)"</Command>
+echo F | xcopy /d /q /y "$(TargetPath)" "$(SolutionDir)Wizard resources\client release\$(TargetFileName)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>echo #####################################################
