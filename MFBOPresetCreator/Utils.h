@@ -139,6 +139,10 @@ public:
   static QString GetPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool aUseKeyPath);
   static bool UpdatePathAtKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aPath, const bool aMustUpdateGeneralKey = true, const bool aAuthorizeEmptyValue = false, const bool aMustSaveFile = true);
 
+  // API
+  static bool SaveAPIKeyToFile(const QString& aAPIKey, QWidget* aParent = nullptr, const QString& aIconFolder = QString());
+  static QString ReadAPIKeyFromFile();
+
   // Language
   static QString GetShortLanguageNameFromEnum(const int aEnumValue);
   static ApplicationLanguage GetStructLanguageFromName(const QString& aShortName);

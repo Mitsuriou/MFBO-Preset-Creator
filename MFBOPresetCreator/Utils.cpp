@@ -1691,6 +1691,59 @@ bool Utils::UpdatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
   return lMapCopy != *aMap;
 }
 
+bool Utils::SaveAPIKeyToFile(const QString& aAPIKey, QWidget* aParent, const QString& aIconFolder)
+{
+  const auto lAPIKeyFilePath{Utils::GetAppDataPathFolder() + "private_key"};
+
+  // Open (or create and open) the file
+  QFile lFile(lAPIKeyFilePath);
+  if (lFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+  {
+    lFile.write(aAPIKey.toUtf8());
+
+    // API key file save: success window
+    if (aParent && !aIconFolder.isEmpty())
+    {
+      Utils::DisplayInfoMessage(aParent,
+                                tr("API key successfully saved"),
+                                tr("The API key file has successfully been saved to \"%1\".").arg(lAPIKeyFilePath),
+                                aIconFolder,
+                                "done",
+                                tr("OK"));
+    }
+
+    lFile.close();
+    return true;
+  }
+  else if (aParent && !aIconFolder.isEmpty())
+  {
+    // API key file save: fail window
+    Utils::DisplayWarningMessage(tr("Could not save the api key file to \"%1\".\nBe sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lAPIKeyFilePath));
+  }
+
+  return false;
+}
+
+QString Utils::ReadAPIKeyFromFile()
+{
+  const auto lAPIKeyFilePath{Utils::GetAppDataPathFolder() + "private_key"};
+
+  // Check if an installer file needs to be removed at launch
+  QFile lAPIKeyFile(lAPIKeyFilePath);
+  if (lAPIKeyFile.exists())
+  {
+    if (lAPIKeyFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+      const auto lAPIKey{QString::fromUtf8(lAPIKeyFile.readAll())};
+      lAPIKeyFile.close();
+
+      return lAPIKey;
+    }
+  }
+
+  return QString();
+}
+
 QString Utils::GetShortLanguageNameFromEnum(const int aEnumValue)
 {
   const auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
