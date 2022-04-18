@@ -72,7 +72,7 @@
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <QtTranslation>
-      <BuildAction>lupdate</BuildAction>
+      <BuildAction>lrelease</BuildAction>
       <QmOutputDir>$(ProjectDir)</QmOutputDir>
     </QtTranslation>
     <PreBuildEvent>
