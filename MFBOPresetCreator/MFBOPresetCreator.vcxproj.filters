@@ -1,14 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Drag and Drop">
+      <UniqueIdentifier>{87ee9b37-5d8f-430a-bf1c-c466fd5f60c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\First Install Wizard">
+      <UniqueIdentifier>{a21b7a63-9950-4ae9-a451-1fcfd4adbe89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{631df484-584c-4eef-86af-d7a52283b491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Qt Classes">
+      <UniqueIdentifier>{92eb1fea-bcf1-43ba-9cce-82cb30aefecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{b8f9c9c6-e2e0-40d2-a42b-dd1a10a7fcae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Drag and Drop">
+      <UniqueIdentifier>{fe6d57dd-c44c-4166-9536-31990018c266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\First Install Wizard">
+      <UniqueIdentifier>{3efb3b2e-6820-4088-81b0-ede78238cd10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GUI">
+      <UniqueIdentifier>{7a5b6d31-8a38-4215-9664-a0f1a2cec75d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Qt Classes">
+      <UniqueIdentifier>{8cdeb052-f52a-4f2d-b1be-1cfb6edeb133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{d2df7426-3bb5-498f-9c35-b71df900fec7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MFBOPresetCreator.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="MFBOPresetCreator.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <ResourceCompile Include="MFBOPresetCreator.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="About.cpp">
+    <ClCompile Include="MFBOPresetCreator.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="BodySlideFiltersEditor.cpp">
-      <Filter>Source Files\GUI</Filter>
+    <ClCompile Include="ComponentFactory.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="DataLists.cpp">
       <Filter>Source Files\Utils</Filter>
@@ -16,7 +79,37 @@
     <ClCompile Include="LangManager.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="MFBOPresetCreator.cpp">
+    <ClCompile Include="SliderFileBuilder.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="VersionsInformation.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupBox.cpp">
+      <Filter>Source Files\Qt Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="About.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="AssistedConversion.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BatchConversion.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BatchConversionPicker.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BodySlideFiltersEditor.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PresetCreator.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ReleaseNotesViewer.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="RetargetingTool.cpp">
@@ -25,13 +118,7 @@
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Update.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="AssistedConversion.cpp">
+    <ClCompile Include="TargetMeshesPicker.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
     <ClCompile Include="TextInputDialog.cpp">
@@ -40,20 +127,17 @@
     <ClCompile Include="TexturesAssistant.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="BatchConversion.cpp">
+    <ClCompile Include="Update.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="ComponentFactory.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="SliderFileBuilder.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="PresetCreator.cpp">
+    <ClCompile Include="WelcomeScreen.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="BatchConversionPicker.cpp">
-      <Filter>Source Files\GUI</Filter>
+    <ClCompile Include="FirstInstallWindow.cpp">
+      <Filter>Source Files\First Install Wizard</Filter>
+    </ClCompile>
+    <ClCompile Include="ThemeCard.cpp">
+      <Filter>Source Files\First Install Wizard</Filter>
     </ClCompile>
     <ClCompile Include="BCDragWidget.cpp">
       <Filter>Source Files\Drag and Drop</Filter>
@@ -64,117 +148,6 @@
     <ClCompile Include="BCGroupWidget.cpp">
       <Filter>Source Files\Drag and Drop</Filter>
     </ClCompile>
-    <ClCompile Include="WelcomeScreen.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="ReleaseNotesViewer.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="VersionsInformation.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="TargetMeshesPicker.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GroupBox.cpp">
-      <Filter>Source Files\Qt Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="FirstInstallWindow.cpp">
-      <Filter>Source Files\First Install Wizard</Filter>
-    </ClCompile>
-    <ClCompile Include="ThemeCard.cpp">
-      <Filter>Source Files\First Install Wizard</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enum.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Struct.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="LangManager.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="SliderFileBuilder.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="VersionsInformation.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-      <ParseFiles>true</ParseFiles>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-      <ParseFiles>true</ParseFiles>
-    </Filter>
-    <Filter Include="Translation Files">
-      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
-      <Extensions>ts</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
-    <Filter Include="Form Files">
-      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
-      <Extensions>ui</Extensions>
-      <ParseFiles>true</ParseFiles>
-    </Filter>
-    <Filter Include="Source Files\GUI">
-      <UniqueIdentifier>{8a4b793f-900e-4e09-9359-d9f025aa87f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{ee977981-9006-4f73-814e-ee67fa79098b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GUI">
-      <UniqueIdentifier>{70d90964-5ddf-4c0e-a065-7fe432724b1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utils">
-      <UniqueIdentifier>{2348a2dc-c069-4280-8862-91451fd9ce91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Drag and Drop">
-      <UniqueIdentifier>{5c04f660-fd61-455c-9d6b-b7c30d0dc38a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Drag and Drop">
-      <UniqueIdentifier>{6bc77066-e119-492f-8b42-fb09bba1e18e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="App Resources">
-      <UniqueIdentifier>{6c557561-e475-413b-9a0b-e95921564d0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Qt Classes">
-      <UniqueIdentifier>{322b3896-4998-4607-afde-0b48217fbc7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Qt Classes">
-      <UniqueIdentifier>{ed92a39b-09a1-4fda-afb0-bf97c29c202c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\First Install Wizard">
-      <UniqueIdentifier>{639995a3-517d-4c3a-b2ca-16a2dc016e61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\First Install Wizard">
-      <UniqueIdentifier>{37b9e63f-7168-47c6-befa-02de9b4ba9d8}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="MFBOPresetCreator.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="MFBOPresetCreator.rc">
-      <Filter>App Resources</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="resources/software/icon.ico">
-      <Filter>App Resources</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">
@@ -188,50 +161,93 @@
     </QtTranslation>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="BatchConversion.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
+    <Image Include="resources\software\icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LangManager.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderFileBuilder.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="VersionsInformation.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <QtMoc Include="ComponentFactory.h">
       <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="DataLists.h">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="Utils.h">
+      <Filter>Header Files\Utils</Filter>
+    </QtMoc>
+    <QtMoc Include="GroupBox.h">
+      <Filter>Header Files\Qt Classes</Filter>
+    </QtMoc>
+    <QtMoc Include="About.h">
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="AssistedConversion.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="About.h">
+    <QtMoc Include="BatchConversion.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="BatchConversionPicker.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="BodySlideFiltersEditor.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="DataLists.h">
-      <Filter>Header Files\Utils</Filter>
+    <QtMoc Include="PresetCreator.h">
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="Settings.h">
+    <QtMoc Include="ReleaseNotesViewer.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="RetargetingTool.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="PresetCreator.h">
+    <QtMoc Include="Settings.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TargetMeshesPicker.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
     <QtMoc Include="TextInputDialog.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="MFBOPresetCreator.h">
+    <QtMoc Include="TexturesAssistant.h">
       <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="Utils.h">
-      <Filter>Header Files\Utils</Filter>
     </QtMoc>
     <QtMoc Include="Update.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="TexturesAssistant.h">
+    <QtMoc Include="WelcomeScreen.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
-    <QtMoc Include="BatchConversionPicker.h">
+    <QtMoc Include="MFBOPresetCreator.h">
       <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="FirstInstallWindow.h">
+      <Filter>Header Files\First Install Wizard</Filter>
+    </QtMoc>
+    <QtMoc Include="ThemeCard.h">
+      <Filter>Header Files\First Install Wizard</Filter>
     </QtMoc>
     <QtMoc Include="BCDragWidget.h">
       <Filter>Header Files\Drag and Drop</Filter>
@@ -242,28 +258,5 @@
     <QtMoc Include="BCGroupWidget.h">
       <Filter>Header Files\Drag and Drop</Filter>
     </QtMoc>
-    <QtMoc Include="WelcomeScreen.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="ReleaseNotesViewer.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="TargetMeshesPicker.h">
-      <Filter>Header Files\GUI</Filter>
-    </QtMoc>
-    <QtMoc Include="GroupBox.h">
-      <Filter>Header Files\Qt Classes</Filter>
-    </QtMoc>
-    <QtMoc Include="FirstInstallWindow.h">
-      <Filter>Header Files\First Install Wizard</Filter>
-    </QtMoc>
-    <QtMoc Include="ThemeCard.h">
-      <Filter>Header Files\First Install Wizard</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="MFBOPresetCreator.qrc">
-      <Filter>App Resources</Filter>
-    </QtRcc>
   </ItemGroup>
 </Project>

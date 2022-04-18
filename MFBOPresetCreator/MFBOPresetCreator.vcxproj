@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -9,19 +9,13 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Translator|x64">
-      <Configuration>Translator</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{51385EF8-9F40-43D7-A8F1-B9737468DB56}</ProjectGuid>
+    <ProjectGuid>{A98F8BE5-A84C-432F-8517-D8C2C3416761}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">10.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
-    <ProjectName>MFBOPresetCreator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -34,12 +28,22 @@
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.15.2</QtInstall>
+    <QtModules>core;xml;network;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+    <QtQMLDebugEnable>false</QtQMLDebugEnable>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.15.2</QtInstall>
+    <QtModules>core;xml;network;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+    <QtQMLDebugEnable>false</QtQMLDebugEnable>
+  </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
   </Target>
@@ -47,35 +51,30 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="Translator.props" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
-    <Import Project="$(QtMsBuild)\qt_defaults.props" />
-  </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Link />
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeaderFile />
+      <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <PreprocessorDefinitions>DEBUG;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>5054</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <QtTranslation>
+      <BuildAction>lupdate</BuildAction>
+      <QmOutputDir>$(ProjectDir)</QmOutputDir>
+    </QtTranslation>
     <PreBuildEvent>
       <Command>echo #####################################################
 echo #####################################################
@@ -83,57 +82,26 @@ echo ####### STARTING BUILDING MFBO:Preset Creator #######
 echo #####################################################
 echo #####################################################</Command>
     </PreBuildEvent>
-    <Link />
-    <QtTranslation />
-    <QtTranslation>
-      <QmOutputDir>$(ProjectDir)</QmOutputDir>
-      <BuildAction>lrelease</BuildAction>
-    </QtTranslation>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Link />
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeaderFile />
+      <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
       <DisableSpecificWarnings>5054</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <PostBuildEvent>
-      <Command>echo #####################################################
-echo #####################################################
-echo ############# FINISHED BUILDING MFBO:PC #############
-echo ### COPYING EXECUTABLE INTO CLIENT RELEASE FOLDER ###
-echo #####################################################
-echo #####################################################
-echo F | xcopy /d /q /y "$(TargetPath)" "$(SolutionDir)Wizard resources\client release\$(TargetFileName)"</Command>
-    </PostBuildEvent>
-    <PreBuildEvent>
-      <Command>echo #####################################################
-echo #####################################################
-echo ####### STARTING BUILDING MFBO:Preset Creator #######
-echo #####################################################
-echo #####################################################</Command>
-    </PreBuildEvent>
     <QtTranslation>
       <BuildAction>lupdate_lrelease</BuildAction>
       <QmOutputDir>$(ProjectDir)</QmOutputDir>
     </QtTranslation>
-    <Link />
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">
-    <Link />
-    <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeaderFile />
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>5054</DisableSpecificWarnings>
-    </ClCompile>
+    <PreBuildEvent>
+      <Command>echo #####################################################
+echo #####################################################
+echo ####### STARTING BUILDING MFBO:Preset Creator #######
+echo #####################################################
+echo #####################################################</Command>
+    </PreBuildEvent>
     <PostBuildEvent>
       <Command>echo #####################################################
 echo #####################################################
@@ -143,43 +111,7 @@ echo #####################################################
 echo #####################################################
 echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client release\$(TargetFileName)"</Command>
     </PostBuildEvent>
-    <PreBuildEvent>
-      <Command>echo #####################################################
-echo #####################################################
-echo ####### STARTING BUILDING MFBO:Preset Creator #######
-echo #####################################################
-echo #####################################################</Command>
-    </PreBuildEvent>
-    <QtTranslation>
-      <BuildAction>lupdate_lrelease</BuildAction>
-      <QmOutputDir>$(ProjectDir)</QmOutputDir>
-    </QtTranslation>
-    <Link />
   </ItemDefinitionGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>5.15.2</QtInstall>
-    <QtModules>core;xml;network;gui;widgets</QtModules>
-    <QtBuildConfig>debug</QtBuildConfig>
-    <QtQMLDebugEnable>false</QtQMLDebugEnable>
-    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>5.15.2</QtInstall>
-    <QtModules>core;xml;network;gui;widgets</QtModules>
-    <QtBuildConfig>release</QtBuildConfig>
-    <QtQMLDebugEnable>false</QtQMLDebugEnable>
-    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" Label="QtSettings">
-    <QtInstall>5.15.2</QtInstall>
-    <QtModules>core;xml;network;gui;widgets</QtModules>
-    <QtBuildConfig>release</QtBuildConfig>
-    <QtQMLDebugEnable>false</QtQMLDebugEnable>
-    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
-  </PropertyGroup>
-  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
-    <Import Project="$(QtMsBuild)\qt.props" />
-  </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -187,14 +119,11 @@ echo #####################################################</Command>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <UsePrecompiledHeader>Use</UsePrecompiledHeader>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <QtMoc />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ClCompile>
@@ -203,30 +132,11 @@ echo #####################################################</Command>
       <DebugInformationFormat>None</DebugInformationFormat>
       <Optimization>MaxSpeed</Optimization>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <UsePrecompiledHeader>Use</UsePrecompiledHeader>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
-    <QtMoc />
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Translator|x64'" Label="Configuration">
-    <ClCompile>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DebugInformationFormat>None</DebugInformationFormat>
-      <Optimization>MaxSpeed</Optimization>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <UsePrecompiledHeader>Use</UsePrecompiledHeader>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-    </Link>
-    <QtMoc />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
@@ -236,23 +146,13 @@ echo #####################################################</Command>
     <ClCompile Include="BCDragWidget.cpp" />
     <ClCompile Include="BCDropWidget.cpp" />
     <ClCompile Include="BCGroupWidget.cpp" />
-    <ClCompile Include="ComponentFactory.cpp" />
-    <ClCompile Include="DataLists.cpp" />
     <ClCompile Include="BodySlideFiltersEditor.cpp" />
     <ClCompile Include="FirstInstallWindow.cpp" />
     <ClCompile Include="GroupBox.cpp" />
-    <ClCompile Include="LangManager.cpp" />
+    <ClCompile Include="PresetCreator.cpp" />
     <ClCompile Include="ReleaseNotesViewer.cpp" />
-    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
-    <ClCompile Include="PresetCreator.cpp">
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Translator|x64'">%(Filename).moc</QtMocFileName>
-    </ClCompile>
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SliderFileBuilder.cpp" />
     <ClCompile Include="TargetMeshesPicker.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
@@ -262,55 +162,54 @@ echo #####################################################</Command>
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="VersionsInformation.cpp" />
     <ClCompile Include="WelcomeScreen.cpp" />
-    <QtMoc Include="TargetMeshesPicker.h" />
-    <QtMoc Include="GroupBox.h" />
-    <QtMoc Include="FirstInstallWindow.h" />
-    <QtMoc Include="ThemeCard.h" />
-    <ClInclude Include="VersionsInformation.h" />
-    <QtMoc Include="WelcomeScreen.h" />
-    <QtMoc Include="TexturesAssistant.h" />
-    <QtMoc Include="TextInputDialog.h" />
-    <QtMoc Include="Update.h" />
-    <QtMoc Include="PresetCreator.h" />
-    <QtMoc Include="DataLists.h" />
-    <QtMoc Include="AssistedConversion.h" />
-    <QtMoc Include="About.h" />
-    <QtMoc Include="BatchConversion.h" />
-    <QtMoc Include="ComponentFactory.h" />
-    <QtMoc Include="BatchConversionPicker.h" />
-    <QtMoc Include="BCDragWidget.h" />
-    <QtMoc Include="BCDropWidget.h" />
-    <QtMoc Include="BCGroupWidget.h" />
-    <ClInclude Include="Enum.h" />
-    <QtMoc Include="BodySlideFiltersEditor.h" />
-    <ClInclude Include="LangManager.h" />
-    <QtMoc Include="ReleaseNotesViewer.h" />
-    <ClInclude Include="resource.h" />
-    <QtMoc Include="Settings.h" />
-    <ClInclude Include="SliderFileBuilder.h" />
-    <ClInclude Include="Struct.h" />
-    <QtMoc Include="RetargetingTool.h" />
-    <QtMoc Include="Utils.h" />
     <QtRcc Include="MFBOPresetCreator.qrc" />
     <QtUic Include="MFBOPresetCreator.ui" />
     <QtMoc Include="MFBOPresetCreator.h" />
+    <ClCompile Include="ComponentFactory.cpp" />
+    <ClCompile Include="DataLists.cpp" />
+    <ClCompile Include="LangManager.cpp" />
     <ClCompile Include="MFBOPresetCreator.cpp" />
     <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="MFBOPresetCreator.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources/software/icon.ico" />
+    <QtTranslation Include="mfbopc_en.ts" />
+    <QtTranslation Include="mfbopc_fr.ts" />
+    <QtTranslation Include="mfbopc_zh_TW.ts" />
   </ItemGroup>
   <ItemGroup>
-    <QtTranslation Include="mfbopc_en.ts">
-      <FileType>Document</FileType>
-    </QtTranslation>
-    <QtTranslation Include="mfbopc_fr.ts">
-      <FileType>Document</FileType>
-    </QtTranslation>
-    <QtTranslation Include="mfbopc_zh_TW.ts" />
+    <Image Include="resources\software\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="BCGroupWidget.h" />
+    <QtMoc Include="BCDropWidget.h" />
+    <QtMoc Include="BCDragWidget.h" />
+    <QtMoc Include="ThemeCard.h" />
+    <QtMoc Include="FirstInstallWindow.h" />
+    <QtMoc Include="WelcomeScreen.h" />
+    <QtMoc Include="Update.h" />
+    <QtMoc Include="TexturesAssistant.h" />
+    <QtMoc Include="TextInputDialog.h" />
+    <QtMoc Include="TargetMeshesPicker.h" />
+    <QtMoc Include="Settings.h" />
+    <QtMoc Include="RetargetingTool.h" />
+    <QtMoc Include="ReleaseNotesViewer.h" />
+    <QtMoc Include="PresetCreator.h" />
+    <QtMoc Include="BodySlideFiltersEditor.h" />
+    <QtMoc Include="BatchConversionPicker.h" />
+    <QtMoc Include="BatchConversion.h" />
+    <QtMoc Include="AssistedConversion.h" />
+    <QtMoc Include="About.h" />
+    <ClInclude Include="Enum.h" />
+    <QtMoc Include="GroupBox.h" />
+    <ClInclude Include="LangManager.h" />
+    <ClInclude Include="SliderFileBuilder.h" />
+    <ClInclude Include="Struct.h" />
+    <ClInclude Include="VersionsInformation.h" />
+    <QtMoc Include="Utils.h" />
+    <QtMoc Include="DataLists.h" />
+    <QtMoc Include="ComponentFactory.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
