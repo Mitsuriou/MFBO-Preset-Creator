@@ -187,7 +187,7 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
   lLayout->addWidget(lTexturesSetRefresher, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder)};
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder)};
   lLayout->addWidget(lOpenAssetsDirectory, 0, 3);
 
   this->populateTexturesSetChooser();

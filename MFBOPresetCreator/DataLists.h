@@ -60,7 +60,7 @@ public:
   static DLLEXP int GetVersionOffset(const BodyVariant& aBodyVariant, const int aRelativeVersion);
   static DLLEXP int GetVersionOffset(const FeetVariant& aFeetVariant);
 
-  static DLLEXP QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType);
+  static DLLEXP QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const MeshPartType& aResourceType);
 
   // Pre 3.5.x.x data to 3.5.x.x+ data format
   static DLLEXP std::pair<int, int> GetSplittedNameVersionFromBodyVersionCompatibility(const int aBodyVersion);

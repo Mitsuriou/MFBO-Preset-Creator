@@ -60,6 +60,7 @@ private:
   void launchBatchConversion();
   void launchPresetsRetargeting();
   void launchTexturesAssistant();
+  void injectDataFromOSPFile();
   // Dialog
   void launchSettingsDialog();
   void launchUpdateDialog();

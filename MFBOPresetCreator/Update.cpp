@@ -518,13 +518,14 @@ void Update::installLatestUpdate()
 
   // Create a file to be able to know that the installer file needs to be removed at next launch
   QFile lLogFile(Utils::GetAppDataPathFolder() + "installer.log");
-  lLogFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text);
+  if (lLogFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+  {
+    QTextStream lTextStream(&lLogFile);
+    lTextStream << this->mSaveFilePath;
+    lTextStream.flush();
 
-  QTextStream lTextStream(&lLogFile);
-  lTextStream << this->mSaveFilePath;
-  lTextStream.flush();
-
-  lLogFile.close();
+    lLogFile.close();
+  }
 
   // Start the update process
   if (QProcess::startDetached(this->mSaveFilePath, QStringList()))

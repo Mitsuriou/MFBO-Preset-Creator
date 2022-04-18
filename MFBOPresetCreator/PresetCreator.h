@@ -16,6 +16,7 @@ public:
   // Function that will to be called from outside this class
   void loadProject(const QString& lFilePath = QString(), const bool aSkipFileChooser = false);
   void saveProject(const bool aIsSaveAsContext);
+  void injectDataFromOSPFile();
   void setHasUserDoneSomething(const bool aHasUserDoneSomething);
   bool hasUserDoneSomething();
   void updateSettings(Struct::Settings aSettings);

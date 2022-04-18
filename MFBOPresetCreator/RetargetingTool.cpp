@@ -565,11 +565,11 @@ void RetargetingTool::launchUpDownGradeProcess()
     auto lMustUseBeastHands{Utils::IsPresetUsingBeastHands(lAbsFilePath)};
 
     // Check the file extension
-    auto lFileName{it2.fileInfo().completeBaseName()};
+    const auto lFileName{it2.fileInfo().completeBaseName()};
 
-    lParsedSliderSets = Utils::GetOutputPathsFromOSPFile(lAbsFilePath);
+    lParsedSliderSets = Utils::ReadOSPFileInformation(lAbsFilePath);
 
-    if (lParsedSliderSets.size() == 0)
+    if (lParsedSliderSets.size() == 0 || lParsedSliderSets.size() > 3)
     {
       Utils::DisplayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lAbsFilePath));
       return;
@@ -617,17 +617,20 @@ void RetargetingTool::launchUpDownGradeProcess()
       unsigned char lOptions{0};
       for (const auto& lSliderSet : lParsedSliderSets)
       {
-        if (lSliderSet.getMeshPart() == "Body")
+        switch (lSliderSet.getMeshPart())
         {
-          lOptions += 100;
-        }
-        else if (lSliderSet.getMeshPart() == "Feet")
-        {
-          lOptions += 10;
-        }
-        else if (lSliderSet.getMeshPart() == "Hands")
-        {
-          lOptions += 1;
+          case MeshPartType::UNKNOWN:
+            break;
+          case MeshPartType::BODY:
+            lOptions += 100;
+            break;
+          case MeshPartType::FEET:
+            lOptions += 10;
+            break;
+          case MeshPartType::HANDS:
+          case MeshPartType::BEAST_HANDS:
+            lOptions += 1;
+            break;
         }
       }
       lOSPUsedSliders.insert(std::make_pair(lFileName, lOptions));
@@ -637,20 +640,23 @@ void RetargetingTool::launchUpDownGradeProcess()
       // Fill the custom variables
       for (const auto& lSliderSet : lParsedSliderSets)
       {
-        if (lSliderSet.getMeshPart() == "Body")
+        switch (lSliderSet.getMeshPart())
         {
-          lOSPFileContent.replace(QString("{%%body_output_path%%}"), lSliderSet.getOutputPath());
-          lOSPFileContent.replace(QString("{%%body_output_file%%}"), lSliderSet.getOutputFile());
-        }
-        else if (lSliderSet.getMeshPart() == "Feet")
-        {
-          lOSPFileContent.replace(QString("{%%feet_output_path%%}"), lSliderSet.getOutputPath());
-          lOSPFileContent.replace(QString("{%%feet_output_file%%}"), lSliderSet.getOutputFile());
-        }
-        else if (lSliderSet.getMeshPart() == "Hands")
-        {
-          lOSPFileContent.replace(QString("{%%hands_output_path%%}"), lSliderSet.getOutputPath());
-          lOSPFileContent.replace(QString("{%%hands_output_file%%}"), lSliderSet.getOutputFile());
+          case MeshPartType::UNKNOWN:
+            break;
+          case MeshPartType::BODY:
+            lOSPFileContent.replace(QString("{%%body_output_path%%}"), lSliderSet.getOutputPath());
+            lOSPFileContent.replace(QString("{%%body_output_file%%}"), lSliderSet.getOutputFile());
+            break;
+          case MeshPartType::FEET:
+            lOSPFileContent.replace(QString("{%%feet_output_path%%}"), lSliderSet.getOutputPath());
+            lOSPFileContent.replace(QString("{%%feet_output_file%%}"), lSliderSet.getOutputFile());
+            break;
+          case MeshPartType::HANDS:
+          case MeshPartType::BEAST_HANDS:
+            lOSPFileContent.replace(QString("{%%hands_output_path%%}"), lSliderSet.getOutputPath());
+            lOSPFileContent.replace(QString("{%%hands_output_file%%}"), lSliderSet.getOutputFile());
+            break;
         }
       }
 
@@ -775,8 +781,8 @@ void RetargetingTool::launchUpDownGradeProcess()
     QCoreApplication::processEvents();
   }
 
-  auto lTitle{tr("Retargeting successful")};
-  auto lMessage{tr("All the files have been correctly retargeted. You can now close this window!")};
+  const auto& lTitle{tr("Retargeting successful")};
+  const auto& lMessage{tr("All the files have been correctly retargeted. You can now close this window!")};
 
   // Open the directory where the file structure has been created
   if (this->mSettings.presetsRetargeting.automaticallyOpenFinalDirectory)

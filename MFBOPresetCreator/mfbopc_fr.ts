@@ -288,6 +288,12 @@
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
+        <location filename="BatchConversion.cpp" line="181"/>
+        <location filename="BatchConversion.cpp" line="200"/>
+        <source>View in explorer</source>
+        <translation>Voir dans l&apos;explorateur</translation>
+    </message>
+    <message>
         <location filename="BatchConversion.cpp" line="298"/>
         <source>Scan tweaks</source>
         <translation>Ajustements du scan</translation>
@@ -888,44 +894,44 @@ Pieds ciblés : -</translation>
 <context>
     <name>DataLists</name>
     <message>
-        <location filename="DataLists.cpp" line="2373"/>
+        <location filename="DataLists.cpp" line="2378"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2374"/>
-        <location filename="DataLists.cpp" line="2380"/>
+        <location filename="DataLists.cpp" line="2379"/>
+        <location filename="DataLists.cpp" line="2385"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2375"/>
-        <location filename="DataLists.cpp" line="2381"/>
+        <location filename="DataLists.cpp" line="2380"/>
+        <location filename="DataLists.cpp" line="2386"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2409"/>
+        <location filename="DataLists.cpp" line="2414"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2410"/>
+        <location filename="DataLists.cpp" line="2415"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2411"/>
+        <location filename="DataLists.cpp" line="2416"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2412"/>
+        <location filename="DataLists.cpp" line="2417"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2413"/>
+        <location filename="DataLists.cpp" line="2418"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
@@ -972,13 +978,13 @@ Pieds ciblés : -</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="701"/>
+        <location filename="MFBOPresetCreator.cpp" line="708"/>
         <source>Go back to the application</source>
         <translation>Revenir sur l&apos;application</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="74"/>
-        <location filename="MFBOPresetCreator.cpp" line="702"/>
+        <location filename="MFBOPresetCreator.cpp" line="709"/>
         <source>Save the project and quit the application</source>
         <translation>Enregistrer le projet et quitter l&apos;application</translation>
     </message>
@@ -1029,31 +1035,36 @@ Pieds ciblés : -</translation>
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="238"/>
+        <source>Load data from existing OSP file</source>
+        <translation>Charger les données depuis un fichier OSP existant</translation>
+    </message>
+    <message>
+        <location filename="MFBOPresetCreator.cpp" line="244"/>
         <source> (stable update available)</source>
         <translation> (mise à jour stable disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="251"/>
+        <location filename="MFBOPresetCreator.cpp" line="257"/>
         <source>Current version&apos;s release notes</source>
         <translation>Notes de publication de la version actuelle</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="299"/>
+        <location filename="MFBOPresetCreator.cpp" line="305"/>
         <source>Donate - buy me a coffee (ko-fi.com)</source>
         <translation>Faire un don - me payer un café (ko-fi.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="309"/>
+        <location filename="MFBOPresetCreator.cpp" line="315"/>
         <source>About Qt</source>
         <translation>À propos de Qt</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="586"/>
+        <location filename="MFBOPresetCreator.cpp" line="593"/>
         <source>BETA update available</source>
         <translation>Mise à jour BETA disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="587"/>
+        <location filename="MFBOPresetCreator.cpp" line="594"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -1064,12 +1075,12 @@ La nouvelle version BETA &quot;%2&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="595"/>
+        <location filename="MFBOPresetCreator.cpp" line="602"/>
         <source>Stable update available</source>
         <translation>Mise à jour stable disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="596"/>
+        <location filename="MFBOPresetCreator.cpp" line="603"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -1080,37 +1091,37 @@ La nouvelle version stable &quot;%2&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="257"/>
+        <location filename="MFBOPresetCreator.cpp" line="263"/>
         <source>Report a bug...</source>
         <translation>Signaler un bug...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="267"/>
+        <location filename="MFBOPresetCreator.cpp" line="273"/>
         <source>GitHub (github.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="271"/>
+        <location filename="MFBOPresetCreator.cpp" line="277"/>
         <source>GitLab (gitlab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="275"/>
+        <location filename="MFBOPresetCreator.cpp" line="281"/>
         <source>Useful links...</source>
         <translation>Liens utiles...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="285"/>
+        <location filename="MFBOPresetCreator.cpp" line="291"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>Guide utilisateur et tutoriels (docs.google.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="291"/>
+        <location filename="MFBOPresetCreator.cpp" line="297"/>
         <source>View the source code (github.com)</source>
         <translation>Voir le code source (github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="295"/>
+        <location filename="MFBOPresetCreator.cpp" line="301"/>
         <source>View the source code (gitlab.com)</source>
         <translation>Voir le code source (gitlab.com)</translation>
     </message>
@@ -1125,65 +1136,65 @@ Voulez-vous la télécharger maintenant ?</translation>
         <translation>Conversion par Lot</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="240"/>
+        <location filename="MFBOPresetCreator.cpp" line="246"/>
         <source> (BETA update available)</source>
         <translation> (mise à jour BETA disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="242"/>
+        <location filename="MFBOPresetCreator.cpp" line="248"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="247"/>
+        <location filename="MFBOPresetCreator.cpp" line="253"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="263"/>
-        <location filename="MFBOPresetCreator.cpp" line="281"/>
+        <location filename="MFBOPresetCreator.cpp" line="269"/>
+        <location filename="MFBOPresetCreator.cpp" line="287"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <translation>Page Nexus Mods (nexusmods.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="305"/>
+        <location filename="MFBOPresetCreator.cpp" line="311"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="571"/>
+        <location filename="MFBOPresetCreator.cpp" line="578"/>
         <source>Error while searching for a new update</source>
         <translation>Erreur lors de la recherche d&apos;une nouvelle mise à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="572"/>
+        <location filename="MFBOPresetCreator.cpp" line="579"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version...
 Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="624"/>
+        <location filename="MFBOPresetCreator.cpp" line="631"/>
         <source>Download and install the update now</source>
         <translation>Télécharger et installer la mise à jour maintenant</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="625"/>
+        <location filename="MFBOPresetCreator.cpp" line="632"/>
         <source>Download later</source>
         <translation>Télécharger plus tard</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="697"/>
+        <location filename="MFBOPresetCreator.cpp" line="704"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer rapidement l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="700"/>
+        <location filename="MFBOPresetCreator.cpp" line="707"/>
         <source>Quickly restart the application</source>
         <translation>Relancer rapidement l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="615"/>
+        <location filename="MFBOPresetCreator.cpp" line="622"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1194,7 +1205,7 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
     </message>
     <message>
         <location filename="MFBOPresetCreator.cpp" line="207"/>
-        <location filename="MFBOPresetCreator.cpp" line="696"/>
+        <location filename="MFBOPresetCreator.cpp" line="703"/>
         <source>Quick restart</source>
         <translation>Relancement rapide</translation>
     </message>
@@ -1210,133 +1221,159 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
 <context>
     <name>PresetCreator</name>
     <message>
-        <location filename="PresetCreator.cpp" line="326"/>
+        <location filename="PresetCreator.cpp" line="434"/>
         <source>Original mod&apos;s body meshes</source>
         <translation>Meshes de corps du mod original</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="337"/>
+        <location filename="PresetCreator.cpp" line="445"/>
         <source>Meshes paths and names:</source>
         <translation>Emplacements et noms des meshes :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="396"/>
+        <location filename="PresetCreator.cpp" line="504"/>
         <source>Use beast hands?</source>
         <translation>Utiliser des main de bête ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="400"/>
+        <location filename="PresetCreator.cpp" line="508"/>
         <source>Check this box if the follower or NPC uses beast hands</source>
         <translation>Cocher cette case si le follower ou le NPC utilise des mains de bête</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="353"/>
-        <location filename="PresetCreator.cpp" line="369"/>
-        <location filename="PresetCreator.cpp" line="385"/>
+        <location filename="PresetCreator.cpp" line="461"/>
+        <location filename="PresetCreator.cpp" line="477"/>
+        <location filename="PresetCreator.cpp" line="493"/>
         <source>_0.nif/_1.nif</source>
         <translation>_0.nif/_1.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="79"/>
+        <location filename="PresetCreator.cpp" line="80"/>
+        <location filename="PresetCreator.cpp" line="155"/>
         <source>Unsaved data</source>
         <translation>Données non sauvegardées</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="80"/>
+        <location filename="PresetCreator.cpp" line="81"/>
         <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%1&quot;?</source>
         <translation>Il semblerait que certains données n&apos;aient pas été sauvegardées. Voulez-vous toujours ouvrir le fichier de projet &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="83"/>
+        <location filename="PresetCreator.cpp" line="84"/>
         <source>Open the project without saving</source>
         <translation>Ouvrir le projet sans sauvegarder</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="84"/>
+        <location filename="PresetCreator.cpp" line="85"/>
         <source>Cancel the file opening</source>
         <translation>Annuler l&apos;ouverture de fichier</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="252"/>
+        <location filename="PresetCreator.cpp" line="156"/>
+        <source>It seems that you have some unsaved data. Do you still want to inject data from the OSP file &quot;%1&quot;?</source>
+        <translation>Il semblerait que certains données n&apos;aient pas été sauvegardées. Voulez-vous toujours injecter des données depuis le fichier OSP &quot;%1&quot; ?</translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="159"/>
+        <source>Inject the data without saving</source>
+        <translation>Injecter des données sans sauvegarder</translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="160"/>
+        <source>Cancel the data injection</source>
+        <translation>Annuler l&apos;injection de données</translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="177"/>
+        <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
+        <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="360"/>
         <source> and the hands</source>
         <translation> et des mains</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="266"/>
+        <location filename="PresetCreator.cpp" line="374"/>
         <source>You did not select any file for %1 meshes. Would you like to clear all these unassigned entries or keep their currently set values?</source>
         <translation>Vous n&apos;avez sélectionné aucun fichier pour les meshes %1. Voulez-vous vider toutes ces entrées non assignées ou garder leurs valeurs actuellement saisies ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="271"/>
+        <location filename="PresetCreator.cpp" line="379"/>
         <source>You did not select any file for %1 mesh. Would you like to clear this unassigned entry or keep its currently set value?</source>
         <translation>Vous n&apos;avez sélectionné aucun fichier pour la mesh %1. Voulez-vous vider cette entrée non assignée ou garder sa valeur actuellement saisie ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="275"/>
+        <location filename="PresetCreator.cpp" line="383"/>
         <source>One mesh data was not assigned</source>
         <translation>Une donnée de mesh n&apos;a pas été assignée</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="279"/>
+        <location filename="PresetCreator.cpp" line="387"/>
         <source>Clear all the unassigned entries</source>
         <translation>Vider toutes les entrées non assignées</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="280"/>
+        <location filename="PresetCreator.cpp" line="388"/>
         <source>Keep the currently set values for the unassigned entries</source>
         <translation>Garder les valeurs actuellement saisies pour les entrées non assignées</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="388"/>
-        <location filename="PresetCreator.cpp" line="489"/>
-        <location filename="PresetCreator.cpp" line="544"/>
-        <location filename="PresetCreator.cpp" line="565"/>
+        <location filename="PresetCreator.cpp" line="496"/>
+        <location filename="PresetCreator.cpp" line="597"/>
+        <location filename="PresetCreator.cpp" line="652"/>
+        <location filename="PresetCreator.cpp" line="673"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="439"/>
+        <location filename="PresetCreator.cpp" line="547"/>
         <source>Check this box if the follower or NPC uses a custom skeleton</source>
         <translation>Cocher cette case si le follower ou le NPC utilise un squelette personnalisé</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="517"/>
+        <location filename="PresetCreator.cpp" line="568"/>
+        <source>View in explorer</source>
+        <translation>Voir dans l&apos;explorateur</translation>
+    </message>
+    <message>
+        <location filename="PresetCreator.cpp" line="625"/>
         <source>BodySlide output</source>
         <translation>Sortie BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="537"/>
+        <location filename="PresetCreator.cpp" line="645"/>
         <source>BodySlide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="557"/>
+        <location filename="PresetCreator.cpp" line="665"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation>Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="572"/>
+        <location filename="PresetCreator.cpp" line="680"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="591"/>
+        <location filename="PresetCreator.cpp" line="699"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1225"/>
+        <location filename="PresetCreator.cpp" line="1332"/>
         <source>Error: no path has been given for any mesh.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour une mesh.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1326"/>
-        <location filename="PresetCreator.cpp" line="1329"/>
+        <location filename="PresetCreator.cpp" line="1433"/>
+        <location filename="PresetCreator.cpp" line="1436"/>
         <source>Open the generated directory</source>
         <translation>Ouvrir le répertoire généré</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1175"/>
+        <location filename="PresetCreator.cpp" line="1282"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1345,59 +1382,59 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1376"/>
+        <location filename="PresetCreator.cpp" line="1483"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
 Pieds ciblés : %2</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1446"/>
+        <location filename="PresetCreator.cpp" line="1553"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="443"/>
+        <location filename="PresetCreator.cpp" line="551"/>
         <source>Skeleton file:</source>
         <translation>Fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="456"/>
+        <location filename="PresetCreator.cpp" line="564"/>
         <source>Refresh</source>
         <translation>Rafraîchir</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="464"/>
+        <location filename="PresetCreator.cpp" line="572"/>
         <source>Skeleton path:</source>
         <translation>Emplacement du squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="474"/>
+        <location filename="PresetCreator.cpp" line="582"/>
         <source>Skeleton file name:</source>
         <translation>Nom du fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="484"/>
+        <location filename="PresetCreator.cpp" line="592"/>
         <source>.nif</source>
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="638"/>
+        <location filename="PresetCreator.cpp" line="746"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1157"/>
+        <location filename="PresetCreator.cpp" line="1264"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1164"/>
+        <location filename="PresetCreator.cpp" line="1271"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1321"/>
+        <location filename="PresetCreator.cpp" line="1428"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
@@ -1414,87 +1451,87 @@ Pieds ciblés : %2</translation>
         <translation type="vanished">Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1239"/>
+        <location filename="PresetCreator.cpp" line="1346"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1253"/>
+        <location filename="PresetCreator.cpp" line="1360"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="556"/>
+        <location filename="PresetCreator.cpp" line="664"/>
         <source>Presets names:</source>
         <translation>Noms des presets :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="430"/>
+        <location filename="PresetCreator.cpp" line="538"/>
         <source>Use a custom skeleton?</source>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1329"/>
+        <location filename="PresetCreator.cpp" line="1436"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="226"/>
+        <location filename="PresetCreator.cpp" line="334"/>
         <source>the body</source>
         <translation>du corps</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="234"/>
+        <location filename="PresetCreator.cpp" line="342"/>
         <source> and the feet</source>
         <translation> et des pieds</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="238"/>
+        <location filename="PresetCreator.cpp" line="346"/>
         <source>, the feet</source>
         <translation>, des pieds</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="242"/>
+        <location filename="PresetCreator.cpp" line="350"/>
         <source>the feet</source>
         <translation>des pieds</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="256"/>
+        <location filename="PresetCreator.cpp" line="364"/>
         <source>the hands</source>
         <translation>des mains</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="419"/>
+        <location filename="PresetCreator.cpp" line="527"/>
         <source>Skeleton</source>
         <translation>Squelette</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="436"/>
+        <location filename="PresetCreator.cpp" line="544"/>
         <source>Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1183"/>
+        <location filename="PresetCreator.cpp" line="1290"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1184"/>
+        <location filename="PresetCreator.cpp" line="1291"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation>Le répertoire &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même générer les fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1187"/>
+        <location filename="PresetCreator.cpp" line="1294"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1188"/>
+        <location filename="PresetCreator.cpp" line="1295"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1320"/>
+        <location filename="PresetCreator.cpp" line="1427"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -1646,7 +1683,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     <message>
         <location filename="RetargetingTool.cpp" line="509"/>
         <location filename="RetargetingTool.cpp" line="556"/>
-        <location filename="RetargetingTool.cpp" line="693"/>
+        <location filename="RetargetingTool.cpp" line="699"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
@@ -1666,14 +1703,14 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Le choix de corps/version ne supporte pas les mains de bêtes. Le reciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="814"/>
+        <location filename="RetargetingTool.cpp" line="820"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
 Pieds ciblés : %2</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="881"/>
+        <location filename="RetargetingTool.cpp" line="887"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -1683,18 +1720,18 @@ Pieds ciblés : %2</translation>
         <translation>Erreur en essayant d&apos;analyser le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="779"/>
+        <location filename="RetargetingTool.cpp" line="785"/>
         <source>All the files have been correctly retargeted. You can now close this window!</source>
         <translation>Tous les fichiers ont été correctement reciblés . Vous pouvez maintenant fermer cette fenêtre !</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="784"/>
-        <location filename="RetargetingTool.cpp" line="787"/>
+        <location filename="RetargetingTool.cpp" line="790"/>
+        <location filename="RetargetingTool.cpp" line="793"/>
         <source>Open the retargeted directory</source>
         <translation>Ouvrir le répertoire reciblé</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="787"/>
+        <location filename="RetargetingTool.cpp" line="793"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1709,27 +1746,27 @@ Pieds ciblés : %2</translation>
         <translation>Analyse et patching des fichiers OSP. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="669"/>
+        <location filename="RetargetingTool.cpp" line="675"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="683"/>
+        <location filename="RetargetingTool.cpp" line="689"/>
         <source>Patching XML files. Please wait...</source>
         <translation>Patching des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="721"/>
+        <location filename="RetargetingTool.cpp" line="727"/>
         <source>Since the associated OSP file has not been modified, the file &quot;%1&quot; has not been modified.</source>
         <translation>Puisque le fichier OSP associé n&apos;est pas été modifié, le fichier &quot;%1&quot; n&apos;a pas été modifié.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="770"/>
+        <location filename="RetargetingTool.cpp" line="776"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="778"/>
+        <location filename="RetargetingTool.cpp" line="784"/>
         <source>Retargeting successful</source>
         <translation>Reciblage réussi</translation>
     </message>
@@ -1898,7 +1935,12 @@ Pieds ciblés : %2</translation>
         <translation>Assist. Tex. : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="847"/>
+        <location filename="Settings.cpp" line="440"/>
+        <source>Last injected OSP file</source>
+        <translation>Dernier fichier OSP injecté</translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="848"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
@@ -1930,7 +1972,7 @@ Pieds ciblés : %2</translation>
         <translation>Conv. par Lot : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="462"/>
+        <location filename="Settings.cpp" line="463"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -2000,37 +2042,37 @@ Pieds ciblés : %2</translation>
         <translation>Assist. Tex. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="440"/>
+        <location filename="Settings.cpp" line="441"/>
         <source>Loaded project</source>
         <translation>Projet chargé</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="441"/>
+        <location filename="Settings.cpp" line="442"/>
         <source>Saved project</source>
         <translation>Projet enregistré</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="456"/>
+        <location filename="Settings.cpp" line="457"/>
         <source>Restore default</source>
         <translation>Restaurer par défaut</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="459"/>
+        <location filename="Settings.cpp" line="460"/>
         <source>Save and close</source>
         <translation>Sauvegarder et fermer</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="766"/>
+        <location filename="Settings.cpp" line="767"/>
         <source>Restart now</source>
         <translation>Redémarrer maintenant</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="767"/>
+        <location filename="Settings.cpp" line="768"/>
         <source>Go back to the application and restart later</source>
         <translation>Revenir sur l&apos;application et redémarrer plus tard</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="762"/>
+        <location filename="Settings.cpp" line="763"/>
         <source>Application settings changed</source>
         <translation>Paramètres de l&apos;application modifiés</translation>
     </message>
@@ -2056,7 +2098,7 @@ Pieds ciblés : %2</translation>
         <translation>Tâche de post-traitement :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="763"/>
+        <location filename="Settings.cpp" line="764"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
@@ -2239,6 +2281,11 @@ Pieds ciblés : %2</translation>
         <translation>Rafraîchir</translation>
     </message>
     <message>
+        <location filename="TexturesAssistant.cpp" line="190"/>
+        <source>View in explorer</source>
+        <translation>Voir dans l&apos;explorateur</translation>
+    </message>
+    <message>
         <location filename="TexturesAssistant.cpp" line="230"/>
         <source>Create the files structure on my computer</source>
         <translation>Créer la structure de fichiers sur mon ordinateur</translation>
@@ -2398,7 +2445,7 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
-        <location filename="Update.cpp" line="536"/>
+        <location filename="Update.cpp" line="537"/>
         <source>The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again.</source>
         <translation>Le processus de mise à jour n&apos;a pas pu être démarré. Veuillez vérifier que votre pare-feu et votre anti-virus ne bloquent pas le fichier de mise à jour, avant d&apos;essayer à nouveau.</translation>
     </message>
@@ -2564,7 +2611,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
     <message>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1005"/>
+        <location filename="Utils.cpp" line="1018"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2621,22 +2668,22 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <message>
         <location filename="Utils.cpp" line="816"/>
         <location filename="Utils.cpp" line="849"/>
-        <location filename="Utils.cpp" line="967"/>
+        <location filename="Utils.cpp" line="980"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1005"/>
+        <location filename="Utils.cpp" line="1018"/>
         <source>Project successfully saved</source>
         <translation>Projet sauvegardé avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1005"/>
+        <location filename="Utils.cpp" line="1018"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>Le fichier de projet a été sauvegardé vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1011"/>
+        <location filename="Utils.cpp" line="1024"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2645,18 +2692,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1733"/>
+        <location filename="Utils.cpp" line="1751"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1817"/>
-        <location filename="Utils.cpp" line="1841"/>
+        <location filename="Utils.cpp" line="1835"/>
+        <location filename="Utils.cpp" line="1859"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1835"/>
+        <location filename="Utils.cpp" line="1853"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

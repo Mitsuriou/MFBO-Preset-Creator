@@ -93,7 +93,9 @@ public:
 
   // XML and OSP file parse
   static QString GetPresetNameFromXMLFile(const QString& aPath);
-  static std::vector<Struct::SliderSet> GetOutputPathsFromOSPFile(const QString& aPath);
+  static std::vector<Struct::SliderSet> ReadOSPFileInformation(const QString& aPath);
+  static bool AlreadyContainsMeshPartType(const std::vector<Struct::SliderSet>& aSliderSetsList, const MeshPartType& aMeshPartType);
+  static std::pair<bool, Struct::SliderSet> GetSliderSetByMeshPartType(const std::vector<Struct::SliderSet>& aSliderSetsList, const MeshPartType& aMeshPartType);
   static bool IsPresetUsingBeastHands(const QString& aPath);
 
   // Preset values

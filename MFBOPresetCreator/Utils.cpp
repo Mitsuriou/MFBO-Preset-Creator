@@ -830,9 +830,9 @@ QString Utils::GetPresetNameFromXMLFile(const QString& aPath)
   return lPresetName.left(lPresetName.lastIndexOf('-') - 1);
 }
 
-std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& aPath)
+std::vector<Struct::SliderSet> Utils::ReadOSPFileInformation(const QString& aPath)
 {
-  std::vector<Struct::SliderSet> lPaths;
+  std::vector<Struct::SliderSet> lSliderSets;
 
   QFile lReadFile(aPath);
   lReadFile.setPermissions(QFile::WriteUser);
@@ -850,105 +850,118 @@ std::vector<Struct::SliderSet> Utils::GetOutputPathsFromOSPFile(const QString& a
     return std::vector<Struct::SliderSet>();
   }
 
-  auto lRoot{lOSPDocument.documentElement()};
-  auto lSliderSet{lRoot.firstChild().toElement()};
+  const auto lRoot{lOSPDocument.documentElement()};
+  auto lNextNodeToParse{lRoot.firstChild().toElement()};
 
-  while (!lSliderSet.isNull())
+  while (!lNextNodeToParse.isNull())
   {
-    if (lSliderSet.tagName() == "SliderSet")
+    if (lNextNodeToParse.tagName().compare("SliderSet", Qt::CaseSensitivity::CaseInsensitive) == 0)
     {
-      Struct::SliderSet lTempSet;
-      lTempSet.setName(lSliderSet.attribute("name", "")); // Name
+      Struct::SliderSet lSliderSetEntry;
+      lSliderSetEntry.setName(lNextNodeToParse.attribute("name", "")); // Name
 
-      // TODO: Improve these checks:
-      if (lTempSet.getName().endsWith(" - CBBE 3BBB Body Amazing", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing NeverNude", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - CBBE 3BBB Amazing Underwear", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP 3BBB", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 3", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP BBP", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP BBP Advanced", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP TBBP", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP TBBP Advanced", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Ver 2 Nevernude", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - CBBE Body SMP (3BBB)", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - [COCO]3Bsmp_BodyV4_A", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Body_A", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - [COCO]body_B_v3", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - [COCO]3Bsmp_BodyV4_B", Qt::CaseInsensitive)
-          || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Body_B", Qt::CaseInsensitive))
+      if (lSliderSetEntry.getName().isEmpty())
       {
-        lTempSet.setMeshPart("Body"); // Body
-      }
-      else if (lTempSet.getName().endsWith(" - Hands", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - Beast Hands", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE Hands", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE Beast Hands", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE Hands Beast", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE 3BBB Hands", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE 3BBB Hands Beast", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Hands Ver 3", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_HandV4_A", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Hands_A", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO]bodyHands_B_v3", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_HandV4_B", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Hands_B", Qt::CaseInsensitive))
-      {
-        lTempSet.setMeshPart("Hands"); // Hands
-      }
-      else if (lTempSet.getName().endsWith(" - Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - BHUNP 3BBB Advanced Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE 3BBB Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_FeetV4_A", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Feet_A", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO]bodyFeets_B_v3", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO]3Bsmp_FeetV4_B", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [COCO 3BBB V6]Feet_B", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - Feet (MSF - normal)", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE MSF Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - BHUNP Feet MSF", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - Feet (MSF - HH)", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - CBBE MSF Feet High Heel", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - BHUNP Feet High Heel MSF", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - HGFeet UUNP", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [Khrysamere] HG Feet (BHUNP)", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [Khrysamere] K Feet", Qt::CaseInsensitive)
-               || lTempSet.getName().endsWith(" - [Khrysamere] K Feet v5.0", Qt::CaseInsensitive))
-      {
-        lTempSet.setMeshPart("Feet"); // Feet
+        lNextNodeToParse = lNextNodeToParse.nextSiblingElement();
+        continue;
       }
 
-      auto lChild{lSliderSet.firstChild().toElement()};
-      while (!lChild.isNull())
+      const auto lSplittedName{lSliderSetEntry.getName().split('-')};
+      if (lSplittedName.isEmpty())
       {
-        if (lChild.tagName() == "OutputPath")
+        lNextNodeToParse = lNextNodeToParse.nextSiblingElement();
+        continue;
+      }
+
+      const QString& lNamePartToAnalyze{lSplittedName.size() == 1 ? lSplittedName.first()
+                                                                  : (lSplittedName.size() == 2 ? lSplittedName.at(1)
+                                                                                               : lSplittedName.last())};
+
+      // Try to guess the part type from the name
+      // TODO: It should be possible to make this analyze way more precise, by using the whole content of the lNextNodeToParse,
+      //       and by giving weights from each parsed data.
+      if (lNamePartToAnalyze.contains("feet", Qt::CaseSensitivity::CaseInsensitive)
+          && !Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::FEET))
+      {
+        lSliderSetEntry.setMeshPart(MeshPartType::FEET);
+      }
+      else if ((lNamePartToAnalyze.contains("hand", Qt::CaseSensitivity::CaseInsensitive)
+                && lNamePartToAnalyze.contains("beast", Qt::CaseSensitivity::CaseInsensitive))
+               && (!Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::HANDS)
+                   || !Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::BEAST_HANDS)))
+      {
+        lSliderSetEntry.setMeshPart(MeshPartType::BEAST_HANDS);
+      }
+      else if (lNamePartToAnalyze.contains("hand", Qt::CaseSensitivity::CaseInsensitive)
+               && (!Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::HANDS)
+                   || !Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::BEAST_HANDS)))
+      {
+        lSliderSetEntry.setMeshPart(MeshPartType::HANDS);
+      }
+      else if (!Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::BODY))
+      {
+        lSliderSetEntry.setMeshPart(MeshPartType::BODY);
+      }
+      else
+      {
+        lNextNodeToParse = lNextNodeToParse.nextSiblingElement();
+        continue;
+      }
+
+      auto lNextChildNodeToParse{lNextNodeToParse.firstChild().toElement()};
+      while (!lNextChildNodeToParse.isNull())
+      {
+        if (lNextChildNodeToParse.tagName() == "OutputPath")
         {
-          lTempSet.setOutputPath(lChild.firstChild().toText().data()); // OutputPath
+          lSliderSetEntry.setOutputPath(lNextChildNodeToParse.firstChild().toText().data()); // OutputPath
         }
-        else if (lChild.tagName() == "OutputFile")
+        else if (lNextChildNodeToParse.tagName() == "OutputFile")
         {
-          lTempSet.setOutputFile(lChild.firstChild().toText().data()); // OutputFile
+          lSliderSetEntry.setOutputFile(lNextChildNodeToParse.firstChild().toText().data()); // OutputFile
         }
 
-        if (!lTempSet.getOutputPath().isEmpty() && !lTempSet.getOutputFile().isEmpty())
+        if (!lSliderSetEntry.getOutputPath().isEmpty() && !lSliderSetEntry.getOutputFile().isEmpty())
         {
           break;
         }
 
-        lChild = lChild.nextSiblingElement();
+        lNextChildNodeToParse = lNextChildNodeToParse.nextSiblingElement();
       }
 
-      lPaths.push_back(lTempSet);
+      if (lSliderSetEntry.isValid())
+        lSliderSets.push_back(lSliderSetEntry);
     }
 
-    lSliderSet = lSliderSet.nextSiblingElement();
+    lNextNodeToParse = lNextNodeToParse.nextSiblingElement();
   }
 
-  return lPaths;
+  return lSliderSets;
+}
+
+bool Utils::AlreadyContainsMeshPartType(const std::vector<Struct::SliderSet>& aSliderSetsList, const MeshPartType& aMeshPartType)
+{
+  for (const auto& lSliderSet : aSliderSetsList)
+  {
+    if (lSliderSet.getMeshPart() == aMeshPartType)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+std::pair<bool, Struct::SliderSet> Utils::GetSliderSetByMeshPartType(const std::vector<Struct::SliderSet>& aSliderSetsList, const MeshPartType& aMeshPartType)
+{
+  for (const auto& lSliderSet : aSliderSetsList)
+  {
+    if (lSliderSet.getMeshPart() == aMeshPartType)
+    {
+      return std::make_pair(true, lSliderSet);
+    }
+  }
+
+  return std::make_pair(false, Struct::SliderSet());
 }
 
 bool Utils::IsPresetUsingBeastHands(const QString& aPath)
@@ -970,10 +983,10 @@ bool Utils::IsPresetUsingBeastHands(const QString& aPath)
 
   if (lFileContent.contains("beast hands", Qt::CaseInsensitive) || lFileContent.contains("hands beast", Qt::CaseInsensitive))
   {
-    return true;
+    return true; // Preset uses beast hands
   }
 
-  return false;
+  return false; // Preset doesn't use beast hands
 }
 
 QString Utils::GetBodySliderValue(const BodyNameVersion& aBodyNameVersion)
@@ -1018,15 +1031,19 @@ QJsonObject Utils::LoadFromJsonFile(const QString& aFilePath)
 {
   // Open and read the file
   QFile lFile(aFilePath);
-  lFile.open(QIODevice::ReadOnly | QIODevice::Text);
-  const QString lReadData{lFile.readAll()};
+  if (lFile.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    // Convert the text content into a QJsonDocument
+    const auto lJsonDocument(QJsonDocument::fromJson(lFile.readAll()));
+
+    lFile.close();
+
+    // Return the QJsonObject containing the read data
+    return lJsonDocument.object();
+  }
+
   lFile.close();
-
-  // Convert the text content into a QJsonDocument
-  auto lJsonDocument(QJsonDocument::fromJson(lReadData.toUtf8()));
-
-  // Return the QJsonObject containing the read data
-  return lJsonDocument.object();
+  return QJsonObject();
 }
 
 QString Utils::SettingsFullFilePath()
@@ -1565,6 +1582,7 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
     {"batchConversionInput", ""},
     {"batchConversionOutput", ""},
     {"general", ""},
+    {"lastInjectedOSPFile", ""},
     {"lastLoadedProject", ""},
     {"lastSavedProject", ""},
     {"mainWindowOutput", ""},

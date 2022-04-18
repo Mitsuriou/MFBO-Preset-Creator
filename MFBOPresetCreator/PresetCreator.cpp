@@ -73,6 +73,7 @@ void PresetCreator::loadProject(const QString& lFilePath, const bool aSkipFileCh
 
   Utils::UpdatePathAtKey(this->mLastPaths, "lastLoadedProject", lFileToLoad);
 
+  // Avoid losing user data
   if (this->hasUserDoneSomething())
   {
     if (Utils::DisplayQuestionMessage(this,
@@ -132,6 +133,114 @@ void PresetCreator::saveProject(const bool aIsSaveAsContext)
 
   Utils::SaveAsJsonFile(this->saveValuesToJsonObject(), lFilePath, this, lIconFolder);
   this->setHasUserDoneSomething(false);
+}
+
+void PresetCreator::injectDataFromOSPFile()
+{
+  // Open a file chooser dialog
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "lastInjectedOSPFile", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  QString lFileToLoad = QFileDialog::getOpenFileName(this, "", lContextPath, "BodySlide OSP file (*.osp)");
+
+  if (lFileToLoad.compare("") == 0)
+  {
+    return;
+  }
+
+  Utils::UpdatePathAtKey(this->mLastPaths, "lastInjectedOSPFile", lFileToLoad);
+
+  // Avoid losing user data
+  if (this->hasUserDoneSomething())
+  {
+    if (Utils::DisplayQuestionMessage(this,
+                                      tr("Unsaved data"),
+                                      tr("It seems that you have some unsaved data. Do you still want to inject data from the OSP file \"%1\"?").arg(lFileToLoad),
+                                      Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme),
+                                      "help-circle",
+                                      tr("Inject the data without saving"),
+                                      tr("Cancel the data injection"),
+                                      "",
+                                      this->mSettings.display.dangerColor,
+                                      this->mSettings.display.successColor,
+                                      "",
+                                      false)
+        != ButtonClicked::YES)
+    {
+      return;
+    }
+  }
+
+  // Parse the OSP file
+  const auto lParsedSliderSets{Utils::ReadOSPFileInformation(lFileToLoad)};
+
+  if (lParsedSliderSets.size() == 0 || lParsedSliderSets.size() > 3)
+  {
+    Utils::DisplayWarningMessage(tr("Error while trying to parse the OSP file \"%1\". Aborting process.").arg(lFileToLoad));
+    return;
+  }
+
+  // Create a "fake" JSON object to load its data
+  QJsonObject lPayload;
+
+  const auto lBodySliderSet{Utils::GetSliderSetByMeshPartType(lParsedSliderSets, MeshPartType::BODY)};
+  lPayload["meshes_path_input_femalebody"] = lBodySliderSet.second.getOutputPath();
+  lPayload["body_mesh_name_input"] = lBodySliderSet.second.getOutputFile();
+
+  const auto lFeetSliderSet{Utils::GetSliderSetByMeshPartType(lParsedSliderSets, MeshPartType::FEET)};
+  lPayload["meshes_path_input_femalefeet"] = lFeetSliderSet.second.getOutputPath();
+  lPayload["feet_mesh_name_input"] = lFeetSliderSet.second.getOutputFile();
+
+  const auto lBeastHandsSliderSet{Utils::GetSliderSetByMeshPartType(lParsedSliderSets, MeshPartType::BEAST_HANDS)};
+  if (lBeastHandsSliderSet.first)
+  {
+    lPayload["meshes_path_input_femalehands"] = lBeastHandsSliderSet.second.getOutputPath();
+    lPayload["hands_mesh_name_input"] = lBeastHandsSliderSet.second.getOutputFile();
+  }
+  else
+  {
+    const auto lHandsSliderSet{Utils::GetSliderSetByMeshPartType(lParsedSliderSets, MeshPartType::HANDS)};
+    lPayload["meshes_path_input_femalehands"] = lHandsSliderSet.second.getOutputPath();
+    lPayload["hands_mesh_name_input"] = lHandsSliderSet.second.getOutputFile();
+  }
+
+  lPayload["use_beast_hands"] = lBeastHandsSliderSet.first;
+
+  lPayload["skeleton_path_directory"] = "";
+  lPayload["skeleton_name"] = "";
+  lPayload["use_custom_skeleton"] = false;
+
+  lPayload["body_mesh"] = static_cast<int>(this->mSettings.presetCreator.defaultBodyFeet.bodyMesh);
+  lPayload["feet_mesh"] = static_cast<int>(this->mSettings.presetCreator.defaultBodyFeet.feetMesh);
+
+  const auto lFileName{QFileInfo(lFileToLoad).completeBaseName()};
+  lPayload["names_osp_xml_input"] = lFileName;
+
+  // Try to guess the name of the slider set
+  QString lSlidersetName;
+  for (int i = 0; i < lParsedSliderSets.size(); i++)
+  {
+    if (!lSlidersetName.isEmpty())
+    {
+      break;
+    }
+
+    auto lSplittedSlidersetName{lParsedSliderSets.at(i).getName().split('-')};
+    if (lSplittedSlidersetName.size() <= 1)
+    {
+      lSlidersetName = lSplittedSlidersetName.first();
+    }
+    else
+    {
+      lSplittedSlidersetName.removeLast();
+      lSlidersetName = lSplittedSlidersetName.join('-');
+    }
+  }
+
+  lPayload["names_bodyslide_input"] = (lSlidersetName.isEmpty() ? lFileName : lSlidersetName.trimmed());
+
+  lPayload["output_path_directory"] = "";
+  lPayload["output_path_subdirectory"] = "";
+
+  this->loadValuesFromJsonObject(lPayload);
 }
 
 void PresetCreator::setHasUserDoneSomething(const bool aHasUserDoneSomething)
@@ -457,7 +566,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder, "open_skeletons_assets_directory")};
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder, "open_skeletons_assets_directory")};
   lSkeletonGridLayout->addWidget(lOpenAssetsDirectory, 1, 3);
 
   // Skeleton path
@@ -654,7 +763,6 @@ void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
   this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))->setText(lFile["meshes_path_input_femalehands"].toString());
   this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))->setText(lFile["hands_mesh_name_input"].toString());
 
-  this->findChild<QCheckBox*>(QString("use_beast_hands"))->setChecked(true); // Force to be true before putting the wanted value
   this->findChild<QCheckBox*>(QString("use_beast_hands"))->setChecked(lFile["use_beast_hands"].toBool());
 
   // Skeleton

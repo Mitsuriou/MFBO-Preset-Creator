@@ -178,7 +178,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lLayout->addWidget(lSkeletonRefresherHuman, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder)};
+  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder)};
   lLayout->addWidget(lOpenAssetsDirectoryHuman, 0, 3);
 
   // Beast skeleton file
@@ -197,7 +197,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   this->populateSkeletonChoosers();
 
   // Open assets directory
-  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, "View in explorer", "", "folder-search", lIconFolder)};
+  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder)};
   lLayout->addWidget(lOpenAssetsDirectoryBeast, 1, 3);
 
   // Event binding

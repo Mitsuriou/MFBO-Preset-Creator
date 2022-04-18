@@ -71,6 +71,7 @@
         <file alias="done">resources/software/icons/black/done.png</file>
         <file alias="coffee">resources/software/icons/black/coffee.png</file>
         <file alias="qt-logo">resources/software/icons/black/qt-logo.png</file>
+        <file alias="upload-file">resources/software/icons/black/upload-file.png</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">resources/software/icons/white/alert-circle.png</file>
@@ -137,6 +138,7 @@
         <file alias="done">resources/software/icons/white/done.png</file>
         <file alias="coffee">resources/software/icons/white/coffee.png</file>
         <file alias="qt-logo">resources/software/icons/white/qt-logo.png</file>
+        <file alias="upload-file">resources/software/icons/white/upload-file.png</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

@@ -341,8 +341,9 @@ enum class ButtonClicked
   OTHER
 };
 
-enum class BodyPartType
+enum class MeshPartType
 {
+  UNKNOWN,
   BODY,
   FEET,
   HANDS,

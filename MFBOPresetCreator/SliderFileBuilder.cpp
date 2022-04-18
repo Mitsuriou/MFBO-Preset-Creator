@@ -13,16 +13,16 @@ QString SliderFileBuilder::BuildOSPFileContent(const QString& aLineName, const B
   {
     lBuiltContent.append("\n").append(
       Utils::ReadQRCFileContent(
-        DataLists::GetQRCPathForResource(aBody, aFeet, BodyPartType::BODY))
+        DataLists::GetQRCPathForResource(aBody, aFeet, MeshPartType::BODY))
         .arg(aLineName));
-  }  
+  }
 
   // Feet
   if (aTargetBlocks % 100 / 10 == 1)
   {
     lBuiltContent.append("\n").append(
       Utils::ReadQRCFileContent(
-        DataLists::GetQRCPathForResource(aBody, aFeet, BodyPartType::FEET))
+        DataLists::GetQRCPathForResource(aBody, aFeet, MeshPartType::FEET))
         .arg(aLineName));
   }
 
@@ -31,7 +31,7 @@ QString SliderFileBuilder::BuildOSPFileContent(const QString& aLineName, const B
   {
     lBuiltContent.append("\n").append(
       Utils::ReadQRCFileContent(
-        DataLists::GetQRCPathForResource(aBody, aFeet, aMustUseBeastHands ? BodyPartType::BEAST_HANDS : BodyPartType::HANDS))
+        DataLists::GetQRCPathForResource(aBody, aFeet, aMustUseBeastHands ? MeshPartType::BEAST_HANDS : MeshPartType::HANDS))
         .arg(aLineName));
   }
 

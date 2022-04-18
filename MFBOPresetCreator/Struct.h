@@ -14,10 +14,10 @@ namespace Struct
   public:
     explicit SliderSet() {}
 
-    explicit SliderSet(const QString& aName, const QString& aMeshPart, const QString& aOutputPath, const QString& aOutputFile)
+    explicit SliderSet(const QString& aName, const MeshPartType& aMeshPartType, const QString& aOutputPath, const QString& aOutputFile)
     {
       this->name = aName;
-      this->meshPart = aMeshPart;
+      this->meshPartType = aMeshPartType;
       this->outputPath = aOutputPath;
       this->outputFile = aOutputFile;
     }
@@ -27,19 +27,19 @@ namespace Struct
       this->name = aName;
     }
 
-    QString getName() const
+    const QString& getName() const
     {
       return this->name;
     }
 
-    void setMeshPart(const QString& aMeshPart)
+    void setMeshPart(const MeshPartType& aMeshPartType)
     {
-      this->meshPart = aMeshPart;
+      this->meshPartType = aMeshPartType;
     }
 
-    QString getMeshPart() const
+    const MeshPartType& getMeshPart() const
     {
-      return this->meshPart;
+      return this->meshPartType;
     }
 
     void setOutputPath(const QString& aOutputPath)
@@ -47,7 +47,7 @@ namespace Struct
       this->outputPath = aOutputPath;
     }
 
-    QString getOutputPath() const
+    const QString& getOutputPath() const
     {
       return this->outputPath;
     }
@@ -57,14 +57,19 @@ namespace Struct
       this->outputFile = aOutputFile;
     }
 
-    QString getOutputFile() const
+    const QString& getOutputFile() const
     {
       return this->outputFile;
     }
 
+    bool isValid()
+    {
+      return !this->name.isEmpty() && !this->getOutputPath().isEmpty() && !this->getOutputFile().isEmpty() && getMeshPart() != MeshPartType::UNKNOWN;
+    }
+
   private:
     QString name{""};
-    QString meshPart{""};
+    MeshPartType meshPartType{MeshPartType::UNKNOWN};
     QString outputPath{""};
     QString outputFile{""};
   };

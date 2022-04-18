@@ -1804,7 +1804,7 @@ int DataLists::GetVersionOffset(const FeetVariant& aFeetVariant)
   return 0;
 }
 
-QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const BodyPartType& aResourceType)
+QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const MeshPartType& aResourceType)
 {
   QString lResourceType;
   QString lResourceName;
@@ -1812,21 +1812,26 @@ QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion
 
   switch (aResourceType)
   {
-    case BodyPartType::BODY:
+    case MeshPartType::UNKNOWN:
+    {
+      // Do not do anything
+      break;
+    }
+    case MeshPartType::BODY:
     {
       lResourceType = "body";
       lResourceName = DataLists::GetQRCResourceName(DataLists::GetVariant(aBodyNameVersion));
       lResourceVersion = DataLists::GetVersionString(aBodyNameVersion);
       break;
     }
-    case BodyPartType::FEET:
+    case MeshPartType::FEET:
     {
       lResourceType = "feet";
       lResourceName = DataLists::GetQRCResourceName(DataLists::GetVariant(aBodyNameVersion), aFeetNameVersion);
       lResourceVersion = DataLists::GetVersionString(aBodyNameVersion, aFeetNameVersion);
       break;
     }
-    case BodyPartType::HANDS:
+    case MeshPartType::HANDS:
     {
       lResourceType = "hands";
       lResourceVersion = DataLists::GetVersionString(aBodyNameVersion);
@@ -1887,7 +1892,7 @@ QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion
 
       break;
     }
-    case BodyPartType::BEAST_HANDS:
+    case MeshPartType::BEAST_HANDS:
     {
       // For the beast hands, use the default CBBE v.1.6.1 beast hands
       if (Utils::IsCBBEBasedBody(aBodyNameVersion))

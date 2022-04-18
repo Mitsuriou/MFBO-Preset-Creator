@@ -232,6 +232,12 @@ void MFBOPresetCreator::setupMenuBar()
   auto lOpenRetaTools{Utils::BuildQAction(this, tr("BodySlide Presets' Retargeting"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_H), "arrow-up", lIconFolder)};
   lTools->addAction(lOpenRetaTools);
 
+  lTools->addSeparator();
+
+  // Action: Inject data from OSP file
+  auto lInjectDataFromOSPFile{Utils::BuildQAction(this, tr("Load data from existing OSP file"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_U), "upload-file", lIconFolder)};
+  lTools->addAction(lInjectDataFromOSPFile);
+
   // Menu: Help
   QString lUpdateAvailableText;
   if (this->mNewStableVersionAvailable)
@@ -321,6 +327,7 @@ void MFBOPresetCreator::setupMenuBar()
   this->connect(lOpenTextAssist, &QAction::triggered, this, &MFBOPresetCreator::launchTexturesAssistant);
   this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
   this->connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
+  this->connect(lInjectDataFromOSPFile, &QAction::triggered, this, &MFBOPresetCreator::injectDataFromOSPFile);
   this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
   this->connect(lOpenCurrentVersionReleaseNotes, &QAction::triggered, this, &MFBOPresetCreator::launchCurrentVersionReleaseNotes);
   this->connect(lReportBugNexusMods, &QAction::triggered, this, &MFBOPresetCreator::reportBugNexusMods);
@@ -759,6 +766,11 @@ void MFBOPresetCreator::launchPresetsRetargeting()
 void MFBOPresetCreator::launchTexturesAssistant()
 {
   new TexturesAssistant(this, this->mSettings, &this->mLastPaths);
+}
+
+void MFBOPresetCreator::injectDataFromOSPFile()
+{
+  qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))->injectDataFromOSPFile();
 }
 
 void MFBOPresetCreator::launchSettingsDialog()
