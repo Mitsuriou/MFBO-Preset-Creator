@@ -1,6 +1,7 @@
 #include "AssistedConversion.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "FileIDPicker.h"
 #include "Utils.h"
 #include <QAbstractItemView>
 #include <QApplication>
@@ -87,7 +88,7 @@ void AssistedConversion::setWindowProperties()
 
 void AssistedConversion::initializeGUI()
 {
-  // Main window layout
+  // Main layout
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(3, 1); // Make the hint zone as high as possible
   lMainLayout->setAlignment(Qt::AlignTop);
@@ -431,7 +432,7 @@ void AssistedConversion::launchSearchFromLocalFolder()
   this->displayObtainedData(lFoundNifFiles);
 }
 
-std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
+mapSpQS AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
 {
   // Progress bar
   auto lProgressBar{new QProgressBar(this->parentWidget())};
@@ -450,7 +451,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   QCoreApplication::processEvents();
 
   // The map is storing <path+fileName, <path, fileName>>
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> lScannedValues;
+  mapSpQS lScannedValues;
 
   QString lRelativeDirPath;
   QString lFileName;
@@ -582,7 +583,8 @@ std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesList
       lList.push_back(Struct::NexusModsFileInformation(lFile["file_id"].toInt(),
                                                        lFile["name"].toString(),
                                                        lFile["uploaded_timestamp"].toInt(),
-                                                       lFile["version"].toString()));
+                                                       lFile["version"].toString(),
+                                                       lFile["content_preview_link"].toString()));
     }
   }
   else
@@ -599,14 +601,18 @@ void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusMods
   if (aFilesInformation.empty())
     return;
 
-  // TODO: Create the new UI
-  // TODO: Display the brand new UI
-
-  this->requestModFileContent(""); // TODO: conect this function to a callback of the new UI
+  auto lFilePicker{new FileIDPicker(this, this->mSettings, aFilesInformation)};
+  connect(lFilePicker, &FileIDPicker::fileContentPreviewURLChosen, this, &AssistedConversion::requestModFileContent);
 }
 
 void AssistedConversion::requestModFileContent(const QString& aContentPreviewLink)
 {
+  if (aContentPreviewLink.isEmpty())
+  {
+    // TODO
+    return;
+  }
+
   QNetworkRequest lRequest{QUrl(aContentPreviewLink)};
   lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
   lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
@@ -616,11 +622,35 @@ void AssistedConversion::requestModFileContent(const QString& aContentPreviewLin
 
 void AssistedConversion::requestModFileContentFinished()
 {
-  // TODO: parse the data to have the type "std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>"
-  this->displayObtainedData(std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>());
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
+
+  mapSpQS lParsedFilesInformation;
+  if (lReply->error() == QNetworkReply::NoError)
+  {
+    lParsedFilesInformation = this->parseFileContent(true, lReply->readAll());
+  }
+  else
+  {
+    lParsedFilesInformation = this->parseFileContent(false, "");
+  }
+
+  lReply->deleteLater();
+
+  this->displayObtainedData(mapSpQS());
 }
 
-void AssistedConversion::displayObtainedData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aFoundNifFiles)
+mapSpQS AssistedConversion::parseFileContent(const bool aSucceeded, const QByteArray& aResult)
+{
+  if (!aSucceeded)
+  {
+    Utils::DisplayErrorMessage(tr("An error has occurred... Make sure your internet connection is operational and try again."));
+    return mapSpQS();
+  }
+
+  // TODO: parse
+}
+
+void AssistedConversion::displayObtainedData(const mapSpQS& aFoundNifFiles)
 {
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};

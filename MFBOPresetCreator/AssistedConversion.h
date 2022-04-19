@@ -5,6 +5,8 @@
 #include <QNetworkAccessManager>
 #include <QTabWidget>
 
+using mapSpQS = std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>;
+
 class AssistedConversion final : public QDialog
 {
   Q_OBJECT
@@ -48,7 +50,7 @@ private:
   void launchSearchProcess();
 
   void launchSearchFromLocalFolder();
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
+  mapSpQS scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
 
   void launchSearchNexusModsURL();
 
@@ -58,8 +60,9 @@ private:
   void displayFileIDPicker(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation);
   void requestModFileContent(const QString& aContentPreviewLink);
   void requestModFileContentFinished();
+  mapSpQS parseFileContent(const bool aSucceeded, const QByteArray& aResult);
 
-  void displayObtainedData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aFoundNifFiles);
+  void displayObtainedData(const mapSpQS& aFoundNifFiles);
 
   // Choose and accept values
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex);
