@@ -34,7 +34,7 @@ private:
   // Check for updates
   void checkForUpdate();
   void updateCheckFinished();
-  void displayUpdateMessage(const QString& aResult);
+  void displayUpdateMessage(const bool aSucceeded, const QString& aResult);
 
   explicit WelcomeScreen(const WelcomeScreen&) = delete;
   WelcomeScreen& operator=(const WelcomeScreen&) = delete;

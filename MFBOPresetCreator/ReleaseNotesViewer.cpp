@@ -84,23 +84,23 @@ void ReleaseNotesViewer::updateCheckFinished()
 
   if (lReply->error() == QNetworkReply::NoError)
   {
-    this->displayUpdateMessage(QString::fromUtf8(lReply->readAll()));
+    this->displayUpdateMessage(true, QString::fromUtf8(lReply->readAll()));
   }
   else
   {
-    this->displayUpdateMessage("fetch_error");
+    this->displayUpdateMessage(false, "");
   }
 
   lReply->deleteLater();
 }
 
-void ReleaseNotesViewer::displayUpdateMessage(const QString& aResult)
+void ReleaseNotesViewer::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 {
   auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
   auto lViewer{this->findChild<QTextBrowser*>(QString("viewer"))};
 
   // Display error messages to the user
-  if (aResult == "fetch_error")
+  if (!aSucceeded)
   {
     lFetchStatus->setText(tr("An error has occurred while searching for a new version.\nPlease make sure your internet connection is working correctly and try again."));
     return;

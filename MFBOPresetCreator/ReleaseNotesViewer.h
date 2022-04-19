@@ -19,7 +19,7 @@ private:
   // Check for updates
   void checkForUpdate();
   void updateCheckFinished();
-  void displayUpdateMessage(const QString& aResult);
+  void displayUpdateMessage(const bool aSucceeded, const QString& aResult);
   // Callback functions
   void viewInDefaultBrowser();
 

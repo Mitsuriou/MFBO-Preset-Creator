@@ -2,6 +2,7 @@
 #include "Struct.h"
 #include <QDialog>
 #include <QGridLayout>
+#include <QNetworkAccessManager>
 #include <QTabWidget>
 
 class AssistedConversion final : public QDialog
@@ -18,6 +19,7 @@ protected:
 private:
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
+  QNetworkAccessManager mManager;
   bool mHasUserDoneSomething;
   std::vector<int> mBoxSelectedIndexes;
   QString mScannedDirName;
@@ -39,16 +41,25 @@ private:
   void updateSaveAPIKeyButtonState(const bool aMustBeDisabled);
 
   // Scan
+  void updateLaunchSearchButtonState(const QString&);
   void updateLaunchSearchButtonState(int aCurrentTabIndex);
 
   bool isFileNameRecognized(const QString& aFileName);
   void launchSearchProcess();
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> launchSearchFromTabContext();
 
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> launchSearchFromLocalFolder();
+  void launchSearchFromLocalFolder();
   std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
 
-  std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> launchSearchNexusModsURL();
+  void launchSearchNexusModsURL();
+
+  void requestModInformation(const int aModID);
+  void requestModInformationFinished();
+  std::vector<Struct::NexusModsFileInformation> parseFilesListFromModInformation(const bool aSucceeded, const QByteArray& aResult);
+  void displayFileIDPicker(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation);
+  void requestModFileContent(const QString& aContentPreviewLink);
+  void requestModFileContentFinished();
+
+  void displayObtainedData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aFoundNifFiles);
 
   // Choose and accept values
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex);

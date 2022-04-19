@@ -29,6 +29,7 @@ private:
   bool mNewBetaVersionAvailable;
   QNetworkAccessManager mManager;
 
+  // GUI
   void initializeGUI();
   void setupMenuBar();
   void showWindow();
@@ -46,27 +47,34 @@ private:
 
   // Check for updates
   void checkForUpdate();
-  void displayUpdateMessage(const QString& aResult);
+  void updateCheckFinished();
+  void displayUpdateMessage(const bool aSucceeded, const QString& aResult);
 
-  //#pragma region PRIVATE_SLOTS
   // Base functionalities
   void loadProject();
   void saveProject(const bool aIsQuittingContext = false);
   void quickRelaunch();
+
   // Assisted Conversion
   void launchAssistedConversion();
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
-  // Other tools
+
+  // Tools
   void launchBatchConversion();
   void launchPresetsRetargeting();
   void launchTexturesAssistant();
   void injectDataFromOSPFile();
-  // Dialog
+
+  // Dialogs
   void launchSettingsDialog();
   void launchUpdateDialog();
   void launchCurrentVersionReleaseNotes();
+  void launchAboutDialog();
+  void launchAboutQtDialog();
+
   // Settings callback
   void refreshUI(Struct::Settings aSettings, bool aMustUpdateSettings);
+
   // URL links
   void reportBugNexusMods();
   void reportBugGitHub();
@@ -76,13 +84,6 @@ private:
   void openGitLabSourceCodePage();
   void openGoogleDriveGuide();
   void openKoFiPage();
-  // Dialog
-  void launchAboutDialog();
-  void launchAboutQtDialog();
-
-  // Check for updates
-  void updateCheckFinished();
-  //#pragma endregion PRIVATE_SLOTS
 
   explicit MFBOPresetCreator(const MFBOPresetCreator&) = delete;
   MFBOPresetCreator& operator=(const MFBOPresetCreator&) = delete;

@@ -9,7 +9,10 @@
 #include <QDirIterator>
 #include <QDomDocument>
 #include <QFileDialog>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QListView>
+#include <QNetworkReply>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QScrollArea>
@@ -115,7 +118,7 @@ void AssistedConversion::initializeGUI()
   this->displayHintZone();
 
   // Event binding
-  this->connect(lTabWidget, &QTabWidget::currentChanged, this, &AssistedConversion::updateLaunchSearchButtonState);
+  this->connect(lTabWidget, &QTabWidget::currentChanged, this, QOverload<int>::of(&AssistedConversion::updateLaunchSearchButtonState));
   this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
 }
 
@@ -198,6 +201,8 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lSaveAPIKey, 1, 2, Qt::AlignTop);
 
   // Event binding
+  this->connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
+  this->connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
   this->connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateSaveAPIKeyButtonState));
   this->connect(lSaveAPIKey, &QPushButton::clicked, this, &AssistedConversion::saveAPIKey);
 
@@ -212,6 +217,7 @@ void AssistedConversion::displayHintZone()
   // Get the window's layout
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
+  lHintZone->setMinimumHeight(300);
   lHintZone->setObjectName(QString("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
   lMainLayout->addWidget(lHintZone, 3, 0);
@@ -288,6 +294,12 @@ void AssistedConversion::updateSaveAPIKeyButtonState(const bool aMustBeDisabled)
   lSaveAPIKey->setDisabled(aMustBeDisabled);
 }
 
+void AssistedConversion::updateLaunchSearchButtonState(const QString&)
+{
+  const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
+  this->updateLaunchSearchButtonState(lTabWidget->currentIndex());
+}
+
 void AssistedConversion::updateLaunchSearchButtonState(int aCurrentTabIndex)
 {
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
@@ -348,74 +360,21 @@ void AssistedConversion::launchSearchProcess()
     }
   }
 
-  const auto lFoundNifFiles{this->launchSearchFromTabContext()};
-
-  // No file found
-  if (lFoundNifFiles.size() == 0)
-  {
-    this->displayHintZone();
-    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
-    if (lHintZone)
-    {
-      lHintZone->setText(tr("No NIF file was found in the scanned directory."));
-    }
-    return;
-  }
-
-  // Delete already existing the hint label or the layout and the validation button
-  this->deleteAlreadyExistingWindowBottom();
-
-  // Create the scroll area chooser
-  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 3, 0, 1, 3)};
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
-
-  // Columns header
-  lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);
-  lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignCenter);
-  lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignCenter);
-
-  auto lNextRow{1};
-  this->mBoxSelectedIndexes.clear();
-
-  std::vector<std::pair<QString, QString>> lNifFilesInformation;
-  for (const auto& lNifFile : lFoundNifFiles)
-  {
-    lNifFilesInformation.push_back(lNifFile.second);
-  }
-
-  std::sort(lNifFilesInformation.begin(), lNifFilesInformation.end(), [=](const std::pair<QString, QString>& lhs, const std::pair<QString, QString>& rhs) {
-    return isFileNameRecognized(lhs.second) && !isFileNameRecognized(rhs.second);
-  });
-
-  for (const auto& lNifFileInformation : lNifFilesInformation)
-  {
-    this->createSelectionBlock(*lDataContainer, lNifFileInformation.second, lNifFileInformation.first, lNextRow++);
-  }
-
-  // Create the validation button
-  auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
-  lMainLayout->addWidget(lValidateSelection, 4, 0);
-
-  this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
-}
-
-std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::launchSearchFromTabContext()
-{
   const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
   switch (lTabWidget->currentIndex())
   {
     case 0:
       // Local folder
-      return this->launchSearchFromLocalFolder();
+      this->launchSearchFromLocalFolder();
+      break;
     case 1:
       // NexusMods URL/ID
-      return this->launchSearchNexusModsURL();
+      this->launchSearchNexusModsURL();
+      break;
   }
-
-  return {};
 }
 
-std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::launchSearchFromLocalFolder()
+void AssistedConversion::launchSearchFromLocalFolder()
 {
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
@@ -440,7 +399,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
                                       true)
         != ButtonClicked::YES)
     {
-      return {};
+      return;
     }
   }
 
@@ -461,7 +420,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
                                       true)
         != ButtonClicked::YES)
     {
-      return {};
+      return;
     }
   }
 
@@ -469,7 +428,7 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   const auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
   this->mScannedDirName = QDir(lInputPath).dirName();
 
-  return lFoundNifFiles;
+  this->displayObtainedData(lFoundNifFiles);
 }
 
 std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
@@ -535,10 +494,184 @@ std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> As
   return lScannedValues;
 }
 
-std::map<std::string, std::pair<QString, QString>, std::greater<std::string>> AssistedConversion::launchSearchNexusModsURL()
+void AssistedConversion::launchSearchNexusModsURL()
 {
-  // TODO
-  return {};
+  const auto lModURLOrID{this->findChild<QLineEdit*>(QString("mod_url_or_id"))->text()};
+  const auto lURLPattern{QString("nexusmods.com/skyrimspecialedition/mods/")};
+  auto lModID{0};
+
+  // ID
+  bool lIsInteger;
+  lModURLOrID.toInt(&lIsInteger);
+  if (lIsInteger)
+  {
+    lModID = lModURLOrID.toInt();
+  }
+  // URL
+  else if (lModURLOrID.contains(lURLPattern))
+  {
+    const auto lStart{lModURLOrID.indexOf(lURLPattern)};
+    for (const auto& lChar : lModURLOrID.mid(lStart + lURLPattern.length()))
+    {
+      if (lChar.isDigit())
+      {
+        lModID = lModID * 10 + lChar.digitValue();
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    // Invalid format
+    return;
+  }
+
+  this->requestModInformation(lModID);
+}
+
+void AssistedConversion::requestModInformation(const int aModID)
+{
+  const auto lURL{QString("https://api.nexusmods.com/v1/games/skyrimspecialedition/mods/%1/files.json").arg(QString::number(aModID))};
+
+  QNetworkRequest lRequest{QUrl(lURL)};
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  QNetworkReply* lReply{this->mManager.get(lRequest)};
+  connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModInformationFinished);
+}
+
+void AssistedConversion::requestModInformationFinished()
+{
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
+
+  std::vector<Struct::NexusModsFileInformation> lParsedFilesInformation;
+  if (lReply->error() == QNetworkReply::NoError)
+  {
+    lParsedFilesInformation = this->parseFilesListFromModInformation(true, lReply->readAll());
+  }
+  else
+  {
+    lParsedFilesInformation = this->parseFilesListFromModInformation(false, "");
+  }
+
+  lReply->deleteLater();
+
+  this->displayFileIDPicker(lParsedFilesInformation);
+}
+
+std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesListFromModInformation(const bool aSucceeded, const QByteArray& aResult)
+{
+  if (!aSucceeded)
+  {
+    Utils::DisplayErrorMessage(tr("An error has occurred... Make sure your internet connection is operational and try again."));
+    return std::vector<Struct::NexusModsFileInformation>();
+  }
+
+  std::vector<Struct::NexusModsFileInformation> lList;
+
+  const auto lJson{QJsonDocument::fromJson(aResult)};
+  const auto lRootElement{lJson.object()};
+  if (lRootElement.contains("files") && lRootElement["files"].isArray())
+  {
+    const auto lFiles{lRootElement["files"].toArray()};
+    for (const auto& lFile : lFiles)
+    {
+      lList.push_back(Struct::NexusModsFileInformation(lFile["file_id"].toInt(),
+                                                       lFile["name"].toString(),
+                                                       lFile["uploaded_timestamp"].toInt(),
+                                                       lFile["version"].toString()));
+    }
+  }
+  else
+  {
+    Utils::DisplayErrorMessage(tr("Parse error: could not find the \"files\" element."));
+    return std::vector<Struct::NexusModsFileInformation>();
+  }
+
+  return lList;
+}
+
+void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
+{
+  if (aFilesInformation.empty())
+    return;
+
+  // TODO: Create the new UI
+  // TODO: Display the brand new UI
+
+  this->requestModFileContent(""); // TODO: conect this function to a callback of the new UI
+}
+
+void AssistedConversion::requestModFileContent(const QString& aContentPreviewLink)
+{
+  QNetworkRequest lRequest{QUrl(aContentPreviewLink)};
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  QNetworkReply* lReply{this->mManager.get(lRequest)};
+  connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModFileContentFinished);
+}
+
+void AssistedConversion::requestModFileContentFinished()
+{
+  // TODO: parse the data to have the type "std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>"
+  this->displayObtainedData(std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>());
+}
+
+void AssistedConversion::displayObtainedData(const std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>& aFoundNifFiles)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
+  // No file found
+  if (aFoundNifFiles.empty())
+  {
+    this->displayHintZone();
+    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+    if (lHintZone)
+    {
+      lHintZone->setText(tr("No NIF file was found in the scanned directory."));
+    }
+    return;
+  }
+
+  // Delete already existing the hint label or the layout and the validation button
+  this->deleteAlreadyExistingWindowBottom();
+
+  // Create the scroll area chooser
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 3, 0, 1, 3)};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+
+  // Columns header
+  lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);
+  lDataContainer->addWidget(new QLabel(tr("*.nif file name"), this), 0, 1, Qt::AlignCenter);
+  lDataContainer->addWidget(new QLabel(tr("Action"), this), 0, 2, Qt::AlignCenter);
+
+  auto lNextRow{1};
+  this->mBoxSelectedIndexes.clear();
+
+  std::vector<std::pair<QString, QString>> lNifFilesInformation;
+  for (const auto& lNifFile : aFoundNifFiles)
+  {
+    lNifFilesInformation.push_back(lNifFile.second);
+  }
+
+  std::sort(lNifFilesInformation.begin(), lNifFilesInformation.end(), [=](const std::pair<QString, QString>& lhs, const std::pair<QString, QString>& rhs) {
+    return isFileNameRecognized(lhs.second) && !isFileNameRecognized(rhs.second);
+  });
+
+  for (const auto& lNifFileInformation : lNifFilesInformation)
+  {
+    this->createSelectionBlock(*lDataContainer, lNifFileInformation.second, lNifFileInformation.first, lNextRow++);
+  }
+
+  // Create the validation button
+  auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
+  lMainLayout->addWidget(lValidateSelection, 4, 0);
+
+  this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
 }
 
 void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex)
@@ -756,7 +889,7 @@ void AssistedConversion::validateSelection()
 {
   auto lValues{this->getChosenValuesFromInterface()};
 
-  if (lValues.size() == 0)
+  if (lValues.empty())
   {
     // If not any file as been tagged, ask the user to continue or reselect values
     if (Utils::DisplayQuestionMessage(this,

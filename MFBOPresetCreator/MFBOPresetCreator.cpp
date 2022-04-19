@@ -567,13 +567,29 @@ void MFBOPresetCreator::checkForUpdate()
   connect(lReply, &QNetworkReply::finished, this, &MFBOPresetCreator::updateCheckFinished);
 }
 
-void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
+void MFBOPresetCreator::updateCheckFinished()
+{
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
+
+  if (lReply->error() == QNetworkReply::NoError)
+  {
+    this->displayUpdateMessage(true, QString::fromUtf8(lReply->readAll()));
+  }
+  else
+  {
+    this->displayUpdateMessage(false, "");
+  }
+
+  lReply->deleteLater();
+}
+
+void MFBOPresetCreator::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 {
   // Display a message based on new available versions
   QString lTitle;
   QString lMessage;
 
-  if (aResult == "fetch_error")
+  if (!aSucceeded)
   {
     lTitle = tr("Error while searching for a new update");
     lMessage = tr("An error has occurred while searching for a new version...\nMake sure your internet connection is operational and try again.");
@@ -617,7 +633,7 @@ void MFBOPresetCreator::displayUpdateMessage(const QString& aResult)
     // User theme accent
     const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
-    if (aResult == "fetch_error")
+    if (!aSucceeded)
     {
       Utils::DisplayInfoMessage(this, lTitle, lMessage, lIconFolder, "alert-circle", tr("OK"));
     }
@@ -790,6 +806,16 @@ void MFBOPresetCreator::launchCurrentVersionReleaseNotes()
   new ReleaseNotesViewer(this, this->mSettings);
 }
 
+void MFBOPresetCreator::launchAboutDialog()
+{
+  new About(this, this->mSettings);
+}
+
+void MFBOPresetCreator::launchAboutQtDialog()
+{
+  QApplication::aboutQt();
+}
+
 void MFBOPresetCreator::reportBugNexusMods()
 {
   QDesktopServices::openUrl(QUrl("https://www.nexusmods.com/skyrimspecialedition/mods/44706?tab=bugs"));
@@ -828,30 +854,4 @@ void MFBOPresetCreator::openGoogleDriveGuide()
 void MFBOPresetCreator::openKoFiPage()
 {
   QDesktopServices::openUrl(QUrl("https://ko-fi.com/mitsuriou"));
-}
-
-void MFBOPresetCreator::launchAboutDialog()
-{
-  new About(this, this->mSettings);
-}
-
-void MFBOPresetCreator::launchAboutQtDialog()
-{
-  QApplication::aboutQt();
-}
-
-void MFBOPresetCreator::updateCheckFinished()
-{
-  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
-
-  if (lReply->error() == QNetworkReply::NoError)
-  {
-    this->displayUpdateMessage(QString::fromUtf8(lReply->readAll()));
-  }
-  else
-  {
-    this->displayUpdateMessage("fetch_error");
-  }
-
-  lReply->deleteLater();
 }

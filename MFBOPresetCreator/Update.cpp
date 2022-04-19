@@ -126,22 +126,22 @@ void Update::updateCheckFinished()
 
   if (lReply->error() == QNetworkReply::NoError)
   {
-    this->displayUpdateMessage(QString::fromUtf8(lReply->readAll()));
+    this->displayUpdateMessage(true, QString::fromUtf8(lReply->readAll()));
   }
   else
   {
-    this->displayUpdateMessage("fetch_error");
+    this->displayUpdateMessage(false, "");
   }
 
   lReply->deleteLater();
 }
 
-void Update::displayUpdateMessage(const QString& aResult)
+void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 {
   auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
   auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
 
-  if (aResult == "fetch_error")
+  if (!aSucceeded)
   {
     QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath)));

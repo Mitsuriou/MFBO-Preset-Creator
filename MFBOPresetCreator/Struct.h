@@ -715,4 +715,42 @@ namespace Struct
     bool mustGenerateFilesInExistingDirectory{false};
     bool mustGenerateEachPresetInADedicatedDirectory{false};
   };
+
+  struct NexusModsFileInformation
+  {
+  public:
+    NexusModsFileInformation(const int aFileID, const QString& aName, const qint64 aDateTime, const QString& aVersion)
+      : fileID{aFileID}
+      , name{aName}
+      , version{aVersion}
+    {
+      dateTime.setSecsSinceEpoch(aDateTime);
+    }
+
+    const int& getFileID() const
+    {
+      return this->fileID;
+    }
+
+    const QString& getName() const
+    {
+      return this->name;
+    }
+
+    const QDateTime& getDate() const
+    {
+      return this->dateTime;
+    }
+
+    const QString& getVersion() const
+    {
+      return this->version;
+    }
+
+  private:
+    int fileID;
+    QString name;
+    QDateTime dateTime;
+    QString version;
+  };
 }

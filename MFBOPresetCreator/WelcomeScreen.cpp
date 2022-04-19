@@ -309,24 +309,24 @@ void WelcomeScreen::updateCheckFinished()
 
   if (lReply->error() == QNetworkReply::NoError)
   {
-    this->displayUpdateMessage(QString::fromUtf8(lReply->readAll()));
+    this->displayUpdateMessage(true, QString::fromUtf8(lReply->readAll()));
   }
   else
   {
-    this->displayUpdateMessage("fetch_error");
+    this->displayUpdateMessage(false, "");
   }
 
   lReply->deleteLater();
 }
 
-void WelcomeScreen::displayUpdateMessage(const QString& aResult)
+void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 {
   auto lCurrentVersionStatusLabel{this->findChild<QLabel*>(QString("current_version_status_label"))};
   auto lStableStatusLabel{this->findChild<QLabel*>(QString("stable_status_label"))};
   auto lBetaStatusLabel{this->findChild<QLabel*>(QString("beta_status_label"))};
 
   // Display error messages to the user
-  if (aResult == "fetch_error")
+  if (!aSucceeded)
   {
     auto lErrorText{tr("An error has occurred... Make sure your internet connection is operational and try again.")};
     lCurrentVersionStatusLabel->setText(lErrorText);
