@@ -320,7 +320,7 @@ void AssistedConversion::updateLaunchSearchButtonState(int aCurrentTabIndex)
       const auto lModURLOrIDLineEdit{this->findChild<QLineEdit*>(QString("mod_url_or_id"))};
       const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
 
-      lLaunchSearchButton->setDisabled(lModURLOrIDLineEdit->text().isEmpty() || lAPIKeyLineEdit->text().isEmpty());
+      lLaunchSearchButton->setDisabled(lModURLOrIDLineEdit->text().isEmpty() || lAPIKeyLineEdit->text().isEmpty() || !isModIDValid());
 
       break;
     }
@@ -338,6 +338,9 @@ bool AssistedConversion::isFileNameRecognized(const QString& aFileName)
 
 void AssistedConversion::launchSearchProcess()
 {
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  lLaunchSearchButton->setDisabled(true);
+
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
@@ -357,6 +360,7 @@ void AssistedConversion::launchSearchProcess()
                                       false)
         != ButtonClicked::YES)
     {
+      lLaunchSearchButton->setDisabled(false);
       return;
     }
   }
@@ -380,6 +384,7 @@ void AssistedConversion::launchSearchFromLocalFolder()
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
@@ -400,6 +405,7 @@ void AssistedConversion::launchSearchFromLocalFolder()
                                       true)
         != ButtonClicked::YES)
     {
+      lLaunchSearchButton->setDisabled(false);
       return;
     }
   }
@@ -421,18 +427,19 @@ void AssistedConversion::launchSearchFromLocalFolder()
                                       true)
         != ButtonClicked::YES)
     {
+      lLaunchSearchButton->setDisabled(false);
       return;
     }
   }
 
   // Fetch all the "*.nif" files
-  const auto lFoundNifFiles{this->scanForFilesByExtension(lInputPath, "*.nif")};
+  const auto lFoundNifFiles{this->scanForNifFiles(lInputPath)};
   this->mScannedDirName = QDir(lInputPath).dirName();
 
   this->displayObtainedData(lFoundNifFiles);
 }
 
-mapSpQS AssistedConversion::scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const
+mapSpSS AssistedConversion::scanForNifFiles(const QString& aRootDir) const
 {
   // Progress bar
   auto lProgressBar{new QProgressBar(this->parentWidget())};
@@ -451,11 +458,11 @@ mapSpQS AssistedConversion::scanForFilesByExtension(const QString& aRootDir, con
   QCoreApplication::processEvents();
 
   // The map is storing <path+fileName, <path, fileName>>
-  mapSpQS lScannedValues;
+  mapSpSS lScannedValues;
 
   QString lRelativeDirPath;
   QString lFileName;
-  std::string lKey;
+  QString lKey;
 
   auto lRootDir{aRootDir};
   if (this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked())
@@ -463,7 +470,7 @@ mapSpQS AssistedConversion::scanForFilesByExtension(const QString& aRootDir, con
     lRootDir.append("/meshes");
   }
 
-  QDirIterator it(lRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(lRootDir, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -486,7 +493,7 @@ mapSpQS AssistedConversion::scanForFilesByExtension(const QString& aRootDir, con
     lFileName.remove(".nif", Qt::CaseInsensitive);
 
     // Construct the key of the map
-    lKey = QString("%1/%2").arg(lRelativeDirPath, lFileName).toStdString();
+    lKey = QString("%1/%2").arg(lRelativeDirPath, lFileName);
 
     // Insert the key-value into the map
     lScannedValues.insert(std::make_pair(lKey, std::make_pair(lRelativeDirPath, lFileName)));
@@ -497,20 +504,26 @@ mapSpQS AssistedConversion::scanForFilesByExtension(const QString& aRootDir, con
 
 void AssistedConversion::launchSearchNexusModsURL()
 {
+  auto lModID{this->getModIDFromUserInput()};
+  this->requestModInformation(lModID);
+}
+
+int AssistedConversion::getModIDFromUserInput()
+{
   const auto lModURLOrID{this->findChild<QLineEdit*>(QString("mod_url_or_id"))->text()};
   const auto lURLPattern{QString("nexusmods.com/skyrimspecialedition/mods/")};
-  auto lModID{0};
 
   // ID
   bool lIsInteger;
   lModURLOrID.toInt(&lIsInteger);
   if (lIsInteger)
   {
-    lModID = lModURLOrID.toInt();
+    return lModURLOrID.toInt();
   }
   // URL
   else if (lModURLOrID.contains(lURLPattern))
   {
+    auto lModID{0};
     const auto lStart{lModURLOrID.indexOf(lURLPattern)};
     for (const auto& lChar : lModURLOrID.mid(lStart + lURLPattern.length()))
     {
@@ -523,14 +536,17 @@ void AssistedConversion::launchSearchNexusModsURL()
         break;
       }
     }
-  }
-  else
-  {
-    // Invalid format
-    return;
+
+    return lModID;
   }
 
-  this->requestModInformation(lModID);
+  // Invalid format
+  return -1;
+}
+
+bool AssistedConversion::isModIDValid()
+{
+  return this->getModIDFromUserInput() != -1;
 }
 
 void AssistedConversion::requestModInformation(const int aModID)
@@ -584,7 +600,8 @@ std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesList
                                                        lFile["name"].toString(),
                                                        lFile["uploaded_timestamp"].toInt(),
                                                        lFile["version"].toString(),
-                                                       lFile["content_preview_link"].toString()));
+                                                       lFile["content_preview_link"].toString(),
+                                                       lFile["category_name"].isNull() ? "-" : lFile["category_name"].toString()));
     }
   }
   else
@@ -598,8 +615,13 @@ std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesList
 
 void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
 {
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+
   if (aFilesInformation.empty())
+  {
+    lLaunchSearchButton->setDisabled(false);
     return;
+  }
 
   auto lFilePicker{new FileIDPicker(this, this->mSettings, aFilesInformation)};
   connect(lFilePicker, &FileIDPicker::fileContentPreviewURLChosen, this, &AssistedConversion::requestModFileContent);
@@ -609,7 +631,7 @@ void AssistedConversion::requestModFileContent(const QString& aContentPreviewLin
 {
   if (aContentPreviewLink.isEmpty())
   {
-    // TODO
+    Utils::DisplayErrorMessage(tr("An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status."));
     return;
   }
 
@@ -624,34 +646,148 @@ void AssistedConversion::requestModFileContentFinished()
 {
   auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
 
-  mapSpQS lParsedFilesInformation;
+  mapSpSS lParsedFilesInformation;
+  bool lHasFoundBSAFile{false};
+
   if (lReply->error() == QNetworkReply::NoError)
   {
-    lParsedFilesInformation = this->parseFileContent(true, lReply->readAll());
+    lParsedFilesInformation = this->parseFileContent(true, lReply->readAll(), lHasFoundBSAFile);
   }
   else
   {
-    lParsedFilesInformation = this->parseFileContent(false, "");
+    lParsedFilesInformation = this->parseFileContent(false, "", lHasFoundBSAFile);
   }
 
   lReply->deleteLater();
 
-  this->displayObtainedData(mapSpQS());
+  // Warn the user if the scan found a BSA file
+  if (lHasFoundBSAFile)
+  {
+    Utils::DisplayWarningMessage(tr("At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan."));
+  }
+
+  this->displayObtainedData(lParsedFilesInformation);
 }
 
-mapSpQS AssistedConversion::parseFileContent(const bool aSucceeded, const QByteArray& aResult)
+mapSpSS AssistedConversion::parseFileContent(const bool aSucceeded,
+                                             const QByteArray& aResult,
+                                             bool& aHasFoundBSAFile) const
 {
   if (!aSucceeded)
   {
     Utils::DisplayErrorMessage(tr("An error has occurred... Make sure your internet connection is operational and try again."));
-    return mapSpQS();
+    return mapSpSS();
   }
 
-  // TODO: parse
+  auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
+
+  mapSpSS lFoundNifFiles;
+
+  const auto lJson{QJsonDocument::fromJson(aResult)};
+  const auto lRootElement{lJson.object()};
+
+  if (lRootElement.contains("children") && lRootElement["children"].isArray())
+  {
+    const auto lChildren{lRootElement["children"].toArray()};
+    if (lChildren.size() == 1 && lChildren.first().toObject().contains("name"))
+    {
+      this->parseNode(lChildren, lFoundNifFiles, lChildren.first().toObject()["name"].toString(), lScanMeshesSubdirsOnly, aHasFoundBSAFile);
+    }
+  }
+
+  return lFoundNifFiles;
 }
 
-void AssistedConversion::displayObtainedData(const mapSpQS& aFoundNifFiles)
+void AssistedConversion::parseNode(const QJsonArray& aArray,
+                                   mapSpSS& aNifFilesList,
+                                   const QString& aRootNodeName,
+                                   const bool aScanMeshesSubdirsOnly,
+                                   bool& aHasFoundBSAFile) const
 {
+  for (const auto& lEntry : aArray)
+  {
+    if (lEntry.isObject())
+    {
+      // The node contains some children
+      if (lEntry.toObject().contains("children") && lEntry["children"].isArray())
+      {
+        // Parse the content of the array
+        const auto lChildren{lEntry["children"].toArray()};
+        this->parseNode(lChildren, aNifFilesList, aRootNodeName, aScanMeshesSubdirsOnly, aHasFoundBSAFile);
+      }
+      else
+      {
+        // Parse the file node
+        const auto lParsedNifFile{this->parseNode(lEntry.toObject(), aRootNodeName, aScanMeshesSubdirsOnly, aHasFoundBSAFile)};
+
+        // If the path and the file name have been correctly parsed
+        if (!lParsedNifFile.first.isEmpty() && !lParsedNifFile.second.isEmpty())
+        {
+          aNifFilesList.insert({lParsedNifFile.first + "/" + lParsedNifFile.second, lParsedNifFile});
+        }
+      }
+    }
+  }
+}
+
+std::pair<QString, QString> AssistedConversion::parseNode(const QJsonObject& aNode,
+                                                          const QString& aRootNodeName,
+                                                          const bool aScanMeshesSubdirsOnly,
+                                                          bool& aHasFoundBSAFile) const
+{
+  if (aNode.contains("path") && aNode["path"].isString()
+      && aNode.contains("name") && aNode["name"].isString()
+      && aNode.contains("type") && aNode["type"].isString()
+      && aNode.contains("size"))
+  {
+    const auto lName{aNode["name"].toString()};
+
+    // BSA file
+    if (lName.endsWith(".bsa", Qt::CaseSensitivity::CaseInsensitive))
+    {
+      aHasFoundBSAFile = true;
+    }
+
+    // Not a file or not a NIF file
+    if (aNode["type"].toString().compare("file") != 0
+        || !lName.endsWith(".nif", Qt::CaseSensitivity::CaseInsensitive))
+    {
+      return std::make_pair(QString(), QString());
+    }
+
+    auto lFileName{aNode["path"].toString()};
+
+    // Remove the root node name from the file path
+    if (lFileName.startsWith(aRootNodeName + "/"))
+    {
+      lFileName.remove(aRootNodeName + "/");
+    }
+
+    // If the user checked the option to scan only the meshes subdir, check the file name starts with "meshes/"
+    if (aScanMeshesSubdirsOnly && !lFileName.startsWith("meshes/", Qt::CaseSensitivity::CaseInsensitive))
+    {
+      return std::make_pair(QString(), QString());
+    }
+
+    // Clean the file name from any artifact
+    lFileName.remove("_0.nif", Qt::CaseInsensitive);
+    lFileName.remove("_1.nif", Qt::CaseInsensitive);
+    lFileName.remove(".nif", Qt::CaseInsensitive);
+
+    const auto lLastSlashPosition{lFileName.lastIndexOf('/')};
+
+    // Insert the key-value into the map
+    return std::make_pair(lFileName.left(lLastSlashPosition), lFileName.mid(lLastSlashPosition + 1));
+  }
+
+  return std::make_pair(QString(), QString());
+}
+
+void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
+{
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  lLaunchSearchButton->setDisabled(true);
+
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 

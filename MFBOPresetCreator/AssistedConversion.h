@@ -5,7 +5,7 @@
 #include <QNetworkAccessManager>
 #include <QTabWidget>
 
-using mapSpQS = std::map<std::string, std::pair<QString, QString>, std::greater<std::string>>;
+using mapSpSS = std::map<QString, std::pair<QString, QString>, std::greater<QString>>;
 
 class AssistedConversion final : public QDialog
 {
@@ -50,9 +50,11 @@ private:
   void launchSearchProcess();
 
   void launchSearchFromLocalFolder();
-  mapSpQS scanForFilesByExtension(const QString& aRootDir, const QString& aFileExtension) const;
+  mapSpSS scanForNifFiles(const QString& aRootDir) const;
 
   void launchSearchNexusModsURL();
+  int getModIDFromUserInput();
+  bool isModIDValid();
 
   void requestModInformation(const int aModID);
   void requestModInformationFinished();
@@ -60,9 +62,20 @@ private:
   void displayFileIDPicker(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation);
   void requestModFileContent(const QString& aContentPreviewLink);
   void requestModFileContentFinished();
-  mapSpQS parseFileContent(const bool aSucceeded, const QByteArray& aResult);
+  mapSpSS parseFileContent(const bool aSucceeded,
+                           const QByteArray& aResult,
+                           bool& aHasFoundBSAFile) const;
+  void parseNode(const QJsonArray& aArray,
+                 mapSpSS& aNifFilesList,
+                 const QString& aRootNodeName,
+                 const bool aScanMeshesSubdirsOnly,
+                 bool& aHasFoundBSAFile) const;
+  std::pair<QString, QString> parseNode(const QJsonObject& aNode,
+                                        const QString& aRootNodeName,
+                                        const bool aScanMeshesSubdirsOnly,
+                                        bool& aHasFoundBSAFile) const;
 
-  void displayObtainedData(const mapSpQS& aFoundNifFiles);
+  void displayObtainedData(const mapSpSS& aFoundNifFiles);
 
   // Choose and accept values
   void createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex);

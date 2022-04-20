@@ -719,11 +719,17 @@ namespace Struct
   struct NexusModsFileInformation
   {
   public:
-    NexusModsFileInformation(const int aFileID, const QString& aName, const qint64 aDateTime, const QString& aVersion, const QString& aContentPreviewURL)
+    NexusModsFileInformation(const int aFileID,
+                             const QString& aName,
+                             const qint64 aDateTime,
+                             const QString& aVersion,
+                             const QString& aContentPreviewURL,
+                             const QString& aCategoryName)
       : fileID{aFileID}
       , name{aName}
       , version{aVersion}
       , contentPreviewURL{aContentPreviewURL}
+      , categoryName{aCategoryName}
     {
       dateTime.setSecsSinceEpoch(aDateTime);
     }
@@ -747,9 +753,15 @@ namespace Struct
     {
       return this->version;
     }
+
     const QString& getContentPreviewURL() const
     {
       return this->contentPreviewURL;
+    }
+
+    const QString& getCategoryName() const
+    {
+      return this->categoryName;
     }
 
   private:
@@ -758,5 +770,6 @@ namespace Struct
     QDateTime dateTime;
     QString version;
     QString contentPreviewURL;
+    QString categoryName;
   };
 }

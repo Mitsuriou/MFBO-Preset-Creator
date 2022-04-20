@@ -74,39 +74,41 @@ QWidget* FileIDPicker::createChoiceEntry(const Struct::NexusModsFileInformation&
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Wrapper
-  auto lWidgetPtr{new QWidget(this)};
+  auto lWrapper{new QGroupBox(aFileInformation.getName(), this)};
 
   // Layout
-  auto lLayout{new QGridLayout(lWidgetPtr)};
-  lWidgetPtr->setLayout(lLayout);
+  auto lLayout{new QGridLayout(lWrapper)};
+  lWrapper->setLayout(lLayout);
 
-  // File name
-  auto lFileName{new QLabel(tr("File name: ") + aFileInformation.getName(), lWidgetPtr)};
-  lLayout->addWidget(lFileName, 0, 0, Qt::AlignmentFlag::AlignLeft);
+  auto lLineIndex{0};
 
-  // File ID
-  auto lFileID{new QLabel(tr("File ID: ") + QString::number(aFileInformation.getFileID()), lWidgetPtr)};
-  lLayout->addWidget(lFileID, 1, 0, Qt::AlignmentFlag::AlignLeft);
+  // Version
+  auto lVersion{new QLabel(tr("Version: ") + aFileInformation.getVersion(), lWrapper)};
+  lLayout->addWidget(lVersion, lLineIndex++, 0, Qt::AlignmentFlag::AlignLeft);
+
+  // Category
+  auto lCategoryName{new QLabel(tr("Category: ") + aFileInformation.getCategoryName(), lWrapper)};
+  lLayout->addWidget(lCategoryName, lLineIndex++, 0, Qt::AlignmentFlag::AlignLeft);
 
   // Date
   auto lDate{new QLabel(tr("Upload date: ")
                           + aFileInformation.getDate()
                               .toString(QLocale::system().dateTimeFormat(QLocale::FormatType::ShortFormat)),
-                        lWidgetPtr)};
-  lLayout->addWidget(lDate, 2, 0, Qt::AlignmentFlag::AlignLeft);
+                        lWrapper)};
+  lLayout->addWidget(lDate, lLineIndex++, 0, Qt::AlignmentFlag::AlignLeft);
 
-  // Version
-  auto lVersion{new QLabel(tr("Version: ") + aFileInformation.getVersion(), lWidgetPtr)};
-  lLayout->addWidget(lVersion, 3, 0, Qt::AlignmentFlag::AlignLeft);
+  // File ID
+  auto lFileID{new QLabel(tr("File ID: ") + QString::number(aFileInformation.getFileID()), lWrapper)};
+  lLayout->addWidget(lFileID, lLineIndex++, 0, Qt::AlignmentFlag::AlignLeft);
 
   // Selection button
-  auto lSelectionButton{ComponentFactory::CreateButton(lWidgetPtr, tr("Select this file"), "", "done", lIconFolder)};
-  lLayout->addWidget(lSelectionButton, 0, 1, 4, 1, Qt::AlignmentFlag::AlignRight);
+  auto lSelectionButton{ComponentFactory::CreateButton(lWrapper, tr("Select this file"), "", "done", lIconFolder)};
+  lLayout->addWidget(lSelectionButton, 0, 1, lLineIndex + 1, 1, Qt::AlignmentFlag::AlignRight);
 
   QObject::connect(lSelectionButton, &QPushButton::clicked, [=]() {
     emit fileContentPreviewURLChosen(aFileInformation.getContentPreviewURL());
     this->close();
   });
 
-  return lWidgetPtr;
+  return lWrapper;
 }
