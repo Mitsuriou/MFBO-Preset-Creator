@@ -191,7 +191,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
   auto lModURLOrIDLineEdit{new QLineEdit(this)};
   lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
   lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
-  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 2, Qt::AlignTop);
+  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 3, Qt::AlignTop);
 
   // API Key label
   lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0, Qt::AlignTop);
@@ -203,15 +203,27 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
   lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());
   lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1, Qt::AlignTop);
 
-  // Input chooser
-  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save the API key"), "", "save", lIconFolder, "save_api_key", false, true)};
+  // Save the API key
+  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save this API key"), "", "save", lIconFolder, "save_api_key", false, true)};
   lTabLayout->addWidget(lSaveAPIKey, 1, 2, Qt::AlignTop);
+
+  // Open the NexusMods API keys' management page
+  auto lOpenAPIKeysManagementPage{ComponentFactory::CreateButton(this,
+                                                                 tr("View my keys (nexusmods.com)"),
+                                                                 "",
+                                                                 "external",
+                                                                 lIconFolder,
+                                                                 "open_api_keys_management_page",
+                                                                 false,
+                                                                 true)};
+  lTabLayout->addWidget(lOpenAPIKeysManagementPage, 1, 3, Qt::AlignTop);
 
   // Event binding
   QObject::connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&TexturesAssistant::updateLaunchSearchButtonState));
   QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&TexturesAssistant::updateLaunchSearchButtonState));
   QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&TexturesAssistant::updateSaveAPIKeyButtonState));
   QObject::connect(lSaveAPIKey, &QPushButton::clicked, this, &TexturesAssistant::saveAPIKey);
+  QObject::connect(lOpenAPIKeysManagementPage, &QPushButton::clicked, this, &TexturesAssistant::openAPIKeysManagementPage);
 
   // Post-bind initialization functions
   this->updateSaveAPIKeyButtonState(true);
@@ -1080,6 +1092,11 @@ void TexturesAssistant::generateTexturesStructure()
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
+}
+
+void TexturesAssistant::openAPIKeysManagementPage()
+{
+  QDesktopServices::openUrl(QUrl("https://www.nexusmods.com/users/myaccount?tab=api%20access"));
 }
 
 void TexturesAssistant::updateOutputPreview()

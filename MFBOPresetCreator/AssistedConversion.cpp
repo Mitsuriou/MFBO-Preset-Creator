@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QCloseEvent>
 #include <QComboBox>
+#include <QDesktopServices>
 #include <QDirIterator>
 #include <QDomDocument>
 #include <QFileDialog>
@@ -203,15 +204,27 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());
   lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1, Qt::AlignTop);
 
-  // Input chooser
-  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save the API key"), "", "save", lIconFolder, "save_api_key", false, true)};
+  // Save the API key
+  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save this API key"), "", "save", lIconFolder, "save_api_key", false, true)};
   lTabLayout->addWidget(lSaveAPIKey, 1, 2, Qt::AlignTop);
+
+  // Open the NexusMods API keys' management page
+  auto lOpenAPIKeysManagementPage{ComponentFactory::CreateButton(this,
+                                                                 tr("View my keys (nexusmods.com)"),
+                                                                 "",
+                                                                 "external",
+                                                                 lIconFolder,
+                                                                 "open_api_keys_management_page",
+                                                                 false,
+                                                                 true)};
+  lTabLayout->addWidget(lOpenAPIKeysManagementPage, 1, 3, Qt::AlignTop);
 
   // Event binding
   QObject::connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
   QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
   QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateSaveAPIKeyButtonState));
   QObject::connect(lSaveAPIKey, &QPushButton::clicked, this, &AssistedConversion::saveAPIKey);
+  QObject::connect(lOpenAPIKeysManagementPage, &QPushButton::clicked, this, &AssistedConversion::openAPIKeysManagementPage);
 
   // Post-bind initialization functions
   this->updateSaveAPIKeyButtonState(true);
@@ -1091,4 +1104,9 @@ void AssistedConversion::validateSelection()
 
   emit valuesChosen(this->mScannedDirName, lValues);
   this->close();
+}
+
+void AssistedConversion::openAPIKeysManagementPage()
+{
+  QDesktopServices::openUrl(QUrl("https://www.nexusmods.com/users/myaccount?tab=api%20access"));
 }

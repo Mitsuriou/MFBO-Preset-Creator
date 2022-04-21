@@ -92,6 +92,7 @@ private:
   void generateTexturesStructure();
 
   // GUI widgets events
+  void openAPIKeysManagementPage();
   void updateOutputPreview();
   void populateTexturesSetChooser();
   void openTexturesSetsAssetsDirectory();

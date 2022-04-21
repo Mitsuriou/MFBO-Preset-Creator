@@ -74,6 +74,9 @@ private:
   std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface() const;
   void validateSelection();
 
+  // GUI widgets events
+  void openAPIKeysManagementPage();
+
   explicit AssistedConversion(const AssistedConversion&) = delete;
   AssistedConversion& operator=(const AssistedConversion&) = delete;
 
