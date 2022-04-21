@@ -37,192 +37,194 @@
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="146"/>
+        <location filename="AssistedConversion.cpp" line="152"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="156"/>
+        <location filename="AssistedConversion.cpp" line="162"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="111"/>
+        <location filename="AssistedConversion.cpp" line="112"/>
         <source>Only scan the &quot;meshes&quot; subdirectory of the mod</source>
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot; du mod</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="115"/>
+        <location filename="AssistedConversion.cpp" line="121"/>
         <source>Launch the scan of the mod</source>
         <translation>Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="220"/>
+        <location filename="AssistedConversion.cpp" line="226"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="459"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="459"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="479"/>
+        <location filename="AssistedConversion.cpp" line="485"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="350"/>
-        <location filename="AssistedConversion.cpp" line="354"/>
+        <location filename="AssistedConversion.cpp" line="356"/>
+        <location filename="AssistedConversion.cpp" line="360"/>
         <source>Relaunch the scan</source>
         <translation>Relancer le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="351"/>
+        <location filename="AssistedConversion.cpp" line="357"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="355"/>
+        <location filename="AssistedConversion.cpp" line="361"/>
         <source>Cancel the relaunch</source>
         <translation>Annuler le relancement</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1062"/>
+        <location filename="AssistedConversion.cpp" line="1075"/>
         <source>No entry selected</source>
         <translation>Aucune entrée sélectionnée</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1063"/>
+        <location filename="AssistedConversion.cpp" line="1076"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation>Vous n&apos;avez sélectionné aucune entrée. Voulez-vous quand même valider la sélection telle quelle ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1066"/>
+        <location filename="AssistedConversion.cpp" line="1079"/>
         <source>Validate as is</source>
         <translation>Valider tel quel</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1067"/>
+        <location filename="AssistedConversion.cpp" line="1080"/>
         <source>Cancel, I wanted to select values</source>
         <translation>Annuler, je veux sélectionner des valeurs</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="395"/>
+        <location filename="AssistedConversion.cpp" line="401"/>
         <source>No root file has been found</source>
         <translation>Aucun fichier racine n&apos;a été trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="143"/>
-        <source>From local folder</source>
-        <translation type="unfinished"></translation>
+        <location filename="AssistedConversion.cpp" line="149"/>
+        <source>From local directory</source>
+        <oldsource>From local folder</oldsource>
+        <translation>Depuis un répertoire local</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="179"/>
+        <location filename="AssistedConversion.cpp" line="185"/>
         <source>From NexusMods URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Depuis un URL NexusMods</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="182"/>
-        <source>Input mod&apos;s URL or ID:</source>
-        <translation type="unfinished"></translation>
+        <location filename="AssistedConversion.cpp" line="188"/>
+        <source>Mod&apos;s URL or ID:</source>
+        <oldsource>Input mod&apos;s URL or ID:</oldsource>
+        <translation>URL ou ID du mod :</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="187"/>
+        <location filename="AssistedConversion.cpp" line="193"/>
         <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="191"/>
+        <location filename="AssistedConversion.cpp" line="197"/>
         <source>API Key:</source>
-        <translation type="unfinished"></translation>
+        <translation>Clé d&apos;API :</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="196"/>
+        <location filename="AssistedConversion.cpp" line="202"/>
         <source>Enter your NexusMods API key here</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrez votre clé d&apos;API NexusMods ici</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="201"/>
-        <source>Save API key</source>
-        <translation type="unfinished"></translation>
+        <location filename="AssistedConversion.cpp" line="207"/>
+        <source>Save the API key</source>
+        <oldsource>Save API key</oldsource>
+        <translation>Enregistrer la clé d&apos;API</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="396"/>
+        <location filename="AssistedConversion.cpp" line="402"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation>Aucun fichier ESL, ESM ou ESP n&apos;ont été trouvés dans le répertoire scanné. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="399"/>
-        <location filename="AssistedConversion.cpp" line="421"/>
+        <location filename="AssistedConversion.cpp" line="405"/>
+        <location filename="AssistedConversion.cpp" line="427"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="400"/>
-        <location filename="AssistedConversion.cpp" line="422"/>
+        <location filename="AssistedConversion.cpp" line="406"/>
+        <location filename="AssistedConversion.cpp" line="428"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="423"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="418"/>
+        <location filename="AssistedConversion.cpp" line="424"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="586"/>
-        <location filename="AssistedConversion.cpp" line="678"/>
+        <location filename="AssistedConversion.cpp" line="595"/>
+        <location filename="AssistedConversion.cpp" line="691"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
-        <translation type="unfinished">Une erreur s&apos;est produite...
-Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
+        <translation>Une erreur s&apos;est produite... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="609"/>
+        <location filename="AssistedConversion.cpp" line="619"/>
         <source>Parse error: could not find the &quot;files&quot; element.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur d&apos;analyse : l&apos;élément &quot;files&quot; n&apos;a pas été trouvé.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="634"/>
+        <location filename="AssistedConversion.cpp" line="645"/>
         <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une erreur s&apos;est produite lors de la tentative de lecture de l&apos;aperçu du contenu du fichier. Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez. Si l&apos;erreur se produit à nouveau, veuillez vérifier l&apos;état des serveurs NexusMods.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="666"/>
+        <location filename="AssistedConversion.cpp" line="679"/>
         <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
-        <translation type="unfinished"></translation>
+        <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de télécharger et installer le mod, pour ensuite décompresser le fichier BSA, avant de poursuivre le scan.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="801"/>
+        <location filename="AssistedConversion.cpp" line="811"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation>Aucun fichier NIF n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="814"/>
+        <location filename="AssistedConversion.cpp" line="824"/>
         <source>File path</source>
         <translation>Emplacement du fichier</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="815"/>
+        <location filename="AssistedConversion.cpp" line="825"/>
         <source>*.nif file name</source>
         <translation>Nom du fichier *.nif</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="816"/>
+        <location filename="AssistedConversion.cpp" line="826"/>
         <source>Action</source>
         <translation>Action</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="837"/>
+        <location filename="AssistedConversion.cpp" line="850"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>Valider la (les) sélection(s) ci-dessus et revenir sur la fenêtre principale</translation>
     </message>
@@ -804,7 +806,7 @@ Voulez-vous fermer la fenêtre conversion par lot : sélecteur de résultats mai
     <message>
         <location filename="BodySlideFiltersEditor.cpp" line="59"/>
         <source>Close the editor window without saving</source>
-        <translation>Fermer la fenêtre de l&apos;éditeur sans sauvegarder</translation>
+        <translation>Fermer la fenêtre de l&apos;éditeur sans enregistrer</translation>
     </message>
     <message>
         <location filename="BodySlideFiltersEditor.cpp" line="60"/>
@@ -875,7 +877,7 @@ Voulez-vous fermer la fenêtre conversion par lot : sélecteur de résultats mai
     <message>
         <location filename="BodySlideFiltersEditor.cpp" line="185"/>
         <source>Save and close</source>
-        <translation>Sauvegarder et fermer</translation>
+        <translation>Enregistrer et fermer</translation>
     </message>
     <message>
         <location filename="BodySlideFiltersEditor.cpp" line="188"/>
@@ -996,39 +998,40 @@ Pieds ciblés : -</translation>
 <context>
     <name>FileIDPicker</name>
     <message>
-        <location filename="FileIDPicker.cpp" line="38"/>
+        <location filename="FileIDPicker.cpp" line="43"/>
         <source>NexusMods File Picker</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélecteur de Fichier NexusMods</translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="50"/>
-        <source>Choose a file</source>
-        <translation type="unfinished"></translation>
+        <location filename="FileIDPicker.cpp" line="55"/>
+        <source>Choose a distant file</source>
+        <oldsource>Choose a file</oldsource>
+        <translation>Choisir un fichier distant</translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="86"/>
+        <location filename="FileIDPicker.cpp" line="91"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>Version : </translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="90"/>
+        <location filename="FileIDPicker.cpp" line="95"/>
         <source>Category: </source>
-        <translation type="unfinished"></translation>
+        <translation>Catégorie : </translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="94"/>
+        <location filename="FileIDPicker.cpp" line="99"/>
         <source>Upload date: </source>
-        <translation type="unfinished"></translation>
+        <translation>Date de mise en ligne : </translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="101"/>
+        <location filename="FileIDPicker.cpp" line="106"/>
         <source>File ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>ID du fichier : </translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="105"/>
+        <location filename="FileIDPicker.cpp" line="110"/>
         <source>Select this file</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner ce fichier</translation>
     </message>
 </context>
 <context>
@@ -1356,7 +1359,7 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
     <message>
         <location filename="PresetCreator.cpp" line="84"/>
         <source>Open the project without saving</source>
-        <translation>Ouvrir le projet sans sauvegarder</translation>
+        <translation>Ouvrir le projet sans enregistrer</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="85"/>
@@ -1371,7 +1374,7 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
     <message>
         <location filename="PresetCreator.cpp" line="159"/>
         <source>Inject the data without saving</source>
-        <translation>Injecter des données sans sauvegarder</translation>
+        <translation>Injecter des données sans enregistrer</translation>
     </message>
     <message>
         <location filename="PresetCreator.cpp" line="160"/>
@@ -2084,7 +2087,7 @@ Pieds ciblés : %2</translation>
     <message>
         <location filename="Settings.cpp" line="66"/>
         <source>Close the settings window without saving</source>
-        <translation>Fermer la fenêtre de paramètres sans sauvegarder</translation>
+        <translation>Fermer la fenêtre de paramètres sans enregistrer</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="67"/>
@@ -2154,7 +2157,7 @@ Pieds ciblés : %2</translation>
     <message>
         <location filename="Settings.cpp" line="460"/>
         <source>Save and close</source>
-        <translation>Sauvegarder et fermer</translation>
+        <translation>Enregistrer et fermer</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="767"/>
@@ -2285,7 +2288,7 @@ Pieds ciblés : -</translation>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="169"/>
         <source>Save and close</source>
-        <translation>Sauvegarder et fermer</translation>
+        <translation>Enregistrer et fermer</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="172"/>
@@ -2316,137 +2319,196 @@ Pieds ciblés : %2</translation>
 <context>
     <name>TexturesAssistant</name>
     <message>
-        <location filename="TexturesAssistant.cpp" line="55"/>
+        <location filename="TexturesAssistant.cpp" line="59"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="56"/>
+        <location filename="TexturesAssistant.cpp" line="60"/>
         <source>Do you want to close the window?</source>
         <translation>Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="59"/>
+        <location filename="TexturesAssistant.cpp" line="63"/>
         <source>Close the window</source>
         <translation>Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="60"/>
+        <location filename="TexturesAssistant.cpp" line="64"/>
         <source>Go back to the textures assistant window</source>
         <translation>Revenir sur la fenêtre de l&apos;assistant textures</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="86"/>
+        <location filename="TexturesAssistant.cpp" line="90"/>
         <source>Textures Assistant</source>
         <translation>Assistant Textures</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="104"/>
+        <location filename="TexturesAssistant.cpp" line="152"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="114"/>
+        <location filename="TexturesAssistant.cpp" line="162"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="118"/>
+        <location filename="TexturesAssistant.cpp" line="116"/>
         <source>Launch the scan of the mod</source>
         <translation>Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="139"/>
+        <location filename="TexturesAssistant.cpp" line="149"/>
+        <source>From local directory</source>
+        <oldsource>From local folder</oldsource>
+        <translation>Depuis un répertoire local</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="185"/>
+        <source>From NexusMods URL</source>
+        <translation>Depuis un URL NexusMods</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="188"/>
+        <source>Mod&apos;s URL or ID:</source>
+        <oldsource>Input mod&apos;s URL or ID:</oldsource>
+        <translation>URL ou ID du mod :</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="193"/>
+        <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="197"/>
+        <source>API Key:</source>
+        <translation>Clé d&apos;API :</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="202"/>
+        <source>Enter your NexusMods API key here</source>
+        <translation>Entrez votre clé d&apos;API NexusMods ici</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="207"/>
+        <source>Save the API key</source>
+        <oldsource>Save API key</oldsource>
+        <translation>Enregistrer la clé d&apos;API</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="225"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="164"/>
+        <location filename="TexturesAssistant.cpp" line="250"/>
         <source>Textures set</source>
         <translation>Set de textures</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="177"/>
+        <location filename="TexturesAssistant.cpp" line="263"/>
         <source>Textures set:</source>
         <translation>Set de textures :</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="186"/>
+        <location filename="TexturesAssistant.cpp" line="272"/>
         <source>Refresh</source>
         <translation>Rafraîchir</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="190"/>
+        <location filename="TexturesAssistant.cpp" line="276"/>
         <source>View in explorer</source>
         <translation>Voir dans l&apos;explorateur</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="230"/>
+        <location filename="TexturesAssistant.cpp" line="316"/>
         <source>Create the files structure on my computer</source>
         <translation>Créer la structure de fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="266"/>
+        <location filename="TexturesAssistant.cpp" line="504"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="266"/>
+        <location filename="TexturesAssistant.cpp" line="504"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="287"/>
+        <location filename="TexturesAssistant.cpp" line="525"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="368"/>
+        <location filename="TexturesAssistant.cpp" line="634"/>
+        <location filename="TexturesAssistant.cpp" line="738"/>
+        <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
+        <translation>Une erreur s&apos;est produite... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="658"/>
+        <source>Parse error: could not find the &quot;files&quot; element.</source>
+        <translation>Erreur d&apos;analyse : l&apos;élément &quot;files&quot; n&apos;a pas été trouvé.</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="684"/>
+        <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
+        <translation>Une erreur s&apos;est produite lors de la tentative de lecture de l&apos;aperçu du contenu du fichier. Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez. Si l&apos;erreur se produit à nouveau, veuillez vérifier l&apos;état des serveurs NexusMods.</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="715"/>
+        <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
+        <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de télécharger et installer le mod, pour ensuite décompresser le fichier BSA, avant de poursuivre le scan.</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="917"/>
         <source>Head textures</source>
         <translation>Textures de tête</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="377"/>
+        <location filename="TexturesAssistant.cpp" line="926"/>
         <source>Mouth textures</source>
         <translation>Textures de bouche</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="395"/>
+        <location filename="TexturesAssistant.cpp" line="944"/>
         <source>Extra body textures</source>
         <translation>Textures de corps supplémentaires</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="404"/>
+        <location filename="TexturesAssistant.cpp" line="953"/>
         <source>Hands textures</source>
         <translation>Textures de mains</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="386"/>
+        <location filename="TexturesAssistant.cpp" line="935"/>
         <source>Body textures</source>
         <translation>Textures de corps</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="413"/>
+        <location filename="TexturesAssistant.cpp" line="962"/>
         <source>Other .DDS textures</source>
         <translation>Autres textures .DDS</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="459"/>
+        <location filename="TexturesAssistant.cpp" line="998"/>
         <source>Error: no textures set chosen.</source>
         <translation>Erreur : aucun set de textures choisi.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="481"/>
+        <location filename="TexturesAssistant.cpp" line="1020"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="488"/>
+        <location filename="TexturesAssistant.cpp" line="1027"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="498"/>
+        <location filename="TexturesAssistant.cpp" line="1037"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2455,72 +2517,72 @@ Assurez vous de ne pas créer les fichiers dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="506"/>
+        <location filename="TexturesAssistant.cpp" line="1045"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="507"/>
+        <location filename="TexturesAssistant.cpp" line="1046"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
         <translation>Le répertoire &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même créer les fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="510"/>
+        <location filename="TexturesAssistant.cpp" line="1049"/>
         <source>Continue the files creation</source>
         <translation>Continuer la création de fichiers</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="511"/>
+        <location filename="TexturesAssistant.cpp" line="1050"/>
         <source>Cancel the files creation</source>
         <translation>Annuler la création de fichiers</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="536"/>
+        <location filename="TexturesAssistant.cpp" line="1075"/>
         <source>Files creation successful</source>
         <translation>Création de fichiers réussie</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="537"/>
+        <location filename="TexturesAssistant.cpp" line="1076"/>
         <source>The texture files have been correctly created.</source>
         <translation>Tous les fichiers de texture ont été correctement créés.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="540"/>
+        <location filename="TexturesAssistant.cpp" line="1079"/>
         <source>Open the created directory</source>
         <translation>Ouvrir le répertoire créé</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="540"/>
+        <location filename="TexturesAssistant.cpp" line="1079"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="582"/>
+        <location filename="TexturesAssistant.cpp" line="450"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="583"/>
+        <location filename="TexturesAssistant.cpp" line="451"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="586"/>
+        <location filename="TexturesAssistant.cpp" line="454"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="587"/>
+        <location filename="TexturesAssistant.cpp" line="455"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="602"/>
+        <location filename="TexturesAssistant.cpp" line="470"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>Aucun répertoire &quot;textures&quot; n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="616"/>
+        <location filename="TexturesAssistant.cpp" line="858"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>Aucun fichier DDS n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
@@ -2651,6 +2713,9 @@ Vous trouverez ci-dessous les notes de publication pour la version stable &quot;
         <source>Download successful. Click the button above to open the directory where the file has been downloaded.
 
 </source>
+        <oldsource>Download successful. Click the button above to open the directory where the file has been downloaded.
+
+            </oldsource>
         <translation>Téléchargement réussi. Cliquez sur le bouton ci-dessus pour ouvrir le répertoire où le fichier a été téléchargé.
 
 </translation>
@@ -2661,6 +2726,10 @@ Vous trouverez ci-dessous les notes de publication pour la version stable &quot;
 Make sure that you saved everything before starting the update as the application will be closed!
 
 </source>
+        <oldsource>Download successful. Click the button above to start updating MFBOPC.
+Make sure that you saved everything before starting the update as the application will be closed!
+
+            </oldsource>
         <translation>Téléchargement réussi. Cliquez sur le bouton ci-dessus pour commencer la mise à jour de MFBOPC.
 Assurez-vous que vous avez tout enregistré avant de commencer la mise à jour car l&apos;application sera fermée !
 
@@ -2672,6 +2741,10 @@ Assurez-vous que vous avez tout enregistré avant de commencer la mise à jour c
 Please make sure your internet connection is working correctly and try again.
 
 </source>
+        <oldsource>An error has occurred while downloading the update.
+Please make sure your internet connection is working correctly and try again.
+
+            </oldsource>
         <translation>Une erreur s&apos;est produite lors du téléchargement de la mise à jour.
 Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.
 
@@ -2776,7 +2849,7 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <message>
         <location filename="Utils.cpp" line="1018"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
-        <translation>Le fichier de projet a été sauvegardé vers &quot;%1&quot;.</translation>
+        <translation>Le fichier de projet a été sauvegardé avec succès vers &quot;%1&quot;.</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1024"/>
@@ -2790,19 +2863,24 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
     <message>
         <location filename="Utils.cpp" line="1708"/>
         <source>API key successfully saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Clé d&apos;API sauvegardée avec succès</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1709"/>
         <source>The API key file has successfully been saved to &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>La clé d&apos;API a été sauvegardée avec succès vers &quot;%1&quot;.</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1721"/>
-        <source>Could not save the api key file to &quot;%1&quot;.
+        <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <oldsource>Could not save the api key file to &quot;%1&quot;.
+Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
+Be sure that you used characters authorized by your OS in the given paths.</oldsource>
+        <translation>La clé d&apos;API n&apos;a pas pu être sauvegardée vers &quot;%1&quot;.
+Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et que vous avez exécuter l&apos;application avec des permissions suffisantes.
+Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1804"/>

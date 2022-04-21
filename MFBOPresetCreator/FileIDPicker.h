@@ -15,6 +15,7 @@ protected:
 
 private:
   const Struct::Settings mSettings;
+  bool hasEmitedAnythingYet{false};
 
   // GUI functions
   void setWindowProperties();
@@ -26,5 +27,6 @@ private:
   FileIDPicker& operator=(const FileIDPicker&) = delete;
 
 signals:
-  void fileContentPreviewURLChosen(const QString& aContentPreviewLink);
+  void fileContentPreviewURLChosen(QString aFileName, QString aContentPreviewLink);
+  void fileContentPreviewURLChosen(QString aContentPreviewLink);
 };

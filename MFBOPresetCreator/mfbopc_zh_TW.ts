@@ -37,192 +37,195 @@
         <translation>輔助轉換</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="146"/>
+        <location filename="AssistedConversion.cpp" line="152"/>
         <source>Input path:</source>
         <translation>匯入檔案路徑:</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="156"/>
+        <location filename="AssistedConversion.cpp" line="162"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="111"/>
+        <location filename="AssistedConversion.cpp" line="112"/>
         <source>Only scan the &quot;meshes&quot; subdirectory of the mod</source>
         <oldsource>Only scan the &quot;meshes&quot; subdirectories of the mod</oldsource>
         <translation>只掃描&quot;meshes&quot;資料夾</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="115"/>
+        <location filename="AssistedConversion.cpp" line="121"/>
         <source>Launch the scan of the mod</source>
         <translation>開始掃描MOD</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="220"/>
+        <location filename="AssistedConversion.cpp" line="226"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>等待偵測開始...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="459"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="459"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="479"/>
+        <location filename="AssistedConversion.cpp" line="485"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="350"/>
-        <location filename="AssistedConversion.cpp" line="354"/>
+        <location filename="AssistedConversion.cpp" line="356"/>
+        <location filename="AssistedConversion.cpp" line="360"/>
         <source>Relaunch the scan</source>
         <translation>重新偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="143"/>
-        <source>From local folder</source>
+        <location filename="AssistedConversion.cpp" line="149"/>
+        <source>From local directory</source>
+        <oldsource>From local folder</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="179"/>
+        <location filename="AssistedConversion.cpp" line="185"/>
         <source>From NexusMods URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="182"/>
-        <source>Input mod&apos;s URL or ID:</source>
+        <location filename="AssistedConversion.cpp" line="188"/>
+        <source>Mod&apos;s URL or ID:</source>
+        <oldsource>Input mod&apos;s URL or ID:</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="187"/>
+        <location filename="AssistedConversion.cpp" line="193"/>
         <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="191"/>
+        <location filename="AssistedConversion.cpp" line="197"/>
         <source>API Key:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="196"/>
+        <location filename="AssistedConversion.cpp" line="202"/>
         <source>Enter your NexusMods API key here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="201"/>
-        <source>Save API key</source>
+        <location filename="AssistedConversion.cpp" line="207"/>
+        <source>Save the API key</source>
+        <oldsource>Save API key</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="351"/>
+        <location filename="AssistedConversion.cpp" line="357"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation>將失去所有為保存進度。請問是否繼續重啟偵測?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="355"/>
+        <location filename="AssistedConversion.cpp" line="361"/>
         <source>Cancel the relaunch</source>
         <translation>取消重新開始</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="395"/>
+        <location filename="AssistedConversion.cpp" line="401"/>
         <source>No root file has been found</source>
         <translation>未發現根目錄檔案</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="396"/>
+        <location filename="AssistedConversion.cpp" line="402"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation>未發現ESL/ESM/ESP檔。請問是否繼續偵測?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="399"/>
-        <location filename="AssistedConversion.cpp" line="421"/>
+        <location filename="AssistedConversion.cpp" line="405"/>
+        <location filename="AssistedConversion.cpp" line="427"/>
         <source>Continue the scan</source>
         <translation>繼續偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="400"/>
-        <location filename="AssistedConversion.cpp" line="422"/>
+        <location filename="AssistedConversion.cpp" line="406"/>
+        <location filename="AssistedConversion.cpp" line="428"/>
         <source>Cancel the scan</source>
         <translation>取消偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="423"/>
         <source>BSA file found</source>
         <translation>偵測到BSA檔</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="418"/>
+        <location filename="AssistedConversion.cpp" line="424"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>偵測到資料夾存在BSA檔案。由於本程式不支援BSA檔案，建議解壓縮BSA檔後繼續操作。是否繼續進行操作?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="586"/>
-        <location filename="AssistedConversion.cpp" line="678"/>
+        <location filename="AssistedConversion.cpp" line="595"/>
+        <location filename="AssistedConversion.cpp" line="691"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation type="unfinished">發生錯誤...請確認網路連線並稍後重試。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="609"/>
+        <location filename="AssistedConversion.cpp" line="619"/>
         <source>Parse error: could not find the &quot;files&quot; element.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="634"/>
+        <location filename="AssistedConversion.cpp" line="645"/>
         <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="666"/>
+        <location filename="AssistedConversion.cpp" line="679"/>
         <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="801"/>
+        <location filename="AssistedConversion.cpp" line="811"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation>未發現NIF檔案。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="814"/>
+        <location filename="AssistedConversion.cpp" line="824"/>
         <source>File path</source>
         <translation>檔案位置</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="815"/>
+        <location filename="AssistedConversion.cpp" line="825"/>
         <source>*.nif file name</source>
         <translation>.nif檔案名稱</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="816"/>
+        <location filename="AssistedConversion.cpp" line="826"/>
         <source>Action</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="837"/>
+        <location filename="AssistedConversion.cpp" line="850"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>驗證已選選項，並回到主視窗</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1062"/>
+        <location filename="AssistedConversion.cpp" line="1075"/>
         <source>No entry selected</source>
         <translation>未選擇任何條目</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1063"/>
+        <location filename="AssistedConversion.cpp" line="1076"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation>未選擇任何條目。是否直接驗證當前所選?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1066"/>
+        <location filename="AssistedConversion.cpp" line="1079"/>
         <source>Validate as is</source>
         <translation>照原樣驗正</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1067"/>
+        <location filename="AssistedConversion.cpp" line="1080"/>
         <source>Cancel, I wanted to select values</source>
         <translation>取消，我想要調整數值</translation>
     </message>
@@ -1092,37 +1095,38 @@ Targeted feet: -</source>
 <context>
     <name>FileIDPicker</name>
     <message>
-        <location filename="FileIDPicker.cpp" line="38"/>
+        <location filename="FileIDPicker.cpp" line="43"/>
         <source>NexusMods File Picker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="50"/>
-        <source>Choose a file</source>
+        <location filename="FileIDPicker.cpp" line="55"/>
+        <source>Choose a distant file</source>
+        <oldsource>Choose a file</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="86"/>
+        <location filename="FileIDPicker.cpp" line="91"/>
         <source>Version: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="90"/>
+        <location filename="FileIDPicker.cpp" line="95"/>
         <source>Category: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="94"/>
+        <location filename="FileIDPicker.cpp" line="99"/>
         <source>Upload date: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="101"/>
+        <location filename="FileIDPicker.cpp" line="106"/>
         <source>File ID: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="105"/>
+        <location filename="FileIDPicker.cpp" line="110"/>
         <source>Select this file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2578,138 +2582,197 @@ Targeted feet: %2</source>
 <context>
     <name>TexturesAssistant</name>
     <message>
-        <location filename="TexturesAssistant.cpp" line="55"/>
+        <location filename="TexturesAssistant.cpp" line="59"/>
         <source>Closing</source>
         <translation>關閉中</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="56"/>
+        <location filename="TexturesAssistant.cpp" line="60"/>
         <source>Do you want to close the window?</source>
         <translation>確定關閉視窗?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="59"/>
+        <location filename="TexturesAssistant.cpp" line="63"/>
         <source>Close the window</source>
         <translation>關閉視窗</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="60"/>
+        <location filename="TexturesAssistant.cpp" line="64"/>
         <source>Go back to the textures assistant window</source>
         <translation>回到貼圖助手(textures assistant)視窗</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="86"/>
+        <location filename="TexturesAssistant.cpp" line="90"/>
         <source>Textures Assistant</source>
         <translation>貼圖(Textures)助手</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="104"/>
+        <location filename="TexturesAssistant.cpp" line="152"/>
         <source>Input path:</source>
         <translation>匯入檔案路徑:</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="114"/>
+        <location filename="TexturesAssistant.cpp" line="162"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="118"/>
+        <location filename="TexturesAssistant.cpp" line="116"/>
         <source>Launch the scan of the mod</source>
         <translation>開始掃描MOD</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="139"/>
+        <location filename="TexturesAssistant.cpp" line="149"/>
+        <source>From local directory</source>
+        <oldsource>From local folder</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="185"/>
+        <source>From NexusMods URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="188"/>
+        <source>Mod&apos;s URL or ID:</source>
+        <oldsource>Input mod&apos;s URL or ID:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="193"/>
+        <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="197"/>
+        <source>API Key:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="202"/>
+        <source>Enter your NexusMods API key here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="207"/>
+        <source>Save the API key</source>
+        <oldsource>Save API key</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="225"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>等待偵測開始...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="164"/>
+        <location filename="TexturesAssistant.cpp" line="250"/>
         <source>Textures set</source>
         <translation>貼圖檔</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="177"/>
+        <location filename="TexturesAssistant.cpp" line="263"/>
         <source>Textures set:</source>
         <translation>貼圖檔:</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="186"/>
+        <location filename="TexturesAssistant.cpp" line="272"/>
         <source>Refresh</source>
         <translation>重新整理</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="190"/>
+        <location filename="TexturesAssistant.cpp" line="276"/>
         <source>View in explorer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="230"/>
+        <location filename="TexturesAssistant.cpp" line="316"/>
         <source>Create the files structure on my computer</source>
         <oldsource>Generate the files on my computer</oldsource>
         <translation>在電腦中產生檔案路徑</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="266"/>
+        <location filename="TexturesAssistant.cpp" line="504"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="266"/>
+        <location filename="TexturesAssistant.cpp" line="504"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="287"/>
+        <location filename="TexturesAssistant.cpp" line="525"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="368"/>
+        <location filename="TexturesAssistant.cpp" line="634"/>
+        <location filename="TexturesAssistant.cpp" line="738"/>
+        <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
+        <translation type="unfinished">發生錯誤...請確認網路連線並稍後重試。</translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="658"/>
+        <source>Parse error: could not find the &quot;files&quot; element.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="684"/>
+        <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="715"/>
+        <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="917"/>
         <source>Head textures</source>
         <translation>頭部貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="377"/>
+        <location filename="TexturesAssistant.cpp" line="926"/>
         <source>Mouth textures</source>
         <translation>嘴巴貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="395"/>
+        <location filename="TexturesAssistant.cpp" line="944"/>
         <source>Extra body textures</source>
         <translation>額外身體貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="404"/>
+        <location filename="TexturesAssistant.cpp" line="953"/>
         <source>Hands textures</source>
         <translation>手部貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="386"/>
+        <location filename="TexturesAssistant.cpp" line="935"/>
         <source>Body textures</source>
         <translation>身體貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="413"/>
+        <location filename="TexturesAssistant.cpp" line="962"/>
         <source>Other .DDS textures</source>
         <translation>其他DDS檔貼圖</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="459"/>
+        <location filename="TexturesAssistant.cpp" line="998"/>
         <source>Error: no textures set chosen.</source>
         <translation>錯誤: 未選擇貼圖檔。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="481"/>
+        <location filename="TexturesAssistant.cpp" line="1020"/>
         <source>Error: no path given to export the files.</source>
         <translation>錯誤:未指定輸出路徑。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="488"/>
+        <location filename="TexturesAssistant.cpp" line="1027"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>錯誤:無效的輸出路徑。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="498"/>
+        <location filename="TexturesAssistant.cpp" line="1037"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -2721,77 +2784,77 @@ Be sure that you used characters authorized by your OS in the given paths.</olds
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="506"/>
+        <location filename="TexturesAssistant.cpp" line="1045"/>
         <source>Already existing directory</source>
         <translation>已存在資料夾</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="507"/>
+        <location filename="TexturesAssistant.cpp" line="1046"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
         <oldsource>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</oldsource>
         <translation>資料夾:&quot;%1&quot;已存在。是否確定在此資料夾生成檔案?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="510"/>
+        <location filename="TexturesAssistant.cpp" line="1049"/>
         <source>Continue the files creation</source>
         <oldsource>Continue the files generation</oldsource>
         <translation>繼續執行產生檔案</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="511"/>
+        <location filename="TexturesAssistant.cpp" line="1050"/>
         <source>Cancel the files creation</source>
         <oldsource>Cancel the files generation</oldsource>
         <translation>取消產生檔案</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="536"/>
+        <location filename="TexturesAssistant.cpp" line="1075"/>
         <source>Files creation successful</source>
         <oldsource>Generation successful</oldsource>
         <translation>成功生成檔案</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="537"/>
+        <location filename="TexturesAssistant.cpp" line="1076"/>
         <source>The texture files have been correctly created.</source>
         <oldsource>The textures files have been correctly created.</oldsource>
         <translation>成功生成貼圖檔。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="540"/>
+        <location filename="TexturesAssistant.cpp" line="1079"/>
         <source>Open the created directory</source>
         <translation>開啟生成檔案資料夾</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="540"/>
+        <location filename="TexturesAssistant.cpp" line="1079"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="582"/>
+        <location filename="TexturesAssistant.cpp" line="450"/>
         <source>BSA file found</source>
         <translation>找到BSA檔</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="583"/>
+        <location filename="TexturesAssistant.cpp" line="451"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>偵測到資料夾存在BSA檔案。由於本程式不支援BSA檔案，建議解壓縮BSA檔後再進行掃描。是否繼續進行掃描?</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="586"/>
+        <location filename="TexturesAssistant.cpp" line="454"/>
         <source>Continue the scan</source>
         <translation>繼續偵測</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="587"/>
+        <location filename="TexturesAssistant.cpp" line="455"/>
         <source>Cancel the scan</source>
         <translation>取消偵測</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="602"/>
+        <location filename="TexturesAssistant.cpp" line="470"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation>掃描範圍中找不到名稱為&quot;textures&quot;的資料夾。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="616"/>
+        <location filename="TexturesAssistant.cpp" line="858"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>掃描範圍中找不到任何DDS檔。</translation>
     </message>
@@ -3146,9 +3209,12 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     </message>
     <message>
         <location filename="Utils.cpp" line="1721"/>
-        <source>Could not save the api key file to &quot;%1&quot;.
+        <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
+        <oldsource>Could not save the api key file to &quot;%1&quot;.
+Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
+Be sure that you used characters authorized by your OS in the given paths.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -149,7 +149,7 @@
       <Filter>Source Files\Drag and Drop</Filter>
     </ClCompile>
     <ClCompile Include="FileIDPicker.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -262,7 +262,7 @@
       <Filter>Header Files\Drag and Drop</Filter>
     </QtMoc>
     <QtMoc Include="FileIDPicker.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

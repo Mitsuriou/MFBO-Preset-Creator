@@ -1718,7 +1718,7 @@ bool Utils::SaveAPIKeyToFile(const QString& aAPIKey, QWidget* aParent, const QSt
   else if (aParent && !aIconFolder.isEmpty())
   {
     // API key file save: fail window
-    Utils::DisplayWarningMessage(tr("Could not save the api key file to \"%1\".\nBe sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lAPIKeyFilePath));
+    Utils::DisplayWarningMessage(tr("Could not save the API key file to \"%1\".\nBe sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.\nBe sure that you used characters authorized by your OS in the given paths.").arg(lAPIKeyFilePath));
   }
 
   return false;

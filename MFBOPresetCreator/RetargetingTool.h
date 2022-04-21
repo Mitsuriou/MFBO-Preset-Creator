@@ -20,7 +20,7 @@ protected:
   void reject() override;
 
 private:
-  QFileSystemWatcher* mFileWatcher;
+  QFileSystemWatcher* mFileWatcher{nullptr};
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   bool mHasUserDoneSomething;

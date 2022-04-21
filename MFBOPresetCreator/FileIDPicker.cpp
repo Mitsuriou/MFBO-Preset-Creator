@@ -20,7 +20,12 @@ FileIDPicker::FileIDPicker(QWidget* aParent, const Struct::Settings& aSettings, 
 
 void FileIDPicker::closeEvent(QCloseEvent* aEvent)
 {
-  emit fileContentPreviewURLChosen("");
+  if (!this->hasEmitedAnythingYet)
+  {
+    emit fileContentPreviewURLChosen("", "");
+    emit fileContentPreviewURLChosen("");
+  }
+
   aEvent->accept();
 }
 
@@ -47,7 +52,7 @@ void FileIDPicker::initializeGUI()
   this->setLayout(lMainLayout);
 
   // Main title
-  auto lMainTitle{new QLabel(tr("Choose a file"), this)};
+  auto lMainTitle{new QLabel(tr("Choose a distant file"), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.pointSize * 2));
   lMainLayout->addWidget(lMainTitle, 0, 0, Qt::AlignmentFlag::AlignTop);
@@ -106,7 +111,9 @@ QWidget* FileIDPicker::createChoiceEntry(const Struct::NexusModsFileInformation&
   lLayout->addWidget(lSelectionButton, 0, 1, lLineIndex + 1, 1, Qt::AlignmentFlag::AlignRight);
 
   QObject::connect(lSelectionButton, &QPushButton::clicked, [=]() {
+    emit fileContentPreviewURLChosen(aFileInformation.getName(), aFileInformation.getContentPreviewURL());
     emit fileContentPreviewURLChosen(aFileInformation.getContentPreviewURL());
+    this->hasEmitedAnythingYet = true;
     this->close();
   });
 

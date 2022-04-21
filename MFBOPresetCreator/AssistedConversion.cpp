@@ -88,14 +88,14 @@ void AssistedConversion::setWindowProperties()
 
 void AssistedConversion::initializeGUI()
 {
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(3, 1); // Make the hint zone as high as possible
   lMainLayout->setAlignment(Qt::AlignTop);
   this->setLayout(lMainLayout);
-
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
@@ -108,8 +108,14 @@ void AssistedConversion::initializeGUI()
   this->setupFromURLTab(*lTabWidget);
 
   // Scan only "meshes" directory
-  auto lScanMeshesSubdirsOnly{ComponentFactory::CreateCheckBox(this, tr("Only scan the \"meshes\" subdirectory of the mod"), "", "only_scan_meshes_dir", true)};
-  lMainLayout->addWidget(lScanMeshesSubdirsOnly, 1, 0, Qt::AlignTop);
+  lMainLayout->addWidget(ComponentFactory::CreateCheckBox(this,
+                                                          tr("Only scan the \"meshes\" subdirectory of the mod"),
+                                                          "",
+                                                          "only_scan_meshes_dir",
+                                                          true),
+                         1,
+                         0,
+                         Qt::AlignTop);
 
   // Launch search button
   auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
@@ -119,8 +125,8 @@ void AssistedConversion::initializeGUI()
   this->displayHintZone();
 
   // Event binding
-  this->connect(lTabWidget, &QTabWidget::currentChanged, this, QOverload<int>::of(&AssistedConversion::updateLaunchSearchButtonState));
-  this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
+  QObject::connect(lTabWidget, &QTabWidget::currentChanged, this, QOverload<int>::of(&AssistedConversion::updateLaunchSearchButtonState));
+  QObject::connect(lLaunchSearchButton, &QPushButton::clicked, this, &AssistedConversion::launchSearchProcess);
 }
 
 void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
@@ -140,7 +146,7 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))), tr("From local folder"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))), tr("From local directory"));
 
   // Input path label
   lTabLayout->addWidget(new QLabel(tr("Input path:"), this));
@@ -157,7 +163,7 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lInputPathChooser);
 
   // Event binding
-  this->connect(lInputPathChooser, &QPushButton::clicked, this, &AssistedConversion::chooseInputDirectory);
+  QObject::connect(lInputPathChooser, &QPushButton::clicked, this, &AssistedConversion::chooseInputDirectory);
 }
 
 void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
@@ -179,7 +185,7 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(lIconFolder))), tr("From NexusMods URL"));
 
   // Input mod's URL/ID label
-  lTabLayout->addWidget(new QLabel(tr("Input mod's URL or ID:"), this), 0, 0, Qt::AlignTop);
+  lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0, Qt::AlignTop);
 
   // Input mod's URL/ID value
   auto lModURLOrIDLineEdit{new QLineEdit(this)};
@@ -198,14 +204,14 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1, Qt::AlignTop);
 
   // Input chooser
-  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save API key"), "", "save", lIconFolder, "save_api_key", false, true)};
+  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save the API key"), "", "save", lIconFolder, "save_api_key", false, true)};
   lTabLayout->addWidget(lSaveAPIKey, 1, 2, Qt::AlignTop);
 
   // Event binding
-  this->connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
-  this->connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
-  this->connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateSaveAPIKeyButtonState));
-  this->connect(lSaveAPIKey, &QPushButton::clicked, this, &AssistedConversion::saveAPIKey);
+  QObject::connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
+  QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
+  QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateSaveAPIKeyButtonState));
+  QObject::connect(lSaveAPIKey, &QPushButton::clicked, this, &AssistedConversion::saveAPIKey);
 
   // Post-bind initialization functions
   this->updateSaveAPIKeyButtonState(true);
@@ -385,7 +391,7 @@ void AssistedConversion::launchSearchFromLocalFolder()
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+  const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
   if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList({"*.esl", "*.esm", "*.esp"})) == 0)
@@ -477,7 +483,7 @@ mapSpSS AssistedConversion::scanForNifFiles(const QString& aRootDir) const
     if (lProgressDialog.wasCanceled())
     {
       Utils::DisplayWarningMessage(tr("Process aborted by the user."));
-      return {};
+      return mapSpSS();
     }
 
     it.next();
@@ -581,8 +587,11 @@ void AssistedConversion::requestModInformationFinished()
 
 std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesListFromModInformation(const bool aSucceeded, const QByteArray& aResult)
 {
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+
   if (!aSucceeded)
   {
+    lLaunchSearchButton->setDisabled(false);
     Utils::DisplayErrorMessage(tr("An error has occurred... Make sure your internet connection is operational and try again."));
     return std::vector<Struct::NexusModsFileInformation>();
   }
@@ -606,6 +615,7 @@ std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesList
   }
   else
   {
+    lLaunchSearchButton->setDisabled(false);
     Utils::DisplayErrorMessage(tr("Parse error: could not find the \"files\" element."));
     return std::vector<Struct::NexusModsFileInformation>();
   }
@@ -615,25 +625,28 @@ std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesList
 
 void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-
   if (aFilesInformation.empty())
   {
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
     lLaunchSearchButton->setDisabled(false);
     return;
   }
 
   auto lFilePicker{new FileIDPicker(this, this->mSettings, aFilesInformation)};
-  connect(lFilePicker, &FileIDPicker::fileContentPreviewURLChosen, this, &AssistedConversion::requestModFileContent);
+  connect(lFilePicker, QOverload<QString, QString>::of(&FileIDPicker::fileContentPreviewURLChosen), this, &AssistedConversion::requestModFileContent);
 }
 
-void AssistedConversion::requestModFileContent(const QString& aContentPreviewLink)
+void AssistedConversion::requestModFileContent(const QString& aFileName, const QString& aContentPreviewLink)
 {
   if (aContentPreviewLink.isEmpty())
   {
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+    lLaunchSearchButton->setDisabled(false);
     Utils::DisplayErrorMessage(tr("An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status."));
     return;
   }
+
+  this->mScannedDirName = aFileName;
 
   QNetworkRequest lRequest{QUrl(aContentPreviewLink)};
   lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -786,10 +799,7 @@ std::pair<QString, QString> AssistedConversion::parseNode(const QJsonObject& aNo
 void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
 {
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  lLaunchSearchButton->setDisabled(true);
-
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  lLaunchSearchButton->setDisabled(false);
 
   // No file found
   if (aFoundNifFiles.empty())
@@ -833,11 +843,14 @@ void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
     this->createSelectionBlock(*lDataContainer, lNifFileInformation.second, lNifFileInformation.first, lNextRow++);
   }
 
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
   // Create the validation button
   auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
   lMainLayout->addWidget(lValidateSelection, 4, 0);
 
-  this->connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
+  QObject::connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
 }
 
 void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QString& aFileName, const QString& aPath, const int aRowIndex)
@@ -884,7 +897,7 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
   this->mBoxSelectedIndexes.push_back(0);
 
   // Event binding
-  this->connect(lChoiceCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+  QObject::connect(lChoiceCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
 }
 
 void AssistedConversion::modifyComboBoxLockState(int aIndex)
@@ -936,13 +949,13 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
     if (lTestIndex == lEventSource->count())
     {
       lEventSource->setCurrentIndex(this->mBoxSelectedIndexes.at(lComboBoxIndex));
-      this->connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+      QObject::connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
       return;
     }
 
     lEventSource->setCurrentIndex(lTestIndex);
     aIndex = lTestIndex;
-    this->connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+    QObject::connect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
   }
 
   // Keep the old index and store the new selected index

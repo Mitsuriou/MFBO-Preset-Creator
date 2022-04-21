@@ -21,7 +21,7 @@ protected:
   void reject() override;
 
 private:
-  QFileSystemWatcher* mFileWatcher;
+  QFileSystemWatcher* mFileWatcher{nullptr};
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   std::map<QString, QStringList> mFiltersList;

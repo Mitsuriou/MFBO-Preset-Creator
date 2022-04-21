@@ -1,6 +1,7 @@
 #include "TexturesAssistant.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "FileIDPicker.h"
 #include "Utils.h"
 #include <QAbstractSlider>
 #include <QApplication>
@@ -9,8 +10,11 @@
 #include <QDirIterator>
 #include <QFileDialog>
 #include <QIcon>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QLabel>
 #include <QLineEdit>
+#include <QNetworkReply>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QPushButton>
@@ -92,43 +96,125 @@ void TexturesAssistant::initializeGUI()
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
-  // Main window layout
-  auto lMainGrid{new QGridLayout(this)};
-  lMainGrid->setSpacing(10);
-  lMainGrid->setContentsMargins(10, 10, 10, 10);
-  lMainGrid->setAlignment(Qt::AlignTop);
-  lMainGrid->setRowStretch(2, 1);
-  this->setLayout(lMainGrid);
+  // Main layout
+  auto lMainLayout{new QGridLayout(this)};
+  lMainLayout->setRowStretch(2, 1); // Make the hint zone as high as possible
+  lMainLayout->setAlignment(Qt::AlignTop);
+  this->setLayout(lMainLayout);
 
-  // First line
-  lMainGrid->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
+  // Tab widget
+  auto lTabWidget{new QTabWidget(this)};
+  lTabWidget->setObjectName(QString("tab_widget"));
+  lTabWidget->setAutoFillBackground(true);
+  lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
+  lMainLayout->addWidget(lTabWidget, 0, 0, Qt::AlignTop);
 
-  // Input label
+  this->setupFromLocalFolderTab(*lTabWidget);
+  this->setupFromURLTab(*lTabWidget);
+
+  // Launch search button
+  auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
+  lMainLayout->addWidget(lLaunchSearchButton, 1, 0, Qt::AlignTop);
+
+  // Setup all the different GUI components
+  this->displayHintZone();
+  this->setupTexturesSetGUI(*lMainLayout);
+  this->setupOutputBox(*lMainLayout);
+  this->setupButtons(*lMainLayout);
+
+  // Event binding
+  QObject::connect(lTabWidget, &QTabWidget::currentChanged, this, QOverload<int>::of(&TexturesAssistant::updateLaunchSearchButtonState));
+  QObject::connect(lLaunchSearchButton, &QPushButton::clicked, this, &TexturesAssistant::launchSearchProcess);
+
+  QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &TexturesAssistant::updateOutputPreview);
+}
+
+void TexturesAssistant::setupFromLocalFolderTab(QTabWidget& aTabWidget)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
+
+  // Layout
+  auto lTabLayout{new QHBoxLayout(lTabContent)};
+  lTabLayout->setStretch(0, 0);
+  lTabLayout->setStretch(1, 1);
+  lTabLayout->setStretch(2, 0);
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))), tr("From local directory"));
+
+  // Input path label
+  lTabLayout->addWidget(new QLabel(tr("Input path:"), this));
+
+  // Input path value
   auto lInputPathLineEdit{new QLineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
-  lMainGrid->addWidget(lInputPathLineEdit, 0, 1);
+  lTabLayout->addWidget(lInputPathLineEdit);
 
   // Input chooser
   auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
-  lMainGrid->addWidget(lInputPathChooser, 0, 2);
-
-  // Launch search button
-  auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
-  lMainGrid->addWidget(lLaunchSearchButton, 1, 0, 1, 3, Qt::AlignTop);
-
-  // Setup all the different GUI components
-  this->displayHintZone();
-  this->setupTexturesSetGUI(*lMainGrid);
-  this->setupOutputBox(*lMainGrid);
-  this->setupButtons(*lMainGrid);
+  lTabLayout->addWidget(lInputPathChooser);
 
   // Event binding
-  this->connect(lInputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseInputDirectory);
-  this->connect(lLaunchSearchButton, &QPushButton::clicked, this, &TexturesAssistant::launchSearchProcess);
+  QObject::connect(lInputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseInputDirectory);
+}
 
-  QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &TexturesAssistant::updateOutputPreview);
+void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
+
+  // Layout
+  auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setColumnStretch(0, 0);
+  lTabLayout->setColumnStretch(1, 1);
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+  lTabContent->setLayout(lTabLayout);
+
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(lIconFolder))), tr("From NexusMods URL"));
+
+  // Input mod's URL/ID label
+  lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0, Qt::AlignTop);
+
+  // Input mod's URL/ID value
+  auto lModURLOrIDLineEdit{new QLineEdit(this)};
+  lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
+  lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
+  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 2, Qt::AlignTop);
+
+  // API Key label
+  lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0, Qt::AlignTop);
+
+  // API Key value
+  auto lAPIKeyLineEdit{new QLineEdit(this)};
+  lAPIKeyLineEdit->setObjectName(QString("api_key"));
+  lAPIKeyLineEdit->setPlaceholderText(tr("Enter your NexusMods API key here"));
+  lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());
+  lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1, Qt::AlignTop);
+
+  // Input chooser
+  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save the API key"), "", "save", lIconFolder, "save_api_key", false, true)};
+  lTabLayout->addWidget(lSaveAPIKey, 1, 2, Qt::AlignTop);
+
+  // Event binding
+  QObject::connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&TexturesAssistant::updateLaunchSearchButtonState));
+  QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&TexturesAssistant::updateLaunchSearchButtonState));
+  QObject::connect(lAPIKeyLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&TexturesAssistant::updateSaveAPIKeyButtonState));
+  QObject::connect(lSaveAPIKey, &QPushButton::clicked, this, &TexturesAssistant::saveAPIKey);
+
+  // Post-bind initialization functions
+  this->updateSaveAPIKeyButtonState(true);
 }
 
 void TexturesAssistant::displayHintZone()
@@ -139,7 +225,7 @@ void TexturesAssistant::displayHintZone()
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setObjectName(QString("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
-  qobject_cast<QGridLayout*>(this->layout())->addWidget(lHintZone, 2, 0, 1, 3);
+  qobject_cast<QGridLayout*>(this->layout())->addWidget(lHintZone, 2, 0);
 
   // Disable the groupboxes
   auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
@@ -162,7 +248,7 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
 
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Textures set"), "textures", lIconFolder, this->mSettings.display.font.pointSize, "textures_set_groupbox", true)};
-  aLayout.addWidget(lGroupBox, 3, 0, 1, 3);
+  aLayout.addWidget(lGroupBox, 3, 0);
 
   auto lLayout{new QGridLayout(lGroupBox)};
   lLayout->setColumnStretch(0, 0);
@@ -193,8 +279,8 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
   this->populateTexturesSetChooser();
 
   // Event binding
-  this->connect(lTexturesSetRefresher, &QPushButton::clicked, this, &TexturesAssistant::populateTexturesSetChooser);
-  this->connect(lOpenAssetsDirectory, &QPushButton::clicked, this, &TexturesAssistant::openTexturesSetsAssetsDirectory);
+  QObject::connect(lTexturesSetRefresher, &QPushButton::clicked, this, &TexturesAssistant::populateTexturesSetChooser);
+  QObject::connect(lOpenAssetsDirectory, &QPushButton::clicked, this, &TexturesAssistant::openTexturesSetsAssetsDirectory);
 }
 
 void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
@@ -203,19 +289,19 @@ void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.pointSize, 1, 3);
+  ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.pointSize);
   auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
   lOutputGroupBox->setDisabled(true);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
-  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseExportDirectory);
+  QObject::connect(lOutputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseExportDirectory);
 
   auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
-  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TexturesAssistant::updateOutputPreview);
+  QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TexturesAssistant::updateOutputPreview);
 
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
-  this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &TexturesAssistant::useOnlySubdirStateChanged);
+  QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &TexturesAssistant::useOnlySubdirStateChanged);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -229,10 +315,10 @@ void TexturesAssistant::setupButtons(QGridLayout& aLayout)
   // Generate button
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Create the files structure on my computer"), "", "build", lIconFolder, "generate_set")};
   lGenerateButton->setDisabled(true);
-  aLayout.addWidget(lGenerateButton, 5, 0, 1, 3);
+  aLayout.addWidget(lGenerateButton, 5, 0);
 
   // Event binding
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &TexturesAssistant::generateTexturesStructure);
+  QObject::connect(lGenerateButton, &QPushButton::clicked, this, &TexturesAssistant::generateTexturesStructure);
 }
 
 void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
@@ -250,6 +336,158 @@ void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
     delete lScrollZone;
     lScrollZone = nullptr;
   }
+}
+
+void TexturesAssistant::chooseInputDirectory()
+{
+  // Fetch GUI components
+  auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+
+  // Open a directory chooser dialog
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
+  lLineEdit->setText(lPath);
+  Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantInput", lPath);
+
+  if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
+  {
+    this->mHasUserDoneSomething = true;
+  }
+
+  // Enable or disable path viewer label and launch button
+  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
+  lLineEdit->setDisabled(lMustDisableButton);
+  lLaunchSearchButton->setDisabled(lMustDisableButton);
+
+  this->displayHintZone();
+}
+
+void TexturesAssistant::saveAPIKey()
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
+  const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
+  const auto lSucceed{Utils::SaveAPIKeyToFile(lAPIKeyLineEdit->text(), this, lIconFolder)};
+
+  this->updateSaveAPIKeyButtonState(lSucceed);
+}
+
+void TexturesAssistant::updateSaveAPIKeyButtonState(const QString&)
+{
+  this->updateSaveAPIKeyButtonState(false);
+}
+
+void TexturesAssistant::updateSaveAPIKeyButtonState(const bool aMustBeDisabled)
+{
+  const auto lSaveAPIKey{this->findChild<QPushButton*>(QString("save_api_key"))};
+  lSaveAPIKey->setDisabled(aMustBeDisabled);
+}
+
+void TexturesAssistant::updateLaunchSearchButtonState(const QString&)
+{
+  const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
+  this->updateLaunchSearchButtonState(lTabWidget->currentIndex());
+}
+
+void TexturesAssistant::updateLaunchSearchButtonState(int aCurrentTabIndex)
+{
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+
+  switch (aCurrentTabIndex)
+  {
+    case 0:
+    {
+      // Local folder
+      const auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+      lLaunchSearchButton->setDisabled(lLineEdit->text().isEmpty());
+      break;
+    }
+    case 1:
+    {
+      // NexusMods URL/ID
+      const auto lModURLOrIDLineEdit{this->findChild<QLineEdit*>(QString("mod_url_or_id"))};
+      const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
+
+      lLaunchSearchButton->setDisabled(lModURLOrIDLineEdit->text().isEmpty() || lAPIKeyLineEdit->text().isEmpty() || !isModIDValid());
+
+      break;
+    }
+  }
+}
+
+void TexturesAssistant::launchSearchProcess()
+{
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  lLaunchSearchButton->setDisabled(true);
+
+  const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
+  switch (lTabWidget->currentIndex())
+  {
+    case 0:
+      // Local folder
+      this->launchSearchFromLocalFolder();
+      break;
+    case 1:
+      // NexusMods URL/ID
+      this->launchSearchNexusModsURL();
+      break;
+  }
+}
+
+void TexturesAssistant::launchSearchFromLocalFolder()
+{
+  // User theme accent
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
+  const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+
+  // Warn the user if the scan found a BSA file
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
+  {
+    if (Utils::DisplayQuestionMessage(this,
+                                      tr("BSA file found"),
+                                      tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
+                                      lIconFolder,
+                                      "help-circle",
+                                      tr("Continue the scan"),
+                                      tr("Cancel the scan"),
+                                      "",
+                                      this->mSettings.display.warningColor,
+                                      this->mSettings.display.successColor,
+                                      "",
+                                      true)
+        != ButtonClicked::YES)
+    {
+      return;
+    }
+  }
+
+  // The root directory should at least contain a "textures" directory to be scanned.
+  if (!QDir(QString("%1/textures").arg(lInputPath)).exists())
+  {
+    Utils::DisplayWarningMessage(tr("No \"textures\" directory has been found in the scanned directory."));
+  }
+
+  // Fetch all the "*dds" files
+  this->scanForTexturesFiles(lInputPath, "*.dds");
+
+  // Display the data
+  this->displayObtainedData();
+
+  // Re-enable the groupboxes
+  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
+  if (lTexturesSetGroupBox != nullptr)
+    lTexturesSetGroupBox->setDisabled(false);
+
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
+  if (lOutputGroupBox != nullptr)
+    lOutputGroupBox->setDisabled(false);
+
+  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
+  if (lGenerateButton != nullptr)
+    lGenerateButton->setDisabled(false);
 }
 
 void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QString& aFileExtension)
@@ -309,21 +547,331 @@ void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QStr
     }
   }
 }
-
-void TexturesAssistant::displayTexturesFilesList()
+void TexturesAssistant::launchSearchNexusModsURL()
 {
+  auto lModID{this->getModIDFromUserInput()};
+  this->requestModInformation(lModID);
+}
+
+int TexturesAssistant::getModIDFromUserInput()
+{
+  const auto lModURLOrID{this->findChild<QLineEdit*>(QString("mod_url_or_id"))->text()};
+  const auto lURLPattern{QString("nexusmods.com/skyrimspecialedition/mods/")};
+
+  // ID
+  bool lIsInteger;
+  lModURLOrID.toInt(&lIsInteger);
+  if (lIsInteger)
+  {
+    return lModURLOrID.toInt();
+  }
+  // URL
+  else if (lModURLOrID.contains(lURLPattern))
+  {
+    auto lModID{0};
+    const auto lStart{lModURLOrID.indexOf(lURLPattern)};
+    for (const auto& lChar : lModURLOrID.mid(lStart + lURLPattern.length()))
+    {
+      if (lChar.isDigit())
+      {
+        lModID = lModID * 10 + lChar.digitValue();
+      }
+      else
+      {
+        break;
+      }
+    }
+
+    return lModID;
+  }
+
+  // Invalid format
+  return -1;
+}
+
+bool TexturesAssistant::isModIDValid()
+{
+  return this->getModIDFromUserInput() != -1;
+}
+
+void TexturesAssistant::requestModInformation(const int aModID)
+{
+  const auto lURL{QString("https://api.nexusmods.com/v1/games/skyrimspecialedition/mods/%1/files.json").arg(QString::number(aModID))};
+
+  QNetworkRequest lRequest{QUrl(lURL)};
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  QNetworkReply* lReply{this->mManager.get(lRequest)};
+  connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModInformationFinished);
+}
+
+void TexturesAssistant::requestModInformationFinished()
+{
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
+
+  std::vector<Struct::NexusModsFileInformation> lParsedFilesInformation;
+  if (lReply->error() == QNetworkReply::NoError)
+  {
+    lParsedFilesInformation = this->parseFilesListFromModInformation(true, lReply->readAll());
+  }
+  else
+  {
+    lParsedFilesInformation = this->parseFilesListFromModInformation(false, "");
+  }
+
+  lReply->deleteLater();
+
+  this->displayFileIDPicker(lParsedFilesInformation);
+}
+
+std::vector<Struct::NexusModsFileInformation> TexturesAssistant::parseFilesListFromModInformation(const bool aSucceeded, const QByteArray& aResult)
+{
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+
+  if (!aSucceeded)
+  {
+    lLaunchSearchButton->setDisabled(false);
+    Utils::DisplayErrorMessage(tr("An error has occurred... Make sure your internet connection is operational and try again."));
+    return std::vector<Struct::NexusModsFileInformation>();
+  }
+
+  std::vector<Struct::NexusModsFileInformation> lList;
+
+  const auto lJson{QJsonDocument::fromJson(aResult)};
+  const auto lRootElement{lJson.object()};
+  if (lRootElement.contains("files") && lRootElement["files"].isArray())
+  {
+    const auto lFiles{lRootElement["files"].toArray()};
+    for (const auto& lFile : lFiles)
+    {
+      lList.push_back(Struct::NexusModsFileInformation(lFile["file_id"].toInt(),
+                                                       lFile["name"].toString(),
+                                                       lFile["uploaded_timestamp"].toInt(),
+                                                       lFile["version"].toString(),
+                                                       lFile["content_preview_link"].toString(),
+                                                       lFile["category_name"].isNull() ? "-" : lFile["category_name"].toString()));
+    }
+  }
+  else
+  {
+    lLaunchSearchButton->setDisabled(false);
+    Utils::DisplayErrorMessage(tr("Parse error: could not find the \"files\" element."));
+    return std::vector<Struct::NexusModsFileInformation>();
+  }
+
+  return lList;
+}
+
+void TexturesAssistant::displayFileIDPicker(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
+{
+  if (aFilesInformation.empty())
+  {
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+    lLaunchSearchButton->setDisabled(false);
+    return;
+  }
+
+  auto lFilePicker{new FileIDPicker(this, this->mSettings, aFilesInformation)};
+  QObject::connect(lFilePicker, QOverload<QString>::of(&FileIDPicker::fileContentPreviewURLChosen), this, &TexturesAssistant::requestModFileContent);
+}
+
+void TexturesAssistant::requestModFileContent(const QString& aContentPreviewLink)
+{
+  if (aContentPreviewLink.isEmpty())
+  {
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+    lLaunchSearchButton->setDisabled(false);
+    Utils::DisplayErrorMessage(tr("An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status."));
+    return;
+  }
+
+  QNetworkRequest lRequest{QUrl(aContentPreviewLink)};
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  QNetworkReply* lReply{this->mManager.get(lRequest)};
+  connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModFileContentFinished);
+}
+
+void TexturesAssistant::requestModFileContentFinished()
+{
+  auto lReply{qobject_cast<QNetworkReply*>(this->sender())};
+
+  bool lHasFoundBSAFile{false};
+
+  if (lReply->error() == QNetworkReply::NoError)
+  {
+    this->parseFileContent(true, lReply->readAll(), lHasFoundBSAFile);
+  }
+  else
+  {
+    this->parseFileContent(false, "", lHasFoundBSAFile);
+  }
+
+  lReply->deleteLater();
+
+  // Warn the user if the scan found a BSA file
+  if (lHasFoundBSAFile)
+  {
+    Utils::DisplayWarningMessage(tr("At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan."));
+  }
+
+  this->displayObtainedData();
+
+  // Re-enable the groupboxes
+  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
+  if (lTexturesSetGroupBox != nullptr)
+    lTexturesSetGroupBox->setDisabled(false);
+
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
+  if (lOutputGroupBox != nullptr)
+    lOutputGroupBox->setDisabled(false);
+
+  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
+  if (lGenerateButton != nullptr)
+    lGenerateButton->setDisabled(false);
+}
+
+void TexturesAssistant::parseFileContent(const bool aSucceeded, const QByteArray& aResult, bool& aHasFoundBSAFile)
+{
+  if (!aSucceeded)
+  {
+    Utils::DisplayErrorMessage(tr("An error has occurred... Make sure your internet connection is operational and try again."));
+    return;
+  }
+
+  this->mScannedFiles.groupedTextures.clear();
+  this->mScannedFiles.otherTextures.clear();
+
+  std::map<QString, std::vector<QString>> lFoundNifFiles;
+
+  const auto lJson{QJsonDocument::fromJson(aResult)};
+  const auto lRootElement{lJson.object()};
+
+  if (lRootElement.contains("children") && lRootElement["children"].isArray())
+  {
+    const auto lChildren{lRootElement["children"].toArray()};
+    if (lChildren.size() == 1 && lChildren.first().toObject().contains("name"))
+    {
+      this->parseNode(lChildren, lFoundNifFiles, lChildren.first().toObject()["name"].toString(), aHasFoundBSAFile);
+    }
+  }
+}
+
+void TexturesAssistant::parseNode(const QJsonArray& aArray,
+                                  std::map<QString, std::vector<QString>>& aNifFilesList,
+                                  const QString& aRootNodeName,
+                                  bool& aHasFoundBSAFile)
+{
+  for (const auto& lEntry : aArray)
+  {
+    if (lEntry.isObject())
+    {
+      // The node contains some children
+      if (lEntry.toObject().contains("children") && lEntry["children"].isArray())
+      {
+        // Parse the content of the array
+        const auto lChildren{lEntry["children"].toArray()};
+        this->parseNode(lChildren, aNifFilesList, aRootNodeName, aHasFoundBSAFile);
+      }
+      else
+      {
+        // Parse the file node
+        this->parseNode(lEntry.toObject(), aRootNodeName, aHasFoundBSAFile);
+      }
+    }
+  }
+}
+
+void TexturesAssistant::parseNode(const QJsonObject& aNode, const QString& aRootNodeName, bool& aHasFoundBSAFile)
+{
+  if (aNode.contains("path") && aNode["path"].isString()
+      && aNode.contains("name") && aNode["name"].isString()
+      && aNode.contains("type") && aNode["type"].isString()
+      && aNode.contains("size"))
+  {
+    const QStringList lTexturesFilesToFind{DataLists::GetKnownTexturesFilesNames()};
+
+    const auto lName{aNode["name"].toString()};
+
+    // BSA file
+    if (lName.endsWith(".bsa", Qt::CaseSensitivity::CaseInsensitive))
+    {
+      aHasFoundBSAFile = true;
+    }
+
+    // Not a file or not a DDS file
+    if (aNode["type"].toString().compare("file") != 0
+        || !lName.endsWith(".dds", Qt::CaseSensitivity::CaseInsensitive))
+    {
+      return;
+    }
+
+    auto lFileName{aNode["path"].toString()};
+
+    // Remove the root node name from the file path
+    if (lFileName.startsWith(aRootNodeName + "/"))
+    {
+      lFileName.remove(aRootNodeName + "/");
+    }
+
+    // The root directory should at least contain a "textures" directory to be scanned.
+    if (!lFileName.startsWith("textures/", Qt::CaseSensitivity::CaseInsensitive))
+    {
+      return;
+    }
+
+    // Clean the file name from any artifact
+    lFileName.remove(".dds", Qt::CaseInsensitive);
+
+    const auto lLastSlashPosition{lFileName.lastIndexOf('/')};
+
+    auto lSplittedPath = std::make_pair(lFileName.left(lLastSlashPosition), lFileName.mid(lLastSlashPosition + 1));
+    if (lSplittedPath.first.isEmpty() || lSplittedPath.second.isEmpty())
+    {
+      return;
+    }
+
+    if (lTexturesFilesToFind.contains(lSplittedPath.second))
+    {
+      this->mScannedFiles.groupedTextures.push_back(std::make_pair(lSplittedPath.first, lSplittedPath.second));
+    }
+    else
+    {
+      this->mScannedFiles.otherTextures.push_back(std::make_pair(lSplittedPath.first, lSplittedPath.second));
+    }
+  }
+}
+
+void TexturesAssistant::displayObtainedData()
+{
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  lLaunchSearchButton->setDisabled(false);
+
+  // No file found
+  if (this->mScannedFiles.groupedTextures.empty() && this->mScannedFiles.otherTextures.empty())
+  {
+    this->displayHintZone();
+
+    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+    if (lHintZone != nullptr)
+    {
+      lHintZone->setText(tr("No DDS file was found in the scanned directory."));
+    }
+    return;
+  }
+
   // Delete already existing the hint label or the layout and the validation button
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area wrapper
-  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 2, 0, 1, 3)};
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 2, 0)};
 
   // Parse the grouped textures to split them in multiple storages
   TexturesAssistant::GroupedData lGroupedPaths;
 
   for (const auto& lNifFile : this->mScannedFiles.groupedTextures)
   {
-    std::map<std::string, std::vector<QString>>* lTargetMapToFill{nullptr};
+    std::map<QString, std::vector<QString>>* lTargetMapToFill{nullptr};
 
     if (lNifFile.second.contains("head"))
     {
@@ -348,20 +896,21 @@ void TexturesAssistant::displayTexturesFilesList()
 
     if (lTargetMapToFill != nullptr)
     {
-      (*lTargetMapToFill)[lNifFile.first.toStdString()].push_back(lNifFile.second);
+      (*lTargetMapToFill)[lNifFile.first].push_back(lNifFile.second);
     }
   }
 
   // Parse the other textures to change their storage type to be compatible with the display function
-  auto lOtherPaths{std::map<std::string, std::vector<QString>>()};
+  auto lOtherPaths{std::map<QString, std::vector<QString>>()};
 
   for (const auto& lNifFile : this->mScannedFiles.otherTextures)
   {
-    lOtherPaths[lNifFile.first.toStdString()].push_back(lNifFile.second);
+    lOtherPaths[lNifFile.first].push_back(lNifFile.second);
   }
 
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+
   auto lRowIndex{0};
 
   // Head resources blocks
@@ -419,7 +968,7 @@ void TexturesAssistant::displayTexturesFilesList()
   lDataContainer->addWidget(lOtherGroup, lRowIndex++, 0);
 }
 
-void TexturesAssistant::createResourceBlock(const std::map<std::string, std::vector<QString>>& aMap, QGridLayout* aLayout)
+void TexturesAssistant::createResourceBlock(const std::map<QString, std::vector<QString>>& aMap, QGridLayout* aLayout)
 {
   auto lRowIndex{0};
   for (const auto& lRootPath : aMap)
@@ -432,19 +981,9 @@ void TexturesAssistant::createResourceBlock(const std::map<std::string, std::vec
     }
     lConcatenatedFileNames = lConcatenatedFileNames.left(lConcatenatedFileNames.length() - 1);
 
-    aLayout->addWidget(new QLabel(QString::fromStdString(lRootPath.first), this), lRowIndex, 0, Qt::AlignLeft);
+    aLayout->addWidget(new QLabel(lRootPath.first, this), lRowIndex, 0, Qt::AlignLeft);
     aLayout->addWidget(new QLabel(lConcatenatedFileNames, this), lRowIndex++, 1, Qt::AlignLeft);
   }
-}
-
-void TexturesAssistant::updateOutputPreview()
-{
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
-  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
-
-  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
 }
 
 void TexturesAssistant::generateTexturesStructure()
@@ -543,96 +1082,14 @@ void TexturesAssistant::generateTexturesStructure()
   }
 }
 
-void TexturesAssistant::chooseInputDirectory()
+void TexturesAssistant::updateOutputPreview()
 {
-  // Fetch GUI components
-  auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
-  const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
-  lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantInput", lPath);
-
-  if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
-  {
-    this->mHasUserDoneSomething = true;
-  }
-
-  // Enable or disable path viewer label and launch button
-  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
-  lLineEdit->setDisabled(lMustDisableButton);
-  lLaunchSearchButton->setDisabled(lMustDisableButton);
-
-  this->displayHintZone();
-}
-
-void TexturesAssistant::launchSearchProcess()
-{
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
-
-  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
-
-  // Warn the user if the scan found a BSA file
-  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
-  {
-    if (Utils::DisplayQuestionMessage(this,
-                                      tr("BSA file found"),
-                                      tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
-                                      lIconFolder,
-                                      "help-circle",
-                                      tr("Continue the scan"),
-                                      tr("Cancel the scan"),
-                                      "",
-                                      this->mSettings.display.warningColor,
-                                      this->mSettings.display.successColor,
-                                      "",
-                                      true)
-        != ButtonClicked::YES)
-    {
-      return;
-    }
-  }
-
-  // The root directory should at least contain a DDS file to be scanned.
-  if (!QDir(QString("%1/textures").arg(lInputPath)).exists())
-  {
-    Utils::DisplayWarningMessage(tr("No \"textures\" directory has been found in the scanned directory."));
-  }
-
-  // Fetch all the "*dds" files
-  this->scanForTexturesFiles(lInputPath, "*.dds");
-
-  // No file found
-  if (this->mScannedFiles.groupedTextures.size() == 0 && this->mScannedFiles.otherTextures.size() == 0)
-  {
-    this->displayHintZone();
-
-    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
-    if (lHintZone != nullptr)
-    {
-      lHintZone->setText(tr("No DDS file was found in the scanned directory."));
-    }
-    return;
-  }
-
-  // Display the data
-  this->displayTexturesFilesList();
-
-  // Re-enable the groupboxes
-  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
-  if (lTexturesSetGroupBox != nullptr)
-    lTexturesSetGroupBox->setDisabled(false);
-
-  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
-  if (lOutputGroupBox != nullptr)
-    lOutputGroupBox->setDisabled(false);
-
-  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
-  if (lGenerateButton != nullptr)
-    lGenerateButton->setDisabled(false);
+  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
 }
 
 void TexturesAssistant::populateTexturesSetChooser()

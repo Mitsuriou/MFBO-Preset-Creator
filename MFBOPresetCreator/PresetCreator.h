@@ -24,7 +24,7 @@ public:
   void fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList);
 
 private:
-  QFileSystemWatcher* mFileWatcher;
+  QFileSystemWatcher* mFileWatcher{nullptr};
   Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths;
   std::map<QString, QStringList> mFiltersList;

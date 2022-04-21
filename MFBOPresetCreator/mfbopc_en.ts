@@ -37,191 +37,194 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="146"/>
+        <location filename="AssistedConversion.cpp" line="152"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="156"/>
+        <location filename="AssistedConversion.cpp" line="162"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="111"/>
+        <location filename="AssistedConversion.cpp" line="112"/>
         <source>Only scan the &quot;meshes&quot; subdirectory of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="115"/>
+        <location filename="AssistedConversion.cpp" line="121"/>
         <source>Launch the scan of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="220"/>
+        <location filename="AssistedConversion.cpp" line="226"/>
         <source>Awaiting the launch of a scan...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="459"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="453"/>
+        <location filename="AssistedConversion.cpp" line="459"/>
         <source>Scanning the directory. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="479"/>
+        <location filename="AssistedConversion.cpp" line="485"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="350"/>
-        <location filename="AssistedConversion.cpp" line="354"/>
+        <location filename="AssistedConversion.cpp" line="356"/>
+        <location filename="AssistedConversion.cpp" line="360"/>
         <source>Relaunch the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="351"/>
+        <location filename="AssistedConversion.cpp" line="357"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="355"/>
+        <location filename="AssistedConversion.cpp" line="361"/>
         <source>Cancel the relaunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1062"/>
+        <location filename="AssistedConversion.cpp" line="1075"/>
         <source>No entry selected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1063"/>
+        <location filename="AssistedConversion.cpp" line="1076"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1066"/>
+        <location filename="AssistedConversion.cpp" line="1079"/>
         <source>Validate as is</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1067"/>
+        <location filename="AssistedConversion.cpp" line="1080"/>
         <source>Cancel, I wanted to select values</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="395"/>
+        <location filename="AssistedConversion.cpp" line="401"/>
         <source>No root file has been found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="143"/>
-        <source>From local folder</source>
-        <translation type="unfinished"></translation>
+        <location filename="AssistedConversion.cpp" line="149"/>
+        <source>From local directory</source>
+        <oldsource>From local folder</oldsource>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="179"/>
+        <location filename="AssistedConversion.cpp" line="185"/>
         <source>From NexusMods URL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="182"/>
-        <source>Input mod&apos;s URL or ID:</source>
-        <translation type="unfinished"></translation>
+        <location filename="AssistedConversion.cpp" line="188"/>
+        <source>Mod&apos;s URL or ID:</source>
+        <oldsource>Input mod&apos;s URL or ID:</oldsource>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="187"/>
+        <location filename="AssistedConversion.cpp" line="193"/>
         <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="191"/>
+        <location filename="AssistedConversion.cpp" line="197"/>
         <source>API Key:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="196"/>
+        <location filename="AssistedConversion.cpp" line="202"/>
         <source>Enter your NexusMods API key here</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="201"/>
-        <source>Save API key</source>
-        <translation type="unfinished"></translation>
+        <location filename="AssistedConversion.cpp" line="207"/>
+        <source>Save the API key</source>
+        <oldsource>Save API key</oldsource>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="396"/>
+        <location filename="AssistedConversion.cpp" line="402"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="399"/>
-        <location filename="AssistedConversion.cpp" line="421"/>
+        <location filename="AssistedConversion.cpp" line="405"/>
+        <location filename="AssistedConversion.cpp" line="427"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="400"/>
-        <location filename="AssistedConversion.cpp" line="422"/>
+        <location filename="AssistedConversion.cpp" line="406"/>
+        <location filename="AssistedConversion.cpp" line="428"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="417"/>
+        <location filename="AssistedConversion.cpp" line="423"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="418"/>
+        <location filename="AssistedConversion.cpp" line="424"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="586"/>
-        <location filename="AssistedConversion.cpp" line="678"/>
+        <location filename="AssistedConversion.cpp" line="595"/>
+        <location filename="AssistedConversion.cpp" line="691"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="609"/>
+        <location filename="AssistedConversion.cpp" line="619"/>
         <source>Parse error: could not find the &quot;files&quot; element.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="634"/>
+        <location filename="AssistedConversion.cpp" line="645"/>
         <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="666"/>
+        <location filename="AssistedConversion.cpp" line="679"/>
         <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="801"/>
+        <location filename="AssistedConversion.cpp" line="811"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="814"/>
+        <location filename="AssistedConversion.cpp" line="824"/>
         <source>File path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="815"/>
+        <location filename="AssistedConversion.cpp" line="825"/>
         <source>*.nif file name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="816"/>
+        <location filename="AssistedConversion.cpp" line="826"/>
         <source>Action</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="837"/>
+        <location filename="AssistedConversion.cpp" line="850"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation></translation>
     </message>
@@ -977,39 +980,40 @@ Targeted feet: -</source>
 <context>
     <name>FileIDPicker</name>
     <message>
-        <location filename="FileIDPicker.cpp" line="38"/>
+        <location filename="FileIDPicker.cpp" line="43"/>
         <source>NexusMods File Picker</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="50"/>
-        <source>Choose a file</source>
-        <translation type="unfinished"></translation>
+        <location filename="FileIDPicker.cpp" line="55"/>
+        <source>Choose a distant file</source>
+        <oldsource>Choose a file</oldsource>
+        <translation></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="86"/>
+        <location filename="FileIDPicker.cpp" line="91"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="90"/>
+        <location filename="FileIDPicker.cpp" line="95"/>
         <source>Category: </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="94"/>
+        <location filename="FileIDPicker.cpp" line="99"/>
         <source>Upload date: </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="101"/>
+        <location filename="FileIDPicker.cpp" line="106"/>
         <source>File ID: </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="FileIDPicker.cpp" line="105"/>
+        <location filename="FileIDPicker.cpp" line="110"/>
         <source>Select this file</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2268,209 +2272,268 @@ Targeted feet: %2</source>
 <context>
     <name>TexturesAssistant</name>
     <message>
-        <location filename="TexturesAssistant.cpp" line="55"/>
+        <location filename="TexturesAssistant.cpp" line="59"/>
         <source>Closing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="56"/>
+        <location filename="TexturesAssistant.cpp" line="60"/>
         <source>Do you want to close the window?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="59"/>
+        <location filename="TexturesAssistant.cpp" line="63"/>
         <source>Close the window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="60"/>
+        <location filename="TexturesAssistant.cpp" line="64"/>
         <source>Go back to the textures assistant window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="86"/>
+        <location filename="TexturesAssistant.cpp" line="90"/>
         <source>Textures Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="104"/>
+        <location filename="TexturesAssistant.cpp" line="152"/>
         <source>Input path:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="114"/>
+        <location filename="TexturesAssistant.cpp" line="162"/>
         <source>Choose a directory...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="118"/>
+        <location filename="TexturesAssistant.cpp" line="116"/>
         <source>Launch the scan of the mod</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="139"/>
+        <location filename="TexturesAssistant.cpp" line="149"/>
+        <source>From local directory</source>
+        <oldsource>From local folder</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="185"/>
+        <source>From NexusMods URL</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="188"/>
+        <source>Mod&apos;s URL or ID:</source>
+        <oldsource>Input mod&apos;s URL or ID:</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="193"/>
+        <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="197"/>
+        <source>API Key:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="202"/>
+        <source>Enter your NexusMods API key here</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="207"/>
+        <source>Save the API key</source>
+        <oldsource>Save API key</oldsource>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="225"/>
         <source>Awaiting the launch of a scan...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="164"/>
+        <location filename="TexturesAssistant.cpp" line="250"/>
         <source>Textures set</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="177"/>
+        <location filename="TexturesAssistant.cpp" line="263"/>
         <source>Textures set:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="186"/>
+        <location filename="TexturesAssistant.cpp" line="272"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="190"/>
+        <location filename="TexturesAssistant.cpp" line="276"/>
         <source>View in explorer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="230"/>
+        <location filename="TexturesAssistant.cpp" line="316"/>
         <source>Create the files structure on my computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="266"/>
+        <location filename="TexturesAssistant.cpp" line="504"/>
         <source>Cancel treatment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="266"/>
+        <location filename="TexturesAssistant.cpp" line="504"/>
         <source>Scanning the directory. Please wait...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="287"/>
+        <location filename="TexturesAssistant.cpp" line="525"/>
         <source>Process aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="368"/>
+        <location filename="TexturesAssistant.cpp" line="634"/>
+        <location filename="TexturesAssistant.cpp" line="738"/>
+        <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="658"/>
+        <source>Parse error: could not find the &quot;files&quot; element.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="684"/>
+        <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="715"/>
+        <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="TexturesAssistant.cpp" line="917"/>
         <source>Head textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="377"/>
+        <location filename="TexturesAssistant.cpp" line="926"/>
         <source>Mouth textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="395"/>
+        <location filename="TexturesAssistant.cpp" line="944"/>
         <source>Extra body textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="404"/>
+        <location filename="TexturesAssistant.cpp" line="953"/>
         <source>Hands textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="386"/>
+        <location filename="TexturesAssistant.cpp" line="935"/>
         <source>Body textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="413"/>
+        <location filename="TexturesAssistant.cpp" line="962"/>
         <source>Other .DDS textures</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="459"/>
+        <location filename="TexturesAssistant.cpp" line="998"/>
         <source>Error: no textures set chosen.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="481"/>
+        <location filename="TexturesAssistant.cpp" line="1020"/>
         <source>Error: no path given to export the files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="488"/>
+        <location filename="TexturesAssistant.cpp" line="1027"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="498"/>
+        <location filename="TexturesAssistant.cpp" line="1037"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not create the files in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="506"/>
+        <location filename="TexturesAssistant.cpp" line="1045"/>
         <source>Already existing directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="507"/>
+        <location filename="TexturesAssistant.cpp" line="1046"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to create the files in this directory?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="510"/>
+        <location filename="TexturesAssistant.cpp" line="1049"/>
         <source>Continue the files creation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="511"/>
+        <location filename="TexturesAssistant.cpp" line="1050"/>
         <source>Cancel the files creation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="536"/>
+        <location filename="TexturesAssistant.cpp" line="1075"/>
         <source>Files creation successful</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="537"/>
+        <location filename="TexturesAssistant.cpp" line="1076"/>
         <source>The texture files have been correctly created.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="540"/>
+        <location filename="TexturesAssistant.cpp" line="1079"/>
         <source>Open the created directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="540"/>
+        <location filename="TexturesAssistant.cpp" line="1079"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="582"/>
+        <location filename="TexturesAssistant.cpp" line="450"/>
         <source>BSA file found</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="583"/>
+        <location filename="TexturesAssistant.cpp" line="451"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="586"/>
+        <location filename="TexturesAssistant.cpp" line="454"/>
         <source>Continue the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="587"/>
+        <location filename="TexturesAssistant.cpp" line="455"/>
         <source>Cancel the scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="602"/>
+        <location filename="TexturesAssistant.cpp" line="470"/>
         <source>No &quot;textures&quot; directory has been found in the scanned directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="616"/>
+        <location filename="TexturesAssistant.cpp" line="858"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation></translation>
     </message>
@@ -2713,19 +2776,22 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
     <message>
         <location filename="Utils.cpp" line="1708"/>
         <source>API key successfully saved</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1709"/>
         <source>The API key file has successfully been saved to &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1721"/>
-        <source>Could not save the api key file to &quot;%1&quot;.
+        <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
-        <translation type="unfinished"></translation>
+        <oldsource>Could not save the api key file to &quot;%1&quot;.
+Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
+Be sure that you used characters authorized by your OS in the given paths.</oldsource>
+        <translation></translation>
     </message>
     <message>
         <location filename="Utils.cpp" line="1804"/>
