@@ -13,7 +13,9 @@ class MFBOPresetCreator final : public QMainWindow
   Q_OBJECT
 
 public:
-  explicit MFBOPresetCreator(const Struct::Settings& aSettings, const QString& aInjectedFilePath, QWidget* aParent = Q_NULLPTR);
+  explicit MFBOPresetCreator(const Struct::Settings& aSettings,
+                             const QString& aInjectedFilePath,
+                             QWidget* aParent = nullptr);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

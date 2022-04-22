@@ -21,7 +21,9 @@ ThemeCard::ThemeCard(const QString& aThemeName, QWidget* aParent)
   lWrapper->addWidget(lButton);
 
   // Event binding
-  QObject::connect(lButton, &QPushButton::clicked, this, &ThemeCard::buttonClicked);
+  QObject::connect(lButton, &QPushButton::clicked, this, [&]() {
+    emit loadQSSTheme(this->mThemeName);
+  });
 
   // Simulate a resize event
   this->resizeEvent(nullptr);
@@ -38,9 +40,4 @@ void ThemeCard::resizeEvent(QResizeEvent*)
 
   lImageLabel->setPixmap(this->mPreviewImage.scaledToWidth(lImageLabel->width(),
                                                            Qt::TransformationMode::SmoothTransformation));
-}
-
-void ThemeCard::buttonClicked()
-{
-  emit loadQSSTheme(this->mThemeName);
 }

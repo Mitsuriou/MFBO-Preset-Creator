@@ -7,7 +7,7 @@ class FirstInstallWindow : public QMainWindow
   Q_OBJECT
 
 public:
-  explicit FirstInstallWindow(QWidget* aParent = Q_NULLPTR);
+  explicit FirstInstallWindow(QWidget* aParent = nullptr);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

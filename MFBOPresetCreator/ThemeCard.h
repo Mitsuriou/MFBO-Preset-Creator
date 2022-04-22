@@ -17,6 +17,4 @@ protected:
 private:
   QString mThemeName;
   QPixmap mPreviewImage;
-
-  void buttonClicked();
 };
