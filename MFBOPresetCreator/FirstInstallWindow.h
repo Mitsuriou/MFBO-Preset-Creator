@@ -1,6 +1,5 @@
 #pragma once
-#include "Struct.h"
-#include <QHBoxLayout>
+#include "Enum.h"
 #include <QMainWindow>
 
 class FirstInstallWindow : public QMainWindow

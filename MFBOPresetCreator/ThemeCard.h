@@ -9,7 +9,7 @@ public:
   explicit ThemeCard(const QString& aThemeName, QWidget* aParent);
 
 signals:
-  void loadQSSTheme(QString);
+  void loadQSSTheme(QString aThemeName);
 
 protected:
   void resizeEvent(QResizeEvent* aEvent) override;

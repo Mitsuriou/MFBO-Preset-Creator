@@ -4,6 +4,7 @@
 #include <QFrame>
 #include <QGridLayout>
 #include <QIcon>
+#include <QMainWindow>
 #include <QPixmap>
 #include <QPushButton>
 #include <QScrollArea>
@@ -166,6 +167,15 @@ QGridLayout* ComponentFactory::CreateScrollAreaComponentLayout(QWidget* aParent,
   lMainWidget->setLayout(lDataContainer);
 
   auto lMainLayout{qobject_cast<QGridLayout*>(aParent->layout())};
+  if (lMainLayout == nullptr)
+  {
+    auto lCastedWindow{qobject_cast<QMainWindow*>(aParent)};
+    if (lCastedWindow != nullptr && lCastedWindow->centralWidget() != nullptr)
+    {
+      lMainLayout = qobject_cast<QGridLayout*>(lCastedWindow->centralWidget()->layout());
+    }
+  }
+
   lMainLayout->addWidget(lScrollArea, aRow, aColumn, aRowSpan, aColumnSpan);
 
   return lDataContainer;
