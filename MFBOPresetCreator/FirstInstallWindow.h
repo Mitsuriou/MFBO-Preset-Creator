@@ -2,7 +2,7 @@
 #include "Enum.h"
 #include <QMainWindow>
 
-class FirstInstallWindow : public QMainWindow
+class FirstInstallWindow final : public QMainWindow
 {
   Q_OBJECT
 

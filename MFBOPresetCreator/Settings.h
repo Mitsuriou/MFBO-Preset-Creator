@@ -10,15 +10,15 @@ class Settings final : public QDialog
   Q_OBJECT
 
 public:
-  explicit Settings(QWidget* aParent, const Struct::Settings& aSettings, const std::map<QString, QString>& aLastPaths);
+  explicit Settings(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
   void reject() override;
 
 private:
-  Struct::Settings mSettings;
-  std::map<QString, QString> mLastPaths;
+  const Struct::Settings mSettings;
+  std::map<QString, QString>* mLastPaths{nullptr};
   bool mMustRebootMainApp;
   bool mPathEntryCleared;
   QFont mNewFont;

@@ -39,7 +39,7 @@ private:
   QFileSystemWatcher* mFileWatcher{nullptr};
   QNetworkAccessManager mManager;
   const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths;
+  std::map<QString, QString>* mLastPaths{nullptr};
   bool mHasUserDoneSomething;
   int mMinimumFirstColumnWidth;
   TexturesAssistant::ScannedData mScannedFiles;
@@ -63,18 +63,20 @@ private:
   void updateSaveAPIKeyButtonState(const QString&);
   void updateSaveAPIKeyButtonState(const bool aMustBeDisabled);
 
-  // Scan
-  void updateLaunchSearchButtonState(const QString&);
-  void updateLaunchSearchButtonState(int aCurrentTabIndex);
+  // Toggle GUI widgets' state
+  void toggleGroupBoxesState(const bool aMustBeDisabled) const;
+  void updateLaunchSearchButtonState(const QString&) const;
+  void updateLaunchSearchButtonState(int aCurrentTabIndex) const;
 
+  // Scan
   void launchSearchProcess();
 
   void launchSearchFromLocalFolder();
   void scanForTexturesFiles(const QString& aRootDir, const QString& aFileExtension);
 
   void launchSearchNexusModsURL();
-  int getModIDFromUserInput();
-  bool isModIDValid();
+  int getModIDFromUserInput() const;
+  bool isModIDValid() const;
 
   void requestModInformation(const int aModID);
   void requestModInformationFinished();

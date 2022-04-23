@@ -15,6 +15,7 @@ private:
   void setWindowProperties();
   void initializeGUI();
 
-  explicit About(const About&) = delete;
+  // Prevent object copy
+  About(const About&) = delete;
   About& operator=(const About&) = delete;
 };

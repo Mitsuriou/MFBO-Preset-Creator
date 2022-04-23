@@ -26,7 +26,7 @@ public:
 private:
   QFileSystemWatcher* mFileWatcher{nullptr};
   Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths;
+  std::map<QString, QString>* mLastPaths{nullptr};
   std::map<QString, QStringList> mFiltersList;
   bool mHasUserDoneSomething;
   QString mLastUsedSavePath;

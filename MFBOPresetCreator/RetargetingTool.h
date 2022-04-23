@@ -22,7 +22,7 @@ protected:
 private:
   QFileSystemWatcher* mFileWatcher{nullptr};
   const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths;
+  std::map<QString, QString>* mLastPaths{nullptr};
   bool mHasUserDoneSomething;
   std::map<QString, QStringList> mFiltersList;
   BodyNameVersion mTargetBodyMesh;

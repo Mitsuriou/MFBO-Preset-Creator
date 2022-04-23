@@ -1,7 +1,7 @@
 #pragma once
 #include <QWidget>
 
-class ThemeCard : public QWidget
+class ThemeCard final : public QWidget
 {
   Q_OBJECT
 

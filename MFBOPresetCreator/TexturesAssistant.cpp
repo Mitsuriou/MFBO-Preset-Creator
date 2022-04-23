@@ -240,17 +240,7 @@ void TexturesAssistant::displayHintZone()
   qobject_cast<QGridLayout*>(this->layout())->addWidget(lHintZone, 2, 0);
 
   // Disable the groupboxes
-  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
-  if (lTexturesSetGroupBox != nullptr)
-    lTexturesSetGroupBox->setDisabled(true);
-
-  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
-  if (lOutputGroupBox != nullptr)
-    lOutputGroupBox->setDisabled(true);
-
-  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
-  if (lGenerateButton != nullptr)
-    lGenerateButton->setDisabled(true);
+  this->toggleGroupBoxesState(true);
 }
 
 void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
@@ -397,13 +387,28 @@ void TexturesAssistant::updateSaveAPIKeyButtonState(const bool aMustBeDisabled)
   lSaveAPIKey->setDisabled(aMustBeDisabled);
 }
 
-void TexturesAssistant::updateLaunchSearchButtonState(const QString&)
+void TexturesAssistant::toggleGroupBoxesState(const bool aMustBeDisabled) const
+{
+  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
+  if (lTexturesSetGroupBox != nullptr)
+    lTexturesSetGroupBox->setDisabled(aMustBeDisabled);
+
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
+  if (lOutputGroupBox != nullptr)
+    lOutputGroupBox->setDisabled(aMustBeDisabled);
+
+  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
+  if (lGenerateButton != nullptr)
+    lGenerateButton->setDisabled(aMustBeDisabled);
+}
+
+void TexturesAssistant::updateLaunchSearchButtonState(const QString&) const
 {
   const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
   this->updateLaunchSearchButtonState(lTabWidget->currentIndex());
 }
 
-void TexturesAssistant::updateLaunchSearchButtonState(int aCurrentTabIndex)
+void TexturesAssistant::updateLaunchSearchButtonState(int aCurrentTabIndex) const
 {
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
 
@@ -489,17 +494,7 @@ void TexturesAssistant::launchSearchFromLocalFolder()
   this->displayObtainedData();
 
   // Re-enable the groupboxes
-  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
-  if (lTexturesSetGroupBox != nullptr)
-    lTexturesSetGroupBox->setDisabled(false);
-
-  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
-  if (lOutputGroupBox != nullptr)
-    lOutputGroupBox->setDisabled(false);
-
-  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
-  if (lGenerateButton != nullptr)
-    lGenerateButton->setDisabled(false);
+  this->toggleGroupBoxesState(false);
 }
 
 void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QString& aFileExtension)
@@ -565,7 +560,7 @@ void TexturesAssistant::launchSearchNexusModsURL()
   this->requestModInformation(lModID);
 }
 
-int TexturesAssistant::getModIDFromUserInput()
+int TexturesAssistant::getModIDFromUserInput() const
 {
   const auto lModURLOrID{this->findChild<QLineEdit*>(QString("mod_url_or_id"))->text()};
   const auto lURLPattern{QString("nexusmods.com/skyrimspecialedition/mods/")};
@@ -601,7 +596,7 @@ int TexturesAssistant::getModIDFromUserInput()
   return -1;
 }
 
-bool TexturesAssistant::isModIDValid()
+bool TexturesAssistant::isModIDValid() const
 {
   return this->getModIDFromUserInput() != -1;
 }
@@ -730,17 +725,7 @@ void TexturesAssistant::requestModFileContentFinished()
   this->displayObtainedData();
 
   // Re-enable the groupboxes
-  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
-  if (lTexturesSetGroupBox != nullptr)
-    lTexturesSetGroupBox->setDisabled(false);
-
-  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
-  if (lOutputGroupBox != nullptr)
-    lOutputGroupBox->setDisabled(false);
-
-  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
-  if (lGenerateButton != nullptr)
-    lGenerateButton->setDisabled(false);
+  this->toggleGroupBoxesState(false);
 }
 
 void TexturesAssistant::parseFileContent(const bool aSucceeded, const QByteArray& aResult, bool& aHasFoundBSAFile)

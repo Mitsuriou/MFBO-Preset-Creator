@@ -21,7 +21,7 @@ protected:
 private:
   QNetworkAccessManager mManager;
   const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths;
+  std::map<QString, QString>* mLastPaths{nullptr};
   bool mHasUserDoneSomething;
   std::vector<int> mBoxSelectedIndexes;
   QString mScannedDirName;
