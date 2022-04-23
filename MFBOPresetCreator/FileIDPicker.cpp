@@ -64,10 +64,10 @@ void FileIDPicker::initializeGUI()
 void FileIDPicker::fillChoicesList(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
 {
   const auto lListWrapper{this->findChild<QGridLayout*>("data_container")};
-  for (int i = 0; i < aFilesInformation.size(); i++)
+  for (size_t i = 0; i < aFilesInformation.size(); i++)
   {
     lListWrapper->addWidget(this->createChoiceEntry(aFilesInformation.at(i)),
-                            i,
+                            static_cast<int>(i),
                             0,
                             Qt::AlignmentFlag::AlignTop);
   }

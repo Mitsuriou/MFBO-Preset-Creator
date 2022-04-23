@@ -216,7 +216,7 @@ void PresetCreator::injectDataFromOSPFile()
 
   // Try to guess the name of the slider set
   QString lSlidersetName;
-  for (int i = 0; i < lParsedSliderSets.size(); i++)
+  for (size_t i = 0; i < lParsedSliderSets.size(); i++)
   {
     if (!lSlidersetName.isEmpty())
     {

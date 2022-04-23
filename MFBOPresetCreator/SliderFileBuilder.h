@@ -7,7 +7,11 @@ class SliderFileBuilder final
 {
 public:
   // SliderSets
-  static QString BuildOSPFileContent(const QString& aLineName, const BodyNameVersion& aBody, const FeetNameVersion& aFeet, const bool aMustUseBeastHands, const unsigned char& aTargetBlocks);
+  static QString BuildOSPFileContent(const QString& aLineName,
+                                     const BodyNameVersion& aBody,
+                                     const FeetNameVersion& aFeet,
+                                     const bool aMustUseBeastHands,
+                                     const unsigned char& aTargetBlocks);
 
   // SliderGroups
   static QString BuildXMLFileContent(const QString& aLineName,

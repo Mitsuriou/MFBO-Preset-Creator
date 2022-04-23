@@ -32,6 +32,7 @@ HEADERS += ./resource.h \
     ./BCDragWidget.h \
     ./BCDropWidget.h \
     ./BCGroupWidget.h \
+    FileIDPicker.h \
     FirstInstallWindow.h \
     GroupBox.h \
     TargetMeshesPicker.h \
@@ -61,6 +62,7 @@ SOURCES += ./main.cpp \
     ./BCDragWidget.cpp \
     ./BCDropWidget.cpp \
     ./BCGroupWidget.cpp \
+    FileIDPicker.cpp \
     FirstInstallWindow.cpp \
     GroupBox.cpp \
     TargetMeshesPicker.cpp \
