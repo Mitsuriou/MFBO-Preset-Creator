@@ -19,7 +19,4 @@ private:
   QPoint mDragStartPosition;
   QString mOriginFolder;
   QString mResourcePath;
-
-  explicit BCDragWidget(const BCDragWidget&) = delete;
-  BCDragWidget& operator=(const BCDragWidget&) = delete;
 };

@@ -1,12 +1,7 @@
 #pragma once
 #include "Enum.h"
 
-class LangManager final
+namespace LangManager
 {
-public:
-  static ApplicationLanguage GetSystemLanguage();
-
-private:
-  explicit LangManager() {}
-  ~LangManager() = delete;
+  ApplicationLanguage GetSystemLanguage();
 };

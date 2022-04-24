@@ -159,6 +159,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClCompile Include="TextInputDialog.cpp" />
     <ClCompile Include="TexturesAssistant.cpp" />
     <ClCompile Include="ThemeCard.cpp" />
+    <ClCompile Include="TitleDialog.cpp" />
     <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="VersionsInformation.cpp" />
@@ -207,10 +208,11 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClInclude Include="LangManager.h" />
     <ClInclude Include="SliderFileBuilder.h" />
     <ClInclude Include="Struct.h" />
+    <QtMoc Include="TitleDialog.h" />
     <ClInclude Include="VersionsInformation.h" />
     <QtMoc Include="Utils.h" />
-    <QtMoc Include="DataLists.h" />
-    <QtMoc Include="ComponentFactory.h" />
+    <ClInclude Include="DataLists.h" />
+    <ClInclude Include="ComponentFactory.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

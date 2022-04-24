@@ -1,5 +1,5 @@
 #pragma once
-#include "Struct.h"
+#include "TitleDialog.h"
 #include <QDialog>
 #include <QGridLayout>
 #include <QNetworkAccessManager>
@@ -7,7 +7,7 @@
 
 using mapSpSS = std::map<QString, std::pair<QString, QString>, std::greater<QString>>;
 
-class AssistedConversion final : public QDialog
+class AssistedConversion final : public TitleDialog
 {
   Q_OBJECT
 
@@ -16,13 +16,10 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
   QNetworkAccessManager mManager;
-  const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths{nullptr};
-  bool mHasUserDoneSomething;
+  bool mHasUserDoneSomething{false};
   std::vector<int> mBoxSelectedIndexes;
   QString mScannedDirName;
 
@@ -76,9 +73,6 @@ private:
 
   // GUI widgets events
   void openAPIKeysManagementPage();
-
-  explicit AssistedConversion(const AssistedConversion&) = delete;
-  AssistedConversion& operator=(const AssistedConversion&) = delete;
 
 signals:
   void valuesChosen(QString, std::vector<Struct::AssistedConversionResult>);

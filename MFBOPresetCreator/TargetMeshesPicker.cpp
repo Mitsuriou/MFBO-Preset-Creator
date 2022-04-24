@@ -6,10 +6,10 @@
 
 TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
                                        const Struct::Settings& aSettings,
+                                       std::map<QString, QString>* aLastPaths,
                                        const BodyNameVersion& aPreSelectedBody,
                                        const FeetNameVersion& aPreSelectedFeet)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
-  , mSettings(aSettings)
+  : TitleDialog(aParent, aSettings, aLastPaths)
   , mOriginalBody(aPreSelectedBody)
   , mOriginalFeet(aPreSelectedFeet)
   , mListBodyName(new QListWidget(this))
@@ -37,7 +37,7 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -47,8 +47,8 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the target meshes picker window"),
                                     "",
-                                    this->mSettings.display.dangerColor,
-                                    this->mSettings.display.successColor,
+                                    this->settings().display.dangerColor,
+                                    this->settings().display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -59,11 +59,6 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
   {
     aEvent->ignore();
   }
-}
-
-void TargetMeshesPicker::reject()
-{
-  this->close();
 }
 
 void TargetMeshesPicker::setWindowProperties()
@@ -79,7 +74,7 @@ void TargetMeshesPicker::setWindowProperties()
 void TargetMeshesPicker::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Main window container
   auto lMainLayout{new QVBoxLayout(this)};
@@ -89,7 +84,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted body group box */
   /*=========================*/
-  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", lIconFolder, this->settings().display.font.pointSize)};
   lMainLayout->addWidget(lBodyGroupBox);
 
   // Grid layout
@@ -123,7 +118,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted feet group box */
   /*=========================*/
-  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", lIconFolder, this->settings().display.font.pointSize)};
   lMainLayout->addWidget(lFeetGroupBox);
 
   // Grid layout
@@ -175,15 +170,15 @@ void TargetMeshesPicker::initializeGUI()
   lMainLayout->addLayout(lButtonsLayout);
 
   // Event binding
-  this->connect(this->mListBodyName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyNameIndexChanged);
-  this->connect(this->mListBodyVersion, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyVersionIndexChanged);
-  this->connect(this->mListBodyVariantName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyVariantIndexChanged);
-  this->connect(this->mListFeetName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetNameIndexChanged);
-  this->connect(this->mListFeetVersion, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVersionIndexChanged);
-  this->connect(this->mListFeetVariantName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVariantIndexChanged);
+  QObject::connect(this->mListBodyName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyNameIndexChanged);
+  QObject::connect(this->mListBodyVersion, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyVersionIndexChanged);
+  QObject::connect(this->mListBodyVariantName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyVariantIndexChanged);
+  QObject::connect(this->mListFeetName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetNameIndexChanged);
+  QObject::connect(this->mListFeetVersion, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVersionIndexChanged);
+  QObject::connect(this->mListFeetVariantName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVariantIndexChanged);
 
-  this->connect(lSaveButton, &QPushButton::clicked, this, &TargetMeshesPicker::validateAndClose);
-  this->connect(lCloseButton, &QPushButton::clicked, this, &TargetMeshesPicker::close);
+  QObject::connect(lSaveButton, &QPushButton::clicked, this, &TargetMeshesPicker::validateAndClose);
+  QObject::connect(lCloseButton, &QPushButton::clicked, this, &TargetMeshesPicker::close);
 
   // Post-bind initialization functions for body list widgets
   this->mListBodyName->setCurrentRow(static_cast<int>(DataLists::GetName(this->mOriginalBody)));

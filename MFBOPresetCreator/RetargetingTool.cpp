@@ -23,9 +23,8 @@
 #include <QTextStream>
 
 RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
+  : TitleDialog(aParent, aSettings, aLastPaths)
   , mFileWatcher(new QFileSystemWatcher())
-  , mSettings(aSettings)
   , mLastPaths(aLastPaths)
   , mTargetBodyMesh(aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh)
   , mTargetFeetMesh(aSettings.presetsRetargeting.defaultBodyFeet.feetMesh)
@@ -59,7 +58,7 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -69,8 +68,8 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the retargeting tool window"),
                                     "",
-                                    this->mSettings.display.dangerColor,
-                                    this->mSettings.display.successColor,
+                                    this->settings().display.dangerColor,
+                                    this->settings().display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -83,11 +82,6 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   }
 
   emit modalClosed();
-}
-
-void RetargetingTool::reject()
-{
-  this->close();
 }
 
 void RetargetingTool::setWindowProperties()
@@ -112,10 +106,10 @@ void RetargetingTool::initializeGUI()
 void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // General group box
-  auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", lIconFolder, this->settings().display.font.pointSize)};
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -168,7 +162,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Backup group box
-  auto lBackupGroupBox{ComponentFactory::CreateGroupBox(this, tr("Backup"), "restore", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lBackupGroupBox{ComponentFactory::CreateGroupBox(this, tr("Backup"), "restore", lIconFolder, this->settings().display.font.pointSize)};
   aLayout.addWidget(lBackupGroupBox, 1, 0);
 
   // Grid layout
@@ -224,16 +218,16 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   this->targetMeshesChanged(this->mTargetBodyMesh, this->mTargetFeetMesh);
 
   // Event binding
-  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &RetargetingTool::openTargetMeshesPicker);
-  this->connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
-  this->connect(lKeepBackup, &QCheckBox::stateChanged, this, &RetargetingTool::updateBackupState);
+  QObject::connect(lTargetMeshesPicker, &QPushButton::clicked, this, &RetargetingTool::openTargetMeshesPicker);
+  QObject::connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
+  QObject::connect(lKeepBackup, &QCheckBox::stateChanged, this, &RetargetingTool::updateBackupState);
   lKeepBackup->setChecked(true);
 
-  this->connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
-  this->connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
-  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateBodySlideFiltersListPreview);
-  this->connect(lEditFilters, &QPushButton::clicked, this, &RetargetingTool::openBodySlideFiltersEditor);
+  QObject::connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
+  QObject::connect(lBackupSubpathLineEdit, &QLineEdit::textChanged, this, &RetargetingTool::updateBackupPreview);
+  QObject::connect(lGenerateButton, &QPushButton::clicked, this, &RetargetingTool::launchUpDownGradeProcess);
+  QObject::connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &RetargetingTool::updateBodySlideFiltersListPreview);
+  QObject::connect(lEditFilters, &QPushButton::clicked, this, &RetargetingTool::openBodySlideFiltersEditor);
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
@@ -263,7 +257,7 @@ void RetargetingTool::userHasDoneAnAction(int)
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
@@ -279,7 +273,7 @@ void RetargetingTool::chooseInputDirectory()
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
@@ -372,7 +366,7 @@ void RetargetingTool::updateBackupPreview()
 
   // Set the full path value in the preview label
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("backup_path_preview"))};
-  auto lNewTextColor{this->mSettings.display.successColor};
+  auto lNewTextColor{this->settings().display.successColor};
 
   if (lIsValidPath)
   {
@@ -383,12 +377,12 @@ void RetargetingTool::updateBackupPreview()
     if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
         || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
     {
-      lNewTextColor = this->mSettings.display.dangerColor;
+      lNewTextColor = this->settings().display.dangerColor;
     }
     // Check if the wanted backup directory already exists
     else if (QDir(lFullPath).exists())
     {
-      lNewTextColor = this->mSettings.display.warningColor;
+      lNewTextColor = this->settings().display.warningColor;
     }
 
     // Add a new path to watch to
@@ -396,7 +390,7 @@ void RetargetingTool::updateBackupPreview()
   }
   else
   {
-    lNewTextColor = this->mSettings.display.dangerColor;
+    lNewTextColor = this->settings().display.dangerColor;
   }
 
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
@@ -785,7 +779,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   const auto& lMessage{tr("All the files have been correctly retargeted. You can now close this window!")};
 
   // Open the directory where the file structure has been created
-  if (this->mSettings.presetsRetargeting.automaticallyOpenFinalDirectory)
+  if (this->settings().presetsRetargeting.automaticallyOpenFinalDirectory)
   {
     Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the retargeted directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
@@ -798,8 +792,8 @@ void RetargetingTool::launchUpDownGradeProcess()
 
 void RetargetingTool::openTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mTargetBodyMesh, this->mTargetFeetMesh)};
-  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &RetargetingTool::targetMeshesChanged);
+  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &RetargetingTool::targetMeshesChanged);
 }
 
 void RetargetingTool::targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
@@ -825,8 +819,8 @@ void RetargetingTool::targetMeshesChanged(const BodyNameVersion& aBody, const Fe
 
 void RetargetingTool::openBodySlideFiltersEditor()
 {
-  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList)};
-  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &RetargetingTool::updateBodySlideFiltersList);
+  auto lEditor{new BodySlideFiltersEditor(this, this->settings(), this->lastPaths(), this->mFiltersList)};
+  QObject::connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &RetargetingTool::updateBodySlideFiltersList);
 }
 
 void RetargetingTool::initBodySlideFiltersList()

@@ -1,25 +1,23 @@
 #pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
 #include <QGridLayout>
 #include <QListWidget>
 
-class TargetMeshesPicker final : public QDialog
+class TargetMeshesPicker final : public TitleDialog
 {
   Q_OBJECT
 
 public:
   explicit TargetMeshesPicker(QWidget* aParent,
                               const Struct::Settings& aSettings,
+                              std::map<QString, QString>* aLastPaths,
                               const BodyNameVersion& aPreSelectedBody,
                               const FeetNameVersion& aPreSelectedFeet);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
-  const Struct::Settings mSettings;
   const BodyNameVersion mOriginalBody;
   const FeetNameVersion mOriginalFeet;
 
@@ -63,9 +61,6 @@ private:
   void feetNameIndexChanged(const int aNewIndex);
   void feetVersionIndexChanged(const int aNewIndex);
   void feetVariantIndexChanged(const int aNewIndex);
-
-  explicit TargetMeshesPicker(const TargetMeshesPicker&) = delete;
-  TargetMeshesPicker& operator=(const TargetMeshesPicker&) = delete;
 
 signals:
   void valuesChosen(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);

@@ -391,8 +391,6 @@ namespace Struct
     bool body{false};
     bool feet{false};
     bool hands{false};
-
-    explicit Filter() = delete;
   };
 
   struct BatchConversionEntry

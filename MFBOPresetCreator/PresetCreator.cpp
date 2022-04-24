@@ -510,13 +510,13 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   lMeshesGridLayout->addWidget(lNeedBeastHands, 5, 1, 1, 4);
 
   // Event binding
-  this->connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lMeshesPathFemaleFeetLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lMeshesPathFemaleHandsLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
-  this->connect(lNeedBeastHands, &QCheckBox::stateChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lMeshesPathFemaleBodyLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lMeshesPathFemaleFeetLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lMeshesPathFemaleHandsLineEdit, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lNeedBeastHands, &QCheckBox::stateChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
 }
 
 void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
@@ -607,14 +607,14 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   this->updateSkeletonPreview();
 
   // Event binding
-  this->connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &PresetCreator::updateSkeletonPathState);
+  QObject::connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &PresetCreator::updateSkeletonPathState);
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
 
-  this->connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
-  this->connect(lSkeletonRefresher, &QPushButton::clicked, this, &PresetCreator::populateSkeletonChooser);
-  this->connect(lOpenAssetsDirectory, &QPushButton::clicked, this, &PresetCreator::openSkeletonsAssetsDirectory);
-  this->connect(lSkeletonName, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
+  QObject::connect(lSkeletonPathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
+  QObject::connect(lSkeletonRefresher, &QPushButton::clicked, this, &PresetCreator::populateSkeletonChooser);
+  QObject::connect(lOpenAssetsDirectory, &QPushButton::clicked, this, &PresetCreator::openSkeletonsAssetsDirectory);
+  QObject::connect(lSkeletonName, &QLineEdit::textChanged, this, &PresetCreator::updateSkeletonPreview);
 }
 
 void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
@@ -706,11 +706,11 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   this->updateBodyslideNamesPreview(QString());
 
   // Event binding
-  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &PresetCreator::openTargetMeshesPicker);
-  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
-  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
-  this->connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
-  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
+  QObject::connect(lTargetMeshesPicker, &QPushButton::clicked, this, &PresetCreator::openTargetMeshesPicker);
+  QObject::connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOSPXMLPreview);
+  QObject::connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateBodyslideNamesPreview);
+  QObject::connect(lEditFilters, &QPushButton::clicked, this, &PresetCreator::openBodySlideFiltersEditor);
+  QObject::connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &PresetCreator::updateBodySlideFiltersListPreview);
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
@@ -726,13 +726,13 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
-  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &PresetCreator::chooseExportDirectory);
+  QObject::connect(lOutputPathChooser, &QPushButton::clicked, this, &PresetCreator::chooseExportDirectory);
 
   auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
-  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOutputPreview);
+  QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOutputPreview);
 
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
-  this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &PresetCreator::useOnlySubdirStateChanged);
+  QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &PresetCreator::useOnlySubdirStateChanged);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -748,7 +748,7 @@ void PresetCreator::setupButtons(QHBoxLayout& aLayout)
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &PresetCreator::generateDirectoryStructure);
+  QObject::connect(lGenerateButton, &QPushButton::clicked, this, &PresetCreator::generateDirectoryStructure);
 }
 
 void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
@@ -1462,8 +1462,8 @@ void PresetCreator::refreshAllPreviewFields()
 
 void PresetCreator::openTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mTargetBodyMesh, this->mTargetFeetMesh)};
-  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &PresetCreator::targetMeshesChanged);
+  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mLastPaths, this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &PresetCreator::targetMeshesChanged);
 }
 
 void PresetCreator::targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
@@ -1492,8 +1492,8 @@ void PresetCreator::targetMeshesChanged(const BodyNameVersion& aBody, const Feet
 
 void PresetCreator::openBodySlideFiltersEditor()
 {
-  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList)};
-  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &PresetCreator::updateBodySlideFiltersList);
+  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mLastPaths, this->mFiltersList)};
+  QObject::connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &PresetCreator::updateBodySlideFiltersList);
 }
 
 void PresetCreator::initBodySlideFiltersList()

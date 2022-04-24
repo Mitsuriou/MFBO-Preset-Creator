@@ -4,9 +4,11 @@
 #include <QCloseEvent>
 #include <QLabel>
 
-FileIDPicker::FileIDPicker(QWidget* aParent, const Struct::Settings& aSettings, const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
-  , mSettings(aSettings)
+FileIDPicker::FileIDPicker(QWidget* aParent,
+                           const Struct::Settings& aSettings,
+                           std::map<QString, QString>* aLastPaths,
+                           const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
+  : TitleDialog(aParent, aSettings, aLastPaths)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -29,11 +31,6 @@ void FileIDPicker::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void FileIDPicker::reject()
-{
-  this->close();
-}
-
 void FileIDPicker::setWindowProperties()
 {
   this->setModal(true);
@@ -54,7 +51,7 @@ void FileIDPicker::initializeGUI()
   // Main title
   auto lMainTitle{new QLabel(tr("Choose a distant file"), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.pointSize * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
   lMainLayout->addWidget(lMainTitle, 0, 0, Qt::AlignmentFlag::AlignTop);
 
   // List wrapper
@@ -76,7 +73,7 @@ void FileIDPicker::fillChoicesList(const std::vector<Struct::NexusModsFileInform
 QWidget* FileIDPicker::createChoiceEntry(const Struct::NexusModsFileInformation& aFileInformation)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Wrapper
   auto lWrapper{new QGroupBox(aFileInformation.getName(), this)};

@@ -1,11 +1,11 @@
 ﻿#pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
+#include <QApplication>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QTabWidget>
 
-class Settings final : public QDialog
+class Settings final : public TitleDialog
 {
   Q_OBJECT
 
@@ -14,14 +14,11 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
-  const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths{nullptr};
-  bool mMustRebootMainApp;
-  bool mPathEntryCleared;
-  QFont mNewFont;
+  bool mMustRebootMainApp{false};
+  bool mPathEntryCleared{false};
+  QFont mNewFont{qApp->font()};
   QString mNewSuccessColor;
   QString mNewWarningColor;
   QString mNewDangerColor;
@@ -85,9 +82,6 @@ private:
   void clearPathButtonClicked();
   void clearAllPaths();
   void toggleClearAllButtonState();
-
-  explicit Settings(const Settings&) = delete;
-  Settings& operator=(const Settings&) = delete;
 
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);

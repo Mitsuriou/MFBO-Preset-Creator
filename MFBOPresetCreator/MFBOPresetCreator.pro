@@ -36,7 +36,8 @@ HEADERS += ./resource.h \
     FirstInstallWindow.h \
     GroupBox.h \
     TargetMeshesPicker.h \
-    ThemeCard.h
+    ThemeCard.h \
+    TitleDialog.h
 
 SOURCES += ./main.cpp \
     ./About.cpp \
@@ -66,7 +67,8 @@ SOURCES += ./main.cpp \
     FirstInstallWindow.cpp \
     GroupBox.cpp \
     TargetMeshesPicker.cpp \
-    ThemeCard.cpp
+    ThemeCard.cpp \
+    TitleDialog.cpp
 
 FORMS += ./MFBOPresetCreator.ui
 

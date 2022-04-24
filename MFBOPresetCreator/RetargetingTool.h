@@ -1,10 +1,9 @@
 ﻿#pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
 #include <QFileSystemWatcher>
 #include <QGridLayout>
 
-class RetargetingTool final : public QDialog
+class RetargetingTool final : public TitleDialog
 {
   Q_OBJECT
 
@@ -17,11 +16,9 @@ signals:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
   QFileSystemWatcher* mFileWatcher{nullptr};
-  const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths{nullptr};
   bool mHasUserDoneSomething;
   std::map<QString, QStringList> mFiltersList;
@@ -50,9 +47,5 @@ private:
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
-
   //#pragma endregion PRIVATE_SLOTS
-
-  explicit RetargetingTool(const RetargetingTool&) = delete;
-  RetargetingTool operator=(const RetargetingTool&) = delete;
 };

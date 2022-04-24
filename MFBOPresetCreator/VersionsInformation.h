@@ -1,6 +1,5 @@
 #pragma once
 #include <QString>
-#include <QStringList>
 #include <vector>
 
 struct VersionsInformation
@@ -31,6 +30,6 @@ public:
   bool stableVersionsListContains(const QString& aVersion) const;
 
 private:
-  std::vector<std::pair<QString, QString>> stableVersionsList; // std::vector<std::pair<version number, release notes>>
-  std::vector<std::pair<QString, QString>> betaVersionsList;   // std::vector<std::pair<version number, release notes>>
+  std::vector<std::pair<const QString, const QString>> stableVersionsList; // std::vector<std::pair<version number, release notes>>
+  std::vector<std::pair<const QString, const QString>> betaVersionsList;   // std::vector<std::pair<version number, release notes>>
 };

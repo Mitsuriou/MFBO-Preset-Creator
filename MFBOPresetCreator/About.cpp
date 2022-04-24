@@ -1,10 +1,10 @@
 #include "About.h"
 #include "Enum.h"
 #include "Utils.h"
+#include <QCloseEvent>
 
-About::About(QWidget* aParent, const Struct::Settings& aSettings)
-  : QDialog(aParent)
-  , mSettings(aSettings)
+About::About(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
+  : TitleDialog(aParent, aSettings, aLastPaths)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -15,6 +15,11 @@ About::About(QWidget* aParent, const Struct::Settings& aSettings)
   this->show();
 }
 
+void About::closeEvent(QCloseEvent* aEvent)
+{
+  aEvent->accept();
+}
+
 void About::setWindowProperties()
 {
   this->setModal(true);
@@ -23,7 +28,7 @@ void About::setWindowProperties()
   this->setWindowIcon(QIcon(QPixmap(":/black/info-circle")));
 
   // Hacky window's background color change for Windows Vista theme
-  if (this->mSettings.display.applicationTheme == GUITheme::DEFAULT_OS_THEME)
+  if (this->settings().display.applicationTheme == GUITheme::DEFAULT_OS_THEME)
   {
     this->setStyleSheet("background-color: white;");
   }
@@ -38,12 +43,12 @@ void About::initializeGUI()
 
   // Hacky links' colors override for some themes
   QString lLinksColorOverride;
-  if (this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME)
+  if (this->settings().display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME)
   {
     lLinksColorOverride = " style='color: #3991ff;'";
   }
-  else if (this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_DARK_THEME
-           || this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_LIGHT_THEME)
+  else if (this->settings().display.applicationTheme == GUITheme::MITSURIOU_DARK_THEME
+           || this->settings().display.applicationTheme == GUITheme::MITSURIOU_LIGHT_THEME)
   {
     lLinksColorOverride = " style='color: #e95985;'";
   }

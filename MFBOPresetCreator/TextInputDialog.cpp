@@ -33,23 +33,10 @@ void TextInputDialog::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void TextInputDialog::updateAddButtonStatus(const QString& aText)
-{
-  auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
-
-  if (aText.trimmed().isEmpty())
-  {
-    lAddBtn->setDisabled(true);
-  }
-  else
-  {
-    lAddBtn->setDisabled(false);
-  }
-}
-
 void TextInputDialog::setWindowProperties(const QString& aTitle)
 {
   this->setModal(true);
+  this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(aTitle);
 }
 
@@ -88,10 +75,24 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
   lBtnsContainer->addWidget(lCancelBtn);
 
   // Events binding
-  this->connect(lLineEdit, &QLineEdit::textChanged, this, &TextInputDialog::updateAddButtonStatus);
-  this->connect(lAddBtn, &QPushButton::clicked, this, &TextInputDialog::close);
-  this->connect(lCancelBtn, &QPushButton::clicked, this, &TextInputDialog::close);
+  QObject::connect(lLineEdit, &QLineEdit::textChanged, this, &TextInputDialog::updateAddButtonStatus);
+  QObject::connect(lAddBtn, &QPushButton::clicked, this, &TextInputDialog::close);
+  QObject::connect(lCancelBtn, &QPushButton::clicked, this, &TextInputDialog::close);
 
   // Post-bind initialization functions
   this->updateAddButtonStatus("");
+}
+
+void TextInputDialog::updateAddButtonStatus(const QString& aText)
+{
+  auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
+
+  if (aText.trimmed().isEmpty())
+  {
+    lAddBtn->setDisabled(true);
+  }
+  else
+  {
+    lAddBtn->setDisabled(false);
+  }
 }

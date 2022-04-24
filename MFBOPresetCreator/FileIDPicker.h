@@ -1,20 +1,20 @@
 #pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
 
-class FileIDPicker final : public QDialog
+class FileIDPicker final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit FileIDPicker(QWidget* aParent, const Struct::Settings& aSettings, const std::vector<Struct::NexusModsFileInformation>& aFilesInformation);
+  explicit FileIDPicker(QWidget* aParent,
+                        const Struct::Settings& aSettings,
+                        std::map<QString, QString>* aLastPaths,
+                        const std::vector<Struct::NexusModsFileInformation>& aFilesInformation);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
-  const Struct::Settings mSettings;
   bool hasEmitedAnythingYet{false};
 
   // GUI functions
@@ -23,10 +23,7 @@ private:
   void fillChoicesList(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation);
   QWidget* createChoiceEntry(const Struct::NexusModsFileInformation& aFileInformation);
 
-  explicit FileIDPicker(const FileIDPicker&) = delete;
-  FileIDPicker& operator=(const FileIDPicker&) = delete;
-
 signals:
-  void fileContentPreviewURLChosen(QString aFileName, QString aContentPreviewLink);
-  void fileContentPreviewURLChosen(QString aContentPreviewLink);
+  void fileContentPreviewURLChosen(const QString& aFileName, const QString& aContentPreviewLink);
+  void fileContentPreviewURLChosen(const QString& aContentPreviewLink);
 };

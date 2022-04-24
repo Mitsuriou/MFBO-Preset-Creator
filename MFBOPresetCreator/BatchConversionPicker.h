@@ -1,28 +1,29 @@
 #pragma once
 #include "BCDragWidget.h"
 #include "BCGroupWidget.h"
-#include "Struct.h"
+#include "TitleDialog.h"
 #include <QDialog>
 #include <map>
 #include <set>
 
-class BatchConversionPicker final : public QDialog
+class BatchConversionPicker final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const Struct::BatchConversionData& aData);
+  explicit BatchConversionPicker(QWidget* aParent,
+                                 const Struct::Settings& aSettings,
+                                 std::map<QString, QString>* aLastPaths,
+                                 const Struct::BatchConversionData& aData);
 
 signals:
   void presetsCreationValidated(const Struct::BatchConversionData& aPresetsData);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
-  const Struct::Settings mSettings;
-  int mMinimumFirstColumnWidth;
+  int mMinimumFirstColumnWidth{200};
   Struct::BatchConversionData mData;
   std::vector<BCDragWidget*> mMiddleListButtons;
   bool mPreventPresetSave{true};
@@ -62,7 +63,4 @@ private:
   std::map<QString, std::set<QString>> findNewPresets(const QString& aOriginFolder);
   void generateNewPresets(const std::multimap<QString, std::map<QString, std::set<QString>>>& aPresets); // multimap<origin_folder, map<path, set<mesh_file_name>>>
   void validateSelection();
-
-  explicit BatchConversionPicker(const BatchConversionPicker&) = delete;
-  BatchConversionPicker& operator=(const BatchConversionPicker&) = delete;
 };

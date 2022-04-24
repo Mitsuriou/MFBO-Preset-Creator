@@ -45,12 +45,12 @@ BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCa
   if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
   {
     auto lUseAlternativeModel{this->createCheckBox(tr("Check this box if the follower or NPC uses beast hands"), *lMainLayout)};
-    this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+    QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
   }
   else if (this->mCallContext == BCGroupWidgetCallContext::SKELETON)
   {
     auto lUseAlternativeModel{this->createCheckBox(tr("Check this box if the follower or NPC uses beast skeleton"), *lMainLayout)};
-    this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+    QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
   }
 
   this->resetData();
@@ -192,7 +192,7 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
       this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
       lUseAlternativeModel->setChecked(false);
       lUseAlternativeModel->hide();
-      this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
 
       // Update the texts to have the placeholder centered
       lPathLabel->setText("");
@@ -219,7 +219,7 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
       this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
       lUseAlternativeModel->setChecked(aUseAlternativeModel);
       lUseAlternativeModel->show();
-      this->connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
     }
   }
 }

@@ -2,7 +2,10 @@
 #include "Utils.h"
 #include <QLocale>
 
-ApplicationLanguage LangManager::GetSystemLanguage()
+namespace LangManager
 {
-  return Utils::GetStructLanguageFromName(QLocale::languageToString(QLocale::system().language()));
+  ApplicationLanguage GetSystemLanguage()
+  {
+    return Utils::GetStructLanguageFromName(QLocale::languageToString(QLocale::system().language()));
+  }
 }

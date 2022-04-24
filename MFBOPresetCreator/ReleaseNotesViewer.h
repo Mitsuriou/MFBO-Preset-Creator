@@ -1,17 +1,18 @@
 #pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
 #include <QNetworkAccessManager>
 
-class ReleaseNotesViewer final : public QDialog
+class ReleaseNotesViewer final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit ReleaseNotesViewer(QWidget* aParent, const Struct::Settings& aSettings);
+  explicit ReleaseNotesViewer(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+
+protected:
+  void closeEvent(QCloseEvent* aEvent) override;
 
 private:
-  const Struct::Settings mSettings;
   QNetworkAccessManager mManager;
 
   void setWindowProperties();
@@ -22,7 +23,4 @@ private:
   void displayUpdateMessage(const bool aSucceeded, const QString& aResult);
   // Callback functions
   void viewInDefaultBrowser();
-
-  explicit ReleaseNotesViewer(const ReleaseNotesViewer&) = delete;
-  ReleaseNotesViewer& operator=(const ReleaseNotesViewer&) = delete;
 };

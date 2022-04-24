@@ -151,6 +151,9 @@
     <ClCompile Include="FileIDPicker.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="TitleDialog.cpp">
+      <Filter>Source Files\Qt Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">
@@ -187,14 +190,14 @@
     <ClInclude Include="VersionsInformation.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentFactory.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="DataLists.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ComponentFactory.h">
-      <Filter>Header Files\Utils</Filter>
-    </QtMoc>
-    <QtMoc Include="DataLists.h">
-      <Filter>Header Files\Utils</Filter>
-    </QtMoc>
     <QtMoc Include="Utils.h">
       <Filter>Header Files\Utils</Filter>
     </QtMoc>
@@ -263,6 +266,9 @@
     </QtMoc>
     <QtMoc Include="FileIDPicker.h">
       <Filter>Header Files\GUI</Filter>
+    </QtMoc>
+    <QtMoc Include="TitleDialog.h">
+      <Filter>Header Files\Qt Classes</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

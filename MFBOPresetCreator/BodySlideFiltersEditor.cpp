@@ -10,9 +10,11 @@
 #include <QPushButton>
 #include <QStyledItemDelegate>
 
-BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* aParent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList)
-  : QDialog(aParent)
-  , mSettings(aSettings)
+BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* aParent,
+                                               const Struct::Settings& aSettings,
+                                               std::map<QString, QString>* aLastPaths,
+                                               const std::map<QString, QStringList>& aInitialList)
+  : TitleDialog(aParent, aSettings, aLastPaths)
   , mOriginalFiltersList(aInitialList)
   , mFiltersList(aInitialList)
   , mListWidget{new QListWidget(this)}
@@ -46,10 +48,10 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
   }
 
   if (this->mOriginalFiltersList.size() != this->mFiltersList.size()
-      || !(std::equal(this->mOriginalFiltersList.begin(), this->mOriginalFiltersList.end(), this->mFiltersList.begin())))
+      || !(std::equal(this->mOriginalFiltersList.cbegin(), this->mOriginalFiltersList.cend(), this->mFiltersList.cbegin())))
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
@@ -59,8 +61,8 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
                                       tr("Close the editor window without saving"),
                                       tr("Go back to the editor window"),
                                       "",
-                                      this->mSettings.display.dangerColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.dangerColor,
+                                      this->settings().display.successColor,
                                       "",
                                       false)
         != ButtonClicked::YES)
@@ -71,11 +73,6 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
   }
 
   aEvent->accept();
-}
-
-void BodySlideFiltersEditor::reject()
-{
-  this->close();
 }
 
 void BodySlideFiltersEditor::setWindowProperties()
@@ -106,7 +103,7 @@ void BodySlideFiltersEditor::initializeGUI()
 void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Body filter set chooser
   aLayout.addWidget(new QLabel(tr("Edit set:"), this), 0, 0);
@@ -157,13 +154,13 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   this->mListWidget->addAction(lDelAction);
 
   // Event binding
-  this->connect(lNewSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::addSet);
-  this->connect(lDelSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::removeSet);
+  QObject::connect(lNewSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::addSet);
+  QObject::connect(lDelSetBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::removeSet);
 
-  this->connect(lAddNewRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::addRow);
-  this->connect(lDeleteRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteRow);
-  this->connect(lDeleteAllRows, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteAllRows);
-  this->connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
+  QObject::connect(lAddNewRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::addRow);
+  QObject::connect(lDeleteRow, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteRow);
+  QObject::connect(lDeleteAllRows, &QPushButton::clicked, this, &BodySlideFiltersEditor::deleteAllRows);
+  QObject::connect(lDelAction, &QAction::triggered, this, &BodySlideFiltersEditor::deleteRow);
 
   // Post-bind initialization functions
   this->mFiltersList = Utils::LoadFiltersFromFile();
@@ -174,7 +171,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
@@ -189,8 +186,8 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
   lButtonsContainer->addWidget(lCancelBtn);
 
   // Event binding
-  this->connect(lSaveBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::close);
-  this->connect(lCancelBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::close);
+  QObject::connect(lSaveBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::close);
+  QObject::connect(lCancelBtn, &QPushButton::clicked, this, &BodySlideFiltersEditor::close);
 }
 
 void BodySlideFiltersEditor::updateFiltersCombobox() const
@@ -217,9 +214,9 @@ void BodySlideFiltersEditor::updateFiltersCombobox() const
     this->mFiltersListChooser->addItem(lPair.first);
   }
 
-  this->connect(this->mFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BodySlideFiltersEditor::showFiltersList);
-  this->connect(this->mFiltersListChooser, &QComboBox::currentTextChanged, this, &BodySlideFiltersEditor::handleSetRenaming);
-  this->connect(this->mListWidget, &QListWidget::itemChanged, this, &BodySlideFiltersEditor::handleRowRenaming);
+  QObject::connect(this->mFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BodySlideFiltersEditor::showFiltersList);
+  QObject::connect(this->mFiltersListChooser, &QComboBox::currentTextChanged, this, &BodySlideFiltersEditor::handleSetRenaming);
+  QObject::connect(this->mListWidget, &QListWidget::itemChanged, this, &BodySlideFiltersEditor::handleRowRenaming);
 }
 
 void BodySlideFiltersEditor::displayFilterAt(const int aIndex) const
@@ -281,8 +278,8 @@ void BodySlideFiltersEditor::showFiltersList(int aIndex)
 
 void BodySlideFiltersEditor::addSet()
 {
-  auto lDialog{new TextInputDialog(tr("Add a new BodySlide filters set"), tr("Filters set name:"), this->mSettings.display.applicationTheme, this)};
-  this->connect(lDialog, &TextInputDialog::getTextValue, this, &BodySlideFiltersEditor::addNewSetEntry);
+  auto lDialog{new TextInputDialog(tr("Add a new BodySlide filters set"), tr("Filters set name:"), this->settings().display.applicationTheme, this)};
+  QObject::connect(lDialog, &TextInputDialog::getTextValue, this, &BodySlideFiltersEditor::addNewSetEntry);
   lDialog->exec();
 
   delete lDialog;

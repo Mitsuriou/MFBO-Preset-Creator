@@ -55,10 +55,10 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lSectionLayout->addWidget(lDuplicateButton, 1, 1);
 
   // Event binding
-  this->connect(lDropWidget, &BCDropWidget::dropEventTriggered, this, &BCGroupWidget::dropEventTrigerredReceiver);
-  this->connect(lDropWidget, &BCDropWidget::checkBoxStateChangedTriggered, this, &BCGroupWidget::checkBoxStateChangedReceiver);
-  this->connect(lRemoveButton, &QPushButton::clicked, this, &BCGroupWidget::removeData);
-  this->connect(lDuplicateButton, &QPushButton::clicked, this, &BCGroupWidget::duplicateData);
+  QObject::connect(lDropWidget, &BCDropWidget::dropEventTriggered, this, &BCGroupWidget::dropEventTrigerredReceiver);
+  QObject::connect(lDropWidget, &BCDropWidget::checkBoxStateChangedTriggered, this, &BCGroupWidget::checkBoxStateChangedReceiver);
+  QObject::connect(lRemoveButton, &QPushButton::clicked, this, &BCGroupWidget::removeData);
+  QObject::connect(lDuplicateButton, &QPushButton::clicked, this, &BCGroupWidget::duplicateData);
 }
 
 void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)

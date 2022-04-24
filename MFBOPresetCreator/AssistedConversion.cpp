@@ -3,7 +3,6 @@
 #include "DataLists.h"
 #include "FileIDPicker.h"
 #include "Utils.h"
-#include <QAbstractItemView>
 #include <QApplication>
 #include <QCloseEvent>
 #include <QComboBox>
@@ -22,10 +21,7 @@
 #include <QStyledItemDelegate>
 
 AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
-  , mSettings(aSettings)
-  , mLastPaths(aLastPaths)
-  , mHasUserDoneSomething(false)
+  : TitleDialog(aParent, aSettings, aLastPaths)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -49,7 +45,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -59,8 +55,8 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the assisted conversion tool window"),
                                     "",
-                                    this->mSettings.display.dangerColor,
-                                    this->mSettings.display.successColor,
+                                    this->settings().display.dangerColor,
+                                    this->settings().display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -71,11 +67,6 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   {
     aEvent->ignore();
   }
-}
-
-void AssistedConversion::reject()
-{
-  this->close();
 }
 
 void AssistedConversion::setWindowProperties()
@@ -90,7 +81,7 @@ void AssistedConversion::setWindowProperties()
 void AssistedConversion::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
@@ -133,7 +124,7 @@ void AssistedConversion::initializeGUI()
 void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -170,7 +161,7 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
 void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -274,10 +265,10 @@ void AssistedConversion::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "assistedConversionInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "assistedConversionInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "assistedConversionInput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "assistedConversionInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
@@ -295,7 +286,7 @@ void AssistedConversion::chooseInputDirectory()
 void AssistedConversion::saveAPIKey()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
   const auto lSucceed{Utils::SaveAPIKeyToFile(lAPIKeyLineEdit->text(), this, lIconFolder)};
@@ -361,7 +352,7 @@ void AssistedConversion::launchSearchProcess()
   lLaunchSearchButton->setDisabled(true);
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   if (this->hasUserSelectedAnything())
   {
@@ -373,8 +364,8 @@ void AssistedConversion::launchSearchProcess()
                                       tr("Relaunch the scan"),
                                       tr("Cancel the relaunch"),
                                       "",
-                                      this->mSettings.display.dangerColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.dangerColor,
+                                      this->settings().display.successColor,
                                       "",
                                       false)
         != ButtonClicked::YES)
@@ -401,7 +392,7 @@ void AssistedConversion::launchSearchProcess()
 void AssistedConversion::launchSearchFromLocalFolder()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
@@ -418,8 +409,8 @@ void AssistedConversion::launchSearchFromLocalFolder()
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
-                                      this->mSettings.display.warningColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.warningColor,
+                                      this->settings().display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)
@@ -440,8 +431,8 @@ void AssistedConversion::launchSearchFromLocalFolder()
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
-                                      this->mSettings.display.warningColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.warningColor,
+                                      this->settings().display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)
@@ -645,8 +636,8 @@ void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusMods
     return;
   }
 
-  auto lFilePicker{new FileIDPicker(this, this->mSettings, aFilesInformation)};
-  connect(lFilePicker, QOverload<QString, QString>::of(&FileIDPicker::fileContentPreviewURLChosen), this, &AssistedConversion::requestModFileContent);
+  auto lFilePicker{new FileIDPicker(this, this->settings(), this->lastPaths(), aFilesInformation)};
+  connect(lFilePicker, QOverload<const QString&, const QString&>::of(&FileIDPicker::fileContentPreviewURLChosen), this, &AssistedConversion::requestModFileContent);
 }
 
 void AssistedConversion::requestModFileContent(const QString& aFileName, const QString& aContentPreviewLink)
@@ -857,7 +848,7 @@ void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Create the validation button
   auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
@@ -1087,13 +1078,13 @@ void AssistedConversion::validateSelection()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
-                                      Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme),
+                                      Utils::GetIconResourceFolder(this->settings().display.applicationTheme),
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),
                                       "",
-                                      this->mSettings.display.dangerColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.dangerColor,
+                                      this->settings().display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)

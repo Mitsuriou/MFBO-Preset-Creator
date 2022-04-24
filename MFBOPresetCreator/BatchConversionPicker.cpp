@@ -11,10 +11,11 @@
 #include <QSpinBox>
 #include <QSplitter>
 
-BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Settings& aSettings, const Struct::BatchConversionData& aData)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
-  , mSettings(aSettings)
-  , mMinimumFirstColumnWidth(200)
+BatchConversionPicker::BatchConversionPicker(QWidget* aParent,
+                                             const Struct::Settings& aSettings,
+                                             std::map<QString, QString>* aLastPaths,
+                                             const Struct::BatchConversionData& aData)
+  : TitleDialog(aParent, aSettings, aLastPaths)
   , mData(aData)
 {
   // Build the window's interface
@@ -31,7 +32,7 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent, const Struct::Set
 void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   if (this->mData.presets.size() == 0
       || Utils::DisplayQuestionMessage(this,
@@ -42,8 +43,8 @@ void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
                                        tr("Close the window"),
                                        tr("Go back to the batch conversion: results picker window"),
                                        "",
-                                       this->mSettings.display.dangerColor,
-                                       this->mSettings.display.successColor,
+                                       this->settings().display.dangerColor,
+                                       this->settings().display.successColor,
                                        "",
                                        false)
            == ButtonClicked::YES)
@@ -54,11 +55,6 @@ void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
   {
     aEvent->ignore();
   }
-}
-
-void BatchConversionPicker::reject()
-{
-  this->close();
 }
 
 void BatchConversionPicker::setWindowProperties()
@@ -74,7 +70,7 @@ void BatchConversionPicker::setWindowProperties()
 void BatchConversionPicker::initializeGUI()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, false)};
@@ -184,27 +180,27 @@ void BatchConversionPicker::initializeGUI()
   lRightDataLayout->addWidget(lNoPresetLabel);
 
   // Body drop widget
-  auto lDropSectionBody{new BCGroupWidget(this, this->mSettings, tr("Body"), "body", BCGroupWidgetCallContext::BODY)};
+  auto lDropSectionBody{new BCGroupWidget(this, this->settings(), tr("Body"), "body", BCGroupWidgetCallContext::BODY)};
   lDropSectionBody->setObjectName(QString("drop_section_body"));
   lRightDataLayout->addWidget(lDropSectionBody);
 
   // Feet drop widget
-  auto lDropSectionFeet{new BCGroupWidget(this, this->mSettings, tr("Feet"), "foot", BCGroupWidgetCallContext::FEET)};
+  auto lDropSectionFeet{new BCGroupWidget(this, this->settings(), tr("Feet"), "foot", BCGroupWidgetCallContext::FEET)};
   lDropSectionFeet->setObjectName(QString("drop_section_feet"));
   lRightDataLayout->addWidget(lDropSectionFeet);
 
   // Hands drop widget
-  auto lDropSectionHands{new BCGroupWidget(this, this->mSettings, tr("Hands"), "hand", BCGroupWidgetCallContext::HANDS)};
+  auto lDropSectionHands{new BCGroupWidget(this, this->settings(), tr("Hands"), "hand", BCGroupWidgetCallContext::HANDS)};
   lDropSectionHands->setObjectName(QString("drop_section_hands"));
   lRightDataLayout->addWidget(lDropSectionHands);
 
   // Hands drop widget
-  auto lDropSectionSkeleton{new BCGroupWidget(this, this->mSettings, tr("Skeleton"), "skeleton", BCGroupWidgetCallContext::SKELETON)};
+  auto lDropSectionSkeleton{new BCGroupWidget(this, this->settings(), tr("Skeleton"), "skeleton", BCGroupWidgetCallContext::SKELETON)};
   lDropSectionSkeleton->setObjectName(QString("drop_section_skeleton"));
   lRightDataLayout->addWidget(lDropSectionSkeleton);
 
   // BodySlide output settings group box
-  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.pointSize, "bodyslide_groupbox")};
+  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->settings().display.font.pointSize, "bodyslide_groupbox")};
   lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -294,22 +290,22 @@ void BatchConversionPicker::initializeGUI()
   this->connectGroupWidgetEvents(lDropSectionBody);
   this->connectGroupWidgetEvents(lDropSectionFeet);
   this->connectGroupWidgetEvents(lDropSectionHands);
-  this->connect(lDropSectionHands, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::handsCheckBoxStateChanged);
+  QObject::connect(lDropSectionHands, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::handsCheckBoxStateChanged);
   this->connectGroupWidgetEvents(lDropSectionSkeleton);
-  this->connect(lDropSectionSkeleton, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::skeletonCheckBoxStateChanged);
+  QObject::connect(lDropSectionSkeleton, &BCGroupWidget::checkBoxStateChangedTriggered, this, &BatchConversionPicker::skeletonCheckBoxStateChanged);
 
-  this->connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateOSPXMLPreview);
-  this->connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
-  this->connect(lLeftList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::refreshMiddleList);
-  this->connect(lFullQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::fullQuickCreatePreset);
-  this->connect(lSimpleQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::simpleQuickCreatePreset);
+  QObject::connect(lOSPXMLNamesLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateOSPXMLPreview);
+  QObject::connect(lNamesInAppLineEdit, &QLineEdit::textChanged, this, &BatchConversionPicker::updateBodyslideNamesPreview);
+  QObject::connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversionPicker::validateSelection);
+  QObject::connect(lLeftList, &QListWidget::itemSelectionChanged, this, &BatchConversionPicker::refreshMiddleList);
+  QObject::connect(lFullQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::fullQuickCreatePreset);
+  QObject::connect(lSimpleQuickPresetCreationButton, &QPushButton::clicked, this, &BatchConversionPicker::simpleQuickCreatePreset);
 
-  this->connect(lPreviousPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToPreviousPreset);
-  this->connect(lNextPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToNextPreset);
-  this->connect(lActivePresetNumber, QOverload<int>::of(&QSpinBox::valueChanged), this, &BatchConversionPicker::updatePresetInterfaceState);
-  this->connect(lRemoveActivePreset, &QPushButton::clicked, this, &BatchConversionPicker::removeActivePreset);
-  this->connect(lAddEmptyPreset, &QPushButton::clicked, this, &BatchConversionPicker::addNewEmptyPreset);
+  QObject::connect(lPreviousPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToPreviousPreset);
+  QObject::connect(lNextPreset, &QPushButton::clicked, this, &BatchConversionPicker::goToNextPreset);
+  QObject::connect(lActivePresetNumber, QOverload<int>::of(&QSpinBox::valueChanged), this, &BatchConversionPicker::updatePresetInterfaceState);
+  QObject::connect(lRemoveActivePreset, &QPushButton::clicked, this, &BatchConversionPicker::removeActivePreset);
+  QObject::connect(lAddEmptyPreset, &QPushButton::clicked, this, &BatchConversionPicker::addNewEmptyPreset);
 
   // Post-bind initialization functions
   lLeftList->setCurrentRow(0);
@@ -318,9 +314,9 @@ void BatchConversionPicker::initializeGUI()
 
 void BatchConversionPicker::connectGroupWidgetEvents(BCGroupWidget* lGroupWidget)
 {
-  this->connect(lGroupWidget, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
-  this->connect(lGroupWidget, &BCGroupWidget::duplicatePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
-  this->connect(lGroupWidget, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
+  QObject::connect(lGroupWidget, &BCGroupWidget::removePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  QObject::connect(lGroupWidget, &BCGroupWidget::duplicatePressed, this, &BatchConversionPicker::addDataToActiveMiddleList);
+  QObject::connect(lGroupWidget, &BCGroupWidget::dropEventTriggered, this, &BatchConversionPicker::removeDataFromActiveMiddleList);
 }
 
 void BatchConversionPicker::displayLeftList()
@@ -391,7 +387,7 @@ void BatchConversionPicker::refreshMiddleList()
         // Create the BCDragWidget
         for (const auto& lValue : lPosition->second)
         {
-          const auto lDraggableWidget{new BCDragWidget(this, this->mSettings, lPosition->first, lValue)};
+          const auto lDraggableWidget{new BCDragWidget(this, this->settings(), lPosition->first, lValue)};
           this->mMiddleListButtons.push_back(lDraggableWidget);
           lOptionsList->addWidget(lDraggableWidget);
         }
@@ -421,7 +417,7 @@ void BatchConversionPicker::updateOSPXMLPreview(QString aText)
                                  "[...]/Skyrim Special Edition/Data/CalienteTools/BodySlide/SliderSets/%1.osp")
                                  .arg(aText)};
 
-  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lIsValidPath ? this->mSettings.display.successColor : this->mSettings.display.dangerColor));
+  lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lIsValidPath ? this->settings().display.successColor : this->settings().display.dangerColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 
   // Save the data in the preset
@@ -461,11 +457,11 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   lConstructedPreviewText.append(Utils::GetHandsSliderValue(this->mData.getBodyMod(), lMustUseBeastHands)); // Hands
   lConstructedPreviewText = lConstructedPreviewText.arg(aText);
 
-  auto lNewTextColor{this->mSettings.display.successColor};
+  auto lNewTextColor{this->settings().display.successColor};
 
   if (!lIsValidPath)
   {
-    lNewTextColor = this->mSettings.display.dangerColor;
+    lNewTextColor = this->settings().display.dangerColor;
   }
 
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_bodyslide_preview"))};
@@ -823,7 +819,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Ask the user if they want to create the detected possible presets
   if (Utils::DisplayQuestionMessage(this,
@@ -834,7 +830,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
                                     tr("Create the %1 new preset(s)").arg(lNumberOfNewPresets),
                                     tr("Do not create the %1 new preset(s)").arg(lNumberOfNewPresets),
                                     "",
-                                    this->mSettings.display.successColor,
+                                    this->settings().display.successColor,
                                     "",
                                     "",
                                     true)
@@ -893,7 +889,7 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
 void BatchConversionPicker::validateSelection()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Inform the user that the window will be closed since no preset were made
   if (this->mData.presets.size() == 0)
@@ -930,8 +926,8 @@ void BatchConversionPicker::validateSelection()
                                         tr("Delete the preset number %1 and continue the generation").arg(lNaturalIndex),
                                         tr("Go back to the batch conversion: results picker window"),
                                         "",
-                                        this->mSettings.display.dangerColor,
-                                        this->mSettings.display.successColor,
+                                        this->settings().display.dangerColor,
+                                        this->settings().display.successColor,
                                         "",
                                         false)
           == ButtonClicked::YES)
@@ -976,8 +972,8 @@ void BatchConversionPicker::validateSelection()
                                       tr("Close the batch conversion: results picker window"),
                                       tr("Go back to the batch conversion: results picker window"),
                                       "",
-                                      this->mSettings.display.dangerColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.dangerColor,
+                                      this->settings().display.successColor,
                                       "",
                                       false)
         == ButtonClicked::YES)
@@ -1000,8 +996,8 @@ void BatchConversionPicker::validateSelection()
                                     tr("Generate the preset(s) files on my disk"),
                                     tr("Go back to the batch conversion: results picker window"),
                                     "",
-                                    this->mSettings.display.warningColor,
-                                    this->mSettings.display.successColor,
+                                    this->settings().display.warningColor,
+                                    this->settings().display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)

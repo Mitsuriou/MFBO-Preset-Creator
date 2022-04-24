@@ -13,14 +13,14 @@
 #include <QStandardPaths>
 #include <QTextBrowser>
 
-Update::Update(QWidget* aParent, const Struct::Settings& aSettings, const bool aForceStableContext, const bool aForceBetaContext)
-  : QDialog(aParent)
+Update::Update(QWidget* aParent,
+               const Struct::Settings& aSettings,
+               std::map<QString, QString>* aLastPaths,
+               const bool aForceStableContext,
+               const bool aForceBetaContext)
+  : TitleDialog(aParent, aSettings, aLastPaths)
   , mForceStableContext(aForceStableContext)
   , mForceBetaContext(aForceBetaContext)
-  , mSettings(aSettings)
-  , mHasDownloadBeenCanceled(false)
-  , mDownloadedFile(nullptr)
-  , mReply(nullptr)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -52,11 +52,6 @@ void Update::closeEvent(QCloseEvent*)
   this->accept();
 }
 
-void Update::reject()
-{
-  this->close();
-}
-
 void Update::setWindowProperties()
 {
   this->setModal(true);
@@ -80,11 +75,11 @@ void Update::initializeGUI()
   /*============*/
   auto lMainTitle{new QLabel(tr("Check for updates") + lForcedVersionSuffix, this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.pointSize * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
   this->layout()->addWidget(lMainTitle);
 
   // Check for updates
-  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme), "search_button")};
+  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconResourceFolder(this->settings().display.applicationTheme), "search_button")};
   lUpdateButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
   this->layout()->addWidget(lUpdateButton);
@@ -105,7 +100,7 @@ void Update::initializeGUI()
   this->layout()->addWidget(lFetchStatus);
 
   // Event binding
-  this->connect(lUpdateButton, &QPushButton::clicked, this, &Update::checkForUpdate);
+  QObject::connect(lUpdateButton, &QPushButton::clicked, this, &Update::checkForUpdate);
 }
 
 void Update::checkForUpdate()
@@ -143,7 +138,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 
   if (!aSucceeded)
   {
-    QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath)));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Check for updates once again"));
@@ -179,14 +174,14 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
       }
 
       // A new beta version is available
-      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Download the update"));
       lSearchButton->setToolTip(tr("Download the update"));
 
       this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
-      this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+      QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
       auto lVersionFileName = lVersionsInformation.getLatestBetaVersionNumber();
       if (Utils::IsRunningStandaloneVersion())
       {
@@ -220,14 +215,14 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
       }
 
       // A new stable version is available
-      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Download the update"));
       lSearchButton->setToolTip(tr("Download the update"));
 
       this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
-      this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+      QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
       auto lVersionFileName = lVersionsInformation.getLatestStableVersionNumber();
       if (Utils::IsRunningStandaloneVersion())
       {
@@ -245,7 +240,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
     else
     {
       // The user runs the latest version
-      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
+      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setDisabled(true);
@@ -269,7 +264,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 
   // Links color override
   auto lHTMLString{lTextContainer->toHtml()};
-  Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
+  Utils::OverrideHTMLLinksColor(lHTMLString, this->settings().display.applicationTheme);
   lTextContainer->setHtml(lHTMLString);
 }
 
@@ -280,13 +275,13 @@ void Update::downloadLatestUpdate()
   lSearchButton->setToolTip(tr("Cancel the download"));
 
   // Update the icon in case the user had an error before
-  QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
+  QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
   lSearchButton->setIcon(QIcon(QPixmap(lPath)));
   lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
 
   // Rebind the events to the correct handlers
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-  this->connect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
+  QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
   if (QFile::exists(this->mSaveFilePath))
   {
@@ -306,9 +301,9 @@ void Update::downloadLatestUpdate()
 
   this->mReply = this->mManager.get(QNetworkRequest(QUrl(this->mDownloadURL)));
 
-  this->connect(this->mReply, &QNetworkReply::readyRead, this, &Update::fileChunkReceived);
-  this->connect(this->mReply, &QNetworkReply::downloadProgress, this, &Update::chunkSizeUpdated);
-  this->connect(this->mReply, &QNetworkReply::finished, this, &Update::fileDownloadEnded);
+  QObject::connect(this->mReply, &QNetworkReply::readyRead, this, &Update::fileChunkReceived);
+  QObject::connect(this->mReply, &QNetworkReply::downloadProgress, this, &Update::chunkSizeUpdated);
+  QObject::connect(this->mReply, &QNetworkReply::finished, this, &Update::fileDownloadEnded);
 }
 
 void Update::cancelCurrentDownload()
@@ -320,7 +315,7 @@ void Update::cancelCurrentDownload()
 
   // Rebind the correct events
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
-  this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+  QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
 
   // Cancel the currently running download process
   this->mHasDownloadBeenCanceled = true;
@@ -437,7 +432,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
     if (Utils::IsRunningStandaloneVersion())
     {
       // The app has been downloaded
-      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/folder" : ":/black/folder"};
+      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/folder" : ":/black/folder"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Show the ZIP file in Windows Explorer"));
@@ -456,12 +451,12 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
         lFetchStatus->setText(lStatusText);
       }
 
-      this->connect(lSearchButton, &QPushButton::clicked, this, &Update::openStandaloneOutputDirectory);
+      QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::openStandaloneOutputDirectory);
     }
     else
     {
       // The app has been downloaded
-      QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
+      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
       lSearchButton->setIcon(QIcon(QPixmap(lPath)));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Close MFBOPC and install the update"));
@@ -480,13 +475,13 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
         lFetchStatus->setText(lStatusText);
       }
 
-      this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+      QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
     }
   }
   else
   {
     // Error while downloading
-    QString lPath{Utils::IsThemeDark(this->mSettings.display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
+    QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
     lSearchButton->setIcon(QIcon(QPixmap(lPath)));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Try to download the update once again"));
@@ -505,7 +500,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
       lFetchStatus->setText(lStatusText);
     }
 
-    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+    QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
   }
 }
 
@@ -535,7 +530,7 @@ void Update::installLatestUpdate()
   else
   {
     Utils::DisplayWarningMessage(tr("The update process could not be started. Please verify that your firewall and your antivirus do not block the update file, before trying again."));
-    this->connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+    QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
     lSearchButton->setDisabled(false);
   }
 }

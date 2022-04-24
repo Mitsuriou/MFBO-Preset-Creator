@@ -83,7 +83,7 @@ void FirstInstallWindow::initializeGUI()
   this->setupButtons();
 
   // Apply the "Mitsuriou's black theme" stylesheet
-  this->loadQSSTheme(lThemes.at(1));
+  this->loadQSSTheme(lThemes.at(static_cast<int>(GUITheme::MITSURIOU_BLACK_THEME)));
 }
 
 void FirstInstallWindow::setupButtons()
@@ -105,7 +105,7 @@ void FirstInstallWindow::setupButtons()
   lMainLayout->addWidget(lValidateButton, 3, 0);
 
   // Event binding
-  this->connect(lValidateButton, &QPushButton::clicked, this, &FirstInstallWindow::close);
+  QObject::connect(lValidateButton, &QPushButton::clicked, this, &FirstInstallWindow::close);
 }
 
 void FirstInstallWindow::loadQSSTheme(const QString& aThemeName)

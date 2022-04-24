@@ -11,19 +11,14 @@ public:
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
-  //#pragma region PRIVATE_SLOTS
-  void updateAddButtonStatus(const QString& aText);
-  //#pragma endregion PRIVATE_SLOTS
-
 private:
-  GUITheme mAppTheme;
+  const GUITheme mAppTheme;
 
   void setWindowProperties(const QString& aTitle);
   void initializeGUI(const QString& aLabel);
 
-  explicit TextInputDialog(const TextInputDialog&) = delete;
-  TextInputDialog& operator=(const TextInputDialog&) = delete;
+  void updateAddButtonStatus(const QString& aText);
 
 signals:
-  void getTextValue(const QString&);
+  void getTextValue(const QString& aText);
 };

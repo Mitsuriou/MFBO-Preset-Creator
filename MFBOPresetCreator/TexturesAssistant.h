@@ -1,12 +1,11 @@
 #pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
 #include <QFileSystemWatcher>
 #include <QGridLayout>
 #include <QNetworkAccessManager>
 #include <QTabWidget>
 
-class TexturesAssistant final : public QDialog
+class TexturesAssistant final : public TitleDialog
 {
   Q_OBJECT
 
@@ -16,7 +15,6 @@ public:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
   struct ScannedData
@@ -38,10 +36,9 @@ private:
 
   QFileSystemWatcher* mFileWatcher{nullptr};
   QNetworkAccessManager mManager;
-  const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths{nullptr};
-  bool mHasUserDoneSomething;
-  int mMinimumFirstColumnWidth;
+  bool mHasUserDoneSomething{false};
+  int mMinimumFirstColumnWidth{300};
   TexturesAssistant::ScannedData mScannedFiles;
 
   // GUI creation
@@ -100,7 +97,4 @@ private:
   void openTexturesSetsAssetsDirectory();
   void useOnlySubdirStateChanged(int);
   void chooseExportDirectory();
-
-  explicit TexturesAssistant(const TexturesAssistant&) = delete;
-  TexturesAssistant& operator=(const TexturesAssistant&) = delete;
 };

@@ -1,24 +1,25 @@
 #pragma once
-#include "Struct.h"
+#include "TitleDialog.h"
 #include <QComboBox>
 #include <QDialog>
 #include <QGridLayout>
 #include <QListWidget>
 
-class BodySlideFiltersEditor final : public QDialog
+class BodySlideFiltersEditor final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit BodySlideFiltersEditor(QWidget* aParent, Struct::Settings aSettings, const std::map<QString, QStringList>& aInitialList);
+  explicit BodySlideFiltersEditor(QWidget* aParent,
+                                  const Struct::Settings& aSettings,
+                                  std::map<QString, QString>* aLastPaths,
+                                  const std::map<QString, QStringList>& aInitialList);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
-  const Struct::Settings mSettings;
-  std::map<QString, QStringList> mOriginalFiltersList;
+  const std::map<QString, QStringList> mOriginalFiltersList;
   std::map<QString, QStringList> mFiltersList;
   QComboBox* mFiltersListChooser{nullptr};
   QListWidget* mListWidget{nullptr};
@@ -49,9 +50,6 @@ private:
   void deleteAllRows();
   void handleRowRenaming();
   //#pragma endregion PRIVATE_SLOTS
-
-  explicit BodySlideFiltersEditor(const BodySlideFiltersEditor&) = delete;
-  BodySlideFiltersEditor& operator=(const BodySlideFiltersEditor&) = delete;
 
 signals:
   void listEdited(const std::map<QString, QStringList>&);

@@ -1,11 +1,11 @@
 #pragma once
-#include "Struct.h"
+#include "TitleDialog.h"
 #include <QDialog>
 #include <QFileSystemWatcher>
 #include <QGridLayout>
 #include <set>
 
-class BatchConversion final : public QDialog
+class BatchConversion final : public TitleDialog
 {
   Q_OBJECT
 
@@ -18,18 +18,16 @@ signals:
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
   QFileSystemWatcher* mFileWatcher{nullptr};
-  const Struct::Settings mSettings;
-  std::map<QString, QString>* mLastPaths{nullptr};
   std::map<QString, QStringList> mFiltersList;
-  bool mHasUserDoneSomething;
-  int mMinimumFirstColumnWidth;
+  bool mHasUserDoneSomething{false};
+  int mMinimumFirstColumnWidth{300};
   BodyNameVersion mTargetBodyMesh;
   FeetNameVersion mTargetFeetMesh;
 
+  //
   void setWindowProperties();
   void setupGeneralGUI(QGridLayout& aLayout);
   void setupSkeletonGUI(QGridLayout& aLayout);
@@ -65,7 +63,4 @@ private:
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
-
-  explicit BatchConversion(const BatchConversion&) = delete;
-  BatchConversion& operator=(const BatchConversion&) = delete;
 };

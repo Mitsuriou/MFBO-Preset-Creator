@@ -1,21 +1,17 @@
 #pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
 
-class About final : public QDialog
+class About final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit About(QWidget* aParent, const Struct::Settings& aSettings);
+  explicit About(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+
+protected:
+  void closeEvent(QCloseEvent* aEvent) override;
 
 private:
-  const Struct::Settings mSettings;
-
   void setWindowProperties();
   void initializeGUI();
-
-  // Prevent object copy
-  About(const About&) = delete;
-  About& operator=(const About&) = delete;
 };

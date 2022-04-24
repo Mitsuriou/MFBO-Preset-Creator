@@ -1,43 +1,39 @@
 #pragma once
-#include "Struct.h"
-#include <QDialog>
+#include "TitleDialog.h"
 #include <QLabel>
 #include <QNetworkAccessManager>
 
-class WelcomeScreen final : public QDialog
+class WelcomeScreen final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings);
+  explicit WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
-  void reject() override;
 
 private:
-  const Struct::Settings mSettings;
-  const StartupAction mInitializationStartupAction;
   QNetworkAccessManager mManager;
 
   // GUI functions
   void setWindowProperties();
   void initializeGUI();
+
   // Utils functions
   QLabel* createTitleLabel(QWidget* aParent, const QString& aText, const int aAppFontSize);
+
   // Dialog
   void openKoFiPage();
   void launchUpdateDialog();
   void openIncomingFeatures();
   void openKnownIssues();
   void openGoogleDriveGuide();
+
   // Check for updates
   void checkForUpdate();
   void updateCheckFinished();
   void displayUpdateMessage(const bool aSucceeded, const QString& aResult);
-
-  explicit WelcomeScreen(const WelcomeScreen&) = delete;
-  WelcomeScreen& operator=(const WelcomeScreen&) = delete;
 
 signals:
   void refreshMainUI(Struct::Settings aSettings, bool aMustUpdateSettings);

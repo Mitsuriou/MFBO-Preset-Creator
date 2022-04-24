@@ -25,7 +25,4 @@ private:
 
   void dropEventTrigerredReceiver(const QString& aOldOriginFolder, const QString& aOldResourcePath, const QString& aNewOriginFolder, const QString& aNewResourcePath, const bool isCheckBoxChecked);
   void checkBoxStateChangedReceiver(const bool aIsActive);
-
-  explicit BCGroupWidget(const BCGroupWidget&) = delete;
-  BCGroupWidget& operator=(const BCGroupWidget&) = delete;
 };

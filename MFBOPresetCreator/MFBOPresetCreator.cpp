@@ -316,30 +316,30 @@ void MFBOPresetCreator::setupMenuBar()
   lHelp->addAction(lOpenAboutQt);
 
   // Event binding
-  this->connect(lLaunchWelcomeScreen, &QAction::triggered, this, &MFBOPresetCreator::launchWelcomeScreen);
-  this->connect(lOpenProjectFile, &QAction::triggered, this, &MFBOPresetCreator::loadProject);
-  this->connect(lSaveProject, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
-  this->connect(lSaveProjectAs, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
-  this->connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
-  this->connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
-  this->connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
-  this->connect(lOpenBatchConv, &QAction::triggered, this, &MFBOPresetCreator::launchBatchConversion);
-  this->connect(lOpenTextAssist, &QAction::triggered, this, &MFBOPresetCreator::launchTexturesAssistant);
-  this->connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
-  this->connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
-  this->connect(lInjectDataFromOSPFile, &QAction::triggered, this, &MFBOPresetCreator::injectDataFromOSPFile);
-  this->connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
-  this->connect(lOpenCurrentVersionReleaseNotes, &QAction::triggered, this, &MFBOPresetCreator::launchCurrentVersionReleaseNotes);
-  this->connect(lReportBugNexusMods, &QAction::triggered, this, &MFBOPresetCreator::reportBugNexusMods);
-  this->connect(lReportBugGitHub, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitHub);
-  this->connect(lReportBugGitLab, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitLab);
-  this->connect(lOpenNexus, &QAction::triggered, this, &MFBOPresetCreator::openNexusModsPage);
-  this->connect(lOpenSourceCodeGitHub, &QAction::triggered, this, &MFBOPresetCreator::openGitHubSourceCodePage);
-  this->connect(lOpenSourceCodeGitLab, &QAction::triggered, this, &MFBOPresetCreator::openGitLabSourceCodePage);
-  this->connect(lOpenGuide, &QAction::triggered, this, &MFBOPresetCreator::openGoogleDriveGuide);
-  this->connect(lOpenKoFiPage, &QAction::triggered, this, &MFBOPresetCreator::openKoFiPage);
-  this->connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
-  this->connect(lOpenAboutQt, &QAction::triggered, this, &MFBOPresetCreator::launchAboutQtDialog);
+  QObject::connect(lLaunchWelcomeScreen, &QAction::triggered, this, &MFBOPresetCreator::launchWelcomeScreen);
+  QObject::connect(lOpenProjectFile, &QAction::triggered, this, &MFBOPresetCreator::loadProject);
+  QObject::connect(lSaveProject, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
+  QObject::connect(lSaveProjectAs, &QAction::triggered, this, &MFBOPresetCreator::saveProject);
+  QObject::connect(lOpenSettings, &QAction::triggered, this, &MFBOPresetCreator::launchSettingsDialog);
+  QObject::connect(lRelaunchApp, &QAction::triggered, this, &MFBOPresetCreator::quickRelaunch);
+  QObject::connect(lExitApp, &QAction::triggered, this, &MFBOPresetCreator::close);
+  QObject::connect(lOpenBatchConv, &QAction::triggered, this, &MFBOPresetCreator::launchBatchConversion);
+  QObject::connect(lOpenTextAssist, &QAction::triggered, this, &MFBOPresetCreator::launchTexturesAssistant);
+  QObject::connect(lOpenAssiConv, &QAction::triggered, this, &MFBOPresetCreator::launchAssistedConversion);
+  QObject::connect(lOpenRetaTools, &QAction::triggered, this, &MFBOPresetCreator::launchPresetsRetargeting);
+  QObject::connect(lInjectDataFromOSPFile, &QAction::triggered, this, &MFBOPresetCreator::injectDataFromOSPFile);
+  QObject::connect(lOpenUpdate, &QAction::triggered, this, &MFBOPresetCreator::launchUpdateDialog);
+  QObject::connect(lOpenCurrentVersionReleaseNotes, &QAction::triggered, this, &MFBOPresetCreator::launchCurrentVersionReleaseNotes);
+  QObject::connect(lReportBugNexusMods, &QAction::triggered, this, &MFBOPresetCreator::reportBugNexusMods);
+  QObject::connect(lReportBugGitHub, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitHub);
+  QObject::connect(lReportBugGitLab, &QAction::triggered, this, &MFBOPresetCreator::reportBugGitLab);
+  QObject::connect(lOpenNexus, &QAction::triggered, this, &MFBOPresetCreator::openNexusModsPage);
+  QObject::connect(lOpenSourceCodeGitHub, &QAction::triggered, this, &MFBOPresetCreator::openGitHubSourceCodePage);
+  QObject::connect(lOpenSourceCodeGitLab, &QAction::triggered, this, &MFBOPresetCreator::openGitLabSourceCodePage);
+  QObject::connect(lOpenGuide, &QAction::triggered, this, &MFBOPresetCreator::openGoogleDriveGuide);
+  QObject::connect(lOpenKoFiPage, &QAction::triggered, this, &MFBOPresetCreator::openKoFiPage);
+  QObject::connect(lOpenAbout, &QAction::triggered, this, &MFBOPresetCreator::launchAboutDialog);
+  QObject::connect(lOpenAboutQt, &QAction::triggered, this, &MFBOPresetCreator::launchAboutQtDialog);
 }
 
 void MFBOPresetCreator::showWindow()
@@ -395,8 +395,8 @@ void MFBOPresetCreator::showWindow()
 
 void MFBOPresetCreator::launchWelcomeScreen()
 {
-  auto lWelcomeScreen{new WelcomeScreen(this, this->mSettings)};
-  this->connect(lWelcomeScreen, &WelcomeScreen::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
+  auto lWelcomeScreen{new WelcomeScreen(this, this->mSettings, &this->mLastPaths)};
+  QObject::connect(lWelcomeScreen, &WelcomeScreen::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
 }
 
 void MFBOPresetCreator::applyGlobalStyleSheet()
@@ -742,7 +742,7 @@ void MFBOPresetCreator::quickRelaunch()
 void MFBOPresetCreator::launchAssistedConversion()
 {
   auto lDialog{new AssistedConversion(this, this->mSettings, &this->mLastPaths)};
-  this->connect(lDialog, &AssistedConversion::valuesChosen, this, &MFBOPresetCreator::fillUIByAssistedConversionValues);
+  QObject::connect(lDialog, &AssistedConversion::valuesChosen, this, &MFBOPresetCreator::fillUIByAssistedConversionValues);
 }
 
 void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, std::vector<Struct::AssistedConversionResult> aResultsList)
@@ -761,7 +761,7 @@ void MFBOPresetCreator::launchBatchConversion()
 {
   auto lDialog{new BatchConversion(this, this->mSettings, &this->mLastPaths)};
 
-  this->connect(lDialog, &BatchConversion::modalClosed, [=]() {
+  QObject::connect(lDialog, &BatchConversion::modalClosed, [=]() {
     // Update the BodySlide sets in case they were modified through the BatchConversion's window
     auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
     lMainHandler->updateBodySlideSets();
@@ -772,7 +772,7 @@ void MFBOPresetCreator::launchPresetsRetargeting()
 {
   auto lDialog{new RetargetingTool(this, this->mSettings, &this->mLastPaths)};
 
-  this->connect(lDialog, &RetargetingTool::modalClosed, [=]() {
+  QObject::connect(lDialog, &RetargetingTool::modalClosed, [=]() {
     // Update the BodySlide sets in case they were modified through the RetargetingTool's window
     auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
     lMainHandler->updateBodySlideSets();
@@ -792,23 +792,23 @@ void MFBOPresetCreator::injectDataFromOSPFile()
 void MFBOPresetCreator::launchSettingsDialog()
 {
   auto lSettings{new Settings(this, this->mSettings, &this->mLastPaths)};
-  this->connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
-  this->connect(lSettings, &Settings::refreshLastPaths, this, [=](const std::map<QString, QString>& aLastPaths) { this->mLastPaths = aLastPaths; });
+  QObject::connect(lSettings, &Settings::refreshMainUI, this, &MFBOPresetCreator::refreshUI);
+  QObject::connect(lSettings, &Settings::refreshLastPaths, this, [=](const std::map<QString, QString>& aLastPaths) { this->mLastPaths = aLastPaths; });
 }
 
 void MFBOPresetCreator::launchUpdateDialog()
 {
-  new Update(this, this->mSettings, false, false);
+  new Update(this, this->mSettings, &this->mLastPaths, false, false);
 }
 
 void MFBOPresetCreator::launchCurrentVersionReleaseNotes()
 {
-  new ReleaseNotesViewer(this, this->mSettings);
+  new ReleaseNotesViewer(this, this->mSettings, &this->mLastPaths);
 }
 
 void MFBOPresetCreator::launchAboutDialog()
 {
-  new About(this, this->mSettings);
+  new About(this, this->mSettings, &this->mLastPaths);
 }
 
 void MFBOPresetCreator::launchAboutQtDialog()

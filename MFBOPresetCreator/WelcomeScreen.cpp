@@ -10,10 +10,8 @@
 #include <QTextBrowser>
 #include <math.h>
 
-WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
-  , mSettings(aSettings)
-  , mInitializationStartupAction(aSettings.general.startupAction)
+WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
+  : TitleDialog(aParent, aSettings, aLastPaths)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -33,8 +31,8 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
   auto lShowHideWelcomeScreen{this->findChild<QCheckBox*>(QString("always_show_welcome_screen"))};
 
   // Update the setting's value
-  auto lSettingsCopy{this->mSettings};
-  if (this->mInitializationStartupAction == StartupAction::OPEN_WELCOME_SCREEN && !lShowHideWelcomeScreen->isChecked())
+  auto lSettingsCopy{this->settings()};
+  if (this->settings().general.startupAction == StartupAction::OPEN_WELCOME_SCREEN && !lShowHideWelcomeScreen->isChecked())
   {
     lSettingsCopy.general.startupAction = StartupAction::CHECK_FOR_UPDATES;
   }
@@ -44,7 +42,7 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
   }
   else
   {
-    lSettingsCopy.general.startupAction = this->mInitializationStartupAction;
+    lSettingsCopy.general.startupAction = this->settings().general.startupAction;
   }
 
   Utils::SaveSettingsToFile(lSettingsCopy);
@@ -53,11 +51,6 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
   emit refreshMainUI(lSettingsCopy, true);
 
   aEvent->accept();
-}
-
-void WelcomeScreen::reject()
-{
-  this->close();
 }
 
 void WelcomeScreen::setWindowProperties()
@@ -73,7 +66,7 @@ void WelcomeScreen::setWindowProperties()
 void WelcomeScreen::initializeGUI()
 {
   // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Main layout
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, true, false)};
@@ -85,7 +78,7 @@ void WelcomeScreen::initializeGUI()
                                                                tr("Show the welcome screen at application startup"),
                                                                "",
                                                                "always_show_welcome_screen",
-                                                               this->mSettings.general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
+                                                               this->settings().general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
   lMainLayout->addWidget(lShowHideWelcomeScreen);
 
   /*============*/
@@ -93,13 +86,13 @@ void WelcomeScreen::initializeGUI()
   /*============*/
   auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::GetApplicationVersion()), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.pointSize * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
   lMainLayout->addWidget(lMainTitle);
 
   /*============*/
   /* Ko-Fi page */
   /*============*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Support me: donate - buy me a coffee"), this->mSettings.display.font.pointSize));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Support me: donate - buy me a coffee"), this->settings().display.font.pointSize));
 
   auto lFreewareLabel{new QLabel(tr("Anything I create is for free and is created during my free time. Any given cent is meaningful to me. If you want to support me financially, click the button below:"), this)};
   lFreewareLabel->setWordWrap(true);
@@ -120,7 +113,7 @@ void WelcomeScreen::initializeGUI()
   /* CURRENT VERSION */
   /*=================*/
   // Current version's release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Current version's release notes"), this->mSettings.display.font.pointSize));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Current version's release notes"), this->settings().display.font.pointSize));
 
   // Current version's status label
   auto lCurrentVersionStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
@@ -138,7 +131,7 @@ void WelcomeScreen::initializeGUI()
   /* STABLE */
   /*========*/
   // Stable version release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest stable release notes"), this->mSettings.display.font.pointSize));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest stable release notes"), this->settings().display.font.pointSize));
 
   // Latest stable release notes
   auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
@@ -168,7 +161,7 @@ void WelcomeScreen::initializeGUI()
   /* BETA */
   /*======*/
   // BETA version release notes
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest BETA release notes"), this->mSettings.display.font.pointSize));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Latest BETA release notes"), this->settings().display.font.pointSize));
 
   // Latest BETA release notes
   auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
@@ -197,7 +190,7 @@ void WelcomeScreen::initializeGUI()
   /*===================*/
   /* Incoming features */
   /*===================*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->mSettings.display.font.pointSize));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Incoming features"), this->settings().display.font.pointSize));
 
   auto lIncomingFeaturesLabel{new QLabel(tr("You can consult the list of incoming features and enhancements or ask for new features requests by clicking the button below:"), this)};
   lIncomingFeaturesLabel->setWordWrap(true);
@@ -209,7 +202,7 @@ void WelcomeScreen::initializeGUI()
   /*==============*/
   /* Known issues */
   /*==============*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->mSettings.display.font.pointSize));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("Known issues"), this->settings().display.font.pointSize));
 
   auto lKnownIssuesLabel{new QLabel(tr("You can consult the list of already reported bugs that are waiting for a fix or report a new issue by clicking the button below:"), this)};
   lKnownIssuesLabel->setWordWrap(true);
@@ -221,7 +214,7 @@ void WelcomeScreen::initializeGUI()
   /*=====================*/
   /* Guide and tutorials */
   /*=====================*/
-  lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->mSettings.display.font.pointSize));
+  lMainLayout->addWidget(this->createTitleLabel(this, tr("User guide and tutorials"), this->settings().display.font.pointSize));
 
   auto lGuideLabel{new QLabel(tr("Whether it is your first time using the application or you're wondering how a particular feature works, you should check the user guide and detailed tutorials by clicking the button below:"), this)};
   lGuideLabel->setWordWrap(true);
@@ -233,12 +226,12 @@ void WelcomeScreen::initializeGUI()
   /*===============*/
   /* Event binding */
   /*===============*/
-  this->connect(lDonateButton, &QPushButton::clicked, this, &WelcomeScreen::openKoFiPage);
-  this->connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
-  this->connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
-  this->connect(lOpenIncomingFeatures, &QPushButton::clicked, this, &WelcomeScreen::openIncomingFeatures);
-  this->connect(lOpenKnownIssues, &QPushButton::clicked, this, &WelcomeScreen::openKnownIssues);
-  this->connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeScreen::openGoogleDriveGuide);
+  QObject::connect(lDonateButton, &QPushButton::clicked, this, &WelcomeScreen::openKoFiPage);
+  QObject::connect(lDownloadStableUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
+  QObject::connect(lDownloadBetaUpdate, &QPushButton::clicked, this, &WelcomeScreen::launchUpdateDialog);
+  QObject::connect(lOpenIncomingFeatures, &QPushButton::clicked, this, &WelcomeScreen::openIncomingFeatures);
+  QObject::connect(lOpenKnownIssues, &QPushButton::clicked, this, &WelcomeScreen::openKnownIssues);
+  QObject::connect(lOpenGuideTutorials, &QPushButton::clicked, this, &WelcomeScreen::openGoogleDriveGuide);
 }
 
 QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, const int aAppFontSize)
@@ -248,11 +241,11 @@ QLabel* WelcomeScreen::createTitleLabel(QWidget* aParent, const QString& aText, 
   // Hacky links' colors override for some themes
   QString lColorOverride;
 
-  if (this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME
-      || this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_DARK_THEME
-      || this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_LIGHT_THEME)
+  if (this->settings().display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME
+      || this->settings().display.applicationTheme == GUITheme::MITSURIOU_DARK_THEME
+      || this->settings().display.applicationTheme == GUITheme::MITSURIOU_LIGHT_THEME)
   {
-    lColorOverride = this->mSettings.display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff;") : QString("color:#e95985;");
+    lColorOverride = this->settings().display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff;") : QString("color:#e95985;");
   }
 
   lLabel->setStyleSheet(QString("qproperty-indent:0; margin: 0; padding: 0; margin-top: 15px; font-size: %1pt; %2").arg(static_cast<int>(floor(aAppFontSize * 1.75))).arg(lColorOverride));
@@ -270,12 +263,12 @@ void WelcomeScreen::launchUpdateDialog()
   const auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
   if (lEventSource == this->findChild<QPushButton*>(QString("download_stable_update")))
   {
-    new Update(this->parentWidget(), this->mSettings, true, false);
+    new Update(this->parentWidget(), this->settings(), this->lastPaths(), true, false);
     this->close();
   }
   else if (lEventSource == this->findChild<QPushButton*>(QString("download_beta_update")))
   {
-    new Update(this->parentWidget(), this->mSettings, false, true);
+    new Update(this->parentWidget(), this->settings(), this->lastPaths(), false, true);
     this->close();
   }
 }
@@ -358,7 +351,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
 
     // Links color override
     auto lHTMLString{lBrowserCurrentVersionReleaseNotes->toHtml()};
-    Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
+    Utils::OverrideHTMLLinksColor(lHTMLString, this->settings().display.applicationTheme);
     lBrowserCurrentVersionReleaseNotes->setHtml(lHTMLString);
   }
   else if (lVersionsInformation.stableVersionsListContains(lCurrentVersion))
@@ -369,7 +362,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
 
     // Links color override
     auto lHTMLString{lBrowserCurrentVersionReleaseNotes->toHtml()};
-    Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
+    Utils::OverrideHTMLLinksColor(lHTMLString, this->settings().display.applicationTheme);
     lBrowserCurrentVersionReleaseNotes->setHtml(lHTMLString);
   }
   else
@@ -385,7 +378,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
 
   // Links color override
   auto lHTMLString{lBrowserStableReleaseNotes->toHtml()};
-  Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
+  Utils::OverrideHTMLLinksColor(lHTMLString, this->settings().display.applicationTheme);
   lBrowserStableReleaseNotes->setHtml(lHTMLString);
 
   // Parsing error
@@ -427,7 +420,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
 
   // Links color override
   lHTMLString = lBrowserBetaReleaseNotes->toHtml();
-  Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
+  Utils::OverrideHTMLLinksColor(lHTMLString, this->settings().display.applicationTheme);
   lBrowserBetaReleaseNotes->setHtml(lHTMLString);
 
   // Parsing error

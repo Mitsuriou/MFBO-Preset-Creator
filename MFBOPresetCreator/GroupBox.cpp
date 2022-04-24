@@ -33,7 +33,7 @@ GroupBox::GroupBox(QWidget* aParent,
   this->setDisabled(aIsDisabled);
 
   // Redirect the toggled event to a custom function
-  this->connect(this, &QGroupBox::toggled, this, &GroupBox::setExpandState);
+  QObject::connect(this, &QGroupBox::toggled, this, &GroupBox::setExpandState);
 }
 
 void GroupBox::setExpandState(const bool aMustExpand)

@@ -4,7 +4,6 @@
 #include "TargetMeshesPicker.h"
 #include "Utils.h"
 #include <QAbstractSlider>
-#include <QApplication>
 #include <QCheckBox>
 #include <QCloseEvent>
 #include <QColorDialog>
@@ -20,11 +19,7 @@
 #include <QStyledItemDelegate>
 
 Settings::Settings(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
-  , mSettings(aSettings)
-  , mLastPaths(aLastPaths)
-  , mMustRebootMainApp(false)
-  , mPathEntryCleared(false)
+  : TitleDialog(aParent, aSettings, aLastPaths)
   , mNewFont(qApp->font())
 {
   // Build the window's interface
@@ -47,16 +42,16 @@ void Settings::closeEvent(QCloseEvent* aEvent)
 
     if (this->mPathEntryCleared)
     {
-      Utils::SaveLastPathsToFile(*this->mLastPaths);
-      emit refreshLastPaths(*this->mLastPaths);
+      Utils::SaveLastPathsToFile(*this->lastPaths());
+      emit refreshLastPaths(*this->lastPaths());
     }
     return;
   }
 
-  if (this->getSettingsFromGUI() != this->mSettings || this->mPathEntryCleared)
+  if (this->getSettingsFromGUI() != this->settings() || this->mPathEntryCleared)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
@@ -66,8 +61,8 @@ void Settings::closeEvent(QCloseEvent* aEvent)
                                       tr("Close the settings window without saving"),
                                       tr("Go back to the settings window"),
                                       "",
-                                      this->mSettings.display.dangerColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.dangerColor,
+                                      this->settings().display.successColor,
                                       "",
                                       false)
         != ButtonClicked::YES)
@@ -78,11 +73,6 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   }
 
   aEvent->accept();
-}
-
-void Settings::reject()
-{
-  this->close();
 }
 
 void Settings::setWindowProperties()
@@ -105,12 +95,12 @@ void Settings::initializeGUI()
   if (Utils::RESTART_PENDING)
   {
     lStarLabel->setText(tr("Warning: A restart of the application is pending. You should not modify any value marked with the \"*\" character until you restart the application."));
-    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.display.dangerColor));
+    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->settings().display.dangerColor));
   }
   else
   {
     lStarLabel->setText(tr("Note: Modifying a value marked with the \"*\" character will require a restart of the application to be applied correctly."));
-    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->mSettings.display.warningColor));
+    lStarLabel->setStyleSheet(QString("color: %1;").arg(this->settings().display.warningColor));
   }
   lMainLayout->addWidget(lStarLabel, 0, 0);
 
@@ -131,13 +121,13 @@ void Settings::initializeGUI()
   this->setupButtons(*lButtonLayout);
 
   // Load the settings into the interface
-  this->loadSettings(this->mSettings);
+  this->loadSettings(this->settings());
 }
 
 void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -241,16 +231,16 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   this->createDialogOpeningModeBlock(*lTabLayout, tr("BodySlide presets' retargeting - opening mode:"), "bodyslide_presets_retargeting_opening_mode", 10, 1);
 
   // Event binding
-  this->connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
-  this->connect(lSuccessColorChooser, &QPushButton::clicked, this, &Settings::chooseSuccessColor);
-  this->connect(lWarningColorChooser, &QPushButton::clicked, this, &Settings::chooseWarningColor);
-  this->connect(lDangerColorChooser, &QPushButton::clicked, this, &Settings::chooseDangerColor);
+  QObject::connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
+  QObject::connect(lSuccessColorChooser, &QPushButton::clicked, this, &Settings::chooseSuccessColor);
+  QObject::connect(lWarningColorChooser, &QPushButton::clicked, this, &Settings::chooseWarningColor);
+  QObject::connect(lDangerColorChooser, &QPushButton::clicked, this, &Settings::chooseDangerColor);
 }
 
 void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -293,13 +283,13 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lCheckPathsHistory, 5, 1);
 
   // Event binding
-  this->connect(lCheckPathsHistory, &QPushButton::clicked, this, &Settings::goToLastPathsTab);
+  QObject::connect(lCheckPathsHistory, &QPushButton::clicked, this, &Settings::goToLastPathsTab);
 }
 
 void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -328,13 +318,13 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lAutoOpenDirCheckbox, 3, 0);
 
   // Event binding
-  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openPresetCreatorTargetMeshesPicker);
+  QObject::connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openPresetCreatorTargetMeshesPicker);
 }
 
 void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -363,13 +353,13 @@ void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 3, 0);
 
   // Event binding
-  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openBatchConversionTargetMeshesPicker);
+  QObject::connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openBatchConversionTargetMeshesPicker);
 }
 
 void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -398,13 +388,13 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 3, 0);
 
   // Event binding
-  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openRetargetingToolTargetMeshesPicker);
+  QObject::connect(lTargetMeshesPicker, &QPushButton::clicked, this, &Settings::openRetargetingToolTargetMeshesPicker);
 }
 
 void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -423,35 +413,35 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lClearAllButton, 0, 2);
 
   // Bind the "remove all" button
-  this->connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);
+  QObject::connect(lClearAllButton, &QPushButton::clicked, this, &Settings::clearAllPaths);
   this->toggleClearAllButtonState();
 
   // Create a line for each path
   auto lRowIndex{1};
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->mLastPaths->find("general")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Main window: output"), this->mLastPaths->find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: input"), this->mLastPaths->find("batchConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: output"), this->mLastPaths->find("batchConversionOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Assist. Conv.: input"), this->mLastPaths->find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->mLastPaths->find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->mLastPaths->find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->mLastPaths->find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: output"), this->mLastPaths->find("texturesAssistantOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Last injected OSP file"), this->mLastPaths->find("lastInjectedOSPFile")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->mLastPaths->find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Saved project"), this->mLastPaths->find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->lastPaths()->find("general")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Main window: output"), this->lastPaths()->find("mainWindowOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: input"), this->lastPaths()->find("batchConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: output"), this->lastPaths()->find("batchConversionOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Assist. Conv.: input"), this->lastPaths()->find("assistedConversionInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->lastPaths()->find("retargetingToolInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->lastPaths()->find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->lastPaths()->find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: output"), this->lastPaths()->find("texturesAssistantOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Last injected OSP file"), this->lastPaths()->find("lastInjectedOSPFile")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->lastPaths()->find("lastLoadedProject")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Saved project"), this->lastPaths()->find("lastSavedProject")->second, lIconFolder, QString("cross"));
 
   // Bind every single "clear path" button
   const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};
   for (const auto lButton : lButtons)
   {
-    this->connect(lButton, &QPushButton::clicked, this, &Settings::clearPathButtonClicked);
+    QObject::connect(lButton, &QPushButton::clicked, this, &Settings::clearPathButtonClicked);
   }
 }
 
 void Settings::setupButtons(QHBoxLayout& aLayout)
 {
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Create the buttons
   auto lRestoreDefaultButton{ComponentFactory::CreateButton(this, tr("Restore default"), "", "restore", lIconFolder, "", false, true)};
@@ -464,9 +454,9 @@ void Settings::setupButtons(QHBoxLayout& aLayout)
   aLayout.addWidget(lCloseButton);
 
   // Event binding
-  this->connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
-  this->connect(lSaveButton, &QPushButton::clicked, this, &Settings::saveSettings);
-  this->connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
+  QObject::connect(lRestoreDefaultButton, &QPushButton::clicked, this, &Settings::restoreDefaultSettings);
+  QObject::connect(lSaveButton, &QPushButton::clicked, this, &Settings::saveSettings);
+  QObject::connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
 }
 
 void Settings::createDialogOpeningModeBlock(QGridLayout& aLayout, const QString& aLabelTitle, const QString& aObjectName, const int aRow, const int aCol)
@@ -748,16 +738,16 @@ void Settings::saveSettings()
   auto lSettings{this->getSettingsFromGUI()};
 
   // Check if a restart of the app is required
-  this->mMustRebootMainApp = (this->mSettings.display.language != lSettings.display.language
-                              || this->mSettings.display.applicationTheme != lSettings.display.applicationTheme
-                              || this->mSettings.display.successColor != lSettings.display.successColor
-                              || this->mSettings.display.warningColor != lSettings.display.warningColor
-                              || this->mSettings.display.dangerColor != lSettings.display.dangerColor);
+  this->mMustRebootMainApp = (this->settings().display.language != lSettings.display.language
+                              || this->settings().display.applicationTheme != lSettings.display.applicationTheme
+                              || this->settings().display.successColor != lSettings.display.successColor
+                              || this->settings().display.warningColor != lSettings.display.warningColor
+                              || this->settings().display.dangerColor != lSettings.display.dangerColor);
 
   if (this->mMustRebootMainApp)
   {
     // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Application settings changed"),
@@ -767,8 +757,8 @@ void Settings::saveSettings()
                                       tr("Restart now"),
                                       tr("Go back to the application and restart later"),
                                       "",
-                                      this->mSettings.display.dangerColor,
-                                      this->mSettings.display.warningColor,
+                                      this->settings().display.dangerColor,
+                                      this->settings().display.warningColor,
                                       "",
                                       false)
         == ButtonClicked::YES)
@@ -798,20 +788,20 @@ void Settings::restoreDefaultSettings()
 
 void Settings::openPresetCreatorTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mSettings.presetCreator.defaultBodyFeet.bodyMesh, this->mSettings.presetCreator.defaultBodyFeet.feetMesh)};
-  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::presetCreatorTargetMeshesChanged);
+  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->settings().presetCreator.defaultBodyFeet.bodyMesh, this->settings().presetCreator.defaultBodyFeet.feetMesh)};
+  QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::presetCreatorTargetMeshesChanged);
 }
 
 void Settings::openBatchConversionTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mSettings.batchConversion.defaultBodyFeet.bodyMesh, this->mSettings.batchConversion.defaultBodyFeet.feetMesh)};
-  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::batchConversionTargetMeshesChanged);
+  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->settings().batchConversion.defaultBodyFeet.bodyMesh, this->settings().batchConversion.defaultBodyFeet.feetMesh)};
+  QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::batchConversionTargetMeshesChanged);
 }
 
 void Settings::openRetargetingToolTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mSettings.presetsRetargeting.defaultBodyFeet.bodyMesh, this->mSettings.presetsRetargeting.defaultBodyFeet.feetMesh)};
-  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::retargetingToolTargetMeshesChanged);
+  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->settings().presetsRetargeting.defaultBodyFeet.bodyMesh, this->settings().presetsRetargeting.defaultBodyFeet.feetMesh)};
+  QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::retargetingToolTargetMeshesChanged);
 }
 
 void Settings::presetCreatorTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
@@ -929,18 +919,18 @@ void Settings::clearPathButtonClicked()
   const auto lKey{DataLists::GetLastPathsKeys().at(lRowIndex - 1)};
 
   // If the path is already empty, return instantly
-  if (this->mLastPaths->find(lKey)->second.compare("", Qt::CaseInsensitive) == 0)
+  if (this->lastPaths()->find(lKey)->second.compare("", Qt::CaseInsensitive) == 0)
   {
     return;
   }
 
-  if (Utils::UpdatePathAtKey(this->mLastPaths, lKey, QString(), false, true, false))
+  if (Utils::UpdatePathAtKey(this->lastPaths(), lKey, QString(), false, true, false))
   {
     this->mPathEntryCleared = true;
 
     // Update the path display in the corresponding QLineEdit
     auto lPathLineEdit{this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))};
-    lPathLineEdit->setText(this->mLastPaths->find(lKey)->second);
+    lPathLineEdit->setText(this->lastPaths()->find(lKey)->second);
     lPathLineEdit->setFocus();
 
     // Disable the corresponding button
@@ -959,12 +949,12 @@ void Settings::clearAllPaths()
   const auto lKeys{DataLists::GetLastPathsKeys()};
   for (int i = 0; i < lKeys.size(); i++)
   {
-    if (Utils::UpdatePathAtKey(this->mLastPaths, lKeys.at(i), QString(), false, true, false))
+    if (Utils::UpdatePathAtKey(this->lastPaths(), lKeys.at(i), QString(), false, true, false))
     {
       this->mPathEntryCleared = true;
 
       // Update the path display in the corresponding QLineEdit
-      this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(i + 1))->setText(this->mLastPaths->find(lKeys.at(i))->second);
+      this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(i + 1))->setText(this->lastPaths()->find(lKeys.at(i))->second);
 
       // Disable the corresponding button
       this->findChild<QPushButton*>(QString("clear_path_%1").arg(i + 1))->setDisabled(true);
@@ -982,7 +972,7 @@ void Settings::toggleClearAllButtonState()
 {
   // If there is as least one path to clear, keep the "remove all" button active
   auto lKeepEnabledRemoveAllButton{false};
-  for (const auto& lPair : *this->mLastPaths)
+  for (const auto& lPair : *this->lastPaths())
   {
     if (!lPair.second.isEmpty())
     {

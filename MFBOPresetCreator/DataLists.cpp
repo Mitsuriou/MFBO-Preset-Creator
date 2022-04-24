@@ -2375,15 +2375,15 @@ QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, 
 
 QStringList DataLists::GetWindowOpeningModes()
 {
-  return QStringList{tr("Minimized"),
-                     tr("Windowed"),
-                     tr("Maximized")};
+  return QStringList{QObject::tr("Minimized"),
+                     QObject::tr("Windowed"),
+                     QObject::tr("Maximized")};
 }
 
 QStringList DataLists::GetDialogOpeningModes()
 {
-  return QStringList{tr("Windowed"),
-                     tr("Maximized")};
+  return QStringList{QObject::tr("Windowed"),
+                     QObject::tr("Maximized")};
 }
 
 QStringList DataLists::GetAppThemes()
@@ -2411,11 +2411,11 @@ QStringList DataLists::GetLanguages()
 
 QStringList DataLists::GetAssistedConversionActions()
 {
-  return QStringList{tr("[ignore]"),
-                     tr("Body mesh"),
-                     tr("Feet mesh"),
-                     tr("Hands mesh"),
-                     tr("Skeleton mesh")};
+  return QStringList{QObject::tr("[ignore]"),
+                     QObject::tr("Body mesh"),
+                     QObject::tr("Feet mesh"),
+                     QObject::tr("Hands mesh"),
+                     QObject::tr("Skeleton mesh")};
 }
 
 QStringList DataLists::GetLastPathsKeys()

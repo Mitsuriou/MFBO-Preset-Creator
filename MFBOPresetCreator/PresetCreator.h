@@ -77,9 +77,5 @@ private:
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
-
   //#pragma endregion PRIVATE_SLOTS
-
-  explicit PresetCreator(const PresetCreator&) = delete;
-  PresetCreator& operator=(const PresetCreator&) = delete;
 };

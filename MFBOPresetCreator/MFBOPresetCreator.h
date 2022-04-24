@@ -86,7 +86,4 @@ private:
   void openGitLabSourceCodePage();
   void openGoogleDriveGuide();
   void openKoFiPage();
-
-  explicit MFBOPresetCreator(const MFBOPresetCreator&) = delete;
-  MFBOPresetCreator& operator=(const MFBOPresetCreator&) = delete;
 };

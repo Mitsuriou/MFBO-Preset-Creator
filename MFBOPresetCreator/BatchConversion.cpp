@@ -20,11 +20,8 @@
 #include <QStyledItemDelegate>
 
 BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
+  : TitleDialog(aParent, aSettings, aLastPaths)
   , mFileWatcher(new QFileSystemWatcher())
-  , mSettings(aSettings)
-  , mLastPaths(aLastPaths)
-  , mMinimumFirstColumnWidth(300)
   , mTargetBodyMesh(aSettings.batchConversion.defaultBodyFeet.bodyMesh)
   , mTargetFeetMesh(aSettings.batchConversion.defaultBodyFeet.feetMesh)
 {
@@ -69,7 +66,7 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
@@ -79,8 +76,8 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
                                     tr("Close the window"),
                                     tr("Go back to the batch conversion window"),
                                     "",
-                                    this->mSettings.display.dangerColor,
-                                    this->mSettings.display.successColor,
+                                    this->settings().display.dangerColor,
+                                    this->settings().display.successColor,
                                     "",
                                     false)
       == ButtonClicked::YES)
@@ -95,11 +92,6 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   emit modalClosed();
 }
 
-void BatchConversion::reject()
-{
-  this->close();
-}
-
 void BatchConversion::setWindowProperties()
 {
   this->setModal(true);
@@ -112,10 +104,10 @@ void BatchConversion::setWindowProperties()
 void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Input location"), "tune", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Input location"), "tune", lIconFolder, this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 0, 0);
 
   // Grid layout
@@ -143,16 +135,16 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   lLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Event binding
-  this->connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
+  QObject::connect(lInputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseInputDirectory);
 }
 
 void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 1, 0);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -201,19 +193,19 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lLayout->addWidget(lOpenAssetsDirectoryBeast, 1, 3);
 
   // Event binding
-  this->connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
-  this->connect(lOpenAssetsDirectoryHuman, &QPushButton::clicked, this, &BatchConversion::openSkeletonsAssetsDirectory);
-  this->connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
-  this->connect(lOpenAssetsDirectoryBeast, &QPushButton::clicked, this, &BatchConversion::openSkeletonsAssetsDirectory);
+  QObject::connect(lSkeletonRefresherHuman, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
+  QObject::connect(lOpenAssetsDirectoryHuman, &QPushButton::clicked, this, &BatchConversion::openSkeletonsAssetsDirectory);
+  QObject::connect(lSkeletonRefresherBeast, &QPushButton::clicked, this, &BatchConversion::populateSkeletonChoosers);
+  QObject::connect(lOpenAssetsDirectoryBeast, &QPushButton::clicked, this, &BatchConversion::openSkeletonsAssetsDirectory);
 }
 
 void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", lIconFolder, this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 2, 0);
 
   // Grid layout
@@ -259,9 +251,9 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   this->targetMeshesChanged(this->mTargetBodyMesh, this->mTargetFeetMesh);
 
   // Event binding
-  this->connect(lTargetMeshesPicker, &QPushButton::clicked, this, &BatchConversion::openTargetMeshesPicker);
-  this->connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
-  this->connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
+  QObject::connect(lTargetMeshesPicker, &QPushButton::clicked, this, &BatchConversion::openTargetMeshesPicker);
+  QObject::connect(lEditFilters, &QPushButton::clicked, this, &BatchConversion::openBodySlideFiltersEditor);
+  QObject::connect(lFiltersListChooser, qOverload<int>(&QComboBox::currentIndexChanged), this, &BatchConversion::updateBodySlideFiltersListPreview);
 
   // Post-bind initialization functions
   this->initBodySlideFiltersList();
@@ -270,20 +262,20 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->mSettings.display.font.pointSize);
+  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->settings().display.font.pointSize);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
-  this->connect(lOutputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseExportDirectory);
+  QObject::connect(lOutputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseExportDirectory);
 
   auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
-  this->connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview);
+  QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview);
 
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
-  this->connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
+  QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -292,10 +284,10 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", lIconFolder, this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 4, 0);
 
   // Layout
@@ -330,10 +322,10 @@ void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", lIconFolder, this->mSettings.display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", lIconFolder, this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 5, 0);
 
   // Layout
@@ -360,14 +352,14 @@ void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Batch generate button
   auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the directory"), "", "build", lIconFolder)};
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
-  this->connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
+  QObject::connect(lGenerateButton, &QPushButton::clicked, this, &BatchConversion::launchSearchProcess);
 }
 
 void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData, const bool aMustGenerateFilesInExistingDirectory)
@@ -413,8 +405,8 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
                                          lGenerateEachPresetInDedicatedDir,
                                          Utils::ToMapQsVecQs(aScannedData))};
 
-  auto lBCPicker{new BatchConversionPicker(this, this->mSettings, lData)};
-  this->connect(lBCPicker, &BatchConversionPicker::presetsCreationValidated, this, &BatchConversion::batchCreatePresets);
+  auto lBCPicker{new BatchConversionPicker(this, this->settings(), this->lastPaths(), lData)};
+  QObject::connect(lBCPicker, &BatchConversionPicker::presetsCreationValidated, this, &BatchConversion::batchCreatePresets);
 }
 
 void BatchConversion::userHasDoneAnAction()
@@ -444,10 +436,10 @@ void BatchConversion::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "batchConversionInput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "batchConversionInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "batchConversionInput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "batchConversionInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
@@ -462,7 +454,7 @@ void BatchConversion::chooseInputDirectory()
 void BatchConversion::launchSearchProcess()
 {
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Input path
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
@@ -516,8 +508,8 @@ void BatchConversion::launchSearchProcess()
                                       tr("Continue the search"),
                                       tr("Cancel the search"),
                                       "",
-                                      this->mSettings.display.warningColor,
-                                      this->mSettings.display.successColor,
+                                      this->settings().display.warningColor,
+                                      this->settings().display.successColor,
                                       "",
                                       true)
         != ButtonClicked::YES)
@@ -789,7 +781,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
   auto lMessage{tr("Every preset has been correctly generated.")};
 
   // Open the directory where the file structure has been created
-  if (this->mSettings.batchConversion.automaticallyOpenFinalDirectory)
+  if (this->settings().batchConversion.automaticallyOpenFinalDirectory)
   {
     Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the batch generated directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.getFullOutputPath()));
@@ -874,23 +866,23 @@ void BatchConversion::updateOutputPreview()
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
   auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
 
-  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->mSettings.display.successColor, this->mSettings.display.warningColor, this->mSettings.display.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->settings().display.successColor, this->settings().display.warningColor, this->settings().display.dangerColor, lOutputPathsPreview);
 }
 
 void BatchConversion::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "batchConversionOutput", lLineEdit->text(), this->mSettings.general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "batchConversionOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "batchConversionOutput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "batchConversionOutput", lPath);
   this->updateOutputPreview();
 }
 
 void BatchConversion::openTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mTargetBodyMesh, this->mTargetFeetMesh)};
-  this->connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &BatchConversion::targetMeshesChanged);
+  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &BatchConversion::targetMeshesChanged);
 }
 
 void BatchConversion::targetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
@@ -916,8 +908,8 @@ void BatchConversion::targetMeshesChanged(const BodyNameVersion& aBody, const Fe
 
 void BatchConversion::openBodySlideFiltersEditor()
 {
-  auto lEditor{new BodySlideFiltersEditor(this, this->mSettings, this->mFiltersList)};
-  this->connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &BatchConversion::updateBodySlideFiltersList);
+  auto lEditor{new BodySlideFiltersEditor(this, this->settings(), this->lastPaths(), this->mFiltersList)};
+  QObject::connect(lEditor, &BodySlideFiltersEditor::listEdited, this, &BatchConversion::updateBodySlideFiltersList);
 }
 
 void BatchConversion::initBodySlideFiltersList()

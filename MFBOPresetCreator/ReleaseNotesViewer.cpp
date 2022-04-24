@@ -2,13 +2,13 @@
 #include "ComponentFactory.h"
 #include "Enum.h"
 #include "Utils.h"
+#include <QCloseEvent>
 #include <QDesktopServices>
 #include <QNetworkReply>
 #include <QTextBrowser>
 
-ReleaseNotesViewer::ReleaseNotesViewer(QWidget* aParent, const Struct::Settings& aSettings)
-  : QDialog(aParent)
-  , mSettings(aSettings)
+ReleaseNotesViewer::ReleaseNotesViewer(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
+  : TitleDialog(aParent, aSettings, aLastPaths)
 {
   // Build the window's interface
   this->setWindowProperties();
@@ -19,6 +19,11 @@ ReleaseNotesViewer::ReleaseNotesViewer(QWidget* aParent, const Struct::Settings&
   this->show();
 
   this->checkForUpdate();
+}
+
+void ReleaseNotesViewer::closeEvent(QCloseEvent* aEvent)
+{
+  aEvent->accept();
 }
 
 void ReleaseNotesViewer::setWindowProperties()
@@ -40,7 +45,7 @@ void ReleaseNotesViewer::initializeGUI()
   // Main title
   auto lMainTitle{new QLabel(tr("Current version's release notes"), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->mSettings.display.font.pointSize * 2));
+  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
   this->layout()->addWidget(lMainTitle);
 
   // Fetch status
@@ -56,14 +61,14 @@ void ReleaseNotesViewer::initializeGUI()
   this->layout()->addWidget(lViewer);
 
   // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
+  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Open in default browser button
   auto lButton{ComponentFactory::CreateButton(this, tr("View in default browser"), "", "external", lIconFolder)};
   this->layout()->addWidget(lButton);
 
   // Event binding
-  this->connect(lButton, &QPushButton::clicked, this, &ReleaseNotesViewer::viewInDefaultBrowser);
+  QObject::connect(lButton, &QPushButton::clicked, this, &ReleaseNotesViewer::viewInDefaultBrowser);
 }
 
 void ReleaseNotesViewer::checkForUpdate()
@@ -132,7 +137,7 @@ void ReleaseNotesViewer::displayUpdateMessage(const bool aSucceeded, const QStri
 
   // Links color override
   auto lHTMLString{lViewer->toHtml()};
-  Utils::OverrideHTMLLinksColor(lHTMLString, this->mSettings.display.applicationTheme);
+  Utils::OverrideHTMLLinksColor(lHTMLString, this->settings().display.applicationTheme);
   lViewer->setHtml(lHTMLString);
 }
 
