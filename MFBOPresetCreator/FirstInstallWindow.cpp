@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QRadioButton>
 #include <QWidget>
 
 FirstInstallWindow::FirstInstallWindow(QWidget* aParent)
@@ -68,8 +69,8 @@ void FirstInstallWindow::initializeGUI()
   const auto lThemes{DataLists::GetAppThemes()};
   for (int i = 0; i < lThemes.size(); i++)
   {
-    auto lThemeCard{new ThemeCard(lThemes.at(i), this)};
-    QObject::connect(lThemeCard, &ThemeCard::loadQSSTheme, this, &FirstInstallWindow::loadQSSTheme);
+    auto lThemeCard{new ThemeCard(this, lThemes.at(i), static_cast<int>(i))};
+    QObject::connect(lThemeCard, &ThemeCard::askThemeChange, this, &FirstInstallWindow::loadQSSTheme);
     lDataContainer->addWidget(lThemeCard, (i + 2) / 2, (i + 2) % 2);
   }
 
@@ -83,7 +84,8 @@ void FirstInstallWindow::initializeGUI()
   this->setupButtons();
 
   // Apply the "Mitsuriou's black theme" stylesheet
-  this->loadQSSTheme(lThemes.at(static_cast<int>(GUITheme::MITSURIOU_BLACK_THEME)));
+  const auto lThemeIndex{static_cast<int>(GUITheme::MITSURIOU_BLACK_THEME)};
+  this->loadQSSTheme(lThemes.at(lThemeIndex), lThemeIndex);
 }
 
 void FirstInstallWindow::setupButtons()
@@ -108,8 +110,20 @@ void FirstInstallWindow::setupButtons()
   QObject::connect(lValidateButton, &QPushButton::clicked, this, &FirstInstallWindow::close);
 }
 
-void FirstInstallWindow::loadQSSTheme(const QString& aThemeName)
+void FirstInstallWindow::loadQSSTheme(const QString& aThemeName, const int aCardIndex)
 {
+  // Clear every single checked radio button
+  const auto lRadioButtons{this->findChildren<QRadioButton*>(QRegularExpression("selector_*"))};
+  for (const auto& lRadioButton : lRadioButtons)
+  {
+    lRadioButton->setChecked(false);
+  }
+
+  //
+  const auto lCheckedRadioButton{this->findChild<QRadioButton*>(QString("selector_%1").arg(QString::number(aCardIndex)))};
+  lCheckedRadioButton->setChecked(true);
+
+  // Apply the new theme on the GUI
   Utils::ApplyApplicationStyleSheet(aThemeName);
 
   // Store the last loaded theme

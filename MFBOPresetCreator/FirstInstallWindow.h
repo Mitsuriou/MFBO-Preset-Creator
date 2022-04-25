@@ -18,5 +18,5 @@ private:
   void initializeGUI();
   void setupButtons();
 
-  void loadQSSTheme(const QString& aThemeName);
+  void loadQSSTheme(const QString& aThemeName, const int aCardIndex);
 };

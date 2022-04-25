@@ -1,9 +1,10 @@
 #include "ThemeCard.h"
 #include "ComponentFactory.h"
 #include <QLabel>
+#include <QRadioButton>
 #include <QVBoxLayout>
 
-ThemeCard::ThemeCard(const QString& aThemeName, QWidget* aParent)
+ThemeCard::ThemeCard(QWidget* aParent, const QString& aThemeName, const int aCardIndex)
   : QWidget(aParent)
   , mThemeName(aThemeName)
   , mPreviewImage(QPixmap(QString(":/qss-previews/%2").arg(aThemeName)))
@@ -16,13 +17,18 @@ ThemeCard::ThemeCard(const QString& aThemeName, QWidget* aParent)
   lImageLabel->setObjectName("image_label");
   lWrapper->addWidget(lImageLabel);
 
-  // Load button
-  const auto lButton{ComponentFactory::CreateButton(this, aThemeName, "", "", "")};
-  lWrapper->addWidget(lButton);
+  // Load radio button
+  const auto lRadioButton{new QRadioButton(aThemeName, this)};
+  lRadioButton->setObjectName(QString("selector_%1").arg(QString::number(aCardIndex)));
+  lWrapper->addWidget(lRadioButton);
 
   // Event binding
-  QObject::connect(lButton, &QPushButton::clicked, this, [&]() {
-    emit loadQSSTheme(this->mThemeName);
+  QObject::connect(lRadioButton, &QRadioButton::clicked, this, [=]() {
+    // If the new state is "unchecked", skip the event
+    if (!lRadioButton->isChecked())
+      return;
+
+    emit askThemeChange(this->mThemeName, aCardIndex);
   });
 
   // Simulate a resize event

@@ -6,10 +6,10 @@ class ThemeCard final : public QWidget
   Q_OBJECT
 
 public:
-  explicit ThemeCard(const QString& aThemeName, QWidget* aParent);
+  explicit ThemeCard(QWidget* aParent, const QString& aThemeName, const int aCardIndex);
 
 signals:
-  void loadQSSTheme(QString aThemeName);
+  void askThemeChange(const QString& aThemeName, const int aCardIndex);
 
 protected:
   void resizeEvent(QResizeEvent* aEvent) override;
