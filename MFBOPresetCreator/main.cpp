@@ -208,7 +208,7 @@ int main(int argc, char* argv[])
     // If the settings file does not exist, display the FirstInstallWindow
     if (!Utils::SettingsFileExists())
     {
-      lLaunchedMainWindow = new FirstInstallWindow();
+      lLaunchedMainWindow = new FirstInstallWindow(lTranslator, lQtBaseTranslator);
     }
     // Elseway, display the software interface directly
     else

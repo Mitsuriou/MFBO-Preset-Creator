@@ -52,10 +52,10 @@ void FileIDPicker::initializeGUI()
   auto lMainTitle{new QLabel(tr("Choose a distant file"), this)};
   lMainTitle->setAlignment(Qt::AlignCenter);
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
-  lMainLayout->addWidget(lMainTitle, 0, 0, Qt::AlignmentFlag::AlignTop);
+  lMainLayout->addWidget(lMainTitle, 0, 0);
 
   // List wrapper
-  ComponentFactory::CreateScrollAreaComponentLayout(this, 1, 0);
+  ComponentFactory::CreateScrollAreaComponentLayout(this, *lMainLayout, 1, 0);
 }
 
 void FileIDPicker::fillChoicesList(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)

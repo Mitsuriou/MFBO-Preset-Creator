@@ -94,7 +94,7 @@ void AssistedConversion::initializeGUI()
   lTabWidget->setObjectName(QString("tab_widget"));
   lTabWidget->setAutoFillBackground(true);
   lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
-  lMainLayout->addWidget(lTabWidget, 0, 0, Qt::AlignTop);
+  lMainLayout->addWidget(lTabWidget, 0, 0);
 
   this->setupFromLocalFolderTab(*lTabWidget);
   this->setupFromURLTab(*lTabWidget);
@@ -106,12 +106,11 @@ void AssistedConversion::initializeGUI()
                                                           "only_scan_meshes_dir",
                                                           true),
                          1,
-                         0,
-                         Qt::AlignTop);
+                         0);
 
   // Launch search button
   auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
-  lMainLayout->addWidget(lLaunchSearchButton, 2, 0, Qt::AlignTop);
+  lMainLayout->addWidget(lLaunchSearchButton, 2, 0);
 
   // Hint zone
   this->displayHintZone();
@@ -177,27 +176,27 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(lIconFolder))), tr("From NexusMods URL"));
 
   // Input mod's URL/ID label
-  lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0, Qt::AlignTop);
+  lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0);
 
   // Input mod's URL/ID value
   auto lModURLOrIDLineEdit{new QLineEdit(this)};
   lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
   lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
-  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 2, Qt::AlignTop);
+  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 2);
 
   // API Key label
-  lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0, Qt::AlignTop);
+  lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0);
 
   // API Key value
   auto lAPIKeyLineEdit{new QLineEdit(this)};
   lAPIKeyLineEdit->setObjectName(QString("api_key"));
   lAPIKeyLineEdit->setPlaceholderText(tr("Enter your NexusMods API key here"));
   lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());
-  lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1, Qt::AlignTop);
+  lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1);
 
   // Save the API key
   auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save this API key"), "", "save", lIconFolder, "save_api_key", false, true)};
-  lTabLayout->addWidget(lSaveAPIKey, 1, 2, Qt::AlignTop);
+  lTabLayout->addWidget(lSaveAPIKey, 1, 2);
 
   // Open the NexusMods API keys' management page
   auto lOpenAPIKeysManagementPage{ComponentFactory::CreateButton(this,
@@ -208,7 +207,7 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
                                                                  "open_api_keys_management_page",
                                                                  false,
                                                                  true)};
-  lTabLayout->addWidget(lOpenAPIKeysManagementPage, 1, 3, Qt::AlignTop);
+  lTabLayout->addWidget(lOpenAPIKeysManagementPage, 1, 3);
 
   // Event binding
   QObject::connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&AssistedConversion::updateLaunchSearchButtonState));
@@ -821,8 +820,8 @@ void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 3, 0, 1, 3)};
   auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, *lMainLayout, 3, 0)};
 
   // Columns header
   lDataContainer->addWidget(new QLabel(tr("File path"), this), 0, 0, Qt::AlignCenter);

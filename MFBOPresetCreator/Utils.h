@@ -145,6 +145,7 @@ public:
 
   // Language
   static QString GetShortLanguageNameFromEnum(const int aEnumValue);
+  static QString GetShortLanguageNameFromEnum(const ApplicationLanguage& aLanguage);
   static ApplicationLanguage GetStructLanguageFromName(const QString& aShortName);
 
   // Widgets builder

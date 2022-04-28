@@ -19,6 +19,7 @@ ThemeCard::ThemeCard(QWidget* aParent, const QString& aThemeName, const int aCar
 
   // Load radio button
   const auto lRadioButton{new QRadioButton(aThemeName, this)};
+  lRadioButton->setCursor(Qt::CursorShape::PointingHandCursor);
   lRadioButton->setObjectName(QString("selector_%1").arg(QString::number(aCardIndex)));
   lWrapper->addWidget(lRadioButton);
 

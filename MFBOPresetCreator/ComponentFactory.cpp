@@ -149,10 +149,9 @@ namespace ComponentFactory
   }
 
   QGridLayout* CreateScrollAreaComponentLayout(QWidget* aParent,
+                                               QGridLayout& aLayout,
                                                const int aRow,
-                                               const int aColumn,
-                                               const int aRowSpan,
-                                               const int aColumnSpan)
+                                               const int aColumn)
   {
     auto lScrollArea{new QScrollArea(aParent)};
     lScrollArea->setObjectName(QString("scrollable_zone"));
@@ -168,17 +167,7 @@ namespace ComponentFactory
 
     lMainWidget->setLayout(lDataContainer);
 
-    auto lMainLayout{qobject_cast<QGridLayout*>(aParent->layout())};
-    if (lMainLayout == nullptr)
-    {
-      auto lCastedWindow{qobject_cast<QMainWindow*>(aParent)};
-      if (lCastedWindow != nullptr && lCastedWindow->centralWidget() != nullptr)
-      {
-        lMainLayout = qobject_cast<QGridLayout*>(lCastedWindow->centralWidget()->layout());
-      }
-    }
-
-    lMainLayout->addWidget(lScrollArea, aRow, aColumn, aRowSpan, aColumnSpan);
+    aLayout.addWidget(lScrollArea, aRow, aColumn);
 
     return lDataContainer;
   }

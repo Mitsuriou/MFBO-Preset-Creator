@@ -788,8 +788,7 @@ void TexturesAssistant::parseNode(const QJsonObject& aNode, const QString& aRoot
     }
 
     // Not a file or not a DDS file
-    if (aNode["type"].toString().compare("file") != 0
-        || !lName.endsWith(".dds", Qt::CaseSensitivity::CaseInsensitive))
+    if (aNode["type"].toString().compare("file") != 0 || !lName.endsWith(".dds", Qt::CaseSensitivity::CaseInsensitive))
     {
       return;
     }
@@ -852,7 +851,8 @@ void TexturesAssistant::displayObtainedData()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area wrapper
-  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, 2, 0)};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, *lMainLayout, 2, 0)};
 
   // Parse the grouped textures to split them in multiple storages
   TexturesAssistant::GroupedData lGroupedPaths;

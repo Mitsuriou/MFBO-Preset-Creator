@@ -4,7 +4,7 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="About.cpp" line="21"/>
+        <location filename="About.cpp" line="27"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
@@ -37,12 +37,12 @@
         <translation>Conversion assistée</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="144"/>
+        <location filename="AssistedConversion.cpp" line="143"/>
         <source>Input path:</source>
         <translation>Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="154"/>
+        <location filename="AssistedConversion.cpp" line="153"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
@@ -52,184 +52,184 @@
         <translation>Scanner seulement le sous-répertoire &quot;meshes&quot; du mod</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="113"/>
+        <location filename="AssistedConversion.cpp" line="112"/>
         <source>Launch the scan of the mod</source>
         <translation>Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="230"/>
+        <location filename="AssistedConversion.cpp" line="229"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="463"/>
+        <location filename="AssistedConversion.cpp" line="462"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="463"/>
+        <location filename="AssistedConversion.cpp" line="462"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="489"/>
+        <location filename="AssistedConversion.cpp" line="488"/>
         <source>Process aborted by the user.</source>
         <translation>Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="360"/>
-        <location filename="AssistedConversion.cpp" line="364"/>
+        <location filename="AssistedConversion.cpp" line="359"/>
+        <location filename="AssistedConversion.cpp" line="363"/>
         <source>Relaunch the scan</source>
         <translation>Relancer le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="204"/>
+        <location filename="AssistedConversion.cpp" line="203"/>
         <source>View my keys (nexusmods.com)</source>
         <translation>Voir mes clés (nexusmods.com)</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="361"/>
+        <location filename="AssistedConversion.cpp" line="360"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="364"/>
         <source>Cancel the relaunch</source>
         <translation>Annuler le relancement</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1079"/>
+        <location filename="AssistedConversion.cpp" line="1078"/>
         <source>No entry selected</source>
         <translation>Aucune entrée sélectionnée</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1080"/>
+        <location filename="AssistedConversion.cpp" line="1079"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation>Vous n&apos;avez sélectionné aucune entrée. Voulez-vous quand même valider la sélection telle quelle ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1083"/>
+        <location filename="AssistedConversion.cpp" line="1082"/>
         <source>Validate as is</source>
         <translation>Valider tel quel</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1084"/>
+        <location filename="AssistedConversion.cpp" line="1083"/>
         <source>Cancel, I wanted to select values</source>
         <translation>Annuler, je veux sélectionner des valeurs</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="405"/>
+        <location filename="AssistedConversion.cpp" line="404"/>
         <source>No root file has been found</source>
         <translation>Aucun fichier racine n&apos;a été trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="141"/>
+        <location filename="AssistedConversion.cpp" line="140"/>
         <source>From local directory</source>
         <oldsource>From local folder</oldsource>
         <translation>Depuis un répertoire local</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="177"/>
+        <location filename="AssistedConversion.cpp" line="176"/>
         <source>From NexusMods URL</source>
         <translation>Depuis un URL NexusMods</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="180"/>
+        <location filename="AssistedConversion.cpp" line="179"/>
         <source>Mod&apos;s URL or ID:</source>
         <oldsource>Input mod&apos;s URL or ID:</oldsource>
         <translation>URL ou ID du mod :</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="185"/>
+        <location filename="AssistedConversion.cpp" line="184"/>
         <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="189"/>
+        <location filename="AssistedConversion.cpp" line="188"/>
         <source>API Key:</source>
         <translation>Clé d&apos;API :</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="194"/>
+        <location filename="AssistedConversion.cpp" line="193"/>
         <source>Enter your NexusMods API key here</source>
         <translation>Entrez votre clé d&apos;API NexusMods ici</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="199"/>
+        <location filename="AssistedConversion.cpp" line="198"/>
         <source>Save this API key</source>
         <oldsource>Save the API key</oldsource>
         <translation>Enregistrer cette clé d&apos;API</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="406"/>
+        <location filename="AssistedConversion.cpp" line="405"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation>Aucun fichier ESL, ESM ou ESP n&apos;ont été trouvés dans le répertoire scanné. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="409"/>
-        <location filename="AssistedConversion.cpp" line="431"/>
+        <location filename="AssistedConversion.cpp" line="408"/>
+        <location filename="AssistedConversion.cpp" line="430"/>
         <source>Continue the scan</source>
         <translation>Continuer le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="410"/>
-        <location filename="AssistedConversion.cpp" line="432"/>
+        <location filename="AssistedConversion.cpp" line="409"/>
+        <location filename="AssistedConversion.cpp" line="431"/>
         <source>Cancel the scan</source>
         <translation>Annuler le scan</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="427"/>
+        <location filename="AssistedConversion.cpp" line="426"/>
         <source>BSA file found</source>
         <translation>Fichier BSA trouvé</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="428"/>
+        <location filename="AssistedConversion.cpp" line="427"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de décompresser le fichier BSA avant de poursuivre le scan. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="599"/>
-        <location filename="AssistedConversion.cpp" line="695"/>
+        <location filename="AssistedConversion.cpp" line="598"/>
+        <location filename="AssistedConversion.cpp" line="694"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite... Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="623"/>
+        <location filename="AssistedConversion.cpp" line="622"/>
         <source>Parse error: could not find the &quot;files&quot; element.</source>
         <translation>Erreur d&apos;analyse : l&apos;élément &quot;files&quot; n&apos;a pas été trouvé.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="649"/>
+        <location filename="AssistedConversion.cpp" line="648"/>
         <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
         <translation>Une erreur s&apos;est produite lors de la tentative de lecture de l&apos;aperçu du contenu du fichier. Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez. Si l&apos;erreur se produit à nouveau, veuillez vérifier l&apos;état des serveurs NexusMods.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="683"/>
+        <location filename="AssistedConversion.cpp" line="682"/>
         <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
         <translation>Au moins un fichier BSA a été trouvé dans le répertoire scanné. Veuillez noter que l&apos;application ne peut pas lire les données contenues dans les fichiers BSA, il est donc conseillé de télécharger et installer le mod, pour ensuite décompresser le fichier BSA, avant de poursuivre le scan.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="815"/>
+        <location filename="AssistedConversion.cpp" line="814"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation>Aucun fichier NIF n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="828"/>
+        <location filename="AssistedConversion.cpp" line="827"/>
         <source>File path</source>
         <translation>Emplacement du fichier</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="829"/>
+        <location filename="AssistedConversion.cpp" line="828"/>
         <source>*.nif file name</source>
         <translation>Nom du fichier *.nif</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="830"/>
+        <location filename="AssistedConversion.cpp" line="829"/>
         <source>Action</source>
         <translation>Action</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="854"/>
+        <location filename="AssistedConversion.cpp" line="853"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>Valider la (les) sélection(s) ci-dessus et revenir sur la fenêtre principale</translation>
     </message>
@@ -1022,23 +1022,43 @@ Pieds ciblés : -</translation>
 <context>
     <name>FirstInstallWindow</name>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="15"/>
+        <location filename="FirstInstallWindow.cpp" line="326"/>
         <source>First Installation Wizard</source>
         <translation>Assistant de Première Installation</translation>
     </message>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="58"/>
+        <location filename="FirstInstallWindow.cpp" line="336"/>
+        <source>Language</source>
+        <translation>Langage</translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="343"/>
+        <source>Current language: %1</source>
+        <translation>Langage actuel : %1</translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="354"/>
         <source>Application theme</source>
         <translation>Thème de l&apos;application</translation>
     </message>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="77"/>
-        <location filename="FirstInstallWindow.cpp" line="122"/>
+        <location filename="FirstInstallWindow.cpp" line="361"/>
+        <location filename="FirstInstallWindow.cpp" line="415"/>
         <source>Current theme: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème actuel : %1</translation>
     </message>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="104"/>
+        <location filename="FirstInstallWindow.cpp" line="372"/>
+        <source>Previous step</source>
+        <translation>Étape précédente</translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="379"/>
+        <source>Next step</source>
+        <translation>Étape suivante</translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="386"/>
         <source>Validate and launch MFBO: Preset Creator</source>
         <translation>Valider et lancer MFBO: Preset Creator</translation>
     </message>
@@ -1628,142 +1648,142 @@ Pieds ciblés : %2</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="195"/>
+        <location filename="ComponentFactory.cpp" line="184"/>
         <source>Targeted meshes mods:</source>
-        <translation type="unfinished">Mods de meshes ciblés :</translation>
+        <translation>Mods de meshes ciblés :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="203"/>
+        <location filename="ComponentFactory.cpp" line="192"/>
         <source>Choose target meshes</source>
-        <translation type="unfinished">Choisir les meshes cibles</translation>
+        <translation>Choisir les meshes cibles</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="206"/>
+        <location filename="ComponentFactory.cpp" line="195"/>
         <source>Targeted body: -
 Targeted feet: -</source>
-        <translation type="unfinished">Corps ciblé : -
+        <translation>Corps ciblé : -
 Pieds ciblés : -</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="226"/>
+        <location filename="ComponentFactory.cpp" line="215"/>
         <source>Files generation&apos;s output location</source>
-        <translation type="unfinished">Emplacement de sortie de la génération de fichiers</translation>
+        <translation>Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="241"/>
+        <location filename="ComponentFactory.cpp" line="230"/>
         <source>Output directory path:</source>
-        <translation type="unfinished">Emplacement du répertoire de sortie :</translation>
+        <translation>Emplacement du répertoire de sortie :</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="238"/>
+        <source>Choose a directory...</source>
+        <translation>Choisir un répertoire...</translation>
+    </message>
+    <message>
+        <location filename="ComponentFactory.cpp" line="242"/>
+        <source>Output subdirectory name/path:</source>
+        <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
         <location filename="ComponentFactory.cpp" line="249"/>
-        <source>Choose a directory...</source>
-        <translation type="unfinished">Choisir un répertoire...</translation>
-    </message>
-    <message>
-        <location filename="ComponentFactory.cpp" line="253"/>
-        <source>Output subdirectory name/path:</source>
-        <translation type="unfinished">Nom/Emplacement du sous-répertoire de sortie :</translation>
-    </message>
-    <message>
-        <location filename="ComponentFactory.cpp" line="260"/>
         <source>Use only subdirectory path?</source>
-        <translation type="unfinished">Utiliser seulement le sous-répertoire ?</translation>
+        <translation>Utiliser seulement le sous-répertoire ?</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="262"/>
+        <location filename="ComponentFactory.cpp" line="251"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
-        <translation type="unfinished">Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques)</translation>
+        <translation>Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques)</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="266"/>
+        <location filename="ComponentFactory.cpp" line="255"/>
         <source>Preview:</source>
-        <translation type="unfinished">Aperçu :</translation>
+        <translation>Aperçu :</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2378"/>
         <source>Minimized</source>
-        <translation type="unfinished">Minimisé</translation>
+        <translation>Minimisé</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2379"/>
         <location filename="DataLists.cpp" line="2385"/>
         <source>Windowed</source>
-        <translation type="unfinished">Fenêtré</translation>
+        <translation>Fenêtré</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2380"/>
         <location filename="DataLists.cpp" line="2386"/>
         <source>Maximized</source>
-        <translation type="unfinished">Maximisé</translation>
+        <translation>Maximisé</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2414"/>
         <source>[ignore]</source>
-        <translation type="unfinished">[ignorer]</translation>
+        <translation>[ignorer]</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2415"/>
         <source>Body mesh</source>
-        <translation type="unfinished">Mesh de corps</translation>
+        <translation>Mesh de corps</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2416"/>
         <source>Feet mesh</source>
-        <translation type="unfinished">Mesh de pieds</translation>
+        <translation>Mesh de pieds</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2417"/>
         <source>Hands mesh</source>
-        <translation type="unfinished">Mesh de mains</translation>
+        <translation>Mesh de mains</translation>
     </message>
     <message>
         <location filename="DataLists.cpp" line="2418"/>
         <source>Skeleton mesh</source>
-        <translation type="unfinished">Mesh de squelette</translation>
+        <translation>Mesh de squelette</translation>
     </message>
 </context>
 <context>
     <name>ReleaseNotesViewer</name>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="29"/>
-        <location filename="ReleaseNotesViewer.cpp" line="40"/>
+        <location filename="ReleaseNotesViewer.cpp" line="35"/>
+        <location filename="ReleaseNotesViewer.cpp" line="46"/>
         <source>Current version&apos;s release notes</source>
         <translation>Notes de publication de la version actuelle</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="61"/>
+        <location filename="ReleaseNotesViewer.cpp" line="67"/>
         <source>View in default browser</source>
         <translation>Voir dans le navigateur par défaut</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="71"/>
+        <location filename="ReleaseNotesViewer.cpp" line="77"/>
         <source>Contacting GitHub.com...</source>
         <translation>Contact de GitHub.com...</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="104"/>
+        <location filename="ReleaseNotesViewer.cpp" line="110"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version.
 Veuillez vous assurer que votre connexion Internet fonctionne correctement et réessayez.</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="114"/>
+        <location filename="ReleaseNotesViewer.cpp" line="120"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>Une erreur s&apos;est produite lors de l&apos;analyse des données de l&apos;API GitHub. Veuillez réessayer dans quelques secondes.</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="118"/>
+        <location filename="ReleaseNotesViewer.cpp" line="124"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version BETA &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="123"/>
+        <location filename="ReleaseNotesViewer.cpp" line="129"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>Ci-dessous sont les notes de publication pour la version stable &quot;%1&quot; :</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="128"/>
+        <location filename="ReleaseNotesViewer.cpp" line="134"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>Les notes de publication pour la version &quot;%1&quot; n&apos;ont pas été trouvées.</translation>
     </message>
@@ -2676,7 +2696,7 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>Aucun répertoire &quot;textures&quot; n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="846"/>
+        <location filename="TexturesAssistant.cpp" line="845"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>Aucun fichier DDS n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
@@ -2977,18 +2997,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1804"/>
+        <location filename="Utils.cpp" line="1808"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1888"/>
-        <location filename="Utils.cpp" line="1912"/>
+        <location filename="Utils.cpp" line="1892"/>
+        <location filename="Utils.cpp" line="1916"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1906"/>
+        <location filename="Utils.cpp" line="1910"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

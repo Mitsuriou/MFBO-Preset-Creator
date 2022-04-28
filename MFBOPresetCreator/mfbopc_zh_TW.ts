@@ -4,7 +4,7 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="About.cpp" line="21"/>
+        <location filename="About.cpp" line="27"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
@@ -37,12 +37,12 @@
         <translation>輔助轉換</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="144"/>
+        <location filename="AssistedConversion.cpp" line="143"/>
         <source>Input path:</source>
         <translation>匯入檔案路徑:</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="154"/>
+        <location filename="AssistedConversion.cpp" line="153"/>
         <source>Choose a directory...</source>
         <translation>選擇資料夾...</translation>
     </message>
@@ -53,184 +53,184 @@
         <translation>只掃描&quot;meshes&quot;資料夾</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="113"/>
+        <location filename="AssistedConversion.cpp" line="112"/>
         <source>Launch the scan of the mod</source>
         <translation>開始掃描MOD</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="204"/>
+        <location filename="AssistedConversion.cpp" line="203"/>
         <source>View my keys (nexusmods.com)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="230"/>
+        <location filename="AssistedConversion.cpp" line="229"/>
         <source>Awaiting the launch of a scan...</source>
         <translation>等待偵測開始...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="463"/>
+        <location filename="AssistedConversion.cpp" line="462"/>
         <source>Scanning the directory. Please wait...</source>
         <translation>掃描資料夾中 請稍等...</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="463"/>
+        <location filename="AssistedConversion.cpp" line="462"/>
         <source>Cancel treatment</source>
         <translation>取消處理</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="489"/>
+        <location filename="AssistedConversion.cpp" line="488"/>
         <source>Process aborted by the user.</source>
         <translation>使用者已終止程序。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="360"/>
-        <location filename="AssistedConversion.cpp" line="364"/>
+        <location filename="AssistedConversion.cpp" line="359"/>
+        <location filename="AssistedConversion.cpp" line="363"/>
         <source>Relaunch the scan</source>
         <translation>重新偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="141"/>
+        <location filename="AssistedConversion.cpp" line="140"/>
         <source>From local directory</source>
         <oldsource>From local folder</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="177"/>
+        <location filename="AssistedConversion.cpp" line="176"/>
         <source>From NexusMods URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="180"/>
+        <location filename="AssistedConversion.cpp" line="179"/>
         <source>Mod&apos;s URL or ID:</source>
         <oldsource>Input mod&apos;s URL or ID:</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="185"/>
+        <location filename="AssistedConversion.cpp" line="184"/>
         <source>https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="189"/>
+        <location filename="AssistedConversion.cpp" line="188"/>
         <source>API Key:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="194"/>
+        <location filename="AssistedConversion.cpp" line="193"/>
         <source>Enter your NexusMods API key here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="199"/>
+        <location filename="AssistedConversion.cpp" line="198"/>
         <source>Save this API key</source>
         <oldsource>Save the API key</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="361"/>
+        <location filename="AssistedConversion.cpp" line="360"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation>將失去所有為保存進度。請問是否繼續重啟偵測?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="365"/>
+        <location filename="AssistedConversion.cpp" line="364"/>
         <source>Cancel the relaunch</source>
         <translation>取消重新開始</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="405"/>
+        <location filename="AssistedConversion.cpp" line="404"/>
         <source>No root file has been found</source>
         <translation>未發現根目錄檔案</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="406"/>
+        <location filename="AssistedConversion.cpp" line="405"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation>未發現ESL/ESM/ESP檔。請問是否繼續偵測?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="409"/>
-        <location filename="AssistedConversion.cpp" line="431"/>
+        <location filename="AssistedConversion.cpp" line="408"/>
+        <location filename="AssistedConversion.cpp" line="430"/>
         <source>Continue the scan</source>
         <translation>繼續偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="410"/>
-        <location filename="AssistedConversion.cpp" line="432"/>
+        <location filename="AssistedConversion.cpp" line="409"/>
+        <location filename="AssistedConversion.cpp" line="431"/>
         <source>Cancel the scan</source>
         <translation>取消偵測</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="427"/>
+        <location filename="AssistedConversion.cpp" line="426"/>
         <source>BSA file found</source>
         <translation>偵測到BSA檔</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="428"/>
+        <location filename="AssistedConversion.cpp" line="427"/>
         <source>At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?</source>
         <translation>偵測到資料夾存在BSA檔案。由於本程式不支援BSA檔案，建議解壓縮BSA檔後繼續操作。是否繼續進行操作?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="599"/>
-        <location filename="AssistedConversion.cpp" line="695"/>
+        <location filename="AssistedConversion.cpp" line="598"/>
+        <location filename="AssistedConversion.cpp" line="694"/>
         <source>An error has occurred... Make sure your internet connection is operational and try again.</source>
-        <translation type="unfinished">發生錯誤...請確認網路連線並稍後重試。</translation>
+        <translation>發生錯誤...請確認網路連線並稍後重試。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="623"/>
+        <location filename="AssistedConversion.cpp" line="622"/>
         <source>Parse error: could not find the &quot;files&quot; element.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="649"/>
+        <location filename="AssistedConversion.cpp" line="648"/>
         <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="683"/>
+        <location filename="AssistedConversion.cpp" line="682"/>
         <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="815"/>
+        <location filename="AssistedConversion.cpp" line="814"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation>未發現NIF檔案。</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="828"/>
+        <location filename="AssistedConversion.cpp" line="827"/>
         <source>File path</source>
         <translation>檔案位置</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="829"/>
+        <location filename="AssistedConversion.cpp" line="828"/>
         <source>*.nif file name</source>
         <translation>.nif檔案名稱</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="830"/>
+        <location filename="AssistedConversion.cpp" line="829"/>
         <source>Action</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="854"/>
+        <location filename="AssistedConversion.cpp" line="853"/>
         <source>Validate the selection(s) above and go back to the main window</source>
         <translation>驗證已選選項，並回到主視窗</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1079"/>
+        <location filename="AssistedConversion.cpp" line="1078"/>
         <source>No entry selected</source>
         <translation>未選擇任何條目</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1080"/>
+        <location filename="AssistedConversion.cpp" line="1079"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation>未選擇任何條目。是否直接驗證當前所選?</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1083"/>
+        <location filename="AssistedConversion.cpp" line="1082"/>
         <source>Validate as is</source>
         <translation>照原樣驗正</translation>
     </message>
     <message>
-        <location filename="AssistedConversion.cpp" line="1084"/>
+        <location filename="AssistedConversion.cpp" line="1083"/>
         <source>Cancel, I wanted to select values</source>
         <translation>取消，我想要調整數值</translation>
     </message>
@@ -1119,23 +1119,43 @@ Targeted feet: -</source>
 <context>
     <name>FirstInstallWindow</name>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="15"/>
+        <location filename="FirstInstallWindow.cpp" line="326"/>
         <source>First Installation Wizard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="58"/>
+        <location filename="FirstInstallWindow.cpp" line="336"/>
+        <source>Language</source>
+        <translation>語言</translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="343"/>
+        <source>Current language: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="354"/>
         <source>Application theme</source>
         <translation>應用程式主題</translation>
     </message>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="77"/>
-        <location filename="FirstInstallWindow.cpp" line="122"/>
+        <location filename="FirstInstallWindow.cpp" line="361"/>
+        <location filename="FirstInstallWindow.cpp" line="415"/>
         <source>Current theme: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FirstInstallWindow.cpp" line="104"/>
+        <location filename="FirstInstallWindow.cpp" line="372"/>
+        <source>Previous step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="379"/>
+        <source>Next step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FirstInstallWindow.cpp" line="386"/>
         <source>Validate and launch MFBO: Preset Creator</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1825,54 +1845,54 @@ Targeted feet: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="195"/>
+        <location filename="ComponentFactory.cpp" line="184"/>
         <source>Targeted meshes mods:</source>
         <translation type="unfinished">目標模型Mods:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="203"/>
+        <location filename="ComponentFactory.cpp" line="192"/>
         <source>Choose target meshes</source>
         <translation type="unfinished">選擇目標模型</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="206"/>
+        <location filename="ComponentFactory.cpp" line="195"/>
         <source>Targeted body: -
 Targeted feet: -</source>
         <translation type="unfinished">目標身型: -
 目標腳部: -</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="226"/>
+        <location filename="ComponentFactory.cpp" line="215"/>
         <source>Files generation&apos;s output location</source>
         <translation type="unfinished">輸出檔案設定</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="241"/>
+        <location filename="ComponentFactory.cpp" line="230"/>
         <source>Output directory path:</source>
         <translation type="unfinished">輸出資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="249"/>
+        <location filename="ComponentFactory.cpp" line="238"/>
         <source>Choose a directory...</source>
         <translation type="unfinished">選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="253"/>
+        <location filename="ComponentFactory.cpp" line="242"/>
         <source>Output subdirectory name/path:</source>
         <translation type="unfinished">輸出子資料夾路徑:</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="260"/>
+        <location filename="ComponentFactory.cpp" line="249"/>
         <source>Use only subdirectory path?</source>
         <translation type="unfinished">使用子資料夾路徑?</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="262"/>
+        <location filename="ComponentFactory.cpp" line="251"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation type="unfinished">勾選此欄以輸出檔案於子資料夾路徑(風險自負)</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="266"/>
+        <location filename="ComponentFactory.cpp" line="255"/>
         <source>Preview:</source>
         <translation type="unfinished">預覽:</translation>
     </message>
@@ -1922,46 +1942,46 @@ Targeted feet: -</source>
 <context>
     <name>ReleaseNotesViewer</name>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="29"/>
-        <location filename="ReleaseNotesViewer.cpp" line="40"/>
+        <location filename="ReleaseNotesViewer.cpp" line="35"/>
+        <location filename="ReleaseNotesViewer.cpp" line="46"/>
         <source>Current version&apos;s release notes</source>
         <translation>當前版本資訊</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="61"/>
+        <location filename="ReleaseNotesViewer.cpp" line="67"/>
         <source>View in default browser</source>
         <translation>在預設瀏覽器中</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="71"/>
+        <location filename="ReleaseNotesViewer.cpp" line="77"/>
         <source>Contacting GitHub.com...</source>
         <translation>正在連接Github.com...</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="104"/>
+        <location filename="ReleaseNotesViewer.cpp" line="110"/>
         <source>An error has occurred while searching for a new version.
 Please make sure your internet connection is working correctly and try again.</source>
         <translation>找不到更新檔...
 請確認網路連線狀況。</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="114"/>
+        <location filename="ReleaseNotesViewer.cpp" line="120"/>
         <source>An error has occured while analyzing GitHub&apos;s API data. Please retry in a few seconds.</source>
         <translation>無法取得Github的API...
 請稍後重試。</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="118"/>
+        <location filename="ReleaseNotesViewer.cpp" line="124"/>
         <source>Below are the release notes for the BETA version &quot;%1&quot;:</source>
         <translation>以下為Beta版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="123"/>
+        <location filename="ReleaseNotesViewer.cpp" line="129"/>
         <source>Below are the release notes for the stable version &quot;%1&quot;:</source>
         <translation>以下為正式版本 &quot;%1&quot; 的細節:</translation>
     </message>
     <message>
-        <location filename="ReleaseNotesViewer.cpp" line="128"/>
+        <location filename="ReleaseNotesViewer.cpp" line="134"/>
         <source>The release notes for the version &quot;%1&quot; has not been found.</source>
         <translation>找不到版本 &quot;%1&quot; 的細節。</translation>
     </message>
@@ -2948,7 +2968,7 @@ Be sure that you used characters authorized by your OS in the given paths.</olds
         <translation>掃描範圍中找不到名稱為&quot;textures&quot;的資料夾。</translation>
     </message>
     <message>
-        <location filename="TexturesAssistant.cpp" line="846"/>
+        <location filename="TexturesAssistant.cpp" line="845"/>
         <source>No DDS file was found in the scanned directory.</source>
         <translation>掃描範圍中找不到任何DDS檔。</translation>
     </message>
@@ -3312,18 +3332,18 @@ Be sure that you used characters authorized by your OS in the given paths.</olds
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1804"/>
+        <location filename="Utils.cpp" line="1808"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1888"/>
-        <location filename="Utils.cpp" line="1912"/>
+        <location filename="Utils.cpp" line="1892"/>
+        <location filename="Utils.cpp" line="1916"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1906"/>
+        <location filename="Utils.cpp" line="1910"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

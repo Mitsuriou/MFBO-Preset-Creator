@@ -1746,8 +1746,12 @@ QString Utils::ReadAPIKeyFromFile()
 
 QString Utils::GetShortLanguageNameFromEnum(const int aEnumValue)
 {
-  const auto lEnumLang{static_cast<ApplicationLanguage>(aEnumValue)};
-  switch (lEnumLang)
+  return Utils::GetShortLanguageNameFromEnum(static_cast<ApplicationLanguage>(aEnumValue));
+}
+
+QString Utils::GetShortLanguageNameFromEnum(const ApplicationLanguage& aLanguage)
+{
+  switch (aLanguage)
   {
     case ApplicationLanguage::ENGLISH:
       return "en";
