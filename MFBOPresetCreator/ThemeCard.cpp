@@ -27,7 +27,10 @@ ThemeCard::ThemeCard(QWidget* aParent, const QString& aThemeName, const int aCar
   QObject::connect(lRadioButton, &QRadioButton::clicked, this, [=]() {
     // If the new state is "unchecked", skip the event
     if (!lRadioButton->isChecked())
+    {
+      lRadioButton->setChecked(true);
       return;
+    }
 
     emit askThemeChange(this->mThemeName, aCardIndex);
   });
