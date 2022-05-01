@@ -670,7 +670,10 @@ void TexturesAssistant::displayFileIDPicker(const std::vector<Struct::NexusModsF
   }
 
   auto lFilePicker{new FileIDPicker(this, this->settings(), this->lastPaths(), aFilesInformation)};
-  QObject::connect(lFilePicker, QOverload<const QString&>::of(&FileIDPicker::fileContentPreviewURLChosen), this, &TexturesAssistant::requestModFileContent);
+  QObject::connect(lFilePicker,
+                   QOverload<const QString&>::of(&FileIDPicker::fileContentPreviewURLChosen),
+                   this,
+                   &TexturesAssistant::requestModFileContent);
 }
 
 void TexturesAssistant::requestModFileContent(const QString& aContentPreviewLink)
@@ -679,7 +682,6 @@ void TexturesAssistant::requestModFileContent(const QString& aContentPreviewLink
   {
     const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
     lLaunchSearchButton->setDisabled(false);
-    Utils::DisplayErrorMessage(tr("An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status."));
     return;
   }
 

@@ -636,7 +636,10 @@ void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusMods
   }
 
   auto lFilePicker{new FileIDPicker(this, this->settings(), this->lastPaths(), aFilesInformation)};
-  connect(lFilePicker, QOverload<const QString&, const QString&>::of(&FileIDPicker::fileContentPreviewURLChosen), this, &AssistedConversion::requestModFileContent);
+  connect(lFilePicker,
+          QOverload<const QString&, const QString&>::of(&FileIDPicker::fileContentPreviewURLChosen),
+          this,
+          &AssistedConversion::requestModFileContent);
 }
 
 void AssistedConversion::requestModFileContent(const QString& aFileName, const QString& aContentPreviewLink)
@@ -645,7 +648,6 @@ void AssistedConversion::requestModFileContent(const QString& aFileName, const Q
   {
     const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
     lLaunchSearchButton->setDisabled(false);
-    Utils::DisplayErrorMessage(tr("An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status."));
     return;
   }
 

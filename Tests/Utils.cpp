@@ -9,7 +9,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Tests
 {
-  class UtilsTest : public TestClass<UtilsTest>
+  class UtilsTest final : public TestClass<UtilsTest>
   {
   public:
     TEST_METHOD(bool__QRCResourceExists__QString)

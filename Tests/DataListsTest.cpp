@@ -55,7 +55,7 @@ namespace Microsoft
 
 namespace Tests
 {
-  class DataListsTest : public TestClass<DataListsTest>
+  class DataListsTest final : public TestClass<DataListsTest>
   {
   public:
     TEST_METHOD(BodyName__GetName__BodyVariant)

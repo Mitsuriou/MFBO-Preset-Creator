@@ -138,8 +138,10 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 
   if (!aSucceeded)
   {
-    QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
-    lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+    // User theme accent
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
+
+    lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder))));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Check for updates once again"));
     lSearchButton->setToolTip(tr("Check for updates once again"));
@@ -480,9 +482,11 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
   }
   else
   {
+    // User theme accent
+    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
+
     // Error while downloading
-    QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/alert-circle" : ":/black/alert-circle"};
-    lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+    lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder))));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Try to download the update once again"));
     lSearchButton->setToolTip(tr("Try to download the update once again"));
