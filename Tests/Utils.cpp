@@ -37,6 +37,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_3BBB_ADVANCED
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_20, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_2_25, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
@@ -47,6 +48,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_3BBB_ADVANCED_VER_2
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_20, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_2_25, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
@@ -57,11 +59,13 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_3BBB_ADVANCED_VER_3
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_BBP
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_2_20, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_2_25, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
@@ -72,6 +76,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_BBP_ADVANCED
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_ADVANCED_2_20, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_ADVANCED_2_25, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
@@ -82,6 +87,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_ADVANCED_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_ADVANCED_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_ADVANCED_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_BBP_ADVANCED_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_TBBP
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_2_20, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_2_25, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
@@ -92,6 +98,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_TBBP_ADVANCED
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_20, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_ADVANCED_2_25, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
@@ -102,6 +109,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_TBBP_ADVANCED_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_25, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_2_30, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
@@ -110,6 +118,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_03, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_04, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_10, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE_3_11, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // CBBE_SMP_3BBB
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::CBBE_SMP_3BBB_1_2_0, FeetNameVersion::_INVALID_VALUE, MeshPartType::BODY)));
       // COCO_BODY_CBBE
@@ -169,6 +178,7 @@ namespace Tests
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_03, FeetNameVersion::BHUNP_3BBB_ADVANCED_3_03, MeshPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_04, FeetNameVersion::BHUNP_3BBB_ADVANCED_3_04, MeshPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_10, FeetNameVersion::BHUNP_3BBB_ADVANCED_3_10, MeshPartType::FEET)));
+      Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::BHUNP_3BBB_3_11, FeetNameVersion::BHUNP_3BBB_ADVANCED_3_11, MeshPartType::FEET)));
       // CBBE_3BA_3BBB
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::CBBE_3BA_3BBB_1_50, FeetNameVersion::CBBE_3BA_3BBB_1_50, MeshPartType::FEET)));
       Assert::IsTrue(Utils::QRCResourceExists(DataLists::GetQRCPathForResource(BodyNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55, FeetNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55, MeshPartType::FEET)));

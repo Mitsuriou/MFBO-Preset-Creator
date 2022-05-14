@@ -738,9 +738,9 @@ bool Utils::IsVersionOffsetValid(const BodyVariant& aBodyVariant, const int aRel
     return false;
   }
 
-  // If not "3.00 to 3.02", "3.03", "3.04 - 3.05" and "3.10"
+  // If not "3.00 to 3.02", "3.03", "3.04 - 3.05", "3.10" and "3.11"
   if (aBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_3
-      && !(aRelativeVersion >= 5 && aRelativeVersion <= 8) // "3.00 to 3.02", "3.03", "3.04 - 3.05" and "3.10"
+      && !(aRelativeVersion >= 5 && aRelativeVersion <= 9) // "3.00 to 3.02", "3.03", "3.04 - 3.05", "3.10" and "3.11"
   )
   {
     return false;
