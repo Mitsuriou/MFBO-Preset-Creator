@@ -182,7 +182,7 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   auto lModURLOrIDLineEdit{new QLineEdit(this)};
   lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
   lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
-  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 2);
+  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 3);
 
   // API Key label
   lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0);
@@ -401,7 +401,7 @@ void AssistedConversion::launchSearchFromLocalFolder()
   {
     // If it does not contain one of the wanted files, ask the user to start or cancel the scan
     if (Utils::DisplayQuestionMessage(this,
-                                      tr("No root file has been found"),
+                                      tr("No mod archive file has been found"),
                                       tr("No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?"),
                                       lIconFolder,
                                       "help-circle",

@@ -36,7 +36,6 @@ private:
 
   QFileSystemWatcher* mFileWatcher{nullptr};
   QNetworkAccessManager mManager;
-  std::map<QString, QString>* mLastPaths{nullptr};
   bool mHasUserDoneSomething{false};
   int mMinimumFirstColumnWidth{300};
   TexturesAssistant::ScannedData mScannedFiles;

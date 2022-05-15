@@ -176,27 +176,27 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(lIconFolder))), tr("From NexusMods URL"));
 
   // Input mod's URL/ID label
-  lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0, Qt::AlignTop);
+  lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0);
 
   // Input mod's URL/ID value
   auto lModURLOrIDLineEdit{new QLineEdit(this)};
   lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
   lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
-  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 3, Qt::AlignTop);
+  lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 3);
 
   // API Key label
-  lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0, Qt::AlignTop);
+  lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0);
 
   // API Key value
   auto lAPIKeyLineEdit{new QLineEdit(this)};
   lAPIKeyLineEdit->setObjectName(QString("api_key"));
   lAPIKeyLineEdit->setPlaceholderText(tr("Enter your NexusMods API key here"));
   lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());
-  lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1, Qt::AlignTop);
+  lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1);
 
   // Save the API key
   auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save this API key"), "", "save", lIconFolder, "save_api_key", false, true)};
-  lTabLayout->addWidget(lSaveAPIKey, 1, 2, Qt::AlignTop);
+  lTabLayout->addWidget(lSaveAPIKey, 1, 2);
 
   // Open the NexusMods API keys' management page
   auto lOpenAPIKeysManagementPage{ComponentFactory::CreateButton(this,
@@ -207,7 +207,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
                                                                  "open_api_keys_management_page",
                                                                  false,
                                                                  true)};
-  lTabLayout->addWidget(lOpenAPIKeysManagementPage, 1, 3, Qt::AlignTop);
+  lTabLayout->addWidget(lOpenAPIKeysManagementPage, 1, 3);
 
   // Event binding
   QObject::connect(lModURLOrIDLineEdit, &QLineEdit::textChanged, this, QOverload<const QString&>::of(&TexturesAssistant::updateLaunchSearchButtonState));
@@ -338,10 +338,10 @@ void TexturesAssistant::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "texturesAssistantInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantInput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "texturesAssistantInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
   {
@@ -1138,9 +1138,9 @@ void TexturesAssistant::useOnlySubdirStateChanged(int)
 void TexturesAssistant::chooseExportDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "texturesAssistantOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "texturesAssistantOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "texturesAssistantOutput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "texturesAssistantOutput", lPath);
   this->updateOutputPreview();
 }

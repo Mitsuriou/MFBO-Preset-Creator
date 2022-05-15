@@ -2443,6 +2443,15 @@ QStringList DataLists::GetAssistedConversionActions()
                      QObject::tr("Skeleton mesh")};
 }
 
+QStringList DataLists::GetSliderSetsScanPickerActions()
+{
+  return QStringList{QObject::tr("[ignore]"),
+                     QObject::tr("Body mesh"),
+                     QObject::tr("Feet mesh"),
+                     QObject::tr("Hands mesh"),
+                     QObject::tr("Beast hands mesh")};
+}
+
 QStringList DataLists::GetLastPathsKeys()
 {
   return QStringList{QString("general"),

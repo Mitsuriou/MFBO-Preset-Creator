@@ -830,13 +830,11 @@ QString Utils::GetPresetNameFromXMLFile(const QString& aPath)
   return lPresetName.left(lPresetName.lastIndexOf('-') - 1);
 }
 
-std::vector<Struct::SliderSet> Utils::ReadOSPFileInformation(const QString& aPath)
+std::vector<Struct::SliderSet> Utils::ReadOSPFileInformation(const QString& aPath, const bool aSkipTypeAnalysis)
 {
   std::vector<Struct::SliderSet> lSliderSets;
 
   QFile lReadFile(aPath);
-  lReadFile.setPermissions(QFile::WriteUser);
-
   QDomDocument lOSPDocument;
 
   if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -877,11 +875,16 @@ std::vector<Struct::SliderSet> Utils::ReadOSPFileInformation(const QString& aPat
                                                                   : (lSplittedName.size() == 2 ? lSplittedName.at(1)
                                                                                                : lSplittedName.last())};
 
+      // Skip the
+      if (aSkipTypeAnalysis)
+      {
+        lSliderSetEntry.setMeshPart(MeshPartType::UNKNOWN);
+      }
       // Try to guess the part type from the name
       // TODO: It should be possible to make this analyze way more precise, by using the whole content of the lNextNodeToParse,
       //       and by giving weights from each parsed data.
-      if (lNamePartToAnalyze.contains("feet", Qt::CaseSensitivity::CaseInsensitive)
-          && !Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::FEET))
+      else if (lNamePartToAnalyze.contains("feet", Qt::CaseSensitivity::CaseInsensitive)
+               && !Utils::AlreadyContainsMeshPartType(lSliderSets, MeshPartType::FEET))
       {
         lSliderSetEntry.setMeshPart(MeshPartType::FEET);
       }
@@ -928,7 +931,7 @@ std::vector<Struct::SliderSet> Utils::ReadOSPFileInformation(const QString& aPat
         lNextChildNodeToParse = lNextChildNodeToParse.nextSiblingElement();
       }
 
-      if (lSliderSetEntry.isValid())
+      if (lSliderSetEntry.isValid() || (aSkipTypeAnalysis && lSliderSetEntry.isValidNoMeshPartCheck()))
         lSliderSets.push_back(lSliderSetEntry);
     }
 
@@ -1594,7 +1597,9 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
   const auto lKeys{lVariantMap.keys()};
   for (const auto& lKey : lKeys)
   {
-    lLastPathsList.find(lKey)->second = lVariantMap.value(lKey, "").toString();
+    const auto lPosition{lLastPathsList.find(lKey)};
+    if (lPosition != lLastPathsList.cend())
+      lLastPathsList.find(lKey)->second = lVariantMap.value(lKey, "").toString();
   }
 
   return lLastPathsList;

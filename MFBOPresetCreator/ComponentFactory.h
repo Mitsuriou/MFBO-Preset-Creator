@@ -43,7 +43,9 @@ namespace ComponentFactory
   QGridLayout* CreateScrollAreaComponentLayout(QWidget* aParent,
                                                QGridLayout& aLayout,
                                                const int aRow,
-                                               const int aColumn);
+                                               const int aColumn,
+                                               const int aRowSpan = 1,
+                                               const int aColumnSpan = 1);
 
   // Full UI blocks
   QPushButton* CreateTargetMeshesPickerLine(QWidget* aParent,

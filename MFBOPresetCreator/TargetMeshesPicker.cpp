@@ -1,6 +1,7 @@
 #include "TargetMeshesPicker.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "PresetsDatabaseManager.h"
 #include "Utils.h"
 #include <QCloseEvent>
 
@@ -26,6 +27,8 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
   // Show the window when it's completely built
   this->adjustSize();
   this->show();
+
+  new PresetsDatabaseManager();
 }
 
 void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)

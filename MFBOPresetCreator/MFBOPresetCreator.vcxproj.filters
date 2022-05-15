@@ -51,6 +51,12 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{d2df7426-3bb5-498f-9c35-b71df900fec7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Database">
+      <UniqueIdentifier>{5c881ae2-0555-4d7b-94b0-d980877c4d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Database">
+      <UniqueIdentifier>{2a86e5f3-f52d-4436-adf6-05e5d37afc31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MFBOPresetCreator.qrc">
@@ -154,6 +160,15 @@
     <ClCompile Include="TitleDialog.cpp">
       <Filter>Source Files\Qt Classes</Filter>
     </ClCompile>
+    <ClCompile Include="PresetsDatabaseManager.cpp">
+      <Filter>Source Files\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderSetsScanPicker.cpp">
+      <Filter>Source Files\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="SSSPSelectionBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">
@@ -195,6 +210,12 @@
     </ClInclude>
     <ClInclude Include="DataLists.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PresetsDatabaseManager.h">
+      <Filter>Header Files\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="SSSPSelectionBlock.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +290,9 @@
     </QtMoc>
     <QtMoc Include="TitleDialog.h">
       <Filter>Header Files\Qt Classes</Filter>
+    </QtMoc>
+    <QtMoc Include="SliderSetsScanPicker.h">
+      <Filter>Header Files\Database</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

@@ -151,10 +151,13 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClCompile Include="FirstInstallWindow.cpp" />
     <ClCompile Include="GroupBox.cpp" />
     <ClCompile Include="PresetCreator.cpp" />
+    <ClCompile Include="PresetsDatabaseManager.cpp" />
     <ClCompile Include="ReleaseNotesViewer.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SliderFileBuilder.cpp" />
+    <ClCompile Include="SliderSetsScanPicker.cpp" />
+    <ClCompile Include="SSSPSelectionBlock.cpp" />
     <ClCompile Include="TargetMeshesPicker.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
     <ClCompile Include="TexturesAssistant.cpp" />
@@ -206,7 +209,10 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <QtMoc Include="GroupBox.h" />
     <QtMoc Include="FileIDPicker.h" />
     <ClInclude Include="LangManager.h" />
+    <ClInclude Include="PresetsDatabaseManager.h" />
     <ClInclude Include="SliderFileBuilder.h" />
+    <QtMoc Include="SliderSetsScanPicker.h" />
+    <ClInclude Include="SSSPSelectionBlock.h" />
     <ClInclude Include="Struct.h" />
     <QtMoc Include="TitleDialog.h" />
     <ClInclude Include="VersionsInformation.h" />

@@ -67,6 +67,11 @@ namespace Struct
       return !this->name.isEmpty() && !this->getOutputPath().isEmpty() && !this->getOutputFile().isEmpty() && getMeshPart() != MeshPartType::UNKNOWN;
     }
 
+    bool isValidNoMeshPartCheck()
+    {
+      return !this->name.isEmpty() && !this->getOutputPath().isEmpty() && !this->getOutputFile().isEmpty();
+    }
+
   private:
     QString name{""};
     MeshPartType meshPartType{MeshPartType::UNKNOWN};
@@ -152,6 +157,7 @@ namespace Struct
     int mainWindowHeight{620};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
     int mainWindowWidth{1000};
+    DialogOpeningMode sliderSetsScanPickerDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString successColor{"#48c774"};
     DialogOpeningMode texturesAssistantDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString warningColor{"#ffbc6b"};

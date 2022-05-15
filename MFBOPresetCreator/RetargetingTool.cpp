@@ -25,7 +25,6 @@
 RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : TitleDialog(aParent, aSettings, aLastPaths)
   , mFileWatcher(new QFileSystemWatcher())
-  , mLastPaths(aLastPaths)
   , mTargetBodyMesh(aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh)
   , mTargetFeetMesh(aSettings.presetsRetargeting.defaultBodyFeet.feetMesh)
 {
@@ -257,10 +256,10 @@ void RetargetingTool::userHasDoneAnAction(int)
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "retargetingToolInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolInput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "retargetingToolInput", lPath);
 
   if (!this->mHasUserDoneSomething && lPath.size() > 0)
   {
@@ -273,10 +272,10 @@ void RetargetingTool::chooseInputDirectory()
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->mLastPaths, "retargetingToolOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "retargetingToolOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->mLastPaths, "retargetingToolOutput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "retargetingToolOutput", lPath);
   this->updateBackupPreview();
 
   if (!this->mHasUserDoneSomething && lPath.size() > 0)

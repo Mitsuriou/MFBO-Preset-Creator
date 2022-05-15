@@ -95,10 +95,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No root file has been found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -139,10 +135,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>At least one BSA file was found in the scanned mod. Please note that the application cannot read the data contained in the BSA files, so it is advisable to download and install the mod, to then decompress the BSA file, before continuing the scan.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -180,6 +172,10 @@
     </message>
     <message>
         <source>Cancel, I wanted to select values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No mod archive file has been found</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1286,6 +1282,10 @@ Targeted feet: -</source>
         <source>Skeleton mesh</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Beast hands mesh</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ReleaseNotesViewer</name>
@@ -1746,6 +1746,125 @@ Targeted feet: %2</source>
     </message>
 </context>
 <context>
+    <name>SliderSetsScanPicker</name>
+    <message>
+        <source>Closing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to close the window?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close the window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go back to the assisted conversion tool window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Assisted Conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Input path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose a directory...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch the scan of the mod</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Awaiting the launch of a scan...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Relaunch the scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel the relaunch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No mod archive file has been found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue the scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel the scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No CalienteTools directory was found in the scanned directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No BodySlide directory was found in the CalienteTools directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No SliderSets directory was found in the BodySlide directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No OSP file were found in the SliderSets directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scanning the directory. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel treatment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Process aborted by the user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No NIF file was found in the scanned directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import the slider sets(s) and close this window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No entry selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You did not select any entry. Do you still want to validate this selection as is?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validate as is</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel, I wanted to select values</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TargetMeshesPicker</name>
     <message>
         <source>Closing</source>
@@ -1953,10 +2072,6 @@ Targeted feet: %2</source>
     </message>
     <message>
         <source>Parse error: could not find the &quot;files&quot; element.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>An error has occurred while trying to read the file content preview. Make sure your internet connection is operational and try again. If the error occurs again, please check NexusMods servers status.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
