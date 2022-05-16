@@ -357,7 +357,7 @@ void SliderSetsScanPicker::displayObtainedData(const std::multimap<QString, std:
   {
     for (const auto& lSliderSet : lOspFile.second)
     {
-      lDataContainer->addWidget(new SSSPSelectionBlock(this, lSliderSet), lNextRow++, 0);
+      lDataContainer->addWidget(new SSSPSelectionBlock(this, this->settings().display.applicationTheme, this->settings().display.font.pointSize, lOspFile.first, lSliderSet), lNextRow++, 0);
     }
   }
 

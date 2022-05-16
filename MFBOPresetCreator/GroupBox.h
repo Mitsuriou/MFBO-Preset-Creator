@@ -2,7 +2,7 @@
 
 #include <QGroupBox>
 
-class GroupBox final : public QGroupBox
+class GroupBox : public QGroupBox
 {
   Q_OBJECT
 
@@ -16,6 +16,7 @@ public:
                     const bool aIsDisabled = false);
 
   void setExpandState(const bool aMustExpand);
+  void setTitle(const QString& aTitle);
 
 private:
   int mFontSize;

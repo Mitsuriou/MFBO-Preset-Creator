@@ -4,6 +4,7 @@
 #include "DataLists.h"
 #include "Settings.h"
 #include "SliderFileBuilder.h"
+#include "TargetMeshesPicker.h"
 #include "Utils.h"
 #include <QAction>
 #include <QCheckBox>
@@ -20,7 +21,7 @@
 #include <QStandardPaths>
 #include <QStyledItemDelegate>
 
-#include "TargetMeshesPicker.h"
+#include "SliderSetsScanPicker.h"
 
 PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : QWidget(aParent)
@@ -641,6 +642,10 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
                                                                           lIconFolder,
                                                                           QString("target_meshes_picker_button"),
                                                                           QString("currently_targeted_body_feet"))};
+
+  auto DEBUGBUTTON{new QPushButton("DEBUG", this)};
+  lBodyslideGridLayout->addWidget(DEBUGBUTTON, 0, 2);
+  connect(DEBUGBUTTON, &QPushButton::clicked, this, &PresetCreator::testtt);
 
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
@@ -1558,4 +1563,9 @@ void PresetCreator::updateBodySlideFiltersListPreview()
   lFiltersList->setText(lText);
 
   this->setHasUserDoneSomething(true);
+}
+
+void PresetCreator::testtt()
+{
+  new SliderSetsScanPicker(this, this->mSettings, this->mLastPaths);
 }

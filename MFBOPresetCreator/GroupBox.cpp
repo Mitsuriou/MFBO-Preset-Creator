@@ -58,5 +58,11 @@ void GroupBox::setExpandState(const bool aMustExpand)
   }
 
   // Update the title with the updated chevron state
-  this->setTitle(lTitle);
+  QGroupBox::setTitle(lTitle);
+}
+
+void GroupBox::setTitle(const QString& aTitle)
+{
+  QGroupBox::setTitle(aTitle + "  ");
+  this->setExpandState(this->isChecked());
 }
