@@ -156,7 +156,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SliderFileBuilder.cpp" />
-    <ClCompile Include="SliderSetsScanPicker.cpp" />
+    <ClCompile Include="SliderSetsImporter.cpp" />
     <ClCompile Include="SSSPSelectionBlock.cpp" />
     <ClCompile Include="TargetMeshesPicker.cpp" />
     <ClCompile Include="TextInputDialog.cpp" />
@@ -211,8 +211,8 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClInclude Include="LangManager.h" />
     <ClInclude Include="PresetsDatabaseManager.h" />
     <ClInclude Include="SliderFileBuilder.h" />
-    <QtMoc Include="SliderSetsScanPicker.h" />
-    <ClInclude Include="SSSPSelectionBlock.h" />
+    <QtMoc Include="SliderSetsImporter.h" />
+    <QtMoc Include="SSSPSelectionBlock.h" />
     <ClInclude Include="Struct.h" />
     <QtMoc Include="TitleDialog.h" />
     <ClInclude Include="VersionsInformation.h" />

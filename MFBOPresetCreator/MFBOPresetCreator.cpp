@@ -19,7 +19,6 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
-#include <QMessageBox>
 #include <QMimeData>
 #include <QPushButton>
 #include <QScreen>

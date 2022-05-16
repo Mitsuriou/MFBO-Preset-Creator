@@ -78,6 +78,4 @@ private:
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
   //#pragma endregion PRIVATE_SLOTS
-
-  void testtt();
 };

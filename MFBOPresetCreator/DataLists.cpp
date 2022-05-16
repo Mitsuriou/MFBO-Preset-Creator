@@ -2443,7 +2443,7 @@ QStringList DataLists::GetAssistedConversionActions()
                      QObject::tr("Skeleton mesh")};
 }
 
-QStringList DataLists::GetSliderSetsScanPickerActions()
+QStringList DataLists::GetSliderSetsImporterActions()
 {
   return QStringList{QObject::tr("[ignore]"),
                      QObject::tr("Body mesh"),

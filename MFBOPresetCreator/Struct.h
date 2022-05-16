@@ -14,13 +14,15 @@ namespace Struct
   public:
     explicit SliderSet() {}
 
-    explicit SliderSet(const QString& aName, const MeshPartType& aMeshPartType, const QString& aOutputPath, const QString& aOutputFile)
-    {
-      this->name = aName;
-      this->meshPartType = aMeshPartType;
-      this->outputPath = aOutputPath;
-      this->outputFile = aOutputFile;
-    }
+    explicit SliderSet(const QString& aName,
+                       const MeshPartType& aMeshPartType,
+                       const QString& aOutputPath,
+                       const QString& aOutputFile)
+      : name(aName)
+      , meshPartType(aMeshPartType)
+      , outputPath(aOutputPath)
+      , outputFile(aOutputFile)
+    {}
 
     void setName(const QString& aName)
     {
@@ -157,7 +159,7 @@ namespace Struct
     int mainWindowHeight{620};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
     int mainWindowWidth{1000};
-    DialogOpeningMode sliderSetsScanPickerDialogOpeningMode{DialogOpeningMode::WINDOWED};
+    DialogOpeningMode SliderSetsImporterDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString successColor{"#48c774"};
     DialogOpeningMode texturesAssistantDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString warningColor{"#ffbc6b"};
@@ -332,18 +334,17 @@ namespace Struct
   {
   public:
     explicit AssistedConversionResult(const QString& aPath, const QString& aName, const int aRole)
-    {
-      this->path = aPath;
-      this->name = aName;
-      this->role = aRole;
-    }
+      : path(aPath)
+      , name(aName)
+      , role(aRole)
+    {}
 
-    QString getPath() const
+    const QString& getPath() const
     {
       return this->path;
     }
 
-    QString getName() const
+    const QString& getName() const
     {
       return this->name;
     }
@@ -358,21 +359,62 @@ namespace Struct
     QString name{""};
     int role{0};
 
-    explicit AssistedConversionResult() = delete;
+    AssistedConversionResult() = delete;
+  };
+
+  struct SliderSetResult
+  {
+  public:
+    explicit SliderSetResult(const QString& aFilePath,
+                             const QString& aOriginalSliderSetName,
+                             const QString& aNewSliderSetName,
+                             const MeshPartType aMeshType)
+      : filePath(aFilePath)
+      , originalSliderSetName(aOriginalSliderSetName)
+      , newSliderSetName(aNewSliderSetName)
+      , meshType(aMeshType)
+    {}
+
+    const QString& getFilePath() const
+    {
+      return this->filePath;
+    }
+
+    const QString& getOriginalSliderSetName() const
+    {
+      return this->originalSliderSetName;
+    }
+
+    const QString& getNewSliderSetName() const
+    {
+      return this->newSliderSetName;
+    }
+
+    const MeshPartType& getMeshType() const
+    {
+      return this->meshType;
+    }
+
+  private:
+    QString filePath;
+    QString originalSliderSetName;
+    QString newSliderSetName;
+    MeshPartType meshType{MeshPartType::UNKNOWN};
+
+    SliderSetResult() = delete;
   };
 
   struct Filter
   {
   public:
-    explicit Filter(const QString& aFilters, const bool aBody, const bool aFeet, const bool aHands)
-    {
-      this->filter = aFilters;
-      this->body = aBody;
-      this->feet = aFeet;
-      this->hands = aHands;
-    }
+    explicit Filter(const QString& aFilter, const bool aBody, const bool aFeet, const bool aHands)
+      : filter(aFilter)
+      , body(aBody)
+      , feet(aFeet)
+      , hands(aHands)
+    {}
 
-    QString getFilter() const
+    const QString& getFilter() const
     {
       return this->filter;
     }
@@ -417,7 +459,7 @@ namespace Struct
       this->originFolder = aOriginFolder;
     }
 
-    QString getOriginFolder() const
+    const QString& getOriginFolder() const
     {
       return this->originFolder;
     }
@@ -428,7 +470,7 @@ namespace Struct
       this->resourcesPath = aResourcePath;
     }
 
-    QString getResourcePath() const
+    const QString& getResourcePath() const
     {
       return this->resourcesPath;
     }
@@ -623,7 +665,7 @@ namespace Struct
       this->humanSkeletonPath = aHumanSkeletonPath;
     }
 
-    QString getHumanSkeletonPath() const
+    const QString& getHumanSkeletonPath() const
     {
       return this->humanSkeletonPath;
     }
@@ -634,7 +676,7 @@ namespace Struct
       this->beastSkeletonPath = aBeastSkeletonPath;
     }
 
-    QString getBeastSkeletonPath() const
+    const QString& getBeastSkeletonPath() const
     {
       return this->beastSkeletonPath;
     }
@@ -678,7 +720,7 @@ namespace Struct
       this->fullOutputPath = aFullOutputPath;
     }
 
-    QString getFullOutputPath() const
+    const QString& getFullOutputPath() const
     {
       return this->fullOutputPath;
     }

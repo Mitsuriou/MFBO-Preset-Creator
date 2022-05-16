@@ -77,6 +77,6 @@ namespace DataLists
   QStringList GetAppThemes();
   QStringList GetLanguages();
   QStringList GetAssistedConversionActions();
-  QStringList GetSliderSetsScanPickerActions();
+  QStringList GetSliderSetsImporterActions();
   QStringList GetLastPathsKeys();
 };

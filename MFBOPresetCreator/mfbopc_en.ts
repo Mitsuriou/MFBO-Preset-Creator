@@ -1496,6 +1496,29 @@ Targeted feet: %2</source>
     </message>
 </context>
 <context>
+    <name>SSSPSelectionBlock</name>
+    <message>
+        <source>Import this preset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preset name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ressource type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Settings</name>
     <message>
         <source>Closing</source>
@@ -1746,7 +1769,7 @@ Targeted feet: %2</source>
     </message>
 </context>
 <context>
-    <name>SliderSetsScanPicker</name>
+    <name>SliderSetsImporter</name>
     <message>
         <source>Closing</source>
         <translation type="unfinished"></translation>
@@ -1764,7 +1787,7 @@ Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Assisted Conversion</source>
+        <source>Slider Sets Importer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1844,7 +1867,7 @@ Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import the slider sets(s) and close this window</source>
+        <source>Start importing the chosen slider sets(s) and close this window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

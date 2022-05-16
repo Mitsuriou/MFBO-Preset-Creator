@@ -1,27 +1,21 @@
-#include "SliderSetsScanPicker.h"
+#include "SliderSetsImporter.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
-#include "FileIDPicker.h"
 #include "SSSPSelectionBlock.h"
 #include "Utils.h"
 #include <QApplication>
 #include <QCloseEvent>
-#include <QComboBox>
-#include <QDesktopServices>
 #include <QDirIterator>
 #include <QDomDocument>
 #include <QFileDialog>
 #include <QJsonArray>
 #include <QJsonDocument>
-#include <QListView>
-#include <QNetworkReply>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QScrollArea>
-#include <QStandardItemModel>
 #include <QStyledItemDelegate>
 
-SliderSetsScanPicker::SliderSetsScanPicker(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
+SliderSetsImporter::SliderSetsImporter(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : TitleDialog(aParent, aSettings, aLastPaths)
 {
   // Build the window's interface
@@ -30,10 +24,10 @@ SliderSetsScanPicker::SliderSetsScanPicker(QWidget* aParent, const Struct::Setti
 
   // Show the window when it's completely built
   this->adjustSize();
-  aSettings.display.sliderSetsScanPickerDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+  aSettings.display.SliderSetsImporterDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
-void SliderSetsScanPicker::closeEvent(QCloseEvent* aEvent)
+void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
 {
   // Catch the sender of the event
   auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
@@ -70,16 +64,16 @@ void SliderSetsScanPicker::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void SliderSetsScanPicker::setWindowProperties()
+void SliderSetsImporter::setWindowProperties()
 {
   this->setModal(true);
   this->setMinimumWidth(700);
   this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Assisted Conversion"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/pencil")));
+  this->setWindowTitle(tr("Slider Sets Importer"));
+  this->setWindowIcon(QIcon(QPixmap(":/black/publish")));
 }
 
-void SliderSetsScanPicker::initializeGUI()
+void SliderSetsImporter::initializeGUI()
 {
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
@@ -112,11 +106,11 @@ void SliderSetsScanPicker::initializeGUI()
   this->displayHintZone();
 
   // Event binding
-  QObject::connect(lInputPathChooser, &QPushButton::clicked, this, &SliderSetsScanPicker::chooseInputDirectory);
-  QObject::connect(lLaunchSearchButton, &QPushButton::clicked, this, &SliderSetsScanPicker::launchSearchProcess);
+  QObject::connect(lInputPathChooser, &QPushButton::clicked, this, &SliderSetsImporter::chooseInputDirectory);
+  QObject::connect(lLaunchSearchButton, &QPushButton::clicked, this, &SliderSetsImporter::launchSearchProcess);
 }
 
-void SliderSetsScanPicker::displayHintZone()
+void SliderSetsImporter::displayHintZone()
 {
   this->deleteAlreadyExistingWindowBottom();
 
@@ -129,7 +123,7 @@ void SliderSetsScanPicker::displayHintZone()
   lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
 }
 
-void SliderSetsScanPicker::deleteAlreadyExistingWindowBottom() const
+void SliderSetsImporter::deleteAlreadyExistingWindowBottom() const
 {
   auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
   if (lHintZone)
@@ -153,17 +147,17 @@ void SliderSetsScanPicker::deleteAlreadyExistingWindowBottom() const
   }
 }
 
-void SliderSetsScanPicker::chooseInputDirectory()
+void SliderSetsImporter::chooseInputDirectory()
 {
   // Fetch GUI components
   auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "sliderSetsScanPickerInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "SliderSetsImporterInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->lastPaths(), "sliderSetsScanPickerInput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "SliderSetsImporterInput", lPath);
 
   // Enable or disable path viewer label and launch button
   auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
@@ -173,7 +167,7 @@ void SliderSetsScanPicker::chooseInputDirectory()
   this->displayHintZone();
 }
 
-bool SliderSetsScanPicker::isFileNameRecognized(const QString& aFileName)
+bool SliderSetsImporter::isFileNameRecognized(const QString& aFileName)
 {
   return (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
           || aFileName.compare("skeletonbeast_female", Qt::CaseInsensitive) == 0
@@ -182,7 +176,7 @@ bool SliderSetsScanPicker::isFileNameRecognized(const QString& aFileName)
           || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0);
 }
 
-void SliderSetsScanPicker::launchSearchProcess()
+void SliderSetsImporter::launchSearchProcess()
 {
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   lLaunchSearchButton->setDisabled(true);
@@ -214,7 +208,7 @@ void SliderSetsScanPicker::launchSearchProcess()
   this->launchSearch();
 }
 
-void SliderSetsScanPicker::launchSearch()
+void SliderSetsImporter::launchSearch()
 {
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
@@ -285,7 +279,7 @@ void SliderSetsScanPicker::launchSearch()
   this->displayObtainedData(this->scanForOspFiles(lCheckPath));
 }
 
-std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsScanPicker::scanForOspFiles(const QString& aRootDir) const
+std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsImporter::scanForOspFiles(const QString& aRootDir) const
 {
   // Progress bar
   auto lProgressBar{new QProgressBar(this->parentWidget())};
@@ -323,7 +317,7 @@ std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsScanPicker::sca
   return lScannedValues;
 }
 
-void SliderSetsScanPicker::displayObtainedData(const std::multimap<QString, std::vector<Struct::SliderSet>>& aFoundOspFiles)
+void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::vector<Struct::SliderSet>>& aFoundOspFiles)
 {
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   lLaunchSearchButton->setDisabled(false);
@@ -357,7 +351,13 @@ void SliderSetsScanPicker::displayObtainedData(const std::multimap<QString, std:
   {
     for (const auto& lSliderSet : lOspFile.second)
     {
-      lDataContainer->addWidget(new SSSPSelectionBlock(this, this->settings().display.applicationTheme, this->settings().display.font.pointSize, lOspFile.first, lSliderSet), lNextRow++, 0);
+      lDataContainer->addWidget(new SSSPSelectionBlock(this,
+                                                       this->settings().display.applicationTheme,
+                                                       this->settings().display.font.pointSize,
+                                                       lOspFile.first,
+                                                       lSliderSet),
+                                lNextRow++,
+                                0);
     }
   }
 
@@ -365,13 +365,13 @@ void SliderSetsScanPicker::displayObtainedData(const std::multimap<QString, std:
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Create the validation button
-  auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Import the slider sets(s) and close this window"), "", "playlist-check", lIconFolder, "validate_selection")};
+  auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Start importing the chosen slider sets(s) and close this window"), "", "playlist-check", lIconFolder, "validate_selection")};
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
 
-  QObject::connect(lValidateSelection, &QPushButton::clicked, this, &SliderSetsScanPicker::validateSelection);
+  QObject::connect(lValidateSelection, &QPushButton::clicked, this, &SliderSetsImporter::validateSelection);
 }
 
-std::vector<Struct::AssistedConversionResult> SliderSetsScanPicker::getChosenValuesFromInterface() const
+std::vector<Struct::SliderSetResult> SliderSetsImporter::getChosenValuesFromInterface() const
 {
   // Fetch the grid layout
   auto lDataContainer{this->findChild<QGridLayout*>(QString("data_container"))};
@@ -381,59 +381,32 @@ std::vector<Struct::AssistedConversionResult> SliderSetsScanPicker::getChosenVal
 
   if (lLinesToTreat <= 1)
   {
-    return std::vector<Struct::AssistedConversionResult>();
+    return std::vector<Struct::SliderSetResult>();
   }
 
-  std::vector<Struct::AssistedConversionResult> lResults;
-  QComboBox* lComboBox{nullptr};
-  QString lFilePath;
-  QString lFileName;
+  std::vector<Struct::SliderSetResult> lResults;
+  SSSPSelectionBlock* lSSPSBlock{nullptr};
 
   // For each row (skip the row 0 because it is a "header")
   for (int i = 1; i < lLinesToTreat; i++)
   {
-    lComboBox = qobject_cast<QComboBox*>(lDataContainer->itemAtPosition(i, 2)->widget());
+    lSSPSBlock = qobject_cast<SSSPSelectionBlock*>(lDataContainer->itemAtPosition(i, 0)->widget());
 
-    // Third column is the chosen action on the line
-    if (lComboBox->currentIndex() == 0)
+    if (!lSSPSBlock->isCheckedForImport() || lSSPSBlock->getCurrentlySetMeshPartType() == MeshPartType::UNKNOWN)
     {
       continue;
     }
 
-    // First column is the file path
-    lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
-    if (lFilePath.startsWith("<span"))
-    {
-      // Parse the inner text of the XML span tag
-      QDomDocument lDoc;
-      lDoc.setContent(lFilePath);
-      const auto lElementToParse{lDoc.documentElement()};
-
-      lFilePath = lElementToParse.text();
-    }
-
-    // Second column is the file name
-    lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
-    if (lFileName.startsWith("<span"))
-    {
-      // Parse the inner text of the XML span tag
-      QDomDocument lDoc;
-      lDoc.setContent(lFileName);
-      const auto lElementToParse{lDoc.documentElement()};
-
-      lFileName = lElementToParse.text();
-    }
-
     // Save the gotten values
-    lResults.push_back(Struct::AssistedConversionResult(lFilePath, lFileName, lComboBox->currentIndex()));
+    lResults.push_back(lSSPSBlock->getData());
   }
 
   return lResults;
 }
 
-void SliderSetsScanPicker::validateSelection()
+void SliderSetsImporter::validateSelection()
 {
-  auto lValues{this->getChosenValuesFromInterface()};
+  const auto lValues{this->getChosenValuesFromInterface()};
 
   if (lValues.empty())
   {
@@ -456,6 +429,6 @@ void SliderSetsScanPicker::validateSelection()
     }
   }
 
-  // emit valuesChosen(); // TODO
+  emit valuesChosen(lValues);
   this->close();
 }

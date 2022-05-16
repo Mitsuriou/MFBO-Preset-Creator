@@ -1,22 +1,17 @@
 #pragma once
 #include "TitleDialog.h"
-#include <QDialog>
-#include <QGridLayout>
-#include <QNetworkAccessManager>
-#include <QTabWidget>
 
-class SliderSetsScanPicker final : public TitleDialog
+class SliderSetsImporter final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit SliderSetsScanPicker(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
+  explicit SliderSetsImporter(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
-  QNetworkAccessManager mManager;
   bool mHasUserDoneSomething{false};
 
   // GUI creation
@@ -37,10 +32,9 @@ private:
 
   // Display, choose and accept values
   void displayObtainedData(const std::multimap<QString, std::vector<Struct::SliderSet>>& aFoundOspFiles);
-  std::vector<Struct::AssistedConversionResult> getChosenValuesFromInterface() const;
+  std::vector<Struct::SliderSetResult> getChosenValuesFromInterface() const;
   void validateSelection();
 
-  // TODO
-  // signals:
-  //  void valuesChosen();
+signals:
+  void valuesChosen(std::vector<Struct::SliderSetResult>);
 };

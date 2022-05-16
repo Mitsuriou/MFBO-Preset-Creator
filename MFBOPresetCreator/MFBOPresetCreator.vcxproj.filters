@@ -51,11 +51,11 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{d2df7426-3bb5-498f-9c35-b71df900fec7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Database">
-      <UniqueIdentifier>{5c881ae2-0555-4d7b-94b0-d980877c4d43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Database">
+    <Filter Include="Header Files\Slider Sets Injection">
       <UniqueIdentifier>{2a86e5f3-f52d-4436-adf6-05e5d37afc31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Slider Sets Injection">
+      <UniqueIdentifier>{5c881ae2-0555-4d7b-94b0-d980877c4d43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -161,13 +161,13 @@
       <Filter>Source Files\Qt Classes</Filter>
     </ClCompile>
     <ClCompile Include="PresetsDatabaseManager.cpp">
-      <Filter>Source Files\Database</Filter>
+      <Filter>Source Files\Slider Sets Injection</Filter>
     </ClCompile>
-    <ClCompile Include="SliderSetsScanPicker.cpp">
-      <Filter>Source Files\Database</Filter>
+    <ClCompile Include="SliderSetsImporter.cpp">
+      <Filter>Source Files\Slider Sets Injection</Filter>
     </ClCompile>
     <ClCompile Include="SSSPSelectionBlock.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Slider Sets Injection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,10 +212,7 @@
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="PresetsDatabaseManager.h">
-      <Filter>Header Files\Database</Filter>
-    </ClInclude>
-    <ClInclude Include="SSSPSelectionBlock.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Slider Sets Injection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -291,8 +288,11 @@
     <QtMoc Include="TitleDialog.h">
       <Filter>Header Files\Qt Classes</Filter>
     </QtMoc>
-    <QtMoc Include="SliderSetsScanPicker.h">
-      <Filter>Header Files\Database</Filter>
+    <QtMoc Include="SliderSetsImporter.h">
+      <Filter>Header Files\Slider Sets Injection</Filter>
+    </QtMoc>
+    <QtMoc Include="SSSPSelectionBlock.h">
+      <Filter>Header Files\Slider Sets Injection</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

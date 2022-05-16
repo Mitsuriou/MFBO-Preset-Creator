@@ -1066,114 +1066,114 @@ Pieds ciblés : -</translation>
 <context>
     <name>MFBOPresetCreator</name>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="39"/>
+        <location filename="MFBOPresetCreator.cpp" line="38"/>
         <source>[DEV] </source>
         <translation>[DEV] </translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="68"/>
+        <location filename="MFBOPresetCreator.cpp" line="67"/>
         <source>Quitting</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="69"/>
+        <location filename="MFBOPresetCreator.cpp" line="68"/>
         <source>You will lose all the unsaved data. Do you still want to quit the application?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même quitter l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="72"/>
+        <location filename="MFBOPresetCreator.cpp" line="71"/>
         <source>Quit the application</source>
         <translation>Quitter l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="73"/>
-        <location filename="MFBOPresetCreator.cpp" line="724"/>
+        <location filename="MFBOPresetCreator.cpp" line="72"/>
+        <location filename="MFBOPresetCreator.cpp" line="723"/>
         <source>Go back to the application</source>
         <translation>Revenir sur l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="74"/>
-        <location filename="MFBOPresetCreator.cpp" line="725"/>
+        <location filename="MFBOPresetCreator.cpp" line="73"/>
+        <location filename="MFBOPresetCreator.cpp" line="724"/>
         <source>Save the project and quit the application</source>
         <translation>Enregistrer le projet et quitter l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="172"/>
+        <location filename="MFBOPresetCreator.cpp" line="171"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="177"/>
+        <location filename="MFBOPresetCreator.cpp" line="176"/>
         <source>Welcome screen</source>
         <translation>Écran d&apos;accueil</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="183"/>
+        <location filename="MFBOPresetCreator.cpp" line="182"/>
         <source>Open project...</source>
         <translation>Ouvrir projet...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="194"/>
+        <location filename="MFBOPresetCreator.cpp" line="193"/>
         <source>Save as...</source>
         <translation>Enregistrer sous...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="211"/>
+        <location filename="MFBOPresetCreator.cpp" line="210"/>
         <source>Exit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="215"/>
+        <location filename="MFBOPresetCreator.cpp" line="214"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="224"/>
+        <location filename="MFBOPresetCreator.cpp" line="223"/>
         <source>Textures Assistant</source>
         <translation>Assistant Textures</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="228"/>
+        <location filename="MFBOPresetCreator.cpp" line="227"/>
         <source>Assisted Conversion</source>
         <translation>Conversion Assistée</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="232"/>
+        <location filename="MFBOPresetCreator.cpp" line="231"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Reciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="238"/>
+        <location filename="MFBOPresetCreator.cpp" line="237"/>
         <source>Load data from existing OSP file</source>
         <translation>Charger les données depuis un fichier OSP existant</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="244"/>
+        <location filename="MFBOPresetCreator.cpp" line="243"/>
         <source> (stable update available)</source>
         <translation> (mise à jour stable disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="257"/>
+        <location filename="MFBOPresetCreator.cpp" line="256"/>
         <source>Current version&apos;s release notes</source>
         <translation>Notes de publication de la version actuelle</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="305"/>
+        <location filename="MFBOPresetCreator.cpp" line="304"/>
         <source>Donate - buy me a coffee (ko-fi.com)</source>
         <translation>Faire un don - me payer un café (ko-fi.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="315"/>
+        <location filename="MFBOPresetCreator.cpp" line="314"/>
         <source>About Qt</source>
         <translation>À propos de Qt</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="609"/>
+        <location filename="MFBOPresetCreator.cpp" line="608"/>
         <source>BETA update available</source>
         <translation>Mise à jour BETA disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="610"/>
+        <location filename="MFBOPresetCreator.cpp" line="609"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new BETA version &quot;%2&quot; is available on GitHub.
 
@@ -1184,12 +1184,12 @@ La nouvelle version BETA &quot;%2&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="618"/>
+        <location filename="MFBOPresetCreator.cpp" line="617"/>
         <source>Stable update available</source>
         <translation>Mise à jour stable disponible</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="619"/>
+        <location filename="MFBOPresetCreator.cpp" line="618"/>
         <source>You are currently running the version &quot;%1&quot;.
 The new stable version &quot;%2&quot; is available on GitHub.
 
@@ -1200,121 +1200,121 @@ La nouvelle version stable &quot;%2&quot; est disponible sur GitHub.
 Voulez-vous la télécharger maintenant ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="263"/>
+        <location filename="MFBOPresetCreator.cpp" line="262"/>
         <source>Report a bug...</source>
         <translation>Signaler un bug...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="273"/>
+        <location filename="MFBOPresetCreator.cpp" line="272"/>
         <source>GitHub (github.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="277"/>
+        <location filename="MFBOPresetCreator.cpp" line="276"/>
         <source>GitLab (gitlab.com)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="281"/>
+        <location filename="MFBOPresetCreator.cpp" line="280"/>
         <source>Useful links...</source>
         <translation>Liens utiles...</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="291"/>
+        <location filename="MFBOPresetCreator.cpp" line="290"/>
         <source>User guide and tutorials (docs.google.com)</source>
         <translation>Guide utilisateur et tutoriels (docs.google.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="297"/>
+        <location filename="MFBOPresetCreator.cpp" line="296"/>
         <source>View the source code (github.com)</source>
         <translation>Voir le code source (github.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="301"/>
+        <location filename="MFBOPresetCreator.cpp" line="300"/>
         <source>View the source code (gitlab.com)</source>
         <translation>Voir le code source (gitlab.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="201"/>
+        <location filename="MFBOPresetCreator.cpp" line="200"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="220"/>
+        <location filename="MFBOPresetCreator.cpp" line="219"/>
         <source>Batch Conversion</source>
         <translation>Conversion par Lot</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="246"/>
+        <location filename="MFBOPresetCreator.cpp" line="245"/>
         <source> (BETA update available)</source>
         <translation> (mise à jour BETA disponible)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="248"/>
+        <location filename="MFBOPresetCreator.cpp" line="247"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="253"/>
+        <location filename="MFBOPresetCreator.cpp" line="252"/>
         <source>Check for updates</source>
         <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="269"/>
-        <location filename="MFBOPresetCreator.cpp" line="287"/>
+        <location filename="MFBOPresetCreator.cpp" line="268"/>
+        <location filename="MFBOPresetCreator.cpp" line="286"/>
         <source>Nexus Mods page (nexusmods.com)</source>
         <translation>Page Nexus Mods (nexusmods.com)</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="311"/>
+        <location filename="MFBOPresetCreator.cpp" line="310"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="594"/>
+        <location filename="MFBOPresetCreator.cpp" line="593"/>
         <source>Error while searching for a new update</source>
         <translation>Erreur lors de la recherche d&apos;une nouvelle mise à jour</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="595"/>
+        <location filename="MFBOPresetCreator.cpp" line="594"/>
         <source>An error has occurred while searching for a new version...
 Make sure your internet connection is operational and try again.</source>
         <translation>Une erreur s&apos;est produite lors de la recherche d&apos;une nouvelle version...
 Vérifiez que votre connexion internet est opérationnelle et réessayez.</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="647"/>
+        <location filename="MFBOPresetCreator.cpp" line="646"/>
         <source>Download and install the update now</source>
         <translation>Télécharger et installer la mise à jour maintenant</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="648"/>
+        <location filename="MFBOPresetCreator.cpp" line="647"/>
         <source>Download later</source>
         <translation>Télécharger plus tard</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="720"/>
+        <location filename="MFBOPresetCreator.cpp" line="719"/>
         <source>You will lose all the unsaved data. Do you still want to quickly restart the application?</source>
         <translation>Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer rapidement l&apos;application ?</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="723"/>
+        <location filename="MFBOPresetCreator.cpp" line="722"/>
         <source>Quickly restart the application</source>
         <translation>Relancer rapidement l&apos;application</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="638"/>
+        <location filename="MFBOPresetCreator.cpp" line="637"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="188"/>
+        <location filename="MFBOPresetCreator.cpp" line="187"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="MFBOPresetCreator.cpp" line="207"/>
-        <location filename="MFBOPresetCreator.cpp" line="719"/>
+        <location filename="MFBOPresetCreator.cpp" line="206"/>
+        <location filename="MFBOPresetCreator.cpp" line="718"/>
         <source>Quick restart</source>
         <translation>Relancement rapide</translation>
     </message>
@@ -1330,159 +1330,159 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
 <context>
     <name>PresetCreator</name>
     <message>
-        <location filename="PresetCreator.cpp" line="436"/>
+        <location filename="PresetCreator.cpp" line="434"/>
         <source>Original mod&apos;s body meshes</source>
         <translation>Meshes de corps du mod original</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="447"/>
+        <location filename="PresetCreator.cpp" line="445"/>
         <source>Meshes paths and names:</source>
         <translation>Emplacements et noms des meshes :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="506"/>
+        <location filename="PresetCreator.cpp" line="504"/>
         <source>Use beast hands?</source>
         <translation>Utiliser des main de bête ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="510"/>
+        <location filename="PresetCreator.cpp" line="508"/>
         <source>Check this box if the follower or NPC uses beast hands</source>
         <translation>Cocher cette case si le follower ou le NPC utilise des mains de bête</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="463"/>
-        <location filename="PresetCreator.cpp" line="479"/>
-        <location filename="PresetCreator.cpp" line="495"/>
+        <location filename="PresetCreator.cpp" line="461"/>
+        <location filename="PresetCreator.cpp" line="477"/>
+        <location filename="PresetCreator.cpp" line="493"/>
         <source>_0.nif/_1.nif</source>
         <translation>_0.nif/_1.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="81"/>
-        <location filename="PresetCreator.cpp" line="156"/>
+        <location filename="PresetCreator.cpp" line="79"/>
+        <location filename="PresetCreator.cpp" line="154"/>
         <source>Unsaved data</source>
         <translation>Données non sauvegardées</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="82"/>
+        <location filename="PresetCreator.cpp" line="80"/>
         <source>It seems that you have some unsaved data. Do you still want to open the project file &quot;%1&quot;?</source>
         <translation>Il semblerait que certaines données n&apos;aient pas été sauvegardées. Voulez-vous toujours ouvrir le fichier de projet &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="85"/>
+        <location filename="PresetCreator.cpp" line="83"/>
         <source>Open the project without saving</source>
         <translation>Ouvrir le projet sans enregistrer</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="86"/>
+        <location filename="PresetCreator.cpp" line="84"/>
         <source>Cancel the file opening</source>
         <translation>Annuler l&apos;ouverture de fichier</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="157"/>
+        <location filename="PresetCreator.cpp" line="155"/>
         <source>It seems that you have some unsaved data. Do you still want to inject data from the OSP file &quot;%1&quot;?</source>
         <translation>Il semblerait que certaines données n&apos;aient pas été sauvegardées. Voulez-vous toujours injecter des données depuis le fichier OSP &quot;%1&quot; ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="160"/>
+        <location filename="PresetCreator.cpp" line="158"/>
         <source>Inject the data without saving</source>
         <translation>Injecter des données sans enregistrer</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="161"/>
+        <location filename="PresetCreator.cpp" line="159"/>
         <source>Cancel the data injection</source>
         <translation>Annuler l&apos;injection de données</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="178"/>
+        <location filename="PresetCreator.cpp" line="176"/>
         <source>Error while trying to parse the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant d&apos;analyser le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="362"/>
+        <location filename="PresetCreator.cpp" line="360"/>
         <source> and the hands</source>
         <translation> et des mains</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="376"/>
+        <location filename="PresetCreator.cpp" line="374"/>
         <source>You did not select any file for %1 meshes. Would you like to clear all these unassigned entries or keep their currently set values?</source>
         <translation>Vous n&apos;avez sélectionné aucun fichier pour les meshes %1. Voulez-vous vider toutes ces entrées non assignées ou garder leurs valeurs actuellement saisies ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="381"/>
+        <location filename="PresetCreator.cpp" line="379"/>
         <source>You did not select any file for %1 mesh. Would you like to clear this unassigned entry or keep its currently set value?</source>
         <translation>Vous n&apos;avez sélectionné aucun fichier pour la mesh %1. Voulez-vous vider cette entrée non assignée ou garder sa valeur actuellement saisie ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="385"/>
+        <location filename="PresetCreator.cpp" line="383"/>
         <source>One mesh data was not assigned</source>
         <translation>Une donnée de mesh n&apos;a pas été assignée</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="389"/>
+        <location filename="PresetCreator.cpp" line="387"/>
         <source>Clear all the unassigned entries</source>
         <translation>Vider toutes les entrées non assignées</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="390"/>
+        <location filename="PresetCreator.cpp" line="388"/>
         <source>Keep the currently set values for the unassigned entries</source>
         <translation>Garder les valeurs actuellement saisies pour les entrées non assignées</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="498"/>
-        <location filename="PresetCreator.cpp" line="599"/>
-        <location filename="PresetCreator.cpp" line="658"/>
-        <location filename="PresetCreator.cpp" line="679"/>
+        <location filename="PresetCreator.cpp" line="496"/>
+        <location filename="PresetCreator.cpp" line="597"/>
+        <location filename="PresetCreator.cpp" line="652"/>
+        <location filename="PresetCreator.cpp" line="673"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="549"/>
+        <location filename="PresetCreator.cpp" line="547"/>
         <source>Check this box if the follower or NPC uses a custom skeleton</source>
         <translation>Cocher cette case si le follower ou le NPC utilise un squelette personnalisé</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="570"/>
+        <location filename="PresetCreator.cpp" line="568"/>
         <source>View in explorer</source>
         <translation>Voir dans l&apos;explorateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="627"/>
+        <location filename="PresetCreator.cpp" line="625"/>
         <source>BodySlide output</source>
         <translation>Sortie BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="651"/>
+        <location filename="PresetCreator.cpp" line="645"/>
         <source>BodySlide files names:</source>
         <translation>Noms des fichiers BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="671"/>
+        <location filename="PresetCreator.cpp" line="665"/>
         <source>This field represents the names under which the presets will be listed in the BodySlide application.</source>
         <translation>Ce champ répresente les noms sous lesquels les presets vont être listés dans l&apos;application BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="686"/>
+        <location filename="PresetCreator.cpp" line="680"/>
         <source>BodySlide filters:</source>
         <translation>Filtres BodySlide :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="705"/>
+        <location filename="PresetCreator.cpp" line="699"/>
         <source>Edit BodySlide filters sets</source>
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1338"/>
+        <location filename="PresetCreator.cpp" line="1332"/>
         <source>Error: no path has been given for any mesh.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour une mesh.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1439"/>
-        <location filename="PresetCreator.cpp" line="1442"/>
+        <location filename="PresetCreator.cpp" line="1433"/>
+        <location filename="PresetCreator.cpp" line="1436"/>
         <source>Open the generated directory</source>
         <translation>Ouvrir le répertoire généré</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1288"/>
+        <location filename="PresetCreator.cpp" line="1282"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1491,59 +1491,59 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1489"/>
+        <location filename="PresetCreator.cpp" line="1483"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
 Pieds ciblés : %2</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1559"/>
+        <location filename="PresetCreator.cpp" line="1553"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="553"/>
+        <location filename="PresetCreator.cpp" line="551"/>
         <source>Skeleton file:</source>
         <translation>Fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="566"/>
+        <location filename="PresetCreator.cpp" line="564"/>
         <source>Refresh</source>
         <translation>Rafraîchir</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="574"/>
+        <location filename="PresetCreator.cpp" line="572"/>
         <source>Skeleton path:</source>
         <translation>Emplacement du squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="584"/>
+        <location filename="PresetCreator.cpp" line="582"/>
         <source>Skeleton file name:</source>
         <translation>Nom du fichier de squelette :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="594"/>
+        <location filename="PresetCreator.cpp" line="592"/>
         <source>.nif</source>
         <translation>.nif</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="752"/>
+        <location filename="PresetCreator.cpp" line="746"/>
         <source>Generate the files on my computer</source>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1270"/>
+        <location filename="PresetCreator.cpp" line="1264"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1277"/>
+        <location filename="PresetCreator.cpp" line="1271"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1434"/>
+        <location filename="PresetCreator.cpp" line="1428"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
@@ -1560,87 +1560,87 @@ Pieds ciblés : %2</translation>
         <translation type="vanished">Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1352"/>
+        <location filename="PresetCreator.cpp" line="1346"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1366"/>
+        <location filename="PresetCreator.cpp" line="1360"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="670"/>
+        <location filename="PresetCreator.cpp" line="664"/>
         <source>Presets names:</source>
         <translation>Noms des presets :</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="540"/>
+        <location filename="PresetCreator.cpp" line="538"/>
         <source>Use a custom skeleton?</source>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1442"/>
+        <location filename="PresetCreator.cpp" line="1436"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="336"/>
+        <location filename="PresetCreator.cpp" line="334"/>
         <source>the body</source>
         <translation>du corps</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="344"/>
+        <location filename="PresetCreator.cpp" line="342"/>
         <source> and the feet</source>
         <translation> et des pieds</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="348"/>
+        <location filename="PresetCreator.cpp" line="346"/>
         <source>, the feet</source>
         <translation>, des pieds</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="352"/>
+        <location filename="PresetCreator.cpp" line="350"/>
         <source>the feet</source>
         <translation>des pieds</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="366"/>
+        <location filename="PresetCreator.cpp" line="364"/>
         <source>the hands</source>
         <translation>des mains</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="529"/>
+        <location filename="PresetCreator.cpp" line="527"/>
         <source>Skeleton</source>
         <translation>Squelette</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="546"/>
+        <location filename="PresetCreator.cpp" line="544"/>
         <source>Not overriding a custom skeleton would cause breasts collision and physics to be inaccurate.</source>
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1296"/>
+        <location filename="PresetCreator.cpp" line="1290"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1297"/>
+        <location filename="PresetCreator.cpp" line="1291"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation>Le répertoire &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même générer les fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1300"/>
+        <location filename="PresetCreator.cpp" line="1294"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1301"/>
+        <location filename="PresetCreator.cpp" line="1295"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1433"/>
+        <location filename="PresetCreator.cpp" line="1427"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
@@ -2017,6 +2017,34 @@ Pieds ciblés : %2</translation>
     </message>
 </context>
 <context>
+    <name>SSSPSelectionBlock</name>
+    <message>
+        <location filename="SSSPSelectionBlock.cpp" line="52"/>
+        <source>Import this preset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SSSPSelectionBlock.cpp" line="58"/>
+        <source>Preset name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SSSPSelectionBlock.cpp" line="66"/>
+        <source>Preview:</source>
+        <translation type="unfinished">Aperçu :</translation>
+    </message>
+    <message>
+        <location filename="SSSPSelectionBlock.cpp" line="74"/>
+        <source>Ressource type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SSSPSelectionBlock.cpp" line="92"/>
+        <source>Source file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Settings</name>
     <message>
         <location filename="Settings.cpp" line="57"/>
@@ -2333,236 +2361,331 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
     </message>
 </context>
 <context>
-    <name>SliderSetsScanPicker</name>
+    <name>SliderSetsImporter</name>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="52"/>
+        <location filename="SliderSetsImporter.cpp" line="46"/>
         <source>Closing</source>
         <translation type="unfinished">Fermeture</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="53"/>
+        <location filename="SliderSetsImporter.cpp" line="47"/>
         <source>Do you want to close the window?</source>
         <translation type="unfinished">Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="56"/>
+        <location filename="SliderSetsImporter.cpp" line="50"/>
         <source>Close the window</source>
         <translation type="unfinished">Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="57"/>
+        <location filename="SliderSetsImporter.cpp" line="51"/>
         <source>Go back to the assisted conversion tool window</source>
         <translation type="unfinished">Revenir sur la fenêtre de l&apos;outil de conversion assistée</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="78"/>
-        <source>Assisted Conversion</source>
+        <location filename="SliderSetsImporter.cpp" line="72"/>
+        <source>Slider Sets Importer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="94"/>
+        <location filename="SliderSetsImporter.cpp" line="88"/>
         <source>Input path:</source>
         <translation type="unfinished">Emplacement d&apos;entrée :</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="104"/>
+        <location filename="SliderSetsImporter.cpp" line="98"/>
         <source>Choose a directory...</source>
         <translation type="unfinished">Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="108"/>
+        <location filename="SliderSetsImporter.cpp" line="102"/>
         <source>Launch the scan of the mod</source>
         <translation type="unfinished">Lancer le scan du mod</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="125"/>
+        <location filename="SliderSetsImporter.cpp" line="119"/>
         <source>Awaiting the launch of a scan...</source>
         <translation type="unfinished">En attente du lancement d&apos;un scan...</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="196"/>
-        <location filename="SliderSetsScanPicker.cpp" line="200"/>
+        <location filename="SliderSetsImporter.cpp" line="190"/>
+        <location filename="SliderSetsImporter.cpp" line="194"/>
         <source>Relaunch the scan</source>
         <translation type="unfinished">Relancer le scan</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="197"/>
+        <location filename="SliderSetsImporter.cpp" line="191"/>
         <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
         <translation type="unfinished">Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer le scan ?</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="201"/>
+        <location filename="SliderSetsImporter.cpp" line="195"/>
         <source>Cancel the relaunch</source>
         <translation type="unfinished">Annuler le relancement</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="230"/>
+        <location filename="SliderSetsImporter.cpp" line="224"/>
         <source>No mod archive file has been found</source>
         <translation type="unfinished">Aucun fichier racine n&apos;a été trouvé</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="231"/>
+        <location filename="SliderSetsImporter.cpp" line="225"/>
         <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
         <translation type="unfinished">Aucun fichier ESL, ESM ou ESP n&apos;ont été trouvés dans le répertoire scanné. Voulez-vous quand même continuer le scan ?</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="234"/>
+        <location filename="SliderSetsImporter.cpp" line="228"/>
         <source>Continue the scan</source>
         <translation type="unfinished">Continuer le scan</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="235"/>
+        <location filename="SliderSetsImporter.cpp" line="229"/>
         <source>Cancel the scan</source>
         <translation type="unfinished">Annuler le scan</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="252"/>
+        <location filename="SliderSetsImporter.cpp" line="246"/>
         <source>No CalienteTools directory was found in the scanned directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="261"/>
+        <location filename="SliderSetsImporter.cpp" line="255"/>
         <source>No BodySlide directory was found in the CalienteTools directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="270"/>
+        <location filename="SliderSetsImporter.cpp" line="264"/>
         <source>No SliderSets directory was found in the BodySlide directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="278"/>
+        <location filename="SliderSetsImporter.cpp" line="272"/>
         <source>No OSP file were found in the SliderSets directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="299"/>
+        <location filename="SliderSetsImporter.cpp" line="293"/>
         <source>Scanning the directory. Please wait...</source>
         <translation type="unfinished">Scan du dossier. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="299"/>
+        <location filename="SliderSetsImporter.cpp" line="293"/>
         <source>Cancel treatment</source>
         <translation type="unfinished">Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="314"/>
+        <location filename="SliderSetsImporter.cpp" line="308"/>
         <source>Process aborted by the user.</source>
         <translation type="unfinished">Processus interrompu par l&apos;utilisateur.</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="338"/>
+        <location filename="SliderSetsImporter.cpp" line="332"/>
         <source>No NIF file was found in the scanned directory.</source>
         <translation type="unfinished">Aucun fichier NIF n&apos;a été trouvé dans le répertoire scanné.</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="368"/>
-        <source>Import the slider sets(s) and close this window</source>
+        <location filename="SliderSetsImporter.cpp" line="368"/>
+        <source>Start importing the chosen slider sets(s) and close this window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="442"/>
+        <location filename="SliderSetsImporter.cpp" line="415"/>
         <source>No entry selected</source>
         <translation type="unfinished">Aucune entrée sélectionnée</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="443"/>
+        <location filename="SliderSetsImporter.cpp" line="416"/>
         <source>You did not select any entry. Do you still want to validate this selection as is?</source>
         <translation type="unfinished">Vous n&apos;avez sélectionné aucune entrée. Voulez-vous quand même valider la sélection telle quelle ?</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="446"/>
+        <location filename="SliderSetsImporter.cpp" line="419"/>
         <source>Validate as is</source>
         <translation type="unfinished">Valider tel quel</translation>
     </message>
     <message>
-        <location filename="SliderSetsScanPicker.cpp" line="447"/>
+        <location filename="SliderSetsImporter.cpp" line="420"/>
         <source>Cancel, I wanted to select values</source>
         <translation type="unfinished">Annuler, je veux sélectionner des valeurs</translation>
     </message>
 </context>
 <context>
+    <name>SliderSetsScanPicker</name>
+    <message>
+        <source>Closing</source>
+        <translation type="obsolete">Fermeture</translation>
+    </message>
+    <message>
+        <source>Do you want to close the window?</source>
+        <translation type="obsolete">Voulez-vous fermer la fenêtre ?</translation>
+    </message>
+    <message>
+        <source>Close the window</source>
+        <translation type="obsolete">Fermer la fenêtre</translation>
+    </message>
+    <message>
+        <source>Go back to the assisted conversion tool window</source>
+        <translation type="obsolete">Revenir sur la fenêtre de l&apos;outil de conversion assistée</translation>
+    </message>
+    <message>
+        <source>Input path:</source>
+        <translation type="obsolete">Emplacement d&apos;entrée :</translation>
+    </message>
+    <message>
+        <source>Choose a directory...</source>
+        <translation type="obsolete">Choisir un répertoire...</translation>
+    </message>
+    <message>
+        <source>Launch the scan of the mod</source>
+        <translation type="obsolete">Lancer le scan du mod</translation>
+    </message>
+    <message>
+        <source>Awaiting the launch of a scan...</source>
+        <translation type="obsolete">En attente du lancement d&apos;un scan...</translation>
+    </message>
+    <message>
+        <source>Relaunch the scan</source>
+        <translation type="obsolete">Relancer le scan</translation>
+    </message>
+    <message>
+        <source>You will lose all the unsaved data. Do you still want to relaunch the scan?</source>
+        <translation type="obsolete">Vous allez perdre toutes les données non sauvegardées. Voulez-vous quand même relancer le scan ?</translation>
+    </message>
+    <message>
+        <source>Cancel the relaunch</source>
+        <translation type="obsolete">Annuler le relancement</translation>
+    </message>
+    <message>
+        <source>No mod archive file has been found</source>
+        <translation type="obsolete">Aucun fichier racine n&apos;a été trouvé</translation>
+    </message>
+    <message>
+        <source>No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?</source>
+        <translation type="obsolete">Aucun fichier ESL, ESM ou ESP n&apos;ont été trouvés dans le répertoire scanné. Voulez-vous quand même continuer le scan ?</translation>
+    </message>
+    <message>
+        <source>Continue the scan</source>
+        <translation type="obsolete">Continuer le scan</translation>
+    </message>
+    <message>
+        <source>Cancel the scan</source>
+        <translation type="obsolete">Annuler le scan</translation>
+    </message>
+    <message>
+        <source>Scanning the directory. Please wait...</source>
+        <translation type="obsolete">Scan du dossier. Veuillez patienter...</translation>
+    </message>
+    <message>
+        <source>Cancel treatment</source>
+        <translation type="obsolete">Annuler le traitement</translation>
+    </message>
+    <message>
+        <source>Process aborted by the user.</source>
+        <translation type="obsolete">Processus interrompu par l&apos;utilisateur.</translation>
+    </message>
+    <message>
+        <source>No NIF file was found in the scanned directory.</source>
+        <translation type="obsolete">Aucun fichier NIF n&apos;a été trouvé dans le répertoire scanné.</translation>
+    </message>
+    <message>
+        <source>No entry selected</source>
+        <translation type="obsolete">Aucune entrée sélectionnée</translation>
+    </message>
+    <message>
+        <source>You did not select any entry. Do you still want to validate this selection as is?</source>
+        <translation type="obsolete">Vous n&apos;avez sélectionné aucune entrée. Voulez-vous quand même valider la sélection telle quelle ?</translation>
+    </message>
+    <message>
+        <source>Validate as is</source>
+        <translation type="obsolete">Valider tel quel</translation>
+    </message>
+    <message>
+        <source>Cancel, I wanted to select values</source>
+        <translation type="obsolete">Annuler, je veux sélectionner des valeurs</translation>
+    </message>
+</context>
+<context>
     <name>TargetMeshesPicker</name>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="46"/>
+        <location filename="TargetMeshesPicker.cpp" line="43"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="47"/>
+        <location filename="TargetMeshesPicker.cpp" line="44"/>
         <source>Do you want to close the window?</source>
         <translation>Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="50"/>
+        <location filename="TargetMeshesPicker.cpp" line="47"/>
         <source>Close the window</source>
         <translation>Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="51"/>
+        <location filename="TargetMeshesPicker.cpp" line="48"/>
         <source>Go back to the target meshes picker window</source>
         <translation>Revenir sur la fenêtre de sélecteur de meshes cibles</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="73"/>
+        <location filename="TargetMeshesPicker.cpp" line="70"/>
         <source>Target Meshes Picker</source>
         <translation>Sélecteur de Meshes Cibles</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="90"/>
+        <location filename="TargetMeshesPicker.cpp" line="87"/>
         <source>Body mod</source>
         <translation>Mod de corps</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="103"/>
+        <location filename="TargetMeshesPicker.cpp" line="100"/>
         <source>Body base mod:</source>
         <translation>Mod de base du corps :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="105"/>
-        <location filename="TargetMeshesPicker.cpp" line="139"/>
+        <location filename="TargetMeshesPicker.cpp" line="102"/>
+        <location filename="TargetMeshesPicker.cpp" line="136"/>
         <source>Version number:</source>
         <translation>Numéro de version :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="107"/>
+        <location filename="TargetMeshesPicker.cpp" line="104"/>
         <source>Targeted body mesh:</source>
         <translation>Mesh de corps ciblée :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="124"/>
+        <location filename="TargetMeshesPicker.cpp" line="121"/>
         <source>Feet mod</source>
         <translation>Mod de pieds</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="137"/>
+        <location filename="TargetMeshesPicker.cpp" line="134"/>
         <source>Feet base mod:</source>
         <translation>Mod de base des pieds :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="141"/>
+        <location filename="TargetMeshesPicker.cpp" line="138"/>
         <source>Targeted feet mesh:</source>
         <translation>Mesh de pieds ciblée :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="158"/>
+        <location filename="TargetMeshesPicker.cpp" line="155"/>
         <source>Targeted body: -
 Targeted feet: -</source>
         <translation>Corps ciblé : -
 Pieds ciblés : -</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="167"/>
+        <location filename="TargetMeshesPicker.cpp" line="164"/>
         <source>Save and close</source>
         <translation>Enregistrer et fermer</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="170"/>
+        <location filename="TargetMeshesPicker.cpp" line="167"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="422"/>
+        <location filename="TargetMeshesPicker.cpp" line="419"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1

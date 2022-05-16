@@ -1,6 +1,6 @@
 #pragma once
-#include <QDialog>
+#include "TitleDialog.h"
 
-class PresetsDatabaseManager final : public QDialog
+class PresetsDatabaseManager final : public TitleDialog
 {
 };
