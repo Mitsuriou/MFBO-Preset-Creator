@@ -1,8 +1,14 @@
 #include "TargetMeshesPicker.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "PresetsDatabaseManager.h"
 #include "Utils.h"
 #include <QCloseEvent>
+
+void TargetMeshesPicker::debugtest()
+{
+  new PresetsDatabaseManager(this, this->settings(), this->lastPaths());
+}
 
 TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
                                        const Struct::Settings& aSettings,
@@ -155,6 +161,12 @@ void TargetMeshesPicker::initializeGUI()
   auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body: -\nTargeted feet: -"), this)};
   lCurrentlyTargetedBody->setObjectName("currently_targeted_body_feet");
   lMainLayout->addWidget(lCurrentlyTargetedBody);
+
+  // DEBUG
+  auto DEBUGBUTTON{ComponentFactory::CreateButton(this, "DEBUG - OPEN DB MANAGER", "", "", "")};
+  lMainLayout->addWidget(DEBUGBUTTON);
+  QObject::connect(DEBUGBUTTON, &QPushButton::clicked, this, &TargetMeshesPicker::debugtest);
+  // END DEBUG
 
   /*================*/
   /* Bottom buttons */

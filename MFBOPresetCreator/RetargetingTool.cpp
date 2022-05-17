@@ -15,7 +15,6 @@
 #include <QFileDialog>
 #include <QLabel>
 #include <QLineEdit>
-#include <QMessageBox>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QPushButton>
@@ -474,6 +473,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   // Progress bar
   auto lProgressBar{new QProgressBar(this)};
   lProgressBar->setFormat("%v / %m");
+  lProgressBar->setRange(0, lNumberXMLFiles);
   lProgressBar->setValue(0);
   lProgressBar->setTextVisible(true);
 
@@ -490,7 +490,6 @@ void RetargetingTool::launchUpDownGradeProcess()
   QString lRelativeDirs;
   std::vector<Struct::SliderSet> lParsedSliderSets;
 
-  lProgressBar->setRange(0, lNumberXMLFiles);
   lTreatedFiles = 0;
 
   QDirIterator it(lRootDir, QStringList() << QString("*.xml"), QDir::Files, QDirIterator::Subdirectories);

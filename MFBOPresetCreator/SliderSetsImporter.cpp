@@ -6,10 +6,7 @@
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDirIterator>
-#include <QDomDocument>
 #include <QFileDialog>
-#include <QJsonArray>
-#include <QJsonDocument>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QScrollArea>
@@ -276,10 +273,10 @@ void SliderSetsImporter::launchSearch()
 
   // Fetch all the "*.nif" files
   Utils::CleanPathString(lCheckPath);
-  this->displayObtainedData(this->scanForOspFiles(lCheckPath));
+  this->displayObtainedData(this->scanForOspFilesData(lCheckPath));
 }
 
-std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsImporter::scanForOspFiles(const QString& aRootDir) const
+std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsImporter::scanForOspFilesData(const QString& aRootDir) const
 {
   // Progress bar
   auto lProgressBar{new QProgressBar(this->parentWidget())};
@@ -329,7 +326,7 @@ void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::v
     auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
     if (lHintZone)
     {
-      lHintZone->setText(tr("No NIF file was found in the scanned directory."));
+      lHintZone->setText(tr("No OSP file was found in the scanned directory."));
     }
 
     this->mHasUserDoneSomething = false;
@@ -379,7 +376,7 @@ std::vector<Struct::SliderSetResult> SliderSetsImporter::getChosenValuesFromInte
   // Iterate in the layout
   auto lLinesToTreat{lDataContainer->rowCount()};
 
-  if (lLinesToTreat <= 1)
+  if (lLinesToTreat < 1)
   {
     return std::vector<Struct::SliderSetResult>();
   }
@@ -388,7 +385,7 @@ std::vector<Struct::SliderSetResult> SliderSetsImporter::getChosenValuesFromInte
   SSSPSelectionBlock* lSSPSBlock{nullptr};
 
   // For each row (skip the row 0 because it is a "header")
-  for (int i = 1; i < lLinesToTreat; i++)
+  for (int i = 0; i < lLinesToTreat; i++)
   {
     lSSPSBlock = qobject_cast<SSSPSelectionBlock*>(lDataContainer->itemAtPosition(i, 0)->widget());
 

@@ -209,7 +209,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <QtMoc Include="GroupBox.h" />
     <QtMoc Include="FileIDPicker.h" />
     <ClInclude Include="LangManager.h" />
-    <ClInclude Include="PresetsDatabaseManager.h" />
+    <QtMoc Include="PresetsDatabaseManager.h" />
     <ClInclude Include="SliderFileBuilder.h" />
     <QtMoc Include="SliderSetsImporter.h" />
     <QtMoc Include="SSSPSelectionBlock.h" />

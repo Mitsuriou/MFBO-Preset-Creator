@@ -28,7 +28,7 @@ private:
   void launchSearchProcess();
 
   void launchSearch();
-  std::multimap<QString, std::vector<Struct::SliderSet>> scanForOspFiles(const QString& aRootDir) const;
+  std::multimap<QString, std::vector<Struct::SliderSet>> scanForOspFilesData(const QString& aRootDir) const;
 
   // Display, choose and accept values
   void displayObtainedData(const std::multimap<QString, std::vector<Struct::SliderSet>>& aFoundOspFiles);

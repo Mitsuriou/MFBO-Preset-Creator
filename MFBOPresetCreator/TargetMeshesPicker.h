@@ -7,6 +7,11 @@ class TargetMeshesPicker final : public TitleDialog
 {
   Q_OBJECT
 
+  // DEBUG
+public:
+  void debugtest();
+  // END DEBUG
+
 public:
   explicit TargetMeshesPicker(QWidget* aParent,
                               const Struct::Settings& aSettings,
