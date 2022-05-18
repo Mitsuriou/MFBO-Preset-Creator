@@ -45,7 +45,7 @@ void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
                                     lIconFolder,
                                     "help-circle",
                                     tr("Close the window"),
-                                    tr("Go back to the assisted conversion tool window"),
+                                    tr("Go back to the slider sets importer window"),
                                     "",
                                     this->settings().display.dangerColor,
                                     this->settings().display.successColor,
@@ -240,7 +240,7 @@ void SliderSetsImporter::launchSearch()
   auto lCheckPath{QString("%1%2%3").arg(lInputPath, QDir::separator(), "CalienteTools")};
   if (!QDir(lCheckPath).exists())
   {
-    Utils::DisplayErrorMessage(tr("No CalienteTools directory was found in the scanned directory."));
+    Utils::DisplayErrorMessage(tr("No \"CalienteTools\" directory was found in the scanned directory."));
     lLaunchSearchButton->setDisabled(false);
     return;
   }
@@ -249,7 +249,7 @@ void SliderSetsImporter::launchSearch()
   lCheckPath.append(QDir::separator()).append("BodySlide");
   if (!QDir(lCheckPath).exists())
   {
-    Utils::DisplayErrorMessage(tr("No BodySlide directory was found in the CalienteTools directory."));
+    Utils::DisplayErrorMessage(tr("No \"BodySlide\" directory was found in the CalienteTools directory."));
     lLaunchSearchButton->setDisabled(false);
     return;
   }
@@ -258,7 +258,7 @@ void SliderSetsImporter::launchSearch()
   lCheckPath.append(QDir::separator()).append("SliderSets");
   if (!QDir(lCheckPath).exists())
   {
-    Utils::DisplayErrorMessage(tr("No SliderSets directory was found in the BodySlide directory."));
+    Utils::DisplayErrorMessage(tr("No \"SliderSets\" directory was found in the BodySlide directory."));
     lLaunchSearchButton->setDisabled(false);
     return;
   }
@@ -266,7 +266,7 @@ void SliderSetsImporter::launchSearch()
   // The root directory should at least contain an OSP file to be scanned.
   if (Utils::GetNumberFilesByExtensions(lCheckPath, QStringList({"*.osp"})) == 0)
   {
-    Utils::DisplayErrorMessage(tr("No OSP file were found in the SliderSets directory."));
+    Utils::DisplayErrorMessage(tr("No OSP file were found in the \"SliderSets\" directory."));
     lLaunchSearchButton->setDisabled(false);
     return;
   }
@@ -326,7 +326,7 @@ void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::v
     auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
     if (lHintZone)
     {
-      lHintZone->setText(tr("No OSP file was found in the scanned directory."));
+      lHintZone->setText(tr("No OSP file were found in the \"SliderSets\" directory."));
     }
 
     this->mHasUserDoneSomething = false;

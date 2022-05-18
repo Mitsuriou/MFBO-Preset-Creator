@@ -82,11 +82,25 @@ public:
   static DLLEXP bool IsVersionOffsetValid(const BodyVariant& aBodyVariant, const int aRelativeVersion);
   static DLLEXP bool IsVersionOffsetValid(const FeetVariant& aFeetVariant, const int aRelativeVersion);
 
-  static DLLEXP bool QRCResourceExists(const QString& aRessourcePath);
+  static DLLEXP bool QRCResourceExists(const QString& aResourcePath);
 
   // App data behavior settings
   static bool IsRunningStandaloneVersion();
-  static QString GetAppDataPathFolder();
+  static QString GetAppDataFolderPath();
+
+  // AppData config files
+  static QString GetInstallerLogFilePath();
+  static QString GetConfigFilePath();
+  static QString GetFiltersFilePath();
+  static QString GetLastPathsFilePath();
+  static QString GetPrivateKeyFilePath();
+  static QString GetDatabaseFilePath();
+
+  // AppData injection folders paths
+  static QString GetAssetsFolderPath();
+  static QString GetSkeletonsFolderPath();
+  static QString GetTexturesFolderPath();
+  static QString GetSliderSetsFolderPath();
 
   // Read virtual file from QRC
   static QString ReadQRCFileContent(const QString& aFilePath);

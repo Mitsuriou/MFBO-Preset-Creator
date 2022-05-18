@@ -49,18 +49,18 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   this->setLayout(lMainLayout);
 
   // Import checkbox
-  const auto lImportPresetCheckbox{ComponentFactory::CreateCheckBox(this, tr("Import this preset"), "")};
-  lImportPresetCheckbox->setObjectName("import_slider_set");
+  const auto lImportSliderSetCheckbox{ComponentFactory::CreateCheckBox(this, tr("Import this slider set"), "")};
+  lImportSliderSetCheckbox->setObjectName("import_slider_set");
 
-  lMainLayout->addRow(lImportPresetCheckbox);
+  lMainLayout->addRow(lImportSliderSetCheckbox);
 
-  // Preset name
-  const auto lPresetNameLabel{new QLabel(tr("Preset name:"), this)};
+  // SliderSet name
+  const auto lSliderSetNameLabel{new QLabel(tr("Slider set name:"), this)};
 
-  const auto lPresetNameValue{new QLineEdit(aSliderSet.getName(), this)};
-  lPresetNameValue->setObjectName("slider_set_name");
+  const auto lSliderSetNameValue{new QLineEdit(aSliderSet.getName(), this)};
+  lSliderSetNameValue->setObjectName("slider_set_name");
 
-  lMainLayout->addRow(lPresetNameLabel, lPresetNameValue);
+  lMainLayout->addRow(lSliderSetNameLabel, lSliderSetNameValue);
 
   // Preview
   const auto lPreviewCheckbox{new QLabel(tr("Preview:"), this)};
@@ -70,16 +70,16 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
 
   lMainLayout->addRow(lPreviewCheckbox, lPreviewValue);
 
-  // Ressource type
-  const auto lRessourceTypeLabel{new QLabel(tr("Ressource type:"), this)};
+  // Resource type
+  const auto lResourceTypeLabel{new QLabel(tr("Resource type:"), this)};
 
-  const auto lRessourceTypeValue{new QComboBox(this)};
-  lRessourceTypeValue->setObjectName("slider_set_type");
-  lRessourceTypeValue->setItemDelegate(new QStyledItemDelegate());
-  lRessourceTypeValue->setCursor(Qt::PointingHandCursor);
-  lRessourceTypeValue->addItems(DataLists::GetSliderSetsImporterActions());
+  const auto lResourceTypeValue{new QComboBox(this)};
+  lResourceTypeValue->setObjectName("slider_set_type");
+  lResourceTypeValue->setItemDelegate(new QStyledItemDelegate());
+  lResourceTypeValue->setCursor(Qt::PointingHandCursor);
+  lResourceTypeValue->addItems(DataLists::GetSliderSetsImporterActions());
 
-  lMainLayout->addRow(lRessourceTypeLabel, lRessourceTypeValue);
+  lMainLayout->addRow(lResourceTypeLabel, lResourceTypeValue);
 
   //// Source directory
   // const auto lSourceDirectoryNameLabel{new QLabel(tr("Source directory:"), this)};
@@ -96,16 +96,16 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   lMainLayout->addRow(lSourceFileNameLabel, lSourceFileNameValue);
 
   // Event binding
-  QObject::connect(lPresetNameValue, &QLineEdit::textEdited, this, &SSSPSelectionBlock::presetNameChanged);
+  QObject::connect(lSliderSetNameValue, &QLineEdit::textEdited, this, &SSSPSelectionBlock::SliderSetNameChanged);
 
   // Post-bind initialization functions
-  this->presetNameChanged(lPresetNameValue->text());
+  this->SliderSetNameChanged(lSliderSetNameValue->text());
 }
 
-void SSSPSelectionBlock::presetNameChanged(const QString& aNewPresetName)
+void SSSPSelectionBlock::SliderSetNameChanged(const QString& aNewSliderSetName)
 {
-  this->setTitle(aNewPresetName);
+  this->setTitle(aNewSliderSetName);
 
   const auto lPreviewValue{this->findChild<QLabel*>("preview_value")};
-  lPreviewValue->setText(QString("A Follower Name - %1").arg(aNewPresetName));
+  lPreviewValue->setText(tr("Follower Name - %1").arg(aNewSliderSetName));
 }

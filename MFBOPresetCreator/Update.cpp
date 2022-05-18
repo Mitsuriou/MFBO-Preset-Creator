@@ -516,7 +516,7 @@ void Update::installLatestUpdate()
   this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
 
   // Create a file to be able to know that the installer file needs to be removed at next launch
-  QFile lLogFile(Utils::GetAppDataPathFolder() + "installer.log");
+  QFile lLogFile(Utils::GetInstallerLogFilePath());
   if (lLogFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
   {
     QTextStream lTextStream(&lLogFile);

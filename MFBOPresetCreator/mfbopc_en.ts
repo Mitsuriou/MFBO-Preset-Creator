@@ -5,42 +5,42 @@
     <name>About</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>About</translation>
     </message>
 </context>
 <context>
     <name>AssistedConversion</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation>Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation>Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the window</source>
-        <translation type="unfinished"></translation>
+        <translation>Close the window</translation>
     </message>
     <message>
         <source>Go back to the assisted conversion tool window</source>
-        <translation type="unfinished"></translation>
+        <translation>Go back to the assisted conversion tool window</translation>
     </message>
     <message>
         <source>Assisted Conversion</source>
-        <translation type="unfinished"></translation>
+        <translation>Assisted Conversion</translation>
     </message>
     <message>
         <source>Only scan the &quot;meshes&quot; subdirectory of the mod</source>
-        <translation type="unfinished"></translation>
+        <translation>Only scan the &quot;meshes&quot; subdirectory of the mod</translation>
     </message>
     <message>
         <source>Launch the scan of the mod</source>
-        <translation type="unfinished"></translation>
+        <translation>Launch the scan of the mod</translation>
     </message>
     <message>
         <source>From local directory</source>
-        <translation type="unfinished"></translation>
+        <translation>From local directory</translation>
     </message>
     <message>
         <source>Input path:</source>
@@ -248,15 +248,15 @@
     <name>BatchConversion</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close the window</translation>
     </message>
     <message>
         <source>Go back to the batch conversion window</source>
@@ -430,15 +430,15 @@ Targeted feet: %2</source>
     <name>BatchConversionPicker</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close the window</translation>
     </message>
     <message>
         <source>Go back to the batch conversion: results picker window</source>
@@ -619,11 +619,11 @@ Would you like to generate it (them) now?</source>
     <name>BodySlideFiltersEditor</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the editor window without saving</source>
@@ -836,7 +836,7 @@ Would you like to generate it (them) now?</source>
     </message>
     <message>
         <source>Assisted Conversion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Assisted Conversion</translation>
     </message>
     <message>
         <source>BodySlide Presets&apos; Retargeting</source>
@@ -904,7 +904,7 @@ Would you like to generate it (them) now?</source>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">About</translation>
     </message>
     <message>
         <source>About Qt</source>
@@ -1208,6 +1208,25 @@ Targeted feet: %2</source>
     </message>
 </context>
 <context>
+    <name>PresetsDatabaseManager</name>
+    <message>
+        <source>Parsing XML files. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel treatment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error while trying to read the file &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Targeted meshes mods:</source>
@@ -1327,15 +1346,15 @@ Please make sure your internet connection is working correctly and try again.</s
     <name>RetargetingTool</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close the window</translation>
     </message>
     <message>
         <source>Go back to the retargeting tool window</source>
@@ -1498,23 +1517,27 @@ Targeted feet: %2</source>
 <context>
     <name>SSSPSelectionBlock</name>
     <message>
-        <source>Import this preset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preset name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Preview:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ressource type:</source>
+        <source>Source file:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Source file:</source>
+        <source>Import this slider set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slider set name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follower Name - %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resource type:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1522,11 +1545,11 @@ Targeted feet: %2</source>
     <name>Settings</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the settings window without saving</source>
@@ -1772,19 +1795,19 @@ Targeted feet: %2</source>
     <name>SliderSetsImporter</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close the window</translation>
     </message>
     <message>
         <source>Go back to the assisted conversion tool window</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Go back to the assisted conversion tool window</translation>
     </message>
     <message>
         <source>Slider Sets Importer</source>
@@ -1800,7 +1823,7 @@ Targeted feet: %2</source>
     </message>
     <message>
         <source>Launch the scan of the mod</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Launch the scan of the mod</translation>
     </message>
     <message>
         <source>Awaiting the launch of a scan...</source>
@@ -1835,22 +1858,6 @@ Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No CalienteTools directory was found in the scanned directory.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No BodySlide directory was found in the CalienteTools directory.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No SliderSets directory was found in the BodySlide directory.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No OSP file were found in the SliderSets directory.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Scanning the directory. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1860,10 +1867,6 @@ Targeted feet: %2</source>
     </message>
     <message>
         <source>Process aborted by the user.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No NIF file was found in the scanned directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1886,20 +1889,40 @@ Targeted feet: %2</source>
         <source>Cancel, I wanted to select values</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Go back to the slider sets importer window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No &quot;CalienteTools&quot; directory was found in the scanned directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No &quot;BodySlide&quot; directory was found in the CalienteTools directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No &quot;SliderSets&quot; directory was found in the BodySlide directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No OSP file were found in the &quot;SliderSets&quot; directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TargetMeshesPicker</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close the window</translation>
     </message>
     <message>
         <source>Go back to the target meshes picker window</source>
@@ -1971,15 +1994,15 @@ Targeted feet: %2</source>
     <name>TexturesAssistant</name>
     <message>
         <source>Closing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closing</translation>
     </message>
     <message>
         <source>Do you want to close the window?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
         <source>Close the window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close the window</translation>
     </message>
     <message>
         <source>Go back to the textures assistant window</source>
@@ -1991,11 +2014,11 @@ Targeted feet: %2</source>
     </message>
     <message>
         <source>Launch the scan of the mod</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Launch the scan of the mod</translation>
     </message>
     <message>
         <source>From local directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">From local directory</translation>
     </message>
     <message>
         <source>Input path:</source>

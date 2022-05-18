@@ -25,5 +25,5 @@ private:
   void initializeGUI(const Struct::SliderSet& aSliderSet);
 
   // Events handlers
-  void presetNameChanged(const QString& aNewPresetName);
+  void SliderSetNameChanged(const QString& aNewSliderSetName);
 };

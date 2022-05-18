@@ -895,7 +895,7 @@ void PresetCreator::updateBeastHandsCheckboxState()
 
 void PresetCreator::populateSkeletonChooser()
 {
-  auto lRootDir{Utils::GetAppDataPathFolder() + "assets/skeletons/"};
+  auto lRootDir{Utils::GetSkeletonsFolderPath()};
   Utils::CleanPathString(lRootDir);
   QStringList lAvailableSkeletons;
 
@@ -927,7 +927,7 @@ void PresetCreator::populateSkeletonChooser()
 
 void PresetCreator::openSkeletonsAssetsDirectory()
 {
-  QDesktopServices::openUrl(QUrl::fromLocalFile(QString("%1assets/skeletons").arg(Utils::GetAppDataPathFolder())));
+  QDesktopServices::openUrl(QUrl::fromLocalFile(Utils::GetSkeletonsFolderPath()));
 }
 
 void PresetCreator::updateMeshesPreview()
@@ -1401,7 +1401,7 @@ void PresetCreator::generateDirectoryStructure()
   {
     // Read location
     auto lSourceSkeletonFileName{this->findChild<QComboBox*>(QString("skeleton_chooser"))->currentText()};
-    auto lSourceSkeletonReadPath{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSourceSkeletonFileName)};
+    auto lSourceSkeletonReadPath{Utils::GetSkeletonsFolderPath().append(lSourceSkeletonFileName)};
 
     // Write location
     auto lDestinationSkeletonRelativePath{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))->text().trimmed()};

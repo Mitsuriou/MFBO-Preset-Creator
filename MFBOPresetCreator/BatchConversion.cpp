@@ -370,11 +370,11 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
 
   // Human skeleton
   auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
-  auto lSkeletonPathHuman{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooserHuman->currentText())};
+  auto lSkeletonPathHuman{Utils::GetSkeletonsFolderPath().append(lSkeletonChooserHuman->currentText())};
 
   // Beast skeleton
   auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
-  auto lSkeletonPathBeast{QString("%1assets/skeletons/%2").arg(Utils::GetAppDataPathFolder(), lSkeletonChooserBeast->currentText())};
+  auto lSkeletonPathBeast{Utils::GetSkeletonsFolderPath().append(lSkeletonChooserBeast->currentText())};
 
   // Output paths
   auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
@@ -794,7 +794,7 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
 
 void BatchConversion::populateSkeletonChoosers()
 {
-  auto lRootDir{Utils::GetAppDataPathFolder() + "assets/skeletons/"};
+  auto lRootDir{Utils::GetSkeletonsFolderPath()};
   Utils::CleanPathString(lRootDir);
   QStringList lAvailableSkeletons;
 
@@ -849,7 +849,7 @@ void BatchConversion::populateSkeletonChoosers()
 
 void BatchConversion::openSkeletonsAssetsDirectory()
 {
-  QDesktopServices::openUrl(QUrl::fromLocalFile(QString("%1assets/skeletons").arg(Utils::GetAppDataPathFolder())));
+  QDesktopServices::openUrl(QUrl::fromLocalFile(Utils::GetSkeletonsFolderPath()));
 }
 
 void BatchConversion::useOnlySubdirStateChanged(int)

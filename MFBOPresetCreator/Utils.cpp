@@ -754,9 +754,9 @@ bool Utils::IsVersionOffsetValid(const FeetVariant& aFeetVariant, const int aRel
   return (aRelativeVersion >= DataLists::GetVersionOffset(aFeetVariant));
 }
 
-bool Utils::QRCResourceExists(const QString& aRessourcePath)
+bool Utils::QRCResourceExists(const QString& aResourcePath)
 {
-  return QFile(aRessourcePath).exists();
+  return QFile(aResourcePath).exists();
 }
 
 bool Utils::IsRunningStandaloneVersion()
@@ -765,7 +765,7 @@ bool Utils::IsRunningStandaloneVersion()
   return !lDir.exists();
 }
 
-QString Utils::GetAppDataPathFolder()
+QString Utils::GetAppDataFolderPath()
 {
 #if defined(DEBUG) || !defined(QT_NO_DEBUG)
   return QCoreApplication::applicationDirPath() + QDir::separator();
@@ -778,6 +778,56 @@ QString Utils::GetAppDataPathFolder()
 
   return QCoreApplication::applicationDirPath() + QDir::separator();
 #endif
+}
+
+QString Utils::GetInstallerLogFilePath()
+{
+  return Utils::GetAppDataFolderPath().append("installer.log");
+}
+
+QString Utils::GetConfigFilePath()
+{
+  return Utils::SettingsFullFilePath();
+}
+
+QString Utils::GetFiltersFilePath()
+{
+  return Utils::GetAppDataFolderPath().append("filters.json");
+}
+
+QString Utils::GetLastPathsFilePath()
+{
+  return Utils::GetAppDataFolderPath().append("paths.json");
+}
+
+QString Utils::GetPrivateKeyFilePath()
+{
+  return Utils::GetAppDataFolderPath().append("private_key");
+}
+
+QString Utils::GetDatabaseFilePath()
+{
+  return Utils::GetAppDataFolderPath().append("slider_sets_db");
+}
+
+QString Utils::GetAssetsFolderPath()
+{
+  return Utils::GetAppDataFolderPath().append("assets/");
+}
+
+QString Utils::GetSkeletonsFolderPath()
+{
+  return Utils::GetAssetsFolderPath().append("skeletons/");
+}
+
+QString Utils::GetTexturesFolderPath()
+{
+  return Utils::GetAssetsFolderPath().append("textures/");
+}
+
+QString Utils::GetSliderSetsFolderPath()
+{
+  return Utils::GetAssetsFolderPath().append("slidersets/");
 }
 
 QString Utils::ReadQRCFileContent(const QString& aFilePath)
@@ -1051,7 +1101,7 @@ QJsonObject Utils::LoadFromJsonFile(const QString& aFilePath)
 
 QString Utils::SettingsFullFilePath()
 {
-  return Utils::GetAppDataPathFolder().append("config.json");
+  return Utils::GetAppDataFolderPath().append("config.json");
 }
 
 bool Utils::SettingsFileExists()
@@ -1448,8 +1498,7 @@ QJsonObject Utils::SettingsStructToJson(const Struct::Settings& aSettings)
 
 void Utils::CheckFiltersFileExistence()
 {
-  auto lFiltersFilePath{Utils::GetAppDataPathFolder() + "filters.json"};
-  if (!QFile(lFiltersFilePath).exists())
+  if (!QFile(Utils::GetFiltersFilePath()).exists())
   {
     // Create a default filters file if it does not exist
     Utils::SaveFiltersToFile(std::map<QString, QStringList>());
@@ -1460,8 +1509,7 @@ std::map<QString, QStringList> Utils::LoadFiltersFromFile()
 {
   Utils::CheckFiltersFileExistence();
 
-  auto lFiltersFilePath(Utils::GetAppDataPathFolder() + "filters.json");
-  QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(lFiltersFilePath)};
+  QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(Utils::GetFiltersFilePath())};
 
   std::map<QString, QStringList> lFiltersList;
   const auto lVariantMap{lObtainedJSON.toVariantMap()};
@@ -1477,8 +1525,7 @@ std::map<QString, QStringList> Utils::LoadFiltersFromFile()
 
 void Utils::SaveFiltersToFile(const std::map<QString, QStringList>& aList)
 {
-  auto lFiltersFilePath{Utils::GetAppDataPathFolder() + "filters.json"};
-  Utils::SaveAsJsonFile(Utils::FiltersMapToJson(aList), lFiltersFilePath);
+  Utils::SaveAsJsonFile(Utils::FiltersMapToJson(aList), Utils::GetFiltersFilePath());
 }
 
 QJsonObject Utils::FiltersMapToJson(const std::map<QString, QStringList>& aList)
@@ -1556,8 +1603,7 @@ std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, Q
 
 void Utils::CheckLastPathsFileExistence()
 {
-  const auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
-  if (!QFile(lLastPathsFilePath).exists())
+  if (!QFile(Utils::GetLastPathsFilePath()).exists())
   {
     // Create a default "last paths" file if it does not exist
     std::map<QString, QString> lMap;
@@ -1576,8 +1622,7 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
 {
   Utils::CheckLastPathsFileExistence();
 
-  const auto lLastPathsFilePath(Utils::GetAppDataPathFolder() + "paths.json");
-  const QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(lLastPathsFilePath)};
+  const QJsonObject lObtainedJSON{Utils::LoadFromJsonFile(Utils::GetLastPathsFilePath())};
 
   auto lVariantMap{lObtainedJSON.toVariantMap()};
   std::map<QString, QString> lLastPathsList{
@@ -1607,8 +1652,7 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
 
 void Utils::SaveLastPathsToFile(const std::map<QString, QString>& aList)
 {
-  const auto lLastPathsFilePath{Utils::GetAppDataPathFolder() + "paths.json"};
-  Utils::SaveAsJsonFile(Utils::LastPathsStructToJson(aList), lLastPathsFilePath);
+  Utils::SaveAsJsonFile(Utils::LastPathsStructToJson(aList), Utils::GetLastPathsFilePath());
 }
 
 QJsonObject Utils::LastPathsStructToJson(const std::map<QString, QString>& aList)
@@ -1698,7 +1742,7 @@ bool Utils::UpdatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
 
 bool Utils::SaveAPIKeyToFile(const QString& aAPIKey, QWidget* aParent, const QString& aIconFolder)
 {
-  const auto lAPIKeyFilePath{Utils::GetAppDataPathFolder() + "private_key"};
+  const auto lAPIKeyFilePath{Utils::GetPrivateKeyFilePath()};
 
   // Open (or create and open) the file
   QFile lFile(lAPIKeyFilePath);
@@ -1731,10 +1775,8 @@ bool Utils::SaveAPIKeyToFile(const QString& aAPIKey, QWidget* aParent, const QSt
 
 QString Utils::ReadAPIKeyFromFile()
 {
-  const auto lAPIKeyFilePath{Utils::GetAppDataPathFolder() + "private_key"};
-
   // Check if an installer file needs to be removed at launch
-  QFile lAPIKeyFile(lAPIKeyFilePath);
+  QFile lAPIKeyFile(Utils::GetPrivateKeyFilePath());
   if (lAPIKeyFile.exists())
   {
     if (lAPIKeyFile.open(QIODevice::ReadOnly | QIODevice::Text))

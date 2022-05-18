@@ -1050,8 +1050,8 @@ void TexturesAssistant::generateTexturesStructure()
   }
 
   // Read location
-  auto lSourceTexturesFolderName{lTexturesSetChooser->currentText()};
-  auto lSourceTexturesReadPath{QString("%1assets/textures/%2").arg(Utils::GetAppDataPathFolder(), lSourceTexturesFolderName)};
+  const auto lSourceTexturesFolderName{lTexturesSetChooser->currentText()};
+  const auto lSourceTexturesReadPath{Utils::GetTexturesFolderPath().append(lSourceTexturesFolderName)};
 
   // Iterate through the texture files lists
   for (const auto& lFoundTextureFile : this->mScannedFiles.groupedTextures)
@@ -1089,7 +1089,7 @@ void TexturesAssistant::updateOutputPreview()
 
 void TexturesAssistant::populateTexturesSetChooser()
 {
-  auto lRootDir{Utils::GetAppDataPathFolder() + "assets/textures/"};
+  auto lRootDir{Utils::GetTexturesFolderPath()};
   Utils::CleanPathString(lRootDir);
   QStringList lAvailableTexturesSets;
 
@@ -1127,7 +1127,7 @@ void TexturesAssistant::populateTexturesSetChooser()
 
 void TexturesAssistant::openTexturesSetsAssetsDirectory()
 {
-  QDesktopServices::openUrl(QUrl::fromLocalFile(QString("%1assets/textures").arg(Utils::GetAppDataPathFolder())));
+  QDesktopServices::openUrl(QUrl::fromLocalFile(Utils::GetTexturesFolderPath()));
 }
 
 void TexturesAssistant::useOnlySubdirStateChanged(int)
