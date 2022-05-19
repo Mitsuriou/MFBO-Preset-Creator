@@ -4,6 +4,7 @@
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QTabWidget>
+#include <QVBoxLayout>
 
 class Settings final : public TitleDialog
 {
@@ -41,7 +42,7 @@ private:
 
   void setupButtons(QHBoxLayout& aLayout);
 
-  void createDialogOpeningModeBlock(QGridLayout& aLayout, const QString& aLabelTitle, const QString& aObjectName, const int aRow, const int aCol);
+  void createDialogOpeningModeBlock(QVBoxLayout& aLayout, const QString& aLabelTitle, const QString& aObjectName);
 
   void loadSettings(const Struct::Settings& aSettingsToLoad);
   void loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsToLoad);

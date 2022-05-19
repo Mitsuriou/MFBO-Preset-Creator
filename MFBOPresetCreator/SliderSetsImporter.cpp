@@ -21,7 +21,7 @@ SliderSetsImporter::SliderSetsImporter(QWidget* aParent, const Struct::Settings&
 
   // Show the window when it's completely built
   this->adjustSize();
-  aSettings.display.SliderSetsImporterDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+  aSettings.display.sliderSetsImporterDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
 void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
@@ -151,10 +151,10 @@ void SliderSetsImporter::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "SliderSetsImporterInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "sliderSetsImporterInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->lastPaths(), "SliderSetsImporterInput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), "sliderSetsImporterInput", lPath);
 
   // Enable or disable path viewer label and launch button
   auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};

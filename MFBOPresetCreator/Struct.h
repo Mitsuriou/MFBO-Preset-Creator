@@ -159,7 +159,8 @@ namespace Struct
     int mainWindowHeight{620};
     WindowOpeningMode mainWindowOpeningMode{WindowOpeningMode::WINDOWED};
     int mainWindowWidth{1000};
-    DialogOpeningMode SliderSetsImporterDialogOpeningMode{DialogOpeningMode::WINDOWED};
+    DialogOpeningMode sliderSetsDBManagerDialogOpeningMode{DialogOpeningMode::WINDOWED};
+    DialogOpeningMode sliderSetsImporterDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString successColor{"#48c774"};
     DialogOpeningMode texturesAssistantDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString warningColor{"#ffbc6b"};
@@ -189,6 +190,8 @@ namespace Struct
       lDisplayNode["mainWindowHeight"] = this->mainWindowHeight;
       lDisplayNode["mainWindowOpeningMode"] = static_cast<int>(this->mainWindowOpeningMode);
       lDisplayNode["mainWindowWidth"] = this->mainWindowWidth;
+      lDisplayNode["sliderSetsDBManagerDialogOpeningMode"] = static_cast<int>(this->sliderSetsDBManagerDialogOpeningMode);
+      lDisplayNode["sliderSetsImporterDialogOpeningMode"] = static_cast<int>(this->sliderSetsImporterDialogOpeningMode);
       lDisplayNode["successColor"] = this->successColor;
       lDisplayNode["texturesAssistantDialogOpeningMode"] = static_cast<int>(this->texturesAssistantDialogOpeningMode);
       lDisplayNode["warningColor"] = this->warningColor;
@@ -210,6 +213,8 @@ namespace Struct
         && this->mainWindowHeight == rhs.mainWindowHeight
         && this->mainWindowOpeningMode == rhs.mainWindowOpeningMode
         && this->mainWindowWidth == rhs.mainWindowWidth
+        && this->sliderSetsDBManagerDialogOpeningMode == rhs.sliderSetsDBManagerDialogOpeningMode
+        && this->sliderSetsImporterDialogOpeningMode == rhs.sliderSetsImporterDialogOpeningMode
         && this->successColor == rhs.successColor
         && this->texturesAssistantDialogOpeningMode == rhs.texturesAssistantDialogOpeningMode
         && this->warningColor == rhs.warningColor);
@@ -229,6 +234,8 @@ namespace Struct
         || this->mainWindowHeight != rhs.mainWindowHeight
         || this->mainWindowOpeningMode != rhs.mainWindowOpeningMode
         || this->mainWindowWidth != rhs.mainWindowWidth
+        || this->sliderSetsDBManagerDialogOpeningMode != rhs.sliderSetsDBManagerDialogOpeningMode
+        || this->sliderSetsImporterDialogOpeningMode != rhs.sliderSetsImporterDialogOpeningMode
         || this->successColor != rhs.successColor
         || this->texturesAssistantDialogOpeningMode != rhs.texturesAssistantDialogOpeningMode
         || this->warningColor != rhs.warningColor);

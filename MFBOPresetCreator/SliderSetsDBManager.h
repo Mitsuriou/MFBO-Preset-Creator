@@ -2,14 +2,12 @@
 #include "TitleDialog.h"
 #include <QDomElement>
 
-class PresetsDatabaseManager final : public TitleDialog
+class SliderSetsDBManager final : public TitleDialog
 {
   Q_OBJECT
 
 public:
-  explicit PresetsDatabaseManager(QWidget* aParent,
-                                  const Struct::Settings& aSettings,
-                                  std::map<QString, QString>* aLastPaths);
+  explicit SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -17,6 +15,10 @@ protected:
 private:
   std::map<int, bool> mInitialDatabase;
   std::map<int, bool> mRunningDatabase;
+
+  // GUI creation
+  void setWindowProperties();
+  void initializeGUI();
 
   // Database I/O streams
   void loadDatabase();

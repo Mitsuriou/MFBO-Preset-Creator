@@ -1,4 +1,4 @@
-#include "PresetsDatabaseManager.h"
+#include "SliderSetsDBManager.h"
 #include "ComponentFactory.h"
 #include "SliderSetsImporter.h"
 #include "Utils.h"
@@ -11,30 +11,47 @@
 
 constexpr int XML_INDENT = 4;
 
-PresetsDatabaseManager::PresetsDatabaseManager(QWidget* aParent,
-                                               const Struct::Settings& aSettings,
-                                               std::map<QString, QString>* aLastPaths)
+SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : TitleDialog(aParent, aSettings, aLastPaths)
 {
+  // Load the database before doing anything else
   this->loadDatabase();
 
+  // Build the window's interface
+  this->setWindowProperties();
+  this->initializeGUI();
+
+  // Show the window when it's completely built
+  this->adjustSize();
+  aSettings.display.sliderSetsDBManagerDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
+}
+
+void SliderSetsDBManager::closeEvent(QCloseEvent*)
+{
+  this->saveDatabase();
+}
+
+void SliderSetsDBManager::setWindowProperties()
+{
+  this->setModal(true);
+  this->setMinimumWidth(700);
+  this->setAttribute(Qt::WA_DeleteOnClose);
+  this->setWindowTitle(tr("Slider Sets Database Manager"));
+  this->setWindowIcon(QIcon(QPixmap(":/black/database")));
+}
+
+void SliderSetsDBManager::initializeGUI()
+{
   const auto lMainLayout = new QVBoxLayout(this);
   this->setLayout(lMainLayout);
 
   const auto lButton{ComponentFactory::CreateButton(this, "DEBUG - IMPORT PRESETS", "", "", "")};
   lMainLayout->addWidget(lButton);
 
-  QObject::connect(lButton, &QPushButton::clicked, this, &PresetsDatabaseManager::openSliderSetsImporter);
-
-  this->show();
+  QObject::connect(lButton, &QPushButton::clicked, this, &SliderSetsDBManager::openSliderSetsImporter);
 }
 
-void PresetsDatabaseManager::closeEvent(QCloseEvent*)
-{
-  this->saveDatabase();
-}
-
-void PresetsDatabaseManager::loadDatabase()
+void SliderSetsDBManager::loadDatabase()
 {
   QFile lDatabaseFile(Utils::GetDatabaseFilePath());
   if (!lDatabaseFile.exists())
@@ -66,7 +83,7 @@ void PresetsDatabaseManager::loadDatabase()
   this->detectRemovedFiles();
 }
 
-void PresetsDatabaseManager::saveDatabase()
+void SliderSetsDBManager::saveDatabase()
 {
   if (this->mInitialDatabase != this->mRunningDatabase)
   {
@@ -88,7 +105,7 @@ void PresetsDatabaseManager::saveDatabase()
   }
 }
 
-void PresetsDatabaseManager::detectRemovedFiles()
+void SliderSetsDBManager::detectRemovedFiles()
 {
   const auto lBasePath{Utils::GetSliderSetsFolderPath()};
 
@@ -103,13 +120,13 @@ void PresetsDatabaseManager::detectRemovedFiles()
   }
 }
 
-void PresetsDatabaseManager::openSliderSetsImporter()
+void SliderSetsDBManager::openSliderSetsImporter()
 {
   const auto lSliderSetsImporter{new SliderSetsImporter(this, this->settings(), this->lastPaths())};
-  QObject::connect(lSliderSetsImporter, &SliderSetsImporter::valuesChosen, this, &PresetsDatabaseManager::importNewSliderSets);
+  QObject::connect(lSliderSetsImporter, &SliderSetsImporter::valuesChosen, this, &SliderSetsDBManager::importNewSliderSets);
 }
 
-void PresetsDatabaseManager::importNewSliderSets(const std::vector<Struct::SliderSetResult>& aChosenPresets)
+void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSetResult>& aChosenPresets)
 {
   std::map<QString, std::vector<const Struct::SliderSetResult*>> lPaths;
   auto lEntriesCount{0};
@@ -190,7 +207,7 @@ void PresetsDatabaseManager::importNewSliderSets(const std::vector<Struct::Slide
   }
 }
 
-bool PresetsDatabaseManager::saveSliderSetToDatabase(const QDomElement& aSliderSetNode)
+bool SliderSetsDBManager::saveSliderSetToDatabase(const QDomElement& aSliderSetNode)
 {
   QString lXMLContent;
   QTextStream lStream(&lXMLContent, QIODevice::WriteOnly);
@@ -221,7 +238,7 @@ bool PresetsDatabaseManager::saveSliderSetToDatabase(const QDomElement& aSliderS
   return false;
 }
 
-void PresetsDatabaseManager::addDatabaseLine(const int& aIndex)
+void SliderSetsDBManager::addDatabaseLine(const int& aIndex)
 {
   auto lPosition{this->mRunningDatabase.find(aIndex)};
 
@@ -232,7 +249,7 @@ void PresetsDatabaseManager::addDatabaseLine(const int& aIndex)
   }
 }
 
-void PresetsDatabaseManager::updateDatabaseLine(const int aIndex, const bool aValue)
+void SliderSetsDBManager::updateDatabaseLine(const int aIndex, const bool aValue)
 {
   auto lPosition{this->mRunningDatabase.find(aIndex)};
 
@@ -243,7 +260,7 @@ void PresetsDatabaseManager::updateDatabaseLine(const int aIndex, const bool aVa
   }
 }
 
-void PresetsDatabaseManager::removeFromDatabase(const int& aIndex)
+void SliderSetsDBManager::removeFromDatabase(const int& aIndex)
 {
   const auto lPosition{this->mRunningDatabase.find(aIndex)};
   if (lPosition != this->mRunningDatabase.end())
@@ -252,7 +269,7 @@ void PresetsDatabaseManager::removeFromDatabase(const int& aIndex)
   }
 }
 
-int PresetsDatabaseManager::nextAvailableDatabaseIndex()
+int SliderSetsDBManager::nextAvailableDatabaseIndex()
 {
   if (this->mRunningDatabase.begin() == this->mRunningDatabase.end())
   {
@@ -268,7 +285,7 @@ int PresetsDatabaseManager::nextAvailableDatabaseIndex()
          + 1;
 }
 
-QString PresetsDatabaseManager::databaseToString()
+QString SliderSetsDBManager::databaseToString()
 {
   QString lString;
   for (const auto& lEntry : this->mRunningDatabase)
@@ -279,13 +296,13 @@ QString PresetsDatabaseManager::databaseToString()
   return lString;
 }
 
-std::pair<int, bool> PresetsDatabaseManager::parseDatabaseLine(const QString& aLine)
+std::pair<int, bool> SliderSetsDBManager::parseDatabaseLine(const QString& aLine)
 {
   const auto& lParts{aLine.split(',')};
   return std::pair<int, bool>(lParts[0].toInt(), lParts[1].toInt() == 1);
 }
 
-QString PresetsDatabaseManager::stringifyDatabaseEntry(const std::pair<int, bool>& lEntry)
+QString SliderSetsDBManager::stringifyDatabaseEntry(const std::pair<int, bool>& lEntry)
 {
   return QString::number(lEntry.first)
     .append(",")

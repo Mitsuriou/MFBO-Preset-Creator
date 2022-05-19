@@ -1841,24 +1841,16 @@ Targeted feet: %2</source>
 <context>
     <name>PresetsDatabaseManager</name>
     <message>
-        <location filename="PresetsDatabaseManager.cpp" line="133"/>
         <source>Parsing XML files. Please wait...</source>
-        <translation type="unfinished">解析XML檔中。 請稍待...</translation>
+        <translation type="obsolete">解析XML檔中。 請稍待...</translation>
     </message>
     <message>
-        <location filename="PresetsDatabaseManager.cpp" line="133"/>
         <source>Cancel treatment</source>
-        <translation type="unfinished">取消處理</translation>
+        <translation type="obsolete">取消處理</translation>
     </message>
     <message>
-        <location filename="PresetsDatabaseManager.cpp" line="150"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
-        <translation type="unfinished">讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
-    </message>
-    <message>
-        <location filename="PresetsDatabaseManager.cpp" line="220"/>
-        <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
     </message>
 </context>
 <context>
@@ -2317,17 +2309,17 @@ Targeted feet: %2</source>
         <translation>提示: 更改帶有 &quot;*&quot; 符號的數值需要重啟程式才能生效。</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="143"/>
+        <location filename="Settings.cpp" line="144"/>
         <source>Display</source>
         <translation>顯示</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="149"/>
+        <location filename="Settings.cpp" line="154"/>
         <source>Language:</source>
         <translation>語言:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="169"/>
+        <location filename="Settings.cpp" line="174"/>
         <source>Font:</source>
         <translation>字體:</translation>
     </message>
@@ -2336,7 +2328,7 @@ Targeted feet: %2</source>
         <translation type="vanished">選擇字體</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="159"/>
+        <location filename="Settings.cpp" line="164"/>
         <source>Application Theme:</source>
         <translation>應用程式主題:</translation>
     </message>
@@ -2353,112 +2345,127 @@ Targeted feet: %2</source>
         <translation type="vanished">法文</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="171"/>
+        <location filename="Settings.cpp" line="176"/>
         <source>Change font properties</source>
         <translation>更改字體選項</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="175"/>
+        <location filename="Settings.cpp" line="180"/>
         <source>Default main window width:</source>
         <translation>預設主視窗寬度:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="183"/>
+        <location filename="Settings.cpp" line="188"/>
         <source>Default main window height:</source>
         <translation>預設主視窗高度:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="191"/>
+        <location filename="Settings.cpp" line="196"/>
         <source>Texts accent color:</source>
         <translatorcomment>accent?</translatorcomment>
         <translation>輔助文字色調:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="194"/>
+        <location filename="Settings.cpp" line="199"/>
         <source>Choose a success color</source>
         <translation>選擇成功顏色</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="198"/>
+        <location filename="Settings.cpp" line="203"/>
         <source>Choose a warning color</source>
         <translation>選擇警告顏色</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="202"/>
+        <location filename="Settings.cpp" line="207"/>
         <source>Choose a danger color</source>
         <translation>選擇危險顏色</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="209"/>
+        <location filename="Settings.cpp" line="220"/>
         <source>Preset creator - opening mode:</source>
         <oldsource>Preset Creator - opening mode:</oldsource>
         <translation>Preset Creator - 開啟模式:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="219"/>
+        <location filename="Settings.cpp" line="230"/>
         <source>Batch conversion - opening mode:</source>
         <translation>批次轉換(Batch Conversion) - 開啟模式:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="222"/>
+        <location filename="Settings.cpp" line="233"/>
         <source>Batch conversion: results picker - opening mode:</source>
         <oldsource>Batch conversion: Results picker - opening mode:</oldsource>
         <translation>批次轉換輸出選取工具(Batch Conversion:results picker)) - 開啟模式:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="225"/>
+        <location filename="Settings.cpp" line="236"/>
         <source>Textures assistant - opening mode:</source>
         <translation>貼圖助手(textures assistant) - 開啟模式:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="228"/>
+        <location filename="Settings.cpp" line="239"/>
         <source>Assisted conversion - opening mode:</source>
         <translation>輔助轉換 - 開啟模式:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="231"/>
+        <location filename="Settings.cpp" line="242"/>
         <source>BodySlide presets&apos; retargeting - opening mode:</source>
         <translation>BodySlide檔案重定向(BodySlide presets&apos; retargeting ) - 開啟模式:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="256"/>
-        <location filename="Settings.cpp" line="421"/>
+        <location filename="Settings.cpp" line="245"/>
+        <source>Slider Sets DB Manager - opening mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="248"/>
+        <source>Slider Sets Importer - opening mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="275"/>
+        <location filename="Settings.cpp" line="440"/>
         <source>General</source>
         <translation>一般</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="259"/>
+        <location filename="Settings.cpp" line="278"/>
         <source>Startup actions:</source>
         <translation>啟動時動作:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="261"/>
+        <location filename="Settings.cpp" line="280"/>
         <source>Open the welcome screen (pop-up window)</source>
         <translation>開啟初始化畫面 (彈跳視窗)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="266"/>
+        <location filename="Settings.cpp" line="285"/>
         <source>Check for updates only (pop-up window only if there is an update available)</source>
         <translation>只在有新版本時顯示彈跳視窗</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="315"/>
-        <location filename="Settings.cpp" line="350"/>
+        <location filename="Settings.cpp" line="334"/>
+        <location filename="Settings.cpp" line="369"/>
         <source>Post-generation task:</source>
         <translation>輸出完成後動作:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="429"/>
+        <location filename="Settings.cpp" line="448"/>
         <source>Textures Assist.: output</source>
         <translation>材質(Textures)助手: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="430"/>
+        <location filename="Settings.cpp" line="449"/>
+        <source>Slider Sets Importer: input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="450"/>
         <source>Last injected OSP file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="837"/>
+        <location filename="Settings.cpp" line="871"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>目標身型: %1
@@ -2469,29 +2476,29 @@ Targeted feet: %2</source>
         <translation type="vanished">開啟程式時檢查更新</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="271"/>
+        <location filename="Settings.cpp" line="290"/>
         <source>Skip any check for updates and go directly to the main window</source>
         <oldsource>Each directory chooser button stores its own last opened path</oldsource>
         <translation>跳過更新檢查直接前往主畫面</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="277"/>
+        <location filename="Settings.cpp" line="296"/>
         <source>Smarter buttons:</source>
         <translation>智能按鈕:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="279"/>
+        <location filename="Settings.cpp" line="298"/>
         <source>Each directory chooser button stores its own last opened path</source>
         <oldsource>Each directory chooser button stores its own last opened path.</oldsource>
         <translation>路徑選項將自動紀錄最近使用路徑</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="282"/>
+        <location filename="Settings.cpp" line="301"/>
         <source>Check/clear my browsing history</source>
         <translation>檢查/清除紀錄</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="303"/>
+        <location filename="Settings.cpp" line="322"/>
         <source>Preset Creator</source>
         <translation>身形產生器(Preset Creator)</translation>
     </message>
@@ -2512,32 +2519,32 @@ Targeted feet: %2</source>
         <translation type="vanished">選擇資料夾...</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="317"/>
+        <location filename="Settings.cpp" line="336"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation>完成後自動打開輸出資料夾</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="338"/>
+        <location filename="Settings.cpp" line="357"/>
         <source>Batch Conversion</source>
         <translation>批次轉換</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="352"/>
+        <location filename="Settings.cpp" line="371"/>
         <source>Automatically open the output directory after a batch generation</source>
         <translation>完成批次轉換後自動打開輸出資料夾</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="373"/>
+        <location filename="Settings.cpp" line="392"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>重定向BodySlide檔案</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="385"/>
+        <location filename="Settings.cpp" line="404"/>
         <source>Post-processing task:</source>
         <translation>處理完成後動作:</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="387"/>
+        <location filename="Settings.cpp" line="406"/>
         <source>Automatically open the retargeted directory after the retargeting process succeeded</source>
         <translation>完成後自動打開重定向資料夾</translation>
     </message>
@@ -2550,7 +2557,7 @@ Targeted feet: %2</source>
         <translation type="vanished">只偵測&quot;meshes&quot;資料夾之內</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="408"/>
+        <location filename="Settings.cpp" line="427"/>
         <source>Last used paths</source>
         <translation>上次使用路徑</translation>
     </message>
@@ -2559,77 +2566,77 @@ Targeted feet: %2</source>
         <translation type="vanished">最近使用之資料夾路徑</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="411"/>
+        <location filename="Settings.cpp" line="430"/>
         <source>Remove all the history</source>
         <translation>刪除所有歷史紀錄</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="422"/>
+        <location filename="Settings.cpp" line="441"/>
         <source>Main window: output</source>
         <translation>主視窗: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="423"/>
+        <location filename="Settings.cpp" line="442"/>
         <source>Batch Conv.: input</source>
         <translation>批次轉換: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="424"/>
+        <location filename="Settings.cpp" line="443"/>
         <source>Batch Conv.: output</source>
         <translation>批次轉換: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="425"/>
+        <location filename="Settings.cpp" line="444"/>
         <source>Assist. Conv.: input</source>
         <translation>輔助轉換: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="426"/>
+        <location filename="Settings.cpp" line="445"/>
         <source>Presets&apos; Ret.: input</source>
         <translation>預設(Preset)重定向: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="427"/>
+        <location filename="Settings.cpp" line="446"/>
         <source>Presets&apos; Ret.: output</source>
         <translation>預設(Preset)重定向: 輸出</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="428"/>
+        <location filename="Settings.cpp" line="447"/>
         <source>Textures Assist.: input</source>
         <translation>材質(Textures)助手: 輸入</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="431"/>
+        <location filename="Settings.cpp" line="451"/>
         <source>Loaded project</source>
         <translation>當前運行檔案(Project)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="432"/>
+        <location filename="Settings.cpp" line="452"/>
         <source>Saved project</source>
         <translation>已儲存檔案(Project)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="447"/>
+        <location filename="Settings.cpp" line="467"/>
         <source>Restore default</source>
         <translation>回覆預設</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="450"/>
+        <location filename="Settings.cpp" line="470"/>
         <source>Save and close</source>
         <translation>儲存後關閉</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="453"/>
+        <location filename="Settings.cpp" line="473"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="753"/>
+        <location filename="Settings.cpp" line="787"/>
         <source>Application settings changed</source>
         <translation>已更改程式設定</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="754"/>
+        <location filename="Settings.cpp" line="788"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
@@ -2640,14 +2647,42 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="vanished">已儲存所有設定。有需要重啟才能生效的設定。 是否立即重啟程式?</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="757"/>
+        <location filename="Settings.cpp" line="791"/>
         <source>Restart now</source>
         <translation>立即重啟</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="758"/>
+        <location filename="Settings.cpp" line="792"/>
         <source>Go back to the application and restart later</source>
         <translation>回到應用程式稍後再重啟</translation>
+    </message>
+</context>
+<context>
+    <name>SliderSetsDBManager</name>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="39"/>
+        <source>Slider Sets Database Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="150"/>
+        <source>Parsing XML files. Please wait...</source>
+        <translation type="unfinished">解析XML檔中。 請稍待...</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="150"/>
+        <source>Cancel treatment</source>
+        <translation type="unfinished">取消處理</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="167"/>
+        <source>Error while trying to read the file &quot;%1&quot;.</source>
+        <translation type="unfinished">讀取檔案 &quot;%1&quot;時發生錯誤。</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="237"/>
+        <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3545,7 +3580,7 @@ Below are the release notes for the stable version &quot;%2&quot;:</source>
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
         <location filename="Utils.cpp" line="1071"/>
-        <location filename="Utils.cpp" line="1761"/>
+        <location filename="Utils.cpp" line="1770"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -3624,17 +3659,17 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
 或建議使用英文路徑名稱。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1757"/>
+        <location filename="Utils.cpp" line="1766"/>
         <source>API key successfully saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1758"/>
+        <location filename="Utils.cpp" line="1767"/>
         <source>The API key file has successfully been saved to &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1770"/>
+        <location filename="Utils.cpp" line="1779"/>
         <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -3644,18 +3679,18 @@ Be sure that you used characters authorized by your OS in the given paths.</olds
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1855"/>
+        <location filename="Utils.cpp" line="1866"/>
         <source>Remove from history</source>
         <translation>從歷史紀錄中刪除</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1939"/>
-        <location filename="Utils.cpp" line="1963"/>
+        <location filename="Utils.cpp" line="1950"/>
+        <location filename="Utils.cpp" line="1974"/>
         <source>No path given or invalid path given.</source>
         <translation>未選取目的地或者目的地無效。</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1957"/>
+        <location filename="Utils.cpp" line="1968"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>必須從&quot;選擇檔案&quot;中選擇資料夾。目前資料夾: &quot; /%1&quot;。</translation>
     </message>

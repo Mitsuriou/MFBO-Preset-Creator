@@ -1647,24 +1647,20 @@ Pieds ciblés : %2</translation>
 <context>
     <name>PresetsDatabaseManager</name>
     <message>
-        <location filename="PresetsDatabaseManager.cpp" line="133"/>
         <source>Parsing XML files. Please wait...</source>
-        <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
+        <translation type="vanished">Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="PresetsDatabaseManager.cpp" line="133"/>
         <source>Cancel treatment</source>
-        <translation>Annuler le traitement</translation>
+        <translation type="vanished">Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="PresetsDatabaseManager.cpp" line="150"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
-        <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
+        <translation type="vanished">Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="PresetsDatabaseManager.cpp" line="220"/>
         <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
-        <translation>Erreur en essayant de créer le fichier SliderSet &quot;%1&quot;. Interruption du processus.</translation>
+        <translation type="vanished">Erreur en essayant de créer le fichier SliderSet &quot;%1&quot;. Interruption du processus.</translation>
     </message>
 </context>
 <context>
@@ -2092,165 +2088,180 @@ Pieds ciblés : %2</translation>
         <translation>Note : Modifier une valeur marquée du caractère &quot;*&quot; nécessitera un redémarrage de l&apos;application pour être appliquée correctement.</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="143"/>
+        <location filename="Settings.cpp" line="144"/>
         <source>Display</source>
         <translation>Affichage</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="149"/>
+        <location filename="Settings.cpp" line="154"/>
         <source>Language:</source>
         <translation>Langage :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="169"/>
+        <location filename="Settings.cpp" line="174"/>
         <source>Font:</source>
         <translation>Police de caractères :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="191"/>
+        <location filename="Settings.cpp" line="196"/>
         <source>Texts accent color:</source>
         <translation>Couleur d&apos;accentuation des textes :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="194"/>
+        <location filename="Settings.cpp" line="199"/>
         <source>Choose a success color</source>
         <translation>Choisir une couleur de succès</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="198"/>
+        <location filename="Settings.cpp" line="203"/>
         <source>Choose a warning color</source>
         <translation>Choisir une couleur d&apos;avertissement</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="202"/>
+        <location filename="Settings.cpp" line="207"/>
         <source>Choose a danger color</source>
         <translation>Choisir une couleur de danger</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="209"/>
+        <location filename="Settings.cpp" line="220"/>
         <source>Preset creator - opening mode:</source>
         <translation>Créateur de preset - mode d&apos;ouverture :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="219"/>
+        <location filename="Settings.cpp" line="230"/>
         <source>Batch conversion - opening mode:</source>
         <translation>Conversion par lot - mode d&apos;ouverture :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="222"/>
+        <location filename="Settings.cpp" line="233"/>
         <source>Batch conversion: results picker - opening mode:</source>
         <translation>Conversion par lot : sélecteur de résultats - mode d&apos;ouverture :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="225"/>
+        <location filename="Settings.cpp" line="236"/>
         <source>Textures assistant - opening mode:</source>
         <translation>Assistant textures - mode d&apos;ouverture :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="228"/>
+        <location filename="Settings.cpp" line="239"/>
         <source>Assisted conversion - opening mode:</source>
         <translation>Conversion assistée - mode d&apos;ouverture :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="231"/>
+        <location filename="Settings.cpp" line="242"/>
         <source>BodySlide presets&apos; retargeting - opening mode:</source>
         <translation>Reciblage de presets BodySlide - mode d&apos;ouverture :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="256"/>
-        <location filename="Settings.cpp" line="421"/>
+        <location filename="Settings.cpp" line="245"/>
+        <source>Slider Sets DB Manager - opening mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="248"/>
+        <source>Slider Sets Importer - opening mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="275"/>
+        <location filename="Settings.cpp" line="440"/>
         <source>General</source>
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="259"/>
+        <location filename="Settings.cpp" line="278"/>
         <source>Startup actions:</source>
         <translation>Actions de démarrage :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="261"/>
+        <location filename="Settings.cpp" line="280"/>
         <source>Open the welcome screen (pop-up window)</source>
         <translation>Ouvrir l&apos;écran d&apos;accueil (fenêtre pop-up)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="266"/>
+        <location filename="Settings.cpp" line="285"/>
         <source>Check for updates only (pop-up window only if there is an update available)</source>
         <translation>Vérifier les mises à jour uniquement (fenêtre pop-up uniquement s&apos;il y a une mise à jour disponible)</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="271"/>
+        <location filename="Settings.cpp" line="290"/>
         <source>Skip any check for updates and go directly to the main window</source>
         <translation>Ignorer toute vérification des mises à jour et aller directement à la fenêtre principale</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="277"/>
+        <location filename="Settings.cpp" line="296"/>
         <source>Smarter buttons:</source>
         <translation>Boutons plus intelligents :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="279"/>
+        <location filename="Settings.cpp" line="298"/>
         <source>Each directory chooser button stores its own last opened path</source>
         <translation>Chaque bouton de sélection de répertoire stocke son propre dernier chemin ouvert</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="282"/>
+        <location filename="Settings.cpp" line="301"/>
         <source>Check/clear my browsing history</source>
         <translation>Consulter/effacer mon historique de navigation</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="303"/>
+        <location filename="Settings.cpp" line="322"/>
         <source>Preset Creator</source>
         <translation>Créateur de Preset</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="429"/>
+        <location filename="Settings.cpp" line="448"/>
         <source>Textures Assist.: output</source>
         <translation>Assist. Tex. : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="430"/>
+        <location filename="Settings.cpp" line="449"/>
+        <source>Slider Sets Importer: input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings.cpp" line="450"/>
         <source>Last injected OSP file</source>
         <translation>Dernier fichier OSP injecté</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="837"/>
+        <location filename="Settings.cpp" line="871"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
 Pieds ciblés : %2</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="373"/>
+        <location filename="Settings.cpp" line="392"/>
         <source>BodySlide Presets&apos; Retargeting</source>
         <translation>Reciblage de Presets BodySlide</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="408"/>
+        <location filename="Settings.cpp" line="427"/>
         <source>Last used paths</source>
         <translation>Derniers chemins utilisés</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="411"/>
+        <location filename="Settings.cpp" line="430"/>
         <source>Remove all the history</source>
         <translation>Supprimer tout l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="423"/>
+        <location filename="Settings.cpp" line="442"/>
         <source>Batch Conv.: input</source>
         <translation>Conv. par Lot : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="424"/>
+        <location filename="Settings.cpp" line="443"/>
         <source>Batch Conv.: output</source>
         <translation>Conv. par Lot : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="453"/>
+        <location filename="Settings.cpp" line="473"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="159"/>
+        <location filename="Settings.cpp" line="164"/>
         <source>Application Theme:</source>
         <translation>Thème de l&apos;application :</translation>
     </message>
@@ -2275,103 +2286,103 @@ Pieds ciblés : %2</translation>
         <translation>Attention : Un redémarrage de l&apos;application est en attente. Vous ne devriez modifier aucune valeur marquée du caractère &quot;*&quot; avant d&apos;avoir redémarré l&apos;application.</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="171"/>
+        <location filename="Settings.cpp" line="176"/>
         <source>Change font properties</source>
         <translation>Modifier les propriétés de la police de caractères</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="317"/>
+        <location filename="Settings.cpp" line="336"/>
         <source>Automatically open the generated preset&apos;s output directory after a generation</source>
         <translation>Ouvrir automatiquement le répertoire de sortie du preset généré après une génération</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="387"/>
+        <location filename="Settings.cpp" line="406"/>
         <source>Automatically open the retargeted directory after the retargeting process succeeded</source>
         <translation>Ouvrir automatiquement le répertoire reciblé après la réussite du processus de reciblage</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="422"/>
+        <location filename="Settings.cpp" line="441"/>
         <source>Main window: output</source>
         <translation>Fenêtre principale : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="425"/>
+        <location filename="Settings.cpp" line="444"/>
         <source>Assist. Conv.: input</source>
         <translation>Conv. Assist. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="426"/>
+        <location filename="Settings.cpp" line="445"/>
         <source>Presets&apos; Ret.: input</source>
         <translation>Reciblage de Pr. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="427"/>
+        <location filename="Settings.cpp" line="446"/>
         <source>Presets&apos; Ret.: output</source>
         <translation>Reciblage de Pr. : sortie</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="428"/>
+        <location filename="Settings.cpp" line="447"/>
         <source>Textures Assist.: input</source>
         <translation>Assist. Tex. : entrée</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="431"/>
+        <location filename="Settings.cpp" line="451"/>
         <source>Loaded project</source>
         <translation>Projet chargé</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="432"/>
+        <location filename="Settings.cpp" line="452"/>
         <source>Saved project</source>
         <translation>Projet enregistré</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="447"/>
+        <location filename="Settings.cpp" line="467"/>
         <source>Restore default</source>
         <translation>Restaurer par défaut</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="450"/>
+        <location filename="Settings.cpp" line="470"/>
         <source>Save and close</source>
         <translation>Enregistrer et fermer</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="757"/>
+        <location filename="Settings.cpp" line="791"/>
         <source>Restart now</source>
         <translation>Redémarrer maintenant</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="758"/>
+        <location filename="Settings.cpp" line="792"/>
         <source>Go back to the application and restart later</source>
         <translation>Revenir sur l&apos;application et redémarrer plus tard</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="753"/>
+        <location filename="Settings.cpp" line="787"/>
         <source>Application settings changed</source>
         <translation>Paramètres de l&apos;application modifiés</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="315"/>
-        <location filename="Settings.cpp" line="350"/>
+        <location filename="Settings.cpp" line="334"/>
+        <location filename="Settings.cpp" line="369"/>
         <source>Post-generation task:</source>
         <translation>Tâche de post-génération :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="338"/>
+        <location filename="Settings.cpp" line="357"/>
         <source>Batch Conversion</source>
         <translation>Conversion par Lot</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="352"/>
+        <location filename="Settings.cpp" line="371"/>
         <source>Automatically open the output directory after a batch generation</source>
         <translation>Ouvrir automatiquement le répertoire de sortie après une génération par lot</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="385"/>
+        <location filename="Settings.cpp" line="404"/>
         <source>Post-processing task:</source>
         <translation>Tâche de post-traitement :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="754"/>
+        <location filename="Settings.cpp" line="788"/>
         <source>All settings have been saved. You changed a setting that needs a restart of the application to be applied.
 
 Would you like to restart the application now (you will lose all unsaved data)?</source>
@@ -2380,14 +2391,42 @@ Would you like to restart the application now (you will lose all unsaved data)?<
 Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donnée non sauvegardée) ?</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="175"/>
+        <location filename="Settings.cpp" line="180"/>
         <source>Default main window width:</source>
         <translation>Largeur par défaut de la fenêtre principale :</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="183"/>
+        <location filename="Settings.cpp" line="188"/>
         <source>Default main window height:</source>
         <translation>Hauteur par défaut de la fenêtre principale :</translation>
+    </message>
+</context>
+<context>
+    <name>SliderSetsDBManager</name>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="39"/>
+        <source>Slider Sets Database Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="150"/>
+        <source>Parsing XML files. Please wait...</source>
+        <translation type="unfinished">Analyse des fichiers XML. Veuillez patienter...</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="150"/>
+        <source>Cancel treatment</source>
+        <translation type="unfinished">Annuler le traitement</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="167"/>
+        <source>Error while trying to read the file &quot;%1&quot;.</source>
+        <translation type="unfinished">Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="237"/>
+        <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished">Erreur en essayant de créer le fichier SliderSet &quot;%1&quot;. Interruption du processus.</translation>
     </message>
 </context>
 <context>
@@ -3209,7 +3248,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
         <location filename="Utils.cpp" line="1071"/>
-        <location filename="Utils.cpp" line="1761"/>
+        <location filename="Utils.cpp" line="1770"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -3290,17 +3329,17 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1757"/>
+        <location filename="Utils.cpp" line="1766"/>
         <source>API key successfully saved</source>
         <translation>Clé d&apos;API sauvegardée avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1758"/>
+        <location filename="Utils.cpp" line="1767"/>
         <source>The API key file has successfully been saved to &quot;%1&quot;.</source>
         <translation>La clé d&apos;API a été sauvegardée avec succès vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1770"/>
+        <location filename="Utils.cpp" line="1779"/>
         <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -3312,18 +3351,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1855"/>
+        <location filename="Utils.cpp" line="1866"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1939"/>
-        <location filename="Utils.cpp" line="1963"/>
+        <location filename="Utils.cpp" line="1950"/>
+        <location filename="Utils.cpp" line="1974"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1957"/>
+        <location filename="Utils.cpp" line="1968"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

@@ -151,7 +151,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClCompile Include="FirstInstallWindow.cpp" />
     <ClCompile Include="GroupBox.cpp" />
     <ClCompile Include="PresetCreator.cpp" />
-    <ClCompile Include="PresetsDatabaseManager.cpp" />
+    <ClCompile Include="SliderSetsDBManager.cpp" />
     <ClCompile Include="ReleaseNotesViewer.cpp" />
     <ClCompile Include="RetargetingTool.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -209,7 +209,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <QtMoc Include="GroupBox.h" />
     <QtMoc Include="FileIDPicker.h" />
     <ClInclude Include="LangManager.h" />
-    <QtMoc Include="PresetsDatabaseManager.h" />
+    <QtMoc Include="SliderSetsDBManager.h" />
     <ClInclude Include="SliderFileBuilder.h" />
     <QtMoc Include="SliderSetsImporter.h" />
     <QtMoc Include="SSSPSelectionBlock.h" />

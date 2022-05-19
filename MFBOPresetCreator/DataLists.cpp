@@ -2454,6 +2454,7 @@ QStringList DataLists::GetSliderSetsImporterActions()
 
 QStringList DataLists::GetLastPathsKeys()
 {
+  // Note: keep this list sorted since indexes are used to bind some Settings actions
   return QStringList{QString("general"),
                      QString("mainWindowOutput"),
                      QString("batchConversionInput"),
@@ -2463,6 +2464,8 @@ QStringList DataLists::GetLastPathsKeys()
                      QString("retargetingToolOutput"),
                      QString("texturesAssistantInput"),
                      QString("texturesAssistantOutput"),
+                     QString("sliderSetsImporterInput"),
+                     QString("lastInjectedOSPFile"),
                      QString("lastLoadedProject"),
                      QString("lastSavedProject")};
 }

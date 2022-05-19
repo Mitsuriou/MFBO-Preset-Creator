@@ -1382,6 +1382,14 @@ void Utils::ParseDisplaySettings(Struct::DisplaySettings& aSettings, const QJson
   if (aJSONObject.contains("mainWindowWidth") && aJSONObject["mainWindowWidth"].isDouble())
     aSettings.mainWindowWidth = aJSONObject["mainWindowWidth"].toInt();
 
+  // Opening mode: slider sets database manager
+  if (aJSONObject.contains("sliderSetsDBManagerDialogOpeningMode") && aJSONObject["sliderSetsDBManagerDialogOpeningMode"].isDouble())
+    aSettings.sliderSetsDBManagerDialogOpeningMode = static_cast<DialogOpeningMode>(aJSONObject["sliderSetsDBManagerDialogOpeningMode"].toInt());
+
+  // Opening mode: slider sets importer
+  if (aJSONObject.contains("sliderSetsImporterDialogOpeningMode") && aJSONObject["sliderSetsImporterDialogOpeningMode"].isDouble())
+    aSettings.sliderSetsImporterDialogOpeningMode = static_cast<DialogOpeningMode>(aJSONObject["sliderSetsImporterDialogOpeningMode"].toInt());
+
   // Success color
   if (aJSONObject.contains("successColor") && aJSONObject["successColor"].isString())
     aSettings.successColor = aJSONObject["successColor"].toString();
@@ -1636,6 +1644,7 @@ std::map<QString, QString> Utils::LoadLastPathsFromFile()
     {"mainWindowOutput", ""},
     {"retargetingToolInput", ""},
     {"retargetingToolOutput", ""},
+    {"sliderSetsImporterInput", ""},
     {"texturesAssistantInput", ""},
     {"texturesAssistantOutput", ""}};
 
@@ -1832,6 +1841,7 @@ ApplicationLanguage Utils::GetStructLanguageFromName(const QString& aShortName)
   return ApplicationLanguage::ENGLISH;
 }
 
+// TODO: Move to ComponentFactory
 QAction* Utils::BuildQAction(QWidget* aParent, const QString& aText, const QKeySequence& aKeysCombination, const QString& aIconName, const QString& aIconFolder)
 {
   auto lAction{new QAction(aParent)};
@@ -1842,6 +1852,7 @@ QAction* Utils::BuildQAction(QWidget* aParent, const QString& aText, const QKeyS
   return lAction;
 }
 
+// TODO: Move to ComponentFactory
 void Utils::AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aRow, const QString& aLabel, const QString& aValue, const QString& aIconFolder, const QString& aIconName)
 {
   aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);

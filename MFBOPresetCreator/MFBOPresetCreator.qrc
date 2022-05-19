@@ -71,6 +71,7 @@
         <file alias="qt-logo">resources/software/icons/black/qt-logo.svg</file>
         <file alias="upload-file">resources/software/icons/black/upload-file.svg</file>
         <file alias="publish">resources/software/icons/black/publish.svg</file>
+        <file alias="database">resources/software/icons/black/database.svg</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">resources/software/icons/white/alert-circle.svg</file>
@@ -137,6 +138,7 @@
         <file alias="qt-logo">resources/software/icons/white/qt-logo.svg</file>
         <file alias="upload-file">resources/software/icons/white/upload-file.svg</file>
         <file alias="publish">resources/software/icons/white/publish.svg</file>
+        <file alias="database">resources/software/icons/white/database.svg</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

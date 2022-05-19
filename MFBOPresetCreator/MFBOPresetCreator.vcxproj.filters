@@ -160,7 +160,7 @@
     <ClCompile Include="TitleDialog.cpp">
       <Filter>Source Files\Qt Classes</Filter>
     </ClCompile>
-    <ClCompile Include="PresetsDatabaseManager.cpp">
+    <ClCompile Include="SliderSetsDBManager.cpp">
       <Filter>Source Files\Slider Sets Injection</Filter>
     </ClCompile>
     <ClCompile Include="SliderSetsImporter.cpp">
@@ -291,7 +291,7 @@
     <QtMoc Include="SSSPSelectionBlock.h">
       <Filter>Header Files\Slider Sets Injection</Filter>
     </QtMoc>
-    <QtMoc Include="PresetsDatabaseManager.h">
+    <QtMoc Include="SliderSetsDBManager.h">
       <Filter>Header Files\Slider Sets Injection</Filter>
     </QtMoc>
   </ItemGroup>

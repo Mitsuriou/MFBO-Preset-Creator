@@ -1208,25 +1208,6 @@ Targeted feet: %2</source>
     </message>
 </context>
 <context>
-    <name>PresetsDatabaseManager</name>
-    <message>
-        <source>Parsing XML files. Please wait...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel treatment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error while trying to read the file &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
         <source>Targeted meshes mods:</source>
@@ -1788,6 +1769,41 @@ Would you like to restart the application now (you will lose all unsaved data)?<
     <message>
         <source>Targeted body: %1
 Targeted feet: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slider Sets DB Manager - opening mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slider Sets Importer - opening mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slider Sets Importer: input</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SliderSetsDBManager</name>
+    <message>
+        <source>Slider Sets Database Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parsing XML files. Please wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel treatment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error while trying to read the file &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -138,6 +138,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lTabLayout->setColumnStretch(1, 1);
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
+
   lTabContent->setLayout(lTabLayout);
 
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(lIconFolder))), tr("Display"));
@@ -145,90 +146,108 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   //
   // First column
   //
+  auto lLeftColumnLayout{new QVBoxLayout(this)};
+  lLeftColumnLayout->setSpacing(10);
+  lTabLayout->addLayout(lLeftColumnLayout, 0, 0);
+
   // LANGUAGE
-  lTabLayout->addWidget(new QLabel(QString("* " + tr("Language:")), this), 0, 0);
+  lLeftColumnLayout->addWidget(new QLabel(QString("* " + tr("Language:")), this));
 
   auto lLanguageSelector{new QComboBox(this)};
   lLanguageSelector->setItemDelegate(new QStyledItemDelegate());
   lLanguageSelector->setCursor(Qt::PointingHandCursor);
   lLanguageSelector->addItems(DataLists::GetLanguages());
   lLanguageSelector->setObjectName(QString("language"));
-  lTabLayout->addWidget(lLanguageSelector, 1, 0);
+  lLeftColumnLayout->addWidget(lLanguageSelector);
 
   // GUI THEME
-  lTabLayout->addWidget(new QLabel(QString("* " + tr("Application Theme:")), this), 2, 0);
+  lLeftColumnLayout->addWidget(new QLabel(QString("* " + tr("Application Theme:")), this));
 
   auto lGUIThemeSelector{new QComboBox(this)};
   lGUIThemeSelector->setItemDelegate(new QStyledItemDelegate());
   lGUIThemeSelector->setCursor(Qt::PointingHandCursor);
   lGUIThemeSelector->addItems(DataLists::GetAppThemes());
   lGUIThemeSelector->setObjectName(QString("app_theme"));
-  lTabLayout->addWidget(lGUIThemeSelector, 3, 0);
+  lLeftColumnLayout->addWidget(lGUIThemeSelector);
 
   // FONT FAMILY
-  lTabLayout->addWidget(new QLabel(QString(tr("Font:")), this), 4, 0);
+  lLeftColumnLayout->addWidget(new QLabel(QString(tr("Font:")), this));
 
   auto lFontChooser{ComponentFactory::CreateButton(this, tr("Change font properties"), "", "text", lIconFolder, "font_chooser", false, true)};
-  lTabLayout->addWidget(lFontChooser, 5, 0);
+  lLeftColumnLayout->addWidget(lFontChooser);
 
   // WINDOW WIDTH
-  lTabLayout->addWidget(new QLabel(tr("Default main window width:"), this), 6, 0);
+  lLeftColumnLayout->addWidget(new QLabel(tr("Default main window width:"), this));
 
   auto lWinWidthInput{new QLineEdit(this)};
   lWinWidthInput->setObjectName(QString("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 9999, this));
-  lTabLayout->addWidget(lWinWidthInput, 7, 0);
+  lLeftColumnLayout->addWidget(lWinWidthInput);
 
   // WINDOW HEIGHT
-  lTabLayout->addWidget(new QLabel(tr("Default main window height:"), this), 8, 0);
+  lLeftColumnLayout->addWidget(new QLabel(tr("Default main window height:"), this));
 
   auto lWinHeightInput{new QLineEdit(this)};
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
-  lTabLayout->addWidget(lWinHeightInput, 9, 0);
+  lLeftColumnLayout->addWidget(lWinHeightInput);
 
   // COLORS
-  lTabLayout->addWidget(new QLabel(QString("* " + tr("Texts accent color:")), this), 10, 0);
+  lLeftColumnLayout->addWidget(new QLabel(QString("* " + tr("Texts accent color:")), this));
 
   // Success
   auto lSuccessColorChooser{ComponentFactory::CreateButton(this, tr("Choose a success color"), "", "color", lIconFolder, "success_color_chooser", false, true)};
-  lTabLayout->addWidget(lSuccessColorChooser, 11, 0);
+  lLeftColumnLayout->addWidget(lSuccessColorChooser);
 
   // Warning
   auto lWarningColorChooser{ComponentFactory::CreateButton(this, tr("Choose a warning color"), "", "color", lIconFolder, "warning_color_chooser", false, true)};
-  lTabLayout->addWidget(lWarningColorChooser, 12, 0);
+  lLeftColumnLayout->addWidget(lWarningColorChooser);
 
   // Danger
   auto lDangerColorChooser{ComponentFactory::CreateButton(this, tr("Choose a danger color"), "", "color", lIconFolder, "danger_color_chooser", false, true)};
-  lTabLayout->addWidget(lDangerColorChooser, 13, 0);
+  lLeftColumnLayout->addWidget(lDangerColorChooser);
+
+  lLeftColumnLayout->addStretch();
 
   //
   // Second column
   //
+  auto lRightColumnLayout{new QVBoxLayout(this)};
+  lRightColumnLayout->setSpacing(10);
+  lTabLayout->addLayout(lRightColumnLayout, 0, 1);
+
   // Opening mode: main window
-  lTabLayout->addWidget(new QLabel(tr("Preset creator - opening mode:"), this), 0, 1);
+  lRightColumnLayout->addWidget(new QLabel(tr("Preset creator - opening mode:"), this));
 
   auto lWindowOpeningModeSelector{new QComboBox(this)};
   lWindowOpeningModeSelector->setItemDelegate(new QStyledItemDelegate());
   lWindowOpeningModeSelector->setCursor(Qt::PointingHandCursor);
   lWindowOpeningModeSelector->addItems(DataLists::GetWindowOpeningModes());
   lWindowOpeningModeSelector->setObjectName(QString("main_window_opening_mode"));
-  lTabLayout->addWidget(lWindowOpeningModeSelector, 1, 1);
+  lRightColumnLayout->addWidget(lWindowOpeningModeSelector);
 
   // Opening mode: batch conversion
-  this->createDialogOpeningModeBlock(*lTabLayout, tr("Batch conversion - opening mode:"), "batch_conversion_opening_mode", 2, 1);
+  this->createDialogOpeningModeBlock(*lRightColumnLayout, tr("Batch conversion - opening mode:"), "batch_conversion_opening_mode");
 
   // Opening mode: batch conversion picker
-  this->createDialogOpeningModeBlock(*lTabLayout, tr("Batch conversion: results picker - opening mode:"), "batch_conversion_picker_opening_mode", 4, 1);
+  this->createDialogOpeningModeBlock(*lRightColumnLayout, tr("Batch conversion: results picker - opening mode:"), "batch_conversion_picker_opening_mode");
 
   // Opening mode: textures assistant
-  this->createDialogOpeningModeBlock(*lTabLayout, tr("Textures assistant - opening mode:"), "textures_assistant_opening_mode", 6, 1);
+  this->createDialogOpeningModeBlock(*lRightColumnLayout, tr("Textures assistant - opening mode:"), "textures_assistant_opening_mode");
 
   // Opening mode: assisted conversion
-  this->createDialogOpeningModeBlock(*lTabLayout, tr("Assisted conversion - opening mode:"), "assisted_conversion_opening_mode", 8, 1);
+  this->createDialogOpeningModeBlock(*lRightColumnLayout, tr("Assisted conversion - opening mode:"), "assisted_conversion_opening_mode");
 
   // Opening mode: bodySlide presets' retargeting
-  this->createDialogOpeningModeBlock(*lTabLayout, tr("BodySlide presets' retargeting - opening mode:"), "bodyslide_presets_retargeting_opening_mode", 10, 1);
+  this->createDialogOpeningModeBlock(*lRightColumnLayout, tr("BodySlide presets' retargeting - opening mode:"), "bodyslide_presets_retargeting_opening_mode");
+
+  // Opening mode: slider sets database manager
+  this->createDialogOpeningModeBlock(*lRightColumnLayout, tr("Slider Sets DB Manager - opening mode:"), "slider_sets_db_manager_opening_mode");
+
+  // Opening mode: slider sets importer
+  this->createDialogOpeningModeBlock(*lRightColumnLayout, tr("Slider Sets Importer - opening mode:"), "slider_sets_importer_opening_mode");
+
+  lRightColumnLayout->addStretch();
 
   // Event binding
   QObject::connect(lFontChooser, &QPushButton::clicked, this, &Settings::chooseFont);
@@ -427,6 +446,7 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->lastPaths()->find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->lastPaths()->find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: output"), this->lastPaths()->find("texturesAssistantOutput")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Slider Sets Importer: input"), this->lastPaths()->find("sliderSetsImporterInput")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Last injected OSP file"), this->lastPaths()->find("lastInjectedOSPFile")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->lastPaths()->find("lastLoadedProject")->second, lIconFolder, QString("cross"));
   Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Saved project"), this->lastPaths()->find("lastSavedProject")->second, lIconFolder, QString("cross"));
@@ -459,16 +479,16 @@ void Settings::setupButtons(QHBoxLayout& aLayout)
   QObject::connect(lCloseButton, &QPushButton::clicked, this, &Settings::close);
 }
 
-void Settings::createDialogOpeningModeBlock(QGridLayout& aLayout, const QString& aLabelTitle, const QString& aObjectName, const int aRow, const int aCol)
+void Settings::createDialogOpeningModeBlock(QVBoxLayout& aLayout, const QString& aLabelTitle, const QString& aObjectName)
 {
-  aLayout.addWidget(new QLabel(aLabelTitle, this), aRow, aCol);
+  aLayout.addWidget(new QLabel(aLabelTitle, this));
 
   auto lSelector{new QComboBox(this)};
   lSelector->setItemDelegate(new QStyledItemDelegate());
   lSelector->setCursor(Qt::PointingHandCursor);
   lSelector->addItems(DataLists::GetDialogOpeningModes());
   lSelector->setObjectName(QString(aObjectName));
-  aLayout.addWidget(lSelector, aRow + 1, aCol);
+  aLayout.addWidget(lSelector);
 }
 
 void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
@@ -552,6 +572,12 @@ void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsTo
 
   auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))};
   lBodySlidePresetsRetargetingDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.bodySlidePresetsRetargetingDialogOpeningMode));
+
+  auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_db_manager_opening_mode"))};
+  lSliderSetsDBManagerDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.sliderSetsDBManagerDialogOpeningMode));
+
+  auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_importer_opening_mode"))};
+  lSliderSetsImporterDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.sliderSetsImporterDialogOpeningMode));
 }
 
 void Settings::loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsToLoad)
@@ -594,6 +620,8 @@ Struct::Settings Settings::getSettingsFromGUI() const
   auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QString("textures_assistant_opening_mode"))->currentIndex()};
   auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("assisted_conversion_opening_mode"))->currentIndex()};
   auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))->currentIndex()};
+  auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_db_manager_opening_mode"))->currentIndex()};
+  auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_importer_opening_mode"))->currentIndex()};
   auto lWelcomeActionWelcomeScreen{this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->isChecked()};
   auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
   auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
@@ -659,6 +687,12 @@ Struct::Settings Settings::getSettingsFromGUI() const
 
   // Opening mode: bodySlide presets' retargeting
   lSettings.display.bodySlidePresetsRetargetingDialogOpeningMode = static_cast<DialogOpeningMode>(lBodySlidePresetsRetargetingDialogOpeningMode);
+
+  // Opening mode: slider sets database manager
+  lSettings.display.sliderSetsDBManagerDialogOpeningMode = static_cast<DialogOpeningMode>(lSliderSetsDBManagerDialogOpeningMode);
+
+  // Opening mode: slider sets importer
+  lSettings.display.sliderSetsImporterDialogOpeningMode = static_cast<DialogOpeningMode>(lSliderSetsImporterDialogOpeningMode);
 
   // Default selected body and version (main)
   lSettings.presetCreator.defaultBodyFeet.bodyMesh = this->mNewPresetCreatorTargetBodyMesh;

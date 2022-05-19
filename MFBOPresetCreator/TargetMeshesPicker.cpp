@@ -1,13 +1,13 @@
 #include "TargetMeshesPicker.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
-#include "PresetsDatabaseManager.h"
+#include "SliderSetsDBManager.h"
 #include "Utils.h"
 #include <QCloseEvent>
 
 void TargetMeshesPicker::debugtest()
 {
-  new PresetsDatabaseManager(this, this->settings(), this->lastPaths());
+  new SliderSetsDBManager(this, this->settings(), this->lastPaths());
 }
 
 TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
