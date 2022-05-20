@@ -15,11 +15,13 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent,
                                              const Struct::Settings& aSettings,
                                              std::map<QString, QString>* aLastPaths,
                                              const Struct::BatchConversionData& aData)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Batch Conversion: Results picker"), "reorder", aSettings, aLastPaths, 700)
   , mData(aData)
 {
+  // Authorize drag&drop
+  this->setAcceptDrops(true);
+
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   this->displayLeftList();
@@ -57,23 +59,13 @@ void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void BatchConversionPicker::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Batch Conversion: Results picker"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
-  this->setAcceptDrops(true); // Authorize drag&drop
-}
-
 void BatchConversionPicker::initializeGUI()
 {
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, false)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(), false)};
 
   // 3 columns splitter
   auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
@@ -137,7 +129,7 @@ void BatchConversionPicker::initializeGUI()
   lMiddleLayout->addWidget(lNoDataLabel);
 
   // Create the middle list scroll area + list which will contain all the available data entries
-  ComponentFactory::CreateScrollAreaWindowLayout(this, true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
+  ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(), true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
 
   // Quick preset creation button
   auto lSimpleQuickPresetCreationButton{ComponentFactory::CreateButton(this, tr("Quick preset(s) creation (active mod)"), "", "bolt", lIconFolder, "simple_quick_preset_creation", true, true)};

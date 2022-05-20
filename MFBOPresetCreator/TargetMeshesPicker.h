@@ -49,7 +49,6 @@ private:
   QString mLastSelectedFeetVariant;
 
   // Common functions
-  void setWindowProperties();
   void initializeGUI();
 
   BodyVariant getChosenBodyVariant() const;

@@ -24,7 +24,6 @@ private:
   BodyNameVersion mTargetBodyMesh;
   FeetNameVersion mTargetFeetMesh;
 
-  void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
   void userHasDoneAnAction();

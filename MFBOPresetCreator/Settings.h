@@ -30,7 +30,6 @@ private:
   BodyNameVersion mNewRetargetingToolTargetBodyMesh;
   FeetNameVersion mNewRetargetingToolTargetFeetMesh;
 
-  void setWindowProperties();
   void initializeGUI();
 
   void setupDisplayTab(QTabWidget& aTabWidget);

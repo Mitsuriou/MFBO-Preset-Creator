@@ -13,10 +13,9 @@
 #include <QStyledItemDelegate>
 
 SliderSetsImporter::SliderSetsImporter(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Slider Sets Importer"), "publish", aSettings, aLastPaths, 700)
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -61,15 +60,6 @@ void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void SliderSetsImporter::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Slider Sets Importer"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/publish")));
-}
-
 void SliderSetsImporter::initializeGUI()
 {
   // User theme accent
@@ -79,7 +69,7 @@ void SliderSetsImporter::initializeGUI()
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(2, 1); // Make the hint zone as high as possible
   lMainLayout->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainLayout);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   // Input path label
   lMainLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
@@ -112,7 +102,7 @@ void SliderSetsImporter::displayHintZone()
   this->deleteAlreadyExistingWindowBottom();
 
   // Get the window's layout
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->getCentralLayout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setMinimumHeight(300);
   lHintZone->setObjectName(QString("hint_zone"));
@@ -339,7 +329,7 @@ void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::v
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->getCentralLayout())};
   auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, *lMainLayout, 2, 0, 1, 3)};
 
   auto lNextRow{0};

@@ -234,7 +234,7 @@ void MFBOPresetCreator::setupMenuBar()
   lTools->addSeparator();
 
   // Action: Inject data from OSP file
-  auto lInjectDataFromOSPFile{Utils::BuildQAction(this, tr("Load data from existing OSP file"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_U), "upload-file", lIconFolder)};
+  auto lInjectDataFromOSPFile{Utils::BuildQAction(this, tr("Load data from existing OSP file"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_I), "upload-file", lIconFolder)};
   lTools->addAction(lInjectDataFromOSPFile);
 
   // Menu: Help

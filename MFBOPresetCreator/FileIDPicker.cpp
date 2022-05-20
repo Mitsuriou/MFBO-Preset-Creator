@@ -8,10 +8,11 @@ FileIDPicker::FileIDPicker(QWidget* aParent,
                            const Struct::Settings& aSettings,
                            std::map<QString, QString>* aLastPaths,
                            const std::vector<Struct::NexusModsFileInformation>& aFilesInformation)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("NexusMods File Picker"), "nexus-logo", aSettings, aLastPaths, 700, 600)
 {
+  this->overrideContentTitle(tr("Choose a distant file"));
+
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
   this->fillChoicesList(aFilesInformation);
 
@@ -31,28 +32,12 @@ void FileIDPicker::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void FileIDPicker::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setMinimumHeight(600);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("NexusMods File Picker"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/nexus-logo")));
-}
-
 void FileIDPicker::initializeGUI()
 {
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainLayout);
-
-  // Main title
-  auto lMainTitle{new QLabel(tr("Choose a distant file"), this)};
-  lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
-  lMainLayout->addWidget(lMainTitle, 0, 0);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   // List wrapper
   ComponentFactory::CreateScrollAreaComponentLayout(this, *lMainLayout, 1, 0);

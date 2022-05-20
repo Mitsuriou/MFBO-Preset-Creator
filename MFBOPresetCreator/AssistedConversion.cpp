@@ -21,10 +21,9 @@
 #include <QStyledItemDelegate>
 
 AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Assisted Conversion"), "pencil", aSettings, aLastPaths, 700)
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -69,25 +68,16 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void AssistedConversion::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Assisted Conversion"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/pencil")));
-}
-
 void AssistedConversion::initializeGUI()
 {
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Main layout
-  auto lMainLayout{new QGridLayout(this)};
+  const auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(3, 1); // Make the hint zone as high as possible
   lMainLayout->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainLayout);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
@@ -225,7 +215,7 @@ void AssistedConversion::displayHintZone()
   this->deleteAlreadyExistingWindowBottom();
 
   // Get the window's layout
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->getCentralLayout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setMinimumHeight(300);
   lHintZone->setObjectName(QString("hint_zone"));
@@ -822,7 +812,7 @@ void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area chooser
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->getCentralLayout())};
   auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, *lMainLayout, 3, 0)};
 
   // Columns header

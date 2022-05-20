@@ -4,10 +4,16 @@
 #include <QCloseEvent>
 
 About::About(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("About"), "info-circle", aSettings, aLastPaths)
 {
+  // Hacky window's background color change for Windows Vista theme
+  if (this->settings().display.applicationTheme == GUITheme::DEFAULT_OS_THEME)
+  {
+    this->setStyleSheet("background-color: white;");
+  }
+
   // Build the window's interface
-  this->setWindowProperties();
+  this->hideTitle();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -20,26 +26,14 @@ void About::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void About::setWindowProperties()
-{
-  this->setModal(true);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("About"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/info-circle")));
-
-  // Hacky window's background color change for Windows Vista theme
-  if (this->settings().display.applicationTheme == GUITheme::DEFAULT_OS_THEME)
-  {
-    this->setStyleSheet("background-color: white;");
-  }
-}
-
 void About::initializeGUI()
 {
   // Set a layout for this dialog box
-  this->setLayout(new QVBoxLayout(this));
-  this->layout()->setAlignment(Qt::AlignCenter);
-  this->layout()->setContentsMargins(10, 10, 10, 10);
+  const auto lMainLayout{new QVBoxLayout(this)};
+  lMainLayout->setAlignment(Qt::AlignCenter);
+  lMainLayout->setContentsMargins(10, 10, 10, 10);
+  lMainLayout->setSpacing(10);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   // Hacky links' colors override for some themes
   QString lLinksColorOverride;
@@ -101,5 +95,5 @@ void About::initializeGUI()
   lTextContainer->setText(lDescription);
   lTextContainer->adjustSize();
   lTextContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-  this->layout()->addWidget(lTextContainer);
+  qobject_cast<QVBoxLayout*>(this->getCentralLayout())->addWidget(lTextContainer);
 }

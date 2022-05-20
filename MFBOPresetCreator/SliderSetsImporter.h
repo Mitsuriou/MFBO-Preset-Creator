@@ -15,7 +15,6 @@ private:
   bool mHasUserDoneSomething{false};
 
   // GUI creation
-  void setWindowProperties();
   void initializeGUI();
   void displayHintZone();
   void deleteAlreadyExistingWindowBottom() const;

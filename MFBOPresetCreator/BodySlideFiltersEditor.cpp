@@ -14,13 +14,12 @@ BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* aParent,
                                                const Struct::Settings& aSettings,
                                                std::map<QString, QString>* aLastPaths,
                                                const std::map<QString, QStringList>& aInitialList)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("BodySlide filters editor"), "filter", aSettings, aLastPaths)
   , mOriginalFiltersList(aInitialList)
   , mFiltersList(aInitialList)
   , mListWidget{new QListWidget(this)}
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -75,21 +74,13 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void BodySlideFiltersEditor::setWindowProperties()
-{
-  this->setModal(true);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("BodySlide filters editor"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/filter")));
-}
-
 void BodySlideFiltersEditor::initializeGUI()
 {
   // Main window container
   auto lMainLayout{new QGridLayout(this)};
   this->setupInterface(*lMainLayout);
   this->setupButtons(*lMainLayout);
-  this->setLayout(lMainLayout);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   // Focus the first line of the list
   this->mListWidget->setAlternatingRowColors(true);

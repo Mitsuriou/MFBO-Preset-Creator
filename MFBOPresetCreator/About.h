@@ -12,6 +12,5 @@ protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
-  void setWindowProperties();
   void initializeGUI();
 };

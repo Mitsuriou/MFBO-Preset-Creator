@@ -34,7 +34,6 @@ private:
   QNetworkReply* mReply{nullptr};
 
   // GUI functions
-  void setWindowProperties();
   void initializeGUI();
 
   // Check for updates

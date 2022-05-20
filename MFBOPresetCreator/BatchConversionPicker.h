@@ -29,7 +29,6 @@ private:
   bool mPreventPresetSave{true};
 
   // General
-  void setWindowProperties();
   void initializeGUI();
   void connectGroupWidgetEvents(BCGroupWidget* lGroupWidget);
   void displayLeftList();

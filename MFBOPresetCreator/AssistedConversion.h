@@ -24,7 +24,6 @@ private:
   QString mScannedDirName;
 
   // GUI creation
-  void setWindowProperties();
   void initializeGUI();
   void setupFromLocalFolderTab(QTabWidget& aTabWidget);
   void setupFromURLTab(QTabWidget& aTabWidget);

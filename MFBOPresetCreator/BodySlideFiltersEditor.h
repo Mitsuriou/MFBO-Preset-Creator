@@ -25,7 +25,6 @@ private:
   QListWidget* mListWidget{nullptr};
 
   // GUI construction
-  void setWindowProperties();
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
   void setupButtons(QGridLayout& aLayout);

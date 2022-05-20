@@ -17,7 +17,6 @@ private:
   QNetworkAccessManager mManager;
 
   // GUI functions
-  void setWindowProperties();
   void initializeGUI();
 
   // Utils functions

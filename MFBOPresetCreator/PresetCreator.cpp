@@ -564,7 +564,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   lSkeletonGridLayout->addWidget(lSkeletonRefresher, 1, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder, "open_skeletons_assets_directory")};
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", lIconFolder, "open_skeletons_assets_directory")};
   lSkeletonGridLayout->addWidget(lOpenAssetsDirectory, 1, 3);
 
   // Skeleton path

@@ -41,7 +41,6 @@ private:
   TexturesAssistant::ScannedData mScannedFiles;
 
   // GUI creation
-  void setWindowProperties();
   void initializeGUI();
   void setupFromLocalFolderTab(QTabWidget& aTabWidget);
   void setupFromURLTab(QTabWidget& aTabWidget);

@@ -15,7 +15,7 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
                                        std::map<QString, QString>* aLastPaths,
                                        const BodyNameVersion& aPreSelectedBody,
                                        const FeetNameVersion& aPreSelectedFeet)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Target Meshes Picker"), "mesh", aSettings, aLastPaths, 1100, 700)
   , mOriginalBody(aPreSelectedBody)
   , mOriginalFeet(aPreSelectedFeet)
   , mListBodyName(new QListWidget(this))
@@ -26,7 +26,6 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
   , mListFeetVariantName(new QListWidget(this))
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -67,16 +66,6 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void TargetMeshesPicker::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(1100);
-  this->setMinimumHeight(650);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Target Meshes Picker"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/mesh")));
-}
-
 void TargetMeshesPicker::initializeGUI()
 {
   // User theme accent
@@ -85,7 +74,7 @@ void TargetMeshesPicker::initializeGUI()
   // Main window container
   auto lMainLayout{new QVBoxLayout(this)};
   lMainLayout->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainLayout);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   /*=========================*/
   /* Targeted body group box */

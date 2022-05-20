@@ -22,13 +22,12 @@
 #include <QTextStream>
 
 RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("BodySlide Presets' Retargeting"), "arrow-up", aSettings, aLastPaths, 700)
   , mFileWatcher(new QFileSystemWatcher())
   , mTargetBodyMesh(aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh)
   , mTargetFeetMesh(aSettings.presetsRetargeting.defaultBodyFeet.feetMesh)
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &RetargetingTool::updateBackupPreview);
@@ -82,15 +81,6 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
   emit modalClosed();
 }
 
-void RetargetingTool::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("BodySlide Presets' Retargeting"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/arrow-up")));
-}
-
 void RetargetingTool::initializeGUI()
 {
   // Main window container
@@ -99,6 +89,8 @@ void RetargetingTool::initializeGUI()
   lMainVertical->setRowStretch(1, 0);
   lMainVertical->setRowStretch(2, 2);
   this->setupInterface(*lMainVertical);
+
+  this->getCentralWidget()->setLayout(lMainVertical);
 }
 
 void RetargetingTool::setupInterface(QGridLayout& aLayout)

@@ -22,11 +22,10 @@
 #include <QStyledItemDelegate>
 
 TexturesAssistant::TexturesAssistant(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Textures Assistant"), "textures", aSettings, aLastPaths, 700)
   , mFileWatcher(new QFileSystemWatcher())
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -73,15 +72,6 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
   }
 }
 
-void TexturesAssistant::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Textures Assistant"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/textures")));
-}
-
 void TexturesAssistant::initializeGUI()
 {
   // User theme accent
@@ -91,7 +81,7 @@ void TexturesAssistant::initializeGUI()
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(2, 1); // Make the hint zone as high as possible
   lMainLayout->setAlignment(Qt::AlignTop);
-  this->setLayout(lMainLayout);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
@@ -228,7 +218,7 @@ void TexturesAssistant::displayHintZone()
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setObjectName(QString("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
-  qobject_cast<QGridLayout*>(this->layout())->addWidget(lHintZone, 2, 0);
+  qobject_cast<QGridLayout*>(this->getCentralLayout())->addWidget(lHintZone, 2, 0);
 
   // Disable the groupboxes
   this->toggleGroupBoxesState(true);
@@ -266,7 +256,7 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
   lLayout->addWidget(lTexturesSetRefresher, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder)};
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", lIconFolder)};
   lLayout->addWidget(lOpenAssetsDirectory, 0, 3);
 
   this->populateTexturesSetChooser();
@@ -853,7 +843,7 @@ void TexturesAssistant::displayObtainedData()
   this->deleteAlreadyExistingWindowBottom();
 
   // Create the scroll area wrapper
-  auto lMainLayout{qobject_cast<QGridLayout*>(this->layout())};
+  auto lMainLayout{qobject_cast<QGridLayout*>(this->getCentralLayout())};
   auto lDataContainer{ComponentFactory::CreateScrollAreaComponentLayout(this, *lMainLayout, 2, 0)};
 
   // Parse the grouped textures to split them in multiple storages
@@ -960,19 +950,27 @@ void TexturesAssistant::displayObtainedData()
 
 void TexturesAssistant::createResourceBlock(const std::map<QString, std::vector<QString>>& aMap, QGridLayout* aLayout)
 {
-  auto lRowIndex{0};
-  for (const auto& lRootPath : aMap)
+  if (aMap.empty())
   {
-    QString lConcatenatedFileNames;
+    aLayout->addWidget(new QLabel(tr("No textures found for this type..."), this));
+  }
+  else
+  {
+    auto lRowIndex{0};
 
-    for (const auto& lFileName : lRootPath.second)
+    for (const auto& lRootPath : aMap)
     {
-      lConcatenatedFileNames.append(QString("%1\n").arg(lFileName));
-    }
-    lConcatenatedFileNames = lConcatenatedFileNames.left(lConcatenatedFileNames.length() - 1);
+      QString lConcatenatedFileNames;
 
-    aLayout->addWidget(new QLabel(lRootPath.first, this), lRowIndex, 0, Qt::AlignLeft);
-    aLayout->addWidget(new QLabel(lConcatenatedFileNames, this), lRowIndex++, 1, Qt::AlignLeft);
+      for (const auto& lFileName : lRootPath.second)
+      {
+        lConcatenatedFileNames.append(QString("%1\n").arg(lFileName));
+      }
+      lConcatenatedFileNames = lConcatenatedFileNames.left(lConcatenatedFileNames.length() - 1);
+
+      aLayout->addWidget(new QLabel(lRootPath.first, this), lRowIndex, 0, Qt::AlignLeft);
+      aLayout->addWidget(new QLabel(lConcatenatedFileNames, this), lRowIndex++, 1, Qt::AlignLeft);
+    }
   }
 }
 

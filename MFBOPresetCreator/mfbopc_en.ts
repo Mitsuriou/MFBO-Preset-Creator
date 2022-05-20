@@ -2218,6 +2218,10 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>No textures found for this type...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Update</name>

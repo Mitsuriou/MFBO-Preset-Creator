@@ -17,7 +17,6 @@ private:
   std::map<int, bool> mRunningDatabase;
 
   // GUI creation
-  void setWindowProperties();
   void initializeGUI();
 
   // Database I/O streams

@@ -1,4 +1,5 @@
 #include "ComponentFactory.h"
+#include "TitleDialog.h"
 #include "Utils.h"
 #include <QCheckBox>
 #include <QFrame>

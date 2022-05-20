@@ -19,11 +19,10 @@
 #include <QStyledItemDelegate>
 
 Settings::Settings(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Settings"), "cog", aSettings, aLastPaths, 1000, 700)
   , mNewFont(qApp->font())
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -75,20 +74,10 @@ void Settings::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void Settings::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(1000);
-  this->setMinimumHeight(620);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Settings"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/cog")));
-}
-
 void Settings::initializeGUI()
 {
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
   auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   auto lStarLabel{new QLabel(this)};

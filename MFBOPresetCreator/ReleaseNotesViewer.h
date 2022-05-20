@@ -15,7 +15,6 @@ protected:
 private:
   QNetworkAccessManager mManager;
 
-  void setWindowProperties();
   void initializeGUI();
   // Check for updates
   void checkForUpdate();

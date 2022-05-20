@@ -18,12 +18,11 @@ Update::Update(QWidget* aParent,
                std::map<QString, QString>* aLastPaths,
                const bool aForceStableContext,
                const bool aForceBetaContext)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Check for updates"), "cloud-search", aSettings, aLastPaths, 700, 500)
   , mForceStableContext(aForceStableContext)
   , mForceBetaContext(aForceBetaContext)
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -52,44 +51,27 @@ void Update::closeEvent(QCloseEvent*)
   this->accept();
 }
 
-void Update::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setMinimumHeight(500);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Check for updates"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/cloud-search")));
-}
-
 void Update::initializeGUI()
 {
   // Set a layout for this dialog box
-  this->setLayout(new QVBoxLayout(this));
-  this->layout()->setAlignment(Qt::AlignTop);
+  const auto lMainLayout{new QVBoxLayout{this}};
+  lMainLayout->setAlignment(Qt::AlignTop);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   const auto lForcedVersionSuffix(this->mForceStableContext ? tr(" (stable only)") : (this->mForceBetaContext ? tr(" (BETA only)") : QString()));
-
-  /*============*/
-  /* Main title */
-  /*============*/
-  auto lMainTitle{new QLabel(tr("Check for updates") + lForcedVersionSuffix, this)};
-  lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
-  this->layout()->addWidget(lMainTitle);
 
   // Check for updates
   auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconResourceFolder(this->settings().display.applicationTheme), "search_button")};
   lUpdateButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
-  this->layout()->addWidget(lUpdateButton);
+  lMainLayout->addWidget(lUpdateButton);
 
   // Download progress bar
   auto lDownloadProgressBar{new QProgressBar(this)};
   lDownloadProgressBar->setObjectName(QString("download_progress_bar"));
   lDownloadProgressBar->setTextVisible(true);
   lDownloadProgressBar->setFormat(tr("Initializing..."));
-  this->layout()->addWidget(lDownloadProgressBar);
+  lMainLayout->addWidget(lDownloadProgressBar);
   lDownloadProgressBar->hide();
 
   // Fetch status
@@ -97,7 +79,7 @@ void Update::initializeGUI()
   lFetchStatus->setObjectName(QString("fetch_status"));
   lFetchStatus->setWordWrap(true);
   lFetchStatus->hide();
-  this->layout()->addWidget(lFetchStatus);
+  lMainLayout->addWidget(lFetchStatus);
 
   // Event binding
   QObject::connect(lUpdateButton, &QPushButton::clicked, this, &Update::checkForUpdate);
@@ -262,7 +244,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
   lTextContainer->setMinimumHeight(200);
   lTextContainer->adjustSize();
   lTextContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-  this->layout()->addWidget(lTextContainer);
+  qobject_cast<QVBoxLayout*>(this->getCentralLayout())->addWidget(lTextContainer);
 
   // Links color override
   auto lHTMLString{lTextContainer->toHtml()};

@@ -20,16 +20,13 @@
 #include <QStyledItemDelegate>
 
 BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Batch Conversion"), "reorder", aSettings, aLastPaths, 1000)
   , mFileWatcher(new QFileSystemWatcher())
   , mTargetBodyMesh(aSettings.batchConversion.defaultBodyFeet.bodyMesh)
   , mTargetFeetMesh(aSettings.batchConversion.defaultBodyFeet.feetMesh)
 {
-  // Build the window's interface
-  this->setWindowProperties();
-
   // Main layout with scroll area
-  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
   auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   // Setup all the different GUI components
@@ -90,15 +87,6 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
   }
 
   emit modalClosed();
-}
-
-void BatchConversion::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(1000);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Batch Conversion"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/reorder")));
 }
 
 void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
@@ -170,7 +158,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lLayout->addWidget(lSkeletonRefresherHuman, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder)};
+  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", lIconFolder)};
   lLayout->addWidget(lOpenAssetsDirectoryHuman, 0, 3);
 
   // Beast skeleton file
@@ -189,7 +177,7 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   this->populateSkeletonChoosers();
 
   // Open assets directory
-  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "folder-search", lIconFolder)};
+  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", lIconFolder)};
   lLayout->addWidget(lOpenAssetsDirectoryBeast, 1, 3);
 
   // Event binding

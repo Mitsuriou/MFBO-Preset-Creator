@@ -8,10 +8,9 @@
 #include <QTextBrowser>
 
 ReleaseNotesViewer::ReleaseNotesViewer(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Current version's release notes"), "text-snippet", aSettings, aLastPaths, 700, 500)
 {
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -26,46 +25,31 @@ void ReleaseNotesViewer::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void ReleaseNotesViewer::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setMinimumHeight(500);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Current version's release notes"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/text-snippet")));
-}
-
 void ReleaseNotesViewer::initializeGUI()
 {
   // Set a layout for this dialog box
-  this->setLayout(new QVBoxLayout(this));
-  this->layout()->setAlignment(Qt::AlignTop);
-
-  // Main title
-  auto lMainTitle{new QLabel(tr("Current version's release notes"), this)};
-  lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
-  this->layout()->addWidget(lMainTitle);
+  const auto lMainLayout{new QVBoxLayout(this)};
+  lMainLayout->setAlignment(Qt::AlignTop);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   // Fetch status
   auto lFetchStatus{new QLabel(this)};
   lFetchStatus->setObjectName(QString("fetch_status"));
   lFetchStatus->hide();
-  this->layout()->addWidget(lFetchStatus);
+  lMainLayout->addWidget(lFetchStatus);
 
   // Viewer
   auto lViewer{new QTextBrowser(this)};
   lViewer->setObjectName(QString("viewer"));
   lViewer->setOpenExternalLinks(true);
-  this->layout()->addWidget(lViewer);
+  lMainLayout->addWidget(lViewer);
 
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Open in default browser button
   auto lButton{ComponentFactory::CreateButton(this, tr("View in default browser"), "", "external", lIconFolder)};
-  this->layout()->addWidget(lButton);
+  lMainLayout->addWidget(lButton);
 
   // Event binding
   QObject::connect(lButton, &QPushButton::clicked, this, &ReleaseNotesViewer::viewInDefaultBrowser);

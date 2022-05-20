@@ -12,13 +12,12 @@
 constexpr int XML_INDENT = 4;
 
 SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 700)
 {
   // Load the database before doing anything else
   this->loadDatabase();
 
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -31,19 +30,10 @@ void SliderSetsDBManager::closeEvent(QCloseEvent*)
   this->saveDatabase();
 }
 
-void SliderSetsDBManager::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Slider Sets Database Manager"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/database")));
-}
-
 void SliderSetsDBManager::initializeGUI()
 {
   const auto lMainLayout = new QVBoxLayout(this);
-  this->setLayout(lMainLayout);
+  this->getCentralWidget()->setLayout(lMainLayout);
 
   const auto lButton{ComponentFactory::CreateButton(this, "DEBUG - IMPORT PRESETS", "", "", "")};
   lMainLayout->addWidget(lButton);

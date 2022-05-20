@@ -18,7 +18,6 @@ private:
   bool hasEmitedAnythingYet{false};
 
   // GUI functions
-  void setWindowProperties();
   void initializeGUI();
   void fillChoicesList(const std::vector<Struct::NexusModsFileInformation>& aFilesInformation);
   QWidget* createChoiceEntry(const Struct::NexusModsFileInformation& aFileInformation);

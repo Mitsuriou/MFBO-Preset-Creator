@@ -28,7 +28,6 @@ private:
   FeetNameVersion mTargetFeetMesh;
 
   //
-  void setWindowProperties();
   void setupGeneralGUI(QGridLayout& aLayout);
   void setupSkeletonGUI(QGridLayout& aLayout);
   void setupBodySlideGUI(QGridLayout& aLayout);

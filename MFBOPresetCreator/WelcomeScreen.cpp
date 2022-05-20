@@ -11,10 +11,11 @@
 #include <math.h>
 
 WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("Welcome screen"), "home", aSettings, aLastPaths, 700, 600)
 {
+  this->overrideContentTitle(tr("MFBO: Preset Creator v.%1").arg(Utils::GetApplicationVersion()));
+
   // Build the window's interface
-  this->setWindowProperties();
   this->initializeGUI();
 
   // Show the window when it's completely built
@@ -53,23 +54,13 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
   aEvent->accept();
 }
 
-void WelcomeScreen::setWindowProperties()
-{
-  this->setModal(true);
-  this->setMinimumWidth(700);
-  this->setMinimumHeight(600);
-  this->setAttribute(Qt::WA_DeleteOnClose);
-  this->setWindowTitle(tr("Welcome screen"));
-  this->setWindowIcon(QIcon(QPixmap(":/black/home")));
-}
-
 void WelcomeScreen::initializeGUI()
 {
   // Keep a reference to the user theme
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
 
   // Main layout
-  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this, true, false)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(), true, false)};
 
   /*================================*/
   /* Show / Hide the welcome screen */
@@ -80,14 +71,6 @@ void WelcomeScreen::initializeGUI()
                                                                "always_show_welcome_screen",
                                                                this->settings().general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
   lMainLayout->addWidget(lShowHideWelcomeScreen);
-
-  /*============*/
-  /* Main title */
-  /*============*/
-  auto lMainTitle{new QLabel(tr("MFBO: Preset Creator v.%1").arg(Utils::GetApplicationVersion()), this)};
-  lMainTitle->setAlignment(Qt::AlignCenter);
-  lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
-  lMainLayout->addWidget(lMainTitle);
 
   /*============*/
   /* Ko-Fi page */
