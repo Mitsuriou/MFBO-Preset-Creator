@@ -155,8 +155,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
       }
 
       // A new beta version is available
-      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
-      lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+      lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/cloud-download").arg(this->getThemedResourcePath()))));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Download the update"));
       lSearchButton->setToolTip(tr("Download the update"));
@@ -196,8 +195,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
       }
 
       // A new stable version is available
-      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
-      lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+      lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/cloud-download").arg(this->getThemedResourcePath()))));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Download the update"));
       lSearchButton->setToolTip(tr("Download the update"));
@@ -221,8 +219,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
     else
     {
       // The user runs the latest version
-      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-check" : ":/black/cloud-check"};
-      lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+      lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/cloud-check").arg(this->getThemedResourcePath()))));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setDisabled(true);
       lSearchButton->setText(tr("Already running the latest version"));
@@ -256,8 +253,7 @@ void Update::downloadLatestUpdate()
   lSearchButton->setToolTip(tr("Cancel the download"));
 
   // Update the icon in case the user had an error before
-  QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/cloud-download" : ":/black/cloud-download"};
-  lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+  lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/cloud-download").arg(this->getThemedResourcePath()))));
   lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
 
   // Rebind the events to the correct handlers
@@ -413,8 +409,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
     if (Utils::IsRunningStandaloneVersion())
     {
       // The app has been downloaded
-      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/folder" : ":/black/folder"};
-      lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+      lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/folder").arg(this->getThemedResourcePath()))));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Show the ZIP file in Windows Explorer"));
       lSearchButton->setToolTip(tr("Show the ZIP file in Windows Explorer"));
@@ -437,8 +432,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
     else
     {
       // The app has been downloaded
-      QString lPath{Utils::IsThemeDark(this->settings().display.applicationTheme) ? ":/white/arrow-up" : ":/black/arrow-up"};
-      lSearchButton->setIcon(QIcon(QPixmap(lPath)));
+      lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/arrow-up").arg(this->getThemedResourcePath()))));
       lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
       lSearchButton->setText(tr("Close MFBOPC and install the update"));
       lSearchButton->setToolTip(tr("Close MFBOPC and install the update"));
