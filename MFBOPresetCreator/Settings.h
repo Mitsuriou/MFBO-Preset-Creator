@@ -67,7 +67,11 @@ private:
   void presetCreatorTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
   void batchConversionTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
   void retargetingToolTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
-  void targetMeshesChanged(BodyNameVersion& aBodyToUpdate, FeetNameVersion& aFeetToUpdate, const BodyNameVersion& aBody, const FeetNameVersion& aFeet, const QString& aObjectNamePrefix);
+  void targetMeshesChanged(BodyNameVersion& aBodyToUpdate,
+                           FeetNameVersion& aFeetToUpdate,
+                           const BodyNameVersion& aBody,
+                           const FeetNameVersion& aFeet,
+                           const QString& aObjectNamePrefix);
 
   // Style choices
   void chooseFont();

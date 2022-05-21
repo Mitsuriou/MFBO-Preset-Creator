@@ -33,14 +33,11 @@ BatchConversionPicker::BatchConversionPicker(QWidget* aParent,
 
 void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (this->mData.presets.size() == 0
       || Utils::DisplayQuestionMessage(this,
                                        tr("Closing"),
                                        tr("Do you want to close the window?"),
-                                       lIconFolder,
+                                       this->getThemedResourcePath(),
                                        "help-circle",
                                        tr("Close the window"),
                                        tr("Go back to the batch conversion: results picker window"),
@@ -61,9 +58,6 @@ void BatchConversionPicker::closeEvent(QCloseEvent* aEvent)
 
 void BatchConversionPicker::initializeGUI()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(), false)};
 
@@ -96,7 +90,14 @@ void BatchConversionPicker::initializeGUI()
   lLeftLayout->addWidget(lLeftList);
 
   // Full quick preset creation button
-  auto lFullQuickPresetCreationButton{ComponentFactory::CreateButton(this, tr("Quick preset(s) creation (all mods)"), "", "bolt", lIconFolder, "full_quick_preset_creation", false, true)};
+  auto lFullQuickPresetCreationButton{ComponentFactory::CreateButton(this,
+                                                                     tr("Quick preset(s) creation (all mods)"),
+                                                                     "",
+                                                                     "bolt",
+                                                                     this->getThemedResourcePath(),
+                                                                     "full_quick_preset_creation",
+                                                                     false,
+                                                                     true)};
   lLeftLayout->addWidget(lFullQuickPresetCreationButton);
 
   /*=============*/
@@ -129,10 +130,23 @@ void BatchConversionPicker::initializeGUI()
   lMiddleLayout->addWidget(lNoDataLabel);
 
   // Create the middle list scroll area + list which will contain all the available data entries
-  ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(), true, false, lMiddleLayout, "middle_list_scrollable_zone", QMargins(0, 0, 0, 0), "middle_list");
+  ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(),
+                                                 true,
+                                                 false,
+                                                 lMiddleLayout,
+                                                 "middle_list_scrollable_zone",
+                                                 QMargins(0, 0, 0, 0),
+                                                 "middle_list");
 
   // Quick preset creation button
-  auto lSimpleQuickPresetCreationButton{ComponentFactory::CreateButton(this, tr("Quick preset(s) creation (active mod)"), "", "bolt", lIconFolder, "simple_quick_preset_creation", true, true)};
+  auto lSimpleQuickPresetCreationButton{ComponentFactory::CreateButton(this,
+                                                                       tr("Quick preset(s) creation (active mod)"),
+                                                                       "",
+                                                                       "bolt",
+                                                                       this->getThemedResourcePath(),
+                                                                       "simple_quick_preset_creation",
+                                                                       true,
+                                                                       true)};
   lMiddleLayout->addWidget(lSimpleQuickPresetCreationButton);
 
   /*============*/
@@ -192,7 +206,12 @@ void BatchConversionPicker::initializeGUI()
   lRightDataLayout->addWidget(lDropSectionSkeleton);
 
   // BodySlide output settings group box
-  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide output"), "bodyslide-logo", lIconFolder, this->settings().display.font.pointSize, "bodyslide_groupbox")};
+  auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this,
+                                                           tr("BodySlide output"),
+                                                           "bodyslide-logo",
+                                                           this->getThemedResourcePath(),
+                                                           this->settings().display.font.pointSize,
+                                                           "bodyslide_groupbox")};
   lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -224,7 +243,7 @@ void BatchConversionPicker::initializeGUI()
   lNamesInApp->setTextFormat(Qt::RichText);
   lNamesInApp->setText(QString("<p style=\"text-align: left; padding: 0px; margin: 0px;\">"
                                "<img src=\":/%1/info-circle-smaller\" alt=\"~info icon~\" style=\"vertical-align: baseline;\"> %2</p>")
-                         .arg(lIconFolder, tr("Presets names:")));
+                         .arg(this->getThemedResourcePath(), tr("Presets names:")));
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
@@ -243,7 +262,14 @@ void BatchConversionPicker::initializeGUI()
   /* Right list: Presets controls */
   /*==============================*/
   // Previous preset
-  auto lPreviousPreset{ComponentFactory::CreateButton(this, tr("Previous preset"), "", "arrow-left", lIconFolder, "previous_preset", false, true)};
+  auto lPreviousPreset{ComponentFactory::CreateButton(this,
+                                                      tr("Previous preset"),
+                                                      "",
+                                                      "arrow-left",
+                                                      this->getThemedResourcePath(),
+                                                      "previous_preset",
+                                                      false,
+                                                      true)};
   lRightNavigationLayout->addWidget(lPreviousPreset, 0, 0);
 
   // Active preset number
@@ -252,26 +278,52 @@ void BatchConversionPicker::initializeGUI()
   lRightNavigationLayout->addWidget(lActivePresetNumber, 0, 1);
 
   // Next preset
-  auto lNextPreset{ComponentFactory::CreateButton(this, tr("Next preset"), "", "arrow-right", lIconFolder, "next_preset", false, true)};
+  auto lNextPreset{ComponentFactory::CreateButton(this,
+                                                  tr("Next preset"),
+                                                  "",
+                                                  "arrow-right",
+                                                  this->getThemedResourcePath(),
+                                                  "next_preset",
+                                                  false,
+                                                  true)};
   lRightNavigationLayout->addWidget(lNextPreset, 0, 2);
 
   // Remove current preset
-  auto lRemoveActivePreset{ComponentFactory::CreateButton(this, tr("Remove current preset"), "", "minus", lIconFolder, "remove_current_preset", false, true)};
+  auto lRemoveActivePreset{ComponentFactory::CreateButton(this,
+                                                          tr("Remove current preset"),
+                                                          "",
+                                                          "minus",
+                                                          this->getThemedResourcePath(),
+                                                          "remove_current_preset",
+                                                          false,
+                                                          true)};
   lRightNavigationLayout->addWidget(lRemoveActivePreset, 0, 3);
 
   // Add new empty preset
-  auto lAddEmptyPreset{ComponentFactory::CreateButton(this, tr("Add new preset"), "", "plus", lIconFolder, "add_empty_preset", false, true)};
+  auto lAddEmptyPreset{ComponentFactory::CreateButton(this,
+                                                      tr("Add new preset"),
+                                                      "",
+                                                      "plus",
+                                                      this->getThemedResourcePath(),
+                                                      "add_empty_preset",
+                                                      false,
+                                                      true)};
   lRightNavigationLayout->addWidget(lAddEmptyPreset, 0, 4);
 
   /*========================================*/
   /* Validate selection and generate button */
   /*========================================*/
-  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
-  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Batch generate the files on my computer"), "", "build", lIconFolder, "generate")};
+  auto lGenerateButton{ComponentFactory::CreateButton(this,
+                                                      tr("Batch generate the files on my computer"),
+                                                      "",
+                                                      "build",
+                                                      this->getThemedResourcePath(),
+                                                      "generate")};
   lGenerateButton->setAutoDefault(true);
   lGenerateButton->setDefault(true);
-  lButtonLayout->addWidget(lGenerateButton);
+  lButtonsLayout->addWidget(lGenerateButton);
 
   // Pre-bind initialization functions
   this->updateOSPXMLPreview(QString());
@@ -810,14 +862,11 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
     return;
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Ask the user if they want to create the detected possible presets
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Create new preset(s)?"),
                                     tr("Do you want to create %1 new preset(s)?").arg(lNumberOfNewPresets),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Create the %1 new preset(s)").arg(lNumberOfNewPresets),
                                     tr("Do not create the %1 new preset(s)").arg(lNumberOfNewPresets),
@@ -880,16 +929,13 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
 
 void BatchConversionPicker::validateSelection()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Inform the user that the window will be closed since no preset were made
   if (this->mData.presets.size() == 0)
   {
     Utils::DisplayInfoMessage(this,
                               tr("No preset created"),
                               tr("You have not created any preset. Batch conversion: results picker window is going to be closed."),
-                              lIconFolder,
+                              this->getThemedResourcePath(),
                               "alert-circle",
                               tr("OK"));
     this->accept();
@@ -913,7 +959,7 @@ void BatchConversionPicker::validateSelection()
       if (Utils::DisplayQuestionMessage(this,
                                         tr("Invalid preset detected"),
                                         tr("The preset number %1 is not valid.\n\nA preset is considered as valid when at least one mesh part has been defined and the BodySlide files names and BodySlide preset name have been given.\n\nWould you like to delete this invalid preset and continue, or cancel the generation and fix this preset?").arg(lNaturalIndex),
-                                        lIconFolder,
+                                        this->getThemedResourcePath(),
                                         "help-circle",
                                         tr("Delete the preset number %1 and continue the generation").arg(lNaturalIndex),
                                         tr("Go back to the batch conversion: results picker window"),
@@ -959,7 +1005,7 @@ void BatchConversionPicker::validateSelection()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No valid preset"),
                                       tr("No valid preset has been found.\n\nWould you like to close the batch conversion: results picker window now?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Close the batch conversion: results picker window"),
                                       tr("Go back to the batch conversion: results picker window"),
@@ -983,7 +1029,7 @@ void BatchConversionPicker::validateSelection()
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Start batch generation now?"),
                                     tr("%1 valid preset(s) has (have) been found.\n\nWould you like to generate it (them) now?").arg(this->mData.presets.size()),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Generate the preset(s) files on my disk"),
                                     tr("Go back to the batch conversion: results picker window"),

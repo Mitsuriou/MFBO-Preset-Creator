@@ -21,7 +21,7 @@
 #include <QStyledItemDelegate>
 
 AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("Assisted Conversion"), "pencil", aSettings, aLastPaths, 700)
+  : TitleDialog(aParent, tr("Assisted Conversion"), "pencil", aSettings, aLastPaths, 800)
 {
   // Build the window's interface
   this->initializeGUI();
@@ -43,13 +43,10 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Close the window"),
                                     tr("Go back to the assisted conversion tool window"),
@@ -70,9 +67,6 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
 
 void AssistedConversion::initializeGUI()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Main layout
   const auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(3, 1); // Make the hint zone as high as possible
@@ -99,7 +93,14 @@ void AssistedConversion::initializeGUI()
                          0);
 
   // Launch search button
-  auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
+  auto lLaunchSearchButton{ComponentFactory::CreateButton(this,
+                                                          tr("Launch the scan of the mod"),
+                                                          "",
+                                                          "search",
+                                                          this->getThemedResourcePath(),
+                                                          "launch_search_button",
+                                                          true,
+                                                          true)};
   lMainLayout->addWidget(lLaunchSearchButton, 2, 0);
 
   // Hint zone
@@ -112,9 +113,6 @@ void AssistedConversion::initializeGUI()
 
 void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -127,7 +125,7 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))), tr("From local directory"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(this->getThemedResourcePath()))), tr("From local directory"));
 
   // Input path label
   lTabLayout->addWidget(new QLabel(tr("Input path:"), this));
@@ -140,7 +138,14 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lInputPathLineEdit);
 
   // Input chooser
-  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this,
+                                                        tr("Choose a directory..."),
+                                                        "",
+                                                        "folder",
+                                                        this->getThemedResourcePath(),
+                                                        "",
+                                                        false,
+                                                        true)};
   lTabLayout->addWidget(lInputPathChooser);
 
   // Event binding
@@ -149,9 +154,6 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
 
 void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -163,7 +165,7 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(lIconFolder))), tr("From NexusMods URL"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(this->getThemedResourcePath()))), tr("From NexusMods URL"));
 
   // Input mod's URL/ID label
   lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0);
@@ -185,7 +187,14 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1);
 
   // Save the API key
-  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save this API key"), "", "save", lIconFolder, "save_api_key", false, true)};
+  auto lSaveAPIKey{ComponentFactory::CreateButton(this,
+                                                  tr("Save this API key"),
+                                                  "",
+                                                  "save",
+                                                  this->getThemedResourcePath(),
+                                                  "save_api_key",
+                                                  false,
+                                                  true)};
   lTabLayout->addWidget(lSaveAPIKey, 1, 2);
 
   // Open the NexusMods API keys' management page
@@ -193,7 +202,7 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
                                                                  tr("View my keys (nexusmods.com)"),
                                                                  "",
                                                                  "external",
-                                                                 lIconFolder,
+                                                                 this->getThemedResourcePath(),
                                                                  "open_api_keys_management_page",
                                                                  false,
                                                                  true)};
@@ -274,11 +283,8 @@ void AssistedConversion::chooseInputDirectory()
 
 void AssistedConversion::saveAPIKey()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
-  const auto lSucceed{Utils::SaveAPIKeyToFile(lAPIKeyLineEdit->text(), this, lIconFolder)};
+  const auto lSucceed{Utils::SaveAPIKeyToFile(lAPIKeyLineEdit->text(), this, this->getThemedResourcePath())};
 
   this->updateSaveAPIKeyButtonState(lSucceed);
 }
@@ -340,15 +346,12 @@ void AssistedConversion::launchSearchProcess()
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   lLaunchSearchButton->setDisabled(true);
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (this->hasUserSelectedAnything())
   {
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Relaunch the scan"),
                                       tr("You will lose all the unsaved data. Do you still want to relaunch the scan?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Relaunch the scan"),
                                       tr("Cancel the relaunch"),
@@ -380,9 +383,6 @@ void AssistedConversion::launchSearchProcess()
 
 void AssistedConversion::launchSearchFromLocalFolder()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
@@ -393,7 +393,7 @@ void AssistedConversion::launchSearchFromLocalFolder()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No mod archive file has been found"),
                                       tr("No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
@@ -415,7 +415,7 @@ void AssistedConversion::launchSearchFromLocalFolder()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("BSA file found"),
                                       tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
@@ -838,11 +838,13 @@ void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
     this->createSelectionBlock(*lDataContainer, lNifFileInformation.second, lNifFileInformation.first, lNextRow++);
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Create the validation button
-  auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Validate the selection(s) above and go back to the main window"), "", "playlist-check", lIconFolder, "validate_selection")};
+  auto lValidateSelection{ComponentFactory::CreateButton(this,
+                                                         tr("Validate the selection(s) above and go back to the main window"),
+                                                         "",
+                                                         "playlist-check",
+                                                         this->getThemedResourcePath(),
+                                                         "validate_selection")};
   lMainLayout->addWidget(lValidateSelection, 4, 0);
 
   QObject::connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
@@ -1069,7 +1071,7 @@ void AssistedConversion::validateSelection()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
-                                      Utils::GetIconResourceFolder(this->settings().display.applicationTheme),
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),

@@ -33,14 +33,19 @@ protected:
   QLayout* getCentralLayout();
   QHBoxLayout* getButtonsLayout();
 
+  // Utils functions
+  const QString& getThemedResourcePath() const;
+
 private:
   // Common attributes
   const Struct::Settings mSettings;
   std::map<QString, QString>* mLastPaths{nullptr};
 
+  const QString mApplicationIconResourceFolder;
+
   void setWindowProperties(const QString& aTitle,
                            const QString& aIconName,
                            const int aMinimumWidth,
                            const int aMinimumHeight);
-  void constructGUI(const QString& aTitle, const bool aGenerateButtonsLayout);
+  void constructGUI(const QString& aTitle);
 };

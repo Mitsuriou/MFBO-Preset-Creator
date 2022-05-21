@@ -92,7 +92,7 @@ namespace Struct
     bool underline{false};
     int weight{50};
 
-    bool operator==(const Struct::Font& aSettings)
+    bool operator==(const Struct::Font& aSettings) const
     {
       return (
         this->family == aSettings.family
@@ -104,7 +104,7 @@ namespace Struct
         && this->weight == aSettings.weight);
     }
 
-    bool operator!=(const Struct::Font& aSettings)
+    bool operator!=(const Struct::Font& aSettings) const
     {
       return (this->family != aSettings.family
               || this->italic != aSettings.italic
@@ -130,14 +130,14 @@ namespace Struct
       return lNode;
     }
 
-    bool operator==(const Struct::GeneralSettings& rhs)
+    bool operator==(const Struct::GeneralSettings& rhs) const
     {
       return (
         this->eachButtonSavesItsLastUsedPath == rhs.eachButtonSavesItsLastUsedPath
         && this->startupAction == rhs.startupAction);
     }
 
-    bool operator!=(const Struct::GeneralSettings& rhs)
+    bool operator!=(const Struct::GeneralSettings& rhs) const
     {
       return (
         this->eachButtonSavesItsLastUsedPath != rhs.eachButtonSavesItsLastUsedPath
@@ -199,7 +199,7 @@ namespace Struct
       return lDisplayNode;
     }
 
-    bool operator==(const Struct::DisplaySettings& rhs)
+    bool operator==(const Struct::DisplaySettings& rhs) const
     {
       return (
         this->applicationTheme == rhs.applicationTheme
@@ -220,7 +220,7 @@ namespace Struct
         && this->warningColor == rhs.warningColor);
     };
 
-    bool operator!=(const Struct::DisplaySettings& rhs)
+    bool operator!=(const Struct::DisplaySettings& rhs) const
     {
       return (
         this->applicationTheme != rhs.applicationTheme
@@ -256,12 +256,12 @@ namespace Struct
       return lNode;
     }
 
-    bool operator==(const Struct::BodyFeetSettings& rhs)
+    bool operator==(const Struct::BodyFeetSettings& rhs) const
     {
       return (this->bodyMesh == rhs.bodyMesh && this->feetMesh == rhs.feetMesh);
     }
 
-    bool operator!=(const Struct::BodyFeetSettings& rhs)
+    bool operator!=(const Struct::BodyFeetSettings& rhs) const
     {
       return (this->bodyMesh != rhs.bodyMesh || this->feetMesh != rhs.feetMesh);
     }
@@ -281,14 +281,14 @@ namespace Struct
       return lNode;
     }
 
-    bool operator==(const Struct::GenericDialogSettings& rhs)
+    bool operator==(const Struct::GenericDialogSettings& rhs) const
     {
       return (
         this->automaticallyOpenFinalDirectory == rhs.automaticallyOpenFinalDirectory
         && this->defaultBodyFeet == rhs.defaultBodyFeet);
     }
 
-    bool operator!=(const Struct::GenericDialogSettings& rhs)
+    bool operator!=(const Struct::GenericDialogSettings& rhs) const
     {
       return (
         this->automaticallyOpenFinalDirectory != rhs.automaticallyOpenFinalDirectory
@@ -316,7 +316,7 @@ namespace Struct
       return lRootNode;
     }
 
-    bool operator==(const Struct::Settings& rhs)
+    bool operator==(const Struct::Settings& rhs) const
     {
       return (
         this->batchConversion == rhs.batchConversion
@@ -326,7 +326,7 @@ namespace Struct
         && this->presetsRetargeting == rhs.presetsRetargeting);
     }
 
-    bool operator!=(const Struct::Settings& rhs)
+    bool operator!=(const Struct::Settings& rhs) const
     {
       return (
         this->batchConversion != rhs.batchConversion
@@ -367,6 +367,73 @@ namespace Struct
     int role{0};
 
     AssistedConversionResult() = delete;
+  };
+
+  struct DatabaseSliderSet
+  {
+  public:
+    explicit DatabaseSliderSet(const bool aIsActive,
+                               const QString& aSliderSetName,
+                               const MeshPartType aMeshType)
+      : active(aIsActive)
+      , sliderSetName(aSliderSetName)
+      , meshType(aMeshType)
+    {}
+
+    // Active
+    void setActive(const bool aIsActive)
+    {
+      this->active = aIsActive;
+    }
+
+    const bool& isActive() const
+    {
+      return this->active;
+    }
+
+    // Slider set name
+    void setSliderSetName(const QString& aSliderSetName)
+    {
+      this->sliderSetName = aSliderSetName;
+    }
+
+    const QString& getSliderSetName() const
+    {
+      return this->sliderSetName;
+    }
+
+    // Mesh type
+    void setMeshType(const MeshPartType aMeshType)
+    {
+      this->meshType = aMeshType;
+    }
+
+    const MeshPartType& getMeshType() const
+    {
+      return this->meshType;
+    }
+
+    // Operators overload
+    bool operator==(const Struct::DatabaseSliderSet& rhs) const
+    {
+      return (this->active == rhs.active
+              && this->sliderSetName == rhs.sliderSetName
+              && this->meshType == rhs.meshType);
+    }
+
+    bool operator!=(const Struct::DatabaseSliderSet& rhs) const
+    {
+      return (this->active != rhs.active
+              || this->sliderSetName != rhs.sliderSetName
+              || this->meshType != rhs.meshType);
+    }
+
+  private:
+    bool active;
+    QString sliderSetName;
+    MeshPartType meshType{MeshPartType::UNKNOWN};
+
+    DatabaseSliderSet() = delete;
   };
 
   struct SliderSetResult

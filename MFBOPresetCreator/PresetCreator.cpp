@@ -31,14 +31,14 @@ PresetCreator::PresetCreator(QWidget* aParent, const Struct::Settings& aSettings
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this)};
-  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   // Setup all the different GUI components
   this->setupBodyMeshesGUI(*lMainLayout);
   this->setupSkeletonGUI(*lMainLayout);
   this->setupBodySlideGUI(*lMainLayout);
   this->setupOutputGUI(*lMainLayout);
-  this->setupButtons(*lButtonLayout);
+  this->setupButtons(*lButtonsLayout);
 
   // Update the GUI based on the values entered
   this->refreshAllPreviewFields();

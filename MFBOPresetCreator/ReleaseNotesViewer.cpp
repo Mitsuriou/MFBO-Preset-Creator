@@ -44,11 +44,8 @@ void ReleaseNotesViewer::initializeGUI()
   lViewer->setOpenExternalLinks(true);
   lMainLayout->addWidget(lViewer);
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Open in default browser button
-  auto lButton{ComponentFactory::CreateButton(this, tr("View in default browser"), "", "external", lIconFolder)};
+  auto lButton{ComponentFactory::CreateButton(this, tr("View in default browser"), "", "external", this->getThemedResourcePath())};
   lMainLayout->addWidget(lButton);
 
   // Event binding

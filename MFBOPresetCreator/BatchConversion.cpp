@@ -20,14 +20,14 @@
 #include <QStyledItemDelegate>
 
 BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("Batch Conversion"), "reorder", aSettings, aLastPaths, 1000)
+  : TitleDialog(aParent, tr("Batch Conversion"), "reorder", aSettings, aLastPaths, 1200)
   , mFileWatcher(new QFileSystemWatcher())
   , mTargetBodyMesh(aSettings.batchConversion.defaultBodyFeet.bodyMesh)
   , mTargetFeetMesh(aSettings.batchConversion.defaultBodyFeet.feetMesh)
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
-  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   // Setup all the different GUI components
   this->setupGeneralGUI(*lMainLayout);
@@ -36,7 +36,7 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
   this->setupOutputGUI(*lMainLayout);
   this->setupScanTweaksGUI(*lMainLayout);
   this->setupGenerationAdjustmentGUI(*lMainLayout);
-  this->setupButtons(*lButtonLayout);
+  this->setupButtons(*lButtonsLayout);
 
   QObject::connect(this->mFileWatcher, &QFileSystemWatcher::directoryChanged, this, &BatchConversion::updateOutputPreview);
 
@@ -62,13 +62,10 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Close the window"),
                                     tr("Go back to the batch conversion window"),
@@ -91,11 +88,12 @@ void BatchConversion::closeEvent(QCloseEvent* aEvent)
 
 void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Input location"), "tune", lIconFolder, this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this,
+                                                  tr("Input location"),
+                                                  "tune",
+                                                  this->getThemedResourcePath(),
+                                                  this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 0, 0);
 
   // Grid layout
@@ -119,7 +117,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   lLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
-  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", this->getThemedResourcePath())};
   lLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Event binding
@@ -128,11 +126,8 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 
 void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", lIconFolder, this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 1, 0);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -154,11 +149,11 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lLayout->addWidget(lSkeletonChooserHuman, 0, 1);
 
   // Refresh button
-  auto lSkeletonRefresherHuman{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
+  auto lSkeletonRefresherHuman{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", this->getThemedResourcePath())};
   lLayout->addWidget(lSkeletonRefresherHuman, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", lIconFolder)};
+  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", this->getThemedResourcePath())};
   lLayout->addWidget(lOpenAssetsDirectoryHuman, 0, 3);
 
   // Beast skeleton file
@@ -171,13 +166,13 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   lLayout->addWidget(lSkeletonChooserBeast, 1, 1);
 
   // Refresh button
-  auto lSkeletonRefresherBeast{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
+  auto lSkeletonRefresherBeast{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", this->getThemedResourcePath())};
   lLayout->addWidget(lSkeletonRefresherBeast, 1, 2);
 
   this->populateSkeletonChoosers();
 
   // Open assets directory
-  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", lIconFolder)};
+  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", this->getThemedResourcePath())};
   lLayout->addWidget(lOpenAssetsDirectoryBeast, 1, 3);
 
   // Event binding
@@ -189,11 +184,8 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 
 void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", lIconFolder, this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 2, 0);
 
   // Grid layout
@@ -208,7 +200,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
                                                                           *lLayout,
                                                                           true,
                                                                           0,
-                                                                          lIconFolder,
+                                                                          this->getThemedResourcePath(),
                                                                           QString("target_meshes_picker_button"),
                                                                           QString("currently_targeted_body_feet"))};
 
@@ -232,7 +224,7 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   lFiltersList->setWordWrap(true);
   lFiltersWrapper->addWidget(lFiltersList);
 
-  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
+  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", this->getThemedResourcePath(), "edit_filters")};
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Pre-bind initialization functions
@@ -249,11 +241,8 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 
 void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->settings().display.font.pointSize);
+  ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, this->getThemedResourcePath(), this->mMinimumFirstColumnWidth, this->settings().display.font.pointSize);
 
   // Event binding
   auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
@@ -271,11 +260,8 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 
 void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", lIconFolder, this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 4, 0);
 
   // Layout
@@ -309,11 +295,8 @@ void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 
 void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", lIconFolder, this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 5, 0);
 
   // Layout
@@ -339,11 +322,8 @@ void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 
 void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Batch generate button
-  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the directory"), "", "build", lIconFolder)};
+  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the directory"), "", "build", this->getThemedResourcePath())};
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
@@ -441,9 +421,6 @@ void BatchConversion::chooseInputDirectory()
 
 void BatchConversion::launchSearchProcess()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Input path
   const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
@@ -491,7 +468,7 @@ void BatchConversion::launchSearchProcess()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Already existing directory"),
                                       tr("The directory \"%1\" already exists on your computer. Do you still want to generate the files in this directory?").arg(lEntryDirectory),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Continue the search"),
                                       tr("Cancel the search"),

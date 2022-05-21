@@ -1829,7 +1829,9 @@ int DataLists::GetVersionOffset(const FeetVariant& aFeetVariant)
   return 0;
 }
 
-QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const MeshPartType& aResourceType)
+QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion,
+                                         const FeetNameVersion& aFeetNameVersion,
+                                         const MeshPartType& aResourceType)
 {
   QString lResourceType;
   QString lResourceName;

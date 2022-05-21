@@ -61,7 +61,7 @@ void Update::initializeGUI()
   const auto lForcedVersionSuffix(this->mForceStableContext ? tr(" (stable only)") : (this->mForceBetaContext ? tr(" (BETA only)") : QString()));
 
   // Check for updates
-  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", Utils::GetIconResourceFolder(this->settings().display.applicationTheme), "search_button")};
+  auto lUpdateButton{ComponentFactory::CreateButton(this, tr("Check for updates") + lForcedVersionSuffix, "", "cloud-search", this->getThemedResourcePath(), "search_button")};
   lUpdateButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
   lUpdateButton->setContentsMargins(0, 0, 0, 0);
   lMainLayout->addWidget(lUpdateButton);
@@ -120,10 +120,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 
   if (!aSucceeded)
   {
-    // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
-    lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder))));
+    lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/alert-circle").arg(this->getThemedResourcePath()))));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Check for updates once again"));
     lSearchButton->setToolTip(tr("Check for updates once again"));
@@ -464,11 +461,8 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
   }
   else
   {
-    // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
     // Error while downloading
-    lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/alert-circle").arg(lIconFolder))));
+    lSearchButton->setIcon(QIcon(QPixmap(QString(":/%1/alert-circle").arg(this->getThemedResourcePath()))));
     lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
     lSearchButton->setText(tr("Try to download the update once again"));
     lSearchButton->setToolTip(tr("Try to download the update once again"));

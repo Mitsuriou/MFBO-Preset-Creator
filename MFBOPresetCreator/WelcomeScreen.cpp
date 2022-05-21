@@ -56,11 +56,9 @@ void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
 
 void WelcomeScreen::initializeGUI()
 {
-  // Keep a reference to the user theme
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Main layout
-  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(), true, false)};
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   /*================================*/
   /* Show / Hide the welcome screen */
@@ -70,7 +68,7 @@ void WelcomeScreen::initializeGUI()
                                                                "",
                                                                "always_show_welcome_screen",
                                                                this->settings().general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
-  lMainLayout->addWidget(lShowHideWelcomeScreen);
+  lButtonsLayout->addWidget(lShowHideWelcomeScreen);
 
   /*============*/
   /* Ko-Fi page */
@@ -86,7 +84,7 @@ void WelcomeScreen::initializeGUI()
                                                     tr("Donate - buy me a coffee (ko-fi.com)"),
                                                     "",
                                                     "coffee",
-                                                    lIconFolder,
+                                                    this->getThemedResourcePath(),
                                                     "",
                                                     false,
                                                     true)};
@@ -133,7 +131,7 @@ void WelcomeScreen::initializeGUI()
                                                             tr("Download the latest stable update"),
                                                             "",
                                                             "cloud-download",
-                                                            lIconFolder,
+                                                            this->getThemedResourcePath(),
                                                             "download_stable_update",
                                                             false,
                                                             true)};
@@ -163,7 +161,7 @@ void WelcomeScreen::initializeGUI()
                                                           tr("Download the latest BETA update"),
                                                           "",
                                                           "cloud-download",
-                                                          lIconFolder,
+                                                          this->getThemedResourcePath(),
                                                           "download_beta_update",
                                                           false,
                                                           true)};
@@ -179,7 +177,7 @@ void WelcomeScreen::initializeGUI()
   lIncomingFeaturesLabel->setWordWrap(true);
   lMainLayout->addWidget(lIncomingFeaturesLabel);
 
-  auto lOpenIncomingFeatures{ComponentFactory::CreateButton(this, tr("Incoming features list (github.com)"), "", "external", lIconFolder, "", false, true)};
+  auto lOpenIncomingFeatures{ComponentFactory::CreateButton(this, tr("Incoming features list (github.com)"), "", "external", this->getThemedResourcePath(), "", false, true)};
   lMainLayout->addWidget(lOpenIncomingFeatures);
 
   /*==============*/
@@ -191,7 +189,7 @@ void WelcomeScreen::initializeGUI()
   lKnownIssuesLabel->setWordWrap(true);
   lMainLayout->addWidget(lKnownIssuesLabel);
 
-  auto lOpenKnownIssues{ComponentFactory::CreateButton(this, tr("Known issues list (github.com)"), "", "external", lIconFolder, "", false, true)};
+  auto lOpenKnownIssues{ComponentFactory::CreateButton(this, tr("Known issues list (github.com)"), "", "external", this->getThemedResourcePath(), "", false, true)};
   lMainLayout->addWidget(lOpenKnownIssues);
 
   /*=====================*/
@@ -203,7 +201,7 @@ void WelcomeScreen::initializeGUI()
   lGuideLabel->setWordWrap(true);
   lMainLayout->addWidget(lGuideLabel);
 
-  auto lOpenGuideTutorials{ComponentFactory::CreateButton(this, tr("User guide and tutorials (docs.google.com)"), "", "external", lIconFolder, "", false, true)};
+  auto lOpenGuideTutorials{ComponentFactory::CreateButton(this, tr("User guide and tutorials (docs.google.com)"), "", "external", this->getThemedResourcePath(), "", false, true)};
   lMainLayout->addWidget(lOpenGuideTutorials);
 
   /*===============*/

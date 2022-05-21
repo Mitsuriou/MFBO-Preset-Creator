@@ -6,13 +6,16 @@
 #include <QDir>
 #include <QDomDocument>
 #include <QFile>
+#include <QPlainTextEdit>
 #include <QProgressBar>
 #include <QProgressDialog>
+#include <QSplitter>
 
 constexpr int XML_INDENT = 4;
+constexpr QChar DB_SEPARATOR = ';';
 
 SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 700)
+  : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 800)
 {
   // Load the database before doing anything else
   this->loadDatabase();
@@ -32,11 +35,32 @@ void SliderSetsDBManager::closeEvent(QCloseEvent*)
 
 void SliderSetsDBManager::initializeGUI()
 {
-  const auto lMainLayout = new QVBoxLayout(this);
-  this->getCentralWidget()->setLayout(lMainLayout);
+  // Main layout with scroll area
+  auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget(), true, false)};
 
-  const auto lButton{ComponentFactory::CreateButton(this, "DEBUG - IMPORT PRESETS", "", "", "")};
-  lMainLayout->addWidget(lButton);
+  // Splitter
+  const auto lSplitter{new QSplitter(Qt::Horizontal, this)};
+  lSplitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+  lMainLayout->addWidget(lSplitter, 0, 0);
+
+  // Left side
+  const auto lLeftWrapper{new QWidget(this)};
+  const auto lLeftWrapperLayout{new QGridLayout(this)};
+  lLeftWrapper->setLayout(lLeftWrapperLayout);
+
+  const auto lLeftLayout{ComponentFactory::CreateScrollAreaComponentLayout(lLeftWrapper, *lLeftWrapperLayout, 0, 0)};
+  lSplitter->addWidget(lLeftWrapper);
+
+  auto lButton{ComponentFactory::CreateButton(this, "DEBUG - IMPORT SLIDER SETS", "", "", "")};
+  lLeftLayout->addWidget(lButton);
+
+  // Right side
+  const auto lFileViewer{new QPlainTextEdit(this)};
+  lFileViewer->setReadOnly(true);
+  lFileViewer->setLineWrapMode(QPlainTextEdit::NoWrap);
+  lFileViewer->setWordWrapMode(QTextOption::NoWrap);
+  lFileViewer->setPlainText("test");
+  lSplitter->addWidget(lFileViewer);
 
   QObject::connect(lButton, &QPushButton::clicked, this, &SliderSetsDBManager::openSliderSetsImporter);
 }
@@ -58,10 +82,8 @@ void SliderSetsDBManager::loadDatabase()
     QTextStream in(&lDatabaseFile);
     while (!in.atEnd())
     {
-      const auto lData{this->parseDatabaseLine(in.readLine())};
-
       // This should be the only place the mInitialDatabase is used as lhs
-      this->mInitialDatabase[lData.first] = lData.second;
+      this->mInitialDatabase.insert(this->parseDatabaseLine(in.readLine()));
     }
   }
   lDatabaseFile.close();
@@ -71,6 +93,9 @@ void SliderSetsDBManager::loadDatabase()
 
   // Purge the database
   this->detectRemovedFiles();
+
+  // Save the new database state
+  this->saveDatabase();
 }
 
 void SliderSetsDBManager::saveDatabase()
@@ -87,6 +112,8 @@ void SliderSetsDBManager::saveDatabase()
       lTextStream.flush();
 
       lOSPFile.close();
+
+      this->mInitialDatabase = this->mRunningDatabase;
     }
     else
     {
@@ -116,16 +143,16 @@ void SliderSetsDBManager::openSliderSetsImporter()
   QObject::connect(lSliderSetsImporter, &SliderSetsImporter::valuesChosen, this, &SliderSetsDBManager::importNewSliderSets);
 }
 
-void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSetResult>& aChosenPresets)
+void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSetResult>& aChosenSliderSets)
 {
   std::map<QString, std::vector<const Struct::SliderSetResult*>> lPaths;
   auto lEntriesCount{0};
 
   // Iterate over the results
-  for (const auto& lChosenPreset : aChosenPresets)
+  for (const auto& lChosenSliderSet : aChosenSliderSets)
   {
     // Filter the paths to know which file to open and parse
-    lPaths[lChosenPreset.getFilePath()].push_back(&lChosenPreset);
+    lPaths[lChosenSliderSet.getFilePath()].push_back(&lChosenSliderSet);
     lEntriesCount++;
   }
 
@@ -174,7 +201,7 @@ void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSe
       {
         const auto lSliderSetName{lNextNodeToParse.attribute("name", "")};
 
-        // Check if a preset chosen by the user has the same name than the current one
+        // Check if a SliderSet chosen by the user has the same name than the current one
         for (const auto& lSliderSet : lEntry.second)
         {
           if (lSliderSetName == lSliderSet->getOriginalSliderSetName())
@@ -182,7 +209,10 @@ void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSe
             // Update the name with the new one given by the user
             lNextNodeToParse.setAttribute("name", lSliderSet->getNewSliderSetName());
 
-            this->saveSliderSetToDatabase(lNextNodeToParse);
+            this->saveSliderSetToDatabase(lNextNodeToParse,
+                                          Struct::DatabaseSliderSet(true,
+                                                                    lSliderSet->getNewSliderSetName(),
+                                                                    lSliderSet->getMeshType()));
 
             break;
           }
@@ -197,7 +227,7 @@ void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSe
   }
 }
 
-bool SliderSetsDBManager::saveSliderSetToDatabase(const QDomElement& aSliderSetNode)
+bool SliderSetsDBManager::saveSliderSetToDatabase(const QDomElement& aSliderSetNode, const Struct::DatabaseSliderSet& aSliderSetData)
 {
   QString lXMLContent;
   QTextStream lStream(&lXMLContent, QIODevice::WriteOnly);
@@ -219,7 +249,7 @@ bool SliderSetsDBManager::saveSliderSetToDatabase(const QDomElement& aSliderSetN
 
     lOSPFile.close();
 
-    this->addDatabaseLine(lSliderSetIndex);
+    this->addDatabaseLine(lSliderSetIndex, aSliderSetData);
 
     return true;
   }
@@ -228,25 +258,34 @@ bool SliderSetsDBManager::saveSliderSetToDatabase(const QDomElement& aSliderSetN
   return false;
 }
 
-void SliderSetsDBManager::addDatabaseLine(const int& aIndex)
+void SliderSetsDBManager::addDatabaseLine(const int& aIndex, const Struct::DatabaseSliderSet& aSliderSetData)
 {
   auto lPosition{this->mRunningDatabase.find(aIndex)};
 
   // If the index is not already in the database, add it
   if (lPosition == this->mRunningDatabase.end())
   {
-    this->mRunningDatabase[aIndex] = true;
+    this->mRunningDatabase.insert({aIndex, aSliderSetData});
+  }
+
+  this->saveDatabase();
+}
+
+void SliderSetsDBManager::updateSliderSetName(const int aIndex, const QString& aNewName)
+{
+  const auto lPosition{this->mRunningDatabase.find(aIndex)};
+  if (lPosition != this->mRunningDatabase.end())
+  {
+    lPosition->second.setSliderSetName(aNewName);
   }
 }
 
-void SliderSetsDBManager::updateDatabaseLine(const int aIndex, const bool aValue)
+void SliderSetsDBManager::updateSliderSetMeshType(const int aIndex, const MeshPartType aMeshType)
 {
-  auto lPosition{this->mRunningDatabase.find(aIndex)};
-
-  // If the index is already in the database, update it
+  const auto lPosition{this->mRunningDatabase.find(aIndex)};
   if (lPosition != this->mRunningDatabase.end())
   {
-    lPosition->second = aValue;
+    lPosition->second.setMeshType(aMeshType);
   }
 }
 
@@ -255,7 +294,7 @@ void SliderSetsDBManager::removeFromDatabase(const int& aIndex)
   const auto lPosition{this->mRunningDatabase.find(aIndex)};
   if (lPosition != this->mRunningDatabase.end())
   {
-    lPosition->second = false;
+    lPosition->second.setActive(false);
   }
 }
 
@@ -286,16 +325,23 @@ QString SliderSetsDBManager::databaseToString()
   return lString;
 }
 
-std::pair<int, bool> SliderSetsDBManager::parseDatabaseLine(const QString& aLine)
+std::pair<int, Struct::DatabaseSliderSet> SliderSetsDBManager::parseDatabaseLine(const QString& aLine)
 {
-  const auto& lParts{aLine.split(',')};
-  return std::pair<int, bool>(lParts[0].toInt(), lParts[1].toInt() == 1);
+  const auto& lParts{aLine.split(DB_SEPARATOR)};
+  return {lParts[0].toInt(),
+          Struct::DatabaseSliderSet(lParts[1].toInt() == 1,
+                                    QByteArray::fromBase64(lParts[2].toUtf8()),
+                                    static_cast<MeshPartType>(lParts[3].toInt()))};
 }
 
-QString SliderSetsDBManager::stringifyDatabaseEntry(const std::pair<int, bool>& lEntry)
+QString SliderSetsDBManager::stringifyDatabaseEntry(const std::pair<int, Struct::DatabaseSliderSet>& lEntry)
 {
   return QString::number(lEntry.first)
-    .append(",")
-    .append(QString::number(lEntry.second))
+    .append(DB_SEPARATOR)
+    .append(QString::number(lEntry.second.isActive()))
+    .append(DB_SEPARATOR)
+    .append(lEntry.second.getSliderSetName().toUtf8().toBase64())
+    .append(DB_SEPARATOR)
+    .append(QString::number(static_cast<int>(lEntry.second.getMeshType())))
     .append("\n");
 }

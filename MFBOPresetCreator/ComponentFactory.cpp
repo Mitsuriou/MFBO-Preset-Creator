@@ -1,5 +1,4 @@
 #include "ComponentFactory.h"
-#include "TitleDialog.h"
 #include "Utils.h"
 #include <QCheckBox>
 #include <QFrame>
@@ -112,17 +111,17 @@ namespace ComponentFactory
     }
 
     // Create a scroll area
-    auto lScrollArea{new QScrollArea(aParent)};
+    const auto lScrollArea{new QScrollArea(aParent)};
     lScrollArea->setObjectName(aScrollAreaObjectName);
     lScrollArea->setContentsMargins(0, 0, 0, 0);
     lScrollArea->setWidgetResizable(true);
     lScrollArea->setStyleSheet("QScrollArea{border: none;}");
 
     // Add a QFrame to permit automatic expanding of the content inside the scroll area
-    auto lScrollAreaWidgetContent{new QFrame(lScrollArea)};
+    const auto lScrollAreaWidgetContent{new QFrame(lScrollArea)};
 
     // Main container
-    auto lNestedLayout{new QGridLayout(lScrollAreaWidgetContent)};
+    const auto lNestedLayout{new QGridLayout(lScrollAreaWidgetContent)};
     lNestedLayout->setObjectName(aNestedLayoutObjectName);
     lNestedLayout->setSpacing(10);
     lNestedLayout->setContentsMargins(aNestedLayoutMargins);
@@ -138,12 +137,12 @@ namespace ComponentFactory
     // Bottom layout for buttons
     if (aGenerateButtonsBottomLayout)
     {
-      auto lButtonLayout{new QHBoxLayout(aParent)};
-      lButtonLayout->setObjectName(QString("window_buttons_layout"));
-      lButtonLayout->setSpacing(10);
-      lButtonLayout->setContentsMargins(10, 0, 10, 10);
-      lButtonLayout->setAlignment(Qt::AlignTop);
-      aParentLayout->addLayout(lButtonLayout);
+      const auto lButtonsLayout{new QHBoxLayout(aParent)};
+      lButtonsLayout->setObjectName(QString("window_buttons_layout"));
+      lButtonsLayout->setSpacing(10);
+      lButtonsLayout->setContentsMargins(10, 0, 10, 10);
+      lButtonsLayout->setAlignment(Qt::AlignTop);
+      aParentLayout->addLayout(lButtonsLayout);
     }
 
     return lNestedLayout;

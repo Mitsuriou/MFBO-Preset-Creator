@@ -35,13 +35,10 @@ void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Close the window"),
                                     tr("Go back to the slider sets importer window"),
@@ -62,9 +59,6 @@ void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
 
 void SliderSetsImporter::initializeGUI()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(2, 1); // Make the hint zone as high as possible
@@ -82,11 +76,25 @@ void SliderSetsImporter::initializeGUI()
   lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
-  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this,
+                                                        tr("Choose a directory..."),
+                                                        "",
+                                                        "folder",
+                                                        this->getThemedResourcePath(),
+                                                        "",
+                                                        false,
+                                                        true)};
   lMainLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Launch search button
-  auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
+  auto lLaunchSearchButton{ComponentFactory::CreateButton(this,
+                                                          tr("Launch the scan of the mod"),
+                                                          "",
+                                                          "search",
+                                                          this->getThemedResourcePath(),
+                                                          "launch_search_button",
+                                                          true,
+                                                          true)};
   lMainLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3);
 
   // Hint zone
@@ -141,7 +149,10 @@ void SliderSetsImporter::chooseInputDirectory()
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "sliderSetsImporterInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                 "sliderSetsImporterInput",
+                                                 lLineEdit->text(),
+                                                 this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "sliderSetsImporterInput", lPath);
@@ -168,15 +179,12 @@ void SliderSetsImporter::launchSearchProcess()
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   lLaunchSearchButton->setDisabled(true);
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (this->mHasUserDoneSomething)
   {
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Relaunch the scan"),
                                       tr("You will lose all the unsaved data. Do you still want to relaunch the scan?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Relaunch the scan"),
                                       tr("Cancel the relaunch"),
@@ -197,9 +205,6 @@ void SliderSetsImporter::launchSearchProcess()
 
 void SliderSetsImporter::launchSearch()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
   const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
@@ -210,7 +215,7 @@ void SliderSetsImporter::launchSearch()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No mod archive file has been found"),
                                       tr("No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
@@ -348,11 +353,13 @@ void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::v
     }
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Create the validation button
-  auto lValidateSelection{ComponentFactory::CreateButton(this, tr("Start importing the chosen slider sets(s) and close this window"), "", "playlist-check", lIconFolder, "validate_selection")};
+  auto lValidateSelection{ComponentFactory::CreateButton(this,
+                                                         tr("Start importing the chosen slider sets(s) and close this window"),
+                                                         "",
+                                                         "playlist-check",
+                                                         this->getThemedResourcePath(),
+                                                         "validate_selection")};
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
 
   QObject::connect(lValidateSelection, &QPushButton::clicked, this, &SliderSetsImporter::validateSelection);
@@ -401,7 +408,7 @@ void SliderSetsImporter::validateSelection()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
-                                      Utils::GetIconResourceFolder(this->settings().display.applicationTheme),
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),

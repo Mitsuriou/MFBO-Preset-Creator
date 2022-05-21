@@ -49,13 +49,10 @@ void Settings::closeEvent(QCloseEvent* aEvent)
 
   if (this->getSettingsFromGUI() != this->settings() || this->mPathEntryCleared)
   {
-    // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
                                       tr("Do you want to close the window?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Close the settings window without saving"),
                                       tr("Go back to the settings window"),
@@ -78,7 +75,7 @@ void Settings::initializeGUI()
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
-  auto lButtonLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
 
   auto lStarLabel{new QLabel(this)};
   if (Utils::RESTART_PENDING)
@@ -107,7 +104,7 @@ void Settings::initializeGUI()
   this->setupRetargetingToolTab(*lTabWidget);
   this->setupLastPathsTab(*lTabWidget);
 
-  this->setupButtons(*lButtonLayout);
+  this->setupButtons(*lButtonsLayout);
 
   // Load the settings into the interface
   this->loadSettings(this->settings());
@@ -115,9 +112,6 @@ void Settings::initializeGUI()
 
 void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -130,7 +124,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(lIconFolder))), tr("Display"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(this->getThemedResourcePath()))), tr("Display"));
 
   //
   // First column
@@ -162,7 +156,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   // FONT FAMILY
   lLeftColumnLayout->addWidget(new QLabel(QString(tr("Font:")), this));
 
-  auto lFontChooser{ComponentFactory::CreateButton(this, tr("Change font properties"), "", "text", lIconFolder, "font_chooser", false, true)};
+  auto lFontChooser{ComponentFactory::CreateButton(this, tr("Change font properties"), "", "text", this->getThemedResourcePath(), "font_chooser", false, true)};
   lLeftColumnLayout->addWidget(lFontChooser);
 
   // WINDOW WIDTH
@@ -185,15 +179,36 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lLeftColumnLayout->addWidget(new QLabel(QString("* " + tr("Texts accent color:")), this));
 
   // Success
-  auto lSuccessColorChooser{ComponentFactory::CreateButton(this, tr("Choose a success color"), "", "color", lIconFolder, "success_color_chooser", false, true)};
+  auto lSuccessColorChooser{ComponentFactory::CreateButton(this,
+                                                           tr("Choose a success color"),
+                                                           "",
+                                                           "color",
+                                                           this->getThemedResourcePath(),
+                                                           "success_color_chooser",
+                                                           false,
+                                                           true)};
   lLeftColumnLayout->addWidget(lSuccessColorChooser);
 
   // Warning
-  auto lWarningColorChooser{ComponentFactory::CreateButton(this, tr("Choose a warning color"), "", "color", lIconFolder, "warning_color_chooser", false, true)};
+  auto lWarningColorChooser{ComponentFactory::CreateButton(this,
+                                                           tr("Choose a warning color"),
+                                                           "",
+                                                           "color",
+                                                           this->getThemedResourcePath(),
+                                                           "warning_color_chooser",
+                                                           false,
+                                                           true)};
   lLeftColumnLayout->addWidget(lWarningColorChooser);
 
   // Danger
-  auto lDangerColorChooser{ComponentFactory::CreateButton(this, tr("Choose a danger color"), "", "color", lIconFolder, "danger_color_chooser", false, true)};
+  auto lDangerColorChooser{ComponentFactory::CreateButton(this,
+                                                          tr("Choose a danger color"),
+                                                          "",
+                                                          "color",
+                                                          this->getThemedResourcePath(),
+                                                          "danger_color_chooser",
+                                                          false,
+                                                          true)};
   lLeftColumnLayout->addWidget(lDangerColorChooser);
 
   lLeftColumnLayout->addStretch();
@@ -247,9 +262,6 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 
 void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -261,7 +273,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(lIconFolder))), tr("General"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(this->getThemedResourcePath()))), tr("General"));
 
   // Show welcome screen at application startup
   lTabLayout->addWidget(new QLabel(tr("Startup actions:"), this), 0, 0, 1, 2);
@@ -284,10 +296,20 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   // Each button stores the last opened path
   lTabLayout->addWidget(new QLabel(tr("Smarter buttons:"), this), 4, 0, 1, 2);
 
-  auto lEachButtonSavesItsLastUsedPath{ComponentFactory::CreateCheckBox(this, tr("Each directory chooser button stores its own last opened path"), "", "each_button_saves_last_path")};
+  auto lEachButtonSavesItsLastUsedPath{ComponentFactory::CreateCheckBox(this,
+                                                                        tr("Each directory chooser button stores its own last opened path"),
+                                                                        "",
+                                                                        "each_button_saves_last_path")};
   lTabLayout->addWidget(lEachButtonSavesItsLastUsedPath, 5, 0);
 
-  auto lCheckPathsHistory{ComponentFactory::CreateButton(this, tr("Check/clear my browsing history"), "", "tab", lIconFolder, "", false, true)};
+  auto lCheckPathsHistory{ComponentFactory::CreateButton(this,
+                                                         tr("Check/clear my browsing history"),
+                                                         "",
+                                                         "tab",
+                                                         this->getThemedResourcePath(),
+                                                         "",
+                                                         false,
+                                                         true)};
   lTabLayout->addWidget(lCheckPathsHistory, 5, 1);
 
   // Event binding
@@ -296,9 +318,6 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 
 void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -308,21 +327,24 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(lIconFolder))), tr("Preset Creator"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(this->getThemedResourcePath()))), tr("Preset Creator"));
 
   // DEFAULT TARGETED BODY AND FEET VERSION
   auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
                                                                           *lTabLayout,
                                                                           false,
                                                                           0,
-                                                                          lIconFolder,
+                                                                          this->getThemedResourcePath(),
                                                                           QString("main_target_meshes_picker_button"),
                                                                           QString("main_currently_targeted_body_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 2, 0);
 
-  auto lAutoOpenDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the generated preset's output directory after a generation"), "", "auto_open_generated_dir")};
+  auto lAutoOpenDirCheckbox{ComponentFactory::CreateCheckBox(this,
+                                                             tr("Automatically open the generated preset's output directory after a generation"),
+                                                             "",
+                                                             "auto_open_generated_dir")};
   lTabLayout->addWidget(lAutoOpenDirCheckbox, 3, 0);
 
   // Event binding
@@ -331,9 +353,6 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 
 void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -343,21 +362,24 @@ void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/reorder").arg(lIconFolder))), tr("Batch Conversion"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/reorder").arg(this->getThemedResourcePath()))), tr("Batch Conversion"));
 
   // DEFAULT TARGETED BODY AND FEET VERSION (BATCH CONVERSION)
   auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
                                                                           *lTabLayout,
                                                                           false,
                                                                           0,
-                                                                          lIconFolder,
+                                                                          this->getThemedResourcePath(),
                                                                           QString("batch_conversion_target_meshes_picker_button"),
                                                                           QString("batch_conversion_currently_targeted_body_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-generation task:"), this), 2, 0);
 
-  auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the output directory after a batch generation"), "", "auto_open_batch_generated_dir")};
+  auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this,
+                                                                       tr("Automatically open the output directory after a batch generation"),
+                                                                       "",
+                                                                       "auto_open_batch_generated_dir")};
   lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 3, 0);
 
   // Event binding
@@ -366,9 +388,6 @@ void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
 
 void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -378,21 +397,24 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(lIconFolder))), tr("BodySlide Presets' Retargeting"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(this->getThemedResourcePath()))), tr("BodySlide Presets' Retargeting"));
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
   auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
                                                                           *lTabLayout,
                                                                           false,
                                                                           0,
-                                                                          lIconFolder,
+                                                                          this->getThemedResourcePath(),
                                                                           QString("retargeting_tool_target_meshes_picker_button"),
                                                                           QString("retargeting_tool_currently_targeted_body_feet"))};
 
   // AUTOMATICALLY OPEN THE GENERATED DIRECTORY
   lTabLayout->addWidget(new QLabel(tr("Post-processing task:"), this), 2, 0);
 
-  auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this, tr("Automatically open the retargeted directory after the retargeting process succeeded"), "", "auto_open_retargeted_dir")};
+  auto lAutoOpenRetargetedDirCheckbox{ComponentFactory::CreateCheckBox(this,
+                                                                       tr("Automatically open the retargeted directory after the retargeting process succeeded"),
+                                                                       "",
+                                                                       "auto_open_retargeted_dir")};
   lTabLayout->addWidget(lAutoOpenRetargetedDirCheckbox, 3, 0);
 
   // Event binding
@@ -401,9 +423,6 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 
 void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -413,10 +432,17 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))), tr("Last used paths"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(this->getThemedResourcePath()))), tr("Last used paths"));
 
   // "Clear all" button
-  auto lClearAllButton{ComponentFactory::CreateButton(this, tr("Remove all the history"), "", "trash-lines", lIconFolder, "remove_all_filters", false, true)};
+  auto lClearAllButton{ComponentFactory::CreateButton(this,
+                                                      tr("Remove all the history"),
+                                                      "",
+                                                      "trash-lines",
+                                                      this->getThemedResourcePath(),
+                                                      "remove_all_filters",
+                                                      false,
+                                                      true)};
   lClearAllButton->setStyleSheet("text-align:left;");
   lTabLayout->addWidget(lClearAllButton, 0, 2);
 
@@ -426,19 +452,19 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 
   // Create a line for each path
   auto lRowIndex{1};
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->lastPaths()->find("general")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Main window: output"), this->lastPaths()->find("mainWindowOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: input"), this->lastPaths()->find("batchConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: output"), this->lastPaths()->find("batchConversionOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Assist. Conv.: input"), this->lastPaths()->find("assistedConversionInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->lastPaths()->find("retargetingToolInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->lastPaths()->find("retargetingToolOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->lastPaths()->find("texturesAssistantInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: output"), this->lastPaths()->find("texturesAssistantOutput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Slider Sets Importer: input"), this->lastPaths()->find("sliderSetsImporterInput")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Last injected OSP file"), this->lastPaths()->find("lastInjectedOSPFile")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->lastPaths()->find("lastLoadedProject")->second, lIconFolder, QString("cross"));
-  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Saved project"), this->lastPaths()->find("lastSavedProject")->second, lIconFolder, QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("General"), this->lastPaths()->find("general")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Main window: output"), this->lastPaths()->find("mainWindowOutput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: input"), this->lastPaths()->find("batchConversionInput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Batch Conv.: output"), this->lastPaths()->find("batchConversionOutput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Assist. Conv.: input"), this->lastPaths()->find("assistedConversionInput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: input"), this->lastPaths()->find("retargetingToolInput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Presets' Ret.: output"), this->lastPaths()->find("retargetingToolOutput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: input"), this->lastPaths()->find("texturesAssistantInput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Textures Assist.: output"), this->lastPaths()->find("texturesAssistantOutput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Slider Sets Importer: input"), this->lastPaths()->find("sliderSetsImporterInput")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Last injected OSP file"), this->lastPaths()->find("lastInjectedOSPFile")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Loaded project"), this->lastPaths()->find("lastLoadedProject")->second, this->getThemedResourcePath(), QString("cross"));
+  Utils::AddLastPathLine(this, lTabLayout, lRowIndex++, tr("Saved project"), this->lastPaths()->find("lastSavedProject")->second, this->getThemedResourcePath(), QString("cross"));
 
   // Bind every single "clear path" button
   const auto lButtons{this->findChildren<QPushButton*>(QRegularExpression("clear_path_*"))};
@@ -450,16 +476,14 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 
 void Settings::setupButtons(QHBoxLayout& aLayout)
 {
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Create the buttons
-  auto lRestoreDefaultButton{ComponentFactory::CreateButton(this, tr("Restore default"), "", "restore", lIconFolder, "", false, true)};
+  auto lRestoreDefaultButton{ComponentFactory::CreateButton(this, tr("Restore default"), "", "restore", this->getThemedResourcePath(), "", false, true)};
   aLayout.addWidget(lRestoreDefaultButton);
 
-  auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", lIconFolder, "save_close", false, true)};
+  auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", this->getThemedResourcePath(), "save_close", false, true)};
   aLayout.addWidget(lSaveButton);
 
-  auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", lIconFolder, "", false, true)};
+  auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", this->getThemedResourcePath(), "", false, true)};
   aLayout.addWidget(lCloseButton);
 
   // Event binding
@@ -769,13 +793,10 @@ void Settings::saveSettings()
 
   if (this->mMustRebootMainApp)
   {
-    // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Application settings changed"),
                                       tr("All settings have been saved. You changed a setting that needs a restart of the application to be applied.\n\nWould you like to restart the application now (you will lose all unsaved data)?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Restart now"),
                                       tr("Go back to the application and restart later"),
@@ -811,19 +832,31 @@ void Settings::restoreDefaultSettings()
 
 void Settings::openPresetCreatorTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->settings().presetCreator.defaultBodyFeet.bodyMesh, this->settings().presetCreator.defaultBodyFeet.feetMesh)};
+  auto lDialog{new TargetMeshesPicker(this,
+                                      this->settings(),
+                                      this->lastPaths(),
+                                      this->settings().presetCreator.defaultBodyFeet.bodyMesh,
+                                      this->settings().presetCreator.defaultBodyFeet.feetMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::presetCreatorTargetMeshesChanged);
 }
 
 void Settings::openBatchConversionTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->settings().batchConversion.defaultBodyFeet.bodyMesh, this->settings().batchConversion.defaultBodyFeet.feetMesh)};
+  auto lDialog{new TargetMeshesPicker(this,
+                                      this->settings(),
+                                      this->lastPaths(),
+                                      this->settings().batchConversion.defaultBodyFeet.bodyMesh,
+                                      this->settings().batchConversion.defaultBodyFeet.feetMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::batchConversionTargetMeshesChanged);
 }
 
 void Settings::openRetargetingToolTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->settings().presetsRetargeting.defaultBodyFeet.bodyMesh, this->settings().presetsRetargeting.defaultBodyFeet.feetMesh)};
+  auto lDialog{new TargetMeshesPicker(this,
+                                      this->settings(),
+                                      this->lastPaths(),
+                                      this->settings().presetsRetargeting.defaultBodyFeet.bodyMesh,
+                                      this->settings().presetsRetargeting.defaultBodyFeet.feetMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::retargetingToolTargetMeshesChanged);
 }
 
@@ -842,7 +875,11 @@ void Settings::retargetingToolTargetMeshesChanged(const BodyNameVersion& aBody, 
   this->targetMeshesChanged(this->mNewRetargetingToolTargetBodyMesh, this->mNewRetargetingToolTargetFeetMesh, aBody, aFeet, QString("retargeting_tool"));
 }
 
-void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate, FeetNameVersion& aFeetToUpdate, const BodyNameVersion& aBody, const FeetNameVersion& aFeet, const QString& aObjectNamePrefix)
+void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate,
+                                   FeetNameVersion& aFeetToUpdate,
+                                   const BodyNameVersion& aBody,
+                                   const FeetNameVersion& aFeet,
+                                   const QString& aObjectNamePrefix)
 {
   // Update the class members
   aBodyToUpdate = aBody;

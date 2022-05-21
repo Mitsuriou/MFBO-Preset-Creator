@@ -49,13 +49,10 @@ void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
   if (this->mOriginalFiltersList.size() != this->mFiltersList.size()
       || !(std::equal(this->mOriginalFiltersList.cbegin(), this->mOriginalFiltersList.cend(), this->mFiltersList.cbegin())))
   {
-    // User theme accent
-    const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Closing"),
                                       tr("Do you want to close the window?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Close the editor window without saving"),
                                       tr("Go back to the editor window"),
@@ -93,9 +90,6 @@ void BodySlideFiltersEditor::initializeGUI()
 
 void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Body filter set chooser
   aLayout.addWidget(new QLabel(tr("Edit set:"), this), 0, 0);
 
@@ -109,11 +103,25 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   aLayout.addWidget(this->mFiltersListChooser, 0, 1);
 
   // Add filters set
-  auto lNewSetBtn{ComponentFactory::CreateButton(this, tr("New set"), tr("Add a new BodySlide filters set"), "plus", lIconFolder, "", false, true)};
+  auto lNewSetBtn{ComponentFactory::CreateButton(this,
+                                                 tr("New set"),
+                                                 tr("Add a new BodySlide filters set"),
+                                                 "plus",
+                                                 this->getThemedResourcePath(),
+                                                 "",
+                                                 false,
+                                                 true)};
   aLayout.addWidget(lNewSetBtn, 0, 2);
 
   // Remove filters set
-  auto lDelSetBtn{ComponentFactory::CreateButton(this, tr("Remove set"), tr("Remove the selected BodySlide filters set"), "minus", lIconFolder, "remove_set", false, true)};
+  auto lDelSetBtn{ComponentFactory::CreateButton(this,
+                                                 tr("Remove set"),
+                                                 tr("Remove the selected BodySlide filters set"),
+                                                 "minus",
+                                                 this->getThemedResourcePath(),
+                                                 "remove_set",
+                                                 false,
+                                                 true)};
   aLayout.addWidget(lDelSetBtn, 0, 3);
 
   // Filters list
@@ -124,17 +132,38 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   aLayout.addLayout(lButtonLayout, 1, 3, Qt::AlignTop);
 
   // New filter
-  auto lAddNewRow{ComponentFactory::CreateButton(this, tr("New filter"), tr("Add a new BodySlide filter"), "playlist-plus", lIconFolder, "add_filter", false, true)};
+  auto lAddNewRow{ComponentFactory::CreateButton(this,
+                                                 tr("New filter"),
+                                                 tr("Add a new BodySlide filter"),
+                                                 "playlist-plus",
+                                                 this->getThemedResourcePath(),
+                                                 "add_filter",
+                                                 false,
+                                                 true)};
   lAddNewRow->setStyleSheet("text-align:left;");
   lButtonLayout->addWidget(lAddNewRow);
 
   // Remove filter
-  auto lDeleteRow{ComponentFactory::CreateButton(this, tr("Remove filter"), tr("Remove the selected BodySlide filter"), "trash", lIconFolder, "remove_filter", false, true)};
+  auto lDeleteRow{ComponentFactory::CreateButton(this,
+                                                 tr("Remove filter"),
+                                                 tr("Remove the selected BodySlide filter"),
+                                                 "trash",
+                                                 this->getThemedResourcePath(),
+                                                 "remove_filter",
+                                                 false,
+                                                 true)};
   lDeleteRow->setStyleSheet("text-align:left;");
   lButtonLayout->addWidget(lDeleteRow);
 
   // Remove all filters
-  auto lDeleteAllRows{ComponentFactory::CreateButton(this, tr("Remove all"), tr("Remove all the BodySlide filters"), "trash-lines", lIconFolder, "remove_all_filters", false, true)};
+  auto lDeleteAllRows{ComponentFactory::CreateButton(this,
+                                                     tr("Remove all"),
+                                                     tr("Remove all the BodySlide filters"),
+                                                     "trash-lines",
+                                                     this->getThemedResourcePath(),
+                                                     "remove_all_filters",
+                                                     false,
+                                                     true)};
   lDeleteAllRows->setStyleSheet("text-align:left;");
   lButtonLayout->addWidget(lDeleteAllRows);
 
@@ -161,19 +190,16 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
 
 void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Vertical layout for the buttons
   auto lButtonsContainer{new QHBoxLayout()};
   lButtonsContainer->setSpacing(10);
   aLayout.addLayout(lButtonsContainer, 3, 0, 1, 4);
 
   // Create the buttons
-  auto lSaveBtn{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", lIconFolder, "save_close", false, true)};
+  auto lSaveBtn{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", this->getThemedResourcePath(), "save_close", false, true)};
   lButtonsContainer->addWidget(lSaveBtn);
 
-  auto lCancelBtn{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", lIconFolder, "", false, true)};
+  auto lCancelBtn{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", this->getThemedResourcePath(), "", false, true)};
   lButtonsContainer->addWidget(lCancelBtn);
 
   // Event binding

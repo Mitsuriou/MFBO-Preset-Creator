@@ -1,4 +1,5 @@
 #include "TitleDialog.h"
+#include "Utils.h"
 #include <QCloseEvent>
 #include <QIcon>
 #include <QLabel>
@@ -14,10 +15,10 @@ TitleDialog::TitleDialog(QWidget* aParent,
   : QDialog(aParent, Qt::CustomizeWindowHint | Qt::WindowMaximizeButtonHint | Qt::Window | Qt::WindowCloseButtonHint)
   , mSettings{aSettings}
   , mLastPaths{aLastPaths}
+  , mApplicationIconResourceFolder{Utils::GetIconResourceFolder(aSettings.display.applicationTheme)}
 {
   this->setWindowProperties(aTitle, aIconName, aMinimumWidth, aMinimumHeight);
-  // this->constructGUI(aTitle, aGenerateButtonsLayout);
-  this->constructGUI(aTitle, false);
+  this->constructGUI(aTitle);
 }
 
 const Struct::Settings& TitleDialog::settings()
@@ -68,6 +69,11 @@ QHBoxLayout* TitleDialog::getButtonsLayout()
   return this->findChild<QHBoxLayout*>("td_buttons_layout");
 }
 
+const QString& TitleDialog::getThemedResourcePath() const
+{
+  return mApplicationIconResourceFolder;
+}
+
 void TitleDialog::setWindowProperties(const QString& aTitle,
                                       const QString& aIconName,
                                       const int aMinimumWidth,
@@ -85,7 +91,7 @@ void TitleDialog::setWindowProperties(const QString& aTitle,
     this->setMinimumHeight(aMinimumHeight);
 }
 
-void TitleDialog::constructGUI(const QString& aTitle, const bool aGenerateButtonsLayout)
+void TitleDialog::constructGUI(const QString& aTitle)
 {
   // Global layout
   const auto lMainLayout{new QVBoxLayout(this)};
@@ -104,14 +110,4 @@ void TitleDialog::constructGUI(const QString& aTitle, const bool aGenerateButton
   const auto lCentralWidget{new QWidget(this)};
   lCentralWidget->setObjectName("td_central_widget");
   lMainLayout->addWidget(lCentralWidget, 1);
-
-  // Buttons layouts
-  if (aGenerateButtonsLayout)
-  {
-    const auto lButtonsLayout{new QHBoxLayout(lCentralWidget)};
-    lButtonsLayout->setContentsMargins(0, 0, 0, 0);
-    lButtonsLayout->setSpacing(10);
-    lButtonsLayout->setObjectName("td_buttons_layout");
-    lMainLayout->addLayout(lButtonsLayout);
-  }
 }

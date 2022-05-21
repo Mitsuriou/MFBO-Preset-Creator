@@ -41,13 +41,10 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Close the window"),
                                     tr("Go back to the target meshes picker window"),
@@ -68,9 +65,6 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
 
 void TargetMeshesPicker::initializeGUI()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Main window container
   auto lMainLayout{new QVBoxLayout(this)};
   lMainLayout->setAlignment(Qt::AlignTop);
@@ -79,7 +73,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted body group box */
   /*=========================*/
-  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", lIconFolder, this->settings().display.font.pointSize)};
+  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   lMainLayout->addWidget(lBodyGroupBox);
 
   // Grid layout
@@ -113,7 +107,7 @@ void TargetMeshesPicker::initializeGUI()
   /*=========================*/
   /* Targeted feet group box */
   /*=========================*/
-  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", lIconFolder, this->settings().display.font.pointSize)};
+  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   lMainLayout->addWidget(lFeetGroupBox);
 
   // Grid layout
@@ -162,10 +156,10 @@ void TargetMeshesPicker::initializeGUI()
   /*================*/
   auto lButtonsLayout{new QHBoxLayout(this)};
 
-  auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", lIconFolder, "save_close", false, true)};
+  auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", this->getThemedResourcePath(), "save_close", false, true)};
   lButtonsLayout->addWidget(lSaveButton);
 
-  auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", lIconFolder, "", false, true)};
+  auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", this->getThemedResourcePath(), "", false, true)};
   lButtonsLayout->addWidget(lCloseButton);
 
   lMainLayout->addLayout(lButtonsLayout);
@@ -366,7 +360,10 @@ void TargetMeshesPicker::feetVersionIndexChanged(const int aNewIndex)
 
   // Refresh the content of the third list
   this->mListFeetVariantName->clear();
-  const auto lAvailableFeetVariants{DataLists::GetFeetVariantsList(DataLists::GetName(getChosenBodyVariant(), lSelectedFeetName), aNewIndex, Utils::IsCBBEBasedBody(lBodyVariant))};
+  const auto lAvailableFeetVariants{DataLists::GetFeetVariantsList(DataLists::GetName(getChosenBodyVariant(),
+                                                                                      lSelectedFeetName),
+                                                                   aNewIndex,
+                                                                   Utils::IsCBBEBasedBody(lBodyVariant))};
   this->mListFeetVariantName->addItems(lAvailableFeetVariants);
 
   // Smarter lists behavior

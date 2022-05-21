@@ -1,4 +1,5 @@
 #pragma once
+#include "Struct.h"
 #include "TitleDialog.h"
 #include <QDomElement>
 
@@ -13,8 +14,8 @@ protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
-  std::map<int, bool> mInitialDatabase;
-  std::map<int, bool> mRunningDatabase;
+  std::map<int, Struct::DatabaseSliderSet> mInitialDatabase;
+  std::map<int, Struct::DatabaseSliderSet> mRunningDatabase;
 
   // GUI creation
   void initializeGUI();
@@ -27,13 +28,14 @@ private:
 
   // Create
   void openSliderSetsImporter();
-  void importNewSliderSets(const std::vector<Struct::SliderSetResult>& aChosenPresets);
-  bool saveSliderSetToDatabase(const QDomElement& aSliderSetNode);
+  void importNewSliderSets(const std::vector<Struct::SliderSetResult>& aChosenSliderSets);
+  bool saveSliderSetToDatabase(const QDomElement& aSliderSetNode, const Struct::DatabaseSliderSet& aSliderSetData);
 
-  void addDatabaseLine(const int& aIndex);
+  void addDatabaseLine(const int& aIndex, const Struct::DatabaseSliderSet& aSliderSetData);
 
   // Update
-  void updateDatabaseLine(const int aIndex, const bool aValue);
+  void updateSliderSetName(const int aIndex, const QString& aNewName);
+  void updateSliderSetMeshType(const int aIndex, const MeshPartType aMeshType);
 
   // Delete
   void removeFromDatabase(const int& aIndex);
@@ -42,6 +44,6 @@ private:
   int nextAvailableDatabaseIndex();
 
   QString databaseToString();
-  std::pair<int, bool> parseDatabaseLine(const QString& aLine);
-  QString stringifyDatabaseEntry(const std::pair<int, bool>& lEntry);
+  std::pair<int, Struct::DatabaseSliderSet> parseDatabaseLine(const QString& aLine);
+  QString stringifyDatabaseEntry(const std::pair<int, Struct::DatabaseSliderSet>& lEntry);
 };

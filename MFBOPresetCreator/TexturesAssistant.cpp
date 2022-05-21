@@ -47,13 +47,10 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Close the window"),
                                     tr("Go back to the textures assistant window"),
@@ -74,9 +71,6 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
 
 void TexturesAssistant::initializeGUI()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Main layout
   auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setRowStretch(2, 1); // Make the hint zone as high as possible
@@ -94,7 +88,14 @@ void TexturesAssistant::initializeGUI()
   this->setupFromURLTab(*lTabWidget);
 
   // Launch search button
-  auto lLaunchSearchButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the mod"), "", "search", lIconFolder, "launch_search_button", true, true)};
+  auto lLaunchSearchButton{ComponentFactory::CreateButton(this,
+                                                          tr("Launch the scan of the mod"),
+                                                          "",
+                                                          "search",
+                                                          this->getThemedResourcePath(),
+                                                          "launch_search_button",
+                                                          true,
+                                                          true)};
   lMainLayout->addWidget(lLaunchSearchButton, 1, 0, Qt::AlignTop);
 
   // Setup all the different GUI components
@@ -112,9 +113,6 @@ void TexturesAssistant::initializeGUI()
 
 void TexturesAssistant::setupFromLocalFolderTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -127,7 +125,7 @@ void TexturesAssistant::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(lIconFolder))), tr("From local directory"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(this->getThemedResourcePath()))), tr("From local directory"));
 
   // Input path label
   lTabLayout->addWidget(new QLabel(tr("Input path:"), this));
@@ -140,7 +138,7 @@ void TexturesAssistant::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lInputPathLineEdit);
 
   // Input chooser
-  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", this->getThemedResourcePath(), "", false, true)};
   lTabLayout->addWidget(lInputPathChooser);
 
   // Event binding
@@ -149,9 +147,6 @@ void TexturesAssistant::setupFromLocalFolderTab(QTabWidget& aTabWidget)
 
 void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Tab widget
   auto lTabContent{new QWidget(this)};
 
@@ -163,7 +158,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
   lTabContent->setLayout(lTabLayout);
 
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(lIconFolder))), tr("From NexusMods URL"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/nexus-logo").arg(this->getThemedResourcePath()))), tr("From NexusMods URL"));
 
   // Input mod's URL/ID label
   lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0);
@@ -185,7 +180,14 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1);
 
   // Save the API key
-  auto lSaveAPIKey{ComponentFactory::CreateButton(this, tr("Save this API key"), "", "save", lIconFolder, "save_api_key", false, true)};
+  auto lSaveAPIKey{ComponentFactory::CreateButton(this,
+                                                  tr("Save this API key"),
+                                                  "",
+                                                  "save",
+                                                  this->getThemedResourcePath(),
+                                                  "save_api_key",
+                                                  false,
+                                                  true)};
   lTabLayout->addWidget(lSaveAPIKey, 1, 2);
 
   // Open the NexusMods API keys' management page
@@ -193,7 +195,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
                                                                  tr("View my keys (nexusmods.com)"),
                                                                  "",
                                                                  "external",
-                                                                 lIconFolder,
+                                                                 this->getThemedResourcePath(),
                                                                  "open_api_keys_management_page",
                                                                  false,
                                                                  true)};
@@ -226,11 +228,14 @@ void TexturesAssistant::displayHintZone()
 
 void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Textures set"), "textures", lIconFolder, this->settings().display.font.pointSize, "textures_set_groupbox", true)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this,
+                                                  tr("Textures set"),
+                                                  "textures",
+                                                  this->getThemedResourcePath(),
+                                                  this->settings().display.font.pointSize,
+                                                  "textures_set_groupbox",
+                                                  true)};
   aLayout.addWidget(lGroupBox, 3, 0);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -252,11 +257,11 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
   lLayout->addWidget(lTexturesSetChooser, 0, 1);
 
   // Refresh button
-  auto lTexturesSetRefresher{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", lIconFolder)};
+  auto lTexturesSetRefresher{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", this->getThemedResourcePath())};
   lLayout->addWidget(lTexturesSetRefresher, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", lIconFolder)};
+  auto lOpenAssetsDirectory{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", this->getThemedResourcePath())};
   lLayout->addWidget(lOpenAssetsDirectory, 0, 3);
 
   this->populateTexturesSetChooser();
@@ -268,11 +273,14 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
 
 void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Create the group box
-  ComponentFactory::CreateOutputBox(this, aLayout, 4, 0, lIconFolder, this->mMinimumFirstColumnWidth, this->settings().display.font.pointSize);
+  ComponentFactory::CreateOutputBox(this,
+                                    aLayout,
+                                    4,
+                                    0,
+                                    this->getThemedResourcePath(),
+                                    this->mMinimumFirstColumnWidth,
+                                    this->settings().display.font.pointSize);
   auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
   lOutputGroupBox->setDisabled(true);
 
@@ -292,11 +300,13 @@ void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
 
 void TexturesAssistant::setupButtons(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Generate button
-  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Create the files structure on my computer"), "", "build", lIconFolder, "generate_set")};
+  auto lGenerateButton{ComponentFactory::CreateButton(this,
+                                                      tr("Create the files structure on my computer"),
+                                                      "",
+                                                      "build",
+                                                      this->getThemedResourcePath(),
+                                                      "generate_set")};
   lGenerateButton->setDisabled(true);
   aLayout.addWidget(lGenerateButton, 5, 0);
 
@@ -348,11 +358,8 @@ void TexturesAssistant::chooseInputDirectory()
 
 void TexturesAssistant::saveAPIKey()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
-  const auto lSucceed{Utils::SaveAPIKeyToFile(lAPIKeyLineEdit->text(), this, lIconFolder)};
+  const auto lSucceed{Utils::SaveAPIKeyToFile(lAPIKeyLineEdit->text(), this, this->getThemedResourcePath())};
 
   this->updateSaveAPIKeyButtonState(lSucceed);
 }
@@ -436,9 +443,6 @@ void TexturesAssistant::launchSearchProcess()
 
 void TexturesAssistant::launchSearchFromLocalFolder()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
 
   // Warn the user if the scan found a BSA file
@@ -447,7 +451,7 @@ void TexturesAssistant::launchSearchFromLocalFolder()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("BSA file found"),
                                       tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
@@ -888,13 +892,14 @@ void TexturesAssistant::displayObtainedData()
     lOtherPaths[lNifFile.first].push_back(lNifFile.second);
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   auto lRowIndex{0};
 
   // Head resources blocks
-  auto lHeadGroup{ComponentFactory::CreateGroupBox(this, tr("Head textures"), "woman-head", lIconFolder, this->settings().display.font.pointSize)};
+  auto lHeadGroup{ComponentFactory::CreateGroupBox(this,
+                                                   tr("Head textures"),
+                                                   "woman-head",
+                                                   this->getThemedResourcePath(),
+                                                   this->settings().display.font.pointSize)};
 
   auto lHeadGroupContainer{new QGridLayout(this)};
   lHeadGroupContainer->setSpacing(16);
@@ -903,7 +908,11 @@ void TexturesAssistant::displayObtainedData()
   lDataContainer->addWidget(lHeadGroup, lRowIndex++, 0);
 
   // Mouth resources blocks
-  auto lMouthGroup{ComponentFactory::CreateGroupBox(this, tr("Mouth textures"), "mouth", lIconFolder, this->settings().display.font.pointSize)};
+  auto lMouthGroup{ComponentFactory::CreateGroupBox(this,
+                                                    tr("Mouth textures"),
+                                                    "mouth",
+                                                    this->getThemedResourcePath(),
+                                                    this->settings().display.font.pointSize)};
 
   auto lMouthGroupContainer{new QGridLayout(this)};
   lMouthGroupContainer->setSpacing(16);
@@ -912,7 +921,11 @@ void TexturesAssistant::displayObtainedData()
   lDataContainer->addWidget(lMouthGroup, lRowIndex++, 0);
 
   // Body resources blocks
-  auto lBodyGroup{ComponentFactory::CreateGroupBox(this, tr("Body textures"), "body", lIconFolder, this->settings().display.font.pointSize)};
+  auto lBodyGroup{ComponentFactory::CreateGroupBox(this,
+                                                   tr("Body textures"),
+                                                   "body",
+                                                   this->getThemedResourcePath(),
+                                                   this->settings().display.font.pointSize)};
 
   auto lBodyGroupContainer{new QGridLayout(this)};
   lBodyGroupContainer->setSpacing(16);
@@ -921,7 +934,11 @@ void TexturesAssistant::displayObtainedData()
   lDataContainer->addWidget(lBodyGroup, lRowIndex++, 0);
 
   // Extra body resources blocks
-  auto lBodyExtraGroup{ComponentFactory::CreateGroupBox(this, tr("Extra body textures"), "more", lIconFolder, this->settings().display.font.pointSize)};
+  auto lBodyExtraGroup{ComponentFactory::CreateGroupBox(this,
+                                                        tr("Extra body textures"),
+                                                        "more",
+                                                        this->getThemedResourcePath(),
+                                                        this->settings().display.font.pointSize)};
 
   auto lBodyExtraGroupContainer{new QGridLayout(this)};
   lBodyExtraGroupContainer->setSpacing(16);
@@ -930,7 +947,11 @@ void TexturesAssistant::displayObtainedData()
   lDataContainer->addWidget(lBodyExtraGroup, lRowIndex++, 0);
 
   // Hands resources blocks
-  auto lHandsGroup{ComponentFactory::CreateGroupBox(this, tr("Hands textures"), "hand", lIconFolder, this->settings().display.font.pointSize)};
+  auto lHandsGroup{ComponentFactory::CreateGroupBox(this,
+                                                    tr("Hands textures"),
+                                                    "hand",
+                                                    this->getThemedResourcePath(),
+                                                    this->settings().display.font.pointSize)};
 
   auto lHandsGroupContainer{new QGridLayout(this)};
   lHandsGroupContainer->setSpacing(16);
@@ -939,7 +960,11 @@ void TexturesAssistant::displayObtainedData()
   lDataContainer->addWidget(lHandsGroup, lRowIndex++, 0);
 
   // Other texture files
-  auto lOtherGroup{ComponentFactory::CreateGroupBox(this, tr("Other .DDS textures"), "textures", lIconFolder, this->settings().display.font.pointSize)};
+  auto lOtherGroup{ComponentFactory::CreateGroupBox(this,
+                                                    tr("Other .DDS textures"),
+                                                    "textures",
+                                                    this->getThemedResourcePath(),
+                                                    this->settings().display.font.pointSize)};
 
   auto lOtherGroupContainer{new QGridLayout(this)};
   lOtherGroupContainer->setSpacing(16);
@@ -976,9 +1001,6 @@ void TexturesAssistant::createResourceBlock(const std::map<QString, std::vector<
 
 void TexturesAssistant::generateTexturesStructure()
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // Textures set
   auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
   if (lTexturesSetChooser->currentIndex() == -1 || lTexturesSetChooser->count() == 0)
@@ -1032,7 +1054,7 @@ void TexturesAssistant::generateTexturesStructure()
     if (Utils::DisplayQuestionMessage(this,
                                       tr("Already existing directory"),
                                       tr("The directory \"%1\" already exists on your computer. Do you still want to create the files in this directory?").arg(lEntryDirectory),
-                                      lIconFolder,
+                                      this->getThemedResourcePath(),
                                       "help-circle",
                                       tr("Continue the files creation"),
                                       tr("Cancel the files creation"),

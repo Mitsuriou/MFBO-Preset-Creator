@@ -22,7 +22,7 @@
 #include <QTextStream>
 
 RetargetingTool::RetargetingTool(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("BodySlide Presets' Retargeting"), "arrow-up", aSettings, aLastPaths, 700)
+  : TitleDialog(aParent, tr("BodySlide Presets' Retargeting"), "arrow-up", aSettings, aLastPaths, 800)
   , mFileWatcher(new QFileSystemWatcher())
   , mTargetBodyMesh(aSettings.presetsRetargeting.defaultBodyFeet.bodyMesh)
   , mTargetFeetMesh(aSettings.presetsRetargeting.defaultBodyFeet.feetMesh)
@@ -54,13 +54,10 @@ void RetargetingTool::closeEvent(QCloseEvent* aEvent)
     return;
   }
 
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   if (Utils::DisplayQuestionMessage(this,
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
-                                    lIconFolder,
+                                    this->getThemedResourcePath(),
                                     "help-circle",
                                     tr("Close the window"),
                                     tr("Go back to the retargeting tool window"),
@@ -95,11 +92,8 @@ void RetargetingTool::initializeGUI()
 
 void RetargetingTool::setupInterface(QGridLayout& aLayout)
 {
-  // User theme accent
-  const auto& lIconFolder{Utils::GetIconResourceFolder(this->settings().display.applicationTheme)};
-
   // General group box
-  auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", lIconFolder, this->settings().display.font.pointSize)};
+  auto lGeneralGroupBox{ComponentFactory::CreateGroupBox(this, tr("General"), "tune", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   aLayout.addWidget(lGeneralGroupBox, 0, 0);
 
   // Grid layout
@@ -113,7 +107,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
                                                                           *lGeneralGridLayout,
                                                                           true,
                                                                           0,
-                                                                          lIconFolder,
+                                                                          this->getThemedResourcePath(),
                                                                           QString("target_meshes_picker_button"),
                                                                           QString("currently_targeted_body_feet"))};
 
@@ -125,7 +119,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1);
 
-  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "", false, true)};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", this->getThemedResourcePath(), "", false, true)};
   lGeneralGridLayout->addWidget(lInputPathChooser, 1, 2);
 
   // Filters
@@ -148,11 +142,11 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lFiltersList->setWordWrap(true);
   lFiltersWrapper->addWidget(lFiltersList);
 
-  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", lIconFolder, "edit_filters")};
+  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", this->getThemedResourcePath(), "edit_filters")};
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Backup group box
-  auto lBackupGroupBox{ComponentFactory::CreateGroupBox(this, tr("Backup"), "restore", lIconFolder, this->settings().display.font.pointSize)};
+  auto lBackupGroupBox{ComponentFactory::CreateGroupBox(this, tr("Backup"), "restore", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
   aLayout.addWidget(lBackupGroupBox, 1, 0);
 
   // Grid layout
@@ -177,7 +171,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupPathLineEdit->setObjectName(QString("backup_path_directory"));
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
 
-  auto lBackupPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", lIconFolder, "backup_dir_chooser", false, true)};
+  auto lBackupPathChooser{ComponentFactory::CreateButton(this,
+                                                         tr("Choose a directory..."),
+                                                         "",
+                                                         "folder",
+                                                         this->getThemedResourcePath(),
+                                                         "backup_dir_chooser",
+                                                         false,
+                                                         true)};
   lBackupGridLayout->addWidget(lBackupPathChooser, 1, 2);
 
   // Backup subdirectory name/path
@@ -201,7 +202,14 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupGridLayout->addWidget(lBackupPathsPreview, 3, 1, 1, 2);
 
   // Generate button
-  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Retarget all the files under the input path"), "", "arrow-up", lIconFolder, "objectname", false, true)};
+  auto lGenerateButton{ComponentFactory::CreateButton(this,
+                                                      tr("Retarget all the files under the input path"),
+                                                      "",
+                                                      "arrow-up",
+                                                      this->getThemedResourcePath(),
+                                                      "objectname",
+                                                      false,
+                                                      true)};
   aLayout.addWidget(lGenerateButton, 2, 0, Qt::AlignBottom);
 
   // Pre-bind initialization functions
@@ -247,7 +255,10 @@ void RetargetingTool::userHasDoneAnAction(int)
 void RetargetingTool::chooseInputDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "retargetingToolInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                 "retargetingToolInput",
+                                                 lLineEdit->text(),
+                                                 this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "retargetingToolInput", lPath);
@@ -263,7 +274,10 @@ void RetargetingTool::chooseInputDirectory()
 void RetargetingTool::chooseBackupDirectory()
 {
   auto lLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "retargetingToolOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                 "retargetingToolOutput",
+                                                 lLineEdit->text(),
+                                                 this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "retargetingToolOutput", lPath);
@@ -742,8 +756,16 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Construct the file content
     auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-    auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), this->mTargetBodyMesh, this->mTargetFeetMesh)};
-    auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(lPresetName, lUserFilters, this->mTargetBodyMesh, this->mTargetFeetMesh, lMustUseBeastHands, lOSPUsedSliders.find(lFileName)->second)};
+    auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList,
+                                                 lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()),
+                                                 this->mTargetBodyMesh,
+                                                 this->mTargetFeetMesh)};
+    auto lXMLFileContent{SliderFileBuilder::BuildXMLFileContent(lPresetName,
+                                                                lUserFilters,
+                                                                this->mTargetBodyMesh,
+                                                                this->mTargetFeetMesh,
+                                                                lMustUseBeastHands,
+                                                                lOSPUsedSliders.find(lFileName)->second)};
 
     // Create the OSP file on disk
     QFile lXMLFile(lAbsFilePath);
@@ -774,7 +796,19 @@ void RetargetingTool::launchUpDownGradeProcess()
     Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the retargeted directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
   }
-  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the retargeted directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  else if (Utils::DisplayQuestionMessage(this,
+                                         lTitle,
+                                         lMessage,
+                                         "icons",
+                                         "green-info",
+                                         tr("Open the retargeted directory"),
+                                         tr("OK"),
+                                         "",
+                                         "",
+                                         "",
+                                         "",
+                                         false)
+           == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(lRootDir));
   }
