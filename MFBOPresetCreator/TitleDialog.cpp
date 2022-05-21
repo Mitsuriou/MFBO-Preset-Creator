@@ -82,7 +82,9 @@ void TitleDialog::setWindowProperties(const QString& aTitle,
   this->setModal(true);
   this->setAttribute(Qt::WA_DeleteOnClose);
   this->setWindowTitle(aTitle);
-  this->setWindowIcon(QIcon(QPixmap(QString(":/black/%1").arg(aIconName))));
+  this->setWindowIcon(QIcon(QPixmap(
+    QString(":/%1/%2").arg(Utils::GetTitleBarResourceFolder(this->settings().display.titleBarIconsBlack),
+                           aIconName))));
 
   if (aMinimumWidth > -1)
     this->setMinimumWidth(aMinimumWidth);

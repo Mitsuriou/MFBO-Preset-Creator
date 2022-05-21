@@ -61,6 +61,7 @@ public:
   static void ApplyApplicationStyleSheet(const QString& aQSSFileName);
   static bool IsThemeDark(const GUITheme& aTheme);
   static QString GetIconResourceFolder(const GUITheme& aTheme);
+  static QString GetTitleBarResourceFolder(const bool aUseBlackIcons);
   static void OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme);
 
   // Skyrim related stuff

@@ -163,6 +163,7 @@ namespace Struct
     DialogOpeningMode sliderSetsImporterDialogOpeningMode{DialogOpeningMode::WINDOWED};
     QString successColor{"#48c774"};
     DialogOpeningMode texturesAssistantDialogOpeningMode{DialogOpeningMode::WINDOWED};
+    bool titleBarIconsBlack{true};
     QString warningColor{"#ffbc6b"};
 
     QJsonObject toJson() const
@@ -194,6 +195,7 @@ namespace Struct
       lDisplayNode["sliderSetsImporterDialogOpeningMode"] = static_cast<int>(this->sliderSetsImporterDialogOpeningMode);
       lDisplayNode["successColor"] = this->successColor;
       lDisplayNode["texturesAssistantDialogOpeningMode"] = static_cast<int>(this->texturesAssistantDialogOpeningMode);
+      lDisplayNode["titleBarIconsBlack"] = this->titleBarIconsBlack;
       lDisplayNode["warningColor"] = this->warningColor;
 
       return lDisplayNode;
@@ -217,6 +219,7 @@ namespace Struct
         && this->sliderSetsImporterDialogOpeningMode == rhs.sliderSetsImporterDialogOpeningMode
         && this->successColor == rhs.successColor
         && this->texturesAssistantDialogOpeningMode == rhs.texturesAssistantDialogOpeningMode
+        && this->titleBarIconsBlack == rhs.titleBarIconsBlack
         && this->warningColor == rhs.warningColor);
     };
 
@@ -238,6 +241,7 @@ namespace Struct
         || this->sliderSetsImporterDialogOpeningMode != rhs.sliderSetsImporterDialogOpeningMode
         || this->successColor != rhs.successColor
         || this->texturesAssistantDialogOpeningMode != rhs.texturesAssistantDialogOpeningMode
+        || this->titleBarIconsBlack != rhs.titleBarIconsBlack
         || this->warningColor != rhs.warningColor);
     };
   };

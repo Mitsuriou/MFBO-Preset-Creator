@@ -460,6 +460,11 @@ QString Utils::GetIconResourceFolder(const GUITheme& aTheme)
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
 
+QString Utils::GetTitleBarResourceFolder(const bool aUseBlackIcons)
+{
+  return (aUseBlackIcons ? QString("black") : QString("white"));
+}
+
 void Utils::OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme)
 {
   // If no color change is needed
@@ -1341,6 +1346,10 @@ void Utils::ParseDisplaySettings(Struct::DisplaySettings& aSettings, const QJson
   // App theme
   if (aJSONObject.contains("applicationTheme") && aJSONObject["applicationTheme"].isDouble())
     aSettings.applicationTheme = static_cast<GUITheme>(aJSONObject["applicationTheme"].toInt());
+
+  // Title bar icons color
+  if (aJSONObject.contains("titleBarIconsBlack") && aJSONObject["titleBarIconsBlack"].isBool())
+    aSettings.titleBarIconsBlack = aJSONObject["titleBarIconsBlack"].toBool();
 
   // Opening mode: assisted conversion
   if (aJSONObject.contains("assistedConversionDialogOpeningMode") && aJSONObject["assistedConversionDialogOpeningMode"].isDouble())

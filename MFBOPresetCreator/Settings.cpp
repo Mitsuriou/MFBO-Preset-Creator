@@ -153,6 +153,25 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lGUIThemeSelector->setObjectName(QString("app_theme"));
   lLeftColumnLayout->addWidget(lGUIThemeSelector);
 
+  // APPLICATION BAR ICONS COLOR
+  lLeftColumnLayout->addWidget(new QLabel(QString(tr("Title bar - icons color:")), this));
+
+  const auto lTitleBarIconsColorWrapper{new QHBoxLayout(this)};
+  lTitleBarIconsColorWrapper->setSpacing(10);
+  lLeftColumnLayout->addLayout(lTitleBarIconsColorWrapper);
+
+  auto lTitleBarIconBlack{new QRadioButton(tr("Black"), this)};
+  lTitleBarIconBlack->setCursor(Qt::PointingHandCursor);
+  lTitleBarIconBlack->setObjectName(QString("title_bar_icons_black"));
+  lTitleBarIconsColorWrapper->addWidget(lTitleBarIconBlack);
+
+  auto lTitleBarIconWhite{new QRadioButton(tr("White"), this)};
+  lTitleBarIconWhite->setCursor(Qt::PointingHandCursor);
+  lTitleBarIconWhite->setObjectName(QString("title_bar_icons_white"));
+  lTitleBarIconsColorWrapper->addWidget(lTitleBarIconWhite);
+
+  lTitleBarIconsColorWrapper->addStretch();
+
   // FONT FAMILY
   lLeftColumnLayout->addWidget(new QLabel(QString(tr("Font:")), this));
 
@@ -164,7 +183,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 
   auto lWinWidthInput{new QLineEdit(this)};
   lWinWidthInput->setObjectName(QString("window_width"));
-  lWinWidthInput->setValidator(new QIntValidator(0, 9999, this));
+  lWinWidthInput->setValidator(new QIntValidator(0, 99999, this));
   lLeftColumnLayout->addWidget(lWinWidthInput);
 
   // WINDOW HEIGHT
@@ -172,7 +191,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 
   auto lWinHeightInput{new QLineEdit(this)};
   lWinHeightInput->setObjectName(QString("window_height"));
-  lWinHeightInput->setValidator(new QIntValidator(0, 9999, this));
+  lWinHeightInput->setValidator(new QIntValidator(0, 99999, this));
   lLeftColumnLayout->addWidget(lWinHeightInput);
 
   // COLORS
@@ -537,6 +556,15 @@ void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsTo
   auto lApplicationTheme{this->findChild<QComboBox*>(QString("app_theme"))};
   lApplicationTheme->setCurrentIndex(static_cast<int>(aSettingsToLoad.applicationTheme));
 
+  // Title bar icons color
+  auto lTitleBarIconBlack{this->findChild<QRadioButton*>(QString("title_bar_icons_black"))};
+  auto lTitleBarIconWhite{this->findChild<QRadioButton*>(QString("title_bar_icons_white"))};
+
+  if (aSettingsToLoad.titleBarIconsBlack)
+    lTitleBarIconBlack->setChecked(true);
+  else
+    lTitleBarIconWhite->setChecked(true);
+
   // Font
   QFont lFont(aSettingsToLoad.font.family,
               aSettingsToLoad.font.pointSize,
@@ -623,24 +651,26 @@ void Settings::loadGenericDialogSettings(const Struct::GenericDialogSettings& aS
 
 Struct::Settings Settings::getSettingsFromGUI() const
 {
-  auto lLang{this->findChild<QComboBox*>(QString("language"))->currentIndex()};
-  auto lAppTheme{this->findChild<QComboBox*>(QString("app_theme"))->currentIndex()};
-  auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))->text().trimmed()};
-  auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))->text().trimmed()};
-  auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("main_window_opening_mode"))->currentIndex()};
-  auto lBatchConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_opening_mode"))->currentIndex()};
-  auto lBatchConversionPickerDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_picker_opening_mode"))->currentIndex()};
-  auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QString("textures_assistant_opening_mode"))->currentIndex()};
-  auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("assisted_conversion_opening_mode"))->currentIndex()};
-  auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))->currentIndex()};
-  auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_db_manager_opening_mode"))->currentIndex()};
-  auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_importer_opening_mode"))->currentIndex()};
-  auto lWelcomeActionWelcomeScreen{this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->isChecked()};
-  auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
-  auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
-  auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))->isChecked()};
-  auto lAutoOpenRetargetedDir{this->findChild<QCheckBox*>(QString("auto_open_retargeted_dir"))->isChecked()};
-  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))->isChecked()};
+  const auto lLang{this->findChild<QComboBox*>(QString("language"))->currentIndex()};
+  const auto lAppTheme{this->findChild<QComboBox*>(QString("app_theme"))->currentIndex()};
+  const auto lTitleBarIconBlack{this->findChild<QRadioButton*>(QString("title_bar_icons_black"))->isChecked()};
+  const auto lTitleBarIconWhite{this->findChild<QRadioButton*>(QString("title_bar_icons_white"))->isChecked()};
+  const auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))->text().trimmed()};
+  const auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))->text().trimmed()};
+  const auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("main_window_opening_mode"))->currentIndex()};
+  const auto lBatchConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_opening_mode"))->currentIndex()};
+  const auto lBatchConversionPickerDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_picker_opening_mode"))->currentIndex()};
+  const auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QString("textures_assistant_opening_mode"))->currentIndex()};
+  const auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("assisted_conversion_opening_mode"))->currentIndex()};
+  const auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))->currentIndex()};
+  const auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_db_manager_opening_mode"))->currentIndex()};
+  const auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_importer_opening_mode"))->currentIndex()};
+  const auto lWelcomeActionWelcomeScreen{this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->isChecked()};
+  const auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
+  const auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
+  const auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))->isChecked()};
+  const auto lAutoOpenRetargetedDir{this->findChild<QCheckBox*>(QString("auto_open_retargeted_dir"))->isChecked()};
+  const auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))->isChecked()};
 
   Struct::Settings lSettings;
 
@@ -670,6 +700,9 @@ Struct::Settings Settings::getSettingsFromGUI() const
 
   // Application theme
   lSettings.display.applicationTheme = static_cast<GUITheme>(lAppTheme);
+
+  // Title bar icons color
+  lSettings.display.titleBarIconsBlack = lTitleBarIconBlack && !lTitleBarIconWhite;
 
   // Window width
   if (lWindowWidth.size() > 0)
@@ -787,6 +820,7 @@ void Settings::saveSettings()
   // Check if a restart of the app is required
   this->mMustRebootMainApp = (this->settings().display.language != lSettings.display.language
                               || this->settings().display.applicationTheme != lSettings.display.applicationTheme
+                              || this->settings().display.titleBarIconsBlack != lSettings.display.titleBarIconsBlack
                               || this->settings().display.successColor != lSettings.display.successColor
                               || this->settings().display.warningColor != lSettings.display.warningColor
                               || this->settings().display.dangerColor != lSettings.display.dangerColor);
