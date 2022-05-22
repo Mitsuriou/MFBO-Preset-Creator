@@ -18,7 +18,7 @@ At this time, the application is only capable of changing the body, hands and fe
 - [Visual Studio 2022](https://visualstudio.microsoft.com/fr/vs/) along with:
   - Desktop C++ development kit;
   - [Qt VS Tools](https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022) extension;
-- [Qt 5.15](https://www.qt.io/download), with MSVC package (Qt 6.x wil be supported in a very near future version);
+  - [Qt 6.3.0](https://www.qt.io/download), with MSVC package;
 
 Once all the requirements are correctly installed, change the Qt Version associated to the Visual Studio Solution and run a compile of the full VS Solution.
 

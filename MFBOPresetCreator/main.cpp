@@ -8,7 +8,6 @@
 #include <QLibraryInfo>
 #include <QSplashScreen>
 #include <QStandardPaths>
-#include <QTextCodec>
 #include <QTranslator>
 #include <iostream>
 
@@ -17,7 +16,7 @@
 #endif
 
 #if defined(DEBUG) || !defined(QT_NO_DEBUG)
-bool FORCE_CONSOLE_DISPLAY = false;
+bool FORCE_CONSOLE_DISPLAY = true;
 #else
 bool FORCE_CONSOLE_DISPLAY = false;
 #endif
@@ -97,6 +96,13 @@ int main(int argc, char* argv[])
     Utils::PrintMessageStdOut("");
     Utils::PrintMessageStdOut("Running MFBOPC in debug mode");
     Utils::PrintMessageStdOut("Checking support for SSL...");
+
+    const auto lAvailableBackends{QSslSocket::availableBackends()};
+    for (const auto& lBackend : lAvailableBackends)
+    {
+      Utils::PrintMessageStdOut(QString("Found SSL backend \"%1\"").arg(lBackend));
+    }
+
     Utils::PrintMessageStdOut(QString("Supports SSL? %1").arg(QSslSocket::supportsSsl() ? "yes" : "no"));
     Utils::PrintMessageStdOut(QString("SSL version information: %1").arg(QSslSocket::sslLibraryBuildVersionString()));
     Utils::PrintMessageStdOut("");
@@ -104,8 +110,6 @@ int main(int argc, char* argv[])
     // Reset the value
     Utils::RESTART_PENDING = false;
 
-    qApp->setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    qApp->setAttribute(Qt::AA_DisableWindowContextHelpButton, true);
     qApp->setApplicationVersion("4.0.0.0");
     const auto& lAppVersion{Utils::GetApplicationVersion()};
 
@@ -124,9 +128,6 @@ int main(int argc, char* argv[])
     lMainApplication.setApplicationName("MFBOPresetCreator");
     lMainApplication.setApplicationVersion(lAppVersion);
     lMainApplication.setWindowIcon(QIcon(QPixmap(":/application/icon")));
-
-    // Set the codec
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
     // Show the splash screen
     const QPixmap lSplashScreenBackground(":/application/splashscreen");
@@ -192,7 +193,7 @@ int main(int argc, char* argv[])
 
     // Apply default Qt language and translation
     auto lQtBaseTranslator{new QTranslator()};
-    if (lQtBaseTranslator->load(QString("qt_%1.qm").arg(lLanguageToSet), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (lQtBaseTranslator->load(QString("qt_%1.qm").arg(lLanguageToSet), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
     {
       lMainApplication.installTranslator(lQtBaseTranslator);
     }

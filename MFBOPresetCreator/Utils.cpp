@@ -677,7 +677,7 @@ BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName
     return BCGroupWidgetCallContext::EYES;
 
   // Skeleton
-  if (aFileName.midRef(aFileName.lastIndexOf('/') + 1).contains("skeleton", Qt::CaseInsensitive))
+  if (aFileName.mid(aFileName.lastIndexOf('/') + 1).contains("skeleton", Qt::CaseInsensitive))
     return BCGroupWidgetCallContext::SKELETON;
 
   return BCGroupWidgetCallContext::UNDEFINED;

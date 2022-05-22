@@ -126,7 +126,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lGeneralGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 2, 0);
 
   auto lFiltersWrapper{new QHBoxLayout(lGeneralGroupBox)};
-  lFiltersWrapper->setMargin(0);
+  lFiltersWrapper->setContentsMargins(0, 0, 0, 0);
   lGeneralGridLayout->addLayout(lFiltersWrapper, 2, 1, 1, 2);
 
   auto lFiltersListChooser{new QComboBox(this)};

@@ -636,12 +636,17 @@ std::vector<Struct::NexusModsFileInformation> TexturesAssistant::parseFilesListF
     const auto lFiles{lRootElement["files"].toArray()};
     for (const auto& lFile : lFiles)
     {
-      lList.push_back(Struct::NexusModsFileInformation(lFile["file_id"].toInt(),
-                                                       lFile["name"].toString(),
-                                                       lFile["uploaded_timestamp"].toInt(),
-                                                       lFile["version"].toString(),
-                                                       lFile["content_preview_link"].toString(),
-                                                       lFile["category_name"].isNull() ? "-" : lFile["category_name"].toString()));
+      if (lFile.isObject())
+      {
+        const auto lObject{lFile.toObject()};
+
+        lList.push_back(Struct::NexusModsFileInformation(lObject["file_id"].toInt(),
+                                                         lObject["name"].toString(),
+                                                         lObject["uploaded_timestamp"].toInt(),
+                                                         lObject["version"].toString(),
+                                                         lObject["content_preview_link"].toString(),
+                                                         lObject["category_name"].isNull() ? "-" : lObject["category_name"].toString()));
+      }
     }
   }
   else
@@ -750,17 +755,19 @@ void TexturesAssistant::parseNode(const QJsonArray& aArray,
   {
     if (lEntry.isObject())
     {
+      const auto lObject{lEntry.toObject()};
+
       // The node contains some children
-      if (lEntry.toObject().contains("children") && lEntry["children"].isArray())
+      if (lObject.contains("children") && lObject["children"].isArray())
       {
         // Parse the content of the array
-        const auto lChildren{lEntry["children"].toArray()};
+        const auto lChildren{lObject["children"].toArray()};
         this->parseNode(lChildren, aNifFilesList, aRootNodeName, aHasFoundBSAFile);
       }
       else
       {
         // Parse the file node
-        this->parseNode(lEntry.toObject(), aRootNodeName, aHasFoundBSAFile);
+        this->parseNode(lObject, aRootNodeName, aHasFoundBSAFile);
       }
     }
   }
@@ -1140,7 +1147,7 @@ void TexturesAssistant::populateTexturesSetChooser()
 
   // Reselect the previously selected textures set, if it still exists
   if (lPreviousIndex != -1)
-    lTexturesSetChooser->setCurrentIndex(std::max(lAvailableTexturesSets.indexOf(lPreviousTexturesSet), 0));
+    lTexturesSetChooser->setCurrentIndex(std::max(static_cast<int>(lAvailableTexturesSets.indexOf(lPreviousTexturesSet)), 0));
   else if (lTexturesSetChooser->count() > 0)
     lTexturesSetChooser->setCurrentIndex(0);
 }

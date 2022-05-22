@@ -381,7 +381,7 @@ void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
     // If two parenthesis have been found
     if (lOpenIndex != -1 && lCloseIndex != -1 && lLength > 0)
     {
-      lNextValue = lNewSetName.midRef(lOpenIndex + 1, lLength).toInt(&lSuccessfullyCasted);
+      lNextValue = lNewSetName.mid(lOpenIndex + 1, lLength).toInt(&lSuccessfullyCasted);
       if (!lSuccessfullyCasted)
       {
         lNextValue = 2;

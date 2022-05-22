@@ -679,7 +679,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 5, 0);
 
   auto lFiltersWrapper{new QHBoxLayout(lBodyslideGroupBox)};
-  lFiltersWrapper->setMargin(0);
+  lFiltersWrapper->setContentsMargins(0, 0, 0, 0);
   lBodyslideGridLayout->addLayout(lFiltersWrapper, 5, 1);
 
   auto lFiltersListChooser{new QComboBox(this)};
@@ -920,7 +920,7 @@ void PresetCreator::populateSkeletonChooser()
 
   // Reselect the previously selected skeleton, if it still exists
   if (lPreviousIndex != -1)
-    lSkeletonChooser->setCurrentIndex(std::max(lAvailableSkeletons.indexOf(lPreviousSkeleton), 0));
+    lSkeletonChooser->setCurrentIndex(std::max(static_cast<int>(lAvailableSkeletons.indexOf(lPreviousSkeleton)), 0));
   else if (lSkeletonChooser->count() > 0)
     lSkeletonChooser->setCurrentIndex(0);
 }

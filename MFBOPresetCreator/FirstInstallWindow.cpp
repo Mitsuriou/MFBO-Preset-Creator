@@ -246,7 +246,7 @@ void FirstInstallWindow::swapTranslators(const QString& aLanguageToSet)
 
   // Apply default Qt language and translation
   const auto lQtBaseTranslator{new QTranslator()};
-  if (lQtBaseTranslator->load(QString("qt_%1.qm").arg(aLanguageToSet), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+  if (lQtBaseTranslator->load(QString("qt_%1.qm").arg(aLanguageToSet), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
   {
     qApp->installTranslator(lQtBaseTranslator);
   }

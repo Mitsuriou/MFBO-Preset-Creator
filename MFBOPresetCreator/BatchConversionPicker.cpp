@@ -63,7 +63,7 @@ void BatchConversionPicker::initializeGUI()
 
   // 3 columns splitter
   auto lSplitter{new QSplitter(Qt::Orientation::Horizontal, this)};
-  lMainLayout->setMargin(0);
+  lMainLayout->setContentsMargins(0, 0, 0, 0);
   lMainLayout->addWidget(lSplitter, 0, 0);
 
   /*===========*/

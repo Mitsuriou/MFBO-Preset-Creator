@@ -21,7 +21,7 @@ BCDragWidget::BCDragWidget(QWidget* aParent, const Struct::Settings& aSettings, 
 
   // Main layout
   auto lMainLayout{new QVBoxLayout(this)};
-  lMainLayout->setMargin(0);
+  lMainLayout->setContentsMargins(0, 0, 0, 0);
   this->setLayout(lMainLayout);
 
   // Tweak the group box text and icon

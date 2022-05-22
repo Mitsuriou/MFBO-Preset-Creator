@@ -186,7 +186,7 @@ namespace ComponentFactory
     aLayout.addWidget(new QLabel(QObject::tr("Targeted meshes mods:"), aParent), aLayoutRow, 0);
 
     QHBoxLayout* lBodyNameVersionWrapper{new QHBoxLayout(aParent)};
-    lBodyNameVersionWrapper->setMargin(0);
+    lBodyNameVersionWrapper->setContentsMargins(0, 0, 0, 0);
     aLayout.addLayout(lBodyNameVersionWrapper,
                       aLayoutRow + (aSingleLineForLabelAndActions ? 0 : 1),
                       (aSingleLineForLabelAndActions ? 1 : 0));
