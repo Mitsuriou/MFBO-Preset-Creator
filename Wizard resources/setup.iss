@@ -44,6 +44,22 @@ Name: "{autoprograms}\{#AppName}"; Filename: "{app}\MFBOPresetCreator.exe"
 Name: "{autodesktop}\{#AppName} (v.{#AppVersion})"; Filename: "{app}\MFBOPresetCreator.exe"; Tasks: desktopicon
 
 [InstallDelete]
+// VERSION 3.x.x Qt5 resources and DLLs
+Type: filesandordirs; Name: "{app}\Qt5Core.dll"
+Type: filesandordirs; Name: "{app}\Qt5Gui.dll"
+Type: filesandordirs; Name: "{app}\Qt5Network.dll"
+Type: filesandordirs; Name: "{app}\Qt5Svg.dll"
+Type: filesandordirs; Name: "{app}\Qt5Widgets.dll"
+Type: filesandordirs; Name: "{app}\Qt5Xml.dll"
+
+Type: filesandordirs; Name: "{app}\bearer"
+Type: filesandordirs; Name: "{app}\iconengines"
+Type: filesandordirs; Name: "{app}\imageformats"
+Type: filesandordirs; Name: "{app}\platforms"
+Type: filesandordirs; Name: "{app}\styles"
+Type: filesandordirs; Name: "{app}\translations"
+
+// APP DATA
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female - XPMSSE (v4.72)"
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female beast - XPMSSE (v4.72)"
 Type: filesandordirs; Name: "{localappdata}\MFBOPresetCreator\assets\skeletons\Female - XPMSSE (v4.80)"

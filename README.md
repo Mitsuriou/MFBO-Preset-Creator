@@ -14,11 +14,14 @@ At this time, the application is only capable of changing the body, hands and fe
 # Requirements to run the software
 - [Microsoft Visual C++ Redistributable 2015 - 2022 (x64)](https://aka.ms/vs/17/release/vc_redist.x64.exe)
 
-# Requirements to compile the source code
-- [Visual Studio 2022](https://visualstudio.microsoft.com/fr/vs/) along with:
-  - Desktop C++ development kit;
-  - [Qt VS Tools](https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022) extension;
-  - [Qt 6.3.0](https://www.qt.io/download), with MSVC package;
+# Requirements to compile the source code and create install wizard file
+[Visual Studio 2022](https://visualstudio.microsoft.com/fr/vs/) along with:
+- Desktop C++ development kit.
+- [Qt VS Tools](https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022) extension.
+
+[Qt version 6.3.0](https://www.qt.io/download) with MSVC 2019 package.
+
+[Inno Setup](https://jrsoftware.org/isdl.php) version 6 or newer.
 
 Once all the requirements are correctly installed, change the Qt Version associated to the Visual Studio Solution and run a compile of the full VS Solution.
 
@@ -30,8 +33,9 @@ If you want to understand how the application works, if you have any doubt on an
 
 # Mirrors
 ## Source code
-- [View on GitHub](https://github.com/Mitsuriou/MFBO-Preset-Creator)
-- [View on GitLab](https://gitlab.com/Mitsuriou/MFBO-Preset-Creator)
+[View on GitHub](https://github.com/Mitsuriou/MFBO-Preset-Creator)
+
+[View on GitLab](https://gitlab.com/Mitsuriou/MFBO-Preset-Creator)
 
 ## NexusMods
 [View on NexusMods](https://www.nexusmods.com/skyrimspecialedition/mods/44706)
