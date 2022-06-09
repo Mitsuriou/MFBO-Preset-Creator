@@ -169,6 +169,9 @@
     <ClCompile Include="SSSPSelectionBlock.cpp">
       <Filter>Source Files\Slider Sets Injection</Filter>
     </ClCompile>
+    <ClCompile Include="SliderSetsDBEntry.cpp">
+      <Filter>Source Files\Slider Sets Injection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">
@@ -292,6 +295,9 @@
       <Filter>Header Files\Slider Sets Injection</Filter>
     </QtMoc>
     <QtMoc Include="SliderSetsDBManager.h">
+      <Filter>Header Files\Slider Sets Injection</Filter>
+    </QtMoc>
+    <QtMoc Include="SliderSetsDBEntry.h">
       <Filter>Header Files\Slider Sets Injection</Filter>
     </QtMoc>
   </ItemGroup>

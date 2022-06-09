@@ -114,6 +114,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(this->getThemedResourcePath()))), tr("Display"));
 
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
@@ -121,10 +122,6 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lTabLayout->setColumnStretch(1, 1);
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
-
-  lTabContent->setLayout(lTabLayout);
-
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/monitor").arg(this->getThemedResourcePath()))), tr("Display"));
 
   //
   // First column
@@ -283,6 +280,7 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(this->getThemedResourcePath()))), tr("General"));
 
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
@@ -290,9 +288,6 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
   lTabLayout->setColumnStretch(1, 0);
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
-  lTabContent->setLayout(lTabLayout);
-
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/tune").arg(this->getThemedResourcePath()))), tr("General"));
 
   // Show welcome screen at application startup
   lTabLayout->addWidget(new QLabel(tr("Startup actions:"), this), 0, 0, 1, 2);
@@ -339,14 +334,12 @@ void Settings::setupPresetCreatorTab(QTabWidget& aTabWidget)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(this->getThemedResourcePath()))), tr("Preset Creator"));
 
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
-  lTabContent->setLayout(lTabLayout);
-
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/home").arg(this->getThemedResourcePath()))), tr("Preset Creator"));
 
   // DEFAULT TARGETED BODY AND FEET VERSION
   auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
@@ -374,14 +367,12 @@ void Settings::setupBatchConversionToolTab(QTabWidget& aTabWidget)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/reorder").arg(this->getThemedResourcePath()))), tr("Batch Conversion"));
 
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
-  lTabContent->setLayout(lTabLayout);
-
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/reorder").arg(this->getThemedResourcePath()))), tr("Batch Conversion"));
 
   // DEFAULT TARGETED BODY AND FEET VERSION (BATCH CONVERSION)
   auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
@@ -409,14 +400,12 @@ void Settings::setupRetargetingToolTab(QTabWidget& aTabWidget)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(this->getThemedResourcePath()))), tr("BodySlide Presets' Retargeting"));
 
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
-  lTabContent->setLayout(lTabLayout);
-
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/arrow-up").arg(this->getThemedResourcePath()))), tr("BodySlide Presets' Retargeting"));
 
   // DEFAULT SELECTED BODY AND VERSION (RETARGETING TOOL)
   auto lTargetMeshesPicker{ComponentFactory::CreateTargetMeshesPickerLine(this,
@@ -444,14 +433,12 @@ void Settings::setupLastPathsTab(QTabWidget& aTabWidget)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(this->getThemedResourcePath()))), tr("Last used paths"));
 
   // Layout
   auto lTabLayout{new QGridLayout(lTabContent)};
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
-  lTabContent->setLayout(lTabLayout);
-
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/folder").arg(this->getThemedResourcePath()))), tr("Last used paths"));
 
   // "Clear all" button
   auto lClearAllButton{ComponentFactory::CreateButton(this,

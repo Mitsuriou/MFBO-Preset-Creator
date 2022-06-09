@@ -434,7 +434,7 @@ void Utils::ApplyApplicationStyleSheet(const QString& aQSSFileName)
   }
 }
 
-bool Utils::IsThemeDark(const GUITheme& aTheme)
+bool Utils::IsThemeDark(const GUITheme aTheme)
 {
   switch (aTheme)
   {
@@ -455,7 +455,7 @@ bool Utils::IsThemeDark(const GUITheme& aTheme)
   return false;
 }
 
-QString Utils::GetIconResourceFolder(const GUITheme& aTheme)
+QString Utils::GetIconResourceFolder(const GUITheme aTheme)
 {
   return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
 }
@@ -465,7 +465,7 @@ QString Utils::GetTitleBarResourceFolder(const bool aUseBlackIcons)
   return (aUseBlackIcons ? QString("black") : QString("white"));
 }
 
-void Utils::OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme)
+void Utils::OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme aTheme)
 {
   // If no color change is needed
   if (aTheme != GUITheme::MITSURIOU_BLACK_THEME

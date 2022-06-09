@@ -1,5 +1,6 @@
 #include "SliderSetsDBManager.h"
 #include "ComponentFactory.h"
+#include "SliderSetsDBEntry.h"
 #include "SliderSetsImporter.h"
 #include "Utils.h"
 #include <QApplication>
@@ -15,7 +16,7 @@ constexpr int XML_INDENT = 4;
 constexpr QChar DB_SEPARATOR = ';';
 
 SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 800)
+  : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 1200, 600)
 {
   // Load the database before doing anything else
   this->loadDatabase();
@@ -46,23 +47,50 @@ void SliderSetsDBManager::initializeGUI()
   // Left side
   const auto lLeftWrapper{new QWidget(this)};
   const auto lLeftWrapperLayout{new QGridLayout(this)};
+  lLeftWrapperLayout->setContentsMargins(0, 0, 10, 0);
   lLeftWrapper->setLayout(lLeftWrapperLayout);
 
-  const auto lLeftLayout{ComponentFactory::CreateScrollAreaComponentLayout(lLeftWrapper, *lLeftWrapperLayout, 0, 0)};
+  ComponentFactory::CreateScrollAreaComponentLayout(lLeftWrapper, *lLeftWrapperLayout, 0, 0);
   lSplitter->addWidget(lLeftWrapper);
 
-  auto lButton{ComponentFactory::CreateButton(this, "DEBUG - IMPORT SLIDER SETS", "", "", "")};
-  lLeftLayout->addWidget(lButton);
+  const auto lButton{ComponentFactory::CreateButton(this, "Import new slider sets", "", "plus", this->getThemedResourcePath())};
+  lLeftWrapperLayout->addWidget(lButton);
 
   // Right side
   const auto lFileViewer{new QPlainTextEdit(this)};
+  lFileViewer->setObjectName("file_content_viewer");
   lFileViewer->setReadOnly(true);
   lFileViewer->setLineWrapMode(QPlainTextEdit::NoWrap);
   lFileViewer->setWordWrapMode(QTextOption::NoWrap);
-  lFileViewer->setPlainText("test");
   lSplitter->addWidget(lFileViewer);
 
   QObject::connect(lButton, &QPushButton::clicked, this, &SliderSetsDBManager::openSliderSetsImporter);
+
+  // Construct the list of slider sets
+  this->refreshList();
+}
+
+void SliderSetsDBManager::refreshList()
+{
+  const auto lDataContainer{this->findChild<QGridLayout*>("data_container")};
+
+  auto lRow{0};
+
+  for (const auto& lEntry : this->mRunningDatabase)
+  {
+    const auto lEntryWidget{new SliderSetsDBEntry(this,
+                                                  this->settings().display.applicationTheme,
+                                                  this->settings().display.font.pointSize,
+                                                  lEntry.first,
+                                                  lEntry.second)};
+
+    QObject::connect(lEntryWidget, &SliderSetsDBEntry::nameUpdated, this, &SliderSetsDBManager::updateSliderSetName);
+    QObject::connect(lEntryWidget, &SliderSetsDBEntry::meshTypeUpdated, this, &SliderSetsDBManager::updateSliderSetMeshType);
+    QObject::connect(lEntryWidget, &SliderSetsDBEntry::deleteButtonClicked, this, &SliderSetsDBManager::removeFromDatabase);
+    QObject::connect(lEntryWidget, &SliderSetsDBEntry::viewContentButtonClicked, this, &SliderSetsDBManager::displaySliderSetContent);
+
+    lDataContainer->addWidget(lEntryWidget, lRow++, 0);
+  }
 }
 
 void SliderSetsDBManager::loadDatabase()
@@ -126,11 +154,10 @@ void SliderSetsDBManager::detectRemovedFiles()
 {
   const auto lBasePath{Utils::GetSliderSetsFolderPath()};
 
-  QString lString;
   for (const auto& lEntry : this->mRunningDatabase)
   {
     // If the file does not exist anymore, mark it as removed
-    if (!QFile(lBasePath + QString::number(lEntry.first) + ".osp").exists())
+    if (!QFile(lBasePath + QString::number(lEntry.first) + QStringLiteral(".osp")).exists())
     {
       this->removeFromDatabase(lEntry.first);
     }
@@ -157,7 +184,7 @@ void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSe
   }
 
   // Progress bar
-  auto lProgressBar{new QProgressBar(this)};
+  const auto lProgressBar{new QProgressBar(this)};
   lProgressBar->setFormat("%v / %m");
   lProgressBar->setRange(0, lEntriesCount);
   lProgressBar->setValue(0);
@@ -206,14 +233,8 @@ void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSe
         {
           if (lSliderSetName == lSliderSet->getOriginalSliderSetName())
           {
-            // Update the name with the new one given by the user
-            lNextNodeToParse.setAttribute("name", lSliderSet->getNewSliderSetName());
-
             this->saveSliderSetToDatabase(lNextNodeToParse,
-                                          Struct::DatabaseSliderSet(true,
-                                                                    lSliderSet->getNewSliderSetName(),
-                                                                    lSliderSet->getMeshType()));
-
+                                          Struct::DatabaseSliderSet(true, lSliderSet->getNewSliderSetName(), lSliderSet->getMeshType()));
             break;
           }
 
@@ -225,20 +246,24 @@ void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSe
       lNextNodeToParse = lNextNodeToParse.nextSiblingElement();
     }
   }
+
+  // Refresh the displayed slider sets
+  this->refreshList();
 }
 
-bool SliderSetsDBManager::saveSliderSetToDatabase(const QDomElement& aSliderSetNode, const Struct::DatabaseSliderSet& aSliderSetData)
+bool SliderSetsDBManager::saveSliderSetToDatabase(QDomElement& aSliderSetNode, const Struct::DatabaseSliderSet& aSliderSetData, const int aIndex)
 {
+  // Update the name with the new one given by the user
+  aSliderSetNode.setAttribute("name", aSliderSetData.getSliderSetName());
+
   QString lXMLContent;
   QTextStream lStream(&lXMLContent, QIODevice::WriteOnly);
   aSliderSetNode.save(lStream, XML_INDENT);
 
-  auto lSliderSetIndex{this->nextAvailableDatabaseIndex()};
+  const auto lSliderSetIndex{aIndex == -1 ? this->nextAvailableDatabaseIndex() : aIndex};
 
   // Create the XML file on disk
-  const auto lAbsFilePath{Utils::GetSliderSetsFolderPath()
-                            .append(QString::number(lSliderSetIndex))
-                            .append(".osp")};
+  const auto lAbsFilePath{Utils::GetSliderSetsFolderPath().append(QString::number(lSliderSetIndex)).append(QStringLiteral(".osp"))};
 
   QFile lOSPFile(lAbsFilePath);
   if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
@@ -258,7 +283,7 @@ bool SliderSetsDBManager::saveSliderSetToDatabase(const QDomElement& aSliderSetN
   return false;
 }
 
-void SliderSetsDBManager::addDatabaseLine(const int& aIndex, const Struct::DatabaseSliderSet& aSliderSetData)
+void SliderSetsDBManager::addDatabaseLine(const int aIndex, const Struct::DatabaseSliderSet& aSliderSetData)
 {
   auto lPosition{this->mRunningDatabase.find(aIndex)};
 
@@ -271,39 +296,74 @@ void SliderSetsDBManager::addDatabaseLine(const int& aIndex, const Struct::Datab
   this->saveDatabase();
 }
 
-void SliderSetsDBManager::updateSliderSetName(const int aIndex, const QString& aNewName)
+void SliderSetsDBManager::updateSliderSetName(const int aIndex, const QString& aNewSliderSetName)
 {
   const auto lPosition{this->mRunningDatabase.find(aIndex)};
+
   if (lPosition != this->mRunningDatabase.end())
   {
-    lPosition->second.setSliderSetName(aNewName);
+    // Update the OSP file's content
+    QFile lReadFile(Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp")));
+    if (lReadFile.open(QFile::ReadOnly | QFile::Text))
+    {
+      QDomDocument lOSPDocument;
+      lOSPDocument.setContent(&lReadFile);
+
+      auto lNode{lOSPDocument.firstChildElement()};
+      this->saveSliderSetToDatabase(lNode, Struct::DatabaseSliderSet(true, aNewSliderSetName, lPosition->second.getMeshType()), aIndex);
+
+      // Update the database entry only if the file has been successfully updated
+      lPosition->second.setSliderSetName(aNewSliderSetName);
+
+      // Refresh the file's content viewer
+      this->displaySliderSetContent(aIndex);
+    }
+
+    lReadFile.close();
   }
 }
 
 void SliderSetsDBManager::updateSliderSetMeshType(const int aIndex, const MeshPartType aMeshType)
 {
   const auto lPosition{this->mRunningDatabase.find(aIndex)};
+
   if (lPosition != this->mRunningDatabase.end())
-  {
     lPosition->second.setMeshType(aMeshType);
-  }
 }
 
-void SliderSetsDBManager::removeFromDatabase(const int& aIndex)
+void SliderSetsDBManager::removeFromDatabase(const int aIndex)
 {
   const auto lPosition{this->mRunningDatabase.find(aIndex)};
+
   if (lPosition != this->mRunningDatabase.end())
-  {
     lPosition->second.setActive(false);
+
+  this->displaySliderSetContent(-1);
+}
+
+void SliderSetsDBManager::displaySliderSetContent(const int aIndex)
+{
+  const auto lFileViewer{this->findChild<QPlainTextEdit*>("file_content_viewer")};
+
+  QFile lReadFile(Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp")));
+  if (lReadFile.open(QFile::ReadOnly | QFile::Text))
+  {
+    lFileViewer->setPlainText(lReadFile.readAll());
+    this->mCurrentPreviewIndex = aIndex;
   }
+  else
+  {
+    lFileViewer->clear();
+    this->mCurrentPreviewIndex = -1;
+  }
+
+  lReadFile.close();
 }
 
 int SliderSetsDBManager::nextAvailableDatabaseIndex()
 {
   if (this->mRunningDatabase.begin() == this->mRunningDatabase.end())
-  {
     return 1;
-  }
 
   return std::max_element(this->mRunningDatabase.begin(),
                           this->mRunningDatabase.end(),
@@ -317,10 +377,9 @@ int SliderSetsDBManager::nextAvailableDatabaseIndex()
 QString SliderSetsDBManager::databaseToString()
 {
   QString lString;
+
   for (const auto& lEntry : this->mRunningDatabase)
-  {
     lString.append(this->stringifyDatabaseEntry(lEntry));
-  }
 
   return lString;
 }
@@ -328,6 +387,7 @@ QString SliderSetsDBManager::databaseToString()
 std::pair<int, Struct::DatabaseSliderSet> SliderSetsDBManager::parseDatabaseLine(const QString& aLine)
 {
   const auto& lParts{aLine.split(DB_SEPARATOR)};
+
   return {lParts[0].toInt(),
           Struct::DatabaseSliderSet(lParts[1].toInt() == 1,
                                     QByteArray::fromBase64(lParts[2].toUtf8()),

@@ -59,10 +59,10 @@ public:
 
   // Theming
   static void ApplyApplicationStyleSheet(const QString& aQSSFileName);
-  static bool IsThemeDark(const GUITheme& aTheme);
-  static QString GetIconResourceFolder(const GUITheme& aTheme);
+  static bool IsThemeDark(const GUITheme aTheme);
+  static QString GetIconResourceFolder(const GUITheme aTheme);
   static QString GetTitleBarResourceFolder(const bool aUseBlackIcons);
-  static void OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme& aTheme);
+  static void OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme aTheme);
 
   // Skyrim related stuff
   static bool CreateXMLFile(const QString& aEntryDirectory, const bool aGenerateFilesInExistingMainDirectory, const QString& aOSPXMLNames, const bool aMustUseBeastHands, const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const QString& aBodyslideSlidersetsNames, const std::vector<Struct::Filter>& aBodySlideFilters, const bool aIsBatchConversionPreset, const unsigned char& aTargetBlocks);

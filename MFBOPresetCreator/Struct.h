@@ -858,7 +858,7 @@ namespace Struct
       dateTime.setSecsSinceEpoch(aDateTime);
     }
 
-    const int& getFileID() const
+    int getFileID() const
     {
       return this->fileID;
     }

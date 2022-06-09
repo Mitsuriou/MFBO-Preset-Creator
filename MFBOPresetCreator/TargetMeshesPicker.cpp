@@ -5,11 +5,6 @@
 #include "Utils.h"
 #include <QCloseEvent>
 
-void TargetMeshesPicker::debugtest()
-{
-  new SliderSetsDBManager(this, this->settings(), this->lastPaths());
-}
-
 TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
                                        const Struct::Settings& aSettings,
                                        std::map<QString, QString>* aLastPaths,
@@ -66,77 +61,15 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
 void TargetMeshesPicker::initializeGUI()
 {
   // Main window container
-  auto lMainLayout{new QVBoxLayout(this)};
+  const auto lMainLayout{new QVBoxLayout(this->getCentralWidget())};
   lMainLayout->setAlignment(Qt::AlignTop);
-  this->getCentralWidget()->setLayout(lMainLayout);
 
-  /*=========================*/
-  /* Targeted body group box */
-  /*=========================*/
-  auto lBodyGroupBox{ComponentFactory::CreateGroupBox(this, tr("Body mod"), "body", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
-  lMainLayout->addWidget(lBodyGroupBox);
-
-  // Grid layout
-  auto lBodyLayout{new QGridLayout(lBodyGroupBox)};
-  lBodyLayout->setSpacing(10);
-  lBodyLayout->setContentsMargins(15, 20, 15, 15);
-  lBodyLayout->setColumnStretch(0, 2);
-  lBodyLayout->setColumnStretch(1, 1);
-  lBodyLayout->setColumnStretch(2, 2);
-  lBodyLayout->setAlignment(Qt::AlignTop);
-
-  // Add the labels
-  auto lLabelBodyBase{new QLabel(tr("Body base mod:"), this)};
-  lBodyLayout->addWidget(lLabelBodyBase, 0, 0);
-  auto lLabelBodyVersionNumber{new QLabel(tr("Version number:"), this)};
-  lBodyLayout->addWidget(lLabelBodyVersionNumber, 0, 1);
-  auto lLabelBodyVersionName{new QLabel(tr("Targeted body mesh:"), this)};
-  lBodyLayout->addWidget(lLabelBodyVersionName, 0, 2);
-
-  // Add the list widgets
-  this->mListBodyName->setAlternatingRowColors(true);
-  lBodyLayout->addWidget(this->mListBodyName, 1, 0);
-  this->mListBodyName->addItems(DataLists::GetBodyNamesList());
-
-  this->mListBodyVersion->setAlternatingRowColors(true);
-  lBodyLayout->addWidget(this->mListBodyVersion, 1, 1);
-
-  this->mListBodyVariantName->setAlternatingRowColors(true);
-  lBodyLayout->addWidget(this->mListBodyVariantName, 1, 2);
-
-  /*=========================*/
-  /* Targeted feet group box */
-  /*=========================*/
-  auto lFeetGroupBox{ComponentFactory::CreateGroupBox(this, tr("Feet mod"), "foot", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
-  lMainLayout->addWidget(lFeetGroupBox);
-
-  // Grid layout
-  auto lFeetLayout{new QGridLayout(lFeetGroupBox)};
-  lFeetLayout->setSpacing(10);
-  lFeetLayout->setContentsMargins(15, 20, 15, 15);
-  lFeetLayout->setColumnStretch(0, 2);
-  lFeetLayout->setColumnStretch(1, 1);
-  lFeetLayout->setColumnStretch(2, 2);
-  lFeetLayout->setAlignment(Qt::AlignTop);
-
-  // Add the labels
-  auto lLabelFeetBase{new QLabel(tr("Feet base mod:"), this)};
-  lFeetLayout->addWidget(lLabelFeetBase, 0, 0);
-  auto lLabelFeetVersionNumber{new QLabel(tr("Version number:"), this)};
-  lFeetLayout->addWidget(lLabelFeetVersionNumber, 0, 1);
-  auto lLabelFeetVersionName{new QLabel(tr("Targeted feet mesh:"), this)};
-  lFeetLayout->addWidget(lLabelFeetVersionName, 0, 2);
-
-  // Add the list widgets
-  this->mListFeetName->setAlternatingRowColors(true);
-  lFeetLayout->addWidget(this->mListFeetName, 1, 0);
-  this->mListFeetName->addItems(DataLists::GetFeetNamesList(DataLists::GetVariant(this->mOriginalBody)));
-
-  this->mListFeetVersion->setAlternatingRowColors(true);
-  lFeetLayout->addWidget(this->mListFeetVersion, 1, 1);
-
-  this->mListFeetVariantName->setAlternatingRowColors(true);
-  lFeetLayout->addWidget(this->mListFeetVariantName, 1, 2);
+  /*=============*/
+  /* Tab widgets */
+  /*=============*/
+  this->setupBodyTabWidget(*lMainLayout);
+  this->setupFeetTabWidget(*lMainLayout);
+  this->setupHandsTabWidget(*lMainLayout);
 
   /*========================================*/
   /* Label for currently chosen meshes mods */
@@ -145,21 +78,15 @@ void TargetMeshesPicker::initializeGUI()
   lCurrentlyTargetedBody->setObjectName("currently_targeted_body_feet");
   lMainLayout->addWidget(lCurrentlyTargetedBody);
 
-  // DEBUG
-  auto DEBUGBUTTON{ComponentFactory::CreateButton(this, "DEBUG - OPEN DB MANAGER", "", "", "")};
-  lMainLayout->addWidget(DEBUGBUTTON);
-  QObject::connect(DEBUGBUTTON, &QPushButton::clicked, this, &TargetMeshesPicker::debugtest);
-  // END DEBUG
-
   /*================*/
   /* Bottom buttons */
   /*================*/
-  auto lButtonsLayout{new QHBoxLayout(this)};
+  const auto lButtonsLayout{new QHBoxLayout()};
 
-  auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", this->getThemedResourcePath(), "save_close", false, true)};
+  const auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", this->getThemedResourcePath(), "save_close", false, true)};
   lButtonsLayout->addWidget(lSaveButton);
 
-  auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", this->getThemedResourcePath(), "", false, true)};
+  const auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", this->getThemedResourcePath(), "", false, true)};
   lButtonsLayout->addWidget(lCloseButton);
 
   lMainLayout->addLayout(lButtonsLayout);
@@ -186,6 +113,224 @@ void TargetMeshesPicker::initializeGUI()
   this->mListFeetVariantName->setCurrentRow(DataLists::GetVariantIndex(this->mOriginalFeet));
 
   this->mIsWindowInitialized = true;
+}
+
+void TargetMeshesPicker::setupBodyTabWidget(QVBoxLayout& aMainLayout)
+{
+  // Sub-title
+  const auto lBodyModLabel{new QLabel(tr("Body mod:"), this)};
+  lBodyModLabel->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 1.5));
+  aMainLayout.addWidget(lBodyModLabel);
+
+  // Tab widget
+  auto lBodyTabWidget{new QTabWidget(this)};
+  lBodyTabWidget->setObjectName(QString("body_tab_widget"));
+  lBodyTabWidget->setAutoFillBackground(true);
+  lBodyTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
+  aMainLayout.addWidget(lBodyTabWidget);
+
+  this->setupEmbeddedBodyTab(*lBodyTabWidget);
+  this->setupCustomBodyTab(*lBodyTabWidget);
+}
+
+void TargetMeshesPicker::setupEmbeddedBodyTab(QTabWidget& aTabWidget)
+{
+  // Tab widget
+  const auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/body").arg(this->getThemedResourcePath()))), tr("Embedded body mods"));
+
+  // Layout
+  const auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setColumnStretch(0, 2);
+  lTabLayout->setColumnStretch(1, 1);
+  lTabLayout->setColumnStretch(2, 2);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Add the labels
+  const auto lLabelBodyBase{new QLabel(tr("Base mod:"), this)};
+  lTabLayout->addWidget(lLabelBodyBase, 0, 0);
+  const auto lLabelBodyVersionNumber{new QLabel(tr("Version number:"), this)};
+  lTabLayout->addWidget(lLabelBodyVersionNumber, 0, 1);
+  const auto lLabelBodyVersionName{new QLabel(tr("Targeted mesh:"), this)};
+  lTabLayout->addWidget(lLabelBodyVersionName, 0, 2);
+
+  // Add the list widgets
+  this->mListBodyName->setAlternatingRowColors(true);
+  lTabLayout->addWidget(this->mListBodyName, 1, 0);
+  this->mListBodyName->addItems(DataLists::GetBodyNamesList());
+
+  this->mListBodyVersion->setAlternatingRowColors(true);
+  lTabLayout->addWidget(this->mListBodyVersion, 1, 1);
+
+  this->mListBodyVariantName->setAlternatingRowColors(true);
+  lTabLayout->addWidget(this->mListBodyVariantName, 1, 2);
+}
+
+void TargetMeshesPicker::setupCustomBodyTab(QTabWidget& aTabWidget)
+{
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/body").arg(this->getThemedResourcePath()))), tr("Custom body mods"));
+
+  // Layout
+  auto lTabLayout{new QVBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Database manager button
+  auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};
+  lTabLayout->addWidget(lOpenDatabaseManager);
+
+  // Event binding
+  QObject::connect(lOpenDatabaseManager, &QPushButton::clicked, this, &TargetMeshesPicker::openSliderSetsDatabaseManager);
+}
+
+void TargetMeshesPicker::setupFeetTabWidget(QVBoxLayout& aMainLayout)
+{
+  // Sub-title
+  const auto lFeetModLabel{new QLabel(tr("Feet mod:"), this)};
+  lFeetModLabel->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 1.5));
+  aMainLayout.addWidget(lFeetModLabel);
+
+  // Tab widget
+  auto lFeetTabWidget{new QTabWidget(this)};
+  lFeetTabWidget->setObjectName(QString("feet_tab_widget"));
+  lFeetTabWidget->setAutoFillBackground(true);
+  lFeetTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
+  aMainLayout.addWidget(lFeetTabWidget);
+
+  this->setupEmbeddedFeetTab(*lFeetTabWidget);
+  this->setupCustomFeetTab(*lFeetTabWidget);
+}
+
+void TargetMeshesPicker::setupEmbeddedFeetTab(QTabWidget& aTabWidget)
+{
+  // Tab widget
+  const auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/foot").arg(this->getThemedResourcePath()))), tr("Embedded feet mods"));
+
+  // Layout
+  const auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setColumnStretch(0, 2);
+  lTabLayout->setColumnStretch(1, 1);
+  lTabLayout->setColumnStretch(2, 2);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Add the labels
+  const auto lLabelFeetBase{new QLabel(tr("Base mod:"), this)};
+  lTabLayout->addWidget(lLabelFeetBase, 0, 0);
+  const auto lLabelFeetVersionNumber{new QLabel(tr("Version number:"), this)};
+  lTabLayout->addWidget(lLabelFeetVersionNumber, 0, 1);
+  const auto lLabelFeetVersionName{new QLabel(tr("Targeted mesh:"), this)};
+  lTabLayout->addWidget(lLabelFeetVersionName, 0, 2);
+
+  // Add the list widgets
+  this->mListFeetName->setAlternatingRowColors(true);
+  lTabLayout->addWidget(this->mListFeetName, 1, 0);
+  this->mListFeetName->addItems(DataLists::GetFeetNamesList(DataLists::GetVariant(this->mOriginalBody)));
+
+  this->mListFeetVersion->setAlternatingRowColors(true);
+  lTabLayout->addWidget(this->mListFeetVersion, 1, 1);
+
+  this->mListFeetVariantName->setAlternatingRowColors(true);
+  lTabLayout->addWidget(this->mListFeetVariantName, 1, 2);
+}
+
+void TargetMeshesPicker::setupCustomFeetTab(QTabWidget& aTabWidget)
+{
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/foot").arg(this->getThemedResourcePath()))), tr("Custom feet mods"));
+
+  // Layout
+  auto lTabLayout{new QVBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Database manager button
+  auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};
+  lTabLayout->addWidget(lOpenDatabaseManager);
+
+  // Event binding
+  QObject::connect(lOpenDatabaseManager, &QPushButton::clicked, this, &TargetMeshesPicker::openSliderSetsDatabaseManager);
+}
+
+void TargetMeshesPicker::setupHandsTabWidget(QVBoxLayout& aMainLayout)
+{
+  // Sub-title
+  const auto lHandsModLabel{new QLabel(tr("Hands mod:"), this)};
+  lHandsModLabel->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 1.5));
+  aMainLayout.addWidget(lHandsModLabel);
+
+  // Tab widget
+  auto lHandsTabWidget{new QTabWidget(this)};
+  lHandsTabWidget->setObjectName(QString("hands_tab_widget"));
+  lHandsTabWidget->setAutoFillBackground(true);
+  lHandsTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
+  aMainLayout.addWidget(lHandsTabWidget);
+
+  this->setupEmbeddedHandsTab(*lHandsTabWidget);
+  this->setupCustomHandsTab(*lHandsTabWidget);
+}
+
+void TargetMeshesPicker::setupEmbeddedHandsTab(QTabWidget& aTabWidget)
+{
+  // Tab widget
+  const auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/hand").arg(this->getThemedResourcePath()))), tr("Embedded hands mods"));
+
+  // Layout
+  const auto lTabLayout{new QGridLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setColumnStretch(0, 2);
+  lTabLayout->setColumnStretch(1, 1);
+  lTabLayout->setColumnStretch(2, 2);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Add the labels
+  const auto lLabelHandsBase{new QLabel(tr("Base mod:"), this)};
+  lTabLayout->addWidget(lLabelHandsBase, 0, 0);
+  const auto lLabelHandsVersionNumber{new QLabel(tr("Version number:"), this)};
+  lTabLayout->addWidget(lLabelHandsVersionNumber, 0, 1);
+  const auto lLabelHandsVersionName{new QLabel(tr("Targeted mesh:"), this)};
+  lTabLayout->addWidget(lLabelHandsVersionName, 0, 2);
+
+  //// Add the list widgets
+  // this->mListHandsName->setAlternatingRowColors(true);
+  // lTabLayout->addWidget(this->mListHandsName, 1, 0);
+  // this->mListHandsName->addItems(DataLists::GetHandsNamesList(DataLists::GetVariant(this->mOriginalBody)));
+
+  // this->mListHandsVersion->setAlternatingRowColors(true);
+  // lTabLayout->addWidget(this->mListHandsVersion, 1, 1);
+
+  // this->mListHandsVariantName->setAlternatingRowColors(true);
+  // lTabLayout->addWidget(this->mListHandsVariantName, 1, 2);
+}
+
+void TargetMeshesPicker::setupCustomHandsTab(QTabWidget& aTabWidget)
+{
+  // Tab widget
+  auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/hand").arg(this->getThemedResourcePath()))), tr("Custom hands mods"));
+
+  // Layout
+  auto lTabLayout{new QVBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Database manager button
+  auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};
+  lTabLayout->addWidget(lOpenDatabaseManager);
+
+  // Event binding
+  QObject::connect(lOpenDatabaseManager, &QPushButton::clicked, this, &TargetMeshesPicker::openSliderSetsDatabaseManager);
+}
+
+void TargetMeshesPicker::openSliderSetsDatabaseManager()
+{
+  new SliderSetsDBManager(this, this->settings(), this->lastPaths());
 }
 
 BodyVariant TargetMeshesPicker::getChosenBodyVariant() const

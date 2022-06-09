@@ -16,7 +16,7 @@
 #endif
 
 #if defined(DEBUG) || !defined(QT_NO_DEBUG)
-bool FORCE_CONSOLE_DISPLAY = true;
+bool FORCE_CONSOLE_DISPLAY = false;
 #else
 bool FORCE_CONSOLE_DISPLAY = false;
 #endif

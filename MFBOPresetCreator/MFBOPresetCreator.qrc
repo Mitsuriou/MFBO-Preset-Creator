@@ -71,6 +71,7 @@
         <file alias="publish">resources/software/icons/black/publish.svg</file>
         <file alias="database">resources/software/icons/black/database.svg</file>
         <file alias="open_in_new">resources/software/icons/black/open_in_new.svg</file>
+        <file alias="preview">resources/software/icons/black/preview.svg</file>
     </qresource>
     <qresource prefix="/white">
         <file alias="alert-circle">resources/software/icons/white/alert-circle.svg</file>
@@ -137,6 +138,7 @@
         <file alias="publish">resources/software/icons/white/publish.svg</file>
         <file alias="database">resources/software/icons/white/database.svg</file>
         <file alias="open_in_new">resources/software/icons/white/open_in_new.svg</file>
+        <file alias="preview">resources/software/icons/white/preview.svg</file>
     </qresource>
     <qresource prefix="/translations">
         <file>mfbopc_en.qm</file>

@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 # Ignore compiled EXE
 Wizard resources/*/*.exe
+
+*.qm

@@ -11,7 +11,7 @@
 #include <QStyledItemDelegate>
 
 SSSPSelectionBlock::SSSPSelectionBlock(QWidget* aParent,
-                                       const GUITheme& aApplicationTheme,
+                                       const GUITheme aApplicationTheme,
                                        const int aPointSize,
                                        const QString& aFullFilePath,
                                        const Struct::SliderSet& aSliderSet)
@@ -42,7 +42,7 @@ Struct::SliderSetResult SSSPSelectionBlock::getData() const
 
 void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
 {
-  QFormLayout* lMainLayout = new QFormLayout(this);
+  const auto lMainLayout = new QFormLayout(this);
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(15, 20, 15, 15);
   lMainLayout->setAlignment(Qt::AlignTop);
@@ -81,13 +81,6 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
 
   lMainLayout->addRow(lResourceTypeLabel, lResourceTypeValue);
 
-  //// Source directory
-  // const auto lSourceDirectoryNameLabel{new QLabel(tr("Source directory:"), this)};
-
-  // const auto lSourceDirectoryNameValue{new QLabel(QFileInfo(this->mFullFilePath).absolutePath(), this)};
-
-  // lMainLayout->addRow(lSourceDirectoryNameLabel, lSourceDirectoryNameValue);
-
   // Source file
   const auto lSourceFileNameLabel{new QLabel(tr("Source file:"), this)};
 
@@ -96,13 +89,13 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   lMainLayout->addRow(lSourceFileNameLabel, lSourceFileNameValue);
 
   // Event binding
-  QObject::connect(lSliderSetNameValue, &QLineEdit::textEdited, this, &SSSPSelectionBlock::SliderSetNameChanged);
+  QObject::connect(lSliderSetNameValue, &QLineEdit::textEdited, this, &SSSPSelectionBlock::sliderSetNameChanged);
 
   // Post-bind initialization functions
-  this->SliderSetNameChanged(lSliderSetNameValue->text());
+  this->sliderSetNameChanged(lSliderSetNameValue->text());
 }
 
-void SSSPSelectionBlock::SliderSetNameChanged(const QString& aNewSliderSetName)
+void SSSPSelectionBlock::sliderSetNameChanged(const QString& aNewSliderSetName)
 {
   this->setTitle(aNewSliderSetName);
 

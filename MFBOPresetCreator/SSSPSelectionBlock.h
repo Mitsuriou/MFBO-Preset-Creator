@@ -9,7 +9,7 @@ class SSSPSelectionBlock final : public GroupBox
 
 public:
   SSSPSelectionBlock(QWidget* aParent,
-                     const GUITheme& aApplicationTheme,
+                     const GUITheme aApplicationTheme,
                      const int aPointSize,
                      const QString& aFullFilePath,
                      const Struct::SliderSet& aSliderSet);
@@ -25,5 +25,5 @@ private:
   void initializeGUI(const Struct::SliderSet& aSliderSet);
 
   // Events handlers
-  void SliderSetNameChanged(const QString& aNewSliderSetName);
+  void sliderSetNameChanged(const QString& aNewSliderSetName);
 };

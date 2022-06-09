@@ -6,7 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme& aAppTheme, QWidget* aParent)
+TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme aAppTheme, QWidget* aParent)
   : QDialog(aParent)
   , mAppTheme(aAppTheme)
 {

@@ -6,12 +6,6 @@
 class TargetMeshesPicker final : public TitleDialog
 {
   Q_OBJECT
-
-  // DEBUG
-public:
-  void debugtest();
-  // END DEBUG
-
 public:
   explicit TargetMeshesPicker(QWidget* aParent,
                               const Struct::Settings& aSettings,
@@ -50,6 +44,20 @@ private:
 
   // Common functions
   void initializeGUI();
+
+  void setupBodyTabWidget(QVBoxLayout& aMainLayout);
+  void setupEmbeddedBodyTab(QTabWidget& aTabWidget);
+  void setupCustomBodyTab(QTabWidget& aTabWidget);
+
+  void setupFeetTabWidget(QVBoxLayout& aMainLayout);
+  void setupEmbeddedFeetTab(QTabWidget& aTabWidget);
+  void setupCustomFeetTab(QTabWidget& aTabWidget);
+
+  void setupHandsTabWidget(QVBoxLayout& aMainLayout);
+  void setupEmbeddedHandsTab(QTabWidget& aTabWidget);
+  void setupCustomHandsTab(QTabWidget& aTabWidget);
+
+  void openSliderSetsDatabaseManager();
 
   BodyVariant getChosenBodyVariant() const;
   BodyNameVersion getChosenBodyName() const;

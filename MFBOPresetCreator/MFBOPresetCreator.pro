@@ -35,6 +35,10 @@ HEADERS += ./resource.h \
     FileIDPicker.h \
     FirstInstallWindow.h \
     GroupBox.h \
+    SSSPSelectionBlock.h \
+    SliderSetsDBEntry.h \
+    SliderSetsDBManager.h \
+    SliderSetsImporter.h \
     TargetMeshesPicker.h \
     ThemeCard.h \
     TitleDialog.h
@@ -66,6 +70,10 @@ SOURCES += ./main.cpp \
     FileIDPicker.cpp \
     FirstInstallWindow.cpp \
     GroupBox.cpp \
+    SSSPSelectionBlock.cpp \
+    SliderSetsDBEntry.cpp \
+    SliderSetsDBManager.cpp \
+    SliderSetsImporter.cpp \
     TargetMeshesPicker.cpp \
     ThemeCard.cpp \
     TitleDialog.cpp

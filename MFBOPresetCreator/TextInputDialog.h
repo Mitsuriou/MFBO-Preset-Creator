@@ -6,7 +6,7 @@ class TextInputDialog final : public QDialog
   Q_OBJECT
 
 public:
-  explicit TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme& aAppTheme, QWidget* aParent);
+  explicit TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme aAppTheme, QWidget* aParent);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;

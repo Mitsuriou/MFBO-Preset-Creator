@@ -17,8 +17,11 @@ private:
   std::map<int, Struct::DatabaseSliderSet> mInitialDatabase;
   std::map<int, Struct::DatabaseSliderSet> mRunningDatabase;
 
+  int mCurrentPreviewIndex{-1};
+
   // GUI creation
   void initializeGUI();
+  void refreshList();
 
   // Database I/O streams
   void loadDatabase();
@@ -29,18 +32,19 @@ private:
   // Create
   void openSliderSetsImporter();
   void importNewSliderSets(const std::vector<Struct::SliderSetResult>& aChosenSliderSets);
-  bool saveSliderSetToDatabase(const QDomElement& aSliderSetNode, const Struct::DatabaseSliderSet& aSliderSetData);
+  bool saveSliderSetToDatabase(QDomElement& aSliderSetNode, const Struct::DatabaseSliderSet& aSliderSetData, const int aIndex = -1);
 
-  void addDatabaseLine(const int& aIndex, const Struct::DatabaseSliderSet& aSliderSetData);
+  void addDatabaseLine(const int aIndex, const Struct::DatabaseSliderSet& aSliderSetData);
 
   // Update
-  void updateSliderSetName(const int aIndex, const QString& aNewName);
+  void updateSliderSetName(const int aIndex, const QString& aNewSliderSetName);
   void updateSliderSetMeshType(const int aIndex, const MeshPartType aMeshType);
 
   // Delete
-  void removeFromDatabase(const int& aIndex);
+  void removeFromDatabase(const int aIndex);
 
   // Other utils functions
+  void displaySliderSetContent(const int aIndex);
   int nextAvailableDatabaseIndex();
 
   QString databaseToString();
