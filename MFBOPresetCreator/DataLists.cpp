@@ -26,7 +26,8 @@ QStringList DataLists::GetBodyVersionsList(const BodyName& aBodyName)
                           QString("1.51 to 1.55"),
                           QString("2.02 to 2.04"),
                           QString("2.06 - 2.11 - 2.12"),
-                          QString("2.13 to 2.22 - 2.30 - 2.31")});
+                          QString("2.13 to 2.22 - 2.30 - 2.31"),
+                          QString("2.40 to 2.42")});
     }
     case BodyName::BHUNP_UUNP_NEXT_GENERATION:
     {
@@ -79,8 +80,8 @@ QStringList DataLists::GetBodyVariantsList(const BodyName& aBodyName, const int 
       // All the version numbers propose the variant below:
       QStringList lVariantsList{QString("CBBE 3BBB Body Amazing")};
 
-      // Only for "2.13 to 2.22 - 2.30 - 2.31"
-      if (aRelativeVersion == 4)
+      // Only for "2.13 to 2.22 - 2.30 - 2.31" and "CBBE 3BA 3BBB 2.40 to 2.42"
+      if (aRelativeVersion >= 4 && aRelativeVersion <= 5)
       {
         lVariantsList.append(QString("CBBE 3BBB Amazing NeverNude"));
         lVariantsList.append(QString("CBBE 3BBB Amazing Underwear"));
@@ -322,7 +323,8 @@ QStringList DataLists::GetFeetVersionsList(const FeetName& aFeetName, const bool
                          QString("1.51 to 1.55"),
                          QString("2.02 to 2.04"),
                          QString("2.06 - 2.11 - 2.12"),
-                         QString("2.13 to 2.22 - 2.30 - 2.31")};
+                         QString("2.13 to 2.22 - 2.30 - 2.31"),
+                         QString("2.40 to 2.42")};
     case FeetName::COCO_BODY:
       if (aIsCBBEBody)
         return QStringList{QString("V4"), QString("V6"), QString("V6.8"), QString("V6.9 - V6.95")};
@@ -723,12 +725,15 @@ BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
     case BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
     case BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case BodyNameVersion::CBBE_3BA_3BBB_2_40_TO_2_42:
       return BodyVariant::CBBE_3BA_3BBB;
     //
     case BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_40_TO_2_42:
       return BodyVariant::CBBE_3BA_3BBB_NEVERNUDE;
     //
     case BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_40_TO_2_42:
       return BodyVariant::CBBE_3BA_3BBB_UNDERWEAR;
     //
     case BodyNameVersion::BHUNP_3BBB_2_20:
@@ -900,8 +905,10 @@ BodyVariant DataLists::GetVariant(const BodyName& aBodyName, const int aRelative
       return BodyVariant::_INVALID_VALUE;
     case BodyName::CBBE_3BA_3BBB:
     {
-      // If not "2.13 to 2.22 - 2.30 - 2.31" but trying to use nevernude or underwear key, this is invalid
-      if (aRelativeVersion != 4 && aRelativeVariant > 0)
+      // If not "2.13 to 2.22 - 2.30 - 2.31" or "2.40 to 2.42" but trying to use nevernude or underwear key, this is invalid
+      if (aRelativeVariant > 0
+          && !(aRelativeVersion >= 4 && aRelativeVersion <= 5) // "2.13 to 2.22 - 2.30 - 2.31" or "2.40 to 2.42"
+      )
       {
         return BodyVariant::_INVALID_VALUE;
       }
@@ -985,6 +992,7 @@ FeetVariant DataLists::GetVariant(const FeetNameVersion& aFeetNameVersion)
     case FeetNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
     case FeetNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
     case FeetNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case FeetNameVersion::CBBE_3BA_3BBB_2_40_TO_2_42:
       return FeetVariant::CBBE_3BA_3BBB;
     case FeetNameVersion::COCO_BODY_NORMAL_CBBE_V4:
     case FeetNameVersion::COCO_BODY_NORMAL_CBBE_V6:
@@ -1602,6 +1610,7 @@ int DataLists::GetVersionOffset(const BodyNameVersion& aBodyNameVersion)
     case BodyNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
     case BodyNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
     case BodyNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case BodyNameVersion::CBBE_3BA_3BBB_2_40_TO_2_42:
     case BodyNameVersion::BHUNP_3BBB_2_20:
     case BodyNameVersion::BHUNP_3BBB_2_25:
     case BodyNameVersion::BHUNP_3BBB_2_30:
@@ -1700,7 +1709,9 @@ int DataLists::GetVersionOffset(const BodyNameVersion& aBodyNameVersion)
       return 0;
     }
     case BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case BodyNameVersion::CBBE_3BA_3BBB_NEVERNUDE_2_40_TO_2_42:
     case BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case BodyNameVersion::CBBE_3BA_3BBB_UNDERWEAR_2_40_TO_2_42:
     {
       return 4; // Ignore "1.50", "1.51 to 1.55", "2.02 to 2.04" and "2.06 - 2.11 - 2.12"
     }
@@ -1915,7 +1926,24 @@ QString DataLists::GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion
       // For the beast hands, use the default CBBE v.1.6.1 beast hands
       if (Utils::IsCBBEBasedBody(aBodyNameVersion))
       {
-        return QString(":/presets/beast_hands/cbbe/1.6.1");
+        lResourceType = "beast_hands";
+
+        const auto lBodyName{DataLists::GetName(aBodyNameVersion)};
+        const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+
+        // Only for CBBE 3BA 3BBB "2.40 to 2.42"
+        if (lBodyName == BodyName::CBBE_3BA_3BBB && lVersionIndex == 5)
+        {
+          lResourceName = DataLists::GetQRCResourceName(DataLists::GetVariant(aBodyNameVersion), aFeetNameVersion);
+          lResourceVersion = DataLists::GetVersionString(aBodyNameVersion, aFeetNameVersion);
+        }
+        else
+        {
+          lResourceName = QString("cbbe");
+          lResourceVersion = QString("1.6.1");
+        }
+
+        break;
       }
 
       // UNP-based bodies do not have beast hands compatibility
@@ -2319,14 +2347,18 @@ QString DataLists::GetFeetSliderValue(const FeetNameVersion& aFeetNameVersion)
 
 QString DataLists::GetHandsSliderValue(const BodyNameVersion& aBodyNameVersion, const bool aMustUseBeastHands)
 {
+  const auto lBodyName{DataLists::GetName(aBodyNameVersion)};
+  const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
+
   // Beast hands
   if (Utils::IsCBBEBasedBody(aBodyNameVersion) && aMustUseBeastHands)
   {
+    // Only for CBBE 3BA 3BBB "2.40 to 2.42"
+    if (lBodyName == BodyName::CBBE_3BA_3BBB && lVersionIndex == 5)
+      return QString("CBBE 3BBB Hands Beast");
+
     return QString("CBBE Hands Beast");
   }
-
-  const auto lBodyName{DataLists::GetName(aBodyNameVersion)};
-  const auto lVersionIndex{DataLists::GetVersionIndex(aBodyNameVersion)};
 
   switch (lBodyName)
   {

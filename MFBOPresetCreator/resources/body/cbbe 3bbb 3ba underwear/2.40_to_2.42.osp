@@ -1,0 +1,955 @@
+    <SliderSet name="%1 - CBBE 3BBB Amazing Underwear">
+        <DataFolder>SE 3BBB Amazing</DataFolder>
+        <SourceFile>CBBE 3BBB Amazing Underwear.nif</SourceFile>
+        <OutputPath>{%%body_output_path%%}</OutputPath>
+        <OutputFile GenWeights="true">{%%body_output_file%%}</OutputFile>
+        <Shape target="3BA" DataFolder="SE 3BBB Amazing">3BA</Shape>
+        <Shape target="3BA_Anus">3BA_Anus</Shape>
+        <Shape target="3BA_Vagina">3BA_Vagina</Shape>
+        <Shape target="Bra">Bra</Shape>
+        <Shape target="BraBowTies1">BraBowTies1</Shape>
+        <Shape target="BraBowTies2">BraBowTies2</Shape>
+        <Shape target="Panty">Panty</Shape>
+        <Shape target="PantyBowTies1">PantyBowTies1</Shape>
+        <Shape target="PantyBowTies2">PantyBowTies2</Shape>
+        <Slider name="AnkleSize" invert="false" small="100" big="0">
+            <Data name="3BAAnkleSize" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAnkleSize</Data>
+        </Slider>
+        <Slider name="AppleCheeks" invert="false" small="0" big="0">
+            <Data name="3BAAppleCheeks" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAppleCheeks</Data>
+            <Data name="BraAppleCheeks" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraAppleCheeks</Data>
+            <Data name="PantyAppleCheeks" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyAppleCheeks</Data>
+            <Data name="PantyBowTies1AppleCheeks" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1AppleCheeks</Data>
+            <Data name="PantyBowTies2AppleCheeks" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2AppleCheeks</Data>
+            <Data name="3BA_VaginaAppleCheeks" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaAppleCheeks</Data>
+            <Data name="3BA_AnusAppleCheeks" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusAppleCheeks</Data>
+        </Slider>
+        <Slider name="AreolaSize" invert="false" small="0" big="0" uv="true">
+            <Data name="3BAAreolaSize" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAreolaSize</Data>
+        </Slider>
+        <Slider name="Arms" invert="false" small="0" big="0">
+            <Data name="3BAArms" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAArms</Data>
+            <Data name="BraArms" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraArms</Data>
+        </Slider>
+        <Slider name="Back" invert="false" small="0" big="0">
+            <Data name="3BABack" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABack</Data>
+            <Data name="BraBack" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBack</Data>
+            <Data name="PantyBack" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBack</Data>
+            <Data name="PantyBowTies1Back" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Back</Data>
+            <Data name="PantyBowTies2Back" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2Back</Data>
+        </Slider>
+        <Slider name="BackArch" invert="false" small="0" big="0">
+            <Data name="3BABackArch" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABackArch</Data>
+            <Data name="BraBackArch" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBackArch</Data>
+            <Data name="PantyBackArch" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBackArch</Data>
+            <Data name="PantyBowTies1BackArch" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BackArch</Data>
+        </Slider>
+        <Slider name="Belly" invert="false" small="0" big="0">
+            <Data name="3BABelly" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABelly</Data>
+            <Data name="BraBelly" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBelly</Data>
+            <Data name="BraBowTies2Belly" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2Belly</Data>
+            <Data name="PantyBelly" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBelly</Data>
+            <Data name="PantyBowTies1Belly" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Belly</Data>
+            <Data name="PantyBowTies2Belly" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2Belly</Data>
+        </Slider>
+        <Slider name="BigBelly" invert="false" small="0" big="0">
+            <Data name="3BABigBelly" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABigBelly</Data>
+            <Data name="BraBigBelly" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBigBelly</Data>
+            <Data name="BraBowTies2BigBelly" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BigBelly</Data>
+            <Data name="PantyBigBelly" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBigBelly</Data>
+            <Data name="PantyBowTies1BigBelly" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BigBelly</Data>
+            <Data name="PantyBowTies2BigBelly" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2BigBelly</Data>
+            <Data name="3BA_VaginaBigBelly" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaBigBelly</Data>
+        </Slider>
+        <Slider name="BigButt" invert="false" small="0" big="0">
+            <Data name="3BABigButt" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABigButt</Data>
+            <Data name="BraBigButt" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBigButt</Data>
+            <Data name="PantyBigButt" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBigButt</Data>
+            <Data name="PantyBowTies1BigButt" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BigButt</Data>
+            <Data name="PantyBowTies2BigButt" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2BigButt</Data>
+            <Data name="3BA_VaginaBigButt" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaBigButt</Data>
+            <Data name="3BA_AnusBigButt" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusBigButt</Data>
+        </Slider>
+        <Slider name="BigTorso" invert="false" small="0" big="0">
+            <Data name="3BABigTorso" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABigTorso</Data>
+            <Data name="BraBigTorso" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBigTorso</Data>
+            <Data name="BraBowTies1BigTorso" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BigTorso</Data>
+            <Data name="BraBowTies2BigTorso" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BigTorso</Data>
+            <Data name="PantyBigTorso" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBigTorso</Data>
+            <Data name="PantyBowTies1BigTorso" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BigTorso</Data>
+            <Data name="PantyBowTies2BigTorso" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2BigTorso</Data>
+        </Slider>
+        <Slider name="BreastCenter" invert="false" small="0" big="0">
+            <Data name="3BABreastCenter" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastCenter</Data>
+        </Slider>
+        <Slider name="BreastCenterBig" invert="false" small="0" big="0">
+            <Data name="3BABreastCenterBig" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastCenterBig</Data>
+        </Slider>
+        <Slider name="BreastCleavage" invert="false" small="0" big="0">
+            <Data name="3BABreastCleavage" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastCleavage</Data>
+            <Data name="BraBreastCleavage" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastCleavage</Data>
+            <Data name="PantyBreastCleavage" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBreastCleavage</Data>
+        </Slider>
+        <Slider name="BreastFlatness2" invert="false" small="0" big="0">
+            <Data name="3BABreastFlatness2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastFlatness2</Data>
+            <Data name="BraBreastFlatness2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastFlatness2</Data>
+            <Data name="BraBowTies1BreastFlatness2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastFlatness2</Data>
+            <Data name="BraBowTies2BreastFlatness2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastFlatness2</Data>
+        </Slider>
+        <Slider name="BreastFlatness" invert="false" small="0" big="0">
+            <Data name="3BABreastFlatness" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastFlatness</Data>
+            <Data name="BraBreastFlatness" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastFlatness</Data>
+            <Data name="BraBowTies1BreastFlatness" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastFlatness</Data>
+            <Data name="BraBowTies2BreastFlatness" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastFlatness</Data>
+        </Slider>
+        <Slider name="BreastGravity2" invert="false" small="0" big="0">
+            <Data name="3BABreastGravity2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastGravity2</Data>
+            <Data name="BraBreastGravity2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastGravity2</Data>
+            <Data name="BraBowTies1BreastGravity2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastGravity2</Data>
+            <Data name="BraBowTies2BreastGravity2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastGravity2</Data>
+        </Slider>
+        <Slider name="BreastHeight" invert="false" small="0" big="0">
+            <Data name="3BABreastHeight" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastHeight</Data>
+            <Data name="BraBreastHeight" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastHeight</Data>
+            <Data name="BraBowTies1BreastHeight" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastHeight</Data>
+            <Data name="BraBowTies2BreastHeight" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastHeight</Data>
+        </Slider>
+        <Slider name="BreastPerkiness" invert="false" small="0" big="0">
+            <Data name="3BABreastPerkiness" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastPerkiness</Data>
+            <Data name="BraBreastPerkiness" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastPerkiness</Data>
+            <Data name="BraBowTies1BreastPerkiness" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastPerkiness</Data>
+            <Data name="BraBowTies2BreastPerkiness" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastPerkiness</Data>
+        </Slider>
+        <Slider name="Breasts" invert="false" small="0" big="0">
+            <Data name="3BABreasts" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreasts</Data>
+            <Data name="BraBreasts" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreasts</Data>
+            <Data name="BraBowTies1Breasts" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1Breasts</Data>
+            <Data name="BraBowTies2Breasts" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2Breasts</Data>
+        </Slider>
+        <Slider name="BreastsFantasy" invert="false" small="0" big="0">
+            <Data name="3BABreastsFantasy" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsFantasy</Data>
+            <Data name="BraBreastsFantasy" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsFantasy</Data>
+            <Data name="BraBowTies1BreastsFantasy" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsFantasy</Data>
+            <Data name="BraBowTies2BreastsFantasy" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsFantasy</Data>
+        </Slider>
+        <Slider name="BreastsGone" invert="false" small="0" big="0">
+            <Data name="3BABreastsGone" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsGone</Data>
+            <Data name="BraBreastsGone" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsGone</Data>
+            <Data name="BraBowTies1BreastsGone" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsGone</Data>
+            <Data name="BraBowTies2BreastsGone" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsGone</Data>
+        </Slider>
+        <Slider name="BreastsNewSH" invert="false" small="0" big="0">
+            <Data name="3BABreastsNewSH" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsNewSH</Data>
+            <Data name="BraBreastsNewSH" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsNewSH</Data>
+            <Data name="BraBowTies1BreastsNewSH" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsNewSH</Data>
+            <Data name="BraBowTies2BreastsNewSH" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsNewSH</Data>
+        </Slider>
+        <Slider name="BreastsNewSHSymmetry" invert="false" small="0" big="0">
+            <Data name="3BABreastsNewSHSymmetry" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsNewSHSymmetry</Data>
+            <Data name="BraBreastsNewSHSymmetry" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsNewSHSymmetry</Data>
+            <Data name="BraBowTies1BreastsNewSHSymmetry" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsNewSHSymmetry</Data>
+            <Data name="BraBowTies2BreastsNewSHSymmetry" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsNewSHSymmetry</Data>
+        </Slider>
+        <Slider name="BreastsSmall" invert="false" small="0" big="0">
+            <Data name="3BABreastsSmall" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsSmall</Data>
+            <Data name="BraBreastsSmall" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsSmall</Data>
+            <Data name="BraBowTies1BreastsSmall" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsSmall</Data>
+            <Data name="BraBowTies2BreastsSmall" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsSmall</Data>
+            <Data name="PantyBreastsSmall" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBreastsSmall</Data>
+            <Data name="PantyBowTies1BreastsSmall" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BreastsSmall</Data>
+            <Data name="PantyBowTies2BreastsSmall" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2BreastsSmall</Data>
+        </Slider>
+        <Slider name="BreastsSmall2" invert="false" small="0" big="0">
+            <Data name="3BABreastsSmall2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsSmall2</Data>
+            <Data name="BraBreastsSmall2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsSmall2</Data>
+            <Data name="BraBowTies1BreastsSmall2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsSmall2</Data>
+            <Data name="BraBowTies2BreastsSmall2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsSmall2</Data>
+            <Data name="PantyBreastsSmall2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBreastsSmall2</Data>
+            <Data name="PantyBowTies1BreastsSmall2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BreastsSmall2</Data>
+            <Data name="PantyBowTies2BreastsSmall2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2BreastsSmall2</Data>
+        </Slider>
+        <Slider name="BreastsTogether" invert="false" small="0" big="0">
+            <Data name="3BABreastsTogether" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsTogether</Data>
+            <Data name="BraBreastsTogether" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsTogether</Data>
+            <Data name="BraBowTies1BreastsTogether" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsTogether</Data>
+            <Data name="BraBowTies2BreastsTogether" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsTogether</Data>
+        </Slider>
+        <Slider name="BreastTopSlope" invert="false" small="0" big="0">
+            <Data name="3BABreastTopSlope" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastTopSlope</Data>
+            <Data name="BraBreastTopSlope" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastTopSlope</Data>
+            <Data name="BraBowTies1BreastTopSlope" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastTopSlope</Data>
+            <Data name="BraBowTies2BreastTopSlope" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastTopSlope</Data>
+        </Slider>
+        <Slider name="BreastWidth" invert="false" small="0" big="0">
+            <Data name="3BABreastWidth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastWidth</Data>
+            <Data name="BraBreastWidth" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastWidth</Data>
+            <Data name="BraBowTies1BreastWidth" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastWidth</Data>
+            <Data name="BraBowTies2BreastWidth" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastWidth</Data>
+        </Slider>
+        <Slider name="Butt" invert="false" small="0" big="0">
+            <Data name="3BAButt" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButt</Data>
+            <Data name="BraButt" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraButt</Data>
+            <Data name="PantyButt" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButt</Data>
+            <Data name="PantyBowTies1Butt" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Butt</Data>
+            <Data name="PantyBowTies2Butt" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2Butt</Data>
+            <Data name="3BA_VaginaButt" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaButt</Data>
+            <Data name="3BA_AnusButt" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusButt</Data>
+        </Slider>
+        <Slider name="ButtClassic" invert="false" small="0" big="0">
+            <Data name="3BAButtClassic" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtClassic</Data>
+            <Data name="BraButtClassic" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraButtClassic</Data>
+            <Data name="PantyButtClassic" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButtClassic</Data>
+            <Data name="PantyBowTies1ButtClassic" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ButtClassic</Data>
+            <Data name="PantyBowTies2ButtClassic" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ButtClassic</Data>
+            <Data name="3BA_VaginaButtClassic" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaButtClassic</Data>
+            <Data name="3BA_AnusButtClassic" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusButtClassic</Data>
+        </Slider>
+        <Slider name="ButtCrack" invert="false" small="0" big="0">
+            <Data name="3BAButtCrack" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtCrack</Data>
+            <Data name="PantyButtCrack" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButtCrack</Data>
+            <Data name="3BA_VaginaButtCrack" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaButtCrack</Data>
+            <Data name="3BA_AnusButtCrack" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusButtCrack</Data>
+        </Slider>
+        <Slider name="ButtShape2" invert="false" small="0" big="0">
+            <Data name="3BAButtShape2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtShape2</Data>
+            <Data name="BraButtShape2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraButtShape2</Data>
+            <Data name="PantyButtShape2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButtShape2</Data>
+            <Data name="PantyBowTies1ButtShape2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ButtShape2</Data>
+            <Data name="PantyBowTies2ButtShape2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ButtShape2</Data>
+            <Data name="3BA_VaginaButtShape2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaButtShape2</Data>
+            <Data name="3BA_AnusButtShape2" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusButtShape2</Data>
+        </Slider>
+        <Slider name="ButtSmall" invert="false" small="0" big="0">
+            <Data name="3BAButtSmall" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtSmall</Data>
+            <Data name="BraButtSmall" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraButtSmall</Data>
+            <Data name="PantyButtSmall" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButtSmall</Data>
+            <Data name="PantyBowTies1ButtSmall" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ButtSmall</Data>
+            <Data name="PantyBowTies2ButtSmall" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ButtSmall</Data>
+            <Data name="3BA_VaginaButtSmall" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaButtSmall</Data>
+            <Data name="3BA_AnusButtSmall" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusButtSmall</Data>
+        </Slider>
+        <Slider name="CalfSize" invert="false" small="0" big="0">
+            <Data name="3BACalfSize" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BACalfSize</Data>
+        </Slider>
+        <Slider name="CalfSmooth" invert="false" small="0" big="0">
+            <Data name="3BACalfSmooth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BACalfSmooth</Data>
+        </Slider>
+        <Slider name="ChestDepth" invert="false" small="0" big="0">
+            <Data name="3BAChestDepth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAChestDepth</Data>
+            <Data name="BraChestDepth" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraChestDepth</Data>
+            <Data name="BraBowTies1ChestDepth" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1ChestDepth</Data>
+            <Data name="BraBowTies2ChestDepth" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2ChestDepth</Data>
+            <Data name="PantyChestDepth" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyChestDepth</Data>
+            <Data name="PantyBowTies1ChestDepth" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ChestDepth</Data>
+            <Data name="PantyBowTies2ChestDepth" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ChestDepth</Data>
+        </Slider>
+        <Slider name="ChestWidth" invert="false" small="0" big="0">
+            <Data name="3BAChestWidth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAChestWidth</Data>
+            <Data name="BraChestWidth" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraChestWidth</Data>
+            <Data name="BraBowTies1ChestWidth" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1ChestWidth</Data>
+            <Data name="BraBowTies2ChestWidth" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2ChestWidth</Data>
+            <Data name="PantyChestWidth" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyChestWidth</Data>
+            <Data name="PantyBowTies1ChestWidth" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ChestWidth</Data>
+            <Data name="PantyBowTies2ChestWidth" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ChestWidth</Data>
+        </Slider>
+        <Slider name="ChubbyArms" invert="false" small="0" big="0">
+            <Data name="3BAChubbyArms" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAChubbyArms</Data>
+            <Data name="BraChubbyArms" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraChubbyArms</Data>
+        </Slider>
+        <Slider name="ChubbyButt" invert="false" small="0" big="0">
+            <Data name="3BAChubbyButt" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAChubbyButt</Data>
+            <Data name="BraChubbyButt" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraChubbyButt</Data>
+            <Data name="PantyChubbyButt" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyChubbyButt</Data>
+            <Data name="PantyBowTies1ChubbyButt" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ChubbyButt</Data>
+            <Data name="PantyBowTies2ChubbyButt" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ChubbyButt</Data>
+            <Data name="3BA_VaginaChubbyButt" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaChubbyButt</Data>
+            <Data name="3BA_AnusChubbyButt" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusChubbyButt</Data>
+        </Slider>
+        <Slider name="ChubbyLegs" invert="false" small="0" big="0">
+            <Data name="3BAChubbyLegs" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAChubbyLegs</Data>
+            <Data name="PantyChubbyLegs" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyChubbyLegs</Data>
+            <Data name="PantyBowTies1ChubbyLegs" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ChubbyLegs</Data>
+            <Data name="PantyBowTies2ChubbyLegs" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ChubbyLegs</Data>
+            <Data name="3BA_VaginaChubbyLegs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaChubbyLegs</Data>
+            <Data name="3BA_AnusChubbyLegs" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusChubbyLegs</Data>
+        </Slider>
+        <Slider name="ChubbyWaist" invert="false" small="0" big="0">
+            <Data name="3BAChubbyWaist" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAChubbyWaist</Data>
+            <Data name="BraChubbyWaist" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraChubbyWaist</Data>
+            <Data name="BraBowTies2ChubbyWaist" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2ChubbyWaist</Data>
+            <Data name="PantyChubbyWaist" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyChubbyWaist</Data>
+            <Data name="PantyBowTies1ChubbyWaist" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ChubbyWaist</Data>
+            <Data name="PantyBowTies2ChubbyWaist" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ChubbyWaist</Data>
+            <Data name="3BA_VaginaChubbyWaist" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaChubbyWaist</Data>
+            <Data name="3BA_AnusChubbyWaist" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusChubbyWaist</Data>
+        </Slider>
+        <Slider name="CrotchBack" invert="false" small="0" big="0">
+            <Data name="3BACrotchBack" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BACrotchBack</Data>
+            <Data name="PantyCrotchBack" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyCrotchBack</Data>
+            <Data name="PantyBowTies1CrotchBack" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1CrotchBack</Data>
+            <Data name="PantyBowTies2CrotchBack" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2CrotchBack</Data>
+            <Data name="3BA_VaginaCrotchBack" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaCrotchBack</Data>
+            <Data name="3BA_AnusCrotchBack" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusCrotchBack</Data>
+        </Slider>
+        <Slider name="DoubleMelon" invert="false" small="0" big="0">
+            <Data name="3BADoubleMelon" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BADoubleMelon</Data>
+            <Data name="BraDoubleMelon" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraDoubleMelon</Data>
+            <Data name="BraBowTies1DoubleMelon" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1DoubleMelon</Data>
+            <Data name="BraBowTies2DoubleMelon" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2DoubleMelon</Data>
+        </Slider>
+        <Slider name="ForearmSize" invert="false" small="0" big="0">
+            <Data name="3BAForearmSize" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAForearmSize</Data>
+        </Slider>
+        <Slider name="Groin" invert="false" small="0" big="0">
+            <Data name="3BAGroin" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAGroin</Data>
+            <Data name="PantyGroin" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyGroin</Data>
+            <Data name="PantyBowTies1Groin" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Groin</Data>
+            <Data name="3BA_VaginaGroin" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaGroin</Data>
+            <Data name="3BA_AnusGroin" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusGroin</Data>
+        </Slider>
+        <Slider name="HipBone" invert="false" small="0" big="0">
+            <Data name="3BAHipBone" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAHipBone</Data>
+            <Data name="PantyHipBone" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyHipBone</Data>
+            <Data name="PantyBowTies1HipBone" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1HipBone</Data>
+            <Data name="PantyBowTies2HipBone" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2HipBone</Data>
+            <Data name="3BA_VaginaHipBone" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaHipBone</Data>
+        </Slider>
+        <Slider name="HipForward" invert="false" small="0" big="0">
+            <Data name="3BAHipForward" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAHipForward</Data>
+            <Data name="BraHipForward" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraHipForward</Data>
+            <Data name="BraBowTies2HipForward" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2HipForward</Data>
+            <Data name="PantyHipForward" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyHipForward</Data>
+            <Data name="PantyBowTies1HipForward" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1HipForward</Data>
+            <Data name="PantyBowTies2HipForward" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2HipForward</Data>
+            <Data name="3BA_VaginaHipForward" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaHipForward</Data>
+            <Data name="3BA_AnusHipForward" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusHipForward</Data>
+        </Slider>
+        <Slider name="Hips" invert="false" small="0" big="0">
+            <Data name="3BAHips" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAHips</Data>
+            <Data name="BraHips" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraHips</Data>
+            <Data name="PantyHips" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyHips</Data>
+            <Data name="PantyBowTies1Hips" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Hips</Data>
+            <Data name="PantyBowTies2Hips" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2Hips</Data>
+            <Data name="3BA_VaginaHips" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaHips</Data>
+            <Data name="3BA_AnusHips" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusHips</Data>
+        </Slider>
+        <Slider name="HipUpperWidth" invert="false" small="0" big="0">
+            <Data name="3BAHipUpperWidth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAHipUpperWidth</Data>
+            <Data name="BraHipUpperWidth" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraHipUpperWidth</Data>
+            <Data name="PantyHipUpperWidth" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyHipUpperWidth</Data>
+            <Data name="PantyBowTies2HipUpperWidth" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2HipUpperWidth</Data>
+        </Slider>
+        <Slider name="KneeHeight" invert="false" small="0" big="0">
+            <Data name="3BAKneeHeight" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAKneeHeight</Data>
+        </Slider>
+        <Slider name="KneeShape" invert="false" small="0" big="0">
+            <Data name="3BAKneeShape" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAKneeShape</Data>
+        </Slider>
+        <Slider name="LegShapeClassic" invert="false" small="0" big="0">
+            <Data name="3BALegShapeClassic" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALegShapeClassic</Data>
+        </Slider>
+        <Slider name="LegsThin" invert="false" small="0" big="0">
+            <Data name="3BALegsThin" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALegsThin</Data>
+            <Data name="PantyLegsThin" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLegsThin</Data>
+            <Data name="PantyBowTies2LegsThin" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2LegsThin</Data>
+        </Slider>
+        <Slider name="MuscleAbs" invert="false" small="0" big="0">
+            <Data name="3BAMuscleAbs" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleAbs</Data>
+            <Data name="BraMuscleAbs" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraMuscleAbs</Data>
+            <Data name="BraBowTies2MuscleAbs" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2MuscleAbs</Data>
+            <Data name="PantyMuscleAbs" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyMuscleAbs</Data>
+            <Data name="PantyBowTies1MuscleAbs" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1MuscleAbs</Data>
+            <Data name="PantyBowTies2MuscleAbs" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2MuscleAbs</Data>
+        </Slider>
+        <Slider name="MuscleArms" invert="false" small="0" big="0">
+            <Data name="3BAMuscleArms" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleArms</Data>
+            <Data name="BraMuscleArms" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraMuscleArms</Data>
+        </Slider>
+        <Slider name="MuscleButt" invert="false" small="0" big="0">
+            <Data name="3BAMuscleButt" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleButt</Data>
+            <Data name="PantyMuscleButt" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyMuscleButt</Data>
+            <Data name="PantyBowTies1MuscleButt" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1MuscleButt</Data>
+            <Data name="PantyBowTies2MuscleButt" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2MuscleButt</Data>
+        </Slider>
+        <Slider name="MuscleLegs" invert="false" small="0" big="0">
+            <Data name="3BAMuscleLegs" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleLegs</Data>
+            <Data name="PantyMuscleLegs" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyMuscleLegs</Data>
+            <Data name="PantyBowTies2MuscleLegs" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2MuscleLegs</Data>
+            <Data name="3BA_VaginaMuscleLegs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaMuscleLegs</Data>
+            <Data name="3BA_AnusMuscleLegs" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusMuscleLegs</Data>
+        </Slider>
+        <Slider name="MusclePecs" invert="false" small="0" big="0">
+            <Data name="3BAMusclePecs" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMusclePecs</Data>
+            <Data name="BraMusclePecs" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraMusclePecs</Data>
+            <Data name="BraBowTies1MusclePecs" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1MusclePecs</Data>
+            <Data name="BraBowTies2MusclePecs" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2MusclePecs</Data>
+        </Slider>
+        <Slider name="NavelEven" invert="false" small="0" big="0">
+            <Data name="3BANavelEven" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANavelEven</Data>
+        </Slider>
+        <Slider name="NeckSeam" invert="false" small="100" big="0" hidden="true">
+            <Data name="3BANeckSeam" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANeckSeam</Data>
+            <Data name="BraNeckSeam" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNeckSeam</Data>
+        </Slider>
+        <Slider name="NipBGone" invert="false" small="0" big="0">
+            <Data name="3BANipBGone" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANipBGone</Data>
+            <Data name="BraNipBGone" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNipBGone</Data>
+            <Data name="BraBowTies1NipBGone" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NipBGone</Data>
+            <Data name="BraBowTies2NipBGone" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NipBGone</Data>
+        </Slider>
+        <Slider name="NippleDistance" invert="false" small="0" big="0">
+            <Data name="3BANippleDistance" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleDistance</Data>
+        </Slider>
+        <Slider name="NippleDown" invert="false" small="0" big="0">
+            <Data name="3BANippleDown" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleDown</Data>
+        </Slider>
+        <Slider name="NippleLength" invert="false" small="0" big="0">
+            <Data name="3BANippleLength" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleLength</Data>
+            <Data name="BraNippleLength" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleLength</Data>
+            <Data name="BraBowTies1NippleLength" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleLength</Data>
+            <Data name="BraBowTies2NippleLength" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleLength</Data>
+        </Slider>
+        <Slider name="NippleManga" invert="false" small="0" big="0">
+            <Data name="3BANippleManga" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleManga</Data>
+            <Data name="BraNippleManga" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleManga</Data>
+            <Data name="BraBowTies1NippleManga" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleManga</Data>
+            <Data name="BraBowTies2NippleManga" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleManga</Data>
+        </Slider>
+        <Slider name="NipplePerkiness" invert="false" small="0" big="0">
+            <Data name="3BANipplePerkiness" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANipplePerkiness</Data>
+            <Data name="BraNipplePerkiness" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNipplePerkiness</Data>
+            <Data name="BraBowTies1NipplePerkiness" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NipplePerkiness</Data>
+        </Slider>
+        <Slider name="NipplePerkManga" invert="false" small="0" big="0">
+            <Data name="3BANipplePerkManga" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANipplePerkManga</Data>
+            <Data name="BraNipplePerkManga" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNipplePerkManga</Data>
+        </Slider>
+        <Slider name="NippleSize" invert="false" small="0" big="0">
+            <Data name="3BANippleSize" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleSize</Data>
+            <Data name="BraNippleSize" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleSize</Data>
+            <Data name="BraBowTies1NippleSize" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleSize</Data>
+            <Data name="BraBowTies2NippleSize" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleSize</Data>
+        </Slider>
+        <Slider name="NippleTip" invert="false" small="0" big="0">
+            <Data name="3BANippleTip" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleTip</Data>
+            <Data name="BraNippleTip" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleTip</Data>
+            <Data name="BraBowTies1NippleTip" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleTip</Data>
+            <Data name="BraBowTies2NippleTip" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleTip</Data>
+        </Slider>
+        <Slider name="NippleTipManga" invert="false" small="0" big="0">
+            <Data name="3BANippleTipManga" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleTipManga</Data>
+            <Data name="BraNippleTipManga" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleTipManga</Data>
+            <Data name="BraBowTies1NippleTipManga" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleTipManga</Data>
+            <Data name="BraBowTies2NippleTipManga" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleTipManga</Data>
+        </Slider>
+        <Slider name="NippleUp" invert="false" small="0" big="0">
+            <Data name="3BANippleUp" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleUp</Data>
+            <Data name="BraNippleUp" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleUp</Data>
+            <Data name="BraBowTies1NippleUp" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleUp</Data>
+            <Data name="BraBowTies2NippleUp" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleUp</Data>
+        </Slider>
+        <Slider name="PregnancyBelly" invert="false" small="0" big="0">
+            <Data name="3BAPregnancyBelly" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAPregnancyBelly</Data>
+            <Data name="BraPregnancyBelly" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraPregnancyBelly</Data>
+            <Data name="BraBowTies1PregnancyBelly" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1PregnancyBelly</Data>
+            <Data name="BraBowTies2PregnancyBelly" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2PregnancyBelly</Data>
+            <Data name="PantyPregnancyBelly" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyPregnancyBelly</Data>
+            <Data name="PantyBowTies1PregnancyBelly" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1PregnancyBelly</Data>
+            <Data name="PantyBowTies2PregnancyBelly" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2PregnancyBelly</Data>
+            <Data name="3BA_VaginaPregnancyBelly" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaPregnancyBelly</Data>
+        </Slider>
+        <Slider name="PushUp" invert="false" small="0" big="0">
+            <Data name="3BAPushUp" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAPushUp</Data>
+            <Data name="BraPushUp" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraPushUp</Data>
+            <Data name="BraBowTies1PushUp" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1PushUp</Data>
+            <Data name="BraBowTies2PushUp" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2PushUp</Data>
+        </Slider>
+        <Slider name="RibsProminance" invert="false" small="0" big="0">
+            <Data name="3BARibsProminance" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BARibsProminance</Data>
+            <Data name="BraRibsProminance" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraRibsProminance</Data>
+            <Data name="BraBowTies2RibsProminance" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2RibsProminance</Data>
+        </Slider>
+        <Slider name="RoundAss" invert="false" small="0" big="0">
+            <Data name="3BARoundAss" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BARoundAss</Data>
+            <Data name="PantyRoundAss" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyRoundAss</Data>
+            <Data name="PantyBowTies1RoundAss" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1RoundAss</Data>
+            <Data name="3BA_VaginaRoundAss" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaRoundAss</Data>
+            <Data name="3BA_AnusRoundAss" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusRoundAss</Data>
+        </Slider>
+        <Slider name="ShoulderSmooth" invert="false" small="0" big="0">
+            <Data name="3BAShoulderSmooth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAShoulderSmooth</Data>
+            <Data name="BraShoulderSmooth" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraShoulderSmooth</Data>
+        </Slider>
+        <Slider name="ShoulderTweak" invert="false" small="0" big="0">
+            <Data name="3BAShoulderTweak" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAShoulderTweak</Data>
+            <Data name="BraShoulderTweak" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraShoulderTweak</Data>
+        </Slider>
+        <Slider name="ShoulderWidth" invert="false" small="0" big="0">
+            <Data name="3BAShoulderWidth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAShoulderWidth</Data>
+            <Data name="BraShoulderWidth" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraShoulderWidth</Data>
+            <Data name="BraBowTies1ShoulderWidth" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1ShoulderWidth</Data>
+        </Slider>
+        <Slider name="SlimThighs" invert="false" small="0" big="0">
+            <Data name="3BASlimThighs" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BASlimThighs</Data>
+            <Data name="PantySlimThighs" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantySlimThighs</Data>
+            <Data name="PantyBowTies1SlimThighs" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1SlimThighs</Data>
+            <Data name="PantyBowTies2SlimThighs" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2SlimThighs</Data>
+            <Data name="3BA_VaginaSlimThighs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaSlimThighs</Data>
+            <Data name="3BA_AnusSlimThighs" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusSlimThighs</Data>
+        </Slider>
+        <Slider name="SternumDepth" invert="false" small="0" big="0">
+            <Data name="3BASternumDepth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BASternumDepth</Data>
+        </Slider>
+        <Slider name="SternumHeight" invert="false" small="0" big="0">
+            <Data name="3BASternumHeight" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BASternumHeight</Data>
+            <Data name="BraSternumHeight" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraSternumHeight</Data>
+        </Slider>
+        <Slider name="Thighs" invert="false" small="0" big="0">
+            <Data name="3BAThighs" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAThighs</Data>
+            <Data name="PantyThighs" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyThighs</Data>
+            <Data name="PantyBowTies1Thighs" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Thighs</Data>
+            <Data name="PantyBowTies2Thighs" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2Thighs</Data>
+            <Data name="3BA_VaginaThighs" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaThighs</Data>
+            <Data name="3BA_AnusThighs" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusThighs</Data>
+        </Slider>
+        <Slider name="TummyTuck" invert="false" small="0" big="0">
+            <Data name="3BATummyTuck" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BATummyTuck</Data>
+            <Data name="BraTummyTuck" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraTummyTuck</Data>
+            <Data name="PantyTummyTuck" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyTummyTuck</Data>
+            <Data name="PantyBowTies1TummyTuck" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1TummyTuck</Data>
+            <Data name="PantyBowTies2TummyTuck" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2TummyTuck</Data>
+            <Data name="3BA_VaginaTummyTuck" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaTummyTuck</Data>
+        </Slider>
+        <Slider name="Waist" invert="false" small="0" big="0">
+            <Data name="3BAWaist" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAWaist</Data>
+            <Data name="BraWaist" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraWaist</Data>
+            <Data name="PantyWaist" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyWaist</Data>
+            <Data name="PantyBowTies1Waist" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Waist</Data>
+            <Data name="PantyBowTies2Waist" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2Waist</Data>
+        </Slider>
+        <Slider name="WaistHeight" invert="false" small="0" big="0">
+            <Data name="3BAWaistHeight" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAWaistHeight</Data>
+            <Data name="BraWaistHeight" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraWaistHeight</Data>
+            <Data name="BraBowTies2WaistHeight" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2WaistHeight</Data>
+            <Data name="PantyWaistHeight" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyWaistHeight</Data>
+            <Data name="PantyBowTies1WaistHeight" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1WaistHeight</Data>
+            <Data name="PantyBowTies2WaistHeight" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2WaistHeight</Data>
+            <Data name="3BA_VaginaWaistHeight" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaWaistHeight</Data>
+            <Data name="3BA_AnusWaistHeight" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusWaistHeight</Data>
+        </Slider>
+        <Slider name="WideWaistLine" invert="false" small="0" big="0">
+            <Data name="3BAWideWaistLine" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAWideWaistLine</Data>
+            <Data name="BraWideWaistLine" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraWideWaistLine</Data>
+            <Data name="PantyWideWaistLine" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyWideWaistLine</Data>
+            <Data name="PantyBowTies2WideWaistLine" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2WideWaistLine</Data>
+        </Slider>
+        <Slider name="WristSize" invert="false" small="100" big="0">
+            <Data name="3BAWristSize" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAWristSize</Data>
+        </Slider>
+        <Slider name="7B Lower" invert="false" small="0" big="0">
+            <Data name="3BA7B Lower" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BA7B Lower</Data>
+            <Data name="Bra7B Lower" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\Bra7B Lower</Data>
+            <Data name="Panty7B Lower" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\Panty7B Lower</Data>
+            <Data name="PantyBowTies17B Lower" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies17B Lower</Data>
+            <Data name="PantyBowTies27B Lower" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies27B Lower</Data>
+            <Data name="3BA_Vagina7B Lower" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_Vagina7B Lower</Data>
+            <Data name="3BA_Anus7B Lower" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_Anus7B Lower</Data>
+        </Slider>
+        <Slider name="7B Upper" invert="false" small="0" big="0">
+            <Data name="3BA7B Upper" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BA7B Upper</Data>
+            <Data name="Bra7B Upper" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\Bra7B Upper</Data>
+            <Data name="BraBowTies17B Upper" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies17B Upper</Data>
+            <Data name="BraBowTies27B Upper" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies27B Upper</Data>
+        </Slider>
+        <Slider name="VanillaSSEHi" invert="false" small="0" big="0">
+            <Data name="3BAVanillaSSEHi" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAVanillaSSEHi</Data>
+            <Data name="BraVanillaSSEHi" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraVanillaSSEHi</Data>
+            <Data name="BraBowTies1VanillaSSEHi" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1VanillaSSEHi</Data>
+            <Data name="BraBowTies2VanillaSSEHi" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2VanillaSSEHi</Data>
+            <Data name="PantyVanillaSSEHi" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyVanillaSSEHi</Data>
+            <Data name="PantyBowTies1VanillaSSEHi" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1VanillaSSEHi</Data>
+            <Data name="PantyBowTies2VanillaSSEHi" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2VanillaSSEHi</Data>
+            <Data name="3BA_VaginaVanillaSSEHi" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaVanillaSSEHi</Data>
+            <Data name="3BA_AnusVanillaSSEHi" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusVanillaSSEHi</Data>
+        </Slider>
+        <Slider name="VanillaSSELo" invert="false" small="0" big="0">
+            <Data name="3BAVanillaSSELo" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAVanillaSSELo</Data>
+            <Data name="BraVanillaSSELo" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraVanillaSSELo</Data>
+            <Data name="BraBowTies1VanillaSSELo" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1VanillaSSELo</Data>
+            <Data name="BraBowTies2VanillaSSELo" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2VanillaSSELo</Data>
+            <Data name="PantyVanillaSSELo" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyVanillaSSELo</Data>
+            <Data name="PantyBowTies1VanillaSSELo" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1VanillaSSELo</Data>
+            <Data name="PantyBowTies2VanillaSSELo" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2VanillaSSELo</Data>
+            <Data name="3BA_VaginaVanillaSSELo" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaVanillaSSELo</Data>
+            <Data name="3BA_AnusVanillaSSELo" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusVanillaSSELo</Data>
+        </Slider>
+        <Slider name="OldBaseShape" invert="false" small="0" big="0">
+            <Data name="3BAOldBaseShape" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAOldBaseShape</Data>
+            <Data name="BraOldBaseShape" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraOldBaseShape</Data>
+            <Data name="BraBowTies1OldBaseShape" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1OldBaseShape</Data>
+            <Data name="BraBowTies2OldBaseShape" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2OldBaseShape</Data>
+            <Data name="PantyOldBaseShape" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyOldBaseShape</Data>
+            <Data name="PantyBowTies1OldBaseShape" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1OldBaseShape</Data>
+            <Data name="PantyBowTies2OldBaseShape" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2OldBaseShape</Data>
+            <Data name="3BA_VaginaOldBaseShape" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaOldBaseShape</Data>
+            <Data name="3BA_AnusOldBaseShape" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusOldBaseShape</Data>
+        </Slider>
+        <Slider name="Revealing Bra" invert="false" small="0" big="0" zap="true">
+            <Data name="BraRevealing Bra" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraRevealing Bra</Data>
+        </Slider>
+        <Slider name="Revealing Panty" invert="false" small="0" big="0" zap="true">
+            <Data name="PantyRevealing Panty" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyRevealing Panty</Data>
+        </Slider>
+        <Slider name="Remove Bra" invert="false" small="0" big="0" zap="true" zaptoggles="NippleZap;">
+            <Data name="BraRemove Bra" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraRemove Bra</Data>
+            <Data name="BraBowTies1Remove Bra" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1Remove Bra</Data>
+            <Data name="BraBowTies2Remove Bra" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2Remove Bra</Data>
+        </Slider>
+        <Slider name="Remove Panty" invert="false" small="0" big="0" zap="true" zaptoggles="PelvisZap;">
+            <Data name="PantyRemove Panty" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyRemove Panty</Data>
+            <Data name="PantyBowTies1Remove Panty" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1Remove Panty</Data>
+            <Data name="PantyBowTies2Remove Panty" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2Remove Panty</Data>
+        </Slider>
+        <Slider name="Remove Bow Ties 2" invert="false" small="0" big="0" zap="true">
+            <Data name="BraBowTies2Remove Bow Ties - Bra F" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2Remove Bow Ties - Bra F</Data>
+        </Slider>
+        <Slider name="Smaller Bow Ties 1" invert="false" small="30" big="30">
+            <Data name="BraBowTies1Smaller Bow Ties - Bra Sides" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1Smaller Bow Ties - Bra Sides</Data>
+        </Slider>
+        <Slider name="Smaller Bow Ties 2" invert="false" small="30" big="30">
+            <Data name="BraBowTies2Smaller Bow Ties - Bra Font" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2Smaller Bow Ties - Bra Font</Data>
+        </Slider>
+        <Slider name="ArmpitShape_v2" invert="false" small="0" big="0">
+            <Data name="3BAArmpitShape_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAArmpitShape_v2</Data>
+            <Data name="BraArmpitShape_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraArmpitShape_v2</Data>
+        </Slider>
+        <Slider name="AreolaPull_v2" invert="false" small="0" big="0">
+            <Data name="3BAAreolaPull_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAreolaPull_v2</Data>
+            <Data name="BraAreolaPull_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraAreolaPull_v2</Data>
+            <Data name="BraBowTies1AreolaPull_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1AreolaPull_v2</Data>
+            <Data name="BraBowTies2AreolaPull_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2AreolaPull_v2</Data>
+        </Slider>
+        <Slider name="BackValley_v2" invert="false" small="0" big="0">
+            <Data name="3BABackValley_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABackValley_v2</Data>
+            <Data name="BraBackValley_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBackValley_v2</Data>
+            <Data name="PantyBackValley_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBackValley_v2</Data>
+        </Slider>
+        <Slider name="BackWing_v2" invert="false" small="0" big="0">
+            <Data name="3BABackWing_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABackWing_v2</Data>
+            <Data name="BraBackWing_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBackWing_v2</Data>
+        </Slider>
+        <Slider name="BellyFrontUpFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellyFrontUpFat_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABellyFrontUpFat_v2</Data>
+            <Data name="BraBellyFrontUpFat_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBellyFrontUpFat_v2</Data>
+            <Data name="BraBowTies2BellyFrontUpFat_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BellyFrontUpFat_v2</Data>
+        </Slider>
+        <Slider name="BellyFrontDownFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellyFrontDownFat_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABellyFrontDownFat_v2</Data>
+            <Data name="PantyBellyFrontDownFat_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBellyFrontDownFat_v2</Data>
+            <Data name="PantyBowTies1BellyFrontDownFat_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BellyFrontDownFat_v2</Data>
+        </Slider>
+        <Slider name="BellySideUpFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellySideUpFat_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABellySideUpFat_v2</Data>
+        </Slider>
+        <Slider name="BellySideDownFat_v2" invert="false" small="0" big="0">
+            <Data name="3BABellySideDownFat_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABellySideDownFat_v2</Data>
+            <Data name="PantyBellySideDownFat_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBellySideDownFat_v2</Data>
+        </Slider>
+        <Slider name="BellyUnder_v2" invert="false" small="0" big="0">
+            <Data name="3BABellyUnder_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABellyUnder_v2</Data>
+            <Data name="PantyBellyUnder_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBellyUnder_v2</Data>
+            <Data name="PantyBowTies1BellyUnder_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1BellyUnder_v2</Data>
+            <Data name="3BA_VaginaBellyUnder_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaBellyUnder_v2</Data>
+        </Slider>
+        <Slider name="BreastsConverage_v2" invert="false" small="0" big="0">
+            <Data name="3BABreastsConverage_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsConverage_v2</Data>
+            <Data name="BraBreastsConverage_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsConverage_v2</Data>
+            <Data name="BraBowTies1BreastsConverage_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsConverage_v2</Data>
+            <Data name="BraBowTies2BreastsConverage_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsConverage_v2</Data>
+        </Slider>
+        <Slider name="BreastSideShape" invert="false" small="0" big="0">
+            <Data name="3BABreastSideShape" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastSideShape</Data>
+        </Slider>
+        <Slider name="BreastUnderDepth" invert="false" small="0" big="0">
+            <Data name="3BABreastUnderDepth" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastUnderDepth</Data>
+        </Slider>
+        <Slider name="BreastsPressed_v2" invert="false" small="0" big="0">
+            <Data name="3BABreastsPressed_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BABreastsPressed_v2</Data>
+            <Data name="BraBreastsPressed_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraBreastsPressed_v2</Data>
+            <Data name="BraBowTies1BreastsPressed_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1BreastsPressed_v2</Data>
+            <Data name="BraBowTies2BreastsPressed_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2BreastsPressed_v2</Data>
+        </Slider>
+        <Slider name="ButtSaggy_v2" invert="false" small="0" big="0">
+            <Data name="3BAButtSaggy_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtSaggy_v2</Data>
+            <Data name="PantyButtSaggy_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButtSaggy_v2</Data>
+            <Data name="PantyBowTies1ButtSaggy_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ButtSaggy_v2</Data>
+            <Data name="3BA_AnusButtSaggy_v2" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusButtSaggy_v2</Data>
+        </Slider>
+        <Slider name="ButtDimples" invert="false" small="0" big="0">
+            <Data name="3BAButtDimples" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtDimples</Data>
+        </Slider>
+        <Slider name="ButtUnderFold" invert="false" small="0" big="0">
+            <Data name="3BAButtUnderFold" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtUnderFold</Data>
+            <Data name="3BA_VaginaButtUnderFold" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaButtUnderFold</Data>
+        </Slider>
+        <Slider name="ButtPressed_v2" invert="false" small="0" big="0">
+            <Data name="3BAButtPressed_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtPressed_v2</Data>
+            <Data name="PantyButtPressed_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButtPressed_v2</Data>
+            <Data name="PantyBowTies1ButtPressed_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ButtPressed_v2</Data>
+            <Data name="3BA_VaginaButtPressed_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaButtPressed_v2</Data>
+            <Data name="3BA_AnusButtPressed_v2" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusButtPressed_v2</Data>
+        </Slider>
+        <Slider name="ButtNarrow_v2" invert="false" small="0" big="0">
+            <Data name="3BAButtNarrow_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAButtNarrow_v2</Data>
+            <Data name="PantyButtNarrow_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyButtNarrow_v2</Data>
+            <Data name="PantyBowTies1ButtNarrow_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1ButtNarrow_v2</Data>
+        </Slider>
+        <Slider name="CalfFBThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BACalfFBThicc_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BACalfFBThicc_v2</Data>
+        </Slider>
+        <Slider name="Clavicle_v2" invert="false" small="0" big="0">
+            <Data name="3BAClavicle_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAClavicle_v2</Data>
+            <Data name="BraClavicle_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraClavicle_v2</Data>
+        </Slider>
+        <Slider name="HipCarved" invert="false" small="0" big="0">
+            <Data name="3BAHipCarved" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAHipCarved</Data>
+        </Slider>
+        <Slider name="HipNarrow_v2" invert="false" small="0" big="0">
+            <Data name="3BAHipNarrow_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAHipNarrow_v2</Data>
+            <Data name="PantyHipNarrow_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyHipNarrow_v2</Data>
+            <Data name="PantyBowTies2HipNarrow_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2HipNarrow_v2</Data>
+        </Slider>
+        <Slider name="KneeTogether_v2" invert="false" small="0" big="0">
+            <Data name="3BAKneeTogether_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAKneeTogether_v2</Data>
+        </Slider>
+        <Slider name="MuscleBack_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleBack_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleBack_v2</Data>
+            <Data name="BraMuscleBack_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraMuscleBack_v2</Data>
+            <Data name="PantyMuscleBack_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyMuscleBack_v2</Data>
+        </Slider>
+        <Slider name="MuscleMoreAbs_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleMoreAbs_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleMoreAbs_v2</Data>
+            <Data name="BraMuscleMoreAbs_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraMuscleMoreAbs_v2</Data>
+            <Data name="PantyMuscleMoreAbs_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyMuscleMoreAbs_v2</Data>
+            <Data name="PantyBowTies1MuscleMoreAbs_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1MuscleMoreAbs_v2</Data>
+            <Data name="PantyBowTies2MuscleMoreAbs_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2MuscleMoreAbs_v2</Data>
+        </Slider>
+        <Slider name="MuscleMoreArms_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleMoreArms_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleMoreArms_v2</Data>
+            <Data name="BraMuscleMoreArms_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraMuscleMoreArms_v2</Data>
+        </Slider>
+        <Slider name="MuscleMoreLegs_v2" invert="false" small="0" big="0">
+            <Data name="3BAMuscleMoreLegs_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAMuscleMoreLegs_v2</Data>
+            <Data name="PantyMuscleMoreLegs_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyMuscleMoreLegs_v2</Data>
+            <Data name="PantyBowTies1MuscleMoreLegs_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1MuscleMoreLegs_v2</Data>
+            <Data name="PantyBowTies2MuscleMoreLegs_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2MuscleMoreLegs_v2</Data>
+        </Slider>
+        <Slider name="NippleDip" invert="false" small="0" big="0">
+            <Data name="3BANippleDip" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleDip</Data>
+            <Data name="BraNippleDip" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleDip</Data>
+            <Data name="BraBowTies1NippleDip" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleDip</Data>
+            <Data name="BraBowTies2NippleDip" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleDip</Data>
+        </Slider>
+        <Slider name="NippleCrease_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleCrease_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleCrease_v2</Data>
+            <Data name="BraNippleCrease_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleCrease_v2</Data>
+            <Data name="BraBowTies1NippleCrease_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleCrease_v2</Data>
+            <Data name="BraBowTies2NippleCrease_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleCrease_v2</Data>
+        </Slider>
+        <Slider name="NipplePuffy_v2" invert="false" small="0" big="0">
+            <Data name="3BANipplePuffy_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANipplePuffy_v2</Data>
+            <Data name="BraNipplePuffy_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNipplePuffy_v2</Data>
+        </Slider>
+        <Slider name="NippleShy_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleShy_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleShy_v2</Data>
+            <Data name="BraNippleShy_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleShy_v2</Data>
+            <Data name="BraBowTies1NippleShy_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleShy_v2</Data>
+            <Data name="BraBowTies2NippleShy_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleShy_v2</Data>
+        </Slider>
+        <Slider name="NippleThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleThicc_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleThicc_v2</Data>
+            <Data name="BraNippleThicc_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleThicc_v2</Data>
+            <Data name="BraBowTies1NippleThicc_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleThicc_v2</Data>
+            <Data name="BraBowTies2NippleThicc_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleThicc_v2</Data>
+        </Slider>
+        <Slider name="NippleInvert_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleInvert_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleInvert_v2</Data>
+            <Data name="BraNippleInvert_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleInvert_v2</Data>
+            <Data name="BraBowTies1NippleInvert_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleInvert_v2</Data>
+            <Data name="BraBowTies2NippleInvert_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleInvert_v2</Data>
+        </Slider>
+        <Slider name="NippleSquash1_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleSquash1_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleSquash1_v2</Data>
+            <Data name="BraNippleSquash1_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleSquash1_v2</Data>
+            <Data name="BraBowTies1NippleSquash1_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleSquash1_v2</Data>
+            <Data name="BraBowTies2NippleSquash1_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleSquash1_v2</Data>
+        </Slider>
+        <Slider name="NippleSquash2_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleSquash2_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleSquash2_v2</Data>
+            <Data name="BraNippleSquash2_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleSquash2_v2</Data>
+            <Data name="BraBowTies1NippleSquash2_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleSquash2_v2</Data>
+            <Data name="BraBowTies2NippleSquash2_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleSquash2_v2</Data>
+        </Slider>
+        <Slider name="NippleBump_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleBump_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleBump_v2</Data>
+            <Data name="BraNippleBump_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleBump_v2</Data>
+            <Data name="BraBowTies1NippleBump_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleBump_v2</Data>
+            <Data name="BraBowTies2NippleBump_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleBump_v2</Data>
+        </Slider>
+        <Slider name="NippleCrumpled_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleCrumpled_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleCrumpled_v2</Data>
+            <Data name="BraNippleCrumpled_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleCrumpled_v2</Data>
+            <Data name="BraBowTies1NippleCrumpled_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleCrumpled_v2</Data>
+            <Data name="BraBowTies2NippleCrumpled_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleCrumpled_v2</Data>
+        </Slider>
+        <Slider name="NippleTube_v2" invert="false" small="0" big="0">
+            <Data name="3BANippleTube_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BANippleTube_v2</Data>
+            <Data name="BraNippleTube_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraNippleTube_v2</Data>
+            <Data name="BraBowTies1NippleTube_v2" target="BraBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies1NippleTube_v2</Data>
+            <Data name="BraBowTies2NippleTube_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2NippleTube_v2</Data>
+        </Slider>
+        <Slider name="RibsMore_v2" invert="false" small="0" big="0">
+            <Data name="3BARibsMore_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BARibsMore_v2</Data>
+            <Data name="BraRibsMore_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraRibsMore_v2</Data>
+            <Data name="BraBowTies2RibsMore_v2" target="BraBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\BraBowTies2RibsMore_v2</Data>
+        </Slider>
+        <Slider name="ThighOutsideThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BAThighOutsideThicc_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAThighOutsideThicc_v2</Data>
+            <Data name="PantyThighOutsideThicc_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyThighOutsideThicc_v2</Data>
+            <Data name="PantyBowTies2ThighOutsideThicc_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ThighOutsideThicc_v2</Data>
+        </Slider>
+        <Slider name="ThighInsideThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BAThighInsideThicc_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAThighInsideThicc_v2</Data>
+            <Data name="PantyThighInsideThicc_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyThighInsideThicc_v2</Data>
+            <Data name="3BA_VaginaThighInsideThicc_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaThighInsideThicc_v2</Data>
+        </Slider>
+        <Slider name="ThighFBThicc_v2" invert="false" small="0" big="0">
+            <Data name="3BAThighFBThicc_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAThighFBThicc_v2</Data>
+            <Data name="PantyThighFBThicc_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyThighFBThicc_v2</Data>
+            <Data name="PantyBowTies2ThighFBThicc_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2ThighFBThicc_v2</Data>
+        </Slider>
+        <Slider name="LegSpread_v2" invert="false" small="0" big="0">
+            <Data name="3BALegSpread_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALegSpread_v2</Data>
+            <Data name="PantyLegSpread_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLegSpread_v2</Data>
+            <Data name="PantyBowTies1LegSpread_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1LegSpread_v2</Data>
+            <Data name="PantyBowTies2LegSpread_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2LegSpread_v2</Data>
+        </Slider>
+        <Slider name="UNPHip_v2" invert="false" small="0" big="0">
+            <Data name="3BAUNPHip_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAUNPHip_v2</Data>
+            <Data name="BraUNPHip_v2" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraUNPHip_v2</Data>
+            <Data name="PantyUNPHip_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyUNPHip_v2</Data>
+            <Data name="PantyBowTies1UNPHip_v2" target="PantyBowTies1" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies1UNPHip_v2</Data>
+            <Data name="PantyBowTies2UNPHip_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies2UNPHip_v2</Data>
+        </Slider>
+        <Slider name="7BLeg_v2" invert="false" small="0" big="0">
+            <Data name="3BA7BLeg_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BA7BLeg_v2</Data>
+            <Data name="Panty7BLeg_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\Panty7BLeg_v2</Data>
+            <Data name="PantyBowTies27BLeg_v2" target="PantyBowTies2" local="true">CBBE 3BBB Amazing Underwear.osd\PantyBowTies27BLeg_v2</Data>
+        </Slider>
+        <Slider name="Innieoutie" invert="false" small="0" big="0">
+            <Data name="3BAInnieoutie" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAInnieoutie</Data>
+            <Data name="PantyInnieoutie" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyInnieoutie</Data>
+            <Data name="3BA_VaginaInnieoutie" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaInnieoutie</Data>
+        </Slider>
+        <Slider name="LabiaTightUp" invert="false" small="0" big="0">
+            <Data name="3BALabiaTightUp" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaTightUp</Data>
+            <Data name="PantyLabiaTightUp" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaTightUp</Data>
+            <Data name="3BA_VaginaLabiaTightUp" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaTightUp</Data>
+        </Slider>
+        <Slider name="Labiapuffyness" invert="false" small="0" big="0">
+            <Data name="3BALabiapuffyness" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiapuffyness</Data>
+            <Data name="PantyLabiapuffyness" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiapuffyness</Data>
+            <Data name="3BA_VaginaLabiapuffyness" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiapuffyness</Data>
+        </Slider>
+        <Slider name="LabiaMorePuffyness_v2" invert="false" small="0" big="0">
+            <Data name="3BALabiaMorePuffyness_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaMorePuffyness_v2</Data>
+            <Data name="PantyLabiaMorePuffyness_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaMorePuffyness_v2</Data>
+            <Data name="3BA_VaginaLabiaMorePuffyness_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaMorePuffyness_v2</Data>
+        </Slider>
+        <Slider name="Labiaprotrude" invert="false" small="0" big="0">
+            <Data name="3BALabiaprotrude" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaprotrude</Data>
+            <Data name="PantyLabiaprotrude" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaprotrude</Data>
+            <Data name="3BA_VaginaLabiaprotrude" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaprotrude</Data>
+        </Slider>
+        <Slider name="Labiaprotrude2" invert="false" small="0" big="0">
+            <Data name="3BALabiaprotrude2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaprotrude2</Data>
+            <Data name="PantyLabiaprotrude2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaprotrude2</Data>
+            <Data name="3BA_VaginaLabiaprotrude2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaprotrude2</Data>
+        </Slider>
+        <Slider name="Labiaprotrudeback" invert="false" small="0" big="0">
+            <Data name="PantyLabiaprotrudeback" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaprotrudeback</Data>
+            <Data name="3BA_VaginaLabiaprotrudeback" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaprotrudeback</Data>
+        </Slider>
+        <Slider name="Labiaspread" invert="false" small="0" big="0">
+            <Data name="3BALabiaspread" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaspread</Data>
+            <Data name="PantyLabiaspread" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaspread</Data>
+            <Data name="3BA_VaginaLabiaspread" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaspread</Data>
+        </Slider>
+        <Slider name="LabiaCrumpled_v2" invert="false" small="0" big="0">
+            <Data name="3BALabiaCrumpled_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaCrumpled_v2</Data>
+            <Data name="PantyLabiaCrumpled_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaCrumpled_v2</Data>
+            <Data name="3BA_VaginaLabiaCrumpled_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaCrumpled_v2</Data>
+        </Slider>
+        <Slider name="LabiaNeat_v2" invert="false" small="0" big="0">
+            <Data name="3BALabiaNeat_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaNeat_v2</Data>
+            <Data name="PantyLabiaNeat_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaNeat_v2</Data>
+            <Data name="3BA_VaginaLabiaNeat_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaNeat_v2</Data>
+        </Slider>
+        <Slider name="LabiaBulgogi_v2" invert="false" small="0" big="0">
+            <Data name="3BALabiaBulgogi_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BALabiaBulgogi_v2</Data>
+            <Data name="PantyLabiaBulgogi_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyLabiaBulgogi_v2</Data>
+            <Data name="3BA_VaginaLabiaBulgogi_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaLabiaBulgogi_v2</Data>
+        </Slider>
+        <Slider name="Vaginasize" invert="false" small="0" big="0">
+            <Data name="3BA_VaginaVaginasize" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaVaginasize</Data>
+        </Slider>
+        <Slider name="VaginaHole" invert="false" small="0" big="0">
+            <Data name="3BAVaginaHole" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAVaginaHole</Data>
+            <Data name="PantyVaginaHole" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyVaginaHole</Data>
+            <Data name="3BA_VaginaVaginaHole" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaVaginaHole</Data>
+        </Slider>
+        <Slider name="Clit" invert="false" small="0" big="0">
+            <Data name="3BAClit" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAClit</Data>
+            <Data name="PantyClit" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyClit</Data>
+            <Data name="3BA_VaginaClit" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaClit</Data>
+        </Slider>
+        <Slider name="ClitSwell_v2" invert="false" small="0" big="0">
+            <Data name="3BAClitSwell_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAClitSwell_v2</Data>
+            <Data name="PantyClitSwell_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyClitSwell_v2</Data>
+            <Data name="3BA_VaginaClitSwell_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaClitSwell_v2</Data>
+        </Slider>
+        <Slider name="Cutepuffyness" invert="false" small="0" big="0">
+            <Data name="3BACutepuffyness" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BACutepuffyness</Data>
+            <Data name="PantyCutepuffyness" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyCutepuffyness</Data>
+            <Data name="3BA_VaginaCutepuffyness" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaCutepuffyness</Data>
+        </Slider>
+        <Slider name="CBPC" invert="false" small="0" big="0">
+            <Data name="3BACBPC" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BACBPC</Data>
+            <Data name="PantyCBPC" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyCBPC</Data>
+            <Data name="3BA_VaginaCBPC" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaCBPC</Data>
+        </Slider>
+        <Slider name="CrotchGap" invert="false" small="0" big="0">
+            <Data name="3BACrotchGap" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BACrotchGap</Data>
+            <Data name="BraCrotchGap" target="Bra" local="true">CBBE 3BBB Amazing Underwear.osd\BraCrotchGap</Data>
+            <Data name="PantyCrotchGap" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyCrotchGap</Data>
+            <Data name="3BA_VaginaCrotchGap" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaCrotchGap</Data>
+        </Slider>
+        <Slider name="AnalLoose_v2" invert="false" small="0" big="0">
+            <Data name="3BAAnalLoose_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAnalLoose_v2</Data>
+            <Data name="PantyAnalLoose_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyAnalLoose_v2</Data>
+            <Data name="3BA_VaginaAnalLoose_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaAnalLoose_v2</Data>
+            <Data name="3BA_AnusAnalLoose_v2" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusAnalLoose_v2</Data>
+        </Slider>
+        <Slider name="AnalPosition_v2" invert="false" small="0" big="0">
+            <Data name="3BAAnalPosition_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAnalPosition_v2</Data>
+            <Data name="PantyAnalPosition_v2" target="Panty" local="true">CBBE 3BBB Amazing Underwear.osd\PantyAnalPosition_v2</Data>
+            <Data name="3BA_VaginaAnalPosition_v2" target="3BA_Vagina" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_VaginaAnalPosition_v2</Data>
+            <Data name="3BA_AnusAnalPosition_v2" target="3BA_Anus" local="true">CBBE 3BBB Amazing Underwear.osd\3BA_AnusAnalPosition_v2</Data>
+        </Slider>
+        <Slider name="AnalTexPos_v2" invert="false" small="0" big="0" uv="true">
+            <Data name="3BAAnalTexPos_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAnalTexPos_v2</Data>
+        </Slider>
+        <Slider name="AnalTexPosRe_v2" invert="false" small="0" big="0" uv="true">
+            <Data name="3BAAnalTexPosRe_v2" target="3BA" local="true">CBBE 3BBB Amazing Underwear.osd\3BAAnalTexPosRe_v2</Data>
+        </Slider>
+    </SliderSet>
