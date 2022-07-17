@@ -274,7 +274,7 @@ void WelcomeScreen::checkForUpdate()
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &WelcomeScreen::updateCheckFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &WelcomeScreen::updateCheckFinished);
 }
 
 void WelcomeScreen::updateCheckFinished()

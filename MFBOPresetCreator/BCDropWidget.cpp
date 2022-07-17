@@ -189,7 +189,7 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
     if (lUseAlternativeModel != nullptr)
     {
       // Uncheck the box
-      this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
       lUseAlternativeModel->setChecked(false);
       lUseAlternativeModel->hide();
       QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
@@ -216,7 +216,7 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
     if (lUseAlternativeModel != nullptr)
     {
       // Check the box if needed
-      this->disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
       lUseAlternativeModel->setChecked(aUseAlternativeModel);
       lUseAlternativeModel->show();
       QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);

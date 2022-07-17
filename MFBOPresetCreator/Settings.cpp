@@ -151,7 +151,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lLeftColumnLayout->addWidget(lGUIThemeSelector);
 
   // APPLICATION BAR ICONS COLOR
-  lLeftColumnLayout->addWidget(new QLabel(QString(tr("Title bar - icons color:")), this));
+  lLeftColumnLayout->addWidget(new QLabel(QString("* " + tr("Title bar - icons color:")), this));
 
   const auto lTitleBarIconsColorWrapper{new QHBoxLayout(this)};
   lTitleBarIconsColorWrapper->setSpacing(10);

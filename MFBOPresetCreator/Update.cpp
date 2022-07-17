@@ -94,7 +94,7 @@ void Update::checkForUpdate()
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &Update::updateCheckFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &Update::updateCheckFinished);
 }
 
 void Update::updateCheckFinished()
@@ -160,7 +160,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
       lSearchButton->setText(tr("Download the update"));
       lSearchButton->setToolTip(tr("Download the update"));
 
-      this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
+      QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
       auto lVersionFileName = lVersionsInformation.getLatestBetaVersionNumber();
       if (Utils::IsRunningStandaloneVersion())
@@ -200,7 +200,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
       lSearchButton->setText(tr("Download the update"));
       lSearchButton->setToolTip(tr("Download the update"));
 
-      this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
+      QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
       auto lVersionFileName = lVersionsInformation.getLatestStableVersionNumber();
       if (Utils::IsRunningStandaloneVersion())
@@ -257,7 +257,7 @@ void Update::downloadLatestUpdate()
   lSearchButton->setIconSize(QSize(17 * 2, 17 * 2)); // TODO: Multiply the size by the DPI scale
 
   // Rebind the events to the correct handlers
-  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
+  QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
   QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
   if (QFile::exists(this->mSaveFilePath))
@@ -291,7 +291,7 @@ void Update::cancelCurrentDownload()
   lSearchButton->setToolTip(tr("Download canceled: click to try to download the update once again"));
 
   // Rebind the correct events
-  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
+  QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
   QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
 
   // Cancel the currently running download process
@@ -398,7 +398,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
 
   auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
   auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
-  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
+  QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
   auto lStandaloneSuccessText{tr("Download successful. Click the button above to open the directory where the file has been downloaded.\n\n")};
   auto lSuccessText{tr("Download successful. Click the button above to start updating MFBOPC.\nMake sure that you saved everything before starting the update as the application will be closed!\n\n")};
@@ -483,7 +483,7 @@ void Update::installLatestUpdate()
   auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
   lSearchButton->setDisabled(true);
 
-  this->disconnect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
+  QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);
 
   // Create a file to be able to know that the installer file needs to be removed at next launch
   QFile lLogFile(Utils::GetInstallerLogFilePath());

@@ -556,7 +556,7 @@ void AssistedConversion::requestModInformation(const int aModID)
   lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
   lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
-  connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModInformationFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModInformationFinished);
 }
 
 void AssistedConversion::requestModInformationFinished()
@@ -631,10 +631,10 @@ void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusMods
   }
 
   auto lFilePicker{new FileIDPicker(this, this->settings(), this->lastPaths(), aFilesInformation)};
-  connect(lFilePicker,
-          QOverload<const QString&, const QString&>::of(&FileIDPicker::fileContentPreviewURLChosen),
-          this,
-          &AssistedConversion::requestModFileContent);
+  QObject::connect(lFilePicker,
+                   QOverload<const QString&, const QString&>::of(&FileIDPicker::fileContentPreviewURLChosen),
+                   this,
+                   &AssistedConversion::requestModFileContent);
 }
 
 void AssistedConversion::requestModFileContent(const QString& aFileName, const QString& aContentPreviewLink)
@@ -652,7 +652,7 @@ void AssistedConversion::requestModFileContent(const QString& aFileName, const Q
   lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
   lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
-  connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModFileContentFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModFileContentFinished);
 }
 
 void AssistedConversion::requestModFileContentFinished()
@@ -948,7 +948,7 @@ void AssistedConversion::modifyComboBoxLockState(int aIndex)
       lTestIndex += lStep;
     }
 
-    this->disconnect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
+    QObject::disconnect(lEventSource, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AssistedConversion::modifyComboBoxLockState);
 
     if (lTestIndex == lEventSource->count())
     {

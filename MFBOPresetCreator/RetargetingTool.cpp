@@ -245,11 +245,11 @@ void RetargetingTool::userHasDoneAnAction(int)
 
   // Body name selector
   auto lBodyNameSelector{this->findChild<QComboBox*>(QString("body_selector_name"))};
-  this->disconnect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
+  QObject::disconnect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
 
   // Body version selector
   auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
-  this->disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
+  QObject::disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
 }
 
 void RetargetingTool::chooseInputDirectory()

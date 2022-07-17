@@ -594,7 +594,7 @@ void TexturesAssistant::requestModInformation(const int aModID)
   lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
   lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
-  connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModInformationFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModInformationFinished);
 }
 
 void TexturesAssistant::requestModInformationFinished()
@@ -688,7 +688,7 @@ void TexturesAssistant::requestModFileContent(const QString& aContentPreviewLink
   lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
   lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
-  connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModFileContentFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModFileContentFinished);
 }
 
 void TexturesAssistant::requestModFileContentFinished()

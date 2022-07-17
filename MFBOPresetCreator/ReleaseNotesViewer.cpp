@@ -61,7 +61,7 @@ void ReleaseNotesViewer::checkForUpdate()
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &ReleaseNotesViewer::updateCheckFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &ReleaseNotesViewer::updateCheckFinished);
 }
 
 void ReleaseNotesViewer::updateCheckFinished()

@@ -4,6 +4,7 @@
 #include "SliderSetsDBManager.h"
 #include "Utils.h"
 #include <QCloseEvent>
+#include <QListWidget>
 
 TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
                                        const Struct::Settings& aSettings,
@@ -131,59 +132,25 @@ void TargetMeshesPicker::setupBodyTabWidget(QVBoxLayout& aMainLayout)
 
   this->setupEmbeddedBodyTab(*lBodyTabWidget);
   this->setupCustomBodyTab(*lBodyTabWidget);
+
+  // Event binding
+  QObject::connect(lBodyTabWidget, &QTabWidget::currentChanged, this, &TargetMeshesPicker::refreshSelectionPreview);
 }
 
 void TargetMeshesPicker::setupEmbeddedBodyTab(QTabWidget& aTabWidget)
 {
-  // Tab widget
-  const auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/body").arg(this->getThemedResourcePath()))), tr("Embedded body mods"));
-
-  // Layout
-  const auto lTabLayout{new QGridLayout(lTabContent)};
-  lTabLayout->setSpacing(10);
-  lTabLayout->setColumnStretch(0, 2);
-  lTabLayout->setColumnStretch(1, 1);
-  lTabLayout->setColumnStretch(2, 2);
-  lTabLayout->setAlignment(Qt::AlignTop);
-
-  // Add the labels
-  const auto lLabelBodyBase{new QLabel(tr("Base mod:"), this)};
-  lTabLayout->addWidget(lLabelBodyBase, 0, 0);
-  const auto lLabelBodyVersionNumber{new QLabel(tr("Version number:"), this)};
-  lTabLayout->addWidget(lLabelBodyVersionNumber, 0, 1);
-  const auto lLabelBodyVersionName{new QLabel(tr("Targeted mesh:"), this)};
-  lTabLayout->addWidget(lLabelBodyVersionName, 0, 2);
-
-  // Add the list widgets
-  this->mListBodyName->setAlternatingRowColors(true);
-  lTabLayout->addWidget(this->mListBodyName, 1, 0);
-  this->mListBodyName->addItems(DataLists::GetBodyNamesList());
-
-  this->mListBodyVersion->setAlternatingRowColors(true);
-  lTabLayout->addWidget(this->mListBodyVersion, 1, 1);
-
-  this->mListBodyVariantName->setAlternatingRowColors(true);
-  lTabLayout->addWidget(this->mListBodyVariantName, 1, 2);
+  this->setupEmbeddedTab(aTabWidget,
+                         "body",
+                         tr("Embedded body mods"),
+                         *this->mListBodyName,
+                         *this->mListBodyVersion,
+                         *this->mListBodyVariantName,
+                         DataLists::GetBodyNamesList());
 }
 
 void TargetMeshesPicker::setupCustomBodyTab(QTabWidget& aTabWidget)
 {
-  // Tab widget
-  auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/body").arg(this->getThemedResourcePath()))), tr("Custom body mods"));
-
-  // Layout
-  auto lTabLayout{new QVBoxLayout(lTabContent)};
-  lTabLayout->setSpacing(10);
-  lTabLayout->setAlignment(Qt::AlignTop);
-
-  // Database manager button
-  auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};
-  lTabLayout->addWidget(lOpenDatabaseManager);
-
-  // Event binding
-  QObject::connect(lOpenDatabaseManager, &QPushButton::clicked, this, &TargetMeshesPicker::openSliderSetsDatabaseManager);
+  this->setupCustomTab(aTabWidget, "body", tr("Custom body mods"));
 }
 
 void TargetMeshesPicker::setupFeetTabWidget(QVBoxLayout& aMainLayout)
@@ -202,59 +169,25 @@ void TargetMeshesPicker::setupFeetTabWidget(QVBoxLayout& aMainLayout)
 
   this->setupEmbeddedFeetTab(*lFeetTabWidget);
   this->setupCustomFeetTab(*lFeetTabWidget);
+
+  // Event binding
+  QObject::connect(lFeetTabWidget, &QTabWidget::currentChanged, this, &TargetMeshesPicker::refreshSelectionPreview);
 }
 
 void TargetMeshesPicker::setupEmbeddedFeetTab(QTabWidget& aTabWidget)
 {
-  // Tab widget
-  const auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/foot").arg(this->getThemedResourcePath()))), tr("Embedded feet mods"));
-
-  // Layout
-  const auto lTabLayout{new QGridLayout(lTabContent)};
-  lTabLayout->setSpacing(10);
-  lTabLayout->setColumnStretch(0, 2);
-  lTabLayout->setColumnStretch(1, 1);
-  lTabLayout->setColumnStretch(2, 2);
-  lTabLayout->setAlignment(Qt::AlignTop);
-
-  // Add the labels
-  const auto lLabelFeetBase{new QLabel(tr("Base mod:"), this)};
-  lTabLayout->addWidget(lLabelFeetBase, 0, 0);
-  const auto lLabelFeetVersionNumber{new QLabel(tr("Version number:"), this)};
-  lTabLayout->addWidget(lLabelFeetVersionNumber, 0, 1);
-  const auto lLabelFeetVersionName{new QLabel(tr("Targeted mesh:"), this)};
-  lTabLayout->addWidget(lLabelFeetVersionName, 0, 2);
-
-  // Add the list widgets
-  this->mListFeetName->setAlternatingRowColors(true);
-  lTabLayout->addWidget(this->mListFeetName, 1, 0);
-  this->mListFeetName->addItems(DataLists::GetFeetNamesList(DataLists::GetVariant(this->mOriginalBody)));
-
-  this->mListFeetVersion->setAlternatingRowColors(true);
-  lTabLayout->addWidget(this->mListFeetVersion, 1, 1);
-
-  this->mListFeetVariantName->setAlternatingRowColors(true);
-  lTabLayout->addWidget(this->mListFeetVariantName, 1, 2);
+  this->setupEmbeddedTab(aTabWidget,
+                         "foot",
+                         tr("Embedded feet mods"),
+                         *this->mListFeetName,
+                         *this->mListFeetVersion,
+                         *this->mListFeetVariantName,
+                         DataLists::GetFeetNamesList(DataLists::GetVariant(this->mOriginalBody)));
 }
 
 void TargetMeshesPicker::setupCustomFeetTab(QTabWidget& aTabWidget)
 {
-  // Tab widget
-  auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/foot").arg(this->getThemedResourcePath()))), tr("Custom feet mods"));
-
-  // Layout
-  auto lTabLayout{new QVBoxLayout(lTabContent)};
-  lTabLayout->setSpacing(10);
-  lTabLayout->setAlignment(Qt::AlignTop);
-
-  // Database manager button
-  auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};
-  lTabLayout->addWidget(lOpenDatabaseManager);
-
-  // Event binding
-  QObject::connect(lOpenDatabaseManager, &QPushButton::clicked, this, &TargetMeshesPicker::openSliderSetsDatabaseManager);
+  this->setupCustomTab(aTabWidget, "foot", tr("Custom feet mods"));
 }
 
 void TargetMeshesPicker::setupHandsTabWidget(QVBoxLayout& aMainLayout)
@@ -273,6 +206,9 @@ void TargetMeshesPicker::setupHandsTabWidget(QVBoxLayout& aMainLayout)
 
   this->setupEmbeddedHandsTab(*lHandsTabWidget);
   this->setupCustomHandsTab(*lHandsTabWidget);
+
+  // Event binding
+  QObject::connect(lHandsTabWidget, &QTabWidget::currentChanged, this, &TargetMeshesPicker::refreshSelectionPreview);
 }
 
 void TargetMeshesPicker::setupEmbeddedHandsTab(QTabWidget& aTabWidget)
@@ -280,6 +216,53 @@ void TargetMeshesPicker::setupEmbeddedHandsTab(QTabWidget& aTabWidget)
   // Tab widget
   const auto lTabContent{new QWidget(this)};
   aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/hand").arg(this->getThemedResourcePath()))), tr("Embedded hands mods"));
+
+  // Layout
+  const auto lTabLayout{new QHBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Label
+  const auto lLabelHands{new QLabel(tr("Automatic hands mod:"), this)};
+  lTabLayout->addWidget(lLabelHands);
+
+  // Automatic value
+  const auto lValueHands{new QLabel(this)};
+  lValueHands->setObjectName("automatic_hands_value");
+  lTabLayout->addWidget(lValueHands);
+}
+
+void TargetMeshesPicker::setupCustomHandsTab(QTabWidget& aTabWidget)
+{
+  this->setupCustomTab(aTabWidget, "hand", tr("Custom hands mods"));
+}
+
+void TargetMeshesPicker::setupBeastHandsTabWidget(QVBoxLayout& aMainLayout)
+{
+  Q_UNUSED(aMainLayout)
+}
+
+void TargetMeshesPicker::setupEmbeddedBeastHandsTab(QTabWidget& aTabWidget)
+{
+  Q_UNUSED(aTabWidget)
+}
+
+void TargetMeshesPicker::setupCustomBeastHandsTab(QTabWidget& aTabWidget)
+{
+  Q_UNUSED(aTabWidget)
+}
+
+void TargetMeshesPicker::setupEmbeddedTab(QTabWidget& aTabWidget,
+                                          const QString& aIconName,
+                                          const QString& aTabName,
+                                          QListWidget& aWidgetModName,
+                                          QListWidget& aWidgetModVersion,
+                                          QListWidget& aWidgetModVariantName,
+                                          const QStringList& aNamesList)
+{
+  // Tab widget
+  const auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/%2").arg(this->getThemedResourcePath()).arg(aIconName))), aTabName);
 
   // Layout
   const auto lTabLayout{new QGridLayout(lTabContent)};
@@ -290,30 +273,30 @@ void TargetMeshesPicker::setupEmbeddedHandsTab(QTabWidget& aTabWidget)
   lTabLayout->setAlignment(Qt::AlignTop);
 
   // Add the labels
-  const auto lLabelHandsBase{new QLabel(tr("Base mod:"), this)};
-  lTabLayout->addWidget(lLabelHandsBase, 0, 0);
-  const auto lLabelHandsVersionNumber{new QLabel(tr("Version number:"), this)};
-  lTabLayout->addWidget(lLabelHandsVersionNumber, 0, 1);
-  const auto lLabelHandsVersionName{new QLabel(tr("Targeted mesh:"), this)};
-  lTabLayout->addWidget(lLabelHandsVersionName, 0, 2);
+  const auto lLabelFeetBase{new QLabel(tr("Base mod:"), this)};
+  lTabLayout->addWidget(lLabelFeetBase, 0, 0);
+  const auto lLabelFeetVersionNumber{new QLabel(tr("Version number:"), this)};
+  lTabLayout->addWidget(lLabelFeetVersionNumber, 0, 1);
+  const auto lLabelFeetVersionName{new QLabel(tr("Targeted mesh:"), this)};
+  lTabLayout->addWidget(lLabelFeetVersionName, 0, 2);
 
-  //// Add the list widgets
-  // this->mListHandsName->setAlternatingRowColors(true);
-  // lTabLayout->addWidget(this->mListHandsName, 1, 0);
-  // this->mListHandsName->addItems(DataLists::GetHandsNamesList(DataLists::GetVariant(this->mOriginalBody)));
+  // Add the list widgets
+  aWidgetModName.setAlternatingRowColors(true);
+  lTabLayout->addWidget(&aWidgetModName, 1, 0);
+  aWidgetModName.addItems(aNamesList);
 
-  // this->mListHandsVersion->setAlternatingRowColors(true);
-  // lTabLayout->addWidget(this->mListHandsVersion, 1, 1);
+  aWidgetModVersion.setAlternatingRowColors(true);
+  lTabLayout->addWidget(&aWidgetModVersion, 1, 1);
 
-  // this->mListHandsVariantName->setAlternatingRowColors(true);
-  // lTabLayout->addWidget(this->mListHandsVariantName, 1, 2);
+  aWidgetModVariantName.setAlternatingRowColors(true);
+  lTabLayout->addWidget(&aWidgetModVariantName, 1, 2);
 }
 
-void TargetMeshesPicker::setupCustomHandsTab(QTabWidget& aTabWidget)
+void TargetMeshesPicker::setupCustomTab(QTabWidget& aTabWidget, const QString& aIconName, const QString& aTabName)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/hand").arg(this->getThemedResourcePath()))), tr("Custom hands mods"));
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/%2").arg(this->getThemedResourcePath()).arg(aIconName))), aTabName);
 
   // Layout
   auto lTabLayout{new QVBoxLayout(lTabContent)};
@@ -330,7 +313,15 @@ void TargetMeshesPicker::setupCustomHandsTab(QTabWidget& aTabWidget)
 
 void TargetMeshesPicker::openSliderSetsDatabaseManager()
 {
-  new SliderSetsDBManager(this, this->settings(), this->lastPaths());
+  auto lDialog{new SliderSetsDBManager(this, this->settings(), this->lastPaths())};
+  QObject::connect(lDialog, &SliderSetsDBManager::rejected, [&]() {
+    this->updateCustomSliderSetsLists();
+  });
+}
+
+void TargetMeshesPicker::updateCustomSliderSetsLists() const
+{
+  // TODO
 }
 
 BodyVariant TargetMeshesPicker::getChosenBodyVariant() const
@@ -349,6 +340,8 @@ BodyVariant TargetMeshesPicker::getChosenBodyVariant() const
 
 BodyNameVersion TargetMeshesPicker::getChosenBodyName() const
 {
+  // TODO: handle the selected index of the parent tabwidget
+
   // Get the selected body name
   const auto lSelectedBodyName{static_cast<BodyName>(this->mListBodyName->currentRow())};
 
@@ -363,6 +356,8 @@ BodyNameVersion TargetMeshesPicker::getChosenBodyName() const
 
 FeetNameVersion TargetMeshesPicker::getChosenFeetName() const
 {
+  // TODO: handle the selected index of the parent tabwidget
+
   // Get the dependent body
   const auto lBodyVariant{DataLists::GetVariant(this->getChosenBodyName())};
 
@@ -378,6 +373,18 @@ FeetNameVersion TargetMeshesPicker::getChosenFeetName() const
 
   // DataLists::GetVariant(lFeetName, lSelectedVersionNumber, lSelectedVariant)
   return DataLists::GetFeetNameVersion(lFeetName, lSelectedVersionNumber, lSelectedVariant, Utils::IsCBBEBasedBody(lBodyVariant));
+}
+
+QString TargetMeshesPicker::getChosenHandsName() const
+{
+  // TODO
+  return QString();
+}
+
+QString TargetMeshesPicker::getChosenBeastHandsName() const
+{
+  // TODO
+  return QString();
 }
 
 void TargetMeshesPicker::validateAndClose()
@@ -545,6 +552,11 @@ void TargetMeshesPicker::feetVariantIndexChanged(const int aNewIndex)
     }
   }
 
+  this->refreshSelectionPreview();
+}
+
+void TargetMeshesPicker::refreshSelectionPreview() const
+{
   const auto lChosenBodyName{this->getChosenBodyName()};
   const auto lChosenFeetName{this->getChosenFeetName()};
 

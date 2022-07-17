@@ -563,7 +563,7 @@ void MFBOPresetCreator::checkForUpdate()
   QString lGitHubURL{"https://api.github.com/repos/Mitsuriou/MFBO-Preset-Creator/releases"};
 
   QNetworkReply* lReply{this->mManager.get(QNetworkRequest(QUrl(lGitHubURL)))};
-  connect(lReply, &QNetworkReply::finished, this, &MFBOPresetCreator::updateCheckFinished);
+  QObject::connect(lReply, &QNetworkReply::finished, this, &MFBOPresetCreator::updateCheckFinished);
 }
 
 void MFBOPresetCreator::updateCheckFinished()
