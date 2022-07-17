@@ -73,12 +73,12 @@
       <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt5Network.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Xml.lib;$(SolutionDir)MFBOPresetCreator\$(IntDir)*.obj;MFBOPresetCreator.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Core.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Gui.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Network.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Svg.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Widgets.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Xml.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\</Command>
+      <Command>copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Core.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Gui.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Network.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Svg.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Widgets.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Xml.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -98,12 +98,12 @@ copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Xml.dll $(SolutionDir)$(Platform)\$(Conf
       <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt5Network.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Xml.lib;$(SolutionDir)MFBOPresetCreator\$(IntDir)*.obj;MFBOPresetCreator.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Cored.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Guid.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Networkd.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Svgd.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Widgetsd.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\
-copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Xmld.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\</Command>
+      <Command>copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Cored.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Guid.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Networkd.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Svgd.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Widgetsd.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"
+copy /y D:\Qt\5.15.2\msvc2019_64\bin\Qt5Xmld.dll "$(SolutionDir)$(Platform)\$(Configuration)\Tests\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

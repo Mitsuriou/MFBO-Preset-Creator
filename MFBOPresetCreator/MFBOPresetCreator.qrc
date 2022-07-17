@@ -499,6 +499,7 @@
         <file alias="bhunp 3bbb/3.03">resources/body/bhunp 3bbb/3.03.osp</file>
         <file alias="bhunp 3bbb/3.04 - 3.05">resources/body/bhunp 3bbb/3.04_and_3.05.osp</file>
         <file alias="bhunp 3bbb/3.10">resources/body/bhunp 3bbb/3.10.osp</file>
+        <file alias="bhunp 3bbb/3.11 to 3.13">resources/body/bhunp 3bbb/3.11_to_3.13.osp</file>
         <file alias="bhunp 3bbb advanced/2.20">resources/body/bhunp 3bbb advanced/2.20.osp</file>
         <file alias="bhunp 3bbb advanced/2.25">resources/body/bhunp 3bbb advanced/2.25.osp</file>
         <file alias="bhunp 3bbb advanced/2.30">resources/body/bhunp 3bbb advanced/2.30.osp</file>
@@ -508,6 +509,7 @@
         <file alias="bhunp 3bbb advanced/3.03">resources/body/bhunp 3bbb advanced/3.03.osp</file>
         <file alias="bhunp 3bbb advanced/3.04 - 3.05">resources/body/bhunp 3bbb advanced/3.04_and_3.05.osp</file>
         <file alias="bhunp 3bbb advanced/3.10">resources/body/bhunp 3bbb advanced/3.10.osp</file>
+        <file alias="bhunp 3bbb advanced/3.11 to 3.13">resources/body/bhunp 3bbb advanced/3.11_to_3.13.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.20">resources/body/bhunp 3bbb advanced ver 2/2.20.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.25">resources/body/bhunp 3bbb advanced ver 2/2.25.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/2.30">resources/body/bhunp 3bbb advanced ver 2/2.30.osp</file>
@@ -517,10 +519,12 @@
         <file alias="bhunp 3bbb advanced ver 2/3.03">resources/body/bhunp 3bbb advanced ver 2/3.03.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/3.04 - 3.05">resources/body/bhunp 3bbb advanced ver 2/3.04_and_3.05.osp</file>
         <file alias="bhunp 3bbb advanced ver 2/3.10">resources/body/bhunp 3bbb advanced ver 2/3.10.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2/3.11 to 3.13">resources/body/bhunp 3bbb advanced ver 2/3.11_to_3.13.osp</file>
         <file alias="bhunp 3bbb advanced ver 3/3.00 to 3.02">resources/body/bhunp 3bbb advanced ver 3/3.00_to_3.02.osp</file>
         <file alias="bhunp 3bbb advanced ver 3/3.03">resources/body/bhunp 3bbb advanced ver 3/3.03.osp</file>
         <file alias="bhunp 3bbb advanced ver 3/3.04 - 3.05">resources/body/bhunp 3bbb advanced ver 3/3.04_and_3.05.osp</file>
         <file alias="bhunp 3bbb advanced ver 3/3.10">resources/body/bhunp 3bbb advanced ver 3/3.10.osp</file>
+        <file alias="bhunp 3bbb advanced ver 3/3.11 to 3.13">resources/body/bhunp 3bbb advanced ver 3/3.11_to_3.13.osp</file>
         <file alias="bhunp bbp/2.20">resources/body/bhunp bbp/2.20.osp</file>
         <file alias="bhunp bbp/2.25">resources/body/bhunp bbp/2.25.osp</file>
         <file alias="bhunp bbp/2.30">resources/body/bhunp bbp/2.30.osp</file>
@@ -530,6 +534,7 @@
         <file alias="bhunp bbp/3.03">resources/body/bhunp bbp/3.03.osp</file>
         <file alias="bhunp bbp/3.04 - 3.05">resources/body/bhunp bbp/3.04_and_3.05.osp</file>
         <file alias="bhunp bbp/3.10">resources/body/bhunp bbp/3.10.osp</file>
+        <file alias="bhunp bbp/3.11 to 3.13">resources/body/bhunp bbp/3.11_to_3.13.osp</file>
         <file alias="bhunp bbp advanced/2.20">resources/body/bhunp bbp advanced/2.20.osp</file>
         <file alias="bhunp bbp advanced/2.25">resources/body/bhunp bbp advanced/2.25.osp</file>
         <file alias="bhunp bbp advanced/2.30">resources/body/bhunp bbp advanced/2.30.osp</file>
@@ -539,6 +544,7 @@
         <file alias="bhunp bbp advanced/3.03">resources/body/bhunp bbp advanced/3.03.osp</file>
         <file alias="bhunp bbp advanced/3.04 - 3.05">resources/body/bhunp bbp advanced/3.04_and_3.05.osp</file>
         <file alias="bhunp bbp advanced/3.10">resources/body/bhunp bbp advanced/3.10.osp</file>
+        <file alias="bhunp bbp advanced/3.11 to 3.13">resources/body/bhunp bbp advanced/3.11_to_3.13.osp</file>
         <file alias="bhunp tbbp/2.20">resources/body/bhunp tbbp/2.20.osp</file>
         <file alias="bhunp tbbp/2.25">resources/body/bhunp tbbp/2.25.osp</file>
         <file alias="bhunp tbbp/2.30">resources/body/bhunp tbbp/2.30.osp</file>
@@ -548,6 +554,7 @@
         <file alias="bhunp tbbp/3.03">resources/body/bhunp tbbp/3.03.osp</file>
         <file alias="bhunp tbbp/3.04 - 3.05">resources/body/bhunp tbbp/3.04_and_3.05.osp</file>
         <file alias="bhunp tbbp/3.10">resources/body/bhunp tbbp/3.10.osp</file>
+        <file alias="bhunp tbbp/3.11 to 3.13">resources/body/bhunp tbbp/3.11_to_3.13.osp</file>
         <file alias="bhunp tbbp advanced/2.20">resources/body/bhunp tbbp advanced/2.20.osp</file>
         <file alias="bhunp tbbp advanced/2.25">resources/body/bhunp tbbp advanced/2.25.osp</file>
         <file alias="bhunp tbbp advanced/2.30">resources/body/bhunp tbbp advanced/2.30.osp</file>
@@ -557,6 +564,7 @@
         <file alias="bhunp tbbp advanced/3.03">resources/body/bhunp tbbp advanced/3.03.osp</file>
         <file alias="bhunp tbbp advanced/3.04 - 3.05">resources/body/bhunp tbbp advanced/3.04_and_3.05.osp</file>
         <file alias="bhunp tbbp advanced/3.10">resources/body/bhunp tbbp advanced/3.10.osp</file>
+        <file alias="bhunp tbbp advanced/3.11 to 3.13">resources/body/bhunp tbbp advanced/3.11_to_3.13.osp</file>
         <file alias="bhunp 3bbb advanced ver 2 nevernude/2.25">resources/body/bhunp 3bbb advanced ver 2 nevernude/2.25.osp</file>
         <file alias="bhunp 3bbb advanced ver 2 nevernude/2.30">resources/body/bhunp 3bbb advanced ver 2 nevernude/2.30.osp</file>
         <file alias="bhunp 3bbb advanced ver 2 nevernude/2.35 to 2.42">resources/body/bhunp 3bbb advanced ver 2 nevernude/2.35_to_2.42.osp</file>
@@ -564,6 +572,7 @@
         <file alias="bhunp 3bbb advanced ver 2 nevernude/3.03">resources/body/bhunp 3bbb advanced ver 2 nevernude/3.03.osp</file>
         <file alias="bhunp 3bbb advanced ver 2 nevernude/3.04 - 3.05">resources/body/bhunp 3bbb advanced ver 2 nevernude/3.04_and_3.05.osp</file>
         <file alias="bhunp 3bbb advanced ver 2 nevernude/3.10">resources/body/bhunp 3bbb advanced ver 2 nevernude/3.10.osp</file>
+        <file alias="bhunp 3bbb advanced ver 2 nevernude/3.11 to 3.13">resources/body/bhunp 3bbb advanced ver 2 nevernude/3.11_to_3.13.osp</file>
         <file alias="cbbe smp 3bbb/1.2.0">resources/body/cbbe smp 3bbb/1.2.0.osp</file>
         <file alias="coco body cbbe/V4">resources/body/coco body cbbe/V4.osp</file>
         <file alias="coco body cbbe/V6">resources/body/coco body cbbe/V6.osp</file>
@@ -602,6 +611,7 @@
         <file alias="bhunp/3.03">resources/feet/bhunp/3.03.osp</file>
         <file alias="bhunp/3.04 - 3.05">resources/feet/bhunp/3.04_and_3.05.osp</file>
         <file alias="bhunp/3.10">resources/feet/bhunp/3.10.osp</file>
+        <file alias="bhunp/3.11 to 3.13">resources/feet/bhunp/3.11_to_3.13.osp</file>
         <file alias="cbbe 3bbb 3ba/1.50">resources/feet/cbbe 3bbb 3ba/1.50.osp</file>
         <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/feet/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
         <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/feet/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
@@ -647,10 +657,12 @@
         <file alias="bhunp/3.03">resources/hands/bhunp/3.03.osp</file>
         <file alias="bhunp/3.04 - 3.05">resources/hands/bhunp/3.04_and_3.05.osp</file>
         <file alias="bhunp/3.10">resources/hands/bhunp/3.10.osp</file>
+        <file alias="bhunp/3.11 to 3.13">resources/hands/bhunp/3.11_to_3.13.osp</file>
         <file alias="bhunp ver 3/3.00 to 3.02">resources/hands/bhunp ver 3/3.00_to_3.02.osp</file>
         <file alias="bhunp ver 3/3.03">resources/hands/bhunp ver 3/3.03.osp</file>
         <file alias="bhunp ver 3/3.04 - 3.05">resources/hands/bhunp ver 3/3.04_and_3.05.osp</file>
         <file alias="bhunp ver 3/3.10">resources/hands/bhunp ver 3/3.10.osp</file>
+        <file alias="bhunp ver 3/3.11 to 3.13">resources/hands/bhunp ver 3/3.11_to_3.13.osp</file>
         <file alias="cbbe 3bbb 3ba/1.50">resources/hands/cbbe 3bbb 3ba/1.50.osp</file>
         <file alias="cbbe 3bbb 3ba/1.51 to 1.55">resources/hands/cbbe 3bbb 3ba/1.51_to_1.55.osp</file>
         <file alias="cbbe 3bbb 3ba/2.02 to 2.04">resources/hands/cbbe 3bbb 3ba/2.02_to_2.04.osp</file>
