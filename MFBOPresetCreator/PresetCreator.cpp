@@ -769,13 +769,12 @@ void PresetCreator::loadValuesFromJsonObject(const QJsonObject& lFile)
   this->findChild<QLineEdit*>(QString("skeleton_name"))->setText(lFile["skeleton_name"].toString());
   this->findChild<QCheckBox*>(QString("use_custom_skeleton"))->setChecked(lFile["use_custom_skeleton"].toBool()); // Finish by checking or unchecking the box
 
+  // TODO: Make something cleaner to avoid reseting users' choices at every single update
   // Body and feet meshes: compatiblity
-  if (Utils::CompareVersionNumbers(lFile["applicationVersion"].toString(), "3.5.0.0") == ApplicationVersionRelative::OLDER)
+  if (Utils::CompareVersionNumbers(lFile["applicationVersion"].toString(), Utils::GetApplicationVersion()) == ApplicationVersionRelative::OLDER)
   {
-    const auto lCompatibilityData{DataLists::ReadBodyFeetModsCompatibility(lFile["body_selector_name"].toInt(),
-                                                                           lFile["body_selector_version"].toInt(),
-                                                                           lFile["feet_mod_selector"].toInt())};
-    this->targetMeshesChanged(lCompatibilityData.first, lCompatibilityData.second);
+    this->targetMeshesChanged(BodyNameVersion::CBBE_3BA_3BBB_1_50,
+                              FeetNameVersion::CBBE_3BA_3BBB_1_50);
   }
   // Body and feet meshes: last format version
   else
