@@ -19,7 +19,7 @@ At this time, the application is only capable of changing the body, hands and fe
 - Desktop C++ development kit.
 - [Qt VS Tools](https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022) extension.
 
-[Qt version 6.3.0](https://www.qt.io/download) with MSVC 2019 package.
+[Qt version 6.3.1](https://www.qt.io/download) with MSVC 2019 package.
 
 [Inno Setup](https://jrsoftware.org/isdl.php) version 6 or newer.
 

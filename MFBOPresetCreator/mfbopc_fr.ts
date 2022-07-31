@@ -1718,53 +1718,53 @@ Pieds ciblés : -</translation>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2405"/>
+        <location filename="DataLists.cpp" line="2435"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2406"/>
-        <location filename="DataLists.cpp" line="2412"/>
+        <location filename="DataLists.cpp" line="2436"/>
+        <location filename="DataLists.cpp" line="2442"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2407"/>
-        <location filename="DataLists.cpp" line="2413"/>
+        <location filename="DataLists.cpp" line="2437"/>
+        <location filename="DataLists.cpp" line="2443"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2441"/>
-        <location filename="DataLists.cpp" line="2450"/>
+        <location filename="DataLists.cpp" line="2471"/>
+        <location filename="DataLists.cpp" line="2480"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2442"/>
-        <location filename="DataLists.cpp" line="2451"/>
+        <location filename="DataLists.cpp" line="2472"/>
+        <location filename="DataLists.cpp" line="2481"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2443"/>
-        <location filename="DataLists.cpp" line="2452"/>
+        <location filename="DataLists.cpp" line="2473"/>
+        <location filename="DataLists.cpp" line="2482"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2444"/>
-        <location filename="DataLists.cpp" line="2453"/>
+        <location filename="DataLists.cpp" line="2474"/>
+        <location filename="DataLists.cpp" line="2483"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2445"/>
+        <location filename="DataLists.cpp" line="2475"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2454"/>
+        <location filename="DataLists.cpp" line="2484"/>
         <source>Beast hands mesh</source>
         <translation>Mesh de mains de bête</translation>
     </message>
@@ -2728,27 +2728,27 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
 <context>
     <name>TargetMeshesPicker</name>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="40"/>
+        <location filename="TargetMeshesPicker.cpp" line="41"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="41"/>
+        <location filename="TargetMeshesPicker.cpp" line="42"/>
         <source>Do you want to close the window?</source>
         <translation>Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="44"/>
+        <location filename="TargetMeshesPicker.cpp" line="45"/>
         <source>Close the window</source>
         <translation>Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="45"/>
+        <location filename="TargetMeshesPicker.cpp" line="46"/>
         <source>Go back to the target meshes picker window</source>
         <translation>Revenir sur la fenêtre de sélecteur de meshes cibles</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="13"/>
+        <location filename="TargetMeshesPicker.cpp" line="14"/>
         <source>Target Meshes Picker</source>
         <translation>Sélecteur de Meshes Cibles</translation>
     </message>
@@ -2761,9 +2761,7 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation type="vanished">Mod de base du corps :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="153"/>
-        <location filename="TargetMeshesPicker.cpp" line="224"/>
-        <location filename="TargetMeshesPicker.cpp" line="295"/>
+        <location filename="TargetMeshesPicker.cpp" line="278"/>
         <source>Version number:</source>
         <translation>Numéro de version :</translation>
     </message>
@@ -2784,83 +2782,84 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation type="vanished">Mesh de pieds ciblée :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="77"/>
+        <location filename="TargetMeshesPicker.cpp" line="78"/>
         <source>Targeted body: -
 Targeted feet: -</source>
         <translation>Corps ciblé : -
 Pieds ciblés : -</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="86"/>
+        <location filename="TargetMeshesPicker.cpp" line="87"/>
         <source>Save and close</source>
         <translation>Enregistrer et fermer</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="89"/>
+        <location filename="TargetMeshesPicker.cpp" line="90"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="121"/>
+        <location filename="TargetMeshesPicker.cpp" line="122"/>
         <source>Body mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="140"/>
+        <location filename="TargetMeshesPicker.cpp" line="144"/>
         <source>Embedded body mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="151"/>
-        <location filename="TargetMeshesPicker.cpp" line="222"/>
-        <location filename="TargetMeshesPicker.cpp" line="293"/>
+        <location filename="TargetMeshesPicker.cpp" line="276"/>
         <source>Base mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="155"/>
-        <location filename="TargetMeshesPicker.cpp" line="226"/>
-        <location filename="TargetMeshesPicker.cpp" line="297"/>
+        <location filename="TargetMeshesPicker.cpp" line="280"/>
         <source>Targeted mesh:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="174"/>
+        <location filename="TargetMeshesPicker.cpp" line="153"/>
         <source>Custom body mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="192"/>
+        <location filename="TargetMeshesPicker.cpp" line="159"/>
         <source>Feet mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="211"/>
+        <location filename="TargetMeshesPicker.cpp" line="181"/>
         <source>Embedded feet mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="245"/>
+        <location filename="TargetMeshesPicker.cpp" line="190"/>
         <source>Custom feet mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="263"/>
+        <location filename="TargetMeshesPicker.cpp" line="196"/>
         <source>Hands mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="282"/>
+        <location filename="TargetMeshesPicker.cpp" line="218"/>
         <source>Embedded hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="316"/>
+        <location filename="TargetMeshesPicker.cpp" line="226"/>
+        <source>Automatic hands mod:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TargetMeshesPicker.cpp" line="237"/>
         <source>Custom hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="562"/>
+        <location filename="TargetMeshesPicker.cpp" line="574"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
@@ -3353,7 +3352,7 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <location filename="Utils.cpp" line="161"/>
         <location filename="Utils.cpp" line="223"/>
         <location filename="Utils.cpp" line="1076"/>
-        <location filename="Utils.cpp" line="1779"/>
+        <location filename="Utils.cpp" line="1750"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -3434,17 +3433,17 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1775"/>
+        <location filename="Utils.cpp" line="1746"/>
         <source>API key successfully saved</source>
         <translation>Clé d&apos;API sauvegardée avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1776"/>
+        <location filename="Utils.cpp" line="1747"/>
         <source>The API key file has successfully been saved to &quot;%1&quot;.</source>
         <translation>La clé d&apos;API a été sauvegardée avec succès vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1788"/>
+        <location filename="Utils.cpp" line="1759"/>
         <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -3456,18 +3455,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1875"/>
+        <location filename="Utils.cpp" line="1846"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1959"/>
-        <location filename="Utils.cpp" line="1983"/>
+        <location filename="Utils.cpp" line="1930"/>
+        <location filename="Utils.cpp" line="1954"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1977"/>
+        <location filename="Utils.cpp" line="1948"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>
