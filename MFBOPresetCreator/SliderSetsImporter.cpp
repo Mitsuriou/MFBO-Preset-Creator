@@ -69,7 +69,7 @@ void SliderSetsImporter::initializeGUI()
   lMainLayout->addWidget(new QLabel(tr("Input path:"), this), 0, 0);
 
   // Input path value
-  auto lInputPathLineEdit{new QLineEdit(this)};
+  auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);

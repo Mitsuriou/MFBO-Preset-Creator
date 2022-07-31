@@ -172,6 +172,12 @@
     <ClCompile Include="SliderSetsDBEntry.cpp">
       <Filter>Source Files\Slider Sets Injection</Filter>
     </ClCompile>
+    <ClCompile Include="LineEdit.cpp">
+      <Filter>Source Files\Qt Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlainTextEdit.cpp">
+      <Filter>Source Files\Qt Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">
@@ -299,6 +305,12 @@
     </QtMoc>
     <QtMoc Include="SliderSetsDBEntry.h">
       <Filter>Header Files\Slider Sets Injection</Filter>
+    </QtMoc>
+    <QtMoc Include="LineEdit.h">
+      <Filter>Header Files\Qt Classes</Filter>
+    </QtMoc>
+    <QtMoc Include="PlainTextEdit.h">
+      <Filter>Header Files\Qt Classes</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

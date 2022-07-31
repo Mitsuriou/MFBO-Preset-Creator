@@ -27,7 +27,7 @@ void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabase
   // SliderSet name
   const auto lSliderSetNameLabel{new QLabel(tr("Slider set name:"), this)};
 
-  const auto lSliderSetNameValue{new QLineEdit(aDatabaseEntry.getSliderSetName(), this)};
+  const auto lSliderSetNameValue{new LineEdit(aDatabaseEntry.getSliderSetName(), this)};
   lSliderSetNameValue->setObjectName("slider_set_name");
 
   lMainLayout->addRow(lSliderSetNameLabel, lSliderSetNameValue);

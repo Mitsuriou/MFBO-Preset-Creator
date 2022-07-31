@@ -231,7 +231,7 @@ namespace ComponentFactory
     // Main directory
     lOutputGridLayout->addWidget(new QLabel(QObject::tr("Output directory path:"), aParent), 0, 0);
 
-    auto lOutputPathLineEdit{new QLineEdit(aParent)};
+    auto lOutputPathLineEdit{new LineEdit(aParent)};
     lOutputPathLineEdit->setReadOnly(true);
     lOutputPathLineEdit->setObjectName(QString("output_path_directory"));
     lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
@@ -243,7 +243,7 @@ namespace ComponentFactory
     // Subdirectory
     lOutputGridLayout->addWidget(new QLabel(QObject::tr("Output subdirectory name/path:"), aParent), 1, 0);
 
-    auto lOutputSubpathLineEdit{new QLineEdit(aParent)};
+    auto lOutputSubpathLineEdit{new LineEdit(aParent)};
     lOutputSubpathLineEdit->setObjectName(QString("output_path_subdirectory"));
     lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 

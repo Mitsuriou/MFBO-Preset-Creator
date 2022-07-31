@@ -1,11 +1,11 @@
 ﻿#pragma once
+#include "LineEdit.h"
 #include "Struct.h"
 #include "VersionsInformation.h"
 #include <QComboBox>
 #include <QFileSystemWatcher>
 #include <QGridLayout>
 #include <QLabel>
-#include <QLineEdit>
 #include <QObject>
 #include <set>
 

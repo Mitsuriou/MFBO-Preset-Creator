@@ -1433,86 +1433,86 @@ Do you want to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1263"/>
+        <location filename="PresetCreator.cpp" line="1262"/>
         <source>Error: no path given to export the files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1270"/>
+        <location filename="PresetCreator.cpp" line="1269"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1281"/>
+        <location filename="PresetCreator.cpp" line="1280"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1289"/>
+        <location filename="PresetCreator.cpp" line="1288"/>
         <source>Already existing directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1290"/>
+        <location filename="PresetCreator.cpp" line="1289"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1293"/>
+        <location filename="PresetCreator.cpp" line="1292"/>
         <source>Continue the files generation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1294"/>
+        <location filename="PresetCreator.cpp" line="1293"/>
         <source>Cancel the files generation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1331"/>
+        <location filename="PresetCreator.cpp" line="1330"/>
         <source>Error: no path has been given for any mesh.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1345"/>
+        <location filename="PresetCreator.cpp" line="1344"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1359"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1426"/>
+        <location filename="PresetCreator.cpp" line="1425"/>
         <source>Generation successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1427"/>
+        <location filename="PresetCreator.cpp" line="1426"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1432"/>
-        <location filename="PresetCreator.cpp" line="1435"/>
+        <location filename="PresetCreator.cpp" line="1431"/>
+        <location filename="PresetCreator.cpp" line="1434"/>
         <source>Open the generated directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1435"/>
+        <location filename="PresetCreator.cpp" line="1434"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1482"/>
+        <location filename="PresetCreator.cpp" line="1481"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1552"/>
+        <location filename="PresetCreator.cpp" line="1551"/>
         <source> (feet only)</source>
         <translation type="unfinished"></translation>
     </message>

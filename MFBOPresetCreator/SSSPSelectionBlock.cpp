@@ -1,13 +1,13 @@
 #include "SSSPSelectionBlock.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "LineEdit.h"
 #include "Utils.h"
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFileInfo>
 #include <QFormLayout>
 #include <QLabel>
-#include <QLineEdit>
 #include <QStyledItemDelegate>
 
 SSSPSelectionBlock::SSSPSelectionBlock(QWidget* aParent,
@@ -57,7 +57,7 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   // SliderSet name
   const auto lSliderSetNameLabel{new QLabel(tr("Slider set name:"), this)};
 
-  const auto lSliderSetNameValue{new QLineEdit(aSliderSet.getName(), this)};
+  const auto lSliderSetNameValue{new LineEdit(aSliderSet.getName(), this)};
   lSliderSetNameValue->setObjectName("slider_set_name");
 
   lMainLayout->addRow(lSliderSetNameLabel, lSliderSetNameValue);

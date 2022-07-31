@@ -3,6 +3,7 @@
 #include "AssistedConversion.h"
 #include "BatchConversion.h"
 #include "Enum.h"
+#include "LineEdit.h"
 #include "PresetCreator.h"
 #include "ReleaseNotesViewer.h"
 #include "RetargetingTool.h"
@@ -16,7 +17,6 @@
 #include <QDesktopServices>
 #include <QDropEvent>
 #include <QFileInfo>
-#include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMimeData>

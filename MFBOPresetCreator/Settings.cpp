@@ -1,6 +1,7 @@
 #include "Settings.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "LineEdit.h"
 #include "TargetMeshesPicker.h"
 #include "Utils.h"
 #include <QAbstractSlider>
@@ -11,7 +12,6 @@
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
 #include <QRadioButton>
 #include <QScrollArea>
@@ -178,7 +178,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   // WINDOW WIDTH
   lLeftColumnLayout->addWidget(new QLabel(tr("Default main window width:"), this));
 
-  auto lWinWidthInput{new QLineEdit(this)};
+  auto lWinWidthInput{new LineEdit(this)};
   lWinWidthInput->setObjectName(QString("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 99999, this));
   lLeftColumnLayout->addWidget(lWinWidthInput);
@@ -186,7 +186,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   // WINDOW HEIGHT
   lLeftColumnLayout->addWidget(new QLabel(tr("Default main window height:"), this));
 
-  auto lWinHeightInput{new QLineEdit(this)};
+  auto lWinHeightInput{new LineEdit(this)};
   lWinHeightInput->setObjectName(QString("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 99999, this));
   lLeftColumnLayout->addWidget(lWinHeightInput);

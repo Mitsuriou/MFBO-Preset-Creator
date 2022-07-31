@@ -2,6 +2,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Enum.h"
+#include "LineEdit.h"
 #include "SliderFileBuilder.h"
 #include <QAction>
 #include <QApplication>
@@ -11,7 +12,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
-#include <QLineEdit>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QStandardPaths>
@@ -1837,7 +1837,7 @@ void Utils::AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aR
 {
   aLayout->addWidget(new QLabel(aLabel, aParent), aRow, 0);
 
-  const auto lGeneralValue{new QLineEdit(aValue, aParent)};
+  const auto lGeneralValue{new LineEdit(aValue, aParent)};
   lGeneralValue->setReadOnly(true);
   lGeneralValue->setCursor(Qt::CursorShape::IBeamCursor);
   lGeneralValue->setObjectName(QString("line_edit_path_%1").arg(aRow));

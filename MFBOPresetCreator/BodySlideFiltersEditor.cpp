@@ -1,12 +1,12 @@
 #include "BodySlideFiltersEditor.h"
 #include "ComponentFactory.h"
+#include "LineEdit.h"
 #include "TextInputDialog.h"
 #include "Utils.h"
 #include <QAction>
 #include <QCloseEvent>
 #include <QComboBox>
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
 #include <QStyledItemDelegate>
 

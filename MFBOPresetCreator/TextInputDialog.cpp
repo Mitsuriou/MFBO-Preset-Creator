@@ -1,9 +1,9 @@
 #include "TextInputDialog.h"
 #include "ComponentFactory.h"
+#include "LineEdit.h"
 #include "Utils.h"
 #include <QCloseEvent>
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
 
 TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, const GUITheme aAppTheme, QWidget* aParent)
@@ -57,7 +57,7 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
   lTopContainer->addWidget(new QLabel(aLabel, this));
 
   // LineEdit
-  auto lLineEdit{new QLineEdit(this)};
+  auto lLineEdit{new LineEdit(this)};
   lLineEdit->setObjectName(QString("text"));
   lTopContainer->addWidget(lLineEdit);
 

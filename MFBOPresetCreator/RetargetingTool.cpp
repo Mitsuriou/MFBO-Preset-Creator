@@ -3,6 +3,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Enum.h"
+#include "LineEdit.h"
 #include "SliderFileBuilder.h"
 #include "TargetMeshesPicker.h"
 #include "Utils.h"
@@ -14,7 +15,6 @@
 #include <QDirIterator>
 #include <QFileDialog>
 #include <QLabel>
-#include <QLineEdit>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QPushButton>
@@ -114,7 +114,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // Input path
   lGeneralGridLayout->addWidget(new QLabel(tr("Input path:"), this), 1, 0);
 
-  auto lInputPathLineEdit{new QLineEdit(this)};
+  auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1);
@@ -166,7 +166,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lBackupPathLabel->setObjectName(QString("backup_path_label"));
   lBackupGridLayout->addWidget(lBackupPathLabel, 1, 0);
 
-  auto lBackupPathLineEdit{new QLineEdit(this)};
+  auto lBackupPathLineEdit{new LineEdit(this)};
   lBackupPathLineEdit->setReadOnly(true);
   lBackupPathLineEdit->setObjectName(QString("backup_path_directory"));
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
@@ -186,7 +186,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   lLabelSubDirectoryBackupPath->setObjectName(QString("backup_subdir_label"));
   lBackupGridLayout->addWidget(lLabelSubDirectoryBackupPath, 2, 0);
 
-  auto lBackupSubpathLineEdit{new QLineEdit(this)};
+  auto lBackupSubpathLineEdit{new LineEdit(this)};
   lBackupSubpathLineEdit->setObjectName(QString("backup_path_subdirectory"));
   lBackupGridLayout->addWidget(lBackupSubpathLineEdit, 2, 1);
 

@@ -1,5 +1,6 @@
 #include "SliderSetsDBManager.h"
 #include "ComponentFactory.h"
+#include "PlainTextEdit.h"
 #include "SliderSetsDBEntry.h"
 #include "SliderSetsImporter.h"
 #include "Utils.h"
@@ -7,7 +8,6 @@
 #include <QDir>
 #include <QDomDocument>
 #include <QFile>
-#include <QPlainTextEdit>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QSplitter>
@@ -57,7 +57,7 @@ void SliderSetsDBManager::initializeGUI()
   lLeftWrapperLayout->addWidget(lButton);
 
   // Right side
-  const auto lFileViewer{new QPlainTextEdit(this)};
+  const auto lFileViewer{new PlainTextEdit(this)};
   lFileViewer->setObjectName("file_content_viewer");
   lFileViewer->setReadOnly(true);
   lFileViewer->setLineWrapMode(QPlainTextEdit::NoWrap);
@@ -343,7 +343,7 @@ void SliderSetsDBManager::removeFromDatabase(const int aIndex)
 
 void SliderSetsDBManager::displaySliderSetContent(const int aIndex)
 {
-  const auto lFileViewer{this->findChild<QPlainTextEdit*>("file_content_viewer")};
+  const auto lFileViewer{this->findChild<PlainTextEdit*>("file_content_viewer")};
 
   QFile lReadFile(Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp")));
   if (lReadFile.open(QFile::ReadOnly | QFile::Text))

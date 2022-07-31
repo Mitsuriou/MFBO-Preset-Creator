@@ -1,6 +1,6 @@
 ﻿#pragma once
+#include "LineEdit.h"
 #include "Struct.h"
-#include <QLineEdit>
 #include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>

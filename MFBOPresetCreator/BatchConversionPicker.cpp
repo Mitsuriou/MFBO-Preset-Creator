@@ -1,12 +1,12 @@
 #include "BatchConversionPicker.h"
 #include "BCDropWidget.h"
 #include "ComponentFactory.h"
+#include "LineEdit.h"
 #include "Utils.h"
 #include <QCloseEvent>
 #include <QGridLayout>
 #include <QIcon>
 #include <QLabel>
-#include <QLineEdit>
 #include <QListWidget>
 #include <QSpinBox>
 #include <QSplitter>
@@ -226,7 +226,7 @@ void BatchConversionPicker::initializeGUI()
   // First line
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
-  auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
+  auto lOSPXMLNamesLineEdit{new LineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName(QString("names_osp_xml_input"));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
 
@@ -247,7 +247,7 @@ void BatchConversionPicker::initializeGUI()
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
-  auto lNamesInAppLineEdit{new QLineEdit(this)};
+  auto lNamesInAppLineEdit{new LineEdit(this)};
   lNamesInAppLineEdit->setObjectName(QString("names_bodyslide_input"));
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
 

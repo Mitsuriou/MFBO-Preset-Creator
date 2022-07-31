@@ -99,7 +99,7 @@ xcopy /d /q /y D:\Qt\6.3.1\msvc2019_64\bin\Qt6Xml.dll $(SolutionDir)$(Platform)\
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;D:\Qt\6.3.1\msvc2019_64\lib;$(SolutionDir)$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt6Core.lib;Qt6Xml.lib;Qt6Network.lib;Qt6Gui.lib;Qt6Widgets.lib;$(SolutionDir)MFBOPresetCreator\$(IntDir)*.obj;MFBOPresetCreator.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Qt6Cored.lib;Qt6Xmld.lib;Qt6Networkd.lib;Qt6Guid.lib;Qt6Widgetsd.lib;$(SolutionDir)MFBOPresetCreator\$(IntDir)*.obj;MFBOPresetCreator.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /d /q /y D:\Qt\6.3.1\msvc2019_64\bin\Qt6Cored.dll $(SolutionDir)$(Platform)\$(Configuration)\Tests\

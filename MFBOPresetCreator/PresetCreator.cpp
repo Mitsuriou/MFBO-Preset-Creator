@@ -2,6 +2,7 @@
 #include "BodySlideFiltersEditor.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
+#include "LineEdit.h"
 #include "Settings.h"
 #include "SliderFileBuilder.h"
 #include "TargetMeshesPicker.h"
@@ -14,7 +15,6 @@
 #include <QFileDialog>
 #include <QJsonObject>
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QStandardPaths>
@@ -444,14 +444,14 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   lMeshesGridLayout->addWidget(new QLabel(tr("Meshes paths and names:"), this), 1, 0, 3, 1);
 
   // femalebody
-  auto lMeshesPathFemaleBodyLineEdit{new QLineEdit(this)};
+  auto lMeshesPathFemaleBodyLineEdit{new LineEdit(this)};
   lMeshesPathFemaleBodyLineEdit->setObjectName(QString("meshes_path_input_femalebody"));
   lMeshesPathFemaleBodyLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleBodyLineEdit, 1, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 1, 2);
 
-  auto lBodyMeshNameInput{new QLineEdit(this)};
+  auto lBodyMeshNameInput{new LineEdit(this)};
   lBodyMeshNameInput->setObjectName(QString("body_mesh_name_input"));
   lMeshesGridLayout->addWidget(lBodyMeshNameInput, 1, 3);
   lBodyMeshNameInput->setText("femalebody");
@@ -460,14 +460,14 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   lMeshesGridLayout->addWidget(new QLabel(tr("_0.nif/_1.nif"), this), 1, 4);
 
   // femalefeet
-  auto lMeshesPathFemaleFeetLineEdit{new QLineEdit(this)};
+  auto lMeshesPathFemaleFeetLineEdit{new LineEdit(this)};
   lMeshesPathFemaleFeetLineEdit->setObjectName(QString("meshes_path_input_femalefeet"));
   lMeshesPathFemaleFeetLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleFeetLineEdit, 2, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 2, 2);
 
-  auto lFeetMeshNameInput{new QLineEdit(this)};
+  auto lFeetMeshNameInput{new LineEdit(this)};
   lFeetMeshNameInput->setObjectName(QString("feet_mesh_name_input"));
   lMeshesGridLayout->addWidget(lFeetMeshNameInput, 2, 3);
   lFeetMeshNameInput->setText("femalefeet");
@@ -476,14 +476,14 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   lMeshesGridLayout->addWidget(new QLabel(tr("_0.nif/_1.nif"), this), 2, 4);
 
   // femalehands
-  auto lMeshesPathFemaleHandsLineEdit{new QLineEdit(this)};
+  auto lMeshesPathFemaleHandsLineEdit{new LineEdit(this)};
   lMeshesPathFemaleHandsLineEdit->setObjectName(QString("meshes_path_input_femalehands"));
   lMeshesPathFemaleHandsLineEdit->setPlaceholderText("meshes/...");
   lMeshesGridLayout->addWidget(lMeshesPathFemaleHandsLineEdit, 3, 1);
 
   lMeshesGridLayout->addWidget(new QLabel("/", this), 3, 2);
 
-  auto lHandsMeshNameInput{new QLineEdit(this)};
+  auto lHandsMeshNameInput{new LineEdit(this)};
   lHandsMeshNameInput->setObjectName(QString("hands_mesh_name_input"));
   lMeshesGridLayout->addWidget(lHandsMeshNameInput, 3, 3);
   lHandsMeshNameInput->setText("femalehands");
@@ -572,7 +572,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   lLabelSkeletonPath->setObjectName(QString("label_skeleton_path_directory"));
   lSkeletonGridLayout->addWidget(lLabelSkeletonPath, 2, 0);
 
-  auto lSkeletonPathLineEdit{new QLineEdit(this)};
+  auto lSkeletonPathLineEdit{new LineEdit(this)};
   lSkeletonPathLineEdit->setObjectName(QString("skeleton_path_directory"));
   lSkeletonPathLineEdit->setPlaceholderText("meshes/...");
   lSkeletonGridLayout->addWidget(lSkeletonPathLineEdit, 2, 1);
@@ -582,7 +582,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   lSkeletonNameLabel->setObjectName(QString("label_skeleton_female"));
   lSkeletonGridLayout->addWidget(lSkeletonNameLabel, 3, 0);
 
-  auto lSkeletonName{new QLineEdit(this)};
+  auto lSkeletonName{new LineEdit(this)};
   lSkeletonName->setObjectName(QString("skeleton_name"));
   lSkeletonName->setPlaceholderText("skeleton_female");
   lSkeletonName->setText("skeleton_female");
@@ -643,7 +643,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
-  auto lOSPXMLNamesLineEdit{new QLineEdit(this)};
+  auto lOSPXMLNamesLineEdit{new LineEdit(this)};
   lOSPXMLNamesLineEdit->setObjectName(QString("names_osp_xml_input"));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1);
 
@@ -664,7 +664,7 @@ void PresetCreator::setupBodySlideGUI(QGridLayout& aLayout)
   lNamesInApp->setToolTip(QString(tr("This field represents the names under which the presets will be listed in the BodySlide application.")));
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
-  auto lNamesInAppLineEdit{new QLineEdit(this)};
+  auto lNamesInAppLineEdit{new LineEdit(this)};
   lNamesInAppLineEdit->setObjectName(QString("names_bodyslide_input"));
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1);
 

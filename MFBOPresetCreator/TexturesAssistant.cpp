@@ -2,6 +2,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "FileIDPicker.h"
+#include "LineEdit.h"
 #include "Utils.h"
 #include <QAbstractSlider>
 #include <QApplication>
@@ -13,7 +14,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QLabel>
-#include <QLineEdit>
 #include <QNetworkReply>
 #include <QProgressBar>
 #include <QProgressDialog>
@@ -131,7 +131,7 @@ void TexturesAssistant::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(new QLabel(tr("Input path:"), this));
 
   // Input path value
-  auto lInputPathLineEdit{new QLineEdit(this)};
+  auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
   lInputPathLineEdit->setObjectName(QString("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
@@ -164,7 +164,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(new QLabel(tr("Mod's URL or ID:"), this), 0, 0);
 
   // Input mod's URL/ID value
-  auto lModURLOrIDLineEdit{new QLineEdit(this)};
+  auto lModURLOrIDLineEdit{new LineEdit(this)};
   lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
   lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
   lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 3);
@@ -173,7 +173,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
   lTabLayout->addWidget(new QLabel(tr("API Key:"), this), 1, 0);
 
   // API Key value
-  auto lAPIKeyLineEdit{new QLineEdit(this)};
+  auto lAPIKeyLineEdit{new LineEdit(this)};
   lAPIKeyLineEdit->setObjectName(QString("api_key"));
   lAPIKeyLineEdit->setPlaceholderText(tr("Enter your NexusMods API key here"));
   lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());

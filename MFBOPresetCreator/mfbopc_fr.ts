@@ -1470,18 +1470,18 @@ Vérifiez que votre connexion internet est opérationnelle et réessayez.</trans
         <translation>Éditer les sets de filtres BodySlide</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1331"/>
+        <location filename="PresetCreator.cpp" line="1330"/>
         <source>Error: no path has been given for any mesh.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour une mesh.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1432"/>
-        <location filename="PresetCreator.cpp" line="1435"/>
+        <location filename="PresetCreator.cpp" line="1431"/>
+        <location filename="PresetCreator.cpp" line="1434"/>
         <source>Open the generated directory</source>
         <translation>Ouvrir le répertoire généré</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1281"/>
+        <location filename="PresetCreator.cpp" line="1280"/>
         <source>Error while creating the main directory: &quot;%1&quot; could not be created on your computer.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -1490,14 +1490,14 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1482"/>
+        <location filename="PresetCreator.cpp" line="1481"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
 Pieds ciblés : %2</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1552"/>
+        <location filename="PresetCreator.cpp" line="1551"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -1532,17 +1532,17 @@ Pieds ciblés : %2</translation>
         <translation>Générer les fichiers sur mon ordinateur</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1263"/>
+        <location filename="PresetCreator.cpp" line="1262"/>
         <source>Error: no path given to export the files.</source>
         <translation>Erreur : aucun emplacement donné pour exporter les fichiers.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1270"/>
+        <location filename="PresetCreator.cpp" line="1269"/>
         <source>Error: the path given to export the files seems to be invalid.</source>
         <translation>Erreur : l&apos;emplacement donné pour exporter les fichiers semble invalide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1427"/>
+        <location filename="PresetCreator.cpp" line="1426"/>
         <source>Every file has been correctly generated. You can now exit the application or create another conversion!</source>
         <translation>Tous les fichiers ont été correctement générés. Vous pouvez maintenant quitter l&apos;application ou créer une autre conversion !</translation>
     </message>
@@ -1559,12 +1559,12 @@ Pieds ciblés : %2</translation>
         <translation type="vanished">Erreur : aucun emplacement n&apos;a été donné pour les meshes de mains.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1345"/>
+        <location filename="PresetCreator.cpp" line="1344"/>
         <source>Error: no name given for the BodySlide files.</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les fichiers BodySlide.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1359"/>
+        <location filename="PresetCreator.cpp" line="1358"/>
         <source>Error: no name given for the slider sets (names that appear in the BodySlide application).</source>
         <translation>Erreur : aucun nom n&apos;a été donné pour les sets de sliders (les noms qui apparaissent dans l&apos;application BodySlide).</translation>
     </message>
@@ -1579,7 +1579,7 @@ Pieds ciblés : %2</translation>
         <translation>Utiliser un squelette personnalisé ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1435"/>
+        <location filename="PresetCreator.cpp" line="1434"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -1619,27 +1619,27 @@ Pieds ciblés : %2</translation>
         <translation>Ne pas remplacer un squelette causerait des problèmes de collisions et de calcul de la physique au niveau de la poitrine.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1289"/>
+        <location filename="PresetCreator.cpp" line="1288"/>
         <source>Already existing directory</source>
         <translation>Répertoire déjà existant</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1290"/>
+        <location filename="PresetCreator.cpp" line="1289"/>
         <source>The directory &quot;%1&quot; already exists on your computer. Do you still want to generate the files in this directory?</source>
         <translation>Le répertoire &quot;%1&quot; existe déjà sur votre ordinateur. Voulez-vous quand même générer les fichiers dans ce répertoire ?</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1293"/>
+        <location filename="PresetCreator.cpp" line="1292"/>
         <source>Continue the files generation</source>
         <translation>Continuer la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1294"/>
+        <location filename="PresetCreator.cpp" line="1293"/>
         <source>Cancel the files generation</source>
         <translation>Annuler la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1426"/>
+        <location filename="PresetCreator.cpp" line="1425"/>
         <source>Generation successful</source>
         <translation>Génération réussie</translation>
     </message>
