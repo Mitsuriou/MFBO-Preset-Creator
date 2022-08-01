@@ -13,14 +13,10 @@
 #include <QSplitter>
 
 constexpr int XML_INDENT = 4;
-constexpr QChar DB_SEPARATOR = ';';
 
 SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
   : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 1200, 600)
 {
-  // Load the database before doing anything else
-  this->loadDatabase();
-
   // Build the window's interface
   this->initializeGUI();
 
@@ -31,7 +27,8 @@ SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Setting
 
 void SliderSetsDBManager::closeEvent(QCloseEvent*)
 {
-  this->saveDatabase();
+  // TODO: check to remove this call
+  SliderSetsDBDAO::saveDatabase(this->mDatabase);
 }
 
 void SliderSetsDBManager::initializeGUI()
@@ -104,7 +101,7 @@ void SliderSetsDBManager::refreshList()
 
   auto lRow{0};
 
-  for (const auto& lEntry : this->mRunningDatabase)
+  for (const auto& lEntry : this->mDatabase)
   {
     if (!lEntry.second.isActive())
       continue;
@@ -121,77 +118,6 @@ void SliderSetsDBManager::refreshList()
     QObject::connect(lEntryWidget, &SliderSetsDBEntry::viewContentButtonClicked, this, &SliderSetsDBManager::displaySliderSetContent);
 
     lDataContainer->addWidget(lEntryWidget, lRow++, 0);
-  }
-}
-
-void SliderSetsDBManager::loadDatabase()
-{
-  QFile lDatabaseFile(Utils::GetDatabaseFilePath());
-  if (!lDatabaseFile.exists())
-  {
-    if (!QDir().mkpath(Utils::GetDatabaseFilePath()))
-    {
-      // TODO: error message
-      return;
-    }
-  }
-
-  if (lDatabaseFile.open(QIODevice::ReadOnly | QIODevice::Text))
-  {
-    QTextStream in(&lDatabaseFile);
-    while (!in.atEnd())
-    {
-      // This should be the only place the mInitialDatabase is used as lhs
-      this->mInitialDatabase.insert(this->parseDatabaseLine(in.readLine()));
-    }
-  }
-  lDatabaseFile.close();
-
-  // Copy the initial database to the database that is going to be used for this session
-  this->mRunningDatabase = this->mInitialDatabase;
-
-  // Purge the database
-  this->detectRemovedFiles();
-
-  // Save the new database state
-  this->saveDatabase();
-}
-
-void SliderSetsDBManager::saveDatabase()
-{
-  if (this->mInitialDatabase != this->mRunningDatabase)
-  {
-    const auto lAbsFilePath{Utils::GetDatabaseFilePath()};
-
-    QFile lOSPFile(lAbsFilePath);
-    if (lOSPFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-      QTextStream lTextStream(&lOSPFile);
-      lTextStream << this->databaseToString();
-      lTextStream.flush();
-
-      lOSPFile.close();
-
-      this->mInitialDatabase = this->mRunningDatabase;
-    }
-    else
-    {
-      // TODO: error message
-    }
-  }
-}
-
-void SliderSetsDBManager::detectRemovedFiles()
-{
-  const auto lBasePath{Utils::GetSliderSetsFolderPath()};
-
-  for (const auto& lEntry : this->mRunningDatabase)
-  {
-    // If the file does not exist anymore, mark it as removed
-    if (!QFile(lBasePath + QString::number(lEntry.first) + QStringLiteral(".osp")).exists())
-    {
-      this->removeFromDatabase(lEntry.first);
-    }
   }
 }
 
@@ -316,22 +242,22 @@ bool SliderSetsDBManager::saveSliderSetToDatabase(QDomElement& aSliderSetNode, c
 
 void SliderSetsDBManager::addDatabaseLine(const int aIndex, const Struct::DatabaseSliderSet& aSliderSetData)
 {
-  auto lPosition{this->mRunningDatabase.find(aIndex)};
+  auto lPosition{this->mDatabase.find(aIndex)};
 
   // If the index is not already in the database, add it
-  if (lPosition == this->mRunningDatabase.end())
+  if (lPosition == this->mDatabase.end())
   {
-    this->mRunningDatabase.insert({aIndex, aSliderSetData});
+    this->mDatabase.insert({aIndex, aSliderSetData});
   }
 
-  this->saveDatabase();
+  SliderSetsDBDAO::saveDatabase(this->mDatabase);
 }
 
 void SliderSetsDBManager::updateSliderSetName(const int aIndex, const QString& aNewSliderSetName)
 {
-  const auto lPosition{this->mRunningDatabase.find(aIndex)};
+  const auto lPosition{this->mDatabase.find(aIndex)};
 
-  if (lPosition != this->mRunningDatabase.end())
+  if (lPosition != this->mDatabase.end())
   {
     // Update the OSP file's content
     QFile lReadFile(Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp")));
@@ -340,11 +266,11 @@ void SliderSetsDBManager::updateSliderSetName(const int aIndex, const QString& a
       QDomDocument lOSPDocument;
       lOSPDocument.setContent(&lReadFile);
 
+      // Update the database entry before saving it
+      lPosition->second.setSliderSetName(aNewSliderSetName);
+
       auto lNode{lOSPDocument.firstChildElement()};
       this->saveSliderSetToDatabase(lNode, Struct::DatabaseSliderSet(true, aNewSliderSetName, lPosition->second.getMeshType()), aIndex);
-
-      // Update the database entry only if the file has been successfully updated
-      lPosition->second.setSliderSetName(aNewSliderSetName);
 
       // Refresh the file's content viewer if it is displaying the current preset already
       if (this->mCurrentPreviewIndex == aIndex)
@@ -357,18 +283,15 @@ void SliderSetsDBManager::updateSliderSetName(const int aIndex, const QString& a
 
 void SliderSetsDBManager::updateSliderSetMeshType(const int aIndex, const MeshPartType aMeshType)
 {
-  const auto lPosition{this->mRunningDatabase.find(aIndex)};
+  const auto lPosition{this->mDatabase.find(aIndex)};
 
-  if (lPosition != this->mRunningDatabase.end())
+  if (lPosition != this->mDatabase.end())
     lPosition->second.setMeshType(aMeshType);
 }
 
 void SliderSetsDBManager::removeFromDatabase(const int aIndex)
 {
-  const auto lPosition{this->mRunningDatabase.find(aIndex)};
-
-  if (lPosition != this->mRunningDatabase.end())
-    lPosition->second.setActive(false);
+  SliderSetsDBDAO::removeFromDatabase(this->mDatabase, aIndex);
 
   // Clear the file's content viewer if it was displaying the preset that has just been removed
   if (this->mCurrentPreviewIndex == aIndex)
@@ -409,48 +332,16 @@ void SliderSetsDBManager::clearPreviewContent()
   this->mCurrentPreviewIndex = -1;
 }
 
-int SliderSetsDBManager::nextAvailableDatabaseIndex()
+int SliderSetsDBManager::nextAvailableDatabaseIndex() const
 {
-  if (this->mRunningDatabase.begin() == this->mRunningDatabase.end())
+  if (this->mDatabase.cbegin() == this->mDatabase.cend())
     return 1;
 
-  return std::max_element(this->mRunningDatabase.begin(),
-                          this->mRunningDatabase.end(),
+  return std::max_element(this->mDatabase.cbegin(),
+                          this->mDatabase.cend(),
                           [](const auto& lhs, const auto& rhs) {
                             return lhs.first < rhs.first;
                           })
            ->first
          + 1;
-}
-
-QString SliderSetsDBManager::databaseToString()
-{
-  QString lString;
-
-  for (const auto& lEntry : this->mRunningDatabase)
-    lString.append(this->stringifyDatabaseEntry(lEntry));
-
-  return lString;
-}
-
-std::pair<int, Struct::DatabaseSliderSet> SliderSetsDBManager::parseDatabaseLine(const QString& aLine)
-{
-  const auto& lParts{aLine.split(DB_SEPARATOR)};
-
-  return {lParts[0].toInt(),
-          Struct::DatabaseSliderSet(lParts[1].toInt() == 1,
-                                    QByteArray::fromBase64(lParts[2].toUtf8()),
-                                    static_cast<MeshPartType>(lParts[3].toInt()))};
-}
-
-QString SliderSetsDBManager::stringifyDatabaseEntry(const std::pair<int, Struct::DatabaseSliderSet>& lEntry)
-{
-  return QString::number(lEntry.first)
-    .append(DB_SEPARATOR)
-    .append(QString::number(lEntry.second.isActive()))
-    .append(DB_SEPARATOR)
-    .append(lEntry.second.getSliderSetName().toUtf8().toBase64())
-    .append(DB_SEPARATOR)
-    .append(QString::number(static_cast<int>(lEntry.second.getMeshType())))
-    .append("\n");
 }

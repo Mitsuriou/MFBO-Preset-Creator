@@ -57,7 +57,7 @@ namespace DataLists
   DLLEXP int GetVersionOffset(const BodyVariant& aBodyVariant, const int aRelativeVersion);
   DLLEXP int GetVersionOffset(const FeetVariant& aFeetVariant);
 
-  DLLEXP QString GetQRCPathForResource(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion, const MeshPartType& aResourceType);
+  DLLEXP QString GetQRCPathForResource(const BodyNameVersion aBodyNameVersion, const FeetNameVersion aFeetNameVersion, const MeshPartType aResourceType);
 
   // Pre 3.5.x.x data to 3.5.x.x+ data format
   DLLEXP std::pair<int, int> GetSplittedNameVersionFromBodyVersionCompatibility(const int aBodyVersion);

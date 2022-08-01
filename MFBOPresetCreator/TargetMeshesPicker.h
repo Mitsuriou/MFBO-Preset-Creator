@@ -1,4 +1,5 @@
 #pragma once
+#include "SliderSetsDBDAO.h"
 #include "TitleDialog.h"
 
 class QListWidget;
@@ -19,6 +20,9 @@ protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
+  // Database of injected slider sets
+  std::map<int, Struct::DatabaseSliderSet> mDatabase{SliderSetsDBDAO::loadDatabase()};
+
   // Original values gotten when constructing this dialog
   const BodyNameVersion mOriginalBody;
   const FeetNameVersion mOriginalFeet;
@@ -31,6 +35,9 @@ private:
   QListWidget* mListBodyVariantName{nullptr};
   int mCurrentBodyVersionName{-1};
 
+  QListWidget* mListBodyCustom{nullptr};
+  int mCurrentBodyCustom{-1};
+
   // Feet related list widgets
   QListWidget* mListFeetName{nullptr};
   int mCurrentFeetBase{-1};
@@ -38,6 +45,23 @@ private:
   int mCurrentFeetVersionNumber{-1};
   QListWidget* mListFeetVariantName{nullptr};
   int mCurrentFeetVersionName{-1};
+
+  QListWidget* mListFeetCustom{nullptr};
+  int mCurrentFeetCustom{-1};
+
+  // Hands related list widgets
+  QListWidget* mListHandsEmbedded{nullptr};
+  int mCurrentHandsEmbedded{-1};
+
+  QListWidget* mListHandsCustom{nullptr};
+  int mCurrentHandsCustom{-1};
+
+  // Beast hands related list widgets
+  QListWidget* mListBeastHandsEmbedded{nullptr};
+  int mCurrentBeastHandsEmbedded{-1};
+
+  QListWidget* mListBeastHandsCustom{nullptr};
+  int mCurrentBeastHandsCustom{-1};
 
   // Smarter lists behavior
   bool mIsWindowInitialized{false};
@@ -75,7 +99,11 @@ private:
                         QListWidget& aWidgetModVersion,
                         QListWidget& aWidgetModVariantName,
                         const QStringList& aNamesList);
-  void setupCustomTab(QTabWidget& aTabWidget, const QString& aIconName, const QString& aTabName);
+  void setupCustomTab(QTabWidget& aTabWidget,
+                      const QString& aIconName,
+                      const QString& aTabName,
+                      QListWidget& aListWidget,
+                      const MeshPartType aResourceType);
 
   // Inject custom presets
   void openSliderSetsDatabaseManager();

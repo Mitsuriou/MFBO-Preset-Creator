@@ -17,9 +17,15 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
   , mListBodyName(new QListWidget(this))
   , mListBodyVersion(new QListWidget(this))
   , mListBodyVariantName(new QListWidget(this))
+  , mListBodyCustom(new QListWidget(this))
   , mListFeetName(new QListWidget(this))
   , mListFeetVersion(new QListWidget(this))
   , mListFeetVariantName(new QListWidget(this))
+  , mListFeetCustom(new QListWidget(this))
+  , mListHandsEmbedded(new QListWidget(this))
+  , mListHandsCustom(new QListWidget(this))
+  , mListBeastHandsEmbedded(new QListWidget(this))
+  , mListBeastHandsCustom(new QListWidget(this))
 {
   // Build the window's interface
   this->initializeGUI();
@@ -71,6 +77,7 @@ void TargetMeshesPicker::initializeGUI()
   this->setupBodyTabWidget(*lMainLayout);
   this->setupFeetTabWidget(*lMainLayout);
   this->setupHandsTabWidget(*lMainLayout);
+  this->setupBeastHandsTabWidget(*lMainLayout);
 
   /*========================================*/
   /* Label for currently chosen meshes mods */
@@ -150,7 +157,11 @@ void TargetMeshesPicker::setupEmbeddedBodyTab(QTabWidget& aTabWidget)
 
 void TargetMeshesPicker::setupCustomBodyTab(QTabWidget& aTabWidget)
 {
-  this->setupCustomTab(aTabWidget, "body", tr("Custom body mods"));
+  this->setupCustomTab(aTabWidget,
+                       "body",
+                       tr("Custom body mods"),
+                       *this->mListBodyCustom,
+                       MeshPartType::BODY);
 }
 
 void TargetMeshesPicker::setupFeetTabWidget(QVBoxLayout& aMainLayout)
@@ -187,7 +198,11 @@ void TargetMeshesPicker::setupEmbeddedFeetTab(QTabWidget& aTabWidget)
 
 void TargetMeshesPicker::setupCustomFeetTab(QTabWidget& aTabWidget)
 {
-  this->setupCustomTab(aTabWidget, "foot", tr("Custom feet mods"));
+  this->setupCustomTab(aTabWidget,
+                       "foot",
+                       tr("Custom feet mods"),
+                       *this->mListFeetCustom,
+                       MeshPartType::FEET);
 }
 
 void TargetMeshesPicker::setupHandsTabWidget(QVBoxLayout& aMainLayout)
@@ -234,7 +249,11 @@ void TargetMeshesPicker::setupEmbeddedHandsTab(QTabWidget& aTabWidget)
 
 void TargetMeshesPicker::setupCustomHandsTab(QTabWidget& aTabWidget)
 {
-  this->setupCustomTab(aTabWidget, "hand", tr("Custom hands mods"));
+  this->setupCustomTab(aTabWidget,
+                       "hand",
+                       tr("Custom hands mods"),
+                       *this->mListHandsCustom,
+                       MeshPartType::HANDS);
 }
 
 void TargetMeshesPicker::setupBeastHandsTabWidget(QVBoxLayout& aMainLayout)
@@ -249,7 +268,11 @@ void TargetMeshesPicker::setupEmbeddedBeastHandsTab(QTabWidget& aTabWidget)
 
 void TargetMeshesPicker::setupCustomBeastHandsTab(QTabWidget& aTabWidget)
 {
-  Q_UNUSED(aTabWidget)
+  this->setupCustomTab(aTabWidget,
+                       "hand",
+                       tr("Custom beast hands mods"),
+                       *this->mListBeastHandsCustom,
+                       MeshPartType::BEAST_HANDS);
 }
 
 void TargetMeshesPicker::setupEmbeddedTab(QTabWidget& aTabWidget,
@@ -292,7 +315,11 @@ void TargetMeshesPicker::setupEmbeddedTab(QTabWidget& aTabWidget,
   lTabLayout->addWidget(&aWidgetModVariantName, 1, 2);
 }
 
-void TargetMeshesPicker::setupCustomTab(QTabWidget& aTabWidget, const QString& aIconName, const QString& aTabName)
+void TargetMeshesPicker::setupCustomTab(QTabWidget& aTabWidget,
+                                        const QString& aIconName,
+                                        const QString& aTabName,
+                                        QListWidget& aListWidget,
+                                        const MeshPartType aResourceType)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
@@ -302,6 +329,17 @@ void TargetMeshesPicker::setupCustomTab(QTabWidget& aTabWidget, const QString& a
   auto lTabLayout{new QVBoxLayout(lTabContent)};
   lTabLayout->setSpacing(10);
   lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Add the list widget
+  lTabLayout->addWidget(&aListWidget);
+
+  for (const auto& lEntry : this->mDatabase)
+  {
+    if (lEntry.second.getMeshType() == aResourceType)
+    {
+      aListWidget.addItem(QString::number(lEntry.first) + " - " + lEntry.second.getSliderSetName());
+    }
+  }
 
   // Database manager button
   auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};

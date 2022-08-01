@@ -155,6 +155,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClCompile Include="LineEdit.cpp" />
     <ClCompile Include="PlainTextEdit.cpp" />
     <ClCompile Include="PresetCreator.cpp" />
+    <ClCompile Include="SliderSetsDBDAO.cpp" />
     <ClCompile Include="SliderSetsDBEntry.cpp" />
     <ClCompile Include="SliderSetsDBManager.cpp" />
     <ClCompile Include="ReleaseNotesViewer.cpp" />
@@ -210,6 +211,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <QtMoc Include="BatchConversion.h" />
     <QtMoc Include="AssistedConversion.h" />
     <QtMoc Include="About.h" />
+    <ClInclude Include="SliderSetsDBDAO.h" />
     <ClInclude Include="Enum.h" />
     <QtMoc Include="GroupBox.h" />
     <QtMoc Include="FileIDPicker.h" />

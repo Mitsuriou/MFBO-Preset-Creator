@@ -178,6 +178,9 @@
     <ClCompile Include="PlainTextEdit.cpp">
       <Filter>Source Files\Qt Classes</Filter>
     </ClCompile>
+    <ClCompile Include="SliderSetsDBDAO.cpp">
+      <Filter>Source Files\Slider Sets Injection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="mfbopc_en.ts">
@@ -219,6 +222,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderSetsDBDAO.h">
+      <Filter>Header Files\Slider Sets Injection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

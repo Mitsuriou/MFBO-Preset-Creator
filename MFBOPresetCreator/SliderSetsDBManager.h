@@ -1,4 +1,5 @@
 #pragma once
+#include "SliderSetsDBDAO.h"
 #include "Struct.h"
 #include "TitleDialog.h"
 #include <QDomElement>
@@ -14,20 +15,13 @@ protected:
   void closeEvent(QCloseEvent* aEvent) override;
 
 private:
-  std::map<int, Struct::DatabaseSliderSet> mInitialDatabase;
-  std::map<int, Struct::DatabaseSliderSet> mRunningDatabase;
+  std::map<int, Struct::DatabaseSliderSet> mDatabase{SliderSetsDBDAO::loadDatabase()};
 
   int mCurrentPreviewIndex{-1};
 
   // GUI creation
   void initializeGUI();
   void refreshList();
-
-  // Database I/O streams
-  void loadDatabase();
-  void saveDatabase();
-
-  void detectRemovedFiles();
 
   // Create
   void openSliderSetsImporter();
@@ -46,9 +40,5 @@ private:
   // Other utils functions
   void displaySliderSetContent(const int aIndex);
   void clearPreviewContent();
-  int nextAvailableDatabaseIndex();
-
-  QString databaseToString();
-  std::pair<int, Struct::DatabaseSliderSet> parseDatabaseLine(const QString& aLine);
-  QString stringifyDatabaseEntry(const std::pair<int, Struct::DatabaseSliderSet>& lEntry);
+  int nextAvailableDatabaseIndex() const;
 };
