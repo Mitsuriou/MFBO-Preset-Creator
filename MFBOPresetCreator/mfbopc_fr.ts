@@ -2099,17 +2099,17 @@ Pieds ciblés : %2</translation>
     <message>
         <location filename="Settings.cpp" line="154"/>
         <source>Title bar - icons color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Barre de titre - couleur des icônes :</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="160"/>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation>Noir</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="165"/>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanc</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="173"/>
@@ -2418,34 +2418,39 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
 <context>
     <name>SliderSetsDBEntry</name>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="28"/>
+        <location filename="SliderSetsDBEntry.cpp" line="33"/>
         <source>Slider set name:</source>
-        <translation type="unfinished">Nom du slider set :</translation>
+        <translation>Nom du slider set :</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="36"/>
+        <location filename="SliderSetsDBEntry.cpp" line="42"/>
         <source>Preview:</source>
-        <translation type="unfinished">Aperçu :</translation>
+        <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="44"/>
+        <location filename="SliderSetsDBEntry.cpp" line="51"/>
         <source>Resource type:</source>
-        <translation type="unfinished">Type de ressource :</translation>
+        <translation>Type de ressource :</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="57"/>
+        <location filename="SliderSetsDBEntry.cpp" line="64"/>
+        <source>ID:</source>
+        <translation>ID :</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBEntry.cpp" line="69"/>
         <source>Delete slider set</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer slider set</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="66"/>
+        <location filename="SliderSetsDBEntry.cpp" line="78"/>
         <source>View file content</source>
-        <translation type="unfinished"></translation>
+        <translation>Voir contenu du fichier</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="94"/>
+        <location filename="SliderSetsDBEntry.cpp" line="107"/>
         <source>Follower Name - %1</source>
-        <translation type="unfinished">Nom Du Follower - %1</translation>
+        <translation>Nom Du Follower - %1</translation>
     </message>
 </context>
 <context>
@@ -2456,24 +2461,34 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation>Manager de la Base de Données de Slider Sets</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="194"/>
+        <location filename="SliderSetsDBManager.cpp" line="225"/>
         <source>Parsing XML files. Please wait...</source>
         <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="194"/>
+        <location filename="SliderSetsDBManager.cpp" line="225"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="211"/>
+        <location filename="SliderSetsDBManager.cpp" line="242"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="282"/>
+        <location filename="SliderSetsDBManager.cpp" line="313"/>
         <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier SliderSet &quot;%1&quot;. Interruption du processus.</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="389"/>
+        <source>Current file:</source>
+        <translation>Fichier actuel :</translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="407"/>
+        <source>Waiting for a file to be displayed...</source>
+        <translation>En attente d&apos;un fichier à afficher...</translation>
     </message>
 </context>
 <context>
@@ -2801,7 +2816,7 @@ Pieds ciblés : -</translation>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="122"/>
         <source>Body mod:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod de corps :</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="144"/>
@@ -2811,12 +2826,12 @@ Pieds ciblés : -</translation>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="276"/>
         <source>Base mod:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod de base :</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="280"/>
         <source>Targeted mesh:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesh ciblée :</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="153"/>
@@ -2826,7 +2841,7 @@ Pieds ciblés : -</translation>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="159"/>
         <source>Feet mod:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod de pieds :</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="181"/>
@@ -2841,7 +2856,7 @@ Pieds ciblés : -</translation>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="196"/>
         <source>Hands mod:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesh de mains :</translation>
     </message>
     <message>
         <location filename="TargetMeshesPicker.cpp" line="218"/>

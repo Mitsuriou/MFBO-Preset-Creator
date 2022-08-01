@@ -45,6 +45,7 @@ private:
 
   // Other utils functions
   void displaySliderSetContent(const int aIndex);
+  void clearPreviewContent();
   int nextAvailableDatabaseIndex();
 
   QString databaseToString();

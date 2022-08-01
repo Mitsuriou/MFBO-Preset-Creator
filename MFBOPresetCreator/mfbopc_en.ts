@@ -2263,32 +2263,37 @@ Targeted feet: %2</source>
 <context>
     <name>SliderSetsDBEntry</name>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="28"/>
+        <location filename="SliderSetsDBEntry.cpp" line="33"/>
         <source>Slider set name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="36"/>
+        <location filename="SliderSetsDBEntry.cpp" line="42"/>
         <source>Preview:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="44"/>
+        <location filename="SliderSetsDBEntry.cpp" line="51"/>
         <source>Resource type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="57"/>
+        <location filename="SliderSetsDBEntry.cpp" line="64"/>
+        <source>ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBEntry.cpp" line="69"/>
         <source>Delete slider set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="66"/>
+        <location filename="SliderSetsDBEntry.cpp" line="78"/>
         <source>View file content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBEntry.cpp" line="94"/>
+        <location filename="SliderSetsDBEntry.cpp" line="107"/>
         <source>Follower Name - %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2301,23 +2306,33 @@ Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="194"/>
+        <location filename="SliderSetsDBManager.cpp" line="225"/>
         <source>Parsing XML files. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="194"/>
+        <location filename="SliderSetsDBManager.cpp" line="225"/>
         <source>Cancel treatment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="211"/>
+        <location filename="SliderSetsDBManager.cpp" line="242"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="282"/>
+        <location filename="SliderSetsDBManager.cpp" line="313"/>
         <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="389"/>
+        <source>Current file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SliderSetsDBManager.cpp" line="407"/>
+        <source>Waiting for a file to be displayed...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

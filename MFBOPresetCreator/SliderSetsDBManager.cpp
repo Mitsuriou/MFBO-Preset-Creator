@@ -44,30 +44,58 @@ void SliderSetsDBManager::initializeGUI()
   lSplitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
   lMainLayout->addWidget(lSplitter, 0, 0);
 
-  // Left side
+  //-----------//
+  // Left side //
+  //-----------//
+
+  // Wrapper
   const auto lLeftWrapper{new QWidget(this)};
   const auto lLeftWrapperLayout{new QGridLayout(this)};
+  lLeftWrapperLayout->setSpacing(10);
   lLeftWrapperLayout->setContentsMargins(0, 0, 10, 0);
   lLeftWrapper->setLayout(lLeftWrapperLayout);
 
+  // Scroll area
   ComponentFactory::CreateScrollAreaComponentLayout(lLeftWrapper, *lLeftWrapperLayout, 0, 0);
-  lSplitter->addWidget(lLeftWrapper);
 
+  // "Add new slider sets" button
   const auto lButton{ComponentFactory::CreateButton(this, "Import new slider sets", "", "plus", this->getThemedResourcePath())};
   lLeftWrapperLayout->addWidget(lButton);
 
-  // Right side
+  //------------//
+  // Right side //
+  //------------//
+
+  // Wrapper
+  const auto lRightWrapper{new QWidget(this)};
+  const auto lRightWrapperLayout{new QVBoxLayout(this)};
+  lRightWrapperLayout->setSpacing(10);
+  lRightWrapperLayout->setContentsMargins(10, 0, 0, 0);
+  lRightWrapper->setLayout(lRightWrapperLayout);
+
+  // Plain text viewer
   const auto lFileViewer{new PlainTextEdit(this)};
   lFileViewer->setObjectName("file_content_viewer");
   lFileViewer->setReadOnly(true);
   lFileViewer->setLineWrapMode(QPlainTextEdit::NoWrap);
   lFileViewer->setWordWrapMode(QTextOption::NoWrap);
-  lSplitter->addWidget(lFileViewer);
+  lRightWrapperLayout->addWidget(lFileViewer);
 
+  // Displayed file's path
+  const auto lDisplayedFilePath{new QLabel(this)};
+  lDisplayedFilePath->setObjectName("file_path");
+  lRightWrapperLayout->addWidget(lDisplayedFilePath);
+
+  //
+  lSplitter->addWidget(lLeftWrapper);
+  lSplitter->addWidget(lRightWrapper);
+
+  //
   QObject::connect(lButton, &QPushButton::clicked, this, &SliderSetsDBManager::openSliderSetsImporter);
 
-  // Construct the list of slider sets
+  // Post-bind initialization functions
   this->refreshList();
+  this->clearPreviewContent();
 }
 
 void SliderSetsDBManager::refreshList()
@@ -78,6 +106,9 @@ void SliderSetsDBManager::refreshList()
 
   for (const auto& lEntry : this->mRunningDatabase)
   {
+    if (!lEntry.second.isActive())
+      continue;
+
     const auto lEntryWidget{new SliderSetsDBEntry(this,
                                                   this->settings().display.applicationTheme,
                                                   this->settings().display.font.pointSize,
@@ -315,8 +346,9 @@ void SliderSetsDBManager::updateSliderSetName(const int aIndex, const QString& a
       // Update the database entry only if the file has been successfully updated
       lPosition->second.setSliderSetName(aNewSliderSetName);
 
-      // Refresh the file's content viewer
-      this->displaySliderSetContent(aIndex);
+      // Refresh the file's content viewer if it is displaying the current preset already
+      if (this->mCurrentPreviewIndex == aIndex)
+        this->displaySliderSetContent(aIndex);
     }
 
     lReadFile.close();
@@ -338,26 +370,43 @@ void SliderSetsDBManager::removeFromDatabase(const int aIndex)
   if (lPosition != this->mRunningDatabase.end())
     lPosition->second.setActive(false);
 
-  this->displaySliderSetContent(-1);
+  // Clear the file's content viewer if it was displaying the preset that has just been removed
+  if (this->mCurrentPreviewIndex == aIndex)
+    this->clearPreviewContent();
 }
 
 void SliderSetsDBManager::displaySliderSetContent(const int aIndex)
 {
-  const auto lFileViewer{this->findChild<PlainTextEdit*>("file_content_viewer")};
+  const auto lFilePath{Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp"))};
+  QFile lReadFile(lFilePath);
 
-  QFile lReadFile(Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp")));
   if (lReadFile.open(QFile::ReadOnly | QFile::Text))
   {
+    const auto lFileViewer{this->findChild<PlainTextEdit*>("file_content_viewer")};
     lFileViewer->setPlainText(lReadFile.readAll());
+
+    const auto lDisplayedFilePath{this->findChild<QLabel*>("file_path")};
+    lDisplayedFilePath->setText(tr("Current file:") + " " + lFilePath);
+
     this->mCurrentPreviewIndex = aIndex;
   }
   else
   {
-    lFileViewer->clear();
-    this->mCurrentPreviewIndex = -1;
+    this->clearPreviewContent();
   }
 
   lReadFile.close();
+}
+
+void SliderSetsDBManager::clearPreviewContent()
+{
+  const auto lFileViewer{this->findChild<PlainTextEdit*>("file_content_viewer")};
+  lFileViewer->clear();
+
+  const auto lDisplayedFilePath{this->findChild<QLabel*>("file_path")};
+  lDisplayedFilePath->setText(tr("Waiting for a file to be displayed..."));
+
+  this->mCurrentPreviewIndex = -1;
 }
 
 int SliderSetsDBManager::nextAvailableDatabaseIndex()

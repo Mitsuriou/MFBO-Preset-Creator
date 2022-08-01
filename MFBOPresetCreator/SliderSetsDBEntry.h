@@ -20,9 +20,11 @@ signals:
   void viewContentButtonClicked(const int aIndex);
 
 private:
-  const int mDatabaseIndex;
+  const int mDatabaseIndex{-1};
 
-  void initializeGUI(const Struct::DatabaseSliderSet& aDatabaseEntry, const GUITheme aApplicationTheme);
+  void initializeGUI(const int aDatabaseIndex,
+                     const Struct::DatabaseSliderSet& aDatabaseEntry,
+                     const GUITheme aApplicationTheme);
 
   // Events handlers
   void sliderSetNameChanged(const QString& aNewSliderSetName);

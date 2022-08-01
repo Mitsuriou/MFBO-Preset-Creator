@@ -2,7 +2,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Utils.h"
-#include <QFormLayout>
+#include <QGridLayout>
 #include <QStyledItemDelegate>
 
 SliderSetsDBEntry::SliderSetsDBEntry(QWidget* aParent,
@@ -13,14 +13,19 @@ SliderSetsDBEntry::SliderSetsDBEntry(QWidget* aParent,
   : GroupBox(aParent, aDatabaseEntry.getSliderSetName(), "file", Utils::GetIconResourceFolder(aApplicationTheme), aPointSize)
   , mDatabaseIndex(aDatabaseIndex)
 {
-  this->initializeGUI(aDatabaseEntry, aApplicationTheme);
+  this->initializeGUI(aDatabaseIndex, aDatabaseEntry, aApplicationTheme);
 }
 
-void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabaseEntry, const GUITheme aApplicationTheme)
+void SliderSetsDBEntry::initializeGUI(const int aDatabaseIndex,
+                                      const Struct::DatabaseSliderSet& aDatabaseEntry,
+                                      const GUITheme aApplicationTheme)
 {
-  const auto lMainLayout = new QFormLayout(this);
+  const auto lMainLayout{new QGridLayout(this)};
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(15, 20, 15, 15);
+  lMainLayout->setColumnStretch(0, 0);
+  lMainLayout->setColumnStretch(1, 1);
+  lMainLayout->setColumnStretch(2, 1);
   lMainLayout->setAlignment(Qt::AlignTop);
   this->setLayout(lMainLayout);
 
@@ -30,7 +35,8 @@ void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabase
   const auto lSliderSetNameValue{new LineEdit(aDatabaseEntry.getSliderSetName(), this)};
   lSliderSetNameValue->setObjectName("slider_set_name");
 
-  lMainLayout->addRow(lSliderSetNameLabel, lSliderSetNameValue);
+  lMainLayout->addWidget(lSliderSetNameLabel, 0, 0);
+  lMainLayout->addWidget(lSliderSetNameValue, 0, 1, 1, 2);
 
   // Preview
   const auto lPreviewCheckbox{new QLabel(tr("Preview:"), this)};
@@ -38,7 +44,8 @@ void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabase
   const auto lPreviewValue{new QLabel(this)};
   lPreviewValue->setObjectName("preview_value");
 
-  lMainLayout->addRow(lPreviewCheckbox, lPreviewValue);
+  lMainLayout->addWidget(lPreviewCheckbox, 1, 0);
+  lMainLayout->addWidget(lPreviewValue, 1, 1, 1, 2);
 
   // Resource type
   const auto lResourceTypeLabel{new QLabel(tr("Resource type:"), this)};
@@ -50,7 +57,12 @@ void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabase
   lResourceTypeValue->addItems(DataLists::GetSliderSetsImporterActions());
   lResourceTypeValue->setCurrentIndex(static_cast<int>(aDatabaseEntry.getMeshType()));
 
-  lMainLayout->addRow(lResourceTypeLabel, lResourceTypeValue);
+  lMainLayout->addWidget(lResourceTypeLabel, 2, 0);
+  lMainLayout->addWidget(lResourceTypeValue, 2, 1, 1, 2);
+
+  // ID
+  const auto lIDLabel{new QLabel(tr("ID:") + " " + QString::number(aDatabaseIndex), this)};
+  lMainLayout->addWidget(lIDLabel, 3, 0);
 
   // Delete slider set
   const auto lDeleteButton{ComponentFactory::CreateButton(this,
@@ -59,7 +71,7 @@ void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabase
                                                           "trash",
                                                           Utils::GetIconResourceFolder(aApplicationTheme))};
 
-  lMainLayout->addRow(nullptr, lDeleteButton);
+  lMainLayout->addWidget(lDeleteButton, 3, 1);
 
   // View content
   const auto lViewContentButton{ComponentFactory::CreateButton(this,
@@ -68,7 +80,7 @@ void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabase
                                                                "preview",
                                                                Utils::GetIconResourceFolder(aApplicationTheme))};
 
-  lMainLayout->addRow(nullptr, lViewContentButton);
+  lMainLayout->addWidget(lViewContentButton, 3, 2);
 
   // Event binding
   QObject::connect(lSliderSetNameValue, &QLineEdit::textEdited, this, &SliderSetsDBEntry::sliderSetNameChanged);
@@ -77,6 +89,7 @@ void SliderSetsDBEntry::initializeGUI(const Struct::DatabaseSliderSet& aDatabase
   });
   QObject::connect(lDeleteButton, &QPushButton::clicked, this, [&]() {
     emit deleteButtonClicked(this->mDatabaseIndex);
+    this->deleteLater();
   });
   QObject::connect(lViewContentButton, &QPushButton::clicked, this, [&]() {
     emit viewContentButtonClicked(this->mDatabaseIndex);
