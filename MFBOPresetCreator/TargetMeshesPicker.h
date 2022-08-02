@@ -50,16 +50,10 @@ private:
   int mCurrentFeetCustom{-1};
 
   // Hands related list widgets
-  QListWidget* mListHandsEmbedded{nullptr};
-  int mCurrentHandsEmbedded{-1};
-
   QListWidget* mListHandsCustom{nullptr};
   int mCurrentHandsCustom{-1};
 
   // Beast hands related list widgets
-  QListWidget* mListBeastHandsEmbedded{nullptr};
-  int mCurrentBeastHandsEmbedded{-1};
-
   QListWidget* mListBeastHandsCustom{nullptr};
   int mCurrentBeastHandsCustom{-1};
 
@@ -72,22 +66,22 @@ private:
   void initializeGUI();
 
   // Body selection section
-  void setupBodyTabWidget(QVBoxLayout& aMainLayout);
+  void setupBodyTabWidget(QGridLayout& aMainLayout);
   void setupEmbeddedBodyTab(QTabWidget& aTabWidget);
   void setupCustomBodyTab(QTabWidget& aTabWidget);
 
   // Feet selection section
-  void setupFeetTabWidget(QVBoxLayout& aMainLayout);
+  void setupFeetTabWidget(QGridLayout& aMainLayout);
   void setupEmbeddedFeetTab(QTabWidget& aTabWidget);
   void setupCustomFeetTab(QTabWidget& aTabWidget);
 
   // Hands selection section
-  void setupHandsTabWidget(QVBoxLayout& aMainLayout);
+  void setupHandsTabWidget(QGridLayout& aMainLayout);
   void setupEmbeddedHandsTab(QTabWidget& aTabWidget);
   void setupCustomHandsTab(QTabWidget& aTabWidget);
 
   // Beast hands selection section
-  void setupBeastHandsTabWidget(QVBoxLayout& aMainLayout);
+  void setupBeastHandsTabWidget(QGridLayout& aMainLayout);
   void setupEmbeddedBeastHandsTab(QTabWidget& aTabWidget);
   void setupCustomBeastHandsTab(QTabWidget& aTabWidget);
 

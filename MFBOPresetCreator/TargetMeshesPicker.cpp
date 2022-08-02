@@ -22,9 +22,7 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
   , mListFeetVersion(new QListWidget(this))
   , mListFeetVariantName(new QListWidget(this))
   , mListFeetCustom(new QListWidget(this))
-  , mListHandsEmbedded(new QListWidget(this))
   , mListHandsCustom(new QListWidget(this))
-  , mListBeastHandsEmbedded(new QListWidget(this))
   , mListBeastHandsCustom(new QListWidget(this))
 {
   // Build the window's interface
@@ -68,7 +66,9 @@ void TargetMeshesPicker::closeEvent(QCloseEvent* aEvent)
 void TargetMeshesPicker::initializeGUI()
 {
   // Main window container
-  const auto lMainLayout{new QVBoxLayout(this->getCentralWidget())};
+  const auto lMainLayout{new QGridLayout(this->getCentralWidget())};
+  lMainLayout->setColumnStretch(0, 1);
+  lMainLayout->setColumnStretch(1, 1);
   lMainLayout->setAlignment(Qt::AlignTop);
 
   /*=============*/
@@ -84,12 +84,16 @@ void TargetMeshesPicker::initializeGUI()
   /*========================================*/
   auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body: -\nTargeted feet: -"), this)};
   lCurrentlyTargetedBody->setObjectName("currently_targeted_body_feet");
-  lMainLayout->addWidget(lCurrentlyTargetedBody);
+  lMainLayout->addWidget(lCurrentlyTargetedBody, lMainLayout->rowCount(), 0, 1, 2);
 
   /*================*/
   /* Bottom buttons */
   /*================*/
   const auto lButtonsLayout{new QHBoxLayout()};
+
+  // Database manager button
+  auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};
+  lButtonsLayout->addWidget(lOpenDatabaseManager);
 
   const auto lSaveButton{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", this->getThemedResourcePath(), "save_close", false, true)};
   lButtonsLayout->addWidget(lSaveButton);
@@ -97,7 +101,7 @@ void TargetMeshesPicker::initializeGUI()
   const auto lCloseButton{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", this->getThemedResourcePath(), "", false, true)};
   lButtonsLayout->addWidget(lCloseButton);
 
-  lMainLayout->addLayout(lButtonsLayout);
+  lMainLayout->addLayout(lButtonsLayout, lMainLayout->rowCount(), 0, 1, 2);
 
   // Event binding
   QObject::connect(this->mListBodyName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::bodyNameIndexChanged);
@@ -107,6 +111,7 @@ void TargetMeshesPicker::initializeGUI()
   QObject::connect(this->mListFeetVersion, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVersionIndexChanged);
   QObject::connect(this->mListFeetVariantName, &QListWidget::currentRowChanged, this, &TargetMeshesPicker::feetVariantIndexChanged);
 
+  QObject::connect(lOpenDatabaseManager, &QPushButton::clicked, this, &TargetMeshesPicker::openSliderSetsDatabaseManager);
   QObject::connect(lSaveButton, &QPushButton::clicked, this, &TargetMeshesPicker::validateAndClose);
   QObject::connect(lCloseButton, &QPushButton::clicked, this, &TargetMeshesPicker::close);
 
@@ -123,19 +128,19 @@ void TargetMeshesPicker::initializeGUI()
   this->mIsWindowInitialized = true;
 }
 
-void TargetMeshesPicker::setupBodyTabWidget(QVBoxLayout& aMainLayout)
+void TargetMeshesPicker::setupBodyTabWidget(QGridLayout& aMainLayout)
 {
   // Sub-title
   const auto lBodyModLabel{new QLabel(tr("Body mod:"), this)};
   lBodyModLabel->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 1.5));
-  aMainLayout.addWidget(lBodyModLabel);
+  aMainLayout.addWidget(lBodyModLabel, 0, 0, 1, 2);
 
   // Tab widget
   auto lBodyTabWidget{new QTabWidget(this)};
   lBodyTabWidget->setObjectName(QString("body_tab_widget"));
   lBodyTabWidget->setAutoFillBackground(true);
   lBodyTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
-  aMainLayout.addWidget(lBodyTabWidget);
+  aMainLayout.addWidget(lBodyTabWidget, 1, 0, 1, 2);
 
   this->setupEmbeddedBodyTab(*lBodyTabWidget);
   this->setupCustomBodyTab(*lBodyTabWidget);
@@ -164,19 +169,19 @@ void TargetMeshesPicker::setupCustomBodyTab(QTabWidget& aTabWidget)
                        MeshPartType::BODY);
 }
 
-void TargetMeshesPicker::setupFeetTabWidget(QVBoxLayout& aMainLayout)
+void TargetMeshesPicker::setupFeetTabWidget(QGridLayout& aMainLayout)
 {
   // Sub-title
   const auto lFeetModLabel{new QLabel(tr("Feet mod:"), this)};
   lFeetModLabel->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 1.5));
-  aMainLayout.addWidget(lFeetModLabel);
+  aMainLayout.addWidget(lFeetModLabel, 2, 0, 1, 2);
 
   // Tab widget
   auto lFeetTabWidget{new QTabWidget(this)};
   lFeetTabWidget->setObjectName(QString("feet_tab_widget"));
   lFeetTabWidget->setAutoFillBackground(true);
   lFeetTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
-  aMainLayout.addWidget(lFeetTabWidget);
+  aMainLayout.addWidget(lFeetTabWidget, 3, 0, 1, 2);
 
   this->setupEmbeddedFeetTab(*lFeetTabWidget);
   this->setupCustomFeetTab(*lFeetTabWidget);
@@ -205,19 +210,19 @@ void TargetMeshesPicker::setupCustomFeetTab(QTabWidget& aTabWidget)
                        MeshPartType::FEET);
 }
 
-void TargetMeshesPicker::setupHandsTabWidget(QVBoxLayout& aMainLayout)
+void TargetMeshesPicker::setupHandsTabWidget(QGridLayout& aMainLayout)
 {
   // Sub-title
   const auto lHandsModLabel{new QLabel(tr("Hands mod:"), this)};
   lHandsModLabel->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 1.5));
-  aMainLayout.addWidget(lHandsModLabel);
+  aMainLayout.addWidget(lHandsModLabel, 4, 0);
 
   // Tab widget
   auto lHandsTabWidget{new QTabWidget(this)};
   lHandsTabWidget->setObjectName(QString("hands_tab_widget"));
   lHandsTabWidget->setAutoFillBackground(true);
   lHandsTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
-  aMainLayout.addWidget(lHandsTabWidget);
+  aMainLayout.addWidget(lHandsTabWidget, 5, 0);
 
   this->setupEmbeddedHandsTab(*lHandsTabWidget);
   this->setupCustomHandsTab(*lHandsTabWidget);
@@ -256,14 +261,46 @@ void TargetMeshesPicker::setupCustomHandsTab(QTabWidget& aTabWidget)
                        MeshPartType::HANDS);
 }
 
-void TargetMeshesPicker::setupBeastHandsTabWidget(QVBoxLayout& aMainLayout)
+void TargetMeshesPicker::setupBeastHandsTabWidget(QGridLayout& aMainLayout)
 {
-  Q_UNUSED(aMainLayout)
+  // Sub-title
+  const auto lBestHandsModLabel{new QLabel(tr("Beast hands mod:"), this)};
+  lBestHandsModLabel->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 1.5));
+  aMainLayout.addWidget(lBestHandsModLabel, 4, 1);
+
+  // Tab widget
+  auto lBeastHandsTabWidget{new QTabWidget(this)};
+  lBeastHandsTabWidget->setObjectName(QString("hands_tab_widget"));
+  lBeastHandsTabWidget->setAutoFillBackground(true);
+  lBeastHandsTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
+  aMainLayout.addWidget(lBeastHandsTabWidget, 5, 1);
+
+  this->setupEmbeddedBeastHandsTab(*lBeastHandsTabWidget);
+  this->setupCustomBeastHandsTab(*lBeastHandsTabWidget);
+
+  // Event binding
+  QObject::connect(lBeastHandsTabWidget, &QTabWidget::currentChanged, this, &TargetMeshesPicker::refreshSelectionPreview);
 }
 
 void TargetMeshesPicker::setupEmbeddedBeastHandsTab(QTabWidget& aTabWidget)
 {
-  Q_UNUSED(aTabWidget)
+  // Tab widget
+  const auto lTabContent{new QWidget(this)};
+  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/hand").arg(this->getThemedResourcePath()))), tr("Embedded beast hands mods"));
+
+  // Layout
+  const auto lTabLayout{new QHBoxLayout(lTabContent)};
+  lTabLayout->setSpacing(10);
+  lTabLayout->setAlignment(Qt::AlignTop);
+
+  // Label
+  const auto lLabelBeastHands{new QLabel(tr("Automatic beast hands mod:"), this)};
+  lTabLayout->addWidget(lLabelBeastHands);
+
+  // Automatic value
+  const auto lValueBeastHands{new QLabel(this)};
+  lValueBeastHands->setObjectName("automatic_beast_hands_value");
+  lTabLayout->addWidget(lValueBeastHands);
 }
 
 void TargetMeshesPicker::setupCustomBeastHandsTab(QTabWidget& aTabWidget)
@@ -340,13 +377,6 @@ void TargetMeshesPicker::setupCustomTab(QTabWidget& aTabWidget,
       aListWidget.addItem(QString::number(lEntry.first) + " - " + lEntry.second.getSliderSetName());
     }
   }
-
-  // Database manager button
-  auto lOpenDatabaseManager{ComponentFactory::CreateButton(this, "Manage custom slider sets", "", "database", this->getThemedResourcePath())};
-  lTabLayout->addWidget(lOpenDatabaseManager);
-
-  // Event binding
-  QObject::connect(lOpenDatabaseManager, &QPushButton::clicked, this, &TargetMeshesPicker::openSliderSetsDatabaseManager);
 }
 
 void TargetMeshesPicker::openSliderSetsDatabaseManager()
@@ -427,7 +457,7 @@ QString TargetMeshesPicker::getChosenBeastHandsName() const
 
 void TargetMeshesPicker::validateAndClose()
 {
-  emit valuesChosen(getChosenBodyName(), getChosenFeetName());
+  emit valuesChosen(this->getChosenBodyName(), this->getChosenFeetName());
   this->accept();
 }
 
@@ -460,7 +490,7 @@ void TargetMeshesPicker::bodyVersionIndexChanged(const int aNewIndex)
 void TargetMeshesPicker::bodyVariantIndexChanged(const int)
 {
   this->mListFeetName->clear();
-  const auto lAvailableFeetNames{DataLists::GetFeetNamesList(DataLists::GetVariant(getChosenBodyName()))};
+  const auto lAvailableFeetNames{DataLists::GetFeetNamesList(DataLists::GetVariant(this->getChosenBodyName()))};
   this->mListFeetName->addItems(lAvailableFeetNames);
 
   // Smarter lists behavior
@@ -550,7 +580,7 @@ void TargetMeshesPicker::feetVersionIndexChanged(const int aNewIndex)
 
   // Refresh the content of the third list
   this->mListFeetVariantName->clear();
-  const auto lAvailableFeetVariants{DataLists::GetFeetVariantsList(DataLists::GetName(getChosenBodyVariant(),
+  const auto lAvailableFeetVariants{DataLists::GetFeetVariantsList(DataLists::GetName(this->getChosenBodyVariant(),
                                                                                       lSelectedFeetName),
                                                                    aNewIndex,
                                                                    Utils::IsCBBEBasedBody(lBodyVariant))};
@@ -583,7 +613,7 @@ void TargetMeshesPicker::feetVariantIndexChanged(const int aNewIndex)
   // Save the currently selected feet variant
   if (aNewIndex != -1)
   {
-    auto lCurrentlySelectedFeetName{this->mListFeetVariantName->currentItem()->text()};
+    const auto& lCurrentlySelectedFeetName{this->mListFeetVariantName->currentItem()->text()};
     if (!lCurrentlySelectedFeetName.isEmpty())
     {
       this->mLastSelectedFeetVariant = lCurrentlySelectedFeetName;

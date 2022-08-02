@@ -15,7 +15,7 @@
 constexpr int XML_INDENT = 4;
 
 SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 1200, 600)
+  : TitleDialog(aParent, tr("Slider Sets Database Manager"), "database", aSettings, aLastPaths, 1200, 700)
 {
   // Build the window's interface
   this->initializeGUI();
