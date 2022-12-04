@@ -24,7 +24,7 @@ SSSPSelectionBlock::SSSPSelectionBlock(QWidget* aParent,
 
 bool SSSPSelectionBlock::isCheckedForImport() const
 {
-  return this->findChild<QCheckBox*>("import_slider_set")->isChecked();
+  return this->findChild<QComboBox*>("slider_set_type")->currentIndex() != 0;
 }
 
 MeshPartType SSSPSelectionBlock::getCurrentlySetMeshPartType() const
@@ -47,12 +47,6 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   lMainLayout->setContentsMargins(15, 20, 15, 15);
   lMainLayout->setAlignment(Qt::AlignTop);
   this->setLayout(lMainLayout);
-
-  // Import checkbox
-  const auto lImportSliderSetCheckbox{ComponentFactory::CreateCheckBox(this, tr("Import this slider set"), "")};
-  lImportSliderSetCheckbox->setObjectName("import_slider_set");
-
-  lMainLayout->addRow(lImportSliderSetCheckbox);
 
   // SliderSet name
   const auto lSliderSetNameLabel{new QLabel(tr("Slider set name:"), this)};

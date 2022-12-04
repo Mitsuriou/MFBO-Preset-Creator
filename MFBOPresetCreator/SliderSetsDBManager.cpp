@@ -300,7 +300,9 @@ void SliderSetsDBManager::removeFromDatabase(const int aIndex)
 
 void SliderSetsDBManager::displaySliderSetContent(const int aIndex)
 {
-  const auto lFilePath{Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp"))};
+  auto lFilePath{Utils::GetSliderSetsFolderPath().append(QString::number(aIndex)).append(QStringLiteral(".osp"))};
+  Utils::CleanPathString(lFilePath);
+
   QFile lReadFile(lFilePath);
 
   if (lReadFile.open(QFile::ReadOnly | QFile::Text))
