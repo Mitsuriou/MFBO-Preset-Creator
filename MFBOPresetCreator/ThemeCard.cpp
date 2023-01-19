@@ -14,13 +14,13 @@ ThemeCard::ThemeCard(QWidget* aParent, const QString& aThemeName, const int aCar
 
   // Preview image
   const auto lImageLabel{new QLabel(this)};
-  lImageLabel->setObjectName("image_label");
+  lImageLabel->setObjectName(QStringLiteral("image_label"));
   lWrapper->addWidget(lImageLabel);
 
   // Load radio button
   const auto lRadioButton{new QRadioButton(aThemeName, this)};
   lRadioButton->setCursor(Qt::CursorShape::PointingHandCursor);
-  lRadioButton->setObjectName(QString("selector_%1").arg(QString::number(aCardIndex)));
+  lRadioButton->setObjectName(QStringLiteral("selector_%1").arg(QString::number(aCardIndex)));
   lWrapper->addWidget(lRadioButton);
 
   // Event binding

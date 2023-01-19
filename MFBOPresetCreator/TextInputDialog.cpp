@@ -19,11 +19,11 @@ TextInputDialog::TextInputDialog(const QString& aTitle, const QString& aLabel, c
 void TextInputDialog::closeEvent(QCloseEvent* aEvent)
 {
   auto lEventButton{qobject_cast<QPushButton*>(this->sender())};
-  auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
+  auto lAddBtn{this->findChild<QPushButton*>(QStringLiteral("add_button"))};
 
   if (lEventButton == lAddBtn)
   {
-    emit getTextValue(this->findChild<QLineEdit*>(QString("text"))->text());
+    emit getTextValue(this->findChild<QLineEdit*>(QStringLiteral("text"))->text());
   }
   else
   {
@@ -58,7 +58,7 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
 
   // LineEdit
   auto lLineEdit{new LineEdit(this)};
-  lLineEdit->setObjectName(QString("text"));
+  lLineEdit->setObjectName(QStringLiteral("text"));
   lTopContainer->addWidget(lLineEdit);
 
   // Bottom layout (buttons)
@@ -85,7 +85,7 @@ void TextInputDialog::initializeGUI(const QString& aLabel)
 
 void TextInputDialog::updateAddButtonStatus(const QString& aText)
 {
-  auto lAddBtn{this->findChild<QPushButton*>(QString("add_button"))};
+  auto lAddBtn{this->findChild<QPushButton*>(QStringLiteral("add_button"))};
 
   if (aText.trimmed().isEmpty())
   {

@@ -575,6 +575,10 @@ QTextBrowser {
   border: 1px solid #3991ff;
 }
 
+QTextBrowser::disabled {
+  border-color: #363636;
+}
+
 /**************/
 /*RADIO BUTTON*/
 /**************/

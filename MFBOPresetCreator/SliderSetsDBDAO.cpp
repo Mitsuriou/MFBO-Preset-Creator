@@ -98,10 +98,10 @@ namespace SliderSetsDBDAO
   {
     const auto& lParts{aLine.split(DB_SEPARATOR)};
 
-    return {lParts[0].toInt(),
-            Struct::DatabaseSliderSet(lParts[1].toInt() == 1,
-                                      QByteArray::fromBase64(lParts[2].toUtf8()),
-                                      static_cast<MeshPartType>(lParts[3].toInt()))};
+    return std::make_pair(lParts[0].toInt(),
+                          Struct::DatabaseSliderSet(lParts[1].toInt() == 1,
+                                                    QByteArray::fromBase64(lParts[2].toUtf8()),
+                                                    static_cast<MeshPartType>(lParts[3].toInt())));
   }
 
   QString stringifyDatabaseEntry(const std::pair<int, Struct::DatabaseSliderSet>& lEntry)

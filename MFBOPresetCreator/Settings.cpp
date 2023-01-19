@@ -33,7 +33,7 @@ Settings::Settings(QWidget* aParent, const Struct::Settings& aSettings, std::map
 void Settings::closeEvent(QCloseEvent* aEvent)
 {
   auto lEventButton{qobject_cast<QPushButton*>(this->sender())};
-  auto lSaveButton{this->findChild<QPushButton*>(QString("save_close"))};
+  auto lSaveButton{this->findChild<QPushButton*>(QStringLiteral("save_close"))};
 
   if (lEventButton == lSaveButton)
   {
@@ -75,7 +75,7 @@ void Settings::initializeGUI()
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
-  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QStringLiteral("window_buttons_layout"))};
 
   auto lStarLabel{new QLabel(this)};
   if (Utils::RESTART_PENDING)
@@ -92,7 +92,7 @@ void Settings::initializeGUI()
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
-  lTabWidget->setObjectName(QString("tab_widget"));
+  lTabWidget->setObjectName(QStringLiteral("tab_widget"));
   lTabWidget->setAutoFillBackground(true);
   lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   lMainLayout->addWidget(lTabWidget, 1, 0);
@@ -137,7 +137,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lLanguageSelector->setItemDelegate(new QStyledItemDelegate());
   lLanguageSelector->setCursor(Qt::PointingHandCursor);
   lLanguageSelector->addItems(DataLists::GetLanguages());
-  lLanguageSelector->setObjectName(QString("language"));
+  lLanguageSelector->setObjectName(QStringLiteral("language"));
   lLeftColumnLayout->addWidget(lLanguageSelector);
 
   // GUI THEME
@@ -147,7 +147,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lGUIThemeSelector->setItemDelegate(new QStyledItemDelegate());
   lGUIThemeSelector->setCursor(Qt::PointingHandCursor);
   lGUIThemeSelector->addItems(DataLists::GetAppThemes());
-  lGUIThemeSelector->setObjectName(QString("app_theme"));
+  lGUIThemeSelector->setObjectName(QStringLiteral("app_theme"));
   lLeftColumnLayout->addWidget(lGUIThemeSelector);
 
   // APPLICATION BAR ICONS COLOR
@@ -159,12 +159,12 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
 
   auto lTitleBarIconBlack{new QRadioButton(tr("Black"), this)};
   lTitleBarIconBlack->setCursor(Qt::PointingHandCursor);
-  lTitleBarIconBlack->setObjectName(QString("title_bar_icons_black"));
+  lTitleBarIconBlack->setObjectName(QStringLiteral("title_bar_icons_black"));
   lTitleBarIconsColorWrapper->addWidget(lTitleBarIconBlack);
 
   auto lTitleBarIconWhite{new QRadioButton(tr("White"), this)};
   lTitleBarIconWhite->setCursor(Qt::PointingHandCursor);
-  lTitleBarIconWhite->setObjectName(QString("title_bar_icons_white"));
+  lTitleBarIconWhite->setObjectName(QStringLiteral("title_bar_icons_white"));
   lTitleBarIconsColorWrapper->addWidget(lTitleBarIconWhite);
 
   lTitleBarIconsColorWrapper->addStretch();
@@ -179,7 +179,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lLeftColumnLayout->addWidget(new QLabel(tr("Default main window width:"), this));
 
   auto lWinWidthInput{new LineEdit(this)};
-  lWinWidthInput->setObjectName(QString("window_width"));
+  lWinWidthInput->setObjectName(QStringLiteral("window_width"));
   lWinWidthInput->setValidator(new QIntValidator(0, 99999, this));
   lLeftColumnLayout->addWidget(lWinWidthInput);
 
@@ -187,7 +187,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lLeftColumnLayout->addWidget(new QLabel(tr("Default main window height:"), this));
 
   auto lWinHeightInput{new LineEdit(this)};
-  lWinHeightInput->setObjectName(QString("window_height"));
+  lWinHeightInput->setObjectName(QStringLiteral("window_height"));
   lWinHeightInput->setValidator(new QIntValidator(0, 99999, this));
   lLeftColumnLayout->addWidget(lWinHeightInput);
 
@@ -243,7 +243,7 @@ void Settings::setupDisplayTab(QTabWidget& aTabWidget)
   lWindowOpeningModeSelector->setItemDelegate(new QStyledItemDelegate());
   lWindowOpeningModeSelector->setCursor(Qt::PointingHandCursor);
   lWindowOpeningModeSelector->addItems(DataLists::GetWindowOpeningModes());
-  lWindowOpeningModeSelector->setObjectName(QString("main_window_opening_mode"));
+  lWindowOpeningModeSelector->setObjectName(QStringLiteral("main_window_opening_mode"));
   lRightColumnLayout->addWidget(lWindowOpeningModeSelector);
 
   // Opening mode: batch conversion
@@ -294,17 +294,17 @@ void Settings::setupGeneralTab(QTabWidget& aTabWidget)
 
   auto lWelcomeActionWelcomeScreen{new QRadioButton(tr("Open the welcome screen (pop-up window)"), this)};
   lWelcomeActionWelcomeScreen->setCursor(Qt::PointingHandCursor);
-  lWelcomeActionWelcomeScreen->setObjectName(QString("welcome_action_welcome_screen"));
+  lWelcomeActionWelcomeScreen->setObjectName(QStringLiteral("welcome_action_welcome_screen"));
   lTabLayout->addWidget(lWelcomeActionWelcomeScreen, 1, 0, 1, 2);
 
   auto lWelcomeActionUpdater{new QRadioButton(tr("Check for updates only (pop-up window only if there is an update available)"), this)};
   lWelcomeActionUpdater->setCursor(Qt::PointingHandCursor);
-  lWelcomeActionUpdater->setObjectName(QString("welcome_action_updater"));
+  lWelcomeActionUpdater->setObjectName(QStringLiteral("welcome_action_updater"));
   lTabLayout->addWidget(lWelcomeActionUpdater, 2, 0, 1, 2);
 
   auto lWelcomeActionNone{new QRadioButton(tr("Skip any check for updates and go directly to the main window"), this)};
   lWelcomeActionNone->setCursor(Qt::PointingHandCursor);
-  lWelcomeActionNone->setObjectName(QString("welcome_action_none"));
+  lWelcomeActionNone->setObjectName(QStringLiteral("welcome_action_none"));
   lTabLayout->addWidget(lWelcomeActionNone, 3, 0, 1, 2);
 
   // Each button stores the last opened path
@@ -506,7 +506,7 @@ void Settings::createDialogOpeningModeBlock(QVBoxLayout& aLayout, const QString&
   lSelector->setItemDelegate(new QStyledItemDelegate());
   lSelector->setCursor(Qt::PointingHandCursor);
   lSelector->addItems(DataLists::GetDialogOpeningModes());
-  lSelector->setObjectName(QString(aObjectName));
+  lSelector->setObjectName(aObjectName);
   aLayout.addWidget(lSelector);
 }
 
@@ -536,16 +536,16 @@ void Settings::loadSettings(const Struct::Settings& aSettingsToLoad)
 void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsToLoad)
 {
   // Language
-  auto lLanguage{this->findChild<QComboBox*>(QString("language"))};
+  auto lLanguage{this->findChild<QComboBox*>(QStringLiteral("language"))};
   lLanguage->setCurrentIndex(static_cast<int>(aSettingsToLoad.language));
 
   // Application theme
-  auto lApplicationTheme{this->findChild<QComboBox*>(QString("app_theme"))};
+  auto lApplicationTheme{this->findChild<QComboBox*>(QStringLiteral("app_theme"))};
   lApplicationTheme->setCurrentIndex(static_cast<int>(aSettingsToLoad.applicationTheme));
 
   // Title bar icons color
-  auto lTitleBarIconBlack{this->findChild<QRadioButton*>(QString("title_bar_icons_black"))};
-  auto lTitleBarIconWhite{this->findChild<QRadioButton*>(QString("title_bar_icons_white"))};
+  auto lTitleBarIconBlack{this->findChild<QRadioButton*>(QStringLiteral("title_bar_icons_black"))};
+  auto lTitleBarIconWhite{this->findChild<QRadioButton*>(QStringLiteral("title_bar_icons_white"))};
 
   if (aSettingsToLoad.titleBarIconsBlack)
     lTitleBarIconBlack->setChecked(true);
@@ -565,11 +565,11 @@ void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsTo
   this->applyFontButtonStyle(this->mNewFont);
 
   // Window width
-  auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))};
+  auto lWindowWidth{this->findChild<QLineEdit*>(QStringLiteral("window_width"))};
   lWindowWidth->setText(QString::number(aSettingsToLoad.mainWindowWidth));
 
   // Window height
-  auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))};
+  auto lWindowHeight{this->findChild<QLineEdit*>(QStringLiteral("window_height"))};
   lWindowHeight->setText(QString::number(aSettingsToLoad.mainWindowHeight));
 
   // Colors
@@ -583,49 +583,49 @@ void Settings::loadDisplayTabSettings(const Struct::DisplaySettings& aSettingsTo
   this->applyDangerColorButton(this->mNewDangerColor);
 
   // Windows' default opening modes
-  auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("main_window_opening_mode"))};
+  auto lWindowOpeningMode{this->findChild<QComboBox*>(QStringLiteral("main_window_opening_mode"))};
   lWindowOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.mainWindowOpeningMode));
 
-  auto lBatchConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_opening_mode"))};
+  auto lBatchConversionDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("batch_conversion_opening_mode"))};
   lBatchConversionDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.batchConversionDialogOpeningMode));
 
-  auto lBatchConversionPickerDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_picker_opening_mode"))};
+  auto lBatchConversionPickerDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("batch_conversion_picker_opening_mode"))};
   lBatchConversionPickerDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.batchConversionPickerDialogOpeningMode));
 
-  auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QString("textures_assistant_opening_mode"))};
+  auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("textures_assistant_opening_mode"))};
   lTexturesAssistantDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.texturesAssistantDialogOpeningMode));
 
-  auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("assisted_conversion_opening_mode"))};
+  auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("assisted_conversion_opening_mode"))};
   lAssistedConversionDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.assistedConversionDialogOpeningMode));
 
-  auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))};
+  auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("bodyslide_presets_retargeting_opening_mode"))};
   lBodySlidePresetsRetargetingDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.bodySlidePresetsRetargetingDialogOpeningMode));
 
-  auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_db_manager_opening_mode"))};
+  auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("slider_sets_db_manager_opening_mode"))};
   lSliderSetsDBManagerDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.sliderSetsDBManagerDialogOpeningMode));
 
-  auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_importer_opening_mode"))};
+  auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("slider_sets_importer_opening_mode"))};
   lSliderSetsImporterDialogOpeningMode->setCurrentIndex(static_cast<int>(aSettingsToLoad.sliderSetsImporterDialogOpeningMode));
 }
 
 void Settings::loadGeneralTabSettings(const Struct::GeneralSettings& aSettingsToLoad)
 {
-  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))};
+  auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QStringLiteral("each_button_saves_last_path"))};
   lEachButtonSavesItsLastUsedPath->setChecked(aSettingsToLoad.eachButtonSavesItsLastUsedPath);
 
   // Security in case the switch below does not get any verified condition
-  this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->setChecked(true);
+  this->findChild<QRadioButton*>(QStringLiteral("welcome_action_welcome_screen"))->setChecked(true);
 
   switch (aSettingsToLoad.startupAction)
   {
     case StartupAction::OPEN_WELCOME_SCREEN:
-      this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->setChecked(true);
+      this->findChild<QRadioButton*>(QStringLiteral("welcome_action_welcome_screen"))->setChecked(true);
       break;
     case StartupAction::CHECK_FOR_UPDATES:
-      this->findChild<QRadioButton*>(QString("welcome_action_updater"))->setChecked(true);
+      this->findChild<QRadioButton*>(QStringLiteral("welcome_action_updater"))->setChecked(true);
       break;
     case StartupAction::SKIP_UPDATE_CHECKS:
-      this->findChild<QRadioButton*>(QString("welcome_action_none"))->setChecked(true);
+      this->findChild<QRadioButton*>(QStringLiteral("welcome_action_none"))->setChecked(true);
       break;
   }
 }
@@ -638,26 +638,26 @@ void Settings::loadGenericDialogSettings(const Struct::GenericDialogSettings& aS
 
 Struct::Settings Settings::getSettingsFromGUI() const
 {
-  const auto lLang{this->findChild<QComboBox*>(QString("language"))->currentIndex()};
-  const auto lAppTheme{this->findChild<QComboBox*>(QString("app_theme"))->currentIndex()};
-  const auto lTitleBarIconBlack{this->findChild<QRadioButton*>(QString("title_bar_icons_black"))->isChecked()};
-  const auto lTitleBarIconWhite{this->findChild<QRadioButton*>(QString("title_bar_icons_white"))->isChecked()};
-  const auto lWindowWidth{this->findChild<QLineEdit*>(QString("window_width"))->text().trimmed()};
-  const auto lWindowHeight{this->findChild<QLineEdit*>(QString("window_height"))->text().trimmed()};
-  const auto lWindowOpeningMode{this->findChild<QComboBox*>(QString("main_window_opening_mode"))->currentIndex()};
-  const auto lBatchConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_opening_mode"))->currentIndex()};
-  const auto lBatchConversionPickerDialogOpeningMode{this->findChild<QComboBox*>(QString("batch_conversion_picker_opening_mode"))->currentIndex()};
-  const auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QString("textures_assistant_opening_mode"))->currentIndex()};
-  const auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QString("assisted_conversion_opening_mode"))->currentIndex()};
-  const auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QString("bodyslide_presets_retargeting_opening_mode"))->currentIndex()};
-  const auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_db_manager_opening_mode"))->currentIndex()};
-  const auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QString("slider_sets_importer_opening_mode"))->currentIndex()};
-  const auto lWelcomeActionWelcomeScreen{this->findChild<QRadioButton*>(QString("welcome_action_welcome_screen"))->isChecked()};
-  const auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QString("welcome_action_updater"))->isChecked()};
-  const auto lWelcomeActionNone{this->findChild<QRadioButton*>(QString("welcome_action_none"))->isChecked()};
-  const auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QString("auto_open_generated_dir"))->isChecked()};
-  const auto lAutoOpenRetargetedDir{this->findChild<QCheckBox*>(QString("auto_open_retargeted_dir"))->isChecked()};
-  const auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QString("each_button_saves_last_path"))->isChecked()};
+  const auto lLang{this->findChild<QComboBox*>(QStringLiteral("language"))->currentIndex()};
+  const auto lAppTheme{this->findChild<QComboBox*>(QStringLiteral("app_theme"))->currentIndex()};
+  const auto lTitleBarIconBlack{this->findChild<QRadioButton*>(QStringLiteral("title_bar_icons_black"))->isChecked()};
+  const auto lTitleBarIconWhite{this->findChild<QRadioButton*>(QStringLiteral("title_bar_icons_white"))->isChecked()};
+  const auto lWindowWidth{this->findChild<QLineEdit*>(QStringLiteral("window_width"))->text().trimmed()};
+  const auto lWindowHeight{this->findChild<QLineEdit*>(QStringLiteral("window_height"))->text().trimmed()};
+  const auto lWindowOpeningMode{this->findChild<QComboBox*>(QStringLiteral("main_window_opening_mode"))->currentIndex()};
+  const auto lBatchConversionDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("batch_conversion_opening_mode"))->currentIndex()};
+  const auto lBatchConversionPickerDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("batch_conversion_picker_opening_mode"))->currentIndex()};
+  const auto lTexturesAssistantDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("textures_assistant_opening_mode"))->currentIndex()};
+  const auto lAssistedConversionDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("assisted_conversion_opening_mode"))->currentIndex()};
+  const auto lBodySlidePresetsRetargetingDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("bodyslide_presets_retargeting_opening_mode"))->currentIndex()};
+  const auto lSliderSetsDBManagerDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("slider_sets_db_manager_opening_mode"))->currentIndex()};
+  const auto lSliderSetsImporterDialogOpeningMode{this->findChild<QComboBox*>(QStringLiteral("slider_sets_importer_opening_mode"))->currentIndex()};
+  const auto lWelcomeActionWelcomeScreen{this->findChild<QRadioButton*>(QStringLiteral("welcome_action_welcome_screen"))->isChecked()};
+  const auto lWelcomeActionUpdater{this->findChild<QRadioButton*>(QStringLiteral("welcome_action_updater"))->isChecked()};
+  const auto lWelcomeActionNone{this->findChild<QRadioButton*>(QStringLiteral("welcome_action_none"))->isChecked()};
+  const auto lAutoOpenGeneratedDir{this->findChild<QCheckBox*>(QStringLiteral("auto_open_generated_dir"))->isChecked()};
+  const auto lAutoOpenRetargetedDir{this->findChild<QCheckBox*>(QStringLiteral("auto_open_retargeted_dir"))->isChecked()};
+  const auto lEachButtonSavesItsLastUsedPath{this->findChild<QCheckBox*>(QStringLiteral("each_button_saves_last_path"))->isChecked()};
 
   Struct::Settings lSettings;
 
@@ -778,25 +778,25 @@ Struct::Settings Settings::getSettingsFromGUI() const
 
 void Settings::applyFontButtonStyle(const QFont& aFont) const
 {
-  auto lFontChooserButton{this->findChild<QPushButton*>(QString("font_chooser"))};
+  auto lFontChooserButton{this->findChild<QPushButton*>(QStringLiteral("font_chooser"))};
   lFontChooserButton->setFont(aFont);
 }
 
 void Settings::applySuccessColorButton(const QString& aColor) const
 {
-  auto lColorChooser{this->findChild<QPushButton*>(QString("success_color_chooser"))};
+  auto lColorChooser{this->findChild<QPushButton*>(QStringLiteral("success_color_chooser"))};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
 void Settings::applyWarningColorButton(const QString& aColor) const
 {
-  auto lColorChooser{this->findChild<QPushButton*>(QString("warning_color_chooser"))};
+  auto lColorChooser{this->findChild<QPushButton*>(QStringLiteral("warning_color_chooser"))};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
 void Settings::applyDangerColorButton(const QString& aColor) const
 {
-  auto lColorChooser{this->findChild<QPushButton*>(QString("danger_color_chooser"))};
+  auto lColorChooser{this->findChild<QPushButton*>(QStringLiteral("danger_color_chooser"))};
   lColorChooser->setStyleSheet(QString("background-color: %1;").arg(aColor));
 }
 
@@ -914,7 +914,7 @@ void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate,
   const auto lFeetText{
     QString("%1 [v.%2]").arg(DataLists::GetFeetVariantsList(DataLists::GetName(aFeet), DataLists::GetVersionIndex(aFeet), Utils::IsCBBEBasedBody(aBody)).at(DataLists::GetVariantIndex(aFeet)), DataLists::GetVersionString(aBody, aFeet))};
 
-  auto lCurrentlyTargetedBody{this->findChild<QLabel*>(QString("%1_currently_targeted_body_feet").arg(aObjectNamePrefix))};
+  auto lCurrentlyTargetedBody{this->findChild<QLabel*>(QStringLiteral("%1_currently_targeted_body_feet").arg(aObjectNamePrefix))};
   lCurrentlyTargetedBody->setText(tr("Targeted body: %1\nTargeted feet: %2").arg(lBodyText, lFeetText));
 }
 
@@ -987,7 +987,7 @@ void Settings::chooseDangerColor()
 
 void Settings::goToLastPathsTab()
 {
-  this->findChild<QTabWidget*>(QString("tab_widget"))->setCurrentIndex(5);
+  this->findChild<QTabWidget*>(QStringLiteral("tab_widget"))->setCurrentIndex(5);
 }
 
 void Settings::clearPathButtonClicked()
@@ -1000,7 +1000,7 @@ void Settings::clearPathButtonClicked()
   const auto lKey{DataLists::GetLastPathsKeys().at(lRowIndex - 1)};
 
   // If the path is already empty, return instantly
-  if (this->lastPaths()->find(lKey)->second.compare("", Qt::CaseInsensitive) == 0)
+  if (this->lastPaths()->find(lKey)->second.isEmpty())
   {
     return;
   }
@@ -1010,7 +1010,7 @@ void Settings::clearPathButtonClicked()
     this->mPathEntryCleared = true;
 
     // Update the path display in the corresponding QLineEdit
-    auto lPathLineEdit{this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(lRowIndex))};
+    auto lPathLineEdit{this->findChild<QLineEdit*>(QStringLiteral("line_edit_path_%1").arg(lRowIndex))};
     lPathLineEdit->setText(this->lastPaths()->find(lKey)->second);
     lPathLineEdit->setFocus();
 
@@ -1035,10 +1035,10 @@ void Settings::clearAllPaths()
       this->mPathEntryCleared = true;
 
       // Update the path display in the corresponding QLineEdit
-      this->findChild<QLineEdit*>(QString("line_edit_path_%1").arg(i + 1))->setText(this->lastPaths()->find(lKeys.at(i))->second);
+      this->findChild<QLineEdit*>(QStringLiteral("line_edit_path_%1").arg(i + 1))->setText(this->lastPaths()->find(lKeys.at(i))->second);
 
       // Disable the corresponding button
-      this->findChild<QPushButton*>(QString("clear_path_%1").arg(i + 1))->setDisabled(true);
+      this->findChild<QPushButton*>(QStringLiteral("clear_path_%1").arg(i + 1))->setDisabled(true);
     }
   }
 
@@ -1046,7 +1046,7 @@ void Settings::clearAllPaths()
   lButton->setDisabled(true);
 
   // Change the focus
-  this->findChild<QTabWidget*>(QString("tab_widget"))->setFocus();
+  this->findChild<QTabWidget*>(QStringLiteral("tab_widget"))->setFocus();
 }
 
 void Settings::toggleClearAllButtonState()
@@ -1062,5 +1062,5 @@ void Settings::toggleClearAllButtonState()
     }
   }
 
-  this->findChild<QPushButton*>(QString("remove_all_filters"))->setDisabled(!lKeepEnabledRemoveAllButton);
+  this->findChild<QPushButton*>(QStringLiteral("remove_all_filters"))->setDisabled(!lKeepEnabledRemoveAllButton);
 }

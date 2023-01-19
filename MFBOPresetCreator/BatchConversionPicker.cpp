@@ -86,16 +86,16 @@ void BatchConversionPicker::initializeGUI()
 
   // Paths list
   auto lLeftList{new QListWidget(this)};
-  lLeftList->setObjectName(QString("left_list"));
+  lLeftList->setObjectName(QStringLiteral("left_list"));
   lLeftLayout->addWidget(lLeftList);
 
   // Full quick preset creation button
   auto lFullQuickPresetCreationButton{ComponentFactory::CreateButton(this,
                                                                      tr("Quick preset(s) creation (all mods)"),
                                                                      "",
-                                                                     "bolt",
+                                                                     QStringLiteral("bolt"),
                                                                      this->getThemedResourcePath(),
-                                                                     "full_quick_preset_creation",
+                                                                     QStringLiteral("full_quick_preset_creation"),
                                                                      false,
                                                                      true)};
   lLeftLayout->addWidget(lFullQuickPresetCreationButton);
@@ -120,7 +120,7 @@ void BatchConversionPicker::initializeGUI()
 
   // Label for the "no data available" case
   auto lNoDataLabel{new QLabel(tr("No data available for the selected origin directory"), this)};
-  lNoDataLabel->setObjectName(QString("no_data_label"));
+  lNoDataLabel->setObjectName(QStringLiteral("no_data_label"));
   auto lItalicFont{lNoDataLabel->font()};
   lItalicFont.setItalic(true);
   lNoDataLabel->setFont(lItalicFont);
@@ -134,17 +134,17 @@ void BatchConversionPicker::initializeGUI()
                                                  true,
                                                  false,
                                                  lMiddleLayout,
-                                                 "middle_list_scrollable_zone",
+                                                 QStringLiteral("middle_list_scrollable_zone"),
                                                  QMargins(0, 0, 0, 0),
-                                                 "middle_list");
+                                                 QStringLiteral("middle_list"));
 
   // Quick preset creation button
   auto lSimpleQuickPresetCreationButton{ComponentFactory::CreateButton(this,
                                                                        tr("Quick preset(s) creation (active mod)"),
                                                                        "",
-                                                                       "bolt",
+                                                                       QStringLiteral("bolt"),
                                                                        this->getThemedResourcePath(),
-                                                                       "simple_quick_preset_creation",
+                                                                       QStringLiteral("simple_quick_preset_creation"),
                                                                        true,
                                                                        true)};
   lMiddleLayout->addWidget(lSimpleQuickPresetCreationButton);
@@ -182,36 +182,36 @@ void BatchConversionPicker::initializeGUI()
 
   // Label for the "no preset" case
   auto lNoPresetLabel{new QLabel(tr("No preset created at the moment."), this)};
-  lNoPresetLabel->setObjectName(QString("no_preset_label"));
+  lNoPresetLabel->setObjectName(QStringLiteral("no_preset_label"));
   lRightDataLayout->addWidget(lNoPresetLabel);
 
   // Body drop widget
   auto lDropSectionBody{new BCGroupWidget(this, this->settings(), tr("Body"), "body", BCGroupWidgetCallContext::BODY)};
-  lDropSectionBody->setObjectName(QString("drop_section_body"));
+  lDropSectionBody->setObjectName(QStringLiteral("drop_section_body"));
   lRightDataLayout->addWidget(lDropSectionBody);
 
   // Feet drop widget
   auto lDropSectionFeet{new BCGroupWidget(this, this->settings(), tr("Feet"), "foot", BCGroupWidgetCallContext::FEET)};
-  lDropSectionFeet->setObjectName(QString("drop_section_feet"));
+  lDropSectionFeet->setObjectName(QStringLiteral("drop_section_feet"));
   lRightDataLayout->addWidget(lDropSectionFeet);
 
   // Hands drop widget
   auto lDropSectionHands{new BCGroupWidget(this, this->settings(), tr("Hands"), "hand", BCGroupWidgetCallContext::HANDS)};
-  lDropSectionHands->setObjectName(QString("drop_section_hands"));
+  lDropSectionHands->setObjectName(QStringLiteral("drop_section_hands"));
   lRightDataLayout->addWidget(lDropSectionHands);
 
   // Hands drop widget
   auto lDropSectionSkeleton{new BCGroupWidget(this, this->settings(), tr("Skeleton"), "skeleton", BCGroupWidgetCallContext::SKELETON)};
-  lDropSectionSkeleton->setObjectName(QString("drop_section_skeleton"));
+  lDropSectionSkeleton->setObjectName(QStringLiteral("drop_section_skeleton"));
   lRightDataLayout->addWidget(lDropSectionSkeleton);
 
   // BodySlide output settings group box
   auto lBodyslideGroupBox{ComponentFactory::CreateGroupBox(this,
                                                            tr("BodySlide output"),
-                                                           "bodyslide-logo",
+                                                           QStringLiteral("bodyslide-logo"),
                                                            this->getThemedResourcePath(),
                                                            this->settings().display.font.pointSize,
-                                                           "bodyslide_groupbox")};
+                                                           QStringLiteral("bodyslide_groupbox"))};
   lRightDataLayout->addWidget(lBodyslideGroupBox);
 
   // Grid layout
@@ -227,14 +227,14 @@ void BatchConversionPicker::initializeGUI()
   lBodyslideGridLayout->addWidget(new QLabel(tr("BodySlide files names:"), this), 1, 0);
 
   auto lOSPXMLNamesLineEdit{new LineEdit(this)};
-  lOSPXMLNamesLineEdit->setObjectName(QString("names_osp_xml_input"));
+  lOSPXMLNamesLineEdit->setObjectName(QStringLiteral("names_osp_xml_input"));
   lBodyslideGridLayout->addWidget(lOSPXMLNamesLineEdit, 1, 1, 1, 4);
 
   // Second line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 2, 0);
 
   auto lPathsNamesOspXmlNames{new QLabel("", this)};
-  lPathsNamesOspXmlNames->setObjectName(QString("names_osp_xml_preview"));
+  lPathsNamesOspXmlNames->setObjectName(QStringLiteral("names_osp_xml_preview"));
   lPathsNamesOspXmlNames->setAutoFillBackground(true);
   lBodyslideGridLayout->addWidget(lPathsNamesOspXmlNames, 2, 1, 1, 4);
 
@@ -248,14 +248,14 @@ void BatchConversionPicker::initializeGUI()
   lBodyslideGridLayout->addWidget(lNamesInApp, 3, 0);
 
   auto lNamesInAppLineEdit{new LineEdit(this)};
-  lNamesInAppLineEdit->setObjectName(QString("names_bodyslide_input"));
+  lNamesInAppLineEdit->setObjectName(QStringLiteral("names_bodyslide_input"));
   lBodyslideGridLayout->addWidget(lNamesInAppLineEdit, 3, 1, 1, 4);
 
   // Fourth line
   lBodyslideGridLayout->addWidget(new QLabel(tr("Preview:"), this), 4, 0);
 
   auto lResultNamesInApp{new QLabel("", this)};
-  lResultNamesInApp->setObjectName(QString("names_bodyslide_preview"));
+  lResultNamesInApp->setObjectName(QStringLiteral("names_bodyslide_preview"));
   lBodyslideGridLayout->addWidget(lResultNamesInApp, 4, 1, 1, 4);
 
   /*==============================*/
@@ -265,25 +265,25 @@ void BatchConversionPicker::initializeGUI()
   auto lPreviousPreset{ComponentFactory::CreateButton(this,
                                                       tr("Previous preset"),
                                                       "",
-                                                      "arrow-left",
+                                                      QStringLiteral("arrow-left"),
                                                       this->getThemedResourcePath(),
-                                                      "previous_preset",
+                                                      QStringLiteral("previous_preset"),
                                                       false,
                                                       true)};
   lRightNavigationLayout->addWidget(lPreviousPreset, 0, 0);
 
   // Active preset number
   auto lActivePresetNumber{new QSpinBox(this)};
-  lActivePresetNumber->setObjectName(QString("active_preset_number"));
+  lActivePresetNumber->setObjectName(QStringLiteral("active_preset_number"));
   lRightNavigationLayout->addWidget(lActivePresetNumber, 0, 1);
 
   // Next preset
   auto lNextPreset{ComponentFactory::CreateButton(this,
                                                   tr("Next preset"),
                                                   "",
-                                                  "arrow-right",
+                                                  QStringLiteral("arrow-right"),
                                                   this->getThemedResourcePath(),
-                                                  "next_preset",
+                                                  QStringLiteral("next_preset"),
                                                   false,
                                                   true)};
   lRightNavigationLayout->addWidget(lNextPreset, 0, 2);
@@ -292,9 +292,9 @@ void BatchConversionPicker::initializeGUI()
   auto lRemoveActivePreset{ComponentFactory::CreateButton(this,
                                                           tr("Remove current preset"),
                                                           "",
-                                                          "minus",
+                                                          QStringLiteral("minus"),
                                                           this->getThemedResourcePath(),
-                                                          "remove_current_preset",
+                                                          QStringLiteral("remove_current_preset"),
                                                           false,
                                                           true)};
   lRightNavigationLayout->addWidget(lRemoveActivePreset, 0, 3);
@@ -303,9 +303,9 @@ void BatchConversionPicker::initializeGUI()
   auto lAddEmptyPreset{ComponentFactory::CreateButton(this,
                                                       tr("Add new preset"),
                                                       "",
-                                                      "plus",
+                                                      QStringLiteral("plus"),
                                                       this->getThemedResourcePath(),
-                                                      "add_empty_preset",
+                                                      QStringLiteral("add_empty_preset"),
                                                       false,
                                                       true)};
   lRightNavigationLayout->addWidget(lAddEmptyPreset, 0, 4);
@@ -313,21 +313,21 @@ void BatchConversionPicker::initializeGUI()
   /*========================================*/
   /* Validate selection and generate button */
   /*========================================*/
-  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QStringLiteral("window_buttons_layout"))};
 
   auto lGenerateButton{ComponentFactory::CreateButton(this,
                                                       tr("Batch generate the files on my computer"),
                                                       "",
-                                                      "build",
+                                                      QStringLiteral("build"),
                                                       this->getThemedResourcePath(),
-                                                      "generate")};
+                                                      QStringLiteral("generate"))};
   lGenerateButton->setAutoDefault(true);
   lGenerateButton->setDefault(true);
   lButtonsLayout->addWidget(lGenerateButton);
 
   // Pre-bind initialization functions
-  this->updateOSPXMLPreview(QString());
-  this->updateBodyslideNamesPreview(QString());
+  this->updateOSPXMLPreview("");
+  this->updateBodyslideNamesPreview("");
   this->updatePresetInterfaceState(0);
 
   // Event binding
@@ -365,7 +365,7 @@ void BatchConversionPicker::connectGroupWidgetEvents(BCGroupWidget* lGroupWidget
 
 void BatchConversionPicker::displayLeftList()
 {
-  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  auto lPathsList{this->findChild<QListWidget*>(QStringLiteral("left_list"))};
   for (const auto& lEntry : this->mData.scannedData)
   {
     lPathsList->addItem(lEntry.first);
@@ -379,7 +379,7 @@ void BatchConversionPicker::displayLeftList()
 
 void BatchConversionPicker::refreshLeftListFont()
 {
-  const auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  const auto lPathsList{this->findChild<QListWidget*>(QStringLiteral("left_list"))};
 
   for (int i = 0; i < lPathsList->count(); i++)
   {
@@ -398,7 +398,7 @@ void BatchConversionPicker::refreshLeftListFont()
 void BatchConversionPicker::refreshMiddleList()
 {
   // Delete all children of the middle list
-  const auto lOptionsList{this->findChild<QGridLayout*>(QString("middle_list"))};
+  const auto lOptionsList{this->findChild<QGridLayout*>(QStringLiteral("middle_list"))};
 
   const auto lButtonsListSize{static_cast<int>(this->mMiddleListButtons.size())};
   for (int i = 0; i < lButtonsListSize; i++)
@@ -408,12 +408,12 @@ void BatchConversionPicker::refreshMiddleList()
   }
 
   // Add the entries in the options list, based on the paths list' selected item
-  const auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  const auto lPathsList{this->findChild<QListWidget*>(QStringLiteral("left_list"))};
   const auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
-    const auto lQuickPresetCreationButton{this->findChild<QPushButton*>(QString("simple_quick_preset_creation"))};
-    const auto lNoDataLabel{this->findChild<QLabel*>(QString("no_data_label"))};
+    const auto lQuickPresetCreationButton{this->findChild<QPushButton*>(QStringLiteral("simple_quick_preset_creation"))};
+    const auto lNoDataLabel{this->findChild<QLabel*>(QStringLiteral("no_data_label"))};
     const auto lPosition{this->mData.scannedData.find(lSelectedEntry->text())};
 
     if (lPosition != this->mData.scannedData.end())
@@ -447,7 +447,7 @@ void BatchConversionPicker::refreshMiddleList()
 void BatchConversionPicker::updateOSPXMLPreview(QString aText)
 {
   aText = Utils::CleanBreaksString(aText.trimmed());
-  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_osp_xml_preview"))};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QStringLiteral("names_osp_xml_preview"))};
   auto lIsValidPath{true};
 
   if (aText.isEmpty() || aText.contains('\\') || aText.contains('/'))
@@ -486,7 +486,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
   // Read the beast hands state
   auto lMustUseBeastHands{false};
 
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   const auto lCurrentIndex{lActivePresetNumber->value()};
   if (lCurrentIndex > 0
       && lCurrentIndex <= static_cast<int>(this->mData.presets.size())
@@ -508,7 +508,7 @@ void BatchConversionPicker::updateBodyslideNamesPreview(QString aText)
     lNewTextColor = this->settings().display.dangerColor;
   }
 
-  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("names_bodyslide_preview"))};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QStringLiteral("names_bodyslide_preview"))};
   lOutputPathsPreview->setStyleSheet(QString("QLabel{color:%1;}").arg(lNewTextColor));
   lOutputPathsPreview->setText(lConstructedPreviewText);
 
@@ -544,12 +544,12 @@ void BatchConversionPicker::removeDataFromActiveMiddleList(const QString& aOrigi
   refreshMiddleList();
 
   // Track the changes in the output data
-  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
-  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
-  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
-  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
+  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_body"))};
+  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_feet"))};
+  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_hands"))};
+  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_skeleton"))};
 
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   auto& lPreset{this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1))};
 
   if (this->sender() == lDropSectionBody)
@@ -586,12 +586,12 @@ void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFold
   // Track the changes in the output data
   if (!this->mPreventPresetSave)
   {
-    auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
-    auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
-    auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
-    auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
+    auto lDropSectionBody{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_body"))};
+    auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_feet"))};
+    auto lDropSectionHands{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_hands"))};
+    auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_skeleton"))};
 
-    auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+    auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
     auto& lPreset{this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1))};
 
     if (this->sender() == lDropSectionBody)
@@ -615,20 +615,20 @@ void BatchConversionPicker::addDataToActiveMiddleList(const QString& aOriginFold
 
 void BatchConversionPicker::handsCheckBoxStateChanged(const bool aIsActive)
 {
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   if (lActivePresetNumber->value() == 0)
     return;
 
   this->mData.presets.at(static_cast<size_t>(lActivePresetNumber->value() - 1)).setHandsUseAlternativeModel(aIsActive);
 
   // Refresh the preview since the alternative model can impact the BodySlide presets names
-  auto lNamesInAppValue{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text()};
+  auto lNamesInAppValue{this->findChild<QLineEdit*>(QStringLiteral("names_bodyslide_input"))->text()};
   this->updateBodyslideNamesPreview(lNamesInAppValue);
 }
 
 void BatchConversionPicker::skeletonCheckBoxStateChanged(const bool aIsActive)
 {
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   if (lActivePresetNumber->value() == 0)
     return;
 
@@ -637,14 +637,14 @@ void BatchConversionPicker::skeletonCheckBoxStateChanged(const bool aIsActive)
 
 void BatchConversionPicker::saveBodySlideDataToPreset()
 {
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   if (lActivePresetNumber->value() == 0)
     return;
 
   // Read the data in the GUI
-  auto lOSPXMLNames{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))->text().trimmed()};
+  auto lOSPXMLNames{this->findChild<QLineEdit*>(QStringLiteral("names_osp_xml_input"))->text().trimmed()};
   Utils::CleanBreaksString(lOSPXMLNames);
-  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))->text().trimmed()};
+  auto lBodyslideSlidersetsNames{this->findChild<QLineEdit*>(QStringLiteral("names_bodyslide_input"))->text().trimmed()};
   Utils::CleanBreaksString(lBodyslideSlidersetsNames);
 
   // Update the current preset
@@ -653,13 +653,13 @@ void BatchConversionPicker::saveBodySlideDataToPreset()
 
 void BatchConversionPicker::goToPreviousPreset() const
 {
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   lActivePresetNumber->setValue(static_cast<size_t>(lActivePresetNumber->value() - 1));
 }
 
 void BatchConversionPicker::goToNextPreset() const
 {
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   lActivePresetNumber->setValue(lActivePresetNumber->value() + 1);
 }
 
@@ -667,13 +667,13 @@ void BatchConversionPicker::removeActivePreset()
 {
   // Re-put the data in the scannedData list
   this->mPreventPresetSave = true;
-  this->findChild<BCGroupWidget*>(QString("drop_section_body"))->removeData();
-  this->findChild<BCGroupWidget*>(QString("drop_section_feet"))->removeData();
-  this->findChild<BCGroupWidget*>(QString("drop_section_hands"))->removeData();
-  this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))->removeData();
+  this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_body"))->removeData();
+  this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_feet"))->removeData();
+  this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_hands"))->removeData();
+  this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_skeleton"))->removeData();
   this->mPreventPresetSave = false;
 
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   const auto lCurrentIndex{lActivePresetNumber->value()};
 
   // Remove the preset entry
@@ -697,7 +697,7 @@ void BatchConversionPicker::addNewEmptyPreset()
   auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
 
   // Display the new created preset
-  this->findChild<QSpinBox*>(QString("active_preset_number"))->setValue(lNumberOfPresets);
+  this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))->setValue(lNumberOfPresets);
 }
 
 void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
@@ -705,24 +705,24 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
 
   // Previous preset
-  auto lPreviousPreset{this->findChild<QPushButton*>(QString("previous_preset"))};
+  auto lPreviousPreset{this->findChild<QPushButton*>(QStringLiteral("previous_preset"))};
   auto lWasPreviousPresetFocused{lPreviousPreset->hasFocus()};
   lPreviousPreset->setDisabled(lNumberOfPresets == 0 || aNextIndex <= 1);
 
   // Update active preset number spinbox
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   if (qobject_cast<QSpinBox*>(this->sender()) != lActivePresetNumber)
   {
     this->updateActivePresetNumberSpinBox();
   }
 
   // Next preset
-  auto lNextPreset{this->findChild<QPushButton*>(QString("next_preset"))};
+  auto lNextPreset{this->findChild<QPushButton*>(QStringLiteral("next_preset"))};
   auto lWasNextPresetFocused{lNextPreset->hasFocus()};
   lNextPreset->setDisabled(lNumberOfPresets == 0 || aNextIndex >= lNumberOfPresets);
 
   // Remove current preset
-  this->findChild<QPushButton*>(QString("remove_current_preset"))->setDisabled(lNumberOfPresets == 0);
+  this->findChild<QPushButton*>(QStringLiteral("remove_current_preset"))->setDisabled(lNumberOfPresets == 0);
 
   // Swap the focus between the previous and next buttons
   if (lWasPreviousPresetFocused && !lPreviousPreset->isEnabled())
@@ -735,21 +735,21 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   }
 
   // Drop widgets: Body, Feet, Hands
-  auto lNoPresetLabel{this->findChild<QLabel*>(QString("no_preset_label"))};
+  auto lNoPresetLabel{this->findChild<QLabel*>(QStringLiteral("no_preset_label"))};
   lNoPresetLabel->setHidden(lNumberOfPresets > 0);
 
-  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QString("drop_section_body"))};
+  auto lDropSectionBody{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_body"))};
   lDropSectionBody->setHidden(lNumberOfPresets == 0);
-  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QString("drop_section_feet"))};
+  auto lDropSectionFeet{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_feet"))};
   lDropSectionFeet->setHidden(lNumberOfPresets == 0);
-  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QString("drop_section_hands"))};
+  auto lDropSectionHands{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_hands"))};
   lDropSectionHands->setHidden(lNumberOfPresets == 0);
-  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))};
+  auto lDropSectionSkeleton{this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_skeleton"))};
   lDropSectionSkeleton->setHidden(lNumberOfPresets == 0);
 
   if (lNumberOfPresets > 0)
   {
-    const auto& lDataToSet = this->mData.presets.at(static_cast<size_t>(aNextIndex - 1));
+    const auto& lDataToSet{this->mData.presets.at(static_cast<size_t>(aNextIndex - 1))};
     lDropSectionBody->setData(lDataToSet);
     lDropSectionFeet->setData(lDataToSet);
     lDropSectionHands->setData(lDataToSet);
@@ -757,16 +757,16 @@ void BatchConversionPicker::updatePresetInterfaceState(const int aNextIndex)
   }
 
   // BodySlide data
-  auto lBodyslideGroupBox{this->findChild<GroupBox*>(QString("bodyslide_groupbox"))};
+  auto lBodyslideGroupBox{this->findChild<GroupBox*>(QStringLiteral("bodyslide_groupbox"))};
   lBodyslideGroupBox->setHidden(lNumberOfPresets == 0);
 
   if (lNumberOfPresets > 0)
   {
-    auto lOSPXMLNamesLineEdit{this->findChild<QLineEdit*>(QString("names_osp_xml_input"))};
-    auto lNamesInAppLineEdit{this->findChild<QLineEdit*>(QString("names_bodyslide_input"))};
+    auto lOSPXMLNamesLineEdit{this->findChild<QLineEdit*>(QStringLiteral("names_osp_xml_input"))};
+    auto lNamesInAppLineEdit{this->findChild<QLineEdit*>(QStringLiteral("names_bodyslide_input"))};
 
     mPreventPresetSave = true;
-    const auto& lPathsPair = this->mData.presets.at(static_cast<size_t>(aNextIndex - 1)).getNames();
+    const auto& lPathsPair{this->mData.presets.at(static_cast<size_t>(aNextIndex - 1)).getNames()};
     lOSPXMLNamesLineEdit->setText(lPathsPair.first);
     lNamesInAppLineEdit->setText(lPathsPair.second);
 
@@ -782,7 +782,7 @@ void BatchConversionPicker::updateActivePresetNumberSpinBox()
 {
   auto lNumberOfPresets{static_cast<int>(this->mData.presets.size())};
 
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
   lActivePresetNumber->setDisabled(lNumberOfPresets == 0);
   lActivePresetNumber->setMinimum(lNumberOfPresets == 0 ? 0 : 1);
   lActivePresetNumber->setMaximum(lNumberOfPresets);
@@ -793,13 +793,13 @@ void BatchConversionPicker::fullQuickCreatePreset()
 {
   std::multimap<QString, std::map<QString, std::set<QString>>> lPresets;
 
-  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  auto lPathsList{this->findChild<QListWidget*>(QStringLiteral("left_list"))};
   for (int i = 0; i < lPathsList->count(); i++)
   {
     auto lEntry{lPathsList->item(i)};
     if (lEntry != nullptr)
     {
-      lPresets.insert({lEntry->text(), this->findNewPresets(lEntry->text())});
+      lPresets.insert(std::make_pair(lEntry->text(), this->findNewPresets(lEntry->text())));
       // + add a message if the key is already defined
     }
   }
@@ -809,12 +809,12 @@ void BatchConversionPicker::fullQuickCreatePreset()
 
 void BatchConversionPicker::simpleQuickCreatePreset()
 {
-  auto lPathsList{this->findChild<QListWidget*>(QString("left_list"))};
+  auto lPathsList{this->findChild<QListWidget*>(QStringLiteral("left_list"))};
   auto lSelectedEntry{lPathsList->currentItem()};
   if (lSelectedEntry != nullptr)
   {
-    std::multimap<QString, std::map<QString, std::set<QString>>> lPresets;
-    lPresets.insert({lSelectedEntry->text(), this->findNewPresets(lSelectedEntry->text())});
+    std::multimap<QString, std::map<QString, std::set<QString>>> lPresets{
+      std::make_pair(lSelectedEntry->text(), this->findNewPresets(lSelectedEntry->text()))};
     this->generateNewPresets(lPresets);
   }
 }
@@ -898,16 +898,16 @@ void BatchConversionPicker::generateNewPresets(const std::multimap<QString, std:
           switch (lResourceType)
           {
             case BCGroupWidgetCallContext::BODY:
-              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_body"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              lTarget = this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_body"))->findChild<BCDropWidget*>(QStringLiteral("drop_widget"));
               break;
             case BCGroupWidgetCallContext::FEET:
-              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_feet"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              lTarget = this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_feet"))->findChild<BCDropWidget*>(QStringLiteral("drop_widget"));
               break;
             case BCGroupWidgetCallContext::HANDS:
-              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_hands"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              lTarget = this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_hands"))->findChild<BCDropWidget*>(QStringLiteral("drop_widget"));
               break;
             case BCGroupWidgetCallContext::SKELETON:
-              lTarget = this->findChild<BCGroupWidget*>(QString("drop_section_skeleton"))->findChild<BCDropWidget*>(QString("drop_widget"));
+              lTarget = this->findChild<BCGroupWidget*>(QStringLiteral("drop_section_skeleton"))->findChild<BCDropWidget*>(QStringLiteral("drop_widget"));
               break;
             case BCGroupWidgetCallContext::UNDEFINED:
             case BCGroupWidgetCallContext::HEAD:
@@ -942,7 +942,7 @@ void BatchConversionPicker::validateSelection()
     return;
   }
 
-  auto lActivePresetNumber{this->findChild<QSpinBox*>(QString("active_preset_number"))};
+  auto lActivePresetNumber{this->findChild<QSpinBox*>(QStringLiteral("active_preset_number"))};
 
   for (size_t i = 0; i < this->mData.presets.size(); i++)
   {

@@ -42,7 +42,7 @@ Struct::SliderSetResult SSSPSelectionBlock::getData() const
 
 void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
 {
-  const auto lMainLayout = new QFormLayout(this);
+  const auto lMainLayout{new QFormLayout(this)};
   lMainLayout->setSpacing(10);
   lMainLayout->setContentsMargins(15, 20, 15, 15);
   lMainLayout->setAlignment(Qt::AlignTop);
@@ -52,7 +52,7 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   const auto lSliderSetNameLabel{new QLabel(tr("Slider set name:"), this)};
 
   const auto lSliderSetNameValue{new LineEdit(aSliderSet.getName(), this)};
-  lSliderSetNameValue->setObjectName("slider_set_name");
+  lSliderSetNameValue->setObjectName(QStringLiteral("slider_set_name"));
 
   lMainLayout->addRow(lSliderSetNameLabel, lSliderSetNameValue);
 
@@ -60,7 +60,7 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   const auto lPreviewCheckbox{new QLabel(tr("Preview:"), this)};
 
   const auto lPreviewValue{new QLabel(this)};
-  lPreviewValue->setObjectName("preview_value");
+  lPreviewValue->setObjectName(QStringLiteral("preview_value"));
 
   lMainLayout->addRow(lPreviewCheckbox, lPreviewValue);
 
@@ -68,7 +68,7 @@ void SSSPSelectionBlock::initializeGUI(const Struct::SliderSet& aSliderSet)
   const auto lResourceTypeLabel{new QLabel(tr("Resource type:"), this)};
 
   const auto lResourceTypeValue{new QComboBox(this)};
-  lResourceTypeValue->setObjectName("slider_set_type");
+  lResourceTypeValue->setObjectName(QStringLiteral("slider_set_type"));
   lResourceTypeValue->setItemDelegate(new QStyledItemDelegate());
   lResourceTypeValue->setCursor(Qt::PointingHandCursor);
   lResourceTypeValue->addItems(DataLists::GetSliderSetsImporterActions());

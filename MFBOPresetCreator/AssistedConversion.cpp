@@ -5,7 +5,6 @@
 #include "Utils.h"
 #include <QApplication>
 #include <QCloseEvent>
-#include <QComboBox>
 #include <QDesktopServices>
 #include <QDirIterator>
 #include <QDomDocument>
@@ -21,7 +20,7 @@
 #include <QStyledItemDelegate>
 
 AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("Assisted Conversion"), "pencil", aSettings, aLastPaths, 800)
+  : TitleDialog(aParent, tr("Assisted Conversion"), QStringLiteral("pencil"), aSettings, aLastPaths, 800)
 {
   // Build the window's interface
   this->initializeGUI();
@@ -34,8 +33,8 @@ AssistedConversion::AssistedConversion(QWidget* aParent, const Struct::Settings&
 void AssistedConversion::closeEvent(QCloseEvent* aEvent)
 {
   // Catch the sender of the event
-  auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
-  auto lValidationBtn{this->findChild<QPushButton*>(QString("validate_selection"))};
+  const auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
+  const auto lValidationBtn{this->findChild<QPushButton*>(QStringLiteral("validate_selection"))};
 
   if ((lEventSource == lValidationBtn) || !this->mHasUserDoneSomething)
   {
@@ -47,7 +46,7 @@ void AssistedConversion::closeEvent(QCloseEvent* aEvent)
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
                                     this->getThemedResourcePath(),
-                                    "help-circle",
+                                    QStringLiteral("help-circle"),
                                     tr("Close the window"),
                                     tr("Go back to the assisted conversion tool window"),
                                     "",
@@ -75,7 +74,7 @@ void AssistedConversion::initializeGUI()
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
-  lTabWidget->setObjectName(QString("tab_widget"));
+  lTabWidget->setObjectName(QStringLiteral("tab_widget"));
   lTabWidget->setAutoFillBackground(true);
   lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   lMainLayout->addWidget(lTabWidget, 0, 0);
@@ -87,7 +86,7 @@ void AssistedConversion::initializeGUI()
   lMainLayout->addWidget(ComponentFactory::CreateCheckBox(this,
                                                           tr("Only scan the \"meshes\" subdirectory of the mod"),
                                                           "",
-                                                          "only_scan_meshes_dir",
+                                                          QStringLiteral("only_scan_meshes_dir"),
                                                           true),
                          1,
                          0);
@@ -96,9 +95,9 @@ void AssistedConversion::initializeGUI()
   auto lLaunchSearchButton{ComponentFactory::CreateButton(this,
                                                           tr("Launch the scan of the mod"),
                                                           "",
-                                                          "search",
+                                                          QStringLiteral("search"),
                                                           this->getThemedResourcePath(),
-                                                          "launch_search_button",
+                                                          QStringLiteral("launch_search_button"),
                                                           true,
                                                           true)};
   lMainLayout->addWidget(lLaunchSearchButton, 2, 0);
@@ -133,7 +132,7 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   // Input path value
   auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
+  lInputPathLineEdit->setObjectName(QStringLiteral("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
   lTabLayout->addWidget(lInputPathLineEdit);
 
@@ -141,7 +140,7 @@ void AssistedConversion::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   auto lInputPathChooser{ComponentFactory::CreateButton(this,
                                                         tr("Choose a directory..."),
                                                         "",
-                                                        "folder",
+                                                        QStringLiteral("folder"),
                                                         this->getThemedResourcePath(),
                                                         "",
                                                         false,
@@ -172,7 +171,7 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
 
   // Input mod's URL/ID value
   auto lModURLOrIDLineEdit{new LineEdit(this)};
-  lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
+  lModURLOrIDLineEdit->setObjectName(QStringLiteral("mod_url_or_id"));
   lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
   lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 3);
 
@@ -181,7 +180,7 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
 
   // API Key value
   auto lAPIKeyLineEdit{new LineEdit(this)};
-  lAPIKeyLineEdit->setObjectName(QString("api_key"));
+  lAPIKeyLineEdit->setObjectName(QStringLiteral("api_key"));
   lAPIKeyLineEdit->setPlaceholderText(tr("Enter your NexusMods API key here"));
   lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());
   lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1);
@@ -190,9 +189,9 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   auto lSaveAPIKey{ComponentFactory::CreateButton(this,
                                                   tr("Save this API key"),
                                                   "",
-                                                  "save",
+                                                  QStringLiteral("save"),
                                                   this->getThemedResourcePath(),
-                                                  "save_api_key",
+                                                  QStringLiteral("save_api_key"),
                                                   false,
                                                   true)};
   lTabLayout->addWidget(lSaveAPIKey, 1, 2);
@@ -201,9 +200,9 @@ void AssistedConversion::setupFromURLTab(QTabWidget& aTabWidget)
   auto lOpenAPIKeysManagementPage{ComponentFactory::CreateButton(this,
                                                                  tr("View my keys (nexusmods.com)"),
                                                                  "",
-                                                                 "external",
+                                                                 QStringLiteral("external"),
                                                                  this->getThemedResourcePath(),
-                                                                 "open_api_keys_management_page",
+                                                                 QStringLiteral("open_api_keys_management_page"),
                                                                  false,
                                                                  true)};
   lTabLayout->addWidget(lOpenAPIKeysManagementPage, 1, 3);
@@ -227,28 +226,28 @@ void AssistedConversion::displayHintZone()
   auto lMainLayout{qobject_cast<QGridLayout*>(this->getCentralLayout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setMinimumHeight(300);
-  lHintZone->setObjectName(QString("hint_zone"));
+  lHintZone->setObjectName(QStringLiteral("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
   lMainLayout->addWidget(lHintZone, 3, 0);
 }
 
 void AssistedConversion::deleteAlreadyExistingWindowBottom() const
 {
-  auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+  auto lHintZone{this->findChild<QLabel*>(QStringLiteral("hint_zone"))};
   if (lHintZone)
   {
     delete lHintZone;
     lHintZone = nullptr;
   }
 
-  auto lOldValidationButton{this->findChild<QPushButton*>(QString("validate_selection"))};
+  auto lOldValidationButton{this->findChild<QPushButton*>(QStringLiteral("validate_selection"))};
   if (lOldValidationButton)
   {
     delete lOldValidationButton;
     lOldValidationButton = nullptr;
   }
 
-  auto lOldScrollArea{this->findChild<QScrollArea*>(QString("scrollable_zone"))};
+  auto lOldScrollArea{this->findChild<QScrollArea*>(QStringLiteral("scrollable_zone"))};
   if (lOldScrollArea)
   {
     delete lOldScrollArea;
@@ -259,22 +258,25 @@ void AssistedConversion::deleteAlreadyExistingWindowBottom() const
 void AssistedConversion::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+  auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "assistedConversionInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("assistedConversionInput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
-  Utils::UpdatePathAtKey(this->lastPaths(), "assistedConversionInput", lPath);
+  Utils::UpdatePathAtKey(this->lastPaths(), QStringLiteral("assistedConversionInput"), lPath);
 
-  if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
+  if (!this->mHasUserDoneSomething && !lPath.isEmpty())
   {
     this->mHasUserDoneSomething = true;
   }
 
   // Enable or disable path viewer label and launch button
-  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
+  auto lMustDisableButton{lPath.isEmpty()};
   lLineEdit->setDisabled(lMustDisableButton);
   lLaunchSearchButton->setDisabled(lMustDisableButton);
 
@@ -283,7 +285,7 @@ void AssistedConversion::chooseInputDirectory()
 
 void AssistedConversion::saveAPIKey()
 {
-  const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
+  const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>(QStringLiteral("api_key"))};
   const auto lSucceed{Utils::SaveAPIKeyToFile(lAPIKeyLineEdit->text(), this, this->getThemedResourcePath())};
 
   this->updateSaveAPIKeyButtonState(lSucceed);
@@ -296,34 +298,34 @@ void AssistedConversion::updateSaveAPIKeyButtonState(const QString&)
 
 void AssistedConversion::updateSaveAPIKeyButtonState(const bool aMustBeDisabled)
 {
-  const auto lSaveAPIKey{this->findChild<QPushButton*>(QString("save_api_key"))};
+  const auto lSaveAPIKey{this->findChild<QPushButton*>(QStringLiteral("save_api_key"))};
   lSaveAPIKey->setDisabled(aMustBeDisabled);
 }
 
 void AssistedConversion::updateLaunchSearchButtonState(const QString&)
 {
-  const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
+  const auto lTabWidget{this->findChild<QTabWidget*>(QStringLiteral("tab_widget"))};
   this->updateLaunchSearchButtonState(lTabWidget->currentIndex());
 }
 
 void AssistedConversion::updateLaunchSearchButtonState(int aCurrentTabIndex)
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
 
   switch (aCurrentTabIndex)
   {
     case 0:
     {
       // Local folder
-      const auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+      const auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))};
       lLaunchSearchButton->setDisabled(lLineEdit->text().isEmpty());
       break;
     }
     case 1:
     {
       // NexusMods URL/ID
-      const auto lModURLOrIDLineEdit{this->findChild<QLineEdit*>(QString("mod_url_or_id"))};
-      const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
+      const auto lModURLOrIDLineEdit{this->findChild<QLineEdit*>(QStringLiteral("mod_url_or_id"))};
+      const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>(QStringLiteral("api_key"))};
 
       lLaunchSearchButton->setDisabled(lModURLOrIDLineEdit->text().isEmpty() || lAPIKeyLineEdit->text().isEmpty() || !isModIDValid());
 
@@ -334,16 +336,16 @@ void AssistedConversion::updateLaunchSearchButtonState(int aCurrentTabIndex)
 
 bool AssistedConversion::isFileNameRecognized(const QString& aFileName)
 {
-  return (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
-          || aFileName.compare("skeletonbeast_female", Qt::CaseInsensitive) == 0
-          || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
-          || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
-          || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0);
+  return (aFileName.compare(QStringLiteral("skeleton_female"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("skeletonbeast_female"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("femalehands"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("femalefeet"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("femalebody"), Qt::CaseSensitivity::CaseInsensitive) == 0);
 }
 
 void AssistedConversion::launchSearchProcess()
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
   lLaunchSearchButton->setDisabled(true);
 
   if (this->hasUserSelectedAnything())
@@ -352,7 +354,7 @@ void AssistedConversion::launchSearchProcess()
                                       tr("Relaunch the scan"),
                                       tr("You will lose all the unsaved data. Do you still want to relaunch the scan?"),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Relaunch the scan"),
                                       tr("Cancel the relaunch"),
                                       "",
@@ -367,7 +369,7 @@ void AssistedConversion::launchSearchProcess()
     }
   }
 
-  const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
+  const auto lTabWidget{this->findChild<QTabWidget*>(QStringLiteral("tab_widget"))};
   switch (lTabWidget->currentIndex())
   {
     case 0:
@@ -383,18 +385,18 @@ void AssistedConversion::launchSearchProcess()
 
 void AssistedConversion::launchSearchFromLocalFolder()
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
+  const auto lInputPath{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
-  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList({"*.esl", "*.esm", "*.esp"})) == 0)
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList({QStringLiteral("*.esl"), QStringLiteral("*.esm"), QStringLiteral("*.esp")})) == 0)
   {
     // If it does not contain one of the wanted files, ask the user to start or cancel the scan
     if (Utils::DisplayQuestionMessage(this,
                                       tr("No mod archive file has been found"),
                                       tr("No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?"),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
@@ -410,13 +412,13 @@ void AssistedConversion::launchSearchFromLocalFolder()
   }
 
   // Warn the user if the scan found a BSA file
-  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList(QStringLiteral("*.bsa"))) > 0)
   {
     if (Utils::DisplayQuestionMessage(this,
                                       tr("BSA file found"),
                                       tr("At least one BSA file was found in the scanned directory. Please note that the application cannot read the data contained in the BSA files, so it is advisable to decompress the BSA file before continuing the scan. Do you still want to continue the scan?"),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
@@ -464,12 +466,12 @@ mapSpSS AssistedConversion::scanForNifFiles(const QString& aRootDir) const
   QString lKey;
 
   auto lRootDir{aRootDir};
-  if (this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked())
+  if (this->findChild<QCheckBox*>(QStringLiteral("only_scan_meshes_dir"))->isChecked())
   {
-    lRootDir.append("/meshes");
+    lRootDir.append(QStringLiteral("/meshes"));
   }
 
-  QDirIterator it(lRootDir, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(lRootDir, QStringList(QStringLiteral("*.nif")), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -482,14 +484,14 @@ mapSpSS AssistedConversion::scanForNifFiles(const QString& aRootDir) const
     it.next();
 
     // Get the current directory
-    lRelativeDirPath = it.fileInfo().absolutePath().remove(aRootDir + "/", Qt::CaseInsensitive);
+    lRelativeDirPath = it.fileInfo().absolutePath().remove(aRootDir + QStringLiteral("/"), Qt::CaseSensitivity::CaseInsensitive);
 
     lFileName = it.fileInfo().fileName();
 
     // Clean the file name from any artifact
-    lFileName.remove("_0.nif", Qt::CaseInsensitive);
-    lFileName.remove("_1.nif", Qt::CaseInsensitive);
-    lFileName.remove(".nif", Qt::CaseInsensitive);
+    lFileName.remove(QStringLiteral("_0.nif"), Qt::CaseSensitivity::CaseInsensitive);
+    lFileName.remove(QStringLiteral("_1.nif"), Qt::CaseSensitivity::CaseInsensitive);
+    lFileName.remove(QStringLiteral(".nif"), Qt::CaseSensitivity::CaseInsensitive);
 
     // Construct the key of the map
     lKey = QString("%1/%2").arg(lRelativeDirPath, lFileName);
@@ -509,8 +511,8 @@ void AssistedConversion::launchSearchNexusModsURL()
 
 int AssistedConversion::getModIDFromUserInput()
 {
-  const auto lModURLOrID{this->findChild<QLineEdit*>(QString("mod_url_or_id"))->text()};
-  const auto lURLPattern{QString("nexusmods.com/skyrimspecialedition/mods/")};
+  const auto lModURLOrID{this->findChild<QLineEdit*>(QStringLiteral("mod_url_or_id"))->text()};
+  const auto lURLPattern{QStringLiteral("nexusmods.com/skyrimspecialedition/mods/")};
 
   // ID
   bool lIsInteger;
@@ -553,8 +555,8 @@ void AssistedConversion::requestModInformation(const int aModID)
   const auto lURL{QString("https://api.nexusmods.com/v1/games/skyrimspecialedition/mods/%1/files.json").arg(QString::number(aModID))};
 
   QNetworkRequest lRequest{QUrl(lURL)};
-  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json"));
+  lRequest.setRawHeader(QByteArrayLiteral("apikey"), this->findChild<QLineEdit*>(QStringLiteral("api_key"))->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
   QObject::connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModInformationFinished);
 }
@@ -570,7 +572,7 @@ void AssistedConversion::requestModInformationFinished()
   }
   else
   {
-    lParsedFilesInformation = this->parseFilesListFromModInformation(false, "");
+    lParsedFilesInformation = this->parseFilesListFromModInformation(false, QByteArray());
   }
 
   lReply->deleteLater();
@@ -580,7 +582,7 @@ void AssistedConversion::requestModInformationFinished()
 
 std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesListFromModInformation(const bool aSucceeded, const QByteArray& aResult)
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
 
   if (!aSucceeded)
   {
@@ -593,21 +595,21 @@ std::vector<Struct::NexusModsFileInformation> AssistedConversion::parseFilesList
 
   const auto lJson{QJsonDocument::fromJson(aResult)};
   const auto lRootElement{lJson.object()};
-  if (lRootElement.contains("files") && lRootElement["files"].isArray())
+  if (lRootElement.contains(QStringLiteral("files")) && lRootElement[QStringLiteral("files")].isArray())
   {
-    const auto lFiles{lRootElement["files"].toArray()};
+    const auto lFiles{lRootElement[QStringLiteral("files")].toArray()};
     for (const auto& lFile : lFiles)
     {
       if (lFile.isObject())
       {
         const auto lObject{lFile.toObject()};
 
-        lList.push_back(Struct::NexusModsFileInformation(lObject["file_id"].toInt(),
-                                                         lObject["name"].toString(),
-                                                         lObject["uploaded_timestamp"].toInt(),
-                                                         lObject["version"].toString(),
-                                                         lObject["content_preview_link"].toString(),
-                                                         lObject["category_name"].isNull() ? "-" : lObject["category_name"].toString()));
+        lList.push_back(Struct::NexusModsFileInformation(lObject[QStringLiteral("file_id")].toInt(),
+                                                         lObject[QStringLiteral("name")].toString(),
+                                                         lObject[QStringLiteral("uploaded_timestamp")].toInt(),
+                                                         lObject[QStringLiteral("version")].toString(),
+                                                         lObject[QStringLiteral("content_preview_link")].toString(),
+                                                         lObject[QStringLiteral("category_name")].isNull() ? QStringLiteral("-") : lObject[QStringLiteral("category_name")].toString()));
       }
     }
   }
@@ -625,7 +627,7 @@ void AssistedConversion::displayFileIDPicker(const std::vector<Struct::NexusMods
 {
   if (aFilesInformation.empty())
   {
-    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
     lLaunchSearchButton->setDisabled(false);
     return;
   }
@@ -641,7 +643,7 @@ void AssistedConversion::requestModFileContent(const QString& aFileName, const Q
 {
   if (aContentPreviewLink.isEmpty())
   {
-    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
     lLaunchSearchButton->setDisabled(false);
     return;
   }
@@ -649,8 +651,8 @@ void AssistedConversion::requestModFileContent(const QString& aFileName, const Q
   this->mScannedDirName = aFileName;
 
   QNetworkRequest lRequest{QUrl(aContentPreviewLink)};
-  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json"));
+  lRequest.setRawHeader(QByteArrayLiteral("apikey"), this->findChild<QLineEdit*>(QStringLiteral("api_key"))->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
   QObject::connect(lReply, &QNetworkReply::finished, this, &AssistedConversion::requestModFileContentFinished);
 }
@@ -668,7 +670,7 @@ void AssistedConversion::requestModFileContentFinished()
   }
   else
   {
-    lParsedFilesInformation = this->parseFileContent(false, "", lHasFoundBSAFile);
+    lParsedFilesInformation = this->parseFileContent(false, QByteArray(), lHasFoundBSAFile);
   }
 
   lReply->deleteLater();
@@ -692,19 +694,19 @@ mapSpSS AssistedConversion::parseFileContent(const bool aSucceeded,
     return mapSpSS();
   }
 
-  auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
+  auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QStringLiteral("only_scan_meshes_dir"))->isChecked()};
 
   mapSpSS lFoundNifFiles;
 
   const auto lJson{QJsonDocument::fromJson(aResult)};
   const auto lRootElement{lJson.object()};
 
-  if (lRootElement.contains("children") && lRootElement["children"].isArray())
+  if (lRootElement.contains(QStringLiteral("children")) && lRootElement[QStringLiteral("children")].isArray())
   {
-    const auto lChildren{lRootElement["children"].toArray()};
-    if (lChildren.size() == 1 && lChildren.first().toObject().contains("name"))
+    const auto lChildren{lRootElement[QStringLiteral("children")].toArray()};
+    if (lChildren.size() == 1 && lChildren.first().toObject().contains(QStringLiteral("name")))
     {
-      this->parseNode(lChildren, lFoundNifFiles, lChildren.first().toObject()["name"].toString(), lScanMeshesSubdirsOnly, aHasFoundBSAFile);
+      this->parseNode(lChildren, lFoundNifFiles, lChildren.first().toObject()[QStringLiteral("name")].toString(), lScanMeshesSubdirsOnly, aHasFoundBSAFile);
     }
   }
 
@@ -724,10 +726,10 @@ void AssistedConversion::parseNode(const QJsonArray& aArray,
       const auto lObject{lEntry.toObject()};
 
       // The node contains some children
-      if (lEntry.toObject().contains("children") && lObject["children"].isArray())
+      if (lEntry.toObject().contains(QStringLiteral("children")) && lObject[QStringLiteral("children")].isArray())
       {
         // Parse the content of the array
-        const auto lChildren{lObject["children"].toArray()};
+        const auto lChildren{lObject[QStringLiteral("children")].toArray()};
         this->parseNode(lChildren, aNifFilesList, aRootNodeName, aScanMeshesSubdirsOnly, aHasFoundBSAFile);
       }
       else
@@ -738,7 +740,7 @@ void AssistedConversion::parseNode(const QJsonArray& aArray,
         // If the path and the file name have been correctly parsed
         if (!lParsedNifFile.first.isEmpty() && !lParsedNifFile.second.isEmpty())
         {
-          aNifFilesList.insert({lParsedNifFile.first + "/" + lParsedNifFile.second, lParsedNifFile});
+          aNifFilesList.insert(std::make_pair(lParsedNifFile.first + QStringLiteral("/") + lParsedNifFile.second, lParsedNifFile));
         }
       }
     }
@@ -750,44 +752,44 @@ std::pair<QString, QString> AssistedConversion::parseNode(const QJsonObject& aNo
                                                           const bool aScanMeshesSubdirsOnly,
                                                           bool& aHasFoundBSAFile) const
 {
-  if (aNode.contains("path") && aNode["path"].isString()
-      && aNode.contains("name") && aNode["name"].isString()
-      && aNode.contains("type") && aNode["type"].isString()
-      && aNode.contains("size"))
+  if (aNode.contains(QStringLiteral("path")) && aNode[QStringLiteral("path")].isString()
+      && aNode.contains(QStringLiteral("name")) && aNode[QStringLiteral("name")].isString()
+      && aNode.contains(QStringLiteral("type")) && aNode[QStringLiteral("type")].isString()
+      && aNode.contains(QStringLiteral("size")))
   {
-    const auto lName{aNode["name"].toString()};
+    const auto lName{aNode[QStringLiteral("name")].toString()};
 
     // BSA file
-    if (lName.endsWith(".bsa", Qt::CaseSensitivity::CaseInsensitive))
+    if (lName.endsWith(QStringLiteral(".bsa"), Qt::CaseSensitivity::CaseInsensitive))
     {
       aHasFoundBSAFile = true;
     }
 
     // Not a file or not a NIF file
-    if (aNode["type"].toString().compare("file") != 0
-        || !lName.endsWith(".nif", Qt::CaseSensitivity::CaseInsensitive))
+    if ((aNode[QStringLiteral("type")].toString().compare(QStringLiteral("file")) != 0)
+        || (!lName.endsWith(QStringLiteral(".nif"), Qt::CaseSensitivity::CaseInsensitive)))
     {
-      return std::make_pair(QString(), QString());
+      return std::make_pair("", "");
     }
 
-    auto lFileName{aNode["path"].toString()};
+    auto lFileName{aNode[QStringLiteral("path")].toString()};
 
     // Remove the root node name from the file path
-    if (lFileName.startsWith(aRootNodeName + "/"))
+    if (lFileName.startsWith(aRootNodeName + QStringLiteral("/")))
     {
-      lFileName.remove(aRootNodeName + "/");
+      lFileName.remove(aRootNodeName + QStringLiteral("/"));
     }
 
     // If the user checked the option to scan only the meshes subdir, check the file name starts with "meshes/"
-    if (aScanMeshesSubdirsOnly && !lFileName.startsWith("meshes/", Qt::CaseSensitivity::CaseInsensitive))
+    if (aScanMeshesSubdirsOnly && !lFileName.startsWith(QStringLiteral("meshes/"), Qt::CaseSensitivity::CaseInsensitive))
     {
-      return std::make_pair(QString(), QString());
+      return std::make_pair("", "");
     }
 
     // Clean the file name from any artifact
-    lFileName.remove("_0.nif", Qt::CaseInsensitive);
-    lFileName.remove("_1.nif", Qt::CaseInsensitive);
-    lFileName.remove(".nif", Qt::CaseInsensitive);
+    lFileName.remove(QStringLiteral("_0.nif"), Qt::CaseSensitivity::CaseInsensitive);
+    lFileName.remove(QStringLiteral("_1.nif"), Qt::CaseSensitivity::CaseInsensitive);
+    lFileName.remove(QStringLiteral(".nif"), Qt::CaseSensitivity::CaseInsensitive);
 
     const auto lLastSlashPosition{lFileName.lastIndexOf('/')};
 
@@ -795,19 +797,19 @@ std::pair<QString, QString> AssistedConversion::parseNode(const QJsonObject& aNo
     return std::make_pair(lFileName.left(lLastSlashPosition), lFileName.mid(lLastSlashPosition + 1));
   }
 
-  return std::make_pair(QString(), QString());
+  return std::make_pair("", "");
 }
 
 void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
   lLaunchSearchButton->setDisabled(false);
 
   // No file found
   if (aFoundNifFiles.empty())
   {
     this->displayHintZone();
-    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+    auto lHintZone{this->findChild<QLabel*>(QStringLiteral("hint_zone"))};
     if (lHintZone)
     {
       lHintZone->setText(tr("No NIF file was found in the scanned directory."));
@@ -836,7 +838,7 @@ void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
     lNifFilesInformation.push_back(lNifFile.second);
   }
 
-  std::sort(lNifFilesInformation.begin(), lNifFilesInformation.end(), [=](const std::pair<QString, QString>& lhs, const std::pair<QString, QString>& rhs) {
+  std::sort(lNifFilesInformation.begin(), lNifFilesInformation.end(), [=](const auto& lhs, const auto& rhs) -> bool {
     return isFileNameRecognized(lhs.second) && !isFileNameRecognized(rhs.second);
   });
 
@@ -849,9 +851,9 @@ void AssistedConversion::displayObtainedData(const mapSpSS& aFoundNifFiles)
   auto lValidateSelection{ComponentFactory::CreateButton(this,
                                                          tr("Validate the selection(s) above and go back to the main window"),
                                                          "",
-                                                         "playlist-check",
+                                                         QStringLiteral("playlist-check"),
                                                          this->getThemedResourcePath(),
-                                                         "validate_selection")};
+                                                         QStringLiteral("validate_selection"))};
   lMainLayout->addWidget(lValidateSelection, 4, 0);
 
   QObject::connect(lValidateSelection, &QPushButton::clicked, this, &AssistedConversion::validateSelection);
@@ -868,7 +870,7 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
 
   const auto lFirstTagStart{QString("<span style=\"font-weight: 900; font-size: %1pt;\">").arg(lFontSize + 1)};
   const auto lSecondTagStart{QString("<span style=\"font-weight: 100; font-style: italic; font-size: %1pt;\">").arg(lFontSize - 1)};
-  const auto lTagEnd{QString("</span>")};
+  const auto lTagEnd{QStringLiteral("</span>")};
 
   if (lMustUseBoldFont)
     lPathLabel->setText(lFirstTagStart + aPath + lTagEnd);
@@ -907,10 +909,10 @@ void AssistedConversion::createSelectionBlock(QGridLayout& aLayout, const QStrin
 void AssistedConversion::modifyComboBoxLockState(int aIndex)
 {
   // Catch the sender of the event
-  auto lEventSource{qobject_cast<QComboBox*>(this->sender())};
+  const auto lEventSource{qobject_cast<QComboBox*>(this->sender())};
 
   // Fetch the grid layout
-  auto lDataContainer{this->findChild<QGridLayout*>(QString("data_container"))};
+  auto lDataContainer{this->findChild<QGridLayout*>(QStringLiteral("data_container"))};
   auto lLinesToTreat{lDataContainer->rowCount()};
   QComboBox* lComboBox{nullptr};
   auto lComboBoxIndex{0};
@@ -1011,7 +1013,7 @@ bool AssistedConversion::hasUserSelectedAnything() const
 std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValuesFromInterface() const
 {
   // Fetch the grid layout
-  auto lDataContainer{this->findChild<QGridLayout*>(QString("data_container"))};
+  auto lDataContainer{this->findChild<QGridLayout*>(QStringLiteral("data_container"))};
 
   // Iterate in the layout
   auto lLinesToTreat{lDataContainer->rowCount()};
@@ -1039,7 +1041,7 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
 
     // First column is the file path
     lFilePath = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 0)->widget())->text();
-    if (lFilePath.startsWith("<span"))
+    if (lFilePath.startsWith(QStringLiteral("<span")))
     {
       // Parse the inner text of the XML span tag
       QDomDocument lDoc;
@@ -1051,7 +1053,7 @@ std::vector<Struct::AssistedConversionResult> AssistedConversion::getChosenValue
 
     // Second column is the file name
     lFileName = qobject_cast<QLabel*>(lDataContainer->itemAtPosition(i, 1)->widget())->text();
-    if (lFileName.startsWith("<span"))
+    if (lFileName.startsWith(QStringLiteral("<span")))
     {
       // Parse the inner text of the XML span tag
       QDomDocument lDoc;
@@ -1079,7 +1081,7 @@ void AssistedConversion::validateSelection()
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),
                                       "",
@@ -1099,5 +1101,5 @@ void AssistedConversion::validateSelection()
 
 void AssistedConversion::openAPIKeysManagementPage()
 {
-  QDesktopServices::openUrl(QUrl("https://www.nexusmods.com/users/myaccount?tab=api%20access"));
+  QDesktopServices::openUrl(QUrl(QStringLiteral("https://www.nexusmods.com/users/myaccount?tab=api%20access")));
 }

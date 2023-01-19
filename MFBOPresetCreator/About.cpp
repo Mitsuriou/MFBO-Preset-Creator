@@ -4,12 +4,12 @@
 #include <QCloseEvent>
 
 About::About(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths)
-  : TitleDialog(aParent, tr("About"), "info-circle", aSettings, aLastPaths)
+  : TitleDialog(aParent, tr("About"), QStringLiteral("info-circle"), aSettings, aLastPaths)
 {
   // Hacky window's background color change for Windows Vista theme
   if (this->settings().display.applicationTheme == GUITheme::DEFAULT_OS_THEME)
   {
-    this->setStyleSheet("background-color: white;");
+    this->setStyleSheet(QStringLiteral("background-color: white;"));
   }
 
   // Build the window's interface
@@ -39,12 +39,12 @@ void About::initializeGUI()
   QString lLinksColorOverride;
   if (this->settings().display.applicationTheme == GUITheme::MITSURIOU_BLACK_THEME)
   {
-    lLinksColorOverride = " style='color: #3991ff;'";
+    lLinksColorOverride = QStringLiteral(" style='color: #3991ff;'");
   }
   else if (this->settings().display.applicationTheme == GUITheme::MITSURIOU_DARK_THEME
            || this->settings().display.applicationTheme == GUITheme::MITSURIOU_LIGHT_THEME)
   {
-    lLinksColorOverride = " style='color: #e95985;'";
+    lLinksColorOverride = QStringLiteral(" style='color: #e95985;'");
   }
 
   // Build the description

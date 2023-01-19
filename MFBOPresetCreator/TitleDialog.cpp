@@ -38,22 +38,22 @@ void TitleDialog::reject()
 
 void TitleDialog::overrideContentTitle(const QString& aTitle)
 {
-  this->findChild<QLabel*>("td_main_title")->setText(aTitle);
+  this->findChild<QLabel*>(QStringLiteral("td_main_title"))->setText(aTitle);
 }
 
 void TitleDialog::hideTitle()
 {
-  this->findChild<QLabel*>("td_main_title")->hide();
+  this->findChild<QLabel*>(QStringLiteral("td_main_title"))->hide();
 }
 
 void TitleDialog::showTitle()
 {
-  this->findChild<QLabel*>("td_main_title")->show();
+  this->findChild<QLabel*>(QStringLiteral("td_main_title"))->show();
 }
 
 QWidget* TitleDialog::getCentralWidget()
 {
-  return this->findChild<QWidget*>("td_central_widget");
+  return this->findChild<QWidget*>(QStringLiteral("td_central_widget"));
 }
 
 QLayout* TitleDialog::getCentralLayout()
@@ -66,7 +66,7 @@ QLayout* TitleDialog::getCentralLayout()
 
 QHBoxLayout* TitleDialog::getButtonsLayout()
 {
-  return this->findChild<QHBoxLayout*>("td_buttons_layout");
+  return this->findChild<QHBoxLayout*>(QStringLiteral("td_buttons_layout"));
 }
 
 const QString& TitleDialog::getThemedResourcePath() const
@@ -103,13 +103,13 @@ void TitleDialog::constructGUI(const QString& aTitle)
 
   // Main title
   const auto lMainTitle{new QLabel(aTitle, this)};
-  lMainTitle->setObjectName("td_main_title");
+  lMainTitle->setObjectName(QStringLiteral("td_main_title"));
   lMainTitle->setAlignment(Qt::AlignCenter);
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(this->settings().display.font.pointSize * 2));
   lMainLayout->addWidget(lMainTitle, 0);
 
   // Central widget
   const auto lCentralWidget{new QWidget(this)};
-  lCentralWidget->setObjectName("td_central_widget");
+  lCentralWidget->setObjectName(QStringLiteral("td_central_widget"));
   lMainLayout->addWidget(lCentralWidget, 1);
 }

@@ -116,7 +116,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
+  lInputPathLineEdit->setObjectName(QStringLiteral("input_path_directory"));
   lGeneralGridLayout->addWidget(lInputPathLineEdit, 1, 1);
 
   auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", this->getThemedResourcePath(), "", false, true)};
@@ -132,12 +132,12 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   lFiltersListChooser->setCursor(Qt::PointingHandCursor);
-  lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
+  lFiltersListChooser->setObjectName(QStringLiteral("bodyslide_filters_chooser"));
   lFiltersListChooser->setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy::AdjustToContents);
   lFiltersWrapper->addWidget(lFiltersListChooser);
 
   auto lFiltersList{new QLabel("", this)};
-  lFiltersList->setObjectName(QString("bodyslide_filters"));
+  lFiltersList->setObjectName(QStringLiteral("bodyslide_filters"));
   lFiltersList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   lFiltersList->setWordWrap(true);
   lFiltersWrapper->addWidget(lFiltersList);
@@ -163,12 +163,12 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Backup directory path
   auto lBackupPathLabel{new QLabel(tr("Backup directory path:"), this)};
-  lBackupPathLabel->setObjectName(QString("backup_path_label"));
+  lBackupPathLabel->setObjectName(QStringLiteral("backup_path_label"));
   lBackupGridLayout->addWidget(lBackupPathLabel, 1, 0);
 
   auto lBackupPathLineEdit{new LineEdit(this)};
   lBackupPathLineEdit->setReadOnly(true);
-  lBackupPathLineEdit->setObjectName(QString("backup_path_directory"));
+  lBackupPathLineEdit->setObjectName(QStringLiteral("backup_path_directory"));
   lBackupGridLayout->addWidget(lBackupPathLineEdit, 1, 1);
 
   auto lBackupPathChooser{ComponentFactory::CreateButton(this,
@@ -183,21 +183,21 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
 
   // Backup subdirectory name/path
   auto lLabelSubDirectoryBackupPath{new QLabel(tr("Backup subdirectory name/path:"), this)};
-  lLabelSubDirectoryBackupPath->setObjectName(QString("backup_subdir_label"));
+  lLabelSubDirectoryBackupPath->setObjectName(QStringLiteral("backup_subdir_label"));
   lBackupGridLayout->addWidget(lLabelSubDirectoryBackupPath, 2, 0);
 
   auto lBackupSubpathLineEdit{new LineEdit(this)};
-  lBackupSubpathLineEdit->setObjectName(QString("backup_path_subdirectory"));
+  lBackupSubpathLineEdit->setObjectName(QStringLiteral("backup_path_subdirectory"));
   lBackupGridLayout->addWidget(lBackupSubpathLineEdit, 2, 1);
 
   // Backup preview
   auto lBackupPathPreviewLabel{new QLabel(tr("Preview:"), this)};
-  lBackupPathPreviewLabel->setObjectName(QString("backup_path_preview_label"));
+  lBackupPathPreviewLabel->setObjectName(QStringLiteral("backup_path_preview_label"));
   lBackupPathPreviewLabel->setAlignment(Qt::AlignTop);
   lBackupGridLayout->addWidget(lBackupPathPreviewLabel, 3, 0);
 
   auto lBackupPathsPreview{new QLabel("", this)};
-  lBackupPathsPreview->setObjectName(QString("backup_path_preview"));
+  lBackupPathsPreview->setObjectName(QStringLiteral("backup_path_preview"));
   lBackupPathsPreview->setAlignment(Qt::AlignTop);
   lBackupGridLayout->addWidget(lBackupPathsPreview, 3, 1, 1, 2);
 
@@ -244,21 +244,21 @@ void RetargetingTool::userHasDoneAnAction(int)
   this->mHasUserDoneSomething = true;
 
   // Body name selector
-  auto lBodyNameSelector{this->findChild<QComboBox*>(QString("body_selector_name"))};
+  auto lBodyNameSelector{this->findChild<QComboBox*>(QStringLiteral("body_selector_name"))};
   QObject::disconnect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
 
   // Body version selector
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QStringLiteral("body_selector_version"))};
   QObject::disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&RetargetingTool::userHasDoneAnAction));
 }
 
 void RetargetingTool::chooseInputDirectory()
 {
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(),
-                                                 "retargetingToolInput",
-                                                 lLineEdit->text(),
-                                                 this->settings().general.eachButtonSavesItsLastUsedPath)};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("retargetingToolInput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "retargetingToolInput", lPath);
@@ -273,11 +273,11 @@ void RetargetingTool::chooseInputDirectory()
 
 void RetargetingTool::chooseBackupDirectory()
 {
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(),
-                                                 "retargetingToolOutput",
-                                                 lLineEdit->text(),
-                                                 this->settings().general.eachButtonSavesItsLastUsedPath)};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("backup_path_directory"))};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("retargetingToolOutput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "retargetingToolOutput", lPath);
@@ -291,13 +291,13 @@ void RetargetingTool::chooseBackupDirectory()
 
 void RetargetingTool::updateBackupState(int aState)
 {
-  auto lBackupPathLabel{this->findChild<QLabel*>(QString("backup_path_label"))};
-  auto lBackupPathLineEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
-  auto lBackupPathChooser{this->findChild<QPushButton*>(QString("backup_dir_chooser"))};
-  auto lLabelSubDirectoryBackupPath{this->findChild<QLabel*>(QString("backup_subdir_label"))};
-  auto lBackupSubpathLineEdit{this->findChild<QLineEdit*>(QString("backup_path_subdirectory"))};
-  auto lOutputPathsPreviewLabel{this->findChild<QLabel*>(QString("backup_path_preview_label"))};
-  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("backup_path_preview"))};
+  auto lBackupPathLabel{this->findChild<QLabel*>(QStringLiteral("backup_path_label"))};
+  auto lBackupPathLineEdit{this->findChild<QLineEdit*>(QStringLiteral("backup_path_directory"))};
+  auto lBackupPathChooser{this->findChild<QPushButton*>(QStringLiteral("backup_dir_chooser"))};
+  auto lLabelSubDirectoryBackupPath{this->findChild<QLabel*>(QStringLiteral("backup_subdir_label"))};
+  auto lBackupSubpathLineEdit{this->findChild<QLineEdit*>(QStringLiteral("backup_path_subdirectory"))};
+  auto lOutputPathsPreviewLabel{this->findChild<QLabel*>(QStringLiteral("backup_path_preview_label"))};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QStringLiteral("backup_path_preview"))};
 
   switch (aState)
   {
@@ -328,8 +328,8 @@ void RetargetingTool::updateBackupState(int aState)
 void RetargetingTool::updateBackupPreview()
 {
   // Check if the user has typed in the output subdir qlineedit
-  auto lEventSource{qobject_cast<QLineEdit*>(this->sender())};
-  auto lSubdirLineEdit{this->findChild<QLineEdit*>(QString("backup_path_subdirectory"))};
+  const auto lEventSource{qobject_cast<QLineEdit*>(this->sender())};
+  const auto lSubdirLineEdit{this->findChild<QLineEdit*>(QStringLiteral("backup_path_subdirectory"))};
 
   if (lEventSource == lSubdirLineEdit)
   {
@@ -337,12 +337,12 @@ void RetargetingTool::updateBackupPreview()
   }
 
   // Get main directory
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("backup_path_directory"))};
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QStringLiteral("backup_path_directory"))};
   auto lMainDirectory{lMainDirTextEdit->text().trimmed()};
   Utils::CleanPathString(lMainDirectory);
 
   // Get subdirectory
-  auto lSubDirectory{this->findChild<QLineEdit*>(QString("backup_path_subdirectory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QStringLiteral("backup_path_subdirectory"))->text().trimmed()};
   Utils::CleanPathString(lSubDirectory);
   auto lIsValidPath{true};
 
@@ -369,17 +369,17 @@ void RetargetingTool::updateBackupPreview()
   this->mFileWatcher->removePaths(this->mFileWatcher->files());
 
   // Set the full path value in the preview label
-  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("backup_path_preview"))};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QStringLiteral("backup_path_preview"))};
   auto lNewTextColor{this->settings().display.successColor};
 
   if (lIsValidPath)
   {
-    const auto lInputPath{Utils::CleanPathString(this->findChild<QLineEdit*>(QString("input_path_directory"))->text())};
+    const auto lInputPath{Utils::CleanPathString(this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))->text())};
     const auto lFullPathConst{lFullPath};
 
     // Check if the user is trying to backup the directory into itself
-    if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
-        || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
+    if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseSensitivity::CaseInsensitive) == 0
+        || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseSensitivity::CaseInsensitive))
     {
       lNewTextColor = this->settings().display.dangerColor;
     }
@@ -404,7 +404,7 @@ void RetargetingTool::updateBackupPreview()
 void RetargetingTool::launchUpDownGradeProcess()
 {
   // Input Directory
-  auto lRootDir{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+  auto lRootDir{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))->text()};
 
   // Check if the input path has been given by the user
   if (lRootDir.isEmpty())
@@ -414,13 +414,13 @@ void RetargetingTool::launchUpDownGradeProcess()
   }
 
   // Manage the backup part
-  auto lMustKeepBackup{this->findChild<QCheckBox*>(QString("keep_backup"))->isChecked()};
+  auto lMustKeepBackup{this->findChild<QCheckBox*>(QStringLiteral("keep_backup"))->isChecked()};
 
   if (lMustKeepBackup)
   {
     // Backup paths
-    auto lMainDirectory{this->findChild<QLineEdit*>(QString("backup_path_directory"))->text().trimmed()};
-    auto lSubDirectory{this->findChild<QLineEdit*>(QString("backup_path_subdirectory"))->text().trimmed()};
+    auto lMainDirectory{this->findChild<QLineEdit*>(QStringLiteral("backup_path_directory"))->text().trimmed()};
+    auto lSubDirectory{this->findChild<QLineEdit*>(QStringLiteral("backup_path_subdirectory"))->text().trimmed()};
     Utils::CleanPathString(lSubDirectory);
 
     // Full extract path
@@ -435,12 +435,12 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Check if the user is trying to backup the directory into itself
-    auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+    auto lInputPath{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))->text()};
     const auto lFullPathConst{lFullBackupDirectory};
 
     // if (lFullBackupDirectory.startsWith())
-    if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseInsensitive) == 0
-        || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseInsensitive))
+    if (Utils::CleanPathString(lFullPathConst).compare(lInputPath, Qt::CaseSensitivity::CaseInsensitive) == 0
+        || Utils::CleanPathString(lFullPathConst + QDir::separator()).startsWith(Utils::CleanPathString(lInputPath + QDir::separator()), Qt::CaseSensitivity::CaseInsensitive))
     {
       Utils::DisplayWarningMessage(tr("Error: it is not possible to backup a directory inside itself. Choose another backup location."));
       return;
@@ -472,8 +472,8 @@ void RetargetingTool::launchUpDownGradeProcess()
   }
 
   // Scan the number of files to treat
-  auto lNumberOSPFiles{Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.osp")};
-  auto lNumberXMLFiles{Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, "*.xml")};
+  auto lNumberOSPFiles{Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, QStringLiteral("*.osp"))};
+  auto lNumberXMLFiles{Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(lRootDir, QStringLiteral("*.xml"))};
   auto lTreatedFiles{0};
 
   // Progress bar
@@ -498,7 +498,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
   lTreatedFiles = 0;
 
-  QDirIterator it(lRootDir, QStringList() << QString("*.xml"), QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(lRootDir, QStringList(QStringLiteral("*.xml")), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -513,9 +513,9 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Ignore FOMOD directory
     lAbsFilePath = it.fileInfo().absoluteFilePath();
-    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
+    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseSensitivity::CaseInsensitive);
 
-    if (lRelativeDirs.contains("/fomod/info.xml", Qt::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseInsensitive))
+    if (lRelativeDirs.contains(QStringLiteral("/fomod/info.xml"), Qt::CaseSensitivity::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseSensitivity::CaseInsensitive))
     {
       continue;
     }
@@ -545,7 +545,7 @@ void RetargetingTool::launchUpDownGradeProcess()
 
   std::map<QString, unsigned char> lOSPUsedSliders;
 
-  QDirIterator it2(lRootDir, QStringList() << QString("*.osp"), QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it2(lRootDir, QStringList(QStringLiteral("*.osp")), QDir::Files, QDirIterator::Subdirectories);
   while (it2.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -688,7 +688,7 @@ void RetargetingTool::launchUpDownGradeProcess()
   lProgressBar->setRange(0, lNumberOSPFiles);
   lTreatedFiles = 0;
 
-  QDirIterator it3(lRootDir, QStringList() << QString("*.xml"), QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it3(lRootDir, QStringList(QStringLiteral("*.xml")), QDir::Files, QDirIterator::Subdirectories);
   while (it3.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -703,9 +703,9 @@ void RetargetingTool::launchUpDownGradeProcess()
 
     // Ignore FOMOD directory
     lAbsFilePath = it3.fileInfo().absoluteFilePath();
-    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseInsensitive);
+    lRelativeDirs = lAbsFilePath.mid(0).remove(lRootDir, Qt::CaseSensitivity::CaseInsensitive);
 
-    if (lRelativeDirs.contains("/fomod/info.xml", Qt::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseInsensitive))
+    if (lRelativeDirs.contains(QStringLiteral("/fomod/info.xml"), Qt::CaseSensitivity::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseSensitivity::CaseInsensitive))
     {
       continue;
     }
@@ -755,7 +755,7 @@ void RetargetingTool::launchUpDownGradeProcess()
     }
 
     // Construct the file content
-    auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+    auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
     auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList,
                                                  lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()),
                                                  this->mTargetBodyMesh,
@@ -852,7 +852,7 @@ void RetargetingTool::initBodySlideFiltersList()
   // Load and save the filters list
   this->mFiltersList = Utils::LoadFiltersFromFile();
 
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
 
   // Disable the combobox if there is not any available filter
   if (this->mFiltersList.size() == 0)
@@ -879,16 +879,16 @@ void RetargetingTool::updateBodySlideFiltersList(const std::map<QString, QString
   }
 
   this->mFiltersList = aFilterList;
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QStringLiteral("bodyslide_filters"))};
   Utils::UpdateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
 void RetargetingTool::updateBodySlideFiltersListPreview()
 {
   // Get the GUI widgets
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QStringLiteral("bodyslide_filters"))};
 
   // Get any eventual additional filters
   auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};

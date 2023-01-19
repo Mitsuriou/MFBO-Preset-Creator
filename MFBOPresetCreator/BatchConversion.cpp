@@ -27,7 +27,7 @@ BatchConversion::BatchConversion(QWidget* aParent, const Struct::Settings& aSett
 {
   // Main layout with scroll area
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
-  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QStringLiteral("window_buttons_layout"))};
 
   // Setup all the different GUI components
   this->setupGeneralGUI(*lMainLayout);
@@ -91,7 +91,7 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   // Group box
   auto lGroupBox{ComponentFactory::CreateGroupBox(this,
                                                   tr("Input location"),
-                                                  "tune",
+                                                  QStringLiteral("tune"),
                                                   this->getThemedResourcePath(),
                                                   this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 0, 0);
@@ -112,12 +112,16 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
   // Input label
   auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
+  lInputPathLineEdit->setObjectName(QStringLiteral("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
   lLayout->addWidget(lInputPathLineEdit, 0, 1);
 
   // Input chooser
-  auto lInputPathChooser{ComponentFactory::CreateButton(this, tr("Choose a directory..."), "", "folder", this->getThemedResourcePath())};
+  auto lInputPathChooser{ComponentFactory::CreateButton(this,
+                                                        tr("Choose a directory..."),
+                                                        "",
+                                                        QStringLiteral("folder"),
+                                                        this->getThemedResourcePath())};
   lLayout->addWidget(lInputPathChooser, 0, 2);
 
   // Event binding
@@ -127,7 +131,11 @@ void BatchConversion::setupGeneralGUI(QGridLayout& aLayout)
 void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 {
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Skeleton"), "skeleton", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this,
+                                                  tr("Skeleton"),
+                                                  QStringLiteral("skeleton"),
+                                                  this->getThemedResourcePath(),
+                                                  this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 1, 0);
 
   auto lLayout{new QGridLayout(lGroupBox)};
@@ -145,15 +153,23 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   auto lSkeletonChooserHuman{new QComboBox(this)};
   lSkeletonChooserHuman->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserHuman->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooserHuman->setObjectName(QString("skeleton_chooser_human"));
+  lSkeletonChooserHuman->setObjectName(QStringLiteral("skeleton_chooser_human"));
   lLayout->addWidget(lSkeletonChooserHuman, 0, 1);
 
   // Refresh button
-  auto lSkeletonRefresherHuman{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", this->getThemedResourcePath())};
+  auto lSkeletonRefresherHuman{ComponentFactory::CreateButton(this,
+                                                              tr("Refresh"),
+                                                              "",
+                                                              QStringLiteral("refresh"),
+                                                              this->getThemedResourcePath())};
   lLayout->addWidget(lSkeletonRefresherHuman, 0, 2);
 
   // Open assets directory
-  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", this->getThemedResourcePath())};
+  auto lOpenAssetsDirectoryHuman{ComponentFactory::CreateButton(this,
+                                                                tr("View in explorer"),
+                                                                "",
+                                                                QStringLiteral("open_in_new"),
+                                                                this->getThemedResourcePath())};
   lLayout->addWidget(lOpenAssetsDirectoryHuman, 0, 3);
 
   // Beast skeleton file
@@ -162,17 +178,25 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
   auto lSkeletonChooserBeast{new QComboBox(this)};
   lSkeletonChooserBeast->setItemDelegate(new QStyledItemDelegate());
   lSkeletonChooserBeast->setCursor(Qt::PointingHandCursor);
-  lSkeletonChooserBeast->setObjectName(QString("skeleton_chooser_beast"));
+  lSkeletonChooserBeast->setObjectName(QStringLiteral("skeleton_chooser_beast"));
   lLayout->addWidget(lSkeletonChooserBeast, 1, 1);
 
   // Refresh button
-  auto lSkeletonRefresherBeast{ComponentFactory::CreateButton(this, tr("Refresh"), "", "refresh", this->getThemedResourcePath())};
+  auto lSkeletonRefresherBeast{ComponentFactory::CreateButton(this,
+                                                              tr("Refresh"),
+                                                              "",
+                                                              QStringLiteral("refresh"),
+                                                              this->getThemedResourcePath())};
   lLayout->addWidget(lSkeletonRefresherBeast, 1, 2);
 
   this->populateSkeletonChoosers();
 
   // Open assets directory
-  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this, tr("View in explorer"), "", "open_in_new", this->getThemedResourcePath())};
+  auto lOpenAssetsDirectoryBeast{ComponentFactory::CreateButton(this,
+                                                                tr("View in explorer"),
+                                                                "",
+                                                                QStringLiteral("open_in_new"),
+                                                                this->getThemedResourcePath())};
   lLayout->addWidget(lOpenAssetsDirectoryBeast, 1, 3);
 
   // Event binding
@@ -185,7 +209,11 @@ void BatchConversion::setupSkeletonGUI(QGridLayout& aLayout)
 void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
 {
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("BodySlide"), "bodyslide-logo", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this,
+                                                  tr("BodySlide"),
+                                                  QStringLiteral("bodyslide-logo"),
+                                                  this->getThemedResourcePath(),
+                                                  this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 2, 0);
 
   // Grid layout
@@ -201,8 +229,8 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
                                                                           true,
                                                                           0,
                                                                           this->getThemedResourcePath(),
-                                                                          QString("target_meshes_picker_button"),
-                                                                          QString("currently_targeted_body_feet"))};
+                                                                          QStringLiteral("target_meshes_picker_button"),
+                                                                          QStringLiteral("currently_targeted_body_feet"))};
 
   // Filters
   lLayout->addWidget(new QLabel(tr("BodySlide filters:"), this), 1, 0);
@@ -214,17 +242,22 @@ void BatchConversion::setupBodySlideGUI(QGridLayout& aLayout)
   auto lFiltersListChooser{new QComboBox(this)};
   lFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   lFiltersListChooser->setCursor(Qt::PointingHandCursor);
-  lFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
+  lFiltersListChooser->setObjectName(QStringLiteral("bodyslide_filters_chooser"));
   lFiltersListChooser->setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy::AdjustToContents);
   lFiltersWrapper->addWidget(lFiltersListChooser);
 
   auto lFiltersList{new QLabel("", this)};
-  lFiltersList->setObjectName(QString("bodyslide_filters"));
+  lFiltersList->setObjectName(QStringLiteral("bodyslide_filters"));
   lFiltersList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   lFiltersList->setWordWrap(true);
   lFiltersWrapper->addWidget(lFiltersList);
 
-  auto lEditFilters{ComponentFactory::CreateButton(this, tr("Edit BodySlide filters sets"), "", "filter", this->getThemedResourcePath(), "edit_filters")};
+  auto lEditFilters{ComponentFactory::CreateButton(this,
+                                                   tr("Edit BodySlide filters sets"),
+                                                   "",
+                                                   QStringLiteral("filter"),
+                                                   this->getThemedResourcePath(),
+                                                   QStringLiteral("edit_filters"))};
   lFiltersWrapper->addWidget(lEditFilters);
 
   // Pre-bind initialization functions
@@ -245,13 +278,13 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
   ComponentFactory::CreateOutputBox(this, aLayout, 3, 0, this->getThemedResourcePath(), this->mMinimumFirstColumnWidth, this->settings().display.font.pointSize);
 
   // Event binding
-  auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
+  auto lOutputPathChooser{this->findChild<QPushButton*>(QStringLiteral("output_path_chooser"))};
   QObject::connect(lOutputPathChooser, &QPushButton::clicked, this, &BatchConversion::chooseExportDirectory);
 
-  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
+  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QStringLiteral("output_path_subdirectory"))};
   QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview);
 
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))};
   QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
 
   // Pre-filled data
@@ -261,7 +294,11 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
 void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 {
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Scan tweaks"), "cog", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this,
+                                                  tr("Scan tweaks"),
+                                                  QStringLiteral("cog"),
+                                                  this->getThemedResourcePath(),
+                                                  this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 4, 0);
 
   // Layout
@@ -273,20 +310,28 @@ void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
   // Search mode selector
   auto lSoftSearch{new QRadioButton(tr("Smart search (only files with a name matching a certain pattern are listed)"), this)};
   lSoftSearch->setCursor(Qt::PointingHandCursor);
-  lSoftSearch->setObjectName(QString("scan_soft_search"));
+  lSoftSearch->setObjectName(QStringLiteral("scan_soft_search"));
   lLayout->addWidget(lSoftSearch);
 
   auto lHeavierSearch{new QRadioButton(tr("Advanced search (every single .nif file is listed)"), this)};
   lHeavierSearch->setCursor(Qt::PointingHandCursor);
-  lHeavierSearch->setObjectName(QString("scan_advanced_search"));
+  lHeavierSearch->setObjectName(QStringLiteral("scan_advanced_search"));
   lLayout->addWidget(lHeavierSearch);
 
   // Scan only "meshes" directory
-  auto lScanMeshesSubdirsOnly{ComponentFactory::CreateCheckBox(this, tr("Only scan the \"meshes\" subdirectories of each mod"), "", "only_scan_meshes_dir", true)};
+  auto lScanMeshesSubdirsOnly{ComponentFactory::CreateCheckBox(this,
+                                                               tr("Only scan the \"meshes\" subdirectories of each mod"),
+                                                               "",
+                                                               QStringLiteral("only_scan_meshes_dir"),
+                                                               true)};
   lLayout->addWidget(lScanMeshesSubdirsOnly);
 
   // Clear the irrelevant entries
-  auto lMustClearIrrelevantEntries{ComponentFactory::CreateCheckBox(this, tr("Clear the irrelevant entries (mods which do not contain any body, hands and feet mesh)"), "", "clear_irrelevant_entries", true)};
+  auto lMustClearIrrelevantEntries{ComponentFactory::CreateCheckBox(this,
+                                                                    tr("Clear the irrelevant entries (mods which do not contain any body, hands and feet mesh)"),
+                                                                    "",
+                                                                    QStringLiteral("clear_irrelevant_entries"),
+                                                                    true)};
   lLayout->addWidget(lMustClearIrrelevantEntries);
 
   // Post-bind events
@@ -296,7 +341,11 @@ void BatchConversion::setupScanTweaksGUI(QGridLayout& aLayout)
 void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 {
   // Group box
-  auto lGroupBox{ComponentFactory::CreateGroupBox(this, tr("Generation tweaks"), "cog", this->getThemedResourcePath(), this->settings().display.font.pointSize)};
+  auto lGroupBox{ComponentFactory::CreateGroupBox(this,
+                                                  tr("Generation tweaks"),
+                                                  QStringLiteral("cog"),
+                                                  this->getThemedResourcePath(),
+                                                  this->settings().display.font.pointSize)};
   aLayout.addWidget(lGroupBox, 5, 0);
 
   // Layout
@@ -308,12 +357,12 @@ void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
   // Generation method selector
   auto lGenerateDataArchitecture{new QRadioButton(tr("Generate everything for the \"Data\" directory directly"), this)};
   lGenerateDataArchitecture->setCursor(Qt::PointingHandCursor);
-  lGenerateDataArchitecture->setObjectName(QString("generate_data_architecture"));
+  lGenerateDataArchitecture->setObjectName(QStringLiteral("generate_data_architecture"));
   lLayout->addWidget(lGenerateDataArchitecture);
 
   auto lGenerateDedicatedModArchitecture{new QRadioButton(tr("Generate each preset in a dedicated directory"), this)};
   lGenerateDedicatedModArchitecture->setCursor(Qt::PointingHandCursor);
-  lGenerateDedicatedModArchitecture->setObjectName(QString("generate_dedicated_mod_architecture"));
+  lGenerateDedicatedModArchitecture->setObjectName(QStringLiteral("generate_dedicated_mod_architecture"));
   lLayout->addWidget(lGenerateDedicatedModArchitecture);
 
   // Post-bind events
@@ -323,7 +372,11 @@ void BatchConversion::setupGenerationAdjustmentGUI(QGridLayout& aLayout)
 void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 {
   // Batch generate button
-  auto lGenerateButton{ComponentFactory::CreateButton(this, tr("Launch the scan of the directory"), "", "build", this->getThemedResourcePath())};
+  auto lGenerateButton{ComponentFactory::CreateButton(this,
+                                                      tr("Launch the scan of the directory"),
+                                                      "",
+                                                      QStringLiteral("build"),
+                                                      this->getThemedResourcePath())};
   aLayout.addWidget(lGenerateButton);
 
   // Event binding
@@ -333,24 +386,24 @@ void BatchConversion::setupButtons(QHBoxLayout& aLayout)
 void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& aScannedData, const bool aMustGenerateFilesInExistingDirectory)
 {
   // Filters list
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
   auto lUserFilters{Utils::GetFiltersForExport(this->mFiltersList, lFiltersListChooser->itemText(lFiltersListChooser->currentIndex()), this->mTargetBodyMesh, this->mTargetFeetMesh)};
 
   // Human skeleton
-  auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
+  auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QStringLiteral("skeleton_chooser_human"))};
   auto lSkeletonPathHuman{Utils::GetSkeletonsFolderPath().append(lSkeletonChooserHuman->currentText())};
 
   // Beast skeleton
-  auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
+  auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QStringLiteral("skeleton_chooser_beast"))};
   auto lSkeletonPathBeast{Utils::GetSkeletonsFolderPath().append(lSkeletonChooserBeast->currentText())};
 
   // Output paths
-  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
-  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  auto lMainDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_directory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_subdirectory"))->text().trimmed()};
   Utils::CleanPathString(lSubDirectory);
 
   // Does the user want to define the path only through the secondary path?
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))->isChecked()};
 
   // Full extract path
   QString lEntryDirectory;
@@ -360,7 +413,7 @@ void BatchConversion::launchPicker(const std::map<QString, std::set<QString>>& a
     lEntryDirectory = (lSubDirectory.isEmpty() ? lMainDirectory : (lMainDirectory + "/" + lSubDirectory));
 
   // Generation method
-  auto lGenerateEachPresetInDedicatedDir{this->findChild<QRadioButton*>(QString("generate_dedicated_mod_architecture"))->isChecked()};
+  auto lGenerateEachPresetInDedicatedDir{this->findChild<QRadioButton*>(QStringLiteral("generate_dedicated_mod_architecture"))->isChecked()};
 
   // Construct the data container
   auto lData{Struct::BatchConversionData(lSkeletonPathHuman,
@@ -390,39 +443,42 @@ void BatchConversion::userHasDoneAnAction(int)
   this->mHasUserDoneSomething = true;
 
   // Body name selector
-  auto lBodyNameSelector{this->findChild<QComboBox*>(QString("body_selector_name"))};
+  auto lBodyNameSelector{this->findChild<QComboBox*>(QStringLiteral("body_selector_name"))};
   QObject::disconnect(lBodyNameSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
 
   // Body version selector
-  auto lBodyVersionSelector{this->findChild<QComboBox*>(QString("body_selector_version"))};
+  auto lBodyVersionSelector{this->findChild<QComboBox*>(QStringLiteral("body_selector_version"))};
   QObject::disconnect(lBodyVersionSelector, qOverload<int>(&QComboBox::currentIndexChanged), this, qOverload<int>(&BatchConversion::userHasDoneAnAction));
 }
 
 void BatchConversion::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "batchConversionInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("batchConversionInput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "batchConversionInput", lPath);
 
-  if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
+  if (!this->mHasUserDoneSomething && !lPath.isEmpty())
   {
     this->userHasDoneAnAction();
   }
 
   // Enable or disable path viewer label and launch button
-  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
+  auto lMustDisableButton{lPath.isEmpty()};
   lLineEdit->setDisabled(lMustDisableButton);
 }
 
 void BatchConversion::launchSearchProcess()
 {
   // Input path
-  const auto& lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+  const auto& lInputPath{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))->text()};
 
   // Check if the input path has been given by the user
   if (lInputPath.isEmpty())
@@ -432,12 +488,12 @@ void BatchConversion::launchSearchProcess()
   }
 
   // Output paths
-  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
-  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  auto lMainDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_directory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_subdirectory"))->text().trimmed()};
   Utils::CleanPathString(lSubDirectory);
 
   // Does the user want to define the path only through the secondary path?
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))->isChecked()};
 
   // Full extract path
   QString lEntryDirectory;
@@ -506,16 +562,16 @@ void BatchConversion::launchSearchProcess()
   std::map<QString, std::set<QString>>::iterator lMapPosition;
 
   QString lRelativeDirPath;
-  auto lFirstSlashPosition{-1};
-  auto lSecondSlashPosition{-1};
+  qsizetype lFirstSlashPosition{-1};
+  qsizetype lSecondSlashPosition{-1};
   QString lCurrentModSubDirName;
   QString lFileName;
   QString lKey;
   QString lSecondArgument;
 
-  auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QString("only_scan_meshes_dir"))->isChecked()};
-  auto lMustClearIrrelevantEntries{this->findChild<QCheckBox*>(QString("clear_irrelevant_entries"))->isChecked()};
-  auto lHeavierSearchEnabled{this->findChild<QRadioButton*>(QString("scan_advanced_search"))->isChecked()};
+  auto lScanMeshesSubdirsOnly{this->findChild<QCheckBox*>(QStringLiteral("only_scan_meshes_dir"))->isChecked()};
+  auto lMustClearIrrelevantEntries{this->findChild<QCheckBox*>(QStringLiteral("clear_irrelevant_entries"))->isChecked()};
+  auto lHeavierSearchEnabled{this->findChild<QRadioButton*>(QStringLiteral("scan_advanced_search"))->isChecked()};
   QStringList lMeshesFilesToFind{"femalebody_0.nif",
                                  "femalebody_1.nif",
                                  "femalehands_0.nif",
@@ -527,7 +583,7 @@ void BatchConversion::launchSearchProcess()
                                  "skeleton_female.nif",
                                  "skeletonbeast_female.nif"};
 
-  QDirIterator it(lInputPath, QStringList() << "*.nif", QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(lInputPath, QStringList(QStringLiteral("*.nif")), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -543,7 +599,7 @@ void BatchConversion::launchSearchProcess()
     if (lHeavierSearchEnabled || (lMeshesFilesToFind.contains(it.fileInfo().fileName()) || it.fileInfo().fileName().toLower().contains("skeleton")))
     {
       // Get the current directory
-      lRelativeDirPath = it.fileInfo().absolutePath().remove(lInputPath + "/", Qt::CaseInsensitive);
+      lRelativeDirPath = it.fileInfo().absolutePath().remove(lInputPath + "/", Qt::CaseSensitivity::CaseInsensitive);
       lFirstSlashPosition = lRelativeDirPath.indexOf("/");
       lSecondSlashPosition = lRelativeDirPath.indexOf("/", lFirstSlashPosition + 1);
 
@@ -551,7 +607,7 @@ void BatchConversion::launchSearchProcess()
       if (lScanMeshesSubdirsOnly)
       {
         lCurrentModSubDirName = lRelativeDirPath.mid(lFirstSlashPosition + 1, lSecondSlashPosition - (lFirstSlashPosition + 1));
-        if (lCurrentModSubDirName.compare("meshes", Qt::CaseInsensitive) != 0)
+        if (lCurrentModSubDirName.compare(QStringLiteral("meshes"), Qt::CaseSensitivity::CaseInsensitive) != 0)
         {
           continue;
         }
@@ -560,9 +616,9 @@ void BatchConversion::launchSearchProcess()
       lFileName = it.fileInfo().fileName();
 
       // Clean the file name from any artifact
-      lFileName.remove("_0.nif", Qt::CaseInsensitive);
-      lFileName.remove("_1.nif", Qt::CaseInsensitive);
-      lFileName.remove(".nif", Qt::CaseInsensitive);
+      lFileName.remove(QStringLiteral("_0.nif"), Qt::CaseSensitivity::CaseInsensitive);
+      lFileName.remove(QStringLiteral("_1.nif"), Qt::CaseSensitivity::CaseInsensitive);
+      lFileName.remove(QStringLiteral(".nif"), Qt::CaseSensitivity::CaseInsensitive);
 
       // Construct the key of the map
       lKey = lRelativeDirPath.left(lFirstSlashPosition);
@@ -748,10 +804,27 @@ void BatchConversion::batchCreatePresets(const Struct::BatchConversionData& aPre
   // Open the directory where the file structure has been created
   if (this->settings().batchConversion.automaticallyOpenFinalDirectory)
   {
-    Utils::DisplayInfoMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the batch generated directory"));
+    Utils::DisplayInfoMessage(this,
+                              lTitle,
+                              lMessage,
+                              QStringLiteral("icons"),
+                              QStringLiteral("green-info"),
+                              tr("Open the batch generated directory"));
     QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.getFullOutputPath()));
   }
-  else if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the batch generated directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  else if (Utils::DisplayQuestionMessage(this,
+                                         lTitle,
+                                         lMessage,
+                                         QStringLiteral("icons"),
+                                         QStringLiteral("green-info"),
+                                         tr("Open the batch generated directory"),
+                                         tr("OK"),
+                                         "",
+                                         "",
+                                         "",
+                                         "",
+                                         false)
+           == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(aPresetsData.getFullOutputPath()));
   }
@@ -764,18 +837,18 @@ void BatchConversion::populateSkeletonChoosers()
   QStringList lAvailableSkeletons;
 
   // Search for all "*.nif" files
-  QDirIterator it(lRootDir, QStringList() << QString("*.nif"), QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(lRootDir, QStringList(QStringLiteral("*.nif")), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     it.next();
-    lAvailableSkeletons.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
+    lAvailableSkeletons.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseSensitivity::CaseInsensitive));
   }
 
   /*=======*/
   /* Human */
   /*=======*/
   // Get the combobox
-  const auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QString("skeleton_chooser_human"))};
+  const auto lSkeletonChooserHuman{this->findChild<QComboBox*>(QStringLiteral("skeleton_chooser_human"))};
 
   // Save the selected skeleton file name
   const auto lPreviousIndexHuman{lSkeletonChooserHuman->currentIndex()};
@@ -795,7 +868,7 @@ void BatchConversion::populateSkeletonChoosers()
   /* Beast */
   /*=======*/
   // Get the combobox
-  const auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QString("skeleton_chooser_beast"))};
+  const auto lSkeletonChooserBeast{this->findChild<QComboBox*>(QStringLiteral("skeleton_chooser_beast"))};
 
   // Save the selected skeleton file name
   const auto lPreviousIndexBeast{lSkeletonChooserBeast->currentIndex()};
@@ -826,18 +899,28 @@ void BatchConversion::updateOutputPreview()
 {
   this->userHasDoneAnAction();
 
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
-  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QStringLiteral("output_path_directory"))};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_subdirectory"))->text().trimmed()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))->isChecked()};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QStringLiteral("output_path_preview"))};
 
-  Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->settings().display.successColor, this->settings().display.warningColor, this->settings().display.dangerColor, lOutputPathsPreview);
+  Utils::UpdateOutputPreview(this->mFileWatcher,
+                             lMainDirTextEdit,
+                             lSubDirectory,
+                             lUseOnlySubdir,
+                             this->settings().display.successColor,
+                             this->settings().display.warningColor,
+                             this->settings().display.dangerColor,
+                             lOutputPathsPreview);
 }
 
 void BatchConversion::chooseExportDirectory()
 {
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "batchConversionOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("output_path_directory"))};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("batchConversionOutput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "batchConversionOutput", lPath);
@@ -882,7 +965,7 @@ void BatchConversion::initBodySlideFiltersList()
   // Load and save the filters list
   this->mFiltersList = Utils::LoadFiltersFromFile();
 
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
 
   // Disable the combobox if there is not any available filter
   if (this->mFiltersList.size() == 0)
@@ -909,16 +992,16 @@ void BatchConversion::updateBodySlideFiltersList(const std::map<QString, QString
   }
 
   this->mFiltersList = aFilterList;
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QStringLiteral("bodyslide_filters"))};
   Utils::UpdateComboBoxBodyslideFiltersList(this->mFiltersList, lFiltersListChooser, lFiltersList);
 }
 
 void BatchConversion::updateBodySlideFiltersListPreview()
 {
   // Get the GUI widgets
-  auto lFiltersListChooser{this->findChild<QComboBox*>(QString("bodyslide_filters_chooser"))};
-  auto lFiltersList{this->findChild<QLabel*>(QString("bodyslide_filters"))};
+  auto lFiltersListChooser{this->findChild<QComboBox*>(QStringLiteral("bodyslide_filters_chooser"))};
+  auto lFiltersList{this->findChild<QLabel*>(QStringLiteral("bodyslide_filters"))};
 
   // Get any eventual additional filters
   auto lAdditionalFilter{Utils::GetAdditionalFeetFilter(this->mTargetBodyMesh, this->mTargetFeetMesh)};

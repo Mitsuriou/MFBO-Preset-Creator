@@ -29,7 +29,7 @@ WelcomeScreen::WelcomeScreen(QWidget* aParent, const Struct::Settings& aSettings
 void WelcomeScreen::closeEvent(QCloseEvent* aEvent)
 {
   // Before closing the welcome screen window, save the show/hide setting' state
-  auto lShowHideWelcomeScreen{this->findChild<QCheckBox*>(QString("always_show_welcome_screen"))};
+  auto lShowHideWelcomeScreen{this->findChild<QCheckBox*>(QStringLiteral("always_show_welcome_screen"))};
 
   // Update the setting's value
   auto lSettingsCopy{this->settings()};
@@ -58,7 +58,7 @@ void WelcomeScreen::initializeGUI()
 {
   // Main layout
   auto lMainLayout{ComponentFactory::CreateScrollAreaWindowLayout(this->getCentralWidget())};
-  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QString("window_buttons_layout"))};
+  const auto lButtonsLayout{this->findChild<QHBoxLayout*>(QStringLiteral("window_buttons_layout"))};
 
   /*================================*/
   /* Show / Hide the welcome screen */
@@ -66,7 +66,7 @@ void WelcomeScreen::initializeGUI()
   auto lShowHideWelcomeScreen{ComponentFactory::CreateCheckBox(this,
                                                                tr("Show the welcome screen at application startup"),
                                                                "",
-                                                               "always_show_welcome_screen",
+                                                               QStringLiteral("always_show_welcome_screen"),
                                                                this->settings().general.startupAction == StartupAction::OPEN_WELCOME_SCREEN)};
   lButtonsLayout->addWidget(lShowHideWelcomeScreen);
 
@@ -83,7 +83,7 @@ void WelcomeScreen::initializeGUI()
   auto lDonateButton{ComponentFactory::CreateButton(this,
                                                     tr("Donate - buy me a coffee (ko-fi.com)"),
                                                     "",
-                                                    "coffee",
+                                                    QStringLiteral("coffee"),
                                                     this->getThemedResourcePath(),
                                                     "",
                                                     false,
@@ -98,12 +98,12 @@ void WelcomeScreen::initializeGUI()
 
   // Current version's status label
   auto lCurrentVersionStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lCurrentVersionStatusLabel->setObjectName(QString("current_version_status_label"));
+  lCurrentVersionStatusLabel->setObjectName(QStringLiteral("current_version_status_label"));
   lMainLayout->addWidget(lCurrentVersionStatusLabel);
 
   // Current version's release notes
   auto lBrowserCurrentVersionReleaseNotes{new QTextBrowser(this)};
-  lBrowserCurrentVersionReleaseNotes->setObjectName(QString("browser_current_version"));
+  lBrowserCurrentVersionReleaseNotes->setObjectName(QStringLiteral("browser_current_version"));
   lBrowserCurrentVersionReleaseNotes->setOpenExternalLinks(true);
   lBrowserCurrentVersionReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserCurrentVersionReleaseNotes);
@@ -116,23 +116,23 @@ void WelcomeScreen::initializeGUI()
 
   // Latest stable release notes
   auto lBrowserStableReleaseNotes{new QTextBrowser(this)};
-  lBrowserStableReleaseNotes->setObjectName(QString("browser_stable"));
+  lBrowserStableReleaseNotes->setObjectName(QStringLiteral("browser_stable"));
   lBrowserStableReleaseNotes->setOpenExternalLinks(true);
   lBrowserStableReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserStableReleaseNotes);
 
   // Stable status label
   auto lStableStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lStableStatusLabel->setObjectName(QString("stable_status_label"));
+  lStableStatusLabel->setObjectName(QStringLiteral("stable_status_label"));
   lMainLayout->addWidget(lStableStatusLabel);
 
   // Download stable update button
   auto lDownloadStableUpdate{ComponentFactory::CreateButton(this,
                                                             tr("Download the latest stable update"),
                                                             "",
-                                                            "cloud-download",
+                                                            QStringLiteral("cloud-download"),
                                                             this->getThemedResourcePath(),
-                                                            "download_stable_update",
+                                                            QStringLiteral("download_stable_update"),
                                                             false,
                                                             true)};
   lMainLayout->addWidget(lDownloadStableUpdate);
@@ -146,23 +146,23 @@ void WelcomeScreen::initializeGUI()
 
   // Latest BETA release notes
   auto lBrowserBetaReleaseNotes{new QTextBrowser(this)};
-  lBrowserBetaReleaseNotes->setObjectName(QString("browser_beta"));
+  lBrowserBetaReleaseNotes->setObjectName(QStringLiteral("browser_beta"));
   lBrowserBetaReleaseNotes->setOpenExternalLinks(true);
   lBrowserBetaReleaseNotes->hide();
   lMainLayout->addWidget(lBrowserBetaReleaseNotes);
 
   // BETA status label
   auto lBetaStatusLabel{new QLabel(tr("Contacting GitHub.com..."), this)};
-  lBetaStatusLabel->setObjectName(QString("beta_status_label"));
+  lBetaStatusLabel->setObjectName(QStringLiteral("beta_status_label"));
   lMainLayout->addWidget(lBetaStatusLabel);
 
   // Download BETA update button
   auto lDownloadBetaUpdate{ComponentFactory::CreateButton(this,
                                                           tr("Download the latest BETA update"),
                                                           "",
-                                                          "cloud-download",
+                                                          QStringLiteral("cloud-download"),
                                                           this->getThemedResourcePath(),
-                                                          "download_beta_update",
+                                                          QStringLiteral("download_beta_update"),
                                                           false,
                                                           true)};
   lMainLayout->addWidget(lDownloadBetaUpdate);
@@ -177,7 +177,14 @@ void WelcomeScreen::initializeGUI()
   lIncomingFeaturesLabel->setWordWrap(true);
   lMainLayout->addWidget(lIncomingFeaturesLabel);
 
-  auto lOpenIncomingFeatures{ComponentFactory::CreateButton(this, tr("Incoming features list (github.com)"), "", "external", this->getThemedResourcePath(), "", false, true)};
+  auto lOpenIncomingFeatures{ComponentFactory::CreateButton(this,
+                                                            tr("Incoming features list (github.com)"),
+                                                            "",
+                                                            QStringLiteral("external"),
+                                                            this->getThemedResourcePath(),
+                                                            "",
+                                                            false,
+                                                            true)};
   lMainLayout->addWidget(lOpenIncomingFeatures);
 
   /*==============*/
@@ -189,7 +196,14 @@ void WelcomeScreen::initializeGUI()
   lKnownIssuesLabel->setWordWrap(true);
   lMainLayout->addWidget(lKnownIssuesLabel);
 
-  auto lOpenKnownIssues{ComponentFactory::CreateButton(this, tr("Known issues list (github.com)"), "", "external", this->getThemedResourcePath(), "", false, true)};
+  auto lOpenKnownIssues{ComponentFactory::CreateButton(this,
+                                                       tr("Known issues list (github.com)"),
+                                                       "",
+                                                       QStringLiteral("external"),
+                                                       this->getThemedResourcePath(),
+                                                       "",
+                                                       false,
+                                                       true)};
   lMainLayout->addWidget(lOpenKnownIssues);
 
   /*=====================*/
@@ -201,7 +215,14 @@ void WelcomeScreen::initializeGUI()
   lGuideLabel->setWordWrap(true);
   lMainLayout->addWidget(lGuideLabel);
 
-  auto lOpenGuideTutorials{ComponentFactory::CreateButton(this, tr("User guide and tutorials (docs.google.com)"), "", "external", this->getThemedResourcePath(), "", false, true)};
+  auto lOpenGuideTutorials{ComponentFactory::CreateButton(this,
+                                                          tr("User guide and tutorials (docs.google.com)"),
+                                                          "",
+                                                          QStringLiteral("external"),
+                                                          this->getThemedResourcePath(),
+                                                          "",
+                                                          false,
+                                                          true)};
   lMainLayout->addWidget(lOpenGuideTutorials);
 
   /*===============*/
@@ -242,12 +263,12 @@ void WelcomeScreen::openKoFiPage()
 void WelcomeScreen::launchUpdateDialog()
 {
   const auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
-  if (lEventSource == this->findChild<QPushButton*>(QString("download_stable_update")))
+  if (lEventSource == this->findChild<QPushButton*>(QStringLiteral("download_stable_update")))
   {
     new Update(this->parentWidget(), this->settings(), this->lastPaths(), true, false);
     this->close();
   }
-  else if (lEventSource == this->findChild<QPushButton*>(QString("download_beta_update")))
+  else if (lEventSource == this->findChild<QPushButton*>(QStringLiteral("download_beta_update")))
   {
     new Update(this->parentWidget(), this->settings(), this->lastPaths(), false, true);
     this->close();
@@ -295,9 +316,9 @@ void WelcomeScreen::updateCheckFinished()
 
 void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 {
-  auto lCurrentVersionStatusLabel{this->findChild<QLabel*>(QString("current_version_status_label"))};
-  auto lStableStatusLabel{this->findChild<QLabel*>(QString("stable_status_label"))};
-  auto lBetaStatusLabel{this->findChild<QLabel*>(QString("beta_status_label"))};
+  auto lCurrentVersionStatusLabel{this->findChild<QLabel*>(QStringLiteral("current_version_status_label"))};
+  auto lStableStatusLabel{this->findChild<QLabel*>(QStringLiteral("stable_status_label"))};
+  auto lBetaStatusLabel{this->findChild<QLabel*>(QStringLiteral("beta_status_label"))};
 
   // Display error messages to the user
   if (!aSucceeded)
@@ -309,9 +330,9 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
     return;
   }
 
-  auto lBrowserCurrentVersionReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_current_version"))};
-  auto lBrowserStableReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_stable"))};
-  auto lBrowserBetaReleaseNotes{this->findChild<QTextBrowser*>(QString("browser_beta"))};
+  auto lBrowserCurrentVersionReleaseNotes{this->findChild<QTextBrowser*>(QStringLiteral("browser_current_version"))};
+  auto lBrowserStableReleaseNotes{this->findChild<QTextBrowser*>(QStringLiteral("browser_stable"))};
+  auto lBrowserBetaReleaseNotes{this->findChild<QTextBrowser*>(QStringLiteral("browser_beta"))};
 
   const auto lCurrentVersion{Utils::GetApplicationVersion()};
   const auto lVersionsInformation{Utils::ParseGitHubReleasesRequestResult(aResult)};
@@ -348,7 +369,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
   }
   else
   {
-    lCurrentVersionStatusLabel->setText(tr("The release notes for the version \"%1\" has not been found.").arg(lCurrentVersion));
+    lCurrentVersionStatusLabel->setText(tr("The release notes for the version \"%1\" have not been found.").arg(lCurrentVersion));
   }
 
   /*========*/
@@ -372,7 +393,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
   {
     lBrowserStableReleaseNotes->show();
     lStableStatusLabel->setText(tr("The new stable version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getLatestStableVersionNumber()));
-    this->findChild<QPushButton*>(QString("download_stable_update"))->show();
+    this->findChild<QPushButton*>(QStringLiteral("download_stable_update"))->show();
   }
   // Already running the latest version
   else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::EQUIVALENT)
@@ -384,7 +405,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
   {
     lBrowserStableReleaseNotes->show();
     lStableStatusLabel->setText(tr("You are running a BETA version. Above are displayed the latest stable version release notes.\nPress the button below to open the updater window:"));
-    this->findChild<QPushButton*>(QString("download_stable_update"))->show();
+    this->findChild<QPushButton*>(QStringLiteral("download_stable_update"))->show();
   }
   // Running a developper version (since the current version number is higher than the latest one available on GitHub)
   else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestStableVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::OLDER)
@@ -429,7 +450,7 @@ void WelcomeScreen::displayUpdateMessage(const bool aSucceeded, const QString& a
   {
     lBrowserBetaReleaseNotes->show();
     lBetaStatusLabel->setText(tr("The new BETA version \"%1\" is available on GitHub.\nPress the button below to open the updater window:").arg(lVersionsInformation.getLatestBetaVersionNumber()));
-    this->findChild<QPushButton*>(QString("download_beta_update"))->show();
+    this->findChild<QPushButton*>(QStringLiteral("download_beta_update"))->show();
   }
   // Running a developper version (since the current version number is higher than the latest one available on GitHub)
   else if (Utils::CompareVersionNumbers(lVersionsInformation.getLatestBetaVersionNumber(), lCurrentVersion) == ApplicationVersionRelative::OLDER)

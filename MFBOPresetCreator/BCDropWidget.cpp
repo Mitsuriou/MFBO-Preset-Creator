@@ -25,20 +25,20 @@ BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCa
 
   // Path
   auto lPathLabel{new QLabel(this)};
-  lPathLabel->setObjectName(QString("path_label"));
+  lPathLabel->setObjectName(QStringLiteral("path_label"));
   lMainLayout->addWidget(lPathLabel, 0, 0);
 
   auto lPathContent{new QLabel(this)};
-  lPathContent->setObjectName(QString("path_content"));
+  lPathContent->setObjectName(QStringLiteral("path_content"));
   lMainLayout->addWidget(lPathContent, 0, 1);
 
   // Origin directory
   auto lOriginLabel{new QLabel(this)};
-  lOriginLabel->setObjectName(QString("origin_label"));
+  lOriginLabel->setObjectName(QStringLiteral("origin_label"));
   lMainLayout->addWidget(lOriginLabel, 1, 0);
 
   auto lOriginContent{new QLabel(this)};
-  lOriginContent->setObjectName(QString("origin_content"));
+  lOriginContent->setObjectName(QStringLiteral("origin_content"));
   lMainLayout->addWidget(lOriginContent, 1, 1);
 
   // Alternative model
@@ -174,11 +174,11 @@ void BCDropWidget::checkBoxStateChanged(int aNewState)
 
 void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, const QString& aNewOriginText, const QString& aNewResourceText, const bool aUseAlternativeModel)
 {
-  auto lPathLabel{this->findChild<QLabel*>(QString("path_label"))};
-  auto lPathContent{this->findChild<QLabel*>(QString("path_content"))};
-  auto lOriginLabel{this->findChild<QLabel*>(QString("origin_label"))};
-  auto lOriginContent{this->findChild<QLabel*>(QString("origin_content"))};
-  auto lUseAlternativeModel{this->findChild<QCheckBox*>(QString("use_alternative_model"))};
+  auto lPathLabel{this->findChild<QLabel*>(QStringLiteral("path_label"))};
+  auto lPathContent{this->findChild<QLabel*>(QStringLiteral("path_content"))};
+  auto lOriginLabel{this->findChild<QLabel*>(QStringLiteral("origin_label"))};
+  auto lOriginContent{this->findChild<QLabel*>(QStringLiteral("origin_content"))};
+  auto lUseAlternativeModel{this->findChild<QCheckBox*>(QStringLiteral("use_alternative_model"))};
 
   if (aShouldViewDropZoneOnly)
   {
@@ -226,9 +226,9 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
 
 QCheckBox* BCDropWidget::createCheckBox(const QString& lText, QGridLayout& aLayout)
 {
-  QCheckBox* lUseAlternativeModel{ComponentFactory::CreateCheckBox(this, lText, "", "use_alternative_model", false)};
+  auto lUseAlternativeModel{ComponentFactory::CreateCheckBox(this, lText, "", QStringLiteral("use_alternative_model"), false)};
 
-  QSizePolicy lKeepHeightWhenHidden = lUseAlternativeModel->sizePolicy();
+  auto lKeepHeightWhenHidden{lUseAlternativeModel->sizePolicy()};
   lKeepHeightWhenHidden.setRetainSizeWhenHidden(true);
   lUseAlternativeModel->setSizePolicy(lKeepHeightWhenHidden);
 

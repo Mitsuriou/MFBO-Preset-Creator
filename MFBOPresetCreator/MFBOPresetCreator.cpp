@@ -56,7 +56,7 @@ void MFBOPresetCreator::closeEvent(QCloseEvent* aEvent)
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
-  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())
   {
     aEvent->accept();
@@ -99,7 +99,7 @@ void MFBOPresetCreator::dragEnterEvent(QDragEnterEvent* aEvent)
   {
     auto lFileName{lUrl.toLocalFile()};
     QFileInfo lFileInfo(lFileName);
-    if (lFileInfo.exists() && lFileInfo.isFile() && lFileInfo.completeSuffix().compare("pcp") == 0)
+    if (lFileInfo.exists() && lFileInfo.isFile() && lFileInfo.completeSuffix().compare(QStringLiteral("pcp"), Qt::CaseSensitivity::CaseInsensitive) == 0)
     {
       lAcceptEvent = true;
     }
@@ -122,10 +122,10 @@ void MFBOPresetCreator::dropEvent(QDropEvent* aEvent)
   {
     auto lFileName{lUrl.toLocalFile()};
     QFileInfo lFileInfo(lFileName);
-    if (lFileInfo.exists() && lFileInfo.isFile() && lFileInfo.completeSuffix().compare("pcp") == 0)
+    if (lFileInfo.exists() && lFileInfo.isFile() && lFileInfo.completeSuffix().compare(QStringLiteral("pcp"), Qt::CaseSensitivity::CaseInsensitive) == 0)
     {
       aEvent->acceptProposedAction();
-      qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))->loadProject(lFileName, true);
+      qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))->loadProject(lFileName, true);
     }
   }
 }
@@ -135,7 +135,7 @@ void MFBOPresetCreator::initializeGUI()
   this->setupMenuBar();
 
   auto lMainContainer{new PresetCreator(this, this->mSettings, &this->mLastPaths)};
-  lMainContainer->setObjectName(QString("main_container"));
+  lMainContainer->setObjectName(QStringLiteral("main_container"));
   this->setCentralWidget(lMainContainer);
 
   this->refreshUI(this->mSettings, false);
@@ -180,18 +180,18 @@ void MFBOPresetCreator::setupMenuBar()
 
   // Action: Open project file
   auto lOpenProjectFile{Utils::BuildQAction(this, tr("Open project..."), QKeySequence(Qt::CTRL | Qt::Key_O), "file", lIconFolder)};
-  lOpenProjectFile->setObjectName(QString("action_open_project"));
+  lOpenProjectFile->setObjectName(QStringLiteral("action_open_project"));
   lFile->addAction(lOpenProjectFile);
 
   // Action: Save current project
   auto lSaveProject{Utils::BuildQAction(this, tr("Save"), QKeySequence(Qt::CTRL | Qt::Key_S), "save", lIconFolder)};
-  lSaveProject->setObjectName(QString("action_save_project"));
+  lSaveProject->setObjectName(QStringLiteral("action_save_project"));
   lSaveProject->setDisabled(true);
   lFile->addAction(lSaveProject);
 
   // Action: Save current project as
   auto lSaveProjectAs{Utils::BuildQAction(this, tr("Save as..."), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S), "save", lIconFolder)};
-  lSaveProjectAs->setObjectName(QString("action_save_project_as"));
+  lSaveProjectAs->setObjectName(QStringLiteral("action_save_project_as"));
   lFile->addAction(lSaveProjectAs);
 
   lFile->addSeparator();
@@ -444,14 +444,14 @@ void MFBOPresetCreator::applyGlobalStyleSheet()
   // Reset icons color
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
-  auto lEditFiltersButton{this->findChild<QPushButton*>(QString("edit_filters"))};
+  auto lEditFiltersButton{this->findChild<QPushButton*>(QStringLiteral("edit_filters"))};
   if (lEditFiltersButton != nullptr)
   {
     lEditFiltersButton->setIcon(QIcon(QPixmap(QString(":/%1/filter").arg(lIconFolder))));
     lEditFiltersButton->setIconSize(QSize(17, 17)); // TODO: Multiply the size by the DPI scale
   }
 
-  auto lSkeletonRefresherButton{this->findChild<QPushButton*>(QString("skeleton_chooser_refresher"))};
+  auto lSkeletonRefresherButton{this->findChild<QPushButton*>(QStringLiteral("skeleton_chooser_refresher"))};
   if (lSkeletonRefresherButton != nullptr)
   {
     lSkeletonRefresherButton->setIcon(QIcon(QPixmap(QString(":/%1/refresh").arg(lIconFolder))));
@@ -488,56 +488,56 @@ std::vector<QLineEdit*> MFBOPresetCreator::disableLineEditPlaceholders()
   // Workaround function for style glitch with QSS and QLineEdit
   std::vector<QLineEdit*> lList;
 
-  auto lMeshesPathBody{this->findChild<QLineEdit*>(QString("meshes_path_input_femalebody"))};
+  auto lMeshesPathBody{this->findChild<QLineEdit*>(QStringLiteral("meshes_path_input_femalebody"))};
   if (lMeshesPathBody->isEnabled())
   {
     lMeshesPathBody->setDisabled(true);
     lList.push_back(lMeshesPathBody);
   }
 
-  auto lMeshesPathFeet{this->findChild<QLineEdit*>(QString("meshes_path_input_femalefeet"))};
+  auto lMeshesPathFeet{this->findChild<QLineEdit*>(QStringLiteral("meshes_path_input_femalefeet"))};
   if (lMeshesPathFeet->isEnabled())
   {
     lMeshesPathFeet->setDisabled(true);
     lList.push_back(lMeshesPathFeet);
   }
 
-  auto lMeshesPathHands{this->findChild<QLineEdit*>(QString("meshes_path_input_femalehands"))};
+  auto lMeshesPathHands{this->findChild<QLineEdit*>(QStringLiteral("meshes_path_input_femalehands"))};
   if (lMeshesPathHands->isEnabled())
   {
     lMeshesPathHands->setDisabled(true);
     lList.push_back(lMeshesPathHands);
   }
 
-  auto lBodyMeshNameInput{this->findChild<QLineEdit*>(QString("body_mesh_name_input"))};
+  auto lBodyMeshNameInput{this->findChild<QLineEdit*>(QStringLiteral("body_mesh_name_input"))};
   if (lBodyMeshNameInput->isEnabled())
   {
     lBodyMeshNameInput->setDisabled(true);
     lList.push_back(lBodyMeshNameInput);
   }
 
-  auto lFeetMeshNameInput{this->findChild<QLineEdit*>(QString("feet_mesh_name_input"))};
+  auto lFeetMeshNameInput{this->findChild<QLineEdit*>(QStringLiteral("feet_mesh_name_input"))};
   if (lFeetMeshNameInput->isEnabled())
   {
     lFeetMeshNameInput->setDisabled(true);
     lList.push_back(lFeetMeshNameInput);
   }
 
-  auto lHandsMeshNameInput{this->findChild<QLineEdit*>(QString("hands_mesh_name_input"))};
+  auto lHandsMeshNameInput{this->findChild<QLineEdit*>(QStringLiteral("hands_mesh_name_input"))};
   if (lHandsMeshNameInput->isEnabled())
   {
     lHandsMeshNameInput->setDisabled(true);
     lList.push_back(lHandsMeshNameInput);
   }
 
-  auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>(QString("skeleton_path_directory"))};
+  auto lSkeletonPathLineEdit{this->findChild<QLineEdit*>(QStringLiteral("skeleton_path_directory"))};
   if (lSkeletonPathLineEdit->isEnabled())
   {
     lSkeletonPathLineEdit->setDisabled(true);
     lList.push_back(lSkeletonPathLineEdit);
   }
 
-  auto lSkeletonName{this->findChild<QLineEdit*>(QString("skeleton_name"))};
+  auto lSkeletonName{this->findChild<QLineEdit*>(QStringLiteral("skeleton_name"))};
   if (lSkeletonName->isEnabled())
   {
     lSkeletonName->setDisabled(true);
@@ -642,7 +642,7 @@ void MFBOPresetCreator::displayUpdateMessage(const bool aSucceeded, const QStrin
                                         lTitle,
                                         lMessage,
                                         lIconFolder,
-                                        "info-circle",
+                                        QStringLiteral("info-circle"),
                                         tr("Download and install the update now"),
                                         tr("Download later"),
                                         "",
@@ -665,7 +665,7 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
     this->mSettings = aSettings;
 
     // Update the settings
-    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))};
     lMainHandler->updateSettings(aSettings);
   }
   else
@@ -686,19 +686,19 @@ void MFBOPresetCreator::refreshUI(Struct::Settings aSettings, bool aMustUpdateSe
 
 void MFBOPresetCreator::loadProject()
 {
-  qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))->loadProject();
+  qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))->loadProject();
 }
 
 void MFBOPresetCreator::saveProject(const bool aIsQuittingContext)
 {
-  auto lEventSource{qobject_cast<QAction*>(this->sender())};
-  if (aIsQuittingContext || lEventSource->objectName().compare("action_save_project") == 0)
+  const auto lEventSource{qobject_cast<QAction*>(this->sender())};
+  if (aIsQuittingContext || lEventSource->objectName().compare(QStringLiteral("action_save_project")) == 0)
   {
-    qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))->saveProject(false);
+    qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))->saveProject(false);
   }
-  else if (lEventSource->objectName().compare("action_save_project_as") == 0)
+  else if (lEventSource->objectName().compare(QStringLiteral("action_save_project_as")) == 0)
   {
-    qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))->saveProject(true);
+    qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))->saveProject(true);
   }
 }
 
@@ -707,7 +707,7 @@ void MFBOPresetCreator::quickRelaunch()
   // User theme accent
   const auto& lIconFolder{Utils::GetIconResourceFolder(this->mSettings.display.applicationTheme)};
 
-  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))};
   if (!lMainContainer->hasUserDoneSomething())
   {
     qApp->exit(Utils::EXIT_CODE_REBOOT);
@@ -718,7 +718,7 @@ void MFBOPresetCreator::quickRelaunch()
                                                  tr("Quick restart"),
                                                  tr("You will lose all the unsaved data. Do you still want to quickly restart the application?"),
                                                  lIconFolder,
-                                                 "help-circle",
+                                                 QStringLiteral("help-circle"),
                                                  tr("Quickly restart the application"),
                                                  tr("Go back to the application"),
                                                  tr("Save the project and quit the application"),
@@ -752,7 +752,7 @@ void MFBOPresetCreator::fillUIByAssistedConversionValues(QString aPresetName, st
   }
 
   // Proxy the event to the current tab
-  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+  auto lMainContainer{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))};
   lMainContainer->fillUIByAssistedConversionValues(aPresetName, aResultsList);
 }
 
@@ -762,7 +762,7 @@ void MFBOPresetCreator::launchBatchConversion()
 
   QObject::connect(lDialog, &BatchConversion::modalClosed, [=]() {
     // Update the BodySlide sets in case they were modified through the BatchConversion's window
-    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))};
     lMainHandler->updateBodySlideSets();
   });
 }
@@ -773,7 +773,7 @@ void MFBOPresetCreator::launchPresetsRetargeting()
 
   QObject::connect(lDialog, &RetargetingTool::modalClosed, [=]() {
     // Update the BodySlide sets in case they were modified through the RetargetingTool's window
-    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))};
+    auto lMainHandler{qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))};
     lMainHandler->updateBodySlideSets();
   });
 }
@@ -785,7 +785,7 @@ void MFBOPresetCreator::launchTexturesAssistant()
 
 void MFBOPresetCreator::injectDataFromOSPFile()
 {
-  qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QString("main_container")))->injectDataFromOSPFile();
+  qobject_cast<PresetCreator*>(this->findChild<QWidget*>(QStringLiteral("main_container")))->injectDataFromOSPFile();
 }
 
 void MFBOPresetCreator::launchSettingsDialog()

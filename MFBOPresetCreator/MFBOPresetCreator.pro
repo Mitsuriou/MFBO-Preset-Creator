@@ -4,7 +4,7 @@ QMAKE_LFLAGS += -no-pie
 
 TEMPLATE = app
 
-CONFIG += c++17
+CONFIG += c++20
 
 HEADERS += ./resource.h \
     ./WelcomeScreen.h \
@@ -35,7 +35,10 @@ HEADERS += ./resource.h \
     FileIDPicker.h \
     FirstInstallWindow.h \
     GroupBox.h \
+    LineEdit.h \
+    PlainTextEdit.h \
     SSSPSelectionBlock.h \
+    SliderSetsDBDAO.h \
     SliderSetsDBEntry.h \
     SliderSetsDBManager.h \
     SliderSetsImporter.h \
@@ -70,7 +73,10 @@ SOURCES += ./main.cpp \
     FileIDPicker.cpp \
     FirstInstallWindow.cpp \
     GroupBox.cpp \
+    LineEdit.cpp \
+    PlainTextEdit.cpp \
     SSSPSelectionBlock.cpp \
+    SliderSetsDBDAO.cpp \
     SliderSetsDBEntry.cpp \
     SliderSetsDBManager.cpp \
     SliderSetsImporter.cpp \

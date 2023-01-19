@@ -25,7 +25,7 @@ bool isArgValidFilePath(const QString& aPathToTest)
 {
   QFile lFileToTest{aPathToTest};
   QFileInfo lFileInfo{lFileToTest};
-  return (lFileToTest.exists() && lFileInfo.completeSuffix().compare("pcp") == 0);
+  return (lFileToTest.exists() && lFileInfo.completeSuffix().compare(QStringLiteral("pcp"), Qt::CaseSensitivity::CaseInsensitive) == 0);
 }
 
 int main(int argc, char* argv[])

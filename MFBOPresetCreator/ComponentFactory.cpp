@@ -138,7 +138,7 @@ namespace ComponentFactory
     if (aGenerateButtonsBottomLayout)
     {
       const auto lButtonsLayout{new QHBoxLayout(aParent)};
-      lButtonsLayout->setObjectName(QString("window_buttons_layout"));
+      lButtonsLayout->setObjectName(QStringLiteral("window_buttons_layout"));
       lButtonsLayout->setSpacing(10);
       lButtonsLayout->setContentsMargins(10, 0, 10, 10);
       lButtonsLayout->setAlignment(Qt::AlignTop);
@@ -156,14 +156,14 @@ namespace ComponentFactory
                                                const int aColumnSpan)
   {
     auto lScrollArea{new QScrollArea(aParent)};
-    lScrollArea->setObjectName(QString("scrollable_zone"));
+    lScrollArea->setObjectName(QStringLiteral("scrollable_zone"));
     lScrollArea->setWidgetResizable(true);
 
     auto lMainWidget{new QFrame(aParent)};
     lScrollArea->setWidget(lMainWidget);
 
     auto lDataContainer{new QGridLayout(aParent)};
-    lDataContainer->setObjectName(QString("data_container"));
+    lDataContainer->setObjectName(QStringLiteral("data_container"));
     lDataContainer->setAlignment(Qt::AlignTop);
     lDataContainer->setContentsMargins(10, 10, 10, 10);
 
@@ -191,7 +191,14 @@ namespace ComponentFactory
                       aLayoutRow + (aSingleLineForLabelAndActions ? 0 : 1),
                       (aSingleLineForLabelAndActions ? 1 : 0));
 
-    auto lTargetMeshesPicker{CreateButton(aParent, QObject::tr("Choose target meshes"), "", "mesh", aIconFolder, aButtonObjectName, false, true)};
+    auto lTargetMeshesPicker{CreateButton(aParent,
+                                          QObject::tr("Choose target meshes"),
+                                          "",
+                                          QStringLiteral("mesh"),
+                                          aIconFolder,
+                                          aButtonObjectName,
+                                          false,
+                                          true)};
     lBodyNameVersionWrapper->addWidget(lTargetMeshesPicker);
 
     auto lCurrentlyTargetedBody{new QLabel(QObject::tr("Targeted body: -\nTargeted feet: -"), aParent)};
@@ -233,31 +240,39 @@ namespace ComponentFactory
 
     auto lOutputPathLineEdit{new LineEdit(aParent)};
     lOutputPathLineEdit->setReadOnly(true);
-    lOutputPathLineEdit->setObjectName(QString("output_path_directory"));
+    lOutputPathLineEdit->setObjectName(QStringLiteral("output_path_directory"));
     lOutputGridLayout->addWidget(lOutputPathLineEdit, 0, 1);
 
     // Main directory's file chooser button
-    auto lOutputPathChooser{CreateButton(aParent, QObject::tr("Choose a directory..."), "", "folder", aIconFolder, "output_path_chooser")};
+    auto lOutputPathChooser{CreateButton(aParent,
+                                         QObject::tr("Choose a directory..."),
+                                         "",
+                                         QStringLiteral("folder"),
+                                         aIconFolder,
+                                         "output_path_chooser")};
     lOutputGridLayout->addWidget(lOutputPathChooser, 0, 2);
 
     // Subdirectory
     lOutputGridLayout->addWidget(new QLabel(QObject::tr("Output subdirectory name/path:"), aParent), 1, 0);
 
     auto lOutputSubpathLineEdit{new LineEdit(aParent)};
-    lOutputSubpathLineEdit->setObjectName(QString("output_path_subdirectory"));
+    lOutputSubpathLineEdit->setObjectName(QStringLiteral("output_path_subdirectory"));
     lOutputGridLayout->addWidget(lOutputSubpathLineEdit, 1, 1);
 
     // Use only subdirectory path
     lOutputGridLayout->addWidget(new QLabel(QObject::tr("Use only subdirectory path?"), aParent), 2, 0);
 
-    auto lUseOnlySubdir{CreateCheckBox(aParent, QObject::tr("Check this box to define the export as only the subdirectory field (use at your own risk)"), "", "only_use_subdirectory")};
+    auto lUseOnlySubdir{CreateCheckBox(aParent,
+                                       QObject::tr("Check this box to define the export as only the subdirectory field (use at your own risk)"),
+                                       "",
+                                       QStringLiteral("only_use_subdirectory"))};
     lOutputGridLayout->addWidget(lUseOnlySubdir, 2, 1, 1, 2);
 
     // Preview
     lOutputGridLayout->addWidget(new QLabel(QObject::tr("Preview:"), aParent), 3, 0);
 
     auto lOutputPathsPreview{new QLabel("", aParent)};
-    lOutputPathsPreview->setObjectName(QString("output_path_preview"));
+    lOutputPathsPreview->setObjectName(QStringLiteral("output_path_preview"));
     lOutputPathsPreview->setAutoFillBackground(true);
     lOutputGridLayout->addWidget(lOutputPathsPreview, 3, 1);
   }

@@ -72,7 +72,7 @@ void SliderSetsDBManager::initializeGUI()
 
   // Plain text viewer
   const auto lFileViewer{new PlainTextEdit(this)};
-  lFileViewer->setObjectName("file_content_viewer");
+  lFileViewer->setObjectName(QStringLiteral("file_content_viewer"));
   lFileViewer->setReadOnly(true);
   lFileViewer->setLineWrapMode(QPlainTextEdit::NoWrap);
   lFileViewer->setWordWrapMode(QTextOption::NoWrap);
@@ -80,7 +80,7 @@ void SliderSetsDBManager::initializeGUI()
 
   // Displayed file's path
   const auto lDisplayedFilePath{new QLabel(this)};
-  lDisplayedFilePath->setObjectName("file_path");
+  lDisplayedFilePath->setObjectName(QStringLiteral("file_path"));
   lRightWrapperLayout->addWidget(lDisplayedFilePath);
 
   //
@@ -181,7 +181,7 @@ void SliderSetsDBManager::importNewSliderSets(const std::vector<Struct::SliderSe
 
     while (!lNextNodeToParse.isNull())
     {
-      if (lNextNodeToParse.tagName().compare("SliderSet", Qt::CaseSensitivity::CaseInsensitive) == 0)
+      if (lNextNodeToParse.tagName().compare(QStringLiteral("SliderSet"), Qt::CaseSensitivity::CaseInsensitive) == 0)
       {
         const auto lSliderSetName{lNextNodeToParse.attribute("name", "")};
 
@@ -247,7 +247,7 @@ void SliderSetsDBManager::addDatabaseLine(const int aIndex, const Struct::Databa
   // If the index is not already in the database, add it
   if (lPosition == this->mDatabase.end())
   {
-    this->mDatabase.insert({aIndex, aSliderSetData});
+    this->mDatabase.insert(std::make_pair(aIndex, aSliderSetData));
   }
 
   SliderSetsDBDAO::saveDatabase(this->mDatabase);

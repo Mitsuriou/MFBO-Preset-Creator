@@ -71,7 +71,7 @@ void FirstInstallWindow::initializeGUI()
 
   // Create the central widget
   const auto lStackedWidget{new QStackedWidget(this)};
-  lStackedWidget->setObjectName("stacked_widget");
+  lStackedWidget->setObjectName(QStringLiteral("stacked_widget"));
   lMainLayout->addWidget(lStackedWidget, 0, 0);
 
   // Stacked widget pages
@@ -99,7 +99,7 @@ void FirstInstallWindow::constructLanguagePage(QStackedWidget& aParent)
 
   // Main title
   const auto lMainTitle{new QLabel(this)};
-  lMainTitle->setObjectName("main_title_page_1");
+  lMainTitle->setObjectName(QStringLiteral("main_title_page_1"));
   lMainTitle->setAlignment(Qt::AlignCenter);
   const auto lFontSize{10}; // Same as Struct::Settings.display.font.size
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(lFontSize * 2));
@@ -112,7 +112,7 @@ void FirstInstallWindow::constructLanguagePage(QStackedWidget& aParent)
     const auto lButton{new QRadioButton(lLanguages.at(i), this)};
     lButton->setAutoExclusive(true);
     lButton->setCursor(Qt::CursorShape::PointingHandCursor);
-    lButton->setObjectName(QString("language_button_%1").arg(QString::number(i)));
+    lButton->setObjectName(QStringLiteral("language_button_%1").arg(QString::number(i)));
     lLayout->addWidget(lButton);
 
     // Event binding
@@ -125,7 +125,7 @@ void FirstInstallWindow::constructLanguagePage(QStackedWidget& aParent)
 
   // Current language
   const auto lCurrentLanguageLabel{new QLabel(this)};
-  lCurrentLanguageLabel->setObjectName("current_language_label");
+  lCurrentLanguageLabel->setObjectName(QStringLiteral("current_language_label"));
   lCurrentLanguageLabel->setAlignment(Qt::AlignCenter);
   lLayout->addWidget(lCurrentLanguageLabel);
 
@@ -152,7 +152,7 @@ void FirstInstallWindow::constructApplicationThemePage(QStackedWidget& aParent)
 
   // Main title
   const auto lMainTitle{new QLabel(this)};
-  lMainTitle->setObjectName("main_title_page_2");
+  lMainTitle->setObjectName(QStringLiteral("main_title_page_2"));
   lMainTitle->setAlignment(Qt::AlignCenter);
   const auto lFontSize{10}; // Same as Struct::Settings.display.font.size
   lMainTitle->setStyleSheet(QString("font-size: %1pt").arg(lFontSize * 2));
@@ -174,7 +174,7 @@ void FirstInstallWindow::constructApplicationThemePage(QStackedWidget& aParent)
 
   // Current theme
   const auto lCurrentThemeLabel{new QLabel(this)};
-  lCurrentThemeLabel->setObjectName("current_theme_label");
+  lCurrentThemeLabel->setObjectName(QStringLiteral("current_theme_label"));
   lCurrentThemeLabel->setAlignment(Qt::AlignCenter);
   lMainLayout->addWidget(lCurrentThemeLabel, 2, 0);
 
@@ -198,7 +198,13 @@ void FirstInstallWindow::setupButtons(QGridLayout& aMainLayout)
   if (lGoToPreviousStep != nullptr)
     delete lGoToPreviousStep;
 
-  lGoToPreviousStep = ComponentFactory::CreateButton(this, "", "", "arrow-left", lIconFolder, "previous_step", true);
+  lGoToPreviousStep = ComponentFactory::CreateButton(this,
+                                                     "",
+                                                     "",
+                                                     QStringLiteral("arrow-left"),
+                                                     lIconFolder,
+                                                     QStringLiteral("previous_step"),
+                                                     true);
   lWrapperLayout->addWidget(lGoToPreviousStep);
 
   // Next step
@@ -207,7 +213,12 @@ void FirstInstallWindow::setupButtons(QGridLayout& aMainLayout)
   if (lGoToNextStep != nullptr)
     delete lGoToNextStep;
 
-  lGoToNextStep = ComponentFactory::CreateButton(this, "", "", "arrow-right", lIconFolder, "next_step");
+  lGoToNextStep = ComponentFactory::CreateButton(this,
+                                                 "",
+                                                 "",
+                                                 QStringLiteral("arrow-right"),
+                                                 lIconFolder,
+                                                 QStringLiteral("next_step"));
   lWrapperLayout->addWidget(lGoToNextStep);
 
   // Validate
@@ -216,7 +227,12 @@ void FirstInstallWindow::setupButtons(QGridLayout& aMainLayout)
   if (lValidateButton != nullptr)
     delete lValidateButton;
 
-  lValidateButton = ComponentFactory::CreateButton(this, "", "", "done", lIconFolder, "validate");
+  lValidateButton = ComponentFactory::CreateButton(this,
+                                                   "",
+                                                   "",
+                                                   QStringLiteral("done"),
+                                                   lIconFolder,
+                                                   QStringLiteral("validate"));
   lWrapperLayout->addWidget(lValidateButton);
 
   // Event binding
@@ -397,7 +413,7 @@ void FirstInstallWindow::loadQSSTheme(const QString& aThemeName, const int aCard
   }
 
   // Set the new checked radio button
-  const auto lCheckedRadioButton{this->findChild<QRadioButton*>(QString("selector_%1").arg(QString::number(aCardIndex)))};
+  const auto lCheckedRadioButton{this->findChild<QRadioButton*>(QStringLiteral("selector_%1").arg(QString::number(aCardIndex)))};
   lCheckedRadioButton->setChecked(true);
 
   // Apply the new theme on the GUI
@@ -405,7 +421,7 @@ void FirstInstallWindow::loadQSSTheme(const QString& aThemeName, const int aCard
 
   // Store the last loaded theme
   const auto lThemes{DataLists::GetAppThemes()};
-  const auto lPreviousTheme = this->mChosenTheme;
+  const auto lPreviousTheme{this->mChosenTheme};
   this->mChosenTheme = static_cast<GUITheme>(lThemes.indexOf(aThemeName));
 
   // Display the name of the current theme

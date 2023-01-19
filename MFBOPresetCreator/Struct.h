@@ -22,7 +22,8 @@ namespace Struct
       , meshPartType(aMeshPartType)
       , outputPath(aOutputPath)
       , outputFile(aOutputFile)
-    {}
+    {
+    }
 
     void setName(const QString& aName)
     {
@@ -75,10 +76,10 @@ namespace Struct
     }
 
   private:
-    QString name{""};
+    QString name;
     MeshPartType meshPartType{MeshPartType::UNKNOWN};
-    QString outputPath{""};
-    QString outputFile{""};
+    QString outputPath;
+    QString outputFile;
   };
 
   struct Font
@@ -348,7 +349,8 @@ namespace Struct
       : path(aPath)
       , name(aName)
       , role(aRole)
-    {}
+    {
+    }
 
     const QString& getPath() const
     {
@@ -366,8 +368,8 @@ namespace Struct
     }
 
   private:
-    QString path{""};
-    QString name{""};
+    QString path;
+    QString name;
     int role{0};
 
     AssistedConversionResult() = delete;
@@ -382,7 +384,8 @@ namespace Struct
       : active(aIsActive)
       , sliderSetName(aSliderSetName)
       , meshType(aMeshType)
-    {}
+    {
+    }
 
     // Active
     void setActive(const bool aIsActive)
@@ -451,7 +454,8 @@ namespace Struct
       , originalSliderSetName(aOriginalSliderSetName)
       , newSliderSetName(aNewSliderSetName)
       , meshType(aMeshType)
-    {}
+    {
+    }
 
     const QString& getFilePath() const
     {
@@ -490,7 +494,8 @@ namespace Struct
       , body(aBody)
       , feet(aFeet)
       , hands(aHands)
-    {}
+    {
+    }
 
     const QString& getFilter() const
     {
@@ -513,7 +518,7 @@ namespace Struct
     }
 
   private:
-    QString filter{""};
+    QString filter;
     bool body{false};
     bool feet{false};
     bool hands{false};

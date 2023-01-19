@@ -83,7 +83,7 @@ void TargetMeshesPicker::initializeGUI()
   /* Label for currently chosen meshes mods */
   /*========================================*/
   auto lCurrentlyTargetedBody{new QLabel(tr("Targeted body: -\nTargeted feet: -"), this)};
-  lCurrentlyTargetedBody->setObjectName("currently_targeted_body_feet");
+  lCurrentlyTargetedBody->setObjectName(QStringLiteral("currently_targeted_body_feet"));
   lMainLayout->addWidget(lCurrentlyTargetedBody, lMainLayout->rowCount(), 0, 1, 2);
 
   /*================*/
@@ -137,7 +137,7 @@ void TargetMeshesPicker::setupBodyTabWidget(QGridLayout& aMainLayout)
 
   // Tab widget
   auto lBodyTabWidget{new QTabWidget(this)};
-  lBodyTabWidget->setObjectName(QString("body_tab_widget"));
+  lBodyTabWidget->setObjectName(QStringLiteral("body_tab_widget"));
   lBodyTabWidget->setAutoFillBackground(true);
   lBodyTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   aMainLayout.addWidget(lBodyTabWidget, 1, 0, 1, 2);
@@ -178,7 +178,7 @@ void TargetMeshesPicker::setupFeetTabWidget(QGridLayout& aMainLayout)
 
   // Tab widget
   auto lFeetTabWidget{new QTabWidget(this)};
-  lFeetTabWidget->setObjectName(QString("feet_tab_widget"));
+  lFeetTabWidget->setObjectName(QStringLiteral("feet_tab_widget"));
   lFeetTabWidget->setAutoFillBackground(true);
   lFeetTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   aMainLayout.addWidget(lFeetTabWidget, 3, 0, 1, 2);
@@ -219,7 +219,7 @@ void TargetMeshesPicker::setupHandsTabWidget(QGridLayout& aMainLayout)
 
   // Tab widget
   auto lHandsTabWidget{new QTabWidget(this)};
-  lHandsTabWidget->setObjectName(QString("hands_tab_widget"));
+  lHandsTabWidget->setObjectName(QStringLiteral("hands_tab_widget"));
   lHandsTabWidget->setAutoFillBackground(true);
   lHandsTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   aMainLayout.addWidget(lHandsTabWidget, 5, 0);
@@ -248,7 +248,7 @@ void TargetMeshesPicker::setupEmbeddedHandsTab(QTabWidget& aTabWidget)
 
   // Automatic value
   const auto lValueHands{new QLabel(this)};
-  lValueHands->setObjectName("automatic_hands_value");
+  lValueHands->setObjectName(QStringLiteral("automatic_hands_value"));
   lTabLayout->addWidget(lValueHands);
 }
 
@@ -270,7 +270,7 @@ void TargetMeshesPicker::setupBeastHandsTabWidget(QGridLayout& aMainLayout)
 
   // Tab widget
   auto lBeastHandsTabWidget{new QTabWidget(this)};
-  lBeastHandsTabWidget->setObjectName(QString("hands_tab_widget"));
+  lBeastHandsTabWidget->setObjectName(QStringLiteral("hands_tab_widget"));
   lBeastHandsTabWidget->setAutoFillBackground(true);
   lBeastHandsTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   aMainLayout.addWidget(lBeastHandsTabWidget, 5, 1);
@@ -299,7 +299,7 @@ void TargetMeshesPicker::setupEmbeddedBeastHandsTab(QTabWidget& aTabWidget)
 
   // Automatic value
   const auto lValueBeastHands{new QLabel(this)};
-  lValueBeastHands->setObjectName("automatic_beast_hands_value");
+  lValueBeastHands->setObjectName(QStringLiteral("automatic_beast_hands_value"));
   lTabLayout->addWidget(lValueBeastHands);
 }
 

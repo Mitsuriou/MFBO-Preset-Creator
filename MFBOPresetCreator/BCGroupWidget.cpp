@@ -31,11 +31,18 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 
   // Drop zone
   auto lDropWidget{new BCDropWidget(lSection, this->mCallContext)};
-  lDropWidget->setObjectName(QString("drop_widget"));
+  lDropWidget->setObjectName(QStringLiteral("drop_widget"));
   lSectionLayout->addWidget(lDropWidget, 0, 0, 2, 1);
 
   // Remove data entry button
-  auto lRemoveButton{ComponentFactory::CreateButton(this, tr("Remove this data entry"), "", "cross", lIconFolder, "remove_button", false, true)};
+  auto lRemoveButton{ComponentFactory::CreateButton(this,
+                                                    tr("Remove this data entry"),
+                                                    "",
+                                                    QStringLiteral("cross"),
+                                                    lIconFolder,
+                                                    QStringLiteral("remove_button"),
+                                                    false,
+                                                    true)};
 
   QSizePolicy lSizePolicyRemoveButton{lRemoveButton->sizePolicy()};
   lSizePolicyRemoveButton.setRetainSizeWhenHidden(true);
@@ -45,7 +52,14 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
   lSectionLayout->addWidget(lRemoveButton, 0, 1);
 
   // Duplicate data entry button
-  auto lDuplicateButton{ComponentFactory::CreateButton(this, tr("Duplicate this data entry"), "", "duplicate", lIconFolder, "duplicate_button", false, true)};
+  auto lDuplicateButton{ComponentFactory::CreateButton(this,
+                                                       tr("Duplicate this data entry"),
+                                                       "",
+                                                       QStringLiteral("duplicate"),
+                                                       lIconFolder,
+                                                       QStringLiteral("duplicate_button"),
+                                                       false,
+                                                       true)};
 
   QSizePolicy lSizePolicyDuplicateButton{lDuplicateButton->sizePolicy()};
   lSizePolicyDuplicateButton.setRetainSizeWhenHidden(true);
@@ -63,9 +77,9 @@ BCGroupWidget::BCGroupWidget(QWidget* aParent, const Struct::Settings& aSettings
 
 void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
 {
-  auto lRemoveButton{this->findChild<QPushButton*>(QString("remove_button"))};
-  auto lDuplicateButton{this->findChild<QPushButton*>(QString("duplicate_button"))};
-  auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
+  auto lRemoveButton{this->findChild<QPushButton*>(QStringLiteral("remove_button"))};
+  auto lDuplicateButton{this->findChild<QPushButton*>(QStringLiteral("duplicate_button"))};
+  auto lDropWidget{this->findChild<BCDropWidget*>(QStringLiteral("drop_widget"))};
 
   if (this->mCallContext == BCGroupWidgetCallContext::BODY)
   {
@@ -136,11 +150,11 @@ void BCGroupWidget::setData(const Struct::BatchConversionPresetData& aData)
 void BCGroupWidget::removeData()
 {
   // Current object treatment
-  this->findChild<QPushButton*>(QString("remove_button"))->hide();
-  this->findChild<QPushButton*>(QString("duplicate_button"))->hide();
+  this->findChild<QPushButton*>(QStringLiteral("remove_button"))->hide();
+  this->findChild<QPushButton*>(QStringLiteral("duplicate_button"))->hide();
 
   // Lower treatment
-  auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
+  auto lDropWidget{this->findChild<BCDropWidget*>(QStringLiteral("drop_widget"))};
   auto lOriginFolder{lDropWidget->getOriginFolder()};
   auto lResourcePath{lDropWidget->getResourcePath()};
   lDropWidget->resetData();
@@ -151,7 +165,7 @@ void BCGroupWidget::removeData()
 
 void BCGroupWidget::duplicateData()
 {
-  auto lDropWidget{this->findChild<BCDropWidget*>(QString("drop_widget"))};
+  auto lDropWidget{this->findChild<BCDropWidget*>(QStringLiteral("drop_widget"))};
   auto lOriginFolder{lDropWidget->getOriginFolder()};
   auto lResourcePath{lDropWidget->getResourcePath()};
 
@@ -163,14 +177,14 @@ void BCGroupWidget::dropEventTrigerredReceiver(const QString& aOldOriginFolder, 
   // Check if any data was already set in the drop widget
   if (!aOldOriginFolder.isEmpty() && !aNewOriginFolder.isEmpty())
   {
-    emit BCGroupWidget::removePressed(aOldOriginFolder, aOldResourcePath); // Simulate a click on the "remove" button to make the data go in list again
-    this->findChild<BCDropWidget*>(QString("drop_widget"))->resetData();   // Finally, reset the drop widget data
+    emit BCGroupWidget::removePressed(aOldOriginFolder, aOldResourcePath);      // Simulate a click on the "remove" button to make the data go in list again
+    this->findChild<BCDropWidget*>(QStringLiteral("drop_widget"))->resetData(); // Finally, reset the drop widget data
   }
   else
   {
     // Current object treatment
-    this->findChild<QPushButton*>(QString("remove_button"))->show();
-    this->findChild<QPushButton*>(QString("duplicate_button"))->show();
+    this->findChild<QPushButton*>(QStringLiteral("remove_button"))->show();
+    this->findChild<QPushButton*>(QStringLiteral("duplicate_button"))->show();
   }
 
   // Upper treatment

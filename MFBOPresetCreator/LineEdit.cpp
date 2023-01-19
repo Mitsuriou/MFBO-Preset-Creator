@@ -3,11 +3,13 @@
 
 LineEdit::LineEdit(const QString& aText, QWidget* aParent)
   : QLineEdit(aText, aParent)
-{}
+{
+}
 
 LineEdit::LineEdit(QWidget* aParent)
   : LineEdit("", aParent)
-{}
+{
+}
 
 bool LineEdit::event(QEvent* aEvent)
 {
@@ -19,7 +21,7 @@ bool LineEdit::event(QEvent* aEvent)
     {
       if (lCurrentPalette.color(lRole, QPalette::ColorRole::PlaceholderText).alpha() == 255)
       {
-        auto lColor{lCurrentPalette.color(lRole, QPalette::ColorRole::Text)};
+        QColor lColor{lCurrentPalette.color(lRole, QPalette::ColorRole::Text)};
         lColor.setAlpha(128);
         lCurrentPalette.setColor(lRole, QPalette::ColorRole::PlaceholderText, lColor);
         setPalette(lCurrentPalette);

@@ -30,7 +30,7 @@ Update::Update(QWidget* aParent,
   this->show();
 
   // Search for updates instantly
-  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QStringLiteral("search_button"))};
   lSearchButton->click();
 }
 
@@ -68,7 +68,7 @@ void Update::initializeGUI()
 
   // Download progress bar
   auto lDownloadProgressBar{new QProgressBar(this)};
-  lDownloadProgressBar->setObjectName(QString("download_progress_bar"));
+  lDownloadProgressBar->setObjectName(QStringLiteral("download_progress_bar"));
   lDownloadProgressBar->setTextVisible(true);
   lDownloadProgressBar->setFormat(tr("Initializing..."));
   lMainLayout->addWidget(lDownloadProgressBar);
@@ -76,7 +76,7 @@ void Update::initializeGUI()
 
   // Fetch status
   auto lFetchStatus{new QLabel(this)};
-  lFetchStatus->setObjectName(QString("fetch_status"));
+  lFetchStatus->setObjectName(QStringLiteral("fetch_status"));
   lFetchStatus->setWordWrap(true);
   lFetchStatus->hide();
   lMainLayout->addWidget(lFetchStatus);
@@ -87,7 +87,7 @@ void Update::initializeGUI()
 
 void Update::checkForUpdate()
 {
-  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
+  auto lFetchStatus{this->findChild<QLabel*>(QStringLiteral("fetch_status"))};
   lFetchStatus->setText(tr("Contacting GitHub.com..."));
   lFetchStatus->show();
 
@@ -115,8 +115,8 @@ void Update::updateCheckFinished()
 
 void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 {
-  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
-  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
+  auto lFetchStatus{this->findChild<QLabel*>(QStringLiteral("fetch_status"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QStringLiteral("search_button"))};
 
   if (!aSucceeded)
   {
@@ -162,7 +162,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 
       QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-      auto lVersionFileName = lVersionsInformation.getLatestBetaVersionNumber();
+      auto lVersionFileName{lVersionsInformation.getLatestBetaVersionNumber()};
       if (Utils::IsRunningStandaloneVersion())
       {
         this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), lVersionFileName);
@@ -202,7 +202,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 
       QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::checkForUpdate);
       QObject::connect(lSearchButton, &QPushButton::clicked, this, &Update::downloadLatestUpdate);
-      auto lVersionFileName = lVersionsInformation.getLatestStableVersionNumber();
+      auto lVersionFileName{lVersionsInformation.getLatestStableVersionNumber()};
       if (Utils::IsRunningStandaloneVersion())
       {
         this->mSaveFilePath = QString("%1/MFBOPC v.%2 standalone.zip").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), lVersionFileName);
@@ -231,7 +231,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
   }
 
   // Display the latest release's full release notes as markdown format
-  const auto& lDescription = lUseStableVersionNotes ? lVersionsInformation.getLatestStableReleaseNotes() : lVersionsInformation.getLatestBetaReleaseNotes();
+  const auto& lDescription{lUseStableVersionNotes ? lVersionsInformation.getLatestStableReleaseNotes() : lVersionsInformation.getLatestBetaReleaseNotes()};
   auto lTextContainer{new QTextBrowser(this)};
   lTextContainer->setOpenExternalLinks(true);
   lTextContainer->setMarkdown(lDescription);
@@ -248,7 +248,7 @@ void Update::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 
 void Update::downloadLatestUpdate()
 {
-  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QStringLiteral("search_button"))};
   lSearchButton->setText(tr("Cancel the download"));
   lSearchButton->setToolTip(tr("Cancel the download"));
 
@@ -286,7 +286,7 @@ void Update::downloadLatestUpdate()
 void Update::cancelCurrentDownload()
 {
   // Update the GUI
-  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QStringLiteral("search_button"))};
   lSearchButton->setText(tr("Download canceled: click to try to download the update once again"));
   lSearchButton->setToolTip(tr("Download canceled: click to try to download the update once again"));
 
@@ -314,7 +314,7 @@ void Update::chunkSizeUpdated(qint64 aBytesRead, qint64 aTotal)
     return;
   }
 
-  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
+  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QStringLiteral("download_progress_bar"))};
 
   // Show and update the bar only if a relevant download has started
   if (aTotal > 200000) // 0.20MB
@@ -342,7 +342,7 @@ void Update::fileDownloadEnded()
       this->mDownloadedFile = nullptr;
     }
 
-    auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
+    auto lDownloadProgressBar{this->findChild<QProgressBar*>(QStringLiteral("download_progress_bar"))};
     lDownloadProgressBar->hide();
 
     this->mReply->deleteLater();
@@ -393,11 +393,11 @@ void Update::fileDownloadEnded()
 
 void Update::displayFileDownloadEndStatus(const bool aResult)
 {
-  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QString("download_progress_bar"))};
+  auto lDownloadProgressBar{this->findChild<QProgressBar*>(QStringLiteral("download_progress_bar"))};
   lDownloadProgressBar->hide();
 
-  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
-  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
+  auto lFetchStatus{this->findChild<QLabel*>(QStringLiteral("fetch_status"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QStringLiteral("search_button"))};
   QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::cancelCurrentDownload);
 
   auto lStandaloneSuccessText{tr("Download successful. Click the button above to open the directory where the file has been downloaded.\n\n")};
@@ -480,7 +480,7 @@ void Update::displayFileDownloadEndStatus(const bool aResult)
 
 void Update::installLatestUpdate()
 {
-  auto lSearchButton{this->findChild<QPushButton*>(QString("search_button"))};
+  auto lSearchButton{this->findChild<QPushButton*>(QStringLiteral("search_button"))};
   lSearchButton->setDisabled(true);
 
   QObject::disconnect(lSearchButton, &QPushButton::clicked, this, &Update::installLatestUpdate);

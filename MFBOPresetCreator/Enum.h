@@ -297,6 +297,26 @@ enum class FeetNameVersion
   KHRYSAMERE_HG_FEET_1_6
 };
 
+enum class HandsEntry
+{
+  CBBE_HANDS,
+  CBBE_3BBB_HANDS,
+  BHUNP_3BBB_ADVANCED_HANDS,
+  BHUNP_3BBB_ADVANCED_HANDS_VER_3,
+  COCO_HANDS_CBBE_V4,
+  COCO_HANDS_CBBE_V6,
+  COCO_HANDS_UUNP_V3,
+  COCO_HANDS_UUNP_V4,
+  COCO_HANDS_UUNP_V6,
+  ASDASDF_BHUNP_HANDS
+};
+
+enum class BeastHandsEntry
+{
+  CBBE_HANDS_BEAST,
+  CBBE_3BBB_HANDS_BEAST
+};
+
 enum class ApplicationLanguage
 {
   ENGLISH,

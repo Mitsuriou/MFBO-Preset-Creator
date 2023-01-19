@@ -26,8 +26,8 @@ SliderSetsImporter::SliderSetsImporter(QWidget* aParent, const Struct::Settings&
 void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
 {
   // Catch the sender of the event
-  auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
-  auto lValidationBtn{this->findChild<QPushButton*>(QString("validate_selection"))};
+  const auto lEventSource{qobject_cast<QPushButton*>(this->sender())};
+  const auto lValidationBtn{this->findChild<QPushButton*>(QStringLiteral("validate_selection"))};
 
   if ((lEventSource == lValidationBtn) || !this->mHasUserDoneSomething)
   {
@@ -71,7 +71,7 @@ void SliderSetsImporter::initializeGUI()
   // Input path value
   auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
+  lInputPathLineEdit->setObjectName(QStringLiteral("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
   lMainLayout->addWidget(lInputPathLineEdit, 0, 1);
 
@@ -113,28 +113,28 @@ void SliderSetsImporter::displayHintZone()
   auto lMainLayout{qobject_cast<QGridLayout*>(this->getCentralLayout())};
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
   lHintZone->setMinimumHeight(300);
-  lHintZone->setObjectName(QString("hint_zone"));
+  lHintZone->setObjectName(QStringLiteral("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
   lMainLayout->addWidget(lHintZone, 2, 0, 1, 3);
 }
 
 void SliderSetsImporter::deleteAlreadyExistingWindowBottom() const
 {
-  auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+  auto lHintZone{this->findChild<QLabel*>(QStringLiteral("hint_zone"))};
   if (lHintZone)
   {
     delete lHintZone;
     lHintZone = nullptr;
   }
 
-  auto lOldValidationButton{this->findChild<QPushButton*>(QString("validate_selection"))};
+  auto lOldValidationButton{this->findChild<QPushButton*>(QStringLiteral("validate_selection"))};
   if (lOldValidationButton)
   {
     delete lOldValidationButton;
     lOldValidationButton = nullptr;
   }
 
-  auto lOldScrollArea{this->findChild<QScrollArea*>(QString("scrollable_zone"))};
+  auto lOldScrollArea{this->findChild<QScrollArea*>(QStringLiteral("scrollable_zone"))};
   if (lOldScrollArea)
   {
     delete lOldScrollArea;
@@ -145,20 +145,20 @@ void SliderSetsImporter::deleteAlreadyExistingWindowBottom() const
 void SliderSetsImporter::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+  auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(),
-                                                 "sliderSetsImporterInput",
-                                                 lLineEdit->text(),
-                                                 this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("sliderSetsImporterInput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "sliderSetsImporterInput", lPath);
 
   // Enable or disable path viewer label and launch button
-  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
+  auto lMustDisableButton{lPath.isEmpty()};
   lLineEdit->setDisabled(lMustDisableButton);
   lLaunchSearchButton->setDisabled(lMustDisableButton);
 
@@ -167,16 +167,16 @@ void SliderSetsImporter::chooseInputDirectory()
 
 bool SliderSetsImporter::isFileNameRecognized(const QString& aFileName)
 {
-  return (aFileName.compare("skeleton_female", Qt::CaseInsensitive) == 0
-          || aFileName.compare("skeletonbeast_female", Qt::CaseInsensitive) == 0
-          || aFileName.compare("femalehands", Qt::CaseInsensitive) == 0
-          || aFileName.compare("femalefeet", Qt::CaseInsensitive) == 0
-          || aFileName.compare("femalebody", Qt::CaseInsensitive) == 0);
+  return (aFileName.compare(QStringLiteral("skeleton_female"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("skeletonbeast_female"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("femalehands"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("femalefeet"), Qt::CaseSensitivity::CaseInsensitive) == 0
+          || aFileName.compare(QStringLiteral("femalebody"), Qt::CaseSensitivity::CaseInsensitive) == 0);
 }
 
 void SliderSetsImporter::launchSearchProcess()
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
   lLaunchSearchButton->setDisabled(true);
 
   if (this->mHasUserDoneSomething)
@@ -205,11 +205,11 @@ void SliderSetsImporter::launchSearchProcess()
 
 void SliderSetsImporter::launchSearch()
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
+  const auto lInputPath{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))->text()};
 
   // The root directory should at least contain an ESP, ESL or ESM file to be scanned.
-  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList({"*.esl", "*.esm", "*.esp"})) == 0)
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList({QStringLiteral("*.esl"), QStringLiteral("*.esm"), QStringLiteral("*.esp")})) == 0)
   {
     // If it does not contain one of the wanted files, ask the user to start or cancel the scan
     if (Utils::DisplayQuestionMessage(this,
@@ -259,7 +259,7 @@ void SliderSetsImporter::launchSearch()
   }
 
   // The root directory should at least contain an OSP file to be scanned.
-  if (Utils::GetNumberFilesByExtensions(lCheckPath, QStringList({"*.osp"})) == 0)
+  if (Utils::GetNumberFilesByExtensions(lCheckPath, QStringList({QStringLiteral("*.osp")})) == 0)
   {
     Utils::DisplayErrorMessage(tr("No OSP file were found in the \"SliderSets\" directory."));
     lLaunchSearchButton->setDisabled(false);
@@ -291,7 +291,7 @@ std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsImporter::scanF
 
   std::multimap<QString, std::vector<Struct::SliderSet>> lScannedValues;
 
-  QDirIterator it(aRootDir, QStringList() << "*.osp", QDir::Files, QDirIterator::IteratorFlag::NoIteratorFlags);
+  QDirIterator it(aRootDir, QStringList(QStringLiteral("*.osp")), QDir::Files, QDirIterator::IteratorFlag::NoIteratorFlags);
   while (it.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -303,7 +303,7 @@ std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsImporter::scanF
 
     it.next();
 
-    lScannedValues.insert({it.filePath(), Utils::ReadOSPFileInformation(it.filePath(), true)});
+    lScannedValues.insert(std::make_pair(it.filePath(), Utils::ReadOSPFileInformation(it.filePath(), true)));
   }
 
   return lScannedValues;
@@ -311,14 +311,14 @@ std::multimap<QString, std::vector<Struct::SliderSet>> SliderSetsImporter::scanF
 
 void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::vector<Struct::SliderSet>>& aFoundOspFiles)
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
   lLaunchSearchButton->setDisabled(false);
 
   // No file found
   if (aFoundOspFiles.empty())
   {
     this->displayHintZone();
-    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+    auto lHintZone{this->findChild<QLabel*>(QStringLiteral("hint_zone"))};
     if (lHintZone)
     {
       lHintZone->setText(tr("No OSP file were found in the \"SliderSets\" directory."));
@@ -368,7 +368,7 @@ void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::v
 std::vector<Struct::SliderSetResult> SliderSetsImporter::getChosenValuesFromInterface() const
 {
   // Fetch the grid layout
-  auto lDataContainer{this->findChild<QGridLayout*>(QString("data_container"))};
+  auto lDataContainer{this->findChild<QGridLayout*>(QStringLiteral("data_container"))};
 
   // Iterate in the layout
   auto lLinesToTreat{lDataContainer->rowCount()};

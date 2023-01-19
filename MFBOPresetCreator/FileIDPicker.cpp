@@ -89,7 +89,7 @@ QWidget* FileIDPicker::createChoiceEntry(const Struct::NexusModsFileInformation&
   lLayout->addWidget(lFileID, lLineIndex++, 0, Qt::AlignmentFlag::AlignLeft);
 
   // Selection button
-  auto lSelectionButton{ComponentFactory::CreateButton(lWrapper, tr("Select this file"), "", "done", lIconFolder)};
+  auto lSelectionButton{ComponentFactory::CreateButton(lWrapper, tr("Select this file"), "", QStringLiteral("done"), lIconFolder)};
   lLayout->addWidget(lSelectionButton, 0, 1, lLineIndex + 1, 1, Qt::AlignmentFlag::AlignRight);
 
   QObject::connect(lSelectionButton, &QPushButton::clicked, [=]() {

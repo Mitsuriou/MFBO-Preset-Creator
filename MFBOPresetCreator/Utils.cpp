@@ -60,7 +60,7 @@ QString Utils::CleanPathString(const QString& aPath)
   lPath = lParts.join('/');
 
   // Replace backslashes
-  lPath.replace("\\", "/");
+  lPath.replace(QStringLiteral("\\"), QStringLiteral("/"));
 
   // Remove any '\n' character
   const QString lCleanedPath(lPath);
@@ -71,13 +71,13 @@ QString Utils::CleanPathString(const QString& aPath)
 
 void Utils::CleanBreaksString(QString& aString)
 {
-  aString.replace("\n", "");
+  aString.replace(QStringLiteral("\n"), "");
 }
 
 QString Utils::CleanBreaksString(const QString& aString)
 {
   QString lPath(aString);
-  lPath.replace("\n", "");
+  lPath.replace(QStringLiteral("\n"), "");
   return lPath;
 }
 
@@ -87,7 +87,7 @@ std::map<QString, std::vector<QString>> Utils::ToMapQsVecQs(const std::map<QStri
 
   for (const auto& lMapEntry : aMap)
   {
-    lNewMap.insert({lMapEntry.first, std::vector<QString>(lMapEntry.second.begin(), lMapEntry.second.end())});
+    lNewMap.insert(std::make_pair(lMapEntry.first, std::vector<QString>(lMapEntry.second.begin(), lMapEntry.second.end())));
   }
 
   return lNewMap;
@@ -277,7 +277,7 @@ int Utils::GetNumberFilesByExtension(const QString& aRootDir, const QString& aFi
 {
   auto lNumber{0};
 
-  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::NoIteratorFlags);
+  QDirIterator it(aRootDir, QStringList(aFileExtension), QDir::Files, QDirIterator::NoIteratorFlags);
   while (it.hasNext())
   {
     it.next();
@@ -291,7 +291,7 @@ int Utils::GetNumberFilesByExtensionRecursive(const QString& aRootDir, const QSt
 {
   auto lNumber{0};
 
-  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(aRootDir, QStringList(aFileExtension), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     it.next();
@@ -307,17 +307,17 @@ int Utils::GetNumberFilesByExtensionRecursiveIgnoringFOMOD(const QString& aRootD
   QString lAbsFilePath;
   QString lRelativeDirs;
 
-  QDirIterator it(aRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(aRootDir, QStringList(aFileExtension), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     it.next();
 
     // Ignore FOMOD directory
     lAbsFilePath = it.fileInfo().absoluteFilePath();
-    lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseInsensitive);
+    lRelativeDirs = lAbsFilePath.remove(aRootDir, Qt::CaseSensitivity::CaseInsensitive);
 
-    if (aFileExtension.compare("*.xml", Qt::CaseInsensitive) == 0
-        && (lRelativeDirs.contains("/fomod/info.xml", Qt::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseInsensitive)))
+    if (aFileExtension.compare(QStringLiteral("*.xml"), Qt::CaseSensitivity::CaseInsensitive) == 0
+        && (lRelativeDirs.contains("/fomod/info.xml", Qt::CaseSensitivity::CaseInsensitive) || lRelativeDirs.contains("/fomod/ModuleConfig.xml", Qt::CaseSensitivity::CaseInsensitive)))
     {
       continue;
     }
@@ -457,12 +457,12 @@ bool Utils::IsThemeDark(const GUITheme aTheme)
 
 QString Utils::GetIconResourceFolder(const GUITheme aTheme)
 {
-  return (Utils::IsThemeDark(aTheme) ? QString("white") : QString("black"));
+  return (Utils::IsThemeDark(aTheme) ? QStringLiteral("white") : QStringLiteral("black"));
 }
 
 QString Utils::GetTitleBarResourceFolder(const bool aUseBlackIcons)
 {
-  return (aUseBlackIcons ? QString("black") : QString("white"));
+  return (aUseBlackIcons ? QStringLiteral("black") : QStringLiteral("white"));
 }
 
 void Utils::OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme aTheme)
@@ -476,11 +476,11 @@ void Utils::OverrideHTMLLinksColor(QString& aHTMLString, const GUITheme aTheme)
   }
 
   // Hacky links' colors override for some themes
-  const auto lLinksColorOverride(aTheme == GUITheme::MITSURIOU_BLACK_THEME ? QString("color:#3991ff") : QString("color:#e95985"));
+  const auto lLinksColorOverride{aTheme == GUITheme::MITSURIOU_BLACK_THEME ? QStringLiteral("color:#3991ff") : QStringLiteral("color:#e95985")};
 
   // Go through the string to find the link colors
   auto i{0};
-  while ((i = aHTMLString.indexOf("color:#0000ff", i)) != -1)
+  while ((i = aHTMLString.indexOf(QStringLiteral("color:#0000ff"), i)) != -1)
   {
     aHTMLString.replace(i, lLinksColorOverride.size(), lLinksColorOverride);
   }
@@ -677,7 +677,7 @@ BCGroupWidgetCallContext Utils::GetMeshTypeFromFileName(const QString& aFileName
     return BCGroupWidgetCallContext::EYES;
 
   // Skeleton
-  if (aFileName.mid(aFileName.lastIndexOf('/') + 1).contains("skeleton", Qt::CaseInsensitive))
+  if (aFileName.mid(aFileName.lastIndexOf('/') + 1).contains("skeleton", Qt::CaseSensitivity::CaseInsensitive))
     return BCGroupWidgetCallContext::SKELETON;
 
   return BCGroupWidgetCallContext::UNDEFINED;
@@ -879,7 +879,7 @@ QString Utils::GetPresetNameFromXMLFile(const QString& aPath)
   {
     // Get the first "Member" tag to read its "name" attribute
     auto lXMLMember{lXMLGroup.firstChild().toElement()};
-    lPresetName = lXMLMember.attribute("name", "");
+    lPresetName = lXMLMember.attribute(QStringLiteral("name"), QStringLiteral(""));
   }
 
   return lPresetName.left(lPresetName.lastIndexOf('-') - 1);
@@ -908,10 +908,10 @@ std::vector<Struct::SliderSet> Utils::ReadOSPFileInformation(const QString& aPat
 
   while (!lNextNodeToParse.isNull())
   {
-    if (lNextNodeToParse.tagName().compare("SliderSet", Qt::CaseSensitivity::CaseInsensitive) == 0)
+    if (lNextNodeToParse.tagName().compare(QStringLiteral("SliderSet"), Qt::CaseSensitivity::CaseInsensitive) == 0)
     {
       Struct::SliderSet lSliderSetEntry;
-      lSliderSetEntry.setName(lNextNodeToParse.attribute("name", "")); // Name
+      lSliderSetEntry.setName(lNextNodeToParse.attribute(QStringLiteral("name"), QStringLiteral(""))); // Name
 
       if (lSliderSetEntry.getName().isEmpty())
       {
@@ -1039,7 +1039,7 @@ bool Utils::IsPresetUsingBeastHands(const QString& aPath)
     return false;
   }
 
-  if (lFileContent.contains("beast hands", Qt::CaseInsensitive) || lFileContent.contains("hands beast", Qt::CaseInsensitive))
+  if (lFileContent.contains("beast hands", Qt::CaseSensitivity::CaseInsensitive) || lFileContent.contains("hands beast", Qt::CaseSensitivity::CaseInsensitive))
   {
     return true; // Preset uses beast hands
   }
@@ -1567,7 +1567,7 @@ std::vector<Struct::Filter> Utils::GetFiltersForExport(const std::map<QString, Q
 
   for (const auto& lPair : aList)
   {
-    if (lPair.first.compare(aKey, Qt::CaseSensitive) == 0)
+    if (lPair.first.compare(aKey, Qt::CaseSensitivity::CaseSensitive) == 0)
     {
       // Parse user' sliders
       for (const auto& lFilter : lPair.second)
@@ -1599,7 +1599,7 @@ void Utils::CheckLastPathsFileExistence()
 
     for (const auto& lKey : lKeys)
     {
-      lMap.insert(std::make_pair(lKey, QString()));
+      lMap.insert(std::make_pair(lKey, ""));
     }
 
     Utils::SaveLastPathsToFile(lMap);
@@ -1658,7 +1658,7 @@ QJsonObject Utils::LastPathsStructToJson(const std::map<QString, QString>& aList
 
 QString Utils::GetPathFromKey(std::map<QString, QString>* aMap, const QString& aKey, const QString& aFallbackPath, const bool aUseKeyPath)
 {
-  QString lPath{""};
+  QString lPath;
   QString lKey{aKey};
 
   if (!aUseKeyPath)
@@ -1715,7 +1715,7 @@ bool Utils::UpdatePathAtKey(std::map<QString, QString>* aMap, const QString& aKe
   if (lModifiedPaths < 2 && aMap->find(aKey) == aMap->end())
   {
     // Create the new entry
-    aMap->insert(std::pair<QString, QString>(aKey, aPath));
+    aMap->insert(std::make_pair(aKey, aPath));
   }
 
   // Save only if the map are different
@@ -1802,17 +1802,17 @@ QString Utils::GetShortLanguageNameFromEnum(const ApplicationLanguage& aLanguage
 
 ApplicationLanguage Utils::GetStructLanguageFromName(const QString& aShortName)
 {
-  if (aShortName.compare("English") == 0)
+  if (aShortName.compare(QStringLiteral("English"), Qt::CaseSensitivity::CaseInsensitive) == 0)
   {
     return ApplicationLanguage::ENGLISH;
   }
 
-  if (aShortName.compare("French") == 0)
+  if (aShortName.compare(QStringLiteral("French"), Qt::CaseSensitivity::CaseInsensitive) == 0)
   {
     return ApplicationLanguage::FRENCH;
   }
 
-  if (aShortName.compare("Chinese") == 0)
+  if (aShortName.compare(QStringLiteral("Chinese"), Qt::CaseSensitivity::CaseInsensitive) == 0)
   {
     return ApplicationLanguage::CHINESE_TRADITIONAL;
   }
@@ -1840,10 +1840,17 @@ void Utils::AddLastPathLine(QWidget* aParent, QGridLayout* aLayout, const int aR
   const auto lGeneralValue{new LineEdit(aValue, aParent)};
   lGeneralValue->setReadOnly(true);
   lGeneralValue->setCursor(Qt::CursorShape::IBeamCursor);
-  lGeneralValue->setObjectName(QString("line_edit_path_%1").arg(aRow));
+  lGeneralValue->setObjectName(QStringLiteral("line_edit_path_%1").arg(aRow));
   aLayout->addWidget(lGeneralValue, aRow, 1);
 
-  const auto lGeneralEmptyButton{ComponentFactory::CreateButton(aParent, tr("Remove from history"), "", aIconName, aIconFolder, QString("clear_path_%1").arg(aRow), aValue.isEmpty(), true)};
+  const auto lGeneralEmptyButton{ComponentFactory::CreateButton(aParent,
+                                                                tr("Remove from history"),
+                                                                "",
+                                                                aIconName,
+                                                                aIconFolder,
+                                                                QString("clear_path_%1").arg(aRow),
+                                                                aValue.isEmpty(),
+                                                                true)};
   aLayout->addWidget(lGeneralEmptyButton, aRow, 2);
 }
 
@@ -1890,7 +1897,7 @@ void Utils::UpdateComboBoxBodyslideFiltersList(const std::map<QString, QStringLi
     auto lPrevIndex{0};
     for (const auto& lPair : aFilterList)
     {
-      if (lPair.first.compare(lPrevKey, Qt::CaseSensitive) == 0)
+      if (lPair.first.compare(lPrevKey, Qt::CaseSensitivity::CaseSensitive) == 0)
       {
         break;
       }

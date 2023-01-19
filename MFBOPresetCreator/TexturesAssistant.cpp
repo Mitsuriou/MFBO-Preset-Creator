@@ -51,7 +51,7 @@ void TexturesAssistant::closeEvent(QCloseEvent* aEvent)
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
                                     this->getThemedResourcePath(),
-                                    "help-circle",
+                                    QStringLiteral("help-circle"),
                                     tr("Close the window"),
                                     tr("Go back to the textures assistant window"),
                                     "",
@@ -79,7 +79,7 @@ void TexturesAssistant::initializeGUI()
 
   // Tab widget
   auto lTabWidget{new QTabWidget(this)};
-  lTabWidget->setObjectName(QString("tab_widget"));
+  lTabWidget->setObjectName(QStringLiteral("tab_widget"));
   lTabWidget->setAutoFillBackground(true);
   lTabWidget->tabBar()->setCursor(Qt::CursorShape::PointingHandCursor);
   lMainLayout->addWidget(lTabWidget, 0, 0, Qt::AlignTop);
@@ -91,9 +91,9 @@ void TexturesAssistant::initializeGUI()
   auto lLaunchSearchButton{ComponentFactory::CreateButton(this,
                                                           tr("Launch the scan of the mod"),
                                                           "",
-                                                          "search",
+                                                          QStringLiteral("search"),
                                                           this->getThemedResourcePath(),
-                                                          "launch_search_button",
+                                                          QStringLiteral("launch_search_button"),
                                                           true,
                                                           true)};
   lMainLayout->addWidget(lLaunchSearchButton, 1, 0, Qt::AlignTop);
@@ -133,7 +133,7 @@ void TexturesAssistant::setupFromLocalFolderTab(QTabWidget& aTabWidget)
   // Input path value
   auto lInputPathLineEdit{new LineEdit(this)};
   lInputPathLineEdit->setReadOnly(true);
-  lInputPathLineEdit->setObjectName(QString("input_path_directory"));
+  lInputPathLineEdit->setObjectName(QStringLiteral("input_path_directory"));
   lInputPathLineEdit->setDisabled(true);
   lTabLayout->addWidget(lInputPathLineEdit);
 
@@ -165,7 +165,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
 
   // Input mod's URL/ID value
   auto lModURLOrIDLineEdit{new LineEdit(this)};
-  lModURLOrIDLineEdit->setObjectName(QString("mod_url_or_id"));
+  lModURLOrIDLineEdit->setObjectName(QStringLiteral("mod_url_or_id"));
   lModURLOrIDLineEdit->setPlaceholderText(tr("https://www.nexusmods.com/skyrimspecialedition/mods/XXXXX"));
   lTabLayout->addWidget(lModURLOrIDLineEdit, 0, 1, 1, 3);
 
@@ -174,7 +174,7 @@ void TexturesAssistant::setupFromURLTab(QTabWidget& aTabWidget)
 
   // API Key value
   auto lAPIKeyLineEdit{new LineEdit(this)};
-  lAPIKeyLineEdit->setObjectName(QString("api_key"));
+  lAPIKeyLineEdit->setObjectName(QStringLiteral("api_key"));
   lAPIKeyLineEdit->setPlaceholderText(tr("Enter your NexusMods API key here"));
   lAPIKeyLineEdit->setText(Utils::ReadAPIKeyFromFile());
   lTabLayout->addWidget(lAPIKeyLineEdit, 1, 1);
@@ -218,7 +218,7 @@ void TexturesAssistant::displayHintZone()
 
   // Get the window's layout
   auto lHintZone{new QLabel(tr("Awaiting the launch of a scan..."), this)};
-  lHintZone->setObjectName(QString("hint_zone"));
+  lHintZone->setObjectName(QStringLiteral("hint_zone"));
   lHintZone->setAlignment(Qt::AlignCenter);
   qobject_cast<QGridLayout*>(this->getCentralLayout())->addWidget(lHintZone, 2, 0);
 
@@ -253,7 +253,7 @@ void TexturesAssistant::setupTexturesSetGUI(QGridLayout& aLayout)
   auto lTexturesSetChooser{new QComboBox(this)};
   lTexturesSetChooser->setItemDelegate(new QStyledItemDelegate());
   lTexturesSetChooser->setCursor(Qt::PointingHandCursor);
-  lTexturesSetChooser->setObjectName(QString("textures_set_chooser"));
+  lTexturesSetChooser->setObjectName(QStringLiteral("textures_set_chooser"));
   lLayout->addWidget(lTexturesSetChooser, 0, 1);
 
   // Refresh button
@@ -281,17 +281,17 @@ void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
                                     this->getThemedResourcePath(),
                                     this->mMinimumFirstColumnWidth,
                                     this->settings().display.font.pointSize);
-  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QStringLiteral("output_group_box"))};
   lOutputGroupBox->setDisabled(true);
 
   // Event binding
-  auto lOutputPathChooser{this->findChild<QPushButton*>(QString("output_path_chooser"))};
+  auto lOutputPathChooser{this->findChild<QPushButton*>(QStringLiteral("output_path_chooser"))};
   QObject::connect(lOutputPathChooser, &QPushButton::clicked, this, &TexturesAssistant::chooseExportDirectory);
 
-  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))};
+  auto lOutputSubpathLineEdit{this->findChild<QLineEdit*>(QStringLiteral("output_path_subdirectory"))};
   QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TexturesAssistant::updateOutputPreview);
 
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))};
   QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &TexturesAssistant::useOnlySubdirStateChanged);
 
   // Pre-filled data
@@ -316,14 +316,14 @@ void TexturesAssistant::setupButtons(QGridLayout& aLayout)
 
 void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
 {
-  auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+  auto lHintZone{this->findChild<QLabel*>(QStringLiteral("hint_zone"))};
   if (lHintZone != nullptr)
   {
     delete lHintZone;
     lHintZone = nullptr;
   }
 
-  auto lScrollZone{this->findChild<QScrollArea*>(QString("scrollable_zone"))};
+  auto lScrollZone{this->findChild<QScrollArea*>(QStringLiteral("scrollable_zone"))};
   if (lScrollZone != nullptr)
   {
     delete lScrollZone;
@@ -334,22 +334,25 @@ void TexturesAssistant::deleteAlreadyExistingWindowBottom() const
 void TexturesAssistant::chooseInputDirectory()
 {
   // Fetch GUI components
-  auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+  auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))};
 
   // Open a directory chooser dialog
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "texturesAssistantInput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("texturesAssistantInput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto& lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "texturesAssistantInput", lPath);
 
-  if (!this->mHasUserDoneSomething && lPath.compare("") != 0)
+  if (!this->mHasUserDoneSomething && !lPath.isEmpty())
   {
     this->mHasUserDoneSomething = true;
   }
 
   // Enable or disable path viewer label and launch button
-  auto lMustDisableButton{lPath.compare("", Qt::CaseInsensitive) == 0};
+  auto lMustDisableButton{lPath.isEmpty()};
   lLineEdit->setDisabled(lMustDisableButton);
   lLaunchSearchButton->setDisabled(lMustDisableButton);
 
@@ -371,21 +374,21 @@ void TexturesAssistant::updateSaveAPIKeyButtonState(const QString&)
 
 void TexturesAssistant::updateSaveAPIKeyButtonState(const bool aMustBeDisabled)
 {
-  const auto lSaveAPIKey{this->findChild<QPushButton*>(QString("save_api_key"))};
+  const auto lSaveAPIKey{this->findChild<QPushButton*>(QStringLiteral("save_api_key"))};
   lSaveAPIKey->setDisabled(aMustBeDisabled);
 }
 
 void TexturesAssistant::toggleGroupBoxesState(const bool aMustBeDisabled) const
 {
-  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QString("textures_set_groupbox"))};
+  auto lTexturesSetGroupBox{this->findChild<GroupBox*>(QStringLiteral("textures_set_groupbox"))};
   if (lTexturesSetGroupBox != nullptr)
     lTexturesSetGroupBox->setDisabled(aMustBeDisabled);
 
-  auto lOutputGroupBox{this->findChild<GroupBox*>(QString("output_group_box"))};
+  auto lOutputGroupBox{this->findChild<GroupBox*>(QStringLiteral("output_group_box"))};
   if (lOutputGroupBox != nullptr)
     lOutputGroupBox->setDisabled(aMustBeDisabled);
 
-  auto lGenerateButton{this->findChild<QPushButton*>(QString("generate_set"))};
+  auto lGenerateButton{this->findChild<QPushButton*>(QStringLiteral("generate_set"))};
   if (lGenerateButton != nullptr)
     lGenerateButton->setDisabled(aMustBeDisabled);
 }
@@ -398,21 +401,21 @@ void TexturesAssistant::updateLaunchSearchButtonState(const QString&) const
 
 void TexturesAssistant::updateLaunchSearchButtonState(int aCurrentTabIndex) const
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
 
   switch (aCurrentTabIndex)
   {
     case 0:
     {
       // Local folder
-      const auto lLineEdit{this->findChild<QLineEdit*>(QString("input_path_directory"))};
+      const auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))};
       lLaunchSearchButton->setDisabled(lLineEdit->text().isEmpty());
       break;
     }
     case 1:
     {
       // NexusMods URL/ID
-      const auto lModURLOrIDLineEdit{this->findChild<QLineEdit*>(QString("mod_url_or_id"))};
+      const auto lModURLOrIDLineEdit{this->findChild<QLineEdit*>(QStringLiteral("mod_url_or_id"))};
       const auto lAPIKeyLineEdit{this->findChild<QLineEdit*>("api_key")};
 
       lLaunchSearchButton->setDisabled(lModURLOrIDLineEdit->text().isEmpty() || lAPIKeyLineEdit->text().isEmpty() || !isModIDValid());
@@ -424,7 +427,7 @@ void TexturesAssistant::updateLaunchSearchButtonState(int aCurrentTabIndex) cons
 
 void TexturesAssistant::launchSearchProcess()
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
   lLaunchSearchButton->setDisabled(true);
 
   const auto lTabWidget{this->findChild<QTabWidget*>("tab_widget")};
@@ -443,10 +446,10 @@ void TexturesAssistant::launchSearchProcess()
 
 void TexturesAssistant::launchSearchFromLocalFolder()
 {
-  const auto lInputPath{this->findChild<QLineEdit*>(QString("input_path_directory"))->text()};
+  const auto lInputPath{this->findChild<QLineEdit*>(QStringLiteral("input_path_directory"))->text()};
 
   // Warn the user if the scan found a BSA file
-  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList("*.bsa")) > 0)
+  if (Utils::GetNumberFilesByExtensions(lInputPath, QStringList(QStringLiteral("*.bsa"))) > 0)
   {
     if (Utils::DisplayQuestionMessage(this,
                                       tr("BSA file found"),
@@ -508,7 +511,7 @@ void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QStr
   // Suffix the root directory to earch only in the "textures" subfolder
   const auto lRootDir{QString("%1/textures").arg(aRootDir)};
 
-  QDirIterator it(lRootDir, QStringList() << aFileExtension, QDir::Files, QDirIterator::Subdirectories);
+  QDirIterator it(lRootDir, QStringList(aFileExtension), QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext())
   {
     // Cancel the treatment if the user canceled it
@@ -521,12 +524,12 @@ void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QStr
     it.next();
 
     // Get the current directory
-    const auto lRelativeDirPath{it.fileInfo().absolutePath().remove(aRootDir + "/", Qt::CaseInsensitive)};
+    const auto lRelativeDirPath{it.fileInfo().absolutePath().remove(aRootDir + "/", Qt::CaseSensitivity::CaseInsensitive)};
 
-    auto lFileName = it.fileInfo().fileName();
+    auto lFileName{it.fileInfo().fileName()};
 
     // Clean the file name from any artifact
-    lFileName.remove(".dds", Qt::CaseInsensitive);
+    lFileName.remove(".dds", Qt::CaseSensitivity::CaseInsensitive);
 
     // Check if the file is relative to a texture for a known mesh type
     if (lTexturesFilesToFind.contains(lFileName))
@@ -535,7 +538,7 @@ void TexturesAssistant::scanForTexturesFiles(const QString& aRootDir, const QStr
     }
     else
     {
-      this->mScannedFiles.otherTextures.push_back(std::make_pair(lRelativeDirPath, lFileName));
+      this->mScannedFiles.otherTextures.push_back({lRelativeDirPath, lFileName});
     }
   }
 }
@@ -547,7 +550,7 @@ void TexturesAssistant::launchSearchNexusModsURL()
 
 int TexturesAssistant::getModIDFromUserInput() const
 {
-  const auto lModURLOrID{this->findChild<QLineEdit*>(QString("mod_url_or_id"))->text()};
+  const auto lModURLOrID{this->findChild<QLineEdit*>(QStringLiteral("mod_url_or_id"))->text()};
   const auto lURLPattern{QString("nexusmods.com/skyrimspecialedition/mods/")};
 
   // ID
@@ -591,8 +594,8 @@ void TexturesAssistant::requestModInformation(const int aModID)
   const auto lURL{QString("https://api.nexusmods.com/v1/games/skyrimspecialedition/mods/%1/files.json").arg(QString::number(aModID))};
 
   QNetworkRequest lRequest{QUrl(lURL)};
-  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json"));
+  lRequest.setRawHeader(QByteArrayLiteral("apikey"), this->findChild<QLineEdit*>(QStringLiteral("api_key"))->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
   QObject::connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModInformationFinished);
 }
@@ -618,7 +621,7 @@ void TexturesAssistant::requestModInformationFinished()
 
 std::vector<Struct::NexusModsFileInformation> TexturesAssistant::parseFilesListFromModInformation(const bool aSucceeded, const QByteArray& aResult)
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
 
   if (!aSucceeded)
   {
@@ -663,7 +666,7 @@ void TexturesAssistant::displayFileIDPicker(const std::vector<Struct::NexusModsF
 {
   if (aFilesInformation.empty())
   {
-    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
     lLaunchSearchButton->setDisabled(false);
     return;
   }
@@ -679,14 +682,14 @@ void TexturesAssistant::requestModFileContent(const QString& aContentPreviewLink
 {
   if (aContentPreviewLink.isEmpty())
   {
-    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+    const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
     lLaunchSearchButton->setDisabled(false);
     return;
   }
 
   QNetworkRequest lRequest{QUrl(aContentPreviewLink)};
-  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-  lRequest.setRawHeader("apikey", this->findChild<QLineEdit*>("api_key")->text().toUtf8());
+  lRequest.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json"));
+  lRequest.setRawHeader(QByteArrayLiteral("apikey"), this->findChild<QLineEdit*>(QStringLiteral("api_key"))->text().toUtf8());
   QNetworkReply* lReply{this->mManager.get(lRequest)};
   QObject::connect(lReply, &QNetworkReply::finished, this, &TexturesAssistant::requestModFileContentFinished);
 }
@@ -791,7 +794,7 @@ void TexturesAssistant::parseNode(const QJsonObject& aNode, const QString& aRoot
     }
 
     // Not a file or not a DDS file
-    if (aNode["type"].toString().compare("file") != 0 || !lName.endsWith(".dds", Qt::CaseSensitivity::CaseInsensitive))
+    if ((aNode["type"].toString().compare(QStringLiteral("file")) != 0) || (!lName.endsWith(QStringLiteral(".dds"), Qt::CaseSensitivity::CaseInsensitive)))
     {
       return;
     }
@@ -811,11 +814,11 @@ void TexturesAssistant::parseNode(const QJsonObject& aNode, const QString& aRoot
     }
 
     // Clean the file name from any artifact
-    lFileName.remove(".dds", Qt::CaseInsensitive);
+    lFileName.remove(".dds", Qt::CaseSensitivity::CaseInsensitive);
 
     const auto lLastSlashPosition{lFileName.lastIndexOf('/')};
 
-    auto lSplittedPath = std::make_pair(lFileName.left(lLastSlashPosition), lFileName.mid(lLastSlashPosition + 1));
+    auto lSplittedPath{std::make_pair(lFileName.left(lLastSlashPosition), lFileName.mid(lLastSlashPosition + 1))};
     if (lSplittedPath.first.isEmpty() || lSplittedPath.second.isEmpty())
     {
       return;
@@ -823,18 +826,18 @@ void TexturesAssistant::parseNode(const QJsonObject& aNode, const QString& aRoot
 
     if (lTexturesFilesToFind.contains(lSplittedPath.second))
     {
-      this->mScannedFiles.groupedTextures.push_back(std::make_pair(lSplittedPath.first, lSplittedPath.second));
+      this->mScannedFiles.groupedTextures.push_back(lSplittedPath);
     }
     else
     {
-      this->mScannedFiles.otherTextures.push_back(std::make_pair(lSplittedPath.first, lSplittedPath.second));
+      this->mScannedFiles.otherTextures.push_back(lSplittedPath);
     }
   }
 }
 
 void TexturesAssistant::displayObtainedData()
 {
-  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QString("launch_search_button"))};
+  const auto lLaunchSearchButton{this->findChild<QPushButton*>(QStringLiteral("launch_search_button"))};
   lLaunchSearchButton->setDisabled(false);
 
   // No file found
@@ -842,7 +845,7 @@ void TexturesAssistant::displayObtainedData()
   {
     this->displayHintZone();
 
-    auto lHintZone{this->findChild<QLabel*>(QString("hint_zone"))};
+    auto lHintZone{this->findChild<QLabel*>(QStringLiteral("hint_zone"))};
     if (lHintZone != nullptr)
     {
       lHintZone->setText(tr("No DDS file was found in the scanned directory."));
@@ -1009,7 +1012,7 @@ void TexturesAssistant::createResourceBlock(const std::map<QString, std::vector<
 void TexturesAssistant::generateTexturesStructure()
 {
   // Textures set
-  auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
+  auto lTexturesSetChooser{this->findChild<QComboBox*>(QStringLiteral("textures_set_chooser"))};
   if (lTexturesSetChooser->currentIndex() == -1 || lTexturesSetChooser->count() == 0)
   {
     Utils::DisplayWarningMessage(tr("Error: no textures set chosen."));
@@ -1017,12 +1020,12 @@ void TexturesAssistant::generateTexturesStructure()
   }
 
   // Output paths
-  auto lMainDirectory{this->findChild<QLineEdit*>(QString("output_path_directory"))->text().trimmed()};
-  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
+  auto lMainDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_directory"))->text().trimmed()};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_subdirectory"))->text().trimmed()};
   Utils::CleanPathString(lSubDirectory);
 
   // Does the user want to define the path only through the secondary path?
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))->isChecked()};
 
   // Full extract path
   QString lEntryDirectory;
@@ -1062,7 +1065,7 @@ void TexturesAssistant::generateTexturesStructure()
                                       tr("Already existing directory"),
                                       tr("The directory \"%1\" already exists on your computer. Do you still want to create the files in this directory?").arg(lEntryDirectory),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Continue the files creation"),
                                       tr("Cancel the files creation"),
                                       "",
@@ -1093,7 +1096,19 @@ void TexturesAssistant::generateTexturesStructure()
   auto lMessage{tr("The texture files have been correctly created.")};
 
   // Open the directory where the file structure has been created
-  if (Utils::DisplayQuestionMessage(this, lTitle, lMessage, "icons", "green-info", tr("Open the created directory"), tr("OK"), "", "", "", "", false) == ButtonClicked::YES)
+  if (Utils::DisplayQuestionMessage(this,
+                                    lTitle,
+                                    lMessage,
+                                    QStringLiteral("icons"),
+                                    QStringLiteral("green-info"),
+                                    tr("Open the created directory"),
+                                    tr("OK"),
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    false)
+      == ButtonClicked::YES)
   {
     QDesktopServices::openUrl(QUrl::fromLocalFile(lEntryDirectory));
   }
@@ -1106,10 +1121,10 @@ void TexturesAssistant::openAPIKeysManagementPage()
 
 void TexturesAssistant::updateOutputPreview()
 {
-  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  auto lSubDirectory{this->findChild<QLineEdit*>(QString("output_path_subdirectory"))->text().trimmed()};
-  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QString("only_use_subdirectory"))->isChecked()};
-  auto lOutputPathsPreview{this->findChild<QLabel*>(QString("output_path_preview"))};
+  auto lMainDirTextEdit{this->findChild<QLineEdit*>(QStringLiteral("output_path_directory"))};
+  auto lSubDirectory{this->findChild<QLineEdit*>(QStringLiteral("output_path_subdirectory"))->text().trimmed()};
+  auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))->isChecked()};
+  auto lOutputPathsPreview{this->findChild<QLabel*>(QStringLiteral("output_path_preview"))};
 
   Utils::UpdateOutputPreview(this->mFileWatcher, lMainDirTextEdit, lSubDirectory, lUseOnlySubdir, this->settings().display.successColor, this->settings().display.warningColor, this->settings().display.dangerColor, lOutputPathsPreview);
 }
@@ -1127,15 +1142,15 @@ void TexturesAssistant::populateTexturesSetChooser()
     it.next();
 
     const auto lCurrentDirectory{QDir(it.filePath())};
-    const auto lFilesList{lCurrentDirectory.entryList(QStringList() << "*.dds", QDir::Filter::Files)};
+    const auto lFilesList{lCurrentDirectory.entryList(QStringList(QStringLiteral("*.dds")), QDir::Filter::Files)};
     if (lFilesList.count() > 0)
     {
-      lAvailableTexturesSets.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseInsensitive));
+      lAvailableTexturesSets.push_back(it.fileInfo().absoluteFilePath().remove(lRootDir, Qt::CaseSensitivity::CaseInsensitive));
     }
   }
 
   // Get the combobox
-  const auto lTexturesSetChooser{this->findChild<QComboBox*>(QString("textures_set_chooser"))};
+  const auto lTexturesSetChooser{this->findChild<QComboBox*>(QStringLiteral("textures_set_chooser"))};
 
   // Save the selected textures set file name
   const auto lPreviousIndex{lTexturesSetChooser->currentIndex()};
@@ -1164,8 +1179,11 @@ void TexturesAssistant::useOnlySubdirStateChanged(int)
 
 void TexturesAssistant::chooseExportDirectory()
 {
-  auto lLineEdit{this->findChild<QLineEdit*>(QString("output_path_directory"))};
-  const auto& lContextPath{Utils::GetPathFromKey(this->lastPaths(), "texturesAssistantOutput", lLineEdit->text(), this->settings().general.eachButtonSavesItsLastUsedPath)};
+  auto lLineEdit{this->findChild<QLineEdit*>(QStringLiteral("output_path_directory"))};
+  const auto lContextPath{Utils::GetPathFromKey(this->lastPaths(),
+                                                QStringLiteral("texturesAssistantOutput"),
+                                                lLineEdit->text(),
+                                                this->settings().general.eachButtonSavesItsLastUsedPath)};
   const auto lPath{QFileDialog::getExistingDirectory(this, "", lContextPath)};
   lLineEdit->setText(lPath);
   Utils::UpdatePathAtKey(this->lastPaths(), "texturesAssistantOutput", lPath);

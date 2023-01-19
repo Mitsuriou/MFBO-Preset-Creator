@@ -34,27 +34,27 @@ void ReleaseNotesViewer::initializeGUI()
 
   // Fetch status
   auto lFetchStatus{new QLabel(this)};
-  lFetchStatus->setObjectName(QString("fetch_status"));
+  lFetchStatus->setObjectName(QStringLiteral("fetch_status"));
   lFetchStatus->hide();
   lMainLayout->addWidget(lFetchStatus);
 
   // Viewer
   auto lViewer{new QTextBrowser(this)};
-  lViewer->setObjectName(QString("viewer"));
+  lViewer->setObjectName(QStringLiteral("viewer"));
   lViewer->setOpenExternalLinks(true);
   lMainLayout->addWidget(lViewer);
 
   // Open in default browser button
-  auto lButton{ComponentFactory::CreateButton(this, tr("View in default browser"), "", "external", this->getThemedResourcePath())};
-  lMainLayout->addWidget(lButton);
+  auto lViewInDefaultBrowserButton{ComponentFactory::CreateButton(this, tr("View in default browser"), "", QStringLiteral("external"), this->getThemedResourcePath(), QStringLiteral("view_in_default_browser"))};
+  lMainLayout->addWidget(lViewInDefaultBrowserButton);
 
   // Event binding
-  QObject::connect(lButton, &QPushButton::clicked, this, &ReleaseNotesViewer::viewInDefaultBrowser);
+  QObject::connect(lViewInDefaultBrowserButton, &QPushButton::clicked, this, &ReleaseNotesViewer::viewInDefaultBrowser);
 }
 
 void ReleaseNotesViewer::checkForUpdate()
 {
-  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
+  auto lFetchStatus{this->findChild<QLabel*>(QStringLiteral("fetch_status"))};
   lFetchStatus->setText(tr("Contacting GitHub.com..."));
   lFetchStatus->show();
 
@@ -82,8 +82,8 @@ void ReleaseNotesViewer::updateCheckFinished()
 
 void ReleaseNotesViewer::displayUpdateMessage(const bool aSucceeded, const QString& aResult)
 {
-  auto lFetchStatus{this->findChild<QLabel*>(QString("fetch_status"))};
-  auto lViewer{this->findChild<QTextBrowser*>(QString("viewer"))};
+  auto lFetchStatus{this->findChild<QLabel*>(QStringLiteral("fetch_status"))};
+  auto lViewer{this->findChild<QTextBrowser*>(QStringLiteral("viewer"))};
 
   // Display error messages to the user
   if (!aSucceeded)
@@ -112,7 +112,9 @@ void ReleaseNotesViewer::displayUpdateMessage(const bool aSucceeded, const QStri
   }
   else
   {
-    lFetchStatus->setText(tr("The release notes for the version \"%1\" has not been found.").arg(lCurrentVersion));
+    lFetchStatus->setText(tr("The release notes for the version \"%1\" have not been found.").arg(lCurrentVersion));
+    lViewer->setDisabled(true);
+    this->findChild<QPushButton*>(QStringLiteral("view_in_default_browser"))->setDisabled(true);
     return;
   }
 

@@ -30,7 +30,7 @@ BodySlideFiltersEditor::BodySlideFiltersEditor(QWidget* aParent,
 void BodySlideFiltersEditor::closeEvent(QCloseEvent* aEvent)
 {
   auto lEventButton{qobject_cast<QPushButton*>(this->sender())};
-  auto lSaveButton{this->findChild<QPushButton*>(QString("save_close"))};
+  auto lSaveButton{this->findChild<QPushButton*>(QStringLiteral("save_close"))};
 
   if (lEventButton == lSaveButton)
   {
@@ -96,7 +96,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   this->mFiltersListChooser = new QComboBox(this);
   this->mFiltersListChooser->setItemDelegate(new QStyledItemDelegate());
   this->mFiltersListChooser->setCursor(Qt::PointingHandCursor);
-  this->mFiltersListChooser->setObjectName(QString("bodyslide_filters_chooser"));
+  this->mFiltersListChooser->setObjectName(QStringLiteral("bodyslide_filters_chooser"));
   this->mFiltersListChooser->setDisabled(true);
   this->mFiltersListChooser->setEditable(true);
   this->mFiltersListChooser->setCompleter(nullptr);
@@ -106,7 +106,7 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   auto lNewSetBtn{ComponentFactory::CreateButton(this,
                                                  tr("New set"),
                                                  tr("Add a new BodySlide filters set"),
-                                                 "plus",
+                                                 QStringLiteral("plus"),
                                                  this->getThemedResourcePath(),
                                                  "",
                                                  false,
@@ -117,9 +117,9 @@ void BodySlideFiltersEditor::setupInterface(QGridLayout& aLayout)
   auto lDelSetBtn{ComponentFactory::CreateButton(this,
                                                  tr("Remove set"),
                                                  tr("Remove the selected BodySlide filters set"),
-                                                 "minus",
+                                                 QStringLiteral("minus"),
                                                  this->getThemedResourcePath(),
-                                                 "remove_set",
+                                                 QStringLiteral("remove_set"),
                                                  false,
                                                  true)};
   aLayout.addWidget(lDelSetBtn, 0, 3);
@@ -196,10 +196,24 @@ void BodySlideFiltersEditor::setupButtons(QGridLayout& aLayout)
   aLayout.addLayout(lButtonsContainer, 3, 0, 1, 4);
 
   // Create the buttons
-  auto lSaveBtn{ComponentFactory::CreateButton(this, tr("Save and close"), "", "save", this->getThemedResourcePath(), "save_close", false, true)};
+  auto lSaveBtn{ComponentFactory::CreateButton(this,
+                                               tr("Save and close"),
+                                               "",
+                                               QStringLiteral("save"),
+                                               this->getThemedResourcePath(),
+                                               QStringLiteral("save_close"),
+                                               false,
+                                               true)};
   lButtonsContainer->addWidget(lSaveBtn);
 
-  auto lCancelBtn{ComponentFactory::CreateButton(this, tr("Cancel"), "", "undo", this->getThemedResourcePath(), "", false, true)};
+  auto lCancelBtn{ComponentFactory::CreateButton(this,
+                                                 tr("Cancel"),
+                                                 "",
+                                                 QStringLiteral("undo"),
+                                                 this->getThemedResourcePath(),
+                                                 "",
+                                                 false,
+                                                 true)};
   lButtonsContainer->addWidget(lCancelBtn);
 
   // Event binding
@@ -245,10 +259,10 @@ void BodySlideFiltersEditor::displayFilterAt(const int aIndex) const
 void BodySlideFiltersEditor::shouldDisableFiltersControls()
 {
   // Fetch the button in the GUI
-  auto lDelSetBtn{this->findChild<QPushButton*>(QString("remove_set"))};
-  auto lAddNewRow{this->findChild<QPushButton*>(QString("add_filter"))};
-  auto lDeleteRow{this->findChild<QPushButton*>(QString("remove_filter"))};
-  auto lDeleteAllRows{this->findChild<QPushButton*>(QString("remove_all_filters"))};
+  auto lDelSetBtn{this->findChild<QPushButton*>(QStringLiteral("remove_set"))};
+  auto lAddNewRow{this->findChild<QPushButton*>(QStringLiteral("add_filter"))};
+  auto lDeleteRow{this->findChild<QPushButton*>(QStringLiteral("remove_filter"))};
+  auto lDeleteAllRows{this->findChild<QPushButton*>(QStringLiteral("remove_all_filters"))};
 
   if (this->mFiltersList.size() > 0)
   {
@@ -324,7 +338,7 @@ void BodySlideFiltersEditor::addNewSetEntry(const QString& aSetName)
   auto lNewIndex{0};
   for (const auto& lPair : this->mFiltersList)
   {
-    if (lPair.first.compare(aSetName, Qt::CaseSensitive) == 0)
+    if (lPair.first.compare(aSetName, Qt::CaseSensitivity::CaseSensitive) == 0)
       break;
     lNewIndex++;
   }
@@ -357,7 +371,7 @@ void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
   auto lCursorPos{this->mFiltersListChooser->lineEdit()->cursorPosition()};
 
   // If the set name has not been changed but validated by the user, skip the renaming part
-  if (lPreviousText.compare(lNewSetName, Qt::CaseSensitive) == 0)
+  if (lPreviousText.compare(lNewSetName, Qt::CaseSensitivity::CaseSensitive) == 0)
   {
     return;
   }
@@ -404,7 +418,7 @@ void BodySlideFiltersEditor::handleSetRenaming(const QString& aNewSetName)
   auto lNewIndex{0};
   for (const auto& lPair : this->mFiltersList)
   {
-    if (lPair.first.compare(lNewSetName, Qt::CaseSensitive) == 0)
+    if (lPair.first.compare(lNewSetName, Qt::CaseSensitivity::CaseSensitive) == 0)
     {
       break;
     }
