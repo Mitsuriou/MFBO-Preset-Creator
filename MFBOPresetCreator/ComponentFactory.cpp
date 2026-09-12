@@ -1,5 +1,5 @@
 #include "ComponentFactory.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QCheckBox>
 #include <QFrame>
 #include <QGridLayout>
@@ -11,15 +11,14 @@
 
 namespace ComponentFactory
 {
-  QPushButton* CreateButton(
-    QWidget* aParent,
-    const QString& aText,
-    const QString& aTooltipText,
-    const QString& aIconName,
-    const QString& aIconFolder,
-    const QString& aObjectName,
-    const bool aIsDisabled,
-    const bool aMustDisableAutoDefaultBehavior)
+  QPushButton* CreateButton(QWidget* aParent,
+                            const QString& aText,
+                            const QString& aTooltipText,
+                            const QString& aIconName,
+                            const QString& aIconFolder,
+                            const QString& aObjectName,
+                            const bool aIsDisabled,
+                            const bool aMustDisableAutoDefaultBehavior)
   {
     // Declare and instanciate the button
     auto lButton{new QPushButton(aText, aParent)};

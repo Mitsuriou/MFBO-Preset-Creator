@@ -6,7 +6,7 @@
 #include "LineEdit.h"
 #include "SliderFileBuilder.h"
 #include "TargetMeshesPicker.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QApplication>
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -218,7 +218,7 @@ void RetargetingTool::setupInterface(QGridLayout& aLayout)
   // Event binding
   QObject::connect(lTargetMeshesPicker, &QPushButton::clicked, this, &RetargetingTool::openTargetMeshesPicker);
   QObject::connect(lInputPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseInputDirectory);
-  QObject::connect(lKeepBackup, &QCheckBox::stateChanged, this, &RetargetingTool::updateBackupState);
+  QObject::connect(lKeepBackup, &QCheckBox::checkStateChanged, this, &RetargetingTool::updateBackupState);
   lKeepBackup->setChecked(true);
 
   QObject::connect(lBackupPathChooser, &QPushButton::clicked, this, &RetargetingTool::chooseBackupDirectory);
@@ -816,7 +816,13 @@ void RetargetingTool::launchUpDownGradeProcess()
 
 void RetargetingTool::openTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  auto lDialog{new TargetMeshesPicker(this,
+                                      this->settings(),
+                                      this->lastPaths(),
+                                      this->mTargetBodyMesh,
+                                      this->mTargetFeetMesh,
+                                      this->mTargetHandsMesh,
+                                      this->mTargetBeastHandsMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &RetargetingTool::targetMeshesChanged);
 }
 

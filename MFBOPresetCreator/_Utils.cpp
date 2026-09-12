@@ -1,4 +1,4 @@
-﻿#include "Utils.h"
+﻿#include "_Utils.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "Enum.h"
@@ -919,16 +919,16 @@ std::vector<Struct::SliderSet> Utils::ReadOSPFileInformation(const QString& aPat
         continue;
       }
 
-      const auto lSplittedName{lSliderSetEntry.getName().split('-')};
-      if (lSplittedName.isEmpty())
+      const auto lSplitName{lSliderSetEntry.getName().split('-')};
+      if (lSplitName.isEmpty())
       {
         lNextNodeToParse = lNextNodeToParse.nextSiblingElement();
         continue;
       }
 
-      const QString& lNamePartToAnalyze{lSplittedName.size() == 1 ? lSplittedName.first()
-                                                                  : (lSplittedName.size() == 2 ? lSplittedName.at(1)
-                                                                                               : lSplittedName.last())};
+      const QString& lNamePartToAnalyze{lSplitName.size() == 1 ? lSplitName.first()
+                                                               : (lSplitName.size() == 2 ? lSplitName.at(1)
+                                                                                         : lSplitName.last())};
 
       // Skip the
       if (aSkipTypeAnalysis)
@@ -1030,7 +1030,7 @@ bool Utils::IsPresetUsingBeastHands(const QString& aPath)
 
   if (lReadFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {
-    lFileContent = static_cast<QString>(lReadFile.readAll());
+    lFileContent = QString::fromUtf8(lReadFile.readAll());
     lReadFile.close();
   }
   else
@@ -1447,7 +1447,7 @@ void Utils::ParseBodyFeetSettings(Struct::BodyFeetSettings& aSettings, const QJs
   // Compatibility mode
   if (Utils::CompareVersionNumbers(aSettingsFileVersion, "3.5.0.0") == ApplicationVersionRelative::OLDER)
   {
-    const auto lCompatibilityBodyMod{DataLists::GetSplittedNameVersionFromBodyVersionCompatibility(aJSONObject["bodyMod"].toInt())};
+    const auto lCompatibilityBodyMod{DataLists::GetSplitNameVersionFromBodyVersionCompatibility(aJSONObject["bodyMod"].toInt())};
     const auto lCompatibilityData{DataLists::ReadBodyFeetModsCompatibility(lCompatibilityBodyMod.first,
                                                                            lCompatibilityBodyMod.second,
                                                                            aJSONObject["feetMod"].toInt())};

@@ -1,5 +1,5 @@
 #include "SliderSetsDBDAO.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QDir>
 #include <QFile>
 
@@ -15,7 +15,7 @@ namespace SliderSetsDBDAO
       if (!QDir().mkpath(Utils::GetDatabaseFilePath()))
       {
         // TODO: error message
-        return {};
+        return std::map<int, Struct::DatabaseSliderSet>();
       }
     }
 

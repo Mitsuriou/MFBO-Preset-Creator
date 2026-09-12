@@ -2,7 +2,7 @@
 #include "ComponentFactory.h"
 #include "LineEdit.h"
 #include "TextInputDialog.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QAction>
 #include <QCloseEvent>
 #include <QComboBox>

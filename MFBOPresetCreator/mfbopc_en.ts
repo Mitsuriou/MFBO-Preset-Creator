@@ -523,13 +523,13 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="951"/>
+        <location filename="BatchConversion.cpp" line="957"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="1018"/>
+        <location filename="BatchConversion.cpp" line="1024"/>
         <source> (feet only)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1517,13 +1517,13 @@ Be sure that you used characters authorized by your OS in the given paths.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1493"/>
+        <location filename="PresetCreator.cpp" line="1499"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1563"/>
+        <location filename="PresetCreator.cpp" line="1569"/>
         <source> (feet only)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1531,104 +1531,104 @@ Targeted feet: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="186"/>
+        <location filename="ComponentFactory.cpp" line="185"/>
         <source>Targeted meshes mods:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="195"/>
+        <location filename="ComponentFactory.cpp" line="194"/>
         <source>Choose target meshes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="204"/>
+        <location filename="ComponentFactory.cpp" line="203"/>
         <source>Targeted body: -
 Targeted feet: -</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="224"/>
+        <location filename="ComponentFactory.cpp" line="223"/>
         <source>Files generation&apos;s output location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="239"/>
+        <location filename="ComponentFactory.cpp" line="238"/>
         <source>Output directory path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="248"/>
+        <location filename="ComponentFactory.cpp" line="247"/>
         <source>Choose a directory...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="256"/>
+        <location filename="ComponentFactory.cpp" line="255"/>
         <source>Output subdirectory name/path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="263"/>
+        <location filename="ComponentFactory.cpp" line="262"/>
         <source>Use only subdirectory path?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="266"/>
+        <location filename="ComponentFactory.cpp" line="265"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="272"/>
+        <location filename="ComponentFactory.cpp" line="271"/>
         <source>Preview:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2435"/>
+        <location filename="DataLists.cpp" line="2713"/>
         <source>Minimized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2436"/>
-        <location filename="DataLists.cpp" line="2442"/>
+        <location filename="DataLists.cpp" line="2714"/>
+        <location filename="DataLists.cpp" line="2720"/>
         <source>Windowed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2437"/>
-        <location filename="DataLists.cpp" line="2443"/>
+        <location filename="DataLists.cpp" line="2715"/>
+        <location filename="DataLists.cpp" line="2721"/>
         <source>Maximized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2471"/>
-        <location filename="DataLists.cpp" line="2480"/>
+        <location filename="DataLists.cpp" line="2749"/>
+        <location filename="DataLists.cpp" line="2758"/>
         <source>[ignore]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2472"/>
-        <location filename="DataLists.cpp" line="2481"/>
+        <location filename="DataLists.cpp" line="2750"/>
+        <location filename="DataLists.cpp" line="2759"/>
         <source>Body mesh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2473"/>
-        <location filename="DataLists.cpp" line="2482"/>
+        <location filename="DataLists.cpp" line="2751"/>
+        <location filename="DataLists.cpp" line="2760"/>
         <source>Feet mesh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2474"/>
-        <location filename="DataLists.cpp" line="2483"/>
+        <location filename="DataLists.cpp" line="2752"/>
+        <location filename="DataLists.cpp" line="2761"/>
         <source>Hands mesh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2475"/>
+        <location filename="DataLists.cpp" line="2753"/>
         <source>Skeleton mesh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2484"/>
+        <location filename="DataLists.cpp" line="2762"/>
         <source>Beast hands mesh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1885,13 +1885,13 @@ Please make sure your internet connection is working correctly and try again.</s
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="838"/>
+        <location filename="RetargetingTool.cpp" line="844"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="905"/>
+        <location filename="RetargetingTool.cpp" line="911"/>
         <source> (feet only)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2247,7 +2247,7 @@ Would you like to restart the application now (you will lose all unsaved data)?<
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="918"/>
+        <location filename="Settings.cpp" line="928"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
@@ -2314,32 +2314,32 @@ Targeted feet: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="151"/>
+        <location filename="SliderSetsDBManager.cpp" line="154"/>
         <source>Parsing XML files. Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="151"/>
+        <location filename="SliderSetsDBManager.cpp" line="154"/>
         <source>Cancel treatment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="168"/>
+        <location filename="SliderSetsDBManager.cpp" line="171"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="239"/>
+        <location filename="SliderSetsDBManager.cpp" line="242"/>
         <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="314"/>
+        <location filename="SliderSetsDBManager.cpp" line="317"/>
         <source>Current file:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="332"/>
+        <location filename="SliderSetsDBManager.cpp" line="335"/>
         <source>Waiting for a file to be displayed...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2496,133 +2496,123 @@ Targeted feet: %2</source>
 <context>
     <name>TargetMeshesPicker</name>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="45"/>
+        <location filename="TargetMeshesPicker.cpp" line="53"/>
         <source>Closing</source>
         <translation type="unfinished">Closing</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="46"/>
+        <location filename="TargetMeshesPicker.cpp" line="54"/>
         <source>Do you want to close the window?</source>
         <translation type="unfinished">Do you want to close the window?</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="49"/>
+        <location filename="TargetMeshesPicker.cpp" line="57"/>
         <source>Close the window</source>
         <translation type="unfinished">Close the window</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="50"/>
+        <location filename="TargetMeshesPicker.cpp" line="58"/>
         <source>Go back to the target meshes picker window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="14"/>
+        <location filename="TargetMeshesPicker.cpp" line="16"/>
         <source>Target Meshes Picker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="338"/>
+        <location filename="TargetMeshesPicker.cpp" line="313"/>
         <source>Version number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="85"/>
+        <location filename="TargetMeshesPicker.cpp" line="94"/>
         <source>Targeted body: -
 Targeted feet: -</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="98"/>
+        <location filename="TargetMeshesPicker.cpp" line="107"/>
         <source>Save and close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="101"/>
+        <location filename="TargetMeshesPicker.cpp" line="110"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="134"/>
+        <location filename="TargetMeshesPicker.cpp" line="143"/>
         <source>Body mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="156"/>
+        <location filename="TargetMeshesPicker.cpp" line="165"/>
         <source>Embedded body mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="336"/>
+        <location filename="TargetMeshesPicker.cpp" line="311"/>
         <source>Base mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="340"/>
+        <location filename="TargetMeshesPicker.cpp" line="315"/>
         <source>Targeted mesh:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="167"/>
+        <location filename="TargetMeshesPicker.cpp" line="174"/>
         <source>Custom body mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="175"/>
+        <location filename="TargetMeshesPicker.cpp" line="180"/>
         <source>Feet mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="197"/>
+        <location filename="TargetMeshesPicker.cpp" line="202"/>
         <source>Embedded feet mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="208"/>
+        <location filename="TargetMeshesPicker.cpp" line="211"/>
         <source>Custom feet mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="216"/>
+        <location filename="TargetMeshesPicker.cpp" line="217"/>
         <source>Hands mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="238"/>
+        <location filename="TargetMeshesPicker.cpp" line="239"/>
         <source>Embedded hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="246"/>
-        <source>Automatic hands mod:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TargetMeshesPicker.cpp" line="259"/>
+        <location filename="TargetMeshesPicker.cpp" line="248"/>
         <source>Custom hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="267"/>
+        <location filename="TargetMeshesPicker.cpp" line="254"/>
         <source>Beast hands mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="289"/>
+        <location filename="TargetMeshesPicker.cpp" line="276"/>
         <source>Embedded beast hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="297"/>
-        <source>Automatic beast hands mod:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TargetMeshesPicker.cpp" line="310"/>
+        <location filename="TargetMeshesPicker.cpp" line="285"/>
         <source>Custom beast hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="642"/>
+        <location filename="TargetMeshesPicker.cpp" line="659"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation type="unfinished"></translation>
@@ -3062,120 +3052,120 @@ Please make sure your internet connection is working correctly and try again.
 <context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="158"/>
+        <location filename="_Utils.cpp" line="158"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="161"/>
-        <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1076"/>
-        <location filename="Utils.cpp" line="1750"/>
+        <location filename="_Utils.cpp" line="161"/>
+        <location filename="_Utils.cpp" line="223"/>
+        <location filename="_Utils.cpp" line="1076"/>
+        <location filename="_Utils.cpp" line="1750"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="220"/>
+        <location filename="_Utils.cpp" line="220"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="500"/>
-        <location filename="Utils.cpp" line="553"/>
+        <location filename="_Utils.cpp" line="500"/>
+        <location filename="_Utils.cpp" line="553"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="521"/>
+        <location filename="_Utils.cpp" line="521"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="582"/>
+        <location filename="_Utils.cpp" line="582"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="612"/>
+        <location filename="_Utils.cpp" line="612"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="638"/>
+        <location filename="_Utils.cpp" line="638"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="643"/>
+        <location filename="_Utils.cpp" line="643"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="650"/>
+        <location filename="_Utils.cpp" line="650"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="851"/>
+        <location filename="_Utils.cpp" line="851"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="871"/>
-        <location filename="Utils.cpp" line="902"/>
-        <location filename="Utils.cpp" line="1038"/>
+        <location filename="_Utils.cpp" line="871"/>
+        <location filename="_Utils.cpp" line="902"/>
+        <location filename="_Utils.cpp" line="1038"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1076"/>
+        <location filename="_Utils.cpp" line="1076"/>
         <source>Project successfully saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1076"/>
+        <location filename="_Utils.cpp" line="1076"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1082"/>
+        <location filename="_Utils.cpp" line="1082"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1746"/>
+        <location filename="_Utils.cpp" line="1746"/>
         <source>API key successfully saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1747"/>
+        <location filename="_Utils.cpp" line="1747"/>
         <source>The API key file has successfully been saved to &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1759"/>
+        <location filename="_Utils.cpp" line="1759"/>
         <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1847"/>
+        <location filename="_Utils.cpp" line="1847"/>
         <source>Remove from history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1937"/>
-        <location filename="Utils.cpp" line="1961"/>
+        <location filename="_Utils.cpp" line="1937"/>
+        <location filename="_Utils.cpp" line="1961"/>
         <source>No path given or invalid path given.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1955"/>
+        <location filename="_Utils.cpp" line="1955"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>

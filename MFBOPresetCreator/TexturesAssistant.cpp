@@ -3,7 +3,7 @@
 #include "DataLists.h"
 #include "FileIDPicker.h"
 #include "LineEdit.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QAbstractSlider>
 #include <QApplication>
 #include <QCloseEvent>
@@ -292,7 +292,7 @@ void TexturesAssistant::setupOutputBox(QGridLayout& aLayout)
   QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &TexturesAssistant::updateOutputPreview);
 
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))};
-  QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &TexturesAssistant::useOnlySubdirStateChanged);
+  QObject::connect(lUseOnlySubdir, &QCheckBox::checkStateChanged, this, &TexturesAssistant::useOnlySubdirStateChanged);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -818,19 +818,19 @@ void TexturesAssistant::parseNode(const QJsonObject& aNode, const QString& aRoot
 
     const auto lLastSlashPosition{lFileName.lastIndexOf('/')};
 
-    auto lSplittedPath{std::make_pair(lFileName.left(lLastSlashPosition), lFileName.mid(lLastSlashPosition + 1))};
-    if (lSplittedPath.first.isEmpty() || lSplittedPath.second.isEmpty())
+    auto lSplitPath{std::make_pair(lFileName.left(lLastSlashPosition), lFileName.mid(lLastSlashPosition + 1))};
+    if (lSplitPath.first.isEmpty() || lSplitPath.second.isEmpty())
     {
       return;
     }
 
-    if (lTexturesFilesToFind.contains(lSplittedPath.second))
+    if (lTexturesFilesToFind.contains(lSplitPath.second))
     {
-      this->mScannedFiles.groupedTextures.push_back(lSplittedPath);
+      this->mScannedFiles.groupedTextures.push_back(lSplitPath);
     }
     else
     {
-      this->mScannedFiles.otherTextures.push_back(lSplittedPath);
+      this->mScannedFiles.otherTextures.push_back(lSplitPath);
     }
   }
 }

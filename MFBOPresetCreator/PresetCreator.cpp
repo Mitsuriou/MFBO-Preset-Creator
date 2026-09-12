@@ -6,7 +6,7 @@
 #include "Settings.h"
 #include "SliderFileBuilder.h"
 #include "TargetMeshesPicker.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QAction>
 #include <QCheckBox>
 #include <QComboBox>
@@ -230,15 +230,15 @@ void PresetCreator::injectDataFromOSPFile()
       break;
     }
 
-    auto lSplittedSlidersetName{lParsedSliderSets.at(i).getName().split('-')};
-    if (lSplittedSlidersetName.size() <= 1)
+    auto lSplitSlidersetName{lParsedSliderSets.at(i).getName().split('-')};
+    if (lSplitSlidersetName.size() <= 1)
     {
-      lSlidersetName = lSplittedSlidersetName.first();
+      lSlidersetName = lSplitSlidersetName.first();
     }
     else
     {
-      lSplittedSlidersetName.removeLast();
-      lSlidersetName = lSplittedSlidersetName.join('-');
+      lSplitSlidersetName.removeLast();
+      lSlidersetName = lSplitSlidersetName.join('-');
     }
   }
 
@@ -523,7 +523,7 @@ void PresetCreator::setupBodyMeshesGUI(QGridLayout& aLayout)
   QObject::connect(lBodyMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
   QObject::connect(lFeetMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
   QObject::connect(lHandsMeshNameInput, &QLineEdit::textChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
-  QObject::connect(lNeedBeastHands, &QCheckBox::stateChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
+  QObject::connect(lNeedBeastHands, &QCheckBox::checkStateChanged, this, qOverload<>(&PresetCreator::refreshAllPreviewFields));
 }
 
 void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
@@ -614,7 +614,7 @@ void PresetCreator::setupSkeletonGUI(QGridLayout& aLayout)
   this->updateSkeletonPreview();
 
   // Event binding
-  QObject::connect(lNeedCustomSkeleton, &QCheckBox::stateChanged, this, &PresetCreator::updateSkeletonPathState);
+  QObject::connect(lNeedCustomSkeleton, &QCheckBox::checkStateChanged, this, &PresetCreator::updateSkeletonPathState);
   lNeedCustomSkeleton->setChecked(true);
   lNeedCustomSkeleton->setChecked(false);
 
@@ -739,7 +739,7 @@ void PresetCreator::setupOutputGUI(QGridLayout& aLayout)
   QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &PresetCreator::updateOutputPreview);
 
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))};
-  QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &PresetCreator::useOnlySubdirStateChanged);
+  QObject::connect(lUseOnlySubdir, &QCheckBox::checkStateChanged, this, &PresetCreator::useOnlySubdirStateChanged);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -1471,7 +1471,13 @@ void PresetCreator::refreshAllPreviewFields()
 
 void PresetCreator::openTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->mSettings, this->mLastPaths, this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  auto lDialog{new TargetMeshesPicker(this,
+                                      this->mSettings,
+                                      this->mLastPaths,
+                                      this->mTargetBodyMesh,
+                                      this->mTargetFeetMesh,
+                                      this->mTargetHandsMesh,
+                                      this->mTargetBeastHandsMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &PresetCreator::targetMeshesChanged);
 }
 

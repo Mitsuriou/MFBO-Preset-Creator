@@ -446,7 +446,7 @@ Note pour les utilisateurs de ModOrganizer2 : sélectionnez votre répertoire &q
         <translation>Ouvrir le répertoire généré par lot</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="951"/>
+        <location filename="BatchConversion.cpp" line="957"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
@@ -507,7 +507,7 @@ Assurez-vous que vous avez utilisé des caractères autorisés par votre systèm
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="BatchConversion.cpp" line="1018"/>
+        <location filename="BatchConversion.cpp" line="1024"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -1501,14 +1501,14 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1493"/>
+        <location filename="PresetCreator.cpp" line="1499"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
 Pieds ciblés : %2</translation>
     </message>
     <message>
-        <location filename="PresetCreator.cpp" line="1563"/>
+        <location filename="PresetCreator.cpp" line="1569"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -1677,105 +1677,105 @@ Pieds ciblés : %2</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="ComponentFactory.cpp" line="186"/>
+        <location filename="ComponentFactory.cpp" line="185"/>
         <source>Targeted meshes mods:</source>
         <translation>Mods de meshes ciblés :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="195"/>
+        <location filename="ComponentFactory.cpp" line="194"/>
         <source>Choose target meshes</source>
         <translation>Choisir les meshes cibles</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="204"/>
+        <location filename="ComponentFactory.cpp" line="203"/>
         <source>Targeted body: -
 Targeted feet: -</source>
         <translation>Corps ciblé : -
 Pieds ciblés : -</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="224"/>
+        <location filename="ComponentFactory.cpp" line="223"/>
         <source>Files generation&apos;s output location</source>
         <translation>Emplacement de sortie de la génération de fichiers</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="239"/>
+        <location filename="ComponentFactory.cpp" line="238"/>
         <source>Output directory path:</source>
         <translation>Emplacement du répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="248"/>
+        <location filename="ComponentFactory.cpp" line="247"/>
         <source>Choose a directory...</source>
         <translation>Choisir un répertoire...</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="256"/>
+        <location filename="ComponentFactory.cpp" line="255"/>
         <source>Output subdirectory name/path:</source>
         <translation>Nom/Emplacement du sous-répertoire de sortie :</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="263"/>
+        <location filename="ComponentFactory.cpp" line="262"/>
         <source>Use only subdirectory path?</source>
         <translation>Utiliser seulement le sous-répertoire ?</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="266"/>
+        <location filename="ComponentFactory.cpp" line="265"/>
         <source>Check this box to define the export as only the subdirectory field (use at your own risk)</source>
         <translation>Cochez cette case pour définir le répertoire d&apos;export comme étant uniquement le champ du sous-répertoire (utiliser à vos propres risques)</translation>
     </message>
     <message>
-        <location filename="ComponentFactory.cpp" line="272"/>
+        <location filename="ComponentFactory.cpp" line="271"/>
         <source>Preview:</source>
         <translation>Aperçu :</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2435"/>
+        <location filename="DataLists.cpp" line="2713"/>
         <source>Minimized</source>
         <translation>Minimisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2436"/>
-        <location filename="DataLists.cpp" line="2442"/>
+        <location filename="DataLists.cpp" line="2714"/>
+        <location filename="DataLists.cpp" line="2720"/>
         <source>Windowed</source>
         <translation>Fenêtré</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2437"/>
-        <location filename="DataLists.cpp" line="2443"/>
+        <location filename="DataLists.cpp" line="2715"/>
+        <location filename="DataLists.cpp" line="2721"/>
         <source>Maximized</source>
         <translation>Maximisé</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2471"/>
-        <location filename="DataLists.cpp" line="2480"/>
+        <location filename="DataLists.cpp" line="2749"/>
+        <location filename="DataLists.cpp" line="2758"/>
         <source>[ignore]</source>
         <translation>[ignorer]</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2472"/>
-        <location filename="DataLists.cpp" line="2481"/>
+        <location filename="DataLists.cpp" line="2750"/>
+        <location filename="DataLists.cpp" line="2759"/>
         <source>Body mesh</source>
         <translation>Mesh de corps</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2473"/>
-        <location filename="DataLists.cpp" line="2482"/>
+        <location filename="DataLists.cpp" line="2751"/>
+        <location filename="DataLists.cpp" line="2760"/>
         <source>Feet mesh</source>
         <translation>Mesh de pieds</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2474"/>
-        <location filename="DataLists.cpp" line="2483"/>
+        <location filename="DataLists.cpp" line="2752"/>
+        <location filename="DataLists.cpp" line="2761"/>
         <source>Hands mesh</source>
         <translation>Mesh de mains</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2475"/>
+        <location filename="DataLists.cpp" line="2753"/>
         <source>Skeleton mesh</source>
         <translation>Mesh de squelette</translation>
     </message>
     <message>
-        <location filename="DataLists.cpp" line="2484"/>
+        <location filename="DataLists.cpp" line="2762"/>
         <source>Beast hands mesh</source>
         <translation>Mesh de mains de bête</translation>
     </message>
@@ -1947,14 +1947,14 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
         <translation>Le choix de corps/version ne supporte pas les mains de bêtes. Le reciblage du fichier OSP &quot;%1&quot; a été ignoré.</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="838"/>
+        <location filename="RetargetingTool.cpp" line="844"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
 Pieds ciblés : %2</translation>
     </message>
     <message>
-        <location filename="RetargetingTool.cpp" line="905"/>
+        <location filename="RetargetingTool.cpp" line="911"/>
         <source> (feet only)</source>
         <translation> (pieds uniquement)</translation>
     </message>
@@ -2244,7 +2244,7 @@ Pieds ciblés : %2</translation>
         <translation>Dernier fichier OSP injecté</translation>
     </message>
     <message>
-        <location filename="Settings.cpp" line="918"/>
+        <location filename="Settings.cpp" line="928"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
@@ -2467,32 +2467,32 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation>Manager de la Base de Données de Slider Sets</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="151"/>
+        <location filename="SliderSetsDBManager.cpp" line="154"/>
         <source>Parsing XML files. Please wait...</source>
         <translation>Analyse des fichiers XML. Veuillez patienter...</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="151"/>
+        <location filename="SliderSetsDBManager.cpp" line="154"/>
         <source>Cancel treatment</source>
         <translation>Annuler le traitement</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="168"/>
+        <location filename="SliderSetsDBManager.cpp" line="171"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="239"/>
+        <location filename="SliderSetsDBManager.cpp" line="242"/>
         <source>Error while trying to create the SliderSet file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier SliderSet &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="314"/>
+        <location filename="SliderSetsDBManager.cpp" line="317"/>
         <source>Current file:</source>
         <translation>Fichier actuel :</translation>
     </message>
     <message>
-        <location filename="SliderSetsDBManager.cpp" line="332"/>
+        <location filename="SliderSetsDBManager.cpp" line="335"/>
         <source>Waiting for a file to be displayed...</source>
         <translation>En attente d&apos;un fichier à afficher...</translation>
     </message>
@@ -2749,27 +2749,27 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
 <context>
     <name>TargetMeshesPicker</name>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="45"/>
+        <location filename="TargetMeshesPicker.cpp" line="53"/>
         <source>Closing</source>
         <translation>Fermeture</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="46"/>
+        <location filename="TargetMeshesPicker.cpp" line="54"/>
         <source>Do you want to close the window?</source>
         <translation>Voulez-vous fermer la fenêtre ?</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="49"/>
+        <location filename="TargetMeshesPicker.cpp" line="57"/>
         <source>Close the window</source>
         <translation>Fermer la fenêtre</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="50"/>
+        <location filename="TargetMeshesPicker.cpp" line="58"/>
         <source>Go back to the target meshes picker window</source>
         <translation>Revenir sur la fenêtre de sélecteur de meshes cibles</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="14"/>
+        <location filename="TargetMeshesPicker.cpp" line="16"/>
         <source>Target Meshes Picker</source>
         <translation>Sélecteur de Meshes Cibles</translation>
     </message>
@@ -2782,7 +2782,7 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation type="vanished">Mod de base du corps :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="338"/>
+        <location filename="TargetMeshesPicker.cpp" line="313"/>
         <source>Version number:</source>
         <translation>Numéro de version :</translation>
     </message>
@@ -2803,104 +2803,94 @@ Voulez-vous redémarrer l&apos;application maintenant (vous perdrez toute donné
         <translation type="vanished">Mesh de pieds ciblée :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="85"/>
+        <location filename="TargetMeshesPicker.cpp" line="94"/>
         <source>Targeted body: -
 Targeted feet: -</source>
         <translation>Corps ciblé : -
 Pieds ciblés : -</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="98"/>
+        <location filename="TargetMeshesPicker.cpp" line="107"/>
         <source>Save and close</source>
         <translation>Enregistrer et fermer</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="101"/>
+        <location filename="TargetMeshesPicker.cpp" line="110"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="134"/>
+        <location filename="TargetMeshesPicker.cpp" line="143"/>
         <source>Body mod:</source>
         <translation>Mod de corps :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="156"/>
+        <location filename="TargetMeshesPicker.cpp" line="165"/>
         <source>Embedded body mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="336"/>
+        <location filename="TargetMeshesPicker.cpp" line="311"/>
         <source>Base mod:</source>
         <translation>Mod de base :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="340"/>
+        <location filename="TargetMeshesPicker.cpp" line="315"/>
         <source>Targeted mesh:</source>
         <translation>Mesh ciblée :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="167"/>
+        <location filename="TargetMeshesPicker.cpp" line="174"/>
         <source>Custom body mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="175"/>
+        <location filename="TargetMeshesPicker.cpp" line="180"/>
         <source>Feet mod:</source>
         <translation>Mod de pieds :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="197"/>
+        <location filename="TargetMeshesPicker.cpp" line="202"/>
         <source>Embedded feet mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="208"/>
+        <location filename="TargetMeshesPicker.cpp" line="211"/>
         <source>Custom feet mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="216"/>
+        <location filename="TargetMeshesPicker.cpp" line="217"/>
         <source>Hands mod:</source>
         <translation>Mesh de mains :</translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="238"/>
+        <location filename="TargetMeshesPicker.cpp" line="239"/>
         <source>Embedded hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="246"/>
-        <source>Automatic hands mod:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TargetMeshesPicker.cpp" line="259"/>
+        <location filename="TargetMeshesPicker.cpp" line="248"/>
         <source>Custom hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="267"/>
+        <location filename="TargetMeshesPicker.cpp" line="254"/>
         <source>Beast hands mod:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="289"/>
+        <location filename="TargetMeshesPicker.cpp" line="276"/>
         <source>Embedded beast hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="297"/>
-        <source>Automatic beast hands mod:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TargetMeshesPicker.cpp" line="310"/>
+        <location filename="TargetMeshesPicker.cpp" line="285"/>
         <source>Custom beast hands mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TargetMeshesPicker.cpp" line="642"/>
+        <location filename="TargetMeshesPicker.cpp" line="659"/>
         <source>Targeted body: %1
 Targeted feet: %2</source>
         <translation>Corps ciblé : %1
@@ -3385,51 +3375,51 @@ Veuillez vous assurer que votre connexion Internet fonctionne correctement et r�
 <context>
     <name>Utils</name>
     <message>
-        <location filename="Utils.cpp" line="158"/>
+        <location filename="_Utils.cpp" line="158"/>
         <source>Warning</source>
         <translation>Attention</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="161"/>
-        <location filename="Utils.cpp" line="223"/>
-        <location filename="Utils.cpp" line="1076"/>
-        <location filename="Utils.cpp" line="1750"/>
+        <location filename="_Utils.cpp" line="161"/>
+        <location filename="_Utils.cpp" line="223"/>
+        <location filename="_Utils.cpp" line="1076"/>
+        <location filename="_Utils.cpp" line="1750"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="220"/>
+        <location filename="_Utils.cpp" line="220"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="500"/>
-        <location filename="Utils.cpp" line="553"/>
+        <location filename="_Utils.cpp" line="500"/>
+        <location filename="_Utils.cpp" line="553"/>
         <source>Error while creating the meshes directory: &quot;%1&quot; already exists.</source>
         <translation>Erreur en créant le répertoire des meshes : &quot;%1&quot; existe déjà.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="521"/>
+        <location filename="_Utils.cpp" line="521"/>
         <source>Error while trying to create the XML file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier XML &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="582"/>
+        <location filename="_Utils.cpp" line="582"/>
         <source>Error while trying to create the OSP file &quot;%1&quot;. Aborting process.</source>
         <translation>Erreur en essayant de créer le fichier OSP &quot;%1&quot;. Interruption du processus.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="612"/>
+        <location filename="_Utils.cpp" line="612"/>
         <source>The texture file &quot;%1&quot; was not found or could not be copied.</source>
         <translation>Le fichier de texture &quot;%1&quot; n&apos;a pas été trouvé ou n&apos;a pas pu être copié.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="638"/>
+        <location filename="_Utils.cpp" line="638"/>
         <source>The custom skeleton file was not found or could not be copied. The application will take with the default XPMSSE (v4.72) skeleton instead...</source>
         <translation>Le fichier de squelette personnalisé n&apos;a pas été trouvé ou n&apos;a pas pu être copié. L&apos;application va essayer avec le squelette XPMSSE (v4.72) par défaut à la place...</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="643"/>
+        <location filename="_Utils.cpp" line="643"/>
         <source>The skeleton file could not be created even using the default skeleton.
 Be sure to not generate the preset in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -3438,34 +3428,34 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="650"/>
+        <location filename="_Utils.cpp" line="650"/>
         <source>Error: no path given for the custom skeleton.</source>
         <translation>Erreur : aucun emplacement n&apos;a été donné pour le squelette personnalisé.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="851"/>
+        <location filename="_Utils.cpp" line="851"/>
         <source>The internal file &quot;%1&quot; could not be found. Please report this issue to the developer with the steps to reproduce this bug.</source>
         <translation>Le fichier interne &quot;%1&quot; n&apos;a pas pu être trouvé. Veuillez sigaler ce problème au développeur avec les étapes pour reproduire ce bug.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="871"/>
-        <location filename="Utils.cpp" line="902"/>
-        <location filename="Utils.cpp" line="1038"/>
+        <location filename="_Utils.cpp" line="871"/>
+        <location filename="_Utils.cpp" line="902"/>
+        <location filename="_Utils.cpp" line="1038"/>
         <source>Error while trying to read the file &quot;%1&quot;.</source>
         <translation>Erreur en essayant de lire le fichier &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1076"/>
+        <location filename="_Utils.cpp" line="1076"/>
         <source>Project successfully saved</source>
         <translation>Projet sauvegardé avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1076"/>
+        <location filename="_Utils.cpp" line="1076"/>
         <source>The project file has successfully been saved to &quot;%1&quot;.</source>
         <translation>Le fichier de projet a été sauvegardé avec succès vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1082"/>
+        <location filename="_Utils.cpp" line="1082"/>
         <source>Could not save the project file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -3474,17 +3464,17 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1746"/>
+        <location filename="_Utils.cpp" line="1746"/>
         <source>API key successfully saved</source>
         <translation>Clé d&apos;API sauvegardée avec succès</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1747"/>
+        <location filename="_Utils.cpp" line="1747"/>
         <source>The API key file has successfully been saved to &quot;%1&quot;.</source>
         <translation>La clé d&apos;API a été sauvegardée avec succès vers &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1759"/>
+        <location filename="_Utils.cpp" line="1759"/>
         <source>Could not save the API key file to &quot;%1&quot;.
 Be sure to not save the file in a OneDrive/DropBox space and that you executed the application with sufficient permissions.
 Be sure that you used characters authorized by your OS in the given paths.</source>
@@ -3496,18 +3486,18 @@ Assurez vous de ne pas générer le preset dans un espace OneDrive/DropBox et qu
 Assurez-vous que vous avez utilisé des caractères autorisés par votre système d&apos;exploitation dans les emplacements donnés.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1847"/>
+        <location filename="_Utils.cpp" line="1847"/>
         <source>Remove from history</source>
         <translation>Supprimer de l&apos;historique</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1937"/>
-        <location filename="Utils.cpp" line="1961"/>
+        <location filename="_Utils.cpp" line="1937"/>
+        <location filename="_Utils.cpp" line="1961"/>
         <source>No path given or invalid path given.</source>
         <translation>Aucun emplacement donné ou emplacement invalide donné.</translation>
     </message>
     <message>
-        <location filename="Utils.cpp" line="1955"/>
+        <location filename="_Utils.cpp" line="1955"/>
         <source>You must choose a directory through the file chooser. Current path defined: &quot; /%1&quot;.</source>
         <translation>Vous devez choisir un répertoire depuis le sélecteur de fichier. Chemin actuel : &quot; /%1&quot;.</translation>
     </message>

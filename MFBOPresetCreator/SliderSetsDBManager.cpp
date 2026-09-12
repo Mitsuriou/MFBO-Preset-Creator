@@ -3,7 +3,7 @@
 #include "PlainTextEdit.h"
 #include "SliderSetsDBEntry.h"
 #include "SliderSetsImporter.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QApplication>
 #include <QDir>
 #include <QDomDocument>
@@ -25,10 +25,13 @@ SliderSetsDBManager::SliderSetsDBManager(QWidget* aParent, const Struct::Setting
   aSettings.display.sliderSetsDBManagerDialogOpeningMode == DialogOpeningMode::WINDOWED ? this->show() : this->showMaximized();
 }
 
-void SliderSetsDBManager::closeEvent(QCloseEvent*)
+void SliderSetsDBManager::closeEvent(QCloseEvent* aEvent)
 {
   // TODO: check to remove this call
   SliderSetsDBDAO::saveDatabase(this->mDatabase);
+
+  emit this->closed(this->mDatabase);
+  aEvent->accept();
 }
 
 void SliderSetsDBManager::initializeGUI()
@@ -336,14 +339,15 @@ void SliderSetsDBManager::clearPreviewContent()
 
 int SliderSetsDBManager::nextAvailableDatabaseIndex() const
 {
-  if (this->mDatabase.cbegin() == this->mDatabase.cend())
-    return 1;
+  constexpr auto START_INDEX{1000};
 
-  return std::max_element(this->mDatabase.cbegin(),
-                          this->mDatabase.cend(),
-                          [](const auto& lhs, const auto& rhs) {
-                            return lhs.first < rhs.first;
-                          })
-           ->first
-         + 1;
+  if (this->mDatabase.cbegin() == this->mDatabase.cend())
+    return START_INDEX;
+
+  const auto lMaxIndex{
+    std::max_element(this->mDatabase.cbegin(), this->mDatabase.cend(), [](const auto& lhs, const auto& rhs) {
+      return lhs.first < rhs.first;
+    })->first};
+
+  return std::max(lMaxIndex + 1, START_INDEX);
 }

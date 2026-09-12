@@ -2,7 +2,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "SSSPSelectionBlock.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDirIterator>
@@ -39,7 +39,7 @@ void SliderSetsImporter::closeEvent(QCloseEvent* aEvent)
                                     tr("Closing"),
                                     tr("Do you want to close the window?"),
                                     this->getThemedResourcePath(),
-                                    "help-circle",
+                                    QStringLiteral("help-circle"),
                                     tr("Close the window"),
                                     tr("Go back to the slider sets importer window"),
                                     "",
@@ -79,7 +79,7 @@ void SliderSetsImporter::initializeGUI()
   auto lInputPathChooser{ComponentFactory::CreateButton(this,
                                                         tr("Choose a directory..."),
                                                         "",
-                                                        "folder",
+                                                        QStringLiteral("folder"),
                                                         this->getThemedResourcePath(),
                                                         "",
                                                         false,
@@ -90,9 +90,9 @@ void SliderSetsImporter::initializeGUI()
   auto lLaunchSearchButton{ComponentFactory::CreateButton(this,
                                                           tr("Launch the scan of the mod"),
                                                           "",
-                                                          "search",
+                                                          QStringLiteral("search"),
                                                           this->getThemedResourcePath(),
-                                                          "launch_search_button",
+                                                          QStringLiteral("launch_search_button"),
                                                           true,
                                                           true)};
   lMainLayout->addWidget(lLaunchSearchButton, 1, 0, 1, 3);
@@ -185,7 +185,7 @@ void SliderSetsImporter::launchSearchProcess()
                                       tr("Relaunch the scan"),
                                       tr("You will lose all the unsaved data. Do you still want to relaunch the scan?"),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Relaunch the scan"),
                                       tr("Cancel the relaunch"),
                                       "",
@@ -216,7 +216,7 @@ void SliderSetsImporter::launchSearch()
                                       tr("No mod archive file has been found"),
                                       tr("No ESL, ESM or ESP files were found in the scanned directory. Do you still want to continue the scan?"),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Continue the scan"),
                                       tr("Cancel the scan"),
                                       "",
@@ -259,7 +259,7 @@ void SliderSetsImporter::launchSearch()
   }
 
   // The root directory should at least contain an OSP file to be scanned.
-  if (Utils::GetNumberFilesByExtensions(lCheckPath, QStringList({QStringLiteral("*.osp")})) == 0)
+  if (Utils::GetNumberFilesByExtensions(lCheckPath, QStringList(QStringLiteral("*.osp"))) == 0)
   {
     Utils::DisplayErrorMessage(tr("No OSP file were found in the \"SliderSets\" directory."));
     lLaunchSearchButton->setDisabled(false);
@@ -357,9 +357,9 @@ void SliderSetsImporter::displayObtainedData(const std::multimap<QString, std::v
   auto lValidateSelection{ComponentFactory::CreateButton(this,
                                                          tr("Start importing the chosen slider sets(s) and close this window"),
                                                          "",
-                                                         "playlist-check",
+                                                         QStringLiteral("playlist-check"),
                                                          this->getThemedResourcePath(),
-                                                         "validate_selection")};
+                                                         QStringLiteral("validate_selection"))};
   lMainLayout->addWidget(lValidateSelection, 3, 0, 1, 3);
 
   QObject::connect(lValidateSelection, &QPushButton::clicked, this, &SliderSetsImporter::validateSelection);
@@ -409,7 +409,7 @@ void SliderSetsImporter::validateSelection()
                                       tr("No entry selected"),
                                       tr("You did not select any entry. Do you still want to validate this selection as is?"),
                                       this->getThemedResourcePath(),
-                                      "help-circle",
+                                      QStringLiteral("help-circle"),
                                       tr("Validate as is"),
                                       tr("Cancel, I wanted to select values"),
                                       "",

@@ -2,7 +2,7 @@
 #include "ComponentFactory.h"
 #include "DataLists.h"
 #include "SliderSetsDBManager.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QCloseEvent>
 #include <QListWidget>
 
@@ -10,7 +10,9 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
                                        const Struct::Settings& aSettings,
                                        std::map<QString, QString>* aLastPaths,
                                        const BodyNameVersion& aPreSelectedBody,
-                                       const FeetNameVersion& aPreSelectedFeet)
+                                       const FeetNameVersion& aPreSelectedFeet,
+                                       const HandsNameVersion& aPreSelectedHands,
+                                       const BeastHandsNameVersion& aPreSelectedBeastHands)
   : TitleDialog(aParent, tr("Target Meshes Picker"), "mesh", aSettings, aLastPaths, 1100, 700)
   , mOriginalBody(aPreSelectedBody)
   , mOriginalFeet(aPreSelectedFeet)
@@ -22,7 +24,13 @@ TargetMeshesPicker::TargetMeshesPicker(QWidget* aParent,
   , mListFeetVersion(new QListWidget(this))
   , mListFeetVariantName(new QListWidget(this))
   , mListFeetCustom(new QListWidget(this))
+  , mListHandsName(new QListWidget(this))
+  , mListHandsVersion(new QListWidget(this))
+  , mListHandsVariantName(new QListWidget(this))
   , mListHandsCustom(new QListWidget(this))
+  , mListBeastHandsName(new QListWidget(this))
+  , mListBeastHandsVersion(new QListWidget(this))
+  , mListBeastHandsVariantName(new QListWidget(this))
   , mListBeastHandsCustom(new QListWidget(this))
 {
   // Build the window's interface
@@ -78,6 +86,7 @@ void TargetMeshesPicker::initializeGUI()
   this->setupFeetTabWidget(*lMainLayout);
   this->setupHandsTabWidget(*lMainLayout);
   this->setupBeastHandsTabWidget(*lMainLayout);
+  this->updateCustomSliderSetsLists();
 
   /*========================================*/
   /* Label for currently chosen meshes mods */
@@ -152,7 +161,7 @@ void TargetMeshesPicker::setupBodyTabWidget(QGridLayout& aMainLayout)
 void TargetMeshesPicker::setupEmbeddedBodyTab(QTabWidget& aTabWidget)
 {
   this->setupEmbeddedTab(aTabWidget,
-                         "body",
+                         QStringLiteral("body"),
                          tr("Embedded body mods"),
                          *this->mListBodyName,
                          *this->mListBodyVersion,
@@ -162,11 +171,7 @@ void TargetMeshesPicker::setupEmbeddedBodyTab(QTabWidget& aTabWidget)
 
 void TargetMeshesPicker::setupCustomBodyTab(QTabWidget& aTabWidget)
 {
-  this->setupCustomTab(aTabWidget,
-                       "body",
-                       tr("Custom body mods"),
-                       *this->mListBodyCustom,
-                       MeshPartType::BODY);
+  this->setupCustomTab(aTabWidget, QStringLiteral("body"), tr("Custom body mods"), *this->mListBodyCustom);
 }
 
 void TargetMeshesPicker::setupFeetTabWidget(QGridLayout& aMainLayout)
@@ -193,7 +198,7 @@ void TargetMeshesPicker::setupFeetTabWidget(QGridLayout& aMainLayout)
 void TargetMeshesPicker::setupEmbeddedFeetTab(QTabWidget& aTabWidget)
 {
   this->setupEmbeddedTab(aTabWidget,
-                         "foot",
+                         QStringLiteral("foot"),
                          tr("Embedded feet mods"),
                          *this->mListFeetName,
                          *this->mListFeetVersion,
@@ -203,11 +208,7 @@ void TargetMeshesPicker::setupEmbeddedFeetTab(QTabWidget& aTabWidget)
 
 void TargetMeshesPicker::setupCustomFeetTab(QTabWidget& aTabWidget)
 {
-  this->setupCustomTab(aTabWidget,
-                       "foot",
-                       tr("Custom feet mods"),
-                       *this->mListFeetCustom,
-                       MeshPartType::FEET);
+  this->setupCustomTab(aTabWidget, QStringLiteral("foot"), tr("Custom feet mods"), *this->mListFeetCustom);
 }
 
 void TargetMeshesPicker::setupHandsTabWidget(QGridLayout& aMainLayout)
@@ -233,32 +234,18 @@ void TargetMeshesPicker::setupHandsTabWidget(QGridLayout& aMainLayout)
 
 void TargetMeshesPicker::setupEmbeddedHandsTab(QTabWidget& aTabWidget)
 {
-  // Tab widget
-  const auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/hand").arg(this->getThemedResourcePath()))), tr("Embedded hands mods"));
-
-  // Layout
-  const auto lTabLayout{new QHBoxLayout(lTabContent)};
-  lTabLayout->setSpacing(10);
-  lTabLayout->setAlignment(Qt::AlignTop);
-
-  // Label
-  const auto lLabelHands{new QLabel(tr("Automatic hands mod:"), this)};
-  lTabLayout->addWidget(lLabelHands);
-
-  // Automatic value
-  const auto lValueHands{new QLabel(this)};
-  lValueHands->setObjectName(QStringLiteral("automatic_hands_value"));
-  lTabLayout->addWidget(lValueHands);
+  this->setupEmbeddedTab(aTabWidget,
+                         QStringLiteral("hand"),
+                         tr("Embedded hands mods"),
+                         *this->mListHandsName,
+                         *this->mListHandsVersion,
+                         *this->mListHandsVariantName,
+                         DataLists::GetHandsNamesList(DataLists::GetVariant(this->mOriginalBody)));
 }
 
 void TargetMeshesPicker::setupCustomHandsTab(QTabWidget& aTabWidget)
 {
-  this->setupCustomTab(aTabWidget,
-                       "hand",
-                       tr("Custom hands mods"),
-                       *this->mListHandsCustom,
-                       MeshPartType::HANDS);
+  this->setupCustomTab(aTabWidget, QStringLiteral("hand"), tr("Custom hands mods"), *this->mListHandsCustom);
 }
 
 void TargetMeshesPicker::setupBeastHandsTabWidget(QGridLayout& aMainLayout)
@@ -284,32 +271,18 @@ void TargetMeshesPicker::setupBeastHandsTabWidget(QGridLayout& aMainLayout)
 
 void TargetMeshesPicker::setupEmbeddedBeastHandsTab(QTabWidget& aTabWidget)
 {
-  // Tab widget
-  const auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/hand").arg(this->getThemedResourcePath()))), tr("Embedded beast hands mods"));
-
-  // Layout
-  const auto lTabLayout{new QHBoxLayout(lTabContent)};
-  lTabLayout->setSpacing(10);
-  lTabLayout->setAlignment(Qt::AlignTop);
-
-  // Label
-  const auto lLabelBeastHands{new QLabel(tr("Automatic beast hands mod:"), this)};
-  lTabLayout->addWidget(lLabelBeastHands);
-
-  // Automatic value
-  const auto lValueBeastHands{new QLabel(this)};
-  lValueBeastHands->setObjectName(QStringLiteral("automatic_beast_hands_value"));
-  lTabLayout->addWidget(lValueBeastHands);
+  this->setupEmbeddedTab(aTabWidget,
+                         QStringLiteral("hand"),
+                         tr("Embedded beast hands mods"),
+                         *this->mListBeastHandsName,
+                         *this->mListBeastHandsVersion,
+                         *this->mListBeastHandsVariantName,
+                         DataLists::GetBeastHandsNamesList(DataLists::GetVariant(this->mOriginalBody)));
 }
 
 void TargetMeshesPicker::setupCustomBeastHandsTab(QTabWidget& aTabWidget)
 {
-  this->setupCustomTab(aTabWidget,
-                       "hand",
-                       tr("Custom beast hands mods"),
-                       *this->mListBeastHandsCustom,
-                       MeshPartType::BEAST_HANDS);
+  this->setupCustomTab(aTabWidget, QStringLiteral("hand"), tr("Custom beast hands mods"), *this->mListBeastHandsCustom);
 }
 
 void TargetMeshesPicker::setupEmbeddedTab(QTabWidget& aTabWidget,
@@ -322,7 +295,9 @@ void TargetMeshesPicker::setupEmbeddedTab(QTabWidget& aTabWidget,
 {
   // Tab widget
   const auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/%2").arg(this->getThemedResourcePath()).arg(aIconName))), aTabName);
+  aTabWidget.addTab(lTabContent,
+                    QIcon(QPixmap(QString(":/%1/%2").arg(this->getThemedResourcePath()).arg(aIconName))),
+                    aTabName);
 
   // Layout
   const auto lTabLayout{new QGridLayout(lTabContent)};
@@ -355,12 +330,13 @@ void TargetMeshesPicker::setupEmbeddedTab(QTabWidget& aTabWidget,
 void TargetMeshesPicker::setupCustomTab(QTabWidget& aTabWidget,
                                         const QString& aIconName,
                                         const QString& aTabName,
-                                        QListWidget& aListWidget,
-                                        const MeshPartType aResourceType)
+                                        QListWidget& aListWidget)
 {
   // Tab widget
   auto lTabContent{new QWidget(this)};
-  aTabWidget.addTab(lTabContent, QIcon(QPixmap(QString(":/%1/%2").arg(this->getThemedResourcePath()).arg(aIconName))), aTabName);
+  aTabWidget.addTab(lTabContent,
+                    QIcon(QPixmap(QString(":/%1/%2").arg(this->getThemedResourcePath()).arg(aIconName))),
+                    aTabName);
 
   // Layout
   auto lTabLayout{new QVBoxLayout(lTabContent)};
@@ -369,27 +345,55 @@ void TargetMeshesPicker::setupCustomTab(QTabWidget& aTabWidget,
 
   // Add the list widget
   lTabLayout->addWidget(&aListWidget);
-
-  for (const auto& lEntry : this->mDatabase)
-  {
-    if (lEntry.second.getMeshType() == aResourceType)
-    {
-      aListWidget.addItem(QString::number(lEntry.first) + " - " + lEntry.second.getSliderSetName());
-    }
-  }
 }
 
 void TargetMeshesPicker::openSliderSetsDatabaseManager()
 {
   auto lDialog{new SliderSetsDBManager(this, this->settings(), this->lastPaths())};
-  QObject::connect(lDialog, &SliderSetsDBManager::rejected, [&]() {
+  QObject::connect(lDialog, &SliderSetsDBManager::closed, [&](const std::map<int, Struct::DatabaseSliderSet>& aNewDatabaseState) {
+    this->mDatabase = aNewDatabaseState;
     this->updateCustomSliderSetsLists();
   });
 }
 
-void TargetMeshesPicker::updateCustomSliderSetsLists() const
+void TargetMeshesPicker::updateCustomSliderSetsLists()
 {
-  // TODO
+  this->mListBodyCustom->clear();
+  this->mListFeetCustom->clear();
+  this->mListHandsCustom->clear();
+  this->mListBeastHandsCustom->clear();
+
+  for (const auto& lEntry : this->mDatabase)
+  {
+    QListWidget* lTargetList{nullptr};
+    switch (lEntry.second.getMeshType())
+    {
+      case MeshPartType::UNKNOWN:
+        break;
+      case MeshPartType::BODY:
+        lTargetList = this->mListBodyCustom;
+        break;
+      case MeshPartType::FEET:
+        lTargetList = this->mListFeetCustom;
+        break;
+      case MeshPartType::HANDS:
+        lTargetList = this->mListHandsCustom;
+        break;
+      case MeshPartType::BEAST_HANDS:
+        lTargetList = this->mListBeastHandsCustom;
+        break;
+    }
+
+    if (lTargetList != nullptr)
+    {
+      lTargetList->addItem(QString::number(lEntry.first) + QStringLiteral(" - ") + lEntry.second.getSliderSetName());
+    }
+  }
+
+  this->mListBodyCustom->setCurrentRow(0);
+  this->mListFeetCustom->setCurrentRow(0);
+  this->mListHandsCustom->setCurrentRow(0);
+  this->mListBeastHandsCustom->setCurrentRow(0);
 }
 
 BodyVariant TargetMeshesPicker::getChosenBodyVariant() const
@@ -419,7 +423,7 @@ BodyNameVersion TargetMeshesPicker::getChosenBodyName() const
   // Get the selected relative variant name
   const auto lSelectedVariant{this->mListBodyVariantName->currentRow()};
 
-  return DataLists::GetBodyNameVersion(lSelectedBodyName, lSelectedVersionNumber, lSelectedVariant);
+  return DataLists::GetNameVersion(lSelectedBodyName, lSelectedVersionNumber, lSelectedVariant);
 }
 
 FeetNameVersion TargetMeshesPicker::getChosenFeetName() const
@@ -431,7 +435,7 @@ FeetNameVersion TargetMeshesPicker::getChosenFeetName() const
 
   // Get the selected feet name
   const auto lSelectedFeetName{this->mListFeetName->currentRow()};
-  const auto lFeetName{DataLists::GetName(lBodyVariant, lSelectedFeetName)};
+  const auto lFeetName{DataLists::GetNameFeet(lBodyVariant, lSelectedFeetName)};
 
   // Get the selected relative version number
   const auto lSelectedVersionNumber{this->mListFeetVersion->currentRow()};
@@ -439,25 +443,38 @@ FeetNameVersion TargetMeshesPicker::getChosenFeetName() const
   // Get the selected relative variant name
   const auto lSelectedVariant{this->mListFeetVariantName->currentRow()};
 
-  // DataLists::GetVariant(lFeetName, lSelectedVersionNumber, lSelectedVariant)
-  return DataLists::GetFeetNameVersion(lFeetName, lSelectedVersionNumber, lSelectedVariant, Utils::IsCBBEBasedBody(lBodyVariant));
+  return DataLists::GetNameVersion(lFeetName, lSelectedVersionNumber, lSelectedVariant, Utils::IsCBBEBasedBody(lBodyVariant));
 }
 
-QString TargetMeshesPicker::getChosenHandsName() const
+HandsNameVersion TargetMeshesPicker::getChosenHandsName() const
 {
-  // TODO
-  return QString();
+  // TODO: handle the selected index of the parent tabwidget
+
+  // Get the dependent body
+  const auto lBodyVariant{DataLists::GetVariant(this->getChosenBodyName())};
+
+  // Get the selected hands name
+  const auto lSelectedHandsName{this->mListHandsName->currentRow()};
+  const auto lHandsName{DataLists::GetNameHands(lBodyVariant, lSelectedHandsName)};
+
+  // Get the selected relative version number
+  const auto lSelectedVersionNumber{this->mListFeetVersion->currentRow()};
+
+  // Get the selected relative variant name
+  const auto lSelectedVariant{this->mListFeetVariantName->currentRow()};
+
+  return DataLists::GetNameVersion(lHandsName, lSelectedVersionNumber, lSelectedVariant, Utils::IsCBBEBasedBody(lBodyVariant));
 }
 
-QString TargetMeshesPicker::getChosenBeastHandsName() const
+BeastHandsNameVersion TargetMeshesPicker::getChosenBeastHandsName() const
 {
-  // TODO
-  return QString();
+  // TODO: implement the function
+  return BeastHandsNameVersion::_INVALID_VALUE;
 }
 
 void TargetMeshesPicker::validateAndClose()
 {
-  emit valuesChosen(this->getChosenBodyName(), this->getChosenFeetName());
+  emit valuesChosen(this->getChosenBodyName(), this->getChosenFeetName(), this->getChosenHandsName(), this->getChosenBeastHandsName());
   this->accept();
 }
 
@@ -522,7 +539,7 @@ void TargetMeshesPicker::feetNameIndexChanged(const int aNewIndex)
 
   // Refresh the content of the second list
   this->mListFeetVersion->clear();
-  const auto lAvailableFeetVersions{DataLists::GetFeetVersionsList(DataLists::GetName(lBodyVariant, aNewIndex), Utils::IsCBBEBasedBody(lBodyVariant))};
+  const auto lAvailableFeetVersions{DataLists::GetFeetVersionsList(DataLists::GetNameFeet(lBodyVariant, aNewIndex), Utils::IsCBBEBasedBody(lBodyVariant))};
   this->mListFeetVersion->addItems(lAvailableFeetVersions);
 
   // Smarter lists behavior
@@ -580,8 +597,8 @@ void TargetMeshesPicker::feetVersionIndexChanged(const int aNewIndex)
 
   // Refresh the content of the third list
   this->mListFeetVariantName->clear();
-  const auto lAvailableFeetVariants{DataLists::GetFeetVariantsList(DataLists::GetName(this->getChosenBodyVariant(),
-                                                                                      lSelectedFeetName),
+  const auto lAvailableFeetVariants{DataLists::GetFeetVariantsList(DataLists::GetNameFeet(this->getChosenBodyVariant(),
+                                                                                          lSelectedFeetName),
                                                                    aNewIndex,
                                                                    Utils::IsCBBEBasedBody(lBodyVariant))};
   this->mListFeetVariantName->addItems(lAvailableFeetVariants);

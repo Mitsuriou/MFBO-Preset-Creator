@@ -1,7 +1,7 @@
 #include "ReleaseNotesViewer.h"
 #include "ComponentFactory.h"
 #include "Enum.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QCloseEvent>
 #include <QDesktopServices>
 #include <QNetworkReply>

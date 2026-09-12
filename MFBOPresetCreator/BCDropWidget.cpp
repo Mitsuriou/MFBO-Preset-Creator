@@ -1,7 +1,7 @@
 #include "BCDropWidget.h"
 #include "BCDragWidget.h"
 #include "ComponentFactory.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QApplication>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -45,12 +45,12 @@ BCDropWidget::BCDropWidget(QWidget* aParent, const BCGroupWidgetCallContext& aCa
   if (this->mCallContext == BCGroupWidgetCallContext::HANDS)
   {
     auto lUseAlternativeModel{this->createCheckBox(tr("Check this box if the follower or NPC uses beast hands"), *lMainLayout)};
-    QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+    QObject::connect(lUseAlternativeModel, &QCheckBox::checkStateChanged, this, &BCDropWidget::checkBoxStateChanged);
   }
   else if (this->mCallContext == BCGroupWidgetCallContext::SKELETON)
   {
     auto lUseAlternativeModel{this->createCheckBox(tr("Check this box if the follower or NPC uses beast skeleton"), *lMainLayout)};
-    QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+    QObject::connect(lUseAlternativeModel, &QCheckBox::checkStateChanged, this, &BCDropWidget::checkBoxStateChanged);
   }
 
   this->resetData();
@@ -189,10 +189,10 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
     if (lUseAlternativeModel != nullptr)
     {
       // Uncheck the box
-      QObject::disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::disconnect(lUseAlternativeModel, &QCheckBox::checkStateChanged, this, &BCDropWidget::checkBoxStateChanged);
       lUseAlternativeModel->setChecked(false);
       lUseAlternativeModel->hide();
-      QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::connect(lUseAlternativeModel, &QCheckBox::checkStateChanged, this, &BCDropWidget::checkBoxStateChanged);
 
       // Update the texts to have the placeholder centered
       lPathLabel->setText("");
@@ -216,10 +216,10 @@ void BCDropWidget::tweakWidgetsVisibility(const bool aShouldViewDropZoneOnly, co
     if (lUseAlternativeModel != nullptr)
     {
       // Check the box if needed
-      QObject::disconnect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::disconnect(lUseAlternativeModel, &QCheckBox::checkStateChanged, this, &BCDropWidget::checkBoxStateChanged);
       lUseAlternativeModel->setChecked(aUseAlternativeModel);
       lUseAlternativeModel->show();
-      QObject::connect(lUseAlternativeModel, &QCheckBox::stateChanged, this, &BCDropWidget::checkBoxStateChanged);
+      QObject::connect(lUseAlternativeModel, &QCheckBox::checkStateChanged, this, &BCDropWidget::checkBoxStateChanged);
     }
   }
 }

@@ -1,6 +1,6 @@
 ﻿#include "FirstInstallWindow.h"
 #include "MFBOPresetCreator.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -30,6 +30,9 @@ bool isArgValidFilePath(const QString& aPathToTest)
 
 int main(int argc, char* argv[])
 {
+  // Create the main GUI handler
+  QApplication lMainApplication(argc, argv);
+
   auto currentExitCode{0};
   QString lInjectedFilePath;
 
@@ -114,9 +117,6 @@ int main(int argc, char* argv[])
     const auto& lAppVersion{Utils::GetApplicationVersion()};
 
     Utils::PrintMessageStdOut("Creating the application instance...");
-
-    // Create the main GUI handler
-    QApplication lMainApplication(argc, argv);
 
     QString lAppNamePreffix;
     if (Utils::IsRunningStandaloneVersion())

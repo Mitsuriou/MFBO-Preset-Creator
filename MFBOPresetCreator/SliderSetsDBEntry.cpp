@@ -1,7 +1,7 @@
 #include "SliderSetsDBEntry.h"
 #include "ComponentFactory.h"
 #include "DataLists.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QGridLayout>
 #include <QStyledItemDelegate>
 

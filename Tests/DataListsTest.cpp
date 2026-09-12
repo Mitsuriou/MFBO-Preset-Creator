@@ -1351,7 +1351,7 @@ namespace Tests
       Assert::AreEqual(0, DataLists::GetVersionOffset(FeetVariant::KHRYSAMERE_HG_FEET));
     }
 
-    TEST_METHOD(pair__GetSplittedNameVersionFromBodyVersionCompatibility__int)
+    TEST_METHOD(pair__GetSplitNameVersionFromBodyVersionCompatibility__int)
     {
       // TODO
     }

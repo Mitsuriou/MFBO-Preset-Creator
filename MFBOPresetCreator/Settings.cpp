@@ -3,7 +3,7 @@
 #include "DataLists.h"
 #include "LineEdit.h"
 #include "TargetMeshesPicker.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QAbstractSlider>
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -857,7 +857,9 @@ void Settings::openPresetCreatorTargetMeshesPicker()
                                       this->settings(),
                                       this->lastPaths(),
                                       this->settings().presetCreator.defaultBodyFeet.bodyMesh,
-                                      this->settings().presetCreator.defaultBodyFeet.feetMesh)};
+                                      this->settings().presetCreator.defaultBodyFeet.feetMesh,
+                                      this->settings().presetCreator.defaultBodyFeet.handsMesh,
+                                      this->settings().presetCreator.defaultBodyFeet.beastHandsMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::presetCreatorTargetMeshesChanged);
 }
 
@@ -867,7 +869,9 @@ void Settings::openBatchConversionTargetMeshesPicker()
                                       this->settings(),
                                       this->lastPaths(),
                                       this->settings().batchConversion.defaultBodyFeet.bodyMesh,
-                                      this->settings().batchConversion.defaultBodyFeet.feetMesh)};
+                                      this->settings().batchConversion.defaultBodyFeet.feetMesh,
+                                      this->settings().batchConversion.defaultBodyFeet.handsMesh,
+                                      this->settings().batchConversion.defaultBodyFeet.beastHandsMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::batchConversionTargetMeshesChanged);
 }
 
@@ -877,25 +881,31 @@ void Settings::openRetargetingToolTargetMeshesPicker()
                                       this->settings(),
                                       this->lastPaths(),
                                       this->settings().presetsRetargeting.defaultBodyFeet.bodyMesh,
-                                      this->settings().presetsRetargeting.defaultBodyFeet.feetMesh)};
+                                      this->settings().presetsRetargeting.defaultBodyFeet.feetMesh,
+                                      this->settings().presetsRetargeting.defaultBodyFeet.handsMesh,
+                                      this->settings().presetsRetargeting.defaultBodyFeet.beastHandsMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &Settings::retargetingToolTargetMeshesChanged);
 }
 
+// TODO: add hands support
 void Settings::presetCreatorTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
 {
   this->targetMeshesChanged(this->mNewPresetCreatorTargetBodyMesh, this->mNewPresetCreatorTargetFeetMesh, aBody, aFeet, QString("main"));
 }
 
+// TODO: add hands support
 void Settings::batchConversionTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
 {
   this->targetMeshesChanged(this->mNewBatchConversionTargetBodyMesh, this->mNewBatchConversionTargetFeetMesh, aBody, aFeet, QString("batch_conversion"));
 }
 
+// TODO: add hands support
 void Settings::retargetingToolTargetMeshesChanged(const BodyNameVersion& aBody, const FeetNameVersion& aFeet)
 {
   this->targetMeshesChanged(this->mNewRetargetingToolTargetBodyMesh, this->mNewRetargetingToolTargetFeetMesh, aBody, aFeet, QString("retargeting_tool"));
 }
 
+// TODO: add hands support
 void Settings::targetMeshesChanged(BodyNameVersion& aBodyToUpdate,
                                    FeetNameVersion& aFeetToUpdate,
                                    const BodyNameVersion& aBody,

@@ -10,7 +10,7 @@
 #include "Settings.h"
 #include "TexturesAssistant.h"
 #include "Update.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include "WelcomeScreen.h"
 #include <QApplication>
 #include <QCloseEvent>

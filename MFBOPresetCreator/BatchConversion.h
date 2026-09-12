@@ -26,6 +26,8 @@ private:
   int mMinimumFirstColumnWidth{300};
   BodyNameVersion mTargetBodyMesh;
   FeetNameVersion mTargetFeetMesh;
+  HandsNameVersion mTargetHandsMesh;
+  BeastHandsNameVersion mTargetBeastHandsMesh;
 
   //
   void setupGeneralGUI(QGridLayout& aLayout);

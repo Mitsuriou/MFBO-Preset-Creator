@@ -1,5 +1,6 @@
 #include "DataLists.h"
-#include "Utils.h"
+#include "_Utils.h"
+#include <QObject>
 
 QStringList DataLists::GetBodyNamesList()
 {
@@ -285,7 +286,7 @@ QStringList DataLists::GetFeetNamesList(const BodyVariant& aBodyVariant)
     case BodyVariant::ASDASDF_ALTERBODY_TBBP:
     case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
     {
-      return QStringList{QStringLiteral("ASDASDF BHUNP Feet - by Myst"),
+      return QStringList{QStringLiteral("ASDASDF-BHUNP Feet - by Myst"),
                          QStringLiteral("More Sliders for Feet - by Balveric"),
                          QStringLiteral("HG Feet and Toes UNP - by SunJeong"),
                          QStringLiteral("K Feet - by Khrysamere")};
@@ -400,7 +401,7 @@ QStringList DataLists::GetFeetVariantsList(const FeetName& aFeetName, const int 
     }
     case FeetName::ASDASDF:
     {
-      return QStringList{QStringLiteral("ASDASDF BHUNP Feet")};
+      return QStringList{QStringLiteral("ASDASDF-BHUNP Feet")};
     }
   }
 
@@ -490,6 +491,148 @@ QString DataLists::GetQRCResourceName(const BodyVariant& aBodyVariant, const Fee
   return QString();
 }
 
+QStringList DataLists::GetHandsNamesList(const BodyVariant& aBodyVariant)
+{
+  switch (aBodyVariant)
+  {
+    case BodyVariant::CBBE_3BA_3BBB:
+    case BodyVariant::CBBE_3BA_3BBB_NEVERNUDE:
+    case BodyVariant::CBBE_3BA_3BBB_UNDERWEAR:
+    {
+      return QStringList{QStringLiteral("CBBE 3BBB Hands - by Acro")};
+    }
+    case BodyVariant::BHUNP_3BBB:
+    case BodyVariant::BHUNP_3BBB_ADVANCED:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2:
+    case BodyVariant::BHUNP_BBP:
+    case BodyVariant::BHUNP_BBP_ADVANCED:
+    case BodyVariant::BHUNP_TBBP:
+    case BodyVariant::BHUNP_TBBP_ADVANCED:
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_2_NEVERNUDE:
+    {
+      return QStringList{QStringLiteral("BHUNP 3BBB Advanced Hands - by Bakafactory and Haeun")};
+    }
+    case BodyVariant::BHUNP_3BBB_ADVANCED_VER_3:
+    {
+      return QStringList{QStringLiteral("BHUNP 3BBB Advanced Hands Ver 3 - by Bakafactory and Haeun")};
+    }
+    case BodyVariant::CBBE_SMP_3BBB:
+    {
+      return QStringList{QStringLiteral("CBBE Default Hands - by Ousnius")};
+    }
+    case BodyVariant::COCO_BODY_CBBE:
+    {
+      return QStringList{QStringLiteral("COCO Hands - by COCO")};
+    }
+    case BodyVariant::COCO_BODY_UUNP:
+    {
+      return QStringList{QStringLiteral("COCO Hands - by COCO")};
+    }
+    case BodyVariant::MIMIR_EBONIC_BODY:
+    {
+      return QStringList{QStringLiteral("CBBE 3BBB Hands - by Medley")};
+    }
+    case BodyVariant::ASDASDF_3BBB:
+    case BodyVariant::ASDASDF_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_BBP:
+    case BodyVariant::ASDASDF_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_TBBP:
+    case BodyVariant::ASDASDF_TBBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB:
+    case BodyVariant::ASDASDF_ALTERBODY_3BBB_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP:
+    case BodyVariant::ASDASDF_ALTERBODY_BBP_NO_THIGH_JIGGLE:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP:
+    case BodyVariant::ASDASDF_ALTERBODY_TBBP_NO_THIGH_JIGGLE:
+    {
+      return QStringList{QStringLiteral("ASDASDF-BHUNP Hands - by Myst")};
+    }
+    case BodyVariant::_INVALID_VALUE:
+    {
+      return QStringList();
+    }
+  }
+
+  return QStringList();
+}
+
+QStringList DataLists::GetHandsVersionsList(const HandsName& aHandsName, const bool aIsCBBEBody)
+{
+  switch (aHandsName)
+  {
+    case HandsName::_INVALID_VALUE:
+      return QStringList();
+    case HandsName::CBBE_3BA_3BBB:
+      return QStringList{QStringLiteral("1.50"),
+                         QStringLiteral("1.51 to 1.55"),
+                         QStringLiteral("2.02 to 2.04"),
+                         QStringLiteral("2.06 - 2.11 - 2.12"),
+                         QStringLiteral("2.13 to 2.22 - 2.30 - 2.31"),
+                         QStringLiteral("2.40 to 2.42")};
+    case HandsName::CBBE:
+      return QStringList{QStringLiteral("1.6.1")};
+    // case HandsName::BHUNP_3BBB_ADVANCED:
+    //   // case HandsName::VER_3 too?
+    //   return QStringList{QStringLiteral("2.20"),
+    //                      QStringLiteral("2.25"),
+    //                      QStringLiteral("2.30"),
+    //                      QStringLiteral("2.31"),
+    //                      QStringLiteral("2.35 to 2.42"),
+    //                      QStringLiteral("3.00 to 3.02"),
+    //                      QStringLiteral("3.03"),
+    //                      QStringLiteral("3.04 - 3.05"),
+    //                      QStringLiteral("3.10"),
+    //                      QStringLiteral("3.11 to 3.13")};
+    case HandsName::COCO_BODY:
+      if (aIsCBBEBody)
+        return QStringList{QStringLiteral("V4"), QStringLiteral("V6"), QStringLiteral("V6.8"), QStringLiteral("V6.9 - V6.95")};
+
+      return QStringList{QStringLiteral("V3"), QStringLiteral("V4"), QStringLiteral("V6"), QStringLiteral("V6.8"), QStringLiteral("V6.9 - V6.95")};
+    case HandsName::MIMIR_EBONIC_BODY:
+      return QStringList{QStringLiteral("1.2"), QStringLiteral("1.2 foot fix")};
+    case HandsName::ASDASDF:
+      return QStringList{QStringLiteral("1.13")};
+  }
+
+  return QStringList();
+}
+
+QStringList DataLists::GetHandsVariantsList(const HandsName& aHandsName, const int aRelativeVersion, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return QStringList();
+}
+
+QString DataLists::GetQRCResourceName(const BodyVariant& aBodyVariant, const HandsNameVersion& aHandsNameVersion)
+{
+  // TODO: implement the function
+  return QString();
+}
+
+QStringList DataLists::GetBeastHandsNamesList(const BodyVariant& aBodyVariant)
+{
+  // TODO: implement the function
+  return QStringList();
+}
+
+QStringList DataLists::GetBeastHandsVersionsList(const BeastHandsName& aBeastHandsName, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return QStringList();
+}
+
+QStringList DataLists::GetBeastHandsVariantsList(const BeastHandsName& aBeastHandsName, const int aRelativeVersion, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return QStringList();
+}
+
+QString DataLists::GetQRCResourceName(const BodyVariant& aBodyVariant, const BeastHandsNameVersion& aBeastHandsNameVersion)
+{
+  // TODO: implement the function
+  return QString();
+}
+
 BodyName DataLists::GetName(const BodyVariant& aBodyVariant)
 {
   // Return the parent body name of a given variant
@@ -572,6 +715,18 @@ FeetName DataLists::GetName(const FeetVariant& aFeetVariant)
   return FeetName::_INVALID_VALUE;
 }
 
+HandsName DataLists::GetName(const HandsVariant& aHandsVariant)
+{
+  // TODO: implement the function
+  return HandsName::_INVALID_VALUE;
+}
+
+BeastHandsName DataLists::GetName(const BeastHandsVariant& aBeastHandsVariant)
+{
+  // TODO: implement the function
+  return BeastHandsName::_INVALID_VALUE;
+}
+
 BodyName DataLists::GetName(const BodyNameVersion& aBodyNameVersion)
 {
   return DataLists::GetName(DataLists::GetVariant(aBodyNameVersion));
@@ -582,7 +737,7 @@ FeetName DataLists::GetName(const FeetNameVersion& aFeetNameVersion)
   return DataLists::GetName(DataLists::GetVariant(aFeetNameVersion));
 }
 
-FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelativeFeetName)
+FeetName DataLists::GetNameFeet(const BodyVariant& aBodyVariant, const int aRelativeFeetName)
 {
   switch (aBodyVariant)
   {
@@ -710,6 +865,75 @@ FeetName DataLists::GetName(const BodyVariant& aBodyVariant, const int aRelative
   }
 
   return FeetName::_INVALID_VALUE;
+}
+
+HandsName DataLists::GetName(const HandsNameVersion& aHandsNameVersion)
+{
+  switch (aHandsNameVersion)
+  {
+    case HandsNameVersion::_INVALID_VALUE:
+      return HandsName::_INVALID_VALUE;
+    case HandsNameVersion::CBBE_3BA_3BBB_1_50:
+    case HandsNameVersion::CBBE_3BA_3BBB_1_51_TO_1_55:
+    case HandsNameVersion::CBBE_3BA_3BBB_2_02_TO_2_04:
+    case HandsNameVersion::CBBE_3BA_3BBB_2_06_AND_2_11_AND_2_12:
+    case HandsNameVersion::CBBE_3BA_3BBB_2_13_TO_2_18_AND_2_30_AND_2_31:
+    case HandsNameVersion::CBBE_3BA_3BBB_2_40_TO_2_42:
+      return HandsName::CBBE_3BA_3BBB;
+    case HandsNameVersion::CBBE_1_6_1:
+      return HandsName::CBBE;
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_2_20:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_2_25:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_2_30:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_2_31:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_2_35_TO_2_42:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_3_00_TO_3_02:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_3_03:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_3_04_AND_3_05:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_3_10:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_3_11_TO_3_13:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_00_TO_3_02:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_03:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_04_AND_3_05:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_10:
+    case HandsNameVersion::BHUNP_3BBB_ADVANCED_VER_3_3_11_TO_3_13:
+      return HandsName::BHUNP_UUNP_NEXT_GENERATION;
+    case HandsNameVersion::COCO_BODY_CBBE_V4:
+    case HandsNameVersion::COCO_BODY_CBBE_V6:
+    case HandsNameVersion::COCO_BODY_CBBE_V6_8:
+    case HandsNameVersion::COCO_BODY_CBBE_V6_9_AND_V6_95:
+    case HandsNameVersion::COCO_BODY_UUNP_V3:
+    case HandsNameVersion::COCO_BODY_UUNP_V4:
+    case HandsNameVersion::COCO_BODY_UUNP_V6:
+    case HandsNameVersion::COCO_BODY_UUNP_V6_8:
+    case HandsNameVersion::COCO_BODY_UUNP_V6_9_AND_V6_95:
+      return HandsName::COCO_BODY;
+    case HandsNameVersion::MIMIR_EBONIC_BODY_1_2:
+    case HandsNameVersion::MIMIR_EBONIC_BODY_1_2_FOOT_SEAMS_FIX:
+      return HandsName::MIMIR_EBONIC_BODY;
+    case HandsNameVersion::ASDASDF_1_13:
+      return HandsName::ASDASDF;
+  }
+
+  return HandsName::_INVALID_VALUE;
+}
+
+HandsName DataLists::GetNameHands(const BodyVariant& aBodyVariant, const int aRelativeHandsName)
+{
+  // TODO: implement the function
+  return HandsName::_INVALID_VALUE;
+}
+
+BeastHandsName DataLists::GetName(const BeastHandsNameVersion& aBeastHandsNameVersion)
+{
+  // TODO: implement the function
+  return BeastHandsName::_INVALID_VALUE;
+}
+
+BeastHandsName DataLists::GetNameBeastHands(const BodyVariant& aBodyVariant, const int aRelativeBeastHandsName)
+{
+  // TODO: implement the function
+  return BeastHandsName::_INVALID_VALUE;
 }
 
 BodyVariant DataLists::GetVariant(const BodyNameVersion& aBodyNameVersion)
@@ -1122,7 +1346,31 @@ FeetVariant DataLists::GetVariant(const FeetName& aFeetName, const int aRelative
   return FeetVariant::_INVALID_VALUE;
 }
 
-BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, const int aRelativeVersion)
+HandsVariant DataLists::GetVariant(const HandsNameVersion& aHandsNameVersion)
+{
+  // TODO: implement the function
+  return HandsVariant::_INVALID_VALUE;
+}
+
+HandsVariant DataLists::GetVariant(const HandsName& aHandsName, const int aRelativeVersion, const int aRelativeVariant, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return HandsVariant::_INVALID_VALUE;
+}
+
+BeastHandsVariant DataLists::GetVariant(const BeastHandsNameVersion& aBeastHandsNameVersion)
+{
+  // TODO: implement the function
+  return BeastHandsVariant::_INVALID_VALUE;
+}
+
+BeastHandsVariant DataLists::GetVariant(const BeastHandsName& aBeastHandsName, const int aRelativeVersion, const int aRelativeVariant, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return BeastHandsVariant::_INVALID_VALUE;
+}
+
+BodyNameVersion DataLists::GetNameVersion(const BodyVariant& aBodyVariant, const int aRelativeVersion)
 {
   // Ignore the cases where the checkboxes have no index selected
   if (aRelativeVersion == -1)
@@ -1141,17 +1389,17 @@ BodyNameVersion DataLists::GetBodyNameVersion(const BodyVariant& aBodyVariant, c
   return static_cast<BodyNameVersion>(lOffsetFirstKey + aRelativeVersion);
 }
 
-BodyNameVersion DataLists::GetBodyNameVersion(const BodyName& aBodyName, const int aRelativeVersion, const int aRelativeVariant)
+BodyNameVersion DataLists::GetNameVersion(const BodyName& aBodyName, const int aRelativeVersion, const int aRelativeVariant)
 {
   // Ignore the cases where the checkboxes have no index selected
   if (aRelativeVariant == -1)
     return BodyNameVersion::_INVALID_VALUE;
 
   const auto lBodyVariant{DataLists::GetVariant(aBodyName, aRelativeVersion, aRelativeVariant)};
-  return DataLists::GetBodyNameVersion(lBodyVariant, aRelativeVersion);
+  return DataLists::GetNameVersion(lBodyVariant, aRelativeVersion);
 }
 
-FeetNameVersion DataLists::GetFeetNameVersion(const FeetVariant& aFeetVariant, const int aRelativeVersion, const bool aIsCBBEBody)
+FeetNameVersion DataLists::GetNameVersion(const FeetVariant& aFeetVariant, const int aRelativeVersion, const bool aIsCBBEBody)
 {
   // Ignore the cases where the checkboxes have no index selected
   if (aRelativeVersion == -1)
@@ -1188,7 +1436,7 @@ FeetNameVersion DataLists::GetFeetNameVersion(const FeetVariant& aFeetVariant, c
   return FeetNameVersion::_INVALID_VALUE;
 }
 
-FeetNameVersion DataLists::GetFeetNameVersion(const FeetName& aFeetName, const int aRelativeVersion, const int aRelativeVariant, const bool aIsCBBEBody)
+FeetNameVersion DataLists::GetNameVersion(const FeetName& aFeetName, const int aRelativeVersion, const int aRelativeVariant, const bool aIsCBBEBody)
 {
   // Ignore the cases where the checkboxes have no index selected
   if (aRelativeVariant == -1)
@@ -1196,7 +1444,31 @@ FeetNameVersion DataLists::GetFeetNameVersion(const FeetName& aFeetName, const i
 
   const auto lFeetVariant{DataLists::GetVariant(aFeetName, aRelativeVersion, aRelativeVariant, aIsCBBEBody)};
 
-  return DataLists::GetFeetNameVersion(lFeetVariant, aRelativeVersion, aIsCBBEBody);
+  return DataLists::GetNameVersion(lFeetVariant, aRelativeVersion, aIsCBBEBody);
+}
+
+HandsNameVersion DataLists::GetNameVersion(const HandsVariant& aHandsVariant, const int aRelativeVersion, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return HandsNameVersion::_INVALID_VALUE;
+}
+
+HandsNameVersion DataLists::GetNameVersion(const HandsName& aHandsName, const int aRelativeVersion, const int aRelativeVariant, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return HandsNameVersion::_INVALID_VALUE;
+}
+
+BeastHandsNameVersion DataLists::GetNameVersion(const BeastHandsVariant& aBeastHandsVariant, const int aRelativeVersion, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return BeastHandsNameVersion::_INVALID_VALUE;
+}
+
+BeastHandsNameVersion DataLists::GetNameVersion(const BeastHandsName& aBeastHandsName, const int aRelativeVersion, const int aRelativeVariant, const bool aIsCBBEBody)
+{
+  // TODO: implement the function
+  return BeastHandsNameVersion::_INVALID_VALUE;
 }
 
 int DataLists::GetVersionIndex(const BodyNameVersion& aBodyNameVersion)
@@ -1481,6 +1753,42 @@ int DataLists::GetVariantIndex(const FeetNameVersion& aFeetNameVersion)
   return -1;
 }
 
+int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const HandsNameVersion& aHandsNameVersion)
+{
+  // TODO: implement the function
+  return -1;
+}
+
+int DataLists::GetVersionIndex(const HandsNameVersion& aHandsNameVersion)
+{
+  // TODO: implement the function
+  return -1;
+}
+
+int DataLists::GetVariantIndex(const HandsNameVersion& aHandsNameVersion)
+{
+  // TODO: implement the function
+  return -1;
+}
+
+int DataLists::GetNameIndex(const BodyVariant& aBodyVariant, const BeastHandsNameVersion& aBeastHandsNameVersion)
+{
+  // TODO: implement the function
+  return -1;
+}
+
+int DataLists::GetVersionIndex(const BeastHandsNameVersion& aBeastHandsNameVersion)
+{
+  // TODO: implement the function
+  return -1;
+}
+
+int DataLists::GetVariantIndex(const BeastHandsNameVersion& aBeastHandsNameVersion)
+{
+  // TODO: implement the function
+  return -1;
+}
+
 QString DataLists::GetVersionString(const BodyNameVersion& aBodyNameVersion)
 {
   return DataLists::GetBodyVersionsList(DataLists::GetName(aBodyNameVersion)).at(DataLists::GetVersionIndex(aBodyNameVersion));
@@ -1489,6 +1797,18 @@ QString DataLists::GetVersionString(const BodyNameVersion& aBodyNameVersion)
 QString DataLists::GetVersionString(const BodyNameVersion& aBodyNameVersion, const FeetNameVersion& aFeetNameVersion)
 {
   return DataLists::GetFeetVersionsList(DataLists::GetName(aFeetNameVersion), Utils::IsCBBEBasedBody(DataLists::GetVariant(aBodyNameVersion))).at(DataLists::GetVersionIndex(aFeetNameVersion));
+}
+
+QString DataLists::GetVersionString(const BodyNameVersion& aBodyNameVersion, const HandsNameVersion& aHandsNameVersion)
+{
+  // TODO: implement the function
+  return QString();
+}
+
+QString DataLists::GetVersionString(const BodyNameVersion& aBodyNameVersion, const BeastHandsNameVersion& aBeastHandsNameVersion)
+{
+  // TODO: implement the function
+  return QString();
 }
 
 BodyNameVersion DataLists::GetFirstKey(const BodyVariant& aBodyVariant)
@@ -1838,8 +2158,21 @@ int DataLists::GetVersionOffset(const FeetVariant& aFeetVariant)
   return 0;
 }
 
+int DataLists::GetVersionOffset(const HandsVariant& aHandsVariant)
+{
+  // TODO: implement the function
+  return -1;
+}
+
+int DataLists::GetVersionOffset(const BeastHandsVariant& aBeastHandsVariant)
+{
+  // TODO: implement the function
+  return -1;
+}
+
 QString DataLists::GetQRCPathForResource(const BodyNameVersion aBodyNameVersion,
                                          const FeetNameVersion aFeetNameVersion,
+                                         // const HandsNameVersion aHandsNameVersion,
                                          const MeshPartType aResourceType)
 {
   QString lResourceType;
@@ -1869,64 +2202,9 @@ QString DataLists::GetQRCPathForResource(const BodyNameVersion aBodyNameVersion,
     }
     case MeshPartType::HANDS:
     {
-      lResourceType = "hands";
-      lResourceVersion = DataLists::GetVersionString(aBodyNameVersion);
-
-      const auto lBodyName{DataLists::GetName(aBodyNameVersion)};
-      switch (lBodyName)
-      {
-        case BodyName::_INVALID_VALUE:
-        {
-          lResourceVersion = QString();
-          break;
-        }
-        case BodyName::CBBE_3BA_3BBB:
-        {
-          lResourceName = QStringLiteral("cbbe 3bbb 3ba");
-          break;
-        }
-        case BodyName::BHUNP_UUNP_NEXT_GENERATION:
-        {
-          const auto lBodyVariant{DataLists::GetVariant(aBodyNameVersion)};
-          if (lBodyVariant == BodyVariant::BHUNP_3BBB_ADVANCED_VER_3)
-          {
-            lResourceName = QStringLiteral("bhunp ver 3");
-          }
-          else
-          {
-            lResourceName = QStringLiteral("bhunp");
-          }
-          break;
-        }
-        case BodyName::CBBE_SMP_3BBB:
-        {
-          lResourceName = QStringLiteral("cbbe");
-          lResourceVersion = QStringLiteral("1.6.1"); // Default CBBE hands
-          break;
-        }
-        case BodyName::COCO_BODY_CBBE:
-        {
-          lResourceName = QStringLiteral("coco body cbbe");
-          break;
-        }
-        case BodyName::COCO_BODY_UUNP:
-        {
-          lResourceName = QStringLiteral("coco body uunp");
-          break;
-        }
-        case BodyName::MIMIR_EBONIC_BODY:
-        {
-          lResourceName = QStringLiteral("mimir ebonic body");
-          break;
-        }
-        case BodyName::BHUNP_LITE_ASDASDF:
-        {
-          lResourceName = QStringLiteral("asdasdf");
-          break;
-        }
-      }
-
-      break;
+      // lResourceType = "hands";
+      // lResourceName = DataLists::GetQRCResourceName(DataLists::GetVariant(aBodyNameVersion), aHandsNameVersion);
+      // lResourceVersion = DataLists::GetVersionString(aBodyNameVersion, aHandsNameVersion);
     }
     case MeshPartType::BEAST_HANDS:
     {
@@ -1961,7 +2239,7 @@ QString DataLists::GetQRCPathForResource(const BodyNameVersion aBodyNameVersion,
   return QStringLiteral(":/presets/%1/%2/%3").arg(lResourceType, lResourceName, lResourceVersion);
 }
 
-std::pair<int, int> DataLists::GetSplittedNameVersionFromBodyVersionCompatibility(const int aBodyVersion)
+std::pair<int, int> DataLists::GetSplitNameVersionFromBodyVersionCompatibility(const int aBodyVersion)
 {
   switch (aBodyVersion)
   {
@@ -2130,10 +2408,10 @@ std::pair<BodyNameVersion, FeetNameVersion> DataLists::ReadBodyFeetModsCompatibi
   // If the relative version is too high, take the first one available
   if (aBodyVersion >= DataLists::GetBodyVersionsList(DataLists::GetName(lBodyVariant)).size())
   {
-    return std::make_pair(DataLists::GetBodyNameVersion(lBodyVariant, 0), lFeetToSet);
+    return std::make_pair(DataLists::GetNameVersion(lBodyVariant, 0), lFeetToSet);
   }
 
-  return std::make_pair(DataLists::GetBodyNameVersion(lBodyVariant, aBodyVersion), lFeetToSet);
+  return std::make_pair(DataLists::GetNameVersion(lBodyVariant, aBodyVersion), lFeetToSet);
 }
 
 QStringList DataLists::GetKnownTexturesFilesNames()

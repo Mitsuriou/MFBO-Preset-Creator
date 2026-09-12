@@ -12,6 +12,12 @@ namespace SliderFileBuilder
                               const bool aMustUseBeastHands,
                               const unsigned char& aTargetBlocks);
 
+  // QString BuildOSPFileContent(const QString& aLineName,
+  //                             const int aBody,
+  //                             const int aFeet,
+  //                             const bool aMustUseBeastHands,
+  //                             const unsigned char& aTargetBlocks);
+
   // SliderGroups
   QString BuildXMLFileContent(const QString& aLineName,
                               const std::vector<Struct::Filter>& aFiltersList,

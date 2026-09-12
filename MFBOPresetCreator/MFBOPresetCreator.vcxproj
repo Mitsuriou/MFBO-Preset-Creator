@@ -21,12 +21,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -36,13 +34,13 @@
     <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
-    <QtInstall>6.4.2</QtInstall>
+    <QtInstall>6.9.1</QtInstall>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtModules>core;xml;network;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
-    <QtInstall>6.4.2</QtInstall>
+    <QtInstall>6.9.1</QtInstall>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
@@ -70,6 +68,7 @@
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <QtTranslation>
       <BuildAction>lrelease</BuildAction>
@@ -90,6 +89,7 @@ echo #####################################################</Command>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <QtTranslation>
       <BuildAction>lupdate_lrelease</BuildAction>
@@ -168,7 +168,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClCompile Include="ThemeCard.cpp" />
     <ClCompile Include="TitleDialog.cpp" />
     <ClCompile Include="Update.cpp" />
-    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="_Utils.cpp" />
     <ClCompile Include="VersionsInformation.cpp" />
     <ClCompile Include="WelcomeScreen.cpp" />
     <QtRcc Include="MFBOPresetCreator.qrc" />
@@ -224,7 +224,7 @@ echo F | xcopy /C /Y /R "$(TargetPath)" "$(SolutionDir)Wizard resources\client r
     <ClInclude Include="Struct.h" />
     <QtMoc Include="TitleDialog.h" />
     <ClInclude Include="VersionsInformation.h" />
-    <QtMoc Include="Utils.h" />
+    <QtMoc Include="_Utils.h" />
     <ClInclude Include="DataLists.h" />
     <ClInclude Include="ComponentFactory.h" />
     <ClInclude Include="resource.h" />

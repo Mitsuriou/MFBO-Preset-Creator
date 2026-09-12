@@ -5,7 +5,7 @@
 #include "DataLists.h"
 #include "Enum.h"
 #include "TargetMeshesPicker.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QApplication>
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -285,7 +285,7 @@ void BatchConversion::setupOutputGUI(QGridLayout& aLayout)
   QObject::connect(lOutputSubpathLineEdit, &QLineEdit::textChanged, this, &BatchConversion::updateOutputPreview);
 
   auto lUseOnlySubdir{this->findChild<QCheckBox*>(QStringLiteral("only_use_subdirectory"))};
-  QObject::connect(lUseOnlySubdir, &QCheckBox::stateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
+  QObject::connect(lUseOnlySubdir, &QCheckBox::checkStateChanged, this, &BatchConversion::useOnlySubdirStateChanged);
 
   // Pre-filled data
   this->updateOutputPreview();
@@ -929,7 +929,13 @@ void BatchConversion::chooseExportDirectory()
 
 void BatchConversion::openTargetMeshesPicker()
 {
-  auto lDialog{new TargetMeshesPicker(this, this->settings(), this->lastPaths(), this->mTargetBodyMesh, this->mTargetFeetMesh)};
+  auto lDialog{new TargetMeshesPicker(this,
+                                      this->settings(),
+                                      this->lastPaths(),
+                                      this->mTargetBodyMesh,
+                                      this->mTargetFeetMesh,
+                                      this->mTargetHandsMesh,
+                                      this->mTargetBeastHandsMesh)};
   QObject::connect(lDialog, &TargetMeshesPicker::valuesChosen, this, &BatchConversion::targetMeshesChanged);
 }
 

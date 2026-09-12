@@ -1,5 +1,5 @@
 #include "LangManager.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QLocale>
 
 namespace LangManager

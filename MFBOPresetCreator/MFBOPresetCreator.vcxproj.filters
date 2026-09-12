@@ -88,7 +88,7 @@
     <ClCompile Include="SliderFileBuilder.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
+    <ClCompile Include="_Utils.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="VersionsInformation.cpp">
@@ -228,7 +228,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Utils.h">
+    <QtMoc Include="_Utils.h">
       <Filter>Header Files\Utils</Filter>
     </QtMoc>
     <QtMoc Include="GroupBox.h">

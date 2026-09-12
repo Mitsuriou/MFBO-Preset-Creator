@@ -247,28 +247,38 @@ namespace Struct
     };
   };
 
-  struct BodyFeetSettings
+  struct BodyFeetSettings // TODO: rename this struct
   {
   public:
     BodyNameVersion bodyMesh{BodyNameVersion::CBBE_3BA_3BBB_1_50};
     FeetNameVersion feetMesh{FeetNameVersion::CBBE_3BA_3BBB_1_50};
+    HandsNameVersion handsMesh{HandsNameVersion::_INVALID_VALUE};                // TODO: set a real default value when hands are implemented properly
+    BeastHandsNameVersion beastHandsMesh{BeastHandsNameVersion::_INVALID_VALUE}; // TODO: set a real default value when hands are implemented properly
 
     QJsonObject toJson() const
     {
       QJsonObject lNode;
       lNode["bodyMesh"] = static_cast<int>(this->bodyMesh);
       lNode["feetMesh"] = static_cast<int>(this->feetMesh);
+      lNode["handsMesh"] = static_cast<int>(this->handsMesh);
+      lNode["beastHandsMesh"] = static_cast<int>(this->beastHandsMesh);
       return lNode;
     }
 
     bool operator==(const Struct::BodyFeetSettings& rhs) const
     {
-      return (this->bodyMesh == rhs.bodyMesh && this->feetMesh == rhs.feetMesh);
+      return (this->bodyMesh == rhs.bodyMesh
+              && this->feetMesh == rhs.feetMesh
+              && this->handsMesh == rhs.handsMesh
+              && this->beastHandsMesh == rhs.beastHandsMesh);
     }
 
     bool operator!=(const Struct::BodyFeetSettings& rhs) const
     {
-      return (this->bodyMesh != rhs.bodyMesh || this->feetMesh != rhs.feetMesh);
+      return (this->bodyMesh != rhs.bodyMesh
+              || this->feetMesh != rhs.feetMesh
+              || this->handsMesh != rhs.handsMesh
+              || this->beastHandsMesh != rhs.beastHandsMesh);
     }
   };
 
@@ -276,13 +286,13 @@ namespace Struct
   {
   public:
     bool automaticallyOpenFinalDirectory{true};
-    BodyFeetSettings defaultBodyFeet;
+    BodyFeetSettings defaultBodyFeet; // TODO: rename this value
 
     QJsonObject toJson() const
     {
       QJsonObject lNode;
       lNode["automaticallyOpenFinalDirectory"] = this->automaticallyOpenFinalDirectory;
-      lNode["defaultBodyFeet"] = this->defaultBodyFeet.toJson();
+      lNode["defaultBodyFeet"] = this->defaultBodyFeet.toJson(); // TODO: rename this key
       return lNode;
     }
 

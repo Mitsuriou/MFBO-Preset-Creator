@@ -1,7 +1,7 @@
 #include "WelcomeScreen.h"
 #include "ComponentFactory.h"
 #include "Update.h"
-#include "Utils.h"
+#include "_Utils.h"
 #include <QCheckBox>
 #include <QCloseEvent>
 #include <QDesktopServices>

@@ -2,6 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="DataListsTest.cpp" />
-    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="UtilsTest.cpp" />
   </ItemGroup>
 </Project>

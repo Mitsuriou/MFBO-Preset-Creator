@@ -33,6 +33,8 @@ private:
   int mMinimumFirstColumnWidth;
   BodyNameVersion mTargetBodyMesh;
   FeetNameVersion mTargetFeetMesh;
+  HandsNameVersion mTargetHandsMesh;
+  BeastHandsNameVersion mTargetBeastHandsMesh;
 
   // GUI creation
   void setupBodyMeshesGUI(QGridLayout& aLayout);
@@ -48,7 +50,7 @@ private:
   // GUI update scripts
   void updateBeastHandsCheckboxState();
 
-  //#pragma region PRIVATE_SLOTS
+  // #pragma region PRIVATE_SLOTS
   void populateSkeletonChooser();
   void openSkeletonsAssetsDirectory();
 
@@ -77,5 +79,5 @@ private:
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
-  //#pragma endregion PRIVATE_SLOTS
+  // #pragma endregion PRIVATE_SLOTS
 };

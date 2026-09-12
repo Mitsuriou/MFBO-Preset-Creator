@@ -11,6 +11,9 @@ class SliderSetsDBManager final : public TitleDialog
 public:
   explicit SliderSetsDBManager(QWidget* aParent, const Struct::Settings& aSettings, std::map<QString, QString>* aLastPaths);
 
+signals:
+  void closed(const std::map<int, Struct::DatabaseSliderSet>&);
+
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
 

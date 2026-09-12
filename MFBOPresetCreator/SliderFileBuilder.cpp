@@ -1,8 +1,11 @@
 #include "SliderFileBuilder.h"
 #include "DataLists.h"
-#include "Utils.h"
+// #include "SliderSetsDBDAO.h"
+#include "_Utils.h"
 #include <QFile>
 #include <QTextStream>
+
+constexpr auto START_INDEX{1000};
 
 namespace SliderFileBuilder
 {
@@ -40,6 +43,57 @@ namespace SliderFileBuilder
     lBuiltContent.append("\n</SliderSetInfo>\n");
     return lBuiltContent;
   }
+
+  // QString BuildOSPFileContent(const QString& aLineName,
+  //                             const int aBody,
+  //                             const int aFeet,
+  //                             const bool aMustUseBeastHands,
+  //                             const unsigned char& aTargetBlocks)
+  //{
+  //   const std::map<int, Struct::DatabaseSliderSet> lUserSliderSetsDB{
+  //     (aBody >= START_INDEX || aFeet >= START_INDEX)
+  //       ? SliderSetsDBDAO::loadDatabase()
+  //       : std::map<int, Struct::DatabaseSliderSet>{}};
+
+  //  auto lBuiltContent{QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SliderSetInfo version=\"1\">")};
+
+  //  // Body
+  //  if (aTargetBlocks / 100 == 1)
+  //  {
+  //    if (aBody >= START_INDEX)
+  //    {
+  //      // TODO
+  //    }
+  //    else
+  //    {
+  //      lBuiltContent.append("\n").append(
+  //        Utils::ReadQRCFileContent(
+  //          DataLists::GetQRCPathForResource(static_cast<BodyNameVersion>(aBody), static_cast<FeetNameVersion>(aFeet), MeshPartType::BODY))
+  //          .arg(aLineName));
+  //    }
+  //  }
+
+  //  // Feet
+  //  if (aTargetBlocks % 100 / 10 == 1)
+  //  {
+  //    lBuiltContent.append("\n").append(
+  //      Utils::ReadQRCFileContent(
+  //        DataLists::GetQRCPathForResource(static_cast<BodyNameVersion>(aBody), static_cast<FeetNameVersion>(aFeet), MeshPartType::FEET))
+  //        .arg(aLineName));
+  //  }
+
+  //  // Hands
+  //  if (aTargetBlocks % 10 == 1)
+  //  {
+  //    lBuiltContent.append("\n").append(
+  //      Utils::ReadQRCFileContent(
+  //        DataLists::GetQRCPathForResource(static_cast<BodyNameVersion>(aBody), static_cast<FeetNameVersion>(aFeet), aMustUseBeastHands ? MeshPartType::BEAST_HANDS : MeshPartType::HANDS))
+  //        .arg(aLineName));
+  //  }
+
+  //  lBuiltContent.append("\n</SliderSetInfo>\n");
+  //  return lBuiltContent;
+  //}
 
   QString BuildXMLFileContent(const QString& aLineName,
                               const std::vector<Struct::Filter>& aFiltersList,

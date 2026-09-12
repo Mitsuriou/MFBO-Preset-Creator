@@ -23,12 +23,14 @@ private:
   std::map<QString, QStringList> mFiltersList;
   BodyNameVersion mTargetBodyMesh;
   FeetNameVersion mTargetFeetMesh;
+  HandsNameVersion mTargetHandsMesh;
+  BeastHandsNameVersion mTargetBeastHandsMesh;
 
   void initializeGUI();
   void setupInterface(QGridLayout& aLayout);
   void userHasDoneAnAction();
 
-  //#pragma region PRIVATE_SLOTS
+  // #pragma region PRIVATE_SLOTS
   void userHasDoneAnAction(int);
   void chooseInputDirectory();
   void chooseBackupDirectory();
@@ -45,5 +47,5 @@ private:
   void initBodySlideFiltersList();
   void updateBodySlideFiltersList(const std::map<QString, QStringList>& aFilterList);
   void updateBodySlideFiltersListPreview();
-  //#pragma endregion PRIVATE_SLOTS
+  // #pragma endregion PRIVATE_SLOTS
 };

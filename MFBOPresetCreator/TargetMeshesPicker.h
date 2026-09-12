@@ -14,7 +14,9 @@ public:
                               const Struct::Settings& aSettings,
                               std::map<QString, QString>* aLastPaths,
                               const BodyNameVersion& aPreSelectedBody,
-                              const FeetNameVersion& aPreSelectedFeet);
+                              const FeetNameVersion& aPreSelectedFeet,
+                              const HandsNameVersion& aPreSelectedHands,
+                              const BeastHandsNameVersion& aPreSelectedBeastHands);
 
 protected:
   void closeEvent(QCloseEvent* aEvent) override;
@@ -50,10 +52,24 @@ private:
   int mCurrentFeetCustom{-1};
 
   // Hands related list widgets
+  QListWidget* mListHandsName{nullptr};
+  int mCurrentHandsBase{-1};
+  QListWidget* mListHandsVersion{nullptr};
+  int mCurrentHandsVersionNumber{-1};
+  QListWidget* mListHandsVariantName{nullptr};
+  int mCurrentHandsVersionName{-1};
+
   QListWidget* mListHandsCustom{nullptr};
   int mCurrentHandsCustom{-1};
 
   // Beast hands related list widgets
+  QListWidget* mListBeastHandsName{nullptr};
+  int mCurrentBeastHandsBase{-1};
+  QListWidget* mListBeastHandsVersion{nullptr};
+  int mCurrentBeastHandsVersionNumber{-1};
+  QListWidget* mListBeastHandsVariantName{nullptr};
+  int mCurrentBeastHandsVersionName{-1};
+
   QListWidget* mListBeastHandsCustom{nullptr};
   int mCurrentBeastHandsCustom{-1};
 
@@ -61,6 +77,10 @@ private:
   bool mIsWindowInitialized{false};
   QString mLastSelectedFeetName;
   QString mLastSelectedFeetVariant;
+  QString mLastSelectedHandsName;
+  QString mLastSelectedHandsVariant;
+  QString mLastSelectedBeastHandsName;
+  QString mLastSelectedBeastHandsVariant;
 
   // Common functions
   void initializeGUI();
@@ -93,22 +113,18 @@ private:
                         QListWidget& aWidgetModVersion,
                         QListWidget& aWidgetModVariantName,
                         const QStringList& aNamesList);
-  void setupCustomTab(QTabWidget& aTabWidget,
-                      const QString& aIconName,
-                      const QString& aTabName,
-                      QListWidget& aListWidget,
-                      const MeshPartType aResourceType);
+  void setupCustomTab(QTabWidget& aTabWidget, const QString& aIconName, const QString& aTabName, QListWidget& aListWidget);
 
   // Inject custom presets
   void openSliderSetsDatabaseManager();
-  void updateCustomSliderSetsLists() const;
+  void updateCustomSliderSetsLists();
 
   // Fetch selected values
   BodyVariant getChosenBodyVariant() const;
   BodyNameVersion getChosenBodyName() const;
   FeetNameVersion getChosenFeetName() const;
-  QString getChosenHandsName() const;
-  QString getChosenBeastHandsName() const;
+  HandsNameVersion getChosenHandsName() const;
+  BeastHandsNameVersion getChosenBeastHandsName() const;
 
   // GUI widgets events
   void validateAndClose();
@@ -127,5 +143,5 @@ private:
   void refreshSelectionPreview() const;
 
 signals:
-  void valuesChosen(const BodyNameVersion& aBody, const FeetNameVersion& aFeet);
+  void valuesChosen(const BodyNameVersion& aBody, const FeetNameVersion& aFeet, const HandsNameVersion& aHands, const BeastHandsNameVersion& aBeastHands);
 };
